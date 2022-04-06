@@ -154,6 +154,11 @@ namespace KTKS_DonKH.GUI.DonTu
                         txtSoNK.Text = entity.SoNK.Value.ToString();
                         txtHieuLucKy.Text = entity.HieuLucKy;
                     }
+                    if (entity.ThoiHan != null)
+                    {
+                        cmbThoiHan.SelectedItem = entity.ThoiHan;
+                        dateHetHan.Value = entity.NgayHetHan.Value;
+                    }
                     if (entity.DonTu_ChiTiets.SingleOrDefault().DanhBo != null && entity.DonTu_ChiTiets.SingleOrDefault().DanhBo.Length == 11)
                         txtDanhBo.Text = entity.DonTu_ChiTiets.SingleOrDefault().DanhBo.Insert(7, " ").Insert(4, " ");
                     txtHopDong.Text = entity.DonTu_ChiTiets.SingleOrDefault().HopDong;
@@ -1011,7 +1016,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     dr["DienThoai"] = entity.DonTu_ChiTiets.SingleOrDefault().DienThoai;
                     if (entity.DonTu_ChiTiets.SingleOrDefault().ChanHoaDon == true)
                     {
-                        dr["TenLD"] = "***";
+                        dr["PathLogo"] = "***";
                     }
                 }
                 dr["NoiDung"] = entity.Name_NhomDon_PKH;
@@ -1138,7 +1143,12 @@ namespace KTKS_DonKH.GUI.DonTu
                     dr["DinhMucSau"] = entity.SoNK * 4;
                 dr["HieuLucTuKy"] = entity.HieuLucKy;
                 if (entity.NgayHetHan != null)
+                {
                     dr["NgayHetHan"] = entity.NgayHetHan.Value.ToString("dd/MM/yyyy");
+                    dr["TenLD"] = "Đề nghị khách hàng liên hệ Công ty đăng ký lại định mức nước khi hết hạn.";
+                }
+                else
+                    dr["NgayHetHan"] = "";
                 dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
                 dr["HoTenNV"] = CTaiKhoan.HoTen;
                 dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(dr);
