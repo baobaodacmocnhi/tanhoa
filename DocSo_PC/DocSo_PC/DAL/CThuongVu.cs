@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using DocSo_PC.LinQ;
 
 namespace DocSo_PC.DAL
 {
     class CThuongVu
     {
-        public static CConnection _cDAL = new CConnection("Data Source=113.161.88.180,1133;Initial Catalog=KTKS_DonKH;Persist Security Info=True;User ID=sa;Password=db11@tanhoa");
+        public static dbThuongVuDataContext _db = new dbThuongVuDataContext();
+        public static CConnection _cDAL = new CConnection(_db.Connection.ConnectionString);
         wrThuongVu.wsThuongVu _wsThuongVu = new wrThuongVu.wsThuongVu();
 
         public DataTable getDS_KTXM_ChuaNhan(DateTime FromCreateDate, DateTime ToCreateDate)
@@ -70,6 +72,16 @@ namespace DocSo_PC.DAL
         public DataTable getGiaNuoc(string Nam)
         {
             return _cDAL.ExecuteQuery_DataTable("select * from GiaNuoc2 where Name=" + Nam);
+        }
+
+        public string getChucVu_Duyet()
+        {
+            return _cDAL.ExecuteQuery_ReturnOneValue("select ChucVu from BanGiamDoc where KyTen=1").ToString();
+        }
+
+        public string getNguoiKy_Duyet()
+        {
+            return _cDAL.ExecuteQuery_ReturnOneValue("select HoTen from BanGiamDoc where KyTen=1").ToString();
         }
 
     }

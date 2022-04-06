@@ -96,5 +96,16 @@ namespace DocSo_PC.Properties {
                 return ((string)(this["DocSo_PC_wrThuongVu_wsThuongVu"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=serverg8-01;Initial Catalog=KTKS_DonKH;Persist Security Info=True;Use" +
+            "r ID=sa;Password=db11@tanhoa")]
+        public string KTKS_DonKHConnectionString {
+            get {
+                return ((string)(this["KTKS_DonKHConnectionString"]));
+            }
+        }
     }
 }

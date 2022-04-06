@@ -80,9 +80,9 @@ namespace DocSo_PC.DAL.MaHoa
             return _db.MaHoa_DonTus.SingleOrDefault(item => item.ID == ID);
         }
 
-        public DataTable getDS(DateTime FromCreateDate, DateTime ToCreateDate)
+        public DataTable getDS(string NoiDung, DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            return _cDAL.LINQToDataTable(_db.MaHoa_DonTus.Where(item => item.CreateDate.Date >= FromCreateDate.Date && item.CreateDate.Date <= ToCreateDate.Date).ToList());
+            return _cDAL.LINQToDataTable(_db.MaHoa_DonTus.Where(item => item.CreateDate.Date >= FromCreateDate.Date && item.CreateDate.Date <= ToCreateDate.Date && NoiDung.IndexOf(item.NoiDung)>=0).ToList());
         }
 
         public DataTable getDS_ChuyenDCBD(DateTime FromCreateDate, DateTime ToCreateDate)

@@ -32,11 +32,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDanhSach = new System.Windows.Forms.DataGridView();
             this.Chon = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,6 +57,15 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btnThem = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label20 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.dgvHinh = new System.Windows.Forms.DataGridView();
+            this.ID_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Image_Hinh = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Name_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Bytes_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Loai_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnChonFile = new System.Windows.Forms.Button();
             this.btnInThuBao = new System.Windows.Forms.Button();
             this.btnInPhieu = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
@@ -78,22 +87,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dateDen_DS = new System.Windows.Forms.DateTimePicker();
-            this.label20 = new System.Windows.Forms.Label();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.dgvHinh = new System.Windows.Forms.DataGridView();
-            this.ID_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Image_Hinh = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Name_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Bytes_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Loai_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnChonFile = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDCBD)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHinh)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDCBD)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvDanhSach
@@ -140,7 +140,7 @@
             this.dgvDanhSach.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvDanhSach.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvDanhSach.Size = new System.Drawing.Size(1002, 400);
+            this.dgvDanhSach.Size = new System.Drawing.Size(1002, 538);
             this.dgvDanhSach.TabIndex = 62;
             this.dgvDanhSach.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhSach_RowPostPaint);
             // 
@@ -280,7 +280,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1036, 579);
+            this.tabPage1.Size = new System.Drawing.Size(1231, 579);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Nhập Điều Chỉnh";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -315,6 +315,99 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Danh Sách";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label20.Location = new System.Drawing.Point(910, 33);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(309, 13);
+            this.label20.TabIndex = 147;
+            this.label20.Text = "Xóa File Chọn dòng => bấm nút Delete trên bàn phím";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.dgvHinh);
+            this.groupBox4.Controls.Add(this.btnChonFile);
+            this.groupBox4.Location = new System.Drawing.Point(913, 49);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(274, 135);
+            this.groupBox4.TabIndex = 146;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "File Scan";
+            // 
+            // dgvHinh
+            // 
+            this.dgvHinh.AllowUserToAddRows = false;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHinh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvHinh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvHinh.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID_Hinh,
+            this.Image_Hinh,
+            this.Name_Hinh,
+            this.Bytes_Hinh,
+            this.Loai_Hinh});
+            this.dgvHinh.Location = new System.Drawing.Point(6, 43);
+            this.dgvHinh.Name = "dgvHinh";
+            this.dgvHinh.Size = new System.Drawing.Size(261, 86);
+            this.dgvHinh.TabIndex = 10;
+            this.dgvHinh.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgvHinh_UserDeletingRow);
+            this.dgvHinh.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvHinh_MouseDoubleClick);
+            // 
+            // ID_Hinh
+            // 
+            this.ID_Hinh.DataPropertyName = "ID";
+            this.ID_Hinh.HeaderText = "ID";
+            this.ID_Hinh.Name = "ID_Hinh";
+            this.ID_Hinh.Visible = false;
+            // 
+            // Image_Hinh
+            // 
+            this.Image_Hinh.HeaderText = "Image";
+            this.Image_Hinh.Image = global::DocSo_PC.Properties.Resources.file_24x24;
+            this.Image_Hinh.Name = "Image_Hinh";
+            this.Image_Hinh.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Image_Hinh.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Image_Hinh.Width = 50;
+            // 
+            // Name_Hinh
+            // 
+            this.Name_Hinh.DataPropertyName = "Name";
+            this.Name_Hinh.HeaderText = "File";
+            this.Name_Hinh.Name = "Name_Hinh";
+            this.Name_Hinh.Width = 150;
+            // 
+            // Bytes_Hinh
+            // 
+            this.Bytes_Hinh.DataPropertyName = "Bytes";
+            this.Bytes_Hinh.HeaderText = "Bytes";
+            this.Bytes_Hinh.Name = "Bytes_Hinh";
+            this.Bytes_Hinh.Visible = false;
+            // 
+            // Loai_Hinh
+            // 
+            this.Loai_Hinh.DataPropertyName = "Loai";
+            this.Loai_Hinh.HeaderText = "Loai_Hinh";
+            this.Loai_Hinh.Name = "Loai_Hinh";
+            this.Loai_Hinh.Visible = false;
+            // 
+            // btnChonFile
+            // 
+            this.btnChonFile.Location = new System.Drawing.Point(40, 17);
+            this.btnChonFile.Name = "btnChonFile";
+            this.btnChonFile.Size = new System.Drawing.Size(75, 25);
+            this.btnChonFile.TabIndex = 8;
+            this.btnChonFile.Text = "Chọn File";
+            this.btnChonFile.UseVisualStyleBackColor = true;
+            this.btnChonFile.Click += new System.EventHandler(this.btnChonFile_Click);
             // 
             // btnInThuBao
             // 
@@ -392,7 +485,7 @@
             this.dgvDCBD.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvDCBD.RowsDefaultCellStyle = dataGridViewCellStyle9;
-            this.dgvDCBD.Size = new System.Drawing.Size(901, 400);
+            this.dgvDCBD.Size = new System.Drawing.Size(901, 538);
             this.dgvDCBD.TabIndex = 68;
             this.dgvDCBD.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDCBD_CellClick);
             this.dgvDCBD.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDCBD_RowPostPaint);
@@ -524,99 +617,6 @@
             this.dateDen_DS.Size = new System.Drawing.Size(95, 20);
             this.dateDen_DS.TabIndex = 66;
             // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label20.Location = new System.Drawing.Point(910, 33);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(309, 13);
-            this.label20.TabIndex = 147;
-            this.label20.Text = "Xóa File Chọn dòng => bấm nút Delete trên bàn phím";
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.dgvHinh);
-            this.groupBox4.Controls.Add(this.btnChonFile);
-            this.groupBox4.Location = new System.Drawing.Point(913, 49);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(274, 135);
-            this.groupBox4.TabIndex = 146;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "File Scan";
-            // 
-            // dgvHinh
-            // 
-            this.dgvHinh.AllowUserToAddRows = false;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHinh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvHinh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvHinh.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID_Hinh,
-            this.Image_Hinh,
-            this.Name_Hinh,
-            this.Bytes_Hinh,
-            this.Loai_Hinh});
-            this.dgvHinh.Location = new System.Drawing.Point(6, 43);
-            this.dgvHinh.Name = "dgvHinh";
-            this.dgvHinh.Size = new System.Drawing.Size(261, 86);
-            this.dgvHinh.TabIndex = 10;
-            this.dgvHinh.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgvHinh_UserDeletingRow);
-            this.dgvHinh.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvHinh_MouseDoubleClick);
-            // 
-            // ID_Hinh
-            // 
-            this.ID_Hinh.DataPropertyName = "ID";
-            this.ID_Hinh.HeaderText = "ID";
-            this.ID_Hinh.Name = "ID_Hinh";
-            this.ID_Hinh.Visible = false;
-            // 
-            // Image_Hinh
-            // 
-            this.Image_Hinh.HeaderText = "Image";
-            this.Image_Hinh.Image = global::DocSo_PC.Properties.Resources.file_24x24;
-            this.Image_Hinh.Name = "Image_Hinh";
-            this.Image_Hinh.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Image_Hinh.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Image_Hinh.Width = 50;
-            // 
-            // Name_Hinh
-            // 
-            this.Name_Hinh.DataPropertyName = "Name";
-            this.Name_Hinh.HeaderText = "File";
-            this.Name_Hinh.Name = "Name_Hinh";
-            this.Name_Hinh.Width = 150;
-            // 
-            // Bytes_Hinh
-            // 
-            this.Bytes_Hinh.DataPropertyName = "Bytes";
-            this.Bytes_Hinh.HeaderText = "Bytes";
-            this.Bytes_Hinh.Name = "Bytes_Hinh";
-            this.Bytes_Hinh.Visible = false;
-            // 
-            // Loai_Hinh
-            // 
-            this.Loai_Hinh.DataPropertyName = "Loai";
-            this.Loai_Hinh.HeaderText = "Loai_Hinh";
-            this.Loai_Hinh.Name = "Loai_Hinh";
-            this.Loai_Hinh.Visible = false;
-            // 
-            // btnChonFile
-            // 
-            this.btnChonFile.Location = new System.Drawing.Point(40, 17);
-            this.btnChonFile.Name = "btnChonFile";
-            this.btnChonFile.Size = new System.Drawing.Size(75, 25);
-            this.btnChonFile.TabIndex = 8;
-            this.btnChonFile.Text = "Chọn File";
-            this.btnChonFile.UseVisualStyleBackColor = true;
-            this.btnChonFile.Click += new System.EventHandler(this.btnChonFile_Click);
-            // 
             // frmDCBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -632,9 +632,9 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDCBD)).EndInit();
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvHinh)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDCBD)).EndInit();
             this.ResumeLayout(false);
 
         }

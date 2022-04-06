@@ -14,6 +14,7 @@ using System.Transactions;
 using DocSo_PC.BaoCao;
 using DocSo_PC.BaoCao.MaHoa;
 using DocSo_PC.GUI.BaoCao;
+using DocSo_PC.DAL.Doi;
 
 namespace DocSo_PC.GUI.MaHoa
 {
@@ -23,6 +24,8 @@ namespace DocSo_PC.GUI.MaHoa
         CDonTu _cDonTu = new CDonTu();
         CThuTien _cThuTien = new CThuTien();
         CNguoiDung _cNguoiDung = new CNguoiDung();
+        CThuongVu _cThuongVu = new CThuongVu();
+        CDocSo _cDocSo = new CDocSo();
         wrDHN.wsDHN _wsDHN = new wrDHN.wsDHN();
 
         MaHoa_DonTu _dontu = null;
@@ -64,11 +67,11 @@ namespace DocSo_PC.GUI.MaHoa
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     if (str == "")
-                        str += dt.Rows[0]["Name"].ToString();
+                        str += dt.Rows[i]["Name"].ToString();
                     else
-                        str += ";" + dt.Rows[0]["Name"].ToString();
+                        str += ";" + dt.Rows[i]["Name"].ToString();
                 }
-                chkcmbNoiDung.Properties.DataSource = _cDonTu.getDS_PhieuChuyenAll();
+                chkcmbNoiDung.Properties.DataSource = dt;
                 chkcmbNoiDung.Properties.ValueMember = "Name";
                 chkcmbNoiDung.Properties.DisplayMember = "Name";
                 chkcmbNoiDung.SetEditValue(str);
@@ -167,7 +170,7 @@ namespace DocSo_PC.GUI.MaHoa
                     }
                     if (_cDonTu.Them(en))
                     {
-                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Thành công\nMã đơn: " + en.ID.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear();
                     }
                 }
@@ -339,7 +342,16 @@ namespace DocSo_PC.GUI.MaHoa
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvDanhSach.DataSource = _cDonTu.getDS(dateTuNgay.Value, dateDenNgay.Value);
+            string str = "";
+            for (int i = 0; i < chkcmbNoiDung.Properties.Items.Count; i++)
+                if (chkcmbNoiDung.Properties.Items[i].CheckState == CheckState.Checked)
+                {
+                    if (str == "")
+                        str = chkcmbNoiDung.Properties.Items[i].Value.ToString();
+                    else
+                        str += ";" + chkcmbNoiDung.Properties.Items[i].Value.ToString();
+                }
+            dgvDanhSach.DataSource = _cDonTu.getDS(str, dateTuNgay.Value, dateDenNgay.Value);
         }
 
         private void btnCapNhat_Click(object sender, EventArgs e)
@@ -348,29 +360,37 @@ namespace DocSo_PC.GUI.MaHoa
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 {
-                    if (_dontu != null)
+                    if (cmbNoiChuyen.SelectedIndex > -1)
                     {
-                        MaHoa_DonTu_LichSu entity = new MaHoa_DonTu_LichSu();
-                        entity.NgayChuyen = dateChuyen.Value;
-                        entity.ID_NoiChuyen = int.Parse(cmbNoiChuyen.SelectedValue.ToString());
-                        entity.NoiChuyen = cmbNoiChuyen.Text;
-                        entity.ID_NoiNhan = int.Parse(cmbNoiNhan.SelectedValue.ToString());
-                        entity.NoiNhan = cmbNoiNhan.Text;
-                        entity.NoiDung = txtNoiDung_LichSu.Text.Trim();
-                        entity.IDMaDon = _dontu.ID;
-                        if (cmbNoiNhan.SelectedValue.ToString() == "2")
+                        foreach (DataGridViewRow item in dgvDanhSach.SelectedRows)
                         {
-                            entity.ID_KTXM = int.Parse(cmbKTXM.SelectedValue.ToString());
-                            entity.KTXM = cmbKTXM.Text;
-                        }
-                        if (_cDonTu.Them_LichSu(entity) == true)
-                        {
-                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            loadDonTu_LichSu(_dontu.ID);
-                            ClearChuyenDon();
-                            _cDonTu.Refresh();
+                            MaHoa_DonTu dontu = _cDonTu.get(int.Parse(item.Cells["ID"].Value.ToString()));
+                            if (dontu != null)
+                            {
+                                MaHoa_DonTu_LichSu entity = new MaHoa_DonTu_LichSu();
+                                entity.NgayChuyen = dateChuyen.Value;
+                                entity.ID_NoiChuyen = int.Parse(cmbNoiChuyen.SelectedValue.ToString());
+                                entity.NoiChuyen = cmbNoiChuyen.Text;
+                                entity.ID_NoiNhan = int.Parse(cmbNoiNhan.SelectedValue.ToString());
+                                entity.NoiNhan = cmbNoiNhan.Text;
+                                entity.NoiDung = txtNoiDung_LichSu.Text.Trim();
+                                entity.IDMaDon = dontu.ID;
+                                if (cmbNoiNhan.SelectedValue.ToString() == "2")
+                                {
+                                    entity.ID_KTXM = int.Parse(cmbKTXM.SelectedValue.ToString());
+                                    entity.KTXM = cmbKTXM.Text;
+                                }
+                                if (_cDonTu.Them_LichSu(entity) == true)
+                                {
+                                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    loadDonTu_LichSu(dontu.ID);
+                                    ClearChuyenDon();
+                                    _cDonTu.Refresh();
+                                }
+                            }
                         }
                     }
+
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -411,6 +431,51 @@ namespace DocSo_PC.GUI.MaHoa
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnInDS_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dsBaoCao dsBaoCao = new dsBaoCao();
+                foreach (DataGridViewRow item in dgvDanhSach.Rows)
+                {
+                    MaHoa_DonTu dontu = _cDonTu.get(int.Parse(item.Cells["ID"].Value.ToString()));
+                    DataRow dr = dsBaoCao.Tables["BaoCao"].NewRow();
+                    dr["TenPhong"] = CNguoiDung.TenPhong;
+                    dr["DanhBo"] = dontu.DanhBo.Insert(7, " ").Insert(4, " ");
+                    dr["HopDong"] = dontu.HopDong;
+                    dr["HoTen"] = dontu.HoTen;
+                    dr["DiaChi"] = dontu.DiaChi;
+                    dr["GiaBieu"] = dontu.GiaBieu;
+                    dr["DinhMuc"] = dontu.DinhMuc;
+                    int Nam = dontu.Nam.Value;
+                    int Ky = dontu.Ky.Value;
+                    if (Ky == 12)
+                    {
+                        Nam++;
+                        Ky = 1;
+                    }
+                    else
+                        Ky++;
+                    DocSo docso = _cDocSo.get_DocSo(dontu.DanhBo, Nam.ToString(), Ky.ToString("00"));
+                    dr["TBTT"] = docso.TBTT;
+                    dr["GhiChu"] = dontu.GhiChu;
+                    dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper();
+                    dr["NguoiKy"] = CNguoiDung.NguoiKy.ToUpper();
+                    dr["ChucVuDuyet"] = "DUYỆT\n" + _cThuongVu.getChucVu_Duyet().ToUpper();
+                    dr["NguoiKyDuyet"] = _cThuongVu.getNguoiKy_Duyet().ToUpper();
+                    dsBaoCao.Tables["BaoCao"].Rows.Add(dr);
+                }
+                rptDSDonTu rpt = new rptDSDonTu();
+                rpt.SetDataSource(dsBaoCao);
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                frm.Show();
             }
             catch (Exception ex)
             {
@@ -492,6 +557,8 @@ namespace DocSo_PC.GUI.MaHoa
         }
 
         #endregion
+
+
 
     }
 }

@@ -32,7 +32,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>104</ApplicationRevision>
+    <ApplicationRevision>106</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -119,6 +119,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsBaoCao.xsd</DependentUpon>
     </Compile>
+    <Compile Include="BaoCao\MaHoa\rptDSDonTu.cs">
+      <DependentUpon>rptDSDonTu.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="BaoCao\MaHoa\rptDSChuyenKTXM.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -143,6 +149,12 @@
       <DependentUpon>rptThuBaoDCBD_ChungCu.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="BaoCao\MaHoa\rptToTrinh_ThongQuaPGD_2022.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptToTrinh_ThongQuaPGD_2022.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="BaoCao\rptHeader.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -162,10 +174,12 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DAL\CDocSo12.cs" />
+    <Compile Include="DAL\CTTKH.cs" />
     <Compile Include="DAL\CThuongVu.cs" />
     <Compile Include="DAL\MaHoa\CDCBD.cs" />
     <Compile Include="DAL\MaHoa\CDonTu.cs" />
     <Compile Include="DAL\MaHoa\CKTXM.cs" />
+    <Compile Include="DAL\MaHoa\CToTrinh.cs" />
     <Compile Include="DAL\QuanTri\CMayDS.cs" />
     <Compile Include="DAL\sDHN\CsDHN.cs" />
     <Compile Include="DAL\ToTruong\CDocSoTruoc.cs" />
@@ -423,6 +437,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dbDocSo.dbml</DependentUpon>
     </Compile>
+    <Compile Include="LinQ\dbThuongVu.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbThuongVu.dbml</DependentUpon>
+    </Compile>
     <Compile Include="LinQ\dbThuTien.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -450,6 +469,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BaoCao\MaHoa\rptDSDonTu.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptDSDonTu.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\MaHoa\rptDSChuyenKTXM.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptDSChuyenKTXM.cs</LastGenOutput>
@@ -465,6 +488,10 @@
     <EmbeddedResource Include="BaoCao\MaHoa\rptThuBaoDCBD_ChungCu.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptThuBaoDCBD_ChungCu.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\MaHoa\rptToTrinh_ThongQuaPGD_2022.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptToTrinh_ThongQuaPGD_2022.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\rptHeader.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -578,6 +605,11 @@
       <LastGenOutput>dbDocSo.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
+    <None Include="LinQ\dbThuongVu.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>dbThuongVu.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="LinQ\dbTrungTamKhachHang.dbml.layout">
       <DependentUpon>dbTrungTamKhachHang.dbml</DependentUpon>
     </None>
@@ -590,6 +622,9 @@
     <EmbeddedResource Include="GUI\VanThu\frmShowCongVan.resx">
       <DependentUpon>frmShowCongVan.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="LinQ\dbThuongVu.dbml.layout">
+      <DependentUpon>dbThuongVu.dbml</DependentUpon>
+    </None>
     <EmbeddedResource Include="Report\XuLyDocSo\rptTieuThu.rdlc" />
     <None Include="LinQ\dbDHN.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>

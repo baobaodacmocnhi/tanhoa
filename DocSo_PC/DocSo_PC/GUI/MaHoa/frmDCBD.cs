@@ -23,6 +23,7 @@ namespace DocSo_PC.GUI.MaHoa
         CDonTu _cDonTu = new CDonTu();
         CDCBD _cDCBD = new CDCBD();
         CThuongVu _cThuongVu = new CThuongVu();
+        CTTKH _cTTKH = new CTTKH();
         wrDHN.wsDHN _wsDHN = new wrDHN.wsDHN();
         MaHoa_DCBD _dcbd = null;
 
@@ -41,9 +42,11 @@ namespace DocSo_PC.GUI.MaHoa
         private void btnXem_Click(object sender, EventArgs e)
         {
             dgvDanhSach.DataSource = _cDonTu.getDS_ChuyenDCBD(dateTuNgay.Value, dateDenNgay.Value);
+            string str = _cTTKH.getHieuLucKyToi();
             foreach (DataGridViewRow item in dgvDanhSach.Rows)
             {
                 item.Cells["Chon"].Value = true;
+                item.Cells["HieuLucKy"].Value = str;
             }
         }
 
@@ -97,8 +100,6 @@ namespace DocSo_PC.GUI.MaHoa
                                     if (dontu != null)
                                     {
                                         _cDonTu.Them_LichSu(ctdcbd.CreateDate.Value, "DCBD", "Đã Điều Chỉnh Biến Động, " + ctdcbd.ThongTin, ctdcbd.ID, dontu.ID);
-                                        {
-                                        }
                                     }
                                 }
                             }
@@ -186,8 +187,8 @@ namespace DocSo_PC.GUI.MaHoa
                             dr["DinhMucHN"] = en.DinhMucHN;
                             ///Biến Động
                             dr["GiaBieuBD"] = en.GiaBieu_BD;
-                            dr["ChucVu"] = CNguoiDung.ChucVu + "\n" + CNguoiDung.TenPhong;
-                            dr["NguoiKy"] = CNguoiDung.NguoiKy;
+                            dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper() + "\n" + CNguoiDung.TenPhong.ToUpper();
+                            dr["NguoiKy"] = CNguoiDung.NguoiKy.ToUpper();
                             dsBaoCao.Tables["DCBD"].Rows.Add(dr);
 
                             rptPhieuDCBD_15112019 rpt = new rptPhieuDCBD_15112019();
@@ -256,8 +257,8 @@ namespace DocSo_PC.GUI.MaHoa
                                     if (en.DV != "")
                                         dr["DV"] = en.DV;
                                 dr["MaDon"] = en.IDMaDon.ToString();
-                                dr["ChucVu"] = CNguoiDung.ChucVu + "\n" + CNguoiDung.TenPhong;
-                                dr["NguoiKy"] = CNguoiDung.NguoiKy;
+                                dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper() + "\n" + CNguoiDung.TenPhong.ToUpper();
+                                dr["NguoiKy"] = CNguoiDung.NguoiKy.ToUpper();
                                 dr["TenPhong"] = "";
                                 dsBaoCaoCC.Tables["DCBD"].Rows.Add(dr);
 
@@ -299,8 +300,8 @@ namespace DocSo_PC.GUI.MaHoa
                                         dr["DV"] = en.DV;
                                 dr["MaDon"] = en.IDMaDon.ToString();
 
-                                dr["ChucVu"] = CNguoiDung.ChucVu + "\n" + CNguoiDung.TenPhong;
-                                dr["NguoiKy"] = CNguoiDung.NguoiKy;
+                                dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper() +"\n" + CNguoiDung.TenPhong.ToUpper();
+                                dr["NguoiKy"] = CNguoiDung.NguoiKy.ToUpper() ;
                                 dr["TenPhong"] = "";
                                 dsBaoCao.Tables["DCBD"].Rows.Add(dr);
 
