@@ -37,7 +37,9 @@ namespace DocSo_PC.GUI.MaHoa
 
         private void frmToTrinh_Load(object sender, EventArgs e)
         {
-
+            cmbVeViec.DataSource = _cToTrinh.getDS_VeViec();
+            cmbVeViec.DisplayMember = "Name";
+            cmbVeViec.SelectedIndex = -1;
         }
 
         public void loadTTKH(HOADON hoadon)
@@ -455,7 +457,27 @@ namespace DocSo_PC.GUI.MaHoa
             }
         }
 
+        private void cmbVeViec_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbVeViec.SelectedIndex != -1)
+            {
+                MaHoa_ToTrinh_VeViec vv = (MaHoa_ToTrinh_VeViec)cmbVeViec.SelectedItem;
+                txtVeViec.Text = vv.Name;
+                txtNoiDung.Text = vv.NoiDung;
+                if (txtMaDon.Text.Trim() != "")
+                    txtNoiNhan.Text = vv.NoiNhan + " (" + txtMaDon.Text.Trim() + ")";
+            }
+            else
+            {
+                txtVeViec.Text = "";
+                txtNoiDung.Text = "";
+                txtNoiNhan.Text = "";
+            }
+        }
+
         #endregion
+
+
 
 
 

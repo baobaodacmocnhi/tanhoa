@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DocSoTH" Class="dbDocSoDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=113.161.88.180,1833;Initial Catalog=DocSoTH;Persist Security Info=True;User ID=sa" SettingsObjectName="DocSo_PC.Properties.Settings" SettingsPropertyName="DocSoTHConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=hp_g7\kd;Initial Catalog=DocSoTH;Persist Security Info=True;User ID=sa" SettingsObjectName="DocSo_PC.Properties.Settings" SettingsPropertyName="DocSoTHConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.BaoThay" Member="BaoThays">
     <Type Name="BaoThay">
       <Column Name="BaoThayID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -1074,6 +1074,19 @@
       <Association Name="MaHoa_ToTrinh_MaHoa_ToTrinh_Hinh" Member="MaHoa_ToTrinh" ThisKey="IDParent" OtherKey="ID" Type="MaHoa_ToTrinh" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.MaHoa_ToTrinh_VeViec" Member="MaHoa_ToTrinh_VeViecs">
+    <Type Name="MaHoa_ToTrinh_VeViec">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="STT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="NoiDung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NoiNhan" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.MayDS" Member="MayDs">
     <Type Name="MayD">
       <Column Name="May" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -1274,18 +1287,35 @@
   </Table>
   <Table Name="dbo.Temp" Member="Temps">
     <Type Name="Temp">
-      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Value" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="MaHD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Result" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Value" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="MaHD" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Result" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.Temp_HinhDHN" Member="Temp_HinhDHNs">
-    <Type Name="Temp_HinhDHN">
-      <Column Name="ID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Hinh" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+  <Table Name="dbo.ThamSo" Member="ThamSos">
+    <Type Name="ThamSo">
+      <Column Name="Code" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CodeDesc" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="CodeType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Stt" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ThongBao" Member="ThongBaos">
+    <Type Name="ThongBao">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LoaiLenh" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DanhBa" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SoLenh" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Hieu" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Co" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ChiSo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NoiDung" Type="System.String" DbType="NVarChar(800)" CanBeNull="true" />
+      <Column Name="NgayKiem" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="NgayCapNhat" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="NVCapNhat" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SoThan" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.TKGIENG" Member="TKGIENGs">
@@ -1324,30 +1354,6 @@
       <Column Name="MoTa" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
       <Column Name="Stt" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Vitri" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.ThamSo" Member="ThamSos">
-    <Type Name="ThamSo">
-      <Column Name="Code" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="CodeDesc" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="CodeType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Stt" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.ThongBao" Member="ThongBaos">
-    <Type Name="ThongBao">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="LoaiLenh" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DanhBa" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="SoLenh" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Hieu" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Co" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ChiSo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="NoiDung" Type="System.String" DbType="NVarChar(800)" CanBeNull="true" />
-      <Column Name="NgayKiem" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="NgayCapNhat" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="NVCapNhat" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="SoThan" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.UserGroup" Member="UserGroups">

@@ -145,5 +145,10 @@ namespace DocSo_PC.DAL.MaHoa
         }
 
         #endregion
+
+        public List<MaHoa_ToTrinh_VeViec> getDS_VeViec()
+        {
+            return _db.MaHoa_ToTrinh_VeViecs.OrderBy(item => item.STT).ToList();
+        }
     }
 }
