@@ -734,7 +734,7 @@ namespace DocSo_PC.GUI.ToTruong
                 dt.Columns.Add("May", typeof(string));
                 foreach (DataGridViewRow item in dgvDanhSach.Rows)
                 {
-                    if ((item.Cells["CodeMoi"].Value == null || item.Cells["CodeMoi"].Value.ToString() == "") && wsDHN.checkExists_Hinh(item.Cells["DocSoID"].Value.ToString()) == false)
+                    if (item.Cells["CodeMoi"].Value.ToString() != "" && wsDHN.checkExists_Hinh(item.Cells["DocSoID"].Value.ToString()) == false)
                     {
                         DataRow dr = dt.NewRow();
                         dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString();
@@ -837,7 +837,7 @@ namespace DocSo_PC.GUI.ToTruong
             {
                 foreach (DataGridViewRow item in dgvDanhSach.Rows)
                 {
-                    if ((item.Cells["CodeMoi"].Value == null || item.Cells["CodeMoi"].Value.ToString() == "") && wsDHN.checkExists_Hinh(item.Cells["DocSoID"].Value.ToString()) == false)
+                    if (item.Cells["CodeMoi"].Value.ToString() != "" && wsDHN.checkExists_Hinh(item.Cells["DocSoID"].Value.ToString()) == false)
                     {
                         string sql = "exec [dbo].[spSendNotificationToClient] N'HinhTon',N'" + cmbDot.SelectedItem.ToString() + "',N'" + item.Cells["DocSoID"].Value.ToString() + "'";
                         CDocSo._cDAL.ExecuteNonQuery(sql);
