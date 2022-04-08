@@ -29,6 +29,7 @@ namespace DocSo_PC.GUI.MaHoa
         MaHoa_DonTu _dontu = null;
         HOADON _hoadon = null;
         MaHoa_ToTrinh _totrinh = null;
+        MaHoa_ToTrinh_VeViec _veviec = null;
 
         public frmToTrinh()
         {
@@ -37,9 +38,13 @@ namespace DocSo_PC.GUI.MaHoa
 
         private void frmToTrinh_Load(object sender, EventArgs e)
         {
-            cmbVeViec.DataSource = _cToTrinh.getDS_VeViec();
+            dgvToTrinh.AutoGenerateColumns = false;
+            dgvVeViec.AutoGenerateColumns = false;
+            List<MaHoa_ToTrinh_VeViec> lst = _cToTrinh.getDS_VeViec();
+            cmbVeViec.DataSource = lst;
             cmbVeViec.DisplayMember = "Name";
             cmbVeViec.SelectedIndex = -1;
+            dgvVeViec.DataSource = lst;
         }
 
         public void loadTTKH(HOADON hoadon)
@@ -106,6 +111,7 @@ namespace DocSo_PC.GUI.MaHoa
             _dontu = null;
             _hoadon = null;
             _totrinh = null;
+            _veviec = null;
 
             dgvHinh.Rows.Clear();
         }
@@ -430,8 +436,8 @@ namespace DocSo_PC.GUI.MaHoa
                             dr["DinhMucHN"] = en.DinhMucHN;
                             dr["NoiDung"] = en.NoiDung;
                             dr["NoiNhan"] = en.NoiNhan;
-                            dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper() + "\n" + CNguoiDung.TenPhong.ToUpper();
-                            dr["NguoiKy"] = CNguoiDung.NguoiKy.ToUpper();
+                            dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper() + CNguoiDung.TenPhong.ToUpper();
+                            dr["NguoiKy"] = CNguoiDung.NguoiKy;
                             dr["ChucVuDuyet"] = "DUYỆT\n" + _cThuongVu.getChucVu_Duyet().ToUpper();
                             dr["NguoiKyDuyet"] = _cThuongVu.getNguoiKy_Duyet().ToUpper();
                             dsBaoCao.Tables["DCBD"].Rows.Add(dr);
@@ -476,6 +482,95 @@ namespace DocSo_PC.GUI.MaHoa
         }
 
         #endregion
+
+        #region Về Việc
+
+        private void btnThem_VV_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+            {
+                if (txtVeViec.Text.Trim() != "" && txtNoiDung.Text.Trim() != "" && txtNoiNhan.Text.Trim() != "")
+                {
+                    MaHoa_ToTrinh_VeViec vv = new MaHoa_ToTrinh_VeViec();
+                    vv.Name = txtVeViec_VV.Text.Trim();
+                    vv.NoiDung = txtNoiDung_VV.Text;
+                    vv.NoiNhan = txtNoiNhan_VV.Text.Trim();
+                    if (_cToTrinh.Them(vv))
+                    {
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Clear();
+                    }
+                }
+                else
+                    MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnXoa_VV_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+            {
+                if (_veviec != null)
+                    if (txtVeViec.Text.Trim() != "" && txtNoiDung.Text.Trim() != "" && txtNoiNhan.Text.Trim() != "")
+                    {
+                        _veviec.Name = txtVeViec_VV.Text.Trim();
+                        _veviec.NoiDung = txtNoiDung_VV.Text;
+                        _veviec.NoiNhan = txtNoiNhan_VV.Text.Trim();
+                        if (_cToTrinh.Sua(_veviec))
+                        {
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Clear();
+                        }
+                    }
+                    else
+                        MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnSua_VV_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
+            {
+                if (_veviec != null && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    if (_cToTrinh.Xoa(_veviec))
+                    {
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Clear();
+                    }
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void dgvVeViec_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvVeViec.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvVeViec_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                _veviec = _cToTrinh.get_VeViec(int.Parse(dgvVeViec.CurrentRow.Cells["ID"].Value.ToString()));
+            }
+            catch
+            {
+
+            }
+        }
+
+        #endregion
+
+
 
 
 

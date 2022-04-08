@@ -58,11 +58,11 @@ namespace DocSo_PC.GUI.MaHoa
                 cmbKTXM_DSChuyenKTXM.DataSource = dt;
                 cmbKTXM_DSChuyenKTXM.ValueMember = "MaND";
                 cmbKTXM_DSChuyenKTXM.DisplayMember = "HoTen";
-                cmbNoiDung.DataSource = _cDonTu.getDS_PhieuChuyenPC();
+                dt = _cDonTu.getDS_PhieuChuyenAll();
+                cmbNoiDung.DataSource = dt;
                 cmbNoiDung.ValueMember = "Name";
                 cmbNoiDung.DisplayMember = "Name";
                 cmbNoiDung.SelectedIndex = -1;
-                dt = _cDonTu.getDS_PhieuChuyenAll();
                 string str = "";
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
@@ -467,7 +467,7 @@ namespace DocSo_PC.GUI.MaHoa
                     dr["TBTT"] = docso.TBTT;
                     dr["GhiChu"] = dontu.GhiChu;
                     dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper();
-                    dr["NguoiKy"] = CNguoiDung.NguoiKy.ToUpper();
+                    dr["NguoiKy"] = CNguoiDung.NguoiKy;
                     dr["ChucVuDuyet"] = "DUYỆT\n" + _cThuongVu.getChucVu_Duyet().ToUpper();
                     dr["NguoiKyDuyet"] = _cThuongVu.getNguoiKy_Duyet().ToUpper();
                     dsBaoCao.Tables["BaoCao"].Rows.Add(dr);

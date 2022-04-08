@@ -32,7 +32,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>107</ApplicationRevision>
+    <ApplicationRevision>114</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -733,9 +733,9 @@
   <ItemGroup>
     <None Include="Web References\wrThuongVu\wsthuongvu.disco" />
     <None Include="Resources\file 24x24.png" />
-    <None Include="Resources\logocongty.png">
+    <Content Include="Resources\logocongty.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Content>
     <Content Include="Water.ico" />
     <None Include="Web References\wrDHN\wsdhn.disco" />
     <None Include="Web References\wrThuTien\wsthutien.disco" />

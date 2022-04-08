@@ -146,9 +146,75 @@ namespace DocSo_PC.DAL.MaHoa
 
         #endregion
 
+        #region Về Việc
+
+        public bool Them(MaHoa_ToTrinh_VeViec ctktxm)
+        {
+            try
+            {
+                if (_db.MaHoa_ToTrinh_VeViecs.Count() > 0)
+                {
+                    ctktxm.ID = _db.MaHoa_ToTrinh_VeViecs.Max(item => item.ID) + 1;
+                }
+                else
+                {
+                    ctktxm.ID = 1;
+                }
+                ctktxm.CreateDate = DateTime.Now;
+                ctktxm.CreateBy = CNguoiDung.MaND;
+                _db.MaHoa_ToTrinh_VeViecs.InsertOnSubmit(ctktxm);
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public bool Sua(MaHoa_ToTrinh_VeViec ctktxm)
+        {
+            try
+            {
+                ctktxm.ModifyDate = DateTime.Now;
+                ctktxm.ModifyBy = CNguoiDung.MaND;
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public bool Xoa(MaHoa_ToTrinh_VeViec ctktxm)
+        {
+            try
+            {
+                _db.MaHoa_ToTrinh_VeViecs.DeleteOnSubmit(ctktxm);
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public MaHoa_ToTrinh_VeViec get_VeViec(int ID)
+        {
+            return _db.MaHoa_ToTrinh_VeViecs.SingleOrDefault(item => item.ID == ID);
+        }
+
         public List<MaHoa_ToTrinh_VeViec> getDS_VeViec()
         {
             return _db.MaHoa_ToTrinh_VeViecs.OrderBy(item => item.STT).ToList();
         }
+
+        #endregion
+
     }
 }
