@@ -162,13 +162,13 @@ namespace DocSo_PC.GUI.MaHoa
         {
             try
             {
+                dsBaoCao dsBaoCao = new dsBaoCao();
                 foreach (DataGridViewRow item in dgvDCBD.Rows)
                     if (item.Cells["Chon_DS"].Value != null && bool.Parse(item.Cells["Chon_DS"].Value.ToString()) == true)
                     {
                         MaHoa_DCBD en = _cDCBD.get(int.Parse(item.Cells["ID_DS"].Value.ToString()));
                         if (en != null)
                         {
-                            dsBaoCao dsBaoCao = new dsBaoCao();
                             DataRow dr = dsBaoCao.Tables["DCBD"].NewRow();
 
                             dr["MaDon"] = en.IDMaDon.ToString();
@@ -187,16 +187,15 @@ namespace DocSo_PC.GUI.MaHoa
                             dr["DinhMucHN"] = en.DinhMucHN;
                             ///Biến Động
                             dr["GiaBieuBD"] = en.GiaBieu_BD;
-                            dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper() + CNguoiDung.TenPhong.ToUpper();
+                            dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper()  +" "+ CNguoiDung.TenPhong.ToUpper();
                             dr["NguoiKy"] = CNguoiDung.NguoiKy;
                             dsBaoCao.Tables["DCBD"].Rows.Add(dr);
-
-                            rptPhieuDCBD_15112019 rpt = new rptPhieuDCBD_15112019();
-                            rpt.SetDataSource(dsBaoCao);
-                            frmShowBaoCao frm = new frmShowBaoCao(rpt);
-                            frm.Show();
                         }
                     }
+                rptPhieuDCBD_15112019 rpt = new rptPhieuDCBD_15112019();
+                rpt.SetDataSource(dsBaoCao);
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                frm.Show();
             }
             catch (Exception ex)
             {
@@ -257,7 +256,7 @@ namespace DocSo_PC.GUI.MaHoa
                                     if (en.DV != "")
                                         dr["DV"] = en.DV;
                                 dr["MaDon"] = en.IDMaDon.ToString();
-                                dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper() + CNguoiDung.TenPhong.ToUpper();
+                                dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper()  +" "+ CNguoiDung.TenPhong.ToUpper();
                                 dr["NguoiKy"] = CNguoiDung.NguoiKy;
                                 dr["TenPhong"] = "";
                                 dsBaoCaoCC.Tables["DCBD"].Rows.Add(dr);
@@ -300,7 +299,7 @@ namespace DocSo_PC.GUI.MaHoa
                                         dr["DV"] = en.DV;
                                 dr["MaDon"] = en.IDMaDon.ToString();
 
-                                dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper()  + CNguoiDung.TenPhong.ToUpper();
+                                dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper()  +" "+ CNguoiDung.TenPhong.ToUpper();
                                 dr["NguoiKy"] = CNguoiDung.NguoiKy;
                                 dr["TenPhong"] = "";
                                 dsBaoCao.Tables["DCBD"].Rows.Add(dr);
@@ -410,6 +409,51 @@ namespace DocSo_PC.GUI.MaHoa
                     }
                     else
                         MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnInDSPhieu_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dsBaoCao dsBaoCao = new dsBaoCao();
+                foreach (DataGridViewRow item in dgvDCBD.Rows)
+                    if (item.Cells["Chon_DS"].Value != null && bool.Parse(item.Cells["Chon_DS"].Value.ToString()) == true)
+                    {
+                        MaHoa_DCBD en = _cDCBD.get(int.Parse(item.Cells["ID_DS"].Value.ToString()));
+                        if (en != null)
+                        {
+                            DataRow dr = dsBaoCao.Tables["DCBD"].NewRow();
+
+                            dr["MaDon"] = en.IDMaDon.ToString();
+                            dr["SoPhieu"] = en.HieuLucKy;
+                            dr["ThongTin"] = en.ThongTin;
+                            dr["HieuLucKy"] = en.HieuLucKy;
+                            dr["Dot"] = en.Dot;
+                            ///Hiện tại xử lý mã số thuế như vậy
+                            dr["DanhBo"] = en.DanhBo.Insert(7, " ").Insert(4, " ");
+                            dr["HopDong"] = en.HopDong;
+                            dr["HoTen"] = en.HoTen;
+                            dr["DiaChi"] = en.DiaChi;
+                            dr["MaQuanPhuong"] = en.MaQuanPhuong;
+                            dr["GiaBieu"] = en.GiaBieu;
+                            dr["DinhMuc"] = en.DinhMuc;
+                            dr["DinhMucHN"] = en.DinhMucHN;
+                            ///Biến Động
+                            dr["GiaBieuBD"] = en.GiaBieu_BD;
+                            dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper()  +" "+ CNguoiDung.TenPhong.ToUpper();
+                            dr["NguoiKy"] = CNguoiDung.NguoiKy;
+                            dsBaoCao.Tables["DCBD"].Rows.Add(dr);
+                        }
+                    }
+                rptDSPhieuDCBD_15112019 rpt = new rptDSPhieuDCBD_15112019();
+                rpt.SetDataSource(dsBaoCao);
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                frm.Show();
             }
             catch (Exception ex)
             {

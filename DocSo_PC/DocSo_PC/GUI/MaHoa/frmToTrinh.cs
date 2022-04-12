@@ -415,15 +415,16 @@ namespace DocSo_PC.GUI.MaHoa
         {
             try
             {
+                dsBaoCao dsBaoCao = new dsBaoCao();
                 foreach (DataGridViewRow item in dgvToTrinh.Rows)
                     if (item.Cells["Chon_DS"].Value != null && bool.Parse(item.Cells["Chon_DS"].Value.ToString()) == true)
                     {
                         MaHoa_ToTrinh en = _cToTrinh.get(int.Parse(item.Cells["ID_DS"].Value.ToString()));
                         if (en != null)
                         {
-                            dsBaoCao dsBaoCao = new dsBaoCao();
-                            DataRow dr = dsBaoCao.Tables["DCBD"].NewRow();
+                            DataRow dr = dsBaoCao.Tables["BaoCao"].NewRow();
 
+                            dr["TenPhong"] = CNguoiDung.TenPhong;
                             dr["VeViec"] = en.VeViec;
                             dr["KinhTrinh"] = en.KinhTrinh;
                             dr["MaDon"] = en.ID.ToString();
@@ -436,18 +437,17 @@ namespace DocSo_PC.GUI.MaHoa
                             dr["DinhMucHN"] = en.DinhMucHN;
                             dr["NoiDung"] = en.NoiDung;
                             dr["NoiNhan"] = en.NoiNhan;
-                            dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper() + CNguoiDung.TenPhong.ToUpper();
+                            dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper() + " " + CNguoiDung.TenPhong.ToUpper();
                             dr["NguoiKy"] = CNguoiDung.NguoiKy;
                             dr["ChucVuDuyet"] = "DUYỆT\n" + _cThuongVu.getChucVu_Duyet().ToUpper();
-                            dr["NguoiKyDuyet"] = _cThuongVu.getNguoiKy_Duyet().ToUpper();
-                            dsBaoCao.Tables["DCBD"].Rows.Add(dr);
-
-                            rptToTrinh_ThongQuaPGD_2022 rpt = new rptToTrinh_ThongQuaPGD_2022();
-                            rpt.SetDataSource(dsBaoCao);
-                            frmShowBaoCao frm = new frmShowBaoCao(rpt);
-                            frm.Show();
+                            dr["NguoiKyDuyet"] = _cThuongVu.getNguoiKy_Duyet();
+                            dsBaoCao.Tables["BaoCao"].Rows.Add(dr);
                         }
                     }
+                rptToTrinh_ThongQuaPGD_2022 rpt = new rptToTrinh_ThongQuaPGD_2022();
+                rpt.SetDataSource(dsBaoCao);
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                frm.Show();
             }
             catch (Exception ex)
             {

@@ -87,6 +87,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dateDen_DS = new System.Windows.Forms.DateTimePicker();
+            this.btnInDSPhieu = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -297,6 +298,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btnInDSPhieu);
             this.tabPage2.Controls.Add(this.label20);
             this.tabPage2.Controls.Add(this.groupBox4);
             this.tabPage2.Controls.Add(this.btnInThuBao);
@@ -617,6 +619,16 @@
             this.dateDen_DS.Size = new System.Drawing.Size(95, 20);
             this.dateDen_DS.TabIndex = 66;
             // 
+            // btnInDSPhieu
+            // 
+            this.btnInDSPhieu.Location = new System.Drawing.Point(728, 4);
+            this.btnInDSPhieu.Name = "btnInDSPhieu";
+            this.btnInDSPhieu.Size = new System.Drawing.Size(80, 23);
+            this.btnInDSPhieu.TabIndex = 148;
+            this.btnInDSPhieu.Text = "In DS Phiếu";
+            this.btnInDSPhieu.UseVisualStyleBackColor = true;
+            this.btnInDSPhieu.Click += new System.EventHandler(this.btnInDSPhieu_Click);
+            // 
             // frmDCBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -691,5 +703,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Bytes_Hinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn Loai_Hinh;
         private System.Windows.Forms.Button btnChonFile;
+        private System.Windows.Forms.Button btnInDSPhieu;
     }
 }

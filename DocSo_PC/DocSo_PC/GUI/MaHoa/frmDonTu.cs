@@ -382,13 +382,13 @@ namespace DocSo_PC.GUI.MaHoa
                                 }
                                 if (_cDonTu.Them_LichSu(entity) == true)
                                 {
-                                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    loadDonTu_LichSu(dontu.ID);
-                                    ClearChuyenDon();
-                                    _cDonTu.Refresh();
+                                    
                                 }
                             }
                         }
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ClearChuyenDon();
+                        _cDonTu.Refresh();
                     }
 
                 }
@@ -469,7 +469,7 @@ namespace DocSo_PC.GUI.MaHoa
                     dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper();
                     dr["NguoiKy"] = CNguoiDung.NguoiKy;
                     dr["ChucVuDuyet"] = "DUYỆT\n" + _cThuongVu.getChucVu_Duyet().ToUpper();
-                    dr["NguoiKyDuyet"] = _cThuongVu.getNguoiKy_Duyet().ToUpper();
+                    dr["NguoiKyDuyet"] = _cThuongVu.getNguoiKy_Duyet();
                     dsBaoCao.Tables["BaoCao"].Rows.Add(dr);
                 }
                 rptDSDonTu rpt = new rptDSDonTu();
