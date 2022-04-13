@@ -100,15 +100,17 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label30 = new System.Windows.Forms.Label();
             this.dgvHinh = new System.Windows.Forms.DataGridView();
-            this.btnChonFile = new System.Windows.Forms.Button();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.xoaFile_dgvHinh = new System.Windows.Forms.ToolStripMenuItem();
-            this.chkNgayBCTruocNgayGiao = new System.Windows.Forms.CheckBox();
             this.ID_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Image_Hinh = new System.Windows.Forms.DataGridViewImageColumn();
             this.Name_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bytes_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Loai_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnChonFile = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.xoaFile_dgvHinh = new System.Windows.Forms.ToolStripMenuItem();
+            this.chkNgayBCTruocNgayGiao = new System.Windows.Forms.CheckBox();
+            this.cmbMauSac = new System.Windows.Forms.ComboBox();
+            this.label27 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSNhapBamChi)).BeginInit();
@@ -272,6 +274,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cmbMauSac);
+            this.groupBox2.Controls.Add(this.label27);
             this.groupBox2.Controls.Add(this.txtNiemChi);
             this.groupBox2.Controls.Add(this.label25);
             this.groupBox2.Controls.Add(this.label23);
@@ -830,41 +834,6 @@
             this.dgvHinh.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvHinh_MouseClick);
             this.dgvHinh.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvHinh_MouseDoubleClick);
             // 
-            // btnChonFile
-            // 
-            this.btnChonFile.Location = new System.Drawing.Point(40, 17);
-            this.btnChonFile.Name = "btnChonFile";
-            this.btnChonFile.Size = new System.Drawing.Size(75, 25);
-            this.btnChonFile.TabIndex = 8;
-            this.btnChonFile.Text = "Chọn File";
-            this.btnChonFile.UseVisualStyleBackColor = true;
-            this.btnChonFile.Click += new System.EventHandler(this.btnChonFile_Click);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.xoaFile_dgvHinh});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(101, 26);
-            // 
-            // xoaFile_dgvHinh
-            // 
-            this.xoaFile_dgvHinh.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xoaFile_dgvHinh.Name = "xoaFile_dgvHinh";
-            this.xoaFile_dgvHinh.Size = new System.Drawing.Size(100, 22);
-            this.xoaFile_dgvHinh.Text = "Xóa";
-            this.xoaFile_dgvHinh.Click += new System.EventHandler(this.xoaFile_dgvHinh_Click);
-            // 
-            // chkNgayBCTruocNgayGiao
-            // 
-            this.chkNgayBCTruocNgayGiao.AutoSize = true;
-            this.chkNgayBCTruocNgayGiao.Location = new System.Drawing.Point(108, 140);
-            this.chkNgayBCTruocNgayGiao.Name = "chkNgayBCTruocNgayGiao";
-            this.chkNgayBCTruocNgayGiao.Size = new System.Drawing.Size(187, 20);
-            this.chkNgayBCTruocNgayGiao.TabIndex = 34;
-            this.chkNgayBCTruocNgayGiao.Text = "Ngày BC Trước Ngày Giao";
-            this.chkNgayBCTruocNgayGiao.UseVisualStyleBackColor = true;
-            // 
             // ID_Hinh
             // 
             this.ID_Hinh.DataPropertyName = "ID";
@@ -901,6 +870,61 @@
             this.Loai_Hinh.HeaderText = "Hinh";
             this.Loai_Hinh.Name = "Loai_Hinh";
             this.Loai_Hinh.Visible = false;
+            // 
+            // btnChonFile
+            // 
+            this.btnChonFile.Location = new System.Drawing.Point(40, 17);
+            this.btnChonFile.Name = "btnChonFile";
+            this.btnChonFile.Size = new System.Drawing.Size(75, 25);
+            this.btnChonFile.TabIndex = 8;
+            this.btnChonFile.Text = "Chọn File";
+            this.btnChonFile.UseVisualStyleBackColor = true;
+            this.btnChonFile.Click += new System.EventHandler(this.btnChonFile_Click);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.xoaFile_dgvHinh});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(101, 26);
+            // 
+            // xoaFile_dgvHinh
+            // 
+            this.xoaFile_dgvHinh.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xoaFile_dgvHinh.Name = "xoaFile_dgvHinh";
+            this.xoaFile_dgvHinh.Size = new System.Drawing.Size(100, 22);
+            this.xoaFile_dgvHinh.Text = "Xóa";
+            this.xoaFile_dgvHinh.Click += new System.EventHandler(this.xoaFile_dgvHinh_Click);
+            // 
+            // chkNgayBCTruocNgayGiao
+            // 
+            this.chkNgayBCTruocNgayGiao.AutoSize = true;
+            this.chkNgayBCTruocNgayGiao.Location = new System.Drawing.Point(108, 140);
+            this.chkNgayBCTruocNgayGiao.Name = "chkNgayBCTruocNgayGiao";
+            this.chkNgayBCTruocNgayGiao.Size = new System.Drawing.Size(187, 20);
+            this.chkNgayBCTruocNgayGiao.TabIndex = 34;
+            this.chkNgayBCTruocNgayGiao.Text = "Ngày BC Trước Ngày Giao";
+            this.chkNgayBCTruocNgayGiao.UseVisualStyleBackColor = true;
+            // 
+            // cmbMauSac
+            // 
+            this.cmbMauSac.FormattingEnabled = true;
+            this.cmbMauSac.Items.AddRange(new object[] {
+            "Vàng",
+            "Đỏ"});
+            this.cmbMauSac.Location = new System.Drawing.Point(478, 66);
+            this.cmbMauSac.Name = "cmbMauSac";
+            this.cmbMauSac.Size = new System.Drawing.Size(92, 24);
+            this.cmbMauSac.TabIndex = 76;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(411, 69);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(61, 16);
+            this.label27.TabIndex = 75;
+            this.label27.Text = "Màu Sắc";
             // 
             // frmBamChi
             // 
@@ -1020,5 +1044,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Name_Hinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bytes_Hinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn Loai_Hinh;
+        private System.Windows.Forms.ComboBox cmbMauSac;
+        private System.Windows.Forms.Label label27;
     }
 }

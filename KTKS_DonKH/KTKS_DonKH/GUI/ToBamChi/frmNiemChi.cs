@@ -102,7 +102,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
                             //NiemChi en = new NiemChi();
                             //en.ID = i;
                             //_cNiemChi.Them(en);
-                            sql += " insert into NiemChi(ID,CreateBy,CreateDate)values(" + i + "," + CTaiKhoan.MaUser + ",getDate())";
+                            sql += " insert into NiemChi(ID,MauSac,CreateBy,CreateDate)values(" + i + ",N'" + cmbMauSac.Text + "'," + CTaiKhoan.MaUser + ",getDate())";
                         }
                         _cNiemChi.SqlBeginTransaction();
                         _cNiemChi.ExecuteNonQuery_Transaction(sql);

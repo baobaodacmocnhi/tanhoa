@@ -33,12 +33,12 @@ namespace KTKS_DonKH.GUI.TruyThu
         private void CountdgvDSTruyThuTienNuoc()
         {
             int Tongm3 = 0;
-            int TongTien = 0;
+            long TongTien = 0;
             foreach (DataGridViewRow item in dgvDSTruyThuTienNuoc.Rows)
             {
                 if (item.Cells["Tongm3"].Value.ToString()!="")
                 Tongm3 += int.Parse(item.Cells["Tongm3"].Value.ToString());
-                TongTien += int.Parse(item.Cells["TongTien"].Value.ToString());
+                TongTien += long.Parse(item.Cells["TongTien"].Value.ToString());
             }
             txtTongm3.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", Tongm3);
             txtTongTien.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongTien);

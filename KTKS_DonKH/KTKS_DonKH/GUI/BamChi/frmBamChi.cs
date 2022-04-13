@@ -145,7 +145,13 @@ namespace KTKS_DonKH.GUI.BamChi
             txtMucDichSuDung.Text = ctbamchi.MucDichSuDung;
             txtChiSo.Text = ctbamchi.ChiSo.ToString();
             if (ctbamchi.NiemChi != null)
+            {
                 txtNiemChi.Text = ctbamchi.NiemChi.Value.ToString();
+            }
+            if (ctbamchi.MauSac != null)
+            {
+                cmbMauSac.SelectedItem = ctbamchi.MauSac;
+            }
             cmbTinhTrangChiSo.SelectedItem = ctbamchi.TinhTrangChiSo;
             cmbTrangThaiBC.SelectedValue = ctbamchi.TrangThaiBC;
             txtVienChi.Text = ctbamchi.VienChi.ToString();
@@ -572,9 +578,9 @@ namespace KTKS_DonKH.GUI.BamChi
                         ctbamchi.ChiSo = int.Parse(txtChiSo.Text.Trim());
 
 
-                    if (txtNiemChi.Text.Trim() == "")
+                    if (txtNiemChi.Text.Trim() == "" && cmbMauSac.SelectedIndex == -1)
                     {
-                        MessageBox.Show("Thiếu Số Niêm Chì", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Thiếu Số Niêm Chì - Màu sắc", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     if (!string.IsNullOrEmpty(txtNiemChi.Text.Trim()))
@@ -595,6 +601,7 @@ namespace KTKS_DonKH.GUI.BamChi
                             return;
                         }
                         ctbamchi.NiemChi = int.Parse(txtNiemChi.Text.Trim());
+                        ctbamchi.MauSac = cmbMauSac.Text;
                         //_cNiemChi.suDung(int.Parse(txtNiemChi.Text.Trim()));
                     }
 
@@ -671,7 +678,7 @@ namespace KTKS_DonKH.GUI.BamChi
                             MessageBox.Show("Biên bản bấm chì đã được Chốt Quyết Toán", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        if (CTaiKhoan.Admin==false&&CTaiKhoan.ToTruong == false && CTaiKhoan.ThuKy == false)
+                        if (CTaiKhoan.Admin == false && CTaiKhoan.ToTruong == false && CTaiKhoan.ThuKy == false)
                             if (_ctbamchi.CreateBy != CTaiKhoan.MaUser)
                             {
                                 MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -737,9 +744,9 @@ namespace KTKS_DonKH.GUI.BamChi
                             _ctbamchi.ChiSo = int.Parse(txtChiSo.Text.Trim());
 
 
-                        if (txtNiemChi.Text.Trim() == "")
+                        if (txtNiemChi.Text.Trim() == "" && cmbMauSac.SelectedIndex == -1)
                         {
-                            MessageBox.Show("Thiếu Số Niêm Chì", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Thiếu Số Niêm Chì - Màu sắc", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         if (!string.IsNullOrEmpty(txtNiemChi.Text.Trim()) && (_ctbamchi.NiemChi == null || _ctbamchi.NiemChi.Value != int.Parse(txtNiemChi.Text.Trim())))
@@ -763,6 +770,7 @@ namespace KTKS_DonKH.GUI.BamChi
                             if (_ctbamchi.NiemChi != null)
                                 _cNiemChi.traSuDung(_ctbamchi.NiemChi.Value);
                             _ctbamchi.NiemChi = int.Parse(txtNiemChi.Text.Trim());
+                            _ctbamchi.MauSac = cmbMauSac.Text;
                             _cNiemChi.suDung(int.Parse(txtNiemChi.Text.Trim()));
                         }
 
@@ -1025,7 +1033,7 @@ namespace KTKS_DonKH.GUI.BamChi
                     {
                         if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
                         {
-                            if (CTaiKhoan.Admin==false&&CTaiKhoan.ToTruong == false && CTaiKhoan.ThuKy == false)
+                            if (CTaiKhoan.Admin == false && CTaiKhoan.ToTruong == false && CTaiKhoan.ThuKy == false)
                                 if (_ctbamchi.CreateBy != CTaiKhoan.MaUser)
                                 {
                                     MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -1097,7 +1097,10 @@ namespace KTKS_DonKH.GUI.TruyThu
                                 _TongCongMoi += cttttn_hoadon.TongCongMoi.Value;
                                 cttttn_hoadon.TangGiam = item.Cells["TangGiam"].Value.ToString();
                                 cttttn_hoadon.SoTien1m3 = int.Parse(item.Cells["SoTien1m3"].Value.ToString());
-                                cttttn_hoadon.m3BinhQuan = (int)Math.Round((double)(cttttn_hoadon.TongCongMoi.Value - cttttn_hoadon.TongCongCu.Value) / (cttttn_hoadon.SoTien1m3 * 1.15), 0, MidpointRounding.AwayFromZero);
+                                if (cttttn_hoadon.SoTien1m3 == 0)
+                                    cttttn_hoadon.m3BinhQuan = 0;
+                                else
+                                    cttttn_hoadon.m3BinhQuan = (int)Math.Round((double)(cttttn_hoadon.TongCongMoi.Value - cttttn_hoadon.TongCongCu.Value) / (cttttn_hoadon.SoTien1m3 * 1.15), 0, MidpointRounding.AwayFromZero);
 
                                 _cTTTN.Them_HoaDon(cttttn_hoadon);
                                 //cttttn_hoadon.CreateBy = CTaiKhoan.MaUser;
@@ -1211,6 +1214,9 @@ namespace KTKS_DonKH.GUI.TruyThu
                                     _TongCongMoi += cttttn_hoadon.TongCongMoi.Value;
                                     cttttn_hoadon.TangGiam = item.Cells["TangGiam"].Value.ToString();
                                     cttttn_hoadon.SoTien1m3 = int.Parse(item.Cells["SoTien1m3"].Value.ToString());
+                                    if (cttttn_hoadon.SoTien1m3 == 0)
+                                        cttttn_hoadon.m3BinhQuan = 0;
+                                    else
                                     cttttn_hoadon.m3BinhQuan = (int)Math.Round((double)(cttttn_hoadon.TongCongMoi.Value - cttttn_hoadon.TongCongCu.Value) / (cttttn_hoadon.SoTien1m3 * 1.15), 0, MidpointRounding.AwayFromZero);
 
                                     _cTTTN.Them_HoaDon(cttttn_hoadon);
@@ -1288,6 +1294,9 @@ namespace KTKS_DonKH.GUI.TruyThu
                                     }
                                     else
                                         cttttn_hoadon.SoTien1m3 = int.Parse(item.Cells["SoTien1m3"].Value.ToString());
+                                    if (cttttn_hoadon.SoTien1m3 == 0)
+                                        cttttn_hoadon.m3BinhQuan = 0;
+                                    else
                                     cttttn_hoadon.m3BinhQuan = (int)Math.Round((double)(cttttn_hoadon.TongCongMoi.Value - cttttn_hoadon.TongCongCu.Value) / (cttttn_hoadon.SoTien1m3 * 1.15), 0, MidpointRounding.AwayFromZero);
 
                                     _cTTTN.Sua_HoaDon(cttttn_hoadon);

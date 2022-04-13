@@ -9923,12 +9923,17 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 {
                     case 10:
                     case 11:
+                    case 21:
                         return lstGiaNuoc[2];
                     case 12:
                     case 14:
                     case 32:
                         return lstGiaNuoc[3];
+                    case 31:
+                        return lstGiaNuoc[4];
+                    case 13:
                     case 15:
+                    case 33:
                         return lstGiaNuoc[5];
                     default:
                         return 0;

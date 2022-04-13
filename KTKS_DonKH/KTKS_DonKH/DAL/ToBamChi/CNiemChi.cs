@@ -8,7 +8,7 @@ using KTKS_DonKH.DAL.QuanTri;
 
 namespace KTKS_DonKH.DAL.ToBamChi
 {
-    class CNiemChi:CDAL
+    class CNiemChi : CDAL
     {
         public bool Them(NiemChi en)
         {
@@ -98,7 +98,7 @@ namespace KTKS_DonKH.DAL.ToBamChi
             return db.NiemChis.Any(item => item.ID >= FromID && item.ID <= ToID && item.MaNV != null);
         }
 
-        public bool checkGiao_MaNV(int ID,int MaNV)
+        public bool checkGiao_MaNV(int ID, int MaNV)
         {
             return db.NiemChis.Any(item => item.ID == ID && item.MaNV == MaNV);
         }
@@ -175,7 +175,7 @@ namespace KTKS_DonKH.DAL.ToBamChi
         {
             var query = from item in db.NiemChis
                         where item.CreateDate.Value.Date == CreateDate.Date
-                        group item by new { item.CreateDate.Value.Date, item.MaNV,item.DotChia } into itemGroup
+                        group item by new { item.CreateDate.Value.Date, item.MaNV, item.DotChia } into itemGroup
                         select new
                         {
                             itemGroup.Key.MaNV,
@@ -188,6 +188,7 @@ namespace KTKS_DonKH.DAL.ToBamChi
                             SLSuDung = itemGroup.Count(groupItem => groupItem.SuDung == true),
                             SLHuHong = itemGroup.Count(groupItem => groupItem.HuHong == true),
                             SLTon = itemGroup.Count() - itemGroup.Count(groupItem => groupItem.SuDung == true) - itemGroup.Count(groupItem => groupItem.HuHong == true),
+                            MauSac = itemGroup.FirstOrDefault().MauSac,
                         };
             return LINQToDataTable(query);
         }
@@ -225,11 +226,11 @@ namespace KTKS_DonKH.DAL.ToBamChi
 
         public string getDSNiemChiTon(int MaNV)
         {
-            DataTable dt = LINQToDataTable(db.NiemChis.Where(item => item.MaNV == MaNV && item.SuDung == false&&item.HuHong==false).ToList());
+            DataTable dt = LINQToDataTable(db.NiemChis.Where(item => item.MaNV == MaNV && item.SuDung == false && item.HuHong == false).ToList());
             string str = "";
             foreach (DataRow item in dt.Rows)
             {
-                    str+=item["ID"].ToString()+"\r\n";
+                str += item["ID"].ToString() + "\r\n";
             }
             return str;
         }
