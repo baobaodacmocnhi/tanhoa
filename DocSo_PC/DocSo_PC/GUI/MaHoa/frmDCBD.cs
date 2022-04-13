@@ -430,7 +430,7 @@ namespace DocSo_PC.GUI.MaHoa
                             DataRow dr = dsBaoCao.Tables["DCBD"].NewRow();
 
                             dr["MaDon"] = en.IDMaDon.ToString();
-                            dr["SoPhieu"] = en.HieuLucKy;
+                            dr["SoPhieu"] = en.ID.ToString();
                             dr["ThongTin"] = en.ThongTin;
                             dr["HieuLucKy"] = en.HieuLucKy;
                             dr["Dot"] = en.Dot;
