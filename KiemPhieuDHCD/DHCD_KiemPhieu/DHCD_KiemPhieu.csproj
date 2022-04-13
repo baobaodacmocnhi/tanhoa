@@ -955,10 +955,7 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Browsers\" />
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="ckeditor\.htaccess" />
     <None Include="DataBase\DataSet1.xsc">
