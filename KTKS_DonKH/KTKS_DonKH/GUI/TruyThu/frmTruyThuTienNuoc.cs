@@ -896,6 +896,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                     dgvTruyThuTienNuoc["DinhMucHN_Moi", e.RowIndex + 1].Value = dgvTruyThuTienNuoc["DinhMucHN_Moi", e.RowIndex].Value;
                     dgvTruyThuTienNuoc["DinhMuc_Moi", e.RowIndex + 1].Value = dgvTruyThuTienNuoc["DinhMuc_Moi", e.RowIndex].Value;
                 }
+            if (dgvTruyThuTienNuoc["Ky", e.RowIndex].Value != null)
+            dgvTruyThuTienNuoc["SoTien1m3", e.RowIndex].Value = _cGiaNuoc.getDonGiaCaoNhat(int.Parse(dgvTruyThuTienNuoc["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["Nam", e.RowIndex].Value.ToString()), int.Parse(dgvTruyThuTienNuoc["GiaBieu_Moi", e.RowIndex].Value.ToString()));
         }
 
         private void dgvTruyThuTienNuoc_KeyDown(object sender, KeyEventArgs e)
@@ -1217,7 +1219,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                                     if (cttttn_hoadon.SoTien1m3 == 0)
                                         cttttn_hoadon.m3BinhQuan = 0;
                                     else
-                                    cttttn_hoadon.m3BinhQuan = (int)Math.Round((double)(cttttn_hoadon.TongCongMoi.Value - cttttn_hoadon.TongCongCu.Value) / (cttttn_hoadon.SoTien1m3 * 1.15), 0, MidpointRounding.AwayFromZero);
+                                        cttttn_hoadon.m3BinhQuan = (int)Math.Round((double)(cttttn_hoadon.TongCongMoi.Value - cttttn_hoadon.TongCongCu.Value) / (cttttn_hoadon.SoTien1m3 * 1.15), 0, MidpointRounding.AwayFromZero);
 
                                     _cTTTN.Them_HoaDon(cttttn_hoadon);
                                     //cttttn_hoadon.CreateBy = CTaiKhoan.MaUser;
@@ -1297,7 +1299,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                                     if (cttttn_hoadon.SoTien1m3 == 0)
                                         cttttn_hoadon.m3BinhQuan = 0;
                                     else
-                                    cttttn_hoadon.m3BinhQuan = (int)Math.Round((double)(cttttn_hoadon.TongCongMoi.Value - cttttn_hoadon.TongCongCu.Value) / (cttttn_hoadon.SoTien1m3 * 1.15), 0, MidpointRounding.AwayFromZero);
+                                        cttttn_hoadon.m3BinhQuan = (int)Math.Round((double)(cttttn_hoadon.TongCongMoi.Value - cttttn_hoadon.TongCongCu.Value) / (cttttn_hoadon.SoTien1m3 * 1.15), 0, MidpointRounding.AwayFromZero);
 
                                     _cTTTN.Sua_HoaDon(cttttn_hoadon);
                                 }

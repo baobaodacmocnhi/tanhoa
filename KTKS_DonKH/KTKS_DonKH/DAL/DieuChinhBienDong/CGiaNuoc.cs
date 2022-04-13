@@ -9949,20 +9949,31 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             List<GiaNuoc2> lst = getList();
             int index = -1;
-            for (int i = 0; i < lst.Count; i++)
-                if (Nam == 2019)
-                {
-                    if (Ky == 12)
-                        index = i;
-                    else
-                        index = i - 1;
-                }
-                else
-                    if (Nam == lst[i].Name)
+            if ((Nam > 2013 && Nam < 2019) || (Nam == 2019 && Ky < 12))
+            {
+                for (int i = 0; i < lst.Count; i++)
+                    if (2019 == lst[i].Name)
                     {
                         index = i;
                     }
-
+            }
+            else
+                if (Nam == 2019 && Ky == 12)
+                {
+                    for (int i = 0; i < lst.Count; i++)
+                        if (2020 == lst[i].Name)
+                        {
+                            index = i;
+                        }
+                }
+                else
+                {
+                    for (int i = 0; i < lst.Count; i++)
+                        if (Nam == lst[i].Name)
+                        {
+                            index = i;
+                        }
+                }
             if (index != -1)
             {
                 List<int> lstGiaNuoc = new List<int>();
