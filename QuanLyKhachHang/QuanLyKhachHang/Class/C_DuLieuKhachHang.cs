@@ -141,7 +141,7 @@ namespace QuanLyKhachHang.Class
             DataSet ds = new DataSet();
 
             string query = " SELECT top(1)  ( CASE WHEN hd.KY<10 THEN CONVERT(VARCHAR(20),hd.KY) ELSE CONVERT(VARCHAR(20),hd.KY) END+'/' + CONVERT(VARCHAR(20),hd.NAM)) as  NAM , CONVERT(NCHAR(10), hd.DenNgay, 103) AS NGAYDOC, CodeMoi, hd.CSCU, hd.CSMOI, hd.TieuThuMoi as TIEUTHU,  0.0 as ThanhTien ";
-            query += "  ,N'Đọc số' AS ThanhToan   ";
+            query += "  ,N'Đọc số' AS ThanhToan,KyHD=Ky,NamHD=Nam,DanhBo=DanhBa";
             query += " FROM dbo.DocSo  hd ";
             query += " WHERE DANHBA=  '" + danhba + "' ";
             query += "  ORDER BY hd.Nam desc,CAST(hd.KY as int) DESC  ";
@@ -150,7 +150,7 @@ namespace QuanLyKhachHang.Class
             adapter.Fill(ds, "TIEUTHU");
 
             query = " SELECT top(" + 12 + ")  ( CASE WHEN hd.KY<10 THEN '0'+ CONVERT(VARCHAR(20),hd.KY) ELSE CONVERT(VARCHAR(20),hd.KY) END+'/' + CONVERT(VARCHAR(20),hd.NAM)) as  NAM , CONVERT(NCHAR(10), hd.DenNgay, 103) AS NGAYDOC, CODE as CodeMoi, cast(hd.CSCU as int) as CSCU, cast(hd.CSMOI as int) as CSMOI,cast(hd.TIEUTHU as int) AS TIEUTHU , (hd.TONGCONG) as ThanhTien ";
-            query += " ,CASE WHEN MaNV_DangNgan IS NULL OR MaNV_DangNgan ='' THEN '' ELSE 'x'  END AS ThanhToan   ";
+            query += " ,CASE WHEN MaNV_DangNgan IS NULL OR MaNV_DangNgan ='' THEN '' ELSE 'x'  END AS ThanhToan,KyHD=Ky,NamHD=Nam,DanhBo=DanhBa";
             query += " FROM dbo.HOADON  hd ";
             query += " WHERE DANHBA= '" + danhba + "'  ";
             query += " ORDER BY hd.Nam desc,CAST(hd.KY as int) DESC ";

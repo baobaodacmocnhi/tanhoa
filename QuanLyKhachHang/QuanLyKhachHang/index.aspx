@@ -155,9 +155,11 @@
                             Font-Size="12px" GridLines="Vertical" Width="100%">
                             <AlternatingRowStyle BackColor="#DCDCDC" />
                             <Columns>
-                                <asp:BoundField DataField="NAM" HeaderText="Kỳ">
-                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                </asp:BoundField>
+                               <%-- <a  target='_blank' href='https://old.cskhtanhoa.com.vn:1803/api/docso/imagehtml/'>--%>
+                                    <asp:BoundField DataField="NAM" HeaderText="Kỳ">
+                                        <itemstyle horizontalalign="Center" verticalalign="Middle" />
+                                    </asp:BoundField>
+                               <%-- </a>--%>
                                 <asp:BoundField DataField="NGAYDOC" HeaderText="Ngày Đọc">
                                     <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
@@ -285,7 +287,7 @@
                 <td>
                     <div align="center" style="font-size: x-large; padding-top: 10px; padding-bottom: 10px">
                         <a target="_blank " href="http://113.161.88.180:1802/api/thuongvu/hosogoc/<%=Session["danhbo"]%>">
-                        Bấm để xem Hồ sơ gốc</a>
+                            Bấm để xem Hồ sơ gốc</a>
                     </div>
                 </td>
             </tr>
