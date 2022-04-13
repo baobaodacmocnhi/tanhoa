@@ -30,14 +30,16 @@
                     <li id="mnKinhDoanh" class="top"><a href="pDanhSachCoDong.aspx" id="CODONG" class="top_link">
                         <span>DANH SÁCH CỔ ĐÔNG</span></a>
                         <ul class="sub_gioithieu">
-                            <li><a href="pDanhSachCoDongThamDu.aspx" class="">CỔ ĐÔNG THAM DỰ </a></li>
-                            <li><a href="pInCoDong.aspx" class="">IN DANH SÁCH CỔ ĐÔNG </a></li>
+                            <li><a href="pDanhSachCoDongThamDu.aspx" class="">CỔ ĐÔNG THAM DỰ</a></li>
+                            <li><a href="pInCoDong.aspx" class="">IN DANH SÁCH CỔ ĐÔNG</a></li>
                             <li><a href="Print.aspx?page=HD" class="">IN PHIẾU BẦU CỬ HĐQT</a> </li>
                             <li><a href="Print.aspx?page=BC" class="">IN PHIẾU BẦU CỬ BKS </a></li>
                         </ul>
                     </li>
                     <li id="mnGioithieu" class="top"><a href="pBieuQuyetDHCD_TIEUCHI.aspx" id="KIEMPHIEU"
-                        class="top_link"><span>BIỂU QUYẾT NGHỊ QUYẾT </span></a></li>
+                        class="top_link"><span>BIỂU QUYẾT NGHỊ QUYẾT</span></a></li>
+                       <%-- <li id="Li1" class="top"><a href="pBieuQuyetDHCD_TIEUCHI_2020.aspx" id="A1"
+                        class="top_link"><span>BIỂU QUYẾT NGHỊ QUYẾT HĐQT</span></a></li>--%>
                     <li id="mnBieuQuyet" class="top"><a href="pKetQuaBauCuDHCD.aspx" id="BIEUQUYET" class="top_link">
                         <span>BẦU CỬ HỘI ĐỒNG QUẢN TRỊ</span></a></li>
                     <%--<li id="mnGioithieu" class="top"><a href="pBieuQuyetDHCD_2.aspx" id="KIEMPHIEU" class="top_link" ><span>KIỂM PHIẾU</span></a></li>   
