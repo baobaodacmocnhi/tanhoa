@@ -346,7 +346,6 @@
     <Content Include="Lib\String_Indentity_.dll" />
     <Content Include="StyleSheet\Menu.css" />
     <Content Include="StyleSheet\StyleSheet.css" />
-    <Content Include="View\pBauCuDoanThanhNien.aspx" />
     <Content Include="View\pBieuQuyetDHCD_TIEUCHI_2020.aspx" />
     <Content Include="View\pBauCuNLD.aspx" />
     <Content Include="View\pBauCuCongDoan.aspx" />
@@ -407,12 +406,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="View\pBauCuDoanThanhNien.aspx.cs">
-      <DependentUpon>pBauCuDoanThanhNien.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="View\pBauCuDoanThanhNien.aspx.designer.cs">
-      <DependentUpon>pBauCuDoanThanhNien.aspx</DependentUpon>
+    <Compile Include="View\inTheBieuQuyetHDQT_1_2022.cs">
+      <DependentUpon>inTheBieuQuyetHDQT_1_2022.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="View\pBieuQuyetDHCD_TIEUCHI_2020.aspx.cs">
       <DependentUpon>pBieuQuyetDHCD_TIEUCHI_2020.aspx</DependentUpon>
@@ -647,6 +645,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>inTheBieuQuyet_N.cs</LastGenOutput>
     </Content>
+    <EmbeddedResource Include="View\inTheBieuQuyetHDQT_1_2022.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>inTheBieuQuyetHDQT_1_2022.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\inTheBieuQuyetHDQT_1.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>inTheBieuQuyetHDQT_1.cs</LastGenOutput>

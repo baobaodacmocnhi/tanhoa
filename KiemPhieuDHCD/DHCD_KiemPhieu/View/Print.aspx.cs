@@ -48,7 +48,7 @@ namespace DHCD_KiemPhieu.View
             }
             if ("HD".Equals(Request.Params["page"] + ""))
             {
-                CrystalReportSource1.Report.FileName = "inTheBieuQuyetHDQT_1.rpt";
+                CrystalReportSource1.Report.FileName = "inTheBieuQuyetHDQT_1_2022.rpt";
                 CrystalReportSource1.ReportDocument.SetDataSource(Img());
                 CrystalReportSource1.ReportDocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, false, "THE_BIEU_QUYET");
             }
