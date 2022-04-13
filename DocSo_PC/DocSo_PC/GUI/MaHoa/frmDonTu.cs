@@ -382,7 +382,7 @@ namespace DocSo_PC.GUI.MaHoa
                                 }
                                 if (_cDonTu.Them_LichSu(entity) == true)
                                 {
-                                    
+
                                 }
                             }
                         }
@@ -440,6 +440,7 @@ namespace DocSo_PC.GUI.MaHoa
 
         private void btnInDS_Click(object sender, EventArgs e)
         {
+            string error = "";
             try
             {
                 dsBaoCao dsBaoCao = new dsBaoCao();
@@ -447,6 +448,7 @@ namespace DocSo_PC.GUI.MaHoa
                 {
                     MaHoa_DonTu dontu = _cDonTu.get(int.Parse(item.Cells["ID"].Value.ToString()));
                     DataRow dr = dsBaoCao.Tables["BaoCao"].NewRow();
+                    error = dontu.DanhBo;
                     dr["TenPhong"] = CNguoiDung.TenPhong;
                     dr["DanhBo"] = dontu.DanhBo.Insert(7, " ").Insert(4, " ");
                     dr["HopDong"] = dontu.HopDong;
@@ -464,6 +466,8 @@ namespace DocSo_PC.GUI.MaHoa
                     else
                         Ky++;
                     DocSo docso = _cDocSo.get_DocSo(dontu.DanhBo, Nam.ToString(), Ky.ToString("00"));
+                    if (docso == null)
+                        docso = _cDocSo.get_DocSo(dontu.DanhBo, Nam.ToString(), dontu.Ky.Value.ToString("00"));
                     dr["TBTT"] = docso.TBTT;
                     dr["GhiChu"] = dontu.GhiChu;
                     dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper();
@@ -479,7 +483,7 @@ namespace DocSo_PC.GUI.MaHoa
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(error + "\n" + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
