@@ -304,7 +304,7 @@ namespace DocSo_PC.GUI.MaHoa
                     ctktxm.HopDong = txtHopDong.Text.Trim();
                     ctktxm.HoTen = txtHoTen.Text.Trim().ToUpper();
                     ctktxm.DiaChi = txtDiaChi.Text.Trim().ToUpper();
-                    ctktxm.GiaBieu =int.Parse( txtGiaBieu.Text.Trim());
+                    ctktxm.GiaBieu = int.Parse(txtGiaBieu.Text.Trim());
                     if (!string.IsNullOrEmpty(txtDinhMuc.Text.Trim()))
                         ctktxm.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
                     if (!string.IsNullOrEmpty(txtDinhMucHN.Text.Trim()))
@@ -370,6 +370,9 @@ namespace DocSo_PC.GUI.MaHoa
                         {
                             _cDonTu.Them_LichSu(ctktxm.NgayKTXM.Value, "KTXM", "Đã Kiểm Tra, " + ctktxm.NoiDungKiemTra, ctktxm.ID, _dontu.ID);
                         }
+                        string noidung = "Mã Đơn: " + ctktxm.IDMaDon + ", " + ctktxm.NgayKTXM.Value.ToString("dd/MM/yyyy") + ", " + ctktxm.NoiDungKiemTra + ", " + CNguoiDung.HoTen;
+                        string sql = "insert into TB_GHICHU(DANHBO,DONVI,NOIDUNG,CREATEDATE,CREATEBY)values('" + ctktxm.DanhBo + "',N'Đ.QLĐHN',N'" + noidung + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture) + "',N'" + CNguoiDung.HoTen + "')";
+                        CDHN._cDAL.ExecuteNonQuery(sql);
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear_LoadDSKTXM();
                         txtMaDon.Focus();
@@ -489,7 +492,7 @@ namespace DocSo_PC.GUI.MaHoa
                             if (txtGhiChuNoiDungBaoThay.Text.Trim() != "")
                                 _ctktxm.GhiChuNoiDungBaoThay = txtGhiChuNoiDungBaoThay.Text.Trim();
                         }
-                        if(_cKTXM.Sua(_ctktxm)==true)
+                        if (_cKTXM.Sua(_ctktxm) == true)
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }

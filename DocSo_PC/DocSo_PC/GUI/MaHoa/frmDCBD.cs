@@ -173,7 +173,7 @@ namespace DocSo_PC.GUI.MaHoa
 
                             dr["MaDon"] = en.IDMaDon.ToString();
                             dr["SoPhieu"] = en.ID.ToString();
-                            dr["ThongTin"] = en.ThongTin;
+                            dr["ThongTin"] = en.ThongTin.ToUpper();
                             dr["HieuLucKy"] = en.HieuLucKy;
                             dr["Dot"] = en.Dot;
                             ///Hiện tại xử lý mã số thuế như vậy
@@ -188,7 +188,7 @@ namespace DocSo_PC.GUI.MaHoa
                             ///Biến Động
                             dr["GiaBieuBD"] = en.GiaBieu_BD;
                             dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper()  +" "+ CNguoiDung.TenPhong.ToUpper();
-                            dr["NguoiKy"] = CNguoiDung.NguoiKy;
+                            dr["NguoiKy"] = CNguoiDung.NguoiKy.ToUpper();
                             dsBaoCao.Tables["DCBD"].Rows.Add(dr);
                         }
                     }
@@ -257,7 +257,7 @@ namespace DocSo_PC.GUI.MaHoa
                                         dr["DV"] = en.DV;
                                 dr["MaDon"] = en.IDMaDon.ToString();
                                 dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper()  +" "+ CNguoiDung.TenPhong.ToUpper();
-                                dr["NguoiKy"] = CNguoiDung.NguoiKy;
+                                dr["NguoiKy"] = CNguoiDung.NguoiKy.ToUpper();
                                 dr["TenPhong"] = "";
                                 dsBaoCaoCC.Tables["DCBD"].Rows.Add(dr);
 
@@ -300,7 +300,7 @@ namespace DocSo_PC.GUI.MaHoa
                                 dr["MaDon"] = en.IDMaDon.ToString();
 
                                 dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper()  +" "+ CNguoiDung.TenPhong.ToUpper();
-                                dr["NguoiKy"] = CNguoiDung.NguoiKy;
+                                dr["NguoiKy"] = CNguoiDung.NguoiKy.ToUpper();
                                 dr["TenPhong"] = "";
                                 dsBaoCao.Tables["DCBD"].Rows.Add(dr);
 
@@ -431,7 +431,7 @@ namespace DocSo_PC.GUI.MaHoa
 
                             dr["MaDon"] = en.IDMaDon.ToString();
                             dr["SoPhieu"] = en.ID.ToString();
-                            dr["ThongTin"] = en.ThongTin;
+                            dr["ThongTin"] = en.ThongTin.ToUpper();
                             dr["HieuLucKy"] = en.HieuLucKy;
                             dr["Dot"] = en.Dot;
                             ///Hiện tại xử lý mã số thuế như vậy
@@ -446,7 +446,7 @@ namespace DocSo_PC.GUI.MaHoa
                             ///Biến Động
                             dr["GiaBieuBD"] = en.GiaBieu_BD;
                             dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper()  +" "+ CNguoiDung.TenPhong.ToUpper();
-                            dr["NguoiKy"] = CNguoiDung.NguoiKy;
+                            dr["NguoiKy"] = CNguoiDung.NguoiKy.ToUpper();
                             dsBaoCao.Tables["DCBD"].Rows.Add(dr);
                         }
                     }

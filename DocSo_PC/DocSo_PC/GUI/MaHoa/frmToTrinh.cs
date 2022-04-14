@@ -104,7 +104,7 @@ namespace DocSo_PC.GUI.MaHoa
             txtDinhMucHN.Text = "";
             ///
             txtVeViec.Text = "";
-            txtKinhTrinh.Text = "Ban Giám Đốc";
+            txtKinhTrinh.Text = "Ông Phó Giám đốc";
             txtNoiDung.Text = "";
             txtNoiNhan.Text = "";
             ///
@@ -437,10 +437,10 @@ namespace DocSo_PC.GUI.MaHoa
                             dr["DinhMucHN"] = en.DinhMucHN;
                             dr["NoiDung"] = en.NoiDung;
                             dr["NoiNhan"] = en.NoiNhan;
-                            dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper() + " " + CNguoiDung.TenPhong.ToUpper();
-                            dr["NguoiKy"] = CNguoiDung.NguoiKy;
+                            dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper();
+                            dr["NguoiKy"] = CNguoiDung.NguoiKy.ToUpper();
                             dr["ChucVuDuyet"] = "DUYỆT\n" + _cThuongVu.getChucVu_Duyet().ToUpper();
-                            dr["NguoiKyDuyet"] = _cThuongVu.getNguoiKy_Duyet();
+                            dr["NguoiKyDuyet"] = _cThuongVu.getNguoiKy_Duyet().ToUpper();
                             dsBaoCao.Tables["BaoCao"].Rows.Add(dr);
                         }
                     }

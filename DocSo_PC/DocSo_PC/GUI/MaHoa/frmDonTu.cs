@@ -471,9 +471,9 @@ namespace DocSo_PC.GUI.MaHoa
                     dr["TBTT"] = docso.TBTT;
                     dr["GhiChu"] = dontu.GhiChu;
                     dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper();
-                    dr["NguoiKy"] = CNguoiDung.NguoiKy;
+                    dr["NguoiKy"] = CNguoiDung.NguoiKy.ToUpper();
                     dr["ChucVuDuyet"] = "DUYỆT\n" + _cThuongVu.getChucVu_Duyet().ToUpper();
-                    dr["NguoiKyDuyet"] = _cThuongVu.getNguoiKy_Duyet();
+                    dr["NguoiKyDuyet"] = _cThuongVu.getNguoiKy_Duyet().ToUpper();
                     dsBaoCao.Tables["BaoCao"].Rows.Add(dr);
                 }
                 rptDSDonTu rpt = new rptDSDonTu();
