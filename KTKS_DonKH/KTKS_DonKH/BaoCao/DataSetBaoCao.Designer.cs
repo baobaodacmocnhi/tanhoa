@@ -15592,7 +15592,7 @@ namespace KTKS_DonKH.BaoCao {
                         int ThueGTGTMoi, 
                         int PhiBVMTMoi, 
                         int PhiBVMT_ThueMoi, 
-                        int TongCongMoi, 
+                        long TongCongMoi, 
                         string TangGiam, 
                         string NhanVien, 
                         string VaoLuc, 
@@ -15790,7 +15790,7 @@ namespace KTKS_DonKH.BaoCao {
                 base.Columns.Add(this.columnPhiBVMTMoi);
                 this.columnPhiBVMT_ThueMoi = new global::System.Data.DataColumn("PhiBVMT_ThueMoi", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPhiBVMT_ThueMoi);
-                this.columnTongCongMoi = new global::System.Data.DataColumn("TongCongMoi", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnTongCongMoi = new global::System.Data.DataColumn("TongCongMoi", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTongCongMoi);
                 this.columnTangGiam = new global::System.Data.DataColumn("TangGiam", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTangGiam);
@@ -36013,10 +36013,10 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int TongCongMoi {
+            public long TongCongMoi {
                 get {
                     try {
-                        return ((int)(this[this.tableTruyThuTienNuoc.TongCongMoiColumn]));
+                        return ((long)(this[this.tableTruyThuTienNuoc.TongCongMoiColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'TongCongMoi\' in table \'TruyThuTienNuoc\' is DBNull.", e);
