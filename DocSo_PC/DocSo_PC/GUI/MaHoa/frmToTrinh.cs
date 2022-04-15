@@ -13,6 +13,7 @@ using DocSo_PC.DAL.MaHoa;
 using DocSo_PC.BaoCao;
 using DocSo_PC.BaoCao.MaHoa;
 using DocSo_PC.GUI.BaoCao;
+using DocSo_PC.DAL.Doi;
 
 namespace DocSo_PC.GUI.MaHoa
 {
@@ -23,11 +24,12 @@ namespace DocSo_PC.GUI.MaHoa
         CToTrinh _cToTrinh = new CToTrinh();
         CThuTien _cThuTien = new CThuTien();
         CDonTu _cDonTu = new CDonTu();
+        CDocSo _cDocSo = new CDocSo();
         CThuongVu _cThuongVu = new CThuongVu();
         wrDHN.wsDHN _wsDHN = new wrDHN.wsDHN();
 
         MaHoa_DonTu _dontu = null;
-        HOADON _hoadon = null;
+        BienDong _biendong = null;
         MaHoa_ToTrinh _totrinh = null;
         MaHoa_ToTrinh_VeViec _veviec = null;
 
@@ -47,18 +49,18 @@ namespace DocSo_PC.GUI.MaHoa
             dgvVeViec.DataSource = lst;
         }
 
-        public void loadTTKH(HOADON hoadon)
+        public void loadTTKH(BienDong hoadon)
         {
-            txtDanhBo.Text = hoadon.DANHBA;
-            txtHoTen.Text = hoadon.TENKH;
-            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG;
+            txtDanhBo.Text = hoadon.DanhBa;
+            txtHoTen.Text = hoadon.TenKH;
+            txtDiaChi.Text = hoadon.So + " " + hoadon.Duong;
             txtGiaBieu.Text = hoadon.GB.ToString();
             if (hoadon.DM != null)
                 txtDinhMuc.Text = hoadon.DM.Value.ToString();
             else
                 txtDinhMuc.Text = "";
-            if (hoadon.DinhMucHN != null)
-                txtDinhMucHN.Text = hoadon.DinhMucHN.Value.ToString();
+            if (hoadon.DMHN != null)
+                txtDinhMucHN.Text = hoadon.DMHN.Value.ToString();
             else
                 txtDinhMucHN.Text = "";
         }
@@ -109,7 +111,7 @@ namespace DocSo_PC.GUI.MaHoa
             txtNoiNhan.Text = "";
             ///
             _dontu = null;
-            _hoadon = null;
+            _biendong = null;
             _totrinh = null;
             _veviec = null;
 
@@ -128,10 +130,10 @@ namespace DocSo_PC.GUI.MaHoa
                     _dontu = _cDonTu.get(int.Parse(MaDon));
                     if (_dontu != null)
                     {
-                        _hoadon = _cThuTien.GetMoiNhat(_dontu.DanhBo);
-                        if (_hoadon != null)
+                        _biendong = _cDocSo.get_BienDong_MoiNhat(_dontu.DanhBo);
+                        if (_biendong != null)
                         {
-                            loadTTKH(_hoadon);
+                            loadTTKH(_biendong);
                         }
                         else
                             MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -152,10 +154,10 @@ namespace DocSo_PC.GUI.MaHoa
             {
                 if (txtDanhBo.Text.Trim() != "" && e.KeyChar == 13)
                 {
-                    _hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
-                    if (_hoadon != null)
+                    _biendong = _cDocSo.get_BienDong_MoiNhat(txtDanhBo.Text.Trim());
+                    if (_biendong != null)
                     {
-                        loadTTKH(_hoadon);
+                        loadTTKH(_biendong);
                     }
                     else
                         MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -216,17 +218,17 @@ namespace DocSo_PC.GUI.MaHoa
                         cttt.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
                     if (string.IsNullOrEmpty(txtDinhMucHN.Text.Trim()) == false)
                         cttt.DinhMucHN = int.Parse(txtDinhMucHN.Text.Trim());
-                    if (_hoadon != null)
+                    if (_biendong != null)
                     {
-                        cttt.Dot = _hoadon.DOT;
-                        cttt.Ky = _hoadon.KY;
-                        cttt.Nam = _hoadon.NAM;
-                        cttt.Phuong = _hoadon.Phuong;
-                        cttt.Quan = _hoadon.Quan;
-                        cttt.Hieu = _hoadon.HIEUDH;
-                        cttt.Co = _hoadon.CoDH;
-                        cttt.SoThan = _hoadon.SoThanDHN;
-                        cttt.MLT = _hoadon.MALOTRINH;
+                        cttt.Dot = int.Parse(_biendong.Dot);
+                        cttt.Ky = int.Parse(_biendong.Ky);
+                        cttt.Nam = _biendong.Nam;
+                        cttt.Phuong = _biendong.Phuong;
+                        cttt.Quan = _biendong.Quan;
+                        cttt.Hieu = _biendong.Hieu;
+                        cttt.Co = _biendong.Co.Value.ToString();
+                        cttt.SoThan = _biendong.SoThan;
+                        cttt.MLT = _biendong.MLT1;
                     }
                     cttt.VeViec = txtVeViec.Text.Trim();
                     cttt.KinhTrinh = txtKinhTrinh.Text.Trim();
@@ -293,17 +295,17 @@ namespace DocSo_PC.GUI.MaHoa
                             _totrinh.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
                         if (string.IsNullOrEmpty(txtDinhMucHN.Text.Trim()) == false)
                             _totrinh.DinhMucHN = int.Parse(txtDinhMucHN.Text.Trim());
-                        if (_hoadon != null)
+                        if (_biendong != null)
                         {
-                            _totrinh.Dot = _hoadon.DOT;
-                            _totrinh.Ky = _hoadon.KY;
-                            _totrinh.Nam = _hoadon.NAM;
-                            _totrinh.Phuong = _hoadon.Phuong;
-                            _totrinh.Quan = _hoadon.Quan;
-                            _totrinh.Hieu = _hoadon.HIEUDH;
-                            _totrinh.Co = _hoadon.CoDH;
-                            _totrinh.SoThan = _hoadon.SoThanDHN;
-                            _totrinh.MLT = _hoadon.MALOTRINH;
+                            _totrinh.Dot = int.Parse(_biendong.Dot);
+                            _totrinh.Ky = int.Parse(_biendong.Ky);
+                            _totrinh.Nam = _biendong.Nam;
+                            _totrinh.Phuong = _biendong.Phuong;
+                            _totrinh.Quan = _biendong.Quan;
+                            _totrinh.Hieu = _biendong.Hieu;
+                            _totrinh.Co = _biendong.Co.Value.ToString();
+                            _totrinh.SoThan = _biendong.SoThan;
+                            _totrinh.MLT = _biendong.MLT1;
                         }
                         _totrinh.VeViec = txtVeViec.Text.Trim();
                         _totrinh.KinhTrinh = txtKinhTrinh.Text.Trim();

@@ -96,6 +96,7 @@ namespace DocSo_PC.DAL.MaHoa
                             item.DanhBo,
                             item.HoTen,
                             item.DiaChi,
+                            item.Dot,
                             item.GiaBieu,
                             item.GiaBieu_BD,
                             item.CongDung,

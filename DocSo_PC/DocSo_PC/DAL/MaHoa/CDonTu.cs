@@ -82,12 +82,26 @@ namespace DocSo_PC.DAL.MaHoa
 
         public DataTable getDS(string NoiDung, DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            return _cDAL.LINQToDataTable(_db.MaHoa_DonTus.Where(item => item.CreateDate.Date >= FromCreateDate.Date && item.CreateDate.Date <= ToCreateDate.Date && NoiDung.IndexOf(item.NoiDung)>=0).ToList());
+            return _cDAL.LINQToDataTable(_db.MaHoa_DonTus.Where(item => item.CreateDate.Date >= FromCreateDate.Date && item.CreateDate.Date <= ToCreateDate.Date && NoiDung.IndexOf(item.NoiDung) >= 0).ToList());
         }
 
         public DataTable getDS_ChuyenDCBD(DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            return _cDAL.LINQToDataTable(_db.MaHoa_DonTus.Where(item => item.CreateDate.Date >= FromCreateDate.Date && item.CreateDate.Date <= ToCreateDate.Date && item.TinhTrang == "Tồn (Điều Chỉnh)").ToList());
+            var query = from item in _db.MaHoa_DonTus
+                        where item.CreateDate.Date >= FromCreateDate.Date && item.CreateDate.Date <= ToCreateDate.Date && item.TinhTrang == "Tồn (Điều Chỉnh)"
+                        select new
+                        {
+                            item.ID,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.NoiDung,
+                            item.GhiChu,
+                            item.Dot,
+                            GiaBieuCu = _db.MaHoa_PhieuChuyens.Any(itemC => itemC.Name == item.NoiDung) ? _db.MaHoa_PhieuChuyens.SingleOrDefault(itemC => itemC.Name == item.NoiDung).FromValue : "",
+                            GiaBieuMoi = _db.MaHoa_PhieuChuyens.Any(itemC => itemC.Name == item.NoiDung) ? _db.MaHoa_PhieuChuyens.SingleOrDefault(itemC => itemC.Name == item.NoiDung).ToValue : "",
+                        };
+            return _cDAL.LINQToDataTable(query);
         }
 
 

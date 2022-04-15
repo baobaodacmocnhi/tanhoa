@@ -11,6 +11,7 @@ using DocSo_PC.LinQ;
 using DocSo_PC.DAL;
 using DocSo_PC.DAL.QuanTri;
 using System.Transactions;
+using DocSo_PC.DAL.Doi;
 
 namespace DocSo_PC.GUI.MaHoa
 {
@@ -22,10 +23,11 @@ namespace DocSo_PC.GUI.MaHoa
         CDonTu _cDonTu = new CDonTu();
         CThuTien _cThuTien = new CThuTien();
         CNguoiDung _cNguoiDung = new CNguoiDung();
+        CDocSo _cDocSo = new CDocSo();
         wrDHN.wsDHN _wsDHN = new wrDHN.wsDHN();
 
         MaHoa_DonTu _dontu = null;
-        HOADON _hoadon = null;
+        BienDong _biendong = null;
         MaHoa_KTXM _ctktxm = null;
 
         public frmKTXM()
@@ -58,20 +60,20 @@ namespace DocSo_PC.GUI.MaHoa
             }
         }
 
-        public void loadTTKH(HOADON hoadon)
+        public void loadTTKH(BienDong hoadon)
         {
-            txtDanhBo.Text = hoadon.DANHBA;
-            txtHopDong.Text = hoadon.HOPDONG;
-            txtHoTen.Text = hoadon.TENKH;
-            txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG;
+            txtDanhBo.Text = hoadon.DanhBa;
+            txtHopDong.Text = hoadon.HopDong;
+            txtHoTen.Text = hoadon.TenKH;
+            txtDiaChi.Text = hoadon.So + " " + hoadon.Duong;
             //txtDienThoai.Text = _donkh.DienThoai;
             txtGiaBieu.Text = hoadon.GB.ToString();
             if (hoadon.DM != null)
                 txtDinhMuc.Text = hoadon.DM.Value.ToString();
             else
                 txtDinhMuc.Text = "";
-            if (hoadon.DinhMucHN != null)
-                txtDinhMucHN.Text = hoadon.DinhMucHN.Value.ToString();
+            if (hoadon.DMHN != null)
+                txtDinhMucHN.Text = hoadon.DMHN.Value.ToString();
             else
                 txtDinhMucHN.Text = "";
             TB_DULIEUKHACHHANG ttkh = _cDHN.get(txtDanhBo.Text.Trim());
@@ -166,7 +168,7 @@ namespace DocSo_PC.GUI.MaHoa
             txtGhiChuNoiDungBaoThay.Text = "";
 
             _dontu = null;
-            _hoadon = null;
+            _biendong = null;
             _ctktxm = null;
             dgvDSKetQuaKiemTra.DataSource = null;
             dgvHinh.Rows.Clear();
@@ -203,7 +205,7 @@ namespace DocSo_PC.GUI.MaHoa
             txtGhiChuNoiDungBaoThay.Text = "";
 
             _dontu = null;
-            _hoadon = null;
+            _biendong = null;
             _ctktxm = null;
             dgvHinh.Rows.Clear();
             txtMaDon.Focus();
@@ -227,10 +229,10 @@ namespace DocSo_PC.GUI.MaHoa
                     _dontu = _cDonTu.get(int.Parse(MaDon));
                     if (_dontu != null)
                     {
-                        _hoadon = _cThuTien.GetMoiNhat(_dontu.DanhBo);
-                        if (_hoadon != null)
+                        _biendong = _cDocSo.get_BienDong_MoiNhat(_dontu.DanhBo);
+                        if (_biendong != null)
                         {
-                            loadTTKH(_hoadon);
+                            loadTTKH(_biendong);
                         }
                         else
                             MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -252,10 +254,10 @@ namespace DocSo_PC.GUI.MaHoa
             {
                 if (txtDanhBo.Text.Trim() != "" && e.KeyChar == 13)
                 {
-                    _hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
-                    if (_hoadon != null)
+                    _biendong = _cDocSo.get_BienDong_MoiNhat(txtDanhBo.Text.Trim());
+                    if (_biendong != null)
                     {
-                        loadTTKH(_hoadon);
+                        loadTTKH(_biendong);
                     }
                     else
                         MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -309,13 +311,13 @@ namespace DocSo_PC.GUI.MaHoa
                         ctktxm.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
                     if (!string.IsNullOrEmpty(txtDinhMucHN.Text.Trim()))
                         ctktxm.DinhMucHN = int.Parse(txtDinhMucHN.Text.Trim());
-                    if (_hoadon != null)
+                    if (_biendong != null)
                     {
-                        ctktxm.Dot = _hoadon.DOT;
-                        ctktxm.Ky = _hoadon.KY;
-                        ctktxm.Nam = _hoadon.NAM;
-                        ctktxm.Phuong = _hoadon.Phuong;
-                        ctktxm.Quan = _hoadon.Quan;
+                        ctktxm.Dot = int.Parse(_biendong.Dot);
+                        ctktxm.Ky = int.Parse(_biendong.Ky);
+                        ctktxm.Nam = _biendong.Nam;
+                        ctktxm.Phuong = _biendong.Phuong;
+                        ctktxm.Quan = _biendong.Quan;
                     }
                     ///
                     ctktxm.NgayKTXM_Truoc_NgayGiao = chkNgayKTXMTruocNgayGiao.Checked;
@@ -446,13 +448,13 @@ namespace DocSo_PC.GUI.MaHoa
                             _ctktxm.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
                         if (!string.IsNullOrEmpty(txtDinhMucHN.Text.Trim()))
                             _ctktxm.DinhMucHN = int.Parse(txtDinhMucHN.Text.Trim());
-                        if (_hoadon != null)
+                        if (_biendong != null)
                         {
-                            _ctktxm.Dot = _hoadon.DOT;
-                            _ctktxm.Ky = _hoadon.KY;
-                            _ctktxm.Nam = _hoadon.NAM;
-                            _ctktxm.Phuong = _hoadon.Phuong;
-                            _ctktxm.Quan = _hoadon.Quan;
+                            _ctktxm.Dot = int.Parse(_biendong.Dot);
+                            _ctktxm.Ky = int.Parse(_biendong.Ky);
+                            _ctktxm.Nam = _biendong.Nam;
+                            _ctktxm.Phuong = _biendong.Phuong;
+                            _ctktxm.Quan = _biendong.Quan;
                         }
                         ///
                         _ctktxm.NgayKTXM_Truoc_NgayGiao = chkNgayKTXMTruocNgayGiao.Checked;

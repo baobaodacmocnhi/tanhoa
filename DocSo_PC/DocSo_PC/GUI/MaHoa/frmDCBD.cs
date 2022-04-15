@@ -14,6 +14,7 @@ using DocSo_PC.BaoCao;
 using DocSo_PC.BaoCao.MaHoa;
 using DocSo_PC.GUI.BaoCao;
 using DocSo_PC.DAL;
+using DocSo_PC.DAL.Doi;
 
 namespace DocSo_PC.GUI.MaHoa
 {
@@ -21,6 +22,7 @@ namespace DocSo_PC.GUI.MaHoa
     {
         string _mnu = "mnuDCBD";
         CDonTu _cDonTu = new CDonTu();
+        CDocSo _cDocSo = new CDocSo();
         CDCBD _cDCBD = new CDCBD();
         CThuongVu _cThuongVu = new CThuongVu();
         CTTKH _cTTKH = new CTTKH();
@@ -187,7 +189,7 @@ namespace DocSo_PC.GUI.MaHoa
                             dr["DinhMucHN"] = en.DinhMucHN;
                             ///Biến Động
                             dr["GiaBieuBD"] = en.GiaBieu_BD;
-                            dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper()  +" "+ CNguoiDung.TenPhong.ToUpper();
+                            dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper() + " " + CNguoiDung.TenPhong.ToUpper();
                             dr["NguoiKy"] = CNguoiDung.NguoiKy.ToUpper();
                             dsBaoCao.Tables["DCBD"].Rows.Add(dr);
                         }
@@ -200,14 +202,6 @@ namespace DocSo_PC.GUI.MaHoa
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void dgvDCBD_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
-        {
-            using (SolidBrush b = new SolidBrush(dgvDCBD.RowHeadersDefaultCellStyle.ForeColor))
-            {
-                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
         }
 
@@ -256,7 +250,7 @@ namespace DocSo_PC.GUI.MaHoa
                                     if (en.DV != "")
                                         dr["DV"] = en.DV;
                                 dr["MaDon"] = en.IDMaDon.ToString();
-                                dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper()  +" "+ CNguoiDung.TenPhong.ToUpper();
+                                dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper() + " " + CNguoiDung.TenPhong.ToUpper();
                                 dr["NguoiKy"] = CNguoiDung.NguoiKy.ToUpper();
                                 dr["TenPhong"] = "";
                                 dsBaoCaoCC.Tables["DCBD"].Rows.Add(dr);
@@ -299,7 +293,7 @@ namespace DocSo_PC.GUI.MaHoa
                                         dr["DV"] = en.DV;
                                 dr["MaDon"] = en.IDMaDon.ToString();
 
-                                dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper()  +" "+ CNguoiDung.TenPhong.ToUpper();
+                                dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper() + " " + CNguoiDung.TenPhong.ToUpper();
                                 dr["NguoiKy"] = CNguoiDung.NguoiKy.ToUpper();
                                 dr["TenPhong"] = "";
                                 dsBaoCao.Tables["DCBD"].Rows.Add(dr);
@@ -330,6 +324,23 @@ namespace DocSo_PC.GUI.MaHoa
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvDCBD_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvDCBD.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+
+        private void dgvDCBD_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvDCBD.Columns[e.ColumnIndex].Name == "")
+            {
+
             }
         }
 
@@ -445,7 +456,7 @@ namespace DocSo_PC.GUI.MaHoa
                             dr["DinhMucHN"] = en.DinhMucHN;
                             ///Biến Động
                             dr["GiaBieuBD"] = en.GiaBieu_BD;
-                            dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper()  +" "+ CNguoiDung.TenPhong.ToUpper();
+                            dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper() + " " + CNguoiDung.TenPhong.ToUpper();
                             dr["NguoiKy"] = CNguoiDung.NguoiKy.ToUpper();
                             dsBaoCao.Tables["DCBD"].Rows.Add(dr);
                         }
@@ -460,6 +471,8 @@ namespace DocSo_PC.GUI.MaHoa
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
 
 
 

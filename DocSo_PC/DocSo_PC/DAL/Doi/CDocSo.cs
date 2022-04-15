@@ -87,6 +87,11 @@ namespace DocSo_PC.DAL.Doi
             return _db.BienDongs.SingleOrDefault(item => item.BienDongID == ID);
         }
 
+        public BienDong get_BienDong_MoiNhat(string DanhBo)
+        {
+            return _db.BienDongs.Where(item => item.DanhBa == DanhBo).OrderByDescending(item => item.BienDongID).FirstOrDefault();
+        }
+
         public void updateBienDong(BienDong en, ref BienDong enCN)
         {
             enCN.STT = en.STT;
@@ -416,7 +421,7 @@ namespace DocSo_PC.DAL.Doi
             string sql = "select d.SoLenh,t.CodeDesc,ChiSo,NgayKiem,NoiDung,Hieu,Co,NgayCapNhat"
                             + " from ThongBao d inner join ThamSo t on d.LoaiLenh=t.Code "
                             + " where DanhBa='" + DanhBo + "' and t.CodeType='TB' order by ID desc";
-                            //+ " where DanhBa='" + DanhBo + "' and t.CodeType='TB' and DATEADD(DAY,30,NgayCapNhat)>=GETDATE() order by ID desc";
+            //+ " where DanhBa='" + DanhBo + "' and t.CodeType='TB' and DATEADD(DAY,30,NgayCapNhat)>=GETDATE() order by ID desc";
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
