@@ -167,6 +167,7 @@ namespace KTKS_DonKH.DAL.ToBamChi
                             SLSuDung = itemGroup.Count(groupItem => groupItem.SuDung == true),
                             SLHuHong = itemGroup.Count(groupItem => groupItem.HuHong == true),
                             SLTon = itemGroup.Count() - itemGroup.Count(groupItem => groupItem.SuDung == true) - itemGroup.Count(groupItem => groupItem.HuHong == true),
+                            MauSac = itemGroup.FirstOrDefault().MauSac,
                         };
             return LINQToDataTable(query);
         }
