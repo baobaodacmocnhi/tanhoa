@@ -457,18 +457,7 @@ namespace DocSo_PC.GUI.MaHoa
                     dr["DiaChi"] = dontu.DiaChi;
                     dr["GiaBieu"] = dontu.GiaBieu;
                     dr["DinhMuc"] = dontu.DinhMuc;
-                    int Nam = dontu.Nam.Value;
-                    int Ky = dontu.Ky.Value;
-                    if (Ky == 12)
-                    {
-                        Nam++;
-                        Ky = 1;
-                    }
-                    else
-                        Ky++;
-                    DocSo docso = _cDocSo.get_DocSo(dontu.DanhBo, Nam.ToString(), Ky.ToString("00"));
-                    if (docso == null)
-                        docso = _cDocSo.get_DocSo(dontu.DanhBo, Nam.ToString(), dontu.Ky.Value.ToString("00"));
+                    DocSo docso = _cDocSo.get_DocSo(dontu.DanhBo, dontu.Nam.Value.ToString(), dontu.Ky.Value.ToString("00"));
                     dr["TBTT"] = docso.TBTT;
                     dr["GhiChu"] = dontu.GhiChu;
                     dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper();
