@@ -36,6 +36,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CDCBD _cDCBD = new CDCBD();
         CKTXM _cKTXM = new CKTXM();
         CDHN _cDHN = new CDHN();
+        CDocSo _cDocSo = new CDocSo();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         wsThuongVu.wsThuongVu _wsThuongVu = new wsThuongVu.wsThuongVu();
 
@@ -123,11 +124,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 sohoadon = hoadon.SoHoaDonCu;
             else
                 sohoadon = hoadon.SOHOADON;
-            if (hoadon.PHI.Value == 0 && hoadon.TIEUTHU.Value != 0 && _cDCBD.checkExist_HoaDon(sohoadon) == false)
+            //if (hoadon.PHI.Value == 0 && hoadon.TIEUTHU.Value != 0 && _cDCBD.checkExist_HoaDon(sohoadon) == false)
+            //    lbKhongTinhPhiBVMT.Visible = true;
+            //else
+            //    lbKhongTinhPhiBVMT.Visible = false;
+            if (_cDocSo.checkKhongTinhPBVMT(hoadon.DANHBA) == true)
                 lbKhongTinhPhiBVMT.Visible = true;
             else
                 lbKhongTinhPhiBVMT.Visible = false;
-
             dgvDSSoDangKy.DataSource = _cChungTu.getDS_ChiTiet_DanhBo(hoadon.DANHBA);
             dgvDSDieuChinh.DataSource = _cDCBD.getDSDCBD(hoadon.DANHBA);
             if (dgvDSDieuChinh.Rows.Count > 0)
