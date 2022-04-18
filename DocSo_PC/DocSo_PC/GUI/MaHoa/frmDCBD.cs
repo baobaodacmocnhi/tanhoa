@@ -39,6 +39,7 @@ namespace DocSo_PC.GUI.MaHoa
             dgvDanhSach.AutoGenerateColumns = false;
             dgvDCBD.AutoGenerateColumns = false;
             dgvHinh.AutoGenerateColumns = false;
+            cmbTimTheo.SelectedIndex = 0;
         }
 
         private void btnXem_Click(object sender, EventArgs e)
@@ -119,7 +120,24 @@ namespace DocSo_PC.GUI.MaHoa
 
         private void btnXem_DS_Click(object sender, EventArgs e)
         {
-            dgvDCBD.DataSource = _cDCBD.getDS(dateTu_DS.Value, dateDen_DS.Value);
+            switch (cmbTimTheo.Text)
+            {
+                case "Thời Gian":
+                    dgvDCBD.DataSource = _cDCBD.getDS(dateTu_DS.Value, dateDen_DS.Value);
+                    break;
+                case "Mã Đơn":
+                    if (txtDenSo.Text.Trim() != "")
+                        dgvDCBD.DataSource = _cDCBD.getDS_MaDon(int.Parse(txtTuSo.Text.Trim()), int.Parse(txtDenSo.Text.Trim()));
+                    else
+                        dgvDCBD.DataSource = _cDCBD.getDS_MaDon(int.Parse(txtTuSo.Text.Trim()));
+                    break;
+                case "Số Phiếu":
+                    if (txtDenSo.Text.Trim() != "")
+                        dgvDCBD.DataSource = _cDCBD.getDS_SoPhieu(int.Parse(txtTuSo.Text.Trim()), int.Parse(txtDenSo.Text.Trim()));
+                    else
+                        dgvDCBD.DataSource = _cDCBD.getDS_SoPhieu(int.Parse(txtTuSo.Text.Trim()));
+                    break;
+            }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -195,6 +213,51 @@ namespace DocSo_PC.GUI.MaHoa
                         }
                     }
                 rptPhieuDCBD_15112019 rpt = new rptPhieuDCBD_15112019();
+                rpt.SetDataSource(dsBaoCao);
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                frm.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnInDSPhieu_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dsBaoCao dsBaoCao = new dsBaoCao();
+                foreach (DataGridViewRow item in dgvDCBD.Rows)
+                    if (item.Cells["Chon_DS"].Value != null && bool.Parse(item.Cells["Chon_DS"].Value.ToString()) == true)
+                    {
+                        MaHoa_DCBD en = _cDCBD.get(int.Parse(item.Cells["ID_DS"].Value.ToString()));
+                        if (en != null)
+                        {
+                            DataRow dr = dsBaoCao.Tables["DCBD"].NewRow();
+
+                            dr["MaDon"] = en.IDMaDon.ToString();
+                            dr["SoPhieu"] = en.ID.ToString();
+                            dr["ThongTin"] = en.ThongTin.ToUpper();
+                            dr["HieuLucKy"] = en.HieuLucKy;
+                            dr["Dot"] = en.Dot;
+                            ///Hiện tại xử lý mã số thuế như vậy
+                            dr["DanhBo"] = en.DanhBo.Insert(7, " ").Insert(4, " ");
+                            dr["HopDong"] = en.HopDong;
+                            dr["HoTen"] = en.HoTen;
+                            dr["DiaChi"] = en.DiaChi;
+                            dr["MaQuanPhuong"] = en.MaQuanPhuong;
+                            dr["GiaBieu"] = en.GiaBieu;
+                            dr["DinhMuc"] = en.DinhMuc;
+                            dr["DinhMucHN"] = en.DinhMucHN;
+                            ///Biến Động
+                            dr["GiaBieuBD"] = en.GiaBieu_BD;
+                            dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper() + " " + CNguoiDung.TenPhong.ToUpper();
+                            dr["NguoiKy"] = CNguoiDung.NguoiKy.ToUpper();
+                            dsBaoCao.Tables["DCBD"].Rows.Add(dr);
+                        }
+                    }
+                rptDSPhieuDCBD_15112019 rpt = new rptDSPhieuDCBD_15112019();
                 rpt.SetDataSource(dsBaoCao);
                 frmShowBaoCao frm = new frmShowBaoCao(rpt);
                 frm.Show();
@@ -327,6 +390,55 @@ namespace DocSo_PC.GUI.MaHoa
             }
         }
 
+        private void btnInNhan_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dsBaoCao dsBaoCao1 = new dsBaoCao();
+                dsBaoCao dsBaoCao2 = new dsBaoCao();
+                bool flag = true;///in 2 bên
+                foreach (DataGridViewRow item in dgvDCBD.Rows)
+                    if (item.Cells["Chon_DS"].Value != null && bool.Parse(item.Cells["Chon_DS"].Value.ToString()) == true)
+                    {
+                        MaHoa_DCBD en = _cDCBD.get(int.Parse(item.Cells["ID_DS"].Value.ToString()));
+                        if (en.CongDung != null && en.CongDung != "")
+                        {
+                            if (flag == true)
+                            {
+                                DataRow dr = dsBaoCao1.Tables["BaoCao"].NewRow();
+
+                                dr["HoTen"] = en.HoTen;
+                                dr["DiaChi"] = en.DiaChi;
+                                dr["MaDon"] = en.IDMaDon.ToString() + "/TB";
+
+                                dsBaoCao1.Tables["BaoCao"].Rows.Add(dr);
+                                flag = false;
+                            }
+                            else
+                            {
+                                DataRow dr = dsBaoCao2.Tables["BaoCao"].NewRow();
+
+                                dr["HoTen"] = en.HoTen;
+                                dr["DiaChi"] = en.DiaChi;
+                                dr["MaDon"] = en.IDMaDon.ToString() + "/TB";
+
+                                dsBaoCao2.Tables["BaoCao"].Rows.Add(dr);
+                                flag = true;
+                            }
+                        }
+                    }
+                rptKinhGui rpt = new rptKinhGui();
+                rpt.Subreports[0].SetDataSource(dsBaoCao1);
+                rpt.Subreports[1].SetDataSource(dsBaoCao2);
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                frm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void dgvDCBD_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             using (SolidBrush b = new SolidBrush(dgvDCBD.RowHeadersDefaultCellStyle.ForeColor))
@@ -338,9 +450,17 @@ namespace DocSo_PC.GUI.MaHoa
 
         private void dgvDCBD_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvDCBD.Columns[e.ColumnIndex].Name == "")
+            if (dgvDCBD.Columns[e.ColumnIndex].Name == "GhiChu_DS" || dgvDCBD.Columns[e.ColumnIndex].Name == "GiaBieu_DS" || dgvDCBD.Columns[e.ColumnIndex].Name == "GiaBieu_BD" || dgvDCBD.Columns[e.ColumnIndex].Name == "HieuLucKy_DS")
             {
-
+                MaHoa_DCBD dcbd = _cDCBD.get(int.Parse(dgvDCBD["In_DS", e.RowIndex].Value.ToString()));
+                if (dcbd != null)
+                {
+                    dcbd.CongDung = dgvDCBD["GhiChu_DS", e.RowIndex].Value.ToString();
+                    dcbd.GiaBieu = int.Parse(dgvDCBD["GiaBieu_DS", e.RowIndex].Value.ToString());
+                    dcbd.GiaBieu_BD = int.Parse(dgvDCBD["GiaBieu_BD", e.RowIndex].Value.ToString());
+                    dcbd.HieuLucKy = dgvDCBD["HieuLucKy_DS", e.RowIndex].Value.ToString();
+                    _cDCBD.Sua(dcbd);
+                }
             }
         }
 
@@ -427,54 +547,20 @@ namespace DocSo_PC.GUI.MaHoa
             }
         }
 
-        private void btnInDSPhieu_Click(object sender, EventArgs e)
+        private void cmbTimTheo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
+            switch (cmbTimTheo.Text)
             {
-                dsBaoCao dsBaoCao = new dsBaoCao();
-                foreach (DataGridViewRow item in dgvDCBD.Rows)
-                    if (item.Cells["Chon_DS"].Value != null && bool.Parse(item.Cells["Chon_DS"].Value.ToString()) == true)
-                    {
-                        MaHoa_DCBD en = _cDCBD.get(int.Parse(item.Cells["ID_DS"].Value.ToString()));
-                        if (en != null)
-                        {
-                            DataRow dr = dsBaoCao.Tables["DCBD"].NewRow();
-
-                            dr["MaDon"] = en.IDMaDon.ToString();
-                            dr["SoPhieu"] = en.ID.ToString();
-                            dr["ThongTin"] = en.ThongTin.ToUpper();
-                            dr["HieuLucKy"] = en.HieuLucKy;
-                            dr["Dot"] = en.Dot;
-                            ///Hiện tại xử lý mã số thuế như vậy
-                            dr["DanhBo"] = en.DanhBo.Insert(7, " ").Insert(4, " ");
-                            dr["HopDong"] = en.HopDong;
-                            dr["HoTen"] = en.HoTen;
-                            dr["DiaChi"] = en.DiaChi;
-                            dr["MaQuanPhuong"] = en.MaQuanPhuong;
-                            dr["GiaBieu"] = en.GiaBieu;
-                            dr["DinhMuc"] = en.DinhMuc;
-                            dr["DinhMucHN"] = en.DinhMucHN;
-                            ///Biến Động
-                            dr["GiaBieuBD"] = en.GiaBieu_BD;
-                            dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper() + " " + CNguoiDung.TenPhong.ToUpper();
-                            dr["NguoiKy"] = CNguoiDung.NguoiKy.ToUpper();
-                            dsBaoCao.Tables["DCBD"].Rows.Add(dr);
-                        }
-                    }
-                rptDSPhieuDCBD_15112019 rpt = new rptDSPhieuDCBD_15112019();
-                rpt.SetDataSource(dsBaoCao);
-                frmShowBaoCao frm = new frmShowBaoCao(rpt);
-                frm.Show();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                case "Thời Gian":
+                    panel_Time.Visible = true;
+                    panel_NoiDung.Visible = false;
+                    break;
+                default:
+                    panel_Time.Visible = false;
+                    panel_NoiDung.Visible = true;
+                    break;
             }
         }
-
-
-
-
 
 
     }

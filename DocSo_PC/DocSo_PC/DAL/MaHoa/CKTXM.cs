@@ -171,6 +171,19 @@ namespace DocSo_PC.DAL.MaHoa
             return _db.MaHoa_KTXM_Hinhs.SingleOrDefault(item => item.ID == ID);
         }
 
+        public byte[] get_Hinh_ByteArray(string DanhBo, int Nam, int Ky)
+        {
+            wrDHN.wsDHN wsDHN = new wrDHN.wsDHN();
+            if (_db.MaHoa_KTXMs.Any(item => item.DanhBo == DanhBo && item.Nam == Nam && item.Ky == Ky && item.MaHoa_KTXM_Hinhs.Count > 0))
+            {
+                MaHoa_KTXM_Hinh hinh = _db.MaHoa_KTXMs.SingleOrDefault(item => item.DanhBo == DanhBo && item.Nam == Nam && item.Ky == Ky).MaHoa_KTXM_Hinhs.FirstOrDefault();
+                byte[] hinhbyte = wsDHN.get_Hinh_MaHoa("KTXM", hinh.IDParent.Value.ToString(), hinh.Name + hinh.Loai);
+                return hinhbyte;
+            }
+            else
+                return null;
+        }
+
         #endregion
     }
 }

@@ -27,6 +27,7 @@ namespace DocSo_PC.GUI.ToTruong
         wsDHN wsDHN = new wsDHN();
         CDonTu _cDonTu = new CDonTu();
         CThuTien _cThuTien = new CThuTien();
+        CKTXM _cKTXM = new CKTXM();
         bool _flagLoadFirst = false;
 
         public frmXuLySoLieu()
@@ -76,6 +77,11 @@ namespace DocSo_PC.GUI.ToTruong
                 loadCodeMoi();
                 if (CNguoiDung.Admin)
                     btnReset.Visible = true;
+                DataTable dt = _cDonTu.getDS_PhieuChuyenAll();
+                cmbNoiDung.DataSource = dt;
+                cmbNoiDung.ValueMember = "Name";
+                cmbNoiDung.DisplayMember = "Name";
+                cmbNoiDung.SelectedIndex = -1;
                 btnChuyenDonToMaHoa.Text = "Chuyển Đơn" + Environment.NewLine + "Tổ Mã Hóa";
             }
             catch (Exception ex)
@@ -292,6 +298,12 @@ namespace DocSo_PC.GUI.ToTruong
                         ptbKy0.Image = _cDocSo.byteArrayToImage(img);
                     else
                         ptbKy0.Image = Properties.Resources.no_image;
+
+                    img = _cKTXM.get_Hinh_ByteArray(_docso.DanhBa, _docso.Nam.Value, int.Parse(_docso.Ky));
+                    if (img != null)
+                        ptbKTXMKy0.Image = _cDocSo.byteArrayToImage(img);
+                    else
+                        ptbKTXMKy0.Image = Properties.Resources.no_image;
                     if (_docso.Ky == "01")
                     {
                         lblKy1.Text = "12" + "/" + (_docso.Nam - 1);
@@ -312,6 +324,22 @@ namespace DocSo_PC.GUI.ToTruong
                             ptbKy3.Image = _cDocSo.byteArrayToImage(img);
                         else
                             ptbKy3.Image = Properties.Resources.no_image;
+
+                        img = _cKTXM.get_Hinh_ByteArray(_docso.DanhBa, _docso.Nam.Value - 1, 12);
+                        if (img != null)
+                            ptbKTXMKy1.Image = _cDocSo.byteArrayToImage(img);
+                        else
+                            ptbKTXMKy1.Image = Properties.Resources.no_image;
+                        img = _cKTXM.get_Hinh_ByteArray(_docso.DanhBa, _docso.Nam.Value - 1, 11);
+                        if (img != null)
+                            ptbKTXMKy2.Image = _cDocSo.byteArrayToImage(img);
+                        else
+                            ptbKTXMKy2.Image = Properties.Resources.no_image;
+                        img = _cKTXM.get_Hinh_ByteArray(_docso.DanhBa, _docso.Nam.Value - 1, 10);
+                        if (img != null)
+                            ptbKTXMKy3.Image = _cDocSo.byteArrayToImage(img);
+                        else
+                            ptbKTXMKy3.Image = Properties.Resources.no_image;
                     }
                     else
                         if (_docso.Ky == "02")
@@ -334,6 +362,22 @@ namespace DocSo_PC.GUI.ToTruong
                                 ptbKy3.Image = _cDocSo.byteArrayToImage(img);
                             else
                                 ptbKy3.Image = Properties.Resources.no_image;
+
+                            img = _cKTXM.get_Hinh_ByteArray(_docso.DanhBa, _docso.Nam.Value, 1);
+                            if (img != null)
+                                ptbKTXMKy1.Image = _cDocSo.byteArrayToImage(img);
+                            else
+                                ptbKTXMKy1.Image = Properties.Resources.no_image;
+                            img = _cKTXM.get_Hinh_ByteArray(_docso.DanhBa, _docso.Nam.Value - 1, 12);
+                            if (img != null)
+                                ptbKTXMKy2.Image = _cDocSo.byteArrayToImage(img);
+                            else
+                                ptbKTXMKy2.Image = Properties.Resources.no_image;
+                            img = _cKTXM.get_Hinh_ByteArray(_docso.DanhBa, _docso.Nam.Value - 1, 11);
+                            if (img != null)
+                                ptbKTXMKy3.Image = _cDocSo.byteArrayToImage(img);
+                            else
+                                ptbKTXMKy3.Image = Properties.Resources.no_image;
                         }
                         else
                             if (_docso.Ky == "03")
@@ -356,6 +400,22 @@ namespace DocSo_PC.GUI.ToTruong
                                     ptbKy3.Image = _cDocSo.byteArrayToImage(img);
                                 else
                                     ptbKy3.Image = Properties.Resources.no_image;
+
+                                img = _cKTXM.get_Hinh_ByteArray(_docso.DanhBa, _docso.Nam.Value, 2);
+                                if (img != null)
+                                    ptbKTXMKy1.Image = _cDocSo.byteArrayToImage(img);
+                                else
+                                    ptbKTXMKy1.Image = Properties.Resources.no_image;
+                                img = _cKTXM.get_Hinh_ByteArray(_docso.DanhBa, _docso.Nam.Value, 1);
+                                if (img != null)
+                                    ptbKTXMKy2.Image = _cDocSo.byteArrayToImage(img);
+                                else
+                                    ptbKTXMKy2.Image = Properties.Resources.no_image;
+                                img = _cKTXM.get_Hinh_ByteArray(_docso.DanhBa, _docso.Nam.Value - 1, 12);
+                                if (img != null)
+                                    ptbKTXMKy3.Image = _cDocSo.byteArrayToImage(img);
+                                else
+                                    ptbKTXMKy3.Image = Properties.Resources.no_image;
                             }
                             else
                             {
@@ -377,6 +437,22 @@ namespace DocSo_PC.GUI.ToTruong
                                     ptbKy3.Image = _cDocSo.byteArrayToImage(img);
                                 else
                                     ptbKy3.Image = Properties.Resources.no_image;
+
+                                img = _cKTXM.get_Hinh_ByteArray(_docso.DanhBa, _docso.Nam.Value, int.Parse(_docso.Ky)-1);
+                                if (img != null)
+                                    ptbKTXMKy1.Image = _cDocSo.byteArrayToImage(img);
+                                else
+                                    ptbKTXMKy1.Image = Properties.Resources.no_image;
+                                img = _cKTXM.get_Hinh_ByteArray(_docso.DanhBa, _docso.Nam.Value, int.Parse(_docso.Ky)-2);
+                                if (img != null)
+                                    ptbKTXMKy2.Image = _cDocSo.byteArrayToImage(img);
+                                else
+                                    ptbKTXMKy2.Image = Properties.Resources.no_image;
+                                img = _cKTXM.get_Hinh_ByteArray(_docso.DanhBa, _docso.Nam.Value, int.Parse(_docso.Ky)-3);
+                                if (img != null)
+                                    ptbKTXMKy3.Image = _cDocSo.byteArrayToImage(img);
+                                else
+                                    ptbKTXMKy3.Image = Properties.Resources.no_image;
                             }
                 }
             }
@@ -869,6 +945,30 @@ namespace DocSo_PC.GUI.ToTruong
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void ptbDonKy0_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (ptbKTXMKy0.Image != null)
+                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(ptbKTXMKy0.Image));
+        }
+
+        private void ptbDonKy1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (ptbKTXMKy1.Image != null)
+                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(ptbKTXMKy1.Image));
+        }
+
+        private void ptbDonKy2_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (ptbKTXMKy2.Image != null)
+                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(ptbKTXMKy2.Image));
+        }
+
+        private void ptbDonKy3_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (ptbKTXMKy3.Image != null)
+                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(ptbKTXMKy3.Image));
         }
 
 
