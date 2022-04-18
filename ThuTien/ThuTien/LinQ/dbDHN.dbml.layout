@@ -27,16 +27,16 @@
         <classShapeMoniker Id="393bc83d-bf58-4e0a-8538-d8bc852b828c" />
       </nodes>
     </associationConnector>
-    <classShape Id="7b4a7c76-c34f-4c1b-bbf0-0506a2d08fca" absoluteBounds="0.5, 2.625, 2, 10.424461263020833">
-      <DataClassMoniker Name="/dbDHNDataContext/TB_DULIEUKHACHHANG" />
-      <nestedChildShapes>
-        <elementListCompartment Id="9c52bc6d-42fa-4d5f-82c6-d938a098bd54" absoluteBounds="0.515, 3.085, 1.9700000000000002, 9.8644612630208321" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="52e07186-bc48-4909-b90f-8cf996ebc22e" absoluteBounds="6.625, 2.75, 2, 11.7705712890625">
       <DataClassMoniker Name="/dbDHNDataContext/TB_DULIEUKHACHHANG_HUYDB" />
       <nestedChildShapes>
         <elementListCompartment Id="c8945e7a-69f5-418e-9f08-ba5a7c347c5d" absoluteBounds="6.64, 3.21, 1.9700000000000002, 11.2105712890625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7a82ef7c-901e-47bc-bd9b-d4fa9e0e3aac" absoluteBounds="0.625, 1.75, 2, 11.1936669921875">
+      <DataClassMoniker Name="/dbDHNDataContext/TB_DULIEUKHACHHANG" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d01fd32e-728a-4acf-9df1-a5c09004972d" absoluteBounds="0.64, 2.21, 1.9700000000000002, 10.6336669921875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>
