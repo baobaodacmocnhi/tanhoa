@@ -563,6 +563,9 @@ namespace DocSo_PC.GUI.MaHoa
             try
             {
                 _veviec = _cToTrinh.get_VeViec(int.Parse(dgvVeViec.CurrentRow.Cells["ID"].Value.ToString()));
+                txtVeViec_VV.Text = _veviec.Name;
+                txtNoiDung_VV.Text = _veviec.NoiDung;
+                txtNoiNhan_VV.Text = _veviec.NoiNhan;
             }
             catch
             {
