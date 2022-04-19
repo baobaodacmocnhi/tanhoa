@@ -75,6 +75,7 @@ namespace DocSo_PC.GUI.MaHoa
                 chkcmbNoiDung.Properties.ValueMember = "Name";
                 chkcmbNoiDung.Properties.DisplayMember = "Name";
                 chkcmbNoiDung.SetEditValue(str);
+                cmbTimTheo.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
@@ -343,16 +344,28 @@ namespace DocSo_PC.GUI.MaHoa
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            string str = "";
-            for (int i = 0; i < chkcmbNoiDung.Properties.Items.Count; i++)
-                if (chkcmbNoiDung.Properties.Items[i].CheckState == CheckState.Checked)
-                {
-                    if (str == "")
-                        str = chkcmbNoiDung.Properties.Items[i].Value.ToString();
-                    else
-                        str += ";" + chkcmbNoiDung.Properties.Items[i].Value.ToString();
-                }
-            dgvDanhSach.DataSource = _cDonTu.getDS(str, dateTuNgay.Value, dateDenNgay.Value);
+            switch (cmbTimTheo.Text)
+            {
+                case "Thời Gian":
+                    string str = "";
+                    for (int i = 0; i < chkcmbNoiDung.Properties.Items.Count; i++)
+                        if (chkcmbNoiDung.Properties.Items[i].CheckState == CheckState.Checked)
+                        {
+                            if (str == "")
+                                str = chkcmbNoiDung.Properties.Items[i].Value.ToString();
+                            else
+                                str += ";" + chkcmbNoiDung.Properties.Items[i].Value.ToString();
+                        }
+                    dgvDanhSach.DataSource = _cDonTu.getDS(str, dateTuNgay.Value, dateDenNgay.Value);
+                    break;
+                case "Mã Đơn":
+                    dgvDanhSach.DataSource = _cDonTu.getDS(int.Parse(txtSo.Text.Trim()));
+                    break;
+                case "Danh Bộ":
+                    dgvDanhSach.DataSource = _cDonTu.getDS_DanhBo(txtSo.Text.Trim());
+                    break;
+            }
+
         }
 
         private void btnCapNhat_Click(object sender, EventArgs e)
@@ -551,6 +564,21 @@ namespace DocSo_PC.GUI.MaHoa
         }
 
         #endregion
+
+        private void cmbTimTheo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbTimTheo.Text)
+            {
+                case "Thời Gian":
+                    panel_Time.Visible = true;
+                    panel_NoiDung.Visible = false;
+                    break;
+                default:
+                    panel_Time.Visible = false;
+                    panel_NoiDung.Visible = true;
+                    break;
+            }
+        }
 
 
 
