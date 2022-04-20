@@ -679,6 +679,11 @@ namespace KTKS_DonKH.DAL.DonTu
             return db.DonTu_ChiTiets.SingleOrDefault(item => item.MaDon == MaDon && item.STT == STT);
         }
 
+        public DonTu_ChiTiet get_ChiTiet(int MaDon, string DanhBo)
+        {
+            return db.DonTu_ChiTiets.SingleOrDefault(item => item.MaDon == MaDon && item.DanhBo == DanhBo);
+        }
+
         public DataTable getDS_ChiTiet_ByDanhBo(string DanhBo)
         {
             var query = from item in db.DonTu_ChiTiets
