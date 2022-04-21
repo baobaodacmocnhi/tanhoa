@@ -15,7 +15,7 @@ namespace BauCu
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CDThamDu());
+            Application.Run(new Form1());
         }
     }
 }
