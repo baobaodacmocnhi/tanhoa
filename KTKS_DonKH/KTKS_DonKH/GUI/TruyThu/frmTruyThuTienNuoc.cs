@@ -1397,6 +1397,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                     dr["PhiBVMTCu"] = item.PhiBVMTCu;
                     if (item.PhiBVMT_ThueCu != null)
                         dr["PhiBVMT_ThueCu"] = item.PhiBVMT_ThueCu;
+                    else
+                        dr["PhiBVMT_ThueCu"] = 0;
                     dr["TongCongCu"] = item.TongCongCu;
                     dr["GiaBieuMoi"] = item.GiaBieuMoi;
                     dr["DinhMucHNMoi"] = item.DinhMucHNMoi;
@@ -1407,6 +1409,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                     dr["PhiBVMTMoi"] = item.PhiBVMTMoi;
                     if (item.PhiBVMT_ThueMoi != null)
                         dr["PhiBVMT_ThueMoi"] = item.PhiBVMT_ThueMoi;
+                    else
+                        dr["PhiBVMT_ThueMoi"] = 0;
                     dr["TongCongMoi"] = item.TongCongMoi;
                     dr["TangGiam"] = item.TangGiam;
 
@@ -1514,6 +1518,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                     dr["PhiBVMTCu"] = item.PhiBVMTCu;
                     if (item.PhiBVMT_ThueCu != null)
                         dr["PhiBVMT_ThueCu"] = item.PhiBVMT_ThueCu;
+                    else
+                         dr["PhiBVMT_ThueCu"] = 0;
                     dr["TongCongCu"] = item.TongCongCu;
                     dr["GiaBieuMoi"] = item.GiaBieuMoi;
                     dr["DinhMucHNMoi"] = item.DinhMucHNMoi;
@@ -1524,6 +1530,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                     dr["PhiBVMTMoi"] = item.PhiBVMTMoi;
                     if (item.PhiBVMT_ThueMoi != null)
                         dr["PhiBVMT_ThueMoi"] = item.PhiBVMT_ThueMoi;
+                    else
+                        dr["PhiBVMT_ThueMoi"] = 0;
                     dr["TongCongMoi"] = item.TongCongMoi;
                     dr["TangGiam"] = item.TangGiam;
                     dr["SoTien1m3"] = item.TruyThuTienNuoc_ChiTiet.SoTien1m3 * 1.15;
