@@ -215,6 +215,33 @@ namespace DocSo_PC.DAL.MaHoa
             return _cDAL.LINQToDataTable(query);
         }
 
+        public DataTable getDS_DanhBo(string DanhBo)
+        {
+            var query = from item in _db.MaHoa_DCBDs
+                        join itemND in _db.NguoiDungs on item.CreateBy equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where item.DanhBo == DanhBo
+                        orderby item.CreateDate descending
+                        select new
+                        {
+                            Chon = true,
+                            item.ID,
+                            item.ThongTin,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.Dot,
+                            item.GiaBieu,
+                            item.GiaBieu_BD,
+                            item.CongDung,
+                            item.PhieuDuocKy,
+                            item.HieuLucKy,
+                            CreateBy = itemtableND.HoTen,
+                        };
+            return _cDAL.LINQToDataTable(query);
+        }
+
         #region Hình
 
         public bool Them_Hinh(MaHoa_DCBD_Hinh en)

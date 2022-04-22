@@ -118,6 +118,21 @@ namespace DocSo_PC.GUI.MaHoa
             }
         }
 
+        private void cmbTimTheo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbTimTheo.Text)
+            {
+                case "Thời Gian":
+                    panel_Time.Visible = true;
+                    panel_NoiDung.Visible = false;
+                    break;
+                default:
+                    panel_Time.Visible = false;
+                    panel_NoiDung.Visible = true;
+                    break;
+            }
+        }
+
         private void btnXem_DS_Click(object sender, EventArgs e)
         {
             switch (cmbTimTheo.Text)
@@ -136,6 +151,9 @@ namespace DocSo_PC.GUI.MaHoa
                         dgvDCBD.DataSource = _cDCBD.getDS_SoPhieu(int.Parse(txtTuSo.Text.Trim()), int.Parse(txtDenSo.Text.Trim()));
                     else
                         dgvDCBD.DataSource = _cDCBD.getDS_SoPhieu(int.Parse(txtTuSo.Text.Trim()));
+                    break;
+                case "Danh Bộ":
+                    dgvDCBD.DataSource = _cDCBD.getDS_DanhBo(txtTuSo.Text.Trim());
                     break;
             }
         }
@@ -447,26 +465,49 @@ namespace DocSo_PC.GUI.MaHoa
             }
         }
 
+        private void dgvDCBD_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                _dcbd = _cDCBD.get(int.Parse(dgvDCBD.Rows[e.RowIndex].Cells["ID_DS"].Value.ToString()));
+                dgvHinh.Rows.Clear();
+                foreach (MaHoa_DCBD_Hinh item in _dcbd.MaHoa_DCBD_Hinhs.ToList())
+                {
+                    var index = dgvHinh.Rows.Add();
+                    dgvHinh.Rows[index].Cells["ID_Hinh"].Value = item.ID;
+                    dgvHinh.Rows[index].Cells["Name_Hinh"].Value = item.Name;
+                    dgvHinh.Rows[index].Cells["Loai_Hinh"].Value = item.Loai;
+                }
+            }
+            catch { }
+        }
 
         private void dgvDCBD_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvDCBD.Columns[e.ColumnIndex].Name == "GhiChu_DS" || dgvDCBD.Columns[e.ColumnIndex].Name == "GiaBieu_DS" || dgvDCBD.Columns[e.ColumnIndex].Name == "GiaBieu_BD" || dgvDCBD.Columns[e.ColumnIndex].Name == "HieuLucKy_DS")
+            try
             {
-                MaHoa_DCBD dcbd = _cDCBD.get(int.Parse(dgvDCBD["In_DS", e.RowIndex].Value.ToString()));
-                if (dcbd != null)
-                {
-                    dcbd.CongDung = dgvDCBD["GhiChu_DS", e.RowIndex].Value.ToString();
-                    dcbd.GiaBieu = int.Parse(dgvDCBD["GiaBieu_DS", e.RowIndex].Value.ToString());
-                    dcbd.GiaBieu_BD = int.Parse(dgvDCBD["GiaBieu_BD", e.RowIndex].Value.ToString());
-                    dcbd.HieuLucKy = dgvDCBD["HieuLucKy_DS", e.RowIndex].Value.ToString();
-                    _cDCBD.Sua(dcbd);
-                }
+                if (dgvDCBD.Columns[e.ColumnIndex].Name == "GhiChu_DS" || dgvDCBD.Columns[e.ColumnIndex].Name == "GiaBieu_DS" || dgvDCBD.Columns[e.ColumnIndex].Name == "GiaBieu_BD" || dgvDCBD.Columns[e.ColumnIndex].Name == "HieuLucKy_DS")
+                    if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                    {
+                        if (_dcbd != null)
+                        {
+                            _dcbd.GiaBieu = int.Parse(dgvDCBD["GiaBieu_DS", e.RowIndex].Value.ToString());
+                            _dcbd.GiaBieu_BD = int.Parse(dgvDCBD["GiaBieu_BD", e.RowIndex].Value.ToString());
+                            _dcbd.HieuLucKy = dgvDCBD["HieuLucKy_DS", e.RowIndex].Value.ToString();
+                            _dcbd.CongDung = dgvDCBD["GhiChu_DS", e.RowIndex].Value.ToString();
+                            if (_cDCBD.Sua(_dcbd))
+                            {
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                    }
+                    else
+                        MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void dgvDCBD_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            _dcbd = _cDCBD.get(int.Parse(dgvDCBD.Rows[e.RowIndex].Cells["ID_DS"].Value.ToString()));
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnChonFile_Click(object sender, EventArgs e)
@@ -487,7 +528,7 @@ namespace DocSo_PC.GUI.MaHoa
                             en.IDParent = _dcbd.ID;
                             en.Name = DateTime.Now.ToString("dd.MM.yyyy HH.mm.ss");
                             en.Loai = System.IO.Path.GetExtension(dialog.FileName);
-                            if (_wsDHN.ghi_Hinh_MaHoa("KTXM", en.ID.ToString(), en.Name + en.Loai, bytes) == true)
+                            if (_wsDHN.ghi_Hinh_MaHoa("DCBD", _dcbd.ID.ToString(), en.Name + en.Loai, bytes) == true)
                                 if (_cDCBD.Them_Hinh(en) == true)
                                 {
                                     _cDCBD.Refresh();
@@ -511,7 +552,7 @@ namespace DocSo_PC.GUI.MaHoa
 
         private void dgvHinh_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            byte[] hinh = _wsDHN.get_Hinh_MaHoa("KTXM", _dcbd.ID.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
+            byte[] hinh = _wsDHN.get_Hinh_MaHoa("DCBD", _dcbd.ID.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
             if (hinh != null)
                 _cDCBD.LoadImageView(hinh);
             else
@@ -547,20 +588,9 @@ namespace DocSo_PC.GUI.MaHoa
             }
         }
 
-        private void cmbTimTheo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            switch (cmbTimTheo.Text)
-            {
-                case "Thời Gian":
-                    panel_Time.Visible = true;
-                    panel_NoiDung.Visible = false;
-                    break;
-                default:
-                    panel_Time.Visible = false;
-                    panel_NoiDung.Visible = true;
-                    break;
-            }
-        }
+
+
+
 
 
     }

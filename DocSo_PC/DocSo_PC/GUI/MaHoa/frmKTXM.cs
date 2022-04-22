@@ -348,6 +348,20 @@ namespace DocSo_PC.GUI.MaHoa
 
                     ctktxm.MucDichSuDung = txtMucDichSuDung.Text.Trim();
                     ctktxm.DienThoai = txtDienThoai.Text.Trim();
+                    //auto thêm sđt vào phần ghi chú
+                    if (ctktxm.DienThoai != "" && ctktxm.DienThoai.Length == 10)
+                    {
+                        if (_cDHN.checkExists_DienThoai(ctktxm.DanhBo, ctktxm.DienThoai) == false)
+                        {
+                            SDT_DHN en = new SDT_DHN();
+                            en.DanhBo = ctktxm.DanhBo;
+                            en.DienThoai = ctktxm.DienThoai;
+                            en.HoTen = "";
+                            en.SoChinh = true;
+                            en.GhiChu = "Đ. QLĐHN";
+                            _cDHN.them_DienThoai(en);
+                        }
+                    }
                     ctktxm.HoTenKHKy = txtHoTenKHKy.Text.Trim().ToUpper();
 
                     ctktxm.NoiDungKiemTra = txtNoiDungKiemTra.Text.Trim();

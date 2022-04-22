@@ -96,6 +96,111 @@ namespace DocSo_PC.DAL.MaHoa
             return _cDAL.LINQToDataTable(query);
         }
 
+        public DataTable getDS_MaDon(int MaDon)
+        {
+            var query = from item in _db.MaHoa_ToTrinhs
+                        join itemND in _db.NguoiDungs on item.CreateBy equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where item.IDMaDon == MaDon
+                        orderby item.CreateDate descending
+                        select new
+                        {
+                            Chon = true,
+                            item.ID,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.NoiDung,
+                            CreateBy = itemtableND.HoTen,
+                        };
+            return _cDAL.LINQToDataTable(query);
+        }
+
+        public DataTable getDS_MaDon(int FromMaDon, int ToMaDon)
+        {
+            var query = from item in _db.MaHoa_ToTrinhs
+                        join itemND in _db.NguoiDungs on item.CreateBy equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where item.IDMaDon >= FromMaDon && item.IDMaDon <= ToMaDon
+                        orderby item.CreateDate descending
+                        select new
+                        {
+                            Chon = true,
+                            item.ID,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.NoiDung,
+                            CreateBy = itemtableND.HoTen,
+                        };
+            return _cDAL.LINQToDataTable(query);
+        }
+
+        public DataTable getDS_SoPhieu(int SoPhieu)
+        {
+            var query = from item in _db.MaHoa_ToTrinhs
+                        join itemND in _db.NguoiDungs on item.CreateBy equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where item.ID == SoPhieu
+                        orderby item.CreateDate descending
+                        select new
+                        {
+                            Chon = true,
+                            item.ID,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.NoiDung,
+                            CreateBy = itemtableND.HoTen,
+                        };
+            return _cDAL.LINQToDataTable(query);
+        }
+
+        public DataTable getDS_SoPhieu(int FromSoPhieu, int ToSoPhieu)
+        {
+            var query = from item in _db.MaHoa_ToTrinhs
+                        join itemND in _db.NguoiDungs on item.CreateBy equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where item.ID >= FromSoPhieu && item.ID <= ToSoPhieu
+                        orderby item.CreateDate descending
+                        select new
+                        {
+                            Chon = true,
+                            item.ID,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.NoiDung,
+                            CreateBy = itemtableND.HoTen,
+                        };
+            return _cDAL.LINQToDataTable(query);
+        }
+
+        public DataTable getDS_DanhBo(string DanhBo)
+        {
+            var query = from item in _db.MaHoa_ToTrinhs
+                        join itemND in _db.NguoiDungs on item.CreateBy equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where item.DanhBo == DanhBo
+                        orderby item.CreateDate descending
+                        select new
+                        {
+                            Chon = true,
+                            item.ID,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.NoiDung,
+                            CreateBy = itemtableND.HoTen,
+                        };
+            return _cDAL.LINQToDataTable(query);
+        }
+
         public bool checkExist(int MaDon, string DanhBo, DateTime CreateDate)
         {
             return _db.MaHoa_ToTrinhs.Any(item => item.IDMaDon == MaDon && item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date);

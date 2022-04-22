@@ -346,7 +346,7 @@ namespace DocSo_PC.GUI.MaHoa
                             en.IDParent = _totrinh.ID;
                             en.Name = DateTime.Now.ToString("dd.MM.yyyy HH.mm.ss");
                             en.Loai = System.IO.Path.GetExtension(dialog.FileName);
-                            if (_wsDHN.ghi_Hinh_MaHoa("ToTrinh", en.ID.ToString(), en.Name + en.Loai, bytes) == true)
+                            if (_wsDHN.ghi_Hinh_MaHoa("ToTrinh", _totrinh.ID.ToString(), en.Name + en.Loai, bytes) == true)
                                 if (_cToTrinh.Them_Hinh(en) == true)
                                 {
                                     _cToTrinh.Refresh();
@@ -408,9 +408,44 @@ namespace DocSo_PC.GUI.MaHoa
 
         #region Danh Sách
 
+        private void cmbTimTheo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbTimTheo.Text)
+            {
+                case "Thời Gian":
+                    panel_Time.Visible = true;
+                    panel_NoiDung.Visible = false;
+                    break;
+                default:
+                    panel_Time.Visible = false;
+                    panel_NoiDung.Visible = true;
+                    break;
+            }
+        }
+
         private void btnXem_DS_Click(object sender, EventArgs e)
         {
-            dgvToTrinh.DataSource = _cToTrinh.getDS(dateTu_DS.Value, dateDen_DS.Value);
+            switch (cmbTimTheo.Text)
+            {
+                case "Thời Gian":
+                    dgvToTrinh.DataSource = _cToTrinh.getDS(dateTu_DS.Value, dateDen_DS.Value);
+                    break;
+                case "Mã Đơn":
+                    if (txtDenSo.Text.Trim() != "")
+                        dgvToTrinh.DataSource = _cToTrinh.getDS_MaDon(int.Parse(txtTuSo.Text.Trim()), int.Parse(txtDenSo.Text.Trim()));
+                    else
+                        dgvToTrinh.DataSource = _cToTrinh.getDS_MaDon(int.Parse(txtTuSo.Text.Trim()));
+                    break;
+                case "Số Phiếu":
+                    if (txtDenSo.Text.Trim() != "")
+                        dgvToTrinh.DataSource = _cToTrinh.getDS_SoPhieu(int.Parse(txtTuSo.Text.Trim()), int.Parse(txtDenSo.Text.Trim()));
+                    else
+                        dgvToTrinh.DataSource = _cToTrinh.getDS_SoPhieu(int.Parse(txtTuSo.Text.Trim()));
+                    break;
+                case "Danh Bộ":
+                    dgvToTrinh.DataSource = _cToTrinh.getDS_DanhBo(txtTuSo.Text.Trim());
+                    break;
+            }
         }
 
         private void btnIn_Click(object sender, EventArgs e)
@@ -574,6 +609,8 @@ namespace DocSo_PC.GUI.MaHoa
         }
 
         #endregion
+
+        
 
 
 
