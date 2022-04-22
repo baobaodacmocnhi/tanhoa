@@ -299,6 +299,11 @@ namespace ThuTien.GUI.TongHop
                                     _dchd.PHI_Thue_BD = hd.ThueGTGT_TDVTN;
                                     _dchd.TONGCONG_BD = hd.TONGCONG;
                                 }
+                                //_dchd.GIABAN_BD = _ctdchd.TienNuoc_Start;
+                                //_dchd.THUE_BD = _ctdchd.ThueGTGT_Start;
+                                //_dchd.PHI_BD = _ctdchd.PhiBVMT_Start;
+                                //_dchd.PHI_Thue_BD = _ctdchd.PhiBVMT_Thue_Start;
+                                //_dchd.TONGCONG_BD = _ctdchd.TongCong_Start;
 
                                 _dchd.SoPhieu = _ctdchd.MaCTDCHD;
                                 _dchd.TangGiam = _ctdchd.TangGiam;
