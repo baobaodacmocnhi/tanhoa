@@ -110,8 +110,7 @@
                             <td class="style17" style="border-right: 2px #99cc99 solid; color: Black; background-color: #99FFCC;
                                 text-align: center; border-bottom-style: solid; border-bottom-color: inherit;
                                 border-bottom-width: 1px;">
-                                NHẬP STT CỔ ĐÔNG<br />
-                                &nbsp;KHÔNG ĐỒNG Ý
+                                NHẬP STT CỔ ĐÔNG ĐỒNG Ý
                             </td>
                             <td class="style10" style="border-right: 2px #99cc99 solid; background-color: #99FFCC;
                                 border-bottom: 1px solid;">
@@ -129,12 +128,28 @@
                         <td class="style18" style="border-right: 2px #99cc99 solid; color: Black; background-color: #99FFCC;
                             text-align: center; border-bottom-style: solid; border-bottom-color: inherit;
                             border-bottom-width: 1px;">
-                            NHẬP STT CỔ ĐÔNG KHÔNG Ý KIẾN
+                            NHẬP STT CỔ ĐÔNG KHÔNG ĐỒNG Ý
                         </td>
                         <td class="style10" style="border-right: 2px #99cc99 solid; background-color: #99FFCC;
                             border-bottom: 1px solid;">
                             <asp:TextBox ID="txtCoDong0" runat="server" AutoPostBack="True" onfocus="Focus(this)"
                                 OnTextChanged="txtCoDong0_TextChanged" Width="101px"></asp:TextBox>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+             <td style="width: 250px;">
+                <table cellpadding="0" cellspacing="0" class="table_list" style="font-family: Times New Roman;
+                    font-size: 15px;">
+                    <tr class="head1">
+                        <td class="style18" style="border-right: 2px #99cc99 solid; color: Black; background-color: #99FFCC;
+                            text-align: center; border-bottom-style: solid; border-bottom-color: inherit;
+                            border-bottom-width: 1px;">
+                            NHẬP STT CỔ ĐÔNG KHÔNG HỢP LỆ
+                        <td class="style10" style="border-right: 2px #99cc99 solid; background-color: #99FFCC;
+                            border-bottom: 1px solid;">
+                            <asp:TextBox ID="txtKhongHopLe" runat="server" AutoPostBack="True" onfocus="Focus(this)"
+                                OnTextChanged="txtKhongHopLe_TextChanged" Width="101px"></asp:TextBox>
                         </td>
                     </tr>
                 </table>
@@ -193,7 +208,7 @@
                         <tr class="head1" style="height: 17px;">
                             <td class="style5" style="border-right: 1px #FF0000 solid; background-color: #D3D3D3;
                                 font-size: 19px; border-bottom: 2px #FF0000	 solid;" colspan="2">
-                                CỔ ĐÔNG KHÔNG Ý KIẾN
+                                CỔ ĐÔNG KHÔNG ĐỒNG Ý
                             </td>
                         </tr>
                         <tr class="head1">
@@ -223,6 +238,49 @@
                             <td class="style21" style="border-right: 1px #FF0000 solid; border-bottom: 1px solid;
                                 background-color: #D3D3D3;">
                                 <asp:Label ID="ky_tl0" runat="server" Font-Size="XX-Large" ForeColor="Red" Text="0"
+                                    Font-Bold="True"></asp:Label>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+            <td>
+                <table cellpadding="0" width="100%" cellspacing="0" style="font-family: Times New Roman;
+                    font-size: 15px;" class="table_list_1">
+                    <tbody>
+                        <tr class="head1" style="height: 17px;">
+                            <td class="style5" style="border-right: 1px #FF0000 solid; background-color: #D3D3D3;
+                                font-size: 19px; border-bottom: 2px #FF0000	 solid;" colspan="2">
+                                CỔ ĐÔNG KHÔNG HỢP LỆ
+                            </td>
+                        </tr>
+                        <tr class="head1">
+                            <td class="style20" style="border-right: 2px #FF0000 solid; border-bottom: 1px solid;">
+                                SỐ LƯỢNG CỔ ĐÔNG
+                            </td>
+                            <td class="style21" style="border-right: 1px #FF0000 solid; border-bottom: 1px solid;
+                                background-color: #D3D3D3;">
+                                <asp:Label ID="khl_sl" runat="server" Font-Bold="True" Font-Size="XX-Large" ForeColor="Red"
+                                    Text="0"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr class="head1">
+                            <td class="style20" style="border-right: 2px #FF0000 solid; border-bottom: 1px solid;">
+                                TỔNG SỐ CỔ PHIẾU :
+                            </td>
+                            <td class="style21" style="border-right: 1px #FF0000 solid; border-bottom: 1px solid;
+                                background-color: #D3D3D3;">
+                                <asp:Label ID="khl_cp" runat="server" Font-Size="XX-Large" ForeColor="Red" Text="0"
+                                    Font-Bold="True"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr class="head1">
+                            <td class="style20" style="border-right: 2px #FF0000 solid; border-bottom: 1px solid;">
+                                TỈ LỆ :
+                            </td>
+                            <td class="style21" style="border-right: 1px #FF0000 solid; border-bottom: 1px solid;
+                                background-color: #D3D3D3;">
+                                <asp:Label ID="khl_tyle" runat="server" Font-Size="XX-Large" ForeColor="Red" Text="0"
                                     Font-Bold="True"></asp:Label>
                             </td>
                         </tr>
@@ -364,6 +422,92 @@
                 <asp:GridView ID="G_KYK" runat="server" AutoGenerateColumns="False" BackColor="White"
                     BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" PageSize="1000"
                     Style="margin-right: 0px" Width="100%" OnRowCommand="G_KYK_RowCommand" ForeColor="Black"
+                    GridLines="Horizontal">
+                    <Columns>
+                        <asp:TemplateField HeaderText="STT">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox17" runat="server" Text='<%# Bind("STT") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label17" runat="server" Text='<%# Bind("STT") %>'></asp:Label>
+                            </ItemTemplate>
+                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="8px" />
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="STTCD" Visible="False">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox18" runat="server" Text='<%# Bind("STTCD") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label18" runat="server" Text='<%# Bind("STTCD") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="MÃ CỔ ĐÔNG" Visible="False">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox19" runat="server" Text='<%# Bind("MACD") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label19" runat="server" Text='<%# Bind("MACD") %>'></asp:Label>
+                            </ItemTemplate>
+                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="80px" />
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="TÊN CỔ ĐÔNG">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox20" runat="server" Text='<%# Bind("TENCD") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label20" runat="server" Text='<%# Bind("TENCD") %>'></asp:Label>
+                            </ItemTemplate>
+                            <ItemStyle VerticalAlign="Middle" Width="150px" />
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="TỔNG CỘNG">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox21" runat="server" Text='<%# Bind("TONGCD") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <FooterTemplate>
+                                <asp:Label ID="lbCPTC1" runat="server" Text='<%# Bind("TONGCD","{0:0,0}") %>'></asp:Label>
+                            </FooterTemplate>
+                            <HeaderTemplate>
+                                <table style="width: 100%;">
+                                    <tr>
+                                        <td style="text-align: center">
+                                            TỔNG CỘNG
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: center">
+                                            <asp:Label ID="TongCong1" runat="server"></asp:Label>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </HeaderTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label21" runat="server" Text='<%# String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}",Eval("TONGCD")) %>'></asp:Label>
+                            </ItemTemplate>
+                            <FooterStyle HorizontalAlign="Right" VerticalAlign="Middle" />
+                            <ItemStyle HorizontalAlign="Right" VerticalAlign="Middle" Width="100px" />
+                        </asp:TemplateField>
+                        <asp:TemplateField ShowHeader="False">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="TRONGAI0" runat="server" CommandArgument='<%# Bind("ID") %>'
+                                    CommandName="TRONGAI" ForeColor="Blue" OnClientClick="if(confirm('Bạn có muốn xóa ?') == false)return false;">Xóa</asp:LinkButton>
+                            </ItemTemplate>
+                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="20px" />
+                        </asp:TemplateField>
+                    </Columns>
+                    <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
+                    <HeaderStyle BackColor="DarkBlue" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
+                    <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
+                    <SortedAscendingCellStyle BackColor="#F7F7F7" />
+                    <SortedAscendingHeaderStyle BackColor="#4B4B4B" />
+                    <SortedDescendingCellStyle BackColor="#E5E5E5" />
+                    <SortedDescendingHeaderStyle BackColor="#242121" />
+                </asp:GridView>
+            </td>
+             <td valign="top">
+                <asp:GridView ID="G_KHL" runat="server" AutoGenerateColumns="False" BackColor="White"
+                    BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" PageSize="1000"
+                    Style="margin-right: 0px" Width="100%" OnRowCommand="G_KHL_RowCommand" ForeColor="Black"
                     GridLines="Horizontal">
                     <Columns>
                         <asp:TemplateField HeaderText="STT">

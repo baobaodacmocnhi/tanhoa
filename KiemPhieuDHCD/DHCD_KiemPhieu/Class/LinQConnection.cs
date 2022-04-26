@@ -57,7 +57,6 @@ namespace DHCD_KiemPhieu.Class
             TanHoaDataContext db = new TanHoaDataContext();
             try
             {
-
                 SqlConnection conn = new SqlConnection(db.Connection.ConnectionString);
                 conn.Open();
                 SqlCommand cmd = new SqlCommand(sql, conn);
@@ -152,6 +151,7 @@ namespace DHCD_KiemPhieu.Class
             }
             return null;
         }
+
         public static DataTable ExecuteStoredProcedure(string storedNam, string lan,string ngay)
         {
             TanHoaDataContext db = new TanHoaDataContext();

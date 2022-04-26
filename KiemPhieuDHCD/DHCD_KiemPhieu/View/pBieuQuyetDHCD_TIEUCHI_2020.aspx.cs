@@ -23,15 +23,14 @@ namespace DHCD_KiemPhieu.View
             this.txtCoDong.Text = "";
             this.tungay.Text = DateTime.Now.Date.ToString("dd/MM/yyyy");
         }
+
         private void Binddata()
         {
             LoadDongY();
             LoadKhongDongY();
             LoadKhongYkien();
+            LoadKhongHopLe();
         }
-
-
-
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -58,14 +57,13 @@ namespace DHCD_KiemPhieu.View
             //    lbTitle.Text = "Thông qua Miễn nhiệm Thành viên Ban viên Ban Kiểm soát ";
             try
             {
-                lbTitle.Text = Class.LinQConnection.getDataTable("SELECT * FROM TIEUCHIBIEUQUYET WHERE STT='" + DropDownList1.SelectedIndex + "'").Rows[0][1].ToString();
+                //lbTitle.Text = Class.LinQConnection.getDataTable("SELECT * FROM TIEUCHIBIEUQUYET WHERE STT='" + DropDownList1.SelectedIndex + "'").Rows[0][1].ToString();
+                lbTitle.Text = "Bầu cử thành viên HĐQT";
             }
             catch (Exception)
             {
-
                 lbTitle.Text = "";
             }
-           
         }
 
         public void LoadDongY()
@@ -77,7 +75,6 @@ namespace DHCD_KiemPhieu.View
             DataTable dt = Class.LinQConnection.getDataTable(sql);
             G_DY.DataSource = dt;
             G_DY.DataBind();
-
 
             dy_sl.Text = "0";
             dy_cp.Text = "0";
@@ -97,9 +94,8 @@ namespace DHCD_KiemPhieu.View
             {
                
             }
-            
-
         }
+
         public void LoadKhongDongY()
         {
 
@@ -166,6 +162,36 @@ namespace DHCD_KiemPhieu.View
             }
         }
 
+        public void LoadKhongHopLe()
+        {
+            string sql = " SELECT kp.ID, STT,cd.STTCD, cd.MACD, TENCD, CMND, NGAYCAP, NOICAP, DIACHI, CDGD, PHONGTOA, cd.TONGCD";
+            sql += " FROM DSCODONG_THAMDU cd, KIEMPHIEU_BIEUQUYET kp ";
+            sql += " WHERE kp.LOAIBQ=2 AND cd.MACD=kp.MACD AND LANBQ= " + DropDownList1.SelectedValue.ToString() + " AND CONVERT(VARCHAR(50),NGAYBQ,103)='" + this.tungay.Text + "'  ORDER BY CREATEDATE DESC ";
+
+            DataTable dt = Class.LinQConnection.getDataTable(sql);
+            G_KHL.DataSource = dt;
+            G_KHL.DataBind();
+
+            khl_sl.Text = "0";
+            khl_cp.Text = "0";
+            khl_tyle.Text = "0";
+
+            try
+            {
+                double sum = Convert.ToDouble(dt.Compute("SUM(TONGCD)", string.Empty));
+                khl_sl.Text = String.Format("{0:0,0}", dt.Rows.Count);
+                //ky_cp0.Text = String.Format("{0:0,0}", sum);
+                khl_cp.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", sum);
+
+                double tl = sum / Class.LinQConnection.ReturnResult("SELECT SUM(TONGCD) FROM DSCODONG_THAMDU");
+                khl_tyle.Text = String.Format("{0:0.##}", tl * 100).Replace(".", ",") + "%";
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
         protected void btCapNhat2_Click(object sender, EventArgs e)
         {
         }
@@ -176,9 +202,20 @@ namespace DHCD_KiemPhieu.View
             Binddata();
         }
 
+        protected void G_KYK_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            Class.LinQConnection.ExecuteCommand("DELETE FROM KIEMPHIEU_BIEUQUYET WHERE ID='" + e.CommandArgument.ToString() + "'");
+            Binddata();
+        }
+
+        protected void G_KHL_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            Class.LinQConnection.ExecuteCommand("DELETE FROM KIEMPHIEU_BIEUQUYET WHERE ID='" + e.CommandArgument.ToString() + "'");
+            Binddata();
+        }
+
         protected void txtCoDong_TextChanged(object sender, EventArgs e)
         {
-
             string sql = " INSERT INTO KIEMPHIEU_BIEUQUYET(LANBQ,NGAYBQ,LOAIBQ,STTCD,MACD,TONGCD,CREATEBY,CREATEDATE) ";
             sql += " (SELECT " + DropDownList1.SelectedValue.ToString() + " AS LANBQ,'" + DateTime.ParseExact(tungay.Text, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("yyyy-MM-dd") + "' AS NGAYBQ,0 AS LOAIBQ,STTCD,MACD,TONGCD,'" + Session["login"] + "' AS CREATEBY, GETDATE() AS CREATEDATE ";
             sql += " FROM DSCODONG_THAMDU WHERE STTCD=REPLACE('" + this.txtCoDong.Text.Replace(" ", "") + "','THW','') OR MACD='" + this.txtCoDong.Text.Replace(" ", "") + "' )";
@@ -196,11 +233,19 @@ namespace DHCD_KiemPhieu.View
             Binddata();
             this.txtCoDong0.Focus();
         }
-
-        protected void G_KYK_RowCommand(object sender, GridViewCommandEventArgs e)
+        
+        protected void txtKhongHopLe_TextChanged(object sender, EventArgs e)
         {
-            Class.LinQConnection.ExecuteCommand("DELETE FROM KIEMPHIEU_BIEUQUYET WHERE ID='" + e.CommandArgument.ToString() + "'");
+            string sql = " INSERT INTO KIEMPHIEU_BIEUQUYET(LANBQ,NGAYBQ,LOAIBQ,STTCD,MACD,TONGCD,CREATEBY,CREATEDATE) ";
+            sql += " (SELECT " + DropDownList1.SelectedValue.ToString() + " AS LANBQ,'" + DateTime.ParseExact(tungay.Text, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("yyyy-MM-dd") + "' AS NGAYBQ,2 AS LOAIBQ,STTCD,MACD,TONGCD,'" + Session["login"] + "' AS CREATEBY, GETDATE() AS CREATEDATE ";
+            sql += " FROM DSCODONG_THAMDU WHERE STTCD=REPLACE('" + this.txtKhongHopLe.Text.Replace(" ", "") + "','THW','') OR MACD='" + this.txtKhongHopLe.Text.Replace(" ", "") + "' )";
+            Class.LinQConnection.ExecuteCommand(sql);
             Binddata();
+            this.txtKhongHopLe.Focus();
         }
+
+       
+
+
     }
 }

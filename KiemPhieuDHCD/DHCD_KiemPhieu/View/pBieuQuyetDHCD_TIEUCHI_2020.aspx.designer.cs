@@ -67,6 +67,15 @@ namespace DHCD_KiemPhieu.View {
         protected global::System.Web.UI.WebControls.TextBox txtCoDong0;
         
         /// <summary>
+        /// txtKhongHopLe control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtKhongHopLe;
+        
+        /// <summary>
         /// tungay control.
         /// </summary>
         /// <remarks>
@@ -139,6 +148,33 @@ namespace DHCD_KiemPhieu.View {
         protected global::System.Web.UI.WebControls.Label ky_tl0;
         
         /// <summary>
+        /// khl_sl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label khl_sl;
+        
+        /// <summary>
+        /// khl_cp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label khl_cp;
+        
+        /// <summary>
+        /// khl_tyle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label khl_tyle;
+        
+        /// <summary>
         /// dy_sl control.
         /// </summary>
         /// <remarks>
@@ -182,6 +218,15 @@ namespace DHCD_KiemPhieu.View {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView G_KYK;
+        
+        /// <summary>
+        /// G_KHL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView G_KHL;
         
         /// <summary>
         /// G_DY control.
