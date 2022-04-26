@@ -2087,7 +2087,9 @@ namespace ThuTien.LinQ
 		
 		private string _VITRIDHN;
 		
-		private string _ViTriDHN2;
+		private bool _ViTriDHN_Ngoai;
+		
+		private bool _ViTriDHN_Hop;
 		
 		private string _SODHN;
 		
@@ -2199,8 +2201,10 @@ namespace ThuTien.LinQ
     partial void OnCHIGOCChanged();
     partial void OnVITRIDHNChanging(string value);
     partial void OnVITRIDHNChanged();
-    partial void OnViTriDHN2Changing(string value);
-    partial void OnViTriDHN2Changed();
+    partial void OnViTriDHN_NgoaiChanging(bool value);
+    partial void OnViTriDHN_NgoaiChanged();
+    partial void OnViTriDHN_HopChanging(bool value);
+    partial void OnViTriDHN_HopChanged();
     partial void OnSODHNChanging(string value);
     partial void OnSODHNChanged();
     partial void OnNGAYTHAYChanging(System.Nullable<System.DateTime> value);
@@ -2872,22 +2876,42 @@ namespace ThuTien.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ViTriDHN2", DbType="NVarChar(50)")]
-		public string ViTriDHN2
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ViTriDHN_Ngoai", DbType="Bit NOT NULL")]
+		public bool ViTriDHN_Ngoai
 		{
 			get
 			{
-				return this._ViTriDHN2;
+				return this._ViTriDHN_Ngoai;
 			}
 			set
 			{
-				if ((this._ViTriDHN2 != value))
+				if ((this._ViTriDHN_Ngoai != value))
 				{
-					this.OnViTriDHN2Changing(value);
+					this.OnViTriDHN_NgoaiChanging(value);
 					this.SendPropertyChanging();
-					this._ViTriDHN2 = value;
-					this.SendPropertyChanged("ViTriDHN2");
-					this.OnViTriDHN2Changed();
+					this._ViTriDHN_Ngoai = value;
+					this.SendPropertyChanged("ViTriDHN_Ngoai");
+					this.OnViTriDHN_NgoaiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ViTriDHN_Hop", DbType="Bit NOT NULL")]
+		public bool ViTriDHN_Hop
+		{
+			get
+			{
+				return this._ViTriDHN_Hop;
+			}
+			set
+			{
+				if ((this._ViTriDHN_Hop != value))
+				{
+					this.OnViTriDHN_HopChanging(value);
+					this.SendPropertyChanging();
+					this._ViTriDHN_Hop = value;
+					this.SendPropertyChanged("ViTriDHN_Hop");
+					this.OnViTriDHN_HopChanged();
 				}
 			}
 		}

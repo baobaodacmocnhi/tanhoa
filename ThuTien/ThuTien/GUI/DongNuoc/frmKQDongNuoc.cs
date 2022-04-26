@@ -613,15 +613,16 @@ namespace ThuTien.GUI.DongNuoc
                                     MessageBox.Show("Số Niêm Chì đã Sử Dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
                                 }
-                                _kqdongnuoc.MoNuoc = true;
-                                _kqdongnuoc.NgayMN = dateMoNuoc.Value;
-                                _kqdongnuoc.NgayMN_ThucTe = DateTime.Now;
-                                _kqdongnuoc.ChiSoMN = int.Parse(txtChiSoMN.Text.Trim());
                                 _kqdongnuoc.NiemChiMN = int.Parse(txtNiemChiMN.Text.Trim());
                                 _kqdongnuoc.MauSacMN = cmbMauSacMN.SelectedItem.ToString();
-                                _kqdongnuoc.GhiChuMN = txtGhiChuMN.Text.Trim();
                             }
                         }
+                        _kqdongnuoc.MoNuoc = true;
+                        _kqdongnuoc.NgayMN = dateMoNuoc.Value;
+                        _kqdongnuoc.NgayMN_ThucTe = DateTime.Now;
+                        _kqdongnuoc.ChiSoMN = int.Parse(txtChiSoMN.Text.Trim());
+
+                        _kqdongnuoc.GhiChuMN = txtGhiChuMN.Text.Trim();
                     }
                     else
                     {
