@@ -518,6 +518,18 @@ namespace DocSo_PC.GUI.MaHoa
             }
         }
 
+        private void txtTuSo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                btnXem_DS.PerformClick();
+        }
+
+        private void txtDenSo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                btnXem_DS.PerformClick();
+        }
+
         #endregion
 
         #region Về Việc
@@ -609,6 +621,8 @@ namespace DocSo_PC.GUI.MaHoa
         }
 
         #endregion
+
+      
 
         
 

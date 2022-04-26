@@ -45,10 +45,10 @@
         <elementListCompartment Id="9de1ff68-cdc9-40c2-bf3a-93206f729f98" absoluteBounds="8.265, 1.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="47d89ee2-a5ac-4ff2-bd99-bcfc44287d7a" absoluteBounds="0.5, 0.625, 2, 11.1936669921875">
+    <classShape Id="47e53b07-1a03-4e24-a39c-157c5bc2ff38" absoluteBounds="0.5, 0.75, 2, 11.385968424479165">
       <DataClassMoniker Name="/dbDHNDataContext/TB_DULIEUKHACHHANG" />
       <nestedChildShapes>
-        <elementListCompartment Id="25724415-c77d-426e-82a3-a7a0dd09d1df" absoluteBounds="0.515, 1.085, 1.9700000000000002, 10.6336669921875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="9c241e3e-74a6-454a-b38c-f5b28a4af281" absoluteBounds="0.51500000000000057, 1.21, 1.9700000000000002, 10.825968424479166" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

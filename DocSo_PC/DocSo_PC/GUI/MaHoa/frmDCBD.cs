@@ -158,6 +158,18 @@ namespace DocSo_PC.GUI.MaHoa
             }
         }
 
+        private void txtTuSo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                btnXem_DS.PerformClick();
+        }
+
+        private void txtDenSo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                btnXem_DS.PerformClick();
+        }
+
         private void btnXoa_Click(object sender, EventArgs e)
         {
             try
@@ -569,7 +581,7 @@ namespace DocSo_PC.GUI.MaHoa
                         if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
                             if (e.Row.Cells["ID_Hinh"].Value != null)
-                                if (_wsDHN.xoa_Hinh_MaHoa("KTXM", _dcbd.ID.ToString(), e.Row.Cells["Name_Hinh"].Value.ToString() + e.Row.Cells["Loai_Hinh"].Value.ToString()) == true)
+                                if (_wsDHN.xoa_Hinh_MaHoa("DCBD", _dcbd.ID.ToString(), e.Row.Cells["Name_Hinh"].Value.ToString() + e.Row.Cells["Loai_Hinh"].Value.ToString()) == true)
                                     if (_cDCBD.Xoa_Hinh(_cDCBD.get_Hinh(int.Parse(e.Row.Cells["ID_Hinh"].Value.ToString()))))
                                     {
                                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -587,6 +599,8 @@ namespace DocSo_PC.GUI.MaHoa
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+       
 
 
 

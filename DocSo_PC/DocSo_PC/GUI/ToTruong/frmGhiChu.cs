@@ -56,12 +56,9 @@ namespace DocSo_PC.GUI.ToTruong
             }
             DataTable dt1, dt2;
             dt1 = dt2 = _cDHN.getDS_ViTriDHN();
-            cmbViTri1.DataSource = dt1;
-            cmbViTri1.DisplayMember = "KyHieu";
-            cmbViTri1.ValueMember = "KyHieu";
-            cmbViTri2.DataSource = dt2;
-            cmbViTri2.DisplayMember = "KyHieu";
-            cmbViTri2.ValueMember = "KyHieu";
+            cmbViTri.DataSource = dt1;
+            cmbViTri.DisplayMember = "KyHieu";
+            cmbViTri.ValueMember = "KyHieu";
             cmbDot.SelectedIndex = 0;
             _flagLoadFirst = true;
         }
@@ -96,8 +93,9 @@ namespace DocSo_PC.GUI.ToTruong
         {
             txtSoNha.Text = "";
             txtTenDuong.Text = "";
-            cmbViTri1.SelectedIndex = -1;
-            cmbViTri2.SelectedIndex = -1;
+            cmbViTri.SelectedIndex = -1;
+            chkViTriDHN_Ngoai.Checked = false;
+            chkViTriDHN_Hop.Checked = false;
             chkGieng.Checked = false;
         }
 
@@ -108,9 +106,9 @@ namespace DocSo_PC.GUI.ToTruong
                 txtSoNha.Text = en.SONHA;
                 txtTenDuong.Text = en.TENDUONG;
                 if (en.VITRIDHN != null && en.VITRIDHN != "")
-                    cmbViTri1.SelectedValue = en.VITRIDHN;
-                if (en.ViTriDHN2 != null && en.ViTriDHN2 != "")
-                    cmbViTri2.SelectedValue = en.ViTriDHN2;
+                    cmbViTri.SelectedValue = en.VITRIDHN;
+                chkViTriDHN_Ngoai.Checked = en.ViTriDHN_Ngoai;
+                chkViTriDHN_Hop.Checked = en.ViTriDHN_Hop;
                 chkGieng.Checked = en.Gieng;
                 dgvDienThoai.DataSource = _cDHN.getDS_DienThoai(en.DANHBO);
             }
@@ -233,10 +231,10 @@ namespace DocSo_PC.GUI.ToTruong
                     {
                         _enDLKH.SONHA = txtSoNha.Text.Trim();
                         _enDLKH.TENDUONG = txtTenDuong.Text.Trim();
-                        if (cmbViTri1.SelectedIndex >= 0)
-                            _enDLKH.VITRIDHN = cmbViTri1.SelectedValue.ToString();
-                        if (cmbViTri2.SelectedIndex >= 0)
-                            _enDLKH.ViTriDHN2 = cmbViTri2.SelectedValue.ToString();
+                        if (cmbViTri.SelectedIndex >= 0)
+                            _enDLKH.VITRIDHN = cmbViTri.SelectedValue.ToString();
+                        _enDLKH.ViTriDHN_Ngoai = chkViTriDHN_Ngoai.Checked;
+                        _enDLKH.ViTriDHN_Hop = chkViTriDHN_Hop.Checked;
                         _enDLKH.Gieng = chkGieng.Checked;
                         _cDHN.SubmitChanges();
                         foreach (DataGridViewRow item in dgvDienThoai.Rows)

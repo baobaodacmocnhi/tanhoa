@@ -140,7 +140,6 @@ namespace DocSo_PC.DAL.Doi
             return _cDAL.ExecuteQuery_ReturnOneValue("select TTDHN from TTDHN where Code='" + Code + "'").ToString();
         }
 
-
         //table DocSo
         public bool them_DocSo(DocSo en)
         {
@@ -430,9 +429,9 @@ namespace DocSo_PC.DAL.Doi
             DataTable dt = new DataTable();
             string sql = "select DanhBa,t.CodeDesc,CSGo=CAST(CSGo as varchar(10)),CSGan,SoThanMoi,NgayThay,NgayCapNhat=CONVERT(varchar(10),NgayCapNhat,103),NVCapNhat"
                             + " from BaoThay b inner join ThamSo t on b.LoaiBT=t.Code "
-                            + " where DanhBa='" + DanhBo + "' and t.CodeType = 'BT' and DATEADD(DAY,30,NgayThay)>=GETDATE() order by NgayCapNhat desc";
+                            + " where DanhBa='" + DanhBo + "' and t.CodeType = 'BT' and DATEADD(DAY,90,NgayThay)>=GETDATE() order by NgayCapNhat desc";
             dt = _cDAL.ExecuteQuery_DataTable(sql);
-            sql = "SELECT DanhBa=REPLACE(DANHBO,'-',''),CodeDesc=N'Bồi Thường',CSGo=CAST(TCTB_CSGo as varchar(10)),CSGan=ChiSo,SoThanMoi=SOTHANTLK,NgayThay=NGAYTHICONG,NgayCapNhat='',NVCapNhat='' FROM TANHOA_WATER.dbo.V_HOANGCONGTCTB WHERE DATEADD(DAY,30,NGAYTHICONG)>=GETDATE() and DHN_NGAYKIEMDINH is not null and REPLACE(DANHBO,'-','')='" + DanhBo + "' order by NGAYTHICONG desc";
+            sql = "SELECT DanhBa=REPLACE(DANHBO,'-',''),CodeDesc=N'Bồi Thường',CSGo=CAST(TCTB_CSGo as varchar(10)),CSGan=ChiSo,SoThanMoi=SOTHANTLK,NgayThay=NGAYTHICONG,NgayCapNhat='',NVCapNhat='' FROM TANHOA_WATER.dbo.V_HOANGCONGTCTB WHERE DATEADD(DAY,90,NGAYTHICONG)>=GETDATE() and DHN_NGAYKIEMDINH is not null and REPLACE(DANHBO,'-','')='" + DanhBo + "' order by NGAYTHICONG desc";
             dt.Merge(_cDAL.ExecuteQuery_DataTable(sql));
             return dt;
         }
@@ -509,7 +508,6 @@ namespace DocSo_PC.DAL.Doi
                             + " where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " and CodeMoi in ('5N','5K')";
             return _cDAL.ExecuteNonQuery(sql);
         }
-
 
         //chuyển billing
         public DataTable getTong_ChuyenBilling(string Nam, string Ky)

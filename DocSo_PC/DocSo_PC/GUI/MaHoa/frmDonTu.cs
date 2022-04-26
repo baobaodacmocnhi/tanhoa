@@ -668,6 +668,12 @@ namespace DocSo_PC.GUI.MaHoa
             }
         }
 
+        private void txtSo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                btnXem.PerformClick();
+        }
+
 
 
     }
