@@ -63,6 +63,8 @@ namespace DocSo_PC.wrDHN {
         
         private System.Threading.SendOrPostCallback getDS_DocSo_TonOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getDS_Hinh_TonOperationCompleted;
+        
         private System.Threading.SendOrPostCallback getDS_HoaDonTonOperationCompleted;
         
         private System.Threading.SendOrPostCallback get_GhiChuOperationCompleted;
@@ -93,6 +95,10 @@ namespace DocSo_PC.wrDHN {
         
         private System.Threading.SendOrPostCallback tinhCodeTieuThu_CSMOperationCompleted;
         
+        private System.Threading.SendOrPostCallback get_ThongTinOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getTonFromDienThoaiOperationCompleted;
+        
         private System.Threading.SendOrPostCallback SendNotificationToClientOperationCompleted;
         
         private System.Threading.SendOrPostCallback get_Hinh_MaHoaOperationCompleted;
@@ -110,6 +116,10 @@ namespace DocSo_PC.wrDHN {
         private System.Threading.SendOrPostCallback ghi_Hinh_DonTuOperationCompleted;
         
         private System.Threading.SendOrPostCallback getDS_DonTuOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getDS_TheoDoiOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getDS_BatThuongOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -201,6 +211,9 @@ namespace DocSo_PC.wrDHN {
         public event getDS_DocSo_TonCompletedEventHandler getDS_DocSo_TonCompleted;
         
         /// <remarks/>
+        public event getDS_Hinh_TonCompletedEventHandler getDS_Hinh_TonCompleted;
+        
+        /// <remarks/>
         public event getDS_HoaDonTonCompletedEventHandler getDS_HoaDonTonCompleted;
         
         /// <remarks/>
@@ -246,6 +259,12 @@ namespace DocSo_PC.wrDHN {
         public event tinhCodeTieuThu_CSMCompletedEventHandler tinhCodeTieuThu_CSMCompleted;
         
         /// <remarks/>
+        public event get_ThongTinCompletedEventHandler get_ThongTinCompleted;
+        
+        /// <remarks/>
+        public event getTonFromDienThoaiCompletedEventHandler getTonFromDienThoaiCompleted;
+        
+        /// <remarks/>
         public event SendNotificationToClientCompletedEventHandler SendNotificationToClientCompleted;
         
         /// <remarks/>
@@ -271,6 +290,12 @@ namespace DocSo_PC.wrDHN {
         
         /// <remarks/>
         public event getDS_DonTuCompletedEventHandler getDS_DonTuCompleted;
+        
+        /// <remarks/>
+        public event getDS_TheoDoiCompletedEventHandler getDS_TheoDoiCompleted;
+        
+        /// <remarks/>
+        public event getDS_BatThuongCompletedEventHandler getDS_BatThuongCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetVersion", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -778,6 +803,41 @@ namespace DocSo_PC.wrDHN {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getDS_Hinh_Ton", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getDS_Hinh_Ton(string Nam, string Ky, string Dot, string May) {
+            object[] results = this.Invoke("getDS_Hinh_Ton", new object[] {
+                        Nam,
+                        Ky,
+                        Dot,
+                        May});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getDS_Hinh_TonAsync(string Nam, string Ky, string Dot, string May) {
+            this.getDS_Hinh_TonAsync(Nam, Ky, Dot, May, null);
+        }
+        
+        /// <remarks/>
+        public void getDS_Hinh_TonAsync(string Nam, string Ky, string Dot, string May, object userState) {
+            if ((this.getDS_Hinh_TonOperationCompleted == null)) {
+                this.getDS_Hinh_TonOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetDS_Hinh_TonOperationCompleted);
+            }
+            this.InvokeAsync("getDS_Hinh_Ton", new object[] {
+                        Nam,
+                        Ky,
+                        Dot,
+                        May}, this.getDS_Hinh_TonOperationCompleted, userState);
+        }
+        
+        private void OngetDS_Hinh_TonOperationCompleted(object arg) {
+            if ((this.getDS_Hinh_TonCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getDS_Hinh_TonCompleted(this, new getDS_Hinh_TonCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getDS_HoaDonTon", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string getDS_HoaDonTon(string Nam, string Ky, string Dot, string May) {
             object[] results = this.Invoke("getDS_HoaDonTon", new object[] {
@@ -843,26 +903,28 @@ namespace DocSo_PC.wrDHN {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/update_GhiChu", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string update_GhiChu(string DanhBo, string SoNha, string TenDuong, string ViTri1, string ViTri2, string Gieng, string GhiChu, string MaNV) {
+        public string update_GhiChu(string DanhBo, string SoNha, string TenDuong, string ViTri, string ViTriNgoai, string ViTriHop, string Gieng, string KhoaTu, string GhiChu, string MaNV) {
             object[] results = this.Invoke("update_GhiChu", new object[] {
                         DanhBo,
                         SoNha,
                         TenDuong,
-                        ViTri1,
-                        ViTri2,
+                        ViTri,
+                        ViTriNgoai,
+                        ViTriHop,
                         Gieng,
+                        KhoaTu,
                         GhiChu,
                         MaNV});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void update_GhiChuAsync(string DanhBo, string SoNha, string TenDuong, string ViTri1, string ViTri2, string Gieng, string GhiChu, string MaNV) {
-            this.update_GhiChuAsync(DanhBo, SoNha, TenDuong, ViTri1, ViTri2, Gieng, GhiChu, MaNV, null);
+        public void update_GhiChuAsync(string DanhBo, string SoNha, string TenDuong, string ViTri, string ViTriNgoai, string ViTriHop, string Gieng, string KhoaTu, string GhiChu, string MaNV) {
+            this.update_GhiChuAsync(DanhBo, SoNha, TenDuong, ViTri, ViTriNgoai, ViTriHop, Gieng, KhoaTu, GhiChu, MaNV, null);
         }
         
         /// <remarks/>
-        public void update_GhiChuAsync(string DanhBo, string SoNha, string TenDuong, string ViTri1, string ViTri2, string Gieng, string GhiChu, string MaNV, object userState) {
+        public void update_GhiChuAsync(string DanhBo, string SoNha, string TenDuong, string ViTri, string ViTriNgoai, string ViTriHop, string Gieng, string KhoaTu, string GhiChu, string MaNV, object userState) {
             if ((this.update_GhiChuOperationCompleted == null)) {
                 this.update_GhiChuOperationCompleted = new System.Threading.SendOrPostCallback(this.Onupdate_GhiChuOperationCompleted);
             }
@@ -870,9 +932,11 @@ namespace DocSo_PC.wrDHN {
                         DanhBo,
                         SoNha,
                         TenDuong,
-                        ViTri1,
-                        ViTri2,
+                        ViTri,
+                        ViTriNgoai,
+                        ViTriHop,
                         Gieng,
+                        KhoaTu,
                         GhiChu,
                         MaNV}, this.update_GhiChuOperationCompleted, userState);
         }
@@ -1302,6 +1366,65 @@ namespace DocSo_PC.wrDHN {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/get_ThongTin", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string get_ThongTin(string DanhBo, string Nam, string Ky) {
+            object[] results = this.Invoke("get_ThongTin", new object[] {
+                        DanhBo,
+                        Nam,
+                        Ky});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void get_ThongTinAsync(string DanhBo, string Nam, string Ky) {
+            this.get_ThongTinAsync(DanhBo, Nam, Ky, null);
+        }
+        
+        /// <remarks/>
+        public void get_ThongTinAsync(string DanhBo, string Nam, string Ky, object userState) {
+            if ((this.get_ThongTinOperationCompleted == null)) {
+                this.get_ThongTinOperationCompleted = new System.Threading.SendOrPostCallback(this.Onget_ThongTinOperationCompleted);
+            }
+            this.InvokeAsync("get_ThongTin", new object[] {
+                        DanhBo,
+                        Nam,
+                        Ky}, this.get_ThongTinOperationCompleted, userState);
+        }
+        
+        private void Onget_ThongTinOperationCompleted(object arg) {
+            if ((this.get_ThongTinCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.get_ThongTinCompleted(this, new get_ThongTinCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getTonFromDienThoai", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void getTonFromDienThoai() {
+            this.Invoke("getTonFromDienThoai", new object[0]);
+        }
+        
+        /// <remarks/>
+        public void getTonFromDienThoaiAsync() {
+            this.getTonFromDienThoaiAsync(null);
+        }
+        
+        /// <remarks/>
+        public void getTonFromDienThoaiAsync(object userState) {
+            if ((this.getTonFromDienThoaiOperationCompleted == null)) {
+                this.getTonFromDienThoaiOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetTonFromDienThoaiOperationCompleted);
+            }
+            this.InvokeAsync("getTonFromDienThoai", new object[0], this.getTonFromDienThoaiOperationCompleted, userState);
+        }
+        
+        private void OngetTonFromDienThoaiOperationCompleted(object arg) {
+            if ((this.getTonFromDienThoaiCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getTonFromDienThoaiCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SendNotificationToClient", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string SendNotificationToClient(string Title, string Content, string UID, string Action, string NameUpdate, string ValueUpdate, string ID) {
             object[] results = this.Invoke("SendNotificationToClient", new object[] {
@@ -1504,22 +1627,23 @@ namespace DocSo_PC.wrDHN {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ghi_DonTu", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string ghi_DonTu(string DanhBo, string NoiDung, string GhiChu, string MaNV) {
+        public string ghi_DonTu(string DanhBo, string NoiDung, string GhiChu, string Hinh, string MaNV) {
             object[] results = this.Invoke("ghi_DonTu", new object[] {
                         DanhBo,
                         NoiDung,
                         GhiChu,
+                        Hinh,
                         MaNV});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void ghi_DonTuAsync(string DanhBo, string NoiDung, string GhiChu, string MaNV) {
-            this.ghi_DonTuAsync(DanhBo, NoiDung, GhiChu, MaNV, null);
+        public void ghi_DonTuAsync(string DanhBo, string NoiDung, string GhiChu, string Hinh, string MaNV) {
+            this.ghi_DonTuAsync(DanhBo, NoiDung, GhiChu, Hinh, MaNV, null);
         }
         
         /// <remarks/>
-        public void ghi_DonTuAsync(string DanhBo, string NoiDung, string GhiChu, string MaNV, object userState) {
+        public void ghi_DonTuAsync(string DanhBo, string NoiDung, string GhiChu, string Hinh, string MaNV, object userState) {
             if ((this.ghi_DonTuOperationCompleted == null)) {
                 this.ghi_DonTuOperationCompleted = new System.Threading.SendOrPostCallback(this.Onghi_DonTuOperationCompleted);
             }
@@ -1527,6 +1651,7 @@ namespace DocSo_PC.wrDHN {
                         DanhBo,
                         NoiDung,
                         GhiChu,
+                        Hinh,
                         MaNV}, this.ghi_DonTuOperationCompleted, userState);
         }
         
@@ -1596,6 +1721,76 @@ namespace DocSo_PC.wrDHN {
             if ((this.getDS_DonTuCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getDS_DonTuCompleted(this, new getDS_DonTuCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getDS_TheoDoi", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getDS_TheoDoi(string MaTo, string Nam, string Ky, string Dot) {
+            object[] results = this.Invoke("getDS_TheoDoi", new object[] {
+                        MaTo,
+                        Nam,
+                        Ky,
+                        Dot});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getDS_TheoDoiAsync(string MaTo, string Nam, string Ky, string Dot) {
+            this.getDS_TheoDoiAsync(MaTo, Nam, Ky, Dot, null);
+        }
+        
+        /// <remarks/>
+        public void getDS_TheoDoiAsync(string MaTo, string Nam, string Ky, string Dot, object userState) {
+            if ((this.getDS_TheoDoiOperationCompleted == null)) {
+                this.getDS_TheoDoiOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetDS_TheoDoiOperationCompleted);
+            }
+            this.InvokeAsync("getDS_TheoDoi", new object[] {
+                        MaTo,
+                        Nam,
+                        Ky,
+                        Dot}, this.getDS_TheoDoiOperationCompleted, userState);
+        }
+        
+        private void OngetDS_TheoDoiOperationCompleted(object arg) {
+            if ((this.getDS_TheoDoiCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getDS_TheoDoiCompleted(this, new getDS_TheoDoiCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getDS_BatThuong", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getDS_BatThuong(string MaTo, string Nam, string Ky, string Dot) {
+            object[] results = this.Invoke("getDS_BatThuong", new object[] {
+                        MaTo,
+                        Nam,
+                        Ky,
+                        Dot});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getDS_BatThuongAsync(string MaTo, string Nam, string Ky, string Dot) {
+            this.getDS_BatThuongAsync(MaTo, Nam, Ky, Dot, null);
+        }
+        
+        /// <remarks/>
+        public void getDS_BatThuongAsync(string MaTo, string Nam, string Ky, string Dot, object userState) {
+            if ((this.getDS_BatThuongOperationCompleted == null)) {
+                this.getDS_BatThuongOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetDS_BatThuongOperationCompleted);
+            }
+            this.InvokeAsync("getDS_BatThuong", new object[] {
+                        MaTo,
+                        Nam,
+                        Ky,
+                        Dot}, this.getDS_BatThuongOperationCompleted, userState);
+        }
+        
+        private void OngetDS_BatThuongOperationCompleted(object arg) {
+            if ((this.getDS_BatThuongCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getDS_BatThuongCompleted(this, new getDS_BatThuongCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -2047,6 +2242,32 @@ namespace DocSo_PC.wrDHN {
         private object[] results;
         
         internal getDS_DocSo_TonCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void getDS_Hinh_TonCompletedEventHandler(object sender, getDS_Hinh_TonCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getDS_Hinh_TonCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getDS_Hinh_TonCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -2532,6 +2753,36 @@ namespace DocSo_PC.wrDHN {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void get_ThongTinCompletedEventHandler(object sender, get_ThongTinCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class get_ThongTinCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal get_ThongTinCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void getTonFromDienThoaiCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void SendNotificationToClientCompletedEventHandler(object sender, SendNotificationToClientCompletedEventArgs e);
     
     /// <remarks/>
@@ -2751,6 +3002,58 @@ namespace DocSo_PC.wrDHN {
         private object[] results;
         
         internal getDS_DonTuCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void getDS_TheoDoiCompletedEventHandler(object sender, getDS_TheoDoiCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getDS_TheoDoiCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getDS_TheoDoiCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void getDS_BatThuongCompletedEventHandler(object sender, getDS_BatThuongCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getDS_BatThuongCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getDS_BatThuongCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

@@ -60,7 +60,7 @@ namespace DocSo_PC.DAL
 
         public DataTable getDS_GhiChu()
         {
-            string sql = "select MLT=LOTRINH,DanhBo,HOTEN,DiaChi=SONHA+' '+TENDUONG,ViTri1=VITRIDHN,ViTri2=ViTriDHN2"
+            string sql = "select MLT=LOTRINH,DanhBo,HOTEN,DiaChi=SONHA+' '+TENDUONG,ViTri=VITRIDHN,ViTriDHN_Ngoai,ViTriDHN_Hop"
                         + " ,DienThoai=( select"
                         + "   distinct"
                         + "    stuff(("
@@ -83,7 +83,7 @@ namespace DocSo_PC.DAL
                 Dot = "";
             if (May == "Tất Cả")
                 May = "";
-            string sql = "select MLT=LOTRINH,DanhBo,HOTEN,DiaChi=SONHA+' '+TENDUONG,ViTri1=VITRIDHN,ViTri2=ViTriDHN2"
+            string sql = "select MLT=LOTRINH,DanhBo,HOTEN,DiaChi=SONHA+' '+TENDUONG,ViTri=VITRIDHN,ViTriDHN_Ngoai,ViTriDHN_Hop"
                         + " ,DienThoai=( select"
                         + "   distinct"
                         + "    stuff(("
@@ -102,7 +102,7 @@ namespace DocSo_PC.DAL
 
         public DataTable getDS_GhiChu_DanhBo(string DanhBo)
         {
-            string sql = "select MLT=LOTRINH,DanhBo,HOTEN,DiaChi=SONHA+' '+TENDUONG,ViTri1=VITRIDHN,ViTri2=ViTriDHN2"
+            string sql = "select MLT=LOTRINH,DanhBo,HOTEN,DiaChi=SONHA+' '+TENDUONG,ViTri=VITRIDHN,ViTriDHN_Ngoai,ViTriDHN_Hop"
                         + " ,DienThoai=( select"
                         + "   distinct"
                         + "    stuff(("
@@ -121,7 +121,7 @@ namespace DocSo_PC.DAL
 
         public DataTable getDS_GhiChu_DanhBo(string MaTo, string DanhBo)
         {
-            string sql = "select MLT=LOTRINH,DanhBo,HOTEN,DiaChi=SONHA+' '+TENDUONG,ViTri1=VITRIDHN,ViTri2=ViTriDHN2"
+            string sql = "select MLT=LOTRINH,DanhBo,HOTEN,DiaChi=SONHA+' '+TENDUONG,ViTri=VITRIDHN,ViTriDHN_Ngoai,ViTriDHN_Hop"
                         + " ,DienThoai=( select"
                         + "   distinct"
                         + "    stuff(("

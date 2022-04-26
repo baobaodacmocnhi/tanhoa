@@ -195,7 +195,7 @@ namespace DocSo_PC.GUI.ToTruong
             int TongViTri = 0, TongDienThoai = 0, TongDTKH = 0, TongDTDHN = 0, TongDTTV = 0;
             foreach (DataGridViewRow item in dgvDanhSach.Rows)
             {
-                if (item.Cells["ViTri1"].Value.ToString() != "")
+                if (item.Cells["ViTri"].Value.ToString() != "")
                     TongViTri++;
                 if (item.Cells["DienThoai"].Value.ToString() != "")
                     TongDienThoai++;
@@ -425,7 +425,7 @@ namespace DocSo_PC.GUI.ToTruong
                             string[] DienThoais = item["DienThoai"].ToString().Split('-');
                             foreach (string itemDT in DienThoais)
                             {
-                                if (itemDT.Trim() != "" && itemDT.Trim().Replace(".","").Length==10 && _cDHN.checkExists_DienThoai(item["DanhBo"].ToString(), itemDT.Trim()) == false)
+                                if (itemDT.Trim() != "" && itemDT.Trim().Replace(".", "").Length == 10 && _cDHN.checkExists_DienThoai(item["DanhBo"].ToString(), itemDT.Trim()) == false)
                                 {
                                     SDT_DHN en = new SDT_DHN();
                                     en.DanhBo = item["DanhBo"].ToString();
