@@ -513,17 +513,17 @@ namespace DocSo_PC.DAL.Doi
         public DataTable getTong_ChuyenBilling(string Nam, string Ky)
         {
             string sql = "select *"
-                        + " ,TongHD=(select COUNT(*) from DocSo where Nam=t1.Nam and Ky=t1.Ky and Dot=t1.Dot)"
+                        + " ,TongHD=(select COUNT(DocSoID) from DocSo where Nam=t1.Nam and Ky=t1.Ky and Dot=t1.Dot)"
                         + " ,TongTieuThu=(select SUM(TieuThuMoi) from DocSo where Nam=t1.Nam and Ky=t1.Ky and Dot=t1.Dot)"
-                        + " ,TongHDChuaChuyen=''"
-                        + " ,CreateDateChuyen=''"
+                        + " ,TongHDChuaChuyen=(select COUNT(DocSoID) from DocSo where Nam=t1.Nam and Ky=t1.Ky and Dot=t1.Dot and NgayChuyenListing is not null)"
+                        + " ,CreateDateChuyen=(select top 1 NgayChuyenListing from DocSo where Nam=t1.Nam and Ky=t1.Ky and Dot=t1.Dot and NgayChuyenListing is not null)"
                         + " from"
                         + " (select Nam=SUBSTRING(BillID,0,5)"
                         + " ,Ky=SUBSTRING(BillID,5,2)"
                         + " ,Dot=SUBSTRING(BillID,7,2)"
-                        + " ,BillID=BillID"
+                        + " ,BillID=BillID,NgayChot"
                         + " ,Chot=case when izDS is null then 'false' else 'true' end"
-                        + " from BillState where BillID like '" + Nam + Ky + "%')t1";
+                        + " from BillState where BillID like '" + Nam + Ky + "%')t1 order by t1.Dot asc";
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 

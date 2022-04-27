@@ -3578,6 +3578,8 @@ namespace DocSo_PC.LinQ
 		
 		private System.Nullable<System.DateTime> _NgayRaHD;
 		
+		private System.Nullable<System.DateTime> _NgayChot;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -3596,6 +3598,8 @@ namespace DocSo_PC.LinQ
     partial void OnizFIChanged();
     partial void OnNgayRaHDChanging(System.Nullable<System.DateTime> value);
     partial void OnNgayRaHDChanged();
+    partial void OnNgayChotChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayChotChanged();
     #endregion
 		
 		public BillState()
@@ -3739,6 +3743,26 @@ namespace DocSo_PC.LinQ
 					this._NgayRaHD = value;
 					this.SendPropertyChanged("NgayRaHD");
 					this.OnNgayRaHDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayChot", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NgayChot
+		{
+			get
+			{
+				return this._NgayChot;
+			}
+			set
+			{
+				if ((this._NgayChot != value))
+				{
+					this.OnNgayChotChanging(value);
+					this.SendPropertyChanging();
+					this._NgayChot = value;
+					this.SendPropertyChanged("NgayChot");
+					this.OnNgayChotChanged();
 				}
 			}
 		}
@@ -4859,7 +4883,7 @@ namespace DocSo_PC.LinQ
 		
 		private System.Nullable<int> _BVMT_Thue;
 		
-		private string _NVTaoDS;
+		private System.Nullable<System.DateTime> _NgayChuyenListing;
 		
 		private string _NgayTaoDS1;
 		
@@ -5023,8 +5047,8 @@ namespace DocSo_PC.LinQ
     partial void OnLongitudeChanged();
     partial void OnBVMT_ThueChanging(System.Nullable<int> value);
     partial void OnBVMT_ThueChanged();
-    partial void OnNVTaoDSChanging(string value);
-    partial void OnNVTaoDSChanged();
+    partial void OnNgayChuyenListingChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayChuyenListingChanged();
     partial void OnNgayTaoDS1Changing(string value);
     partial void OnNgayTaoDS1Changed();
     partial void OnDutChiThanChanging(string value);
@@ -6468,22 +6492,22 @@ namespace DocSo_PC.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NVTaoDS", DbType="VarChar(200)")]
-		public string NVTaoDS
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayChuyenListing", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NgayChuyenListing
 		{
 			get
 			{
-				return this._NVTaoDS;
+				return this._NgayChuyenListing;
 			}
 			set
 			{
-				if ((this._NVTaoDS != value))
+				if ((this._NgayChuyenListing != value))
 				{
-					this.OnNVTaoDSChanging(value);
+					this.OnNgayChuyenListingChanging(value);
 					this.SendPropertyChanging();
-					this._NVTaoDS = value;
-					this.SendPropertyChanged("NVTaoDS");
-					this.OnNVTaoDSChanged();
+					this._NgayChuyenListing = value;
+					this.SendPropertyChanged("NgayChuyenListing");
+					this.OnNgayChuyenListingChanged();
 				}
 			}
 		}

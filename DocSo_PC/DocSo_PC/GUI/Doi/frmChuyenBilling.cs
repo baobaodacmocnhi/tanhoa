@@ -62,9 +62,14 @@ namespace DocSo_PC.GUI.Doi
                             if (en != null)
                             {
                                 if (dgvDanhSach[e.ColumnIndex, e.RowIndex].Value.ToString() != "" && bool.Parse(dgvDanhSach[e.ColumnIndex, e.RowIndex].Value.ToString()) == true)
+                                {
                                     en.izDS = "1";
+                                    en.NgayChot = DateTime.Now;
+                                }
                                 else
+                                {
                                     en.izDS = null;
+                                }
                                 _cDocSo.SubmitChanges();
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
@@ -77,6 +82,7 @@ namespace DocSo_PC.GUI.Doi
                                 if (en != null)
                                 {
                                     en.izDS = "1";
+                                    en.NgayChot = DateTime.Now;
                                     _cDocSo.SubmitChanges();
                                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }

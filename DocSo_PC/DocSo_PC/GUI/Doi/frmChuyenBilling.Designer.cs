@@ -38,18 +38,19 @@
             this.cmbNam = new System.Windows.Forms.ComboBox();
             this.btnXem = new System.Windows.Forms.Button();
             this.dgvDanhSach = new System.Windows.Forms.DataGridView();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.button1 = new System.Windows.Forms.Button();
             this.Dot = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongTieuThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongHDChuaChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDateChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Chot = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.NgayChot = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ChuyenBilling = new System.Windows.Forms.DataGridViewButtonColumn();
             this.BillID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ky = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.progressBar = new System.Windows.Forms.ProgressBar();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.SuspendLayout();
             // 
@@ -130,6 +131,7 @@
             this.TongHDChuaChuyen,
             this.CreateDateChuyen,
             this.Chot,
+            this.NgayChot,
             this.ChuyenBilling,
             this.BillID,
             this.Nam,
@@ -155,11 +157,28 @@
             this.dgvDanhSach.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvDanhSach.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvDanhSach.Size = new System.Drawing.Size(656, 485);
+            this.dgvDanhSach.Size = new System.Drawing.Size(726, 485);
             this.dgvDanhSach.TabIndex = 57;
             this.dgvDanhSach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellClick);
             this.dgvDanhSach.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDanhSach_CellFormatting);
             this.dgvDanhSach.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellValueChanged);
+            // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(413, 10);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(203, 23);
+            this.progressBar.TabIndex = 58;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(744, 39);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 59;
+            this.button1.Text = "Xem Code";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Dot
             // 
@@ -203,6 +222,12 @@
             this.Chot.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.Chot.Width = 50;
             // 
+            // NgayChot
+            // 
+            this.NgayChot.DataPropertyName = "NgayChot";
+            this.NgayChot.HeaderText = "Ngày Chốt";
+            this.NgayChot.Name = "NgayChot";
+            // 
             // ChuyenBilling
             // 
             this.ChuyenBilling.HeaderText = "Xử Lý";
@@ -230,23 +255,6 @@
             this.Ky.HeaderText = "Kỳ";
             this.Ky.Name = "Ky";
             this.Ky.Visible = false;
-            // 
-            // progressBar
-            // 
-            this.progressBar.Location = new System.Drawing.Point(413, 10);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(203, 23);
-            this.progressBar.TabIndex = 58;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(674, 39);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 59;
-            this.button1.Text = "Xem Code";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmChuyenBilling
             // 
@@ -278,17 +286,18 @@
         private System.Windows.Forms.ComboBox cmbNam;
         private System.Windows.Forms.Button btnXem;
         private System.Windows.Forms.DataGridView dgvDanhSach;
+        private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dot;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongHD;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongTieuThu;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongHDChuaChuyen;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDateChuyen;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Chot;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayChot;
         private System.Windows.Forms.DataGridViewButtonColumn ChuyenBilling;
         private System.Windows.Forms.DataGridViewTextBoxColumn BillID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nam;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky;
-        private System.Windows.Forms.ProgressBar progressBar;
-        private System.Windows.Forms.Button button1;
     }
 }
