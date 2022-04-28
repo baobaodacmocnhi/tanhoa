@@ -134,6 +134,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.StripStatus_HoTen = new System.Windows.Forms.ToolStripStatusLabel();
+            this.mnuCapDinhMucNuocCCCD = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -592,7 +593,8 @@
             this.mnuHoNgheo,
             this.mnuSoDangKyDinhMuc,
             this.mnuDieuChinhChiSoLo,
-            this.mnuDieuChinhHangLoat});
+            this.mnuDieuChinhHangLoat,
+            this.mnuCapDinhMucNuocCCCD});
             this.mnuDieuChinhBienDong.Name = "mnuDieuChinhBienDong";
             this.mnuDieuChinhBienDong.Size = new System.Drawing.Size(83, 20);
             this.mnuDieuChinhBienDong.Text = "Điểu Chỉnh";
@@ -987,6 +989,13 @@
             this.StripStatus_HoTen.Size = new System.Drawing.Size(205, 17);
             this.StripStatus_HoTen.Text = "                                                 Xin Chào:";
             // 
+            // mnuCapDinhMucNuocCCCD
+            // 
+            this.mnuCapDinhMucNuocCCCD.Name = "mnuCapDinhMucNuocCCCD";
+            this.mnuCapDinhMucNuocCCCD.Size = new System.Drawing.Size(243, 22);
+            this.mnuCapDinhMucNuocCCCD.Text = "Cấp Định Mức Nước (CCCD)";
+            this.mnuCapDinhMucNuocCCCD.Click += new System.EventHandler(this.mnuCapDinhMucNuocCCCD_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1121,5 +1130,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuSoDangKyDinhMuc;
         private System.Windows.Forms.ToolStripMenuItem mnuDieuChinhChiSoLo;
         private System.Windows.Forms.ToolStripMenuItem mnuDieuChinhHangLoat;
+        private System.Windows.Forms.ToolStripMenuItem mnuCapDinhMucNuocCCCD;
     }
 }

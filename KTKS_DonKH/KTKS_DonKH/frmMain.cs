@@ -743,6 +743,17 @@ namespace KTKS_DonKH
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuCapDinhMucNuocCCCD_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuCapDinhMucNuocCCCD", "Xem"))
+            {
+                frmCapDinhMucNuocCCCD frm = new frmCapDinhMucNuocCCCD();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion
 
         #region Cắt Hủy
@@ -1143,19 +1154,8 @@ namespace KTKS_DonKH
 
         #endregion
 
+      
+
        
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }
