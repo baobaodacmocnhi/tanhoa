@@ -110,6 +110,9 @@
             this.txtHieuLucKy = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cmbThoiHan = new System.Windows.Forms.ComboBox();
+            this.dateHetHan = new System.Windows.Forms.DateTimePicker();
+            this.label29 = new System.Windows.Forms.Label();
             this.btnIn = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvLichSuNhanDon = new System.Windows.Forms.DataGridView();
@@ -151,9 +154,7 @@
             this.chkcmbKhieuNai = new DevExpress.XtraEditors.CheckedComboBoxEdit();
             this.chkcmbDieuChinh = new DevExpress.XtraEditors.CheckedComboBoxEdit();
             this.cmbNhomDon_ChiTiet = new System.Windows.Forms.ComboBox();
-            this.label29 = new System.Windows.Forms.Label();
-            this.dateHetHan = new System.Windows.Forms.DateTimePicker();
-            this.cmbThoiHan = new System.Windows.Forms.ComboBox();
+            this.chkCCDM = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabTTKH.SuspendLayout();
@@ -379,7 +380,7 @@
             // 
             // txtSoNK
             // 
-            this.txtSoNK.Location = new System.Drawing.Point(58, 3);
+            this.txtSoNK.Location = new System.Drawing.Point(123, 3);
             this.txtSoNK.Name = "txtSoNK";
             this.txtSoNK.Size = new System.Drawing.Size(40, 22);
             this.txtSoNK.TabIndex = 1;
@@ -390,7 +391,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(3, 6);
+            this.label13.Location = new System.Drawing.Point(68, 6);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(49, 16);
             this.label13.TabIndex = 0;
@@ -855,7 +856,7 @@
             // 
             // txtDM
             // 
-            this.txtDM.Location = new System.Drawing.Point(331, 3);
+            this.txtDM.Location = new System.Drawing.Point(396, 3);
             this.txtDM.Name = "txtDM";
             this.txtDM.ReadOnly = true;
             this.txtDM.Size = new System.Drawing.Size(40, 22);
@@ -864,7 +865,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(257, 6);
+            this.label17.Location = new System.Drawing.Point(322, 6);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(68, 16);
             this.label17.TabIndex = 4;
@@ -872,7 +873,7 @@
             // 
             // txtHieuLucKy
             // 
-            this.txtHieuLucKy.Location = new System.Drawing.Point(191, 3);
+            this.txtHieuLucKy.Location = new System.Drawing.Point(256, 3);
             this.txtHieuLucKy.Name = "txtHieuLucKy";
             this.txtHieuLucKy.Size = new System.Drawing.Size(60, 22);
             this.txtHieuLucKy.TabIndex = 3;
@@ -880,7 +881,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(104, 6);
+            this.label18.Location = new System.Drawing.Point(169, 6);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(81, 16);
             this.label18.TabIndex = 2;
@@ -888,6 +889,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.chkCCDM);
             this.panel1.Controls.Add(this.cmbThoiHan);
             this.panel1.Controls.Add(this.dateHetHan);
             this.panel1.Controls.Add(this.label29);
@@ -902,6 +904,37 @@
             this.panel1.Size = new System.Drawing.Size(818, 30);
             this.panel1.TabIndex = 14;
             this.panel1.Visible = false;
+            // 
+            // cmbThoiHan
+            // 
+            this.cmbThoiHan.FormattingEnabled = true;
+            this.cmbThoiHan.Items.AddRange(new object[] {
+            "Tự Nhập",
+            "6 tháng",
+            "12 tháng"});
+            this.cmbThoiHan.Location = new System.Drawing.Point(541, 3);
+            this.cmbThoiHan.Name = "cmbThoiHan";
+            this.cmbThoiHan.Size = new System.Drawing.Size(80, 24);
+            this.cmbThoiHan.TabIndex = 96;
+            this.cmbThoiHan.SelectedIndexChanged += new System.EventHandler(this.cmbThoiHan_SelectedIndexChanged);
+            // 
+            // dateHetHan
+            // 
+            this.dateHetHan.CustomFormat = "dd/MM/yyyy";
+            this.dateHetHan.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateHetHan.Location = new System.Drawing.Point(626, 3);
+            this.dateHetHan.Name = "dateHetHan";
+            this.dateHetHan.Size = new System.Drawing.Size(90, 22);
+            this.dateHetHan.TabIndex = 95;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(442, 6);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(93, 16);
+            this.label29.TabIndex = 6;
+            this.label29.Text = "Ngày Hết Hạn";
             // 
             // btnIn
             // 
@@ -1333,36 +1366,15 @@
             this.cmbNhomDon_ChiTiet.TabIndex = 94;
             this.cmbNhomDon_ChiTiet.Visible = false;
             // 
-            // label29
+            // chkCCDM
             // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(377, 6);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(93, 16);
-            this.label29.TabIndex = 6;
-            this.label29.Text = "Ngày Hết Hạn";
-            // 
-            // dateHetHan
-            // 
-            this.dateHetHan.CustomFormat = "dd/MM/yyyy";
-            this.dateHetHan.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateHetHan.Location = new System.Drawing.Point(561, 3);
-            this.dateHetHan.Name = "dateHetHan";
-            this.dateHetHan.Size = new System.Drawing.Size(90, 22);
-            this.dateHetHan.TabIndex = 95;
-            // 
-            // cmbThoiHan
-            // 
-            this.cmbThoiHan.FormattingEnabled = true;
-            this.cmbThoiHan.Items.AddRange(new object[] {
-            "Tự Nhập",
-            "6 tháng",
-            "12 tháng"});
-            this.cmbThoiHan.Location = new System.Drawing.Point(476, 3);
-            this.cmbThoiHan.Name = "cmbThoiHan";
-            this.cmbThoiHan.Size = new System.Drawing.Size(80, 24);
-            this.cmbThoiHan.TabIndex = 96;
-            this.cmbThoiHan.SelectedIndexChanged += new System.EventHandler(this.cmbThoiHan_SelectedIndexChanged);
+            this.chkCCDM.AutoSize = true;
+            this.chkCCDM.Location = new System.Drawing.Point(3, 5);
+            this.chkCCDM.Name = "chkCCDM";
+            this.chkCCDM.Size = new System.Drawing.Size(65, 20);
+            this.chkCCDM.TabIndex = 97;
+            this.chkCCDM.Text = "CCĐM";
+            this.chkCCDM.UseVisualStyleBackColor = true;
             // 
             // frmNhanDonTu2019
             // 
@@ -1563,5 +1575,6 @@
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.DateTimePicker dateHetHan;
         private System.Windows.Forms.ComboBox cmbThoiHan;
+        private System.Windows.Forms.CheckBox chkCCDM;
     }
 }

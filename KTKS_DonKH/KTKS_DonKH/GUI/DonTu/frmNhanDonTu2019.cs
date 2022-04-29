@@ -311,6 +311,7 @@ namespace KTKS_DonKH.GUI.DonTu
             txtNguoiLap.Text = "";
 
             cmbNhomDon_ChiTiet.SelectedIndex = -1;
+            chkCCDM.Checked = false;
             txtSoNK.Text = "";
             txtHieuLucKy.Text = "";
             cmbThoiHan.SelectedIndex = -1;
@@ -1305,7 +1306,7 @@ namespace KTKS_DonKH.GUI.DonTu
         {
             if (txtSoNK.Text.Trim() != "")
             {
-                txtHieuLucKy.Text = _cTTKH.getHieuLucKyToi();
+                txtHieuLucKy.Text = _cTTKH.getHieuLucKyToi(chkCCDM.Checked);
             }
         }
 
