@@ -23,6 +23,7 @@ namespace DocSo_PC.GUI.MaHoa
         string _mnu = "mnuDCBD";
         CDonTu _cDonTu = new CDonTu();
         CDocSo _cDocSo = new CDocSo();
+        CDHN _cDHN = new CDHN();
         CDCBD _cDCBD = new CDCBD();
         CThuongVu _cThuongVu = new CThuongVu();
         CTTKH _cTTKH = new CTTKH();
@@ -600,7 +601,52 @@ namespace DocSo_PC.GUI.MaHoa
             }
         }
 
-       
+        private void btnCapNhatTraiDat_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (MessageBox.Show("Bạn có chắc chắn?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    foreach (DataGridViewRow item in dgvDCBD.Rows)
+                        if (item.Cells["Chon_DS"].Value != null && bool.Parse(item.Cells["Chon_DS"].Value.ToString()) == true && bool.Parse(item.Cells["ChuyenDocSo"].Value.ToString()) == false)
+                        {
+                            MaHoa_DCBD en = _cDCBD.get(int.Parse(item.Cells["ID_DS"].Value.ToString()));
+                            if (en != null)
+                            {
+                                if (!string.IsNullOrEmpty(en.GiaBieu_BD.ToString()))
+                                {
+                                    CDHN._cDAL.ExecuteNonQuery("update TB_DULIEUKHACHHANG set GIABIEU=" + en.GiaBieu_BD.Value.ToString() + " where DANHBO='" + en.DanhBo + "'");
+                                }
+                                TB_GHICHU ghichu = new TB_GHICHU();
+                                ghichu.DANHBO = en.DanhBo;
+                                ghichu.DONVI = "Đ. QLĐHN";
+                                ghichu.NOIDUNG = "PYC: " + en.ID.ToString();
+                                ghichu.NOIDUNG += " ," + en.CreateDate.Value.ToString("dd/MM/yyyy");
+                                ghichu.NOIDUNG += " - HL : " + en.HieuLucKy + " - ĐC";
+                                if (!string.IsNullOrEmpty(en.GiaBieu_BD.ToString()))
+                                {
+                                    ghichu.NOIDUNG += " Giá Biểu Từ " + en.GiaBieu + " -> " + en.GiaBieu_BD + ",";
+                                }
+                                string sqlGhiChu = "insert into TB_GHICHU(DANHBO,DONVI,NOIDUNG,CREATEDATE,CREATEBY)values('" + ghichu.DANHBO + "','" + ghichu.DONVI + "',N'" + ghichu.NOIDUNG + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture) + "',N'" + CNguoiDung.HoTen + "')";
+                                if (CDHN._cDAL.ExecuteNonQuery(sqlGhiChu))
+                                {
+                                    en.ChuyenDocSo = true;
+                                    en.NgayChuyenDocSo = DateTime.Now;
+                                    en.NguoiChuyenDocSo = CNguoiDung.MaND;
+                                    _cDCBD.Sua(en);
+                                }
+                            }
+                        }
+                    MessageBox.Show("Cập Nhật Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
 
 
 

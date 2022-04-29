@@ -103,6 +103,7 @@ namespace DocSo_PC.DAL.MaHoa
                             item.PhieuDuocKy,
                             item.HieuLucKy,
                             CreateBy = itemtableND.HoTen,
+                            item.ChuyenDocSo,
                         };
             return _cDAL.LINQToDataTable(query);
         }
@@ -130,6 +131,7 @@ namespace DocSo_PC.DAL.MaHoa
                             item.PhieuDuocKy,
                             item.HieuLucKy,
                             CreateBy = itemtableND.HoTen,
+                            item.ChuyenDocSo,
                         };
             return _cDAL.LINQToDataTable(query);
         }
