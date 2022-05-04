@@ -133,7 +133,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (dgvDanhSach.Columns[e.ColumnIndex].Name == "CCCD" && dgvDanhSach["CCCD", e.RowIndex].Value.ToString() != "")
             {
-                if (_cDKDM.checkExists(dgvDanhSach["CCCD", e.RowIndex].Value.ToString()) == true)
+                if (dgvDanhSach["CCCD", e.RowIndex].Value.ToString().Trim().Length != 9 && dgvDanhSach["CCCD", e.RowIndex].Value.ToString().Trim().Length != 12)
+                {
+                    MessageBox.Show("CMND=9 số hoặc CCCD=12 số", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (_cDKDM.checkExists(dgvDanhSach["CCCD", e.RowIndex].Value.ToString().Trim()) == true)
                 {
                     MessageBox.Show("CCCD đã tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -180,7 +185,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void txtDienThoai_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
+            {
+                if (txtDienThoai.Text.Trim().Length != 10)
+                {
+                    MessageBox.Show("Điện thoại phải 10 số", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 txtSoNK.Focus();
+            }
         }
 
         private void dgvDanhSach_RowLeave(object sender, DataGridViewCellEventArgs e)
