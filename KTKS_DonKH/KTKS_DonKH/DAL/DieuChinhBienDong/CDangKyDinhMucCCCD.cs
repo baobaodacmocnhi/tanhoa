@@ -39,7 +39,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 en.CreateBy = CTaiKhoan.MaUser;
                 db.DCBD_DKDM_DanhBos.InsertOnSubmit(en);
                 db.SubmitChanges();
-                Thung = "Thùng: " + en.Thung.Value.ToString() + " - STT: " + en.STT.Value.ToString();
+                Thung = "Thùng: " + en.Thung.Value.ToString() + "\nSTT: " + en.STT.Value.ToString();
                 return true;
             }
             catch (Exception ex)
@@ -103,7 +103,19 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             return LINQToDataTable(query);
         }
 
-
+        public DataTable getDS_Online(DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            var query = from item in db.DCBD_DKDM_DanhBos
+                        where item.CreateDate.Date >= FromCreateDate.Date && item.CreateDate.Date <= ToCreateDate.Date && item.CreateBy == null
+                        select new
+                        {
+                            item.DanhBo,
+                            item.SDT,
+                            SoNK = item.DCBD_DKDM_CCCDs.Count,
+                            item.CreateDate,
+                        };
+            return LINQToDataTable(query);
+        }
 
     }
 }

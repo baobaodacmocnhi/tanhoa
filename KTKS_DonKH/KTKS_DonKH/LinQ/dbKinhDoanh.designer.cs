@@ -22250,6 +22250,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _SDT;
 		
+		private bool _ChungTu;
+		
 		private string _Quan;
 		
 		private System.Nullable<int> _Thung;
@@ -22272,6 +22274,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnDanhBoChanged();
     partial void OnSDTChanging(string value);
     partial void OnSDTChanged();
+    partial void OnChungTuChanging(bool value);
+    partial void OnChungTuChanged();
     partial void OnQuanChanging(string value);
     partial void OnQuanChanged();
     partial void OnThungChanging(System.Nullable<int> value);
@@ -22346,6 +22350,26 @@ namespace KTKS_DonKH.LinQ
 					this._SDT = value;
 					this.SendPropertyChanged("SDT");
 					this.OnSDTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChungTu", DbType="Bit NOT NULL")]
+		public bool ChungTu
+		{
+			get
+			{
+				return this._ChungTu;
+			}
+			set
+			{
+				if ((this._ChungTu != value))
+				{
+					this.OnChungTuChanging(value);
+					this.SendPropertyChanging();
+					this._ChungTu = value;
+					this.SendPropertyChanged("ChungTu");
+					this.OnChungTuChanged();
 				}
 			}
 		}

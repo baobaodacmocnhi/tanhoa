@@ -927,6 +927,7 @@
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="DanhBo" Type="System.String" DbType="Char(11) NOT NULL" CanBeNull="false" />
       <Column Name="SDT" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="ChungTu" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="Quan" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Thung" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="STT" Type="System.Int32" DbType="Int" CanBeNull="true" />
