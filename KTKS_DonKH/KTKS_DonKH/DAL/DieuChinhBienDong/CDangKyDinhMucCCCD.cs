@@ -49,6 +49,22 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
+        public bool Sua(DCBD_DKDM_DanhBo en)
+        {
+            try
+            {
+                en.ModifyDate = DateTime.Now;
+                en.ModifyBy = CTaiKhoan.MaUser;
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
         public bool Xoa(DCBD_DKDM_DanhBo en)
         {
             try
@@ -65,6 +81,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
+        public DCBD_DKDM_DanhBo get(int ID)
+        {
+            return db.DCBD_DKDM_DanhBos.SingleOrDefault(item => item.ID == ID);
+        }
+
         public DataTable getDS(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             var query = from item in db.DCBD_DKDM_DanhBos
@@ -73,6 +94,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         where item.CreateDate.Date >= FromCreateDate.Date && item.CreateDate.Date <= ToCreateDate.Date && item.CreateBy != null
                         select new
                         {
+                            item.ID,
                             item.DanhBo,
                             item.SDT,
                             item.Quan,
@@ -92,6 +114,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         where item.CreateDate.Date >= FromCreateDate.Date && item.CreateDate.Date <= ToCreateDate.Date && item.CreateBy == CreateBy
                         select new
                         {
+                            item.ID,
                             item.DanhBo,
                             item.SDT,
                             item.Quan,
@@ -99,6 +122,21 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             item.STT,
                             item.CreateDate,
                             CreateBy = itemtableND.HoTen,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable getDS_Online(string DanhBo)
+        {
+            var query = from item in db.DCBD_DKDM_DanhBos
+                        where item.DanhBo == DanhBo
+                        select new
+                        {
+                            item.DanhBo,
+                            item.SDT,
+                            SoNK = item.DCBD_DKDM_CCCDs.Count,
+                            item.CreateDate,
+                            CreateBy = item.CreateBy != null ? "Thương Vụ" : "Khách Hàng",
                         };
             return LINQToDataTable(query);
         }
@@ -113,9 +151,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             item.SDT,
                             SoNK = item.DCBD_DKDM_CCCDs.Count,
                             item.CreateDate,
+                            CreateBy = item.CreateBy != null ? "Thương Vụ" : "Khách Hàng",
                         };
             return LINQToDataTable(query);
         }
-
     }
 }

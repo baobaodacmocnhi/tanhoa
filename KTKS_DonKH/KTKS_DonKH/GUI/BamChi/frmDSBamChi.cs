@@ -122,6 +122,7 @@ namespace KTKS_DonKH.GUI.BamChi
             {
                 DataRow dr = dsBaoCao.Tables["DSBamChi"].NewRow();
 
+                dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
                 dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
                 dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
                 if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))

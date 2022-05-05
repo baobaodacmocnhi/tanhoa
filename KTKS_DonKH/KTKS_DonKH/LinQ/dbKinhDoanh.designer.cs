@@ -21967,6 +21967,10 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.DateTime _CreateDate;
 		
+		private System.Nullable<int> _ModifyBy;
+		
+		private System.Nullable<System.DateTime> _ModifyDate;
+		
 		private EntityRef<DCBD_DKDM_DanhBo> _DCBD_DKDM_DanhBo;
 		
     #region Extensibility Method Definitions
@@ -21991,6 +21995,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.DateTime value);
     partial void OnCreateDateChanged();
+    partial void OnModifyByChanging(System.Nullable<int> value);
+    partial void OnModifyByChanged();
+    partial void OnModifyDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnModifyDateChanged();
     #endregion
 		
 		public DCBD_DKDM_CCCD()
@@ -22183,6 +22191,46 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyBy", DbType="Int")]
+		public System.Nullable<int> ModifyBy
+		{
+			get
+			{
+				return this._ModifyBy;
+			}
+			set
+			{
+				if ((this._ModifyBy != value))
+				{
+					this.OnModifyByChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyBy = value;
+					this.SendPropertyChanged("ModifyBy");
+					this.OnModifyByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ModifyDate
+		{
+			get
+			{
+				return this._ModifyDate;
+			}
+			set
+			{
+				if ((this._ModifyDate != value))
+				{
+					this.OnModifyDateChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyDate = value;
+					this.SendPropertyChanged("ModifyDate");
+					this.OnModifyDateChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DCBD_DKDM_DanhBo_DCBD_DKDM_CCCD", Storage="_DCBD_DKDM_DanhBo", ThisKey="IDDanhBo", OtherKey="ID", IsForeignKey=true)]
 		public DCBD_DKDM_DanhBo DCBD_DKDM_DanhBo
 		{
@@ -22252,6 +22300,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _ChungTu;
 		
+		private string _MaDon;
+		
 		private string _Quan;
 		
 		private System.Nullable<int> _Thung;
@@ -22261,6 +22311,10 @@ namespace KTKS_DonKH.LinQ
 		private System.Nullable<int> _CreateBy;
 		
 		private System.DateTime _CreateDate;
+		
+		private System.Nullable<int> _ModifyBy;
+		
+		private System.Nullable<System.DateTime> _ModifyDate;
 		
 		private EntitySet<DCBD_DKDM_CCCD> _DCBD_DKDM_CCCDs;
 		
@@ -22276,6 +22330,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnSDTChanged();
     partial void OnChungTuChanging(bool value);
     partial void OnChungTuChanged();
+    partial void OnMaDonChanging(string value);
+    partial void OnMaDonChanged();
     partial void OnQuanChanging(string value);
     partial void OnQuanChanged();
     partial void OnThungChanging(System.Nullable<int> value);
@@ -22286,6 +22342,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.DateTime value);
     partial void OnCreateDateChanged();
+    partial void OnModifyByChanging(System.Nullable<int> value);
+    partial void OnModifyByChanged();
+    partial void OnModifyDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnModifyDateChanged();
     #endregion
 		
 		public DCBD_DKDM_DanhBo()
@@ -22374,7 +22434,27 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quan", DbType="VarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDon", DbType="VarChar(20)")]
+		public string MaDon
+		{
+			get
+			{
+				return this._MaDon;
+			}
+			set
+			{
+				if ((this._MaDon != value))
+				{
+					this.OnMaDonChanging(value);
+					this.SendPropertyChanging();
+					this._MaDon = value;
+					this.SendPropertyChanged("MaDon");
+					this.OnMaDonChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quan", DbType="VarChar(20)")]
 		public string Quan
 		{
 			get
@@ -22470,6 +22550,46 @@ namespace KTKS_DonKH.LinQ
 					this._CreateDate = value;
 					this.SendPropertyChanged("CreateDate");
 					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyBy", DbType="Int")]
+		public System.Nullable<int> ModifyBy
+		{
+			get
+			{
+				return this._ModifyBy;
+			}
+			set
+			{
+				if ((this._ModifyBy != value))
+				{
+					this.OnModifyByChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyBy = value;
+					this.SendPropertyChanged("ModifyBy");
+					this.OnModifyByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ModifyDate
+		{
+			get
+			{
+				return this._ModifyDate;
+			}
+			set
+			{
+				if ((this._ModifyDate != value))
+				{
+					this.OnModifyDateChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyDate = value;
+					this.SendPropertyChanged("ModifyDate");
+					this.OnModifyDateChanged();
 				}
 			}
 		}

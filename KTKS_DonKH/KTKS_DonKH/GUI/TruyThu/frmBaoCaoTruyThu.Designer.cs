@@ -79,10 +79,12 @@
             "Đã gửi TB tạm ngưng cung cấp nước",
             "Chuyển lập TB cắt tạm",
             "Chuyển lập TB hủy",
-            "Giữ nguyên"});
+            "Chuyển lập TB Đóng Nước",
+            "Giữ nguyên",
+            "Tạm hoãn để bổ sung hồ sơ"});
             this.cmbTinhTrang.Location = new System.Drawing.Point(86, 87);
             this.cmbTinhTrang.Name = "cmbTinhTrang";
-            this.cmbTinhTrang.Size = new System.Drawing.Size(172, 28);
+            this.cmbTinhTrang.Size = new System.Drawing.Size(172, 24);
             this.cmbTinhTrang.TabIndex = 30;
             // 
             // label23
@@ -90,7 +92,7 @@
             this.label23.AutoSize = true;
             this.label23.Location = new System.Drawing.Point(4, 90);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(94, 20);
+            this.label23.Size = new System.Drawing.Size(76, 16);
             this.label23.TabIndex = 29;
             this.label23.Text = "Tình Trạng:";
             // 
@@ -121,7 +123,7 @@
             this.dateTu_ThongKeTruyThu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTu_ThongKeTruyThu.Location = new System.Drawing.Point(80, 5);
             this.dateTu_ThongKeTruyThu.Name = "dateTu_ThongKeTruyThu";
-            this.dateTu_ThongKeTruyThu.Size = new System.Drawing.Size(90, 26);
+            this.dateTu_ThongKeTruyThu.Size = new System.Drawing.Size(90, 22);
             this.dateTu_ThongKeTruyThu.TabIndex = 13;
             // 
             // dateDen_ThongKeTruyThu
@@ -130,7 +132,7 @@
             this.dateDen_ThongKeTruyThu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateDen_ThongKeTruyThu.Location = new System.Drawing.Point(80, 33);
             this.dateDen_ThongKeTruyThu.Name = "dateDen_ThongKeTruyThu";
-            this.dateDen_ThongKeTruyThu.Size = new System.Drawing.Size(90, 26);
+            this.dateDen_ThongKeTruyThu.Size = new System.Drawing.Size(90, 22);
             this.dateDen_ThongKeTruyThu.TabIndex = 14;
             // 
             // label3
@@ -138,7 +140,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(3, 10);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 20);
+            this.label3.Size = new System.Drawing.Size(63, 16);
             this.label3.TabIndex = 15;
             this.label3.Text = "Từ Ngày:";
             // 
@@ -147,7 +149,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(3, 38);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(87, 20);
+            this.label4.Size = new System.Drawing.Size(71, 16);
             this.label4.TabIndex = 16;
             this.label4.Text = "Đến Ngày:";
             // 
@@ -204,7 +206,7 @@
             "Giữ nguyên"});
             this.cmbTinhTrang_TheoTinhTrang.Location = new System.Drawing.Point(89, 21);
             this.cmbTinhTrang_TheoTinhTrang.Name = "cmbTinhTrang_TheoTinhTrang";
-            this.cmbTinhTrang_TheoTinhTrang.Size = new System.Drawing.Size(172, 28);
+            this.cmbTinhTrang_TheoTinhTrang.Size = new System.Drawing.Size(172, 24);
             this.cmbTinhTrang_TheoTinhTrang.TabIndex = 30;
             // 
             // label1
@@ -212,7 +214,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(7, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 20);
+            this.label1.Size = new System.Drawing.Size(76, 16);
             this.label1.TabIndex = 29;
             this.label1.Text = "Tình Trạng:";
             // 
@@ -228,7 +230,7 @@
             // 
             // frmBaoCaoTruyThu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;

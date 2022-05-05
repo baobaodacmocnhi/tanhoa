@@ -135,6 +135,7 @@ namespace KTKS_DonKH.GUI.BamChi
                 dr["TuNgay"] = dateTu_ThongKeTrangThaiBamChi.Value.ToString("dd/MM/yyyy");
                 dr["DenNgay"] = dateDen_ThongKeTrangThaiBamChi.Value.ToString("dd/MM/yyyy");
                 dr["LoaiBaoCao"] = "BẤM CHÌ";
+                dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
                 dr["MaDon"] = item["MaDon"].ToString();
                 if (string.IsNullOrEmpty(item["DanhBo"].ToString()) == false && item["DanhBo"].ToString().Length == 11)
                     dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
