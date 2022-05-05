@@ -538,7 +538,7 @@ namespace DocSo_PC.GUI.MaHoa
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Them"))
             {
-                if (txtVeViec.Text.Trim() != "" && txtNoiDung.Text.Trim() != "" && txtNoiNhan.Text.Trim() != "")
+                if (txtVeViec_VV.Text.Trim() != "" && txtNoiDung_VV.Text.Trim() != "" && txtNoiNhan_VV.Text.Trim() != "")
                 {
                     MaHoa_ToTrinh_VeViec vv = new MaHoa_ToTrinh_VeViec();
                     vv.Name = txtVeViec_VV.Text.Trim();
@@ -559,6 +559,23 @@ namespace DocSo_PC.GUI.MaHoa
 
         private void btnXoa_VV_Click(object sender, EventArgs e)
         {
+            if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
+            {
+                if (_veviec != null && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    if (_cToTrinh.Xoa(_veviec))
+                    {
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Clear();
+                    }
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnSua_VV_Click(object sender, EventArgs e)
+        {
             if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
             {
                 if (_veviec != null)
@@ -578,23 +595,6 @@ namespace DocSo_PC.GUI.MaHoa
             }
             else
                 MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        private void btnSua_VV_Click(object sender, EventArgs e)
-        {
-            if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
-            {
-                if (_veviec != null && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                {
-                    if (_cToTrinh.Xoa(_veviec))
-                    {
-                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Clear();
-                    }
-                }
-            }
-            else
-                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void dgvVeViec_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -622,9 +622,9 @@ namespace DocSo_PC.GUI.MaHoa
 
         #endregion
 
-      
 
-        
+
+
 
 
 
