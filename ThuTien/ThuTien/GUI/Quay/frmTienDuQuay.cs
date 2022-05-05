@@ -141,7 +141,7 @@ namespace ThuTien.GUI.Quay
                     string ThongTin = "";
                     foreach (HOADON itemHD in lstHD)
                         ///nếu có trong dịch vụ thu thì không thu thêm
-                        if (!_cDichVuThu.CheckExist(itemHD.SOHOADON))
+                        if (!_cDichVuThu.CheckExist(itemHD.ID_HOADON))
                         {
                             DataRow dr = ds.Tables["TienDuKhachHang"].NewRow();
                             dr["DanhBo"] = item.Cells["DanhBo_TienDu"].Value.ToString().Insert(4, " ").Insert(8, " ");

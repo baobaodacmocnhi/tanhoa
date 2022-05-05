@@ -19,6 +19,11 @@ namespace ThuTien.DAL.ChuyenKhoan
             return _db.TT_DichVuThus.Any(item => item.SoHoaDon == SoHoaDon);
         }
 
+        public bool CheckExist(int MaHD)
+        {
+            return _db.TT_DichVuThus.Any(item => item.MaHD == MaHD);
+        }
+
         public bool Xoa(TT_DichVuThu dvt)
         {
             try

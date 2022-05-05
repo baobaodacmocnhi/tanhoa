@@ -124,6 +124,21 @@ namespace ThuTien.DAL.Quay
                 return false;
         }
 
+        public bool CheckExist(int MaHD, out string Loai)
+        {
+            Loai = "";
+            if (_db.TAMTHUs.Any(item => item.FK_HOADON == MaHD))
+            {
+                if (_db.TAMTHUs.SingleOrDefault(item => item.FK_HOADON == MaHD).ChuyenKhoan)
+                    Loai = "Chuyển Khoản, ngày " + _db.TAMTHUs.SingleOrDefault(item => item.FK_HOADON == MaHD).CreateDate.Value.ToString("dd/MM/yyyy");
+                else
+                    Loai = "Quầy, ngày " + _db.TAMTHUs.SingleOrDefault(item => item.FK_HOADON == MaHD).CreateDate.Value.ToString("dd/MM/yyyy");
+                return true;
+            }
+            else
+                return false;
+        }
+
         public bool CheckExist(string SoHoaDon, bool ChuyenKhoan)
         {
             return _db.TAMTHUs.Any(item => item.SoHoaDon == SoHoaDon && item.ChuyenKhoan == ChuyenKhoan);

@@ -68,7 +68,7 @@ namespace ThuTien.GUI.Quay
 
                     foreach (DataGridViewRow item in dgvHoaDon.Rows)
                     {
-                        if (_cDichVuThu.CheckExist(item.Cells["SoHoaDon"].Value.ToString()) == true)
+                        if (_cDichVuThu.CheckExist(int.Parse(item.Cells["MaHD"].Value.ToString())) == true)
                             item.DefaultCellStyle.BackColor = Color.DeepSkyBlue;
                         else
                         {
@@ -111,7 +111,7 @@ namespace ThuTien.GUI.Quay
                     if (item.Cells["Chon"].Value != null && bool.Parse(item.Cells["Chon"].Value.ToString()))
                     {
                         string loai = "";
-                        if (_cTamThu.CheckExist(item.Cells["SoHoaDon"].Value.ToString(), out loai))
+                        if (_cTamThu.CheckExist(int.Parse(item.Cells["MaHD"].Value.ToString()), out loai))
                         {
                             MessageBox.Show("Hóa Đơn này đã có Tạm Thu(" + loai + ")", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             dgvHoaDon.CurrentCell = item.Cells["DanhBo"];
@@ -1020,18 +1020,18 @@ namespace ThuTien.GUI.Quay
                     {
                         DataTable dt = _cTamThu.getDSTon_KyMoi(false);
                         foreach (DataRow item in dt.Rows)
+                        {
+                            if (_cHoaDon.CheckKhoaTienDuBySoHoaDon(item["SoHoaDon"].ToString()))
                             {
-                                if (_cHoaDon.CheckKhoaTienDuBySoHoaDon(item["SoHoaDon"].ToString()))
-                                {
-                                    MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item["SoHoaDon"].ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    return;
-                                }
-                                if (_cHoaDon.CheckDCHDTienDuBySoHoaDon(item["SoHoaDon"].ToString()))
-                                {
-                                    MessageBox.Show("Hóa Đơn đã Điều Chỉnh Tiền Dư " + item["SoHoaDon"].ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    return;
-                                }
+                                MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item["SoHoaDon"].ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
                             }
+                            if (_cHoaDon.CheckDCHDTienDuBySoHoaDon(item["SoHoaDon"].ToString()))
+                            {
+                                MessageBox.Show("Hóa Đơn đã Điều Chỉnh Tiền Dư " + item["SoHoaDon"].ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                        }
                         foreach (DataRow item in dt.Rows)
                             _cHoaDon.DangNgan("Quay", item["SoHoaDon"].ToString(), CNguoiDung.MaND);
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

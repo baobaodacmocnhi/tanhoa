@@ -113,7 +113,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         if (item.Cells["Chon"].Value != null && bool.Parse(item.Cells["Chon"].Value.ToString()))
                         {
                             string loai = "";
-                            if (_cTamThu.CheckExist(item.Cells["SoHoaDon"].Value.ToString(), out loai))
+                            if (_cTamThu.CheckExist(int.Parse(item.Cells["MaHD"].Value.ToString()), out loai))
                             {
                                 MessageBox.Show("Hóa Đơn này đã Tạm Thu(" + loai + ")", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 dgvHoaDon.CurrentCell = item.Cells["DanhBo"];
