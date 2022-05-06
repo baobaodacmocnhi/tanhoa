@@ -109,6 +109,15 @@ namespace ThuTien.DAL.Quay
             return _db.TAMTHUs.Any(item => item.SoHoaDon == SoHoaDon);
         }
 
+        public bool CheckExist(int MaHD, out bool ChuyenKhoan)
+        {
+            if (_db.TAMTHUs.Any(item => item.FK_HOADON == MaHD))
+                ChuyenKhoan = _db.TAMTHUs.SingleOrDefault(item => item.FK_HOADON == MaHD).ChuyenKhoan;
+            else
+                ChuyenKhoan = false;
+            return _db.TAMTHUs.Any(item => item.FK_HOADON == MaHD);
+        }
+
         public bool CheckExist(string SoHoaDon, out string Loai)
         {
             Loai = "";
@@ -142,6 +151,11 @@ namespace ThuTien.DAL.Quay
         public bool CheckExist(string SoHoaDon, bool ChuyenKhoan)
         {
             return _db.TAMTHUs.Any(item => item.SoHoaDon == SoHoaDon && item.ChuyenKhoan == ChuyenKhoan);
+        }
+
+        public bool CheckExist(int MaHD, bool ChuyenKhoan)
+        {
+            return _db.TAMTHUs.Any(item => item.FK_HOADON == MaHD && item.ChuyenKhoan == ChuyenKhoan);
         }
 
         public bool CheckExist(string SoHoaDon)
@@ -370,8 +384,10 @@ namespace ThuTien.DAL.Quay
                         orderby itemHD.MALOTRINH ascending
                         select new
                         {
+                            MaHD = itemHD.ID_HOADON,
                             itemHD.SOHOADON,
                             Ky = itemHD.KY + "/" + itemHD.NAM,
+                            DanhBo=itemHD.DANHBA,
                         };
             return LINQToDataTable(query);
         }

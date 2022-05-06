@@ -66,7 +66,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             if (tabControl.SelectedTab.Name == "tabThongTin")
             {
                 if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim().Replace(" ", "")) && e.KeyChar == 13)
-                    //&& _cDCHD.CheckExist_ChuaUpdatedHDDT(txtDanhBo.Text.Trim().Replace(" ", "")) == false)
+                //&& _cDCHD.CheckExist_ChuaUpdatedHDDT(txtDanhBo.Text.Trim().Replace(" ", "")) == false)
                 {
                     DataTable dt = (DataTable)dgvHoaDon.DataSource;
                     foreach (string item in txtDanhBo.Lines)
@@ -131,7 +131,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
                     foreach (DataGridViewRow item in dgvHoaDon.Rows)
                         if (item.Cells["Chon"].Value != null && bool.Parse(item.Cells["Chon"].Value.ToString()))
-                            if (!_cTamThu.CheckExist(item.Cells["SoHoaDon"].Value.ToString(), true))
+                            if (!_cTamThu.CheckExist(int.Parse(item.Cells["MaHD"].Value.ToString()), true))
                             {
                                 TAMTHU tamthu = new TAMTHU();
                                 tamthu.DANHBA = item.Cells["DanhBo"].Value.ToString();
@@ -370,7 +370,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     DataTable dt = new DataTable();
                     foreach (DataRow item in dtExcel.Rows)
                         if (item[0].ToString().Replace(" ", "").Length == 11 && !string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()))
-                            //&& _cDCHD.CheckExist_ChuaUpdatedHDDT(item[0].ToString().Replace(" ", "")) == false)
+                        //&& _cDCHD.CheckExist_ChuaUpdatedHDDT(item[0].ToString().Replace(" ", "")) == false)
                         {
                             if (chkTruHoNgheo.Checked == true)
                                 dt.Merge(_cHoaDon.GetDSTonByDanhBo_TruHoNgheo(item[0].ToString().Replace(" ", "")));
@@ -381,7 +381,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
                     foreach (DataRow itemExcel in dtExcel.Rows)
                         if (itemExcel[0].ToString().Replace(" ", "").Length == 11 && !string.IsNullOrEmpty(itemExcel[1].ToString()) && !string.IsNullOrEmpty(itemExcel[2].ToString()))
-                            //&& _cDCHD.CheckExist_ChuaUpdatedHDDT(itemExcel[0].ToString().Replace(" ", "")) == false)
+                        //&& _cDCHD.CheckExist_ChuaUpdatedHDDT(itemExcel[0].ToString().Replace(" ", "")) == false)
                         {
                             DanhBo = itemExcel[0].ToString().Replace(" ", "");
                             string ChenhLech = "";
@@ -845,25 +845,25 @@ namespace ThuTien.GUI.ChuyenKhoan
                         //}
 
                         foreach (DataGridViewRow item in dgvTamThu.Rows)
-                            if (item.Cells["NgayGiaiTrach_TT"].Value.ToString() == "")
+                            if (item.Cells["SoHoaDon_TT"].Value.ToString() != "" && item.Cells["NgayGiaiTrach_TT"].Value.ToString() == "")
                             {
                                 i++;
                                 //if(i==972)
                                 //    MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item.Cells["SoHoaDon_TT"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                if (_cHoaDon.CheckKhoaTienDuBySoHoaDon(item.Cells["SoHoaDon_TT"].Value.ToString()))
+                                if (_cHoaDon.CheckKhoaTienDuBySoHoaDon(int.Parse(item.Cells["MaHD_TT"].Value.ToString())))
                                 {
-                                    MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item.Cells["SoHoaDon_TT"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item.Cells["DanhBo_TT"].Value.ToString() + " - " + item.Cells["Ky_TT"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     item.Selected = true;
                                     return;
                                 }
-                                if (_cHoaDon.CheckDCHDTienDuBySoHoaDon(item.Cells["SoHoaDon_TT"].Value.ToString()))
+                                if (_cHoaDon.CheckDCHDTienDuBySoHoaDon(int.Parse(item.Cells["MaHD_TT"].Value.ToString())))
                                 {
-                                    MessageBox.Show("Hóa Đơn đã Điều Chỉnh Tiền Dư " + item.Cells["SoHoaDon_TT"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    MessageBox.Show("Hóa Đơn đã Điều Chỉnh Tiền Dư " + item.Cells["DanhBo_TT"].Value.ToString() + " - " + item.Cells["Ky_TT"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     item.Selected = true;
                                     return;
                                 }
                                 string DanhBo = "";
-                                if (_cDCHD.CheckExist_UpdatedHDDT(item.Cells["SoHoaDon_TT"].Value.ToString(), ref DanhBo) == false)
+                                if (_cDCHD.CheckExist_UpdatedHDDT(int.Parse(item.Cells["MaHD_TT"].Value.ToString()), ref DanhBo) == false)
                                 {
                                     MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     dgvTamThu.CurrentCell = item.Cells["DanhBo_TT"];
@@ -924,25 +924,25 @@ namespace ThuTien.GUI.ChuyenKhoan
             try
             {
                 foreach (DataGridViewRow item in dgvTamThu.Rows)
-                    if (item.Cells["NgayGiaiTrach_TT"].Value.ToString() == "")
+                    if (item.Cells["SoHoaDon_TT"].Value.ToString() != ""&&item.Cells["NgayGiaiTrach_TT"].Value.ToString() == "")
                     {
                         i++;
                         //if(i==972)
                         //    MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item.Cells["SoHoaDon_TT"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        if (_cHoaDon.CheckKhoaTienDuBySoHoaDon(item.Cells["SoHoaDon_TT"].Value.ToString()))
+                        if (_cHoaDon.CheckKhoaTienDuBySoHoaDon(int.Parse(item.Cells["MaHD_TT"].Value.ToString())))
                         {
-                            MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item.Cells["SoHoaDon_TT"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item.Cells["DanhBo_TT"].Value.ToString() + " - " + item.Cells["Ky_TT"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             item.Selected = true;
                             return;
                         }
-                        if (_cHoaDon.CheckDCHDTienDuBySoHoaDon(item.Cells["SoHoaDon_TT"].Value.ToString()))
+                        if (_cHoaDon.CheckDCHDTienDuBySoHoaDon(int.Parse(item.Cells["MaHD_TT"].Value.ToString())))
                         {
-                            MessageBox.Show("Hóa Đơn đã Điều Chỉnh Tiền Dư " + item.Cells["SoHoaDon_TT"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Hóa Đơn đã Điều Chỉnh Tiền Dư " + item.Cells["DanhBo_TT"].Value.ToString() + " - " + item.Cells["Ky_TT"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             item.Selected = true;
                             return;
                         }
                         string DanhBo = "";
-                        if (_cDCHD.CheckExist_UpdatedHDDT(item.Cells["SoHoaDon_TT"].Value.ToString(), ref DanhBo) == false)
+                        if (_cDCHD.CheckExist_UpdatedHDDT(int.Parse(item.Cells["MaHD_TT"].Value.ToString()), ref DanhBo) == false)
                         {
                             MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             dgvTamThu.CurrentCell = item.Cells["DanhBo_TT"];
@@ -1003,38 +1003,39 @@ namespace ThuTien.GUI.ChuyenKhoan
                 DataTable dt = _cTamThu.getDSTon_KyMoi(true);
                 foreach (DataRow item in dt.Rows)
                 {
-                    if (_cHoaDon.CheckKhoaTienDuBySoHoaDon(item["SoHoaDon"].ToString()))
+                    if (_cHoaDon.CheckKhoaTienDuBySoHoaDon(int.Parse(item["MaHD"].ToString())))
                     {
-                        MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item["SoHoaDon"].ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item["DanhBo_TT"].ToString() + " - " + item["Ky_TT"].ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    if (_cHoaDon.CheckDCHDTienDuBySoHoaDon(item["SoHoaDon"].ToString()))
+                    if (_cHoaDon.CheckDCHDTienDuBySoHoaDon(int.Parse(item["MaHD"].ToString())))
                     {
-                        MessageBox.Show("Hóa Đơn đã Điều Chỉnh Tiền Dư " + item["SoHoaDon"].ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Hóa Đơn đã Điều Chỉnh Tiền Dư " + item["DanhBo_TT"].ToString() + " - " + item["Ky_TT"].ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     string DanhBo = "";
-                    if (_cDCHD.CheckExist_UpdatedHDDT(item["SoHoaDon"].ToString(), ref DanhBo) == false)
+                    if (_cDCHD.CheckExist_UpdatedHDDT(int.Parse(item["MaHD"].ToString()), ref DanhBo) == false)
                     {
                         MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                 }
                 foreach (DataRow item in dt.Rows)
-                    if (_cHoaDon.checkExists_KyMoi(item["Ky"].ToString()) == false)
-                    {
-                        var transactionOptions = new TransactionOptions();
-                        transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
-                        using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
+                    if (item["SoHoaDon"].ToString() != "")
+                        if (_cHoaDon.checkExists_KyMoi(item["Ky"].ToString()) == false)
                         {
-                            if (_cHoaDon.DangNgan("ChuyenKhoan", item["SoHoaDon"].ToString(), CNguoiDung.MaND))
-                                if (_cTienDu.UpdateThem(item["SoHoaDon"].ToString()))
-                                {
-                                    scope.Complete();
-                                    scope.Dispose();
-                                }
+                            var transactionOptions = new TransactionOptions();
+                            transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
+                            {
+                                if (_cHoaDon.DangNgan("ChuyenKhoan", item["SoHoaDon"].ToString(), CNguoiDung.MaND))
+                                    if (_cTienDu.UpdateThem(item["SoHoaDon"].ToString()))
+                                    {
+                                        scope.Complete();
+                                        scope.Dispose();
+                                    }
+                            }
                         }
-                    }
             }
             catch (Exception ex)
             {

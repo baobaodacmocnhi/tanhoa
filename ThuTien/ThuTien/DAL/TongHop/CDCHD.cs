@@ -116,6 +116,33 @@ namespace ThuTien.DAL.TongHop
                     return _db.DIEUCHINH_HDs.Any(item => item.FK_HOADON == MaHD && item.UpdatedHDDT == true);
         }
 
+        public bool CheckExist_UpdatedHDDT(int MaHD, ref string DanhBo)
+        {
+            if (_db.TT_DeviceConfigs.Any(item => item.checkUpdatedHDDT == true) == true)
+            {
+                //hóa đơn giấy
+                if (_db.HOADONs.Any(item => item.ID_HOADON == MaHD && (item.NAM < 2020 || (item.NAM == 2020 && item.KY <= 6))) == true)
+                    return true;
+                else//hóa đơn điện tử
+                    if (_db.DIEUCHINH_HDs.Any(item => item.FK_HOADON == MaHD) == false)
+                        return true;
+                    else
+                    {
+                        if (_db.DIEUCHINH_HDs.Any(item => item.FK_HOADON == MaHD && item.UpdatedHDDT == true) == false)
+                        {
+                            HOADON hd = _db.HOADONs.SingleOrDefault(itemHD => itemHD.ID_HOADON == MaHD);
+                            if (hd != null)
+                                DanhBo = hd.DANHBA + " " + hd.KY + "/" + hd.NAM;
+                            return false;
+                        }
+                        else
+                            return true;
+                    }
+            }
+            else
+                return true;
+        }
+
         public bool CheckExist_UpdatedHDDT(string SoHoaDon, ref string DanhBo)
         {
             if (_db.TT_DeviceConfigs.Any(item => item.checkUpdatedHDDT == true) == true)

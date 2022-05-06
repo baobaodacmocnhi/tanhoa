@@ -125,14 +125,14 @@ namespace ThuTien.GUI.Quay
                         //    item.Selected = true;
                         //    return;
                         //}
-                        if (_cHoaDon.CheckKhoaTienDuBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString()))
+                        if (_cHoaDon.CheckKhoaTienDuBySoHoaDon(int.Parse(item.Cells["MaHD"].Value.ToString())))
                         {
                             MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item.Cells["SoHoaDon"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             dgvHoaDon.CurrentCell = item.Cells["DanhBo"];
                             item.Selected = true;
                             return;
                         }
-                        if (_cHoaDon.CheckDCHDTienDuBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString()))
+                        if (_cHoaDon.CheckDCHDTienDuBySoHoaDon(int.Parse(item.Cells["MaHD"].Value.ToString())))
                         {
                             MessageBox.Show("Hóa Đơn đã Điều Chỉnh Tiền Dư " + item.Cells["SoHoaDon"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             dgvHoaDon.CurrentCell = item.Cells["DanhBo"];
@@ -140,7 +140,7 @@ namespace ThuTien.GUI.Quay
                             return;
                         }
                         string DanhBo = "";
-                        if (_cDCHD.CheckExist_UpdatedHDDT(item.Cells["SoHoaDon"].Value.ToString(), ref DanhBo) == false)
+                        if (_cDCHD.CheckExist_UpdatedHDDT(int.Parse(item.Cells["MaHD"].Value.ToString()), ref DanhBo) == false)
                         {
                             MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             dgvHoaDon.CurrentCell = item.Cells["DanhBo"];
@@ -174,7 +174,7 @@ namespace ThuTien.GUI.Quay
                                     if (_cTamThu.Them(tamthu, NgayGiaiTrach) == true)
                                     {
                                         string DanhBo = "";
-                                        if (_cDCHD.CheckExist_UpdatedHDDT(item.Cells["SoHoaDon"].Value.ToString(), ref DanhBo) == false)
+                                        if (_cDCHD.CheckExist_UpdatedHDDT(int.Parse(item.Cells["MaHD"].Value.ToString()), ref DanhBo) == false)
                                         {
                                             lstTamThu.Add(tamthu);
                                             MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -183,7 +183,12 @@ namespace ThuTien.GUI.Quay
                                         {
                                             if (_cHoaDon.checkExists_KyMoi(item.Cells["Ky"].Value.ToString()) == false)
                                             {
-                                                if (_cHoaDon.DangNgan("Quay", tamthu.SoHoaDon, CNguoiDung.MaND, NgayGiaiTrach) == true)
+                                                if (tamthu.SoHoaDon != "")
+                                                {
+                                                    if (_cHoaDon.DangNgan("Quay", tamthu.SoHoaDon, CNguoiDung.MaND, NgayGiaiTrach) == true)
+                                                        lstTamThu.Add(tamthu);
+                                                }
+                                                else
                                                     lstTamThu.Add(tamthu);
                                             }
                                             else
@@ -208,7 +213,7 @@ namespace ThuTien.GUI.Quay
                                         if (_cTamThu.Them(tamthu, NgayGiaiTrach) == true)
                                         {
                                             string DanhBo = "";
-                                            if (_cDCHD.CheckExist_UpdatedHDDT(item.Cells["SoHoaDon"].Value.ToString(), ref DanhBo) == false)
+                                            if (_cDCHD.CheckExist_UpdatedHDDT(int.Parse(item.Cells["MaHD"].Value.ToString()), ref DanhBo) == false)
                                             {
                                                 lstTamThu.Add(tamthu);
                                                 MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -217,7 +222,12 @@ namespace ThuTien.GUI.Quay
                                             {
                                                 if (_cHoaDon.checkExists_KyMoi(item.Cells["Ky"].Value.ToString()) == false)
                                                 {
-                                                    if (_cHoaDon.DangNgan("Quay", tamthu.SoHoaDon, CNguoiDung.MaND, NgayGiaiTrach) == true)
+                                                    if (tamthu.SoHoaDon != "")
+                                                    {
+                                                        if (_cHoaDon.DangNgan("Quay", tamthu.SoHoaDon, CNguoiDung.MaND, NgayGiaiTrach) == true)
+                                                            lstTamThu.Add(tamthu);
+                                                    }
+                                                    else
                                                         lstTamThu.Add(tamthu);
                                                 }
                                                 else
@@ -234,7 +244,7 @@ namespace ThuTien.GUI.Quay
                                         if (_cTamThu.Them(tamthu) == true)
                                         {
                                             string DanhBo = "";
-                                            if (_cDCHD.CheckExist_UpdatedHDDT(item.Cells["SoHoaDon"].Value.ToString(), ref DanhBo) == false)
+                                            if (_cDCHD.CheckExist_UpdatedHDDT(int.Parse(item.Cells["MaHD"].Value.ToString()), ref DanhBo) == false)
                                             {
                                                 lstTamThu.Add(tamthu);
                                                 MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -243,7 +253,12 @@ namespace ThuTien.GUI.Quay
                                             {
                                                 if (_cHoaDon.checkExists_KyMoi(item.Cells["Ky"].Value.ToString()) == false)
                                                 {
-                                                    if (_cHoaDon.DangNgan("Quay", tamthu.SoHoaDon, CNguoiDung.MaND) == true)
+                                                    if (tamthu.SoHoaDon != "")
+                                                    {
+                                                        if (_cHoaDon.DangNgan("Quay", tamthu.SoHoaDon, CNguoiDung.MaND) == true)
+                                                            lstTamThu.Add(tamthu);
+                                                    }
+                                                    else
                                                         lstTamThu.Add(tamthu);
                                                 }
                                                 else
@@ -290,7 +305,7 @@ namespace ThuTien.GUI.Quay
                 Int32 TongCongSo = 0;
                 foreach (var item in lstTamThu)
                 {
-                    HOADON hd = _cHoaDon.Get(item.SoHoaDon);
+                    HOADON hd = _cHoaDon.Get(item.FK_HOADON.Value);
                     if (Ky == "")
                     {
                         Ky += hd.KY + "/" + hd.NAM + ": " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", (Int32)hd.TONGCONG)
@@ -307,7 +322,7 @@ namespace ThuTien.GUI.Quay
                 if (lstTamThu.Count > 0)
                 {
                     dsBaoCao ds = new dsBaoCao();
-                    HOADON hdIn = _cHoaDon.Get(lstTamThu[0].SoHoaDon);
+                    HOADON hdIn = _cHoaDon.Get(lstTamThu[0].FK_HOADON.Value);
                     DataRow dr = ds.Tables["PhieuTamThu"].NewRow();
                     dr["SoPhieu"] = lstTamThu[0].SoPhieu.ToString().Insert(lstTamThu[0].SoPhieu.ToString().Length - 2, "-");
                     dr["DanhBo"] = lstTamThu[0].DANHBA.Insert(7, " ").Insert(4, " ");
