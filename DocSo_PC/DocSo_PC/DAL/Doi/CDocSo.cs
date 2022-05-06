@@ -429,7 +429,7 @@ namespace DocSo_PC.DAL.Doi
             DataTable dt = new DataTable();
             string sql = "select DanhBa,t.CodeDesc,CSGo=CAST(CSGo as varchar(10)),CSGan,SoThanMoi,NgayThay,NgayCapNhat=CONVERT(varchar(10),NgayCapNhat,103),NVCapNhat"
                             + " from BaoThay b inner join ThamSo t on b.LoaiBT=t.Code "
-                            + " where DanhBa='" + DanhBo + "' and t.CodeType = 'BT' and DATEADD(DAY,90,NgayThay)>=GETDATE() order by NgayCapNhat desc";
+                            + " where DanhBa='" + DanhBo + "' and t.CodeType = 'BT' and DATEADD(DAY,90,NgayThay)>=GETDATE() order by NgayThay desc";
             dt = _cDAL.ExecuteQuery_DataTable(sql);
             sql = "SELECT DanhBa=REPLACE(DANHBO,'-',''),CodeDesc=N'Bồi Thường',CSGo=CAST(TCTB_CSGo as varchar(10)),CSGan=ChiSo,SoThanMoi=SOTHANTLK,NgayThay=NGAYTHICONG,NgayCapNhat='',NVCapNhat='' FROM TANHOA_WATER.dbo.V_HOANGCONGTCTB WHERE DATEADD(DAY,90,NGAYTHICONG)>=GETDATE() and DHN_NGAYKIEMDINH is not null and REPLACE(DANHBO,'-','')='" + DanhBo + "' order by NGAYTHICONG desc";
             dt.Merge(_cDAL.ExecuteQuery_DataTable(sql));

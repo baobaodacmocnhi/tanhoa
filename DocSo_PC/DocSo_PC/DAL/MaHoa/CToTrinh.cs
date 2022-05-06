@@ -91,6 +91,7 @@ namespace DocSo_PC.DAL.MaHoa
                             item.HoTen,
                             item.DiaChi,
                             item.NoiDung,
+                            item.VeViec,
                             CreateBy = itemtableND.HoTen,
                         };
             return _cDAL.LINQToDataTable(query);
@@ -112,6 +113,7 @@ namespace DocSo_PC.DAL.MaHoa
                             item.HoTen,
                             item.DiaChi,
                             item.NoiDung,
+                            item.VeViec,
                             CreateBy = itemtableND.HoTen,
                         };
             return _cDAL.LINQToDataTable(query);
@@ -133,6 +135,7 @@ namespace DocSo_PC.DAL.MaHoa
                             item.HoTen,
                             item.DiaChi,
                             item.NoiDung,
+                            item.VeViec,
                             CreateBy = itemtableND.HoTen,
                         };
             return _cDAL.LINQToDataTable(query);
@@ -154,6 +157,7 @@ namespace DocSo_PC.DAL.MaHoa
                             item.HoTen,
                             item.DiaChi,
                             item.NoiDung,
+                            item.VeViec,
                             CreateBy = itemtableND.HoTen,
                         };
             return _cDAL.LINQToDataTable(query);
@@ -175,6 +179,7 @@ namespace DocSo_PC.DAL.MaHoa
                             item.HoTen,
                             item.DiaChi,
                             item.NoiDung,
+                            item.VeViec,
                             CreateBy = itemtableND.HoTen,
                         };
             return _cDAL.LINQToDataTable(query);
@@ -196,6 +201,7 @@ namespace DocSo_PC.DAL.MaHoa
                             item.HoTen,
                             item.DiaChi,
                             item.NoiDung,
+                            item.VeViec,
                             CreateBy = itemtableND.HoTen,
                         };
             return _cDAL.LINQToDataTable(query);
