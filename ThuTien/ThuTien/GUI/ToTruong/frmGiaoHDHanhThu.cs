@@ -112,7 +112,7 @@ namespace ThuTien.GUI.ToTruong
                     {
                         TongCongTruoc += long.Parse(item.Cells["TongCongTruoc_TG"].Value.ToString());
                         TongCongCuoi += long.Parse(item.Cells["TongCongTruoc_TG"].Value.ToString());
-                        item.Cells["TongCongCuoi_TG"].Value = int.Parse(item.Cells["TongCongCuoi_TG"].Value.ToString()) + int.Parse(item.Cells["TongCongTruoc_TG"].Value.ToString());
+                        item.Cells["TongCongCuoi_TG"].Value = long.Parse(item.Cells["TongCongCuoi_TG"].Value.ToString()) + long.Parse(item.Cells["TongCongTruoc_TG"].Value.ToString());
                     }
                 }
                 txtTongHD_TG.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHD);
