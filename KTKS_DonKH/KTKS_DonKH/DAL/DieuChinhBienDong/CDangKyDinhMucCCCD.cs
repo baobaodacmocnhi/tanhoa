@@ -10,9 +10,17 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 {
     class CDangKyDinhMucCCCD : CDAL
     {
-        public bool checkExists(string CCCD)
+        public bool checkExists(string CCCD, out string Thung)
         {
-            return db.DCBD_DKDM_CCCDs.Any(item => item.CCCD == CCCD && item.CreateBy != null);
+            bool flag = db.DCBD_DKDM_CCCDs.Any(item => item.CCCD == CCCD && item.CreateBy != null);
+            if (flag == true)
+            {
+                DCBD_DKDM_DanhBo en = db.DCBD_DKDM_DanhBos.SingleOrDefault(item => item.ID == db.DCBD_DKDM_CCCDs.SingleOrDefault(itemCT => itemCT.CCCD == CCCD && itemCT.CreateBy != null).IDDanhBo);
+                Thung = "Danh Bộ: " + en.DanhBo + " - Thùng: " + en.Thung + " - STT: " + en.STT;
+            }
+            else
+                Thung = "";
+            return flag;
         }
 
         public bool Them(DCBD_DKDM_DanhBo en, out string Thung)
@@ -32,8 +40,17 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 }
                 else
                 {
-                    en.Thung = db.DCBD_DKDM_DanhBos.Where(item => item.Quan == en.Quan).Max(item => item.Thung);
-                    en.STT = db.DCBD_DKDM_DanhBos.Where(item => item.Quan == en.Quan && en.Thung == en.Thung).Max(item => item.STT) + 1;
+                    int ThungMax = db.DCBD_DKDM_DanhBos.Where(item => item.Quan == en.Quan).Max(item => item.Thung).Value;
+                    if (db.DCBD_DKDM_DanhBos.Where(item => item.Quan == en.Quan && item.Thung == ThungMax).Max(item => item.STT) == 210)
+                    {
+                        en.Thung = ThungMax + 1;
+                        en.STT = 1;
+                    }
+                    else
+                    {
+                        en.Thung = ThungMax;
+                        en.STT = db.DCBD_DKDM_DanhBos.Where(item => item.Quan == en.Quan && item.Thung == ThungMax).Max(item => item.STT) + 1;
+                    }
                 }
                 en.CreateDate = DateTime.Now;
                 en.CreateBy = CTaiKhoan.MaUser;
@@ -81,9 +98,41 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
+        public bool XoaCT(DCBD_DKDM_CCCD en)
+        {
+            try
+            {
+                db.DCBD_DKDM_CCCDs.DeleteOnSubmit(en);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
         public DCBD_DKDM_DanhBo get(int ID)
         {
             return db.DCBD_DKDM_DanhBos.SingleOrDefault(item => item.ID == ID);
+        }
+
+        public DataTable getDS(string DanhBo)
+        {
+            var query = from item in db.DCBD_DKDM_DanhBos
+                        where item.DanhBo == DanhBo && item.CreateBy != null
+                        select new
+                        {
+                            item.ID,
+                            item.DanhBo,
+                            item.SDT,
+                            item.Quan,
+                            item.Thung,
+                            item.STT,
+                            item.CreateDate,
+                        };
+            return LINQToDataTable(query);
         }
 
         public DataTable getDS(DateTime FromCreateDate, DateTime ToCreateDate)
@@ -132,6 +181,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         where item.DanhBo == DanhBo
                         select new
                         {
+                            item.ID,
                             item.DanhBo,
                             item.SDT,
                             SoNK = item.DCBD_DKDM_CCCDs.Count,
@@ -147,6 +197,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         where item.CreateDate.Date >= FromCreateDate.Date && item.CreateDate.Date <= ToCreateDate.Date && item.CreateBy == null
                         select new
                         {
+                            item.ID,
                             item.DanhBo,
                             item.SDT,
                             SoNK = item.DCBD_DKDM_CCCDs.Count,
