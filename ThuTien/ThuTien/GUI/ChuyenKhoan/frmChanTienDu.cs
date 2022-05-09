@@ -71,10 +71,10 @@ namespace ThuTien.GUI.ChuyenKhoan
                     foreach (DataGridViewRow item in dgvHoaDon.Rows)
                         if (item.Cells["Chon"].Value != null && bool.Parse(item.Cells["Chon"].Value.ToString()))
                         {
-                            HOADON hoadon = _cHoaDon.Get(item.Cells["SoHoaDon_HD"].Value.ToString());
+                            HOADON hoadon = _cHoaDon.Get(int.Parse(item.Cells["MaHD_HD"].Value.ToString()));
                             if (hoadon.MaNV_DangNgan != null)
                             {
-                                MessageBox.Show("Danh Bộ " + hoadon.DANHBA + " kỳ " + hoadon.KY + "/" + hoadon.NAM + " đã Đăng Ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Danh Bộ " + hoadon.DANHBA + " Kỳ " + hoadon.KY + "/" + hoadon.NAM + " đã Đăng Ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
                             hoadon.KhoaTienDu = true;
@@ -105,10 +105,10 @@ namespace ThuTien.GUI.ChuyenKhoan
                 {
                     foreach (DataGridViewRow item in dgvDSChanTienDu.SelectedRows)
                     {
-                        HOADON hoadon = _cHoaDon.Get(item.Cells["SoHoaDon_Chan"].Value.ToString());
+                        HOADON hoadon = _cHoaDon.Get(int.Parse(item.Cells["MaHD_Chan"].Value.ToString()));
                         if (hoadon.MaNV_DangNgan != null)
                         {
-                            MessageBox.Show("Danh Bộ " + hoadon.DANHBA + " kỳ " + hoadon.KY + "/" + hoadon.NAM + " đã Đăng Ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Danh Bộ " + hoadon.DANHBA + " Kỳ " + hoadon.KY + "/" + hoadon.NAM + " đã Đăng Ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         hoadon.KhoaTienDu = false;
@@ -184,7 +184,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 {
-                    HOADON hoadon = _cHoaDon.Get(dgvDSChanTienDu["SoHoaDon_Chan", e.RowIndex].Value.ToString());
+                    HOADON hoadon = _cHoaDon.Get(int.Parse(dgvDSChanTienDu["MaHD_Chan", e.RowIndex].Value.ToString()));
                     if (bool.Parse(e.FormattedValue.ToString()))
                         hoadon.NGAYGIAITRACH = DateTime.Now;
                     else
@@ -204,7 +204,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 if (chkAll.Checked)
                     foreach (DataGridViewRow item in dgvDSChanTienDu.Rows)
                     {
-                        HOADON hoadon = _cHoaDon.Get(item.Cells["SoHoaDon_Chan"].Value.ToString());
+                        HOADON hoadon = _cHoaDon.Get(int.Parse(item.Cells["MaHD_Chan"].Value.ToString()));
                         hoadon.NGAYGIAITRACH = DateTime.Now;
                         hoadon.ChanTienDu = true;
                         _cHoaDon.Sua(hoadon);
@@ -212,7 +212,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 else
                     foreach (DataGridViewRow item in dgvDSChanTienDu.Rows)
                     {
-                        HOADON hoadon = _cHoaDon.Get(item.Cells["SoHoaDon_Chan"].Value.ToString());
+                        HOADON hoadon = _cHoaDon.Get(int.Parse(item.Cells["MaHD_Chan"].Value.ToString()));
                         hoadon.NGAYGIAITRACH = null;
                         hoadon.ChanTienDu = false;
                         _cHoaDon.Sua(hoadon);
@@ -246,7 +246,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                     DataTable dt = _cHoaDon.GetDSTonByDanhBo(item[0].ToString().Trim().Replace(" ", ""));
                                     foreach (DataRow itemB in dt.Rows)
                                     {
-                                        HOADON hoadon = _cHoaDon.Get(itemB["SoHoaDon"].ToString());
+                                        HOADON hoadon = _cHoaDon.Get(itemB["MaHD"].ToString());
                                         hoadon.KhoaTienDu = true;
                                         hoadon.ChanTienDu = true;
                                         hoadon.NgayChanTienDu = DateTime.Now;
@@ -288,7 +288,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     foreach (DataGridViewRow item in dgvHoaDon_DCHD.Rows)
                         if (item.Cells["Chon_DCHD"].Value != null && bool.Parse(item.Cells["Chon_DCHD"].Value.ToString()))
                         {
-                            HOADON hoadon = _cHoaDon.Get(item.Cells["SoHoaDon_HD_DCHD"].Value.ToString());
+                            HOADON hoadon = _cHoaDon.Get(int.Parse(item.Cells["MaHD_HD_DCHD"].Value.ToString()));
                             if (hoadon.NGAYGIAITRACH != null)
                             {
                                 MessageBox.Show("Danh Bộ " + hoadon.DANHBA + " kỳ " + hoadon.KY + "/" + hoadon.NAM + " đã Đăng Ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -332,10 +332,10 @@ namespace ThuTien.GUI.ChuyenKhoan
                 {
                     foreach (DataGridViewRow item in dgvDCHD.SelectedRows)
                     {
-                        HOADON hoadon = _cHoaDon.Get(item.Cells["SoHoaDon_DCHD"].Value.ToString());
+                        HOADON hoadon = _cHoaDon.Get(int.Parse(item.Cells["MaHD_DCHD"].Value.ToString()));
                         if (hoadon.NGAYGIAITRACH != null)
                         {
-                            MessageBox.Show("Danh Bộ " + hoadon.DANHBA + " kỳ " + hoadon.KY + "/" + hoadon.NAM + " đã Đăng Ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Danh Bộ " + hoadon.DANHBA + " Kỳ " + hoadon.KY + "/" + hoadon.NAM + " đã Đăng Ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         if (hoadon.DCHD == true)
