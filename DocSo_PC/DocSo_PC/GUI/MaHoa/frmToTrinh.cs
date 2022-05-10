@@ -579,7 +579,7 @@ namespace DocSo_PC.GUI.MaHoa
             if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
             {
                 if (_veviec != null)
-                    if (txtVeViec.Text.Trim() != "" && txtNoiDung.Text.Trim() != "" && txtNoiNhan.Text.Trim() != "")
+                    if (txtVeViec_VV.Text.Trim() != "" && txtNoiDung_VV.Text.Trim() != "" && txtNoiNhan_VV.Text.Trim() != "")
                     {
                         _veviec.Name = txtVeViec_VV.Text.Trim();
                         _veviec.NoiDung = txtNoiDung_VV.Text;
