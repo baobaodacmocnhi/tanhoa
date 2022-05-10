@@ -121,6 +121,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         public DataTable getDS(string DanhBo)
         {
             var query = from item in db.DCBD_DKDM_DanhBos
+                        join itemND in db.Users on item.CreateBy equals itemND.MaU into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
                         where item.DanhBo == DanhBo && item.CreateBy != null
                         select new
                         {
@@ -131,6 +133,10 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             item.Thung,
                             item.STT,
                             item.CreateDate,
+                            item.DCBD,
+                            item.DCBD_MaDon,
+                            item.DCBD_STT,
+                            CreateBy=itemtableND.HoTen,
                         };
             return LINQToDataTable(query);
         }
@@ -151,6 +157,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             item.STT,
                             item.CreateDate,
                             CreateBy = itemtableND.HoTen,
+                            item.DCBD,
+                            item.DCBD_MaDon,
+                            item.DCBD_STT,
                         };
             return LINQToDataTable(query);
         }
@@ -171,6 +180,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             item.STT,
                             item.CreateDate,
                             CreateBy = itemtableND.HoTen,
+                            item.DCBD,
+                            item.DCBD_MaDon,
+                            item.DCBD_STT,
                         };
             return LINQToDataTable(query);
         }

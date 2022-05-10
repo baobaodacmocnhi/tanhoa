@@ -24,6 +24,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CDonTu _cDonTu = new CDonTu();
         CThuTien _cThuTien = new CThuTien();
         CDangKyDinhMucCCCD _cDKDM = new CDangKyDinhMucCCCD();
+        CDHN _cDHN = new CDHN();
         HOADON _hoadon = null;
         DCBD_DKDM_DanhBo _danhbo = null;
         bool _flag = false;
@@ -48,6 +49,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtDienThoai.Text = "";
             txtSoNK.Text = "";
             chkChungTu.Checked = false;
+            chkNhaTro.Checked = false;
             txtMaDon.Text = "";
             dgvDanhSach.Rows.Clear();
             _hoadon = null;
@@ -85,6 +87,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         en.SDT = txtDienThoai.Text.Trim();
                         en.Quan = _hoadon.Quan;
                         en.ChungTu = chkChungTu.Checked;
+                        en.NhaTro = chkNhaTro.Checked;
                         en.MaDon = txtMaDon.Text.Trim();
                         foreach (DataGridViewRow item in dgvDanhSach.Rows)
                             if (item.Cells["CCCD"].Value != null && item.Cells["CCCD"].Value.ToString() != "")
@@ -135,6 +138,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         _danhbo.DanhBo = txtDanhBo.Text.Trim();
                         _danhbo.SDT = txtDienThoai.Text.Trim();
                         _danhbo.ChungTu = chkChungTu.Checked;
+                        _danhbo.NhaTro = chkNhaTro.Checked;
                         _danhbo.MaDon = txtMaDon.Text.Trim();
                         foreach (DataGridViewRow item in dgvDanhSach.Rows)
                             if (item.Cells["ID"].Value != null && item.Cells["ID"].Value.ToString() != "")
@@ -302,7 +306,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (txtDanhBo_DS.Text.Trim() != "")
                 dgvDanhSach2.DataSource = _cDKDM.getDS(txtDanhBo_DS.Text.Trim());
             else
-                if (CTaiKhoan.TruongPhong || CTaiKhoan.Admin)
+                if (CTaiKhoan.TruongPhong || CTaiKhoan.Admin || CTaiKhoan.ThuKy)
                     dgvDanhSach2.DataSource = _cDKDM.getDS(dateTu.Value, dateDen.Value);
                 else
                     dgvDanhSach2.DataSource = _cDKDM.getDS(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
@@ -322,6 +326,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     txtSoNK.Text = _danhbo.DCBD_DKDM_CCCDs.Count.ToString();
                     txtMaDon.Text = _danhbo.MaDon;
                     chkChungTu.Checked = _danhbo.ChungTu;
+                    chkNhaTro.Checked = _danhbo.NhaTro;
                     dgvDanhSach.Rows.Clear();
                     foreach (DCBD_DKDM_CCCD item in _danhbo.DCBD_DKDM_CCCDs.ToList())
                     {
@@ -357,6 +362,26 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     btnThem.PerformClick();
                 }
+        }
+
+        private void btnDCBD_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CTaiKhoan.CheckQuyen("mnuDCBD", "Them"))
+                {
+                    if (MessageBox.Show("Bạn có chắc chắn?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         //
@@ -398,7 +423,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         dr["SoPhieu"] = en.ID;
                         dr["DanhBo"] = en.DanhBo;
                         dr["HoTen"] = hd.TENKH;
-                        dr["DiaChi"] = hd.SO + " " + hd.DUONG;
+                        dr["DiaChi"] = hd.SO + " " + hd.DUONG + _cDHN.GetPhuongQuan(hd.Quan, hd.Phuong); ;
                         dr["HopDong"] = en.SDT;
                         dr["DinhMuc"] = en.DCBD_DKDM_CCCDs.Count * 4;
                         dr["MSThue"] = itemCT.DCThuongTru;
@@ -406,6 +431,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         dr["GiaBieu"] = itemCT.NgaySinh.Value.ToString("dd/MM/yyyy");
                         dr["DinhMucHN"] = itemCT.CCCD;
                         dr["HoTenBD"] = itemCT.HoTen;
+                        dr["MaQuanPhuong"] = hd.Quan;
                         dsBaoCao.Tables["DCBD"].Rows.Add(dr);
                     }
                 }
@@ -426,6 +452,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
 
 
     }

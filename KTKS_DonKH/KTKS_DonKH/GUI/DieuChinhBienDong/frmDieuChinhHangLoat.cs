@@ -95,11 +95,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             //dgvDanhSach.DataSource = _cDCBD.LINQToDataTable(_db.DieuChinhHangLoats.Where(item => item.Nam == int.Parse(txtNam.Text.Trim()) && item.Ky == int.Parse(txtKy.Text.Trim()) && item.Dot == int.Parse(txtDot.Text.Trim())).OrderBy(item => item.STT2).ToList());
         }
 
-        private void dgvDanhSach_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void dgvDanhSach_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             using (SolidBrush b = new SolidBrush(dgvDanhSach.RowHeadersDefaultCellStyle.ForeColor))
@@ -508,5 +503,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }

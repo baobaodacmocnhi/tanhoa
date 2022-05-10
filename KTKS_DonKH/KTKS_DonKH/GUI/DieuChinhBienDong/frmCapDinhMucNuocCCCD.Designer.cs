@@ -59,6 +59,8 @@
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnKiemTra = new System.Windows.Forms.Button();
+            this.btnDCBD = new System.Windows.Forms.Button();
             this.txtDanhBo_DS = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.dgvDanhSach2 = new System.Windows.Forms.DataGridView();
@@ -70,6 +72,10 @@
             this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID_DS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DCBD = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.DCBD_MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DCBD_STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnXem = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.dateDen = new System.Windows.Forms.DateTimePicker();
@@ -80,11 +86,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.btnIn_Online = new System.Windows.Forms.Button();
             this.dgvDanhSach_Online = new System.Windows.Forms.DataGridView();
-            this.btnXem_Online = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.dateDen_Online = new System.Windows.Forms.DateTimePicker();
-            this.label7 = new System.Windows.Forms.Label();
-            this.dateTu_Online = new System.Windows.Forms.DateTimePicker();
             this.ID_Online = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -93,6 +94,12 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateBy_Online = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnXem_Online = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.dateDen_Online = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
+            this.dateTu_Online = new System.Windows.Forms.DateTimePicker();
+            this.chkNhaTro = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
@@ -117,6 +124,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.chkNhaTro);
             this.tabPage1.Controls.Add(this.btnSua);
             this.tabPage1.Controls.Add(this.txtMaDon);
             this.tabPage1.Controls.Add(this.label10);
@@ -193,7 +201,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(465, 87);
+            this.label8.Location = new System.Drawing.Point(568, 87);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(41, 13);
             this.label8.TabIndex = 16;
@@ -201,7 +209,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(384, 82);
+            this.btnThem.Location = new System.Drawing.Point(487, 82);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 23);
             this.btnThem.TabIndex = 15;
@@ -370,6 +378,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btnKiemTra);
+            this.tabPage2.Controls.Add(this.btnDCBD);
             this.tabPage2.Controls.Add(this.txtDanhBo_DS);
             this.tabPage2.Controls.Add(this.label12);
             this.tabPage2.Controls.Add(this.dgvDanhSach2);
@@ -385,6 +395,25 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Danh Sách";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnKiemTra
+            // 
+            this.btnKiemTra.Location = new System.Drawing.Point(569, 4);
+            this.btnKiemTra.Name = "btnKiemTra";
+            this.btnKiemTra.Size = new System.Drawing.Size(75, 23);
+            this.btnKiemTra.TabIndex = 32;
+            this.btnKiemTra.Text = "Kiểm Tra";
+            this.btnKiemTra.UseVisualStyleBackColor = true;
+            // 
+            // btnDCBD
+            // 
+            this.btnDCBD.Location = new System.Drawing.Point(650, 4);
+            this.btnDCBD.Name = "btnDCBD";
+            this.btnDCBD.Size = new System.Drawing.Size(75, 23);
+            this.btnDCBD.TabIndex = 31;
+            this.btnDCBD.Text = "ĐCBĐ";
+            this.btnDCBD.UseVisualStyleBackColor = true;
+            this.btnDCBD.Click += new System.EventHandler(this.btnDCBD_Click);
             // 
             // txtDanhBo_DS
             // 
@@ -424,10 +453,14 @@
             this.Thung,
             this.STT,
             this.MaDon,
-            this.ID_DS});
+            this.ID_DS,
+            this.CreateBy,
+            this.DCBD,
+            this.DCBD_MaDon,
+            this.DCBD_STT});
             this.dgvDanhSach2.Location = new System.Drawing.Point(6, 32);
             this.dgvDanhSach2.Name = "dgvDanhSach2";
-            this.dgvDanhSach2.Size = new System.Drawing.Size(662, 501);
+            this.dgvDanhSach2.Size = new System.Drawing.Size(959, 501);
             this.dgvDanhSach2.TabIndex = 19;
             this.dgvDanhSach2.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvDanhSach2_CellMouseDoubleClick);
             this.dgvDanhSach2.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhSach2_RowPostPaint);
@@ -455,6 +488,7 @@
             this.Quan.DataPropertyName = "Quan";
             this.Quan.HeaderText = "Quận";
             this.Quan.Name = "Quan";
+            this.Quan.Width = 50;
             // 
             // Thung
             // 
@@ -482,6 +516,31 @@
             this.ID_DS.HeaderText = "ID";
             this.ID_DS.Name = "ID_DS";
             this.ID_DS.Visible = false;
+            // 
+            // CreateBy
+            // 
+            this.CreateBy.DataPropertyName = "CreateBy";
+            this.CreateBy.HeaderText = "Người Lập";
+            this.CreateBy.Name = "CreateBy";
+            // 
+            // DCBD
+            // 
+            this.DCBD.DataPropertyName = "DCBD";
+            this.DCBD.HeaderText = "ĐCBĐ";
+            this.DCBD.Name = "DCBD";
+            this.DCBD.Width = 50;
+            // 
+            // DCBD_MaDon
+            // 
+            this.DCBD_MaDon.DataPropertyName = "DCBD_MaDon";
+            this.DCBD_MaDon.HeaderText = "DCBD_MaDon";
+            this.DCBD_MaDon.Name = "DCBD_MaDon";
+            // 
+            // DCBD_STT
+            // 
+            this.DCBD_STT.DataPropertyName = "DCBD_STT";
+            this.DCBD_STT.HeaderText = "DCBD_STT";
+            this.DCBD_STT.Name = "DCBD_STT";
             // 
             // btnXem
             // 
@@ -602,52 +661,6 @@
             this.dgvDanhSach_Online.TabIndex = 25;
             this.dgvDanhSach_Online.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhSach_Online_RowPostPaint);
             // 
-            // btnXem_Online
-            // 
-            this.btnXem_Online.Location = new System.Drawing.Point(488, 4);
-            this.btnXem_Online.Name = "btnXem_Online";
-            this.btnXem_Online.Size = new System.Drawing.Size(75, 23);
-            this.btnXem_Online.TabIndex = 24;
-            this.btnXem_Online.Text = "Xem";
-            this.btnXem_Online.UseVisualStyleBackColor = true;
-            this.btnXem_Online.Click += new System.EventHandler(this.btnXem_Online_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(165, 9);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(55, 13);
-            this.label6.TabIndex = 22;
-            this.label6.Text = "Đến Ngày";
-            // 
-            // dateDen_Online
-            // 
-            this.dateDen_Online.CustomFormat = "dd/MM/yyyy";
-            this.dateDen_Online.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDen_Online.Location = new System.Drawing.Point(226, 6);
-            this.dateDen_Online.Name = "dateDen_Online";
-            this.dateDen_Online.Size = new System.Drawing.Size(95, 20);
-            this.dateDen_Online.TabIndex = 23;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(10, 9);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(48, 13);
-            this.label7.TabIndex = 20;
-            this.label7.Text = "Từ Ngày";
-            // 
-            // dateTu_Online
-            // 
-            this.dateTu_Online.CustomFormat = "dd/MM/yyyy";
-            this.dateTu_Online.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTu_Online.Location = new System.Drawing.Point(64, 6);
-            this.dateTu_Online.Name = "dateTu_Online";
-            this.dateTu_Online.Size = new System.Drawing.Size(95, 20);
-            this.dateTu_Online.TabIndex = 21;
-            // 
             // ID_Online
             // 
             this.ID_Online.DataPropertyName = "ID";
@@ -700,6 +713,62 @@
             this.CreateBy_Online.DataPropertyName = "CreateBy";
             this.CreateBy_Online.HeaderText = "Người Lập";
             this.CreateBy_Online.Name = "CreateBy_Online";
+            // 
+            // btnXem_Online
+            // 
+            this.btnXem_Online.Location = new System.Drawing.Point(488, 4);
+            this.btnXem_Online.Name = "btnXem_Online";
+            this.btnXem_Online.Size = new System.Drawing.Size(75, 23);
+            this.btnXem_Online.TabIndex = 24;
+            this.btnXem_Online.Text = "Xem";
+            this.btnXem_Online.UseVisualStyleBackColor = true;
+            this.btnXem_Online.Click += new System.EventHandler(this.btnXem_Online_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(165, 9);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(55, 13);
+            this.label6.TabIndex = 22;
+            this.label6.Text = "Đến Ngày";
+            // 
+            // dateDen_Online
+            // 
+            this.dateDen_Online.CustomFormat = "dd/MM/yyyy";
+            this.dateDen_Online.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateDen_Online.Location = new System.Drawing.Point(226, 6);
+            this.dateDen_Online.Name = "dateDen_Online";
+            this.dateDen_Online.Size = new System.Drawing.Size(95, 20);
+            this.dateDen_Online.TabIndex = 23;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(10, 9);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(48, 13);
+            this.label7.TabIndex = 20;
+            this.label7.Text = "Từ Ngày";
+            // 
+            // dateTu_Online
+            // 
+            this.dateTu_Online.CustomFormat = "dd/MM/yyyy";
+            this.dateTu_Online.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTu_Online.Location = new System.Drawing.Point(64, 6);
+            this.dateTu_Online.Name = "dateTu_Online";
+            this.dateTu_Online.Size = new System.Drawing.Size(95, 20);
+            this.dateTu_Online.TabIndex = 21;
+            // 
+            // chkNhaTro
+            // 
+            this.chkNhaTro.AutoSize = true;
+            this.chkNhaTro.Location = new System.Drawing.Point(384, 86);
+            this.chkNhaTro.Name = "chkNhaTro";
+            this.chkNhaTro.Size = new System.Drawing.Size(65, 17);
+            this.chkNhaTro.TabIndex = 18;
+            this.chkNhaTro.Text = "Nhà Trọ";
+            this.chkNhaTro.UseVisualStyleBackColor = true;
             // 
             // frmCapDinhMucNuocCCCD
             // 
@@ -767,14 +836,6 @@
         private System.Windows.Forms.TextBox txtDanhBo_Online;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnSua;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DienThoai;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quan;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Thung;
-        private System.Windows.Forms.DataGridViewTextBoxColumn STT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaDon;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID_DS;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgaySinh;
@@ -791,5 +852,20 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy_Online;
+        private System.Windows.Forms.Button btnDCBD;
+        private System.Windows.Forms.Button btnKiemTra;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DienThoai;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Thung;
+        private System.Windows.Forms.DataGridViewTextBoxColumn STT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaDon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_DS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn DCBD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DCBD_MaDon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DCBD_STT;
+        private System.Windows.Forms.CheckBox chkNhaTro;
     }
 }

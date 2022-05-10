@@ -16,14 +16,14 @@ namespace KTKS_DonKH.BaoCao.DieuChinhBienDong {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class rptDKDM_CCCD : ReportClass {
+    public class rptDSPhieuDCBD_15112019 : ReportClass {
         
-        public rptDKDM_CCCD() {
+        public rptDSPhieuDCBD_15112019() {
         }
         
         public override string ResourceName {
             get {
-                return "rptDKDM_CCCD.rpt";
+                return "rptDSPhieuDCBD_15112019.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace KTKS_DonKH.BaoCao.DieuChinhBienDong {
         
         public override string FullResourceName {
             get {
-                return "KTKS_DonKH.BaoCao.DieuChinhBienDong.rptDKDM_CCCD.rpt";
+                return "KTKS_DonKH.BaoCao.DieuChinhBienDong.rptDSPhieuDCBD_15112019.rpt";
             }
             set {
                 // Do nothing
@@ -66,7 +66,7 @@ namespace KTKS_DonKH.BaoCao.DieuChinhBienDong {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection2 {
+        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection1 {
             get {
                 return this.ReportDefinition.Sections[2];
             }
@@ -74,7 +74,7 @@ namespace KTKS_DonKH.BaoCao.DieuChinhBienDong {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection1 {
+        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection2 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -90,7 +90,7 @@ namespace KTKS_DonKH.BaoCao.DieuChinhBienDong {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection1 {
+        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection2 {
             get {
                 return this.ReportDefinition.Sections[5];
             }
@@ -98,7 +98,7 @@ namespace KTKS_DonKH.BaoCao.DieuChinhBienDong {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection2 {
+        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection1 {
             get {
                 return this.ReportDefinition.Sections[6];
             }
@@ -122,9 +122,9 @@ namespace KTKS_DonKH.BaoCao.DieuChinhBienDong {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedrptDKDM_CCCD : Component, ICachedReport {
+    public class CachedrptDSPhieuDCBD_15112019 : Component, ICachedReport {
         
-        public CachedrptDKDM_CCCD() {
+        public CachedrptDSPhieuDCBD_15112019() {
         }
         
         [Browsable(false)]
@@ -161,7 +161,7 @@ namespace KTKS_DonKH.BaoCao.DieuChinhBienDong {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            rptDKDM_CCCD rpt = new rptDKDM_CCCD();
+            rptDSPhieuDCBD_15112019 rpt = new rptDSPhieuDCBD_15112019();
             rpt.Site = this.Site;
             return rpt;
         }
