@@ -214,6 +214,39 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             return LINQToDataTable(query);
         }
 
+        public DataTable getDS_KiemTra_Tang(DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            string sql = "select ID,DanhBo,SDT,Quan,Thung,a.STT,a.CreateDate,CreateBy = b.HoTen,DCBD,DCBD_MaDon,DCBD_STT"
+                        + " ,DinhMucCu=(select top 1 DM from server9.HOADON_TA.dbo.HOADON where DANHBA=a.DanhBo order by ID_HOADON desc)"
+                        + " ,DinhMucMoi = (select COUNT(*) from DCBD_DKDM_CCCD where IDDanhBo=a.ID)*4"
+                        + " from DCBD_DKDM_DanhBo a,Users b where a.CreateBy=b.MaU"
+                        + " and CAST(a.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(a.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'"
+                        + " and (select top 1 DM from server9.HOADON_TA.dbo.HOADON where DANHBA=a.DanhBo order by ID_HOADON desc)<(select COUNT(*) from DCBD_DKDM_CCCD where IDDanhBo=a.ID)*4";
+            return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable getDS_KiemTra_Giam(DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            string sql = "select ID,DanhBo,SDT,Quan,Thung,a.STT,a.CreateDate,CreateBy = b.HoTen,DCBD,DCBD_MaDon,DCBD_STT"
+                        + " ,DinhMucCu=(select top 1 DM from server9.HOADON_TA.dbo.HOADON where DANHBA=a.DanhBo order by ID_HOADON desc)"
+                        + " ,DinhMucMoi = (select COUNT(*) from DCBD_DKDM_CCCD where IDDanhBo=a.ID)*4"
+                        + " from DCBD_DKDM_DanhBo a,Users b where a.CreateBy=b.MaU"
+                        + " and CAST(a.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(a.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'"
+                        + " and (select top 1 DM from server9.HOADON_TA.dbo.HOADON where DANHBA=a.DanhBo order by ID_HOADON desc)>(select COUNT(*) from DCBD_DKDM_CCCD where IDDanhBo=a.ID)*4";
+            return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable getDS_KiemTra_GiuNguyen(DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            string sql = "select ID,DanhBo,SDT,Quan,Thung,a.STT,a.CreateDate,CreateBy = b.HoTen,DCBD,DCBD_MaDon,DCBD_STT"
+                        + " ,DinhMucCu=(select top 1 DM from server9.HOADON_TA.dbo.HOADON where DANHBA=a.DanhBo order by ID_HOADON desc)"
+                        + " ,DinhMucMoi = (select COUNT(*) from DCBD_DKDM_CCCD where IDDanhBo=a.ID)*4"
+                        + " from DCBD_DKDM_DanhBo a,Users b where a.CreateBy=b.MaU"
+                        + " and CAST(a.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(a.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'"
+                        + " and (select top 1 DM from server9.HOADON_TA.dbo.HOADON where DANHBA=a.DanhBo order by ID_HOADON desc)=(select COUNT(*) from DCBD_DKDM_CCCD where IDDanhBo=a.ID)*4";
+            return ExecuteQuery_DataTable(sql);
+        }
+
         public DataTable getDS(int CreateBy, DateTime FromCreateDate, DateTime ToCreateDate)
         {
             var query = from item in db.DCBD_DKDM_DanhBos

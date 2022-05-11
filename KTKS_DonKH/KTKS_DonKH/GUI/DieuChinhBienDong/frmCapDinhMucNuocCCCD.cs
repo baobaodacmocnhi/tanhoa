@@ -24,6 +24,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CDonTu _cDonTu = new CDonTu();
         CThuTien _cThuTien = new CThuTien();
         CDangKyDinhMucCCCD _cDKDM = new CDangKyDinhMucCCCD();
+        CDCBD _cDCBD = new CDCBD();
+        CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         CDHN _cDHN = new CDHN();
         HOADON _hoadon = null;
         DCBD_DKDM_DanhBo _danhbo = null;
@@ -378,11 +380,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 if (CTaiKhoan.CheckQuyen("mnuDCBD", "Them"))
                 {
-                    dgvDanhSach2.DataSource = _cDKDM.getDS(dateTu.Value, dateDen.Value);
-                    foreach (DataGridViewRow item in dgvDanhSach2.Rows)
-                    {
-
-                    }
+                    if (radTang.Checked)
+                        dgvDanhSach2.DataSource = _cDKDM.getDS_KiemTra_Tang(dateTu.Value, dateDen.Value);
+                    else
+                        if (radGiam.Checked)
+                            dgvDanhSach2.DataSource = _cDKDM.getDS_KiemTra_Giam(dateTu.Value, dateDen.Value);
+                        else
+                            if (radGiuNguyen.Checked)
+                                dgvDanhSach2.DataSource = _cDKDM.getDS_KiemTra_GiuNguyen(dateTu.Value, dateDen.Value);
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -401,7 +406,100 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     if (MessageBox.Show("Bạn có chắc chắn?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
+                        foreach (DataGridViewRow item in dgvDanhSach2.Rows)
+                            if (item.Cells["MaDon"].Value.ToString() != "")
+                            {
+                                DonTu_ChiTiet dontu_ChiTiet = _cDonTu.get_ChiTiet(int.Parse(item.Cells["MaDon"].Value.ToString()), 1);
+                                HOADON hoadon = _cThuTien.GetMoiNhat(dontu_ChiTiet.DanhBo);
+                                DCBD_ChiTietBienDong ctdcbd = new DCBD_ChiTietBienDong();
 
+                                if (dontu_ChiTiet != null)
+                                {
+                                    if (_cDCBD.checkExist(dontu_ChiTiet.MaDon.Value) == false)
+                                    {
+                                        DCBD dcbd = new DCBD();
+                                        dcbd.MaDonMoi = dontu_ChiTiet.MaDon.Value;
+                                        _cDCBD.Them(dcbd);
+                                    }
+
+                                    ctdcbd.MaDCBD = _cDCBD.get(dontu_ChiTiet.MaDon.Value).MaDCBD;
+                                    ctdcbd.STT = dontu_ChiTiet.STT.Value;
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Chưa nhập Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+
+                                ctdcbd.DanhBo = hoadon.DANHBA;
+                                ctdcbd.HopDong = hoadon.HOPDONG;
+                                ctdcbd.HoTen = hoadon.TENKH;
+                                ctdcbd.DiaChi = hoadon.SO + " " + hoadon.DUONG + _cDHN.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
+                                ctdcbd.MaQuanPhuong = hoadon.Quan + " " + hoadon.Phuong;
+                                ctdcbd.Ky = hoadon.KY.ToString();
+                                ctdcbd.Nam = hoadon.NAM.ToString();
+                                ctdcbd.Phuong = hoadon.Phuong;
+                                ctdcbd.Quan = hoadon.Quan;
+                                ctdcbd.MSThue = hoadon.MST;
+                                ctdcbd.GiaBieu = hoadon.GB;
+                                if (hoadon.DM != null)
+                                    ctdcbd.DinhMuc = hoadon.DM;
+                                else
+                                    ctdcbd.DinhMuc = null;
+                                if (hoadon.DinhMucHN != null)
+                                    ctdcbd.DinhMucHN = hoadon.DinhMucHN;
+                                else
+                                    ctdcbd.DinhMucHN = null;
+                                ctdcbd.SH = hoadon.TILESH.ToString();
+                                ctdcbd.SX = hoadon.TILESX.ToString();
+                                ctdcbd.DV = hoadon.TILEDV.ToString();
+                                ctdcbd.HCSN = hoadon.TILEHCSN.ToString();
+                                ctdcbd.Dot = _cDHN.GetDot(hoadon.DANHBA);
+                                ctdcbd.HieuLucKy = "";
+                                ctdcbd.DienThoai = txtDienThoai.Text.Trim();
+
+                                ///Biến lưu Điều Chỉnh về gì (Họ Tên,Địa Chỉ,Định Mức,Giá Biểu,MSThuế)
+                                string ThongTin = "";
+                                ///Định Mức
+                                if (item.Cells["DinhMucCu"].Value.ToString() != item.Cells["DinhMucMoi"].Value.ToString())
+                                {
+                                    if (string.IsNullOrEmpty(ThongTin) == true)
+                                        ThongTin += "Định Mức";
+                                    else
+                                        ThongTin += ". Định Mức";
+                                    ctdcbd.DinhMuc_BD = int.Parse(item.Cells["DinhMucMoi"].Value.ToString());
+                                }
+                                //if (txtDinhMucHN_BD.Text.Trim() != "" && txtDinhMucHN_BD.Text.Trim() != txtDinhMucHN.Text.Trim())
+                                //{
+                                //    if (string.IsNullOrEmpty(ThongTin) == true)
+                                //        ThongTin += "Định Mức Nghèo";
+                                //    else
+                                //        ThongTin += ". Định Mức Nghèo";
+                                //    ctdcbd.DinhMucHN_BD = int.Parse(txtDinhMucHN_BD.Text.Trim());
+                                //}
+                                ctdcbd.ThongTin = ThongTin;
+                                    BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                                    if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                        ctdcbd.ChucVu = "GIÁM ĐỐC";
+                                    else
+                                        ctdcbd.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                                    ctdcbd.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                                    ctdcbd.PhieuDuocKy = true;
+                                //không chạy transaction đc vì hàm xử lý hiệu lực kỳ
+                                if (_cDCBD.ThemDCBD(ctdcbd))
+                                {
+                                    if (dontu_ChiTiet != null)
+                                    {
+                                        if (_cDonTu.Them_LichSu(ctdcbd.CreateDate.Value, "DCBD", "Đã Điều Chỉnh Biến Động, " + ctdcbd.ThongTin, (int)ctdcbd.MaCTDCBD, dontu_ChiTiet.MaDon.Value, dontu_ChiTiet.STT.Value) == true)
+                                        {
+                                        }
+                                    }
+                                    //add chứng từ
+
+                                    MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    Clear();
+                                }
+                            }
                     }
                 }
                 else
