@@ -233,7 +233,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                     itemCTBamChi.DayChi,
                                     itemCTBamChi.TheoYeuCau,
                                     itemCTBamChi.MaSoBC,
-                                    itemCTBamChi.NiemChi,
+                                    itemCTBamChi.NiemChi,itemCTBamChi.MauSac,
                                     CreateBy = itemUser.HoTen,
                                     itemCTBamChi.NgayQuyetToan,
                                 };
@@ -260,7 +260,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                 itemCTBamChi.DayChi,
                                 itemCTBamChi.TheoYeuCau,
                                 itemCTBamChi.MaSoBC,
-                                itemCTBamChi.NiemChi,
+                                itemCTBamChi.NiemChi,itemCTBamChi.MauSac,
                                 CreateBy = itemUser.HoTen,
                                 itemCTBamChi.NgayQuyetToan,
                             };
@@ -287,7 +287,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                 itemCTBamChi.DayChi,
                                 itemCTBamChi.TheoYeuCau,
                                 itemCTBamChi.MaSoBC,
-                                itemCTBamChi.NiemChi,
+                                itemCTBamChi.NiemChi,itemCTBamChi.MauSac,
                                 CreateBy = itemUser.HoTen,
                                 itemCTBamChi.NgayQuyetToan,
                             };
@@ -314,7 +314,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                 itemCTBamChi.DayChi,
                                 itemCTBamChi.TheoYeuCau,
                                 itemCTBamChi.MaSoBC,
-                                itemCTBamChi.NiemChi,
+                                itemCTBamChi.NiemChi,itemCTBamChi.MauSac,
                                 CreateBy = itemUser.HoTen,
                                 itemCTBamChi.NgayQuyetToan,
                             };
@@ -348,7 +348,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                     itemCTBamChi.DayChi,
                                     itemCTBamChi.TheoYeuCau,
                                     itemCTBamChi.MaSoBC,
-                                    itemCTBamChi.NiemChi,
+                                    itemCTBamChi.NiemChi,itemCTBamChi.MauSac,
                                     CreateBy = itemUser.HoTen,
                                     itemCTBamChi.NgayQuyetToan,
                                 };
@@ -375,7 +375,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                 itemCTBamChi.DayChi,
                                 itemCTBamChi.TheoYeuCau,
                                 itemCTBamChi.MaSoBC,
-                                itemCTBamChi.NiemChi,
+                                itemCTBamChi.NiemChi,itemCTBamChi.MauSac,
                                 CreateBy = itemUser.HoTen,
                                 itemCTBamChi.NgayQuyetToan,
                             };
@@ -402,7 +402,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                 itemCTBamChi.DayChi,
                                 itemCTBamChi.TheoYeuCau,
                                 itemCTBamChi.MaSoBC,
-                                itemCTBamChi.NiemChi,
+                                itemCTBamChi.NiemChi,itemCTBamChi.MauSac,
                                 CreateBy = itemUser.HoTen,
                                 itemCTBamChi.NgayQuyetToan,
                             };
@@ -429,7 +429,7 @@ namespace KTKS_DonKH.DAL.BamChi
                                 itemCTBamChi.DayChi,
                                 itemCTBamChi.TheoYeuCau,
                                 itemCTBamChi.MaSoBC,
-                                itemCTBamChi.NiemChi,
+                                itemCTBamChi.NiemChi,itemCTBamChi.MauSac,
                                 CreateBy = itemUser.HoTen,
                                 itemCTBamChi.NgayQuyetToan,
                             };
@@ -577,7 +577,7 @@ namespace KTKS_DonKH.DAL.BamChi
                             itemCTBamChi.DayChi,
                             itemCTBamChi.TheoYeuCau,
                             itemCTBamChi.MaSoBC,
-                            itemCTBamChi.NiemChi,
+                            itemCTBamChi.NiemChi,itemCTBamChi.MauSac,
                             CreateBy = itemUser.HoTen,
                             itemCTBamChi.NgayQuyetToan,
                         };
@@ -613,7 +613,7 @@ namespace KTKS_DonKH.DAL.BamChi
                             itemCTBamChi.DayChi,
                             itemCTBamChi.TheoYeuCau,
                             itemCTBamChi.MaSoBC,
-                            itemCTBamChi.NiemChi,
+                            itemCTBamChi.NiemChi,itemCTBamChi.MauSac,
                             CreateBy = itemUser.HoTen,
                             itemCTBamChi.NgayQuyetToan,
                         };
@@ -649,7 +649,7 @@ namespace KTKS_DonKH.DAL.BamChi
                             itemCTBamChi.DayChi,
                             itemCTBamChi.TheoYeuCau,
                             itemCTBamChi.MaSoBC,
-                            itemCTBamChi.NiemChi,
+                            itemCTBamChi.NiemChi,itemCTBamChi.MauSac,
                             CreateBy = itemUser.HoTen,
                             itemCTBamChi.NgayQuyetToan,
                         };
@@ -685,7 +685,7 @@ namespace KTKS_DonKH.DAL.BamChi
                             itemCTBamChi.DayChi,
                             itemCTBamChi.TheoYeuCau,
                             itemCTBamChi.MaSoBC,
-                            itemCTBamChi.NiemChi,
+                            itemCTBamChi.NiemChi,itemCTBamChi.MauSac,
                             CreateBy = itemUser.HoTen,
                             itemCTBamChi.NgayQuyetToan,
                         };
@@ -722,7 +722,7 @@ namespace KTKS_DonKH.DAL.BamChi
                             itemCTBamChi.DayChi,
                             itemCTBamChi.TheoYeuCau,
                             itemCTBamChi.MaSoBC,
-                            itemCTBamChi.NiemChi,
+                            itemCTBamChi.NiemChi,itemCTBamChi.MauSac,
                             CreateBy = itemUser.HoTen,
                             itemCTBamChi.NgayQuyetToan,
                         };
@@ -758,7 +758,7 @@ namespace KTKS_DonKH.DAL.BamChi
                             itemCTBamChi.DayChi,
                             itemCTBamChi.TheoYeuCau,
                             itemCTBamChi.MaSoBC,
-                            itemCTBamChi.NiemChi,
+                            itemCTBamChi.NiemChi,itemCTBamChi.MauSac,
                             CreateBy = itemUser.HoTen,
                             itemCTBamChi.NgayQuyetToan,
                         };
