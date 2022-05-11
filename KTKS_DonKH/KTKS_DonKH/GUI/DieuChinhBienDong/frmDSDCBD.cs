@@ -1136,73 +1136,73 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (radDSDCBD.Checked)
             {
-                if (MessageBox.Show("Bạn chắc chắn In Danh Sách Phiếu điều chỉnh Giá Biểu, Định Mức?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    DataSetBaoCao dsBaoCaoHN = new DataSetBaoCao();
-                    DataSetBaoCao dsBaoCaoDC = new DataSetBaoCao();
-                    for (int i = 0; i < dgvDSDCBD.Rows.Count; i++)
-                        if (dgvDSDCBD["In", i].Value != null && bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true)
-                        {
-                            DCBD_ChiTietBienDong ctdcbd = _cDCBD.getBienDong(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
-                            if (ctdcbd.ThongTin.Contains("Giá Biểu"))
-                            {
-                                DataRow dr = dsBaoCaoHN.Tables["DCBD"].NewRow();
+                //if (MessageBox.Show("Bạn chắc chắn In Danh Sách Phiếu điều chỉnh Giá Biểu, Định Mức?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                //{
+                //    DataSetBaoCao dsBaoCaoHN = new DataSetBaoCao();
+                //    DataSetBaoCao dsBaoCaoDC = new DataSetBaoCao();
+                //    for (int i = 0; i < dgvDSDCBD.Rows.Count; i++)
+                //        if (dgvDSDCBD["In", i].Value != null && bool.Parse(dgvDSDCBD["In", i].Value.ToString()) == true)
+                //        {
+                //            DCBD_ChiTietBienDong ctdcbd = _cDCBD.getBienDong(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
+                //            if (ctdcbd.ThongTin.Contains("Giá Biểu"))
+                //            {
+                //                DataRow dr = dsBaoCaoHN.Tables["DCBD"].NewRow();
 
-                                dr["ThongTin"] = ctdcbd.ThongTin;
-                                dr["Dot"] = ctdcbd.Dot;
-                                dr["HieuLucKy"] = ctdcbd.HieuLucKy;
-                                dr["DanhBo"] = ctdcbd.DanhBo.Insert(7, " ").Insert(4, " ");
-                                dr["HopDong"] = ctdcbd.HopDong;
-                                dr["HoTen"] = ctdcbd.HoTen;
-                                dr["DiaChi"] = ctdcbd.DiaChi;
-                                dr["GiaBieu"] = ctdcbd.GiaBieu;
-                                dr["DinhMucHN"] = ctdcbd.DinhMucHN;
-                                dr["DinhMuc"] = ctdcbd.DinhMuc;
-                                ///Biến Động
-                                dr["GiaBieuBD"] = ctdcbd.GiaBieu_BD;
-                                dr["DinhMucHNBD"] = ctdcbd.DinhMucHN_BD;
-                                dr["DinhMucBD"] = ctdcbd.DinhMuc_BD;
-                                ///Ký Tên
-                                dr["ChucVu"] = ctdcbd.ChucVu;
-                                dr["NguoiKy"] = ctdcbd.NguoiKy;
+                //                dr["ThongTin"] = ctdcbd.ThongTin;
+                //                dr["Dot"] = ctdcbd.Dot;
+                //                dr["HieuLucKy"] = ctdcbd.HieuLucKy;
+                //                dr["DanhBo"] = ctdcbd.DanhBo.Insert(7, " ").Insert(4, " ");
+                //                dr["HopDong"] = ctdcbd.HopDong;
+                //                dr["HoTen"] = ctdcbd.HoTen;
+                //                dr["DiaChi"] = ctdcbd.DiaChi;
+                //                dr["GiaBieu"] = ctdcbd.GiaBieu;
+                //                dr["DinhMucHN"] = ctdcbd.DinhMucHN;
+                //                dr["DinhMuc"] = ctdcbd.DinhMuc;
+                //                ///Biến Động
+                //                dr["GiaBieuBD"] = ctdcbd.GiaBieu_BD;
+                //                dr["DinhMucHNBD"] = ctdcbd.DinhMucHN_BD;
+                //                dr["DinhMucBD"] = ctdcbd.DinhMuc_BD;
+                //                ///Ký Tên
+                //                dr["ChucVu"] = ctdcbd.ChucVu;
+                //                dr["NguoiKy"] = ctdcbd.NguoiKy;
 
-                                dsBaoCaoHN.Tables["DCBD"].Rows.Add(dr);
-                            }
-                            else
-                                if (ctdcbd.ThongTin.Contains("Định Mức"))
-                                {
-                                    DataRow dr = dsBaoCaoDC.Tables["DCBD"].NewRow();
+                //                dsBaoCaoHN.Tables["DCBD"].Rows.Add(dr);
+                //            }
+                //            else
+                //                if (ctdcbd.ThongTin.Contains("Định Mức"))
+                //                {
+                //                    DataRow dr = dsBaoCaoDC.Tables["DCBD"].NewRow();
 
-                                    dr["ThongTin"] = ctdcbd.ThongTin;
-                                    dr["Dot"] = ctdcbd.Dot;
-                                    dr["HieuLucKy"] = ctdcbd.HieuLucKy;
-                                    dr["DanhBo"] = ctdcbd.DanhBo.Insert(7, " ").Insert(4, " ");
-                                    dr["HopDong"] = ctdcbd.HopDong;
-                                    dr["HoTen"] = ctdcbd.HoTen;
-                                    dr["DiaChi"] = ctdcbd.DiaChi;
-                                    dr["GiaBieu"] = ctdcbd.GiaBieu;
-                                    dr["DinhMucHN"] = ctdcbd.DinhMucHN;
-                                    dr["DinhMuc"] = ctdcbd.DinhMuc;
-                                    ///Biến Động
-                                    dr["GiaBieuBD"] = ctdcbd.GiaBieu_BD;
-                                    dr["DinhMucHNBD"] = ctdcbd.DinhMucHN_BD;
-                                    dr["DinhMucBD"] = ctdcbd.DinhMuc_BD;
-                                    ///Ký Tên
-                                    dr["ChucVu"] = ctdcbd.ChucVu;
-                                    dr["NguoiKy"] = ctdcbd.NguoiKy;
+                //                    dr["ThongTin"] = ctdcbd.ThongTin;
+                //                    dr["Dot"] = ctdcbd.Dot;
+                //                    dr["HieuLucKy"] = ctdcbd.HieuLucKy;
+                //                    dr["DanhBo"] = ctdcbd.DanhBo.Insert(7, " ").Insert(4, " ");
+                //                    dr["HopDong"] = ctdcbd.HopDong;
+                //                    dr["HoTen"] = ctdcbd.HoTen;
+                //                    dr["DiaChi"] = ctdcbd.DiaChi;
+                //                    dr["GiaBieu"] = ctdcbd.GiaBieu;
+                //                    dr["DinhMucHN"] = ctdcbd.DinhMucHN;
+                //                    dr["DinhMuc"] = ctdcbd.DinhMuc;
+                //                    ///Biến Động
+                //                    dr["GiaBieuBD"] = ctdcbd.GiaBieu_BD;
+                //                    dr["DinhMucHNBD"] = ctdcbd.DinhMucHN_BD;
+                //                    dr["DinhMucBD"] = ctdcbd.DinhMuc_BD;
+                //                    ///Ký Tên
+                //                    dr["ChucVu"] = ctdcbd.ChucVu;
+                //                    dr["NguoiKy"] = ctdcbd.NguoiKy;
 
-                                    dsBaoCaoDC.Tables["DCBD"].Rows.Add(dr);
-                                }
-                        }
-                    rptDSPhieuDCBD_HN rpt = new rptDSPhieuDCBD_HN();
-                    rpt.SetDataSource(dsBaoCaoHN);
-                    frmShowBaoCao frm = new frmShowBaoCao(rpt);
-                    frm.Show();
-                    rptDSPhieuDCBD_DC rpt2 = new rptDSPhieuDCBD_DC();
-                    rpt2.SetDataSource(dsBaoCaoDC);
-                    frmShowBaoCao frm2 = new frmShowBaoCao(rpt2);
-                    frm2.Show();
-                }
+                //                    dsBaoCaoDC.Tables["DCBD"].Rows.Add(dr);
+                //                }
+                //        }
+                //    rptDSPhieuDCBD_HN rpt = new rptDSPhieuDCBD_HN();
+                //    rpt.SetDataSource(dsBaoCaoHN);
+                //    frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                //    frm.Show();
+                //    rptDSPhieuDCBD_DC rpt2 = new rptDSPhieuDCBD_DC();
+                //    rpt2.SetDataSource(dsBaoCaoDC);
+                //    frmShowBaoCao frm2 = new frmShowBaoCao(rpt2);
+                //    frm2.Show();
+                //}
             }
             else
                 if (radDSDCHD.Checked)

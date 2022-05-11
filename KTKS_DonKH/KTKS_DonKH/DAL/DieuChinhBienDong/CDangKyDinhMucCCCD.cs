@@ -133,10 +133,59 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             item.Thung,
                             item.STT,
                             item.CreateDate,
+                            DinhMucMoi = item.DCBD_DKDM_CCCDs.Count,
                             item.DCBD,
                             item.DCBD_MaDon,
                             item.DCBD_STT,
-                            CreateBy=itemtableND.HoTen,
+                            CreateBy = itemtableND.HoTen,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable getDS_Quan(string Quan)
+        {
+            var query = from item in db.DCBD_DKDM_DanhBos
+                        join itemND in db.Users on item.CreateBy equals itemND.MaU into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where item.Quan == Quan && item.CreateBy != null
+                        select new
+                        {
+                            item.ID,
+                            item.DanhBo,
+                            item.SDT,
+                            item.Quan,
+                            item.Thung,
+                            item.STT,
+                            item.CreateDate,
+                            DinhMucMoi = item.DCBD_DKDM_CCCDs.Count,
+                            item.DCBD,
+                            item.DCBD_MaDon,
+                            item.DCBD_STT,
+                            CreateBy = itemtableND.HoTen,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable getDS_Quan_Thung(string Quan, int Thung)
+        {
+            var query = from item in db.DCBD_DKDM_DanhBos
+                        join itemND in db.Users on item.CreateBy equals itemND.MaU into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where item.Quan == Quan && item.Thung == Thung && item.CreateBy != null
+                        select new
+                        {
+                            item.ID,
+                            item.DanhBo,
+                            item.SDT,
+                            item.Quan,
+                            item.Thung,
+                            item.STT,
+                            item.CreateDate,
+                            DinhMucMoi = item.DCBD_DKDM_CCCDs.Count,
+                            item.DCBD,
+                            item.DCBD_MaDon,
+                            item.DCBD_STT,
+                            CreateBy = itemtableND.HoTen,
                         };
             return LINQToDataTable(query);
         }
@@ -157,6 +206,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             item.STT,
                             item.CreateDate,
                             CreateBy = itemtableND.HoTen,
+                            DinhMucMoi = item.DCBD_DKDM_CCCDs.Count,
                             item.DCBD,
                             item.DCBD_MaDon,
                             item.DCBD_STT,
@@ -180,6 +230,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             item.STT,
                             item.CreateDate,
                             CreateBy = itemtableND.HoTen,
+                            DinhMucMoi = item.DCBD_DKDM_CCCDs.Count,
                             item.DCBD,
                             item.DCBD_MaDon,
                             item.DCBD_STT,

@@ -306,10 +306,18 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (txtDanhBo_DS.Text.Trim() != "")
                 dgvDanhSach2.DataSource = _cDKDM.getDS(txtDanhBo_DS.Text.Trim());
             else
-                if (CTaiKhoan.TruongPhong || CTaiKhoan.Admin || CTaiKhoan.ThuKy)
-                    dgvDanhSach2.DataSource = _cDKDM.getDS(dateTu.Value, dateDen.Value);
+                if (txtQuan.Text.Trim() != "")
+                {
+                    if (txtThung.Text.Trim() != "")
+                        dgvDanhSach2.DataSource = _cDKDM.getDS_Quan_Thung(txtQuan.Text.Trim(), int.Parse(txtThung.Text.Trim()));
+                    else
+                        dgvDanhSach2.DataSource = _cDKDM.getDS_Quan(txtQuan.Text.Trim());
+                }
                 else
-                    dgvDanhSach2.DataSource = _cDKDM.getDS(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
+                    if (CTaiKhoan.TruongPhong || CTaiKhoan.Admin || CTaiKhoan.ThuKy)
+                        dgvDanhSach2.DataSource = _cDKDM.getDS(dateTu.Value, dateDen.Value);
+                    else
+                        dgvDanhSach2.DataSource = _cDKDM.getDS(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
         }
 
         private void dgvDanhSach2_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -362,6 +370,27 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     btnThem.PerformClick();
                 }
+        }
+
+        private void btnKiemTra_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CTaiKhoan.CheckQuyen("mnuDCBD", "Them"))
+                {
+                    dgvDanhSach2.DataSource = _cDKDM.getDS(dateTu.Value, dateDen.Value);
+                    foreach (DataGridViewRow item in dgvDanhSach2.Rows)
+                    {
+
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnDCBD_Click(object sender, EventArgs e)
@@ -452,6 +481,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
 
 
 
