@@ -148,6 +148,7 @@ namespace KTKS_DonKH.GUI.BamChi
                             dr["VienChi"] = item.Cells["VienChi"].Value.ToString();
                             dr["DayChi"] = item.Cells["DayChi"].Value.ToString();
                             dr["MaSoBC"] = item.Cells["NiemChi"].Value.ToString();
+                            dr["MauSac"] = "(màu " + item.Cells["MauSac"].Value.ToString().ToUpper() + ")";
                             dr["NguoiBC"] = item.Cells["CreateBy"].Value.ToString();
                             dr["TheoYeuCau"] = item.Cells["TheoYeuCau"].Value.ToString().ToUpper();
                             dr["NguoiKy"] = CTaiKhoan.NguoiKy;
@@ -200,6 +201,7 @@ namespace KTKS_DonKH.GUI.BamChi
                             }
                             dr["Co"] = item.Cells["Co"].Value.ToString();
                             dr["NiemChi"] = item.Cells["NiemChi"].Value.ToString();
+                            dr["MauSac"] = "(màu " + item.Cells["MauSac"].Value.ToString().ToUpper() + ")";
                             dr["DayChi"] = double.Parse(item.Cells["DayChi"].Value.ToString());
                             dr["TheoYeuCau"] = item.Cells["TheoYeuCau"].Value.ToString().ToUpper();
                             dr["NguoiLap"] = CTaiKhoan.HoTen;

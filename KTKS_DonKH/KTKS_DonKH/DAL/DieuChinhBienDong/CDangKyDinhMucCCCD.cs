@@ -23,6 +23,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             return flag;
         }
 
+        public bool checkExists(string DanhBo)
+        {
+            return db.DCBD_DKDM_DanhBos.Any(item => item.DanhBo == DanhBo && item.CreateBy != null);
+        }
+
         public bool Them(DCBD_DKDM_DanhBo en, out string Thung)
         {
             try
@@ -73,6 +78,49 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 en.ModifyDate = DateTime.Now;
                 en.ModifyBy = CTaiKhoan.MaUser;
                 db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public bool Sua(DCBD_DKDM_DanhBo en, out string Thung)
+        {
+            try
+            {
+                if (db.DCBD_DKDM_DanhBos.Count() > 0)
+                {
+                    en.ID = db.DCBD_DKDM_DanhBos.Max(item => item.ID) + 1;
+                }
+                else
+                    en.ID = 1;
+                if (db.DCBD_DKDM_DanhBos.Where(item => item.Quan == en.Quan).Max(item => item.Thung) == null)
+                {
+                    en.Thung = 1;
+                    en.STT = 1;
+                }
+                else
+                {
+                    int ThungMax = db.DCBD_DKDM_DanhBos.Where(item => item.Quan == en.Quan).Max(item => item.Thung).Value;
+                    if (db.DCBD_DKDM_DanhBos.Where(item => item.Quan == en.Quan && item.Thung == ThungMax).Max(item => item.STT) == 210)
+                    {
+                        en.Thung = ThungMax + 1;
+                        en.STT = 1;
+                    }
+                    else
+                    {
+                        en.Thung = ThungMax;
+                        en.STT = db.DCBD_DKDM_DanhBos.Where(item => item.Quan == en.Quan && item.Thung == ThungMax).Max(item => item.STT) + 1;
+                    }
+                }
+                en.CreateDate = DateTime.Now;
+                en.CreateBy = CTaiKhoan.MaUser;
+                en.CreateDate_Old = en.CreateDate;
+                db.SubmitChanges();
+                Thung = "Thùng: " + en.Thung.Value.ToString() + "\nSTT: " + en.STT.Value.ToString();
                 return true;
             }
             catch (Exception ex)
@@ -166,12 +214,62 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             return LINQToDataTable(query);
         }
 
+        public DataTable getDS_Quan(int CreateBy, string Quan)
+        {
+            var query = from item in db.DCBD_DKDM_DanhBos
+                        join itemND in db.Users on item.CreateBy equals itemND.MaU into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where item.Quan == Quan && item.CreateBy == CreateBy
+                        select new
+                        {
+                            item.ID,
+                            item.DanhBo,
+                            item.SDT,
+                            item.Quan,
+                            item.Thung,
+                            item.STT,
+                            item.CreateDate,
+                            DinhMucMoi = item.DCBD_DKDM_CCCDs.Count,
+                            item.DCBD,
+                            item.DCBD_MaDon,
+                            item.DCBD_STT,
+                            CreateBy = itemtableND.HoTen,
+                        };
+            return LINQToDataTable(query);
+        }
+
         public DataTable getDS_Quan_Thung(string Quan, int Thung)
         {
             var query = from item in db.DCBD_DKDM_DanhBos
                         join itemND in db.Users on item.CreateBy equals itemND.MaU into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where item.Quan == Quan && item.Thung == Thung && item.CreateBy != null
+                        orderby item.ID ascending
+                        select new
+                        {
+                            item.ID,
+                            item.DanhBo,
+                            item.SDT,
+                            item.Quan,
+                            item.Thung,
+                            item.STT,
+                            item.CreateDate,
+                            DinhMucMoi = item.DCBD_DKDM_CCCDs.Count,
+                            item.DCBD,
+                            item.DCBD_MaDon,
+                            item.DCBD_STT,
+                            CreateBy = itemtableND.HoTen,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable getDS_Quan_Thung(int CreateBy, string Quan, int Thung)
+        {
+            var query = from item in db.DCBD_DKDM_DanhBos
+                        join itemND in db.Users on item.CreateBy equals itemND.MaU into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where item.Quan == Quan && item.Thung == Thung && item.CreateBy == CreateBy
+                        orderby item.ID ascending
                         select new
                         {
                             item.ID,
@@ -196,6 +294,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         join itemND in db.Users on item.CreateBy equals itemND.MaU into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where item.CreateDate.Date >= FromCreateDate.Date && item.CreateDate.Date <= ToCreateDate.Date && item.CreateBy != null
+                        orderby item.ID ascending
                         select new
                         {
                             item.ID,
@@ -221,7 +320,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         + " ,DinhMucMoi = (select COUNT(*) from DCBD_DKDM_CCCD where IDDanhBo=a.ID)*4"
                         + " from DCBD_DKDM_DanhBo a,Users b where a.CreateBy=b.MaU"
                         + " and CAST(a.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(a.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'"
-                        + " and (select top 1 DM from server9.HOADON_TA.dbo.HOADON where DANHBA=a.DanhBo order by ID_HOADON desc)<(select COUNT(*) from DCBD_DKDM_CCCD where IDDanhBo=a.ID)*4";
+                        + " and (select top 1 DM from server9.HOADON_TA.dbo.HOADON where DANHBA=a.DanhBo order by ID_HOADON desc)<(select COUNT(*) from DCBD_DKDM_CCCD where IDDanhBo=a.ID)*4"
+                        + " order by a.ID asc";
             return ExecuteQuery_DataTable(sql);
         }
 
@@ -232,7 +332,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         + " ,DinhMucMoi = (select COUNT(*) from DCBD_DKDM_CCCD where IDDanhBo=a.ID)*4"
                         + " from DCBD_DKDM_DanhBo a,Users b where a.CreateBy=b.MaU"
                         + " and CAST(a.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(a.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'"
-                        + " and (select top 1 DM from server9.HOADON_TA.dbo.HOADON where DANHBA=a.DanhBo order by ID_HOADON desc)>(select COUNT(*) from DCBD_DKDM_CCCD where IDDanhBo=a.ID)*4";
+                        + " and (select top 1 DM from server9.HOADON_TA.dbo.HOADON where DANHBA=a.DanhBo order by ID_HOADON desc)>(select COUNT(*) from DCBD_DKDM_CCCD where IDDanhBo=a.ID)*4"
+                        + " order by a.ID asc";
             return ExecuteQuery_DataTable(sql);
         }
 
@@ -243,7 +344,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         + " ,DinhMucMoi = (select COUNT(*) from DCBD_DKDM_CCCD where IDDanhBo=a.ID)*4"
                         + " from DCBD_DKDM_DanhBo a,Users b where a.CreateBy=b.MaU"
                         + " and CAST(a.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(a.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'"
-                        + " and (select top 1 DM from server9.HOADON_TA.dbo.HOADON where DANHBA=a.DanhBo order by ID_HOADON desc)=(select COUNT(*) from DCBD_DKDM_CCCD where IDDanhBo=a.ID)*4";
+                        + " and (select top 1 DM from server9.HOADON_TA.dbo.HOADON where DANHBA=a.DanhBo order by ID_HOADON desc)=(select COUNT(*) from DCBD_DKDM_CCCD where IDDanhBo=a.ID)*4"
+                        + " order by a.ID asc";
             return ExecuteQuery_DataTable(sql);
         }
 
@@ -253,6 +355,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         join itemND in db.Users on item.CreateBy equals itemND.MaU into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where item.CreateDate.Date >= FromCreateDate.Date && item.CreateDate.Date <= ToCreateDate.Date && item.CreateBy == CreateBy
+                        orderby item.ID ascending
                         select new
                         {
                             item.ID,
@@ -275,6 +378,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             var query = from item in db.DCBD_DKDM_DanhBos
                         where item.DanhBo == DanhBo
+                        orderby item.ID ascending
                         select new
                         {
                             item.ID,
@@ -291,6 +395,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             var query = from item in db.DCBD_DKDM_DanhBos
                         where item.CreateDate.Date >= FromCreateDate.Date && item.CreateDate.Date <= ToCreateDate.Date && item.CreateBy == null
+                        orderby item.ID ascending
                         select new
                         {
                             item.ID,
@@ -302,5 +407,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         };
             return LINQToDataTable(query);
         }
+
+        public DataTable getDS_NguoiLap()
+        {
+            return ExecuteQuery_DataTable("select Name=(select HoTen from Users where MaU=DCBD_DKDM_DanhBo.CreateBy),ID=CreateBy from DCBD_DKDM_DanhBo where CreateBy is not null group by CreateBy");
+        }
+
     }
 }
