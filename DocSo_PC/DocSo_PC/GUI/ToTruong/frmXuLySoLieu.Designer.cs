@@ -637,7 +637,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(953, 213);
+            this.label20.Location = new System.Drawing.Point(953, 232);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(35, 13);
             this.label20.TabIndex = 73;
@@ -1292,7 +1292,7 @@
             this.lbSLHD0.AutoSize = true;
             this.lbSLHD0.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbSLHD0.ForeColor = System.Drawing.Color.Red;
-            this.lbSLHD0.Location = new System.Drawing.Point(987, 209);
+            this.lbSLHD0.Location = new System.Drawing.Point(987, 228);
             this.lbSLHD0.Name = "lbSLHD0";
             this.lbSLHD0.Size = new System.Drawing.Size(44, 18);
             this.lbSLHD0.TabIndex = 74;
@@ -1303,7 +1303,7 @@
             this.lbSanLuong.AutoSize = true;
             this.lbSanLuong.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbSanLuong.ForeColor = System.Drawing.Color.Red;
-            this.lbSanLuong.Location = new System.Drawing.Point(1011, 184);
+            this.lbSanLuong.Location = new System.Drawing.Point(956, 205);
             this.lbSanLuong.Name = "lbSanLuong";
             this.lbSanLuong.Size = new System.Drawing.Size(71, 18);
             this.lbSanLuong.TabIndex = 72;
@@ -1346,7 +1346,7 @@
             // 
             this.lblKy0.AutoSize = true;
             this.lblKy0.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblKy0.Location = new System.Drawing.Point(1089, 35);
+            this.lblKy0.Location = new System.Drawing.Point(1069, 35);
             this.lblKy0.Name = "lblKy0";
             this.lblKy0.Size = new System.Drawing.Size(11, 13);
             this.lblKy0.TabIndex = 79;
@@ -1356,7 +1356,7 @@
             // 
             this.lblKy1.AutoSize = true;
             this.lblKy1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblKy1.Location = new System.Drawing.Point(1089, 178);
+            this.lblKy1.Location = new System.Drawing.Point(1069, 178);
             this.lblKy1.Name = "lblKy1";
             this.lblKy1.Size = new System.Drawing.Size(11, 13);
             this.lblKy1.TabIndex = 81;
@@ -1366,7 +1366,7 @@
             // 
             this.lblKy2.AutoSize = true;
             this.lblKy2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblKy2.Location = new System.Drawing.Point(1089, 321);
+            this.lblKy2.Location = new System.Drawing.Point(1069, 321);
             this.lblKy2.Name = "lblKy2";
             this.lblKy2.Size = new System.Drawing.Size(11, 13);
             this.lblKy2.TabIndex = 83;
@@ -1386,7 +1386,7 @@
             // 
             this.lblKy3.AutoSize = true;
             this.lblKy3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblKy3.Location = new System.Drawing.Point(1089, 464);
+            this.lblKy3.Location = new System.Drawing.Point(1069, 464);
             this.lblKy3.Name = "lblKy3";
             this.lblKy3.Size = new System.Drawing.Size(11, 13);
             this.lblKy3.TabIndex = 86;
@@ -1451,7 +1451,7 @@
             // 
             // ptbKy3
             // 
-            this.ptbKy3.Location = new System.Drawing.Point(1088, 480);
+            this.ptbKy3.Location = new System.Drawing.Point(1068, 480);
             this.ptbKy3.Name = "ptbKy3";
             this.ptbKy3.Size = new System.Drawing.Size(120, 120);
             this.ptbKy3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1461,7 +1461,7 @@
             // 
             // ptbKy2
             // 
-            this.ptbKy2.Location = new System.Drawing.Point(1088, 337);
+            this.ptbKy2.Location = new System.Drawing.Point(1068, 337);
             this.ptbKy2.Name = "ptbKy2";
             this.ptbKy2.Size = new System.Drawing.Size(120, 120);
             this.ptbKy2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1471,7 +1471,7 @@
             // 
             // ptbKy1
             // 
-            this.ptbKy1.Location = new System.Drawing.Point(1088, 194);
+            this.ptbKy1.Location = new System.Drawing.Point(1068, 194);
             this.ptbKy1.Name = "ptbKy1";
             this.ptbKy1.Size = new System.Drawing.Size(120, 120);
             this.ptbKy1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1481,7 +1481,7 @@
             // 
             // ptbKy0
             // 
-            this.ptbKy0.Location = new System.Drawing.Point(1088, 51);
+            this.ptbKy0.Location = new System.Drawing.Point(1068, 51);
             this.ptbKy0.Name = "ptbKy0";
             this.ptbKy0.Size = new System.Drawing.Size(120, 120);
             this.ptbKy0.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1756,9 +1756,9 @@
             this.Image_Hinh,
             this.Bytes_Hinh,
             this.Loai_Hinh});
-            this.dgvHinh.Location = new System.Drawing.Point(1214, 51);
+            this.dgvHinh.Location = new System.Drawing.Point(1194, 51);
             this.dgvHinh.Name = "dgvHinh";
-            this.dgvHinh.Size = new System.Drawing.Size(159, 100);
+            this.dgvHinh.Size = new System.Drawing.Size(156, 263);
             this.dgvHinh.TabIndex = 109;
             this.dgvHinh.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvHinh_MouseClick);
             // 
@@ -1781,7 +1781,6 @@
             this.Name_Hinh.DataPropertyName = "Name";
             this.Name_Hinh.HeaderText = "File";
             this.Name_Hinh.Name = "Name_Hinh";
-            this.Name_Hinh.Width = 150;
             // 
             // Image_Hinh
             // 
