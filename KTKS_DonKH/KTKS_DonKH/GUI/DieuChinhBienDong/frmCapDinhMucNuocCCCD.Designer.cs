@@ -60,6 +60,9 @@
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.radGiuNguyen = new System.Windows.Forms.RadioButton();
+            this.radGiam = new System.Windows.Forms.RadioButton();
+            this.radTang = new System.Windows.Forms.RadioButton();
             this.txtThung = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.txtQuan = new System.Windows.Forms.TextBox();
@@ -106,9 +109,6 @@
             this.dateDen_Online = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.dateTu_Online = new System.Windows.Forms.DateTimePicker();
-            this.radTang = new System.Windows.Forms.RadioButton();
-            this.radGiam = new System.Windows.Forms.RadioButton();
-            this.radGiuNguyen = new System.Windows.Forms.RadioButton();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
@@ -261,6 +261,7 @@
             this.dgvDanhSach.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellValueChanged);
             this.dgvDanhSach.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_RowLeave);
             this.dgvDanhSach.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhSach_RowPostPaint);
+            this.dgvDanhSach.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgvDanhSach_UserAddedRow);
             this.dgvDanhSach.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgvDanhSach_UserDeletingRow);
             // 
             // ID
@@ -421,6 +422,38 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Danh Sách";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // radGiuNguyen
+            // 
+            this.radGiuNguyen.AutoSize = true;
+            this.radGiuNguyen.Location = new System.Drawing.Point(680, 30);
+            this.radGiuNguyen.Name = "radGiuNguyen";
+            this.radGiuNguyen.Size = new System.Drawing.Size(81, 17);
+            this.radGiuNguyen.TabIndex = 39;
+            this.radGiuNguyen.Text = "Giữ Nguyên";
+            this.radGiuNguyen.UseVisualStyleBackColor = true;
+            // 
+            // radGiam
+            // 
+            this.radGiam.AutoSize = true;
+            this.radGiam.Location = new System.Drawing.Point(625, 30);
+            this.radGiam.Name = "radGiam";
+            this.radGiam.Size = new System.Drawing.Size(49, 17);
+            this.radGiam.TabIndex = 38;
+            this.radGiam.Text = "Giảm";
+            this.radGiam.UseVisualStyleBackColor = true;
+            // 
+            // radTang
+            // 
+            this.radTang.AutoSize = true;
+            this.radTang.Checked = true;
+            this.radTang.Location = new System.Drawing.Point(569, 30);
+            this.radTang.Name = "radTang";
+            this.radTang.Size = new System.Drawing.Size(50, 17);
+            this.radTang.TabIndex = 37;
+            this.radTang.TabStop = true;
+            this.radTang.Text = "Tăng";
+            this.radTang.UseVisualStyleBackColor = true;
             // 
             // txtThung
             // 
@@ -834,38 +867,6 @@
             this.dateTu_Online.Name = "dateTu_Online";
             this.dateTu_Online.Size = new System.Drawing.Size(95, 20);
             this.dateTu_Online.TabIndex = 21;
-            // 
-            // radTang
-            // 
-            this.radTang.AutoSize = true;
-            this.radTang.Checked = true;
-            this.radTang.Location = new System.Drawing.Point(569, 30);
-            this.radTang.Name = "radTang";
-            this.radTang.Size = new System.Drawing.Size(50, 17);
-            this.radTang.TabIndex = 37;
-            this.radTang.TabStop = true;
-            this.radTang.Text = "Tăng";
-            this.radTang.UseVisualStyleBackColor = true;
-            // 
-            // radGiam
-            // 
-            this.radGiam.AutoSize = true;
-            this.radGiam.Location = new System.Drawing.Point(625, 30);
-            this.radGiam.Name = "radGiam";
-            this.radGiam.Size = new System.Drawing.Size(49, 17);
-            this.radGiam.TabIndex = 38;
-            this.radGiam.Text = "Giảm";
-            this.radGiam.UseVisualStyleBackColor = true;
-            // 
-            // radGiuNguyen
-            // 
-            this.radGiuNguyen.AutoSize = true;
-            this.radGiuNguyen.Location = new System.Drawing.Point(680, 30);
-            this.radGiuNguyen.Name = "radGiuNguyen";
-            this.radGiuNguyen.Size = new System.Drawing.Size(81, 17);
-            this.radGiuNguyen.TabIndex = 39;
-            this.radGiuNguyen.Text = "Giữ Nguyên";
-            this.radGiuNguyen.UseVisualStyleBackColor = true;
             // 
             // frmCapDinhMucNuocCCCD
             // 

@@ -94,13 +94,13 @@ namespace KTKS_DonKH.GUI.BamChi
                             if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
                                 dgvDSCTBamChi.DataSource = _cBamChi.getDS("TKH", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                             else
-                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
-                                dgvDSCTBamChi.DataSource = _cBamChi.getDS("TXL", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
-                            else
-                                if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
-                                    dgvDSCTBamChi.DataSource = _cBamChi.getDS("TBC", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
+                                    dgvDSCTBamChi.DataSource = _cBamChi.getDS("TXL", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
                                 else
-                                    dgvDSCTBamChi.DataSource = _cBamChi.getDS("", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim()));
+                                    if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
+                                        dgvDSCTBamChi.DataSource = _cBamChi.getDS("TBC", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", "")));
+                                    else
+                                        dgvDSCTBamChi.DataSource = _cBamChi.getDS("", CTaiKhoan.MaUser, decimal.Parse(txtNoiDungTimKiem.Text.Trim()));
                         break;
                     case "Danh Bộ":
                         if (txtNoiDungTimKiem.Text.Trim() != "")
@@ -116,80 +116,115 @@ namespace KTKS_DonKH.GUI.BamChi
 
         private void btnIn_Click(object sender, EventArgs e)
         {
-            DataTable dt = ((DataTable)dgvDSCTBamChi.DataSource).DefaultView.ToTable();
-            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-            foreach (DataRow itemRow in dt.Rows)
+            try
             {
-                DataRow dr = dsBaoCao.Tables["DSBamChi"].NewRow();
+                DataTable dtGroupMauSac = _cBamChi.getDS_GroupMauSac(dateTu.Value, dateDen.Value);
+                DataSetBaoCao[] dsBaoCao = new DataSetBaoCao[dtGroupMauSac.Rows.Count];
+                for (int i = 0; i < dtGroupMauSac.Rows.Count; i++)
+                {
+                    dsBaoCao[i] = new DataSetBaoCao();
+                }
+                foreach (DataGridViewRow item in dgvDSCTBamChi.Rows)
+                {
+                    for (int i = 0; i < dtGroupMauSac.Rows.Count; i++)
+                        if (dtGroupMauSac.Rows[i]["MauSac"].ToString() == item.Cells["MauSac"].Value.ToString())
+                        {
+                            DataRow dr = dsBaoCao[i].Tables["DSBamChi"].NewRow();
 
-                dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
-                dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
-                dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
-                if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
-                    dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                dr["TenLD"] = itemRow["TenLD"];
-                dr["HopDong"] = itemRow["HopDong"];
-                dr["HoTen"] = itemRow["HoTen"];
-                dr["DiaChi"] = itemRow["DiaChi"];
-                dr["NgayBC"] = itemRow["NgayBC"];
-                dr["Hieu"] = itemRow["Hieu"];
-                dr["Co"] = itemRow["Co"];
-                dr["ChiSo"] = itemRow["ChiSo"];
-                dr["TrangThaiBC"] = itemRow["TrangThaiBC"];
-                dr["VienChi"] = itemRow["VienChi"];
-                dr["DayChi"] = itemRow["DayChi"];
-                dr["MaSoBC"] = itemRow["NiemChi"];
-                dr["NguoiBC"] = itemRow["CreateBy"];
-                dr["TheoYeuCau"] = itemRow["TheoYeuCau"].ToString().ToUpper();
-                dr["NguoiKy"] = CTaiKhoan.NguoiKy;
-                dr["NguoiLap"] = CTaiKhoan.HoTen;
+                            dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
+                            dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                            dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                            if (!string.IsNullOrEmpty(item.Cells["DanhBo"].Value.ToString()))
+                                dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(7, " ").Insert(4, " ");
+                            dr["TenLD"] = item.Cells["TenLD"].Value.ToString();
+                            dr["HopDong"] = item.Cells["HopDong"].Value.ToString();
+                            dr["HoTen"] = item.Cells["HoTen"].Value.ToString();
+                            dr["DiaChi"] = item.Cells["DiaChi"].Value.ToString();
+                            dr["NgayBC"] = item.Cells["NgayBC"].Value.ToString();
+                            dr["Hieu"] = item.Cells["Hieu"].Value.ToString();
+                            dr["Co"] = item.Cells["Co"].Value.ToString();
+                            dr["ChiSo"] = item.Cells["ChiSo"].Value.ToString();
+                            dr["TrangThaiBC"] = item.Cells["TrangThaiBC"].Value.ToString();
+                            dr["VienChi"] = item.Cells["VienChi"].Value.ToString();
+                            dr["DayChi"] = item.Cells["DayChi"].Value.ToString();
+                            dr["MaSoBC"] = item.Cells["NiemChi"].Value.ToString();
+                            dr["NguoiBC"] = item.Cells["CreateBy"].Value.ToString();
+                            dr["TheoYeuCau"] = item.Cells["TheoYeuCau"].Value.ToString().ToUpper();
+                            dr["NguoiKy"] = CTaiKhoan.NguoiKy;
+                            dr["NguoiLap"] = CTaiKhoan.HoTen;
 
-                dsBaoCao.Tables["DSBamChi"].Rows.Add(dr);
+                            dsBaoCao[i].Tables["DSBamChi"].Rows.Add(dr);
+                        }
+                }
+                for (int i = 0; i < dtGroupMauSac.Rows.Count; i++)
+                    if (dsBaoCao[i].Tables["DSBamChi"].Rows.Count > 0)
+                    {
+                        rptDSBamChi rpt = new rptDSBamChi();
+                        rpt.SetDataSource(dsBaoCao[i]);
+                        rpt.Subreports[0].SetDataSource(dsBaoCao[i]);
+                        frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                        frm.Show();
+                    }
             }
-
-            rptDSBamChi rpt = new rptDSBamChi();
-            rpt.SetDataSource(dsBaoCao);
-            rpt.Subreports[0].SetDataSource(dsBaoCao);
-            frmShowBaoCao frm = new frmShowBaoCao(rpt);
-            frm.ShowDialog();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnInQuetToanVatTu_Click(object sender, EventArgs e)
         {
-            DataTable dt = ((DataTable)dgvDSCTBamChi.DataSource).DefaultView.ToTable();
-            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-            foreach (DataRow itemRow in dt.Rows)
+            try
             {
-                DataRow dr = dsBaoCao.Tables["QuyetToanVatTu"].NewRow();
-
-                dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
-                dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
-                if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
-                    dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                if (itemRow["Co"].ToString() == "")
+                DataTable dtGroupMauSac = _cBamChi.getDS_GroupMauSac(dateTu.Value, dateDen.Value);
+                DataSetBaoCao[] dsBaoCao = new DataSetBaoCao[dtGroupMauSac.Rows.Count];
+                for (int i = 0; i < dtGroupMauSac.Rows.Count; i++)
                 {
-                    MessageBox.Show("Có Biên Bản không có nhập Cỡ ĐHN", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    dsBaoCao[i] = new DataSetBaoCao();
                 }
-                dr["Co"] = itemRow["Co"];
-                dr["NiemChi"] = itemRow["NiemChi"];
-                dr["DayChi"] = double.Parse( itemRow["DayChi"].ToString());
-                dr["TheoYeuCau"] = itemRow["TheoYeuCau"].ToString().ToUpper();
-                dr["NguoiLap"] = CTaiKhoan.HoTen;
+                foreach (DataGridViewRow item in dgvDSCTBamChi.Rows)
+                {
+                    for (int i = 0; i < dtGroupMauSac.Rows.Count; i++)
+                        if (dtGroupMauSac.Rows[i]["MauSac"].ToString() == item.Cells["MauSac"].Value.ToString())
+                        {
+                            DataRow dr = dsBaoCao[i].Tables["QuyetToanVatTu"].NewRow();
 
-                dsBaoCao.Tables["QuyetToanVatTu"].Rows.Add(dr);
+                            dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                            dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                            if (!string.IsNullOrEmpty(item.Cells["DanhBo"].Value.ToString()))
+                                dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(7, " ").Insert(4, " ");
+                            if (item.Cells["Co"].Value.ToString() == "")
+                            {
+                                MessageBox.Show("Có Biên Bản không có nhập Cỡ ĐHN", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                            dr["Co"] = item.Cells["Co"].Value.ToString();
+                            dr["NiemChi"] = item.Cells["NiemChi"].Value.ToString();
+                            dr["DayChi"] = double.Parse(item.Cells["DayChi"].Value.ToString());
+                            dr["TheoYeuCau"] = item.Cells["TheoYeuCau"].Value.ToString().ToUpper();
+                            dr["NguoiLap"] = CTaiKhoan.HoTen;
+
+                            dsBaoCao[i].Tables["QuyetToanVatTu"].Rows.Add(dr);
+                        }
+                }
+                for (int i = 0; i < dtGroupMauSac.Rows.Count; i++)
+                    if (dsBaoCao[i].Tables["QuyetToanVatTu"].Rows.Count > 0)
+                    {
+                        rptQuyetToanVatTu_NiemChi rpt = new rptQuyetToanVatTu_NiemChi();
+                        rpt.SetDataSource(dsBaoCao[i]);
+                        ///report 0 là header
+                        for (int j = 1; j < rpt.Subreports.Count; j++)
+                        {
+                            rpt.Subreports[j].SetDataSource(dsBaoCao[i]);
+                        }
+                        frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                        frm.Show();
+                    }
             }
-
-            rptQuyetToanVatTu_NiemChi rpt = new rptQuyetToanVatTu_NiemChi();
-            rpt.SetDataSource(dsBaoCao);
-            ///report 0 là header
-            for (int j = 1; j < rpt.Subreports.Count; j++)
+            catch (Exception ex)
             {
-                rpt.Subreports[j].SetDataSource(dsBaoCao);
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            frmShowBaoCao frm = new frmShowBaoCao(rpt);
-            frm.ShowDialog();
         }
 
         private void dgvDSCTBamChi_KeyDown(object sender, KeyEventArgs e)
@@ -272,6 +307,6 @@ namespace KTKS_DonKH.GUI.BamChi
             }
         }
 
-        
+
     }
 }

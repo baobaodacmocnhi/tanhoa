@@ -233,7 +233,8 @@ namespace KTKS_DonKH.DAL.BamChi
                                     itemCTBamChi.DayChi,
                                     itemCTBamChi.TheoYeuCau,
                                     itemCTBamChi.MaSoBC,
-                                    itemCTBamChi.NiemChi,itemCTBamChi.MauSac,
+                                    itemCTBamChi.NiemChi,
+                                    itemCTBamChi.MauSac,
                                     CreateBy = itemUser.HoTen,
                                     itemCTBamChi.NgayQuyetToan,
                                 };
@@ -260,7 +261,8 @@ namespace KTKS_DonKH.DAL.BamChi
                                 itemCTBamChi.DayChi,
                                 itemCTBamChi.TheoYeuCau,
                                 itemCTBamChi.MaSoBC,
-                                itemCTBamChi.NiemChi,itemCTBamChi.MauSac,
+                                itemCTBamChi.NiemChi,
+                                itemCTBamChi.MauSac,
                                 CreateBy = itemUser.HoTen,
                                 itemCTBamChi.NgayQuyetToan,
                             };
@@ -287,7 +289,8 @@ namespace KTKS_DonKH.DAL.BamChi
                                 itemCTBamChi.DayChi,
                                 itemCTBamChi.TheoYeuCau,
                                 itemCTBamChi.MaSoBC,
-                                itemCTBamChi.NiemChi,itemCTBamChi.MauSac,
+                                itemCTBamChi.NiemChi,
+                                itemCTBamChi.MauSac,
                                 CreateBy = itemUser.HoTen,
                                 itemCTBamChi.NgayQuyetToan,
                             };
@@ -314,7 +317,8 @@ namespace KTKS_DonKH.DAL.BamChi
                                 itemCTBamChi.DayChi,
                                 itemCTBamChi.TheoYeuCau,
                                 itemCTBamChi.MaSoBC,
-                                itemCTBamChi.NiemChi,itemCTBamChi.MauSac,
+                                itemCTBamChi.NiemChi,
+                                itemCTBamChi.MauSac,
                                 CreateBy = itemUser.HoTen,
                                 itemCTBamChi.NgayQuyetToan,
                             };
@@ -348,7 +352,8 @@ namespace KTKS_DonKH.DAL.BamChi
                                     itemCTBamChi.DayChi,
                                     itemCTBamChi.TheoYeuCau,
                                     itemCTBamChi.MaSoBC,
-                                    itemCTBamChi.NiemChi,itemCTBamChi.MauSac,
+                                    itemCTBamChi.NiemChi,
+                                    itemCTBamChi.MauSac,
                                     CreateBy = itemUser.HoTen,
                                     itemCTBamChi.NgayQuyetToan,
                                 };
@@ -375,7 +380,8 @@ namespace KTKS_DonKH.DAL.BamChi
                                 itemCTBamChi.DayChi,
                                 itemCTBamChi.TheoYeuCau,
                                 itemCTBamChi.MaSoBC,
-                                itemCTBamChi.NiemChi,itemCTBamChi.MauSac,
+                                itemCTBamChi.NiemChi,
+                                itemCTBamChi.MauSac,
                                 CreateBy = itemUser.HoTen,
                                 itemCTBamChi.NgayQuyetToan,
                             };
@@ -402,7 +408,8 @@ namespace KTKS_DonKH.DAL.BamChi
                                 itemCTBamChi.DayChi,
                                 itemCTBamChi.TheoYeuCau,
                                 itemCTBamChi.MaSoBC,
-                                itemCTBamChi.NiemChi,itemCTBamChi.MauSac,
+                                itemCTBamChi.NiemChi,
+                                itemCTBamChi.MauSac,
                                 CreateBy = itemUser.HoTen,
                                 itemCTBamChi.NgayQuyetToan,
                             };
@@ -429,7 +436,8 @@ namespace KTKS_DonKH.DAL.BamChi
                                 itemCTBamChi.DayChi,
                                 itemCTBamChi.TheoYeuCau,
                                 itemCTBamChi.MaSoBC,
-                                itemCTBamChi.NiemChi,itemCTBamChi.MauSac,
+                                itemCTBamChi.NiemChi,
+                                itemCTBamChi.MauSac,
                                 CreateBy = itemUser.HoTen,
                                 itemCTBamChi.NgayQuyetToan,
                             };
@@ -577,7 +585,8 @@ namespace KTKS_DonKH.DAL.BamChi
                             itemCTBamChi.DayChi,
                             itemCTBamChi.TheoYeuCau,
                             itemCTBamChi.MaSoBC,
-                            itemCTBamChi.NiemChi,itemCTBamChi.MauSac,
+                            itemCTBamChi.NiemChi,
+                            itemCTBamChi.MauSac,
                             CreateBy = itemUser.HoTen,
                             itemCTBamChi.NgayQuyetToan,
                         };
@@ -613,7 +622,8 @@ namespace KTKS_DonKH.DAL.BamChi
                             itemCTBamChi.DayChi,
                             itemCTBamChi.TheoYeuCau,
                             itemCTBamChi.MaSoBC,
-                            itemCTBamChi.NiemChi,itemCTBamChi.MauSac,
+                            itemCTBamChi.NiemChi,
+                            itemCTBamChi.MauSac,
                             CreateBy = itemUser.HoTen,
                             itemCTBamChi.NgayQuyetToan,
                         };
@@ -649,7 +659,8 @@ namespace KTKS_DonKH.DAL.BamChi
                             itemCTBamChi.DayChi,
                             itemCTBamChi.TheoYeuCau,
                             itemCTBamChi.MaSoBC,
-                            itemCTBamChi.NiemChi,itemCTBamChi.MauSac,
+                            itemCTBamChi.NiemChi,
+                            itemCTBamChi.MauSac,
                             CreateBy = itemUser.HoTen,
                             itemCTBamChi.NgayQuyetToan,
                         };
@@ -685,9 +696,22 @@ namespace KTKS_DonKH.DAL.BamChi
                             itemCTBamChi.DayChi,
                             itemCTBamChi.TheoYeuCau,
                             itemCTBamChi.MaSoBC,
-                            itemCTBamChi.NiemChi,itemCTBamChi.MauSac,
+                            itemCTBamChi.NiemChi,
+                            itemCTBamChi.MauSac,
                             CreateBy = itemUser.HoTen,
                             itemCTBamChi.NgayQuyetToan,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable getDS_GroupMauSac(DateTime FromNgayBC, DateTime ToNgayBC)
+        {
+            var query = from itemCTBamChi in db.BamChi_ChiTiets
+                        where itemCTBamChi.NgayBC.Value.Date >= FromNgayBC.Date && itemCTBamChi.NgayBC.Value.Date <= ToNgayBC.Date
+                        group itemCTBamChi by itemCTBamChi.MauSac into groupMauSac
+                        select new
+                        {
+                            MauSac = groupMauSac.Key,
                         };
             return LINQToDataTable(query);
         }
@@ -722,7 +746,8 @@ namespace KTKS_DonKH.DAL.BamChi
                             itemCTBamChi.DayChi,
                             itemCTBamChi.TheoYeuCau,
                             itemCTBamChi.MaSoBC,
-                            itemCTBamChi.NiemChi,itemCTBamChi.MauSac,
+                            itemCTBamChi.NiemChi,
+                            itemCTBamChi.MauSac,
                             CreateBy = itemUser.HoTen,
                             itemCTBamChi.NgayQuyetToan,
                         };
@@ -758,12 +783,15 @@ namespace KTKS_DonKH.DAL.BamChi
                             itemCTBamChi.DayChi,
                             itemCTBamChi.TheoYeuCau,
                             itemCTBamChi.MaSoBC,
-                            itemCTBamChi.NiemChi,itemCTBamChi.MauSac,
+                            itemCTBamChi.NiemChi,
+                            itemCTBamChi.MauSac,
                             CreateBy = itemUser.HoTen,
                             itemCTBamChi.NgayQuyetToan,
                         };
             return LINQToDataTable(query);
         }
+
+
 
         #endregion
 

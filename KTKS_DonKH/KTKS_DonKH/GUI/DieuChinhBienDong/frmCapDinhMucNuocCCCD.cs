@@ -234,6 +234,50 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dgvDanhSach.Focus();
         }
 
+        private void dgvDanhSach_UserAddedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            try
+            {
+                if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
+                {
+                    if (_danhbo != null)
+                    {
+                        if (e.Row.Cells["CCCD"].Value != null && e.Row.Cells["CCCD"].Value.ToString() != "")
+                        {
+                            DCBD_DKDM_CCCD enCT = new DCBD_DKDM_CCCD();
+                            enCT.CCCD = e.Row.Cells["CCCD"].Value.ToString();
+                            enCT.HoTen = e.Row.Cells["HoTen"].Value.ToString();
+                            string[] NgaySinhs = e.Row.Cells["NgaySinh"].Value.ToString().Split('/');
+                            if (NgaySinhs.Count() == 3)
+                            {
+                                enCT.NgaySinh = new DateTime(int.Parse(NgaySinhs[2]), int.Parse(NgaySinhs[1]), int.Parse(NgaySinhs[0]));
+                            }
+                            else
+                                enCT.NgaySinh = new DateTime(int.Parse(e.Row.Cells["NgaySinh"].Value.ToString()), 1, 1);
+                            if (e.Row.Cells["DCThuongTru"].Value != null && e.Row.Cells["DCThuongTru"].Value.ToString() != "")
+                                enCT.DCThuongTru = e.Row.Cells["DCThuongTru"].Value.ToString();
+                            if (e.Row.Cells["DCTamTru"].Value != null && e.Row.Cells["DCTamTru"].Value.ToString() != "")
+                                enCT.DCTamTru = e.Row.Cells["DCTamTru"].Value.ToString();
+                            enCT.CreateBy = CTaiKhoan.MaUser;
+                            enCT.CreateDate = DateTime.Now;
+                            _danhbo.DCBD_DKDM_CCCDs.Add(enCT);
+                        }
+                        if (_cDKDM.Sua(_danhbo))
+                        {
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Clear();
+                        }
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void dgvDanhSach_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
             try
@@ -478,13 +522,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 //    ctdcbd.DinhMucHN_BD = int.Parse(txtDinhMucHN_BD.Text.Trim());
                                 //}
                                 ctdcbd.ThongTin = ThongTin;
-                                    BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
-                                    if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                                        ctdcbd.ChucVu = "GIÁM ĐỐC";
-                                    else
-                                        ctdcbd.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
-                                    ctdcbd.NguoiKy = bangiamdoc.HoTen.ToUpper();
-                                    ctdcbd.PhieuDuocKy = true;
+                                BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                                if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                    ctdcbd.ChucVu = "GIÁM ĐỐC";
+                                else
+                                    ctdcbd.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                                ctdcbd.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                                ctdcbd.PhieuDuocKy = true;
                                 //không chạy transaction đc vì hàm xử lý hiệu lực kỳ
                                 if (_cDCBD.ThemDCBD(ctdcbd))
                                 {
@@ -579,6 +623,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
 
 
 
