@@ -434,7 +434,7 @@ namespace ThuTien.GUI.ToTruong
 
         private void btnBaoCao_Click(object sender, EventArgs e)
         {
-            if (cmbKy.SelectedIndex != -1&&chkNgayKiemTra.Checked)
+            if (cmbKy.SelectedIndex != -1 && chkNgayKiemTra.Checked)
             {
                 DataTable dtNV = new DataTable();
                 DataTable dtCNKD = new DataTable();
@@ -454,7 +454,7 @@ namespace ThuTien.GUI.ToTruong
                         if (_cDCHD.CheckExist_ChuanThu(int.Parse(item["MaHD"].ToString())))
                         {
                             DIEUCHINH_HD dchd = _cDCHD.Get(int.Parse(item["MaHD"].ToString()));
-                            item["TongCong"] = long.Parse(item["TongCong"].ToString()) - dchd.TONGCONG_DC ;
+                            item["TongCong"] = long.Parse(item["TongCong"].ToString()) - dchd.TONGCONG_DC;
                         }
                     lstND = _cNguoiDung.GetDSHanhThuByMaTo((int)cmbTo.SelectedValue);
                 }
@@ -480,7 +480,7 @@ namespace ThuTien.GUI.ToTruong
                 DataTable dtDCHDTonCuKy = new DataTable();
                 DataTable dtDCHDTonTrongKy = new DataTable();
                 DataTable dtDCHDTongTon = new DataTable();
-                
+
                 foreach (TT_NguoiDung item in lstND)
                 {
                     dtDCHDChuanThu.Merge(_cDCHD.GetChuanThu_NV("TG", item.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
@@ -500,7 +500,7 @@ namespace ThuTien.GUI.ToTruong
                 foreach (DataRow item in dtDCHDChuanThu.Rows)
                 {
                     DataRow[] drTo = dtNV.Select("MaNV=" + item["MaNV"] + " and Loai='" + item["Loai"] + "'");
-                    drTo[0]["GTChuanThu"] = long.Parse(drTo[0]["GTChuanThu"].ToString()) - long.Parse(item["TONGCONG_DC"].ToString()) ;
+                    drTo[0]["GTChuanThu"] = long.Parse(drTo[0]["GTChuanThu"].ToString()) - long.Parse(item["TONGCONG_DC"].ToString());
                 }
 
                 foreach (DataRow item in dtDCHDTonCuKy.Rows)
@@ -867,10 +867,10 @@ namespace ThuTien.GUI.ToTruong
         private void btnInDSTon_Click(object sender, EventArgs e)
         {
             DataTable dt = new DataTable();
-            if(CNguoiDung.Doi)
-                 dt = _cDongNuoc.GetDSCTDongNuocTon((int)cmbTo.SelectedValue, dateDen.Value);
+            if (CNguoiDung.Doi)
+                dt = _cDongNuoc.GetDSCTDongNuocTon((int)cmbTo.SelectedValue, dateDen.Value);
             else
-            dt = _cDongNuoc.GetDSCTDongNuocTon(CNguoiDung.MaTo, dateDen.Value);
+                dt = _cDongNuoc.GetDSCTDongNuocTon(CNguoiDung.MaTo, dateDen.Value);
             dsBaoCao dsBaoCao = new dsBaoCao();
             foreach (DataRow item in dt.Rows)
             {
@@ -890,7 +890,7 @@ namespace ThuTien.GUI.ToTruong
                     dr["LenhHuy"] = true;
                 dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
             }
-            
+
             dt = _cLenhHuy.GetDSTon_ExceptDongNuoc(CNguoiDung.MaTo, dateDen.Value);
             foreach (DataRow item in dt.Rows)
             {
@@ -925,21 +925,36 @@ namespace ThuTien.GUI.ToTruong
             DataTable dtDongNuoc_ChiTiet = new DataTable();
             DataTable dtDongNuoc_DanhSach = new DataTable();
             //add tổng
+            //1 tổ đóng nước
+            //if (CNguoiDung.Doi)
+            //{
+            //    dtDongNuoc = _cDongNuoc.GetBaoCaoTongHop(dateTu.Value, dateDen.Value);
+            //    dtDCHD_DongNuoc = _cDCHD.GetChuanThu_DongNuoc_BaoCaoTongHop(dateTu.Value, dateDen.Value);
+            //    dtDongNuoc_ChiTiet = _cDongNuoc.GetBaoCaoTongHop_ChiTiet(dateTu.Value, dateDen.Value);
+            //    dtDongNuoc_DanhSach = _cDongNuoc.GetBaoCaoTongHop_DanhSach(dateTu.Value, dateDen.Value);
+            //}
+            //else
+            //{
+            //    dtDongNuoc = _cDongNuoc.GetBaoCaoTongHop(dateTu.Value, dateDen.Value);
+            //    dtDCHD_DongNuoc = _cDCHD.GetChuanThu_DongNuoc_BaoCaoTongHop(dateTu.Value, dateDen.Value);
+            //    dtDongNuoc_ChiTiet = _cDongNuoc.GetBaoCaoTongHop_ChiTiet(dateTu.Value, dateDen.Value);
+            //    dtDongNuoc_DanhSach = _cDongNuoc.GetBaoCaoTongHop_DanhSach(dateTu.Value, dateDen.Value);
+            //}
+            //1 tổ hành thu có đóng nước
             if (CNguoiDung.Doi)
             {
-                dtDongNuoc = _cDongNuoc.GetBaoCaoTongHop( dateTu.Value, dateDen.Value);
-                dtDCHD_DongNuoc = _cDCHD.GetChuanThu_DongNuoc_BaoCaoTongHop( dateTu.Value, dateDen.Value);
-                dtDongNuoc_ChiTiet = _cDongNuoc.GetBaoCaoTongHop_ChiTiet( dateTu.Value, dateDen.Value);
-                dtDongNuoc_DanhSach = _cDongNuoc.GetBaoCaoTongHop_DanhSach( dateTu.Value, dateDen.Value);
+                dtDongNuoc = _cDongNuoc.GetBaoCaoTongHop(int.Parse(cmbTo.SelectedValue.ToString()), dateTu.Value, dateDen.Value);
+                dtDCHD_DongNuoc = _cDCHD.GetChuanThu_DongNuoc_BaoCaoTongHop(int.Parse(cmbTo.SelectedValue.ToString()), dateTu.Value, dateDen.Value);
+                dtDongNuoc_ChiTiet = _cDongNuoc.GetBaoCaoTongHop_ChiTiet(int.Parse(cmbTo.SelectedValue.ToString()), dateTu.Value, dateDen.Value);
+                dtDongNuoc_DanhSach = _cDongNuoc.GetBaoCaoTongHop_DanhSach(int.Parse(cmbTo.SelectedValue.ToString()), dateTu.Value, dateDen.Value);
             }
             else
             {
-                dtDongNuoc = _cDongNuoc.GetBaoCaoTongHop(dateTu.Value, dateDen.Value);
-                dtDCHD_DongNuoc = _cDCHD.GetChuanThu_DongNuoc_BaoCaoTongHop( dateTu.Value, dateDen.Value);
-                dtDongNuoc_ChiTiet = _cDongNuoc.GetBaoCaoTongHop_ChiTiet( dateTu.Value, dateDen.Value);
-                dtDongNuoc_DanhSach = _cDongNuoc.GetBaoCaoTongHop_DanhSach(dateTu.Value, dateDen.Value);
+                dtDongNuoc = _cDongNuoc.GetBaoCaoTongHop(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
+                dtDCHD_DongNuoc = _cDCHD.GetChuanThu_DongNuoc_BaoCaoTongHop(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
+                dtDongNuoc_ChiTiet = _cDongNuoc.GetBaoCaoTongHop_ChiTiet(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
+                dtDongNuoc_DanhSach = _cDongNuoc.GetBaoCaoTongHop_DanhSach(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
             }
-
             foreach (DataRow item in dtDCHD_DongNuoc.Rows)
             {
                 DataRow[] drDN = dtDongNuoc.Select("MaNV=" + item["MaNV"]);
