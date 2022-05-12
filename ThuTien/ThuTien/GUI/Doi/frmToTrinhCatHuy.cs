@@ -350,7 +350,7 @@ namespace ThuTien.GUI.Doi
             }
         }
 
-        private void dgvToTrinh_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvToTrinh_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvToTrinh.RowCount > 0)
                 dgvCTToTrinh.DataSource = _cToTrinhCatHuy.GetDSCT(decimal.Parse(dgvToTrinh["MaTT", e.RowIndex].Value.ToString()));
@@ -511,6 +511,8 @@ namespace ThuTien.GUI.Doi
                     else
                         MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+       
 
     }
 }
