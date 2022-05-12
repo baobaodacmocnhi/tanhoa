@@ -57,6 +57,7 @@ namespace DocSo_PC.GUI.HeThong
                     CNguoiDung.Admin = nguoidung.Admin;
                     CNguoiDung.PhoGiamDoc = nguoidung.PhoGiamDoc;
                     CNguoiDung.Doi = nguoidung.Doi;
+                    CNguoiDung.DoiXem = nguoidung.DoiXem;
                     CNguoiDung.ToTruong = nguoidung.ToTruong;
                     CNguoiDung.ThuKy = nguoidung.ThuKy;
                     CNguoiDung.ChucVu = _cNguoiDung.getChucVu();

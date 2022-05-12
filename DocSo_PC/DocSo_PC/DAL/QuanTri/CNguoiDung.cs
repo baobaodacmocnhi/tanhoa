@@ -100,6 +100,13 @@ namespace DocSo_PC.DAL.QuanTri
             set { CNguoiDung._Doi = value; }
         }
 
+        static bool _DoiXem;
+        public static bool DoiXem
+        {
+            get { return CNguoiDung._DoiXem; }
+            set { CNguoiDung._DoiXem = value; }
+        }
+
         static bool _ToTruong;
         public static bool ToTruong
         {

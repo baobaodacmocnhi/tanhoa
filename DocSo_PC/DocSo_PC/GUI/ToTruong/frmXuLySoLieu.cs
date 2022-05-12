@@ -54,7 +54,7 @@ namespace DocSo_PC.GUI.ToTruong
                 cmbCodeMoi.DataSource = dtCode;
                 cmbCodeMoi.DisplayMember = "Code";
                 cmbCodeMoi.ValueMember = "Code";
-                if (CNguoiDung.Doi)
+                if (CNguoiDung.Doi||CNguoiDung.DoiXem)
                 {
                     cmbTo.Visible = true;
                     List<To> lst = _cTo.getDS_HanhThu();
@@ -66,7 +66,6 @@ namespace DocSo_PC.GUI.ToTruong
                     cmbTo.DisplayMember = "TenTo";
                     cmbTo.ValueMember = "MaTo";
                     loadMay(cmbTo.SelectedValue.ToString());
-
                 }
                 else
                 {
