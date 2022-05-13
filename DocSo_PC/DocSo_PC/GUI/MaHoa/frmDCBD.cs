@@ -77,8 +77,8 @@ namespace DocSo_PC.GUI.MaHoa
                                 MaHoa_DCBD ctdcbd = new MaHoa_DCBD();
                                 if (_cDCBD.checkExist(dontu.ID, dontu.DanhBo) == true)
                                 {
-                                    MessageBox.Show("Danh Bộ " + dontu.DanhBo + " đã được Lập Điều Chỉnh Biến Động", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    return;
+                                    if (MessageBox.Show("Danh Bộ " + dontu.DanhBo + " đã được Lập Điều Chỉnh Biến Động\nVẫn muốn Lập tiếp???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+                                        return;
                                 }
                                 ctdcbd.IDMaDon = dontu.ID;
                                 ctdcbd.DanhBo = dontu.DanhBo;
