@@ -472,6 +472,16 @@ namespace DocSo_PC.GUI.MaHoa
                         }
                         ///
                         _ctktxm.NgayKTXM_Truoc_NgayGiao = chkNgayKTXMTruocNgayGiao.Checked;
+                        //cập nhật lại thời gian bên lịch sử chuyển đơn
+                        if (_ctktxm.NgayKTXM.Value.Date != dateKTXM.Value.Date)
+                        {
+                            MaHoa_DonTu_LichSu dtls = _cDonTu.get_LichSu("KTXM", (int)_ctktxm.ID);
+                            if (dtls != null)
+                            {
+                                dtls.NgayChuyen = dateKTXM.Value;
+                                _cDonTu.SubmitChanges();
+                            }
+                        }
                         _ctktxm.NgayKTXM = dateKTXM.Value;
 
                         if (cmbHienTrangKiemTra.SelectedValue != null)
