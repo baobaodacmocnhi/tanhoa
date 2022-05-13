@@ -1306,7 +1306,7 @@ namespace KTKS_DonKH.GUI.DonTu
         {
             if (txtSoNK.Text.Trim() != "")
             {
-                txtHieuLucKy.Text = _cTTKH.getHieuLucKyToi(chkCCDM.Checked);
+                txtHieuLucKy.Text = _cTTKH.getHieuLucKyToi(chkCCDM.Checked,_hoadon.DOT);
             }
         }
 

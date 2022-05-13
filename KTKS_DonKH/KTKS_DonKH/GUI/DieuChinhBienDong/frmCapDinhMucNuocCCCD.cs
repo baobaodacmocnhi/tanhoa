@@ -29,6 +29,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         CChungTu _cChungTu = new CChungTu();
         CDHN _cDHN = new CDHN();
+        CTTKH _cTTKH = new CTTKH();
         HOADON _hoadon = null;
         DCBD_DKDM_DanhBo _danhbo = null;
         bool _flag = false;
