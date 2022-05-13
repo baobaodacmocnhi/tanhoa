@@ -116,6 +116,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
+        public bool checkExist_KhacDanhBo_Active(string DanhBo, string MaCT, int MaLCT)
+        {
+            return db.ChungTu_ChiTiets.Any(itemCT => itemCT.DanhBo != DanhBo && itemCT.MaCT == MaCT && itemCT.MaLCT == MaLCT && itemCT.Cat == false);
+        }
+
         public bool CheckExist_CT(string DanhBo, string MaCT, int MaLCT)
         {
             return db.ChungTu_ChiTiets.Any(itemCT => itemCT.DanhBo == DanhBo && itemCT.MaCT == MaCT && itemCT.MaLCT == MaLCT);

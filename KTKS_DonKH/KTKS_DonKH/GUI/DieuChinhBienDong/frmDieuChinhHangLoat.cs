@@ -153,7 +153,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         entity.SoCongVan_PhongBanDoi = "Đ. QLĐHN";
                         entity.TongDB = entity.DonTu_ChiTiets.Count;
                         //entity.ID_NhomDon_PKH = "7";
-                        //entity.Name_NhomDon_PKH = "Chỉ số nước";
+                        //entity.Name_NhomDon_PKH = "Định mức";
                         entity.VanPhong = true;
                         entity.MaPhong = 1;
                         if (_cDonTu.Them(entity))

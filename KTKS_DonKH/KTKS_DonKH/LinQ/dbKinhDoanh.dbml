@@ -2762,6 +2762,7 @@
       <Column Name="DCBD_STT" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DCBD" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="DangXuLy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="GhiChu" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
