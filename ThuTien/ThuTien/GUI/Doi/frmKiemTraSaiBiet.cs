@@ -90,6 +90,33 @@ namespace ThuTien.GUI.Doi
             {
                 MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            //try
+            //{
+            //    OpenFileDialog dialog = new OpenFileDialog();
+            //    dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
+            //    dialog.Multiselect = false;
+            //    if (dialog.ShowDialog() == DialogResult.OK)
+            //    {
+            //        string mess = "";
+            //        DataTable dt = _cHoaDon.GetDSDangNgan(dateGiaiTrach.Value, dateGiaiTrach.Value);
+            //        DataTable dtExcel = _cHoaDon.ExcelToDataTable(dialog.FileName);
+            //        foreach (DataRow item in dtExcel.Rows)
+            //            if (item[5].ToString().Trim() != "" && item[6].ToString().Trim() != "")
+            //            {
+            //                DataRow[] dr = dt.Select("SoHoaDon='" + item[5].ToString().Trim() + int.Parse(item[6].ToString().Trim()).ToString("0000000") + "'");
+            //                if (dr.Count() > 0)
+            //                    dt.Rows.Remove(dr[0]);
+            //            }
+            //        if (dt.Rows.Count > 0)
+            //            foreach (DataRow item in dt.Rows)
+            //                mess += item["SoHoaDon"]+" ";
+            //        MessageBox.Show(mess, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Lỗi, Vui lòng thử lại " + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         private void btnXem_Click(object sender, EventArgs e)

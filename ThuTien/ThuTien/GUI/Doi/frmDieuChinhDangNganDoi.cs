@@ -163,7 +163,7 @@ namespace ThuTien.GUI.Doi
             if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtSoHoaDon.Text.Trim()))
             {
                 foreach (string item in txtSoHoaDon.Lines)
-                    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && item.ToString().Length == 13)
+                    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) )
                     {
                         if (lstHD.FindItemWithText(item.Trim().ToUpper()) == null)
                         {
@@ -171,16 +171,16 @@ namespace ThuTien.GUI.Doi
                             lstHD.EnsureVisible(lstHD.Items.Count - 1);
                         }
                     }
-                    else
-                        ///Trung An thêm 'K' phía cuối liên hóa đơn
-                        if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && item.ToString().Length == 14)
-                        {
-                            if (lstHD.FindItemWithText(item.Trim().ToUpper().Replace("K", "")) == null)
-                            {
-                                lstHD.Items.Add(item.Trim().ToUpper().Replace("K", ""));
-                                lstHD.EnsureVisible(lstHD.Items.Count - 1);
-                            }
-                        }
+                    //else
+                    //    ///Trung An thêm 'K' phía cuối liên hóa đơn
+                    //    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && item.ToString().Length == 14)
+                    //    {
+                    //        if (lstHD.FindItemWithText(item.Trim().ToUpper().Replace("K", "")) == null)
+                    //        {
+                    //            lstHD.Items.Add(item.Trim().ToUpper().Replace("K", ""));
+                    //            lstHD.EnsureVisible(lstHD.Items.Count - 1);
+                    //        }
+                    //    }
                 txtSoLuong.Text = lstHD.Items.Count.ToString();
                 txtSoHoaDon.Text = "";
             }
