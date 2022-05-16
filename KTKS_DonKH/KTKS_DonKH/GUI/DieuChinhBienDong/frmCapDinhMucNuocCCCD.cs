@@ -97,6 +97,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
                 {
+                    if (_cDKDM.checkExists(_hoadon.DANHBA) == true)
+                    {
+                        MessageBox.Show("Danh Bộ này đã nhập rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
                     if (_hoadon != null)
                     {
                         DCBD_DKDM_DanhBo en = new DCBD_DKDM_DanhBo();
@@ -296,8 +301,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             return;
                         }
                         DCBD_DKDM_CCCD en = _danhbo.DCBD_DKDM_CCCDs.SingleOrDefault(item => item.ID == int.Parse(e.Row.Cells["ID"].Value.ToString()));
-                        if (_cDKDM.XoaCT(en))
-                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        _cDKDM.XoaCT(en);
+                        //MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                         MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -349,24 +354,37 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             && (dgvDanhSach["DCTamTru", e.RowIndex + 1].Value == null || dgvDanhSach["DCTamTru", e.RowIndex + 1].Value.ToString() == ""))
                             dgvDanhSach["DCTamTru", e.RowIndex + 1].Value = dgvDanhSach["DCTamTru", e.RowIndex].Value;
                     }
-                    if (_flagInsert)
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvDanhSach_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (_flagInsert)
+                    if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
                     {
-                        if (dgvDanhSach["CCCD", e.RowIndex].Value != null && dgvDanhSach["CCCD", e.RowIndex].Value.ToString() != "")
+                        if (dgvDanhSach["CCCD", e.RowIndex-1].Value != null && dgvDanhSach["CCCD", e.RowIndex-1].Value.ToString() != "")
                         {
                             DCBD_DKDM_CCCD enCT = new DCBD_DKDM_CCCD();
-                            enCT.CCCD = dgvDanhSach["CCCD", e.RowIndex].Value.ToString();
-                            enCT.HoTen = dgvDanhSach["HoTen", e.RowIndex].Value.ToString();
-                            string[] NgaySinhs = dgvDanhSach["NgaySinh", e.RowIndex].Value.ToString().Split('/');
+                            enCT.CCCD = dgvDanhSach["CCCD", e.RowIndex-1].Value.ToString();
+                            enCT.HoTen = dgvDanhSach["HoTen", e.RowIndex-1].Value.ToString();
+                            string[] NgaySinhs = dgvDanhSach["NgaySinh", e.RowIndex-1].Value.ToString().Split('/');
                             if (NgaySinhs.Count() == 3)
                             {
                                 enCT.NgaySinh = new DateTime(int.Parse(NgaySinhs[2]), int.Parse(NgaySinhs[1]), int.Parse(NgaySinhs[0]));
                             }
                             else
-                                enCT.NgaySinh = new DateTime(int.Parse(dgvDanhSach["NgaySinh", e.RowIndex].Value.ToString()), 1, 1);
-                            if (dgvDanhSach["DCThuongTru", e.RowIndex].Value != null && dgvDanhSach["DCThuongTru", e.RowIndex].Value.ToString() != "")
-                                enCT.DCThuongTru = dgvDanhSach["DCThuongTru", e.RowIndex].Value.ToString();
-                            if (dgvDanhSach["DCTamTru", e.RowIndex].Value != null && dgvDanhSach["DCTamTru", e.RowIndex].Value.ToString() != "")
-                                enCT.DCTamTru = dgvDanhSach["DCTamTru", e.RowIndex].Value.ToString();
+                                enCT.NgaySinh = new DateTime(int.Parse(dgvDanhSach["NgaySinh", e.RowIndex-1].Value.ToString()), 1, 1);
+                            if (dgvDanhSach["DCThuongTru", e.RowIndex-1].Value != null && dgvDanhSach["DCThuongTru", e.RowIndex-1].Value.ToString() != "")
+                                enCT.DCThuongTru = dgvDanhSach["DCThuongTru", e.RowIndex-1].Value.ToString();
+                            if (dgvDanhSach["DCTamTru", e.RowIndex-1].Value != null && dgvDanhSach["DCTamTru", e.RowIndex-1].Value.ToString() != "")
+                                enCT.DCTamTru = dgvDanhSach["DCTamTru", e.RowIndex-1].Value.ToString();
                             enCT.CreateBy = CTaiKhoan.MaUser;
                             enCT.CreateDate = DateTime.Now;
                             _danhbo.DCBD_DKDM_CCCDs.Add(enCT);
@@ -376,7 +394,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             _flagInsert = false;
                         }
                     }
-                }
+                    else
+                        MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
@@ -873,6 +892,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
 
 
     }

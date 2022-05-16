@@ -1203,6 +1203,49 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 //    frmShowBaoCao frm2 = new frmShowBaoCao(rpt2);
                 //    frm2.Show();
                 //}
+                try
+                {
+                    DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                    foreach (DataGridViewRow item in dgvDSDCBD.Rows)
+                        if (item.Cells["In"].Value != null && bool.Parse(item.Cells["In"].Value.ToString()) == true)
+                        {
+                            DCBD_ChiTietBienDong en = _cDCBD.getBienDong(decimal.Parse(item.Cells["SoPhieu"].Value.ToString()));
+                            if (en != null)
+                            {
+                                DataRow dr = dsBaoCao.Tables["DCBD"].NewRow();
+
+                                dr["MaDon"] = en.DCBD.MaDonMoi.ToString();
+                                dr["SoPhieu"] = en.MaCTDCBD.ToString();
+                                dr["ThongTin"] = en.ThongTin.ToUpper();
+                                dr["HieuLucKy"] = en.HieuLucKy;
+                                dr["Dot"] = en.Dot;
+                                ///Hiện tại xử lý mã số thuế như vậy
+                                dr["DanhBo"] = en.DanhBo.Insert(7, " ").Insert(4, " ");
+                                //dr["HopDong"] = en.HopDong;
+                                dr["HoTen"] = en.HoTen;
+                                dr["DiaChi"] = en.DiaChi;
+                                dr["HoTenBD"] = en.HoTen_BD;
+                                dr["DiaChiBD"] = en.DiaChi_BD;
+                                dr["MaQuanPhuong"] = en.MaQuanPhuong;
+                                dr["GiaBieu"] = en.GiaBieu;
+                                dr["DinhMuc"] = en.DinhMuc;
+                                dr["DinhMucHN"] = en.DinhMucHN;
+                                ///Biến Động
+                                dr["GiaBieuBD"] = en.GiaBieu_BD;
+                                dr["ChucVu"] = "TUQ GIÁM ĐỐC\n" + CTaiKhoan.ChucVu.ToUpper().Replace("PHÒNG", "") + CTaiKhoan.TenPhong.ToUpper();
+                                dr["NguoiKy"] = CTaiKhoan.NguoiKy.ToUpper();
+                                dsBaoCao.Tables["DCBD"].Rows.Add(dr);
+                            }
+                        }
+                    rptDSPhieuDCBD_15112019 rpt = new rptDSPhieuDCBD_15112019();
+                    rpt.SetDataSource(dsBaoCao);
+                    frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                    frm.Show();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
                 if (radDSDCHD.Checked)
