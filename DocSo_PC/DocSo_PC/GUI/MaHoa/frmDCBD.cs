@@ -82,7 +82,7 @@ namespace DocSo_PC.GUI.MaHoa
                                 }
                                 ctdcbd.IDMaDon = dontu.ID;
                                 ctdcbd.DanhBo = dontu.DanhBo;
-                                ctdcbd.HopDong = dontu.HopDong;
+                                //ctdcbd.HopDong = dontu.HopDong;
                                 ctdcbd.HoTen = dontu.HoTen;
                                 ctdcbd.DiaChi = dontu.DiaChi;
                                 ctdcbd.MaQuanPhuong = dontu.Quan + " " + dontu.Phuong;
@@ -229,7 +229,7 @@ namespace DocSo_PC.GUI.MaHoa
                             dr["Dot"] = en.Dot;
                             ///Hiện tại xử lý mã số thuế như vậy
                             dr["DanhBo"] = en.DanhBo.Insert(7, " ").Insert(4, " ");
-                            dr["HopDong"] = en.HopDong;
+                            //dr["HopDong"] = en.HopDong;
                             dr["HoTen"] = en.HoTen;
                             dr["DiaChi"] = en.DiaChi;
                             dr["MaQuanPhuong"] = en.MaQuanPhuong;
@@ -274,7 +274,7 @@ namespace DocSo_PC.GUI.MaHoa
                             dr["Dot"] = en.Dot;
                             ///Hiện tại xử lý mã số thuế như vậy
                             dr["DanhBo"] = en.DanhBo.Insert(7, " ").Insert(4, " ");
-                            dr["HopDong"] = en.HopDong;
+                            //dr["HopDong"] = en.HopDong;
                             dr["HoTen"] = en.HoTen;
                             dr["DiaChi"] = en.DiaChi;
                             dr["MaQuanPhuong"] = en.MaQuanPhuong;
