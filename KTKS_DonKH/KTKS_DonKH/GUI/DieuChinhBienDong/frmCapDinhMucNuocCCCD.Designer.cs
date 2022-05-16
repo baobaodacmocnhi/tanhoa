@@ -37,6 +37,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.chkDangXuLy = new System.Windows.Forms.CheckBox();
@@ -68,9 +71,6 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.cmbNguoiLap = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.radGiuNguyen = new System.Windows.Forms.RadioButton();
-            this.radGiam = new System.Windows.Forms.RadioButton();
-            this.radTang = new System.Windows.Forms.RadioButton();
             this.txtThung = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.txtQuan = new System.Windows.Forms.TextBox();
@@ -100,6 +100,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.dateTu = new System.Windows.Forms.DateTimePicker();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.dgvDanhSachCT_Online = new System.Windows.Forms.DataGridView();
             this.txtDanhBo_Online = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.btnIn_Online = new System.Windows.Forms.Button();
@@ -118,12 +119,20 @@
             this.dateDen_Online = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.dateTu_Online = new System.Windows.Forms.DateTimePicker();
+            this.IDCT_Online = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTenCT_Online = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgaySinhCT_Online = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DCThuongTruCT_Online = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DCTamTruCT_Online = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CCCDCT_Online = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmbKiemTra = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach2)).BeginInit();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSachCT_Online)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach_Online)).BeginInit();
             this.SuspendLayout();
             // 
@@ -293,10 +302,8 @@
             this.dgvDanhSach.Size = new System.Drawing.Size(810, 423);
             this.dgvDanhSach.TabIndex = 14;
             this.dgvDanhSach.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellValueChanged);
-            this.dgvDanhSach.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_RowEnter);
             this.dgvDanhSach.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_RowLeave);
             this.dgvDanhSach.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhSach_RowPostPaint);
-            this.dgvDanhSach.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgvDanhSach_UserAddedRow);
             this.dgvDanhSach.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgvDanhSach_UserDeletingRow);
             // 
             // ID
@@ -425,11 +432,9 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.cmbKiemTra);
             this.tabPage2.Controls.Add(this.cmbNguoiLap);
             this.tabPage2.Controls.Add(this.label17);
-            this.tabPage2.Controls.Add(this.radGiuNguyen);
-            this.tabPage2.Controls.Add(this.radGiam);
-            this.tabPage2.Controls.Add(this.radTang);
             this.tabPage2.Controls.Add(this.txtThung);
             this.tabPage2.Controls.Add(this.label14);
             this.tabPage2.Controls.Add(this.txtQuan);
@@ -447,7 +452,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1082, 653);
+            this.tabPage2.Size = new System.Drawing.Size(1309, 860);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Danh Sách";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -468,38 +473,6 @@
             this.label17.Size = new System.Drawing.Size(56, 13);
             this.label17.TabIndex = 40;
             this.label17.Text = "Người Lập";
-            // 
-            // radGiuNguyen
-            // 
-            this.radGiuNguyen.AutoSize = true;
-            this.radGiuNguyen.Location = new System.Drawing.Point(680, 30);
-            this.radGiuNguyen.Name = "radGiuNguyen";
-            this.radGiuNguyen.Size = new System.Drawing.Size(81, 17);
-            this.radGiuNguyen.TabIndex = 39;
-            this.radGiuNguyen.Text = "Giữ Nguyên";
-            this.radGiuNguyen.UseVisualStyleBackColor = true;
-            // 
-            // radGiam
-            // 
-            this.radGiam.AutoSize = true;
-            this.radGiam.Location = new System.Drawing.Point(625, 30);
-            this.radGiam.Name = "radGiam";
-            this.radGiam.Size = new System.Drawing.Size(49, 17);
-            this.radGiam.TabIndex = 38;
-            this.radGiam.Text = "Giảm";
-            this.radGiam.UseVisualStyleBackColor = true;
-            // 
-            // radTang
-            // 
-            this.radTang.AutoSize = true;
-            this.radTang.Checked = true;
-            this.radTang.Location = new System.Drawing.Point(569, 30);
-            this.radTang.Name = "radTang";
-            this.radTang.Size = new System.Drawing.Size(50, 17);
-            this.radTang.TabIndex = 37;
-            this.radTang.TabStop = true;
-            this.radTang.Text = "Tăng";
-            this.radTang.UseVisualStyleBackColor = true;
             // 
             // txtThung
             // 
@@ -760,6 +733,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.AutoScroll = true;
+            this.tabPage3.Controls.Add(this.dgvDanhSachCT_Online);
             this.tabPage3.Controls.Add(this.txtDanhBo_Online);
             this.tabPage3.Controls.Add(this.label11);
             this.tabPage3.Controls.Add(this.btnIn_Online);
@@ -771,10 +746,52 @@
             this.tabPage3.Controls.Add(this.dateTu_Online);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1082, 653);
+            this.tabPage3.Size = new System.Drawing.Size(1309, 860);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "In DS Online";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // dgvDanhSachCT_Online
+            // 
+            this.dgvDanhSachCT_Online.AllowUserToAddRows = false;
+            this.dgvDanhSachCT_Online.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDanhSachCT_Online.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dgvDanhSachCT_Online.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDanhSachCT_Online.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IDCT_Online,
+            this.HoTenCT_Online,
+            this.NgaySinhCT_Online,
+            this.DCThuongTruCT_Online,
+            this.DCTamTruCT_Online,
+            this.CCCDCT_Online});
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDanhSachCT_Online.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dgvDanhSachCT_Online.Location = new System.Drawing.Point(622, 32);
+            this.dgvDanhSachCT_Online.Name = "dgvDanhSachCT_Online";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDanhSachCT_Online.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.dgvDanhSachCT_Online.Size = new System.Drawing.Size(810, 501);
+            this.dgvDanhSachCT_Online.TabIndex = 29;
+            this.dgvDanhSachCT_Online.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhSachCT_Online_RowPostPaint);
             // 
             // txtDanhBo_Online
             // 
@@ -807,14 +824,14 @@
             // 
             this.dgvDanhSach_Online.AllowUserToAddRows = false;
             this.dgvDanhSach_Online.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDanhSach_Online.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDanhSach_Online.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvDanhSach_Online.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDanhSach_Online.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID_Online,
@@ -826,25 +843,25 @@
             this.dataGridViewTextBoxColumn6,
             this.CreateBy_Online,
             this.actionThem});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDanhSach_Online.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDanhSach_Online.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgvDanhSach_Online.Location = new System.Drawing.Point(6, 32);
             this.dgvDanhSach_Online.Name = "dgvDanhSach_Online";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDanhSach_Online.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.dgvDanhSach_Online.Size = new System.Drawing.Size(658, 501);
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDanhSach_Online.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            this.dgvDanhSach_Online.Size = new System.Drawing.Size(610, 501);
             this.dgvDanhSach_Online.TabIndex = 25;
             this.dgvDanhSach_Online.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_Online_CellClick);
             this.dgvDanhSach_Online.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhSach_Online_RowPostPaint);
@@ -956,6 +973,59 @@
             this.dateTu_Online.Size = new System.Drawing.Size(95, 20);
             this.dateTu_Online.TabIndex = 21;
             // 
+            // IDCT_Online
+            // 
+            this.IDCT_Online.DataPropertyName = "ID";
+            this.IDCT_Online.HeaderText = "ID";
+            this.IDCT_Online.Name = "IDCT_Online";
+            this.IDCT_Online.Visible = false;
+            // 
+            // HoTenCT_Online
+            // 
+            this.HoTenCT_Online.DataPropertyName = "HoTen";
+            this.HoTenCT_Online.HeaderText = "Họ Tên";
+            this.HoTenCT_Online.Name = "HoTenCT_Online";
+            this.HoTenCT_Online.Width = 150;
+            // 
+            // NgaySinhCT_Online
+            // 
+            this.NgaySinhCT_Online.DataPropertyName = "NgaySinh";
+            this.NgaySinhCT_Online.HeaderText = "Ngày Sinh";
+            this.NgaySinhCT_Online.Name = "NgaySinhCT_Online";
+            // 
+            // DCThuongTruCT_Online
+            // 
+            this.DCThuongTruCT_Online.DataPropertyName = "DCThuongTru";
+            this.DCThuongTruCT_Online.HeaderText = "ĐC Thường Trú";
+            this.DCThuongTruCT_Online.Name = "DCThuongTruCT_Online";
+            this.DCThuongTruCT_Online.Width = 200;
+            // 
+            // DCTamTruCT_Online
+            // 
+            this.DCTamTruCT_Online.DataPropertyName = "DCTamTru";
+            this.DCTamTruCT_Online.HeaderText = "ĐC Tạm Trú";
+            this.DCTamTruCT_Online.Name = "DCTamTruCT_Online";
+            this.DCTamTruCT_Online.Width = 200;
+            // 
+            // CCCDCT_Online
+            // 
+            this.CCCDCT_Online.DataPropertyName = "CCCD";
+            this.CCCDCT_Online.HeaderText = "CCCD";
+            this.CCCDCT_Online.Name = "CCCDCT_Online";
+            // 
+            // cmbKiemTra
+            // 
+            this.cmbKiemTra.FormattingEnabled = true;
+            this.cmbKiemTra.Items.AddRange(new object[] {
+            "Tất Cả",
+            "Tăng",
+            "Giảm",
+            "Giữ Nguyên"});
+            this.cmbKiemTra.Location = new System.Drawing.Point(569, 31);
+            this.cmbKiemTra.Name = "cmbKiemTra";
+            this.cmbKiemTra.Size = new System.Drawing.Size(100, 21);
+            this.cmbKiemTra.TabIndex = 42;
+            // 
             // frmCapDinhMucNuocCCCD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -976,6 +1046,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach2)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSachCT_Online)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach_Online)).EndInit();
             this.ResumeLayout(false);
 
@@ -1049,9 +1120,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn DCBD;
         private System.Windows.Forms.DataGridViewTextBoxColumn DCBD_MaDon;
         private System.Windows.Forms.DataGridViewTextBoxColumn DCBD_STT;
-        private System.Windows.Forms.RadioButton radGiuNguyen;
-        private System.Windows.Forms.RadioButton radGiam;
-        private System.Windows.Forms.RadioButton radTang;
         private System.Windows.Forms.ComboBox cmbNguoiLap;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_Online;
@@ -1064,5 +1132,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy_Online;
         private System.Windows.Forms.DataGridViewButtonColumn actionThem;
         private System.Windows.Forms.CheckBox chkDangXuLy;
+        private System.Windows.Forms.DataGridView dgvDanhSachCT_Online;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDCT_Online;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HoTenCT_Online;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgaySinhCT_Online;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DCThuongTruCT_Online;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DCTamTruCT_Online;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CCCDCT_Online;
+        private System.Windows.Forms.ComboBox cmbKiemTra;
     }
 }
