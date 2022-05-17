@@ -46,7 +46,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 else
                 {
                     int ThungMax = db.DCBD_DKDM_DanhBos.Where(item => item.Quan == en.Quan).Max(item => item.Thung).Value;
-                    if (db.DCBD_DKDM_DanhBos.Where(item => item.Quan == en.Quan && item.Thung == ThungMax).Max(item => item.STT) == 350)
+                    if (db.DCBD_DKDM_DanhBos.Where(item => item.Quan == en.Quan && item.Thung == ThungMax).Max(item => item.STT) == 300)
                     {
                         en.Thung = ThungMax + 1;
                         en.STT = 1;

@@ -997,11 +997,11 @@
             this.Controls.Add(this.radDSDCBD);
             this.Controls.Add(this.radDSDCHD);
             this.Controls.Add(this.btnInDSPhieu);
-            this.Controls.Add(this.panel_KhoangThoiGian);
             this.Controls.Add(this.txtNoiDungTimKiem);
             this.Controls.Add(this.txtNoiDungTimKiem2);
             this.Controls.Add(this.dgvDSDCBD);
             this.Controls.Add(this.dgvDSCatChuyenDM);
+            this.Controls.Add(this.panel_KhoangThoiGian);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "frmDSDCBD";

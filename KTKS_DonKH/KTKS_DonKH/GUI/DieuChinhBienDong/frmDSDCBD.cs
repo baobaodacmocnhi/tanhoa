@@ -2435,11 +2435,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             dt = _cDCBD.getHoaDon_DataTable(decimal.Parse(dgvDSDCBD["SoPhieu", i].Value.ToString()));
                             //if (bool.Parse(dt.Rows[0]["BaoCaoThue"].ToString()) == false && bool.Parse(dt.Rows[0]["DieuChinhGia"].ToString()) == false && bool.Parse(dt.Rows[0]["DieuChinhGia2"].ToString()) == false)
                             if (bool.Parse(dt.Rows[0]["BaoCaoThue"].ToString()) == false)
-                                if (dt.Rows[0]["SoHoaDon"].ToString().Contains("CT/20E") || dt.Rows[0]["SoHoaDon"].ToString().Contains("CT/21E"))
-                                    dtBinhThuong2021.Merge(dt);
+                                if (dt.Rows[0]["SoHoaDon"].ToString().Contains("CT/22E") || dt.Rows[0]["SoHoaDon"].ToString().Contains("1K22TCT"))
+                                    dtBinhThuong2022.Merge(dt);
                                 else
-                                    if (dt.Rows[0]["SoHoaDon"].ToString().Contains("CT/22E"))
-                                        dtBinhThuong2022.Merge(dt);
+                                    if (dt.Rows[0]["SoHoaDon"].ToString().Contains("CT/20E") || dt.Rows[0]["SoHoaDon"].ToString().Contains("CT/21E"))
+                                        dtBinhThuong2021.Merge(dt);
                                     else
                                         dtBaoCaoThue.Merge(dt);
                         }
@@ -2638,9 +2638,19 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     oSheet.Cells[indexRow, 5] = dr["SoPhatHanh"].ToString();
                     oSheet.Cells[indexRow, 6] = "";
                     oSheet.Cells[indexRow, 7] = "";
-                    oSheet.Cells[indexRow, 8] = _cThuTien.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 6));
-                    oSheet.Cells[indexRow, 9] = dr["SoHoaDon"].ToString().Substring(0, 6);
-                    oSheet.Cells[indexRow, 10] = dr["SoHoaDon"].ToString().Substring(6, 7);
+                    if (dr["SoHoaDon"].ToString().Substring(0, 2).Contains("1K"))
+                    {
+                        oSheet.Cells[indexRow, 8] = _cThuTien.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 7));
+                        oSheet.Cells[indexRow, 9] = dr["SoHoaDon"].ToString().Substring(0, 7);
+                        oSheet.Cells[indexRow, 10] = dr["SoHoaDon"].ToString().Substring(7, 7);
+                    }
+                    else
+                        if (dr["SoHoaDon"].ToString().Substring(0, 2).Contains("CT"))
+                        {
+                            oSheet.Cells[indexRow, 8] = _cThuTien.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 6));
+                            oSheet.Cells[indexRow, 9] = dr["SoHoaDon"].ToString().Substring(0, 6);
+                            oSheet.Cells[indexRow, 10] = dr["SoHoaDon"].ToString().Substring(6, 7);
+                        }
                     oSheet.Cells[indexRow, 11] = dr["HoTen_BD"].ToString();
                     oSheet.Cells[indexRow, 12] = dr["HoTen_BD"].ToString();
                     oSheet.Cells[indexRow, 13] = dr["DiaChi_BD"].ToString();
@@ -2668,9 +2678,19 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         oSheet.Cells[indexRow, 5] = dr["SoPhatHanh"].ToString();
                         oSheet.Cells[indexRow, 6] = "";
                         oSheet.Cells[indexRow, 7] = "";
-                        oSheet.Cells[indexRow, 8] = _cThuTien.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 6));
-                        oSheet.Cells[indexRow, 9] = dr["SoHoaDon"].ToString().Substring(0, 6);
-                        oSheet.Cells[indexRow, 10] = dr["SoHoaDon"].ToString().Substring(6, 7);
+                        if (dr["SoHoaDon"].ToString().Substring(0, 2).Contains("1K"))
+                        {
+                            oSheet.Cells[indexRow, 8] = _cThuTien.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 7));
+                            oSheet.Cells[indexRow, 9] = dr["SoHoaDon"].ToString().Substring(0, 7);
+                            oSheet.Cells[indexRow, 10] = dr["SoHoaDon"].ToString().Substring(7, 7);
+                        }
+                        else
+                            if (dr["SoHoaDon"].ToString().Substring(0, 2).Contains("CT"))
+                            {
+                                oSheet.Cells[indexRow, 8] = _cThuTien.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 6));
+                                oSheet.Cells[indexRow, 9] = dr["SoHoaDon"].ToString().Substring(0, 6);
+                                oSheet.Cells[indexRow, 10] = dr["SoHoaDon"].ToString().Substring(6, 7);
+                            }
                         oSheet.Cells[indexRow, 11] = dr["HoTen_BD"].ToString();
                         oSheet.Cells[indexRow, 12] = dr["HoTen_BD"].ToString();
                         oSheet.Cells[indexRow, 13] = dr["DiaChi_BD"].ToString();
@@ -2700,9 +2720,19 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 oSheet.Cells[indexRow, 5] = dr["SoPhatHanh"].ToString();
                                 oSheet.Cells[indexRow, 6] = "";
                                 oSheet.Cells[indexRow, 7] = "";
-                                oSheet.Cells[indexRow, 8] = _cThuTien.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 6));
-                                oSheet.Cells[indexRow, 9] = dr["SoHoaDon"].ToString().Substring(0, 6);
-                                oSheet.Cells[indexRow, 10] = dr["SoHoaDon"].ToString().Substring(6, 7);
+                                if (dr["SoHoaDon"].ToString().Substring(0, 2).Contains("1K"))
+                                {
+                                    oSheet.Cells[indexRow, 8] = _cThuTien.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 7));
+                                    oSheet.Cells[indexRow, 9] = dr["SoHoaDon"].ToString().Substring(0, 7);
+                                    oSheet.Cells[indexRow, 10] = dr["SoHoaDon"].ToString().Substring(7, 7);
+                                }
+                                else
+                                    if (dr["SoHoaDon"].ToString().Substring(0, 2).Contains("CT"))
+                                    {
+                                        oSheet.Cells[indexRow, 8] = _cThuTien.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 6));
+                                        oSheet.Cells[indexRow, 9] = dr["SoHoaDon"].ToString().Substring(0, 6);
+                                        oSheet.Cells[indexRow, 10] = dr["SoHoaDon"].ToString().Substring(6, 7);
+                                    }
                                 oSheet.Cells[indexRow, 11] = dr["HoTen_BD"].ToString();
                                 oSheet.Cells[indexRow, 12] = dr["HoTen_BD"].ToString();
                                 oSheet.Cells[indexRow, 13] = dr["DiaChi_BD"].ToString();
@@ -2869,9 +2899,19 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     oSheet.Cells[indexRow, 5] = dr["SoPhatHanh"].ToString();
                     oSheet.Cells[indexRow, 6] = "";
                     oSheet.Cells[indexRow, 7] = "";
-                    oSheet.Cells[indexRow, 8] = _cThuTien.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 6));
-                    oSheet.Cells[indexRow, 9] = dr["SoHoaDon"].ToString().Substring(0, 6);
-                    oSheet.Cells[indexRow, 10] = dr["SoHoaDon"].ToString().Substring(6, 7);
+                    if (dr["SoHoaDon"].ToString().Substring(0, 2).Contains("1K"))
+                    {
+                        oSheet.Cells[indexRow, 8] = _cThuTien.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 7));
+                        oSheet.Cells[indexRow, 9] = dr["SoHoaDon"].ToString().Substring(0, 7);
+                        oSheet.Cells[indexRow, 10] = dr["SoHoaDon"].ToString().Substring(7, 7);
+                    }
+                    else
+                        if (dr["SoHoaDon"].ToString().Substring(0, 2).Contains("CT"))
+                        {
+                            oSheet.Cells[indexRow, 8] = _cThuTien.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 6));
+                            oSheet.Cells[indexRow, 9] = dr["SoHoaDon"].ToString().Substring(0, 6);
+                            oSheet.Cells[indexRow, 10] = dr["SoHoaDon"].ToString().Substring(6, 7);
+                        }
                     oSheet.Cells[indexRow, 11] = dr["HoTen_BD"].ToString();
                     oSheet.Cells[indexRow, 12] = dr["HoTen_BD"].ToString();
                     oSheet.Cells[indexRow, 13] = dr["DiaChi_BD"].ToString();
@@ -2900,9 +2940,19 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         oSheet.Cells[indexRow, 5] = dr["SoPhatHanh"].ToString();
                         oSheet.Cells[indexRow, 6] = "";
                         oSheet.Cells[indexRow, 7] = "";
-                        oSheet.Cells[indexRow, 8] = _cThuTien.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 6));
-                        oSheet.Cells[indexRow, 9] = dr["SoHoaDon"].ToString().Substring(0, 6);
-                        oSheet.Cells[indexRow, 10] = dr["SoHoaDon"].ToString().Substring(6, 7);
+                        if (dr["SoHoaDon"].ToString().Substring(0, 2).Contains("1K"))
+                        {
+                            oSheet.Cells[indexRow, 8] = _cThuTien.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 7));
+                            oSheet.Cells[indexRow, 9] = dr["SoHoaDon"].ToString().Substring(0, 7);
+                            oSheet.Cells[indexRow, 10] = dr["SoHoaDon"].ToString().Substring(7, 7);
+                        }
+                        else
+                            if (dr["SoHoaDon"].ToString().Substring(0, 2).Contains("CT"))
+                            {
+                                oSheet.Cells[indexRow, 8] = _cThuTien.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 6));
+                                oSheet.Cells[indexRow, 9] = dr["SoHoaDon"].ToString().Substring(0, 6);
+                                oSheet.Cells[indexRow, 10] = dr["SoHoaDon"].ToString().Substring(6, 7);
+                            }
                         oSheet.Cells[indexRow, 11] = dr["HoTen_BD"].ToString();
                         oSheet.Cells[indexRow, 12] = dr["HoTen_BD"].ToString();
                         oSheet.Cells[indexRow, 13] = dr["DiaChi_BD"].ToString();
@@ -2933,9 +2983,19 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 oSheet.Cells[indexRow, 5] = dr["SoPhatHanh"].ToString();
                                 oSheet.Cells[indexRow, 6] = "";
                                 oSheet.Cells[indexRow, 7] = "";
-                                oSheet.Cells[indexRow, 8] = _cThuTien.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 6));
-                                oSheet.Cells[indexRow, 9] = dr["SoHoaDon"].ToString().Substring(0, 6);
-                                oSheet.Cells[indexRow, 10] = dr["SoHoaDon"].ToString().Substring(6, 7);
+                                if (dr["SoHoaDon"].ToString().Substring(0, 2).Contains("1K"))
+                                {
+                                    oSheet.Cells[indexRow, 8] = _cThuTien.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 7));
+                                    oSheet.Cells[indexRow, 9] = dr["SoHoaDon"].ToString().Substring(0, 7);
+                                    oSheet.Cells[indexRow, 10] = dr["SoHoaDon"].ToString().Substring(7, 7);
+                                }
+                                else
+                                    if (dr["SoHoaDon"].ToString().Substring(0, 2).Contains("CT"))
+                                    {
+                                        oSheet.Cells[indexRow, 8] = _cThuTien.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 6));
+                                        oSheet.Cells[indexRow, 9] = dr["SoHoaDon"].ToString().Substring(0, 6);
+                                        oSheet.Cells[indexRow, 10] = dr["SoHoaDon"].ToString().Substring(6, 7);
+                                    }
                                 oSheet.Cells[indexRow, 11] = dr["HoTen_BD"].ToString();
                                 oSheet.Cells[indexRow, 12] = dr["HoTen_BD"].ToString();
                                 oSheet.Cells[indexRow, 13] = dr["DiaChi_BD"].ToString();
