@@ -529,24 +529,25 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         entity.Name_NhomDon_PKH = "Định mức";
                         entity.VanPhong = true;
                         entity.MaPhong = 1;
-                        using (var scope = new TransactionScope())
-                            if (_cDonTu.Them(entity))
-                            {
-                                foreach (DataGridViewRow item in dgvDanhSach2.Rows)
-                                    if (item.Cells["MaDon"].Value.ToString() == "")
-                                    {
-                                        item.Cells["DCBD_MaDon"].Value = entity.MaDon;
-                                        DCBD_DKDM_DanhBo danhbo = _cDKDM.get(int.Parse(item.Cells["ID_DS"].Value.ToString()));
-                                        danhbo.DCBD_MaDon = int.Parse(item.Cells["DCBD_MaDon"].Value.ToString());
-                                        danhbo.DCBD_STT = int.Parse(item.Cells["DCBD_STT"].Value.ToString());
-                                        _cDKDM.Sua(danhbo);
-                                    }
-                                scope.Complete();
-                            }
+                        if (entity.TongDB > 0)
+                            using (var scope = new TransactionScope())
+                                if (_cDonTu.Them(entity))
+                                {
+                                    foreach (DataGridViewRow item in dgvDanhSach2.Rows)
+                                        if (item.Cells["MaDon"].Value.ToString() == null || item.Cells["MaDon"].Value.ToString() == "")
+                                        {
+                                            item.Cells["DCBD_MaDon"].Value = entity.MaDon;
+                                            DCBD_DKDM_DanhBo danhbo = _cDKDM.get(int.Parse(item.Cells["ID_DS"].Value.ToString()));
+                                            danhbo.DCBD_MaDon = int.Parse(item.Cells["DCBD_MaDon"].Value.ToString());
+                                            danhbo.DCBD_STT = int.Parse(item.Cells["DCBD_STT"].Value.ToString());
+                                            _cDKDM.Sua(danhbo);
+                                        }
+                                    scope.Complete();
+                                }
 
                         foreach (DataGridViewRow item in dgvDanhSach2.Rows)
                             if (bool.Parse(item.Cells["DCBD"].Value.ToString()) == false)
-                                if (item.Cells["MaDon"].Value.ToString() != "" || item.Cells["DCBD_MaDon"].Value.ToString() != "")
+                                if ((item.Cells["MaDon"].Value.ToString() != "" || item.Cells["DCBD_MaDon"].Value.ToString() != "") && int.Parse(item.Cells["DinhMucCu"].Value.ToString()) != int.Parse(item.Cells["DinhMucMoi"].Value.ToString()))
                                 {
                                     DCBD_DKDM_DanhBo danhbo = _cDKDM.get(int.Parse(item.Cells["ID_DS"].Value.ToString()));
                                     DonTu_ChiTiet dontu_ChiTiet = new DonTu_ChiTiet();
@@ -575,171 +576,174 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         danhbo.GhiChu = "CCCD đã đăng ký danh bộ khác";
                                         _cDKDM.Sua(danhbo);
                                     }
-                                    if (flagCCCD == false && danhbo.DangXuLy == false)
-                                    {
-                                        DCBD_ChiTietBienDong ctdcbd = new DCBD_ChiTietBienDong();
-                                        if (dontu_ChiTiet != null)
+                                    else
+                                        if (danhbo.DangXuLy == false)
                                         {
-                                            if (_cDCBD.checkExist(dontu_ChiTiet.MaDon.Value) == false)
+                                            DCBD_ChiTietBienDong ctdcbd = new DCBD_ChiTietBienDong();
+                                            if (dontu_ChiTiet != null)
                                             {
-                                                DCBD dcbd = new DCBD();
-                                                dcbd.MaDonMoi = dontu_ChiTiet.MaDon.Value;
-                                                _cDCBD.Them(dcbd);
+                                                if (_cDCBD.checkExist(dontu_ChiTiet.MaDon.Value) == false)
+                                                {
+                                                    DCBD dcbd = new DCBD();
+                                                    dcbd.MaDonMoi = dontu_ChiTiet.MaDon.Value;
+                                                    _cDCBD.Them(dcbd);
+                                                }
+                                                ctdcbd.MaDCBD = _cDCBD.get(dontu_ChiTiet.MaDon.Value).MaDCBD;
+                                                ctdcbd.STT = dontu_ChiTiet.STT.Value;
                                             }
-                                            ctdcbd.MaDCBD = _cDCBD.get(dontu_ChiTiet.MaDon.Value).MaDCBD;
-                                            ctdcbd.STT = dontu_ChiTiet.STT.Value;
-                                        }
-                                        else
-                                        {
-                                            MessageBox.Show("Chưa nhập Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                            return;
-                                        }
-                                        ctdcbd.DanhBo = hoadon.DANHBA;
-                                        ctdcbd.HopDong = hoadon.HOPDONG;
-                                        ctdcbd.HoTen = hoadon.TENKH;
-                                        ctdcbd.DiaChi = hoadon.SO + " " + hoadon.DUONG + _cDHN.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
-                                        ctdcbd.MaQuanPhuong = hoadon.Quan + " " + hoadon.Phuong;
-                                        ctdcbd.Ky = hoadon.KY.ToString();
-                                        ctdcbd.Nam = hoadon.NAM.ToString();
-                                        ctdcbd.Phuong = hoadon.Phuong;
-                                        ctdcbd.Quan = hoadon.Quan;
-                                        ctdcbd.MSThue = hoadon.MST;
-                                        ctdcbd.GiaBieu = hoadon.GB;
-                                        if (hoadon.DM != null)
-                                            ctdcbd.DinhMuc = hoadon.DM;
-                                        else
-                                            ctdcbd.DinhMuc = null;
-                                        if (hoadon.DinhMucHN != null)
-                                            ctdcbd.DinhMucHN = hoadon.DinhMucHN;
-                                        else
-                                            ctdcbd.DinhMucHN = null;
-                                        ctdcbd.SH = hoadon.TILESH.ToString();
-                                        ctdcbd.SX = hoadon.TILESX.ToString();
-                                        ctdcbd.DV = hoadon.TILEDV.ToString();
-                                        ctdcbd.HCSN = hoadon.TILEHCSN.ToString();
-                                        ctdcbd.Dot = _cDHN.GetDot(hoadon.DANHBA);
-                                        ctdcbd.HieuLucKy = _cTTKH.getHieuLucKyToi(false, _hoadon.DOT);
-                                        ctdcbd.DienThoai = txtDienThoai.Text.Trim();
-
-                                        ///Biến lưu Điều Chỉnh về gì (Họ Tên,Địa Chỉ,Định Mức,Giá Biểu,MSThuế)
-                                        string ThongTin = "";
-                                        ///Định Mức
-                                        if (item.Cells["DinhMucCu"].Value.ToString() != item.Cells["DinhMucMoi"].Value.ToString())
-                                        {
-                                            if (string.IsNullOrEmpty(ThongTin) == true)
-                                                ThongTin += "Định Mức";
                                             else
-                                                ThongTin += ". Định Mức";
-                                            ctdcbd.DinhMuc_BD = int.Parse(item.Cells["DinhMucMoi"].Value.ToString());
-                                        }
-                                        //if (txtDinhMucHN_BD.Text.Trim() != "" && txtDinhMucHN_BD.Text.Trim() != txtDinhMucHN.Text.Trim())
-                                        //{
-                                        //    if (string.IsNullOrEmpty(ThongTin) == true)
-                                        //        ThongTin += "Định Mức Nghèo";
-                                        //    else
-                                        //        ThongTin += ". Định Mức Nghèo";
-                                        //    ctdcbd.DinhMucHN_BD = int.Parse(txtDinhMucHN_BD.Text.Trim());
-                                        //}
-                                        ctdcbd.ThongTin = ThongTin;
-                                        BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
-                                        if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                                            ctdcbd.ChucVu = "GIÁM ĐỐC";
-                                        else
-                                            ctdcbd.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
-                                        ctdcbd.NguoiKy = bangiamdoc.HoTen.ToUpper();
-                                        ctdcbd.PhieuDuocKy = true;
-                                        using (var scope = new TransactionScope())
-                                            if (_cDCBD.ThemDCBD(ctdcbd))
                                             {
-                                                if (dontu_ChiTiet != null)
-                                                {
-                                                    if (_cDonTu.Them_LichSu(ctdcbd.CreateDate.Value, "DCBD", "Đã Điều Chỉnh Biến Động, " + ctdcbd.ThongTin, (int)ctdcbd.MaCTDCBD, dontu_ChiTiet.MaDon.Value, dontu_ChiTiet.STT.Value) == true)
-                                                    {
-                                                    }
-                                                }
-                                                //cắt chứng từ cũ
-                                                DataTable dt = _cChungTu.getDS_ChiTiet_DanhBo(ctdcbd.DanhBo);
-                                                foreach (DataRow itemCT in dt.Rows)
-                                                {
-                                                    ChungTu_ChiTiet ctchungtu = _cChungTu.GetCT(itemCT["DanhBo"].ToString(), itemCT["MaCT"].ToString(), int.Parse(itemCT["MaLCT"].ToString()));
-                                                    if (ctchungtu.Cat == false)
-                                                    {
-                                                        ctchungtu.Cat = true;
-                                                        _cChungTu.SuaCT(ctchungtu);
-                                                    }
-                                                }
-                                                //add chứng từ
-                                                //Kiểm tra Danh Bộ & Số Chứng Từ
-                                                foreach (DCBD_DKDM_CCCD itemCC in danhbo.DCBD_DKDM_CCCDs)
-                                                {
-                                                    int MaLCT = 0;
-                                                    if (itemCC.CCCD.Length == 9)
-                                                        MaLCT = 16;
-                                                    else
-                                                        if (itemCC.CCCD.Length == 12)
-                                                            MaLCT = 15;
-                                                    ///
-                                                    if (_cChungTu.CheckExist_CT(ctdcbd.DanhBo, itemCC.CCCD, MaLCT) == true)
-                                                    {
-                                                        ChungTu_ChiTiet ctchungtu = _cChungTu.GetCT(ctdcbd.DanhBo, itemCC.CCCD, MaLCT);
-                                                        ctchungtu.Cat = false;
-                                                        _cChungTu.SuaCT(ctchungtu);
-                                                    }
-                                                    else
-                                                    {
-                                                        ///Kiểm tra Số Chứng Từ
-                                                        if (_cChungTu.CheckExist(itemCC.CCCD, MaLCT) == false)
-                                                        {
-                                                            ChungTu chungtu = new ChungTu();
-                                                            chungtu.MaCT = itemCC.CCCD;
-                                                            chungtu.HoTen = itemCC.HoTen;
-                                                            chungtu.DiaChi = itemCC.DCThuongTru;
-                                                            chungtu.SoNKTong = 1;
-                                                            chungtu.MaLCT = MaLCT;
-                                                            _cChungTu.Them(chungtu);
-                                                        }
-
-                                                        ChungTu_ChiTiet ctchungtu = new ChungTu_ChiTiet();
-                                                        ctchungtu.DanhBo = ctdcbd.DanhBo;
-                                                        ctchungtu.MaLCT = MaLCT;
-                                                        ctchungtu.MaCT = itemCC.CCCD;
-                                                        ctchungtu.SoNKDangKy = 1;
-                                                        //if (txtThoiHan.Text.Trim() != "" && txtThoiHan.Text.Trim() != "0")
-                                                        //{
-                                                        //    ctchungtu.ThoiHan = int.Parse(txtThoiHan.Text.Trim());
-                                                        //    ctchungtu.NgayHetHan = dateHetHan.Value;
-                                                        //}
-                                                        ctchungtu.Phuong = hoadon.Phuong;
-                                                        ctchungtu.Quan = hoadon.Quan;
-                                                        ///Ghi thông tin Lịch Sử chung
-                                                        ChungTu_LichSu lichsuchungtu = new ChungTu_LichSu();
-                                                        lichsuchungtu.MaDonMoi = dontu_ChiTiet.MaDon;
-                                                        lichsuchungtu.STT = dontu_ChiTiet.STT;
-                                                        lichsuchungtu.Phuong = hoadon.Phuong;
-                                                        lichsuchungtu.Quan = hoadon.Quan;
-                                                        lichsuchungtu.DanhBo = ctchungtu.DanhBo;
-                                                        lichsuchungtu.MaLCT = ctchungtu.MaLCT;
-                                                        lichsuchungtu.MaCT = ctchungtu.MaCT;
-                                                        lichsuchungtu.SoNKTong = 1;
-                                                        lichsuchungtu.SoNKDangKy = ctchungtu.SoNKDangKy;
-                                                        lichsuchungtu.ThoiHan = ctchungtu.ThoiHan;
-                                                        lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;
-                                                        lichsuchungtu.GhiChu = ctchungtu.GhiChu;
-                                                        lichsuchungtu.Lo = ctchungtu.Lo;
-                                                        lichsuchungtu.Phong = ctchungtu.Phong;
-
-                                                        if (_cChungTu.ThemCT(ctchungtu))
-                                                        {
-                                                            ///Thêm Lịch Sử đầu tiên
-                                                            _cChungTu.ThemLichSuChungTu(lichsuchungtu);
-
-                                                            _cChungTu.SubmitChanges();
-                                                        }
-                                                    }
-                                                }
-                                                scope.Complete();
+                                                MessageBox.Show("Chưa nhập Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                return;
                                             }
-                                    }
+                                            ctdcbd.DanhBo = hoadon.DANHBA;
+                                            ctdcbd.HopDong = hoadon.HOPDONG;
+                                            ctdcbd.HoTen = hoadon.TENKH;
+                                            ctdcbd.DiaChi = hoadon.SO + " " + hoadon.DUONG + _cDHN.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
+                                            ctdcbd.MaQuanPhuong = hoadon.Quan + " " + hoadon.Phuong;
+                                            ctdcbd.Ky = hoadon.KY.ToString();
+                                            ctdcbd.Nam = hoadon.NAM.ToString();
+                                            ctdcbd.Phuong = hoadon.Phuong;
+                                            ctdcbd.Quan = hoadon.Quan;
+                                            ctdcbd.MSThue = hoadon.MST;
+                                            ctdcbd.GiaBieu = hoadon.GB;
+                                            if (hoadon.DM != null)
+                                                ctdcbd.DinhMuc = hoadon.DM;
+                                            else
+                                                ctdcbd.DinhMuc = null;
+                                            if (hoadon.DinhMucHN != null)
+                                                ctdcbd.DinhMucHN = hoadon.DinhMucHN;
+                                            else
+                                                ctdcbd.DinhMucHN = null;
+                                            ctdcbd.SH = hoadon.TILESH.ToString();
+                                            ctdcbd.SX = hoadon.TILESX.ToString();
+                                            ctdcbd.DV = hoadon.TILEDV.ToString();
+                                            ctdcbd.HCSN = hoadon.TILEHCSN.ToString();
+                                            ctdcbd.Dot = _cDHN.GetDot(hoadon.DANHBA);
+                                            ctdcbd.HieuLucKy = _cTTKH.getHieuLucKyToi(false, hoadon.DOT);
+                                            ctdcbd.DienThoai = txtDienThoai.Text.Trim();
+
+                                            ///Biến lưu Điều Chỉnh về gì (Họ Tên,Địa Chỉ,Định Mức,Giá Biểu,MSThuế)
+                                            string ThongTin = "";
+                                            ///Định Mức
+                                            if (item.Cells["DinhMucCu"].Value.ToString() != item.Cells["DinhMucMoi"].Value.ToString())
+                                            {
+                                                if (string.IsNullOrEmpty(ThongTin) == true)
+                                                    ThongTin += "Định Mức";
+                                                else
+                                                    ThongTin += ". Định Mức";
+                                                ctdcbd.DinhMuc_BD = int.Parse(item.Cells["DinhMucMoi"].Value.ToString());
+                                            }
+                                            //if (txtDinhMucHN_BD.Text.Trim() != "" && txtDinhMucHN_BD.Text.Trim() != txtDinhMucHN.Text.Trim())
+                                            //{
+                                            //    if (string.IsNullOrEmpty(ThongTin) == true)
+                                            //        ThongTin += "Định Mức Nghèo";
+                                            //    else
+                                            //        ThongTin += ". Định Mức Nghèo";
+                                            //    ctdcbd.DinhMucHN_BD = int.Parse(txtDinhMucHN_BD.Text.Trim());
+                                            //}
+                                            ctdcbd.ThongTin = ThongTin;
+                                            BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                                            if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                                ctdcbd.ChucVu = "GIÁM ĐỐC";
+                                            else
+                                                ctdcbd.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                                            ctdcbd.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                                            ctdcbd.PhieuDuocKy = true;
+                                            using (var scope = new TransactionScope())
+                                                if (_cDCBD.ThemDCBD(ctdcbd))
+                                                {
+                                                    if (dontu_ChiTiet != null)
+                                                    {
+                                                        if (_cDonTu.Them_LichSu(ctdcbd.CreateDate.Value, "DCBD", "Đã Điều Chỉnh Biến Động, " + ctdcbd.ThongTin, (int)ctdcbd.MaCTDCBD, dontu_ChiTiet.MaDon.Value, dontu_ChiTiet.STT.Value) == true)
+                                                        {
+                                                        }
+                                                    }
+                                                    //cắt chứng từ cũ
+                                                    DataTable dt = _cChungTu.getDS_ChiTiet_DanhBo(ctdcbd.DanhBo);
+                                                    foreach (DataRow itemCT in dt.Rows)
+                                                    {
+                                                        ChungTu_ChiTiet ctchungtu = _cChungTu.GetCT(itemCT["DanhBo"].ToString(), itemCT["MaCT"].ToString(), int.Parse(itemCT["MaLCT"].ToString()));
+                                                        if (ctchungtu.Cat == false)
+                                                        {
+                                                            ctchungtu.Cat = true;
+                                                            _cChungTu.SuaCT(ctchungtu);
+                                                        }
+                                                    }
+                                                    //add chứng từ
+                                                    //Kiểm tra Danh Bộ & Số Chứng Từ
+                                                    foreach (DCBD_DKDM_CCCD itemCC in danhbo.DCBD_DKDM_CCCDs)
+                                                    {
+                                                        int MaLCT = 0;
+                                                        if (itemCC.CCCD.Length == 9)
+                                                            MaLCT = 16;
+                                                        else
+                                                            if (itemCC.CCCD.Length == 12)
+                                                                MaLCT = 15;
+                                                        ///
+                                                        if (_cChungTu.CheckExist_CT(ctdcbd.DanhBo, itemCC.CCCD, MaLCT) == true)
+                                                        {
+                                                            ChungTu_ChiTiet ctchungtu = _cChungTu.GetCT(ctdcbd.DanhBo, itemCC.CCCD, MaLCT);
+                                                            ctchungtu.Cat = false;
+                                                            _cChungTu.SuaCT(ctchungtu);
+                                                        }
+                                                        else
+                                                        {
+                                                            ///Kiểm tra Số Chứng Từ
+                                                            if (_cChungTu.CheckExist(itemCC.CCCD, MaLCT) == false)
+                                                            {
+                                                                ChungTu chungtu = new ChungTu();
+                                                                chungtu.MaCT = itemCC.CCCD;
+                                                                chungtu.HoTen = itemCC.HoTen;
+                                                                chungtu.DiaChi = itemCC.DCThuongTru;
+                                                                chungtu.SoNKTong = 1;
+                                                                chungtu.MaLCT = MaLCT;
+                                                                _cChungTu.Them(chungtu);
+                                                            }
+
+                                                            ChungTu_ChiTiet ctchungtu = new ChungTu_ChiTiet();
+                                                            ctchungtu.DanhBo = ctdcbd.DanhBo;
+                                                            ctchungtu.MaLCT = MaLCT;
+                                                            ctchungtu.MaCT = itemCC.CCCD;
+                                                            ctchungtu.SoNKDangKy = 1;
+                                                            //if (txtThoiHan.Text.Trim() != "" && txtThoiHan.Text.Trim() != "0")
+                                                            //{
+                                                            //    ctchungtu.ThoiHan = int.Parse(txtThoiHan.Text.Trim());
+                                                            //    ctchungtu.NgayHetHan = dateHetHan.Value;
+                                                            //}
+                                                            ctchungtu.Phuong = hoadon.Phuong;
+                                                            ctchungtu.Quan = hoadon.Quan;
+                                                            ///Ghi thông tin Lịch Sử chung
+                                                            ChungTu_LichSu lichsuchungtu = new ChungTu_LichSu();
+                                                            lichsuchungtu.MaDonMoi = dontu_ChiTiet.MaDon;
+                                                            lichsuchungtu.STT = dontu_ChiTiet.STT;
+                                                            lichsuchungtu.Phuong = hoadon.Phuong;
+                                                            lichsuchungtu.Quan = hoadon.Quan;
+                                                            lichsuchungtu.DanhBo = ctchungtu.DanhBo;
+                                                            lichsuchungtu.MaLCT = ctchungtu.MaLCT;
+                                                            lichsuchungtu.MaCT = ctchungtu.MaCT;
+                                                            lichsuchungtu.SoNKTong = 1;
+                                                            lichsuchungtu.SoNKDangKy = ctchungtu.SoNKDangKy;
+                                                            lichsuchungtu.ThoiHan = ctchungtu.ThoiHan;
+                                                            lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;
+                                                            lichsuchungtu.GhiChu = ctchungtu.GhiChu;
+                                                            lichsuchungtu.Lo = ctchungtu.Lo;
+                                                            lichsuchungtu.Phong = ctchungtu.Phong;
+
+                                                            if (_cChungTu.ThemCT(ctchungtu))
+                                                            {
+                                                                ///Thêm Lịch Sử đầu tiên
+                                                                _cChungTu.ThemLichSuChungTu(lichsuchungtu);
+
+                                                                _cChungTu.SubmitChanges();
+                                                            }
+                                                        }
+                                                    }
+                                                    danhbo.DCBD = true;
+                                                    _cDKDM.Sua(danhbo);
+                                                    scope.Complete();
+                                                }
+                                        }
                                 }
                                 else
                                 {
@@ -763,86 +767,96 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         danhbo.GhiChu = "CCCD đã đăng ký danh bộ khác";
                                         _cDKDM.Sua(danhbo);
                                     }
-                                    //cắt chứng từ cũ
-                                    DataTable dt = _cChungTu.getDS_ChiTiet_DanhBo(danhbo.DanhBo);
-                                    foreach (DataRow itemCT in dt.Rows)
-                                    {
-                                        ChungTu_ChiTiet ctchungtu = _cChungTu.GetCT(itemCT["DanhBo"].ToString(), itemCT["MaCT"].ToString(), int.Parse(itemCT["MaLCT"].ToString()));
-                                        if (ctchungtu.Cat == false)
+                                    else
+                                        if (danhbo.DangXuLy == false)
                                         {
-                                            ctchungtu.Cat = true;
-                                            _cChungTu.SuaCT(ctchungtu);
-                                        }
-                                    }
-                                    //add chứng từ
-                                    //Kiểm tra Danh Bộ & Số Chứng Từ
-                                    foreach (DCBD_DKDM_CCCD itemCC in danhbo.DCBD_DKDM_CCCDs)
-                                    {
-                                        int MaLCT = 0;
-                                        if (itemCC.CCCD.Length == 9)
-                                            MaLCT = 16;
-                                        else
-                                            if (itemCC.CCCD.Length == 12)
-                                                MaLCT = 15;
-                                        ///
-                                        if (_cChungTu.CheckExist_CT(danhbo.DanhBo, itemCC.CCCD, MaLCT) == true)
-                                        {
-                                            ChungTu_ChiTiet ctchungtu = _cChungTu.GetCT(danhbo.DanhBo, itemCC.CCCD, MaLCT);
-                                            ctchungtu.Cat = false;
-                                            _cChungTu.SuaCT(ctchungtu);
-                                        }
-                                        else
-                                        {
-                                            ///Kiểm tra Số Chứng Từ
-                                            if (_cChungTu.CheckExist(itemCC.CCCD, MaLCT) == false)
-                                            {
-                                                ChungTu chungtu = new ChungTu();
-                                                chungtu.MaCT = itemCC.CCCD;
-                                                chungtu.HoTen = itemCC.HoTen;
-                                                chungtu.DiaChi = itemCC.DCThuongTru;
-                                                chungtu.SoNKTong = 1;
-                                                chungtu.MaLCT = MaLCT;
-                                                _cChungTu.Them(chungtu);
-                                            }
-                                            ChungTu_ChiTiet ctchungtu = new ChungTu_ChiTiet();
-                                            ctchungtu.DanhBo = danhbo.DanhBo;
-                                            ctchungtu.MaLCT = MaLCT;
-                                            ctchungtu.MaCT = itemCC.CCCD;
-                                            ctchungtu.SoNKDangKy = 1;
-                                            //if (txtThoiHan.Text.Trim() != "" && txtThoiHan.Text.Trim() != "0")
-                                            //{
-                                            //    ctchungtu.ThoiHan = int.Parse(txtThoiHan.Text.Trim());
-                                            //    ctchungtu.NgayHetHan = dateHetHan.Value;
-                                            //}
                                             HOADON hd = _cThuTien.GetMoiNhat(danhbo.DanhBo);
-                                            ctchungtu.Phuong = hd.Phuong;
-                                            ctchungtu.Quan = hd.Quan;
-                                            ///Ghi thông tin Lịch Sử chung
-                                            ChungTu_LichSu lichsuchungtu = new ChungTu_LichSu();
-                                            //lichsuchungtu.MaDonMoi = dontu_ChiTiet.MaDon;
-                                            //lichsuchungtu.STT = dontu_ChiTiet.STT;
-                                            lichsuchungtu.Phuong = hd.Phuong;
-                                            lichsuchungtu.Quan = hd.Quan;
-                                            lichsuchungtu.DanhBo = ctchungtu.DanhBo;
-                                            lichsuchungtu.MaLCT = ctchungtu.MaLCT;
-                                            lichsuchungtu.MaCT = ctchungtu.MaCT;
-                                            lichsuchungtu.SoNKTong = 1;
-                                            lichsuchungtu.SoNKDangKy = ctchungtu.SoNKDangKy;
-                                            lichsuchungtu.ThoiHan = ctchungtu.ThoiHan;
-                                            lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;
-                                            lichsuchungtu.GhiChu = ctchungtu.GhiChu;
-                                            lichsuchungtu.Lo = ctchungtu.Lo;
-                                            lichsuchungtu.Phong = ctchungtu.Phong;
-
-                                            if (_cChungTu.ThemCT(ctchungtu))
+                                            using (var scope = new TransactionScope())
                                             {
-                                                ///Thêm Lịch Sử đầu tiên
-                                                _cChungTu.ThemLichSuChungTu(lichsuchungtu);
+                                                //cắt chứng từ cũ
+                                                DataTable dt = _cChungTu.getDS_ChiTiet_DanhBo(danhbo.DanhBo);
+                                                foreach (DataRow itemCT in dt.Rows)
+                                                {
+                                                    ChungTu_ChiTiet ctchungtu = _cChungTu.GetCT(itemCT["DanhBo"].ToString(), itemCT["MaCT"].ToString(), int.Parse(itemCT["MaLCT"].ToString()));
+                                                    if (ctchungtu.Cat == false)
+                                                    {
+                                                        ctchungtu.Cat = true;
+                                                        _cChungTu.SuaCT(ctchungtu);
+                                                    }
+                                                }
+                                                //add chứng từ
+                                                //Kiểm tra Danh Bộ & Số Chứng Từ
+                                                foreach (DCBD_DKDM_CCCD itemCC in danhbo.DCBD_DKDM_CCCDs)
+                                                {
+                                                    int MaLCT = 0;
+                                                    if (itemCC.CCCD.Length == 9)
+                                                        MaLCT = 16;
+                                                    else
+                                                        if (itemCC.CCCD.Length == 12)
+                                                            MaLCT = 15;
+                                                    ///
+                                                    if (_cChungTu.CheckExist_CT(danhbo.DanhBo, itemCC.CCCD, MaLCT) == true)
+                                                    {
+                                                        ChungTu_ChiTiet ctchungtu = _cChungTu.GetCT(danhbo.DanhBo, itemCC.CCCD, MaLCT);
+                                                        ctchungtu.Cat = false;
+                                                        _cChungTu.SuaCT(ctchungtu);
+                                                    }
+                                                    else
+                                                    {
+                                                        ///Kiểm tra Số Chứng Từ
+                                                        if (_cChungTu.CheckExist(itemCC.CCCD, MaLCT) == false)
+                                                        {
+                                                            ChungTu chungtu = new ChungTu();
+                                                            chungtu.MaCT = itemCC.CCCD;
+                                                            chungtu.HoTen = itemCC.HoTen;
+                                                            chungtu.DiaChi = itemCC.DCThuongTru;
+                                                            chungtu.SoNKTong = 1;
+                                                            chungtu.MaLCT = MaLCT;
+                                                            _cChungTu.Them(chungtu);
+                                                        }
+                                                        ChungTu_ChiTiet ctchungtu = new ChungTu_ChiTiet();
+                                                        ctchungtu.DanhBo = danhbo.DanhBo;
+                                                        ctchungtu.MaLCT = MaLCT;
+                                                        ctchungtu.MaCT = itemCC.CCCD;
+                                                        ctchungtu.SoNKDangKy = 1;
+                                                        //if (txtThoiHan.Text.Trim() != "" && txtThoiHan.Text.Trim() != "0")
+                                                        //{
+                                                        //    ctchungtu.ThoiHan = int.Parse(txtThoiHan.Text.Trim());
+                                                        //    ctchungtu.NgayHetHan = dateHetHan.Value;
+                                                        //}
+                                                        ctchungtu.Phuong = hd.Phuong;
+                                                        ctchungtu.Quan = hd.Quan;
+                                                        ///Ghi thông tin Lịch Sử chung
+                                                        ChungTu_LichSu lichsuchungtu = new ChungTu_LichSu();
+                                                        //lichsuchungtu.MaDonMoi = dontu_ChiTiet.MaDon;
+                                                        //lichsuchungtu.STT = dontu_ChiTiet.STT;
+                                                        lichsuchungtu.Phuong = hd.Phuong;
+                                                        lichsuchungtu.Quan = hd.Quan;
+                                                        lichsuchungtu.DanhBo = ctchungtu.DanhBo;
+                                                        lichsuchungtu.MaLCT = ctchungtu.MaLCT;
+                                                        lichsuchungtu.MaCT = ctchungtu.MaCT;
+                                                        lichsuchungtu.SoNKTong = 1;
+                                                        lichsuchungtu.SoNKDangKy = ctchungtu.SoNKDangKy;
+                                                        lichsuchungtu.ThoiHan = ctchungtu.ThoiHan;
+                                                        lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;
+                                                        lichsuchungtu.GhiChu = ctchungtu.GhiChu;
+                                                        lichsuchungtu.Lo = ctchungtu.Lo;
+                                                        lichsuchungtu.Phong = ctchungtu.Phong;
 
-                                                _cChungTu.SubmitChanges();
+                                                        if (_cChungTu.ThemCT(ctchungtu))
+                                                        {
+                                                            ///Thêm Lịch Sử đầu tiên
+                                                            _cChungTu.ThemLichSuChungTu(lichsuchungtu);
+
+                                                            _cChungTu.SubmitChanges();
+                                                        }
+                                                    }
+                                                }
+                                                danhbo.DCBD = true;
+                                                _cDKDM.Sua(danhbo);
+                                                scope.Complete();
                                             }
                                         }
-                                    }
                                 }
                     }
                 }
