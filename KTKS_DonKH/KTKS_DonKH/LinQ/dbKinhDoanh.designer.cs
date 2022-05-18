@@ -62757,6 +62757,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _SDT;
 		
+		private System.Nullable<int> _SoNK;
+		
 		private bool _ChungTu;
 		
 		private bool _NhaTro;
@@ -62774,6 +62776,8 @@ namespace KTKS_DonKH.LinQ
 		private System.Nullable<int> _DCBD_STT;
 		
 		private bool _DCBD;
+		
+		private bool _DaXuLy;
 		
 		private bool _DangXuLy;
 		
@@ -62801,6 +62805,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnDanhBoChanged();
     partial void OnSDTChanging(string value);
     partial void OnSDTChanged();
+    partial void OnSoNKChanging(System.Nullable<int> value);
+    partial void OnSoNKChanged();
     partial void OnChungTuChanging(bool value);
     partial void OnChungTuChanged();
     partial void OnNhaTroChanging(bool value);
@@ -62819,6 +62825,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnDCBD_STTChanged();
     partial void OnDCBDChanging(bool value);
     partial void OnDCBDChanged();
+    partial void OnDaXuLyChanging(bool value);
+    partial void OnDaXuLyChanged();
     partial void OnDangXuLyChanging(bool value);
     partial void OnDangXuLyChanged();
     partial void OnGhiChuChanging(string value);
@@ -62897,6 +62905,26 @@ namespace KTKS_DonKH.LinQ
 					this._SDT = value;
 					this.SendPropertyChanged("SDT");
 					this.OnSDTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoNK", DbType="Int")]
+		public System.Nullable<int> SoNK
+		{
+			get
+			{
+				return this._SoNK;
+			}
+			set
+			{
+				if ((this._SoNK != value))
+				{
+					this.OnSoNKChanging(value);
+					this.SendPropertyChanging();
+					this._SoNK = value;
+					this.SendPropertyChanged("SoNK");
+					this.OnSoNKChanged();
 				}
 			}
 		}
@@ -63077,6 +63105,26 @@ namespace KTKS_DonKH.LinQ
 					this._DCBD = value;
 					this.SendPropertyChanged("DCBD");
 					this.OnDCBDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DaXuLy", DbType="Bit NOT NULL")]
+		public bool DaXuLy
+		{
+			get
+			{
+				return this._DaXuLy;
+			}
+			set
+			{
+				if ((this._DaXuLy != value))
+				{
+					this.OnDaXuLyChanging(value);
+					this.SendPropertyChanging();
+					this._DaXuLy = value;
+					this.SendPropertyChanged("DaXuLy");
+					this.OnDaXuLyChanged();
 				}
 			}
 		}

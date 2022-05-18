@@ -81,20 +81,6 @@
             this.txtDanhBo_DS = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.dgvDanhSach2 = new System.Windows.Forms.DataGridView();
-            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Thung = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID_DS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DinhMucCu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DinhMucMoi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DCBD = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.DCBD_MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DCBD_STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnXem = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.dateDen = new System.Windows.Forms.DateTimePicker();
@@ -126,6 +112,26 @@
             this.dateDen_Online = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.dateTu_Online = new System.Windows.Forms.DateTimePicker();
+            this.txtTong = new System.Windows.Forms.TextBox();
+            this.txtTongDinhMucCu = new System.Windows.Forms.TextBox();
+            this.txtTongDinhMucMoi = new System.Windows.Forms.TextBox();
+            this.txtTongDinhMucBD = new System.Windows.Forms.TextBox();
+            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Thung = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_DS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DinhMucCu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DinhMucMoi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DaXuLy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.DCBD = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DCBD_MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DCBD_STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
@@ -145,7 +151,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1411, 601);
+            this.tabControl1.Size = new System.Drawing.Size(1411, 643);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -173,7 +179,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1403, 559);
+            this.tabPage1.Size = new System.Drawing.Size(1403, 617);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Nhập Liệu";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -432,6 +438,10 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.txtTongDinhMucBD);
+            this.tabPage2.Controls.Add(this.txtTongDinhMucMoi);
+            this.tabPage2.Controls.Add(this.txtTongDinhMucCu);
+            this.tabPage2.Controls.Add(this.txtTong);
             this.tabPage2.Controls.Add(this.cmbKiemTra);
             this.tabPage2.Controls.Add(this.cmbNguoiLap);
             this.tabPage2.Controls.Add(this.label17);
@@ -452,7 +462,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1403, 575);
+            this.tabPage2.Size = new System.Drawing.Size(1403, 617);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Danh Sách";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -581,7 +591,9 @@
             this.CreateBy,
             this.DinhMucCu,
             this.DinhMucMoi,
+            this.DaXuLy,
             this.DCBD,
+            this.GhiChu,
             this.DCBD_MaDon,
             this.DCBD_STT});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -602,101 +614,10 @@
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvDanhSach2.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvDanhSach2.Size = new System.Drawing.Size(1068, 501);
+            this.dgvDanhSach2.Size = new System.Drawing.Size(1005, 501);
             this.dgvDanhSach2.TabIndex = 19;
             this.dgvDanhSach2.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvDanhSach2_CellMouseDoubleClick);
             this.dgvDanhSach2.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhSach2_RowPostPaint);
-            // 
-            // CreateDate
-            // 
-            this.CreateDate.DataPropertyName = "CreateDate";
-            this.CreateDate.HeaderText = "Ngày Lập";
-            this.CreateDate.Name = "CreateDate";
-            // 
-            // DanhBo
-            // 
-            this.DanhBo.DataPropertyName = "DanhBo";
-            this.DanhBo.HeaderText = "Danh Bộ";
-            this.DanhBo.Name = "DanhBo";
-            // 
-            // DienThoai
-            // 
-            this.DienThoai.DataPropertyName = "SDT";
-            this.DienThoai.HeaderText = "Điện Thoại";
-            this.DienThoai.Name = "DienThoai";
-            // 
-            // Quan
-            // 
-            this.Quan.DataPropertyName = "Quan";
-            this.Quan.HeaderText = "Quận";
-            this.Quan.Name = "Quan";
-            this.Quan.Width = 50;
-            // 
-            // Thung
-            // 
-            this.Thung.DataPropertyName = "Thung";
-            this.Thung.HeaderText = "Thùng";
-            this.Thung.Name = "Thung";
-            this.Thung.Width = 50;
-            // 
-            // STT
-            // 
-            this.STT.DataPropertyName = "STT";
-            this.STT.HeaderText = "STT";
-            this.STT.Name = "STT";
-            this.STT.Width = 50;
-            // 
-            // MaDon
-            // 
-            this.MaDon.DataPropertyName = "MaDon";
-            this.MaDon.HeaderText = "Mã Đơn";
-            this.MaDon.Name = "MaDon";
-            // 
-            // ID_DS
-            // 
-            this.ID_DS.DataPropertyName = "ID";
-            this.ID_DS.HeaderText = "ID";
-            this.ID_DS.Name = "ID_DS";
-            this.ID_DS.Visible = false;
-            // 
-            // CreateBy
-            // 
-            this.CreateBy.DataPropertyName = "CreateBy";
-            this.CreateBy.HeaderText = "Người Lập";
-            this.CreateBy.Name = "CreateBy";
-            // 
-            // DinhMucCu
-            // 
-            this.DinhMucCu.DataPropertyName = "DinhMucCu";
-            this.DinhMucCu.HeaderText = "ĐM Cũ";
-            this.DinhMucCu.Name = "DinhMucCu";
-            this.DinhMucCu.Width = 50;
-            // 
-            // DinhMucMoi
-            // 
-            this.DinhMucMoi.DataPropertyName = "DinhMucMoi";
-            this.DinhMucMoi.HeaderText = "ĐM Mới";
-            this.DinhMucMoi.Name = "DinhMucMoi";
-            this.DinhMucMoi.Width = 50;
-            // 
-            // DCBD
-            // 
-            this.DCBD.DataPropertyName = "DCBD";
-            this.DCBD.HeaderText = "ĐCBĐ";
-            this.DCBD.Name = "DCBD";
-            this.DCBD.Width = 50;
-            // 
-            // DCBD_MaDon
-            // 
-            this.DCBD_MaDon.DataPropertyName = "DCBD_MaDon";
-            this.DCBD_MaDon.HeaderText = "DCBD_MaDon";
-            this.DCBD_MaDon.Name = "DCBD_MaDon";
-            // 
-            // DCBD_STT
-            // 
-            this.DCBD_STT.DataPropertyName = "DCBD_STT";
-            this.DCBD_STT.HeaderText = "DCBD_STT";
-            this.DCBD_STT.Name = "DCBD_STT";
             // 
             // btnXem
             // 
@@ -759,7 +680,7 @@
             this.tabPage3.Controls.Add(this.dateTu_Online);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1403, 559);
+            this.tabPage3.Size = new System.Drawing.Size(1403, 575);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "In DS Online";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1027,11 +948,147 @@
             this.dateTu_Online.Size = new System.Drawing.Size(95, 20);
             this.dateTu_Online.TabIndex = 21;
             // 
+            // txtTong
+            // 
+            this.txtTong.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTong.Location = new System.Drawing.Point(6, 559);
+            this.txtTong.Name = "txtTong";
+            this.txtTong.Size = new System.Drawing.Size(50, 20);
+            this.txtTong.TabIndex = 43;
+            // 
+            // txtTongDinhMucCu
+            // 
+            this.txtTongDinhMucCu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTongDinhMucCu.Location = new System.Drawing.Point(699, 559);
+            this.txtTongDinhMucCu.Name = "txtTongDinhMucCu";
+            this.txtTongDinhMucCu.Size = new System.Drawing.Size(50, 20);
+            this.txtTongDinhMucCu.TabIndex = 44;
+            // 
+            // txtTongDinhMucMoi
+            // 
+            this.txtTongDinhMucMoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTongDinhMucMoi.Location = new System.Drawing.Point(749, 559);
+            this.txtTongDinhMucMoi.Name = "txtTongDinhMucMoi";
+            this.txtTongDinhMucMoi.Size = new System.Drawing.Size(50, 20);
+            this.txtTongDinhMucMoi.TabIndex = 45;
+            // 
+            // txtTongDinhMucBD
+            // 
+            this.txtTongDinhMucBD.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTongDinhMucBD.Location = new System.Drawing.Point(799, 559);
+            this.txtTongDinhMucBD.Name = "txtTongDinhMucBD";
+            this.txtTongDinhMucBD.Size = new System.Drawing.Size(50, 20);
+            this.txtTongDinhMucBD.TabIndex = 46;
+            // 
+            // CreateDate
+            // 
+            this.CreateDate.DataPropertyName = "CreateDate";
+            this.CreateDate.HeaderText = "Ngày Lập";
+            this.CreateDate.Name = "CreateDate";
+            // 
+            // DanhBo
+            // 
+            this.DanhBo.DataPropertyName = "DanhBo";
+            this.DanhBo.HeaderText = "Danh Bộ";
+            this.DanhBo.Name = "DanhBo";
+            // 
+            // DienThoai
+            // 
+            this.DienThoai.DataPropertyName = "SDT";
+            this.DienThoai.HeaderText = "Điện Thoại";
+            this.DienThoai.Name = "DienThoai";
+            // 
+            // Quan
+            // 
+            this.Quan.DataPropertyName = "Quan";
+            this.Quan.HeaderText = "Quận";
+            this.Quan.Name = "Quan";
+            this.Quan.Width = 50;
+            // 
+            // Thung
+            // 
+            this.Thung.DataPropertyName = "Thung";
+            this.Thung.HeaderText = "Thùng";
+            this.Thung.Name = "Thung";
+            this.Thung.Width = 50;
+            // 
+            // STT
+            // 
+            this.STT.DataPropertyName = "STT";
+            this.STT.HeaderText = "STT";
+            this.STT.Name = "STT";
+            this.STT.Width = 50;
+            // 
+            // MaDon
+            // 
+            this.MaDon.DataPropertyName = "MaDon";
+            this.MaDon.HeaderText = "Mã Đơn";
+            this.MaDon.Name = "MaDon";
+            // 
+            // ID_DS
+            // 
+            this.ID_DS.DataPropertyName = "ID";
+            this.ID_DS.HeaderText = "ID";
+            this.ID_DS.Name = "ID_DS";
+            this.ID_DS.Visible = false;
+            // 
+            // CreateBy
+            // 
+            this.CreateBy.DataPropertyName = "CreateBy";
+            this.CreateBy.HeaderText = "Người Lập";
+            this.CreateBy.Name = "CreateBy";
+            // 
+            // DinhMucCu
+            // 
+            this.DinhMucCu.DataPropertyName = "DinhMucCu";
+            this.DinhMucCu.HeaderText = "ĐM Cũ";
+            this.DinhMucCu.Name = "DinhMucCu";
+            this.DinhMucCu.Width = 50;
+            // 
+            // DinhMucMoi
+            // 
+            this.DinhMucMoi.DataPropertyName = "DinhMucMoi";
+            this.DinhMucMoi.HeaderText = "ĐM Mới";
+            this.DinhMucMoi.Name = "DinhMucMoi";
+            this.DinhMucMoi.Width = 50;
+            // 
+            // DaXuLy
+            // 
+            this.DaXuLy.DataPropertyName = "DaXuLy";
+            this.DaXuLy.HeaderText = "Đã Xủ Lý";
+            this.DaXuLy.Name = "DaXuLy";
+            this.DaXuLy.Width = 50;
+            // 
+            // DCBD
+            // 
+            this.DCBD.DataPropertyName = "DCBD";
+            this.DCBD.HeaderText = "ĐCBĐ";
+            this.DCBD.Name = "DCBD";
+            this.DCBD.Width = 50;
+            // 
+            // GhiChu
+            // 
+            this.GhiChu.DataPropertyName = "GhiChu";
+            this.GhiChu.HeaderText = "Ghi Chú";
+            this.GhiChu.Name = "GhiChu";
+            // 
+            // DCBD_MaDon
+            // 
+            this.DCBD_MaDon.DataPropertyName = "DCBD_MaDon";
+            this.DCBD_MaDon.HeaderText = "DCBD_MaDon";
+            this.DCBD_MaDon.Name = "DCBD_MaDon";
+            // 
+            // DCBD_STT
+            // 
+            this.DCBD_STT.DataPropertyName = "DCBD_STT";
+            this.DCBD_STT.HeaderText = "DCBD_STT";
+            this.DCBD_STT.Name = "DCBD_STT";
+            // 
             // frmCapDinhMucNuocCCCD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1411, 601);
+            this.ClientSize = new System.Drawing.Size(1411, 643);
             this.Controls.Add(this.tabControl1);
             this.KeyPreview = true;
             this.Name = "frmCapDinhMucNuocCCCD";
@@ -1107,20 +1164,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtQuan;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DienThoai;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quan;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Thung;
-        private System.Windows.Forms.DataGridViewTextBoxColumn STT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaDon;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID_DS;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DinhMucCu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DinhMucMoi;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn DCBD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DCBD_MaDon;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DCBD_STT;
         private System.Windows.Forms.ComboBox cmbNguoiLap;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.CheckBox chkDangXuLy;
@@ -1141,5 +1184,25 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy_Online;
         private System.Windows.Forms.DataGridViewButtonColumn actionThem;
+        private System.Windows.Forms.TextBox txtTongDinhMucBD;
+        private System.Windows.Forms.TextBox txtTongDinhMucMoi;
+        private System.Windows.Forms.TextBox txtTongDinhMucCu;
+        private System.Windows.Forms.TextBox txtTong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DienThoai;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Thung;
+        private System.Windows.Forms.DataGridViewTextBoxColumn STT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaDon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_DS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DinhMucCu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DinhMucMoi;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn DaXuLy;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn DCBD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DCBD_MaDon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DCBD_STT;
     }
 }

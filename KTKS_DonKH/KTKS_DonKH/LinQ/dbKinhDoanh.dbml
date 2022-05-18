@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="KTKS_DonKH" Class="dbKinhDoanhDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=113.161.88.180,1133;Initial Catalog=KTKS_DonKH;Persist Security Info=True;User ID=sa" SettingsObjectName="KTKS_DonKH.Properties.Settings" SettingsPropertyName="KTKS_DonKHConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=serverg8-01;Initial Catalog=KTKS_DonKH;Persist Security Info=True;User ID=sa" SettingsObjectName="KTKS_DonKH.Properties.Settings" SettingsPropertyName="KTKS_DonKHConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.BamChi" Member="BamChis">
     <Type Name="BamChi">
       <Column Name="MaBC" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -2752,6 +2752,7 @@
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="DanhBo" Type="System.String" DbType="Char(11) NOT NULL" CanBeNull="false" />
       <Column Name="SDT" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
+      <Column Name="SoNK" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ChungTu" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="NhaTro" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="MaDon" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
@@ -2761,6 +2762,7 @@
       <Column Name="DCBD_MaDon" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DCBD_STT" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DCBD" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DaXuLy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="DangXuLy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="GhiChu" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />

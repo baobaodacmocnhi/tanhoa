@@ -107,6 +107,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         DCBD_DKDM_DanhBo en = new DCBD_DKDM_DanhBo();
                         en.DanhBo = txtDanhBo.Text.Trim();
                         en.SDT = txtDienThoai.Text.Trim();
+                        en.SoNK = int.Parse(txtSoNK.Text.Trim());
                         en.Quan = _hoadon.Quan;
                         en.ChungTu = chkChungTu.Checked;
                         en.NhaTro = chkNhaTro.Checked;
@@ -164,6 +165,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             return;
                         }
                         _danhbo.DanhBo = txtDanhBo.Text.Trim();
+                        _danhbo.SoNK = int.Parse(txtSoNK.Text.Trim());
                         _danhbo.SDT = txtDienThoai.Text.Trim();
                         _danhbo.Quan = _hoadon.Quan;
                         _danhbo.ChungTu = chkChungTu.Checked;
@@ -405,7 +407,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     txtDanhBo.Text = _danhbo.DanhBo;
                     txtDienThoai.Text = _danhbo.SDT;
-                    txtSoNK.Text = _danhbo.DCBD_DKDM_CCCDs.Count.ToString();
+                    if (_danhbo.SoNK == null)
+                        txtSoNK.Text = _danhbo.DCBD_DKDM_CCCDs.Count.ToString();
+                    else
+                        txtSoNK.Text = _danhbo.SoNK.Value.ToString();
                     txtMaDon.Text = _danhbo.MaDon;
                     chkChungTu.Checked = _danhbo.ChungTu;
                     chkNhaTro.Checked = _danhbo.NhaTro;
@@ -469,6 +474,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             dgvDanhSach2.DataSource = _cDKDM.getDS_KiemTra_All(dateTu.Value, dateDen.Value);
                             break;
                     }
+                    countdgvDanhSach2();
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -493,7 +499,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         int ID = _cDonTu.getMaxID_ChiTiet();
                         int STT = 0;
                         foreach (DataGridViewRow item in dgvDanhSach2.Rows)
-                            if ((item.Cells["MaDon"].Value == null || item.Cells["MaDon"].Value.ToString() == "") && int.Parse(item.Cells["DinhMucCu"].Value.ToString()) != int.Parse(item.Cells["DinhMucMoi"].Value.ToString()))
+                            if (bool.Parse(item.Cells["DaXuLy"].Value.ToString()) == false && (item.Cells["MaDon"].Value == null || item.Cells["MaDon"].Value.ToString() == "") && int.Parse(item.Cells["DinhMucCu"].Value.ToString()) != int.Parse(item.Cells["DinhMucMoi"].Value.ToString()))
                             {
                                 HOADON hd = _cThuTien.GetMoiNhat(item.Cells["DanhBo"].Value.ToString());
                                 if (hd != null)
@@ -546,7 +552,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 }
 
                         foreach (DataGridViewRow item in dgvDanhSach2.Rows)
-                            if (bool.Parse(item.Cells["DCBD"].Value.ToString()) == false)
+                            if (bool.Parse(item.Cells["DaXuLy"].Value.ToString()) == false && bool.Parse(item.Cells["DCBD"].Value.ToString()) == false)
                                 if ((item.Cells["MaDon"].Value.ToString() != "" || item.Cells["DCBD_MaDon"].Value.ToString() != "") && int.Parse(item.Cells["DinhMucCu"].Value.ToString()) != int.Parse(item.Cells["DinhMucMoi"].Value.ToString()))
                                 {
                                     DCBD_DKDM_DanhBo danhbo = _cDKDM.get(int.Parse(item.Cells["ID_DS"].Value.ToString()));
@@ -574,6 +580,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     if (flagCCCD == true)
                                     {
                                         danhbo.GhiChu = "CCCD đã đăng ký danh bộ khác";
+                                        danhbo.DaXuLy = true;
                                         _cDKDM.Sua(danhbo);
                                     }
                                     else
@@ -739,6 +746,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                             }
                                                         }
                                                     }
+                                                    danhbo.DaXuLy = true;
                                                     danhbo.DCBD = true;
                                                     _cDKDM.Sua(danhbo);
                                                     scope.Complete();
@@ -765,6 +773,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     if (flagCCCD == true)
                                     {
                                         danhbo.GhiChu = "CCCD đã đăng ký danh bộ khác";
+                                        danhbo.DaXuLy = true;
                                         _cDKDM.Sua(danhbo);
                                     }
                                     else
@@ -852,6 +861,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                         }
                                                     }
                                                 }
+                                                danhbo.DaXuLy = true;
                                                 danhbo.DCBD = true;
                                                 _cDKDM.Sua(danhbo);
                                                 scope.Complete();
@@ -862,6 +872,29 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void countdgvDanhSach2()
+        {
+            try
+            {
+                int TongDinhMucCu = 0, TongDinhMucMoi = 0;
+                foreach (DataGridViewRow item in dgvDanhSach2.Rows)
+                {
+                    if (item.Cells["DinhMucCu"].Value != null && item.Cells["DinhMucCu"].Value.ToString() != "")
+                        TongDinhMucCu += int.Parse(item.Cells["DinhMucCu"].Value.ToString());
+                    if (item.Cells["DinhMucMoi"].Value != null && item.Cells["DinhMucMoi"].Value.ToString() != "")
+                        TongDinhMucMoi += int.Parse(item.Cells["DinhMucMoi"].Value.ToString());
+                }
+                txtTong.Text = dgvDanhSach2.Rows.Count.ToString();
+                txtTongDinhMucCu.Text = TongDinhMucCu.ToString();
+                txtTongDinhMucMoi.Text = TongDinhMucMoi.ToString();
+                txtTongDinhMucBD.Text = (TongDinhMucMoi - TongDinhMucCu).ToString();
             }
             catch (Exception ex)
             {
