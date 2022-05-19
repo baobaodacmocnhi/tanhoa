@@ -746,6 +746,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                             }
                                                         }
                                                     }
+                                                    danhbo.DCBD_SoPhieu = ctdcbd.MaCTDCBD;
                                                     danhbo.DaXuLy = true;
                                                     danhbo.DCBD = true;
                                                     _cDKDM.Sua(danhbo);

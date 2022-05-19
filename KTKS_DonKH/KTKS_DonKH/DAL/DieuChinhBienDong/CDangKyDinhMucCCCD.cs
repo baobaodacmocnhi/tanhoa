@@ -91,12 +91,6 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                if (db.DCBD_DKDM_DanhBos.Count() > 0)
-                {
-                    en.ID = db.DCBD_DKDM_DanhBos.Max(item => item.ID) + 1;
-                }
-                else
-                    en.ID = 1;
                 if (db.DCBD_DKDM_DanhBos.Where(item => item.Quan == en.Quan).Max(item => item.Thung) == null)
                 {
                     en.Thung = 1;
