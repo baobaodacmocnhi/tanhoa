@@ -83,7 +83,7 @@ namespace ThuTien.GUI.TimKiem
                     else
                         if (bool.Parse(item.Cells["ToTrinh"].Value.ToString()) == true)
                         {
-                            item.DefaultCellStyle.BackColor = Color.Blue;
+                            item.DefaultCellStyle.BackColor = Color.DodgerBlue;
                         }
                     
                     //điều chỉnh tiền dư chuyển khoản
