@@ -81,7 +81,7 @@ namespace ThuTien.DAL.Quay
                 return false;
         }
 
-        public bool CheckExist_Ton(string DanhBo,int Nam,int Ky)
+        public bool CheckExist_Ton(string DanhBo, int Nam, int Ky)
         {
             var query = from item in _db.TT_LenhHuys
                         join itemHD in _db.HOADONs on item.MaHD equals itemHD.ID_HOADON
@@ -126,7 +126,7 @@ namespace ThuTien.DAL.Quay
                         select new
                         {
                             itemHD.NGAYGIAITRACH,
-                            itemLH.SoHoaDon,
+                            itemHD.SOHOADON,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
                             DiaChi = itemHD.SO + " " + itemHD.DUONG,
@@ -139,6 +139,7 @@ namespace ThuTien.DAL.Quay
                             To = itemtableND.TT_To.TenTo,
                             GiaBieu = itemHD.GB,
                             itemLH.Cat,
+                            itemLH.CreateDate,
                         };
             return LINQToDataTable(query);
         }
@@ -155,7 +156,7 @@ namespace ThuTien.DAL.Quay
                         select new
                         {
                             itemHD.NGAYGIAITRACH,
-                            itemLH.SoHoaDon,
+                            itemHD.SOHOADON,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
                             DiaChi = itemHD.SO + " " + itemHD.DUONG,
@@ -168,6 +169,7 @@ namespace ThuTien.DAL.Quay
                             To = itemtableND.TT_To.TenTo,
                             GiaBieu = itemHD.GB,
                             itemLH.Cat,
+                            itemLH.CreateDate,
                         };
             return LINQToDataTable(query);
         }
@@ -182,7 +184,7 @@ namespace ThuTien.DAL.Quay
                         orderby itemHD.MALOTRINH ascending
                         select new
                         {
-                            itemLH.SoHoaDon,
+                            itemHD.SOHOADON,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
                             DiaChi = itemHD.SO + " " + itemHD.DUONG,
@@ -195,6 +197,7 @@ namespace ThuTien.DAL.Quay
                             To = itemtableND.TT_To.TenTo,
                             GiaBieu = itemHD.GB,
                             itemLH.Cat,
+                            itemLH.CreateDate,
                         };
             return LINQToDataTable(query);
         }
@@ -209,7 +212,7 @@ namespace ThuTien.DAL.Quay
                         orderby itemHD.MALOTRINH ascending
                         select new
                         {
-                            itemLH.SoHoaDon,
+                            itemHD.SOHOADON,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
                             DiaChi = itemHD.SO + " " + itemHD.DUONG,
@@ -222,6 +225,7 @@ namespace ThuTien.DAL.Quay
                             To = itemtableND.TT_To.TenTo,
                             GiaBieu = itemHD.GB,
                             itemLH.Cat,
+                            itemLH.CreateDate,
                         };
             return LINQToDataTable(query);
         }
@@ -237,7 +241,7 @@ namespace ThuTien.DAL.Quay
                         select new
                         {
                             itemHD.NGAYGIAITRACH,
-                            itemLH.SoHoaDon,
+                            itemHD.SOHOADON,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
                             DiaChi = itemHD.SO + " " + itemHD.DUONG,
@@ -250,6 +254,7 @@ namespace ThuTien.DAL.Quay
                             To = itemtableND.TT_To.TenTo,
                             GiaBieu = itemHD.GB,
                             itemLH.Cat,
+                            itemLH.CreateDate,
                         };
             return LINQToDataTable(query);
         }
@@ -265,7 +270,7 @@ namespace ThuTien.DAL.Quay
                         select new
                         {
                             itemHD.NGAYGIAITRACH,
-                            itemLH.SoHoaDon,
+                            itemHD.SOHOADON,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
                             DiaChi = itemHD.SO + " " + itemHD.DUONG,
@@ -278,6 +283,7 @@ namespace ThuTien.DAL.Quay
                             To = itemtableND.TT_To.TenTo,
                             GiaBieu = itemHD.GB,
                             itemLH.Cat,
+                            itemLH.CreateDate,
                         };
             return LINQToDataTable(query);
         }
@@ -295,7 +301,7 @@ namespace ThuTien.DAL.Quay
                         select new
                         {
                             itemHD.NGAYGIAITRACH,
-                            itemLH.SoHoaDon,
+                            itemHD.SOHOADON,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
                             DiaChi = itemHD.SO + " " + itemHD.DUONG,
@@ -308,6 +314,7 @@ namespace ThuTien.DAL.Quay
                             To = itemtableND.TT_To.TenTo,
                             GiaBieu = itemHD.GB,
                             itemLH.Cat,
+                            itemLH.CreateDate,
                         };
             return LINQToDataTable(query);
         }
@@ -325,7 +332,7 @@ namespace ThuTien.DAL.Quay
                         select new
                         {
                             itemHD.NGAYGIAITRACH,
-                            itemLH.SoHoaDon,
+                            itemHD.SOHOADON,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
                             DiaChi = itemHD.SO + " " + itemHD.DUONG,
@@ -338,6 +345,7 @@ namespace ThuTien.DAL.Quay
                             To = itemtableND.TT_To.TenTo,
                             GiaBieu = itemHD.GB,
                             itemLH.Cat,
+                            itemLH.CreateDate,
                         };
             return LINQToDataTable(query);
         }
@@ -380,7 +388,7 @@ namespace ThuTien.DAL.Quay
                         select new
                         {
                             itemHD.NGAYGIAITRACH,
-                            itemLH.SoHoaDon,
+                            itemHD.SOHOADON,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
                             DiaChi = itemHD.SO + " " + itemHD.DUONG,
@@ -393,6 +401,7 @@ namespace ThuTien.DAL.Quay
                             To = itemtableND.TT_To.TenTo,
                             GiaBieu = itemHD.GB,
                             itemLH.Cat,
+                            itemLH.CreateDate,
                             DangNgan = itemtableDN.HoTen,
                         };
             return LINQToDataTable(query);
@@ -411,7 +420,7 @@ namespace ThuTien.DAL.Quay
                         select new
                         {
                             itemHD.NGAYGIAITRACH,
-                            itemLH.SoHoaDon,
+                            itemHD.SOHOADON,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
                             DiaChi = itemHD.SO + " " + itemHD.DUONG,
@@ -424,6 +433,7 @@ namespace ThuTien.DAL.Quay
                             To = itemtableND.TT_To.TenTo,
                             GiaBieu = itemHD.GB,
                             itemLH.Cat,
+                            itemLH.CreateDate,
                             DangNgan = itemtableDN.HoTen,
                         };
             return LINQToDataTable(query);
@@ -444,7 +454,7 @@ namespace ThuTien.DAL.Quay
                         select new
                         {
                             itemHD.NGAYGIAITRACH,
-                            itemLH.SoHoaDon,
+                            itemHD.SOHOADON,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
                             DiaChi = itemHD.SO + " " + itemHD.DUONG,
@@ -457,6 +467,7 @@ namespace ThuTien.DAL.Quay
                             To = itemtableND.TT_To.TenTo,
                             GiaBieu = itemHD.GB,
                             itemLH.Cat,
+                            itemLH.CreateDate,
                             DangNgan = itemtableDN.HoTen,
                         };
             return LINQToDataTable(query);
@@ -477,7 +488,7 @@ namespace ThuTien.DAL.Quay
                         select new
                         {
                             itemHD.NGAYGIAITRACH,
-                            itemLH.SoHoaDon,
+                            itemHD.SOHOADON,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
                             DiaChi = itemHD.SO + " " + itemHD.DUONG,
@@ -490,6 +501,7 @@ namespace ThuTien.DAL.Quay
                             To = itemtableND.TT_To.TenTo,
                             GiaBieu = itemHD.GB,
                             itemLH.Cat,
+                            itemLH.CreateDate,
                             DangNgan = itemtableDN.HoTen,
                         };
             return LINQToDataTable(query);
@@ -537,7 +549,7 @@ namespace ThuTien.DAL.Quay
             return LINQToDataTable(query.Distinct());
         }
 
-        public DataTable getDS_DangNgan(DateTime FromNgayGiaiTrach,DateTime ToNgayGiaiTrach)
+        public DataTable getDS_DangNgan(DateTime FromNgayGiaiTrach, DateTime ToNgayGiaiTrach)
         {
             var query = from itemLH in _db.TT_LenhHuys
                         join itemHD in _db.HOADONs on itemLH.MaHD equals itemHD.ID_HOADON
@@ -566,6 +578,7 @@ namespace ThuTien.DAL.Quay
                         select new
                         {
                             itemLH.Cat,
+                            itemLH.CreateDate,
                         };
             if (query.ToList().Count > 0)
                 return query.FirstOrDefault().Cat;
