@@ -1232,6 +1232,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 dr["DinhMucHN"] = en.DinhMucHN;
                                 ///Biến Động
                                 dr["GiaBieuBD"] = en.GiaBieu_BD;
+                                dr["DinhMucBD"] = en.DinhMuc_BD;
+                                dr["DinhMucHNBD"] = en.DinhMucHN_BD;
                                 dr["ChucVu"] = "TUQ GIÁM ĐỐC\n" + CTaiKhoan.ChucVu.ToUpper().Replace("PHÒNG", "") + CTaiKhoan.TenPhong.ToUpper();
                                 dr["NguoiKy"] = CTaiKhoan.NguoiKy.ToUpper();
                                 dsBaoCao.Tables["DCBD"].Rows.Add(dr);
