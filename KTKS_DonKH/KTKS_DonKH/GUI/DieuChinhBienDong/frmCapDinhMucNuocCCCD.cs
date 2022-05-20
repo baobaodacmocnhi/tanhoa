@@ -85,6 +85,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     txtDienThoai.Focus();
                     if (_cDKDM.checkExists(_hoadon.DANHBA))
                         MessageBox.Show("Danh Bộ này đã nhập rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (_hoadon.GB >= 30 && _hoadon.GB <= 39)
+                    {
+                        MessageBox.Show("Giá Biểu 3x không cho nhập", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
                 }
                 else
                     MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -102,10 +107,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         MessageBox.Show("Danh Bộ này đã nhập rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
+                    if (_hoadon.GB >= 30 && _hoadon.GB <= 39)
+                    {
+                        MessageBox.Show("Giá Biểu 3x không cho nhập", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
                     if (_hoadon != null)
                     {
                         DCBD_DKDM_DanhBo en = new DCBD_DKDM_DanhBo();
                         en.DanhBo = txtDanhBo.Text.Trim();
+                        en.GiaBieu = _hoadon.GB;
                         en.SDT = txtDienThoai.Text.Trim();
                         en.SoNK = int.Parse(txtSoNK.Text.Trim());
                         en.Quan = _hoadon.Quan;
@@ -540,7 +551,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 if (_cDonTu.Them(entity))
                                 {
                                     foreach (DataGridViewRow item in dgvDanhSach2.Rows)
-                                        if (item.Cells["MaDon"].Value.ToString() == null || item.Cells["MaDon"].Value.ToString() == "")
+                                        if (item.Cells["MaDon"].Value == null || item.Cells["MaDon"].Value.ToString() == "")
                                         {
                                             item.Cells["DCBD_MaDon"].Value = entity.MaDon;
                                             DCBD_DKDM_DanhBo danhbo = _cDKDM.get(int.Parse(item.Cells["ID_DS"].Value.ToString()));
@@ -635,6 +646,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             ///Định Mức
                                             if (item.Cells["DinhMucCu"].Value.ToString() != item.Cells["DinhMucMoi"].Value.ToString())
                                             {
+                                                if (ctdcbd.GiaBieu == 13)
+                                                {
+                                                    ctdcbd.GiaBieu_BD = 15;
+                                                    if (string.IsNullOrEmpty(ThongTin) == true)
+                                                        ThongTin += "Giá Biểu";
+                                                    else
+                                                        ThongTin += ". Giá Biểu";
+                                                }
                                                 if (string.IsNullOrEmpty(ThongTin) == true)
                                                     ThongTin += "Định Mức";
                                                 else
@@ -987,6 +1006,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             return;
                         }
                         HOADON hoadon = _cThuTien.GetMoiNhat(en.DanhBo);
+                        if (hoadon.GB >= 30 && hoadon.GB <= 39)
+                        {
+                            MessageBox.Show("Giá Biểu 3x không cho nhập", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            return;
+                        }
                         en.Quan = hoadon.Quan;
                         string Thung = "";
                         if (_cDKDM.Sua(en, out Thung))
