@@ -99,7 +99,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 else
                 {
                     int ThungMax = db.DCBD_DKDM_DanhBos.Where(item => item.Quan == en.Quan).Max(item => item.Thung).Value;
-                    if (db.DCBD_DKDM_DanhBos.Where(item => item.Quan == en.Quan && item.Thung == ThungMax).Max(item => item.STT) == 210)
+                    if (db.DCBD_DKDM_DanhBos.Where(item => item.Quan == en.Quan && item.Thung == ThungMax).Max(item => item.STT) == 300)
                     {
                         en.Thung = ThungMax + 1;
                         en.STT = 1;
@@ -110,9 +110,10 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         en.STT = db.DCBD_DKDM_DanhBos.Where(item => item.Quan == en.Quan && item.Thung == ThungMax).Max(item => item.STT) + 1;
                     }
                 }
+                en.CreateDate_Old = en.CreateDate;
                 en.CreateDate = DateTime.Now;
                 en.CreateBy = CTaiKhoan.MaUser;
-                en.CreateDate_Old = en.CreateDate;
+                
                 db.SubmitChanges();
                 Thung = "Thùng: " + en.Thung.Value.ToString() + "\nSTT: " + en.STT.Value.ToString();
                 return true;
