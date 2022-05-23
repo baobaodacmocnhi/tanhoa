@@ -53,6 +53,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             cmbNguoiLap.DataSource = dt;
             cmbNguoiLap.DisplayMember = "Name";
             cmbNguoiLap.ValueMember = "ID";
+            cmbKiemTra.SelectedIndex = 0;
         }
 
         public void Clear()
