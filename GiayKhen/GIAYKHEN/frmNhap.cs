@@ -148,17 +148,18 @@ namespace GIAYKHEN
                     {
                         DataTable dtExcel = ExcelToDataTable(dialog.FileName);
                         string PhongBan = "";
-                        for (int i = 16; i < dtExcel.Rows.Count; i++)
+                        for (int i = 0; i < dtExcel.Rows.Count; i++)
                             if (!string.IsNullOrEmpty(dtExcel.Rows[i][0].ToString().Trim()) && IsNumeric(dtExcel.Rows[i][0].ToString().Trim()))
                             {
                                 A_GIAYKHEN en = new A_GIAYKHEN();
                                 en.HOTEN = dtExcel.Rows[i][1].ToString().Trim();
-                                en.CHUCVU = dtExcel.Rows[i][3].ToString().Trim().ToUpper();
+                                //en.CHUCVU = dtExcel.Rows[i][3].ToString().Trim().ToUpper();
                                 en.PHONGBAN = dtExcel.Rows[i][2].ToString().Trim().ToUpper();
-                                if (dtExcel.Rows[i][4].ToString().Trim() == "Nữ")
-                                    en.GioiTinh = false;
-                                else
-                                    en.GioiTinh = true;
+                                //if (dtExcel.Rows[i][4].ToString().Trim() == "Nữ")
+                                //    en.GioiTinh = false;
+                                //else
+                                //    en.GioiTinh = true;
+                                en.HCM = true;
                                 _db.A_GIAYKHENs.InsertOnSubmit(en);
                                 _db.SubmitChanges();
                             }
