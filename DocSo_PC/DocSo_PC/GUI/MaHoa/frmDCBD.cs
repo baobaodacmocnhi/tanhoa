@@ -605,40 +605,95 @@ namespace DocSo_PC.GUI.MaHoa
         {
             try
             {
-                if (MessageBox.Show("Bạn có chắc chắn?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 {
-                    foreach (DataGridViewRow item in dgvDCBD.Rows)
-                        if (item.Cells["Chon_DS"].Value != null && bool.Parse(item.Cells["Chon_DS"].Value.ToString()) == true && bool.Parse(item.Cells["ChuyenDocSo"].Value.ToString()) == false)
-                        {
-                            MaHoa_DCBD en = _cDCBD.get(int.Parse(item.Cells["ID_DS"].Value.ToString()));
-                            if (en != null)
+                    if (MessageBox.Show("Bạn có chắc chắn?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        foreach (DataGridViewRow item in dgvDCBD.Rows)
+                            if (item.Cells["Chon_DS"].Value != null && bool.Parse(item.Cells["Chon_DS"].Value.ToString()) == true && bool.Parse(item.Cells["ChuyenDocSo"].Value.ToString()) == false)
                             {
-                                if (!string.IsNullOrEmpty(en.GiaBieu_BD.ToString()))
+                                MaHoa_DCBD en = _cDCBD.get(int.Parse(item.Cells["ID_DS"].Value.ToString()));
+                                if (en != null)
                                 {
-                                    CDHN._cDAL.ExecuteNonQuery("update TB_DULIEUKHACHHANG set GIABIEU=" + en.GiaBieu_BD.Value.ToString() + " where DANHBO='" + en.DanhBo + "'");
-                                }
-                                TB_GHICHU ghichu = new TB_GHICHU();
-                                ghichu.DANHBO = en.DanhBo;
-                                ghichu.DONVI = "Đ. QLĐHN";
-                                ghichu.NOIDUNG = "PYC: " + en.ID.ToString();
-                                ghichu.NOIDUNG += " ," + en.CreateDate.Value.ToString("dd/MM/yyyy");
-                                ghichu.NOIDUNG += " - HL : " + en.HieuLucKy + " - ĐC";
-                                if (!string.IsNullOrEmpty(en.GiaBieu_BD.ToString()))
-                                {
-                                    ghichu.NOIDUNG += " Giá Biểu Từ " + en.GiaBieu + " -> " + en.GiaBieu_BD + ",";
-                                }
-                                string sqlGhiChu = "insert into TB_GHICHU(DANHBO,DONVI,NOIDUNG,CREATEDATE,CREATEBY)values('" + ghichu.DANHBO + "','" + ghichu.DONVI + "',N'" + ghichu.NOIDUNG + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture) + "',N'" + CNguoiDung.HoTen + "')";
-                                if (CDHN._cDAL.ExecuteNonQuery(sqlGhiChu))
-                                {
-                                    en.ChuyenDocSo = true;
-                                    en.NgayChuyenDocSo = DateTime.Now;
-                                    en.NguoiChuyenDocSo = CNguoiDung.MaND;
-                                    _cDCBD.Sua(en);
+                                    if (!string.IsNullOrEmpty(en.GiaBieu_BD.ToString()))
+                                    {
+                                        CDHN._cDAL.ExecuteNonQuery("update TB_DULIEUKHACHHANG set GIABIEU=" + en.GiaBieu_BD.Value.ToString() + " where DANHBO='" + en.DanhBo + "'");
+                                    }
+                                    TB_GHICHU ghichu = new TB_GHICHU();
+                                    ghichu.DANHBO = en.DanhBo;
+                                    ghichu.DONVI = "Đ. QLĐHN";
+                                    ghichu.NOIDUNG = "PYC: " + en.ID.ToString();
+                                    ghichu.NOIDUNG += " ," + en.CreateDate.Value.ToString("dd/MM/yyyy");
+                                    ghichu.NOIDUNG += " - HL : " + en.HieuLucKy + " - ĐC";
+                                    if (!string.IsNullOrEmpty(en.GiaBieu_BD.ToString()))
+                                    {
+                                        ghichu.NOIDUNG += " Giá Biểu Từ " + en.GiaBieu + " -> " + en.GiaBieu_BD + ",";
+                                    }
+                                    string sqlGhiChu = "insert into TB_GHICHU(DANHBO,DONVI,NOIDUNG,CREATEDATE,CREATEBY)values('" + ghichu.DANHBO + "',N'" + ghichu.DONVI + "',N'" + ghichu.NOIDUNG + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture) + "',N'" + CNguoiDung.HoTen + "')";
+                                    if (CDHN._cDAL.ExecuteNonQuery(sqlGhiChu))
+                                    {
+                                        en.ChuyenDocSo = true;
+                                        en.NgayChuyenDocSo = DateTime.Now;
+                                        en.NguoiChuyenDocSo = CNguoiDung.MaND;
+                                        _cDCBD.Sua(en);
+                                    }
                                 }
                             }
-                        }
-                    MessageBox.Show("Cập Nhật Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Cập Nhật Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnThuHoiCapNhatTraiDat_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                {
+                    if (MessageBox.Show("Bạn có chắc chắn?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        foreach (DataGridViewRow item in dgvDCBD.Rows)
+                            if (item.Cells["Chon_DS"].Value != null && bool.Parse(item.Cells["Chon_DS"].Value.ToString()) == true && bool.Parse(item.Cells["ChuyenDocSo"].Value.ToString()) == true)
+                            {
+                                MaHoa_DCBD en = _cDCBD.get(int.Parse(item.Cells["ID_DS"].Value.ToString()));
+                                if (en != null)
+                                {
+                                    if (!string.IsNullOrEmpty(en.GiaBieu_BD.ToString()))
+                                    {
+                                        CDHN._cDAL.ExecuteNonQuery("update TB_DULIEUKHACHHANG set GIABIEU=" + en.GiaBieu.Value.ToString() + " where DANHBO='" + en.DanhBo + "'");
+                                    }
+                                    TB_GHICHU ghichu = new TB_GHICHU();
+                                    ghichu.DANHBO = en.DanhBo;
+                                    ghichu.DONVI = "Đ. QLĐHN";
+                                    ghichu.NOIDUNG = "PYC: " + en.ID.ToString();
+                                    ghichu.NOIDUNG += " ," + en.CreateDate.Value.ToString("dd/MM/yyyy");
+                                    ghichu.NOIDUNG += " - HL : " + en.HieuLucKy + " - ĐC";
+                                    if (!string.IsNullOrEmpty(en.GiaBieu_BD.ToString()))
+                                    {
+                                        ghichu.NOIDUNG += " Giá Biểu Từ " + en.GiaBieu + " -> " + en.GiaBieu_BD + ",";
+                                    }
+                                    string sqlGhiChu = "delete from TB_GHICHU where DONVI=N'Đ. QLĐHN' and DANHBO='" + en.DanhBo + "' and NOIDUNG like 'PYC: " + en.ID.ToString() + "%'";
+                                    if (CDHN._cDAL.ExecuteNonQuery(sqlGhiChu))
+                                    {
+                                        en.ChuyenDocSo = false;
+                                        en.NgayChuyenDocSo = null;
+                                        en.NguoiChuyenDocSo = null;
+                                        _cDCBD.Sua(en);
+                                    }
+                                }
+                            }
+                        MessageBox.Show("Cập Nhật Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {

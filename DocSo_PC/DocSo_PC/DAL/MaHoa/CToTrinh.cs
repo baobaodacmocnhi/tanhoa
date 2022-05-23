@@ -93,6 +93,7 @@ namespace DocSo_PC.DAL.MaHoa
                             item.NoiDung,
                             item.VeViec,
                             CreateBy = itemtableND.HoTen,
+                            item.ThuDuocKy,
                         };
             return _cDAL.LINQToDataTable(query);
         }
@@ -115,6 +116,7 @@ namespace DocSo_PC.DAL.MaHoa
                             item.NoiDung,
                             item.VeViec,
                             CreateBy = itemtableND.HoTen,
+                            item.ThuDuocKy,
                         };
             return _cDAL.LINQToDataTable(query);
         }
@@ -137,6 +139,7 @@ namespace DocSo_PC.DAL.MaHoa
                             item.NoiDung,
                             item.VeViec,
                             CreateBy = itemtableND.HoTen,
+                            item.ThuDuocKy,
                         };
             return _cDAL.LINQToDataTable(query);
         }
@@ -159,6 +162,7 @@ namespace DocSo_PC.DAL.MaHoa
                             item.NoiDung,
                             item.VeViec,
                             CreateBy = itemtableND.HoTen,
+                            item.ThuDuocKy,
                         };
             return _cDAL.LINQToDataTable(query);
         }
@@ -181,6 +185,7 @@ namespace DocSo_PC.DAL.MaHoa
                             item.NoiDung,
                             item.VeViec,
                             CreateBy = itemtableND.HoTen,
+                            item.ThuDuocKy,
                         };
             return _cDAL.LINQToDataTable(query);
         }
@@ -203,6 +208,7 @@ namespace DocSo_PC.DAL.MaHoa
                             item.NoiDung,
                             item.VeViec,
                             CreateBy = itemtableND.HoTen,
+                            item.ThuDuocKy,
                         };
             return _cDAL.LINQToDataTable(query);
         }

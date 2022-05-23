@@ -530,6 +530,28 @@ namespace DocSo_PC.GUI.MaHoa
                 btnXem_DS.PerformClick();
         }
 
+        private void dgvToTrinh_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                {
+                    if (dgvToTrinh.Columns[e.ColumnIndex].Name == "ThuDuocKy_DS")
+                    {
+                        MaHoa_ToTrinh totrinh = _cToTrinh.get(int.Parse(dgvToTrinh["ID_DS", e.RowIndex].Value.ToString()));
+                        totrinh.ThuDuocKy = bool.Parse(dgvToTrinh["ThuDuocKy_DS", e.RowIndex].Value.ToString());
+                        _cToTrinh.Sua(totrinh);
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         #endregion
 
         #region Về Việc
@@ -621,6 +643,8 @@ namespace DocSo_PC.GUI.MaHoa
         }
 
         #endregion
+
+
 
 
 
