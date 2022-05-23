@@ -518,8 +518,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 {
                                     DonTu_ChiTiet entityCT = new DonTu_ChiTiet();
                                     entityCT.ID = ++ID;
-                                    item.Cells["DCBD_STT"].Value = entityCT.STT = ++STT;
-
+                                    entityCT.STT = ++STT;
+                                    //item.Cells["DCBD_STT"].Value = entityCT.STT;
+                                    dgvDanhSach2["DCBD_STT", item.Index].Value = entityCT.STT;
                                     entityCT.DanhBo = hd.DANHBA;
                                     entityCT.MLT = hd.MALOTRINH;
                                     entityCT.HopDong = hd.HOPDONG;
@@ -555,8 +556,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         if (item.Cells["MaDon"].Value == null || item.Cells["MaDon"].Value.ToString() == "")
                                         {
                                             item.Cells["DCBD_MaDon"].Value = entity.MaDon;
+                                            DonTu_ChiTiet test = entity.DonTu_ChiTiets.SingleOrDefault(a => a.DanhBo == item.Cells["DanhBo"].Value.ToString());
+                                            item.Cells["DCBD_STT"].Value = entity.DonTu_ChiTiets.SingleOrDefault(a => a.DanhBo == item.Cells["DanhBo"].Value.ToString()).STT.Value;
                                             DCBD_DKDM_DanhBo danhbo = _cDKDM.get(int.Parse(item.Cells["ID_DS"].Value.ToString()));
-                                            danhbo.DCBD_MaDon = int.Parse(item.Cells["DCBD_MaDon"].Value.ToString());
+                                            danhbo.DCBD_MaDon = entity.MaDon;
                                             danhbo.DCBD_STT = int.Parse(item.Cells["DCBD_STT"].Value.ToString());
                                             _cDKDM.Sua(danhbo);
                                         }

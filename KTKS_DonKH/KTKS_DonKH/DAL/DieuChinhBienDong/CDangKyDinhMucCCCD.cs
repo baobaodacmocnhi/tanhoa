@@ -113,7 +113,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 en.CreateDate_Old = en.CreateDate;
                 en.CreateDate = DateTime.Now;
                 en.CreateBy = CTaiKhoan.MaUser;
-                
+
                 db.SubmitChanges();
                 Thung = "Thùng: " + en.Thung.Value.ToString() + "\nSTT: " + en.STT.Value.ToString();
                 return true;
@@ -178,7 +178,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             item.CreateDate,
                             DinhMucMoi = item.DCBD_DKDM_CCCDs.Count * 4,
                             item.MaDon,
-                            item.DaXuLy,item.GhiChu,
+                            item.DaXuLy,
+                            item.GhiChu,
                             item.DCBD,
                             item.DCBD_MaDon,
                             item.DCBD_STT,
@@ -204,7 +205,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             item.CreateDate,
                             DinhMucMoi = item.DCBD_DKDM_CCCDs.Count * 4,
                             item.MaDon,
-                            item.DaXuLy,item.GhiChu,
+                            item.DaXuLy,
+                            item.GhiChu,
                             item.DCBD,
                             item.DCBD_MaDon,
                             item.DCBD_STT,
@@ -230,7 +232,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             item.CreateDate,
                             DinhMucMoi = item.DCBD_DKDM_CCCDs.Count * 4,
                             item.MaDon,
-                            item.DaXuLy,item.GhiChu,
+                            item.DaXuLy,
+                            item.GhiChu,
                             item.DCBD,
                             item.DCBD_MaDon,
                             item.DCBD_STT,
@@ -257,7 +260,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             item.CreateDate,
                             DinhMucMoi = item.DCBD_DKDM_CCCDs.Count * 4,
                             item.MaDon,
-                            item.DaXuLy,item.GhiChu,
+                            item.DaXuLy,
+                            item.GhiChu,
                             item.DCBD,
                             item.DCBD_MaDon,
                             item.DCBD_STT,
@@ -284,7 +288,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             item.CreateDate,
                             DinhMucMoi = item.DCBD_DKDM_CCCDs.Count * 4,
                             item.MaDon,
-                            item.DaXuLy,item.GhiChu,
+                            item.DaXuLy,
+                            item.GhiChu,
                             item.DCBD,
                             item.DCBD_MaDon,
                             item.DCBD_STT,
@@ -312,7 +317,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             CreateBy = itemtableND.HoTen,
                             DinhMucMoi = item.DCBD_DKDM_CCCDs.Count * 4,
                             item.MaDon,
-                            item.DaXuLy,item.GhiChu,
+                            item.DaXuLy,
+                            item.GhiChu,
                             item.DCBD,
                             item.DCBD_MaDon,
                             item.DCBD_STT,
@@ -322,7 +328,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         public DataTable getDS_KiemTra_Tang(DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            string sql = "select ID,DanhBo,SDT,Quan,Thung,a.STT,a.CreateDate,CreateBy = b.HoTen,MaDon,DaXuLy,DCBD,DCBD_MaDon,DCBD_STT"
+            string sql = "select ID,DanhBo,SDT,Quan,Thung,a.STT,a.CreateDate,CreateBy = b.HoTen,MaDon,DaXuLy,DCBD,DCBD_MaDon,DCBD_STT,GhiChu"
                         + " ,DinhMucCu=(select top 1 DM from server9.HOADON_TA.dbo.HOADON where DANHBA=a.DanhBo order by ID_HOADON desc)"
                         + " ,DinhMucMoi = (select COUNT(*) from DCBD_DKDM_CCCD where IDDanhBo=a.ID)*4"
                         + " from DCBD_DKDM_DanhBo a,Users b where a.CreateBy=b.MaU"
@@ -334,7 +340,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         public DataTable getDS_KiemTra_Giam(DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            string sql = "select ID,DanhBo,SDT,Quan,Thung,a.STT,a.CreateDate,CreateBy = b.HoTen,MaDon,DaXuLy,DCBD,DCBD_MaDon,DCBD_STT"
+            string sql = "select ID,DanhBo,SDT,Quan,Thung,a.STT,a.CreateDate,CreateBy = b.HoTen,MaDon,DaXuLy,DCBD,DCBD_MaDon,DCBD_STT,GhiChu"
                         + " ,DinhMucCu=(select top 1 DM from server9.HOADON_TA.dbo.HOADON where DANHBA=a.DanhBo order by ID_HOADON desc)"
                         + " ,DinhMucMoi = (select COUNT(*) from DCBD_DKDM_CCCD where IDDanhBo=a.ID)*4"
                         + " from DCBD_DKDM_DanhBo a,Users b where a.CreateBy=b.MaU"
@@ -346,7 +352,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         public DataTable getDS_KiemTra_GiuNguyen(DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            string sql = "select ID,DanhBo,SDT,Quan,Thung,a.STT,a.CreateDate,CreateBy = b.HoTen,MaDon,DaXuLy,DCBD,DCBD_MaDon,DCBD_STT"
+            string sql = "select ID,DanhBo,SDT,Quan,Thung,a.STT,a.CreateDate,CreateBy = b.HoTen,MaDon,DaXuLy,DCBD,DCBD_MaDon,DCBD_STT,GhiChu"
                         + " ,DinhMucCu=(select top 1 DM from server9.HOADON_TA.dbo.HOADON where DANHBA=a.DanhBo order by ID_HOADON desc)"
                         + " ,DinhMucMoi = (select COUNT(*) from DCBD_DKDM_CCCD where IDDanhBo=a.ID)*4"
                         + " from DCBD_DKDM_DanhBo a,Users b where a.CreateBy=b.MaU"
@@ -358,7 +364,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         public DataTable getDS_KiemTra_All(DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            string sql = "select ID,DanhBo,SDT,Quan,Thung,a.STT,a.CreateDate,CreateBy = b.HoTen,MaDon,DaXuLy,DCBD,DCBD_MaDon,DCBD_STT"
+            string sql = "select ID,DanhBo,SDT,Quan,Thung,a.STT,a.CreateDate,CreateBy = b.HoTen,MaDon,DaXuLy,DCBD,DCBD_MaDon,DCBD_STT,GhiChu"
                         + " ,DinhMucCu=(select top 1 DM from server9.HOADON_TA.dbo.HOADON where DANHBA=a.DanhBo order by ID_HOADON desc)"
                         + " ,DinhMucMoi = (select COUNT(*) from DCBD_DKDM_CCCD where IDDanhBo=a.ID)*4"
                         + " from DCBD_DKDM_DanhBo a,Users b where a.CreateBy=b.MaU"
@@ -385,7 +391,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             item.CreateDate,
                             CreateBy = itemtableND.HoTen,
                             DinhMucMoi = item.DCBD_DKDM_CCCDs.Count * 4,
-                            item.DaXuLy,item.GhiChu,
+                            item.DaXuLy,
+                            item.GhiChu,
                             item.DCBD,
                             item.DCBD_MaDon,
                             item.DCBD_STT,
