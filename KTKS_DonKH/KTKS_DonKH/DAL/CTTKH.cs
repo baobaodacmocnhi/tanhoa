@@ -62,7 +62,7 @@ namespace KTKS_DonKH.DAL
 
         public string getHieuLucKyToi(bool CCDM, int Dot)
         {
-            DataTable dt = ExecuteQuery_DataTable("select ds.Ky,ds.Nam,Dot=dsct.IDDot from Lich_DocSo ds,Lich_DocSo_ChiTiet dsct where NgayDoc>=CAST(getdate() as date) and ds.ID=dsct.IDDocSo and dsct.IDDot=" + Dot);
+            DataTable dt = ExecuteQuery_DataTable("select top 1 ds.Ky,ds.Nam,Dot=dsct.IDDot from Lich_DocSo ds,Lich_DocSo_ChiTiet dsct where NgayDoc>=CAST(getdate() as date) and ds.ID=dsct.IDDocSo");
             if (dt != null && dt.Rows.Count > 0)
             {
                 //chưa tới đợt đọc số

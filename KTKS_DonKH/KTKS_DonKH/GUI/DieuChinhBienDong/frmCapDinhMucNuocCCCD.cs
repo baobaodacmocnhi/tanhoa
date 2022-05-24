@@ -511,7 +511,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         int ID = _cDonTu.getMaxID_ChiTiet();
                         int STT = 0;
                         foreach (DataGridViewRow item in dgvDanhSach2.Rows)
-                            if (bool.Parse(item.Cells["DaXuLy"].Value.ToString()) == false && (item.Cells["MaDon"].Value == null || item.Cells["MaDon"].Value.ToString() == "") && int.Parse(item.Cells["DinhMucCu"].Value.ToString()) != int.Parse(item.Cells["DinhMucMoi"].Value.ToString()))
+                            if (bool.Parse(item.Cells["DaXuLy"].Value.ToString()) == false && (item.Cells["MaDon"].Value == null || item.Cells["MaDon"].Value.ToString() == "") && (item.Cells["DCBD_MaDon"].Value == null || item.Cells["DCBD_MaDon"].Value.ToString() == "") && int.Parse(item.Cells["DinhMucCu"].Value.ToString()) != int.Parse(item.Cells["DinhMucMoi"].Value.ToString()))
                             {
                                 HOADON hd = _cThuTien.GetMoiNhat(item.Cells["DanhBo"].Value.ToString());
                                 if (hd != null)
@@ -519,8 +519,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     DonTu_ChiTiet entityCT = new DonTu_ChiTiet();
                                     entityCT.ID = ++ID;
                                     entityCT.STT = ++STT;
-                                    //item.Cells["DCBD_STT"].Value = entityCT.STT;
-                                    dgvDanhSach2["DCBD_STT", item.Index].Value = entityCT.STT;
+                                    item.Cells["DCBD_STT"].Value = entityCT.STT;
                                     entityCT.DanhBo = hd.DANHBA;
                                     entityCT.MLT = hd.MALOTRINH;
                                     entityCT.HopDong = hd.HOPDONG;
@@ -553,11 +552,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 if (_cDonTu.Them(entity))
                                 {
                                     foreach (DataGridViewRow item in dgvDanhSach2.Rows)
-                                        if (item.Cells["MaDon"].Value == null || item.Cells["MaDon"].Value.ToString() == "")
+                                        if (bool.Parse(item.Cells["DaXuLy"].Value.ToString()) == false && (item.Cells["MaDon"].Value == null || item.Cells["MaDon"].Value.ToString() == "") && (item.Cells["DCBD_MaDon"].Value == null || item.Cells["DCBD_MaDon"].Value.ToString() == "") && int.Parse(item.Cells["DinhMucCu"].Value.ToString()) != int.Parse(item.Cells["DinhMucMoi"].Value.ToString()))
                                         {
                                             item.Cells["DCBD_MaDon"].Value = entity.MaDon;
-                                            DonTu_ChiTiet test = entity.DonTu_ChiTiets.SingleOrDefault(a => a.DanhBo == item.Cells["DanhBo"].Value.ToString());
-                                            item.Cells["DCBD_STT"].Value = entity.DonTu_ChiTiets.SingleOrDefault(a => a.DanhBo == item.Cells["DanhBo"].Value.ToString()).STT.Value;
                                             DCBD_DKDM_DanhBo danhbo = _cDKDM.get(int.Parse(item.Cells["ID_DS"].Value.ToString()));
                                             danhbo.DCBD_MaDon = entity.MaDon;
                                             danhbo.DCBD_STT = int.Parse(item.Cells["DCBD_STT"].Value.ToString());
@@ -886,12 +883,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                     }
                                                 }
                                                 danhbo.DaXuLy = true;
-                                                danhbo.DCBD = true;
                                                 _cDKDM.Sua(danhbo);
                                                 scope.Complete();
                                             }
                                         }
                                 }
+                        MessageBox.Show("Đã xử lý xong", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 else
