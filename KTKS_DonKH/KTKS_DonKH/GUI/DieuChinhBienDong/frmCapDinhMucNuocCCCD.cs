@@ -116,7 +116,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     if (_hoadon != null)
                     {
                         DCBD_DKDM_DanhBo en = new DCBD_DKDM_DanhBo();
-                        en.DanhBo = txtDanhBo.Text.Trim();
+                        en.DanhBo = _hoadon.DANHBA;
                         en.GiaBieu = _hoadon.GB;
                         en.SDT = txtDienThoai.Text.Trim();
                         en.SoNK = int.Parse(txtSoNK.Text.Trim());
@@ -499,6 +499,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void btnDCBD_Click(object sender, EventArgs e)
         {
+            string str = "";
             try
             {
                 if (CTaiKhoan.CheckQuyen("mnuDCBD", "Them"))
@@ -511,11 +512,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         int ID = _cDonTu.getMaxID_ChiTiet();
                         int STT = 0;
                         foreach (DataGridViewRow item in dgvDanhSach2.Rows)
-                            if (bool.Parse(item.Cells["DaXuLy"].Value.ToString()) == false && (item.Cells["MaDon"].Value == null || item.Cells["MaDon"].Value.ToString() == "") && (item.Cells["DCBD_MaDon"].Value == null || item.Cells["DCBD_MaDon"].Value.ToString() == "") && int.Parse(item.Cells["DinhMucCu"].Value.ToString()) != int.Parse(item.Cells["DinhMucMoi"].Value.ToString()))
+                            if (item.Cells["DanhBo"].Value.ToString().Trim() != "" && bool.Parse(item.Cells["DaXuLy"].Value.ToString()) == false && (item.Cells["MaDon"].Value == null || item.Cells["MaDon"].Value.ToString() == "") && (item.Cells["DCBD_MaDon"].Value == null || item.Cells["DCBD_MaDon"].Value.ToString() == "") && int.Parse(item.Cells["DinhMucCu"].Value.ToString()) != int.Parse(item.Cells["DinhMucMoi"].Value.ToString()))
                             {
                                 HOADON hd = _cThuTien.GetMoiNhat(item.Cells["DanhBo"].Value.ToString());
                                 if (hd != null)
                                 {
+                                    str = hd.DANHBA;
                                     DonTu_ChiTiet entityCT = new DonTu_ChiTiet();
                                     entityCT.ID = ++ID;
                                     entityCT.STT = ++STT;
@@ -552,7 +554,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 if (_cDonTu.Them(entity))
                                 {
                                     foreach (DataGridViewRow item in dgvDanhSach2.Rows)
-                                        if (bool.Parse(item.Cells["DaXuLy"].Value.ToString()) == false && (item.Cells["MaDon"].Value == null || item.Cells["MaDon"].Value.ToString() == "") && (item.Cells["DCBD_MaDon"].Value == null || item.Cells["DCBD_MaDon"].Value.ToString() == "") && int.Parse(item.Cells["DinhMucCu"].Value.ToString()) != int.Parse(item.Cells["DinhMucMoi"].Value.ToString()))
+                                        if (item.Cells["DanhBo"].Value.ToString().Trim() != "" && bool.Parse(item.Cells["DaXuLy"].Value.ToString()) == false && (item.Cells["MaDon"].Value == null || item.Cells["MaDon"].Value.ToString() == "") && (item.Cells["DCBD_MaDon"].Value == null || item.Cells["DCBD_MaDon"].Value.ToString() == "") && int.Parse(item.Cells["DinhMucCu"].Value.ToString()) != int.Parse(item.Cells["DinhMucMoi"].Value.ToString()))
                                         {
                                             item.Cells["DCBD_MaDon"].Value = entity.MaDon;
                                             DCBD_DKDM_DanhBo danhbo = _cDKDM.get(int.Parse(item.Cells["ID_DS"].Value.ToString()));
@@ -564,7 +566,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 }
 
                         foreach (DataGridViewRow item in dgvDanhSach2.Rows)
-                            if (bool.Parse(item.Cells["DaXuLy"].Value.ToString()) == false && bool.Parse(item.Cells["DCBD"].Value.ToString()) == false)
+                            if (item.Cells["DanhBo"].Value.ToString().Trim() != "" && bool.Parse(item.Cells["DaXuLy"].Value.ToString()) == false && bool.Parse(item.Cells["DCBD"].Value.ToString()) == false)
                                 if ((item.Cells["MaDon"].Value.ToString() != "" || item.Cells["DCBD_MaDon"].Value.ToString() != "") && int.Parse(item.Cells["DinhMucCu"].Value.ToString()) != int.Parse(item.Cells["DinhMucMoi"].Value.ToString()))
                                 {
                                     DCBD_DKDM_DanhBo danhbo = _cDKDM.get(int.Parse(item.Cells["ID_DS"].Value.ToString()));
@@ -896,7 +898,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message + "\n" + str, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
