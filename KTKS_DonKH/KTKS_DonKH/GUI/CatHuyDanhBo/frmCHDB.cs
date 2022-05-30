@@ -612,7 +612,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     ctchdb.GhiChuLyDo = txtGhiChu.Text.Trim();
                     ctchdb.NoiDung = txtNoiDung.Text;
                     if (txtSoTien.Text.Trim() != "")
-                        ctchdb.SoTien = int.Parse(txtSoTien.Text.Trim().Replace(".", ""));
+                        ctchdb.SoTien = long.Parse(txtSoTien.Text.Trim().Replace(".", ""));
                     if (cmbViTriDHN1.SelectedItem != null)
                         ctchdb.ViTriDHN1 = cmbViTriDHN1.SelectedItem.ToString();
                     if (cmbViTriDHN2.SelectedItem != null)
@@ -725,7 +725,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         _ctchdb.GhiChuLyDo = txtGhiChu.Text.Trim();
                         _ctchdb.NoiDung = txtNoiDung.Text;
                         if (txtSoTien.Text.Trim() != "")
-                            _ctchdb.SoTien = int.Parse(txtSoTien.Text.Trim().Replace(".", ""));
+                            _ctchdb.SoTien = long.Parse(txtSoTien.Text.Trim().Replace(".", ""));
                         else
                             _ctchdb.SoTien = null;
                         if (cmbViTriDHN1.SelectedItem != null)
@@ -1299,7 +1299,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 ctchdb.LyDo = cmbLyDo.SelectedValue.ToString();
                                 ctchdb.GhiChuLyDo = txtGhiChu.Text.Trim();
                                 if (txtSoTien.Text.Trim() != "")
-                                    ctchdb.SoTien = int.Parse(txtSoTien.Text.Trim().Replace(".", ""));
+                                    ctchdb.SoTien = long.Parse(txtSoTien.Text.Trim().Replace(".", ""));
                                 ctchdb.NoiDung = ((CHDB_LyDo)cmbLyDo.SelectedItem).NoiDung;
                                 ctchdb.NoiNhan = ((CHDB_LyDo)cmbLyDo.SelectedItem).NoiNhan + "\r\n(" + itemMa.Text.Insert(itemMa.Text.Length - 2, "-") + ")";
 

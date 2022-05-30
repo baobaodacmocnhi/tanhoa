@@ -33,6 +33,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         HOADON _hoadon = null;
         DCBD_DKDM_DanhBo _danhbo = null;
         bool _flag = false;
+        string[] lstKhongChoNhap = { "16", "21", "22", "31", "32", "33", "35", "51", "52", "59", "68" };
 
         public frmCapDinhMucNuocCCCD()
         {
@@ -83,12 +84,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     txtDanhBo.Text = _hoadon.DANHBA;
                     txtHoTen.Text = _hoadon.TENKH;
                     txtDiaChi.Text = _hoadon.SO + " " + _hoadon.DUONG;
+                    txtGiaBieu.Text = _hoadon.GB.ToString();
+                    if (_hoadon.DM != null)
+                        txtDinhMuc.Text = _hoadon.DM.Value.ToString();
                     txtDienThoai.Focus();
                     if (_cDKDM.checkExists(_hoadon.DANHBA))
                         MessageBox.Show("Danh Bộ này đã nhập rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    if (_hoadon.GB >= 30 && _hoadon.GB <= 39)
+                    if (lstKhongChoNhap.Any(x => x == _hoadon.GB.ToString()))
                     {
-                        MessageBox.Show("Giá Biểu 3x không cho nhập", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Giá Biểu không cho nhập", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
                 }
@@ -108,9 +112,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         MessageBox.Show("Danh Bộ này đã nhập rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
-                    if (_hoadon.GB >= 30 && _hoadon.GB <= 39)
+                    if (lstKhongChoNhap.Any(x => x == _hoadon.GB.ToString()))
                     {
-                        MessageBox.Show("Giá Biểu 3x không cho nhập", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Giá Biểu không cho nhập", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
                     if (_hoadon != null)
@@ -118,6 +122,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         DCBD_DKDM_DanhBo en = new DCBD_DKDM_DanhBo();
                         en.DanhBo = _hoadon.DANHBA;
                         en.GiaBieu = _hoadon.GB;
+                        en.DinhMuc = _hoadon.DM;
                         en.SDT = txtDienThoai.Text.Trim();
                         en.SoNK = int.Parse(txtSoNK.Text.Trim());
                         en.Quan = _hoadon.Quan;
@@ -171,12 +176,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     if (_danhbo != null)
                     {
-                        if (_danhbo.DCBD)
+                        if (_danhbo.DaXuLy)
                         {
-                            MessageBox.Show("Đã lập ĐCBĐ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Danh bộ đã xử lý rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        _danhbo.DanhBo = txtDanhBo.Text.Trim();
+                        _danhbo.DanhBo = _hoadon.DANHBA;
+                        _danhbo.GiaBieu = _hoadon.GB;
+                        _danhbo.DinhMuc = _hoadon.DM;
                         _danhbo.SoNK = int.Parse(txtSoNK.Text.Trim());
                         _danhbo.SDT = txtDienThoai.Text.Trim();
                         _danhbo.Quan = _hoadon.Quan;
@@ -305,9 +312,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
                     {
-                        if (_danhbo.DCBD)
+                        if (_danhbo.DaXuLy)
                         {
-                            MessageBox.Show("Đã lập ĐCBĐ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Danh bộ đã xử lý rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         DCBD_DKDM_CCCD en = _danhbo.DCBD_DKDM_CCCDs.SingleOrDefault(item => item.ID == int.Parse(e.Row.Cells["ID"].Value.ToString()));
@@ -1009,11 +1016,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             return;
                         }
                         HOADON hoadon = _cThuTien.GetMoiNhat(en.DanhBo);
-                        if (hoadon.GB >= 30 && hoadon.GB <= 39)
+                        if (lstKhongChoNhap.Any(x => x == hoadon.GB.ToString()))
                         {
-                            MessageBox.Show("Giá Biểu 3x không cho nhập", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Giá Biểu không cho nhập", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             return;
                         }
+                        en.GiaBieu = hoadon.GB;
+                        en.DinhMuc = hoadon.DM;
                         en.Quan = hoadon.Quan;
                         string Thung = "";
                         if (_cDKDM.Sua(en, out Thung))

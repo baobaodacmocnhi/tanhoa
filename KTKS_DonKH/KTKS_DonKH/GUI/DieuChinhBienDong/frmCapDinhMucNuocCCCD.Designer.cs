@@ -108,30 +108,36 @@
             this.dateTu = new System.Windows.Forms.DateTimePicker();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dgvDanhSachCT_Online = new System.Windows.Forms.DataGridView();
+            this.txtDanhBo_Online = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.btnIn_Online = new System.Windows.Forms.Button();
+            this.dgvDanhSach_Online = new System.Windows.Forms.DataGridView();
+            this.btnXem_Online = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.dateDen_Online = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
+            this.dateTu_Online = new System.Windows.Forms.DateTimePicker();
+            this.txtGiaBieu = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txtDinhMuc = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.ID_Online = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GiaBieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DinhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateBy_Online = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.actionThem = new System.Windows.Forms.DataGridViewButtonColumn();
             this.IDCT_Online = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTenCT_Online = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgaySinhCT_Online = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DCThuongTruCT_Online = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DCTamTruCT_Online = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CCCDCT_Online = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtDanhBo_Online = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.btnIn_Online = new System.Windows.Forms.Button();
-            this.dgvDanhSach_Online = new System.Windows.Forms.DataGridView();
-            this.ID_Online = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreateBy_Online = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.actionThem = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.btnXem_Online = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.dateDen_Online = new System.Windows.Forms.DateTimePicker();
-            this.label7 = new System.Windows.Forms.Label();
-            this.dateTu_Online = new System.Windows.Forms.DateTimePicker();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
@@ -156,6 +162,10 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.txtDinhMuc);
+            this.tabPage1.Controls.Add(this.label19);
+            this.tabPage1.Controls.Add(this.txtGiaBieu);
+            this.tabPage1.Controls.Add(this.label18);
             this.tabPage1.Controls.Add(this.chkDangXuLy);
             this.tabPage1.Controls.Add(this.chkNhaTro);
             this.tabPage1.Controls.Add(this.btnSua);
@@ -849,7 +859,7 @@
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvDanhSachCT_Online.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvDanhSachCT_Online.Location = new System.Drawing.Point(569, 32);
+            this.dgvDanhSachCT_Online.Location = new System.Drawing.Point(669, 32);
             this.dgvDanhSachCT_Online.Name = "dgvDanhSachCT_Online";
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
@@ -859,49 +869,9 @@
             dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvDanhSachCT_Online.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.dgvDanhSachCT_Online.Size = new System.Drawing.Size(810, 501);
+            this.dgvDanhSachCT_Online.Size = new System.Drawing.Size(708, 501);
             this.dgvDanhSachCT_Online.TabIndex = 29;
             this.dgvDanhSachCT_Online.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhSachCT_Online_RowPostPaint);
-            // 
-            // IDCT_Online
-            // 
-            this.IDCT_Online.DataPropertyName = "ID";
-            this.IDCT_Online.HeaderText = "ID";
-            this.IDCT_Online.Name = "IDCT_Online";
-            this.IDCT_Online.Visible = false;
-            // 
-            // HoTenCT_Online
-            // 
-            this.HoTenCT_Online.DataPropertyName = "HoTen";
-            this.HoTenCT_Online.HeaderText = "Họ Tên";
-            this.HoTenCT_Online.Name = "HoTenCT_Online";
-            this.HoTenCT_Online.Width = 150;
-            // 
-            // NgaySinhCT_Online
-            // 
-            this.NgaySinhCT_Online.DataPropertyName = "NgaySinh";
-            this.NgaySinhCT_Online.HeaderText = "Ngày Sinh";
-            this.NgaySinhCT_Online.Name = "NgaySinhCT_Online";
-            // 
-            // DCThuongTruCT_Online
-            // 
-            this.DCThuongTruCT_Online.DataPropertyName = "DCThuongTru";
-            this.DCThuongTruCT_Online.HeaderText = "ĐC Thường Trú";
-            this.DCThuongTruCT_Online.Name = "DCThuongTruCT_Online";
-            this.DCThuongTruCT_Online.Width = 200;
-            // 
-            // DCTamTruCT_Online
-            // 
-            this.DCTamTruCT_Online.DataPropertyName = "DCTamTru";
-            this.DCTamTruCT_Online.HeaderText = "ĐC Tạm Trú";
-            this.DCTamTruCT_Online.Name = "DCTamTruCT_Online";
-            this.DCTamTruCT_Online.Width = 200;
-            // 
-            // CCCDCT_Online
-            // 
-            this.CCCDCT_Online.DataPropertyName = "CCCD";
-            this.CCCDCT_Online.HeaderText = "CCCD";
-            this.CCCDCT_Online.Name = "CCCDCT_Online";
             // 
             // txtDanhBo_Online
             // 
@@ -949,6 +919,8 @@
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
+            this.GiaBieu,
+            this.DinhMuc,
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6,
             this.CreateBy_Online,
@@ -971,72 +943,10 @@
             dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvDanhSach_Online.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
-            this.dgvDanhSach_Online.Size = new System.Drawing.Size(557, 501);
+            this.dgvDanhSach_Online.Size = new System.Drawing.Size(657, 501);
             this.dgvDanhSach_Online.TabIndex = 25;
             this.dgvDanhSach_Online.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_Online_CellClick);
             this.dgvDanhSach_Online.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhSach_Online_RowPostPaint);
-            // 
-            // ID_Online
-            // 
-            this.ID_Online.DataPropertyName = "ID";
-            this.ID_Online.HeaderText = "ID";
-            this.ID_Online.Name = "ID_Online";
-            this.ID_Online.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "CreateDate";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Ngày Lập";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "DanhBo";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Danh Bộ";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "SDT";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Điện Thoại";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "SoNK";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Số NK";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "Thung";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Thùng";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.Visible = false;
-            this.dataGridViewTextBoxColumn5.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "STT";
-            this.dataGridViewTextBoxColumn6.HeaderText = "STT";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.Visible = false;
-            this.dataGridViewTextBoxColumn6.Width = 50;
-            // 
-            // CreateBy_Online
-            // 
-            this.CreateBy_Online.DataPropertyName = "CreateBy";
-            this.CreateBy_Online.HeaderText = "Người Lập";
-            this.CreateBy_Online.Name = "CreateBy_Online";
-            // 
-            // actionThem
-            // 
-            this.actionThem.HeaderText = "Xử Lý";
-            this.actionThem.Name = "actionThem";
-            this.actionThem.Text = "Thêm";
-            this.actionThem.UseColumnTextForButtonValue = true;
-            this.actionThem.Width = 50;
             // 
             // btnXem_Online
             // 
@@ -1083,6 +993,154 @@
             this.dateTu_Online.Name = "dateTu_Online";
             this.dateTu_Online.Size = new System.Drawing.Size(95, 20);
             this.dateTu_Online.TabIndex = 21;
+            // 
+            // txtGiaBieu
+            // 
+            this.txtGiaBieu.Location = new System.Drawing.Point(342, 32);
+            this.txtGiaBieu.Name = "txtGiaBieu";
+            this.txtGiaBieu.Size = new System.Drawing.Size(50, 20);
+            this.txtGiaBieu.TabIndex = 21;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(289, 35);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(47, 13);
+            this.label18.TabIndex = 20;
+            this.label18.Text = "Giá Biểu";
+            // 
+            // txtDinhMuc
+            // 
+            this.txtDinhMuc.Location = new System.Drawing.Point(457, 32);
+            this.txtDinhMuc.Name = "txtDinhMuc";
+            this.txtDinhMuc.Size = new System.Drawing.Size(50, 20);
+            this.txtDinhMuc.TabIndex = 23;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(398, 35);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(53, 13);
+            this.label19.TabIndex = 22;
+            this.label19.Text = "Định Mức";
+            // 
+            // ID_Online
+            // 
+            this.ID_Online.DataPropertyName = "ID";
+            this.ID_Online.HeaderText = "ID";
+            this.ID_Online.Name = "ID_Online";
+            this.ID_Online.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "CreateDate";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Ngày Lập";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "DanhBo";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Danh Bộ";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "SDT";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Điện Thoại";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "SoNK";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Số NK";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Width = 50;
+            // 
+            // GiaBieu
+            // 
+            this.GiaBieu.DataPropertyName = "GiaBieu";
+            this.GiaBieu.HeaderText = "Giá Biểu";
+            this.GiaBieu.Name = "GiaBieu";
+            this.GiaBieu.Width = 50;
+            // 
+            // DinhMuc
+            // 
+            this.DinhMuc.DataPropertyName = "DinhMuc";
+            this.DinhMuc.HeaderText = "Định Mức";
+            this.DinhMuc.Name = "DinhMuc";
+            this.DinhMuc.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "Thung";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Thùng";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.Visible = false;
+            this.dataGridViewTextBoxColumn5.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "STT";
+            this.dataGridViewTextBoxColumn6.HeaderText = "STT";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.Visible = false;
+            this.dataGridViewTextBoxColumn6.Width = 50;
+            // 
+            // CreateBy_Online
+            // 
+            this.CreateBy_Online.DataPropertyName = "CreateBy";
+            this.CreateBy_Online.HeaderText = "Người Lập";
+            this.CreateBy_Online.Name = "CreateBy_Online";
+            // 
+            // actionThem
+            // 
+            this.actionThem.HeaderText = "Xử Lý";
+            this.actionThem.Name = "actionThem";
+            this.actionThem.Text = "Thêm";
+            this.actionThem.UseColumnTextForButtonValue = true;
+            this.actionThem.Width = 50;
+            // 
+            // IDCT_Online
+            // 
+            this.IDCT_Online.DataPropertyName = "ID";
+            this.IDCT_Online.HeaderText = "ID";
+            this.IDCT_Online.Name = "IDCT_Online";
+            this.IDCT_Online.Visible = false;
+            // 
+            // HoTenCT_Online
+            // 
+            this.HoTenCT_Online.DataPropertyName = "HoTen";
+            this.HoTenCT_Online.HeaderText = "Họ Tên";
+            this.HoTenCT_Online.Name = "HoTenCT_Online";
+            this.HoTenCT_Online.Width = 150;
+            // 
+            // NgaySinhCT_Online
+            // 
+            this.NgaySinhCT_Online.DataPropertyName = "NgaySinh";
+            this.NgaySinhCT_Online.HeaderText = "Ngày Sinh";
+            this.NgaySinhCT_Online.Name = "NgaySinhCT_Online";
+            // 
+            // DCThuongTruCT_Online
+            // 
+            this.DCThuongTruCT_Online.DataPropertyName = "DCThuongTru";
+            this.DCThuongTruCT_Online.HeaderText = "ĐC Thường Trú";
+            this.DCThuongTruCT_Online.Name = "DCThuongTruCT_Online";
+            this.DCThuongTruCT_Online.Width = 150;
+            // 
+            // DCTamTruCT_Online
+            // 
+            this.DCTamTruCT_Online.DataPropertyName = "DCTamTru";
+            this.DCTamTruCT_Online.HeaderText = "ĐC Tạm Trú";
+            this.DCTamTruCT_Online.Name = "DCTamTruCT_Online";
+            this.DCTamTruCT_Online.Width = 150;
+            // 
+            // CCCDCT_Online
+            // 
+            this.CCCDCT_Online.DataPropertyName = "CCCD";
+            this.CCCDCT_Online.HeaderText = "CCCD";
+            this.CCCDCT_Online.Name = "CCCDCT_Online";
             // 
             // frmCapDinhMucNuocCCCD
             // 
@@ -1168,22 +1226,7 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.CheckBox chkDangXuLy;
         private System.Windows.Forms.DataGridView dgvDanhSachCT_Online;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDCT_Online;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HoTenCT_Online;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NgaySinhCT_Online;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DCThuongTruCT_Online;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DCTamTruCT_Online;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CCCDCT_Online;
         private System.Windows.Forms.ComboBox cmbKiemTra;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID_Online;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy_Online;
-        private System.Windows.Forms.DataGridViewButtonColumn actionThem;
         private System.Windows.Forms.TextBox txtTongDinhMucBD;
         private System.Windows.Forms.TextBox txtTongDinhMucMoi;
         private System.Windows.Forms.TextBox txtTongDinhMucCu;
@@ -1204,5 +1247,26 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
         private System.Windows.Forms.DataGridViewTextBoxColumn DCBD_MaDon;
         private System.Windows.Forms.DataGridViewTextBoxColumn DCBD_STT;
+        private System.Windows.Forms.TextBox txtDinhMuc;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox txtGiaBieu;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDCT_Online;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HoTenCT_Online;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgaySinhCT_Online;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DCThuongTruCT_Online;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DCTamTruCT_Online;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CCCDCT_Online;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_Online;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GiaBieu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DinhMuc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy_Online;
+        private System.Windows.Forms.DataGridViewButtonColumn actionThem;
     }
 }

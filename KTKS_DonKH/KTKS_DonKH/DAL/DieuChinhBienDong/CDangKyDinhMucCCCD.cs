@@ -171,6 +171,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         {
                             item.ID,
                             item.DanhBo,
+                            item.GiaBieu,
+                            item.DinhMuc,
                             item.SDT,
                             item.Quan,
                             item.Thung,
@@ -198,6 +200,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         {
                             item.ID,
                             item.DanhBo,
+                            item.GiaBieu,
+                            item.DinhMuc,
                             item.SDT,
                             item.Quan,
                             item.Thung,
@@ -225,6 +229,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         {
                             item.ID,
                             item.DanhBo,
+                            item.GiaBieu,
+                            item.DinhMuc,
                             item.SDT,
                             item.Quan,
                             item.Thung,
@@ -253,6 +259,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         {
                             item.ID,
                             item.DanhBo,
+                            item.GiaBieu,
+                            item.DinhMuc,
                             item.SDT,
                             item.Quan,
                             item.Thung,
@@ -281,6 +289,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         {
                             item.ID,
                             item.DanhBo,
+                            item.GiaBieu,
+                            item.DinhMuc,
                             item.SDT,
                             item.Quan,
                             item.Thung,
@@ -309,6 +319,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         {
                             item.ID,
                             item.DanhBo,
+                            item.GiaBieu,
+                            item.DinhMuc,
                             item.SDT,
                             item.Quan,
                             item.Thung,
@@ -384,6 +396,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         {
                             item.ID,
                             item.DanhBo,
+                            item.GiaBieu,
+                            item.DinhMuc,
                             item.SDT,
                             item.Quan,
                             item.Thung,
@@ -409,6 +423,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         {
                             item.ID,
                             item.DanhBo,
+                            item.GiaBieu,
+                            item.DinhMuc,
                             item.SDT,
                             SoNK = item.DCBD_DKDM_CCCDs.Count,
                             item.CreateDate,
@@ -426,6 +442,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         {
                             item.ID,
                             item.DanhBo,
+                            item.GiaBieu,
+                            item.DinhMuc,
                             item.SDT,
                             SoNK = item.DCBD_DKDM_CCCDs.Count,
                             item.CreateDate,

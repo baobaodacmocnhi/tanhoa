@@ -963,31 +963,57 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             if (_cDocSo.CheckExist(ctdcbd.DanhBo) && !string.IsNullOrEmpty(ctdcbd.ThongTin))
                                             {
                                                 k = ctdcbd.MaCTDCBD.ToString();
+                                                string sql = "";
                                                 if (!string.IsNullOrEmpty(ctdcbd.DinhMuc_BD.ToString()))
                                                 {
-                                                    _cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set DINHMUC=" + ctdcbd.DinhMuc_BD.Value.ToString() + " where DANHBO='" + ctdcbd.DanhBo + "'");
+                                                    if (sql == "")
+                                                        sql += " DINHMUC=" + ctdcbd.DinhMuc_BD.Value.ToString();
+                                                    else
+                                                        sql += ",DINHMUC=" + ctdcbd.DinhMuc_BD.Value.ToString();
+                                                    //_cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set DINHMUC=" + ctdcbd.DinhMuc_BD.Value.ToString() + " where DANHBO='" + ctdcbd.DanhBo + "'");
                                                 }
                                                 if (!string.IsNullOrEmpty(ctdcbd.DinhMucHN_BD.ToString()))
                                                 {
-                                                    _cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set DINHMUCHN=" + ctdcbd.DinhMucHN_BD.Value.ToString() + " where DANHBO='" + ctdcbd.DanhBo + "'");
+                                                    if (sql == "")
+                                                        sql += " DINHMUCHN=" + ctdcbd.DinhMucHN_BD.Value.ToString();
+                                                    else
+                                                        sql += ",DINHMUCHN=" + ctdcbd.DinhMucHN_BD.Value.ToString();
+                                                    //_cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set DINHMUCHN=" + ctdcbd.DinhMucHN_BD.Value.ToString() + " where DANHBO='" + ctdcbd.DanhBo + "'");
                                                 }
                                                 if (!string.IsNullOrEmpty(ctdcbd.GiaBieu_BD.ToString()))
                                                 {
-                                                    _cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set GIABIEU=" + ctdcbd.GiaBieu_BD.Value.ToString() + " where DANHBO='" + ctdcbd.DanhBo + "'");
+                                                    if (sql == "")
+                                                        sql += " GIABIEU=" + ctdcbd.GiaBieu_BD.Value.ToString();
+                                                    else
+                                                        sql += ",GIABIEU=" + ctdcbd.GiaBieu_BD.Value.ToString();
+                                                    //_cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set GIABIEU=" + ctdcbd.GiaBieu_BD.Value.ToString() + " where DANHBO='" + ctdcbd.DanhBo + "'");
                                                 }
                                                 if (!string.IsNullOrEmpty(ctdcbd.HoTen_BD))
                                                 {
-                                                    _cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set HOTEN=N'" + ctdcbd.HoTen_BD.ToString().Replace("'", "") + "' where DANHBO='" + ctdcbd.DanhBo + "'");
+                                                    if (sql == "")
+                                                        sql += " HOTEN=N'" + ctdcbd.HoTen_BD.ToString().Replace("'", "") + "'";
+                                                    else
+                                                        sql += ",HOTEN=N'" + ctdcbd.HoTen_BD.ToString().Replace("'", "") + "'";
+                                                    //_cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set HOTEN=N'" + ctdcbd.HoTen_BD.ToString().Replace("'", "") + "' where DANHBO='" + ctdcbd.DanhBo + "'");
                                                 }
                                                 if (!string.IsNullOrEmpty(ctdcbd.DiaChi_BD))
                                                 {
-                                                    _cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set DiaChiHoaDon=N'" + ctdcbd.DiaChi_BD + "',SOHO=SONHA+' '+TENDUONG,SONHA=N'" + ctdcbd.DiaChi_BD.Substring(0, ctdcbd.DiaChi_BD.IndexOf(" ")) + "',TENDUONG=N'" + ctdcbd.DiaChi_BD.Substring((ctdcbd.DiaChi_BD.IndexOf(" ") + 1), ctdcbd.DiaChi_BD.Length - ctdcbd.DiaChi_BD.IndexOf(" ") - 1) + "' where DANHBO='" + ctdcbd.DanhBo + "'");
+                                                    if (sql == "")
+                                                        sql += " DiaChiHoaDon=N'" + ctdcbd.DiaChi_BD + "',SOHO=SONHA+' '+TENDUONG,SONHA=N'" + ctdcbd.DiaChi_BD.Substring(0, ctdcbd.DiaChi_BD.IndexOf(" ")) + "',TENDUONG=N'" + ctdcbd.DiaChi_BD.Substring((ctdcbd.DiaChi_BD.IndexOf(" ") + 1), ctdcbd.DiaChi_BD.Length - ctdcbd.DiaChi_BD.IndexOf(" ") - 1) + "'";
+                                                    else
+                                                        sql += ",DiaChiHoaDon=N'" + ctdcbd.DiaChi_BD + "',SOHO=SONHA+' '+TENDUONG,SONHA=N'" + ctdcbd.DiaChi_BD.Substring(0, ctdcbd.DiaChi_BD.IndexOf(" ")) + "',TENDUONG=N'" + ctdcbd.DiaChi_BD.Substring((ctdcbd.DiaChi_BD.IndexOf(" ") + 1), ctdcbd.DiaChi_BD.Length - ctdcbd.DiaChi_BD.IndexOf(" ") - 1) + "'";
+                                                    //_cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set DiaChiHoaDon=N'" + ctdcbd.DiaChi_BD + "',SOHO=SONHA+' '+TENDUONG,SONHA=N'" + ctdcbd.DiaChi_BD.Substring(0, ctdcbd.DiaChi_BD.IndexOf(" ")) + "',TENDUONG=N'" + ctdcbd.DiaChi_BD.Substring((ctdcbd.DiaChi_BD.IndexOf(" ") + 1), ctdcbd.DiaChi_BD.Length - ctdcbd.DiaChi_BD.IndexOf(" ") - 1) + "' where DANHBO='" + ctdcbd.DanhBo + "'");
                                                 }
                                                 if (!string.IsNullOrEmpty(ctdcbd.MSThue_BD))
                                                 {
-                                                    _cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set MSTHUE='" + ctdcbd.MSThue_BD.ToString() + "' where DANHBO='" + ctdcbd.DanhBo + "'");
+                                                    if (sql == "")
+                                                        sql += " MSTHUE='" + ctdcbd.MSThue_BD.ToString() + "'";
+                                                    else
+                                                        sql += ",MSTHUE='" + ctdcbd.MSThue_BD.ToString() + "'";
+                                                    //_cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set MSTHUE='" + ctdcbd.MSThue_BD.ToString() + "' where DANHBO='" + ctdcbd.DanhBo + "'");
                                                 }
-
+                                                if (sql != "")
+                                                    _cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set " + sql + " where DANHBO='" + ctdcbd.DanhBo + "'");
                                                 TB_GHICHU ghichu = new TB_GHICHU();
                                                 ghichu.DANHBO = ctdcbd.DanhBo;
                                                 ghichu.DONVI = "KTKS";
@@ -1082,31 +1108,57 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     {
                                         if (_cDocSo.CheckExist(ctdcbd.DanhBo) && !string.IsNullOrEmpty(ctdcbd.ThongTin))
                                         {
+                                            string sql = "";
                                             if (!string.IsNullOrEmpty(ctdcbd.DinhMuc_BD.ToString()))
                                             {
-                                                _cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set DINHMUC=" + ctdcbd.DinhMuc.Value.ToString() + " where DANHBO='" + ctdcbd.DanhBo + "'");
+                                                if (sql == "")
+                                                    sql += " DINHMUC=" + ctdcbd.DinhMuc.Value.ToString();
+                                                else
+                                                    sql += ",DINHMUC=" + ctdcbd.DinhMuc.Value.ToString();
+                                                //_cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set DINHMUC=" + ctdcbd.DinhMuc.Value.ToString() + " where DANHBO='" + ctdcbd.DanhBo + "'");
                                             }
                                             if (!string.IsNullOrEmpty(ctdcbd.DinhMucHN_BD.ToString()))
                                             {
-                                                _cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set DINHMUCHN=" + ctdcbd.DinhMucHN.Value.ToString() + " where DANHBO='" + ctdcbd.DanhBo + "'");
+                                                if (sql == "")
+                                                    sql += " DINHMUCHN=" + ctdcbd.DinhMucHN.Value.ToString();
+                                                else
+                                                    sql += ",DINHMUCHN=" + ctdcbd.DinhMucHN.Value.ToString();
+                                                //_cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set DINHMUCHN=" + ctdcbd.DinhMucHN.Value.ToString() + " where DANHBO='" + ctdcbd.DanhBo + "'");
                                             }
                                             if (!string.IsNullOrEmpty(ctdcbd.GiaBieu_BD.ToString()))
                                             {
-                                                _cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set GIABIEU=" + ctdcbd.GiaBieu.Value.ToString() + " where DANHBO='" + ctdcbd.DanhBo + "'");
+                                                if (sql == "")
+                                                    sql += " GIABIEU=" + ctdcbd.GiaBieu.Value.ToString();
+                                                else
+                                                    sql += ",GIABIEU=" + ctdcbd.GiaBieu.Value.ToString();
+                                                //_cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set GIABIEU=" + ctdcbd.GiaBieu.Value.ToString() + " where DANHBO='" + ctdcbd.DanhBo + "'");
                                             }
                                             if (!string.IsNullOrEmpty(ctdcbd.HoTen_BD))
                                             {
-                                                _cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set HOTEN=N'" + ctdcbd.HoTen.ToString().Replace("'", "") + "' where DANHBO='" + ctdcbd.DanhBo + "'");
+                                                if (sql == "")
+                                                    sql += " HOTEN=N'" + ctdcbd.HoTen.ToString().Replace("'", "") + "'";
+                                                else
+                                                    sql += ",HOTEN=N'" + ctdcbd.HoTen.ToString().Replace("'", "") + "'";
+                                                //_cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set HOTEN=N'" + ctdcbd.HoTen.ToString().Replace("'", "") + "' where DANHBO='" + ctdcbd.DanhBo + "'");
                                             }
                                             if (!string.IsNullOrEmpty(ctdcbd.DiaChi_BD))
                                             {
-                                                _cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set DiaChiHoaDon=N'" + ctdcbd.DiaChi + "',SONHA=N'" + ctdcbd.DiaChi.Substring(0, ctdcbd.DiaChi.IndexOf(" ")) + "',TENDUONG=N'" + ctdcbd.DiaChi.Substring((ctdcbd.DiaChi.IndexOf(" ") + 1), ctdcbd.DiaChi.Length - ctdcbd.DiaChi.IndexOf(" ") - 1) + "' where DANHBO='" + ctdcbd.DanhBo + "'");
+                                                if (sql == "")
+                                                    sql += " DiaChiHoaDon=N'" + ctdcbd.DiaChi + "',SONHA=N'" + ctdcbd.DiaChi.Substring(0, ctdcbd.DiaChi.IndexOf(" ")) + "',TENDUONG=N'" + ctdcbd.DiaChi.Substring((ctdcbd.DiaChi.IndexOf(" ") + 1), ctdcbd.DiaChi.Length - ctdcbd.DiaChi.IndexOf(" ") - 1) + "'";
+                                                else
+                                                    sql += ",DiaChiHoaDon=N'" + ctdcbd.DiaChi + "',SONHA=N'" + ctdcbd.DiaChi.Substring(0, ctdcbd.DiaChi.IndexOf(" ")) + "',TENDUONG=N'" + ctdcbd.DiaChi.Substring((ctdcbd.DiaChi.IndexOf(" ") + 1), ctdcbd.DiaChi.Length - ctdcbd.DiaChi.IndexOf(" ") - 1) + "'";
+                                                //_cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set DiaChiHoaDon=N'" + ctdcbd.DiaChi + "',SONHA=N'" + ctdcbd.DiaChi.Substring(0, ctdcbd.DiaChi.IndexOf(" ")) + "',TENDUONG=N'" + ctdcbd.DiaChi.Substring((ctdcbd.DiaChi.IndexOf(" ") + 1), ctdcbd.DiaChi.Length - ctdcbd.DiaChi.IndexOf(" ") - 1) + "' where DANHBO='" + ctdcbd.DanhBo + "'");
                                             }
                                             if (!string.IsNullOrEmpty(ctdcbd.MSThue_BD))
                                             {
-                                                _cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set MSTHUE='" + ctdcbd.MSThue.ToString() + "' where DANHBO='" + ctdcbd.DanhBo + "'");
+                                                if (sql == "")
+                                                    sql += " MSTHUE='" + ctdcbd.MSThue.ToString() + "'";
+                                                else
+                                                    sql += ",MSTHUE='" + ctdcbd.MSThue.ToString() + "'";
+                                                //_cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set MSTHUE='" + ctdcbd.MSThue.ToString() + "' where DANHBO='" + ctdcbd.DanhBo + "'");
                                             }
-
+                                            if (sql != "")
+                                                _cDocSo.LinQ_ExecuteNonQuery("update TB_DULIEUKHACHHANG set " + sql + " where DANHBO='" + ctdcbd.DanhBo + "'");
                                             string sqlGhiChu = "delete from TB_GHICHU where DONVI='KTKS' and DANHBO='" + ctdcbd.DanhBo + "' and NOIDUNG like 'PYC: " + ctdcbd.MaCTDCBD.ToString().Insert(ctdcbd.MaCTDCBD.ToString().Length - 2, "-") + "%'";
                                             if (_cDocSo.LinQ_ExecuteNonQuery(sqlGhiChu))
                                             {
