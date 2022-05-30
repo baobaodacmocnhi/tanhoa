@@ -241,6 +241,9 @@ namespace DocSo_PC.GUI.MaHoa
                         {
                             _cDonTu.Them_LichSu(cttt.CreateDate.Value, "ToTrinh", "Đã Lập Tờ Trình, " + cttt.VeViec, cttt.ID, _dontu.ID);
                         }
+                        string noidung = "Mã Đơn: " + cttt.IDMaDon + ", " + cttt.CreateDate.Value.ToString("dd/MM/yyyy") + ", " + cttt.VeViec + ", " + CNguoiDung.HoTen;
+                        string sql = "insert into TB_GHICHU(DANHBO,DONVI,NOIDUNG,CREATEDATE,CREATEBY)values('" + cttt.DanhBo + "',N'Đ.QLĐHN',N'" + noidung + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture) + "',N'" + CNguoiDung.HoTen + "')";
+                        CDHN._cDAL.ExecuteNonQuery(sql);
                         MessageBox.Show("Thành Công " + cttt.ID.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear();
                     }

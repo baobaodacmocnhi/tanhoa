@@ -49,6 +49,7 @@ namespace DocSo_PC.GUI.QuanTri
             chkDongNuoc.Checked = false;
             chkVanPhong.Checked = false;
             chkKyTen.Checked = false;
+            chkAn.Checked = false;
             txtChucVu.Text = "";
             if (CNguoiDung.Admin)
             {
@@ -276,6 +277,11 @@ namespace DocSo_PC.GUI.QuanTri
                     {
                         ///xóa quan hệ 1 nhiều
                         //_cPhanQuyenNguoiDung.Xoa(nguoidung.PhanQuyenNguoiDungs.ToList());
+
+                        //_cNguoiDung.Xoa(_nguoidung);
+                        //MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //Clear();
+
                         _nguoidung.An = true;
                         _cNguoiDung.Sua(_nguoidung);
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

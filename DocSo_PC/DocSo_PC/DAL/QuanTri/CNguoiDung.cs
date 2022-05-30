@@ -273,6 +273,7 @@ namespace DocSo_PC.DAL.QuanTri
         {
             try
             {
+                _db.PhanQuyenNguoiDungs.DeleteAllOnSubmit(nguoidung.PhanQuyenNguoiDungs.ToList());
                 _db.NguoiDungs.DeleteOnSubmit(nguoidung);
                 _db.SubmitChanges();
                 return true;

@@ -62,6 +62,28 @@ namespace DocSo_PC.GUI.MaHoa
             }
         }
 
+        private void dgvDanhSach_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dgvDanhSach.Columns[e.ColumnIndex].Name == "ID")
+                {
+                    MaHoa_DonTu dontu = _cDonTu.get(int.Parse(dgvDanhSach["ID", e.RowIndex].Value.ToString()));
+                    dgvDanhSach["DanhBo", e.RowIndex].Value = dontu.DanhBo;
+                    dgvDanhSach["HoTen", e.RowIndex].Value = dontu.HoTen;
+                    dgvDanhSach["DiaChi", e.RowIndex].Value = dontu.DiaChi;
+                    dgvDanhSach["NoiDung", e.RowIndex].Value = dontu.NoiDung;
+                    dgvDanhSach["GhiChu", e.RowIndex].Value = dontu.GhiChu;
+                    dgvDanhSach["Dot", e.RowIndex].Value = dontu.Dot;
+                    dgvDanhSach["GiaBieuCu", e.RowIndex].Value = dontu.GiaBieu;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void btnThem_Click(object sender, EventArgs e)
         {
             try
@@ -69,7 +91,7 @@ namespace DocSo_PC.GUI.MaHoa
                 if (CNguoiDung.CheckQuyen(_mnu, "Them"))
                 {
                     foreach (DataGridViewRow item in dgvDanhSach.Rows)
-                        if (item.Cells["Chon"].Value != null && bool.Parse(item.Cells["Chon"].Value.ToString()) == true)
+                        if (item.Cells["Chon"].Value != null && bool.Parse(item.Cells["Chon"].Value.ToString()) == true && item.Cells["ID"].Value != null && item.Cells["ID"].Value.ToString() != "")
                         {
                             MaHoa_DonTu dontu = _cDonTu.get(int.Parse(item.Cells["ID"].Value.ToString()));
                             if (dontu != null)
@@ -700,6 +722,8 @@ namespace DocSo_PC.GUI.MaHoa
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
 
 
 
