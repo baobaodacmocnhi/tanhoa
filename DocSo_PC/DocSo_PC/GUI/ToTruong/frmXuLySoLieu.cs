@@ -464,6 +464,8 @@ namespace DocSo_PC.GUI.ToTruong
                             //loadCodeMoi();
                             //btnXem.PerformClick();
                         }
+                        else
+                            MessageBox.Show("Thất bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
@@ -705,7 +707,7 @@ namespace DocSo_PC.GUI.ToTruong
                                             en.DinhMuc = hd.DM;
                                         if (hd.DinhMucHN != null)
                                             en.DinhMucHN = hd.DinhMucHN;
-                                        en.NoiDung = cmbNoiDung.SelectedItem.ToString();
+                                        en.NoiDung = cmbNoiDung.SelectedValue.ToString();
                                         //en.GhiChu = txtGhiChu.Text.Trim();
                                         en.TinhTrang = "Tồn";
                                         en.MLT = hd.MALOTRINH;
