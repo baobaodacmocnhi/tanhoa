@@ -21963,6 +21963,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _DCTamTru;
 		
+		private bool _KhongKiemTra;
+		
 		private System.Nullable<int> _CreateBy;
 		
 		private System.DateTime _CreateDate;
@@ -21991,6 +21993,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnDCThuongTruChanged();
     partial void OnDCTamTruChanging(string value);
     partial void OnDCTamTruChanged();
+    partial void OnKhongKiemTraChanging(bool value);
+    partial void OnKhongKiemTraChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.DateTime value);
@@ -22147,6 +22151,26 @@ namespace KTKS_DonKH.LinQ
 					this._DCTamTru = value;
 					this.SendPropertyChanged("DCTamTru");
 					this.OnDCTamTruChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KhongKiemTra", DbType="Bit NOT NULL")]
+		public bool KhongKiemTra
+		{
+			get
+			{
+				return this._KhongKiemTra;
+			}
+			set
+			{
+				if ((this._KhongKiemTra != value))
+				{
+					this.OnKhongKiemTraChanging(value);
+					this.SendPropertyChanging();
+					this._KhongKiemTra = value;
+					this.SendPropertyChanged("KhongKiemTra");
+					this.OnKhongKiemTraChanged();
 				}
 			}
 		}

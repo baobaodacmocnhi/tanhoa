@@ -151,6 +151,29 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 enCT.CreateDate = DateTime.Now;
                                 en.DCBD_DKDM_CCCDs.Add(enCT);
                             }
+                            else
+                                if (item.Cells["KhongKiemTra"].Value != null && item.Cells["KhongKiemTra"].Value.ToString() != "" && bool.Parse(item.Cells["KhongKiemTra"].Value.ToString()) == true)
+                                {
+                                    DCBD_DKDM_CCCD enCT = new DCBD_DKDM_CCCD();
+                                    enCT.CCCD = item.Cells["CCCD"].Value.ToString();
+                                    enCT.HoTen = item.Cells["HoTen"].Value.ToString();
+                                    string[] NgaySinhs = item.Cells["NgaySinh"].Value.ToString().Split('/');
+                                    if (NgaySinhs.Count() == 3)
+                                    {
+                                        enCT.NgaySinh = new DateTime(int.Parse(NgaySinhs[2]), int.Parse(NgaySinhs[1]), int.Parse(NgaySinhs[0]));
+                                    }
+                                    else
+                                        enCT.NgaySinh = new DateTime(int.Parse(item.Cells["NgaySinh"].Value.ToString()), 1, 1);
+                                    if (item.Cells["DCThuongTru"].Value != null && item.Cells["DCThuongTru"].Value.ToString() != "")
+                                        enCT.DCThuongTru = item.Cells["DCThuongTru"].Value.ToString();
+                                    if (item.Cells["DCTamTru"].Value != null && item.Cells["DCTamTru"].Value.ToString() != "")
+                                        enCT.DCTamTru = item.Cells["DCTamTru"].Value.ToString();
+                                    if (item.Cells["KhongKiemTra"].Value != null && item.Cells["KhongKiemTra"].Value.ToString() != "")
+                                        enCT.KhongKiemTra = bool.Parse(item.Cells["KhongKiemTra"].Value.ToString());
+                                    enCT.CreateBy = CTaiKhoan.MaUser;
+                                    enCT.CreateDate = DateTime.Now;
+                                    en.DCBD_DKDM_CCCDs.Add(enCT);
+                                }
                         string Thung = "";
                         if (_cDKDM.Them(en, out Thung))
                         {
@@ -231,6 +254,29 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     enCT.CreateDate = DateTime.Now;
                                     _danhbo.DCBD_DKDM_CCCDs.Add(enCT);
                                 }
+                                else
+                                    if (item.Cells["KhongKiemTra"].Value != null && item.Cells["KhongKiemTra"].Value.ToString() != "" && bool.Parse(item.Cells["KhongKiemTra"].Value.ToString()) == true)
+                                    {
+                                        DCBD_DKDM_CCCD enCT = new DCBD_DKDM_CCCD();
+                                        enCT.CCCD = item.Cells["CCCD"].Value.ToString();
+                                        enCT.HoTen = item.Cells["HoTen"].Value.ToString();
+                                        string[] NgaySinhs = item.Cells["NgaySinh"].Value.ToString().Split('/');
+                                        if (NgaySinhs.Count() == 3)
+                                        {
+                                            enCT.NgaySinh = new DateTime(int.Parse(NgaySinhs[2]), int.Parse(NgaySinhs[1]), int.Parse(NgaySinhs[0]));
+                                        }
+                                        else
+                                            enCT.NgaySinh = new DateTime(int.Parse(item.Cells["NgaySinh"].Value.ToString()), 1, 1);
+                                        if (item.Cells["DCThuongTru"].Value != null && item.Cells["DCThuongTru"].Value.ToString() != "")
+                                            enCT.DCThuongTru = item.Cells["DCThuongTru"].Value.ToString();
+                                        if (item.Cells["DCTamTru"].Value != null && item.Cells["DCTamTru"].Value.ToString() != "")
+                                            enCT.DCTamTru = item.Cells["DCTamTru"].Value.ToString();
+                                        if (item.Cells["KhongKiemTra"].Value != null && item.Cells["KhongKiemTra"].Value.ToString() != "")
+                                            enCT.KhongKiemTra = bool.Parse(item.Cells["KhongKiemTra"].Value.ToString());
+                                        enCT.CreateBy = CTaiKhoan.MaUser;
+                                        enCT.CreateDate = DateTime.Now;
+                                        _danhbo.DCBD_DKDM_CCCDs.Add(enCT);
+                                    }
                         if (_cDKDM.Sua(_danhbo))
                         {
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -444,6 +490,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         dgvDanhSach.Rows[index].Cells["DCThuongTru"].Value = item.DCThuongTru;
                         dgvDanhSach.Rows[index].Cells["DCTamTru"].Value = item.DCTamTru;
                         dgvDanhSach.Rows[index].Cells["CCCD"].Value = item.CCCD;
+                        dgvDanhSach.Rows[index].Cells["KhongKiemTra"].Value = item.KhongKiemTra;
                     }
                     _hoadon = _cThuTien.GetMoiNhat(_danhbo.DanhBo);
                     tabControl1.SelectedTab = tabControl1.TabPages["tabPage1"];
