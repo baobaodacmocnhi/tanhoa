@@ -109,7 +109,7 @@ namespace ThuTien.GUI.HanhThu
             if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtSoHoaDon.Text.Trim()))
             {
                 foreach (string item in txtSoHoaDon.Lines)
-                    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && item.ToString().Length == 13)
+                    if (!string.IsNullOrEmpty(item.Trim().ToUpper()))
                     {
                         if (lstHD.FindItemWithText(item.Trim().ToUpper()) == null)
                         {

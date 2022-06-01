@@ -194,7 +194,7 @@
             gridLevelNode1.RelationName = "Level1";
             this.gridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
             gridLevelNode1});
-            this.gridControl.Location = new System.Drawing.Point(247, 40);
+            this.gridControl.Location = new System.Drawing.Point(227, 37);
             this.gridControl.MainView = this.gridViewDN;
             this.gridControl.Name = "gridControl";
             this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -327,7 +327,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(692, 10);
+            this.btnXem.Location = new System.Drawing.Point(672, 7);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 24;
@@ -339,7 +339,7 @@
             // 
             this.dateDen.CustomFormat = "dd/MM/yyyy";
             this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDen.Location = new System.Drawing.Point(586, 12);
+            this.dateDen.Location = new System.Drawing.Point(566, 9);
             this.dateDen.Name = "dateDen";
             this.dateDen.Size = new System.Drawing.Size(100, 20);
             this.dateDen.TabIndex = 23;
@@ -347,7 +347,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(522, 14);
+            this.label4.Location = new System.Drawing.Point(502, 11);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 13);
             this.label4.TabIndex = 22;
@@ -357,7 +357,7 @@
             // 
             this.dateTu.CustomFormat = "dd/MM/yyyy";
             this.dateTu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTu.Location = new System.Drawing.Point(416, 12);
+            this.dateTu.Location = new System.Drawing.Point(396, 9);
             this.dateTu.Name = "dateTu";
             this.dateTu.Size = new System.Drawing.Size(100, 20);
             this.dateTu.TabIndex = 21;
@@ -365,7 +365,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(359, 15);
+            this.label3.Location = new System.Drawing.Point(339, 12);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 13);
             this.label3.TabIndex = 20;
@@ -373,7 +373,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(156, 134);
+            this.btnXoa.Location = new System.Drawing.Point(146, 134);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 19;
@@ -383,7 +383,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(156, 105);
+            this.btnSua.Location = new System.Drawing.Point(146, 105);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 18;
@@ -393,7 +393,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(156, 76);
+            this.btnThem.Location = new System.Drawing.Point(146, 76);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 23);
             this.btnThem.TabIndex = 17;
@@ -421,7 +421,7 @@
             // 
             // btnInTB
             // 
-            this.btnInTB.Location = new System.Drawing.Point(773, 10);
+            this.btnInTB.Location = new System.Drawing.Point(753, 7);
             this.btnInTB.Name = "btnInTB";
             this.btnInTB.Size = new System.Drawing.Size(75, 23);
             this.btnInTB.TabIndex = 26;
@@ -432,7 +432,7 @@
             // chkAll
             // 
             this.chkAll.AutoSize = true;
-            this.chkAll.Location = new System.Drawing.Point(247, 17);
+            this.chkAll.Location = new System.Drawing.Point(227, 14);
             this.chkAll.Name = "chkAll";
             this.chkAll.Size = new System.Drawing.Size(86, 17);
             this.chkAll.TabIndex = 27;
@@ -442,7 +442,7 @@
             // 
             // btnDSTB
             // 
-            this.btnDSTB.Location = new System.Drawing.Point(945, 10);
+            this.btnDSTB.Location = new System.Drawing.Point(925, 7);
             this.btnDSTB.Name = "btnDSTB";
             this.btnDSTB.Size = new System.Drawing.Size(75, 23);
             this.btnDSTB.TabIndex = 28;
@@ -544,7 +544,7 @@
             // 
             // btnInGiayXN
             // 
-            this.btnInGiayXN.Location = new System.Drawing.Point(1026, 10);
+            this.btnInGiayXN.Location = new System.Drawing.Point(1006, 7);
             this.btnInGiayXN.Name = "btnInGiayXN";
             this.btnInGiayXN.Size = new System.Drawing.Size(95, 23);
             this.btnInGiayXN.TabIndex = 73;
@@ -555,7 +555,7 @@
             // chkChuKy
             // 
             this.chkChuKy.AutoSize = true;
-            this.chkChuKy.Location = new System.Drawing.Point(1127, 10);
+            this.chkChuKy.Location = new System.Drawing.Point(1107, 7);
             this.chkChuKy.Name = "chkChuKy";
             this.chkChuKy.Size = new System.Drawing.Size(76, 17);
             this.chkChuKy.TabIndex = 96;
@@ -566,7 +566,7 @@
             // chkCoTenNguoiKy
             // 
             this.chkCoTenNguoiKy.AutoSize = true;
-            this.chkCoTenNguoiKy.Location = new System.Drawing.Point(1127, 33);
+            this.chkCoTenNguoiKy.Location = new System.Drawing.Point(1107, 30);
             this.chkCoTenNguoiKy.Name = "chkCoTenNguoiKy";
             this.chkCoTenNguoiKy.Size = new System.Drawing.Size(107, 17);
             this.chkCoTenNguoiKy.TabIndex = 97;
@@ -576,7 +576,7 @@
             // radA5
             // 
             this.radA5.AutoSize = true;
-            this.radA5.Location = new System.Drawing.Point(1240, 32);
+            this.radA5.Location = new System.Drawing.Point(1220, 29);
             this.radA5.Name = "radA5";
             this.radA5.Size = new System.Drawing.Size(38, 17);
             this.radA5.TabIndex = 103;
@@ -587,7 +587,7 @@
             // 
             this.radA4.AutoSize = true;
             this.radA4.Checked = true;
-            this.radA4.Location = new System.Drawing.Point(1240, 9);
+            this.radA4.Location = new System.Drawing.Point(1220, 6);
             this.radA4.Name = "radA4";
             this.radA4.Size = new System.Drawing.Size(38, 17);
             this.radA4.TabIndex = 102;
@@ -650,7 +650,7 @@
             // 
             // btnInTBTrang
             // 
-            this.btnInTBTrang.Location = new System.Drawing.Point(854, 10);
+            this.btnInTBTrang.Location = new System.Drawing.Point(834, 7);
             this.btnInTBTrang.Name = "btnInTBTrang";
             this.btnInTBTrang.Size = new System.Drawing.Size(85, 23);
             this.btnInTBTrang.TabIndex = 108;
@@ -661,7 +661,7 @@
             // chkNangSuat
             // 
             this.chkNangSuat.AutoSize = true;
-            this.chkNangSuat.Location = new System.Drawing.Point(155, 163);
+            this.chkNangSuat.Location = new System.Drawing.Point(145, 163);
             this.chkNangSuat.Name = "chkNangSuat";
             this.chkNangSuat.Size = new System.Drawing.Size(77, 17);
             this.chkNangSuat.TabIndex = 113;

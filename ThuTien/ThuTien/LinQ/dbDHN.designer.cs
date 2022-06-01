@@ -2129,6 +2129,14 @@ namespace ThuTien.LinQ
 		
 		private bool _Gieng;
 		
+		private bool _XayDung;
+		
+		private System.Nullable<System.DateTime> _XayDung_Ngay;
+		
+		private bool _AmSau;
+		
+		private System.Nullable<System.DateTime> _AmSau_Ngay;
+		
 		private string _GhiChu;
 		
 		private string _MauChiGoc;
@@ -2243,6 +2251,14 @@ namespace ThuTien.LinQ
     partial void OnDINHMUCHNChanged();
     partial void OnGiengChanging(bool value);
     partial void OnGiengChanged();
+    partial void OnXayDungChanging(bool value);
+    partial void OnXayDungChanged();
+    partial void OnXayDung_NgayChanging(System.Nullable<System.DateTime> value);
+    partial void OnXayDung_NgayChanged();
+    partial void OnAmSauChanging(bool value);
+    partial void OnAmSauChanged();
+    partial void OnAmSau_NgayChanging(System.Nullable<System.DateTime> value);
+    partial void OnAmSau_NgayChanged();
     partial void OnGhiChuChanging(string value);
     partial void OnGhiChuChanged();
     partial void OnMauChiGocChanging(string value);
@@ -3296,7 +3312,87 @@ namespace ThuTien.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GhiChu", DbType="NVarChar(100)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_XayDung", DbType="Bit NOT NULL")]
+		public bool XayDung
+		{
+			get
+			{
+				return this._XayDung;
+			}
+			set
+			{
+				if ((this._XayDung != value))
+				{
+					this.OnXayDungChanging(value);
+					this.SendPropertyChanging();
+					this._XayDung = value;
+					this.SendPropertyChanged("XayDung");
+					this.OnXayDungChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_XayDung_Ngay", DbType="DateTime")]
+		public System.Nullable<System.DateTime> XayDung_Ngay
+		{
+			get
+			{
+				return this._XayDung_Ngay;
+			}
+			set
+			{
+				if ((this._XayDung_Ngay != value))
+				{
+					this.OnXayDung_NgayChanging(value);
+					this.SendPropertyChanging();
+					this._XayDung_Ngay = value;
+					this.SendPropertyChanged("XayDung_Ngay");
+					this.OnXayDung_NgayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AmSau", DbType="Bit NOT NULL")]
+		public bool AmSau
+		{
+			get
+			{
+				return this._AmSau;
+			}
+			set
+			{
+				if ((this._AmSau != value))
+				{
+					this.OnAmSauChanging(value);
+					this.SendPropertyChanging();
+					this._AmSau = value;
+					this.SendPropertyChanged("AmSau");
+					this.OnAmSauChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AmSau_Ngay", DbType="DateTime")]
+		public System.Nullable<System.DateTime> AmSau_Ngay
+		{
+			get
+			{
+				return this._AmSau_Ngay;
+			}
+			set
+			{
+				if ((this._AmSau_Ngay != value))
+				{
+					this.OnAmSau_NgayChanging(value);
+					this.SendPropertyChanging();
+					this._AmSau_Ngay = value;
+					this.SendPropertyChanged("AmSau_Ngay");
+					this.OnAmSau_NgayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GhiChu", DbType="NVarChar(200)")]
 		public string GhiChu
 		{
 			get
