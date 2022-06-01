@@ -24,6 +24,8 @@ namespace DocSo_PC.GUI.ToTruong
         bool _flagLoadFirst = false;
         TB_DULIEUKHACHHANG _enDLKH = null;
         bool _flagThemDienThoai = false;
+        wrDHN.wsDHN _wsDHN = new wrDHN.wsDHN();
+
         public frmGhiChu()
         {
             InitializeComponent();
@@ -110,6 +112,8 @@ namespace DocSo_PC.GUI.ToTruong
                 chkViTriDHN_Ngoai.Checked = en.ViTriDHN_Ngoai;
                 chkViTriDHN_Hop.Checked = en.ViTriDHN_Hop;
                 chkGieng.Checked = en.Gieng;
+                chkAmSau.Checked = en.AmSau;
+                chkXayDung.Checked = en.XayDung;
                 dgvDienThoai.DataSource = _cDHN.getDS_DienThoai(en.DANHBO);
             }
         }
@@ -236,11 +240,13 @@ namespace DocSo_PC.GUI.ToTruong
                         _enDLKH.ViTriDHN_Ngoai = chkViTriDHN_Ngoai.Checked;
                         _enDLKH.ViTriDHN_Hop = chkViTriDHN_Hop.Checked;
                         _enDLKH.Gieng = chkGieng.Checked;
+                        _enDLKH.AmSau = chkAmSau.Checked;
+                        _enDLKH.XayDung = chkXayDung.Checked;
                         _cDHN.SubmitChanges();
-                        foreach (DataGridViewRow item in dgvDienThoai.Rows)
-                        {
+                        //foreach (DataGridViewRow item in dgvDienThoai.Rows)
+                        //{
 
-                        }
+                        //}
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
@@ -448,6 +454,46 @@ namespace DocSo_PC.GUI.ToTruong
             {
                 MessageBox.Show("Lỗi, Vui lòng thử lại\n" + ex.Message + error, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void chkAmSau_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkAmSau.Checked)
+            {
+                dateAmSau.Enabled = true;
+                btnHinhAmSau.Enabled = true;
+            }
+            else
+            {
+                dateAmSau.Enabled = false;
+                btnHinhAmSau.Enabled = false;
+            }
+        }
+
+        private void chkXayDung_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkXayDung.Checked)
+            {
+                dateXayDung.Enabled = true;
+                btnHinhXayDung.Enabled = true;
+            }
+            else
+            {
+                dateXayDung.Enabled = false;
+                btnHinhXayDung.Enabled = false;
+            }
+        }
+
+        private void btnHinhAmSau_Click(object sender, EventArgs e)
+        {
+            if (_enDLKH != null)
+                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("AmSau", "", _enDLKH.DANHBO))));
+        }
+
+        private void btnHinhXayDung_Click(object sender, EventArgs e)
+        {
+            if (_enDLKH != null)
+                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("XayDung", "", _enDLKH.DANHBO))));
         }
     }
 }

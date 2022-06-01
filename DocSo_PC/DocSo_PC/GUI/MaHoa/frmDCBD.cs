@@ -343,7 +343,7 @@ namespace DocSo_PC.GUI.MaHoa
                                 dr["DanhBo"] = en.DanhBo.Insert(7, " ").Insert(4, " ");
                                 dr["HopDong"] = en.HopDong;
                                 dr["HoTen"] = en.HoTen;
-                                dr["DiaChi"] = en.DiaChi;
+                                dr["DiaChi"] = en.DiaChi + _cDHN.getPhuongQuan(en.Quan, en.Phuong);
                                 dr["ThongTin"] = en.CongDung;
                                 string[] HieuLucKys = en.HieuLucKy.Split('/');
                                 DataTable gn = _cThuongVu.getGiaNuoc(HieuLucKys[1]);
@@ -722,14 +722,6 @@ namespace DocSo_PC.GUI.MaHoa
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
-
-
-
-
-
-
 
 
     }
