@@ -770,10 +770,9 @@ namespace KTKS_DonKH.GUI.BamChi
                             if (_ctbamchi.NiemChi != null)
                                 _cNiemChi.traSuDung(_ctbamchi.NiemChi.Value);
                             _ctbamchi.NiemChi = int.Parse(txtNiemChi.Text.Trim());
-                            _ctbamchi.MauSac = cmbMauSac.Text;
                             _cNiemChi.suDung(int.Parse(txtNiemChi.Text.Trim()));
                         }
-
+                        _ctbamchi.MauSac = cmbMauSac.Text;
                         if (cmbTinhTrangChiSo.SelectedItem != null)
                             _ctbamchi.TinhTrangChiSo = cmbTinhTrangChiSo.SelectedItem.ToString();
 

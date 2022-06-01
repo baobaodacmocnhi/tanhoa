@@ -476,27 +476,22 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             try
             {
-                if (CTaiKhoan.CheckQuyen("mnuDCBD", "Them"))
+                switch (cmbKiemTra.SelectedItem.ToString())
                 {
-                    switch (cmbKiemTra.SelectedItem.ToString())
-                    {
-                        case "Tăng":
-                            dgvDanhSach2.DataSource = _cDKDM.getDS_KiemTra_Tang(dateTu.Value, dateDen.Value);
-                            break;
-                        case "Giảm":
-                            dgvDanhSach2.DataSource = _cDKDM.getDS_KiemTra_Giam(dateTu.Value, dateDen.Value);
-                            break;
-                        case "Giữ Nguyên":
-                            dgvDanhSach2.DataSource = _cDKDM.getDS_KiemTra_GiuNguyen(dateTu.Value, dateDen.Value);
-                            break;
-                        default:
-                            dgvDanhSach2.DataSource = _cDKDM.getDS_KiemTra_All(dateTu.Value, dateDen.Value);
-                            break;
-                    }
-                    countdgvDanhSach2();
+                    case "Tăng":
+                        dgvDanhSach2.DataSource = _cDKDM.getDS_KiemTra_Tang(dateTu.Value, dateDen.Value);
+                        break;
+                    case "Giảm":
+                        dgvDanhSach2.DataSource = _cDKDM.getDS_KiemTra_Giam(dateTu.Value, dateDen.Value);
+                        break;
+                    case "Giữ Nguyên":
+                        dgvDanhSach2.DataSource = _cDKDM.getDS_KiemTra_GiuNguyen(dateTu.Value, dateDen.Value);
+                        break;
+                    default:
+                        dgvDanhSach2.DataSource = _cDKDM.getDS_KiemTra_All(dateTu.Value, dateDen.Value);
+                        break;
                 }
-                else
-                    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                countdgvDanhSach2();
             }
             catch (Exception ex)
             {

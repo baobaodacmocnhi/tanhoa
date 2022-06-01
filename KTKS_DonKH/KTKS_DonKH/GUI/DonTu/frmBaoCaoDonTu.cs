@@ -192,6 +192,7 @@ namespace KTKS_DonKH.GUI.DonTu
             switch (cmbTimTheo_DSChuyenKTXM.SelectedItem.ToString())
             {
                 case "Số Công Văn":
+                case "Mã Đơn":
                     txtNoiDungTimKiem_DSChuyenKTXM.Visible = true;
                     panel_KhoangThoiGian_DSChuyenKTXM.Visible = false;
                     break;
