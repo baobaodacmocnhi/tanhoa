@@ -1108,6 +1108,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            Clear();
+        }
+
 
 
 

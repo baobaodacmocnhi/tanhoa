@@ -56,6 +56,13 @@
             this.label8 = new System.Windows.Forms.Label();
             this.btnThem = new System.Windows.Forms.Button();
             this.dgvDanhSach = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DCThuongTru = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DCTamTru = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CCCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KhongKiemTra = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.txtSoNK = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtDienThoai = new System.Windows.Forms.TextBox();
@@ -132,13 +139,7 @@
             this.dateDen_Online = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.dateTu_Online = new System.Windows.Forms.DateTimePicker();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DCThuongTru = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DCTamTru = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CCCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.KhongKiemTra = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnReset = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
@@ -163,6 +164,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnReset);
             this.tabPage1.Controls.Add(this.txtDinhMuc);
             this.tabPage1.Controls.Add(this.label19);
             this.tabPage1.Controls.Add(this.txtGiaBieu);
@@ -355,6 +357,53 @@
             this.dgvDanhSach.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_RowLeave);
             this.dgvDanhSach.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhSach_RowPostPaint);
             this.dgvDanhSach.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgvDanhSach_UserDeletingRow);
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Họ Tên";
+            this.HoTen.Name = "HoTen";
+            this.HoTen.Width = 150;
+            // 
+            // NgaySinh
+            // 
+            this.NgaySinh.DataPropertyName = "NgaySinh";
+            this.NgaySinh.HeaderText = "Ngày Sinh";
+            this.NgaySinh.Name = "NgaySinh";
+            // 
+            // DCThuongTru
+            // 
+            this.DCThuongTru.DataPropertyName = "DCThuongTru";
+            this.DCThuongTru.HeaderText = "ĐC Thường Trú";
+            this.DCThuongTru.Name = "DCThuongTru";
+            this.DCThuongTru.Width = 200;
+            // 
+            // DCTamTru
+            // 
+            this.DCTamTru.DataPropertyName = "DCTamTru";
+            this.DCTamTru.HeaderText = "ĐC Tạm Trú";
+            this.DCTamTru.Name = "DCTamTru";
+            this.DCTamTru.Width = 200;
+            // 
+            // CCCD
+            // 
+            this.CCCD.DataPropertyName = "CCCD";
+            this.CCCD.HeaderText = "CCCD";
+            this.CCCD.Name = "CCCD";
+            // 
+            // KhongKiemTra
+            // 
+            this.KhongKiemTra.DataPropertyName = "KhongKiemTra";
+            this.KhongKiemTra.HeaderText = "Không Kiểm Tra";
+            this.KhongKiemTra.Name = "KhongKiemTra";
+            this.KhongKiemTra.Width = 50;
             // 
             // txtSoNK
             // 
@@ -1104,52 +1153,15 @@
             this.dateTu_Online.Size = new System.Drawing.Size(95, 20);
             this.dateTu_Online.TabIndex = 21;
             // 
-            // ID
+            // btnReset
             // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.Visible = false;
-            // 
-            // HoTen
-            // 
-            this.HoTen.DataPropertyName = "HoTen";
-            this.HoTen.HeaderText = "Họ Tên";
-            this.HoTen.Name = "HoTen";
-            this.HoTen.Width = 150;
-            // 
-            // NgaySinh
-            // 
-            this.NgaySinh.DataPropertyName = "NgaySinh";
-            this.NgaySinh.HeaderText = "Ngày Sinh";
-            this.NgaySinh.Name = "NgaySinh";
-            // 
-            // DCThuongTru
-            // 
-            this.DCThuongTru.DataPropertyName = "DCThuongTru";
-            this.DCThuongTru.HeaderText = "ĐC Thường Trú";
-            this.DCThuongTru.Name = "DCThuongTru";
-            this.DCThuongTru.Width = 200;
-            // 
-            // DCTamTru
-            // 
-            this.DCTamTru.DataPropertyName = "DCTamTru";
-            this.DCTamTru.HeaderText = "ĐC Tạm Trú";
-            this.DCTamTru.Name = "DCTamTru";
-            this.DCTamTru.Width = 200;
-            // 
-            // CCCD
-            // 
-            this.CCCD.DataPropertyName = "CCCD";
-            this.CCCD.HeaderText = "CCCD";
-            this.CCCD.Name = "CCCD";
-            // 
-            // KhongKiemTra
-            // 
-            this.KhongKiemTra.DataPropertyName = "KhongKiemTra";
-            this.KhongKiemTra.HeaderText = "Không Kiểm Tra";
-            this.KhongKiemTra.Name = "KhongKiemTra";
-            this.KhongKiemTra.Width = 50;
+            this.btnReset.Location = new System.Drawing.Point(513, 30);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(75, 23);
+            this.btnReset.TabIndex = 24;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // frmCapDinhMucNuocCCCD
             // 
@@ -1278,5 +1290,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DCTamTru;
         private System.Windows.Forms.DataGridViewTextBoxColumn CCCD;
         private System.Windows.Forms.DataGridViewCheckBoxColumn KhongKiemTra;
+        private System.Windows.Forms.Button btnReset;
     }
 }
