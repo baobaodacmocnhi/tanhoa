@@ -155,7 +155,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 if (item.Cells["KhongKiemTra"].Value != null && item.Cells["KhongKiemTra"].Value.ToString() != "" && bool.Parse(item.Cells["KhongKiemTra"].Value.ToString()) == true)
                                 {
                                     DCBD_DKDM_CCCD enCT = new DCBD_DKDM_CCCD();
-                                    enCT.CCCD = item.Cells["CCCD"].Value.ToString();
+                                    if (item.Cells["CCCD"].Value != null && item.Cells["CCCD"].Value.ToString() != "")
+                                        enCT.CCCD = item.Cells["CCCD"].Value.ToString();
+                                    else
+                                        enCT.CCCD = "";
                                     enCT.HoTen = item.Cells["HoTen"].Value.ToString();
                                     string[] NgaySinhs = item.Cells["NgaySinh"].Value.ToString().Split('/');
                                     if (NgaySinhs.Count() == 3)
@@ -258,7 +261,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     if (item.Cells["KhongKiemTra"].Value != null && item.Cells["KhongKiemTra"].Value.ToString() != "" && bool.Parse(item.Cells["KhongKiemTra"].Value.ToString()) == true)
                                     {
                                         DCBD_DKDM_CCCD enCT = new DCBD_DKDM_CCCD();
-                                        enCT.CCCD = item.Cells["CCCD"].Value.ToString();
+                                        if (item.Cells["CCCD"].Value != null && item.Cells["CCCD"].Value.ToString() != "")
+                                            enCT.CCCD = item.Cells["CCCD"].Value.ToString();
+                                        else
+                                            enCT.CCCD = "";
                                         enCT.HoTen = item.Cells["HoTen"].Value.ToString();
                                         string[] NgaySinhs = item.Cells["NgaySinh"].Value.ToString().Split('/');
                                         if (NgaySinhs.Count() == 3)
