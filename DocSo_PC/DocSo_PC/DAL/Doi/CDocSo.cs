@@ -176,6 +176,11 @@ namespace DocSo_PC.DAL.Doi
             return _db.DocSos.SingleOrDefault(item => item.Nam == int.Parse(Nam) && item.Ky == Ky && item.DanhBa == DanhBo);
         }
 
+        public DocSo get_DocSo_MoiNhat(string DanhBo)
+        {
+            return _db.DocSos.Where(item => item.DanhBa == DanhBo).OrderByDescending(item => item.DocSoID).FirstOrDefault();
+        }
+
         public int TinhTBTT(string DanhBo, string Nam, string Ky)
         {
             if (Ky == "01")

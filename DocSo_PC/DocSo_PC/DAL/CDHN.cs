@@ -209,5 +209,13 @@ namespace DocSo_PC.DAL
             return _db.SDT_DHNs.Any(item => item.DanhBo == DanhBo && item.DienThoai == DienThoai);
         }
 
+        public DataTable getDS_AmSau_XayDung(DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            string sql = "select DANHBO,HOTEN,DiaChi=SONHA+' '+TENDUONG,NoiDung=N'Âm Sâu',CREATEDATE=AmSau_Ngay,Folder='AmSau' from TB_DULIEUKHACHHANG where AmSau=1 and CAST(AmSau_Ngay as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(AmSau_Ngay as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'"
+                        + " union all"
+                        + " select DANHBO,HOTEN,DiaChi=SONHA+' '+TENDUONG,NoiDung=N'Xây Dựng',CREATEDATE=XayDung_Ngay,Folder='XayDung' from TB_DULIEUKHACHHANG where XayDung=1 and CAST(XayDung_Ngay as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(XayDung_Ngay as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'";
+            return _cDAL.ExecuteQuery_DataTable(sql);
+        }
+
     }
 }
