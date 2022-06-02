@@ -443,12 +443,15 @@ namespace DocSo_PC.DAL.Doi
 
         public bool checkBaoThay(string DanhBo)
         {
-            string sql = "select top 1 DanhBa from BaoThay b inner join ThamSo t on b.LoaiBT=t.Code where DanhBa='" + DanhBo + "' and t.CodeType = 'BT' and DATEADD(DAY,30,NgayThay)>=GETDATE()";
-            object result = _cDAL.ExecuteQuery_ReturnOneValue(sql);
-            if (result != null && result.ToString() != "")
-                return true;
-            else
-                return false;
+            DataTable dt = getBaoThay(DanhBo);
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                if (dt.Rows[0]["CSGo"].ToString() != "" && dt.Rows[0]["CSGan"].ToString() != "")
+                    return true;
+                else
+                    return false;
+            }
+            else return false;
         }
 
         public DataTable getLichSu(string DanhBo, string Nam, string Ky)

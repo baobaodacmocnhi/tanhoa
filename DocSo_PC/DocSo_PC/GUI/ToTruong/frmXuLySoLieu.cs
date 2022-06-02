@@ -54,7 +54,7 @@ namespace DocSo_PC.GUI.ToTruong
                 cmbCodeMoi.DataSource = dtCode;
                 cmbCodeMoi.DisplayMember = "Code";
                 cmbCodeMoi.ValueMember = "Code";
-                if (CNguoiDung.Doi||CNguoiDung.DoiXem)
+                if (CNguoiDung.Doi || CNguoiDung.DoiXem)
                 {
                     cmbTo.Visible = true;
                     List<To> lst = _cTo.getDS_HanhThu();
@@ -192,6 +192,8 @@ namespace DocSo_PC.GUI.ToTruong
                     if (txtDanhBoTK.Text.Trim().Replace(" ", "").Replace("-", "") != "")
                     {
                         dt = _cDocSo.getDS_XuLy_DanhBo(cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), txtDanhBoTK.Text.Trim().Replace(" ", "").Replace("-", ""));
+                        _docso = _cDocSo.get_DocSo(dgvDanhSach["DocSoID", 0].Value.ToString());
+                        loadThongTin();
                     }
                     else
                     {
@@ -205,6 +207,8 @@ namespace DocSo_PC.GUI.ToTruong
                     if (txtDanhBoTK.Text.Trim().Replace(" ", "").Replace("-", "") != "")
                     {
                         dt = _cDocSo.getDS_XuLy_DanhBo(CNguoiDung.MaTo.ToString(), cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), txtDanhBoTK.Text.Trim().Replace(" ", "").Replace("-", ""));
+                        _docso = _cDocSo.get_DocSo(dgvDanhSach["DocSoID", 0].Value.ToString());
+                        loadThongTin();
                     }
                     else
                     {
@@ -431,6 +435,11 @@ namespace DocSo_PC.GUI.ToTruong
                                 MessageBox.Show("Năm " + _docso.Nam.Value.ToString() + " Kỳ " + _docso.Ky + " Đợt " + _docso.Dot + " đã chuyển billing", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
+                        if (cmbCodeMoi.SelectedValue.ToString().Substring(0, 1) == "8" && _cDocSo.checkBaoThay(_docso.DanhBa) == false)
+                        {
+                            if (MessageBox.Show("Danh Bộ này không có số liệu Thay\nBạn có muốn tiếp tục cập nhật?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+                                return;
+                        }
                         int TTienNuoc = 0, TThueGTGT = 0, TTDVTN = 0, TThueTDVTN = 0, TTieuThu = 0;
                         //if (wsDHN.tinhCodeTieuThu_CSM(_docso.DocSoID, cmbCodeMoi.SelectedValue.ToString(), int.Parse(txtCSM.Text.Trim()), out TieuThu, out GiaBan, out ThueGTGT, out PhiBVMT, out TongCong) == true)
                         if (_wsDHN.tinhCodeTieuThu_TieuThu(_docso.DocSoID, cmbCodeMoi.SelectedValue.ToString(), int.Parse(txtTieuThu.Text.Trim()), out TTienNuoc, out TThueGTGT, out TTDVTN, out TThueTDVTN) == true)
