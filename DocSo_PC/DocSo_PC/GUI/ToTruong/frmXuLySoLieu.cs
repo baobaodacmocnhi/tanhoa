@@ -192,7 +192,7 @@ namespace DocSo_PC.GUI.ToTruong
                     if (txtDanhBoTK.Text.Trim().Replace(" ", "").Replace("-", "") != "")
                     {
                         dt = _cDocSo.getDS_XuLy_DanhBo(cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), txtDanhBoTK.Text.Trim().Replace(" ", "").Replace("-", ""));
-                        _docso = _cDocSo.get_DocSo(dgvDanhSach["DocSoID", 0].Value.ToString());
+                        _docso = _cDocSo.get_DocSo(dt.Rows[0]["DocSoID"].ToString());
                         loadThongTin();
                     }
                     else
@@ -207,7 +207,7 @@ namespace DocSo_PC.GUI.ToTruong
                     if (txtDanhBoTK.Text.Trim().Replace(" ", "").Replace("-", "") != "")
                     {
                         dt = _cDocSo.getDS_XuLy_DanhBo(CNguoiDung.MaTo.ToString(), cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), txtDanhBoTK.Text.Trim().Replace(" ", "").Replace("-", ""));
-                        _docso = _cDocSo.get_DocSo(dgvDanhSach["DocSoID", 0].Value.ToString());
+                        _docso = _cDocSo.get_DocSo(dt.Rows[0]["DocSoID"].ToString());
                         loadThongTin();
                     }
                     else
@@ -234,7 +234,7 @@ namespace DocSo_PC.GUI.ToTruong
             {
                 //tiêu thu tăng cao, tiêu thụ âm
                 if (item.Cells["TieuThuMoi"].Value != null && item.Cells["TieuThuMoi"].Value.ToString() != ""
-                    && (int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) < int.Parse(item.Cells["TBTT"].Value.ToString()) - int.Parse(item.Cells["TBTT"].Value.ToString()) * 1.4
+                    && (int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) <= int.Parse(item.Cells["TBTT"].Value.ToString()) - int.Parse(item.Cells["TBTT"].Value.ToString()) * 0.4
                     || int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) >= int.Parse(item.Cells["TBTT"].Value.ToString()) * 1.4
                     || int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) < 0))
                     item.DefaultCellStyle.BackColor = Color.Red;
@@ -388,7 +388,7 @@ namespace DocSo_PC.GUI.ToTruong
                                 else
                                     ptbKy3.Image = Properties.Resources.no_image;
                             }
-                    dgvHinh.DataSource = _cKTXM.getDS_Hinh(_docso.DanhBa, _docso.Nam.Value, _docso.Ky);
+                    dgvHinh.DataSource = _cKTXM.getDS_Hinh(_docso.DanhBa, _docso.Nam.Value, int.Parse(_docso.Ky));
                 }
             }
             catch (Exception ex)

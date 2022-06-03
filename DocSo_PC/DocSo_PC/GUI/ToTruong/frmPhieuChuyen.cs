@@ -51,7 +51,13 @@ namespace DocSo_PC.GUI.ToTruong
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvDanhSach.DataSource = _cDHN.getDS_AmSau_XayDung(dateTuNgay.Value, dateDenNgay.Value);
+            if (CNguoiDung.Doi)
+                if (cmbTo.SelectedIndex == 0)
+                    dgvDanhSach.DataSource = _cDHN.getDS_AmSau_XayDung(dateTuNgay.Value, dateDenNgay.Value);
+                else
+                    dgvDanhSach.DataSource = _cDHN.getDS_AmSau_XayDung(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
+            else
+                dgvDanhSach.DataSource = _cDHN.getDS_AmSau_XayDung(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
         }
 
         private void dgvDanhSach_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)

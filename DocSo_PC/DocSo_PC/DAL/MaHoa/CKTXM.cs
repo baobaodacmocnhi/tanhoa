@@ -185,10 +185,10 @@ namespace DocSo_PC.DAL.MaHoa
                 return null;
         }
 
-        public DataTable getDS_Hinh(string DanhBo, int Nam, string Ky)
+        public DataTable getDS_Hinh(string DanhBo, int Nam, int Ky)
         {
             string sql = "select Ky=convert(char(2),a.Ky)+'/'+convert(char(4),a.Nam),a.ID,b.Name,b.Loai from MaHoa_KTXM a,MaHoa_KTXM_Hinh b"
-                        + " where a.DanhBo='" + DanhBo + "' and (a.Nam*12+a.Ky)=(" + Nam + "*12+" + Ky + ") and a.ID=b.IDParent";
+                        + " where a.DanhBo='" + DanhBo + "' and (a.Nam*12+a.Ky)>=(" + Nam + "*12+" + (Ky-3) + ") and a.ID=b.IDParent";
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 

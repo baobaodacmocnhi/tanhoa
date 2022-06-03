@@ -211,9 +211,17 @@ namespace DocSo_PC.DAL
 
         public DataTable getDS_AmSau_XayDung(DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            string sql = "select DANHBO,HOTEN,DiaChi=SONHA+' '+TENDUONG,NoiDung=N'Âm Sâu',CREATEDATE=AmSau_Ngay,Folder='AmSau' from TB_DULIEUKHACHHANG where AmSau=1 and CAST(AmSau_Ngay as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(AmSau_Ngay as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'"
+            string sql = "select MLT=LOTRINH,DANHBO,HOTEN,DiaChi=SONHA+' '+TENDUONG,NoiDung=N'Âm Sâu',CREATEDATE=AmSau_Ngay,Folder='AmSau' from TB_DULIEUKHACHHANG where AmSau=1 and CAST(AmSau_Ngay as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(AmSau_Ngay as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'"
                         + " union all"
-                        + " select DANHBO,HOTEN,DiaChi=SONHA+' '+TENDUONG,NoiDung=N'Xây Dựng',CREATEDATE=XayDung_Ngay,Folder='XayDung' from TB_DULIEUKHACHHANG where XayDung=1 and CAST(XayDung_Ngay as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(XayDung_Ngay as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'";
+                        + " select MLT=LOTRINH,DANHBO,HOTEN,DiaChi=SONHA+' '+TENDUONG,NoiDung=N'Xây Dựng',CREATEDATE=XayDung_Ngay,Folder='XayDung' from TB_DULIEUKHACHHANG where XayDung=1 and CAST(XayDung_Ngay as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(XayDung_Ngay as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'";
+            return _cDAL.ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable getDS_AmSau_XayDung(int MaTo,DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            string sql = "select MLT=LOTRINH,DANHBO,HOTEN,DiaChi=SONHA+' '+TENDUONG,NoiDung=N'Âm Sâu',CREATEDATE=AmSau_Ngay,Folder='AmSau' from TB_DULIEUKHACHHANG where AmSau=1 and CAST(AmSau_Ngay as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(AmSau_Ngay as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and SUBSTRING(LOTRINH,3,2)>=(select TuMay from DocSoTH.dbo.[To] where MaTo=" + MaTo + ") and SUBSTRING(LOTRINH,3,2)<=(select DenMay from DocSoTH.dbo.[To] where MaTo=" + MaTo + ")"
+                        + " union all"
+                        + " select MLT=LOTRINH,DANHBO,HOTEN,DiaChi=SONHA+' '+TENDUONG,NoiDung=N'Xây Dựng',CREATEDATE=XayDung_Ngay,Folder='XayDung' from TB_DULIEUKHACHHANG where XayDung=1 and CAST(XayDung_Ngay as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(XayDung_Ngay as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and SUBSTRING(LOTRINH,3,2)>=(select TuMay from DocSoTH.dbo.[To] where MaTo=" + MaTo + ") and SUBSTRING(LOTRINH,3,2)<=(select DenMay from DocSoTH.dbo.[To] where MaTo=" + MaTo + ")";
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
