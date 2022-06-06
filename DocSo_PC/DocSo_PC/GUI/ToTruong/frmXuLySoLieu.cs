@@ -185,7 +185,7 @@ namespace DocSo_PC.GUI.ToTruong
 
             if (cmbMay.SelectedValue != null && cmbCode.SelectedValue != null)
             {
-                if (CNguoiDung.Doi == true)
+                if (CNguoiDung.Doi == true || CNguoiDung.DoiXem)
                 {
                     CNguoiDung.Ky = cmbKy.SelectedItem.ToString();
                     CNguoiDung.Dot = cmbDot.SelectedItem.ToString();

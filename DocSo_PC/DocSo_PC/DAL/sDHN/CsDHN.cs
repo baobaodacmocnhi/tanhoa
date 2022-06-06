@@ -438,7 +438,7 @@ namespace DocSo_PC.DAL.sDHN
         {
             try
             {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://swm.sawaco.com.vn:7032/api/volume?Id=" + DanhBo + "&Date=" + Time.ToString("dd-MM-yyyy") + "&hour=" + Hour);
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://swm.sawaco.com.vn:7032/api/volume?Id=" + DanhBo + "&Date=" + Time.ToString("dd-MM-yyyy") + "&Hour=" + Hour);
                 request.Method = "GET";
                 request.ContentType = "application/json; charset=utf-8";
 
@@ -590,7 +590,75 @@ namespace DocSo_PC.DAL.sDHN
         {
             try
             {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://swm.sawaco.com.vn:7032/api/all?Id=" + DanhBo + "&date=" + Time.ToString("dd-MM-yyyy"));
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://swm.sawaco.com.vn:7032/api/swm_hour?Id=" + DanhBo + "&Date=" + Time.ToString("dd-MM-yyyy"));
+                request.Method = "GET";
+                request.ContentType = "application/json; charset=utf-8";
+
+                HttpWebResponse respuesta = (HttpWebResponse)request.GetResponse();
+                if (respuesta.StatusCode == HttpStatusCode.Accepted || respuesta.StatusCode == HttpStatusCode.OK || respuesta.StatusCode == HttpStatusCode.Created)
+                {
+                    StreamReader read = new StreamReader(respuesta.GetResponseStream());
+                    string result = read.ReadToEnd();
+                    read.Close();
+                    respuesta.Close();
+
+                    var obj = jss.Deserialize<dynamic>(result);
+                    DataTable dt = new DataTable();
+                    dt.Columns.Add("ChiSo", typeof(System.Double));
+                    dt.Columns.Add("Pin", typeof(System.Int32));
+                    dt.Columns.Add("ThoiLuongPinConLai", typeof(System.String));
+                    dt.Columns.Add("LuuLuong", typeof(System.Double));
+                    dt.Columns.Add("ChatLuongSong", typeof(System.String));
+                    dt.Columns.Add("CBPinYeu", typeof(System.Boolean));
+                    dt.Columns.Add("CBRoRi", typeof(System.Boolean));
+                    dt.Columns.Add("CBQuaDong", typeof(System.Boolean));
+                    dt.Columns.Add("CBChayNguoc", typeof(System.Boolean));
+                    dt.Columns.Add("CBNamCham", typeof(System.Boolean));
+                    dt.Columns.Add("CBKhoOng", typeof(System.Boolean));
+                    dt.Columns.Add("CBMoHop", typeof(System.Boolean));
+                    dt.Columns.Add("Longitude", typeof(System.Double));
+                    dt.Columns.Add("Latitude", typeof(System.Double));
+                    dt.Columns.Add("Altitude", typeof(System.Double));
+                    dt.Columns.Add("ChuKy", typeof(System.Int32));
+                    dt.Columns.Add("ThoiGianCapNhat", typeof(System.DateTime));
+                    foreach (var item in obj)
+                    {
+                        DataRow dr = dt.NewRow();
+                        dr["ChiSo"] = item["Volume"];
+                        dr["Pin"] = item["Battery"];
+                        dr["ThoiLuongPinConLai"] = item["RemainBatt"];
+                        dr["LuuLuong"] = item["Flow"] ?? DBNull.Value;
+                        dr["ChatLuongSong"] = item["Rssi"] ?? DBNull.Value;
+                        dr["CBPinYeu"] = item["IsLowBatt"];
+                        dr["CBRoRi"] = item["IsLeakage"];
+                        dr["CBQuaDong"] = item["IsOverLoad"];
+                        dr["CBChayNguoc"] = item["IsReverse"];
+                        dr["CBNamCham"] = item["IsTampering"];
+                        dr["CBKhoOng"] = item["IsDry"];
+                        dr["CBMoHop"] = item["IsOpenBox"];
+                        dr["Longitude"] = item["Longitude"] ?? DBNull.Value;
+                        dr["Latitude"] = item["Latitude"] ?? DBNull.Value;
+                        //dr["Altitude"] = item["Altitude"] ?? DBNull.Value;
+                        dr["ChuKy"] = item["Interval"] ?? DBNull.Value;
+                        dr["ThoiGianCapNhat"] = DateTime.Parse(item["Time"]);
+                        dt.Rows.Add(dr);
+                    }
+                    return dt;
+                }
+                else
+                    return null;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataTable get_All_Rynan(string DanhBo, DateTime Time, int Hour)
+        {
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://swm.sawaco.com.vn:7032/api/swm_hour?Id=" + DanhBo + "&Date=" + Time.ToString("dd-MM-yyyy") + "&Hour=" + Hour);
                 request.Method = "GET";
                 request.ContentType = "application/json; charset=utf-8";
 
@@ -636,7 +704,7 @@ namespace DocSo_PC.DAL.sDHN
                     dr["CBMoHop"] = obj["IsOpenBox"];
                     dr["Longitude"] = obj["Longitude"] ?? DBNull.Value;
                     dr["Latitude"] = obj["Latitude"] ?? DBNull.Value;
-                    dr["Altitude"] = obj["Altitude"] ?? DBNull.Value;
+                    //dr["Altitude"] = obj["Altitude"] ?? DBNull.Value;
                     dr["ChuKy"] = obj["Interval"] ?? DBNull.Value;
                     dr["ThoiGianCapNhat"] = DateTime.Parse(obj["Time"]);
                     dt.Rows.Add(dr);
@@ -702,7 +770,74 @@ namespace DocSo_PC.DAL.sDHN
                         dr["CBMoHop"] = item["IsOpenBox"];
                         dr["Longitude"] = item["Longitude"] ?? DBNull.Value;
                         dr["Latitude"] = item["Latitude"] ?? DBNull.Value;
-                        dr["Altitude"] = item["Altitude"] ?? DBNull.Value;
+                        //dr["Altitude"] = item["Altitude"] ?? DBNull.Value;
+                        dr["ChuKy"] = item["Interval"] ?? DBNull.Value;
+                        dr["ThoiGianCapNhat"] = DateTime.Parse(item["Time"]);
+                        dt.Rows.Add(dr);
+                    }
+                    return dt;
+                }
+                else
+                    return null;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataTable get_All_Rynan(string DanhBo, DateTime FromTime, DateTime ToTime, int Hour)
+        {
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://swm.sawaco.com.vn:7032/api/all?Id=" + DanhBo + "&Date1=" + FromTime.ToString("dd-MM-yyyy") + "&Date2=" + ToTime.ToString("dd-MM-yyyy") + "&Hour=" + Hour);
+                request.Method = "GET";
+                request.ContentType = "application/json; charset=utf-8";
+
+                HttpWebResponse respuesta = (HttpWebResponse)request.GetResponse();
+                if (respuesta.StatusCode == HttpStatusCode.Accepted || respuesta.StatusCode == HttpStatusCode.OK || respuesta.StatusCode == HttpStatusCode.Created)
+                {
+                    StreamReader read = new StreamReader(respuesta.GetResponseStream());
+                    string result = read.ReadToEnd();
+                    read.Close();
+                    respuesta.Close();
+
+                    var obj = jss.Deserialize<dynamic>(result);
+                    DataTable dt = new DataTable();
+                    dt.Columns.Add("ChiSo", typeof(System.Double));
+                    dt.Columns.Add("Pin", typeof(System.Int32));
+                    dt.Columns.Add("ThoiLuongPinConLai", typeof(System.String));
+                    dt.Columns.Add("LuuLuong", typeof(System.Double));
+                    dt.Columns.Add("ChatLuongSong", typeof(System.String));
+                    dt.Columns.Add("CBPinYeu", typeof(System.Boolean));
+                    dt.Columns.Add("CBRoRi", typeof(System.Boolean));
+                    dt.Columns.Add("CBQuaDong", typeof(System.Boolean));
+                    dt.Columns.Add("CBChayNguoc", typeof(System.Boolean));
+                    dt.Columns.Add("CBNamCham", typeof(System.Boolean));
+                    dt.Columns.Add("CBKhoOng", typeof(System.Boolean));
+                    dt.Columns.Add("CBMoHop", typeof(System.Boolean));
+                    dt.Columns.Add("Longitude", typeof(System.Double));
+                    dt.Columns.Add("Latitude", typeof(System.Double));
+                    dt.Columns.Add("Altitude", typeof(System.Double));
+                    dt.Columns.Add("ChuKy", typeof(System.Int32));
+                    dt.Columns.Add("ThoiGianCapNhat", typeof(System.DateTime));
+                    foreach (var item in obj)
+                    {
+                        DataRow dr = dt.NewRow();
+                        dr["ChiSo"] = item["Volume"];
+                        dr["Pin"] = item["Battery"];
+                        dr["ThoiLuongPinConLai"] = item["RemainBatt"];
+                        dr["LuuLuong"] = item["Flow"] ?? DBNull.Value;
+                        dr["CBPinYeu"] = item["IsLowBatt"];
+                        dr["CBRoRi"] = item["IsLeakage"];
+                        dr["CBQuaDong"] = item["IsOverLoad"];
+                        dr["CBChayNguoc"] = item["IsReverse"];
+                        dr["CBNamCham"] = item["IsTampering"];
+                        dr["CBKhoOng"] = item["IsDry"];
+                        dr["CBMoHop"] = item["IsOpenBox"];
+                        dr["Longitude"] = item["Longitude"] ?? DBNull.Value;
+                        dr["Latitude"] = item["Latitude"] ?? DBNull.Value;
+                        //dr["Altitude"] = item["Altitude"] ?? DBNull.Value;
                         dr["ChuKy"] = item["Interval"] ?? DBNull.Value;
                         dr["ThoiGianCapNhat"] = DateTime.Parse(item["Time"]);
                         dt.Rows.Add(dr);

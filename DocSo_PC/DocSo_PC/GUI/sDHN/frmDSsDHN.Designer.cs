@@ -199,11 +199,14 @@
             this.cmbLoaiXem.FormattingEnabled = true;
             this.cmbLoaiXem.Items.AddRange(new object[] {
             "Chỉ Số",
+            "Chỉ Số giờ",
             "Chất Lượng Sóng",
             "Cảnh Báo",
             "% Pin",
             "Tất Cả 1 ngày",
-            "Tất Cả 10 ngày"});
+            "Tất Cả 1 ngày giờ",
+            "Tất Cả 10 ngày",
+            "Tất Cả 10 ngày giờ"});
             this.cmbLoaiXem.Location = new System.Drawing.Point(402, 14);
             this.cmbLoaiXem.Name = "cmbLoaiXem";
             this.cmbLoaiXem.Size = new System.Drawing.Size(121, 21);
