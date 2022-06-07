@@ -2256,9 +2256,17 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<System.DateTime> _AmSau_Ngay;
 		
+		private bool _DutChi_Goc;
+		
+		private System.Nullable<System.DateTime> _DutChi_Goc_Ngay;
+		
+		private bool _DutChi_Than;
+		
+		private System.Nullable<System.DateTime> _DutChi_Than_Ngay;
+		
 		private string _GhiChu;
 		
-		private string _MauChiGoc;
+		private string _MauSacChiGoc;
 		
 		private bool _KhoaTu;
 		
@@ -2378,10 +2386,18 @@ namespace KTKS_DonKH.LinQ
     partial void OnAmSauChanged();
     partial void OnAmSau_NgayChanging(System.Nullable<System.DateTime> value);
     partial void OnAmSau_NgayChanged();
+    partial void OnDutChi_GocChanging(bool value);
+    partial void OnDutChi_GocChanged();
+    partial void OnDutChi_Goc_NgayChanging(System.Nullable<System.DateTime> value);
+    partial void OnDutChi_Goc_NgayChanged();
+    partial void OnDutChi_ThanChanging(bool value);
+    partial void OnDutChi_ThanChanged();
+    partial void OnDutChi_Than_NgayChanging(System.Nullable<System.DateTime> value);
+    partial void OnDutChi_Than_NgayChanged();
     partial void OnGhiChuChanging(string value);
     partial void OnGhiChuChanged();
-    partial void OnMauChiGocChanging(string value);
-    partial void OnMauChiGocChanged();
+    partial void OnMauSacChiGocChanging(string value);
+    partial void OnMauSacChiGocChanged();
     partial void OnKhoaTuChanging(bool value);
     partial void OnKhoaTuChanged();
     #endregion
@@ -3511,6 +3527,86 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DutChi_Goc", DbType="Bit NOT NULL")]
+		public bool DutChi_Goc
+		{
+			get
+			{
+				return this._DutChi_Goc;
+			}
+			set
+			{
+				if ((this._DutChi_Goc != value))
+				{
+					this.OnDutChi_GocChanging(value);
+					this.SendPropertyChanging();
+					this._DutChi_Goc = value;
+					this.SendPropertyChanged("DutChi_Goc");
+					this.OnDutChi_GocChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DutChi_Goc_Ngay", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DutChi_Goc_Ngay
+		{
+			get
+			{
+				return this._DutChi_Goc_Ngay;
+			}
+			set
+			{
+				if ((this._DutChi_Goc_Ngay != value))
+				{
+					this.OnDutChi_Goc_NgayChanging(value);
+					this.SendPropertyChanging();
+					this._DutChi_Goc_Ngay = value;
+					this.SendPropertyChanged("DutChi_Goc_Ngay");
+					this.OnDutChi_Goc_NgayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DutChi_Than", DbType="Bit NOT NULL")]
+		public bool DutChi_Than
+		{
+			get
+			{
+				return this._DutChi_Than;
+			}
+			set
+			{
+				if ((this._DutChi_Than != value))
+				{
+					this.OnDutChi_ThanChanging(value);
+					this.SendPropertyChanging();
+					this._DutChi_Than = value;
+					this.SendPropertyChanged("DutChi_Than");
+					this.OnDutChi_ThanChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DutChi_Than_Ngay", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DutChi_Than_Ngay
+		{
+			get
+			{
+				return this._DutChi_Than_Ngay;
+			}
+			set
+			{
+				if ((this._DutChi_Than_Ngay != value))
+				{
+					this.OnDutChi_Than_NgayChanging(value);
+					this.SendPropertyChanging();
+					this._DutChi_Than_Ngay = value;
+					this.SendPropertyChanged("DutChi_Than_Ngay");
+					this.OnDutChi_Than_NgayChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GhiChu", DbType="NVarChar(200)")]
 		public string GhiChu
 		{
@@ -3531,22 +3627,22 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MauChiGoc", DbType="NChar(10)")]
-		public string MauChiGoc
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MauSacChiGoc", DbType="NVarChar(10)")]
+		public string MauSacChiGoc
 		{
 			get
 			{
-				return this._MauChiGoc;
+				return this._MauSacChiGoc;
 			}
 			set
 			{
-				if ((this._MauChiGoc != value))
+				if ((this._MauSacChiGoc != value))
 				{
-					this.OnMauChiGocChanging(value);
+					this.OnMauSacChiGocChanging(value);
 					this.SendPropertyChanging();
-					this._MauChiGoc = value;
-					this.SendPropertyChanged("MauChiGoc");
-					this.OnMauChiGocChanged();
+					this._MauSacChiGoc = value;
+					this.SendPropertyChanged("MauSacChiGoc");
+					this.OnMauSacChiGocChanged();
 				}
 			}
 		}
