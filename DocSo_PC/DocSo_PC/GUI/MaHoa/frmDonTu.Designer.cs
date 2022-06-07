@@ -75,6 +75,7 @@
             this.txtGhiChu = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnInDSTon = new System.Windows.Forms.Button();
             this.panel_NoiDung = new System.Windows.Forms.Panel();
             this.txtSo = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
@@ -132,7 +133,7 @@
             this.dateDen_DSChuyenKTXM = new System.Windows.Forms.DateTimePicker();
             this.label16 = new System.Windows.Forms.Label();
             this.dateTu_DSChuyenKTXM = new System.Windows.Forms.DateTimePicker();
-            this.btnInDSTon = new System.Windows.Forms.Button();
+            this.btnXemTon = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -516,6 +517,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btnXemTon);
             this.tabPage2.Controls.Add(this.btnInDSTon);
             this.tabPage2.Controls.Add(this.panel_NoiDung);
             this.tabPage2.Controls.Add(this.panel_Time);
@@ -547,6 +549,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Xử Lý Đơn";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnInDSTon
+            // 
+            this.btnInDSTon.Location = new System.Drawing.Point(955, 4);
+            this.btnInDSTon.Name = "btnInDSTon";
+            this.btnInDSTon.Size = new System.Drawing.Size(75, 23);
+            this.btnInDSTon.TabIndex = 156;
+            this.btnInDSTon.Text = "In DS Tồn";
+            this.btnInDSTon.UseVisualStyleBackColor = true;
+            this.btnInDSTon.Click += new System.EventHandler(this.btnInDSTon_Click);
             // 
             // panel_NoiDung
             // 
@@ -645,7 +657,7 @@
             // 
             // btnInDS
             // 
-            this.btnInDS.Location = new System.Drawing.Point(793, 4);
+            this.btnInDS.Location = new System.Drawing.Point(874, 4);
             this.btnInDS.Name = "btnInDS";
             this.btnInDS.Size = new System.Drawing.Size(75, 23);
             this.btnInDS.TabIndex = 100;
@@ -1122,15 +1134,15 @@
             this.dateTu_DSChuyenKTXM.Size = new System.Drawing.Size(95, 20);
             this.dateTu_DSChuyenKTXM.TabIndex = 11;
             // 
-            // btnInDSTon
+            // btnXemTon
             // 
-            this.btnInDSTon.Location = new System.Drawing.Point(874, 4);
-            this.btnInDSTon.Name = "btnInDSTon";
-            this.btnInDSTon.Size = new System.Drawing.Size(75, 23);
-            this.btnInDSTon.TabIndex = 156;
-            this.btnInDSTon.Text = "In DS Tồn";
-            this.btnInDSTon.UseVisualStyleBackColor = true;
-            this.btnInDSTon.Click += new System.EventHandler(this.btnInDSTon_Click);
+            this.btnXemTon.Location = new System.Drawing.Point(793, 4);
+            this.btnXemTon.Name = "btnXemTon";
+            this.btnXemTon.Size = new System.Drawing.Size(75, 23);
+            this.btnXemTon.TabIndex = 157;
+            this.btnXemTon.Text = "Xem Tồn";
+            this.btnXemTon.UseVisualStyleBackColor = true;
+            this.btnXemTon.Click += new System.EventHandler(this.btnXemTon_Click);
             // 
             // frmDonTu
             // 
@@ -1262,5 +1274,6 @@
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnBaoCao;
         private System.Windows.Forms.Button btnInDSTon;
+        private System.Windows.Forms.Button btnXemTon;
     }
 }

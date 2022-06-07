@@ -28510,7 +28510,7 @@ namespace DocSo_PC.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NVGHI", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NVGHI", DbType="NVarChar(200)")]
 		public string NVGHI
 		{
 			get
@@ -28650,7 +28650,7 @@ namespace DocSo_PC.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NVCapNhat", DbType="NVarChar(100)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NVCapNhat", DbType="NVarChar(200)")]
 		public string NVCapNhat
 		{
 			get

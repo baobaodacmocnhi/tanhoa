@@ -478,10 +478,10 @@
         <classShapeMoniker Id="d9890bce-2026-4306-aabf-07cdebee0986" />
       </nodes>
     </associationConnector>
-    <classShape Id="62efaf30-7c6e-453b-a3e2-20dd9586e7b9" absoluteBounds="18.25, 18.375, 2, 16.193504231770834">
+    <classShape Id="18021798-3a9b-4738-9b8c-ab366e2672ef" absoluteBounds="18.625, 18.75, 2, 16.193504231770834">
       <DataClassMoniker Name="/dbDocSoDataContext/DocSo" />
       <nestedChildShapes>
-        <elementListCompartment Id="4e391ed7-7e37-4a23-ab0e-72ea22ef8f82" absoluteBounds="18.265, 18.835, 1.9700000000000002, 15.633504231770832" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="716dd575-510f-43cc-94b8-7c2b9235095f" absoluteBounds="18.64, 19.21, 1.9700000000000002, 15.633504231770832" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

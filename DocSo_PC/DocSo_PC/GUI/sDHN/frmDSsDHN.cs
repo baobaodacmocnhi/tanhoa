@@ -51,6 +51,10 @@ namespace DocSo_PC.GUI.sDHN
                             if (_csDHN.updateDS_DHN_Rynan() == true)
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             break;
+                        case 3:
+                            if (_csDHN.updateDS_DHN_Deviwas() == true)
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            break;
                         default:
                             break;
                     }
@@ -145,6 +149,40 @@ namespace DocSo_PC.GUI.sDHN
                             case "Tất Cả 10 ngày giờ":
                                 dgvLichSu.DataSource = _csDHN.get_All_Rynan(dgvDanhSach.CurrentRow.Cells["DanhBo"].Value.ToString(), DateTime.Now.AddDays(-10), DateTime.Now, DateTime.Now.Hour);
                                 break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case 3:
+                        switch (cmbLoaiXem.SelectedItem.ToString())
+                        {
+                            case "Chỉ Số":
+                                dgvLichSu.DataSource = _csDHN.get_ChiSoNuoc_Deviwas(dgvDanhSach.CurrentRow.Cells["DanhBo"].Value.ToString(), DateTime.Now);
+                                break;
+                            //case "Chỉ Số giờ":
+                            //    dgvLichSu.DataSource = _csDHN.get_ChiSoNuoc_Deviwas(dgvDanhSach.CurrentRow.Cells["DanhBo"].Value.ToString(), DateTime.Now, DateTime.Now.Hour);
+                            //    break;
+                            case "Chất Lượng Sóng":
+                                dgvLichSu.DataSource = _csDHN.get_ChatLuongSong_Deviwas(dgvDanhSach.CurrentRow.Cells["DanhBo"].Value.ToString(), DateTime.Now);
+                                break;
+                            case "Cảnh Báo":
+                                dgvLichSu.DataSource = _csDHN.get_CanhBao_Deviwas(dgvDanhSach.CurrentRow.Cells["DanhBo"].Value.ToString(), DateTime.Now);
+                                break;
+                            case "% Pin":
+                                dgvLichSu.DataSource = _csDHN.get_Pin_Deviwas(dgvDanhSach.CurrentRow.Cells["DanhBo"].Value.ToString(), DateTime.Now);
+                                break;
+                            case "Tất Cả 1 ngày":
+                                dgvLichSu.DataSource = _csDHN.get_All_Deviwas(dgvDanhSach.CurrentRow.Cells["DanhBo"].Value.ToString(), DateTime.Now);
+                                break;
+                            //case "Tất Cả 1 ngày giờ":
+                            //    dgvLichSu.DataSource = _csDHN.get_All_Deviwas(dgvDanhSach.CurrentRow.Cells["DanhBo"].Value.ToString(), DateTime.Now, DateTime.Now.Hour);
+                            //    break;
+                            case "Tất Cả 10 ngày":
+                                dgvLichSu.DataSource = _csDHN.get_All_Deviwas(dgvDanhSach.CurrentRow.Cells["DanhBo"].Value.ToString(), DateTime.Now.AddDays(-10), DateTime.Now);
+                                break;
+                            //case "Tất Cả 10 ngày giờ":
+                            //    dgvLichSu.DataSource = _csDHN.get_All_Deviwas(dgvDanhSach.CurrentRow.Cells["DanhBo"].Value.ToString(), DateTime.Now.AddDays(-10), DateTime.Now, DateTime.Now.Hour);
+                            //    break;
                             default:
                                 break;
                         }

@@ -491,6 +491,11 @@ namespace DocSo_PC.GUI.MaHoa
 
         }
 
+        private void btnXemTon_Click(object sender, EventArgs e)
+        {
+            dgvDanhSach.DataSource = _cDonTu.getDS_Ton();
+        }
+
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
             try
@@ -786,6 +791,8 @@ namespace DocSo_PC.GUI.MaHoa
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        
 
 
     }

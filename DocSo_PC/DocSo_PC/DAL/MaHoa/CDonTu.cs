@@ -100,6 +100,11 @@ namespace DocSo_PC.DAL.MaHoa
             return _cDAL.LINQToDataTable(_db.MaHoa_DonTus.Where(item => item.DanhBo == DanhBo));
         }
 
+        public DataTable getDS_Ton()
+        {
+            return _cDAL.LINQToDataTable(_db.MaHoa_DonTus.Where(item => item.TinhTrang.Contains("Tồn")));
+        }
+
         public DataTable getDS_ChuyenDCBD(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             var query = from item in _db.MaHoa_DonTus
