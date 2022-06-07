@@ -146,8 +146,12 @@
       <Column Name="XayDung_Ngay" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="AmSau" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="AmSau_Ngay" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DutChi_Goc" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DutChi_Goc_Ngay" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DutChi_Than" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DutChi_Than_Ngay" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="GhiChu" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="MauChiGoc" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="MauSacChiGoc" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="KhoaTu" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
