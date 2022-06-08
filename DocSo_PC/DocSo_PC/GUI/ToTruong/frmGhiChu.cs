@@ -114,6 +114,9 @@ namespace DocSo_PC.GUI.ToTruong
                 chkGieng.Checked = en.Gieng;
                 chkAmSau.Checked = en.AmSau;
                 chkXayDung.Checked = en.XayDung;
+                chkDutChiGoc.Checked = en.DutChi_Goc;
+                chkDutChiThan.Checked = en.DutChi_Than;
+                cmbMauSacChiGoc.SelectedItem = en.MauSacChiGoc;
                 dgvDienThoai.DataSource = _cDHN.getDS_DienThoai(en.DANHBO);
             }
         }
@@ -242,6 +245,9 @@ namespace DocSo_PC.GUI.ToTruong
                         _enDLKH.Gieng = chkGieng.Checked;
                         _enDLKH.AmSau = chkAmSau.Checked;
                         _enDLKH.XayDung = chkXayDung.Checked;
+                        _enDLKH.DutChi_Goc = chkDutChiGoc.Checked;
+                        _enDLKH.DutChi_Than = chkDutChiThan.Checked;
+                        _enDLKH.MauSacChiGoc = cmbMauSacChiGoc.SelectedItem.ToString();
                         _cDHN.SubmitChanges();
                         //foreach (DataGridViewRow item in dgvDienThoai.Rows)
                         //{
@@ -484,6 +490,34 @@ namespace DocSo_PC.GUI.ToTruong
             }
         }
 
+        private void chkDutChiGoc_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkDutChiGoc.Checked)
+            {
+                dateDutChiGoc.Enabled = true;
+                btnHinhDutChiGoc.Enabled = true;
+            }
+            else
+            {
+                dateDutChiGoc.Enabled = false;
+                btnHinhDutChiGoc.Enabled = false;
+            }
+        }
+
+        private void chkDutChiThan_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkDutChiThan.Checked)
+            {
+                dateDutChiThan.Enabled = true;
+                btnHinhDutChiThan.Enabled = true;
+            }
+            else
+            {
+                dateDutChiThan.Enabled = false;
+                btnHinhDutChiThan.Enabled = false;
+            }
+        }
+
         private void btnHinhAmSau_Click(object sender, EventArgs e)
         {
             if (_enDLKH != null)
@@ -495,5 +529,19 @@ namespace DocSo_PC.GUI.ToTruong
             if (_enDLKH != null)
                 _cDocSo.LoadImageView(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("XayDung", "", _enDLKH.DANHBO))));
         }
+
+        private void btnHinhDutChiGoc_Click(object sender, EventArgs e)
+        {
+            if (_enDLKH != null)
+                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("DutChi", "", _enDLKH.DANHBO))));
+        }
+
+        private void btnHinhDutChiThan_Click(object sender, EventArgs e)
+        {
+            if (_enDLKH != null)
+                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("DutChi", "", _enDLKH.DANHBO))));
+        }
+
+        
     }
 }
