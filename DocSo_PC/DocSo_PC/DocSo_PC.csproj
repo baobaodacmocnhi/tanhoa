@@ -15,9 +15,9 @@
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>\\server9\BaoBao%24\DocSo_PC\</PublishUrl>
+    <PublishUrl>C:\Users\BaoBao\Desktop\DocSoWFH\</PublishUrl>
     <Install>true</Install>
-    <InstallFrom>Unc</InstallFrom>
+    <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
@@ -25,14 +25,14 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <UpdateUrl>\\server9\BaoBao%24\DocSo_PC\</UpdateUrl>
+    <UpdateUrl>http://113.161.88.180:81/DocSoWFH/</UpdateUrl>
     <TargetCulture>vi-VN</TargetCulture>
     <ProductName>Quản Lý Đọc Số</ProductName>
     <PublisherName>T.CNTT</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>157</ApplicationRevision>
+    <ApplicationRevision>159</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -119,6 +119,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsBaoCao.xsd</DependentUpon>
     </Compile>
+    <Compile Include="BaoCao\rptDanhSach.cs">
+      <DependentUpon>rptDanhSach.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="BaoCao\ToTruong\rptDSPhieuChuyen.cs">
       <DependentUpon>rptDSPhieuChuyen.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -198,7 +204,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DAL\CDocSo12.cs" />
-    <Compile Include="DAL\CTTKH.cs" />
     <Compile Include="DAL\CThuongVu.cs" />
     <Compile Include="DAL\MaHoa\CDCBD.cs" />
     <Compile Include="DAL\MaHoa\CDonTu.cs" />
@@ -278,7 +283,7 @@
     <Compile Include="DAL\CDAL.cs" />
     <Compile Include="DAL\CFormat.cs" />
     <Compile Include="DAL\CConnection.cs" />
-    <Compile Include="DAL\CLichDocSo.cs" />
+    <Compile Include="DAL\Doi\CLichDocSo.cs" />
     <Compile Include="DAL\Doi\CChuanBiDS.cs" />
     <Compile Include="DAL\CDHN.cs" />
     <Compile Include="DAL\Doi\CChuyenBilling.cs" />
@@ -471,11 +476,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dbThuTien.dbml</DependentUpon>
     </Compile>
-    <Compile Include="LinQ\dbTrungTamKhachHang.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dbTrungTamKhachHang.dbml</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Web References\wrDHN\Reference.cs">
@@ -493,6 +493,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BaoCao\rptDanhSach.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptDanhSach.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\ToTruong\rptDSPhieuChuyen.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptDSPhieuChuyen.cs</LastGenOutput>
@@ -650,9 +654,6 @@
       <LastGenOutput>dbThuongVu.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="LinQ\dbTrungTamKhachHang.dbml.layout">
-      <DependentUpon>dbTrungTamKhachHang.dbml</DependentUpon>
-    </None>
     <EmbeddedResource Include="GUI\VanThu\frmCongVanDen.resx">
       <DependentUpon>frmCongVanDen.cs</DependentUpon>
     </EmbeddedResource>
@@ -715,11 +716,6 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
-    <None Include="LinQ\dbTrungTamKhachHang.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>dbTrungTamKhachHang.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

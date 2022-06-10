@@ -106,19 +106,6 @@ namespace DocSo_PC.GUI.ToTruong
                         dgvDanhSach.DataSource = _cDHN.getDS_DutChiThan(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
                     }
                     break;
-                case "Đứt Chì Góc + Thân":
-                    if (CNguoiDung.Doi)
-                    {
-                        if (cmbTo.SelectedIndex == 0)
-                            dgvDanhSach.DataSource = _cDHN.getDS_DutChiGocThan(dateTuNgay.Value, dateDenNgay.Value);
-                        else
-                            dgvDanhSach.DataSource = _cDHN.getDS_DutChiGocThan(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
-                    }
-                    else
-                    {
-                        dgvDanhSach.DataSource = _cDHN.getDS_DutChiGocThan(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
-                    }
-                    break;
                 default:
                     DataTable dt = new DataTable();
                     if (CNguoiDung.Doi)
@@ -129,7 +116,6 @@ namespace DocSo_PC.GUI.ToTruong
                             dt.Merge(_cDHN.getDS_XayDung(dateTuNgay.Value, dateDenNgay.Value));
                             dt.Merge(_cDHN.getDS_DutChiGoc(dateTuNgay.Value, dateDenNgay.Value));
                             dt.Merge(_cDHN.getDS_DutChiThan(dateTuNgay.Value, dateDenNgay.Value));
-                            dt.Merge(_cDHN.getDS_DutChiGocThan(dateTuNgay.Value, dateDenNgay.Value));
                         }
                         else
                         {
@@ -137,7 +123,6 @@ namespace DocSo_PC.GUI.ToTruong
                             dt.Merge(_cDHN.getDS_XayDung(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
                             dt.Merge(_cDHN.getDS_DutChiGoc(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
                             dt.Merge(_cDHN.getDS_DutChiThan(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
-                            dt.Merge(_cDHN.getDS_DutChiGocThan(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
                         }
                     }
                     else
@@ -146,7 +131,6 @@ namespace DocSo_PC.GUI.ToTruong
                         dt.Merge(_cDHN.getDS_XayDung(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
                         dt.Merge(_cDHN.getDS_DutChiGoc(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
                         dt.Merge(_cDHN.getDS_DutChiThan(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
-                        dt.Merge(_cDHN.getDS_DutChiGocThan(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
                     }
                     dgvDanhSach.DataSource = dt;
                     break;
@@ -198,6 +182,7 @@ namespace DocSo_PC.GUI.ToTruong
                             dr["TieuDe"] = "DANH SÁCH ĐỒNG HỒ NƯỚC " + item.Cells["NoiDung"].Value.ToString().ToUpper();
                             break;
                     }
+                    dr["ThoiGian"] = "Từ ngày " + dateTuNgay.Value.ToString("dd/MM/yyyy") + " đến ngày " + dateDenNgay.Value.ToString("dd/MM/yyyy");
                     dr["DanhBo"] = ttkh.DANHBO.Insert(7, " ").Insert(4, " ");
                     dr["MLT"] = ttkh.LOTRINH;
                     dr["HoTen"] = ttkh.HOTEN;

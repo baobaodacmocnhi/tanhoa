@@ -25,8 +25,8 @@ namespace DocSo_PC.GUI.MaHoa
         CDocSo _cDocSo = new CDocSo();
         CDHN _cDHN = new CDHN();
         CDCBD _cDCBD = new CDCBD();
+        CLichDocSo _cLDS = new CLichDocSo();
         CThuongVu _cThuongVu = new CThuongVu();
-        CTTKH _cTTKH = new CTTKH();
         wrDHN.wsDHN _wsDHN = new wrDHN.wsDHN();
         MaHoa_DCBD _dcbd = null;
 
@@ -46,7 +46,7 @@ namespace DocSo_PC.GUI.MaHoa
         private void btnXem_Click(object sender, EventArgs e)
         {
             dgvDanhSach.DataSource = _cDonTu.getDS_ChuyenDCBD(dateTuNgay.Value, dateDenNgay.Value);
-            string str = _cTTKH.getHieuLucKyToi();
+            string str = _cLDS.getHieuLucKyToi();
             foreach (DataGridViewRow item in dgvDanhSach.Rows)
             {
                 item.Cells["Chon"].Value = true;

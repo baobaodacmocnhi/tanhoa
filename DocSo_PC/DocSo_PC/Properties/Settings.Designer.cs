@@ -47,17 +47,6 @@ namespace DocSo_PC.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=serverg8-01;Initial Catalog=TRUNGTAMKHACHHANG;Persist Security Info=T" +
-            "rue;User ID=sa;Password=db11@tanhoa")]
-        public string TRUNGTAMKHACHHANGConnectionString {
-            get {
-                return ((string)(this["TRUNGTAMKHACHHANGConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
         [global::System.Configuration.DefaultSettingValueAttribute("http://serverg8-01:81/wsthutien.asmx")]
         public string DocSo_PC_wrThuTien_wsThuTien {

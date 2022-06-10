@@ -246,25 +246,15 @@ namespace DocSo_PC.DAL
         }
         public DataTable getDS_DutChiThan(DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            string sql = " select MLT=LOTRINH,DANHBO,HOTEN,DiaChi=SONHA+' '+TENDUONG,NoiDung=N'Đứt Chì Thân',CREATEDATE=DutChi_Than_Ngay,Folder='DutChi' from TB_DULIEUKHACHHANG where DutChi_Goc=0 and DutChi_Than=1 and CAST(DutChi_Than_Ngay as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(DutChi_Than_Ngay as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'";
+            string sql = " select MLT=LOTRINH,DANHBO,HOTEN,DiaChi=SONHA+' '+TENDUONG,NoiDung=N'Đứt Chì Thân',CREATEDATE=DutChi_Than_Ngay,Folder='DutChi' from TB_DULIEUKHACHHANG where DutChi_Than=1 and CAST(DutChi_Than_Ngay as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(DutChi_Than_Ngay as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'";
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
         public DataTable getDS_DutChiThan(int MaTo, DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            string sql = " select MLT=LOTRINH,DANHBO,HOTEN,DiaChi=SONHA+' '+TENDUONG,NoiDung=N'Đứt Chì Thân',CREATEDATE=DutChi_Than_Ngay,Folder='DutChi' from TB_DULIEUKHACHHANG where DutChi_Goc=0 and DutChi_Than=1 and CAST(DutChi_Than_Ngay as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(DutChi_Than_Ngay as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and SUBSTRING(LOTRINH,3,2)>=(select TuMay from DocSoTH.dbo.[To] where MaTo=" + MaTo + ") and SUBSTRING(LOTRINH,3,2)<=(select DenMay from DocSoTH.dbo.[To] where MaTo=" + MaTo + ")";
-            return _cDAL.ExecuteQuery_DataTable(sql);
-        }
-        public DataTable getDS_DutChiGocThan(DateTime FromCreateDate, DateTime ToCreateDate)
-        {
-            string sql = " select MLT=LOTRINH,DANHBO,HOTEN,DiaChi=SONHA+' '+TENDUONG,NoiDung=N'Đứt Chì Góc & Thân',CREATEDATE=DutChi_Than_Ngay,Folder='DutChi' from TB_DULIEUKHACHHANG where DutChi_Goc=1 and DutChi_Than=1 and CAST(DutChi_Than_Ngay as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(DutChi_Than_Ngay as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'";
+            string sql = " select MLT=LOTRINH,DANHBO,HOTEN,DiaChi=SONHA+' '+TENDUONG,NoiDung=N'Đứt Chì Thân',CREATEDATE=DutChi_Than_Ngay,Folder='DutChi' from TB_DULIEUKHACHHANG where DutChi_Than=1 and CAST(DutChi_Than_Ngay as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(DutChi_Than_Ngay as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and SUBSTRING(LOTRINH,3,2)>=(select TuMay from DocSoTH.dbo.[To] where MaTo=" + MaTo + ") and SUBSTRING(LOTRINH,3,2)<=(select DenMay from DocSoTH.dbo.[To] where MaTo=" + MaTo + ")";
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
-        public DataTable getDS_DutChiGocThan(int MaTo, DateTime FromCreateDate, DateTime ToCreateDate)
-        {
-            string sql = " select MLT=LOTRINH,DANHBO,HOTEN,DiaChi=SONHA+' '+TENDUONG,NoiDung=N'Đứt Chì Góc & Than',CREATEDATE=DutChi_Than_Ngay,Folder='DutChi' from TB_DULIEUKHACHHANG where DutChi_Goc=1 and DutChi_Than=1 and CAST(DutChi_Than_Ngay as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(DutChi_Than_Ngay as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and SUBSTRING(LOTRINH,3,2)>=(select TuMay from DocSoTH.dbo.[To] where MaTo=" + MaTo + ") and SUBSTRING(LOTRINH,3,2)<=(select DenMay from DocSoTH.dbo.[To] where MaTo=" + MaTo + ")";
-            return _cDAL.ExecuteQuery_DataTable(sql);
-        }
     }
 }

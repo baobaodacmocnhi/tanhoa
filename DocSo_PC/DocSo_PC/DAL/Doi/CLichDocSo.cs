@@ -10,20 +10,20 @@ using DocSo_PC.DAL.QuanTri;
 
 namespace DocSo_PC.DAL
 {
-    class CLichDocSo
+    class CLichDocSo:CDAL
     {
-        public static dbTrungTamKhachHangDataContext _db = new dbTrungTamKhachHangDataContext();
-        public static CConnection _cDAL = new CConnection(_db.Connection.ConnectionString);
+        //public static dbTrungTamKhachHangDataContext _db = new dbTrungTamKhachHangDataContext();
+        //public static CConnection _cDAL = new CConnection(_db.Connection.ConnectionString);
 
-        public void SubmitChanges()
-        {
-            _db.SubmitChanges();
-        }
+        //public void SubmitChanges()
+        //{
+        //    _db.SubmitChanges();
+        //}
 
-        public void Refresh()
-        {
-            _db = new dbTrungTamKhachHangDataContext();
-        }
+        //public void Refresh()
+        //{
+        //    _db = new dbTrungTamKhachHangDataContext();
+        //}
 
         public bool Them(Lich_DocSo entity)
         {
@@ -125,6 +125,20 @@ namespace DocSo_PC.DAL
         public DataTable getDS_ChiTiet(int IDDocSo)
         {
             return _cDAL.LINQToDataTable(_db.Lich_DocSo_ChiTiets.Where(item => item.IDDocSo == IDDocSo).ToList());
+        }
+
+        public string getHieuLucKyToi()
+        {
+            DataTable dt = _cDAL.ExecuteQuery_DataTable("select ds.Ky,ds.Nam from Lich_DocSo ds,Lich_DocSo_ChiTiet dsct where NgayDoc>=CAST(getdate() as date) and ds.ID=dsct.IDDocSo");
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                if (dt.Rows[0]["Ky"].ToString() == "12")
+                    return "01/" + int.Parse(dt.Rows[0]["Nam"].ToString());
+                else
+                    return (int.Parse(dt.Rows[0]["Ky"].ToString()) + 1).ToString("00") + "/" + dt.Rows[0]["Nam"].ToString();
+            }
+            else
+                return "";
         }
     }
 }
