@@ -135,6 +135,9 @@ namespace KTKS_DonKH.LinQ
     partial void InsertDCBD_DKDM_DanhBo(DCBD_DKDM_DanhBo instance);
     partial void UpdateDCBD_DKDM_DanhBo(DCBD_DKDM_DanhBo instance);
     partial void DeleteDCBD_DKDM_DanhBo(DCBD_DKDM_DanhBo instance);
+    partial void InsertDCBD_DKDM_DanhBo_Hinh(DCBD_DKDM_DanhBo_Hinh instance);
+    partial void UpdateDCBD_DKDM_DanhBo_Hinh(DCBD_DKDM_DanhBo_Hinh instance);
+    partial void DeleteDCBD_DKDM_DanhBo_Hinh(DCBD_DKDM_DanhBo_Hinh instance);
     partial void InsertDCBD_KhauTru(DCBD_KhauTru instance);
     partial void UpdateDCBD_KhauTru(DCBD_KhauTru instance);
     partial void DeleteDCBD_KhauTru(DCBD_KhauTru instance);
@@ -687,6 +690,14 @@ namespace KTKS_DonKH.LinQ
 			get
 			{
 				return this.GetTable<DCBD_DKDM_DanhBo>();
+			}
+		}
+		
+		public System.Data.Linq.Table<DCBD_DKDM_DanhBo_Hinh> DCBD_DKDM_DanhBo_Hinhs
+		{
+			get
+			{
+				return this.GetTable<DCBD_DKDM_DanhBo_Hinh>();
 			}
 		}
 		
@@ -21973,6 +21984,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<System.DateTime> _ModifyDate;
 		
+		private EntitySet<DCBD_DKDM_CCCD_Hinh> _DCBD_DKDM_CCCD_Hinhs;
+		
 		private EntityRef<DCBD_DKDM_DanhBo> _DCBD_DKDM_DanhBo;
 		
     #region Extensibility Method Definitions
@@ -22007,6 +22020,7 @@ namespace KTKS_DonKH.LinQ
 		
 		public DCBD_DKDM_CCCD()
 		{
+			this._DCBD_DKDM_CCCD_Hinhs = new EntitySet<DCBD_DKDM_CCCD_Hinh>(new Action<DCBD_DKDM_CCCD_Hinh>(this.attach_DCBD_DKDM_CCCD_Hinhs), new Action<DCBD_DKDM_CCCD_Hinh>(this.detach_DCBD_DKDM_CCCD_Hinhs));
 			this._DCBD_DKDM_DanhBo = default(EntityRef<DCBD_DKDM_DanhBo>);
 			OnCreated();
 		}
@@ -22075,7 +22089,7 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoTen", DbType="NVarChar(100)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoTen", DbType="NVarChar(200)")]
 		public string HoTen
 		{
 			get
@@ -22255,6 +22269,19 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DCBD_DKDM_CCCD_DCBD_DKDM_CCCD_Hinh", Storage="_DCBD_DKDM_CCCD_Hinhs", ThisKey="ID", OtherKey="IDCCCD")]
+		public EntitySet<DCBD_DKDM_CCCD_Hinh> DCBD_DKDM_CCCD_Hinhs
+		{
+			get
+			{
+				return this._DCBD_DKDM_CCCD_Hinhs;
+			}
+			set
+			{
+				this._DCBD_DKDM_CCCD_Hinhs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DCBD_DKDM_DanhBo_DCBD_DKDM_CCCD", Storage="_DCBD_DKDM_DanhBo", ThisKey="IDDanhBo", OtherKey="ID", IsForeignKey=true)]
 		public DCBD_DKDM_DanhBo DCBD_DKDM_DanhBo
 		{
@@ -22308,6 +22335,18 @@ namespace KTKS_DonKH.LinQ
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void attach_DCBD_DKDM_CCCD_Hinhs(DCBD_DKDM_CCCD_Hinh entity)
+		{
+			this.SendPropertyChanging();
+			entity.DCBD_DKDM_CCCD = this;
+		}
+		
+		private void detach_DCBD_DKDM_CCCD_Hinhs(DCBD_DKDM_CCCD_Hinh entity)
+		{
+			this.SendPropertyChanging();
+			entity.DCBD_DKDM_CCCD = null;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.DCBD_DKDM_CCCD_Hinh")]
@@ -22325,6 +22364,8 @@ namespace KTKS_DonKH.LinQ
 		private string _MatSau;
 		
 		private System.DateTime _CreateDate;
+		
+		private EntityRef<DCBD_DKDM_CCCD> _DCBD_DKDM_CCCD;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -22344,6 +22385,7 @@ namespace KTKS_DonKH.LinQ
 		
 		public DCBD_DKDM_CCCD_Hinh()
 		{
+			this._DCBD_DKDM_CCCD = default(EntityRef<DCBD_DKDM_CCCD>);
 			OnCreated();
 		}
 		
@@ -22378,6 +22420,10 @@ namespace KTKS_DonKH.LinQ
 			{
 				if ((this._IDCCCD != value))
 				{
+					if (this._DCBD_DKDM_CCCD.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnIDCCCDChanging(value);
 					this.SendPropertyChanging();
 					this._IDCCCD = value;
@@ -22443,6 +22489,40 @@ namespace KTKS_DonKH.LinQ
 					this._CreateDate = value;
 					this.SendPropertyChanged("CreateDate");
 					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DCBD_DKDM_CCCD_DCBD_DKDM_CCCD_Hinh", Storage="_DCBD_DKDM_CCCD", ThisKey="IDCCCD", OtherKey="ID", IsForeignKey=true)]
+		public DCBD_DKDM_CCCD DCBD_DKDM_CCCD
+		{
+			get
+			{
+				return this._DCBD_DKDM_CCCD.Entity;
+			}
+			set
+			{
+				DCBD_DKDM_CCCD previousValue = this._DCBD_DKDM_CCCD.Entity;
+				if (((previousValue != value) 
+							|| (this._DCBD_DKDM_CCCD.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DCBD_DKDM_CCCD.Entity = null;
+						previousValue.DCBD_DKDM_CCCD_Hinhs.Remove(this);
+					}
+					this._DCBD_DKDM_CCCD.Entity = value;
+					if ((value != null))
+					{
+						value.DCBD_DKDM_CCCD_Hinhs.Add(this);
+						this._IDCCCD = value.ID;
+					}
+					else
+					{
+						this._IDCCCD = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("DCBD_DKDM_CCCD");
 				}
 			}
 		}
@@ -22524,6 +22604,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private EntitySet<DCBD_DKDM_CCCD> _DCBD_DKDM_CCCDs;
 		
+		private EntitySet<DCBD_DKDM_DanhBo_Hinh> _DCBD_DKDM_DanhBo_Hinhs;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -22581,6 +22663,7 @@ namespace KTKS_DonKH.LinQ
 		public DCBD_DKDM_DanhBo()
 		{
 			this._DCBD_DKDM_CCCDs = new EntitySet<DCBD_DKDM_CCCD>(new Action<DCBD_DKDM_CCCD>(this.attach_DCBD_DKDM_CCCDs), new Action<DCBD_DKDM_CCCD>(this.detach_DCBD_DKDM_CCCDs));
+			this._DCBD_DKDM_DanhBo_Hinhs = new EntitySet<DCBD_DKDM_DanhBo_Hinh>(new Action<DCBD_DKDM_DanhBo_Hinh>(this.attach_DCBD_DKDM_DanhBo_Hinhs), new Action<DCBD_DKDM_DanhBo_Hinh>(this.detach_DCBD_DKDM_DanhBo_Hinhs));
 			OnCreated();
 		}
 		
@@ -23077,6 +23160,19 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DCBD_DKDM_DanhBo_DCBD_DKDM_DanhBo_Hinh", Storage="_DCBD_DKDM_DanhBo_Hinhs", ThisKey="ID", OtherKey="IDParent")]
+		public EntitySet<DCBD_DKDM_DanhBo_Hinh> DCBD_DKDM_DanhBo_Hinhs
+		{
+			get
+			{
+				return this._DCBD_DKDM_DanhBo_Hinhs;
+			}
+			set
+			{
+				this._DCBD_DKDM_DanhBo_Hinhs.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -23107,6 +23203,265 @@ namespace KTKS_DonKH.LinQ
 		{
 			this.SendPropertyChanging();
 			entity.DCBD_DKDM_DanhBo = null;
+		}
+		
+		private void attach_DCBD_DKDM_DanhBo_Hinhs(DCBD_DKDM_DanhBo_Hinh entity)
+		{
+			this.SendPropertyChanging();
+			entity.DCBD_DKDM_DanhBo = this;
+		}
+		
+		private void detach_DCBD_DKDM_DanhBo_Hinhs(DCBD_DKDM_DanhBo_Hinh entity)
+		{
+			this.SendPropertyChanging();
+			entity.DCBD_DKDM_DanhBo = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.DCBD_DKDM_DanhBo_Hinh")]
+	public partial class DCBD_DKDM_DanhBo_Hinh : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _Name;
+		
+		private System.Data.Linq.Binary _Hinh;
+		
+		private System.Nullable<int> _IDParent;
+		
+		private System.Nullable<int> _CreateBy;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private string _Loai;
+		
+		private EntityRef<DCBD_DKDM_DanhBo> _DCBD_DKDM_DanhBo;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnHinhChanging(System.Data.Linq.Binary value);
+    partial void OnHinhChanged();
+    partial void OnIDParentChanging(System.Nullable<int> value);
+    partial void OnIDParentChanged();
+    partial void OnCreateByChanging(System.Nullable<int> value);
+    partial void OnCreateByChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    partial void OnLoaiChanging(string value);
+    partial void OnLoaiChanged();
+    #endregion
+		
+		public DCBD_DKDM_DanhBo_Hinh()
+		{
+			this._DCBD_DKDM_DanhBo = default(EntityRef<DCBD_DKDM_DanhBo>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(50)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Hinh", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Hinh
+		{
+			get
+			{
+				return this._Hinh;
+			}
+			set
+			{
+				if ((this._Hinh != value))
+				{
+					this.OnHinhChanging(value);
+					this.SendPropertyChanging();
+					this._Hinh = value;
+					this.SendPropertyChanged("Hinh");
+					this.OnHinhChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDParent", DbType="Int")]
+		public System.Nullable<int> IDParent
+		{
+			get
+			{
+				return this._IDParent;
+			}
+			set
+			{
+				if ((this._IDParent != value))
+				{
+					if (this._DCBD_DKDM_DanhBo.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDParentChanging(value);
+					this.SendPropertyChanging();
+					this._IDParent = value;
+					this.SendPropertyChanged("IDParent");
+					this.OnIDParentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
+		public System.Nullable<int> CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Loai", DbType="VarChar(5)")]
+		public string Loai
+		{
+			get
+			{
+				return this._Loai;
+			}
+			set
+			{
+				if ((this._Loai != value))
+				{
+					this.OnLoaiChanging(value);
+					this.SendPropertyChanging();
+					this._Loai = value;
+					this.SendPropertyChanged("Loai");
+					this.OnLoaiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DCBD_DKDM_DanhBo_DCBD_DKDM_DanhBo_Hinh", Storage="_DCBD_DKDM_DanhBo", ThisKey="IDParent", OtherKey="ID", IsForeignKey=true)]
+		public DCBD_DKDM_DanhBo DCBD_DKDM_DanhBo
+		{
+			get
+			{
+				return this._DCBD_DKDM_DanhBo.Entity;
+			}
+			set
+			{
+				DCBD_DKDM_DanhBo previousValue = this._DCBD_DKDM_DanhBo.Entity;
+				if (((previousValue != value) 
+							|| (this._DCBD_DKDM_DanhBo.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DCBD_DKDM_DanhBo.Entity = null;
+						previousValue.DCBD_DKDM_DanhBo_Hinhs.Remove(this);
+					}
+					this._DCBD_DKDM_DanhBo.Entity = value;
+					if ((value != null))
+					{
+						value.DCBD_DKDM_DanhBo_Hinhs.Add(this);
+						this._IDParent = value.ID;
+					}
+					else
+					{
+						this._IDParent = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("DCBD_DKDM_DanhBo");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	

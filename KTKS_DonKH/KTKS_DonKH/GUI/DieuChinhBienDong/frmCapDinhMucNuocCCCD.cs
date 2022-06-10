@@ -30,6 +30,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CChungTu _cChungTu = new CChungTu();
         CDHN _cDHN = new CDHN();
         CTTKH _cTTKH = new CTTKH();
+        wsThuongVu.wsThuongVu _wsThuongVu = new wsThuongVu.wsThuongVu();
         HOADON _hoadon = null;
         DCBD_DKDM_DanhBo _danhbo = null;
         bool _flag = false;
@@ -43,6 +44,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void frmCapDinhMucNuocCCCD_Load(object sender, EventArgs e)
         {
             dgvDanhSach.AutoGenerateColumns = false;
+            dgvHinh.AutoGenerateColumns = false;
             dgvDanhSach2.AutoGenerateColumns = false;
             dgvDanhSach_Online.AutoGenerateColumns = false;
             dgvDanhSachCT_Online.AutoGenerateColumns = false;
@@ -69,6 +71,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             chkDangXuLy.Checked = false;
             txtMaDon.Text = "";
             dgvDanhSach.Rows.Clear();
+            dgvHinh.Rows.Clear();
             _hoadon = null;
             _danhbo = null;
             txtDanhBo.Focus();
@@ -495,8 +498,19 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         dgvDanhSach.Rows[index].Cells["NgaySinh"].Value = item.NgaySinh.Value.ToString("dd/MM/yyyy");
                         dgvDanhSach.Rows[index].Cells["DCThuongTru"].Value = item.DCThuongTru;
                         dgvDanhSach.Rows[index].Cells["DCTamTru"].Value = item.DCTamTru;
-                        dgvDanhSach.Rows[index].Cells["CCCD"].Value = item.CCCD;
+                        if (item.CCCD != null)
+                            dgvDanhSach.Rows[index].Cells["CCCD"].Value = item.CCCD;
                         dgvDanhSach.Rows[index].Cells["KhongKiemTra"].Value = item.KhongKiemTra;
+                    }
+                    dgvHinh.Rows.Clear();
+                    foreach (DCBD_DKDM_DanhBo_Hinh item in _danhbo.DCBD_DKDM_DanhBo_Hinhs.ToList())
+                    {
+                        var index = dgvHinh.Rows.Add();
+                        dgvHinh.Rows[index].Cells["ID_Hinh"].Value = item.ID;
+                        dgvHinh.Rows[index].Cells["Name_Hinh"].Value = item.Name;
+                        if (item.Hinh != null)
+                            dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(item.Hinh.ToArray());
+                        dgvHinh.Rows[index].Cells["Loai_Hinh"].Value = item.Loai;
                     }
                     _hoadon = _cThuTien.GetMoiNhat(_danhbo.DanhBo);
                     tabControl1.SelectedTab = tabControl1.TabPages["tabPage1"];
@@ -1117,6 +1131,84 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void btnReset_Click(object sender, EventArgs e)
         {
             Clear();
+        }
+
+        private void btnChonFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png";
+            dialog.Multiselect = false;
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    byte[] bytes = _cDonTu.scanVanBan(dialog.FileName);
+                    if (_danhbo != null)
+                    {
+                        if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+                        {
+                            DCBD_DKDM_DanhBo_Hinh en = new DCBD_DKDM_DanhBo_Hinh();
+                            en.IDParent = _danhbo.ID;
+                            en.Name = DateTime.Now.ToString("dd.MM.yyyy HH.mm.ss");
+                            en.Loai = System.IO.Path.GetExtension(dialog.FileName);
+                            if (_wsThuongVu.ghi_Hinh("DCBD_DKDM_DanhBo_Hinh", _danhbo.ID.ToString(), en.Name + en.Loai, bytes) == true)
+                                if (_cDKDM.Them_Hinh(en) == true)
+                                {
+                                    _cDKDM.Refresh();
+                                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    var index = dgvHinh.Rows.Add();
+                                    dgvHinh.Rows[index].Cells["Name_Hinh"].Value = en.Name;
+                                    dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(bytes);
+                                    dgvHinh.Rows[index].Cells["Loai_Hinh"].Value = System.IO.Path.GetExtension(dialog.FileName);
+                                }
+                        }
+                        else
+                            MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void dgvHinh_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            byte[] hinh = _wsThuongVu.get_Hinh("DCBD_DKDM_DanhBo_Hinh", _danhbo.ID.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
+            if (hinh != null)
+                _cDKDM.LoadImageView(hinh);
+            else
+                MessageBox.Show("Lỗi File", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void dgvHinh_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            try
+            {
+                if (_danhbo != null)
+                    if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+                    {
+                        if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        {
+                            if (e.Row.Cells["ID_Hinh"].Value != null)
+                                if (_wsThuongVu.xoa_Hinh("DCBD_DKDM_DanhBo_Hinh", _danhbo.ID.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString()) == true)
+                                    if (_cDKDM.Xoa_Hinh(_cDKDM.get_Hinh(int.Parse(e.Row.Cells["ID_Hinh"].Value.ToString()))))
+                                    {
+                                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        dgvHinh.Rows.RemoveAt(e.Row.Index);
+                                    }
+                                    else
+                                        MessageBox.Show("Thất Bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                        MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 

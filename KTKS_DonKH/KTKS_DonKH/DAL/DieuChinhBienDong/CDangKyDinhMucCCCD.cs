@@ -457,5 +457,50 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             return ExecuteQuery_DataTable("select Name=(select HoTen from Users where MaU=DCBD_DKDM_DanhBo.CreateBy),ID=CreateBy from DCBD_DKDM_DanhBo where CreateBy is not null group by CreateBy");
         }
 
+        #region Hình
+
+        public bool Them_Hinh(DCBD_DKDM_DanhBo_Hinh en)
+        {
+            try
+            {
+                if (db.DCBD_DKDM_DanhBo_Hinhs.Count() == 0)
+                    en.ID = 1;
+                else
+                    en.ID = db.DCBD_DKDM_DanhBo_Hinhs.Max(item => item.ID) + 1;
+                en.CreateBy = CTaiKhoan.MaUser;
+                en.CreateDate = DateTime.Now;
+                db.DCBD_DKDM_DanhBo_Hinhs.InsertOnSubmit(en);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public bool Xoa_Hinh(DCBD_DKDM_DanhBo_Hinh en)
+        {
+            try
+            {
+                db.DCBD_DKDM_DanhBo_Hinhs.DeleteOnSubmit(en);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public DCBD_DKDM_DanhBo_Hinh get_Hinh(int ID)
+        {
+            return db.DCBD_DKDM_DanhBo_Hinhs.SingleOrDefault(item => item.ID == ID);
+        }
+
+        #endregion
+
     }
 }
