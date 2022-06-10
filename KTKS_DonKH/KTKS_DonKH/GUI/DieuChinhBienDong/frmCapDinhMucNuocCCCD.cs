@@ -29,7 +29,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         CChungTu _cChungTu = new CChungTu();
         CDHN _cDHN = new CDHN();
-        CTTKH _cTTKH = new CTTKH();
+        CDocSo _cDocSo = new CDocSo();
         wsThuongVu.wsThuongVu _wsThuongVu = new wsThuongVu.wsThuongVu();
         HOADON _hoadon = null;
         DCBD_DKDM_DanhBo _danhbo = null;
@@ -710,7 +710,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             ctdcbd.DV = hoadon.TILEDV.ToString();
                                             ctdcbd.HCSN = hoadon.TILEHCSN.ToString();
                                             ctdcbd.Dot = _cDHN.GetDot(hoadon.DANHBA);
-                                            ctdcbd.HieuLucKy = _cTTKH.getHieuLucKyToi(false, hoadon.DOT);
+                                            ctdcbd.HieuLucKy = _cDocSo.getHieuLucKyToi(false, hoadon.DOT);
                                             ctdcbd.DienThoai = txtDienThoai.Text.Trim();
 
                                             ///Biến lưu Điều Chỉnh về gì (Họ Tên,Địa Chỉ,Định Mức,Giá Biểu,MSThuế)

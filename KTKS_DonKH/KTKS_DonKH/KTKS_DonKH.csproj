@@ -1701,9 +1701,9 @@
       <DependentUpon>dbKinhDoanh.dbml</DependentUpon>
     </Compile>
     <Compile Include="LinQ\dbTrungTamKhachHang.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>dbTrungTamKhachHang.dbml</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -2616,9 +2616,6 @@
     <EmbeddedResource Include="GUI\TruyThu\frmTruyThuTienNuoc.resx">
       <DependentUpon>frmTruyThuTienNuoc.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="LinQ\dbTrungTamKhachHang.dbml.layout">
-      <DependentUpon>dbTrungTamKhachHang.dbml</DependentUpon>
-    </None>
     <None Include="LinQ\dbDHN.dbml.layout">
       <DependentUpon>dbDHN.dbml</DependentUpon>
     </None>
@@ -2633,15 +2630,18 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="LinQ\dbTrungTamKhachHang.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>dbTrungTamKhachHang.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
     <None Include="LinQ\dbKinhDoanh.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>dbKinhDoanh.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </None>
+    <None Include="LinQ\dbTrungTamKhachHang.dbml">
+      <SubType>Designer</SubType>
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>dbTrungTamKhachHang.designer.cs</LastGenOutput>
+    </None>
+    <None Include="LinQ\dbTrungTamKhachHang.dbml.layout">
+      <DependentUpon>dbTrungTamKhachHang.dbml</DependentUpon>
     </None>
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">

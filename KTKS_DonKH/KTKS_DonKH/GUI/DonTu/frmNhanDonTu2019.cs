@@ -32,7 +32,7 @@ namespace KTKS_DonKH.GUI.DonTu
         CThuMoi _cThuMoi = new CThuMoi();
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
         CPhongBanDoi _cPBD = new CPhongBanDoi();
-        CTTKH _cTTKH = new CTTKH();
+        CDocSo _cDocSo = new CDocSo();
 
         LinQ.DonTu _dontu = null;
         HOADON _hoadon = null;
@@ -1306,7 +1306,7 @@ namespace KTKS_DonKH.GUI.DonTu
         {
             if (txtSoNK.Text.Trim() != "")
             {
-                txtHieuLucKy.Text = _cTTKH.getHieuLucKyToi(chkCCDM.Checked,_hoadon.DOT);
+                txtHieuLucKy.Text = _cDocSo.getHieuLucKyToi(chkCCDM.Checked, _hoadon.DOT);
             }
         }
 
