@@ -2,7 +2,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectView>ShowAllFiles</ProjectView>
-    <PublishUrlHistory>C:\Users\Admin\Desktop\DocSoWFH\|C:\Users\BaoBao\Desktop\DocSoWFH\|\\server9\BaoBao%24\DocSo_PC\</PublishUrlHistory>
+    <PublishUrlHistory>\\server9\BaoBao%24\DocSo_PC\|C:\Users\Admin\Desktop\DocSoWFH\|C:\Users\BaoBao\Desktop\DocSoWFH\</PublishUrlHistory>
     <InstallUrlHistory />
     <SupportUrlHistory />
     <UpdateUrlHistory>\\server9\BaoBao%24\DocSo_PC\|http://113.161.88.180:81/DocSoWFH/</UpdateUrlHistory>
