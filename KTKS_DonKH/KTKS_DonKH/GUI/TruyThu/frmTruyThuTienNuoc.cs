@@ -2011,7 +2011,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                     //lstVFile.Items.Add(item);
 
                     //byte[] bytes = System.IO.File.ReadAllBytes(dialog.FileName);
-                    byte[] bytes = _cTTTN.scanVanBan(dialog.FileName);
+                    byte[] bytes = _cTTTN.scanImage(dialog.FileName);
                     if (_cttttn == null)
                     {
                         var index = dgvHinh.Rows.Add();

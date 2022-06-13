@@ -828,7 +828,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     //lstVFile.Items.Add(item);
 
                     //byte[] bytes = System.IO.File.ReadAllBytes(dialog.FileName);
-                    byte[] bytes = _cTTTL.scanVanBan(dialog.FileName);
+                    byte[] bytes = _cTTTL.scanImage(dialog.FileName);
                     if (_cttttl == null)
                     {
                         var index = dgvHinh.Rows.Add();

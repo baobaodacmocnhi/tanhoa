@@ -1020,7 +1020,7 @@ namespace KTKS_DonKH.GUI.BamChi
                     //lstVFile.Items.Add(item);
 
                     //byte[] bytes = System.IO.File.ReadAllBytes(dialog.FileName);
-                    byte[] bytes = _cBamChi.scanVanBan(dialog.FileName);
+                    byte[] bytes = _cBamChi.scanImage(dialog.FileName);
                     if (_ctbamchi == null)
                     {
                         var index = dgvHinh.Rows.Add();

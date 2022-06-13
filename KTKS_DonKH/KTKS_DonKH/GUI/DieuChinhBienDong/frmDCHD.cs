@@ -2561,7 +2561,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     //lstVFile.Items.Add(item);
 
                     //byte[] bytes = System.IO.File.ReadAllBytes(dialog.FileName);
-                    byte[] bytes = _cDCBD.scanVanBan(dialog.FileName);
+                    byte[] bytes = _cDCBD.scanImage(dialog.FileName);
                     if (_ctdchd == null)
                     {
                         var index = dgvHinh.Rows.Add();

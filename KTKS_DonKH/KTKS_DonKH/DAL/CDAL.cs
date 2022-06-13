@@ -285,6 +285,19 @@ namespace KTKS_DonKH.DAL
             return dtReturn;
         }
 
+        string pathHinhTV = @"\\rackstation\HinhDHN\ThuongVu";
+        public void LoadFileView(string Folder, string ID, string FileName)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start(pathHinhTV + @"\" + Folder + @"\" + ID + @"\" + FileName);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public void LoadImageView(byte[] pData)
         {
             try
@@ -487,11 +500,16 @@ namespace KTKS_DonKH.DAL
             return (byte[])converter.ConvertTo(image, typeof(byte[]));
         }
 
-        public byte[] scanVanBan(string path)
+        public byte[] scanImage(string path)
         {
             Image image = Image.FromFile(path);
             Bitmap resizedImage = resizeImage(image, 0.5m);
             return ImageToByte(resizedImage);
+        }
+
+        public byte[] scanFile(string path)
+        {
+            return File.ReadAllBytes(path);
         }
     }
 }

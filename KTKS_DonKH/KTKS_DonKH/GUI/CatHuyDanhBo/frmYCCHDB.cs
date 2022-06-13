@@ -724,7 +724,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     //lstVFile.Items.Add(item);
 
                     //byte[] bytes = System.IO.File.ReadAllBytes(dialog.FileName);
-                    byte[] bytes = _cCHDB.scanVanBan(dialog.FileName);
+                    byte[] bytes = _cCHDB.scanImage(dialog.FileName);
                     if (_ycchdb == null)
                     {
                         var index = dgvHinh.Rows.Add();

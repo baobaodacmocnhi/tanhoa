@@ -1083,7 +1083,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                     //lstVFile.Items.Add(item);
 
                     //byte[] bytes = System.IO.File.ReadAllBytes(dialog.FileName);
-                    byte[] bytes = _cGianLan.scanVanBan(dialog.FileName);
+                    byte[] bytes = _cGianLan.scanImage(dialog.FileName);
                     if (_gianlan == null)
                     {
                         var index = dgvHinh.Rows.Add();

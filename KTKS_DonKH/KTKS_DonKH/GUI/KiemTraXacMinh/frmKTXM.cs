@@ -1097,7 +1097,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                     //lstVFile.Items.Add(item);
 
                     //byte[] bytes = System.IO.File.ReadAllBytes(dialog.FileName);
-                    byte[] bytes = _cKTXM.scanVanBan(dialog.FileName);
+                    byte[] bytes = _cKTXM.scanImage(dialog.FileName);
                     if (_ctktxm == null)
                     {
                         var index = dgvHinh.Rows.Add();

@@ -740,7 +740,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                     //lstVFile.Items.Add(item);
 
                     //byte[] bytes = System.IO.File.ReadAllBytes(dialog.FileName);
-                    byte[] bytes = _cThuMoi.scanVanBan(dialog.FileName);
+                    byte[] bytes = _cThuMoi.scanImage(dialog.FileName);
                     if (_thumoi == null)
                     {
                         var index = dgvHinh.Rows.Add();

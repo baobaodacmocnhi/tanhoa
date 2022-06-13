@@ -1136,13 +1136,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void btnChonFile_Click(object sender, EventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png";
+            dialog.Filter = "PDF files (*.pdf) | *.pdf|Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png";
             dialog.Multiselect = false;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
-                    byte[] bytes = _cDonTu.scanVanBan(dialog.FileName);
+                    byte[] bytes = _cDonTu.scanFile(dialog.FileName);
                     if (_danhbo != null)
                     {
                         if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
@@ -1175,11 +1175,26 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void dgvHinh_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            byte[] hinh = _wsThuongVu.get_Hinh("DCBD_DKDM_DanhBo_Hinh", _danhbo.ID.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
-            if (hinh != null)
-                _cDKDM.LoadImageView(hinh);
-            else
-                MessageBox.Show("Lỗi File", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            try
+            {
+                if (dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString().Contains("pdf"))
+                {
+                    _cDKDM.LoadFileView("DCBD_DKDM_DanhBo_Hinh", _danhbo.ID.ToString(),dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
+                }
+                else
+                {
+                    byte[] hinh = _wsThuongVu.get_Hinh("DCBD_DKDM_DanhBo_Hinh", _danhbo.ID.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
+                    if (hinh != null)
+                        _cDKDM.LoadImageView(hinh);
+                    else
+                        MessageBox.Show("Lỗi File", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void dgvHinh_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)

@@ -37,8 +37,8 @@ namespace KTKS_DonKH.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=serverg8-01;Initial Catalog=KTKS_DonKH;Persist Security Info=True;Use" +
-            "r ID=sa;Password=db11@tanhoa")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=server11;Initial Catalog=KTKS_DonKH;Persist Security Info=True;User I" +
+            "D=sa;Password=db11@tanhoa")]
         public string KTKS_DonKHConnectionString {
             get {
                 return ((string)(this["KTKS_DonKHConnectionString"]));
@@ -70,8 +70,8 @@ namespace KTKS_DonKH.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=serverg8-01;Initial Catalog=TRUNGTAMKHACHHANG;Persist Security Info=T" +
-            "rue;User ID=sa;Password=db11@tanhoa")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=server11;Initial Catalog=TRUNGTAMKHACHHANG;Persist Security Info=True" +
+            ";User ID=sa;Password=db11@tanhoa")]
         public string TRUNGTAMKHACHHANGConnectionString {
             get {
                 return ((string)(this["TRUNGTAMKHACHHANGConnectionString"]));
@@ -92,7 +92,7 @@ namespace KTKS_DonKH.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://serverg8-01:81/wsthuongvu.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://server11:81/wsthuongvu.asmx")]
         public string KTKS_DonKH_wsThuongVu_wsThuongVu {
             get {
                 return ((string)(this["KTKS_DonKH_wsThuongVu_wsThuongVu"]));
