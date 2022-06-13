@@ -170,6 +170,18 @@ namespace DocSo_PC.GUI.ToTruong
                 {
                     DataRow dr = dsBaoCao.Tables["BaoCao"].NewRow();
                     dr["TenPhong"] = CNguoiDung.TenPhong;
+                    if (CNguoiDung.Doi)
+                    {
+                        if (cmbTo.SelectedIndex == 0)
+                            dr["SoPhieu"] = "Số:_____/DS";
+                        else
+                            dr["SoPhieu"] = "Số:_____/DS-" + _cTo.get(int.Parse(cmbTo.SelectedValue.ToString())).KyHieu;
+                    }
+                    else
+                    {
+                        dr["SoPhieu"] = "Số:_____/DS-" + _cTo.get(CNguoiDung.MaTo).KyHieu;
+                    }
+
                     switch (item.Cells["NoiDung"].Value.ToString())
                     {
                         case "Âm Sâu":

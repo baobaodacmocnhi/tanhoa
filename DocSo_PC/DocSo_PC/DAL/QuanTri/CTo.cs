@@ -83,7 +83,7 @@ namespace DocSo_PC.DAL.QuanTri
             return _db.Tos.Any(item => item.MaTo == MaTo && item.HanhThu == true);
         }
 
-        public int get_MaTo(int May)
+        public int get_May(int May)
         {
             return _db.Tos.SingleOrDefault(item => item.TuMay <= May && item.DenMay >= May).MaTo;
         }

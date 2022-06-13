@@ -249,7 +249,7 @@ namespace DocSo_PC.GUI.Doi
                                     en.TongTien = 0;
                                     en.DenNgay = NgayDoc;
                                     en.NgayTaoDot = DateTime.Now;
-                                    en.TODS = _cTo.get_MaTo(int.Parse(en.May));
+                                    en.TODS = _cTo.get_May(int.Parse(en.May));
                                     if (_cDocSo.checkExists_DocSo(en.DocSoID) == false)
                                         _cDocSo.them_DocSo(en);
                                     else

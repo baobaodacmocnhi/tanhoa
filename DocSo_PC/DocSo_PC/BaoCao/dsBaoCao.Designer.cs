@@ -318,6 +318,8 @@ namespace DocSo_PC.BaoCao {
             
             private global::System.Data.DataColumn columnTenPhong;
             
+            private global::System.Data.DataColumn columnSoPhieu;
+            
             private global::System.Data.DataColumn columnTieuDe;
             
             private global::System.Data.DataColumn columnThoiGian;
@@ -428,6 +430,14 @@ namespace DocSo_PC.BaoCao {
             public global::System.Data.DataColumn TenPhongColumn {
                 get {
                     return this.columnTenPhong;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SoPhieuColumn {
+                get {
+                    return this.columnSoPhieu;
                 }
             }
             
@@ -727,6 +737,7 @@ namespace DocSo_PC.BaoCao {
             public BaoCaoRow AddBaoCaoRow(
                         string PathLogo, 
                         string TenPhong, 
+                        string SoPhieu, 
                         string TieuDe, 
                         string ThoiGian, 
                         string MaDon, 
@@ -763,6 +774,7 @@ namespace DocSo_PC.BaoCao {
                 object[] columnValuesArray = new object[] {
                         PathLogo,
                         TenPhong,
+                        SoPhieu,
                         TieuDe,
                         ThoiGian,
                         MaDon,
@@ -819,6 +831,7 @@ namespace DocSo_PC.BaoCao {
             internal void InitVars() {
                 this.columnPathLogo = base.Columns["PathLogo"];
                 this.columnTenPhong = base.Columns["TenPhong"];
+                this.columnSoPhieu = base.Columns["SoPhieu"];
                 this.columnTieuDe = base.Columns["TieuDe"];
                 this.columnThoiGian = base.Columns["ThoiGian"];
                 this.columnMaDon = base.Columns["MaDon"];
@@ -860,6 +873,8 @@ namespace DocSo_PC.BaoCao {
                 base.Columns.Add(this.columnPathLogo);
                 this.columnTenPhong = new global::System.Data.DataColumn("TenPhong", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTenPhong);
+                this.columnSoPhieu = new global::System.Data.DataColumn("SoPhieu", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSoPhieu);
                 this.columnTieuDe = new global::System.Data.DataColumn("TieuDe", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTieuDe);
                 this.columnThoiGian = new global::System.Data.DataColumn("ThoiGian", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1925,6 +1940,22 @@ namespace DocSo_PC.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string SoPhieu {
+                get {
+                    try {
+                        return ((string)(this[this.tableBaoCao.SoPhieuColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SoPhieu\' in table \'BaoCao\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBaoCao.SoPhieuColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string TieuDe {
                 get {
                     try {
@@ -2457,6 +2488,18 @@ namespace DocSo_PC.BaoCao {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetTenPhongNull() {
                 this[this.tableBaoCao.TenPhongColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSoPhieuNull() {
+                return this.IsNull(this.tableBaoCao.SoPhieuColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSoPhieuNull() {
+                this[this.tableBaoCao.SoPhieuColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
