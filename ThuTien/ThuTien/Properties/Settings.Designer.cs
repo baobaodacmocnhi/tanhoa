@@ -37,8 +37,8 @@ namespace ThuTien.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=serverg8-01;Initial Catalog=KTKS_DonKH;Persist Security Info=True;Use" +
-            "r ID=sa;Password=db11@tanhoa")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=server11;Initial Catalog=KTKS_DonKH;Persist Security Info=True;User I" +
+            "D=sa;Password=db11@tanhoa")]
         public string KTKS_DonKHConnectionString {
             get {
                 return ((string)(this["KTKS_DonKHConnectionString"]));
@@ -59,7 +59,7 @@ namespace ThuTien.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://serverg8-01:81//wsthutien.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://server11:81//wsthutien.asmx")]
         public string ThuTien_wsThuTien_wsThuTien {
             get {
                 return ((string)(this["ThuTien_wsThuTien_wsThuTien"]));
