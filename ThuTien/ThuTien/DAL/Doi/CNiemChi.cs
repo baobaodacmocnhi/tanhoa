@@ -234,5 +234,9 @@ namespace ThuTien.DAL.Doi
             return _db.TT_NiemChis.Count(item => item.HuHong == true && item.QuyetToan == false);
         }
 
+        public int countHuHong_ChuQuyetToan(string MauSac)
+        {
+            return _db.TT_NiemChis.Count(item => item.HuHong == true && item.QuyetToan == false && item.MauSac == MauSac);
+        }
     }
 }

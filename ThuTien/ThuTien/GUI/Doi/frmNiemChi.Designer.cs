@@ -106,6 +106,8 @@
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID_HuHong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QuyetToan_HuHong = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.cmbMauSac = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNiemChi_Nhap)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -117,6 +119,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cmbMauSac);
+            this.groupBox1.Controls.Add(this.label15);
             this.groupBox1.Controls.Add(this.txtSLHuHong_Nhap);
             this.groupBox1.Controls.Add(this.txtSLTon_Nhap);
             this.groupBox1.Controls.Add(this.txtSLSuDung_Nhap);
@@ -168,7 +172,7 @@
             // 
             // btnXoa_Nhap
             // 
-            this.btnXoa_Nhap.Location = new System.Drawing.Point(216, 77);
+            this.btnXoa_Nhap.Location = new System.Drawing.Point(338, 70);
             this.btnXoa_Nhap.Name = "btnXoa_Nhap";
             this.btnXoa_Nhap.Size = new System.Drawing.Size(75, 23);
             this.btnXoa_Nhap.TabIndex = 9;
@@ -178,7 +182,7 @@
             // 
             // btnSua_Nhap
             // 
-            this.btnSua_Nhap.Location = new System.Drawing.Point(216, 48);
+            this.btnSua_Nhap.Location = new System.Drawing.Point(338, 41);
             this.btnSua_Nhap.Name = "btnSua_Nhap";
             this.btnSua_Nhap.Size = new System.Drawing.Size(75, 23);
             this.btnSua_Nhap.TabIndex = 8;
@@ -188,7 +192,7 @@
             // 
             // btnThem_Nhap
             // 
-            this.btnThem_Nhap.Location = new System.Drawing.Point(216, 19);
+            this.btnThem_Nhap.Location = new System.Drawing.Point(338, 12);
             this.btnThem_Nhap.Name = "btnThem_Nhap";
             this.btnThem_Nhap.Size = new System.Drawing.Size(75, 23);
             this.btnThem_Nhap.TabIndex = 7;
@@ -830,6 +834,26 @@
             this.QuyetToan_HuHong.Name = "QuyetToan_HuHong";
             this.QuyetToan_HuHong.Width = 50;
             // 
+            // cmbMauSac
+            // 
+            this.cmbMauSac.FormattingEnabled = true;
+            this.cmbMauSac.Items.AddRange(new object[] {
+            "Vàng",
+            "Xanh"});
+            this.cmbMauSac.Location = new System.Drawing.Point(272, 72);
+            this.cmbMauSac.Name = "cmbMauSac";
+            this.cmbMauSac.Size = new System.Drawing.Size(60, 21);
+            this.cmbMauSac.TabIndex = 76;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(216, 76);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(50, 13);
+            this.label15.TabIndex = 75;
+            this.label15.Text = "Màu Sắc";
+            // 
             // frmNiemChi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -930,5 +954,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_HuHong;
         private System.Windows.Forms.DataGridViewCheckBoxColumn QuyetToan_HuHong;
+        private System.Windows.Forms.ComboBox cmbMauSac;
+        private System.Windows.Forms.Label label15;
     }
 }

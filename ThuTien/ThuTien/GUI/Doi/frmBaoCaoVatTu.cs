@@ -36,7 +36,11 @@ namespace ThuTien.GUI.Doi
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvBamChi.DataSource = _cDongNuoc.getDS_KQDongNuoc(dateTu.Value, dateDen.Value);
+            if (radDongNuoc.Checked)
+                dgvBamChi.DataSource = _cDongNuoc.getDS_KQDongNuoc(dateTu.Value, dateDen.Value);
+            else
+                if (radMoNuoc.Checked)
+                    dgvBamChi.DataSource = _cDongNuoc.getDS_KQMoNuoc(dateTu.Value, dateDen.Value);
         }
 
         private void btnIn_Click(object sender, EventArgs e)
@@ -44,77 +48,21 @@ namespace ThuTien.GUI.Doi
             try
             {
                 dsBaoCao ds = new dsBaoCao();
-
                 foreach (DataGridViewRow item in dgvBamChi.Rows)
                     if (item.Cells["DanhBo"].Value != null)
                     {
-                        //if (bool.Parse(item.Cells["DongNuoc2"].Value.ToString()) == true)
-                        //{
-                        //    DateTime date = new DateTime();
-                        //    DateTime.TryParse(item.Cells["NgayDN1"].Value.ToString(), out date);
-                        //    if (date.Date >= dateTu.Value.Date && date.Date <= dateDen.Value.Date)
-                        //    {
-                        //        DataRow dr = ds.Tables["KQDongNuoc"].NewRow();
-
-                        //        dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
-                        //        dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
-                        //        dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(7, " ").Insert(4, " ");
-                        //        dr["HoTen"] = item.Cells["HoTen"].Value.ToString();
-                        //        dr["DiaChi"] = item.Cells["DiaChi"].Value.ToString();
-                        //        dr["Hieu"] = item.Cells["Hieu"].Value.ToString();
-                        //        dr["Co"] = item.Cells["Co"].Value.ToString();
-                        //        if (int.Parse(item.Cells["Co"].Value.ToString()) <= 25)
-                        //            dr["ChiSo"] = int.Parse(item.Cells["ChiSoDN1"].Value.ToString()).ToString("D4");
-                        //        else
-                        //            dr["ChiSo"] = int.Parse(item.Cells["ChiSoDN1"].Value.ToString()).ToString("D5");
-
-                        //        dr["NgayDN"] = date.ToString("dd/MM/yyyy");
-                        //        dr["To"] = item.Cells["To"].Value.ToString();
-                        //        dr["NhanVien"] = item.Cells["NhanVien"].Value.ToString();
-                        //        if (item.Cells["NiemChi1"].Value.ToString() != "")
-                        //        {
-                        //            dr["NiemChi"] = item.Cells["NiemChi1"].Value.ToString();
-                        //            dr["DayDong"] = "0.6";
-                        //        }
-                        //        else
-                        //            if (bool.Parse(item.Cells["KhoaKhac"].Value.ToString()) == true || bool.Parse(item.Cells["KhoaTu"].Value.ToString()) == true)
-                        //                dr["KhoaTu"] = "X";
-                        //        dr["GhiChu"] = "Thu hồi nợ";
-                        //        dr["ChucVu"] = CNguoiKy.getChucVu();
-                        //        dr["NguoiKy"] = CNguoiKy.getNguoiKy();
-
-                        //        ds.Tables["KQDongNuoc"].Rows.Add(dr);
-                        //    }
-                        //}
-                        {
-                            DateTime date = new DateTime();
+                        DateTime date = new DateTime();
+                        if (radDongNuoc.Checked)
                             DateTime.TryParse(item.Cells["NgayDN"].Value.ToString(), out date);
-                            if (date.Date >= dateTu.Value.Date && date.Date <= dateDen.Value.Date)
+                        else
+                            if (radMoNuoc.Checked)
+                                DateTime.TryParse(item.Cells["NgayMN"].Value.ToString(), out date);
+                        if (date.Date >= dateTu.Value.Date && date.Date <= dateDen.Value.Date)
+                        {
+                            DataRow dr = ds.Tables["KQDongNuoc"].NewRow();
+                            if (radDongNuoc.Checked)
                             {
-                                DataRow dr = ds.Tables["KQDongNuoc"].NewRow();
-
-                                dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
-                                dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
-                                dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(7, " ").Insert(4, " ");
-                                dr["HoTen"] = item.Cells["HoTen"].Value.ToString();
-                                dr["DiaChi"] = item.Cells["DiaChi"].Value.ToString();
-                                dr["Hieu"] = item.Cells["Hieu"].Value.ToString();
-                                dr["Co"] = item.Cells["Co"].Value.ToString();
-                                if (item.Cells["ChiSoDN"].Value.ToString() == "")
-                                {
-                                    MessageBox.Show("Thiếu chỉ số nước", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    dgvBamChi.Rows[item.Index].Selected = true;
-                                    dgvBamChi.Rows[item.Index].Cells[0].Selected = true;
-                                    return;
-                                }
-                                if (int.Parse(item.Cells["Co"].Value.ToString()) <= 25)
-                                    dr["ChiSo"] = int.Parse(item.Cells["ChiSoDN"].Value.ToString()).ToString("D4");
-                                else
-                                    dr["ChiSo"] = int.Parse(item.Cells["ChiSoDN"].Value.ToString()).ToString("D5");
-
-                                dr["NgayDN"] = date.ToString("dd/MM/yyyy");
-                                dr["To"] = item.Cells["To"].Value.ToString();
-                                dr["NhanVien"] = item.Cells["NhanVien"].Value.ToString();
+                                dr["Loai"] = "màu XANH";
                                 if (item.Cells["NiemChi"].Value.ToString() != "")
                                 {
                                     dr["NiemChi"] = item.Cells["NiemChi"].Value.ToString();
@@ -123,16 +71,49 @@ namespace ThuTien.GUI.Doi
                                 else
                                     if (bool.Parse(item.Cells["KhoaKhac"].Value.ToString()) == true || bool.Parse(item.Cells["KhoaTu"].Value.ToString()) == true)
                                         dr["KhoaTu"] = "X";
-                                dr["GhiChu"] = "Thu hồi nợ";
-                                dr["ChucVu"] = CNguoiKy.getChucVu();
-                                dr["NguoiKy"] = CNguoiKy.getNguoiKy();
-
-                                ds.Tables["KQDongNuoc"].Rows.Add(dr);
                             }
+                            else
+                                if (radMoNuoc.Checked)
+                                {
+                                    dr["Loai"] = "màu VÀNG";
+                                    if (item.Cells["NiemChiMN"].Value.ToString() != "")
+                                    {
+                                        dr["NiemChi"] = item.Cells["NiemChiMN"].Value.ToString();
+                                        dr["DayDong"] = _cDongNuoc.convertToDouble("0,6");
+                                    }
+                                    else
+                                        if (bool.Parse(item.Cells["KhoaKhac"].Value.ToString()) == true || bool.Parse(item.Cells["KhoaTu"].Value.ToString()) == true)
+                                            dr["KhoaTu"] = "X";
+                                }
+                            dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                            dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                            dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(7, " ").Insert(4, " ");
+                            dr["HoTen"] = item.Cells["HoTen"].Value.ToString();
+                            dr["DiaChi"] = item.Cells["DiaChi"].Value.ToString();
+                            dr["Hieu"] = item.Cells["Hieu"].Value.ToString();
+                            dr["Co"] = item.Cells["Co"].Value.ToString();
+                            if (int.Parse(item.Cells["Co"].Value.ToString()) <= 25)
+                                dr["ChiSo"] = int.Parse(item.Cells["ChiSoDN"].Value.ToString()).ToString("D4");
+                            else
+                                dr["ChiSo"] = int.Parse(item.Cells["ChiSoDN"].Value.ToString()).ToString("D5");
+                            dr["NgayDN"] = date.ToString("dd/MM/yyyy");
+                            dr["To"] = item.Cells["To"].Value.ToString();
+                            dr["NhanVien"] = item.Cells["NhanVien"].Value.ToString();
+      
+                            dr["GhiChu"] = "Thu hồi nợ";
+                            dr["ChucVu"] = CNguoiKy.getChucVu();
+                            dr["NguoiKy"] = CNguoiKy.getNguoiKy();
+
+                            ds.Tables["KQDongNuoc"].Rows.Add(dr);
                         }
                     }
 
                 object soluong = _cNiemChi.countHuHong_ChuQuyetToan();
+                if (radDongNuoc.Checked)
+                    soluong = _cNiemChi.countHuHong_ChuQuyetToan("Xanh");
+                else
+                    if (radMoNuoc.Checked)
+                        soluong = _cNiemChi.countHuHong_ChuQuyetToan("Vàng");
                 if (soluong != null && int.Parse(soluong.ToString()) > 0)
                 {
                     DataTable dtHD = _cHoaDon.getDS(soluong.ToString());
@@ -201,6 +182,38 @@ namespace ThuTien.GUI.Doi
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void radDongNuoc_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radDongNuoc.Checked)
+            {
+                dgvBamChi.Columns["ChiSoDN"].Visible = true;
+                dgvBamChi.Columns["NgayDN"].Visible = true;
+                dgvBamChi.Columns["NiemChi"].Visible = true;
+                dgvBamChi.Columns["NiemChi1"].Visible = true;
+                dgvBamChi.Columns["MauSac"].Visible = true;
+                dgvBamChi.Columns["ChiSoMN"].Visible = false;
+                dgvBamChi.Columns["NgayMN"].Visible = false;
+                dgvBamChi.Columns["NiemChiMN"].Visible = false;
+                dgvBamChi.Columns["MauSacMN"].Visible = false;
+            }
+        }
+
+        private void radMoNuoc_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radMoNuoc.Checked)
+            {
+                dgvBamChi.Columns["ChiSoDN"].Visible = false;
+                dgvBamChi.Columns["NgayDN"].Visible = false;
+                dgvBamChi.Columns["NiemChi"].Visible = false;
+                dgvBamChi.Columns["NiemChi1"].Visible = false;
+                dgvBamChi.Columns["MauSac"].Visible = false;
+                dgvBamChi.Columns["ChiSoMN"].Visible = true;
+                dgvBamChi.Columns["NgayMN"].Visible = true;
+                dgvBamChi.Columns["NiemChiMN"].Visible = true;
+                dgvBamChi.Columns["MauSacMN"].Visible = true;
             }
         }
     }

@@ -92,7 +92,7 @@ namespace ThuTien.GUI.Doi
                             //TT_NiemChi en = new TT_NiemChi();
                             //en.ID = i;
                             //_cNiemChi.Them(en);
-                            sql += " insert into TT_NiemChi(ID,CreateBy,CreateDate)values(" + i + "," + CNguoiDung.MaND + ",getDate())";
+                            sql += " insert into TT_NiemChi(ID,MauSac,CreateBy,CreateDate)values(" + i + ",N'" + cmbMauSac.SelectedItem.ToString() + "'," + CNguoiDung.MaND + ",getDate())";
                         }
                         _cNiemChi.SqlBeginTransaction();
                         _cNiemChi.ExecuteNonQuery_Transaction(sql);

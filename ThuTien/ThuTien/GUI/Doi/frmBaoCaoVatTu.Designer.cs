@@ -36,6 +36,9 @@
             this.btnXem = new System.Windows.Forms.Button();
             this.dateTu = new System.Windows.Forms.DateTimePicker();
             this.dgvBamChi = new System.Windows.Forms.DataGridView();
+            this.btnIn = new System.Windows.Forms.Button();
+            this.radDongNuoc = new System.Windows.Forms.RadioButton();
+            this.radMoNuoc = new System.Windows.Forms.RadioButton();
             this.MaKQDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Duyet = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -50,18 +53,22 @@
             this.NiemChi1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayDN1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ChiSoDN1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MauSac = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ChiSoMN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayMN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NiemChiMN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MauSacMN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KhoaTu = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.KhoaKhac = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.To = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NhanVien = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnIn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBamChi)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(314, 15);
+            this.label2.Location = new System.Drawing.Point(329, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 13);
             this.label2.TabIndex = 18;
@@ -71,7 +78,7 @@
             // 
             this.dateDen.CustomFormat = "dd/MM/yyyy";
             this.dateDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDen.Location = new System.Drawing.Point(378, 12);
+            this.dateDen.Location = new System.Drawing.Point(393, 12);
             this.dateDen.Name = "dateDen";
             this.dateDen.Size = new System.Drawing.Size(95, 20);
             this.dateDen.TabIndex = 19;
@@ -79,7 +86,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(156, 15);
+            this.label4.Location = new System.Drawing.Point(171, 15);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(51, 13);
             this.label4.TabIndex = 15;
@@ -87,7 +94,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(479, 10);
+            this.btnXem.Location = new System.Drawing.Point(494, 10);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 17;
@@ -99,7 +106,7 @@
             // 
             this.dateTu.CustomFormat = "dd/MM/yyyy";
             this.dateTu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTu.Location = new System.Drawing.Point(213, 12);
+            this.dateTu.Location = new System.Drawing.Point(228, 12);
             this.dateTu.Name = "dateTu";
             this.dateTu.Size = new System.Drawing.Size(95, 20);
             this.dateTu.TabIndex = 16;
@@ -132,6 +139,11 @@
             this.NiemChi1,
             this.NgayDN1,
             this.ChiSoDN1,
+            this.MauSac,
+            this.ChiSoMN,
+            this.NgayMN,
+            this.NiemChiMN,
+            this.MauSacMN,
             this.KhoaTu,
             this.KhoaKhac,
             this.To,
@@ -146,6 +158,40 @@
             this.dgvBamChi.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvBamChi_CellFormatting);
             this.dgvBamChi.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvBamChi_CellValidating);
             this.dgvBamChi.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvBamChi_RowPostPaint);
+            // 
+            // btnIn
+            // 
+            this.btnIn.Location = new System.Drawing.Point(575, 10);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(75, 23);
+            this.btnIn.TabIndex = 21;
+            this.btnIn.Text = "In";
+            this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            // 
+            // radDongNuoc
+            // 
+            this.radDongNuoc.AutoSize = true;
+            this.radDongNuoc.Checked = true;
+            this.radDongNuoc.Location = new System.Drawing.Point(12, 13);
+            this.radDongNuoc.Name = "radDongNuoc";
+            this.radDongNuoc.Size = new System.Drawing.Size(80, 17);
+            this.radDongNuoc.TabIndex = 22;
+            this.radDongNuoc.TabStop = true;
+            this.radDongNuoc.Text = "Đóng Nước";
+            this.radDongNuoc.UseVisualStyleBackColor = true;
+            this.radDongNuoc.CheckedChanged += new System.EventHandler(this.radDongNuoc_CheckedChanged);
+            // 
+            // radMoNuoc
+            // 
+            this.radMoNuoc.AutoSize = true;
+            this.radMoNuoc.Location = new System.Drawing.Point(98, 13);
+            this.radMoNuoc.Name = "radMoNuoc";
+            this.radMoNuoc.Size = new System.Drawing.Size(69, 17);
+            this.radMoNuoc.TabIndex = 23;
+            this.radMoNuoc.Text = "Mở Nước";
+            this.radMoNuoc.UseVisualStyleBackColor = true;
+            this.radMoNuoc.CheckedChanged += new System.EventHandler(this.radMoNuoc_CheckedChanged);
             // 
             // MaKQDN
             // 
@@ -179,7 +225,7 @@
             this.DiaChi.DataPropertyName = "DiaChi";
             this.DiaChi.HeaderText = "Địa Chỉ";
             this.DiaChi.Name = "DiaChi";
-            this.DiaChi.Width = 250;
+            this.DiaChi.Width = 200;
             // 
             // Hieu
             // 
@@ -243,6 +289,44 @@
             this.ChiSoDN1.Name = "ChiSoDN1";
             this.ChiSoDN1.Visible = false;
             // 
+            // MauSac
+            // 
+            this.MauSac.DataPropertyName = "MauSac";
+            this.MauSac.HeaderText = "Màu Sắc";
+            this.MauSac.Name = "MauSac";
+            this.MauSac.Width = 50;
+            // 
+            // ChiSoMN
+            // 
+            this.ChiSoMN.DataPropertyName = "ChiSoMN";
+            this.ChiSoMN.HeaderText = "Chỉ Số";
+            this.ChiSoMN.Name = "ChiSoMN";
+            this.ChiSoMN.Visible = false;
+            this.ChiSoMN.Width = 50;
+            // 
+            // NgayMN
+            // 
+            this.NgayMN.DataPropertyName = "NgayMN";
+            this.NgayMN.HeaderText = "Ngày MN";
+            this.NgayMN.Name = "NgayMN";
+            this.NgayMN.Visible = false;
+            // 
+            // NiemChiMN
+            // 
+            this.NiemChiMN.DataPropertyName = "NiemChiMN";
+            this.NiemChiMN.HeaderText = "Niêm Chì MN";
+            this.NiemChiMN.Name = "NiemChiMN";
+            this.NiemChiMN.Visible = false;
+            this.NiemChiMN.Width = 70;
+            // 
+            // MauSacMN
+            // 
+            this.MauSacMN.DataPropertyName = "MauSacMN";
+            this.MauSacMN.HeaderText = "Màu Sắc";
+            this.MauSacMN.Name = "MauSacMN";
+            this.MauSacMN.Visible = false;
+            this.MauSacMN.Width = 50;
+            // 
             // KhoaTu
             // 
             this.KhoaTu.DataPropertyName = "KhoaTu";
@@ -271,22 +355,14 @@
             this.NhanVien.Name = "NhanVien";
             this.NhanVien.Width = 80;
             // 
-            // btnIn
-            // 
-            this.btnIn.Location = new System.Drawing.Point(560, 10);
-            this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(75, 23);
-            this.btnIn.TabIndex = 21;
-            this.btnIn.Text = "In";
-            this.btnIn.UseVisualStyleBackColor = true;
-            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
-            // 
             // frmBaoCaoVatTu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1241, 640);
+            this.Controls.Add(this.radMoNuoc);
+            this.Controls.Add(this.radDongNuoc);
             this.Controls.Add(this.btnIn);
             this.Controls.Add(this.dgvBamChi);
             this.Controls.Add(this.label2);
@@ -312,6 +388,8 @@
         private System.Windows.Forms.DateTimePicker dateTu;
         private System.Windows.Forms.DataGridView dgvBamChi;
         private System.Windows.Forms.Button btnIn;
+        private System.Windows.Forms.RadioButton radDongNuoc;
+        private System.Windows.Forms.RadioButton radMoNuoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaKQDN;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Duyet;
@@ -326,6 +404,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NiemChi1;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayDN1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ChiSoDN1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MauSac;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ChiSoMN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayMN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NiemChiMN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MauSacMN;
         private System.Windows.Forms.DataGridViewCheckBoxColumn KhoaTu;
         private System.Windows.Forms.DataGridViewCheckBoxColumn KhoaKhac;
         private System.Windows.Forms.DataGridViewTextBoxColumn To;

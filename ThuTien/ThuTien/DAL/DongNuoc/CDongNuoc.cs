@@ -458,44 +458,6 @@ namespace ThuTien.DAL.DongNuoc
 
         public DataTable getDS_KQDongNuoc(DateTime FromNgayDN, DateTime ToNgayDN)
         {
-            //var query = from item in _db.TT_KQDongNuocs
-            //            where (item.NgayDN.Value.Date >= FromNgayDN.Date && item.NgayDN.Value.Date <= ToNgayDN.Date) || (item.NgayDN1.Value.Date >= FromNgayDN.Date && item.NgayDN1.Value.Date <= ToNgayDN.Date)
-            //            select new
-            //            {
-            //                item.MaKQDN,
-            //                item.DanhBo,
-            //                item.HopDong,
-            //                item.HoTen,
-            //                item.DiaChi,
-            //                item.MLT,
-            //                item.DongNuoc,
-            //                item.NgayDN,
-            //                item.Hieu,
-            //                item.Co,
-            //                item.SoThan,
-            //                item.ChiSoDN,
-            //                item.NiemChi,
-            //                item.ChiMatSo,
-            //                item.ChiKhoaGoc,
-            //                item.LyDo,
-            //                item.GhiChu,
-            //                item.DongNuoc2,
-            //                item.NgayDN1,
-            //                item.ChiSoDN1,
-            //                item.NiemChi1,
-            //                item.SoPhieuDN,
-            //                item.MoNuoc,
-            //                item.NgayMN,
-            //                item.ChiSoMN,
-            //                item.GhiChuMN,
-            //                item.SoPhieuMN,
-            //                item.DongPhi,
-            //                item.MaDN,
-            //                item.DaKy,
-            //                item.NgayKy,
-            //                item.Duyet,
-            //            };
-            //return LINQToDataTable(query);
             DataTable dt = new DataTable();
             var query = from item in _db.TT_KQDongNuocs
                         join itemND in _db.TT_NguoiDungs on item.TT_DongNuoc.MaNV_DongNuoc equals itemND.MaND into tableND
@@ -515,6 +477,7 @@ namespace ThuTien.DAL.DongNuoc
                             item.NgayDN,
                             item.ChiSoDN,
                             item.NiemChi,
+                            item.MauSac,
                             item.ChiMatSo,
                             item.ChiKhoaGoc,
                             item.LyDo,
@@ -555,6 +518,7 @@ namespace ThuTien.DAL.DongNuoc
                              NgayDN = item.NgayDN1,
                              ChiSoDN = item.ChiSoDN1,
                              NiemChi = item.NiemChi1,
+                             MauSac = item.MauSac1,
                              item.ChiMatSo,
                              item.ChiKhoaGoc,
                              item.LyDo,
@@ -866,6 +830,8 @@ namespace ThuTien.DAL.DongNuoc
         public DataTable getDS_KQMoNuoc(DateTime FromNgayMN, DateTime ToNgayMN)
         {
             var query = from item in _db.TT_KQDongNuocs
+                        join itemND in _db.TT_NguoiDungs on item.TT_DongNuoc.MaNV_DongNuoc equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
                         where item.NgayMN.Value.Date >= FromNgayMN.Date && item.NgayMN.Value.Date <= ToNgayMN.Date
                         select new
                         {
@@ -894,6 +860,8 @@ namespace ThuTien.DAL.DongNuoc
                             item.MoNuoc,
                             item.NgayMN,
                             item.ChiSoMN,
+                            item.NiemChiMN,
+                            item.MauSacMN,
                             item.GhiChuMN,
                             item.SoPhieuMN,
                             item.MaDN,
@@ -901,6 +869,10 @@ namespace ThuTien.DAL.DongNuoc
                             item.NgayKy,
                             item.Duyet,
                             item.CreateDate,
+                            item.KhoaTu,
+                            item.KhoaKhac,
+                            To = _db.TT_Tos.SingleOrDefault(itemT => itemT.MaTo == itemtableND.MaTo).TenTo,
+                            NhanVien = itemtableND.HoTen,
                         };
             return LINQToDataTable(query);
         }
