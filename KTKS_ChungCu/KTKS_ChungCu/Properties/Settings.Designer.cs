@@ -26,8 +26,8 @@ namespace KTKS_ChungCu.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=serverg8-01;Initial Catalog=KTKS_DonKH;Persist Security Info=True;Use" +
-            "r ID=sa;Password=db11@tanhoa")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=server11;Initial Catalog=KTKS_DonKH;Persist Security Info=True;User I" +
+            "D=sa;Password=db11@tanhoa")]
         public string KTKS_DonKHConnectionString {
             get {
                 return ((string)(this["KTKS_DonKHConnectionString"]));
@@ -48,8 +48,8 @@ namespace KTKS_ChungCu.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=serverg8-01;Initial Catalog=ChungCu;Persist Security Info=True;User I" +
-            "D=sa;Password=db11@tanhoa")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=server11;Initial Catalog=ChungCu;Persist Security Info=True;User ID=s" +
+            "a;Password=db11@tanhoa")]
         public string ChungCuConnectionString {
             get {
                 return ((string)(this["ChungCuConnectionString"]));

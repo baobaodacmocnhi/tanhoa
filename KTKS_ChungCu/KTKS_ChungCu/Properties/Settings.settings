@@ -5,10 +5,10 @@
     <Setting Name="KTKS_DonKHConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Data Source=serverg8-01;Initial Catalog=KTKS_DonKH;Persist Security Info=True;User ID=sa;Password=db11@tanhoa&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;Data Source=server11;Initial Catalog=KTKS_DonKH;Persist Security Info=True;User ID=sa;Password=db11@tanhoa&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=serverg8-01;Initial Catalog=KTKS_DonKH;Persist Security Info=True;User ID=sa;Password=db11@tanhoa</Value>
+      <Value Profile="(Default)">Data Source=server11;Initial Catalog=KTKS_DonKH;Persist Security Info=True;User ID=sa;Password=db11@tanhoa</Value>
     </Setting>
     <Setting Name="HOADON_TAConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
@@ -21,10 +21,10 @@
     <Setting Name="ChungCuConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Data Source=serverg8-01;Initial Catalog=ChungCu;Persist Security Info=True;User ID=sa;Password=db11@tanhoa&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;Data Source=server11;Initial Catalog=ChungCu;Persist Security Info=True;User ID=sa;Password=db11@tanhoa&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=serverg8-01;Initial Catalog=ChungCu;Persist Security Info=True;User ID=sa;Password=db11@tanhoa</Value>
+      <Value Profile="(Default)">Data Source=server11;Initial Catalog=ChungCu;Persist Security Info=True;User ID=sa;Password=db11@tanhoa</Value>
     </Setting>
   </Settings>
 </SettingsFile>
