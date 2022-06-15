@@ -66,7 +66,6 @@ namespace ThuTien.GUI.ChuyenKhoan
                             //        db.TT_ThoatNgheos.InsertOnSubmit(en);
                             //        db.SubmitChanges();
                             //    }
-
                             foreach (DataRow item in dtExcel.Rows)
                                 if ((string.IsNullOrEmpty(item[0].ToString()) || item[0].ToString().Replace(" ", "").Length == 11) && !string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()))
                                 {
@@ -89,7 +88,6 @@ namespace ThuTien.GUI.ChuyenKhoan
                                             MessageBox.Show("Lỗi Tên Ngân Hàng tại Danh Bộ: " + bangke.DanhBo + "\nBảng Kê đã lưu được tới đây", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                             return;
                                         }
-
                                         bangke.CreateBy = CNguoiDung.MaND;
                                         bangke.CreateDate2 = DateTime.Now;
                                         if (chkNgayLap.Checked == true)
