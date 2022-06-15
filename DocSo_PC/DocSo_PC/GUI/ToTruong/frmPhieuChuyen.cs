@@ -198,7 +198,7 @@ namespace DocSo_PC.GUI.ToTruong
                     dr["DanhBo"] = ttkh.DANHBO.Insert(7, " ").Insert(4, " ");
                     dr["MLT"] = ttkh.LOTRINH;
                     dr["HoTen"] = ttkh.HOTEN;
-                    dr["DiaChi"] = ttkh.SONHA + " " + ttkh.TENDUONG;
+                    dr["DiaChi"] = ttkh.SONHA + " " + ttkh.TENDUONG + _cDHN.getPhuongQuan(ttkh.QUAN, ttkh.PHUONG);
                     dr["Hieu"] = ttkh.HIEUDH;
                     dr["Co"] = ttkh.CODH;
                     dr["SoThan"] = ttkh.SOTHANDH;
