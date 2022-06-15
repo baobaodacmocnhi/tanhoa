@@ -139,8 +139,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 DCBD_DKDM_CCCD enCT = new DCBD_DKDM_CCCD();
                                 enCT.CCCD = item.Cells["CCCD"].Value.ToString();
                                 enCT.HoTen = item.Cells["HoTen"].Value.ToString();
-                                string[] NgaySinhs = item.Cells["NgaySinh"].Value.ToString().Split('/');
-                                if (NgaySinhs.Count() == 3)
+                                string[] NgaySinhs = null;
+                                if (item.Cells["NgaySinh"].Value.ToString().Contains("/"))
+                                    NgaySinhs = item.Cells["NgaySinh"].Value.ToString().Split('/');
+                                else
+                                    if (item.Cells["NgaySinh"].Value.ToString().Contains("-"))
+                                        NgaySinhs = item.Cells["NgaySinh"].Value.ToString().Split('-');
+                                if (NgaySinhs != null && NgaySinhs.Count() == 3)
                                 {
                                     enCT.NgaySinh = new DateTime(int.Parse(NgaySinhs[2]), int.Parse(NgaySinhs[1]), int.Parse(NgaySinhs[0]));
                                 }
@@ -150,6 +155,19 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     enCT.DCThuongTru = item.Cells["DCThuongTru"].Value.ToString();
                                 if (item.Cells["DCTamTru"].Value != null && item.Cells["DCTamTru"].Value.ToString() != "")
                                     enCT.DCTamTru = item.Cells["DCTamTru"].Value.ToString();
+                                if (item.Cells["NgayHetHan"].Value != null && item.Cells["NgayHetHan"].Value.ToString() != "")
+                                {
+                                    string[] NgayHetHans = null;
+                                    if (item.Cells["NgayHetHan"].Value.ToString().Contains("/"))
+                                        NgayHetHans = item.Cells["NgayHetHan"].Value.ToString().Split('/');
+                                    else
+                                        if (item.Cells["NgayHetHan"].Value.ToString().Contains("-"))
+                                            NgayHetHans = item.Cells["NgayHetHan"].Value.ToString().Split('-');
+                                    if (NgayHetHans.Count() == 3)
+                                    {
+                                        enCT.NgayHetHan = new DateTime(int.Parse(NgayHetHans[2]), int.Parse(NgayHetHans[1]), int.Parse(NgayHetHans[0]));
+                                    }
+                                }
                                 enCT.CreateBy = CTaiKhoan.MaUser;
                                 enCT.CreateDate = DateTime.Now;
                                 en.DCBD_DKDM_CCCDs.Add(enCT);
@@ -163,8 +181,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     else
                                         enCT.CCCD = "";
                                     enCT.HoTen = item.Cells["HoTen"].Value.ToString();
-                                    string[] NgaySinhs = item.Cells["NgaySinh"].Value.ToString().Split('/');
-                                    if (NgaySinhs.Count() == 3)
+                                    string[] NgaySinhs = null;
+                                    if (item.Cells["NgaySinh"].Value.ToString().Contains("/"))
+                                        NgaySinhs = item.Cells["NgaySinh"].Value.ToString().Split('/');
+                                    else
+                                        if (item.Cells["NgaySinh"].Value.ToString().Contains("-"))
+                                            NgaySinhs = item.Cells["NgaySinh"].Value.ToString().Split('-');
+                                    if (NgaySinhs != null && NgaySinhs.Count() == 3)
                                     {
                                         enCT.NgaySinh = new DateTime(int.Parse(NgaySinhs[2]), int.Parse(NgaySinhs[1]), int.Parse(NgaySinhs[0]));
                                     }
@@ -176,6 +199,19 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         enCT.DCTamTru = item.Cells["DCTamTru"].Value.ToString();
                                     if (item.Cells["KhongKiemTra"].Value != null && item.Cells["KhongKiemTra"].Value.ToString() != "")
                                         enCT.KhongKiemTra = bool.Parse(item.Cells["KhongKiemTra"].Value.ToString());
+                                    if (item.Cells["NgayHetHan"].Value != null && item.Cells["NgayHetHan"].Value.ToString() != "")
+                                    {
+                                        string[] NgayHetHans = null;
+                                        if (item.Cells["NgayHetHan"].Value.ToString().Contains("/"))
+                                            NgayHetHans = item.Cells["NgayHetHan"].Value.ToString().Split('/');
+                                        else
+                                            if (item.Cells["NgayHetHan"].Value.ToString().Contains("-"))
+                                                NgayHetHans = item.Cells["NgayHetHan"].Value.ToString().Split('-');
+                                        if (NgayHetHans.Count() == 3)
+                                        {
+                                            enCT.NgayHetHan = new DateTime(int.Parse(NgayHetHans[2]), int.Parse(NgayHetHans[1]), int.Parse(NgayHetHans[0]));
+                                        }
+                                    }
                                     enCT.CreateBy = CTaiKhoan.MaUser;
                                     enCT.CreateDate = DateTime.Now;
                                     en.DCBD_DKDM_CCCDs.Add(enCT);
@@ -225,8 +261,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             {
                                 _danhbo.DCBD_DKDM_CCCDs.SingleOrDefault(o => o.ID == int.Parse(item.Cells["ID"].Value.ToString())).CCCD = item.Cells["CCCD"].Value.ToString();
                                 _danhbo.DCBD_DKDM_CCCDs.SingleOrDefault(o => o.ID == int.Parse(item.Cells["ID"].Value.ToString())).HoTen = item.Cells["HoTen"].Value.ToString();
-                                string[] NgaySinhs = item.Cells["NgaySinh"].Value.ToString().Split('/');
-                                if (NgaySinhs.Count() == 3)
+                                string[] NgaySinhs = null;
+                                if (item.Cells["NgaySinh"].Value.ToString().Contains("/"))
+                                    NgaySinhs = item.Cells["NgaySinh"].Value.ToString().Split('/');
+                                else
+                                    if (item.Cells["NgaySinh"].Value.ToString().Contains("-"))
+                                        NgaySinhs = item.Cells["NgaySinh"].Value.ToString().Split('-');
+                                if (NgaySinhs != null && NgaySinhs.Count() == 3)
                                 {
                                     _danhbo.DCBD_DKDM_CCCDs.SingleOrDefault(o => o.ID == int.Parse(item.Cells["ID"].Value.ToString())).NgaySinh = new DateTime(int.Parse(NgaySinhs[2]), int.Parse(NgaySinhs[1]), int.Parse(NgaySinhs[0]));
                                 }
@@ -236,6 +277,19 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     _danhbo.DCBD_DKDM_CCCDs.SingleOrDefault(o => o.ID == int.Parse(item.Cells["ID"].Value.ToString())).DCThuongTru = item.Cells["DCThuongTru"].Value.ToString();
                                 if (item.Cells["DCTamTru"].Value != null && item.Cells["DCTamTru"].Value.ToString() != "")
                                     _danhbo.DCBD_DKDM_CCCDs.SingleOrDefault(o => o.ID == int.Parse(item.Cells["ID"].Value.ToString())).DCTamTru = item.Cells["DCTamTru"].Value.ToString();
+                                if (item.Cells["NgayHetHan"].Value != null && item.Cells["NgayHetHan"].Value.ToString() != "")
+                                {
+                                    string[] NgayHetHans = null;
+                                    if (item.Cells["NgayHetHan"].Value.ToString().Contains("/"))
+                                        NgayHetHans = item.Cells["NgayHetHan"].Value.ToString().Split('/');
+                                    else
+                                        if (item.Cells["NgayHetHan"].Value.ToString().Contains("-"))
+                                            NgayHetHans = item.Cells["NgayHetHan"].Value.ToString().Split('-');
+                                    if (NgayHetHans.Count() == 3)
+                                    {
+                                        _danhbo.DCBD_DKDM_CCCDs.SingleOrDefault(o => o.ID == int.Parse(item.Cells["ID"].Value.ToString())).NgayHetHan = new DateTime(int.Parse(NgayHetHans[2]), int.Parse(NgayHetHans[1]), int.Parse(NgayHetHans[0]));
+                                    }
+                                }
                                 _danhbo.DCBD_DKDM_CCCDs.SingleOrDefault(o => o.ID == int.Parse(item.Cells["ID"].Value.ToString())).ModifyBy = CTaiKhoan.MaUser;
                                 _danhbo.DCBD_DKDM_CCCDs.SingleOrDefault(o => o.ID == int.Parse(item.Cells["ID"].Value.ToString())).ModifyDate = DateTime.Now;
                             }
@@ -245,8 +299,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     DCBD_DKDM_CCCD enCT = new DCBD_DKDM_CCCD();
                                     enCT.CCCD = item.Cells["CCCD"].Value.ToString();
                                     enCT.HoTen = item.Cells["HoTen"].Value.ToString();
-                                    string[] NgaySinhs = item.Cells["NgaySinh"].Value.ToString().Split('/');
-                                    if (NgaySinhs.Count() == 3)
+                                    string[] NgaySinhs = null;
+                                    if (item.Cells["NgaySinh"].Value.ToString().Contains("/"))
+                                        NgaySinhs = item.Cells["NgaySinh"].Value.ToString().Split('/');
+                                    else
+                                        if (item.Cells["NgaySinh"].Value.ToString().Contains("-"))
+                                            NgaySinhs = item.Cells["NgaySinh"].Value.ToString().Split('-');
+                                    if (NgaySinhs != null && NgaySinhs.Count() == 3)
                                     {
                                         enCT.NgaySinh = new DateTime(int.Parse(NgaySinhs[2]), int.Parse(NgaySinhs[1]), int.Parse(NgaySinhs[0]));
                                     }
@@ -256,6 +315,19 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         enCT.DCThuongTru = item.Cells["DCThuongTru"].Value.ToString();
                                     if (item.Cells["DCTamTru"].Value != null && item.Cells["DCTamTru"].Value.ToString() != "")
                                         enCT.DCTamTru = item.Cells["DCTamTru"].Value.ToString();
+                                    if (item.Cells["NgayHetHan"].Value != null && item.Cells["NgayHetHan"].Value.ToString() != "")
+                                    {
+                                        string[] NgayHetHans = null;
+                                        if (item.Cells["NgayHetHan"].Value.ToString().Contains("/"))
+                                            NgayHetHans = item.Cells["NgayHetHan"].Value.ToString().Split('/');
+                                        else
+                                            if (item.Cells["NgayHetHan"].Value.ToString().Contains("-"))
+                                                NgayHetHans = item.Cells["NgayHetHan"].Value.ToString().Split('-');
+                                        if (NgayHetHans.Count() == 3)
+                                        {
+                                            enCT.NgayHetHan = new DateTime(int.Parse(NgayHetHans[2]), int.Parse(NgayHetHans[1]), int.Parse(NgayHetHans[0]));
+                                        }
+                                    }
                                     enCT.CreateBy = CTaiKhoan.MaUser;
                                     enCT.CreateDate = DateTime.Now;
                                     _danhbo.DCBD_DKDM_CCCDs.Add(enCT);
@@ -269,8 +341,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         else
                                             enCT.CCCD = "";
                                         enCT.HoTen = item.Cells["HoTen"].Value.ToString();
-                                        string[] NgaySinhs = item.Cells["NgaySinh"].Value.ToString().Split('/');
-                                        if (NgaySinhs.Count() == 3)
+                                        string[] NgaySinhs = null;
+                                        if (item.Cells["NgaySinh"].Value.ToString().Contains("/"))
+                                            NgaySinhs = item.Cells["NgaySinh"].Value.ToString().Split('/');
+                                        else
+                                            if (item.Cells["NgaySinh"].Value.ToString().Contains("-"))
+                                                NgaySinhs = item.Cells["NgaySinh"].Value.ToString().Split('-');
+                                        if (NgaySinhs != null && NgaySinhs.Count() == 3)
                                         {
                                             enCT.NgaySinh = new DateTime(int.Parse(NgaySinhs[2]), int.Parse(NgaySinhs[1]), int.Parse(NgaySinhs[0]));
                                         }
@@ -282,6 +359,19 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             enCT.DCTamTru = item.Cells["DCTamTru"].Value.ToString();
                                         if (item.Cells["KhongKiemTra"].Value != null && item.Cells["KhongKiemTra"].Value.ToString() != "")
                                             enCT.KhongKiemTra = bool.Parse(item.Cells["KhongKiemTra"].Value.ToString());
+                                        if (item.Cells["NgayHetHan"].Value != null && item.Cells["NgayHetHan"].Value.ToString() != "")
+                                        {
+                                            string[] NgayHetHans = null;
+                                            if (item.Cells["NgayHetHan"].Value.ToString().Contains("/"))
+                                                NgayHetHans = item.Cells["NgayHetHan"].Value.ToString().Split('/');
+                                            else
+                                                if (item.Cells["NgayHetHan"].Value.ToString().Contains("-"))
+                                                    NgayHetHans = item.Cells["NgayHetHan"].Value.ToString().Split('-');
+                                            if (NgayHetHans.Count() == 3)
+                                            {
+                                                enCT.NgayHetHan = new DateTime(int.Parse(NgayHetHans[2]), int.Parse(NgayHetHans[1]), int.Parse(NgayHetHans[0]));
+                                            }
+                                        }
                                         enCT.CreateBy = CTaiKhoan.MaUser;
                                         enCT.CreateDate = DateTime.Now;
                                         _danhbo.DCBD_DKDM_CCCDs.Add(enCT);
@@ -807,7 +897,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                             //if (txtThoiHan.Text.Trim() != "" && txtThoiHan.Text.Trim() != "0")
                                                             //{
                                                             //    ctchungtu.ThoiHan = int.Parse(txtThoiHan.Text.Trim());
-                                                            //    ctchungtu.NgayHetHan = dateHetHan.Value;
+                                                            ctchungtu.NgayHetHan = itemCC.NgayHetHan;
                                                             //}
                                                             ctchungtu.Phuong = hoadon.Phuong;
                                                             ctchungtu.Quan = hoadon.Quan;
@@ -923,7 +1013,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                         //if (txtThoiHan.Text.Trim() != "" && txtThoiHan.Text.Trim() != "0")
                                                         //{
                                                         //    ctchungtu.ThoiHan = int.Parse(txtThoiHan.Text.Trim());
-                                                        //    ctchungtu.NgayHetHan = dateHetHan.Value;
+                                                        ctchungtu.NgayHetHan = itemCC.NgayHetHan;
                                                         //}
                                                         ctchungtu.Phuong = hd.Phuong;
                                                         ctchungtu.Quan = hd.Quan;
@@ -1179,7 +1269,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 if (dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString().Contains("pdf"))
                 {
-                    _cDKDM.LoadFileView("DCBD_DKDM_DanhBo_Hinh", _danhbo.ID.ToString(),dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
+                    _cDKDM.LoadFileView("DCBD_DKDM_DanhBo_Hinh", _danhbo.ID.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
                 }
                 else
                 {

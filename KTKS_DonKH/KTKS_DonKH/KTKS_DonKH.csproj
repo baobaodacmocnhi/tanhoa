@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>1827</ApplicationRevision>
+    <ApplicationRevision>1829</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -3150,10 +3150,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://192.168.90.11:81/wsthuongvu.asmx">
+    <WebReferenceUrl Include="http://server11:81/wsthuongvu.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\wsThuongVu\</RelPath>
-      <UpdateFromURL>http://192.168.90.11:81/wsthuongvu.asmx</UpdateFromURL>
+      <UpdateFromURL>http://server11:81/wsthuongvu.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
