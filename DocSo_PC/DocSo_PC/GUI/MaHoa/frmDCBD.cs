@@ -102,6 +102,12 @@ namespace DocSo_PC.GUI.MaHoa
                                     if (MessageBox.Show("Danh Bộ " + dontu.DanhBo + " đã được Lập Điều Chỉnh Biến Động\nVẫn muốn Lập tiếp???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
                                         return;
                                 }
+                                else
+                                    if (_cDCBD.checkExist(dontu.DanhBo, 33) == true)
+                                    {
+                                        if (MessageBox.Show("Danh Bộ " + dontu.DanhBo + " đã được Lập Điều Chỉnh Biến Động trong 33 ngày gần nhất\nVẫn muốn Lập tiếp???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+                                            return;
+                                    }
                                 ctdcbd.IDMaDon = dontu.ID;
                                 ctdcbd.DanhBo = dontu.DanhBo;
                                 //ctdcbd.HopDong = dontu.HopDong;
@@ -130,7 +136,7 @@ namespace DocSo_PC.GUI.MaHoa
                                 }
                             }
                         }
-                    MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

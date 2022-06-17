@@ -76,6 +76,11 @@ namespace DocSo_PC.DAL.MaHoa
             return _db.MaHoa_DCBDs.Any(item => item.IDMaDon == MaDon && item.DanhBo == DanhBo);
         }
 
+        public bool checkExist(string DanhBo, int SoNgay)
+        {
+            return _db.MaHoa_DCBDs.Any(item => item.DanhBo == DanhBo && item.CreateDate.Value.AddDays(SoNgay) >= DateTime.Now);
+        }
+
         public MaHoa_DCBD get(int ID)
         {
             return _db.MaHoa_DCBDs.SingleOrDefault(item => item.ID == ID);

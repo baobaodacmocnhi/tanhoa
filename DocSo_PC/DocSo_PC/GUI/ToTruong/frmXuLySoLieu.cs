@@ -192,8 +192,13 @@ namespace DocSo_PC.GUI.ToTruong
                     if (txtDanhBoTK.Text.Trim().Replace(" ", "").Replace("-", "") != "")
                     {
                         dt = _cDocSo.getDS_XuLy_DanhBo(cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), txtDanhBoTK.Text.Trim().Replace(" ", "").Replace("-", ""));
-                        _docso = _cDocSo.get_DocSo(dt.Rows[0]["DocSoID"].ToString());
-                        loadThongTin();
+                        if (dt != null && dt.Rows.Count > 0)
+                        {
+                            _docso = _cDocSo.get_DocSo(dt.Rows[0]["DocSoID"].ToString());
+                            loadThongTin();
+                        }
+                        else
+                            MessageBox.Show("Danh Bộ kỳ " + cmbKy.SelectedItem.ToString() + "/" + cmbNam.SelectedValue.ToString() + " không tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
@@ -207,8 +212,13 @@ namespace DocSo_PC.GUI.ToTruong
                     if (txtDanhBoTK.Text.Trim().Replace(" ", "").Replace("-", "") != "")
                     {
                         dt = _cDocSo.getDS_XuLy_DanhBo(CNguoiDung.MaTo.ToString(), cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), txtDanhBoTK.Text.Trim().Replace(" ", "").Replace("-", ""));
-                        _docso = _cDocSo.get_DocSo(dt.Rows[0]["DocSoID"].ToString());
-                        loadThongTin();
+                        if (dt != null && dt.Rows.Count > 0)
+                        {
+                            _docso = _cDocSo.get_DocSo(dt.Rows[0]["DocSoID"].ToString());
+                            loadThongTin();
+                        }
+                        else
+                            MessageBox.Show("Danh Bộ kỳ " + cmbKy.SelectedItem.ToString() + "/" + cmbNam.SelectedValue.ToString()+" không tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {

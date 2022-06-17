@@ -18,6 +18,7 @@ namespace DocSo_PC.GUI.ToTruong
 {
     public partial class frmPhieuChuyen : Form
     {
+        string _mnu = "mnuPhieuChuyen";
         CTo _cTo = new CTo();
         CDHN _cDHN = new CDHN();
         CDocSo _cDocSo = new CDocSo();
@@ -135,7 +136,6 @@ namespace DocSo_PC.GUI.ToTruong
                     dgvDanhSach.DataSource = dt;
                     break;
             }
-
         }
 
         private void dgvDanhSach_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -215,6 +215,70 @@ namespace DocSo_PC.GUI.ToTruong
             rpt.SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.Show();
+        }
+
+        private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && txtDanhBo.Text.Trim().Replace("-", "").Replace(" ", "").Length == 11)
+            {
+                TB_DULIEUKHACHHANG ttkh = _cDHN.get(txtDanhBo.Text.Trim().Replace("-", "").Replace(" ", ""));
+                if (ttkh != null)
+                {
+                    txtHoTen.Text = ttkh.HOTEN;
+                    txtDiaChi.Text = ttkh.SONHA + " " + ttkh.TENDUONG;
+                }
+                else
+                    MessageBox.Show("Danh Bộ không tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (MessageBox.Show("Bạn có chắc chắn???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+                    {
+                        if (cmbLoai.SelectedIndex <= 0)
+                        {
+                            MessageBox.Show("Chưa chọn Loại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        TB_DULIEUKHACHHANG ttkh = _cDHN.get(txtDanhBo.Text.Trim().Replace("-", "").Replace(" ", ""));
+                        if (ttkh != null)
+                        {
+                            switch (cmbLoai.SelectedItem.ToString())
+                            {
+                                case "Âm Sâu":
+                                    ttkh.AmSau = true;
+                                    ttkh.AmSau_Ngay = DateTime.Now;
+                                    break;
+                                case "Xây Dựng":
+                                    ttkh.XayDung = true;
+                                    ttkh.XayDung_Ngay = DateTime.Now;
+                                    break;
+                                case "Đứt Chì Góc":
+                                    ttkh.DutChi_Goc = true;
+                                    ttkh.DutChi_Goc_Ngay = DateTime.Now;
+                                    break;
+                                case "Đứt Chì Thân":
+                                    ttkh.DutChi_Than = true;
+                                    ttkh.DutChi_Than_Ngay = DateTime.Now;
+                                    break;
+                                default:
+                                    break;
+                            }
+                            _cDHN.SubmitChanges();
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    else
+                        MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
