@@ -1316,6 +1316,37 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
+        private void btnThuHoi_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CTaiKhoan.CheckQuyen(_mnu, "Sua") && (CTaiKhoan.TruongPhong || CTaiKhoan.Admin || CTaiKhoan.ThuKy))
+                {
+                    if (MessageBox.Show("Bạn có chắc chắn?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        if (_danhbo != null)
+                        {
+                            if (_danhbo.DaXuLy && !_danhbo.DCBD && _danhbo.GhiChu == "CCCD đã đăng ký danh bộ khác")
+                            {
+                                _danhbo.DaXuLy = false;
+                                if (_cDKDM.Sua(_danhbo))
+                                {
+                                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    Clear();
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
 
 
