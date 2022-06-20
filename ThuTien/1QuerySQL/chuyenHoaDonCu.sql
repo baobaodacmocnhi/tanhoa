@@ -9,6 +9,6 @@ set @ky=12
 
 --select * from HOADON where NAM=@nam and KY=@ky and NGAYGIAITRACH is not null and not exists (select * from TT_CTChuyenNoKhoDoi where MaHD=ID_HOADON and CAST(CreateDate as date)>=@ngaygiaitrach)
 
---insert into TT_HoaDonCu select * from HOADON where NAM=@nam and KY=@ky and NGAYGIAITRACH is not null and not exists (select * from TT_CTChuyenNoKhoDoi where MaHD=ID_HOADON and CAST(CreateDate as date)>=@ngaygiaitrach)
---delete HOADON where NAM=@nam and KY=@ky and NGAYGIAITRACH is not null and not exists (select * from TT_CTChuyenNoKhoDoi where MaHD=ID_HOADON and CAST(CreateDate as date)>=@ngaygiaitrach)
+insert into TT_HoaDonCu select * from HOADON where NAM=@nam and KY=@ky and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@ngaygiaitrach and MaNV_DangNgan is not null and not exists (select * from TT_CTChuyenNoKhoDoi where MaHD=ID_HOADON and CAST(CreateDate as date)>=@ngaygiaitrach)
+delete HOADON where NAM=@nam and KY=@ky and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@ngaygiaitrach and MaNV_DangNgan is not null and not exists (select * from TT_CTChuyenNoKhoDoi where MaHD=ID_HOADON and CAST(CreateDate as date)>=@ngaygiaitrach)
 
