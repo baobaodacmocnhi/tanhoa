@@ -953,7 +953,7 @@ namespace DocSo_PC.DAL.sDHN
                     DataTable dt = new DataTable();
                     dt.Columns.Add("ChatLuongSong", typeof(System.String));
                     DataRow dr = dt.NewRow();
-                    dr["ChatLuongSong"] = obj;
+                    dr["ChatLuongSong"] = obj["Rssi"];
                     dt.Rows.Add(dr);
                     return dt;
                 }
@@ -985,23 +985,44 @@ namespace DocSo_PC.DAL.sDHN
                     var obj = jss.Deserialize<dynamic>(result);
                     DataTable dt = new DataTable();
                     dt.Columns.Add("CBPinYeu", typeof(System.Boolean));
-                    dt.Columns.Add("CBRoRi", typeof(System.Boolean));
+                    dt.Columns.Add("CBDangRoRi", typeof(System.Boolean));
+                    dt.Columns.Add("CBDaRoRi", typeof(System.Boolean));
+                    dt.Columns.Add("CBKhongSuDung", typeof(System.Boolean));
                     dt.Columns.Add("CBQuaDong", typeof(System.Boolean));
+                    dt.Columns.Add("CBDuoiDong", typeof(System.Boolean));
                     dt.Columns.Add("CBChayNguoc", typeof(System.Boolean));
                     dt.Columns.Add("CBNamCham", typeof(System.Boolean));
                     dt.Columns.Add("CBKhoOng", typeof(System.Boolean));
                     dt.Columns.Add("CBMoHop", typeof(System.Boolean));
                     dt.Columns.Add("ThoiGianCapNhat", typeof(System.DateTime));
-                    DataRow dr = dt.NewRow();
-                    dr["CBPinYeu"] = obj["IsLowBatt"];
-                    dr["CBRoRi"] = obj["IsLeakage"];
-                    dr["CBQuaDong"] = obj["IsOverLoad"];
-                    dr["CBChayNguoc"] = obj["IsReverse"];
-                    dr["CBNamCham"] = obj["IsTampering"];
-                    dr["CBKhoOng"] = obj["IsDry"];
-                    dr["CBMoHop"] = obj["IsOpenBox"];
-                    dr["ThoiGianCapNhat"] = DateTime.Parse(obj["TimeUpdate"]);
-                    dt.Rows.Add(dr);
+                    if (obj != null)
+                    {
+                        DataRow dr = dt.NewRow();
+                        string[] strs = ((string)obj).Split('|');
+                        foreach (string itemC in strs)
+                        {
+                            if (itemC == "low battery")
+                                dr["CBPinYeu"] = true;
+                            if (itemC == "leakage current")
+                                dr["CBDangRoRi"] = true;
+                            if (itemC == "leakage historic")
+                                dr["CBDaRoRi"] = true;
+                            if (itemC == "no usage")
+                                dr["CBKhongSuDung"] = true;
+                            if (itemC == "back flow")
+                                dr["CBChayNguoc"] = true;
+                            if (itemC == "over flow")
+                                dr["CBQuaDong"] = true;
+                            if (itemC == "under flow")
+                                dr["CBDuoiDong"] = true;
+                            if (itemC == "meter block")
+                                dr["CBKhoOng"] = true;
+                            if (itemC == "mechanical fraud")
+                                dr["CBMoHop"] = true;
+                        }
+                        dr["ThoiGianCapNhat"] = Time;
+                        dt.Rows.Add(dr);
+                    }
                     return dt;
                 }
                 else
@@ -1036,7 +1057,7 @@ namespace DocSo_PC.DAL.sDHN
                     dt.Columns.Add("ThoiGianCapNhat", typeof(System.DateTime));
                     DataRow dr = dt.NewRow();
                     //dr["Pin"] = obj["batt_percent"];
-                    dr["ThoiLuongPinConLai"] = obj["batt_duration"];
+                    dr["ThoiLuongPinConLai"] = obj["bat_duration"];
                     dr["ThoiGianCapNhat"] = DateTime.Parse(obj["TimeUpdate"]);
                     dt.Rows.Add(dr);
                     return dt;
