@@ -96,7 +96,7 @@ namespace KTKS_DonKH.GUI.VanBan
             if (en.DinhMucHN != null)
                 txtDinhMucHN.Text = en.DinhMucHN.Value.ToString();
 
-            cmbVeViec.SelectedValue = en.VeViec;
+            txtVeViec.Text = en.VeViec;
             txtNoiDung.Text = en.NoiDung;
             txtNoiNhan.Text = en.NoiNhan;
 
@@ -107,7 +107,7 @@ namespace KTKS_DonKH.GUI.VanBan
                 dgvHinh.Rows[index].Cells["ID_Hinh"].Value = item.ID;
                 dgvHinh.Rows[index].Cells["Name_Hinh"].Value = item.Name;
                 if (item.Hinh != null)
-                dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(item.Hinh.ToArray());
+                    dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(item.Hinh.ToArray());
                 dgvHinh.Rows[index].Cells["Loai_Hinh"].Value = item.Loai;
             }
         }
@@ -261,7 +261,7 @@ namespace KTKS_DonKH.GUI.VanBan
                         enCT.Phuong = _hoadon.Phuong;
                         enCT.Quan = _hoadon.Quan;
                     }
-                    enCT.VeViec = cmbVeViec.SelectedValue.ToString();
+                    enCT.VeViec = txtVeViec.Text.Trim();
                     enCT.NoiDung = txtNoiDung.Text;
                     enCT.NoiNhan = txtNoiNhan.Text.Trim();
 
@@ -285,7 +285,7 @@ namespace KTKS_DonKH.GUI.VanBan
                                 //en.Hinh = Convert.FromBase64String(item.Cells["Bytes_Hinh"].Value.ToString());
                                 en.Loai = item.Cells["Loai_Hinh"].Value.ToString();
                                 if (_wsThuongVu.ghi_Hinh("VanBan_ChiTiet_Hinh", en.IDVanBan_ChiTiet.Value.ToString(), en.Name + en.Loai, Convert.FromBase64String(item.Cells["Bytes_Hinh"].Value.ToString())) == true)
-                                _cVanBan.Them_Hinh(en);
+                                    _cVanBan.Them_Hinh(en);
                             }
                             if (_dontu_ChiTiet != null)
                             {
@@ -338,7 +338,7 @@ namespace KTKS_DonKH.GUI.VanBan
                             _enCT.Phuong = _hoadon.Phuong;
                             _enCT.Quan = _hoadon.Quan;
                         }
-                        _enCT.VeViec = cmbVeViec.SelectedValue.ToString();
+                        _enCT.VeViec = txtVeViec.Text.Trim();
                         _enCT.NoiDung = txtNoiDung.Text;
                         _enCT.NoiNhan = txtNoiNhan.Text.Trim();
 
@@ -457,14 +457,15 @@ namespace KTKS_DonKH.GUI.VanBan
             if (cmbVeViec.SelectedIndex != -1)
             {
                 ThuTraLoi_VeViec vv = (ThuTraLoi_VeViec)cmbVeViec.SelectedItem;
+                txtVeViec.Text = vv.TenVV;
                 txtNoiDung.Text = vv.NoiDung;
                 txtNoiNhan.Text = vv.NoiNhan;
                 if (txtMaDonMoi.Text.Trim() != "")
                     txtNoiNhan.Text += " (" + txtMaDonMoi.Text.Trim() + ")";
-
             }
             else
             {
+                txtVeViec.Text = "";
                 txtNoiDung.Text = "";
                 txtNoiNhan.Text = "";
             }
@@ -616,15 +617,15 @@ namespace KTKS_DonKH.GUI.VanBan
                             //en.Hinh = bytes;
                             en.Loai = System.IO.Path.GetExtension(dialog.FileName);
                             if (_wsThuongVu.ghi_Hinh("VanBan_ChiTiet_Hinh", en.IDVanBan_ChiTiet.Value.ToString(), en.Name + en.Loai, bytes) == true)
-                            if (_cVanBan.Them_Hinh(en) == true)
-                            {
-                                _cVanBan.Refresh();
-                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                var index = dgvHinh.Rows.Add();
-                                dgvHinh.Rows[index].Cells["Name_Hinh"].Value = en.Name;
-                                dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(bytes);
-                                dgvHinh.Rows[index].Cells["Loai_Hinh"].Value = System.IO.Path.GetExtension(dialog.FileName);
-                            }
+                                if (_cVanBan.Them_Hinh(en) == true)
+                                {
+                                    _cVanBan.Refresh();
+                                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    var index = dgvHinh.Rows.Add();
+                                    dgvHinh.Rows[index].Cells["Name_Hinh"].Value = en.Name;
+                                    dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(bytes);
+                                    dgvHinh.Rows[index].Cells["Loai_Hinh"].Value = System.IO.Path.GetExtension(dialog.FileName);
+                                }
                         }
                         else
                             MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

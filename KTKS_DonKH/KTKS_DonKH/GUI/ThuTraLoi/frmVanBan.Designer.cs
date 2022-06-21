@@ -66,6 +66,11 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label32 = new System.Windows.Forms.Label();
             this.dgvHinh = new System.Windows.Forms.DataGridView();
+            this.ID_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Image_Hinh = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Name_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Bytes_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Loai_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnChonFile = new System.Windows.Forms.Button();
             this.btnIn = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
@@ -100,11 +105,7 @@
             this.label17 = new System.Windows.Forms.Label();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.xoaFile_dgvHinh = new System.Windows.Forms.ToolStripMenuItem();
-            this.ID_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Image_Hinh = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Name_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Bytes_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Loai_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtVeViec = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -331,6 +332,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtVeViec);
             this.groupBox2.Controls.Add(this.cmbVeViec);
             this.groupBox2.Controls.Add(this.txtNoiNhan);
             this.groupBox2.Controls.Add(this.label10);
@@ -352,7 +354,7 @@
             "Phối hợp đóng nước niêm chì đồng hồ nước"});
             this.cmbVeViec.Location = new System.Drawing.Point(120, 17);
             this.cmbVeViec.Name = "cmbVeViec";
-            this.cmbVeViec.Size = new System.Drawing.Size(487, 24);
+            this.cmbVeViec.Size = new System.Drawing.Size(238, 24);
             this.cmbVeViec.TabIndex = 15;
             this.cmbVeViec.SelectedIndexChanged += new System.EventHandler(this.cmbVeViec_SelectedIndexChanged);
             // 
@@ -451,6 +453,43 @@
             this.dgvHinh.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvHinh_MouseClick);
             this.dgvHinh.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvHinh_MouseDoubleClick);
             // 
+            // ID_Hinh
+            // 
+            this.ID_Hinh.DataPropertyName = "ID";
+            this.ID_Hinh.HeaderText = "ID";
+            this.ID_Hinh.Name = "ID_Hinh";
+            this.ID_Hinh.Visible = false;
+            // 
+            // Image_Hinh
+            // 
+            this.Image_Hinh.HeaderText = "Image";
+            this.Image_Hinh.Image = global::KTKS_DonKH.Properties.Resources.file_24x24;
+            this.Image_Hinh.Name = "Image_Hinh";
+            this.Image_Hinh.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Image_Hinh.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Image_Hinh.Width = 50;
+            // 
+            // Name_Hinh
+            // 
+            this.Name_Hinh.DataPropertyName = "Name";
+            this.Name_Hinh.HeaderText = "File";
+            this.Name_Hinh.Name = "Name_Hinh";
+            this.Name_Hinh.Width = 150;
+            // 
+            // Bytes_Hinh
+            // 
+            this.Bytes_Hinh.DataPropertyName = "Bytes";
+            this.Bytes_Hinh.HeaderText = "Bytes";
+            this.Bytes_Hinh.Name = "Bytes_Hinh";
+            this.Bytes_Hinh.Visible = false;
+            // 
+            // Loai_Hinh
+            // 
+            this.Loai_Hinh.DataPropertyName = "Loai";
+            this.Loai_Hinh.HeaderText = "Loai_Hinh";
+            this.Loai_Hinh.Name = "Loai_Hinh";
+            this.Loai_Hinh.Visible = false;
+            // 
             // btnChonFile
             // 
             this.btnChonFile.Location = new System.Drawing.Point(40, 17);
@@ -515,7 +554,7 @@
             this.groupBox3.Controls.Add(this.panel_KhoangThoiGian);
             this.groupBox3.Location = new System.Drawing.Point(12, 350);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1213, 274);
+            this.groupBox3.Size = new System.Drawing.Size(1213, 261);
             this.groupBox3.TabIndex = 144;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Danh Sách Văn Bản";
@@ -789,42 +828,12 @@
             this.xoaFile_dgvHinh.Text = "Xóa";
             this.xoaFile_dgvHinh.Click += new System.EventHandler(this.xoaFile_dgvHinh_Click);
             // 
-            // ID_Hinh
+            // txtVeViec
             // 
-            this.ID_Hinh.DataPropertyName = "ID";
-            this.ID_Hinh.HeaderText = "ID";
-            this.ID_Hinh.Name = "ID_Hinh";
-            this.ID_Hinh.Visible = false;
-            // 
-            // Image_Hinh
-            // 
-            this.Image_Hinh.HeaderText = "Image";
-            this.Image_Hinh.Image = global::KTKS_DonKH.Properties.Resources.file_24x24;
-            this.Image_Hinh.Name = "Image_Hinh";
-            this.Image_Hinh.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Image_Hinh.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Image_Hinh.Width = 50;
-            // 
-            // Name_Hinh
-            // 
-            this.Name_Hinh.DataPropertyName = "Name";
-            this.Name_Hinh.HeaderText = "File";
-            this.Name_Hinh.Name = "Name_Hinh";
-            this.Name_Hinh.Width = 150;
-            // 
-            // Bytes_Hinh
-            // 
-            this.Bytes_Hinh.DataPropertyName = "Bytes";
-            this.Bytes_Hinh.HeaderText = "Bytes";
-            this.Bytes_Hinh.Name = "Bytes_Hinh";
-            this.Bytes_Hinh.Visible = false;
-            // 
-            // Loai_Hinh
-            // 
-            this.Loai_Hinh.DataPropertyName = "Loai";
-            this.Loai_Hinh.HeaderText = "Loai_Hinh";
-            this.Loai_Hinh.Name = "Loai_Hinh";
-            this.Loai_Hinh.Visible = false;
+            this.txtVeViec.Location = new System.Drawing.Point(364, 19);
+            this.txtVeViec.Name = "txtVeViec";
+            this.txtVeViec.Size = new System.Drawing.Size(388, 22);
+            this.txtVeViec.TabIndex = 16;
             // 
             // frmVanBan
             // 
@@ -947,5 +956,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Name_Hinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bytes_Hinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn Loai_Hinh;
+        private System.Windows.Forms.TextBox txtVeViec;
     }
 }

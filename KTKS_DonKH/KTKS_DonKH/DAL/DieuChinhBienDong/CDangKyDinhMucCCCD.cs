@@ -338,6 +338,37 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             return LINQToDataTable(query);
         }
 
+        public DataTable getDS_FileScan(DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            var query = from item in db.DCBD_DKDM_DanhBos
+                        join itemH in db.DCBD_DKDM_DanhBo_Hinhs on item.ID equals itemH.IDParent
+                        join itemND in db.Users on item.CreateBy equals itemND.MaU into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where itemH.CreateDate.Value.Date >= FromCreateDate.Date && itemH.CreateDate.Value.Date <= ToCreateDate.Date && item.CreateBy != null
+                        orderby item.ID ascending
+                        select new
+                        {
+                            item.ID,
+                            item.DanhBo,
+                            item.GiaBieu,
+                            item.DinhMuc,
+                            item.SDT,
+                            item.Quan,
+                            item.Thung,
+                            item.STT,
+                            item.CreateDate,
+                            CreateBy = itemtableND.HoTen,
+                            DinhMucMoi = item.DCBD_DKDM_CCCDs.Count * 4,
+                            item.MaDon,
+                            item.DaXuLy,
+                            item.GhiChu,
+                            item.DCBD,
+                            item.DCBD_MaDon,
+                            item.DCBD_STT,
+                        };
+            return LINQToDataTable(query);
+        }
+
         public DataTable getDS_KiemTra_Tang(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             string sql = "select ID,DanhBo,SDT,Quan,Thung,a.STT,a.CreateDate,CreateBy = b.HoTen,MaDon,DaXuLy,DCBD,DCBD_MaDon,DCBD_STT,GhiChu"

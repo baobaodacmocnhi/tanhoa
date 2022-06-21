@@ -534,30 +534,37 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            if (txtDanhBo_DS.Text.Trim() != "")
-                dgvDanhSach2.DataSource = _cDKDM.getDS(txtDanhBo_DS.Text.Trim());
+            if (chkFileScan.Checked)
+            {
+                dgvDanhSach2.DataSource = _cDKDM.getDS_FileScan(dateTu.Value, dateDen.Value);
+            }
             else
-                if (txtQuan.Text.Trim() != "")
-                {
-                    if (txtThung.Text.Trim() != "")
-                        if (cmbNguoiLap.SelectedIndex == 0)
-                            dgvDanhSach2.DataSource = _cDKDM.getDS_Quan_Thung(txtQuan.Text.Trim(), int.Parse(txtThung.Text.Trim()));
-                        else
-                            dgvDanhSach2.DataSource = _cDKDM.getDS_Quan_Thung(int.Parse(cmbNguoiLap.SelectedValue.ToString()), txtQuan.Text.Trim(), int.Parse(txtThung.Text.Trim()));
-                    else
-                        if (cmbNguoiLap.SelectedIndex == 0)
-                            dgvDanhSach2.DataSource = _cDKDM.getDS_Quan(txtQuan.Text.Trim());
-                        else
-                            dgvDanhSach2.DataSource = _cDKDM.getDS_Quan(int.Parse(cmbNguoiLap.SelectedValue.ToString()), txtQuan.Text.Trim());
-                }
+            {
+                if (txtDanhBo_DS.Text.Trim() != "")
+                    dgvDanhSach2.DataSource = _cDKDM.getDS(txtDanhBo_DS.Text.Trim());
                 else
-                    if (CTaiKhoan.TruongPhong || CTaiKhoan.Admin || CTaiKhoan.ThuKy)
-                        if (cmbNguoiLap.SelectedIndex == 0)
-                            dgvDanhSach2.DataSource = _cDKDM.getDS(dateTu.Value, dateDen.Value);
+                    if (txtQuan.Text.Trim() != "")
+                    {
+                        if (txtThung.Text.Trim() != "")
+                            if (cmbNguoiLap.SelectedIndex == 0)
+                                dgvDanhSach2.DataSource = _cDKDM.getDS_Quan_Thung(txtQuan.Text.Trim(), int.Parse(txtThung.Text.Trim()));
+                            else
+                                dgvDanhSach2.DataSource = _cDKDM.getDS_Quan_Thung(int.Parse(cmbNguoiLap.SelectedValue.ToString()), txtQuan.Text.Trim(), int.Parse(txtThung.Text.Trim()));
                         else
-                            dgvDanhSach2.DataSource = _cDKDM.getDS(int.Parse(cmbNguoiLap.SelectedValue.ToString()), dateTu.Value, dateDen.Value);
+                            if (cmbNguoiLap.SelectedIndex == 0)
+                                dgvDanhSach2.DataSource = _cDKDM.getDS_Quan(txtQuan.Text.Trim());
+                            else
+                                dgvDanhSach2.DataSource = _cDKDM.getDS_Quan(int.Parse(cmbNguoiLap.SelectedValue.ToString()), txtQuan.Text.Trim());
+                    }
                     else
-                        dgvDanhSach2.DataSource = _cDKDM.getDS(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
+                        if (CTaiKhoan.TruongPhong || CTaiKhoan.Admin || CTaiKhoan.ThuKy)
+                            if (cmbNguoiLap.SelectedIndex == 0)
+                                dgvDanhSach2.DataSource = _cDKDM.getDS(dateTu.Value, dateDen.Value);
+                            else
+                                dgvDanhSach2.DataSource = _cDKDM.getDS(int.Parse(cmbNguoiLap.SelectedValue.ToString()), dateTu.Value, dateDen.Value);
+                        else
+                            dgvDanhSach2.DataSource = _cDKDM.getDS(CTaiKhoan.MaUser, dateTu.Value, dateDen.Value);
+            }
         }
 
         private void dgvDanhSach2_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
