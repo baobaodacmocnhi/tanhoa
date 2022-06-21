@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using DocSo_PC.DAL.Doi;
 using DocSo_PC.DAL.QuanTri;
 using DocSo_PC.LinQ;
+using DocSo_PC.DAL;
 
 namespace DocSo_PC.GUI.BaoCao
 {
@@ -16,6 +17,7 @@ namespace DocSo_PC.GUI.BaoCao
     {
         CDocSo _cDocSo = new CDocSo();
         CTo _cTo = new CTo();
+        CDHN _cDHN = new CDHN();
 
         public frmThongKe()
         {
@@ -32,6 +34,9 @@ namespace DocSo_PC.GUI.BaoCao
             cmbDot.SelectedItem = CNguoiDung.Dot;
 
             DataTable dtCode = _cDocSo.getDS_Code();
+            DataRow dr = dtCode.NewRow();
+            dr["Code"] = "Tất Cả";
+            dtCode.Rows.InsertAt( dr,0);
             cmbCode.DataSource = dtCode;
             cmbCode.DisplayMember = "Code";
             cmbCode.ValueMember = "Code";
@@ -56,7 +61,23 @@ namespace DocSo_PC.GUI.BaoCao
 
         private void btnXem_Click(object sender, EventArgs e)
         {
+            dgvDanhSach.DataSource = _cDocSo.getThongKe(cmbTo.SelectedValue.ToString(), cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString(),  cmbCode.SelectedValue.ToString(), txtTieuThu.Text.Trim(), txtSoKy.Text.Trim());
+        }
 
+        private void chkGieng_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkGieng.Checked)
+                dgvDanhSach.DataSource = _cDHN.getThongKe_Gieng();
+            else
+                dgvDanhSach.DataSource = null;
+        }
+
+        private void dgvDanhSach_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvDanhSach.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
+            }
         }
     }
 }

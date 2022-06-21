@@ -28,6 +28,7 @@ namespace DocSo_PC.GUI.MaHoa
         CDocSo _cDocSo = new CDocSo();
         CToTrinh _cToTrinh = new CToTrinh();
         CDCBD _cDCBD = new CDCBD();
+        CTo _cTo = new CTo();
         wrDHN.wsDHN _wsDHN = new wrDHN.wsDHN();
 
         MaHoa_DonTu _dontu = null;
@@ -78,6 +79,14 @@ namespace DocSo_PC.GUI.MaHoa
                 chkcmbNoiDung.Properties.DisplayMember = "Name";
                 chkcmbNoiDung.SetEditValue(str);
                 cmbTimTheo.SelectedIndex = 0;
+                List<To> lst = _cTo.getDS_HanhThu();
+                To en = new To();
+                en.MaTo = 0;
+                en.TenTo = "Tất Cả";
+                lst.Insert(0, en);
+                cmbTo.DataSource = lst;
+                cmbTo.DisplayMember = "TenTo";
+                cmbTo.ValueMember = "MaTo";
             }
             catch (Exception ex)
             {
@@ -479,7 +488,7 @@ namespace DocSo_PC.GUI.MaHoa
                             else
                                 str += ";" + chkcmbNoiDung.Properties.Items[i].Value.ToString();
                         }
-                    dgvDanhSach.DataSource = _cDonTu.getDS(str, dateTuNgay.Value, dateDenNgay.Value);
+                    dgvDanhSach.DataSource = _cDonTu.getDS(cmbTo.SelectedValue.ToString(), str, dateTuNgay.Value, dateDenNgay.Value);
                     break;
                 case "Mã Đơn":
                     dgvDanhSach.DataSource = _cDonTu.getDS(int.Parse(txtSo.Text.Trim()));
@@ -493,7 +502,7 @@ namespace DocSo_PC.GUI.MaHoa
 
         private void btnXemTon_Click(object sender, EventArgs e)
         {
-            dgvDanhSach.DataSource = _cDonTu.getDS_Ton();
+            dgvDanhSach.DataSource = _cDonTu.getDS_Ton(cmbTo.SelectedValue.ToString());
         }
 
         private void btnCapNhat_Click(object sender, EventArgs e)

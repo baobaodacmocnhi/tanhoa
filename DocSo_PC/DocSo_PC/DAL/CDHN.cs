@@ -244,6 +244,7 @@ namespace DocSo_PC.DAL
             string sql = " select MLT=LOTRINH,DANHBO,HOTEN,DiaChi=SONHA+' '+TENDUONG,NoiDung=N'Đứt Chì Góc',CREATEDATE=DutChi_Goc_Ngay,Folder='DutChi' from TB_DULIEUKHACHHANG where DutChi_Goc=1 and DutChi_Than=0 and CAST(DutChi_Goc_Ngay as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(DutChi_Goc_Ngay as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and SUBSTRING(LOTRINH,3,2)>=(select TuMay from DocSoTH.dbo.[To] where MaTo=" + MaTo + ") and SUBSTRING(LOTRINH,3,2)<=(select DenMay from DocSoTH.dbo.[To] where MaTo=" + MaTo + ")";
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
+
         public DataTable getDS_DutChiThan(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             string sql = " select MLT=LOTRINH,DANHBO,HOTEN,DiaChi=SONHA+' '+TENDUONG,NoiDung=N'Đứt Chì Thân',CREATEDATE=DutChi_Than_Ngay,Folder='DutChi' from TB_DULIEUKHACHHANG where DutChi_Than=1 and CAST(DutChi_Than_Ngay as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(DutChi_Than_Ngay as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'";
@@ -254,6 +255,11 @@ namespace DocSo_PC.DAL
         {
             string sql = " select MLT=LOTRINH,DANHBO,HOTEN,DiaChi=SONHA+' '+TENDUONG,NoiDung=N'Đứt Chì Thân',CREATEDATE=DutChi_Than_Ngay,Folder='DutChi' from TB_DULIEUKHACHHANG where DutChi_Than=1 and CAST(DutChi_Than_Ngay as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(DutChi_Than_Ngay as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and SUBSTRING(LOTRINH,3,2)>=(select TuMay from DocSoTH.dbo.[To] where MaTo=" + MaTo + ") and SUBSTRING(LOTRINH,3,2)<=(select DenMay from DocSoTH.dbo.[To] where MaTo=" + MaTo + ")";
             return _cDAL.ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable getThongKe_Gieng()
+        {
+            return _cDAL.ExecuteQuery_DataTable("select MLT=LOTRINH,DanhBo,HoTen,DiaChi=SONHA+' '+TENDUONG,Hieu=HIEUDH,Co=CODH,SoThan=SOTHANDH from TB_DULIEUKHACHHANG where Gieng=1");
         }
 
     }

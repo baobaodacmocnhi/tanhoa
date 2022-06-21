@@ -56,6 +56,7 @@
             this.btnXem = new System.Windows.Forms.Button();
             this.txtSoKy = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.chkGieng = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,7 +88,6 @@
             this.cmbDot.Name = "cmbDot";
             this.cmbDot.Size = new System.Drawing.Size(39, 21);
             this.cmbDot.TabIndex = 57;
-            this.cmbDot.Visible = false;
             // 
             // label4
             // 
@@ -97,7 +97,6 @@
             this.label4.Size = new System.Drawing.Size(24, 13);
             this.label4.TabIndex = 56;
             this.label4.Text = "Đợt";
-            this.label4.Visible = false;
             // 
             // cmbKy
             // 
@@ -237,8 +236,9 @@
             this.dgvDanhSach.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvDanhSach.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvDanhSach.Size = new System.Drawing.Size(734, 372);
+            this.dgvDanhSach.Size = new System.Drawing.Size(734, 555);
             this.dgvDanhSach.TabIndex = 60;
+            this.dgvDanhSach.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhSach_RowPostPaint);
             // 
             // DanhBo
             // 
@@ -308,6 +308,7 @@
             this.txtTieuThu.Name = "txtTieuThu";
             this.txtTieuThu.Size = new System.Drawing.Size(50, 20);
             this.txtTieuThu.TabIndex = 62;
+            this.txtTieuThu.Text = "0";
             // 
             // btnXem
             // 
@@ -325,6 +326,7 @@
             this.txtSoKy.Name = "txtSoKy";
             this.txtSoKy.Size = new System.Drawing.Size(50, 20);
             this.txtSoKy.TabIndex = 65;
+            this.txtSoKy.Text = "0";
             // 
             // label5
             // 
@@ -335,11 +337,23 @@
             this.label5.TabIndex = 64;
             this.label5.Text = "Số Kỳ >=";
             // 
+            // chkGieng
+            // 
+            this.chkGieng.AutoSize = true;
+            this.chkGieng.Location = new System.Drawing.Point(752, 39);
+            this.chkGieng.Name = "chkGieng";
+            this.chkGieng.Size = new System.Drawing.Size(54, 17);
+            this.chkGieng.TabIndex = 66;
+            this.chkGieng.Text = "Giếng";
+            this.chkGieng.UseVisualStyleBackColor = true;
+            this.chkGieng.CheckedChanged += new System.EventHandler(this.chkGieng_CheckedChanged);
+            // 
             // frmThongKe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(903, 423);
+            this.ClientSize = new System.Drawing.Size(903, 606);
+            this.Controls.Add(this.chkGieng);
             this.Controls.Add(this.txtSoKy);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnXem);
@@ -391,5 +405,6 @@
         private System.Windows.Forms.Button btnXem;
         private System.Windows.Forms.TextBox txtSoKy;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox chkGieng;
     }
 }

@@ -80,9 +80,12 @@ namespace DocSo_PC.DAL.MaHoa
             return _db.MaHoa_DonTus.SingleOrDefault(item => item.ID == ID);
         }
 
-        public DataTable getDS(string NoiDung, DateTime FromCreateDate, DateTime ToCreateDate)
+        public DataTable getDS(string MaTo, string NoiDung, DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            return _cDAL.LINQToDataTable(_db.MaHoa_DonTus.Where(item => item.CreateDate.Date >= FromCreateDate.Date && item.CreateDate.Date <= ToCreateDate.Date && NoiDung.IndexOf(item.NoiDung) >= 0).ToList());
+            if (MaTo == "0")
+                return _cDAL.LINQToDataTable(_db.MaHoa_DonTus.Where(item => item.CreateDate.Date >= FromCreateDate.Date && item.CreateDate.Date <= ToCreateDate.Date && NoiDung.IndexOf(item.NoiDung) >= 0));
+            else
+                return _cDAL.LINQToDataTable(_db.MaHoa_DonTus.Where(item => item.CreateDate.Date >= FromCreateDate.Date && item.CreateDate.Date <= ToCreateDate.Date && NoiDung.IndexOf(item.NoiDung) >= 0 && Convert.ToInt32(item.MLT.Substring(2, 2)) >= _db.Tos.SingleOrDefault(t => t.MaTo == Convert.ToInt32(MaTo)).TuMay && Convert.ToInt32(item.MLT.Substring(2, 2)) <= _db.Tos.SingleOrDefault(t => t.MaTo == Convert.ToInt32(MaTo)).DenMay));
         }
 
         public DataTable getDS(DateTime FromCreateDate, DateTime ToCreateDate)
@@ -100,9 +103,12 @@ namespace DocSo_PC.DAL.MaHoa
             return _cDAL.LINQToDataTable(_db.MaHoa_DonTus.Where(item => item.DanhBo == DanhBo));
         }
 
-        public DataTable getDS_Ton()
+        public DataTable getDS_Ton(string MaTo)
         {
-            return _cDAL.LINQToDataTable(_db.MaHoa_DonTus.Where(item => item.TinhTrang.Contains("Tồn")));
+            if (MaTo == "0")
+                return _cDAL.LINQToDataTable(_db.MaHoa_DonTus.Where(item => item.TinhTrang.Contains("Tồn")));
+            else
+                return _cDAL.LINQToDataTable(_db.MaHoa_DonTus.Where(item => item.TinhTrang.Contains("Tồn") && Convert.ToInt32(item.MLT.Substring(2, 2)) >= _db.Tos.SingleOrDefault(t => t.MaTo == Convert.ToInt32(MaTo)).TuMay && Convert.ToInt32(item.MLT.Substring(2, 2)) <= _db.Tos.SingleOrDefault(t => t.MaTo == Convert.ToInt32(MaTo)).DenMay));
         }
 
         public DataTable getDS_ChuyenDCBD(DateTime FromCreateDate, DateTime ToCreateDate)
