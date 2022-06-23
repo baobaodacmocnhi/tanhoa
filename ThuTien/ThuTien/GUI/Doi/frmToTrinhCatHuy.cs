@@ -273,8 +273,14 @@ namespace ThuTien.GUI.Doi
                     dr["MLT"] = item.Cells["MLT"].Value.ToString().Insert(4, " ").Insert(2, " ");
                     dr["CoDHN"] = item.Cells["CoDHN"].Value;
                     dr["HoTen"] = item.Cells["HoTen"].Value;
-                    dr["DiaChi"] = item.Cells["DiaChi"].Value;
-
+                    HOADON hd = _cHoaDon.GetMoiNhat(item.Cells["DanhBo"].Value.ToString());
+                    if (hd != null)
+                    {
+                        dr["GiaBieu"] = hd.GB;
+                        dr["DinhMuc"] = hd.DM;
+                    }
+                    if (item.Cells["DinhMuc"].Value != null)
+                        dr["DinhMuc"] = item.Cells["DinhMuc"].Value;
                     DataTable dt = _cHoaDon.GetDSTonByDanhBo_ExceptHD0(item.Cells["DanhBo"].Value.ToString());
                     string Ky = "";
                     int TongCongSo = 0;
@@ -288,7 +294,6 @@ namespace ThuTien.GUI.Doi
                         TongCongSo += int.Parse(itemTon["TongCong"].ToString());
                         TieuThu += int.Parse(itemTon["TieuThu"].ToString());
                     }
-
                     dr["Ky"] = Ky;
                     dr["TongCong"] = TongCongSo;
                     dr["TieuThu"] = TieuThu;
@@ -318,6 +323,12 @@ namespace ThuTien.GUI.Doi
                     dr["CoDHN"] = item.Cells["CoDHN"].Value;
                     dr["HoTen"] = item.Cells["HoTen"].Value;
                     dr["DiaChi"] = item.Cells["DiaChi"].Value;
+                    HOADON hd = _cHoaDon.GetMoiNhat(item.Cells["DanhBo"].Value.ToString());
+                    if (hd != null)
+                    {
+                        dr["GiaBieu"] = hd.GB;
+                        dr["DinhMuc"] = hd.DM;
+                    }
                     dr["Ky"] = item.Cells["Ky"].Value;
                     dr["TongCong"] = item.Cells["TongCong"].Value;
                     dr["TieuThu"] = item.Cells["TieuThu"].Value;
@@ -457,9 +468,9 @@ namespace ThuTien.GUI.Doi
                                 //string[] MaHDs = item.MaHD.Split(',');
                                 string[] SoHoaDons = item.SoHoaDon.Split(',');
                                 foreach (string SoHoaDon in SoHoaDons)
-                                    if (String.IsNullOrEmpty(SoHoaDon)==false&&_cLenhHuy.CheckExist(SoHoaDon)==false)
+                                    if (String.IsNullOrEmpty(SoHoaDon) == false && _cLenhHuy.CheckExist(SoHoaDon) == false)
                                     {
-                                        HOADON hoadon=_cHoaDon.Get(SoHoaDon);
+                                        HOADON hoadon = _cHoaDon.Get(SoHoaDon);
                                         TT_LenhHuy lenhhuy = new TT_LenhHuy();
                                         lenhhuy.MaHD = hoadon.ID_HOADON;
                                         lenhhuy.SoHoaDon = SoHoaDon;
@@ -512,7 +523,7 @@ namespace ThuTien.GUI.Doi
                         MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-       
+
 
     }
 }

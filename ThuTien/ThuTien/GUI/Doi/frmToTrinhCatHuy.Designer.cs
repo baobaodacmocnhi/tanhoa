@@ -45,6 +45,13 @@
             this.DaKy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvCTToTrinh = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnXem = new System.Windows.Forms.Button();
+            this.radPhoGiamDoc = new System.Windows.Forms.RadioButton();
+            this.radGiamDoc = new System.Windows.Forms.RadioButton();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.radBa = new System.Windows.Forms.RadioButton();
+            this.radOng = new System.Windows.Forms.RadioButton();
             this.MaTT_CT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaCTTT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,13 +64,8 @@
             this.TieuThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate_CT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnXem = new System.Windows.Forms.Button();
-            this.radPhoGiamDoc = new System.Windows.Forms.RadioButton();
-            this.radGiamDoc = new System.Windows.Forms.RadioButton();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.radBa = new System.Windows.Forms.RadioButton();
-            this.radOng = new System.Windows.Forms.RadioButton();
+            this.GiaBieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DinhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvToTrinh)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -220,7 +222,9 @@
             this.TongCong,
             this.TieuThu,
             this.GhiChu,
-            this.CreateDate_CT});
+            this.CreateDate_CT,
+            this.GiaBieu,
+            this.DinhMuc});
             this.dgvCTToTrinh.Location = new System.Drawing.Point(6, 19);
             this.dgvCTToTrinh.Name = "dgvCTToTrinh";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -230,6 +234,78 @@
             this.dgvCTToTrinh.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvCTToTrinh_CellFormatting);
             this.dgvCTToTrinh.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvCTToTrinh_CellValidating);
             this.dgvCTToTrinh.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvCTToTrinh_RowPostPaint);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(560, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(37, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "(enter)";
+            // 
+            // btnXem
+            // 
+            this.btnXem.Location = new System.Drawing.Point(310, 12);
+            this.btnXem.Name = "btnXem";
+            this.btnXem.Size = new System.Drawing.Size(75, 23);
+            this.btnXem.TabIndex = 3;
+            this.btnXem.Text = "Xem";
+            this.btnXem.UseVisualStyleBackColor = true;
+            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
+            // 
+            // radPhoGiamDoc
+            // 
+            this.radPhoGiamDoc.AutoSize = true;
+            this.radPhoGiamDoc.Checked = true;
+            this.radPhoGiamDoc.Location = new System.Drawing.Point(894, 26);
+            this.radPhoGiamDoc.Name = "radPhoGiamDoc";
+            this.radPhoGiamDoc.Size = new System.Drawing.Size(94, 17);
+            this.radPhoGiamDoc.TabIndex = 50;
+            this.radPhoGiamDoc.TabStop = true;
+            this.radPhoGiamDoc.Text = "Phó Giám Đốc";
+            this.radPhoGiamDoc.UseVisualStyleBackColor = true;
+            // 
+            // radGiamDoc
+            // 
+            this.radGiamDoc.AutoSize = true;
+            this.radGiamDoc.Location = new System.Drawing.Point(894, 3);
+            this.radGiamDoc.Name = "radGiamDoc";
+            this.radGiamDoc.Size = new System.Drawing.Size(72, 17);
+            this.radGiamDoc.TabIndex = 49;
+            this.radGiamDoc.Text = "Giám Đốc";
+            this.radGiamDoc.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.radBa);
+            this.panel1.Controls.Add(this.radOng);
+            this.panel1.Location = new System.Drawing.Point(1019, -1);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(53, 45);
+            this.panel1.TabIndex = 51;
+            // 
+            // radBa
+            // 
+            this.radBa.AutoSize = true;
+            this.radBa.Location = new System.Drawing.Point(3, 26);
+            this.radBa.Name = "radBa";
+            this.radBa.Size = new System.Drawing.Size(38, 17);
+            this.radBa.TabIndex = 51;
+            this.radBa.Text = "Bà";
+            this.radBa.UseVisualStyleBackColor = true;
+            // 
+            // radOng
+            // 
+            this.radOng.AutoSize = true;
+            this.radOng.Checked = true;
+            this.radOng.Location = new System.Drawing.Point(3, 3);
+            this.radOng.Name = "radOng";
+            this.radOng.Size = new System.Drawing.Size(45, 17);
+            this.radOng.TabIndex = 50;
+            this.radOng.TabStop = true;
+            this.radOng.Text = "Ông";
+            this.radOng.UseVisualStyleBackColor = true;
             // 
             // MaTT_CT
             // 
@@ -315,77 +391,19 @@
             this.CreateDate_CT.Name = "CreateDate_CT";
             this.CreateDate_CT.Visible = false;
             // 
-            // label2
+            // GiaBieu
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(560, 15);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "(enter)";
+            this.GiaBieu.DataPropertyName = "GiaBieu";
+            this.GiaBieu.HeaderText = "GiaBieu";
+            this.GiaBieu.Name = "GiaBieu";
+            this.GiaBieu.Visible = false;
             // 
-            // btnXem
+            // DinhMuc
             // 
-            this.btnXem.Location = new System.Drawing.Point(310, 12);
-            this.btnXem.Name = "btnXem";
-            this.btnXem.Size = new System.Drawing.Size(75, 23);
-            this.btnXem.TabIndex = 3;
-            this.btnXem.Text = "Xem";
-            this.btnXem.UseVisualStyleBackColor = true;
-            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
-            // 
-            // radPhoGiamDoc
-            // 
-            this.radPhoGiamDoc.AutoSize = true;
-            this.radPhoGiamDoc.Checked = true;
-            this.radPhoGiamDoc.Location = new System.Drawing.Point(894, 26);
-            this.radPhoGiamDoc.Name = "radPhoGiamDoc";
-            this.radPhoGiamDoc.Size = new System.Drawing.Size(94, 17);
-            this.radPhoGiamDoc.TabIndex = 50;
-            this.radPhoGiamDoc.TabStop = true;
-            this.radPhoGiamDoc.Text = "Phó Giám Đốc";
-            this.radPhoGiamDoc.UseVisualStyleBackColor = true;
-            // 
-            // radGiamDoc
-            // 
-            this.radGiamDoc.AutoSize = true;
-            this.radGiamDoc.Location = new System.Drawing.Point(894, 3);
-            this.radGiamDoc.Name = "radGiamDoc";
-            this.radGiamDoc.Size = new System.Drawing.Size(72, 17);
-            this.radGiamDoc.TabIndex = 49;
-            this.radGiamDoc.Text = "Giám Đốc";
-            this.radGiamDoc.UseVisualStyleBackColor = true;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.radBa);
-            this.panel1.Controls.Add(this.radOng);
-            this.panel1.Location = new System.Drawing.Point(1019, -1);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(53, 45);
-            this.panel1.TabIndex = 51;
-            // 
-            // radBa
-            // 
-            this.radBa.AutoSize = true;
-            this.radBa.Location = new System.Drawing.Point(3, 26);
-            this.radBa.Name = "radBa";
-            this.radBa.Size = new System.Drawing.Size(38, 17);
-            this.radBa.TabIndex = 51;
-            this.radBa.Text = "Bà";
-            this.radBa.UseVisualStyleBackColor = true;
-            // 
-            // radOng
-            // 
-            this.radOng.AutoSize = true;
-            this.radOng.Checked = true;
-            this.radOng.Location = new System.Drawing.Point(3, 3);
-            this.radOng.Name = "radOng";
-            this.radOng.Size = new System.Drawing.Size(45, 17);
-            this.radOng.TabIndex = 50;
-            this.radOng.TabStop = true;
-            this.radOng.Text = "Ông";
-            this.radOng.UseVisualStyleBackColor = true;
+            this.DinhMuc.DataPropertyName = "DinhMuc";
+            this.DinhMuc.HeaderText = "DinhMuc";
+            this.DinhMuc.Name = "DinhMuc";
+            this.DinhMuc.Visible = false;
             // 
             // frmToTrinhCatHuy
             // 
@@ -438,6 +456,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Khoa;
         private System.Windows.Forms.DataGridViewCheckBoxColumn DaKy;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.RadioButton radBa;
+        private System.Windows.Forms.RadioButton radOng;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaTT_CT;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaCTTT;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
@@ -450,8 +471,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TieuThu;
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate_CT;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.RadioButton radBa;
-        private System.Windows.Forms.RadioButton radOng;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GiaBieu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DinhMuc;
     }
 }
