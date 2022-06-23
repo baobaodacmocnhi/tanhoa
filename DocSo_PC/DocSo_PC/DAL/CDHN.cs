@@ -259,7 +259,7 @@ namespace DocSo_PC.DAL
 
         public DataTable getThongKe_Gieng()
         {
-            return _cDAL.ExecuteQuery_DataTable("select MLT=LOTRINH,DanhBo,HoTen,DiaChi=SONHA+' '+TENDUONG,Hieu=HIEUDH,Co=CODH,SoThan=SOTHANDH from TB_DULIEUKHACHHANG where Gieng=1");
+            return _cDAL.ExecuteQuery_DataTable("select MLT=LOTRINH,DanhBo,HoTen,DiaChi=SONHA+' '+TENDUONG,Hieu=HIEUDH,Co=CODH,SoThan=SOTHANDH,Phuong=(select TENPHUONG from PHUONG where MAQUAN=Quan and MAPHUONG=PHUONG),Quan=(select TENQUAN from QUAN where MAQUAN=Quan and MAQUAN=QUAN) from TB_DULIEUKHACHHANG where Gieng=1");
         }
 
     }

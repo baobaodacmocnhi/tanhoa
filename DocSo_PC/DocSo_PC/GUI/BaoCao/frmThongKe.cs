@@ -61,7 +61,7 @@ namespace DocSo_PC.GUI.BaoCao
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvDanhSach.DataSource = _cDocSo.getThongKe(cmbTo.SelectedValue.ToString(), cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString(),  cmbCode.SelectedValue.ToString(), txtTieuThu.Text.Trim(), txtSoKy.Text.Trim());
+            dgvDanhSach.DataSource = _cDocSo.getThongKe(cmbTo.SelectedValue.ToString(), cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString(), cmbCode.SelectedValue.ToString(), txtTieuThu1.Text.Trim(), txtTieuThu2.Text.Trim(), txtSoKy.Text.Trim());
         }
 
         private void chkGieng_CheckedChanged(object sender, EventArgs e)

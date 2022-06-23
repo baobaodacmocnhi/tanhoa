@@ -542,28 +542,28 @@ namespace DocSo_PC.DAL.Doi
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
-        public DataTable getThongKe(string MaTo, string Nam, string Ky, string Dot, string Code, string TieuThu, string SoKy)
+        public DataTable getThongKe(string MaTo, string Nam, string Ky, string Dot, string Code, string TieuThu1, string TieuThu2, string SoKy)
         {
             if (MaTo == "0")
                 MaTo = "";
             else
                 MaTo = " and (select TuMay from [To] where MaTo=" + MaTo + ")<=May and May<=(select DenMay from [To] where MaTo=" + MaTo + ")";
-            //if (May == "" || May == "Tất Cả")
-            //    May = "";
-            //else
-            //    May = " and May like '" + May + "'";
+            if (Dot == "" || Dot == "Tất Cả")
+                Dot = "";
+            else
+                Dot = " and Dot='" + Dot + "'";
             if (Code == "Tất Cả")
                 Code = "";
             else
                 if (Code == "")
                     Code = " and (CodeMoi is null or CodeMoi='')";
                 else
-                    Code = " and CodeMoi like '" + Code + "'";
-            if (TieuThu != "")
-                TieuThu = " and TieuThuMoi>=" + TieuThu;
+                    Code = " and CodeMoi='" + Code + "'";
+            string TieuThu = "";
+            TieuThu = " and TieuThuMoi>=" + TieuThu1 + " and TieuThuMoi<=" + TieuThu2;
             string sql = "select MLT=LOTRINH,DanhBo,HoTen,DiaChi=SONHA+' '+TENDUONG,Hieu=HIEUDH,Co=CODH,SoThan=SOTHANDH,t2.TieuThu from CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t1,"
-                        + " (select DanhBa,TieuThu=Max(TieuThuMoi) from DocSo where (Nam<" + Nam + " or (Nam=" + Nam + " and Ky<='" + Ky + "')) and Dot=" + Dot + MaTo + Code + TieuThu
-                        + " group by DanhBa having COUNT(DocSoID)>=" + SoKy + ")t2"
+                        + " (select DanhBa,TieuThu=Max(TieuThuMoi) from DocSo where (Nam<" + Nam + " or (Nam=" + Nam + " and Ky<='" + Ky + "'))" + Dot + MaTo + Code + TieuThu
+                        + " group by DanhBa having COUNT(DanhBa)>=" + SoKy + ")t2"
                         + " where t1.DanhBo=t2.DanhBa";
             return _cDAL.ExecuteQuery_DataTable(sql);
         }

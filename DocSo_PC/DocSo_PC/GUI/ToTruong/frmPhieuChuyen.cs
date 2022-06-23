@@ -186,12 +186,19 @@ namespace DocSo_PC.GUI.ToTruong
                     {
                         case "Âm Sâu":
                             if (ttkh.ViTriDHN_Ngoai)
+                            {
                                 dr["TieuDe"] = "DANH SÁCH ĐỒNG HỒ NƯỚC " + item.Cells["NoiDung"].Value.ToString().ToUpper() + " NGOÀI BẤT ĐỘNG SẢN";
+                                dr["NoiNhan"] = "P. GNKDT\nP. KHĐT\nĐ. TCTB\nLưu";
+                            }
                             else
+                            {
                                 dr["TieuDe"] = "DANH SÁCH ĐỒNG HỒ NƯỚC " + item.Cells["NoiDung"].Value.ToString().ToUpper() + " TRONG BẤT ĐỘNG SẢN";
+                                dr["NoiNhan"] = "P. GNKDT\nP. KHĐT\nĐ. TCTB\nP. Thương Vụ\nLưu";
+                            }
                             break;
                         default:
                             dr["TieuDe"] = "DANH SÁCH ĐỒNG HỒ NƯỚC " + item.Cells["NoiDung"].Value.ToString().ToUpper();
+                            dr["NoiNhan"] = "P. Thương Vụ: thực hiện\nLưu";
                             break;
                     }
                     dr["ThoiGian"] = "Từ ngày " + dateTuNgay.Value.ToString("dd/MM/yyyy") + " đến ngày " + dateDenNgay.Value.ToString("dd/MM/yyyy");
@@ -274,6 +281,49 @@ namespace DocSo_PC.GUI.ToTruong
                     }
                     else
                         MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
+                {
+                    if (MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        TB_DULIEUKHACHHANG ttkh = _cDHN.get(dgvDanhSach.CurrentRow.Cells["DanhBo"].Value.ToString());
+                        if (ttkh != null)
+                        {
+                            switch (dgvDanhSach.CurrentRow.Cells["NoiDung"].Value.ToString())
+                            {
+                                case "Âm Sâu":
+                                    ttkh.AmSau = false;
+                                    break;
+                                case "Xây Dựng":
+                                    ttkh.XayDung = false;
+                                    break;
+                                case "Đứt Chì Góc":
+                                    ttkh.DutChi_Goc = false;
+                                    break;
+                                case "Đứt Chì Thân":
+                                    ttkh.DutChi_Goc = false;
+                                    ttkh.DutChi_Than = false;
+                                    break;
+                                default:
+                                    break;
+                            }
+                            _cDHN.SubmitChanges();
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
