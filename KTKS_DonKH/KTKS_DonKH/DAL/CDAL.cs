@@ -511,5 +511,6 @@ namespace KTKS_DonKH.DAL
         {
             return File.ReadAllBytes(path);
         }
+
     }
 }

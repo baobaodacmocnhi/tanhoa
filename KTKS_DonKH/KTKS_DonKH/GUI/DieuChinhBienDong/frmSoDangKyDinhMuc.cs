@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.DAL.DieuChinhBienDong;
+using System.IO;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
@@ -33,6 +34,34 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (e.KeyChar == 13)
                 btnTimKiem.PerformClick();
+        }
+
+        private void btnFileBilling_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.DefaultExt = "dat";
+            saveFileDialog.Filter = "Text files (*.dat)|*.dat";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                DataTable dt = _cChungTu.getDS_ChiTiet_CCCD();
+
+                using (StreamWriter writer = new StreamWriter(saveFileDialog.FileName))
+                    foreach (DataRow item in dt.Rows)
+                    {
+                        writer.Write("\"" + item["DanhBo"] + "\"");
+                        writer.Write(",\"T\"");
+                        writer.Write(",\"" + item["MaCT"] + "\"");
+                        writer.Write(",\"" + item["HoTen"] + "\"");
+                        writer.Write(",\"\"");//CMND_CU
+                        writer.Write(",\"\"");//SHK_STT
+                        writer.Write(",\"\"");//NGHEO
+                        writer.Write(",\"\"");//LOAI_CDM
+                        writer.Write(",\"\"");//THOIHAN_TT
+                        writer.Write(",\"\"");//DBO_THTRU
+                        writer.WriteLine(",\"\"");//MSDD_MOI
+                    }
+                MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
     }

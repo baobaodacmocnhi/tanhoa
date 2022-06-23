@@ -211,6 +211,34 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             return LINQToDataTable(query);
         }
 
+        public DataTable getDS_ChiTiet_CCCD()
+        {
+            var query = from itemCTCT in db.ChungTu_ChiTiets
+                        where itemCTCT.ChungTu.MaLCT == 15
+                        select new
+                        {
+                            itemCTCT.DanhBo,
+                            itemCTCT.MaCT,
+                            itemCTCT.ChungTu.HoTen,
+                        };
+
+            return LINQToDataTable(query);
+        }
+
+        public DataTable getDS_ChiTiet_CMND()
+        {
+            var query = from itemCTCT in db.ChungTu_ChiTiets
+                        where itemCTCT.ChungTu.MaLCT == 16
+                        select new
+                        {
+                            itemCTCT.DanhBo,
+                            itemCTCT.MaCT,
+                            itemCTCT.ChungTu.HoTen,
+                        };
+
+            return LINQToDataTable(query);
+        }
+
         #endregion
 
         #region ChungTu_LichSu

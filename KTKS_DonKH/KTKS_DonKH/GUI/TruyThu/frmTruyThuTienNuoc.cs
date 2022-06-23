@@ -1519,7 +1519,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                     if (item.PhiBVMT_ThueCu != null)
                         dr["PhiBVMT_ThueCu"] = item.PhiBVMT_ThueCu;
                     else
-                         dr["PhiBVMT_ThueCu"] = 0;
+                        dr["PhiBVMT_ThueCu"] = 0;
                     dr["TongCongCu"] = item.TongCongCu;
                     dr["GiaBieuMoi"] = item.GiaBieuMoi;
                     dr["DinhMucHNMoi"] = item.DinhMucHNMoi;
@@ -1592,6 +1592,22 @@ namespace KTKS_DonKH.GUI.TruyThu
             rpt.SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.Show();
+        }
+
+        private void btnInKTTC_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                if (_cttttn != null)
+                {
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnThemThanhToan_Click(object sender, EventArgs e)
@@ -2116,6 +2132,8 @@ namespace KTKS_DonKH.GUI.TruyThu
             }
 
         }
+
+
 
 
 
