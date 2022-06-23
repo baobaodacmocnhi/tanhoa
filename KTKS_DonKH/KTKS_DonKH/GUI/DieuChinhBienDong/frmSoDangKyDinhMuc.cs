@@ -44,23 +44,24 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 DataTable dt = _cChungTu.getDS_ChiTiet_CCCD();
-
+                dt.Merge(_cChungTu.getDS_ChiTiet_CMND());
                 using (StreamWriter writer = new StreamWriter(saveFileDialog.FileName))
                     foreach (DataRow item in dt.Rows)
                     {
                         writer.Write("\"" + item["DanhBo"] + "\"");
                         writer.Write(",\"T\"");
-                        writer.Write(",\"" + item["MaCT"] + "\"");
+                        writer.Write(",\"" + item["MaCT"].ToString().Trim() + "\"");
                         writer.Write(",\"" + item["HoTen"] + "\"");
                         writer.Write(",\"\"");//CMND_CU
                         writer.Write(",\"\"");//SHK_STT
-                        writer.Write(",\"\"");//NGHEO
-                        writer.Write(",\"\"");//LOAI_CDM
+                        writer.Write(",\"0\"");//NGHEO
+                        writer.Write(",\"1\"");//LOAI_CDM
                         writer.Write(",\"\"");//THOIHAN_TT
                         writer.Write(",\"\"");//DBO_THTRU
                         writer.WriteLine(",\"\"");//MSDD_MOI
                     }
                 MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //23/06/2022
             }
         }
 
