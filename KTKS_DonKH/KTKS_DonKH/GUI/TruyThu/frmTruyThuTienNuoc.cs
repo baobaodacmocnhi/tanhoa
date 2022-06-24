@@ -1601,7 +1601,97 @@ namespace KTKS_DonKH.GUI.TruyThu
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 if (_cttttn != null)
                 {
+                    foreach (TruyThuTienNuoc_HoaDon item in _cttttn.TruyThuTienNuoc_HoaDons.OrderBy(itemA => itemA.Nam).ThenBy(itemA => itemA.Ky).ToList())
+                    {
+                        DataRow dr = dsBaoCao.Tables["TruyThuTienNuoc"].NewRow();
 
+                        //if (txtMaDonMoi.Text.Trim() != "")
+                        //    dr["MaDon"] = txtMaDonMoi.Text.Trim();
+                        //else
+                        //    dr["MaDon"] = txtMaDonCu.Text.Trim();
+                        dr["ID"] = _cttttn.IDCT.ToString().Insert(_cttttn.IDCT.ToString().Length - 2, "-");
+                        dr["DanhBo"] = _cttttn.DanhBo.ToString().Insert(7, " ").Insert(4, " ");
+                        dr["HoTen"] = _cttttn.HoTen;
+                        dr["DiaChi"] = _cttttn.DiaChi;
+                        dr["HopDong"] = _cttttn.HopDong;
+                        dr["GiaBieu"] = _cttttn.GiaBieu;
+                        dr["DinhMucHN"] = _cttttn.DinhMucHN;
+                        dr["DinhMuc"] = _cttttn.DinhMuc;
+
+                        dr["Ky"] = item.Ky;
+                        dr["Nam"] = item.Nam;
+
+                        HOADON hd = _cThuTien.Get(_cttttn.DanhBo, item.Ky.Value, item.Nam.Value);
+                        int TyleSH = 0, TyLeSX = 0, TyLeDV = 0, TyLeHCSN = 0;
+                        int TienNuocNamCu_Truoc, TienNuocNamMoi_Truoc, TieuThu_DieuChinhGia_Truoc, PhiBVMTNamCu_Truoc, PhiBVMTNamMoi_Truoc, TienNuoc_Truoc, ThueGTGT_Truoc, TDVTN_Truoc, ThueTDVTN_Truoc;
+                        string ChiTietNamCu_Truoc, ChiTietNamMoi_Truoc, ChiTietPhiBVMTNamCu_Truoc, ChiTietPhiBVMTNamMoi_Truoc;
+                        if (hd != null)
+                        {
+                            if (hd.TILESH != null && hd.TILESH.Value != 0)
+                                TyleSH = hd.TILESH.Value;
+                            if (hd.TILESX != null && hd.TILESX.Value != 0)
+                                TyLeSX = hd.TILESX.Value;
+                            if (hd.TILEDV != null && hd.TILEDV.Value != 0)
+                                TyLeDV = hd.TILEDV.Value;
+                            if (hd.TILEHCSN != null && hd.TILEHCSN.Value != 0)
+                                TyLeHCSN = hd.TILEHCSN.Value;
+                        }
+                        _cGiaNuoc.TinhTienNuoc(false, false, false, 0, _cttttn.DanhBo, item.Ky.Value, item.Nam.Value, DateTime.Parse(item.TuNgay), DateTime.Parse(item.DenNgay), item.GiaBieuCu.Value, TyleSH, TyLeSX, TyLeDV, TyLeHCSN, item.DinhMucCu.Value, item.DinhMucHNCu.Value, item.TieuThuCu.Value, out  TienNuocNamCu_Truoc, out ChiTietNamCu_Truoc, out  TienNuocNamMoi_Truoc, out  ChiTietNamMoi_Truoc, out  TieuThu_DieuChinhGia_Truoc, out PhiBVMTNamCu_Truoc, out ChiTietPhiBVMTNamCu_Truoc, out PhiBVMTNamMoi_Truoc, out ChiTietPhiBVMTNamMoi_Truoc, out TienNuoc_Truoc, out ThueGTGT_Truoc, out TDVTN_Truoc, out ThueTDVTN_Truoc);
+
+                        int TienNuocNamCu_Sau, TienNuocNamMoi_Sau, TieuThu_DieuChinhGia_Sau, PhiBVMTNamCu_Sau, PhiBVMTNamMoi_Sau, TienNuoc_Sau, ThueGTGT_Sau, TDVTN_Sau, ThueTDVTN_Sau;
+                        string ChiTietNamCu_Sau, ChiTietNamMoi_Sau, ChiTietPhiBVMTNamCu_Sau, ChiTietPhiBVMTNamMoi_Sau;
+                        _cGiaNuoc.TinhTienNuoc(false, false, false, 0, _cttttn.DanhBo, item.Ky.Value, item.Nam.Value, DateTime.Parse(item.TuNgay), DateTime.Parse(item.DenNgay), item.GiaBieuCu.Value, TyleSH, TyLeSX, TyLeDV, TyLeHCSN, item.DinhMucCu.Value, item.DinhMucHNCu.Value, item.TieuThuCu.Value, out  TienNuocNamCu_Sau, out ChiTietNamCu_Sau, out  TienNuocNamMoi_Sau, out  ChiTietNamMoi_Sau, out  TieuThu_DieuChinhGia_Sau, out PhiBVMTNamCu_Sau, out ChiTietPhiBVMTNamCu_Sau, out PhiBVMTNamMoi_Sau, out ChiTietPhiBVMTNamMoi_Sau, out TienNuoc_Sau, out ThueGTGT_Sau, out TDVTN_Sau, out ThueTDVTN_Sau);
+
+                        if (TienNuocNamMoi_Truoc > 0 && TienNuocNamMoi_Sau > 0)
+                        {
+                            //dr["TieuThuCu"] = item.TieuThuCu;
+                            //dr["GiaBanCu"] = item.GiaBanCu;
+                            //dr["ThueGTGTCu"] = item.ThueGTGTCu;
+                            //dr["PhiBVMTCu"] = item.PhiBVMTCu;
+                            //if (item.PhiBVMT_ThueCu != null)
+                            //    dr["PhiBVMT_ThueCu"] = item.PhiBVMT_ThueCu;
+                            //else
+                            //    dr["PhiBVMT_ThueCu"] = 0;
+                            //dr["TongCongCu"] = item.TongCongCu;
+
+                            //dr["TieuThuMoi"] = item.TieuThuMoi;
+                            //dr["GiaBanMoi"] = item.GiaBanMoi;
+                            //dr["ThueGTGTMoi"] = item.ThueGTGTMoi;
+                            //dr["PhiBVMTMoi"] = item.PhiBVMTMoi;
+                            //if (item.PhiBVMT_ThueMoi != null)
+                            //    dr["PhiBVMT_ThueMoi"] = item.PhiBVMT_ThueMoi;
+                            //else
+                            //    dr["PhiBVMT_ThueMoi"] = 0;
+                            //dr["TongCongMoi"] = item.TongCongMoi;
+                        }
+                        else
+                        {
+                            dr["GiaBanCu"] = item.GiaBanMoi - item.GiaBanCu;
+                            dr["ThueGTGTCu"] = item.ThueGTGTMoi - item.ThueGTGTCu;
+                            if (item.Nam.Value < 2022)
+                            {
+                                dr["PhiBVMTCu1"] = item.PhiBVMTMoi - item.PhiBVMTCu;
+                                dr["PhiBVMTCu"] = 0;
+                            }
+                            else
+                            {
+                                dr["PhiBVMTCu1"] = 0;
+                                dr["PhiBVMTCu"] = item.PhiBVMTMoi - item.PhiBVMTCu;
+                            }
+                            if (item.PhiBVMT_ThueCu != null)
+                                dr["PhiBVMT_ThueCu"] = item.PhiBVMT_ThueMoi - item.PhiBVMT_ThueCu;
+                            else
+                                dr["PhiBVMT_ThueCu"] = 0;
+                            dr["TongCongCu"] = item.TongCongMoi - item.TongCongCu;
+                        }
+                        dr["NhanVien"] = CTaiKhoan.HoTen;
+                        dr["NguoiKy"] = CTaiKhoan.NguoiKy;
+                        dsBaoCao.Tables["TruyThuTienNuoc"].Rows.Add(dr);
+                    }
+                    rptTruyThuTienNuocKTTC rpt = new rptTruyThuTienNuocKTTC();
+                    rpt.SetDataSource(dsBaoCao);
+                    frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                    frm.Show();
                 }
             }
             catch (Exception ex)

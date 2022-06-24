@@ -15142,6 +15142,8 @@ namespace KTKS_DonKH.BaoCao {
             
             private global::System.Data.DataColumn columnThueGTGTCu;
             
+            private global::System.Data.DataColumn columnPhiBVMTCu1;
+            
             private global::System.Data.DataColumn columnPhiBVMTCu;
             
             private global::System.Data.DataColumn columnPhiBVMT_ThueCu;
@@ -15159,6 +15161,8 @@ namespace KTKS_DonKH.BaoCao {
             private global::System.Data.DataColumn columnGiaBanMoi;
             
             private global::System.Data.DataColumn columnThueGTGTMoi;
+            
+            private global::System.Data.DataColumn columnPhiBVMTMoi1;
             
             private global::System.Data.DataColumn columnPhiBVMTMoi;
             
@@ -15405,6 +15409,14 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PhiBVMTCu1Column {
+                get {
+                    return this.columnPhiBVMTCu1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn PhiBVMTCuColumn {
                 get {
                     return this.columnPhiBVMTCu;
@@ -15472,6 +15484,14 @@ namespace KTKS_DonKH.BaoCao {
             public global::System.Data.DataColumn ThueGTGTMoiColumn {
                 get {
                     return this.columnThueGTGTMoi;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PhiBVMTMoi1Column {
+                get {
+                    return this.columnPhiBVMTMoi1;
                 }
             }
             
@@ -15640,6 +15660,7 @@ namespace KTKS_DonKH.BaoCao {
                         int TieuThuCu, 
                         int GiaBanCu, 
                         int ThueGTGTCu, 
+                        int PhiBVMTCu1, 
                         int PhiBVMTCu, 
                         int PhiBVMT_ThueCu, 
                         int TongCongCu, 
@@ -15649,6 +15670,7 @@ namespace KTKS_DonKH.BaoCao {
                         int TieuThuMoi, 
                         int GiaBanMoi, 
                         int ThueGTGTMoi, 
+                        int PhiBVMTMoi1, 
                         int PhiBVMTMoi, 
                         int PhiBVMT_ThueMoi, 
                         long TongCongMoi, 
@@ -15687,6 +15709,7 @@ namespace KTKS_DonKH.BaoCao {
                         TieuThuCu,
                         GiaBanCu,
                         ThueGTGTCu,
+                        PhiBVMTCu1,
                         PhiBVMTCu,
                         PhiBVMT_ThueCu,
                         TongCongCu,
@@ -15696,6 +15719,7 @@ namespace KTKS_DonKH.BaoCao {
                         TieuThuMoi,
                         GiaBanMoi,
                         ThueGTGTMoi,
+                        PhiBVMTMoi1,
                         PhiBVMTMoi,
                         PhiBVMT_ThueMoi,
                         TongCongMoi,
@@ -15754,6 +15778,7 @@ namespace KTKS_DonKH.BaoCao {
                 this.columnTieuThuCu = base.Columns["TieuThuCu"];
                 this.columnGiaBanCu = base.Columns["GiaBanCu"];
                 this.columnThueGTGTCu = base.Columns["ThueGTGTCu"];
+                this.columnPhiBVMTCu1 = base.Columns["PhiBVMTCu1"];
                 this.columnPhiBVMTCu = base.Columns["PhiBVMTCu"];
                 this.columnPhiBVMT_ThueCu = base.Columns["PhiBVMT_ThueCu"];
                 this.columnTongCongCu = base.Columns["TongCongCu"];
@@ -15763,6 +15788,7 @@ namespace KTKS_DonKH.BaoCao {
                 this.columnTieuThuMoi = base.Columns["TieuThuMoi"];
                 this.columnGiaBanMoi = base.Columns["GiaBanMoi"];
                 this.columnThueGTGTMoi = base.Columns["ThueGTGTMoi"];
+                this.columnPhiBVMTMoi1 = base.Columns["PhiBVMTMoi1"];
                 this.columnPhiBVMTMoi = base.Columns["PhiBVMTMoi"];
                 this.columnPhiBVMT_ThueMoi = base.Columns["PhiBVMT_ThueMoi"];
                 this.columnTongCongMoi = base.Columns["TongCongMoi"];
@@ -15827,6 +15853,8 @@ namespace KTKS_DonKH.BaoCao {
                 base.Columns.Add(this.columnGiaBanCu);
                 this.columnThueGTGTCu = new global::System.Data.DataColumn("ThueGTGTCu", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnThueGTGTCu);
+                this.columnPhiBVMTCu1 = new global::System.Data.DataColumn("PhiBVMTCu1", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPhiBVMTCu1);
                 this.columnPhiBVMTCu = new global::System.Data.DataColumn("PhiBVMTCu", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPhiBVMTCu);
                 this.columnPhiBVMT_ThueCu = new global::System.Data.DataColumn("PhiBVMT_ThueCu", typeof(int), null, global::System.Data.MappingType.Element);
@@ -15845,6 +15873,8 @@ namespace KTKS_DonKH.BaoCao {
                 base.Columns.Add(this.columnGiaBanMoi);
                 this.columnThueGTGTMoi = new global::System.Data.DataColumn("ThueGTGTMoi", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnThueGTGTMoi);
+                this.columnPhiBVMTMoi1 = new global::System.Data.DataColumn("PhiBVMTMoi1", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPhiBVMTMoi1);
                 this.columnPhiBVMTMoi = new global::System.Data.DataColumn("PhiBVMTMoi", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPhiBVMTMoi);
                 this.columnPhiBVMT_ThueMoi = new global::System.Data.DataColumn("PhiBVMT_ThueMoi", typeof(int), null, global::System.Data.MappingType.Element);
@@ -36008,6 +36038,22 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int PhiBVMTCu1 {
+                get {
+                    try {
+                        return ((int)(this[this.tableTruyThuTienNuoc.PhiBVMTCu1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PhiBVMTCu1\' in table \'TruyThuTienNuoc\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTruyThuTienNuoc.PhiBVMTCu1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int PhiBVMTCu {
                 get {
                     try {
@@ -36147,6 +36193,22 @@ namespace KTKS_DonKH.BaoCao {
                 }
                 set {
                     this[this.tableTruyThuTienNuoc.ThueGTGTMoiColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int PhiBVMTMoi1 {
+                get {
+                    try {
+                        return ((int)(this[this.tableTruyThuTienNuoc.PhiBVMTMoi1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PhiBVMTMoi1\' in table \'TruyThuTienNuoc\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTruyThuTienNuoc.PhiBVMTMoi1Column] = value;
                 }
             }
             
@@ -36636,6 +36698,18 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPhiBVMTCu1Null() {
+                return this.IsNull(this.tableTruyThuTienNuoc.PhiBVMTCu1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPhiBVMTCu1Null() {
+                this[this.tableTruyThuTienNuoc.PhiBVMTCu1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsPhiBVMTCuNull() {
                 return this.IsNull(this.tableTruyThuTienNuoc.PhiBVMTCuColumn);
             }
@@ -36740,6 +36814,18 @@ namespace KTKS_DonKH.BaoCao {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetThueGTGTMoiNull() {
                 this[this.tableTruyThuTienNuoc.ThueGTGTMoiColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPhiBVMTMoi1Null() {
+                return this.IsNull(this.tableTruyThuTienNuoc.PhiBVMTMoi1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPhiBVMTMoi1Null() {
+                this[this.tableTruyThuTienNuoc.PhiBVMTMoi1Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

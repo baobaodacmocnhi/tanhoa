@@ -1617,6 +1617,9 @@
       <Column Name="KDDV" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="NgayTangGia" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="PhiBVMT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VAT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VAT2_Ky" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="VAT2" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />

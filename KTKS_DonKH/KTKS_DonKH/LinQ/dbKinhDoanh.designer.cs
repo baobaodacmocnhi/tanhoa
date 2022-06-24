@@ -37949,6 +37949,12 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _PhiBVMT;
 		
+		private System.Nullable<int> _VAT;
+		
+		private string _VAT2_Ky;
+		
+		private System.Nullable<int> _VAT2;
+		
 		private System.Nullable<int> _CreateBy;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -37983,6 +37989,12 @@ namespace KTKS_DonKH.LinQ
     partial void OnNgayTangGiaChanged();
     partial void OnPhiBVMTChanging(System.Nullable<int> value);
     partial void OnPhiBVMTChanged();
+    partial void OnVATChanging(System.Nullable<int> value);
+    partial void OnVATChanged();
+    partial void OnVAT2_KyChanging(string value);
+    partial void OnVAT2_KyChanged();
+    partial void OnVAT2Changing(System.Nullable<int> value);
+    partial void OnVAT2Changed();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -38214,6 +38226,66 @@ namespace KTKS_DonKH.LinQ
 					this._PhiBVMT = value;
 					this.SendPropertyChanged("PhiBVMT");
 					this.OnPhiBVMTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VAT", DbType="Int")]
+		public System.Nullable<int> VAT
+		{
+			get
+			{
+				return this._VAT;
+			}
+			set
+			{
+				if ((this._VAT != value))
+				{
+					this.OnVATChanging(value);
+					this.SendPropertyChanging();
+					this._VAT = value;
+					this.SendPropertyChanged("VAT");
+					this.OnVATChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VAT2_Ky", DbType="VarChar(500)")]
+		public string VAT2_Ky
+		{
+			get
+			{
+				return this._VAT2_Ky;
+			}
+			set
+			{
+				if ((this._VAT2_Ky != value))
+				{
+					this.OnVAT2_KyChanging(value);
+					this.SendPropertyChanging();
+					this._VAT2_Ky = value;
+					this.SendPropertyChanged("VAT2_Ky");
+					this.OnVAT2_KyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VAT2", DbType="Int")]
+		public System.Nullable<int> VAT2
+		{
+			get
+			{
+				return this._VAT2;
+			}
+			set
+			{
+				if ((this._VAT2 != value))
+				{
+					this.OnVAT2Changing(value);
+					this.SendPropertyChanging();
+					this._VAT2 = value;
+					this.SendPropertyChanged("VAT2");
+					this.OnVAT2Changed();
 				}
 			}
 		}

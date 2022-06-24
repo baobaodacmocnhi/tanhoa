@@ -2453,6 +2453,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 throw ex;
             }
         }
+        //3 hàm trên không còn dùng
+
 
         //khu công nghiệp
         public int TinhTienNuoc_KhuCongNghiep(string DanhBo, int GiaBieu, int DinhMuc, int TieuThu, out string ChiTiet, out float TyLe)
@@ -4550,24 +4552,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        /// <summary>
-        /// tính giá nước trong định mức, rồi tính thêm tiêu thụ x giá nước nhập vào
-        /// </summary>
-        /// <param name="DieuChinhGia"></param>
-        /// <param name="GiaDieuChinh"></param>
-        /// <param name="lstGiaNuoc"></param>
-        /// <param name="GiaBieu"></param>
-        /// <param name="TyLeSH"></param>
-        /// <param name="TyLeSX"></param>
-        /// <param name="TyLeDV"></param>
-        /// <param name="TyLeHCSN"></param>
-        /// <param name="TongDinhMuc"></param>
-        /// <param name="DinhMucHN"></param>
-        /// <param name="TieuThu"></param>
-        /// <param name="TieuThu_GiaDieuChinh2"></param>
-        /// <param name="GiaTien_GiaDieuChinh2"></param>
-        /// <param name="ChiTiet"></param>
-        /// <returns></returns>
+        // tính giá nước trong định mức, rồi tính thêm tiêu thụ x giá nước nhập vào
         public int TinhTienNuoc2(List<int> lstGiaNuoc, int GiaBieu, int TyLeSH, int TyLeSX, int TyLeDV, int TyLeHCSN, int TongDinhMuc, int DinhMucHN, int TieuThu, int TieuThu_GiaDieuChinh2, int GiaTien_GiaDieuChinh2, out string ChiTiet, out int PhiBVMT, out string ChiTietPhiBVMT)
         {
             try
@@ -6316,24 +6301,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        /// <summary>
-        /// tính giá nước trong định mức, nhập tiêu thụ 1 để tính giá vượt 1, nhập tiêu thụ 2 để tính giá vượt 2
-        /// </summary>
-        /// <param name="DieuChinhGia"></param>
-        /// <param name="GiaDieuChinh"></param>
-        /// <param name="lstGiaNuoc"></param>
-        /// <param name="GiaBieu"></param>
-        /// <param name="TyLeSH"></param>
-        /// <param name="TyLeSX"></param>
-        /// <param name="TyLeDV"></param>
-        /// <param name="TyLeHCSN"></param>
-        /// <param name="TongDinhMuc"></param>
-        /// <param name="DinhMucHN"></param>
-        /// <param name="TieuThu"></param>
-        /// <param name="TieuThu_GiaDieuChinh2"></param>
-        /// <param name="GiaTien_GiaDieuChinh2"></param>
-        /// <param name="ChiTiet"></param>
-        /// <returns></returns>
+        // tính giá nước trong định mức, nhập tiêu thụ 1 để tính giá vượt 1, nhập tiêu thụ 2 để tính giá vượt 2
         public int TinhTienNuoc3(List<int> lstGiaNuoc, int GiaBieu, int TyLeSH, int TyLeSX, int TyLeDV, int TyLeHCSN, int TongDinhMuc, int DinhMucHN, int TieuThu, int TieuThuV1_GiaDieuChinh3, int TieuThuV2_GiaDieuChinh3, out string ChiTiet, out int PhiBVMT, out string ChiTietPhiBVMT)
         {
             try
@@ -7625,6 +7593,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 ThueGTGT = (int)Math.Round((double)(TienNuocNamCu + TienNuocNamMoi) * 5 / 100, 0, MidpointRounding.AwayFromZero);
                 TDVTN = PhiBVMTNamCu + PhiBVMTNamMoi;
                 //Từ 2022 Phí BVMT -> Tiền Dịch Vụ Thoát Nước
+                int ThueTDVTN_VAT = 0;
+                if (dtGiaNuoc.Rows[index]["VAT2_Ky"].ToString().Contains(Ky.ToString("00") + "/" + Nam))
+                    ThueTDVTN_VAT = int.Parse(dtGiaNuoc.Rows[index]["VAT2"].ToString());
+                else
+                    ThueTDVTN_VAT = int.Parse(dtGiaNuoc.Rows[index]["VAT"].ToString());
                 if ((TuNgay.Year < 2021) || (TuNgay.Year == 2021 && DenNgay.Year == 2021))
                 {
                     ThueTDVTN = 0;
@@ -7632,12 +7605,12 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 else
                     if (TuNgay.Year == 2021 && DenNgay.Year == 2022)
                     {
-                        ThueTDVTN = (int)Math.Round((double)(PhiBVMTNamMoi) * 10 / 100, 0, MidpointRounding.AwayFromZero);
+                        ThueTDVTN = (int)Math.Round((double)(PhiBVMTNamMoi) * ThueTDVTN_VAT / 100, 0, MidpointRounding.AwayFromZero);
                     }
                     else
                         if (TuNgay.Year >= 2022)
                         {
-                            ThueTDVTN = (int)Math.Round((double)(PhiBVMTNamCu + PhiBVMTNamMoi) * 10 / 100, 0, MidpointRounding.AwayFromZero);
+                            ThueTDVTN = (int)Math.Round((double)(PhiBVMTNamCu + PhiBVMTNamMoi) * ThueTDVTN_VAT / 100, 0, MidpointRounding.AwayFromZero);
                         }
             }
         }
@@ -7712,6 +7685,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 ThueGTGT = (int)Math.Round((double)(TienNuocNamCu + TienNuocNamMoi) * 5 / 100, 0, MidpointRounding.AwayFromZero);
                 TDVTN = PhiBVMTNamCu + PhiBVMTNamMoi;
                 //Từ 2022 Phí BVMT -> Tiền Dịch Vụ Thoát Nước
+                int ThueTDVTN_VAT = 0;
+                if (dtGiaNuoc.Rows[index]["VAT2_Ky"].ToString().Contains(Ky.ToString("00") + "/" + Nam))
+                    ThueTDVTN_VAT = int.Parse(dtGiaNuoc.Rows[index]["VAT2"].ToString());
+                else
+                    ThueTDVTN_VAT = int.Parse(dtGiaNuoc.Rows[index]["VAT"].ToString());
                 if ((TuNgay.Year < 2021) || (TuNgay.Year == 2021 && DenNgay.Year == 2021))
                 {
                     ThueTDVTN = 0;
@@ -7719,12 +7697,12 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 else
                     if (TuNgay.Year == 2021 && DenNgay.Year == 2022)
                     {
-                        ThueTDVTN = (int)Math.Round((double)(PhiBVMTNamMoi) * 10 / 100, 0, MidpointRounding.AwayFromZero);
+                        ThueTDVTN = (int)Math.Round((double)(PhiBVMTNamMoi) * ThueTDVTN_VAT / 100, 0, MidpointRounding.AwayFromZero);
                     }
                     else
                         if (TuNgay.Year >= 2022)
                         {
-                            ThueTDVTN = (int)Math.Round((double)(PhiBVMTNamCu + PhiBVMTNamMoi) * 10 / 100, 0, MidpointRounding.AwayFromZero);
+                            ThueTDVTN = (int)Math.Round((double)(PhiBVMTNamCu + PhiBVMTNamMoi) * ThueTDVTN_VAT / 100, 0, MidpointRounding.AwayFromZero);
                         }
             }
         }
@@ -7799,6 +7777,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 ThueGTGT = (int)Math.Round((double)(TienNuocNamCu + TienNuocNamMoi) * 5 / 100, 0, MidpointRounding.AwayFromZero);
                 TDVTN = PhiBVMTNamCu + PhiBVMTNamMoi;
                 //Từ 2022 Phí BVMT -> Tiền Dịch Vụ Thoát Nước
+                int ThueTDVTN_VAT = 0;
+                if (dtGiaNuoc.Rows[index]["VAT2_Ky"].ToString().Contains(Ky.ToString("00") + "/" + Nam))
+                    ThueTDVTN_VAT = int.Parse(dtGiaNuoc.Rows[index]["VAT2"].ToString());
+                else
+                    ThueTDVTN_VAT = int.Parse(dtGiaNuoc.Rows[index]["VAT"].ToString());
                 if ((TuNgay.Year < 2021) || (TuNgay.Year == 2021 && DenNgay.Year == 2021))
                 {
                     ThueTDVTN = 0;
@@ -7806,12 +7789,12 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 else
                     if (TuNgay.Year == 2021 && DenNgay.Year == 2022)
                     {
-                        ThueTDVTN = (int)Math.Round((double)(PhiBVMTNamMoi) * 10 / 100, 0, MidpointRounding.AwayFromZero);
+                        ThueTDVTN = (int)Math.Round((double)(PhiBVMTNamMoi) * ThueTDVTN_VAT / 100, 0, MidpointRounding.AwayFromZero);
                     }
                     else
                         if (TuNgay.Year >= 2022)
                         {
-                            ThueTDVTN = (int)Math.Round((double)(PhiBVMTNamCu + PhiBVMTNamMoi) * 10 / 100, 0, MidpointRounding.AwayFromZero);
+                            ThueTDVTN = (int)Math.Round((double)(PhiBVMTNamCu + PhiBVMTNamMoi) * ThueTDVTN_VAT / 100, 0, MidpointRounding.AwayFromZero);
                         }
             }
         }
@@ -7889,6 +7872,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 ThueGTGT = (int)Math.Round((double)(TienNuocNamCu + TienNuocNamMoi) * 5 / 100, 0, MidpointRounding.AwayFromZero);
                 TDVTN = PhiBVMTNamCu + PhiBVMTNamMoi;
                 //Từ 2022 Phí BVMT -> Tiền Dịch Vụ Thoát Nước
+                int ThueTDVTN_VAT = 0;
+                if (dtGiaNuoc.Rows[index]["VAT2_Ky"].ToString().Contains(Ky.ToString("00") + "/" + Nam))
+                    ThueTDVTN_VAT = int.Parse(dtGiaNuoc.Rows[index]["VAT2"].ToString());
+                else
+                    ThueTDVTN_VAT = int.Parse(dtGiaNuoc.Rows[index]["VAT"].ToString());
                 if ((TuNgay.Year < 2021) || (TuNgay.Year == 2021 && DenNgay.Year == 2021))
                 {
                     ThueTDVTN = 0;
@@ -7896,12 +7884,12 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 else
                     if (TuNgay.Year == 2021 && DenNgay.Year == 2022)
                     {
-                        ThueTDVTN = (int)Math.Round((double)(PhiBVMTNamMoi) * 10 / 100, 0, MidpointRounding.AwayFromZero);
+                        ThueTDVTN = (int)Math.Round((double)(PhiBVMTNamMoi) * ThueTDVTN_VAT / 100, 0, MidpointRounding.AwayFromZero);
                     }
                     else
                         if (TuNgay.Year >= 2022)
                         {
-                            ThueTDVTN = (int)Math.Round((double)(PhiBVMTNamCu + PhiBVMTNamMoi) * 10 / 100, 0, MidpointRounding.AwayFromZero);
+                            ThueTDVTN = (int)Math.Round((double)(PhiBVMTNamCu + PhiBVMTNamMoi) * ThueTDVTN_VAT / 100, 0, MidpointRounding.AwayFromZero);
                         }
             }
         }
@@ -7984,6 +7972,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 ThueGTGT = (int)Math.Round((double)(TienNuocNamCu + TienNuocNamMoi) * 5 / 100, 0, MidpointRounding.AwayFromZero);
                 TDVTN = PhiBVMTNamCu + PhiBVMTNamMoi;
                 //Từ 2022 Phí BVMT -> Tiền Dịch Vụ Thoát Nước
+                int ThueTDVTN_VAT = 0;
+                if (dtGiaNuoc.Rows[index]["VAT2_Ky"].ToString().Contains(Ky.ToString("00") + "/" + Nam))
+                    ThueTDVTN_VAT = int.Parse(dtGiaNuoc.Rows[index]["VAT2"].ToString());
+                else
+                    ThueTDVTN_VAT = int.Parse(dtGiaNuoc.Rows[index]["VAT"].ToString());
                 if ((TuNgay.Year < 2021) || (TuNgay.Year == 2021 && DenNgay.Year == 2021))
                 {
                     ThueTDVTN = 0;
@@ -7991,12 +7984,12 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 else
                     if (TuNgay.Year == 2021 && DenNgay.Year == 2022)
                     {
-                        ThueTDVTN = (int)Math.Round((double)(PhiBVMTNamMoi) * 10 / 100, 0, MidpointRounding.AwayFromZero);
+                        ThueTDVTN = (int)Math.Round((double)(PhiBVMTNamMoi) * ThueTDVTN_VAT / 100, 0, MidpointRounding.AwayFromZero);
                     }
                     else
                         if (TuNgay.Year >= 2022)
                         {
-                            ThueTDVTN = (int)Math.Round((double)(PhiBVMTNamCu + PhiBVMTNamMoi) * 10 / 100, 0, MidpointRounding.AwayFromZero);
+                            ThueTDVTN = (int)Math.Round((double)(PhiBVMTNamCu + PhiBVMTNamMoi) * ThueTDVTN_VAT / 100, 0, MidpointRounding.AwayFromZero);
                         }
             }
         }
@@ -8078,6 +8071,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 ThueGTGT = (int)Math.Round((double)(TienNuocNamCu + TienNuocNamMoi) * 5 / 100, 0, MidpointRounding.AwayFromZero);
                 TDVTN = PhiBVMTNamCu + PhiBVMTNamMoi;
                 //Từ 2022 Phí BVMT -> Tiền Dịch Vụ Thoát Nước
+                int ThueTDVTN_VAT = 0;
+                if (dtGiaNuoc.Rows[index]["VAT2_Ky"].ToString().Contains(Ky.ToString("00") + "/" + Nam))
+                    ThueTDVTN_VAT = int.Parse(dtGiaNuoc.Rows[index]["VAT2"].ToString());
+                else
+                    ThueTDVTN_VAT = int.Parse(dtGiaNuoc.Rows[index]["VAT"].ToString());
                 if ((TuNgay.Year < 2021) || (TuNgay.Year == 2021 && DenNgay.Year == 2021))
                 {
                     ThueTDVTN = 0;
@@ -8085,12 +8083,12 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 else
                     if (TuNgay.Year == 2021 && DenNgay.Year == 2022)
                     {
-                        ThueTDVTN = (int)Math.Round((double)(PhiBVMTNamMoi) * 10 / 100, 0, MidpointRounding.AwayFromZero);
+                        ThueTDVTN = (int)Math.Round((double)(PhiBVMTNamMoi) * ThueTDVTN_VAT / 100, 0, MidpointRounding.AwayFromZero);
                     }
                     else
                         if (TuNgay.Year >= 2022)
                         {
-                            ThueTDVTN = (int)Math.Round((double)(PhiBVMTNamCu + PhiBVMTNamMoi) * 10 / 100, 0, MidpointRounding.AwayFromZero);
+                            ThueTDVTN = (int)Math.Round((double)(PhiBVMTNamCu + PhiBVMTNamMoi) * ThueTDVTN_VAT / 100, 0, MidpointRounding.AwayFromZero);
                         }
             }
         }
