@@ -19,10 +19,10 @@
       <Value Profile="(Default)">Data Source=server9;Initial Catalog=HOADON_TA;Persist Security Info=True;User ID=sa;Password=db9@tanhoa</Value>
     </Setting>
     <Setting Name="DocSo_PC_wrThuTien_wsThuTien" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://server11:81/wsthutien.asmx</Value>
+      <Value Profile="(Default)">http://192.168.90.11:81/wsthutien.asmx</Value>
     </Setting>
     <Setting Name="DocSo_PC_wrDHN_wsDHN" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://server11:81/wsdhn.asmx</Value>
+      <Value Profile="(Default)">http://192.168.90.11:81/wsdhn.asmx</Value>
     </Setting>
     <Setting Name="DocSoTHConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
@@ -33,7 +33,7 @@
       <Value Profile="(Default)">Data Source=hp_g7\kd;Initial Catalog=DocSoTH;Persist Security Info=True;User ID=sa;Password=db8@tanhoa</Value>
     </Setting>
     <Setting Name="DocSo_PC_wrThuongVu_wsThuongVu" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://server11:81/wsthuongvu.asmx</Value>
+      <Value Profile="(Default)">http://192.168.90.11:81/wsthuongvu.asmx</Value>
     </Setting>
     <Setting Name="KTKS_DonKHConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;

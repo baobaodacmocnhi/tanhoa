@@ -253,6 +253,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="getDS_LichSu_DocSo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DanhBo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDS_LichSu_DocSoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDS_LichSu_DocSoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="get_GhiChu">
         <s:complexType>
           <s:sequence>
@@ -278,6 +292,11 @@
             <s:element minOccurs="0" maxOccurs="1" name="ViTriHop" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="Gieng" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="KhoaTu" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AmSau" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="XayDung" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DutChiGoc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DutChiThan" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MauSacChiGoc" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="GhiChu" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="MaNV" type="s:string" />
           </s:sequence>
@@ -811,6 +830,12 @@
   <wsdl:message name="getDS_HoaDonTonSoapOut">
     <wsdl:part name="parameters" element="tns:getDS_HoaDonTonResponse" />
   </wsdl:message>
+  <wsdl:message name="getDS_LichSu_DocSoSoapIn">
+    <wsdl:part name="parameters" element="tns:getDS_LichSu_DocSo" />
+  </wsdl:message>
+  <wsdl:message name="getDS_LichSu_DocSoSoapOut">
+    <wsdl:part name="parameters" element="tns:getDS_LichSu_DocSoResponse" />
+  </wsdl:message>
   <wsdl:message name="get_GhiChuSoapIn">
     <wsdl:part name="parameters" element="tns:get_GhiChu" />
   </wsdl:message>
@@ -1049,6 +1074,10 @@
     <wsdl:operation name="getDS_HoaDonTon">
       <wsdl:input message="tns:getDS_HoaDonTonSoapIn" />
       <wsdl:output message="tns:getDS_HoaDonTonSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDS_LichSu_DocSo">
+      <wsdl:input message="tns:getDS_LichSu_DocSoSoapIn" />
+      <wsdl:output message="tns:getDS_LichSu_DocSoSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="get_GhiChu">
       <wsdl:input message="tns:get_GhiChuSoapIn" />
@@ -1325,6 +1354,15 @@
     </wsdl:operation>
     <wsdl:operation name="getDS_HoaDonTon">
       <soap:operation soapAction="http://tempuri.org/getDS_HoaDonTon" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDS_LichSu_DocSo">
+      <soap:operation soapAction="http://tempuri.org/getDS_LichSu_DocSo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1742,6 +1780,15 @@
     </wsdl:operation>
     <wsdl:operation name="getDS_HoaDonTon">
       <soap12:operation soapAction="http://tempuri.org/getDS_HoaDonTon" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDS_LichSu_DocSo">
+      <soap12:operation soapAction="http://tempuri.org/getDS_LichSu_DocSo" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

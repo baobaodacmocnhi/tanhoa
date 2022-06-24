@@ -390,6 +390,7 @@
             <s:element minOccurs="0" maxOccurs="1" name="ButChi" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="KhoaTu" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="NiemChi" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MauSac" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="KhoaKhac" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="KhoaKhac_GhiChu" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="Hieu" type="s:string" />
@@ -441,6 +442,7 @@
             <s:element minOccurs="0" maxOccurs="1" name="ButChi" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="KhoaTu" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="NiemChi" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MauSac" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="KhoaKhac" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="KhoaKhac_GhiChu" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="CreateBy" type="s:string" />
@@ -475,6 +477,8 @@
             <s:element minOccurs="0" maxOccurs="1" name="HinhMN" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="NgayMN" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="ChiSoMN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NiemChi" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MauSac" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="CreateBy" type="s:string" />
           </s:sequence>
         </s:complexType>

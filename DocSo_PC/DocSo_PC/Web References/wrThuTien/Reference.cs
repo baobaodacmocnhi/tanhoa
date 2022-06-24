@@ -1184,6 +1184,7 @@ namespace DocSo_PC.wrThuTien {
                     string ButChi, 
                     string KhoaTu, 
                     string NiemChi, 
+                    string MauSac, 
                     string KhoaKhac, 
                     string KhoaKhac_GhiChu, 
                     string Hieu, 
@@ -1206,6 +1207,7 @@ namespace DocSo_PC.wrThuTien {
                         ButChi,
                         KhoaTu,
                         NiemChi,
+                        MauSac,
                         KhoaKhac,
                         KhoaKhac_GhiChu,
                         Hieu,
@@ -1232,6 +1234,7 @@ namespace DocSo_PC.wrThuTien {
                     string ButChi, 
                     string KhoaTu, 
                     string NiemChi, 
+                    string MauSac, 
                     string KhoaKhac, 
                     string KhoaKhac_GhiChu, 
                     string Hieu, 
@@ -1242,7 +1245,7 @@ namespace DocSo_PC.wrThuTien {
                     string ViTri, 
                     string LyDo, 
                     string CreateBy) {
-            this.ThemDongNuocAsync(MaDN, DanhBo, MLT, HoTen, DiaChi, HinhDN, NgayDN, ChiSoDN, ButChi, KhoaTu, NiemChi, KhoaKhac, KhoaKhac_GhiChu, Hieu, Co, SoThan, ChiMatSo, ChiKhoaGoc, ViTri, LyDo, CreateBy, null);
+            this.ThemDongNuocAsync(MaDN, DanhBo, MLT, HoTen, DiaChi, HinhDN, NgayDN, ChiSoDN, ButChi, KhoaTu, NiemChi, MauSac, KhoaKhac, KhoaKhac_GhiChu, Hieu, Co, SoThan, ChiMatSo, ChiKhoaGoc, ViTri, LyDo, CreateBy, null);
         }
         
         /// <remarks/>
@@ -1258,6 +1261,7 @@ namespace DocSo_PC.wrThuTien {
                     string ButChi, 
                     string KhoaTu, 
                     string NiemChi, 
+                    string MauSac, 
                     string KhoaKhac, 
                     string KhoaKhac_GhiChu, 
                     string Hieu, 
@@ -1284,6 +1288,7 @@ namespace DocSo_PC.wrThuTien {
                         ButChi,
                         KhoaTu,
                         NiemChi,
+                        MauSac,
                         KhoaKhac,
                         KhoaKhac_GhiChu,
                         Hieu,
@@ -1348,7 +1353,7 @@ namespace DocSo_PC.wrThuTien {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ThemDongNuoc2", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool ThemDongNuoc2(string MaDN, string HinhDN, string NgayDN, string ChiSoDN, string ButChi, string KhoaTu, string NiemChi, string KhoaKhac, string KhoaKhac_GhiChu, string CreateBy) {
+        public bool ThemDongNuoc2(string MaDN, string HinhDN, string NgayDN, string ChiSoDN, string ButChi, string KhoaTu, string NiemChi, string MauSac, string KhoaKhac, string KhoaKhac_GhiChu, string CreateBy) {
             object[] results = this.Invoke("ThemDongNuoc2", new object[] {
                         MaDN,
                         HinhDN,
@@ -1357,6 +1362,7 @@ namespace DocSo_PC.wrThuTien {
                         ButChi,
                         KhoaTu,
                         NiemChi,
+                        MauSac,
                         KhoaKhac,
                         KhoaKhac_GhiChu,
                         CreateBy});
@@ -1364,12 +1370,12 @@ namespace DocSo_PC.wrThuTien {
         }
         
         /// <remarks/>
-        public void ThemDongNuoc2Async(string MaDN, string HinhDN, string NgayDN, string ChiSoDN, string ButChi, string KhoaTu, string NiemChi, string KhoaKhac, string KhoaKhac_GhiChu, string CreateBy) {
-            this.ThemDongNuoc2Async(MaDN, HinhDN, NgayDN, ChiSoDN, ButChi, KhoaTu, NiemChi, KhoaKhac, KhoaKhac_GhiChu, CreateBy, null);
+        public void ThemDongNuoc2Async(string MaDN, string HinhDN, string NgayDN, string ChiSoDN, string ButChi, string KhoaTu, string NiemChi, string MauSac, string KhoaKhac, string KhoaKhac_GhiChu, string CreateBy) {
+            this.ThemDongNuoc2Async(MaDN, HinhDN, NgayDN, ChiSoDN, ButChi, KhoaTu, NiemChi, MauSac, KhoaKhac, KhoaKhac_GhiChu, CreateBy, null);
         }
         
         /// <remarks/>
-        public void ThemDongNuoc2Async(string MaDN, string HinhDN, string NgayDN, string ChiSoDN, string ButChi, string KhoaTu, string NiemChi, string KhoaKhac, string KhoaKhac_GhiChu, string CreateBy, object userState) {
+        public void ThemDongNuoc2Async(string MaDN, string HinhDN, string NgayDN, string ChiSoDN, string ButChi, string KhoaTu, string NiemChi, string MauSac, string KhoaKhac, string KhoaKhac_GhiChu, string CreateBy, object userState) {
             if ((this.ThemDongNuoc2OperationCompleted == null)) {
                 this.ThemDongNuoc2OperationCompleted = new System.Threading.SendOrPostCallback(this.OnThemDongNuoc2OperationCompleted);
             }
@@ -1381,6 +1387,7 @@ namespace DocSo_PC.wrThuTien {
                         ButChi,
                         KhoaTu,
                         NiemChi,
+                        MauSac,
                         KhoaKhac,
                         KhoaKhac_GhiChu,
                         CreateBy}, this.ThemDongNuoc2OperationCompleted, userState);
@@ -1424,23 +1431,25 @@ namespace DocSo_PC.wrThuTien {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ThemMoNuoc", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool ThemMoNuoc(string MaDN, string HinhMN, string NgayMN, string ChiSoMN, string CreateBy) {
+        public bool ThemMoNuoc(string MaDN, string HinhMN, string NgayMN, string ChiSoMN, string NiemChi, string MauSac, string CreateBy) {
             object[] results = this.Invoke("ThemMoNuoc", new object[] {
                         MaDN,
                         HinhMN,
                         NgayMN,
                         ChiSoMN,
+                        NiemChi,
+                        MauSac,
                         CreateBy});
             return ((bool)(results[0]));
         }
         
         /// <remarks/>
-        public void ThemMoNuocAsync(string MaDN, string HinhMN, string NgayMN, string ChiSoMN, string CreateBy) {
-            this.ThemMoNuocAsync(MaDN, HinhMN, NgayMN, ChiSoMN, CreateBy, null);
+        public void ThemMoNuocAsync(string MaDN, string HinhMN, string NgayMN, string ChiSoMN, string NiemChi, string MauSac, string CreateBy) {
+            this.ThemMoNuocAsync(MaDN, HinhMN, NgayMN, ChiSoMN, NiemChi, MauSac, CreateBy, null);
         }
         
         /// <remarks/>
-        public void ThemMoNuocAsync(string MaDN, string HinhMN, string NgayMN, string ChiSoMN, string CreateBy, object userState) {
+        public void ThemMoNuocAsync(string MaDN, string HinhMN, string NgayMN, string ChiSoMN, string NiemChi, string MauSac, string CreateBy, object userState) {
             if ((this.ThemMoNuocOperationCompleted == null)) {
                 this.ThemMoNuocOperationCompleted = new System.Threading.SendOrPostCallback(this.OnThemMoNuocOperationCompleted);
             }
@@ -1449,6 +1458,8 @@ namespace DocSo_PC.wrThuTien {
                         HinhMN,
                         NgayMN,
                         ChiSoMN,
+                        NiemChi,
+                        MauSac,
                         CreateBy}, this.ThemMoNuocOperationCompleted, userState);
         }
         

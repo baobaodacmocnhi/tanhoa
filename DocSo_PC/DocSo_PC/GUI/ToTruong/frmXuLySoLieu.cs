@@ -218,7 +218,7 @@ namespace DocSo_PC.GUI.ToTruong
                             loadThongTin();
                         }
                         else
-                            MessageBox.Show("Danh Bộ kỳ " + cmbKy.SelectedItem.ToString() + "/" + cmbNam.SelectedValue.ToString()+" không tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Danh Bộ kỳ " + cmbKy.SelectedItem.ToString() + "/" + cmbNam.SelectedValue.ToString() + " không tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
@@ -244,14 +244,17 @@ namespace DocSo_PC.GUI.ToTruong
             {
                 //tiêu thu tăng cao, tiêu thụ âm
                 if (item.Cells["TieuThuMoi"].Value != null && item.Cells["TieuThuMoi"].Value.ToString() != ""
-                    && (int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) <= int.Parse(item.Cells["TBTT"].Value.ToString()) - int.Parse(item.Cells["TBTT"].Value.ToString()) * 0.4
-                    || int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) >= int.Parse(item.Cells["TBTT"].Value.ToString()) * 1.4
+                    && (int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) >= int.Parse(item.Cells["TBTT"].Value.ToString()) * 1.3
                     || int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) < 0))
                     item.DefaultCellStyle.BackColor = Color.Red;
+                //tiêu thu giảm cao
+                if (item.Cells["TieuThuMoi"].Value != null && item.Cells["TieuThuMoi"].Value.ToString() != ""
+                    && int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) <= int.Parse(item.Cells["TBTT"].Value.ToString()) * (1 - 0.3))
+                    item.DefaultCellStyle.BackColor = Color.DeepPink;
                 //có BBKT, tờ trình, code 8 không có hoàn công thay (bồi thường, tái lập,...)
                 if (bool.Parse(item.Cells["BaoThayBT"].Value.ToString()) == true)
                     item.DefaultCellStyle.BackColor = Color.Orange;
-                //code 4 có hoàn công thay (báo thay), sai code
+                //code 4 có hoàn công thay (báo thay định kỳ), sai code
                 if (item.Cells["CodeMoi"].Value != null && item.Cells["CodeMoi"].Value.ToString() != "" && bool.Parse(item.Cells["BaoThayDK"].Value.ToString()) == true
                     && ((item.Cells["CodeCu"].Value.ToString().Contains("4") && item.Cells["CodeMoi"].Value.ToString().Contains("5"))
                     || (item.Cells["CodeCu"].Value.ToString().Contains("4") && item.Cells["CodeMoi"].Value.ToString().Contains("8"))))

@@ -67,6 +67,8 @@ namespace DocSo_PC.wrDHN {
         
         private System.Threading.SendOrPostCallback getDS_HoaDonTonOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getDS_LichSu_DocSoOperationCompleted;
+        
         private System.Threading.SendOrPostCallback get_GhiChuOperationCompleted;
         
         private System.Threading.SendOrPostCallback update_GhiChuOperationCompleted;
@@ -215,6 +217,9 @@ namespace DocSo_PC.wrDHN {
         
         /// <remarks/>
         public event getDS_HoaDonTonCompletedEventHandler getDS_HoaDonTonCompleted;
+        
+        /// <remarks/>
+        public event getDS_LichSu_DocSoCompletedEventHandler getDS_LichSu_DocSoCompleted;
         
         /// <remarks/>
         public event get_GhiChuCompletedEventHandler get_GhiChuCompleted;
@@ -873,6 +878,35 @@ namespace DocSo_PC.wrDHN {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getDS_LichSu_DocSo", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getDS_LichSu_DocSo(string DanhBo) {
+            object[] results = this.Invoke("getDS_LichSu_DocSo", new object[] {
+                        DanhBo});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getDS_LichSu_DocSoAsync(string DanhBo) {
+            this.getDS_LichSu_DocSoAsync(DanhBo, null);
+        }
+        
+        /// <remarks/>
+        public void getDS_LichSu_DocSoAsync(string DanhBo, object userState) {
+            if ((this.getDS_LichSu_DocSoOperationCompleted == null)) {
+                this.getDS_LichSu_DocSoOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetDS_LichSu_DocSoOperationCompleted);
+            }
+            this.InvokeAsync("getDS_LichSu_DocSo", new object[] {
+                        DanhBo}, this.getDS_LichSu_DocSoOperationCompleted, userState);
+        }
+        
+        private void OngetDS_LichSu_DocSoOperationCompleted(object arg) {
+            if ((this.getDS_LichSu_DocSoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getDS_LichSu_DocSoCompleted(this, new getDS_LichSu_DocSoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/get_GhiChu", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string get_GhiChu(string DanhBo) {
             object[] results = this.Invoke("get_GhiChu", new object[] {
@@ -903,7 +937,7 @@ namespace DocSo_PC.wrDHN {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/update_GhiChu", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string update_GhiChu(string DanhBo, string SoNha, string TenDuong, string ViTri, string ViTriNgoai, string ViTriHop, string Gieng, string KhoaTu, string GhiChu, string MaNV) {
+        public string update_GhiChu(string DanhBo, string SoNha, string TenDuong, string ViTri, string ViTriNgoai, string ViTriHop, string Gieng, string KhoaTu, string AmSau, string XayDung, string DutChiGoc, string DutChiThan, string MauSacChiGoc, string GhiChu, string MaNV) {
             object[] results = this.Invoke("update_GhiChu", new object[] {
                         DanhBo,
                         SoNha,
@@ -913,18 +947,39 @@ namespace DocSo_PC.wrDHN {
                         ViTriHop,
                         Gieng,
                         KhoaTu,
+                        AmSau,
+                        XayDung,
+                        DutChiGoc,
+                        DutChiThan,
+                        MauSacChiGoc,
                         GhiChu,
                         MaNV});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void update_GhiChuAsync(string DanhBo, string SoNha, string TenDuong, string ViTri, string ViTriNgoai, string ViTriHop, string Gieng, string KhoaTu, string GhiChu, string MaNV) {
-            this.update_GhiChuAsync(DanhBo, SoNha, TenDuong, ViTri, ViTriNgoai, ViTriHop, Gieng, KhoaTu, GhiChu, MaNV, null);
+        public void update_GhiChuAsync(string DanhBo, string SoNha, string TenDuong, string ViTri, string ViTriNgoai, string ViTriHop, string Gieng, string KhoaTu, string AmSau, string XayDung, string DutChiGoc, string DutChiThan, string MauSacChiGoc, string GhiChu, string MaNV) {
+            this.update_GhiChuAsync(DanhBo, SoNha, TenDuong, ViTri, ViTriNgoai, ViTriHop, Gieng, KhoaTu, AmSau, XayDung, DutChiGoc, DutChiThan, MauSacChiGoc, GhiChu, MaNV, null);
         }
         
         /// <remarks/>
-        public void update_GhiChuAsync(string DanhBo, string SoNha, string TenDuong, string ViTri, string ViTriNgoai, string ViTriHop, string Gieng, string KhoaTu, string GhiChu, string MaNV, object userState) {
+        public void update_GhiChuAsync(
+                    string DanhBo, 
+                    string SoNha, 
+                    string TenDuong, 
+                    string ViTri, 
+                    string ViTriNgoai, 
+                    string ViTriHop, 
+                    string Gieng, 
+                    string KhoaTu, 
+                    string AmSau, 
+                    string XayDung, 
+                    string DutChiGoc, 
+                    string DutChiThan, 
+                    string MauSacChiGoc, 
+                    string GhiChu, 
+                    string MaNV, 
+                    object userState) {
             if ((this.update_GhiChuOperationCompleted == null)) {
                 this.update_GhiChuOperationCompleted = new System.Threading.SendOrPostCallback(this.Onupdate_GhiChuOperationCompleted);
             }
@@ -937,6 +992,11 @@ namespace DocSo_PC.wrDHN {
                         ViTriHop,
                         Gieng,
                         KhoaTu,
+                        AmSau,
+                        XayDung,
+                        DutChiGoc,
+                        DutChiThan,
+                        MauSacChiGoc,
                         GhiChu,
                         MaNV}, this.update_GhiChuOperationCompleted, userState);
         }
@@ -2294,6 +2354,32 @@ namespace DocSo_PC.wrDHN {
         private object[] results;
         
         internal getDS_HoaDonTonCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void getDS_LichSu_DocSoCompletedEventHandler(object sender, getDS_LichSu_DocSoCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getDS_LichSu_DocSoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getDS_LichSu_DocSoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
