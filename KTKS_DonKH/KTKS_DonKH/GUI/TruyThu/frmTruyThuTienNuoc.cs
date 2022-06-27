@@ -1640,29 +1640,56 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                         int TienNuocNamCu_Sau, TienNuocNamMoi_Sau, TieuThu_DieuChinhGia_Sau, PhiBVMTNamCu_Sau, PhiBVMTNamMoi_Sau, TienNuoc_Sau, ThueGTGT_Sau, TDVTN_Sau, ThueTDVTN_Sau;
                         string ChiTietNamCu_Sau, ChiTietNamMoi_Sau, ChiTietPhiBVMTNamCu_Sau, ChiTietPhiBVMTNamMoi_Sau;
-                        _cGiaNuoc.TinhTienNuoc(false, false, false, 0, _cttttn.DanhBo, item.Ky.Value, item.Nam.Value, DateTime.Parse(item.TuNgay), DateTime.Parse(item.DenNgay), item.GiaBieuCu.Value, TyleSH, TyLeSX, TyLeDV, TyLeHCSN, item.DinhMucCu.Value, item.DinhMucHNCu.Value, item.TieuThuCu.Value, out  TienNuocNamCu_Sau, out ChiTietNamCu_Sau, out  TienNuocNamMoi_Sau, out  ChiTietNamMoi_Sau, out  TieuThu_DieuChinhGia_Sau, out PhiBVMTNamCu_Sau, out ChiTietPhiBVMTNamCu_Sau, out PhiBVMTNamMoi_Sau, out ChiTietPhiBVMTNamMoi_Sau, out TienNuoc_Sau, out ThueGTGT_Sau, out TDVTN_Sau, out ThueTDVTN_Sau);
+                        _cGiaNuoc.TinhTienNuoc(false, false, false, 0, _cttttn.DanhBo, item.Ky.Value, item.Nam.Value, DateTime.Parse(item.TuNgay), DateTime.Parse(item.DenNgay), item.GiaBieuMoi.Value, TyleSH, TyLeSX, TyLeDV, TyLeHCSN, item.DinhMucMoi.Value, item.DinhMucHNMoi.Value, item.TieuThuMoi.Value, out  TienNuocNamCu_Sau, out ChiTietNamCu_Sau, out  TienNuocNamMoi_Sau, out  ChiTietNamMoi_Sau, out  TieuThu_DieuChinhGia_Sau, out PhiBVMTNamCu_Sau, out ChiTietPhiBVMTNamCu_Sau, out PhiBVMTNamMoi_Sau, out ChiTietPhiBVMTNamMoi_Sau, out TienNuoc_Sau, out ThueGTGT_Sau, out TDVTN_Sau, out ThueTDVTN_Sau);
 
-                        if (TienNuocNamMoi_Truoc > 0 && TienNuocNamMoi_Sau > 0)
+                        if (TienNuocNamMoi_Truoc > 0 || TienNuocNamMoi_Sau > 0)
                         {
-                            //dr["TieuThuCu"] = item.TieuThuCu;
-                            //dr["GiaBanCu"] = item.GiaBanCu;
-                            //dr["ThueGTGTCu"] = item.ThueGTGTCu;
-                            //dr["PhiBVMTCu"] = item.PhiBVMTCu;
-                            //if (item.PhiBVMT_ThueCu != null)
-                            //    dr["PhiBVMT_ThueCu"] = item.PhiBVMT_ThueCu;
-                            //else
-                            //    dr["PhiBVMT_ThueCu"] = 0;
-                            //dr["TongCongCu"] = item.TongCongCu;
+                            dr["GiaBanCu"] = TienNuocNamCu_Sau - TienNuocNamCu_Truoc;
+                            dr["GiaBanMoi"] = TienNuocNamMoi_Sau - TienNuocNamMoi_Truoc;
+                            dr["ThueGTGTCu"] = (int)Math.Round((double)(TienNuocNamCu_Sau - TienNuocNamCu_Truoc) * 5 / 100, 0, MidpointRounding.AwayFromZero);
+                            dr["ThueGTGTMoi"] = (int)Math.Round((double)(TienNuocNamMoi_Sau - TienNuocNamMoi_Truoc) * 5 / 100, 0, MidpointRounding.AwayFromZero);
+                            if (item.Nam.Value < 2022)
+                            {
+                                dr["PhiBVMTCu1"] = PhiBVMTNamCu_Sau - PhiBVMTNamCu_Truoc;
+                                dr["PhiBVMTCu"] = 0;
+                                dr["PhiBVMTMoi1"] = PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc;
+                                dr["PhiBVMTMoi"] = 0;
+                                dr["PhiBVMT_ThueCu"] = 0;
+                                dr["PhiBVMT_ThueMoi"] = 0;
+                            }
+                            else
+                            {
+                                if (item.Nam.Value == 2022 && item.Ky.Value == 1)
+                                {
+                                    dr["PhiBVMTCu1"] = PhiBVMTNamCu_Sau - PhiBVMTNamCu_Truoc;
+                                    dr["PhiBVMTCu"] = 0;
+                                    dr["PhiBVMTMoi"] = PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc;
+                                    dr["PhiBVMTMoi1"] = 0;
+                                    dr["PhiBVMT_ThueCu"] = 0;
+                                    if ((PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) > 0)
+                                        dr["PhiBVMT_ThueMoi"] = (PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) * 10 / 100;
+                                    else
+                                        dr["PhiBVMT_ThueMoi"] = 0;
+                                }
+                                else
+                                {
+                                    dr["PhiBVMTCu1"] = 0;
+                                    dr["PhiBVMTCu"] = PhiBVMTNamCu_Sau - PhiBVMTNamCu_Truoc;
+                                    dr["PhiBVMTMoi1"] = 0;
+                                    dr["PhiBVMTMoi"] = PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc;
 
-                            //dr["TieuThuMoi"] = item.TieuThuMoi;
-                            //dr["GiaBanMoi"] = item.GiaBanMoi;
-                            //dr["ThueGTGTMoi"] = item.ThueGTGTMoi;
-                            //dr["PhiBVMTMoi"] = item.PhiBVMTMoi;
-                            //if (item.PhiBVMT_ThueMoi != null)
-                            //    dr["PhiBVMT_ThueMoi"] = item.PhiBVMT_ThueMoi;
-                            //else
-                            //    dr["PhiBVMT_ThueMoi"] = 0;
-                            //dr["TongCongMoi"] = item.TongCongMoi;
+                                    if ((PhiBVMTNamCu_Sau - PhiBVMTNamCu_Truoc) > 0)
+                                        dr["PhiBVMT_ThueCu"] =(PhiBVMTNamCu_Sau - PhiBVMTNamCu_Truoc) * 10 / 100;
+                                    else
+                                        dr["PhiBVMT_ThueCu"] = 0;
+                                    if ((PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) > 0)
+                                        dr["PhiBVMT_ThueMoi"] =(PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) * 10 / 100;
+                                    else
+                                        dr["PhiBVMT_ThueMoi"] = 0;
+                                }
+                            }
+                            dr["TongCongCu"] = (int)dr["GiaBanCu"] + (int)dr["ThueGTGTCu"] + (int)dr["PhiBVMTCu1"] + (int)dr["PhiBVMTCu"] + (int)dr["PhiBVMT_ThueCu"];
+                            dr["TongCongMoi"] = (int)dr["GiaBanMoi"] + (int)dr["ThueGTGTMoi"] + (int)dr["PhiBVMTMoi1"] + (int)dr["PhiBVMTMoi"] + (int)dr["PhiBVMT_ThueMoi"];
                         }
                         else
                         {
