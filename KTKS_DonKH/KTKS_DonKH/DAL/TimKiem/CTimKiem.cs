@@ -360,6 +360,26 @@ namespace KTKS_DonKH.DAL.TimKiem
                 dtThuMoi.TableName = "ThuMoi";
                 ds.Tables.Add(dtThuMoi);
 
+                ///Table VanBan
+                var queryVanBan = from item in db.VanBan_ChiTiets
+                                  where item.VanBan.MaDon == MaDon
+                                  orderby item.CreateDate
+                                  select new
+                                  {
+                                      MaDon = item.VanBan.DonTu.DonTu_ChiTiets.Count == 1 ? item.VanBan.MaDon.Value.ToString() : item.VanBan.MaDon.Value.ToString() + "." + item.STT.Value.ToString(),
+                                      item.IDCT,
+                                      item.DanhBo,
+                                      item.HoTen,
+                                      item.DiaChi,
+                                      item.CreateDate,
+                                      item.VeViec,
+                                      item.NoiDung,
+                                  };
+                DataTable dtVanBan = new DataTable();
+                dtVanBan = LINQToDataTable(queryVanBan);
+                dtVanBan.TableName = "VanBan";
+                ds.Tables.Add(dtVanBan);
+
                 //Table TienTrinh
                 var queryTienTrinh = from item in db.DonTu_LichSus
                                      where item.MaDon == MaDon
@@ -411,6 +431,9 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 if (dtDon.Rows.Count > 0 && dtThuMoi.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Thư Mời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["ThuMoi"].Columns["MaDon"]);
+
+                if (dtDon.Rows.Count > 0 && dtVanBan.Rows.Count > 0)
+                    ds.Relations.Add("Chi Tiết Văn Bản", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["VanBan"].Columns["MaDon"]);
 
                 if (dtDon.Rows.Count > 0 && dtTienTrinh.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Tiến Trình", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["TienTrinh"].Columns["MaDon"]);
@@ -774,6 +797,26 @@ namespace KTKS_DonKH.DAL.TimKiem
                 dtThuMoi.TableName = "ThuMoi";
                 ds.Tables.Add(dtThuMoi);
 
+                ///Table VanBan
+                var queryVanBan = from item in db.VanBan_ChiTiets
+                                  where item.VanBan.MaDon == MaDon && item.STT == STT
+                                  orderby item.CreateDate
+                                  select new
+                                  {
+                                      MaDon = item.VanBan.MaDon.Value.ToString() + "." + item.STT.Value.ToString(),
+                                      item.IDCT,
+                                      item.DanhBo,
+                                      item.HoTen,
+                                      item.DiaChi,
+                                      item.CreateDate,
+                                      item.VeViec,
+                                      item.NoiDung,
+                                  };
+                DataTable dtVanBan = new DataTable();
+                dtVanBan = LINQToDataTable(queryVanBan);
+                dtVanBan.TableName = "VanBan";
+                ds.Tables.Add(dtVanBan);
+
                 //Table TienTrinh
                 var queryTienTrinh = from item in db.DonTu_LichSus
                                      where item.MaDon == MaDon && item.STT == STT
@@ -825,6 +868,9 @@ namespace KTKS_DonKH.DAL.TimKiem
 
                 if (dtDon.Rows.Count > 0 && dtThuMoi.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Thư Mời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["ThuMoi"].Columns["MaDon"]);
+
+                if (dtDon.Rows.Count > 0 && dtVanBan.Rows.Count > 0)
+                    ds.Relations.Add("Chi Tiết Văn Bản", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["VanBan"].Columns["MaDon"]);
 
                 if (dtDon.Rows.Count > 0 && dtTienTrinh.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Tiến Trình", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["TienTrinh"].Columns["MaDon"]);
@@ -8269,6 +8315,9 @@ namespace KTKS_DonKH.DAL.TimKiem
                         case "ThuMoi":
                             ds.Relations.Add("Chi Tiết Thư Mời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
                             break;
+                        case "VanBan":
+                            ds.Relations.Add("Chi Tiết Văn Bản", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
+                            break;
                         case "TienTrinh":
                             ds.Relations.Add("Chi Tiết Tiến Trình", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
                             break;
@@ -8346,6 +8395,9 @@ namespace KTKS_DonKH.DAL.TimKiem
                         case "ThuMoi":
                             ds.Relations.Add("Chi Tiết Thư Mời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
                             break;
+                        case "VanBan":
+                            ds.Relations.Add("Chi Tiết Văn Bản", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
+                            break;
                         case "TienTrinh":
                             ds.Relations.Add("Chi Tiết Tiến Trình", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
                             break;
@@ -8422,6 +8474,9 @@ namespace KTKS_DonKH.DAL.TimKiem
                             break;
                         case "ThuMoi":
                             ds.Relations.Add("Chi Tiết Thư Mời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
+                            break;
+                        case "VanBan":
+                            ds.Relations.Add("Chi Tiết Văn Bản", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
                             break;
                         case "TienTrinh":
                             ds.Relations.Add("Chi Tiết Tiến Trình", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
@@ -8507,6 +8562,9 @@ namespace KTKS_DonKH.DAL.TimKiem
                         case "ThuMoi":
                             ds.Relations.Add("Chi Tiết Thư Mời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
                             break;
+                        case "VanBan":
+                            ds.Relations.Add("Chi Tiết Văn Bản", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
+                            break;
                         case "TienTrinh":
                             ds.Relations.Add("Chi Tiết Tiến Trình", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
                             break;
@@ -8590,6 +8648,9 @@ namespace KTKS_DonKH.DAL.TimKiem
                             break;
                         case "ThuMoi":
                             ds.Relations.Add("Chi Tiết Thư Mời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
+                            break;
+                        case "VanBan":
+                            ds.Relations.Add("Chi Tiết Văn Bản", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
                             break;
                         case "TienTrinh":
                             ds.Relations.Add("Chi Tiết Tiến Trình", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);

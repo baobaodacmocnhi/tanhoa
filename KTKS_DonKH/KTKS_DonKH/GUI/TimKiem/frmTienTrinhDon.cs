@@ -59,6 +59,7 @@ namespace KTKS_DonKH.GUI.TimKiem
             gridControl.LevelTree.Nodes.Add("Chi Tiết Truy Thu", gridViewTruyThu);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Tờ Trình", gridViewToTrinh);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Thư Mời", gridViewThuMoi);
+            gridControl.LevelTree.Nodes.Add("Chi Tiết Văn Bản", gridViewVanBan);
             gridControl.LevelTree.Nodes.Add("Chi Tiết Tiến Trình", gridViewTienTrinh);
         }
 
