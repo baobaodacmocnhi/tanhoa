@@ -1504,7 +1504,7 @@ namespace KTKS_ChungCu.DAL
 
                 DanhSachChungTu dsctCN = db.DanhSachChungTus.SingleOrDefault(item => item.ID == dsct.ID);
 
-                if (dsct.YeuCauCat)
+                if (dsctCN.YeuCauCat)
                 {
                     //chungtuCN.YeuCauCat = true;
                     //chungtuCN.CatNK_MaCN = chungtu.CatNK_MaCN;
@@ -1523,9 +1523,9 @@ namespace KTKS_ChungCu.DAL
                     dsctCN.CatNK_GhiChu = dsct.CatNK_GhiChu;
                     dsctCN.CatNK_MaCT = dsct.CatNK_MaCT;
                     ///Nếu phiếu đã có
-                    if (dsct.SoPhieu!=null)
+                    if (dsctCN.SoPhieu != null)
                     {
-                        LichSuChungTu lichsuchungtuCN = getLichSuChungTubySoPhieu(dsct.SoPhieu.Value);
+                        LichSuChungTu lichsuchungtuCN = getLichSuChungTubySoPhieu(dsctCN.SoPhieu.Value);
                         lichsuchungtuCN.CatNK_MaCN = dsct.CatNK_MaCN;
                         lichsuchungtuCN.CatNK_DanhBo = dsct.CatNK_DanhBo;
                         lichsuchungtuCN.CatNK_HoTen = dsct.CatNK_HoTen;
@@ -1587,9 +1587,9 @@ namespace KTKS_ChungCu.DAL
                 else
                 {
                     dsctCN.YeuCauCat = false;
-                    if (dsct.SoPhieu.HasValue)
+                    if (dsctCN.SoPhieu.HasValue)
                     {
-                        LichSuChungTu lichsuchungtuCN = getLichSuChungTubySoPhieu(dsct.SoPhieu.Value);
+                        LichSuChungTu lichsuchungtuCN = getLichSuChungTubySoPhieu(dsctCN.SoPhieu.Value);
                         XoaLichSuChungTu(lichsuchungtuCN);
                     }
                 }
@@ -1597,7 +1597,7 @@ namespace KTKS_ChungCu.DAL
                 #region Yêu Cầu Cắt 2,3,4,5
 
                 //if (ctchungtu.YeuCauCat2 != ctchungtuCN.YeuCauCat2)
-                if (dsct.YeuCauCat2)
+                if (dsctCN.YeuCauCat2)
                 {
                     dsctCN.YeuCauCat2 = true; 
                     dsctCN.CatNK_MaCN2 = dsct.CatNK_MaCN2;
@@ -1608,9 +1608,9 @@ namespace KTKS_ChungCu.DAL
                     dsctCN.CatNK_GhiChu2 = dsct.CatNK_GhiChu2;
                     dsctCN.CatNK_MaCT2 = dsct.CatNK_MaCT2;
                     ///
-                    if (dsct.SoPhieu2!=null)
+                    if (dsctCN.SoPhieu2 != null)
                     {
-                        LichSuChungTu lichsuchungtuCN2 = getLichSuChungTubySoPhieu(dsct.SoPhieu2.Value);
+                        LichSuChungTu lichsuchungtuCN2 = getLichSuChungTubySoPhieu(dsctCN.SoPhieu2.Value);
                         lichsuchungtuCN2.CatNK_MaCN = dsct.CatNK_MaCN2;
                         lichsuchungtuCN2.CatNK_DanhBo = dsct.CatNK_DanhBo2;
                         lichsuchungtuCN2.CatNK_HoTen = dsct.CatNK_HoTen2;
@@ -1683,9 +1683,9 @@ namespace KTKS_ChungCu.DAL
                 else
                 {
                     dsctCN.YeuCauCat2 = false;
-                    if (dsct.SoPhieu2.HasValue)
+                    if (dsctCN.SoPhieu2.HasValue)
                     {
-                        LichSuChungTu lichsuchungtuCN = getLichSuChungTubySoPhieu(dsct.SoPhieu2.Value);
+                        LichSuChungTu lichsuchungtuCN = getLichSuChungTubySoPhieu(dsctCN.SoPhieu2.Value);
                         XoaLichSuChungTu(lichsuchungtuCN);
                     }
                 }
@@ -1703,9 +1703,9 @@ namespace KTKS_ChungCu.DAL
                     dsctCN.CatNK_GhiChu3 = dsct.CatNK_GhiChu3;
                     dsctCN.CatNK_MaCT3 = dsct.CatNK_MaCT3;
                     ///
-                    if (dsct.SoPhieu3!=null)
+                    if (dsctCN.SoPhieu3 != null)
                     {
-                        LichSuChungTu lichsuchungtuCN3 = getLichSuChungTubySoPhieu(dsct.SoPhieu3.Value);
+                        LichSuChungTu lichsuchungtuCN3 = getLichSuChungTubySoPhieu(dsctCN.SoPhieu3.Value);
                         lichsuchungtuCN3.CatNK_MaCN = dsct.CatNK_MaCN3;
                         lichsuchungtuCN3.CatNK_DanhBo = dsct.CatNK_DanhBo3;
                         lichsuchungtuCN3.CatNK_HoTen = dsct.CatNK_HoTen3;
@@ -1778,15 +1778,15 @@ namespace KTKS_ChungCu.DAL
                 else
                 {
                     dsctCN.YeuCauCat3 = false;
-                    if (dsct.SoPhieu3.HasValue)
+                    if (dsctCN.SoPhieu3.HasValue)
                     {
-                        LichSuChungTu lichsuchungtuCN = getLichSuChungTubySoPhieu(dsct.SoPhieu3.Value);
+                        LichSuChungTu lichsuchungtuCN = getLichSuChungTubySoPhieu(dsctCN.SoPhieu3.Value);
                         XoaLichSuChungTu(lichsuchungtuCN);
                     }
                 }
 
                 //if (ctchungtu.YeuCauCat4 != ctchungtuCN.YeuCauCat4)
-                if (dsct.YeuCauCat4)
+                if (dsctCN.YeuCauCat4)
                 {
                     dsctCN.YeuCauCat4 = true;
                     dsctCN.CatNK_MaCN4 = dsct.CatNK_MaCN4;
@@ -1797,9 +1797,9 @@ namespace KTKS_ChungCu.DAL
                     dsctCN.CatNK_GhiChu4 = dsct.CatNK_GhiChu4;
                     dsctCN.CatNK_MaCT4 = dsct.CatNK_MaCT4;
                     ///
-                    if (dsct.SoPhieu4!=null)
+                    if (dsctCN.SoPhieu4 != null)
                     {
-                        LichSuChungTu lichsuchungtuCN4 = getLichSuChungTubySoPhieu(dsct.SoPhieu4.Value);
+                        LichSuChungTu lichsuchungtuCN4 = getLichSuChungTubySoPhieu(dsctCN.SoPhieu4.Value);
                         lichsuchungtuCN4.CatNK_MaCN = dsct.CatNK_MaCN4;
                         lichsuchungtuCN4.CatNK_DanhBo = dsct.CatNK_DanhBo4;
                         lichsuchungtuCN4.CatNK_HoTen = dsct.CatNK_HoTen4;
@@ -1872,17 +1872,16 @@ namespace KTKS_ChungCu.DAL
                 else
                 {
                     dsctCN.YeuCauCat4 = false;
-                    if (dsct.SoPhieu4.HasValue)
+                    if (dsctCN.SoPhieu4.HasValue)
                     {
-                        LichSuChungTu lichsuchungtuCN = getLichSuChungTubySoPhieu(dsct.SoPhieu4.Value);
+                        LichSuChungTu lichsuchungtuCN = getLichSuChungTubySoPhieu(dsctCN.SoPhieu4.Value);
                         XoaLichSuChungTu(lichsuchungtuCN);
                     }
                 }
 
                 //if (ctchungtu.YeuCauCat5 != ctchungtuCN.YeuCauCat5)
-                if (dsct.YeuCauCat5)
+                if (dsctCN.YeuCauCat5)
                 {
-
                     dsctCN.YeuCauCat5 = true;
                     dsctCN.CatNK_MaCN5 = dsct.CatNK_MaCN5;
                     dsctCN.CatNK_DanhBo5 = dsct.CatNK_DanhBo5;
@@ -1892,9 +1891,9 @@ namespace KTKS_ChungCu.DAL
                     dsctCN.CatNK_GhiChu5 = dsct.CatNK_GhiChu5;
                     dsctCN.CatNK_MaCT5 = dsct.CatNK_MaCT5;
                     ///
-                    if (dsct.SoPhieu5!=null)
+                    if (dsctCN.SoPhieu5 != null)
                     {
-                        LichSuChungTu lichsuchungtuCN5 = getLichSuChungTubySoPhieu(dsct.SoPhieu5.Value);
+                        LichSuChungTu lichsuchungtuCN5 = getLichSuChungTubySoPhieu(dsctCN.SoPhieu5.Value);
                         lichsuchungtuCN5.CatNK_MaCN = dsct.CatNK_MaCN5;
                         lichsuchungtuCN5.CatNK_DanhBo = dsct.CatNK_DanhBo5;
                         lichsuchungtuCN5.CatNK_HoTen = dsct.CatNK_HoTen5;
@@ -1956,7 +1955,7 @@ namespace KTKS_ChungCu.DAL
                         lichsuchungtu5.ID_DSChungTu = dsct.ID;
                         if (ThemLichSuChungTu(lichsuchungtu5))
                         {
-                            dsct.SoPhieu5 = lichsuchungtu5.SoPhieu;
+                            dsctCN.SoPhieu5 = lichsuchungtu5.SoPhieu;
                             db.SubmitChanges();
                             //CatChuyenDM catchuyendm = new CatChuyenDM();
                             //LSCTtoCCDM(lichsuchungtu5, ref catchuyendm);
@@ -1966,11 +1965,10 @@ namespace KTKS_ChungCu.DAL
                 }
                 else
                 {
-
                     dsctCN.YeuCauCat5 = false;
-                    if (dsct.SoPhieu5.HasValue)
+                    if (dsctCN.SoPhieu5.HasValue)
                     {
-                        LichSuChungTu lichsuchungtuCN = getLichSuChungTubySoPhieu(dsct.SoPhieu5.Value);
+                        LichSuChungTu lichsuchungtuCN = getLichSuChungTubySoPhieu(dsctCN.SoPhieu5.Value);
                         XoaLichSuChungTu(lichsuchungtuCN);
                     }
                 }
