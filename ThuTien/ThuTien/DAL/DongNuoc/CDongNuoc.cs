@@ -1745,6 +1745,19 @@ namespace ThuTien.DAL.DongNuoc
                 return false;
         }
 
+        public bool CheckExist_KQDongNuocLan2(int MaHD)
+        {
+            if (CheckExist_CTDongNuoc(MaHD))
+            {
+                if (_db.TT_CTDongNuocs.SingleOrDefault(item => item.MaHD == MaHD && item.TT_DongNuoc.Huy == false).TT_DongNuoc.TT_KQDongNuocs.Count > 0)
+                    return _db.TT_CTDongNuocs.SingleOrDefault(item => item.MaHD == MaHD && item.TT_DongNuoc.Huy == false).TT_DongNuoc.TT_KQDongNuocs.SingleOrDefault().DongNuoc2;
+                else
+                    return false;
+            }
+            else
+                return false;
+        }
+
         /// <summary>
         /// Kiểm tra Số Hóa Đơn có lập Thông Báo chưa. Nếu Thông Báo trước đó bị hủy thì vẫn được lập cái mới
         /// </summary>
@@ -1754,6 +1767,14 @@ namespace ThuTien.DAL.DongNuoc
         {
             if (_db.HOADONs.Any(itemHD => itemHD.SOHOADON == SoHoaDon))
                 return _db.TT_CTDongNuocs.Any(item => item.MaHD == _db.HOADONs.SingleOrDefault(itemHD => itemHD.SOHOADON == SoHoaDon).ID_HOADON && item.TT_DongNuoc.Huy == false);
+            else
+                return false;
+        }
+
+        public bool CheckExist_CTDongNuoc(int MaHD)
+        {
+            if (_db.HOADONs.Any(itemHD => itemHD.ID_HOADON == MaHD))
+                return _db.TT_CTDongNuocs.Any(item => item.MaHD == MaHD && item.TT_DongNuoc.Huy == false);
             else
                 return false;
         }
@@ -1773,6 +1794,29 @@ namespace ThuTien.DAL.DongNuoc
                         join itemND in _db.TT_NguoiDungs on itemDN.MaNV_DongNuoc equals itemND.MaND
                         join itemCTDN in _db.TT_CTDongNuocs on itemDN.MaDN equals itemCTDN.MaDN
                         where itemCTDN.MaHD == _db.HOADONs.SingleOrDefault(itemHD => itemHD.SOHOADON == SoHoaDon).ID_HOADON && itemDN.Huy == false
+                        select new
+                        {
+                            itemND.HoTen,
+                            itemND.TT_To.TenTo,
+                        };
+            if (query.Count() > 0)
+            {
+                HoTen = query.Take(1).ToList()[0].HoTen;
+                TenTo = query.Take(1).ToList()[0].TenTo;
+                return true;
+            }
+            else
+                return false;
+        }
+
+        public bool CheckExist_CTDongNuoc(int MaHD, out string HoTen, out string TenTo)
+        {
+            HoTen = "";
+            TenTo = "";
+            var query = from itemDN in _db.TT_DongNuocs
+                        join itemND in _db.TT_NguoiDungs on itemDN.MaNV_DongNuoc equals itemND.MaND
+                        join itemCTDN in _db.TT_CTDongNuocs on itemDN.MaDN equals itemCTDN.MaDN
+                        where itemCTDN.MaHD == MaHD && itemDN.Huy == false
                         select new
                         {
                             itemND.HoTen,
@@ -1870,6 +1914,22 @@ namespace ThuTien.DAL.DongNuoc
                         join itemCTDN in _db.TT_CTDongNuocs on itemDN.MaDN equals itemCTDN.MaDN
                         join itemKQDN in _db.TT_KQDongNuocs on itemDN.MaDN equals itemKQDN.MaDN
                         where itemCTDN.MaHD == _db.HOADONs.SingleOrDefault(itemHD => itemHD.SOHOADON == SoHoaDon).ID_HOADON && itemKQDN.NgayDN != null && itemDN.Huy == false
+                        select new
+                        {
+                            NgayDN = itemKQDN.NgayDN
+                        };
+            if (query.Count() > 0)
+                return query.Take(1).ToList()[0].NgayDN.Value.ToString("dd/MM/yyyy");
+            else
+                return "";
+        }
+
+        public string GetNgayDNByMaHD(int MaHD)
+        {
+            var query = from itemDN in _db.TT_DongNuocs
+                        join itemCTDN in _db.TT_CTDongNuocs on itemDN.MaDN equals itemCTDN.MaDN
+                        join itemKQDN in _db.TT_KQDongNuocs on itemDN.MaDN equals itemKQDN.MaDN
+                        where itemCTDN.MaHD == MaHD && itemKQDN.NgayDN != null && itemDN.Huy == false
                         select new
                         {
                             NgayDN = itemKQDN.NgayDN

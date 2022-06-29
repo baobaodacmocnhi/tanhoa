@@ -101,12 +101,14 @@
             this.btnInTamThuKhong = new System.Windows.Forms.Button();
             this.chkChuKy = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.btnInDongNuoc = new System.Windows.Forms.Button();
             this.MaTT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DangNgan_TT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayGiaiTrach_TT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoPhieu_TT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate_TT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoHoaDon_TT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaHD_TT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ky_TT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MLT_TT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo_TT = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -117,8 +119,9 @@
             this.ThueGTGT_TT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PhiBVMT_TT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCong_TT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HanhThu_TT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.To_TT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HanhThu_TT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DongNuoc_TT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GiaBieu_TT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tra_TT = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.NgayTra_TT = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -148,7 +151,6 @@
             this.txtDanhBo.Size = new System.Drawing.Size(100, 20);
             this.txtDanhBo.TabIndex = 1;
             this.txtDanhBo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDanhBo_KeyPress);
-            this.txtDanhBo.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtDanhBo_KeyUp);
             // 
             // dgvHoaDon
             // 
@@ -187,7 +189,7 @@
             this.dgvHoaDon.Name = "dgvHoaDon";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvHoaDon.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvHoaDon.Size = new System.Drawing.Size(1315, 526);
+            this.dgvHoaDon.Size = new System.Drawing.Size(1290, 526);
             this.dgvHoaDon.TabIndex = 13;
             this.dgvHoaDon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHoaDon_CellFormatting);
             this.dgvHoaDon.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvHoaDon_ColumnHeaderMouseClick);
@@ -406,6 +408,7 @@
             // 
             // tabTamThu
             // 
+            this.tabTamThu.Controls.Add(this.btnInDongNuoc);
             this.tabTamThu.Controls.Add(this.btnChuyenDangNganKyMoi);
             this.tabTamThu.Controls.Add(this.radDienTu);
             this.tabTamThu.Controls.Add(this.radGiay);
@@ -429,7 +432,7 @@
             // 
             // btnChuyenDangNganKyMoi
             // 
-            this.btnChuyenDangNganKyMoi.Location = new System.Drawing.Point(703, 6);
+            this.btnChuyenDangNganKyMoi.Location = new System.Drawing.Point(799, 6);
             this.btnChuyenDangNganKyMoi.Name = "btnChuyenDangNganKyMoi";
             this.btnChuyenDangNganKyMoi.Size = new System.Drawing.Size(110, 40);
             this.btnChuyenDangNganKyMoi.TabIndex = 33;
@@ -461,7 +464,7 @@
             // 
             // btnChuyenDangNgan
             // 
-            this.btnChuyenDangNgan.Location = new System.Drawing.Point(587, 6);
+            this.btnChuyenDangNgan.Location = new System.Drawing.Point(683, 6);
             this.btnChuyenDangNgan.Name = "btnChuyenDangNgan";
             this.btnChuyenDangNgan.Size = new System.Drawing.Size(110, 23);
             this.btnChuyenDangNgan.TabIndex = 30;
@@ -521,7 +524,7 @@
             // btnXoa
             // 
             this.btnXoa.Enabled = false;
-            this.btnXoa.Location = new System.Drawing.Point(506, 6);
+            this.btnXoa.Location = new System.Drawing.Point(602, 6);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 17;
@@ -567,6 +570,7 @@
             this.SoPhieu_TT,
             this.CreateDate_TT,
             this.SoHoaDon_TT,
+            this.MaHD_TT,
             this.Ky_TT,
             this.MLT_TT,
             this.DanhBo_TT,
@@ -577,8 +581,9 @@
             this.ThueGTGT_TT,
             this.PhiBVMT_TT,
             this.TongCong_TT,
-            this.HanhThu_TT,
             this.To_TT,
+            this.HanhThu_TT,
+            this.DongNuoc_TT,
             this.GiaBieu_TT,
             this.Tra_TT,
             this.NgayTra_TT,
@@ -587,7 +592,7 @@
             this.dgvTamThu.Name = "dgvTamThu";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvTamThu.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvTamThu.Size = new System.Drawing.Size(1350, 504);
+            this.dgvTamThu.Size = new System.Drawing.Size(1310, 504);
             this.dgvTamThu.TabIndex = 14;
             this.dgvTamThu.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvTamThu_CellFormatting);
             this.dgvTamThu.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvTamThu_CellValidating);
@@ -688,7 +693,7 @@
             this.dgvXacNhanNo.Name = "dgvXacNhanNo";
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvXacNhanNo.RowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvXacNhanNo.Size = new System.Drawing.Size(1315, 526);
+            this.dgvXacNhanNo.Size = new System.Drawing.Size(940, 526);
             this.dgvXacNhanNo.TabIndex = 20;
             this.dgvXacNhanNo.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvXacNhanNo_CellFormatting);
             this.dgvXacNhanNo.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvXacNhanNo_RowPostPaint);
@@ -824,6 +829,16 @@
             this.label8.TabIndex = 99;
             this.label8.Text = "Sau 15h hệ thống sẽ tự động chuyển đăng ngân qua ngày hôm sau";
             // 
+            // btnInDongNuoc
+            // 
+            this.btnInDongNuoc.Location = new System.Drawing.Point(506, 6);
+            this.btnInDongNuoc.Name = "btnInDongNuoc";
+            this.btnInDongNuoc.Size = new System.Drawing.Size(90, 23);
+            this.btnInDongNuoc.TabIndex = 34;
+            this.btnInDongNuoc.Text = "In Đóng Nước";
+            this.btnInDongNuoc.UseVisualStyleBackColor = true;
+            this.btnInDongNuoc.Click += new System.EventHandler(this.btnInDongNuoc_Click);
+            // 
             // MaTT
             // 
             this.MaTT.DataPropertyName = "MaTT";
@@ -865,6 +880,13 @@
             this.SoHoaDon_TT.DataPropertyName = "SoHoaDon";
             this.SoHoaDon_TT.HeaderText = "Số HĐ";
             this.SoHoaDon_TT.Name = "SoHoaDon_TT";
+            // 
+            // MaHD_TT
+            // 
+            this.MaHD_TT.DataPropertyName = "MaHD";
+            this.MaHD_TT.HeaderText = "MaHD";
+            this.MaHD_TT.Name = "MaHD_TT";
+            this.MaHD_TT.Visible = false;
             // 
             // Ky_TT
             // 
@@ -938,6 +960,13 @@
             this.TongCong_TT.Name = "TongCong_TT";
             this.TongCong_TT.Width = 70;
             // 
+            // To_TT
+            // 
+            this.To_TT.DataPropertyName = "To";
+            this.To_TT.HeaderText = "Tổ";
+            this.To_TT.Name = "To_TT";
+            this.To_TT.Width = 50;
+            // 
             // HanhThu_TT
             // 
             this.HanhThu_TT.DataPropertyName = "HanhThu";
@@ -945,12 +974,11 @@
             this.HanhThu_TT.Name = "HanhThu_TT";
             this.HanhThu_TT.Width = 80;
             // 
-            // To_TT
+            // DongNuoc_TT
             // 
-            this.To_TT.DataPropertyName = "To";
-            this.To_TT.HeaderText = "Tổ";
-            this.To_TT.Name = "To_TT";
-            this.To_TT.Width = 50;
+            this.DongNuoc_TT.DataPropertyName = "DongNuoc";
+            this.DongNuoc_TT.HeaderText = "Đóng Nước";
+            this.DongNuoc_TT.Name = "DongNuoc_TT";
             // 
             // GiaBieu_TT
             // 
@@ -978,7 +1006,6 @@
             this.GhiChuTra_TT.DataPropertyName = "GhiChuTra";
             this.GhiChuTra_TT.HeaderText = "Ghi Chú";
             this.GhiChuTra_TT.Name = "GhiChuTra_TT";
-            this.GhiChuTra_TT.Width = 150;
             // 
             // frmTamThuQuay
             // 
@@ -1082,12 +1109,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Cat_XacNhanNo;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnChuyenDangNganKyMoi;
+        private System.Windows.Forms.Button btnInDongNuoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaTT;
         private System.Windows.Forms.DataGridViewTextBoxColumn DangNgan_TT;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayGiaiTrach_TT;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoPhieu_TT;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate_TT;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoHoaDon_TT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaHD_TT;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky_TT;
         private System.Windows.Forms.DataGridViewTextBoxColumn MLT_TT;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo_TT;
@@ -1098,8 +1127,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ThueGTGT_TT;
         private System.Windows.Forms.DataGridViewTextBoxColumn PhiBVMT_TT;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_TT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HanhThu_TT;
         private System.Windows.Forms.DataGridViewTextBoxColumn To_TT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HanhThu_TT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DongNuoc_TT;
         private System.Windows.Forms.DataGridViewTextBoxColumn GiaBieu_TT;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Tra_TT;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayTra_TT;

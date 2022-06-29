@@ -81,6 +81,14 @@ namespace ThuTien.DAL.Quay
                 return false;
         }
 
+        public bool CheckExist(int MaHD)
+        {
+            if (_db.HOADONs.Any(itemHD => itemHD.ID_HOADON == MaHD))
+                return _db.TT_LenhHuys.Any(item => item.MaHD == MaHD);
+            else
+                return false;
+        }
+
         public bool CheckExist_Ton(string DanhBo, int Nam, int Ky)
         {
             var query = from item in _db.TT_LenhHuys

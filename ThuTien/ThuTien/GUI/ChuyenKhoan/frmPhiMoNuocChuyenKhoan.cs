@@ -203,7 +203,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 rptBBDongNuoc rpt = new rptBBDongNuoc();
                 rpt.SetDataSource(ds);
                 frmBaoCao frm = new frmBaoCao(rpt);
-                frm.ShowDialog();
+                frm.Show();
             }
         }
 

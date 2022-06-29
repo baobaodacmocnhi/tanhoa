@@ -20,6 +20,8 @@ using ThuTien.BaoCao.ChuyenKhoan;
 using ThuTien.DAL.DongNuoc;
 using ThuTien.DAL.ChuyenKhoan;
 using System.Transactions;
+using ThuTien.BaoCao.DongNuoc;
+using ThuTien.DAL;
 
 namespace ThuTien.GUI.Quay
 {
@@ -35,6 +37,7 @@ namespace ThuTien.GUI.Quay
         CLenhHuy _cLenhHuy = new CLenhHuy();
         CDichVuThu _cDichVuThu = new CDichVuThu();
         CChotDangNgan _cChotDangNgan = new CChotDangNgan();
+        CDHN _cDHN = new CDHN();
 
         public frmTamThuQuay()
         {
@@ -73,19 +76,19 @@ namespace ThuTien.GUI.Quay
                         else
                         {
                             item.Cells["Chon"].Value = "True";
-                            if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
+                            if (_cLenhHuy.CheckExist(int.Parse(item.Cells["MaHD"].Value.ToString())))
                                 item.DefaultCellStyle.BackColor = Color.Red;
                             else
-                                if (_cDongNuoc.CheckExist_KQDongNuocLan2(item.Cells["SoHoaDon"].Value.ToString()))
+                                if (_cDongNuoc.CheckExist_KQDongNuocLan2(int.Parse(item.Cells["MaHD"].Value.ToString())))
                                 {
                                     item.DefaultCellStyle.BackColor = Color.Orange;
-                                    item.Cells["DongNuoc"].Value = _cDongNuoc.GetNgayDNBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString());
+                                    item.Cells["DongNuoc"].Value = _cDongNuoc.GetNgayDNByMaHD(int.Parse(item.Cells["MaHD"].Value.ToString()));
                                 }
                                 else
-                                    if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon"].Value.ToString()))
+                                    if (_cDongNuoc.CheckExist_CTDongNuoc(int.Parse(item.Cells["MaHD"].Value.ToString())))
                                     {
                                         item.DefaultCellStyle.BackColor = Color.Yellow;
-                                        item.Cells["DongNuoc"].Value = _cDongNuoc.GetNgayDNBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString());
+                                        item.Cells["DongNuoc"].Value = _cDongNuoc.GetNgayDNByMaHD(int.Parse(item.Cells["MaHD"].Value.ToString()));
                                     }
                         }
                     }
@@ -94,6 +97,26 @@ namespace ThuTien.GUI.Quay
                     if (tabControl.SelectedTab.Name == "tabTamThu")
                     {
                         dgvTamThu.DataSource = _cTamThu.GetDS(false, txtDanhBo.Text.Trim().Replace(" ", ""));
+                        foreach (DataGridViewRow item in dgvTamThu.Rows)
+                        {
+                            string HoTen = "", TenTo = "";
+                            if (_cLenhHuy.CheckExist(int.Parse(item.Cells["MaHD_TT"].Value.ToString())))
+                                item.DefaultCellStyle.BackColor = Color.Red;
+                            else
+                                if (_cDongNuoc.CheckExist_KQDongNuocLan2(int.Parse(item.Cells["MaHD_TT"].Value.ToString())))
+                                {
+                                    item.DefaultCellStyle.BackColor = Color.Orange;
+                                    item.Cells["DongNuoc_TT"].Value = _cDongNuoc.GetNgayDNByMaHD(int.Parse(item.Cells["MaHD_TT"].Value.ToString()));
+                                }
+                                else
+                                    if (_cDongNuoc.CheckExist_CTDongNuoc(int.Parse(item.Cells["MaHD_TT"].Value.ToString()), out HoTen, out TenTo))
+                                    {
+                                        item.Cells["HanhThu_TT"].Value = HoTen;
+                                        item.Cells["To_TT"].Value = TenTo;
+                                        item.DefaultCellStyle.BackColor = Color.Yellow;
+                                        item.Cells["DongNuoc_TT"].Value = _cDongNuoc.GetNgayDNByMaHD(int.Parse(item.Cells["MaHD_TT"].Value.ToString()));
+                                    }
+                        }
                     }
                     else
                         if (tabControl.SelectedTab.Name == "tabXacNhanNo")
@@ -379,18 +402,22 @@ namespace ThuTien.GUI.Quay
             string HoTen = "", TenTo = "";
             foreach (DataGridViewRow item in dgvTamThu.Rows)
             {
-                if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon_TT"].Value.ToString(), out HoTen, out TenTo))
-                {
-                    item.Cells["HanhThu_TT"].Value = HoTen;
-                    item.Cells["To_TT"].Value = TenTo;
-                    item.DefaultCellStyle.BackColor = Color.Yellow;
-                }
-                if (_cDongNuoc.CheckExist_KQDongNuocLan2(item.Cells["SoHoaDon_TT"].Value.ToString()))
-                    item.DefaultCellStyle.BackColor = Color.Orange;
-                //if (_cDongNuoc.CheckCTDongNuocBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString()))
-                //    item.DefaultCellStyle.BackColor = Color.Yellow;
-                if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon_TT"].Value.ToString()))
+                if (_cLenhHuy.CheckExist(int.Parse(item.Cells["MaHD_TT"].Value.ToString())))
                     item.DefaultCellStyle.BackColor = Color.Red;
+                else
+                    if (_cDongNuoc.CheckExist_KQDongNuocLan2(int.Parse(item.Cells["MaHD_TT"].Value.ToString())))
+                    {
+                        item.DefaultCellStyle.BackColor = Color.Orange;
+                        item.Cells["DongNuoc_TT"].Value = _cDongNuoc.GetNgayDNByMaHD(int.Parse(item.Cells["MaHD_TT"].Value.ToString()));
+                    }
+                    else
+                        if (_cDongNuoc.CheckExist_CTDongNuoc(int.Parse(item.Cells["MaHD_TT"].Value.ToString()), out HoTen, out TenTo))
+                        {
+                            item.Cells["HanhThu_TT"].Value = HoTen;
+                            item.Cells["To_TT"].Value = TenTo;
+                            item.DefaultCellStyle.BackColor = Color.Yellow;
+                            item.Cells["DongNuoc_TT"].Value = _cDongNuoc.GetNgayDNByMaHD(int.Parse(item.Cells["MaHD_TT"].Value.ToString()));
+                        }
             }
         }
 
@@ -945,44 +972,6 @@ namespace ThuTien.GUI.Quay
             }
         }
 
-        private void txtDanhBo_KeyUp(object sender, KeyEventArgs e)
-        {
-            //if (txtDanhBo.Text.Trim().Replace(" ", "").Length == 11 )
-            //{
-            //    if (tabControl.SelectedTab.Name == "tabThongTin")
-            //    {
-            //        dgvHoaDon.DataSource = _cHoaDon.GetDSTonByDanhBo(txtDanhBo.Text.Trim().Replace(" ", ""));
-
-            //        foreach (DataGridViewRow item in dgvHoaDon.Rows)
-            //        {
-            //            if (_cDichVuThu.CheckExist(item.Cells["SoHoaDon"].Value.ToString()) == true)
-            //                item.DefaultCellStyle.BackColor = Color.Blue;
-            //            else
-            //            {
-            //                item.Cells["Chon"].Value = "True";
-            //                if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon"].Value.ToString()))
-            //                    item.DefaultCellStyle.BackColor = Color.Yellow;
-            //                if (_cDongNuoc.CheckExist_KQDongNuocLan2(item.Cells["SoHoaDon"].Value.ToString()))
-            //                    item.DefaultCellStyle.BackColor = Color.Orange;
-            //                item.Cells["DongNuoc"].Value = _cDongNuoc.GetNgayDNBySoHoaDon(item.Cells["SoHoaDon"].Value.ToString());
-            //                if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon"].Value.ToString()))
-            //                    item.DefaultCellStyle.BackColor = Color.Red;
-            //            }
-            //        }
-            //    }
-            //    else
-            //        if (tabControl.SelectedTab.Name == "tabTamThu")
-            //        {
-            //            dgvTamThu.DataSource = _cTamThu.GetDS(false, txtDanhBo.Text.Trim().Replace(" ", ""));
-            //        }
-            //        else
-            //            if (tabControl.SelectedTab.Name == "tabXacNhanNo")
-            //            {
-            //                dgvXacNhanNo.DataSource = _cXacNhanNo.GetDS(txtDanhBo.Text.Trim().Replace(" ", ""));
-            //            }
-            //}
-        }
-
         private void btnChuyenDangNgan_Click(object sender, EventArgs e)
         {
             try
@@ -1058,6 +1047,37 @@ namespace ThuTien.GUI.Quay
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnInDongNuoc_Click(object sender, EventArgs e)
+        {
+            dsBaoCao ds = new dsBaoCao();
+            foreach (DataGridViewRow item in dgvTamThu.SelectedRows)
+            {
+                TT_KQDongNuoc kqdongnuoc = _cDongNuoc.GetKQDongNuocByDanhBo_Last(item.Cells["DanhBo_TT"].Value.ToString());
+                if (kqdongnuoc != null)
+                {
+                    DataRow dr = ds.Tables["KQDongNuoc"].NewRow();
+                    dr["NhanVien"] = _cNguoiDung.GetHoTenByMaND(kqdongnuoc.CreateBy.Value);
+                    dr["STT"] = kqdongnuoc.MaKQDN;
+                    dr["DanhBo"] = kqdongnuoc.DanhBo;
+                    dr["HoTen"] = kqdongnuoc.HoTen;
+                    dr["DiaChi"] = kqdongnuoc.DiaChi + _cDHN.GetPhuongQuan(kqdongnuoc.DanhBo);
+                    dr["Co"] = kqdongnuoc.Co;
+                    dr["Hieu"] = kqdongnuoc.Hieu;
+                    dr["SoThan"] = kqdongnuoc.SoThan;
+                    dr["ChiSo"] = kqdongnuoc.ChiSoDN;
+                    dr["GhiChu"] = kqdongnuoc.LyDo;
+                    dr["PhiMoNuoc"] = kqdongnuoc.PhiMoNuoc;
+                    dr["NgayDN"] = kqdongnuoc.NgayDN;
+
+                    ds.Tables["KQDongNuoc"].Rows.Add(dr);
+                }
+                rptBBDongNuoc rpt = new rptBBDongNuoc();
+                rpt.SetDataSource(ds);
+                frmBaoCao frm = new frmBaoCao(rpt);
+                frm.Show();
             }
         }
 
