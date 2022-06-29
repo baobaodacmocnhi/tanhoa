@@ -686,7 +686,7 @@ namespace KTKS_DonKH.GUI.TruyThu
         {
             HOADON hd = _cThuTien.Get(DanhBo, Ky, Nam);
             int TyleSH = 0, TyLeSX = 0, TyLeDV = 0, TyLeHCSN = 0;
-            int TienNuocNamCu, TienNuocNamMoi, TieuThu_DieuChinhGia, PhiBVMTNamCu, PhiBVMTNamMoi, TienNuoc, ThueGTGT, TDVTN, ThueTDVTN;
+            int TienNuocNamCu, TienNuocNamMoi, TieuThu_DieuChinhGia, PhiBVMTNamCu, PhiBVMTNamMoi, TienNuoc, ThueGTGT, TDVTN, ThueTDVTN, ThueTDVTN_VAT = 0;
             string ChiTietNamCu, ChiTietNamMoi, ChiTietPhiBVMTNamCu, ChiTietPhiBVMTNamMoi;
             //DateTime TuNgay = DateTime.Now, DenNgay = DateTime.Now;
             if (hd != null)
@@ -717,7 +717,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                     DenNgay = ds.DenNgay.Value;
                 }
             }
-            _cGiaNuoc.TinhTienNuoc(false, false, false, 0, DanhBo, Ky, Nam, TuNgay, DenNgay, GiaBieu, TyleSH, TyLeSX, TyLeDV, TyLeHCSN, DinhMuc, DinhMucHN, TieuThu, out  TienNuocNamCu, out ChiTietNamCu, out  TienNuocNamMoi, out  ChiTietNamMoi, out  TieuThu_DieuChinhGia, out PhiBVMTNamCu, out ChiTietPhiBVMTNamCu, out PhiBVMTNamMoi, out ChiTietPhiBVMTNamMoi, out TienNuoc, out ThueGTGT, out TDVTN, out ThueTDVTN);
+            _cGiaNuoc.TinhTienNuoc(false, false, false, 0, DanhBo, Ky, Nam, TuNgay, DenNgay, GiaBieu, TyleSH, TyLeSX, TyLeDV, TyLeHCSN, DinhMuc, DinhMucHN, TieuThu, out  TienNuocNamCu, out ChiTietNamCu, out  TienNuocNamMoi, out  ChiTietNamMoi, out  TieuThu_DieuChinhGia, out PhiBVMTNamCu, out ChiTietPhiBVMTNamCu, out PhiBVMTNamMoi, out ChiTietPhiBVMTNamMoi, out TienNuoc, out ThueGTGT, out TDVTN, out ThueTDVTN, out ThueTDVTN_VAT);
             int PhiBVMT = _cGiaNuoc.TinhPhiBMVT2010(Nam, GiaBieu, DinhMuc, TieuThu);
 
             dgvTruyThuTienNuoc["GiaBan_Cu", RowIndex].Value = TienNuoc;
@@ -767,7 +767,7 @@ namespace KTKS_DonKH.GUI.TruyThu
             HOADON hd = _cThuTien.Get(DanhBo, Ky, Nam);
             DocSo ds = null;
             int TyleSH = 0, TyLeSX = 0, TyLeDV = 0, TyLeHCSN = 0;
-            int TienNuocNamCu, TienNuocNamMoi, TieuThu_DieuChinhGia, PhiBVMTNamCu, PhiBVMTNamMoi, TienNuoc, ThueGTGT, TDVTN, ThueTDVTN;
+            int TienNuocNamCu, TienNuocNamMoi, TieuThu_DieuChinhGia, PhiBVMTNamCu, PhiBVMTNamMoi, TienNuoc, ThueGTGT, TDVTN, ThueTDVTN, ThueTDVTN_VAT = 0;
             string ChiTietNamCu, ChiTietNamMoi, ChiTietPhiBVMTNamCu, ChiTietPhiBVMTNamMoi;
             //DateTime TuNgay = DateTime.Now, DenNgay = DateTime.Now;
             if (hd != null)
@@ -798,7 +798,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                     DenNgay = ds.DenNgay.Value;
                 }
             }
-            _cGiaNuoc.TinhTienNuoc(false, false, false, 0, DanhBo, Ky, Nam, TuNgay, DenNgay, GiaBieu, TyleSH, TyLeSX, TyLeDV, TyLeHCSN, DinhMuc, DinhMucHN, TieuThu, out  TienNuocNamCu, out ChiTietNamCu, out  TienNuocNamMoi, out  ChiTietNamMoi, out  TieuThu_DieuChinhGia, out PhiBVMTNamCu, out ChiTietPhiBVMTNamCu, out PhiBVMTNamMoi, out ChiTietPhiBVMTNamMoi, out TienNuoc, out ThueGTGT, out TDVTN, out ThueTDVTN);
+            _cGiaNuoc.TinhTienNuoc(false, false, false, 0, DanhBo, Ky, Nam, TuNgay, DenNgay, GiaBieu, TyleSH, TyLeSX, TyLeDV, TyLeHCSN, DinhMuc, DinhMucHN, TieuThu, out  TienNuocNamCu, out ChiTietNamCu, out  TienNuocNamMoi, out  ChiTietNamMoi, out  TieuThu_DieuChinhGia, out PhiBVMTNamCu, out ChiTietPhiBVMTNamCu, out PhiBVMTNamMoi, out ChiTietPhiBVMTNamMoi, out TienNuoc, out ThueGTGT, out TDVTN, out ThueTDVTN, out ThueTDVTN_VAT);
             if (hd == null && ds == null)
                 dgvTruyThuTienNuoc["SoTien1m3", RowIndex].Value = _cGiaNuoc.getDonGiaCaoNhat(Ky, Nam, GiaBieu);
             else
@@ -1636,11 +1636,12 @@ namespace KTKS_DonKH.GUI.TruyThu
                             if (hd.TILEHCSN != null && hd.TILEHCSN.Value != 0)
                                 TyLeHCSN = hd.TILEHCSN.Value;
                         }
-                        _cGiaNuoc.TinhTienNuoc(false, false, false, 0, _cttttn.DanhBo, item.Ky.Value, item.Nam.Value, DateTime.Parse(item.TuNgay), DateTime.Parse(item.DenNgay), item.GiaBieuCu.Value, TyleSH, TyLeSX, TyLeDV, TyLeHCSN, item.DinhMucCu.Value, item.DinhMucHNCu.Value, item.TieuThuCu.Value, out  TienNuocNamCu_Truoc, out ChiTietNamCu_Truoc, out  TienNuocNamMoi_Truoc, out  ChiTietNamMoi_Truoc, out  TieuThu_DieuChinhGia_Truoc, out PhiBVMTNamCu_Truoc, out ChiTietPhiBVMTNamCu_Truoc, out PhiBVMTNamMoi_Truoc, out ChiTietPhiBVMTNamMoi_Truoc, out TienNuoc_Truoc, out ThueGTGT_Truoc, out TDVTN_Truoc, out ThueTDVTN_Truoc);
+                        int ThueTDVTN_VAT = 0;
+                        _cGiaNuoc.TinhTienNuoc(false, false, false, 0, _cttttn.DanhBo, item.Ky.Value, item.Nam.Value, DateTime.Parse(item.TuNgay), DateTime.Parse(item.DenNgay), item.GiaBieuCu.Value, TyleSH, TyLeSX, TyLeDV, TyLeHCSN, item.DinhMucCu.Value, item.DinhMucHNCu.Value, item.TieuThuCu.Value, out  TienNuocNamCu_Truoc, out ChiTietNamCu_Truoc, out  TienNuocNamMoi_Truoc, out  ChiTietNamMoi_Truoc, out  TieuThu_DieuChinhGia_Truoc, out PhiBVMTNamCu_Truoc, out ChiTietPhiBVMTNamCu_Truoc, out PhiBVMTNamMoi_Truoc, out ChiTietPhiBVMTNamMoi_Truoc, out TienNuoc_Truoc, out ThueGTGT_Truoc, out TDVTN_Truoc, out ThueTDVTN_Truoc, out ThueTDVTN_VAT);
 
                         int TienNuocNamCu_Sau, TienNuocNamMoi_Sau, TieuThu_DieuChinhGia_Sau, PhiBVMTNamCu_Sau, PhiBVMTNamMoi_Sau, TienNuoc_Sau, ThueGTGT_Sau, TDVTN_Sau, ThueTDVTN_Sau;
                         string ChiTietNamCu_Sau, ChiTietNamMoi_Sau, ChiTietPhiBVMTNamCu_Sau, ChiTietPhiBVMTNamMoi_Sau;
-                        _cGiaNuoc.TinhTienNuoc(false, false, false, 0, _cttttn.DanhBo, item.Ky.Value, item.Nam.Value, DateTime.Parse(item.TuNgay), DateTime.Parse(item.DenNgay), item.GiaBieuMoi.Value, TyleSH, TyLeSX, TyLeDV, TyLeHCSN, item.DinhMucMoi.Value, item.DinhMucHNMoi.Value, item.TieuThuMoi.Value, out  TienNuocNamCu_Sau, out ChiTietNamCu_Sau, out  TienNuocNamMoi_Sau, out  ChiTietNamMoi_Sau, out  TieuThu_DieuChinhGia_Sau, out PhiBVMTNamCu_Sau, out ChiTietPhiBVMTNamCu_Sau, out PhiBVMTNamMoi_Sau, out ChiTietPhiBVMTNamMoi_Sau, out TienNuoc_Sau, out ThueGTGT_Sau, out TDVTN_Sau, out ThueTDVTN_Sau);
+                        _cGiaNuoc.TinhTienNuoc(false, false, false, 0, _cttttn.DanhBo, item.Ky.Value, item.Nam.Value, DateTime.Parse(item.TuNgay), DateTime.Parse(item.DenNgay), item.GiaBieuMoi.Value, TyleSH, TyLeSX, TyLeDV, TyLeHCSN, item.DinhMucMoi.Value, item.DinhMucHNMoi.Value, item.TieuThuMoi.Value, out  TienNuocNamCu_Sau, out ChiTietNamCu_Sau, out  TienNuocNamMoi_Sau, out  ChiTietNamMoi_Sau, out  TieuThu_DieuChinhGia_Sau, out PhiBVMTNamCu_Sau, out ChiTietPhiBVMTNamCu_Sau, out PhiBVMTNamMoi_Sau, out ChiTietPhiBVMTNamMoi_Sau, out TienNuoc_Sau, out ThueGTGT_Sau, out TDVTN_Sau, out ThueTDVTN_Sau, out ThueTDVTN_VAT);
 
                         if (TienNuocNamMoi_Truoc > 0 || TienNuocNamMoi_Sau > 0)
                         {
@@ -1667,7 +1668,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                                     dr["PhiBVMTMoi1"] = 0;
                                     dr["PhiBVMT_ThueCu"] = 0;
                                     if ((PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) > 0)
-                                        dr["PhiBVMT_ThueMoi"] = (PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) * 10 / 100;
+                                        dr["PhiBVMT_ThueMoi"] = (PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) * ThueTDVTN_VAT / 100;
                                     else
                                         dr["PhiBVMT_ThueMoi"] = 0;
                                 }
@@ -1679,11 +1680,11 @@ namespace KTKS_DonKH.GUI.TruyThu
                                     dr["PhiBVMTMoi"] = PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc;
 
                                     if ((PhiBVMTNamCu_Sau - PhiBVMTNamCu_Truoc) > 0)
-                                        dr["PhiBVMT_ThueCu"] =(PhiBVMTNamCu_Sau - PhiBVMTNamCu_Truoc) * 10 / 100;
+                                        dr["PhiBVMT_ThueCu"] = (PhiBVMTNamCu_Sau - PhiBVMTNamCu_Truoc) * ThueTDVTN_VAT / 100;
                                     else
                                         dr["PhiBVMT_ThueCu"] = 0;
                                     if ((PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) > 0)
-                                        dr["PhiBVMT_ThueMoi"] =(PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) * 10 / 100;
+                                        dr["PhiBVMT_ThueMoi"] = (PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) * ThueTDVTN_VAT / 100;
                                     else
                                         dr["PhiBVMT_ThueMoi"] = 0;
                                 }

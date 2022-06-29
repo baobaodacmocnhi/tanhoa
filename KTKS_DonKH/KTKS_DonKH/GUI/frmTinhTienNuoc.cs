@@ -191,9 +191,9 @@ namespace KTKS_DonKH.GUI
             {
             }
 
-            int TienNuocNamCu = 0, TienNuocNamMoi = 0, TienNuoc = 0, ThueGTGT = 0, TDVTNNamCu = 0, TDVTNNamMoi = 0, TDVTN = 0, ThueTDVTN = 0, TongCong = 0, TieuThu_DieuChinhGia = 0;
+            int TienNuocNamCu = 0, TienNuocNamMoi = 0, TienNuoc = 0, ThueGTGT = 0, TDVTNNamCu = 0, TDVTNNamMoi = 0, TDVTN = 0, ThueTDVTN = 0, TongCong = 0, TieuThu_DieuChinhGia = 0, ThueTDVTN_VAT = 0;
             string ChiTietNamCu = "", ChiTietNamMoi = "", ChiTietPhiBVMTNamCu = "", ChiTietPhiBVMTNamMoi = "";
-            _cGiaNuoc.TinhTienNuoc(false, false, false, 0, txtDanhBo.Text.Trim(), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtNam.Text.Trim()), dateTu.Value, dateDen.Value, int.Parse(txtGiaBieu.Text.Trim()), int.Parse(txtSH.Text.Trim()), int.Parse(txtSX.Text.Trim()), int.Parse(txtDV.Text.Trim()), int.Parse(txtHCSN.Text.Trim()), int.Parse(txtDinhMuc.Text.Trim()), int.Parse(txtDinhMucHN.Text.Trim()), int.Parse(txtTieuThu.Text.Trim()), out TienNuocNamCu, out ChiTietNamCu, out TienNuocNamMoi, out ChiTietNamMoi, out TieuThu_DieuChinhGia, out  TDVTNNamCu, out  ChiTietPhiBVMTNamCu, out  TDVTNNamMoi, out ChiTietPhiBVMTNamMoi, out TienNuoc, out ThueGTGT, out TDVTN, out ThueTDVTN);
+            _cGiaNuoc.TinhTienNuoc(false, false, false, 0, txtDanhBo.Text.Trim(), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtNam.Text.Trim()), dateTu.Value, dateDen.Value, int.Parse(txtGiaBieu.Text.Trim()), int.Parse(txtSH.Text.Trim()), int.Parse(txtSX.Text.Trim()), int.Parse(txtDV.Text.Trim()), int.Parse(txtHCSN.Text.Trim()), int.Parse(txtDinhMuc.Text.Trim()), int.Parse(txtDinhMucHN.Text.Trim()), int.Parse(txtTieuThu.Text.Trim()), out TienNuocNamCu, out ChiTietNamCu, out TienNuocNamMoi, out ChiTietNamMoi, out TieuThu_DieuChinhGia, out  TDVTNNamCu, out  ChiTietPhiBVMTNamCu, out  TDVTNNamMoi, out ChiTietPhiBVMTNamMoi, out TienNuoc, out ThueGTGT, out TDVTN, out ThueTDVTN, out ThueTDVTN_VAT);
             //ThueGTGT = (int)Math.Round((double)(TienNuocNamCu + TienNuocNamMoi) * 5 / 100, 0, MidpointRounding.AwayFromZero);
             TongCong = TienNuoc + ThueGTGT + TDVTN + ThueTDVTN;
 

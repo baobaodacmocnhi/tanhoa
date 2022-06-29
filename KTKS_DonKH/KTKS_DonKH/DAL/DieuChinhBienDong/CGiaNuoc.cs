@@ -7517,8 +7517,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         }
 
         //công thức mới 2020
-        public void TinhTienNuoc(bool KhongApGiaGiam, bool ApGiaNuocCu, bool DieuChinhGia, int GiaDieuChinh, string DanhBo, int Ky, int Nam, DateTime TuNgay, DateTime DenNgay, int GiaBieu, int TyLeSH, int TyLeSX, int TyLeDV, int TyLeHCSN, int TongDinhMuc, int DinhMucHN, int TieuThu, out int TienNuocNamCu, out string ChiTietNamCu, out int TienNuocNamMoi, out string ChiTietNamMoi, out int TieuThu_DieuChinhGia, out int PhiBVMTNamCu, out string ChiTietPhiBVMTNamCu, out int PhiBVMTNamMoi, out string ChiTietPhiBVMTNamMoi, out int TienNuoc, out int ThueGTGT, out int TDVTN, out int ThueTDVTN)
+        public void TinhTienNuoc(bool KhongApGiaGiam, bool ApGiaNuocCu, bool DieuChinhGia, int GiaDieuChinh, string DanhBo, int Ky, int Nam, DateTime TuNgay, DateTime DenNgay, int GiaBieu, int TyLeSH, int TyLeSX, int TyLeDV, int TyLeHCSN, int TongDinhMuc, int DinhMucHN, int TieuThu, out int TienNuocNamCu, out string ChiTietNamCu, out int TienNuocNamMoi, out string ChiTietNamMoi, out int TieuThu_DieuChinhGia, out int PhiBVMTNamCu, out string ChiTietPhiBVMTNamCu, out int PhiBVMTNamMoi, out string ChiTietPhiBVMTNamMoi, out int TienNuoc, out int ThueGTGT, out int TDVTN, out int ThueTDVTN, out int ThueTDVTN_VAT)
         {
+            ThueTDVTN_VAT = 0;
             DataTable dtGiaNuoc = getDS();
             //check giảm giá
             if (KhongApGiaGiam == false)
@@ -7593,7 +7594,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 ThueGTGT = (int)Math.Round((double)(TienNuocNamCu + TienNuocNamMoi) * 5 / 100, 0, MidpointRounding.AwayFromZero);
                 TDVTN = PhiBVMTNamCu + PhiBVMTNamMoi;
                 //Từ 2022 Phí BVMT -> Tiền Dịch Vụ Thoát Nước
-                int ThueTDVTN_VAT = 0;
+                
                 if (dtGiaNuoc.Rows[index]["VAT2_Ky"].ToString().Contains(Ky.ToString("00") + "/" + Nam))
                     ThueTDVTN_VAT = int.Parse(dtGiaNuoc.Rows[index]["VAT2"].ToString());
                 else

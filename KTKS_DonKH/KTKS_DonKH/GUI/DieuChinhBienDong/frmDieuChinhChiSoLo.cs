@@ -533,7 +533,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             string ChiTietNamCuTruoc = "", ChiTietNamMoiTruoc = "", ChiTietNamCuSau = "", ChiTietNamMoiSau = "", ChiTietPhiBVMTNamCuTruoc = "", ChiTietPhiBVMTNamMoiTruoc = "", ChiTietPhiBVMTNamCuSau = "", ChiTietPhiBVMTNamMoiSau = "";
                                             int Ky = 0, Nam = 0, TyleSH = 0, TyLeSX = 0, TyLeDV = 0, TyLeHCSN = 0, TienNuocNamCuTruoc = 0, TienNuocNamMoiTruoc = 0, TienNuocNamCuSau = 0, TienNuocNamMoiSau = 0, TieuThu_DieuChinhGia = 0
                                                 , PhiBVMTNamCuTruoc = 0, PhiBVMTNamMoiTruoc = 0, PhiBVMTNamCuSau = 0, PhiBVMTNamMoiSau = 0
-                                                , TienNuocTruoc = 0, ThueGTGTTruoc = 0, TDVTNTruoc = 0, ThueTDVTNTruoc = 0, TienNuocSau = 0, ThueGTGTSau = 0, TDVTNSau = 0, ThueTDVTNSau = 0;
+                                                , TienNuocTruoc = 0, ThueGTGTTruoc = 0, TDVTNTruoc = 0, ThueTDVTNTruoc = 0, TienNuocSau = 0, ThueGTGTSau = 0, TDVTNSau = 0, ThueTDVTNSau = 0, ThueTDVTN_VAT = 0;
                                             DateTime TuNgay = new DateTime(), DenNgay = new DateTime();
 
                                             if (hd != null)
@@ -578,9 +578,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                         TyLeHCSN = hoadon.TILEHCSN.Value;
                                                 }
 
-                                            _cGiaNuoc.TinhTienNuoc(false, false, false, 0, hd.DANHBA, Ky, Nam, TuNgay, DenNgay, ctdchd.GiaBieu.Value, TyleSH, TyLeSX, TyLeDV, TyLeHCSN, ctdchd.DinhMuc.Value, ctdchd.DinhMucHN.Value, ctdchd.TieuThu.Value, out TienNuocNamCuTruoc, out ChiTietNamCuTruoc, out TienNuocNamMoiTruoc, out ChiTietNamMoiTruoc, out TieuThu_DieuChinhGia, out PhiBVMTNamCuTruoc, out ChiTietPhiBVMTNamCuTruoc, out PhiBVMTNamMoiTruoc, out ChiTietPhiBVMTNamMoiTruoc, out TienNuocTruoc, out ThueGTGTTruoc, out TDVTNTruoc, out ThueTDVTNTruoc);
+                                            _cGiaNuoc.TinhTienNuoc(false, false, false, 0, hd.DANHBA, Ky, Nam, TuNgay, DenNgay, ctdchd.GiaBieu.Value, TyleSH, TyLeSX, TyLeDV, TyLeHCSN, ctdchd.DinhMuc.Value, ctdchd.DinhMucHN.Value, ctdchd.TieuThu.Value, out TienNuocNamCuTruoc, out ChiTietNamCuTruoc, out TienNuocNamMoiTruoc, out ChiTietNamMoiTruoc, out TieuThu_DieuChinhGia, out PhiBVMTNamCuTruoc, out ChiTietPhiBVMTNamCuTruoc, out PhiBVMTNamMoiTruoc, out ChiTietPhiBVMTNamMoiTruoc, out TienNuocTruoc, out ThueGTGTTruoc, out TDVTNTruoc, out ThueTDVTNTruoc, out ThueTDVTN_VAT);
 
-                                            _cGiaNuoc.TinhTienNuoc(false, false, false, 0, hd.DANHBA, Ky, Nam, TuNgay, DenNgay, ctdchd.GiaBieu_BD.Value, TyleSH, TyLeSX, TyLeDV, TyLeHCSN, ctdchd.DinhMuc_BD.Value, ctdchd.DinhMucHN_BD.Value, ctdchd.TieuThu_BD.Value, out TienNuocNamCuSau, out ChiTietNamCuSau, out TienNuocNamMoiSau, out ChiTietNamMoiSau, out TieuThu_DieuChinhGia, out PhiBVMTNamCuSau, out ChiTietPhiBVMTNamCuSau, out PhiBVMTNamMoiSau, out ChiTietPhiBVMTNamMoiSau, out TienNuocSau, out ThueGTGTSau, out TDVTNSau, out ThueTDVTNSau);
+                                            _cGiaNuoc.TinhTienNuoc(false, false, false, 0, hd.DANHBA, Ky, Nam, TuNgay, DenNgay, ctdchd.GiaBieu_BD.Value, TyleSH, TyLeSX, TyLeDV, TyLeHCSN, ctdchd.DinhMuc_BD.Value, ctdchd.DinhMucHN_BD.Value, ctdchd.TieuThu_BD.Value, out TienNuocNamCuSau, out ChiTietNamCuSau, out TienNuocNamMoiSau, out ChiTietNamMoiSau, out TieuThu_DieuChinhGia, out PhiBVMTNamCuSau, out ChiTietPhiBVMTNamCuSau, out PhiBVMTNamMoiSau, out ChiTietPhiBVMTNamMoiSau, out TienNuocSau, out ThueGTGTSau, out TDVTNSau, out ThueTDVTNSau, out ThueTDVTN_VAT);
 
                                             ctdchd.ChiTietCu = ChiTietNamCuTruoc + "\r\n" + ChiTietNamMoiTruoc;
                                             ctdchd.ChiTietMoi = ChiTietNamCuSau + "\r\n" + ChiTietNamMoiSau;

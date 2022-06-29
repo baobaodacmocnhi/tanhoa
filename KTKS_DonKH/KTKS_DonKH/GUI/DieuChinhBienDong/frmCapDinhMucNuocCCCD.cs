@@ -1174,6 +1174,19 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             MessageBox.Show("Danh Bộ này đã nhập rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
+                        bool flag = false;
+                        string Thung = "";
+                        foreach (DCBD_DKDM_CCCD itemCC in en.DCBD_DKDM_CCCDs)
+                            if (_cDKDM.checkExists(itemCC.CCCD, out Thung) == true)
+                            {
+                                flag = true;
+                                Thung = "CCCD đã tồn tại\n" + Thung;
+                            }
+                        if (flag)
+                        {
+                            MessageBox.Show(Thung, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                         HOADON hoadon = _cThuTien.GetMoiNhat(en.DanhBo);
                         if (lstKhongChoNhap.Any(x => x == hoadon.GB.ToString()))
                         {
@@ -1183,7 +1196,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         en.GiaBieu = hoadon.GB;
                         en.DinhMuc = hoadon.DM;
                         en.Quan = hoadon.Quan;
-                        string Thung = "";
+                        //string Thung = "";
                         if (_cDKDM.Sua(en, out Thung))
                         {
                             MessageBox.Show("Thành công\n" + Thung, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
