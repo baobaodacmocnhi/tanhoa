@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>172</ApplicationRevision>
+    <ApplicationRevision>175</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -1058,10 +1058,10 @@
     </PublishFile>
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://192.168.90.11:81/wsdhn.asmx">
+    <WebReferenceUrl Include="http://server11:81/wsdhn.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\wrDHN\</RelPath>
-      <UpdateFromURL>http://192.168.90.11:81/wsdhn.asmx</UpdateFromURL>
+      <UpdateFromURL>http://server11:81/wsdhn.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -1069,10 +1069,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>DocSo_PC_wrDHN_wsDHN</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://192.168.90.11:81/wsthuongvu.asmx">
+    <WebReferenceUrl Include="http://server11:81/wsthuongvu.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\wrThuongVu\</RelPath>
-      <UpdateFromURL>http://192.168.90.11:81/wsthuongvu.asmx</UpdateFromURL>
+      <UpdateFromURL>http://server11:81/wsthuongvu.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -1080,10 +1080,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>DocSo_PC_wrThuongVu_wsThuongVu</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://192.168.90.11:81/wsthutien.asmx">
+    <WebReferenceUrl Include="http://server11:81/wsthutien.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\wrThuTien\</RelPath>
-      <UpdateFromURL>http://192.168.90.11:81/wsthutien.asmx</UpdateFromURL>
+      <UpdateFromURL>http://server11:81/wsthutien.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

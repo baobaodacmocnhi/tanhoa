@@ -2042,10 +2042,10 @@
   </wsdl:binding>
   <wsdl:service name="wsDHN">
     <wsdl:port name="wsDHNSoap" binding="tns:wsDHNSoap">
-      <soap:address location="http://192.168.90.11:81/wsdhn.asmx" />
+      <soap:address location="http://server11:81/wsdhn.asmx" />
     </wsdl:port>
     <wsdl:port name="wsDHNSoap12" binding="tns:wsDHNSoap12">
-      <soap12:address location="http://192.168.90.11:81/wsdhn.asmx" />
+      <soap12:address location="http://server11:81/wsdhn.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

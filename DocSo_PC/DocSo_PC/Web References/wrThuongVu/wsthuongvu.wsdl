@@ -190,10 +190,10 @@
   </wsdl:binding>
   <wsdl:service name="wsThuongVu">
     <wsdl:port name="wsThuongVuSoap" binding="tns:wsThuongVuSoap">
-      <soap:address location="http://192.168.90.11:81/wsthuongvu.asmx" />
+      <soap:address location="http://server11:81/wsthuongvu.asmx" />
     </wsdl:port>
     <wsdl:port name="wsThuongVuSoap12" binding="tns:wsThuongVuSoap12">
-      <soap12:address location="http://192.168.90.11:81/wsthuongvu.asmx" />
+      <soap12:address location="http://server11:81/wsthuongvu.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

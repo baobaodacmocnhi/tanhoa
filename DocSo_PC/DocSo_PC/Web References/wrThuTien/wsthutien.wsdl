@@ -2691,10 +2691,10 @@
   </wsdl:binding>
   <wsdl:service name="wsThuTien">
     <wsdl:port name="wsThuTienSoap" binding="tns:wsThuTienSoap">
-      <soap:address location="http://192.168.90.11:81/wsthutien.asmx" />
+      <soap:address location="http://server11:81/wsthutien.asmx" />
     </wsdl:port>
     <wsdl:port name="wsThuTienSoap12" binding="tns:wsThuTienSoap12">
-      <soap12:address location="http://192.168.90.11:81/wsthutien.asmx" />
+      <soap12:address location="http://server11:81/wsthutien.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

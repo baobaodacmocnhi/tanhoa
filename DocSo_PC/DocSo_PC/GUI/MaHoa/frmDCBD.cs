@@ -347,7 +347,7 @@ namespace DocSo_PC.GUI.MaHoa
                                 dr["SoPhieu"] = en.ID.ToString();
                                 dr["HieuLucKy"] = en.HieuLucKy;
                                 dr["DanhBo"] = en.DanhBo.Insert(7, " ").Insert(4, " ");
-                                dr["HopDong"] = en.HopDong;
+                                dr["HopDong"] = en.MaHoa_DonTu.MLT;
                                 dr["HoTen"] = en.HoTen;
                                 dr["DiaChi"] = en.DiaChi + _cDHN.getPhuongQuan(en.Quan, en.Phuong);
                                 dr["ThongTin"] = en.CongDung;
@@ -389,7 +389,7 @@ namespace DocSo_PC.GUI.MaHoa
                                 dr["SoPhieu"] = en.ID.ToString();
                                 dr["HieuLucKy"] = en.HieuLucKy;
                                 dr["DanhBo"] = en.DanhBo.Insert(7, " ").Insert(4, " ");
-                                dr["HopDong"] = en.HopDong;
+                                dr["HopDong"] = en.MaHoa_DonTu.MLT;
                                 dr["HoTen"] = en.HoTen;
                                 dr["DiaChi"] = en.DiaChi;
                                 dr["ThongTin"] = en.CongDung;
@@ -649,7 +649,7 @@ namespace DocSo_PC.GUI.MaHoa
                                     }
                                     TB_GHICHU ghichu = new TB_GHICHU();
                                     ghichu.DANHBO = en.DanhBo;
-                                    ghichu.DONVI = "Đ. QLĐHN";
+                                    ghichu.DONVI = "QLDHN";
                                     ghichu.NOIDUNG = "PYC: " + en.ID.ToString();
                                     ghichu.NOIDUNG += " ," + en.CreateDate.Value.ToString("dd/MM/yyyy");
                                     ghichu.NOIDUNG += " - HL : " + en.HieuLucKy + " - ĐC";
@@ -697,17 +697,17 @@ namespace DocSo_PC.GUI.MaHoa
                                     {
                                         CDHN._cDAL.ExecuteNonQuery("update TB_DULIEUKHACHHANG set GIABIEU=" + en.GiaBieu.Value.ToString() + " where DANHBO='" + en.DanhBo + "'");
                                     }
-                                    TB_GHICHU ghichu = new TB_GHICHU();
-                                    ghichu.DANHBO = en.DanhBo;
-                                    ghichu.DONVI = "Đ. QLĐHN";
-                                    ghichu.NOIDUNG = "PYC: " + en.ID.ToString();
-                                    ghichu.NOIDUNG += " ," + en.CreateDate.Value.ToString("dd/MM/yyyy");
-                                    ghichu.NOIDUNG += " - HL : " + en.HieuLucKy + " - ĐC";
-                                    if (!string.IsNullOrEmpty(en.GiaBieu_BD.ToString()))
-                                    {
-                                        ghichu.NOIDUNG += " Giá Biểu Từ " + en.GiaBieu + " -> " + en.GiaBieu_BD + ",";
-                                    }
-                                    string sqlGhiChu = "delete from TB_GHICHU where DONVI=N'Đ. QLĐHN' and DANHBO='" + en.DanhBo + "' and NOIDUNG like 'PYC: " + en.ID.ToString() + "%'";
+                                    //TB_GHICHU ghichu = new TB_GHICHU();
+                                    //ghichu.DANHBO = en.DanhBo;
+                                    //ghichu.DONVI = "Đ. QLĐHN";
+                                    //ghichu.NOIDUNG = "PYC: " + en.ID.ToString();
+                                    //ghichu.NOIDUNG += " ," + en.CreateDate.Value.ToString("dd/MM/yyyy");
+                                    //ghichu.NOIDUNG += " - HL : " + en.HieuLucKy + " - ĐC";
+                                    //if (!string.IsNullOrEmpty(en.GiaBieu_BD.ToString()))
+                                    //{
+                                    //    ghichu.NOIDUNG += " Giá Biểu Từ " + en.GiaBieu + " -> " + en.GiaBieu_BD + ",";
+                                    //}
+                                    string sqlGhiChu = "delete from TB_GHICHU where DONVI=N'QLDHN' and DANHBO='" + en.DanhBo + "' and NOIDUNG like 'PYC: " + en.ID.ToString() + "%'";
                                     if (CDHN._cDAL.ExecuteNonQuery(sqlGhiChu))
                                     {
                                         en.ChuyenDocSo = false;
