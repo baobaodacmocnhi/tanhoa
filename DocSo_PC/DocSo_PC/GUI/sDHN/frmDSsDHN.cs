@@ -55,6 +55,10 @@ namespace DocSo_PC.GUI.sDHN
                             if (_csDHN.updateDS_DHN_Deviwas() == true)
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             break;
+                        case 4:
+                            if (_csDHN.updateDS_DHN_PhamLam() == true)
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            break;
                         default:
                             break;
                     }
@@ -180,8 +184,42 @@ namespace DocSo_PC.GUI.sDHN
                             case "Tất Cả 10 ngày":
                                 dgvLichSu.DataSource = _csDHN.get_All_Deviwas(dgvDanhSach.CurrentRow.Cells["DanhBo"].Value.ToString(), dateTu.Value.AddDays(-10), dateTu.Value);
                                 break;
+                            //case "Tất Cả 10 ngày giờ":
+                            //    dgvLichSu.DataSource = _csDHN.get_All_Deviwas(dgvDanhSach.CurrentRow.Cells["DanhBo"].Value.ToString(), dateTu.Value.AddDays(-10), dateTu.Value, dateTu.Value.Hour);
+                            //    break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case 4:
+                        switch (cmbLoaiXem.SelectedItem.ToString())
+                        {
+                            case "Chỉ Số":
+                                dgvLichSu.DataSource = _csDHN.get_ChiSoNuoc_PhamLam(dgvDanhSach.CurrentRow.Cells["DanhBo"].Value.ToString(), dateTu.Value);
+                                break;
+                            case "Chỉ Số giờ":
+                                dgvLichSu.DataSource = _csDHN.get_ChiSoNuoc_PhamLam(dgvDanhSach.CurrentRow.Cells["DanhBo"].Value.ToString(), dateTu.Value, dateTu.Value.Hour);
+                                break;
+                            //case "Chất Lượng Sóng":
+                            //    dgvLichSu.DataSource = _csDHN.get_ChatLuongSong_PhamLam(dgvDanhSach.CurrentRow.Cells["DanhBo"].Value.ToString(), dateTu.Value);
+                            //    break;
+                            case "Cảnh Báo":
+                                dgvLichSu.DataSource = _csDHN.get_CanhBao_PhamLam(dgvDanhSach.CurrentRow.Cells["DanhBo"].Value.ToString(), dateTu.Value);
+                                break;
+                            case "% Pin":
+                                dgvLichSu.DataSource = _csDHN.get_Pin_PhamLam(dgvDanhSach.CurrentRow.Cells["DanhBo"].Value.ToString(), dateTu.Value);
+                                break;
+                            case "Tất Cả 1 ngày":
+                                dgvLichSu.DataSource = _csDHN.get_All_PhamLam(dgvDanhSach.CurrentRow.Cells["DanhBo"].Value.ToString(), dateTu.Value);
+                                break;
+                            case "Tất Cả 1 ngày giờ":
+                                dgvLichSu.DataSource = _csDHN.get_All_PhamLam(dgvDanhSach.CurrentRow.Cells["DanhBo"].Value.ToString(), dateTu.Value, dateTu.Value.Hour);
+                                break;
+                            case "Tất Cả 10 ngày":
+                                dgvLichSu.DataSource = _csDHN.get_All_PhamLam(dgvDanhSach.CurrentRow.Cells["DanhBo"].Value.ToString(), dateTu.Value.AddDays(-10), dateTu.Value);
+                                break;
                             case "Tất Cả 10 ngày giờ":
-                                dgvLichSu.DataSource = _csDHN.get_All_Deviwas(dgvDanhSach.CurrentRow.Cells["DanhBo"].Value.ToString(), dateTu.Value.AddDays(-10), dateTu.Value, dateTu.Value.Hour);
+                                dgvLichSu.DataSource = _csDHN.get_All_PhamLam(dgvDanhSach.CurrentRow.Cells["DanhBo"].Value.ToString(), dateTu.Value.AddDays(-10), dateTu.Value, dateTu.Value.Hour);
                                 break;
                             default:
                                 break;
