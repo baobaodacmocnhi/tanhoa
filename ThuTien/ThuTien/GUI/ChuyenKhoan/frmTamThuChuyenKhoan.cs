@@ -375,7 +375,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                             if (chkTruHoNgheo.Checked == true)
                                 dt.Merge(_cHoaDon.GetDSTonByDanhBo_TruHoNgheo(item[0].ToString().Replace(" ", "")));
                             else
-                                dt.Merge(_cHoaDon.GetDSTonByDanhBo_BoDieuChinh(item[0].ToString().Replace(" ", "")));
+                                dt.Merge(_cHoaDon.GetDSTonByDanhBo_DCHD_ChuaUpdateTCT(item[0].ToString().Replace(" ", "")));
                         }
                     dgvHoaDon.DataSource = dt;
 
