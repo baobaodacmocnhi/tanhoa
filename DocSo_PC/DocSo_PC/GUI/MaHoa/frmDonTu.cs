@@ -502,7 +502,16 @@ namespace DocSo_PC.GUI.MaHoa
 
         private void btnXemTon_Click(object sender, EventArgs e)
         {
-            dgvDanhSach.DataSource = _cDonTu.getDS_Ton(cmbTo.SelectedValue.ToString());
+            string str = "";
+            for (int i = 0; i < chkcmbNoiDung.Properties.Items.Count; i++)
+                if (chkcmbNoiDung.Properties.Items[i].CheckState == CheckState.Checked)
+                {
+                    if (str == "")
+                        str = chkcmbNoiDung.Properties.Items[i].Value.ToString();
+                    else
+                        str += ";" + chkcmbNoiDung.Properties.Items[i].Value.ToString();
+                }
+            dgvDanhSach.DataSource = _cDonTu.getDS_Ton(cmbTo.SelectedValue.ToString(), str);
         }
 
         private void btnCapNhat_Click(object sender, EventArgs e)

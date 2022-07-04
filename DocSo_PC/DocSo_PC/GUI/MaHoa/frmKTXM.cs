@@ -387,7 +387,7 @@ namespace DocSo_PC.GUI.MaHoa
                             _cDonTu.Them_LichSu(ctktxm.NgayKTXM.Value, "KTXM", "Đã Kiểm Tra, " + ctktxm.NoiDungKiemTra, ctktxm.ID, _dontu.ID);
                         }
                         string noidung = "Mã Đơn: " + ctktxm.IDMaDon + ", " + ctktxm.NgayKTXM.Value.ToString("dd/MM/yyyy") + ", " + ctktxm.NoiDungKiemTra + ", " + CNguoiDung.HoTen;
-                        string sql = "insert into TB_GHICHU(DANHBO,DONVI,NOIDUNG,CREATEDATE,CREATEBY)values('" + ctktxm.DanhBo + "',N'Đ.QLĐHN',N'" + noidung + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture) + "',N'" + CNguoiDung.HoTen + "')";
+                        string sql = "insert into TB_GHICHU(DANHBO,DONVI,NOIDUNG,CREATEDATE,CREATEBY)values('" + ctktxm.DanhBo + "',N'QLDHN',N'" + noidung + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture) + "',N'" + CNguoiDung.HoTen + "')";
                         CDHN._cDAL.ExecuteNonQuery(sql);
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear_LoadDSKTXM();

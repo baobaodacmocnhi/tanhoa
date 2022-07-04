@@ -27,6 +27,7 @@ namespace DocSo_PC.GUI.MaHoa
         CDCBD _cDCBD = new CDCBD();
         CLichDocSo _cLDS = new CLichDocSo();
         CThuongVu _cThuongVu = new CThuongVu();
+        CThuTien _cThuTien = new CThuTien();
         wrDHN.wsDHN _wsDHN = new wrDHN.wsDHN();
         MaHoa_DCBD _dcbd = null;
 
@@ -51,6 +52,8 @@ namespace DocSo_PC.GUI.MaHoa
             {
                 item.Cells["Chon"].Value = true;
                 item.Cells["HieuLucKy"].Value = str;
+                if (item.Cells["DanhBo"].Value != null && item.Cells["DanhBo"].Value.ToString().Length == 11)
+                    item.Cells["GiaBieuCu"].Value = _cThuTien.GetMoiNhat(item.Cells["DanhBo"].Value.ToString()).GB;
             }
         }
 

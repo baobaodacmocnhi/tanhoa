@@ -16,7 +16,7 @@ namespace DocSo_PC.DAL.sDHN
 
         public DataTable getDS(int IDNCC)
         {
-            string sql = "select db.DanhBo,MLT=kh.LOTRINH,HOTEN,DiaChi=SONHA+' '+TENDUONG"
+            string sql = "select IDLogger,db.DanhBo,MLT=kh.LOTRINH,HOTEN,DiaChi=SONHA+' '+TENDUONG"
                         + " from sDHN db,CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG kh"
                         + " where IDNCC=" + IDNCC + " and Valid=1 and db.DanhBo=kh.DanhBo";
             return _cDAL.ExecuteQuery_DataTable(sql);
@@ -58,7 +58,7 @@ namespace DocSo_PC.DAL.sDHN
                             if (string.IsNullOrEmpty(item["SeriModule"]))
                                 _cDAL.ExecuteNonQuery("insert into sDHN(DanhBo,IDNCC,Valid,CreateBy)values('" + item["MaDanhbo"] + "',1,1," + CNguoiDung.MaND + ")");
                             else
-                                _cDAL.ExecuteNonQuery("insert into sDHN(DanhBo,IDNCC,IDLogger,Valid,CreateBy)values('" + item["MaDanhbo"] + "',1," + item["SeriModule"] + ",1," + CNguoiDung.MaND + ")");
+                                _cDAL.ExecuteNonQuery("insert into sDHN(DanhBo,IDNCC,IDLogger,Valid,CreateBy)values('" + item["MaDanhbo"] + "',1,'" + item["SeriModule"] + "',1," + CNguoiDung.MaND + ")");
                         else
                             _cDAL.ExecuteNonQuery("update sDHN set Valid=1 where DanhBo='" + item["MaDanhbo"] + "' and IDNCC=1");
                     }
@@ -883,9 +883,9 @@ namespace DocSo_PC.DAL.sDHN
                             if (string.IsNullOrEmpty(item["SeriModule"]))
                                 _cDAL.ExecuteNonQuery("insert into sDHN(DanhBo,IDNCC,Valid,CreateBy)values('" + item["MaDanhbo"] + "',3,1," + CNguoiDung.MaND + ")");
                             else
-                                _cDAL.ExecuteNonQuery("insert into sDHN(DanhBo,IDNCC,IDLogger,Valid,CreateBy)values('" + item["MaDanhbo"] + "',3," + item["SeriModule"] + ",1," + CNguoiDung.MaND + ")");
+                                _cDAL.ExecuteNonQuery("insert into sDHN(DanhBo,IDNCC,IDLogger,Valid,CreateBy)values('" + item["MaDanhbo"] + "',3,'" + item["SeriModule"] + "',1," + CNguoiDung.MaND + ")");
                         else
-                            _cDAL.ExecuteNonQuery("update sDHN set Valid=1 where DanhBo='" + item["MaDanhbo"] + "' and IDNCC=3");
+                            _cDAL.ExecuteNonQuery("update sDHN set Valid=1,IDLogger='" + item["SeriModule"] + "' where DanhBo='" + item["MaDanhbo"] + "' and IDNCC=3");
                     }
                     return true;
                 }
@@ -1347,9 +1347,12 @@ namespace DocSo_PC.DAL.sDHN
                     foreach (var item in obj)
                     {
                         if (checkExists(item["wmid"]) == false)
-                            _cDAL.ExecuteNonQuery("insert into sDHN(DanhBo,IDNCC,Valid,CreateBy)values('" + item["wmid"] + "',4,1," + CNguoiDung.MaND + ")");
+                            if (string.IsNullOrEmpty(item["idlogger"]))
+                                _cDAL.ExecuteNonQuery("insert into sDHN(DanhBo,IDNCC,Valid,CreateBy)values('" + item["wmid"] + "',4,1," + CNguoiDung.MaND + ")");
+                            else
+                                _cDAL.ExecuteNonQuery("insert into sDHN(DanhBo,IDNCC,IDLogger,Valid,CreateBy)values('" + item["wmid"] + "',4,'" + item["idlogger"] + "',1," + CNguoiDung.MaND + ")");
                         else
-                            _cDAL.ExecuteNonQuery("update sDHN set Valid=1 where DanhBo='" + item["wmid"] + "' and IDNCC=4");
+                            _cDAL.ExecuteNonQuery("update sDHN set Valid=1,IDLogger='" + item["idlogger"] + "' where DanhBo='" + item["wmid"] + "' and IDNCC=4");
                     }
                     return true;
                 }
@@ -1497,13 +1500,13 @@ namespace DocSo_PC.DAL.sDHN
                     foreach (var item in obj)
                     {
                         DataRow dr = dt.NewRow();
-                        dr["CBPinYeu"] = item["isLowBatt"] == null ? false : item["isLowBatt"];
-                        dr["CBRoRi"] = item["isLeakage"] == null ? false :item["isLeakage"];
-                        dr["CBQuaDong"] = item["isOverLoad"] == null ? false :item["isOverLoad"] ;
-                        dr["CBChayNguoc"] = item["isReverse"] == null ? false :item["isReverse"];
-                        dr["CBNamCham"] = item["isTampering"] == null ? false :item["isTampering"] ;
-                        dr["CBKhoOng"] = item["isDry"] == null ? false :item["isDry"];
-                        dr["CBMoHop"] = item["isOpenBox"] == null ? false : item["isOpenBox"];
+                        dr["CBPinYeu"] = item["isLowBatt"] ?? DBNull.Value;
+                        dr["CBRoRi"] = item["isLeakage"] ?? DBNull.Value;
+                        dr["CBQuaDong"] = item["isOverLoad"] ?? DBNull.Value;
+                        dr["CBChayNguoc"] = item["isReverse"] ?? DBNull.Value;
+                        dr["CBNamCham"] = item["isTampering"] ?? DBNull.Value;
+                        dr["CBKhoOng"] = item["isDry"] ?? DBNull.Value;
+                        dr["CBMoHop"] = item["isOpenBox"] ?? DBNull.Value;
                         dr["ThoiGianCapNhat"] = DateTime.Parse(item["timeUpdate"]);
                         dt.Rows.Add(dr);
                     }
@@ -1612,7 +1615,7 @@ namespace DocSo_PC.DAL.sDHN
                         dr["Latitude"] = item["latitude"] ?? DBNull.Value;
                         dr["Altitude"] = item["altitude"] ?? DBNull.Value;
                         dr["ChuKy"] = item["interval"] ?? DBNull.Value;
-                        dr["ThoiGianCapNhat"] = DateTime.Parse(item["Time"]);
+                        dr["ThoiGianCapNhat"] = DateTime.Parse(item["time"]);
                         dt.Rows.Add(dr);
                     }
                     return dt;
@@ -1661,26 +1664,26 @@ namespace DocSo_PC.DAL.sDHN
                     dt.Columns.Add("Altitude", typeof(System.Double));
                     dt.Columns.Add("ChuKy", typeof(System.Int32));
                     dt.Columns.Add("ThoiGianCapNhat", typeof(System.DateTime));
-                    foreach (var item in obj)
+                    //foreach (var item in obj)
                     {
                         DataRow dr = dt.NewRow();
-                        dr["ChiSo"] = item["flow"];
+                        dr["ChiSo"] = obj["flow"];
                         //dr["Pin"] = item["Battery"];
                         //dr["ThoiLuongPinConLai"] = item["RemainBatt"];
                         //dr["LuuLuong"] = item["Flow"] ?? DBNull.Value;
-                        dr["ChatLuongSong"] = item["rsrp"] ?? DBNull.Value;
-                        dr["CBPinYeu"] = item["isLowBatt"] ?? DBNull.Value;
-                        dr["CBRoRi"] = item["isLeakage"] ?? DBNull.Value;
-                        dr["CBQuaDong"] = item["isOverLoad"] ?? DBNull.Value;
-                        dr["CBChayNguoc"] = item["isReverse"] ?? DBNull.Value;
-                        dr["CBNamCham"] = item["isTampering"] ?? DBNull.Value;
-                        dr["CBKhoOng"] = item["isDry"] ?? DBNull.Value;
-                        dr["CBMoHop"] = item["isOpenBox"] ?? DBNull.Value;
-                        dr["Longitude"] = item["longitude"] ?? DBNull.Value;
-                        dr["Latitude"] = item["latitude"] ?? DBNull.Value;
-                        dr["Altitude"] = item["altitude"] ?? DBNull.Value;
-                        dr["ChuKy"] = item["interval"] ?? DBNull.Value;
-                        dr["ThoiGianCapNhat"] = DateTime.Parse(item["Time"]);
+                        dr["ChatLuongSong"] = obj["rsrp"] ?? DBNull.Value;
+                        dr["CBPinYeu"] = obj["isLowBatt"] ?? DBNull.Value;
+                        dr["CBRoRi"] = obj["isLeakage"] ?? DBNull.Value;
+                        dr["CBQuaDong"] = obj["isOverLoad"] ?? DBNull.Value;
+                        dr["CBChayNguoc"] = obj["isReverse"] ?? DBNull.Value;
+                        dr["CBNamCham"] = obj["isTampering"] ?? DBNull.Value;
+                        dr["CBKhoOng"] = obj["isDry"] ?? DBNull.Value;
+                        dr["CBMoHop"] = obj["isOpenBox"] ?? DBNull.Value;
+                        dr["Longitude"] = obj["longitude"] ?? DBNull.Value;
+                        dr["Latitude"] = obj["latitude"] ?? DBNull.Value;
+                        dr["Altitude"] = obj["altitude"] ?? DBNull.Value;
+                        dr["ChuKy"] = obj["interval"] ?? DBNull.Value;
+                        dr["ThoiGianCapNhat"] = DateTime.Parse(obj["time"]);
                         dt.Rows.Add(dr);
                     }
                     return dt;
@@ -1748,7 +1751,7 @@ namespace DocSo_PC.DAL.sDHN
                         dr["Latitude"] = item["latitude"] ?? DBNull.Value;
                         dr["Altitude"] = item["altitude"] ?? DBNull.Value;
                         dr["ChuKy"] = item["interval"] ?? DBNull.Value;
-                        dr["ThoiGianCapNhat"] = DateTime.Parse(item["Time"]);
+                        dr["ThoiGianCapNhat"] = DateTime.Parse(item["time"]);
                         dt.Rows.Add(dr);
                     }
                     return dt;
@@ -1797,26 +1800,26 @@ namespace DocSo_PC.DAL.sDHN
                     dt.Columns.Add("Altitude", typeof(System.Double));
                     dt.Columns.Add("ChuKy", typeof(System.Int32));
                     dt.Columns.Add("ThoiGianCapNhat", typeof(System.DateTime));
-                    foreach (var item in obj)
+                    //foreach (var item in obj)
                     {
                         DataRow dr = dt.NewRow();
-                        dr["ChiSo"] = item["flow"];
+                        dr["ChiSo"] = obj["flow"];
                         //dr["Pin"] = item["Battery"];
                         //dr["ThoiLuongPinConLai"] = item["RemainBatt"];
                         //dr["LuuLuong"] = item["Flow"] ?? DBNull.Value;
-                        dr["ChatLuongSong"] = item["rsrp"] ?? DBNull.Value;
-                        dr["CBPinYeu"] = item["isLowBatt"] ?? DBNull.Value;
-                        dr["CBRoRi"] = item["isLeakage"] ?? DBNull.Value;
-                        dr["CBQuaDong"] = item["isOverLoad"] ?? DBNull.Value;
-                        dr["CBChayNguoc"] = item["isReverse"] ?? DBNull.Value;
-                        dr["CBNamCham"] = item["isTampering"] ?? DBNull.Value;
-                        dr["CBKhoOng"] = item["isDry"] ?? DBNull.Value;
-                        dr["CBMoHop"] = item["isOpenBox"] ?? DBNull.Value;
-                        dr["Longitude"] = item["longitude"] ?? DBNull.Value;
-                        dr["Latitude"] = item["latitude"] ?? DBNull.Value;
-                        dr["Altitude"] = item["altitude"] ?? DBNull.Value;
-                        dr["ChuKy"] = item["interval"] ?? DBNull.Value;
-                        dr["ThoiGianCapNhat"] = DateTime.Parse(item["Time"]);
+                        dr["ChatLuongSong"] = obj["rsrp"] ?? DBNull.Value;
+                        dr["CBPinYeu"] = obj["isLowBatt"] ?? DBNull.Value;
+                        dr["CBRoRi"] = obj["isLeakage"] ?? DBNull.Value;
+                        dr["CBQuaDong"] = obj["isOverLoad"] ?? DBNull.Value;
+                        dr["CBChayNguoc"] = obj["isReverse"] ?? DBNull.Value;
+                        dr["CBNamCham"] = obj["isTampering"] ?? DBNull.Value;
+                        dr["CBKhoOng"] = obj["isDry"] ?? DBNull.Value;
+                        dr["CBMoHop"] = obj["isOpenBox"] ?? DBNull.Value;
+                        dr["Longitude"] = obj["longitude"] ?? DBNull.Value;
+                        dr["Latitude"] = obj["latitude"] ?? DBNull.Value;
+                        dr["Altitude"] = obj["altitude"] ?? DBNull.Value;
+                        dr["ChuKy"] = obj["interval"] ?? DBNull.Value;
+                        dr["ThoiGianCapNhat"] = DateTime.Parse(obj["time"]);
                         dt.Rows.Add(dr);
                     }
                     return dt;

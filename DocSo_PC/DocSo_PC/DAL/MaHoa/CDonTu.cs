@@ -103,12 +103,12 @@ namespace DocSo_PC.DAL.MaHoa
             return _cDAL.LINQToDataTable(_db.MaHoa_DonTus.Where(item => item.DanhBo == DanhBo));
         }
 
-        public DataTable getDS_Ton(string MaTo)
+        public DataTable getDS_Ton(string MaTo, string NoiDung)
         {
             if (MaTo == "0")
-                return _cDAL.LINQToDataTable(_db.MaHoa_DonTus.Where(item => item.TinhTrang.Contains("Tồn")));
+                return _cDAL.LINQToDataTable(_db.MaHoa_DonTus.Where(item => item.TinhTrang.Contains("Tồn") && NoiDung.IndexOf(item.NoiDung) >= 0));
             else
-                return _cDAL.LINQToDataTable(_db.MaHoa_DonTus.Where(item => item.TinhTrang.Contains("Tồn") && Convert.ToInt32(item.MLT.Substring(2, 2)) >= _db.Tos.SingleOrDefault(t => t.MaTo == Convert.ToInt32(MaTo)).TuMay && Convert.ToInt32(item.MLT.Substring(2, 2)) <= _db.Tos.SingleOrDefault(t => t.MaTo == Convert.ToInt32(MaTo)).DenMay));
+                return _cDAL.LINQToDataTable(_db.MaHoa_DonTus.Where(item => item.TinhTrang.Contains("Tồn") && NoiDung.IndexOf(item.NoiDung) >= 0 && Convert.ToInt32(item.MLT.Substring(2, 2)) >= _db.Tos.SingleOrDefault(t => t.MaTo == Convert.ToInt32(MaTo)).TuMay && Convert.ToInt32(item.MLT.Substring(2, 2)) <= _db.Tos.SingleOrDefault(t => t.MaTo == Convert.ToInt32(MaTo)).DenMay));
         }
 
         public DataTable getDS_ChuyenDCBD(DateTime FromCreateDate, DateTime ToCreateDate)
@@ -124,7 +124,7 @@ namespace DocSo_PC.DAL.MaHoa
                             item.NoiDung,
                             item.GhiChu,
                             item.Dot,
-                            GiaBieuCu = _db.MaHoa_PhieuChuyens.Any(itemC => itemC.Name == item.NoiDung) ? _db.MaHoa_PhieuChuyens.SingleOrDefault(itemC => itemC.Name == item.NoiDung).FromValue : "",
+                            //GiaBieuCu = _db.MaHoa_PhieuChuyens.Any(itemC => itemC.Name == item.NoiDung) ? _db.MaHoa_PhieuChuyens.SingleOrDefault(itemC => itemC.Name == item.NoiDung).FromValue : "",
                             GiaBieuMoi = _db.MaHoa_PhieuChuyens.Any(itemC => itemC.Name == item.NoiDung) ? _db.MaHoa_PhieuChuyens.SingleOrDefault(itemC => itemC.Name == item.NoiDung).ToValue : "",
                         };
             return _cDAL.LINQToDataTable(query);
