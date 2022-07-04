@@ -210,21 +210,21 @@ namespace KTKS_DonKH.GUI.PhongKhachHang
                     {
                         File.Delete(fileName);
                     }
-                    CTTKH _cTTKH = new CTTKH();
-                    string sql = "select Nam,Ky,Dot=RIGHT('0' + CAST(d.ID AS VARCHAR(2)), 2),s8.May,NgayDoc=CONVERT(varchar(10),NgayDoc,103),s8.NhanVienID,DienThoai=REPLACE(s8.DienThoai,'.','')"
-                                    + " from Lich_DocSo ds,Lich_DocSo_ChiTiet ctds,Lich_Dot d,server8.docsoth.dbo.MayDS s8"
-                                    + " where ds.ID=ctds.IDDocSo and d.ID=ctds.IDDot and Nam=" + txtNam.Text.Trim() + " and Ky=" + txtKy.Text.Trim() + " and s8.NhanVienID!=''"
-                                    + " and ((s8.May>=SUBSTRING(d.TB1_From,3,2) and s8.May<=SUBSTRING(d.TB1_To,3,2)) "
-                                    + " or (s8.May>=SUBSTRING(d.TB2_From,3,2) and s8.May<=SUBSTRING(d.TB2_To,3,2)) "
-                                    + " or (s8.May>=SUBSTRING(d.TP1_From,3,2) and s8.May<=SUBSTRING(d.TP1_To,3,2)) "
-                                    + " or (s8.May>=SUBSTRING(d.TP2_From,3,2) and s8.May<=SUBSTRING(d.TP2_To,3,2)))";
-                    DataTable dt = _cTTKH.ExecuteQuery_DataTable(sql);
+                    CDocSo _cDocSo = new CDocSo();
+                    string sql = "select Nam,Ky,Dot=RIGHT('0' + CAST(d.ID AS VARCHAR(2)), 2),nd.May,NgayDoc=CONVERT(varchar(10),NgayDoc,103),nd.HoTen,DienThoai=REPLACE(nd.DienThoai,'.','')"
+                                    + " from Lich_DocSo ds,Lich_DocSo_ChiTiet ctds,Lich_Dot d,NguoiDung nd"
+                                    + " where ds.ID=ctds.IDDocSo and d.ID=ctds.IDDot and Nam=" + txtNam.Text.Trim() + " and Ky=" + txtKy.Text.Trim() + " and nd.May!=''"
+                                    + " and ((nd.May>=SUBSTRING(d.TB1_From,3,2) and nd.May<=SUBSTRING(d.TB1_To,3,2)) "
+                                    + " or (nd.May>=SUBSTRING(d.TB2_From,3,2) and nd.May<=SUBSTRING(d.TB2_To,3,2)) "
+                                    + " or (nd.May>=SUBSTRING(d.TP1_From,3,2) and nd.May<=SUBSTRING(d.TP1_To,3,2)) "
+                                    + " or (nd.May>=SUBSTRING(d.TP2_From,3,2) and nd.May<=SUBSTRING(d.TP2_To,3,2)))";
+                    DataTable dt = _cDocSo.ExecuteQuery_DataTable(sql);
                     // Create a new file     
                     using (StreamWriter sw = File.CreateText(fileName))
                     {
                         foreach (DataRow item in dt.Rows)
                         {
-                            sw.WriteLine(item["Nam"] + "," + item["Ky"] + "," + item["Dot"] + "," + item["May"] + "," + item["NgayDoc"] + "," + item["NhanVienID"] + "," + item["DienThoai"].ToString().Split('-')[0]);
+                            sw.WriteLine(item["Nam"] + "," + item["Ky"] + "," + item["Dot"] + "," + item["May"] + "," + item["NgayDoc"] + "," + item["HoTen"] + "," + item["DienThoai"].ToString().Split('-')[0]);
                         }
                     }
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
