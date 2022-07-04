@@ -1504,7 +1504,7 @@ namespace KTKS_ChungCu.DAL
 
                 DanhSachChungTu dsctCN = db.DanhSachChungTus.SingleOrDefault(item => item.ID == dsct.ID);
 
-                if (dsctCN.YeuCauCat)
+                if (dsct.YeuCauCat)
                 {
                     //chungtuCN.YeuCauCat = true;
                     //chungtuCN.CatNK_MaCN = chungtu.CatNK_MaCN;
@@ -1597,7 +1597,7 @@ namespace KTKS_ChungCu.DAL
                 #region Yêu Cầu Cắt 2,3,4,5
 
                 //if (ctchungtu.YeuCauCat2 != ctchungtuCN.YeuCauCat2)
-                if (dsctCN.YeuCauCat2)
+                if (dsct.YeuCauCat2)
                 {
                     dsctCN.YeuCauCat2 = true; 
                     dsctCN.CatNK_MaCN2 = dsct.CatNK_MaCN2;
@@ -1786,7 +1786,7 @@ namespace KTKS_ChungCu.DAL
                 }
 
                 //if (ctchungtu.YeuCauCat4 != ctchungtuCN.YeuCauCat4)
-                if (dsctCN.YeuCauCat4)
+                if (dsct.YeuCauCat4)
                 {
                     dsctCN.YeuCauCat4 = true;
                     dsctCN.CatNK_MaCN4 = dsct.CatNK_MaCN4;
@@ -1880,7 +1880,7 @@ namespace KTKS_ChungCu.DAL
                 }
 
                 //if (ctchungtu.YeuCauCat5 != ctchungtuCN.YeuCauCat5)
-                if (dsctCN.YeuCauCat5)
+                if (dsct.YeuCauCat5)
                 {
                     dsctCN.YeuCauCat5 = true;
                     dsctCN.CatNK_MaCN5 = dsct.CatNK_MaCN5;
