@@ -26,7 +26,7 @@ namespace ThuTien.DAL.TongHop
             }
             catch (Exception ex)
             {
-                _db = new dbThuTienDataContext();
+                Refresh();
                 System.Windows.Forms.MessageBox.Show(ex.Message, "Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 return false;
             }
@@ -53,7 +53,7 @@ namespace ThuTien.DAL.TongHop
             }
             catch (Exception ex)
             {
-                _db = new dbThuTienDataContext();
+                Refresh();
                 throw ex;
             }
         }
@@ -69,7 +69,7 @@ namespace ThuTien.DAL.TongHop
             }
             catch (Exception ex)
             {
-                _db = new dbThuTienDataContext();
+                Refresh();
                 throw ex;
             }
         }
@@ -84,7 +84,7 @@ namespace ThuTien.DAL.TongHop
             }
             catch (Exception ex)
             {
-                _db = new dbThuTienDataContext();
+                Refresh();
                 throw ex;
             }
         }
@@ -1563,7 +1563,8 @@ namespace ThuTien.DAL.TongHop
                         where itemDC.TONGCONG_END == null && (itemHD.NAM < 2020 || (itemHD.NAM == 2020 && itemHD.KY < 7))
                         select new
                         {
-                            NgayDC = itemDC.NGAY_DC,itemDC.NgayChan,
+                            NgayDC = itemDC.NGAY_DC,
+                            itemDC.NgayChan,
                             MaDCHD = itemDC.ID_DIEUCHINH_HD,
                             MaHD = itemDC.FK_HOADON,
                             itemHD.SOHOADON,
@@ -1609,7 +1610,8 @@ namespace ThuTien.DAL.TongHop
                         where itemDC.TONGCONG_END != null && itemDC.UpdatedHDDT == false && (itemHD.NAM < 2020 || (itemHD.NAM == 2020 && itemHD.KY < 7))
                         select new
                         {
-                            NgayDC = itemDC.NGAY_DC,itemDC.NgayChan,
+                            NgayDC = itemDC.NGAY_DC,
+                            itemDC.NgayChan,
                             MaDCHD = itemDC.ID_DIEUCHINH_HD,
                             MaHD = itemDC.FK_HOADON,
                             itemHD.SOHOADON,
@@ -1655,7 +1657,8 @@ namespace ThuTien.DAL.TongHop
                         where itemDC.TONGCONG_END == null && itemDC.UpdatedHDDT == false && (itemHD.NAM < 2020 || (itemHD.NAM == 2020 && itemHD.KY < 7))
                         select new
                         {
-                            NgayDC = itemDC.NGAY_DC,itemDC.NgayChan,
+                            NgayDC = itemDC.NGAY_DC,
+                            itemDC.NgayChan,
                             MaDCHD = itemDC.ID_DIEUCHINH_HD,
                             MaHD = itemDC.FK_HOADON,
                             itemHD.SOHOADON,
@@ -1701,7 +1704,8 @@ namespace ThuTien.DAL.TongHop
                         where itemDC.TONGCONG_END == null && (itemHD.NAM > 2020 || (itemHD.NAM == 2020 && itemHD.KY >= 7))
                         select new
                         {
-                            NgayDC = itemDC.NGAY_DC,itemDC.NgayChan,
+                            NgayDC = itemDC.NGAY_DC,
+                            itemDC.NgayChan,
                             MaDCHD = itemDC.ID_DIEUCHINH_HD,
                             MaHD = itemDC.FK_HOADON,
                             itemHD.SOHOADON,
@@ -1747,7 +1751,8 @@ namespace ThuTien.DAL.TongHop
                         where itemDC.TONGCONG_END != null && itemDC.UpdatedHDDT == false && (itemHD.NAM > 2020 || (itemHD.NAM == 2020 && itemHD.KY >= 7))
                         select new
                         {
-                            NgayDC = itemDC.NGAY_DC,itemDC.NgayChan,
+                            NgayDC = itemDC.NGAY_DC,
+                            itemDC.NgayChan,
                             MaDCHD = itemDC.ID_DIEUCHINH_HD,
                             MaHD = itemDC.FK_HOADON,
                             itemHD.SOHOADON,
@@ -1793,7 +1798,8 @@ namespace ThuTien.DAL.TongHop
                         where itemDC.TONGCONG_END == null && itemDC.UpdatedHDDT == false && (itemHD.NAM > 2020 || (itemHD.NAM == 2020 && itemHD.KY >= 7))
                         select new
                         {
-                            NgayDC = itemDC.NGAY_DC,itemDC.NgayChan,
+                            NgayDC = itemDC.NGAY_DC,
+                            itemDC.NgayChan,
                             MaDCHD = itemDC.ID_DIEUCHINH_HD,
                             MaHD = itemDC.FK_HOADON,
                             itemHD.SOHOADON,
@@ -1839,7 +1845,8 @@ namespace ThuTien.DAL.TongHop
                         where itemDC.TONGCONG_END == 0 && itemHD.NGAYGIAITRACH == null && itemDC.UpdatedHDDT == true
                         select new
                         {
-                            NgayDC = itemDC.NGAY_DC,itemDC.NgayChan,
+                            NgayDC = itemDC.NGAY_DC,
+                            itemDC.NgayChan,
                             MaDCHD = itemDC.ID_DIEUCHINH_HD,
                             MaHD = itemDC.FK_HOADON,
                             itemHD.SOHOADON,
@@ -1885,7 +1892,8 @@ namespace ThuTien.DAL.TongHop
                         where itemHD.DANHBA == DanhBo
                         select new
                         {
-                            NgayDC = itemDC.NGAY_DC,itemDC.NgayChan,
+                            NgayDC = itemDC.NGAY_DC,
+                            itemDC.NgayChan,
                             MaDCHD = itemDC.ID_DIEUCHINH_HD,
                             MaHD = itemDC.FK_HOADON,
                             itemDC.SoHoaDon,
@@ -1919,7 +1927,8 @@ namespace ThuTien.DAL.TongHop
                         where itemDC.NGAY_DC.Value.Date >= TuNgay.Date && itemDC.NGAY_DC.Value.Date <= DenNgay.Date
                         select new
                         {
-                            NgayDC = itemDC.NGAY_DC,itemDC.NgayChan,
+                            NgayDC = itemDC.NGAY_DC,
+                            itemDC.NgayChan,
                             MaDCHD = itemDC.ID_DIEUCHINH_HD,
                             MaHD = itemDC.FK_HOADON,
                             itemHD.SOHOADON,
@@ -1965,7 +1974,8 @@ namespace ThuTien.DAL.TongHop
                         where itemDC.NGAY_DC.Value.Date >= TuNgay.Date && itemDC.NGAY_DC.Value.Date <= DenNgay.Date && itemHD.NAM == Nam && itemHD.KY == Ky
                         select new
                         {
-                            NgayDC = itemDC.NGAY_DC,itemDC.NgayChan,
+                            NgayDC = itemDC.NGAY_DC,
+                            itemDC.NgayChan,
                             MaDCHD = itemDC.ID_DIEUCHINH_HD,
                             MaHD = itemDC.FK_HOADON,
                             itemHD.SOHOADON,
@@ -1998,7 +2008,8 @@ namespace ThuTien.DAL.TongHop
                         where itemDC.NgayChan.Value.Date >= TuNgay.Date && itemDC.NgayChan.Value.Date <= DenNgay.Date
                         select new
                         {
-                            NgayDC = itemDC.NGAY_DC,itemDC.NgayChan,
+                            NgayDC = itemDC.NGAY_DC,
+                            itemDC.NgayChan,
                             MaDCHD = itemDC.ID_DIEUCHINH_HD,
                             MaHD = itemDC.FK_HOADON,
                             itemHD.SOHOADON,
@@ -2044,7 +2055,8 @@ namespace ThuTien.DAL.TongHop
                         where itemDC.NgayChan.Value.Date >= TuNgay.Date && itemDC.NgayChan.Value.Date <= DenNgay.Date && itemHD.NAM == Nam && itemHD.KY == Ky
                         select new
                         {
-                            NgayDC = itemDC.NGAY_DC,itemDC.NgayChan,
+                            NgayDC = itemDC.NGAY_DC,
+                            itemDC.NgayChan,
                             MaDCHD = itemDC.ID_DIEUCHINH_HD,
                             MaHD = itemDC.FK_HOADON,
                             itemHD.SOHOADON,
@@ -2077,7 +2089,8 @@ namespace ThuTien.DAL.TongHop
                         where itemHD.ChuyenNoKhoDoi == false && itemHD.NGAYGIAITRACH.Value.Date >= TuNgay.Date && itemHD.NGAYGIAITRACH.Value.Date <= DenNgay.Date
                         select new
                         {
-                            NgayDC = itemDC.NGAY_DC,itemDC.NgayChan,
+                            NgayDC = itemDC.NGAY_DC,
+                            itemDC.NgayChan,
                             MaDCHD = itemDC.ID_DIEUCHINH_HD,
                             itemHD.SOHOADON,
                             Ky = itemHD.KY + "/" + itemHD.NAM,
@@ -2106,7 +2119,8 @@ namespace ThuTien.DAL.TongHop
                         where itemHD.ChuyenNoKhoDoi == false && itemHD.NGAYGIAITRACH.Value.Date >= TuNgay.Date && itemHD.NGAYGIAITRACH.Value.Date <= DenNgay.Date && itemHD.NAM == Nam && itemHD.KY == Ky
                         select new
                         {
-                            NgayDC = itemDC.NGAY_DC,itemDC.NgayChan,
+                            NgayDC = itemDC.NGAY_DC,
+                            itemDC.NgayChan,
                             MaDCHD = itemDC.ID_DIEUCHINH_HD,
                             itemHD.SOHOADON,
                             Ky = itemHD.KY + "/" + itemHD.NAM,
@@ -2135,7 +2149,8 @@ namespace ThuTien.DAL.TongHop
                         where itemHD.NGAYGIAITRACH == null
                         select new
                         {
-                            NgayDC = itemDC.NGAY_DC,itemDC.NgayChan,
+                            NgayDC = itemDC.NGAY_DC,
+                            itemDC.NgayChan,
                             MaDCHD = itemDC.ID_DIEUCHINH_HD,
                             itemHD.SOHOADON,
                             Ky = itemHD.KY + "/" + itemHD.NAM,
@@ -2164,7 +2179,8 @@ namespace ThuTien.DAL.TongHop
                         where itemHD.NGAYGIAITRACH == null && itemHD.NAM == Nam && itemHD.KY == Ky
                         select new
                         {
-                            NgayDC = itemDC.NGAY_DC,itemDC.NgayChan,
+                            NgayDC = itemDC.NGAY_DC,
+                            itemDC.NgayChan,
                             MaDCHD = itemDC.ID_DIEUCHINH_HD,
                             itemHD.SOHOADON,
                             Ky = itemHD.KY + "/" + itemHD.NAM,
@@ -2185,7 +2201,6 @@ namespace ThuTien.DAL.TongHop
         }
 
         //get lịch sử
-
         public DataTable getLichSu(int MaHD)
         {
             string sql = "WITH temp AS ("
@@ -2257,7 +2272,6 @@ namespace ThuTien.DAL.TongHop
         }
 
         //hóa đơn chờ điều chỉnh
-
         public bool Them_HDChoDC(TT_HoaDonChoDieuChinh en)
         {
             try
@@ -2270,7 +2284,7 @@ namespace ThuTien.DAL.TongHop
             }
             catch (Exception ex)
             {
-                _db = new dbThuTienDataContext();
+                Refresh();
                 throw ex;
             }
         }
@@ -2285,7 +2299,7 @@ namespace ThuTien.DAL.TongHop
             }
             catch (Exception ex)
             {
-                _db = new dbThuTienDataContext();
+                Refresh();
                 throw ex;
             }
         }
@@ -2305,5 +2319,49 @@ namespace ThuTien.DAL.TongHop
             return LINQToDataTable(_db.TT_HoaDonChoDieuChinhs.ToList());
         }
 
+        //hóa đơn thu tiền trước, điều chỉnh đăng ngân sau
+        public bool Them_HDDC_DangNgan(TT_HDDC_DangNgan en)
+        {
+            try
+            {
+                en.CreateDate = DateTime.Now;
+                en.CreateBy = CNguoiDung.MaND;
+                _db.TT_HDDC_DangNgans.InsertOnSubmit(en);
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public bool Xoa_HDDC_DangNgan(TT_HDDC_DangNgan en)
+        {
+            try
+            {
+                _db.TT_HDDC_DangNgans.DeleteOnSubmit(en);
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public bool checkExist_HDDC_DangNgan(int MaHD)
+        {
+            return _db.TT_HDDC_DangNgans.Any(item => item.MaHD == MaHD);
+        }
+
+        public DataTable getDS_HDDC_DangNgan()
+        {
+            return LINQToDataTable(_db.TT_HDDC_DangNgans.ToList());
+        }
+
     }
+
 }

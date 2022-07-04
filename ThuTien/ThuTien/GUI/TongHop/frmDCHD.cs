@@ -776,6 +776,11 @@ namespace ThuTien.GUI.TongHop
             }
         }
 
+        private void btnXem_HDDC_DangNgan_Click(object sender, EventArgs e)
+        {
+            dgvDCHD.DataSource = _cDCHD.getDS_HDDC_DangNgan();
+        }
+
 
 
 
