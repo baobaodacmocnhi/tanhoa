@@ -40,15 +40,16 @@
             this.cmbNCC = new System.Windows.Forms.ComboBox();
             this.btnXem = new System.Windows.Forms.Button();
             this.dgvDanhSach = new System.Windows.Forms.DataGridView();
-            this.btnCapNhatDS = new System.Windows.Forms.Button();
-            this.dgvLichSu = new System.Windows.Forms.DataGridView();
-            this.cmbLoaiXem = new System.Windows.Forms.ComboBox();
-            this.dateTu = new System.Windows.Forms.DateTimePicker();
             this.IDLogger = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MLT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnCapNhatDS = new System.Windows.Forms.Button();
+            this.dgvLichSu = new System.Windows.Forms.DataGridView();
+            this.cmbLoaiXem = new System.Windows.Forms.ComboBox();
+            this.dateTu = new System.Windows.Forms.DateTimePicker();
+            this.btnExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLichSu)).BeginInit();
             this.SuspendLayout();
@@ -125,6 +126,39 @@
             this.dgvDanhSach.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDanhSach_CellFormatting);
             this.dgvDanhSach.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhSach_RowPostPaint);
             // 
+            // IDLogger
+            // 
+            this.IDLogger.DataPropertyName = "IDLogger";
+            this.IDLogger.HeaderText = "IDLogger";
+            this.IDLogger.Name = "IDLogger";
+            // 
+            // MLT
+            // 
+            this.MLT.DataPropertyName = "MLT";
+            this.MLT.HeaderText = "MLT";
+            this.MLT.Name = "MLT";
+            this.MLT.Width = 80;
+            // 
+            // DanhBo
+            // 
+            this.DanhBo.DataPropertyName = "DanhBo";
+            this.DanhBo.HeaderText = "Danh Bộ";
+            this.DanhBo.Name = "DanhBo";
+            // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Khách Hàng";
+            this.HoTen.Name = "HoTen";
+            this.HoTen.Width = 120;
+            // 
+            // DiaChi
+            // 
+            this.DiaChi.DataPropertyName = "DiaChi";
+            this.DiaChi.HeaderText = "Địa Chỉ";
+            this.DiaChi.Name = "DiaChi";
+            this.DiaChi.Width = 150;
+            // 
             // btnCapNhatDS
             // 
             this.btnCapNhatDS.Location = new System.Drawing.Point(316, 12);
@@ -199,44 +233,21 @@
             this.dateTu.Size = new System.Drawing.Size(128, 20);
             this.dateTu.TabIndex = 60;
             // 
-            // IDLogger
+            // btnExcel
             // 
-            this.IDLogger.DataPropertyName = "IDLogger";
-            this.IDLogger.HeaderText = "IDLogger";
-            this.IDLogger.Name = "IDLogger";
-            // 
-            // MLT
-            // 
-            this.MLT.DataPropertyName = "MLT";
-            this.MLT.HeaderText = "MLT";
-            this.MLT.Name = "MLT";
-            this.MLT.Width = 80;
-            // 
-            // DanhBo
-            // 
-            this.DanhBo.DataPropertyName = "DanhBo";
-            this.DanhBo.HeaderText = "Danh Bộ";
-            this.DanhBo.Name = "DanhBo";
-            // 
-            // HoTen
-            // 
-            this.HoTen.DataPropertyName = "HoTen";
-            this.HoTen.HeaderText = "Khách Hàng";
-            this.HoTen.Name = "HoTen";
-            this.HoTen.Width = 120;
-            // 
-            // DiaChi
-            // 
-            this.DiaChi.DataPropertyName = "DiaChi";
-            this.DiaChi.HeaderText = "Địa Chỉ";
-            this.DiaChi.Name = "DiaChi";
-            this.DiaChi.Width = 150;
+            this.btnExcel.Location = new System.Drawing.Point(663, 12);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(75, 23);
+            this.btnExcel.TabIndex = 61;
+            this.btnExcel.Text = "Excel";
+            this.btnExcel.UseVisualStyleBackColor = true;
             // 
             // frmDSsDHN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1437, 634);
+            this.Controls.Add(this.btnExcel);
             this.Controls.Add(this.dateTu);
             this.Controls.Add(this.cmbLoaiXem);
             this.Controls.Add(this.dgvLichSu);
@@ -270,5 +281,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
+        private System.Windows.Forms.Button btnExcel;
     }
 }

@@ -393,64 +393,67 @@ namespace DocSo_PC.GUI.ToTruong
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Them"))
                 {
-                    //OpenFileDialog dialog = new OpenFileDialog();
-                    //dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
-                    //dialog.Multiselect = false;
+                    OpenFileDialog dialog = new OpenFileDialog();
+                    dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
+                    dialog.Multiselect = false;
 
-                    //if (dialog.ShowDialog() == DialogResult.OK)
-                    //    if (MessageBox.Show("Bạn có chắc chắn Thêm?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                    //    {
-                    //        DataTable dtExcel = _cDocSo.ExcelToDataTable(dialog.FileName);
-
-                    //        foreach (DataRow item in dtExcel.Rows)
-                    //            if (!string.IsNullOrEmpty(item[2].ToString()))
-                    //            {
-                    //                string[] DanhBos = item[2].ToString().Split(',');
-                    //                foreach (string itemS in DanhBos)
-                    //                {
-                    //                    SDT_DHN en = new SDT_DHN();
-                    //                    en.DanhBo = itemS;
-                    //                    en.HoTen = item[0].ToString();
-                    //                    en.DienThoai = item[3].ToString();
-
-                    //                    if (_cDHN.checkExists_DienThoai(en.DanhBo, en.DienThoai) == false)
-                    //                        _cDHN.them_DienThoai(en);
-                    //                }
-                    //            }
-                    //        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //        btnXem.PerformClick();
-                    //    }
-                    DataTable dt = CDocSo._cDAL.ExecuteQuery_DataTable("select DanhBo=DanhBa,DienThoai=SDT from KhachHang");
-                    foreach (DataRow item in dt.Rows)
-                        if (item["DienThoai"].ToString().Trim() != "")// && _cDHN.checkExists_DienThoai(item["DanhBo"].ToString(), item["DienThoai"].ToString().Trim()) == false)
+                    if (dialog.ShowDialog() == DialogResult.OK)
+                        if (MessageBox.Show("Bạn có chắc chắn Thêm?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
-                            //SDT_DHN en = new SDT_DHN();
-                            //en.DanhBo = item["DanhBo"].ToString();
-                            //en.DienThoai = item["DienThoai"].ToString().Trim();
-                            //en.HoTen = "";
-                            ////en.SoChinh = true;
-                            //en.GhiChu = "P. TV";
-                            //if (_cDHN.them_DienThoai(en) == true)
-                            //{
-                            //}
-                            error = item["DanhBo"].ToString();
-                            string[] DienThoais = item["DienThoai"].ToString().Split('-');
-                            foreach (string itemDT in DienThoais)
-                            {
-                                if (itemDT.Trim() != "" && itemDT.Trim().Replace(".", "").Length == 10 && _cDHN.checkExists_DienThoai(item["DanhBo"].ToString(), itemDT.Trim()) == false)
+                            DataTable dtExcel = _cDocSo.ExcelToDataTable(dialog.FileName);
+
+                            foreach (DataRow item in dtExcel.Rows)
+                                if (!string.IsNullOrEmpty(item[2].ToString().Trim()) && item[3].ToString().Trim().Length == 10)
                                 {
-                                    SDT_DHN en = new SDT_DHN();
-                                    en.DanhBo = item["DanhBo"].ToString();
-                                    en.DienThoai = itemDT.Trim();
-                                    en.HoTen = "";
-                                    en.SoChinh = true;
-                                    en.GhiChu = "Đ. QLĐHN";
-                                    if (_cDHN.them_DienThoai(en) == true)
-                                    {
-                                    }
+                                    string[] DanhBos = item[2].ToString().Trim().Split(',');
+                                    foreach (string itemS in DanhBos)
+                                        if (itemS.Length == 11)
+                                        {
+                                            SDT_DHN en = new SDT_DHN();
+                                            en.DanhBo = itemS;
+                                            en.HoTen = item[0].ToString().Trim();
+                                            en.DienThoai = item[3].ToString().Trim();
+                                            en.GhiChu = "P. KH";
+                                            if (_cDHN.checkExists_DienThoai(en.DanhBo, en.DienThoai) == false)
+                                                _cDHN.them_DienThoai(en);
+                                        }
                                 }
-                            }
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            btnXem.PerformClick();
                         }
+                    //chạy ngày 5/7/2022
+                    //DataTable dt = CThuongVu._cDAL.ExecuteQuery_DataTable("select DanhBo,DienThoai from DonTu_ChiTiet where LEN(DienThoai)=10 and cast(createdate as date)>='20220311'"
+                    //+ "union all select DanhBo,DienThoai from KTXM_ChiTiet where LEN(DienThoai)=10 and cast(createdate as date)>='20220311'");
+                    //foreach (DataRow item in dt.Rows)
+                    //    if (item["DanhBo"].ToString().Trim() != "" && _cDHN.checkExists_DienThoai(item["DanhBo"].ToString().Trim(), item["DienThoai"].ToString().Trim()) == false)
+                    //    {
+                    //        SDT_DHN en = new SDT_DHN();
+                    //        en.DanhBo = item["DanhBo"].ToString().Trim();
+                    //        en.DienThoai = item["DienThoai"].ToString().Trim();
+                    //        en.HoTen = "";
+                    //        //en.SoChinh = true;
+                    //        en.GhiChu = "P. TV";
+                    //        if (_cDHN.them_DienThoai(en) == true)
+                    //        {
+                    //        }
+                    //        //error = item["DanhBo"].ToString();
+                    //        //string[] DienThoais = item["DienThoai"].ToString().Split('-');
+                    //        //foreach (string itemDT in DienThoais)
+                    //        //{
+                    //        //    if (itemDT.Trim() != "" && itemDT.Trim().Replace(".", "").Length == 10 && _cDHN.checkExists_DienThoai(item["DanhBo"].ToString(), itemDT.Trim()) == false)
+                    //        //    {
+                    //        //        SDT_DHN en = new SDT_DHN();
+                    //        //        en.DanhBo = item["DanhBo"].ToString();
+                    //        //        en.DienThoai = itemDT.Trim();
+                    //        //        en.HoTen = "";
+                    //        //        en.SoChinh = true;
+                    //        //        en.GhiChu = "Đ. QLĐHN";
+                    //        //        if (_cDHN.them_DienThoai(en) == true)
+                    //        //        {
+                    //        //        }
+                    //        //    }
+                    //        //}
+                    //    }
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
@@ -542,6 +545,6 @@ namespace DocSo_PC.GUI.ToTruong
                 _cDocSo.LoadImageView(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("DutChi", "", _enDLKH.DANHBO))));
         }
 
-        
+
     }
 }
