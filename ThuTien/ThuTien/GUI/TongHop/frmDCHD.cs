@@ -46,16 +46,26 @@ namespace ThuTien.GUI.TongHop
             cmbNam.DisplayMember = "ID";
             cmbNam.ValueMember = "Nam";
 
-            loadHD0Ton();
+            loadHoaDon();
         }
 
-        public void loadHD0Ton()
+        public void loadHoaDon()
         {
             DataTable dt = _cDCHD.getDS_HD0_Ton();
             if (dt != null && dt.Rows.Count > 0)
-                lbHD0.Text = dt.Rows.Count + " Hóa Đơn = 0 chưa Đăng Ngân";
+                lbHD0.Text = dt.Rows.Count + " HĐ = 0 chưa Đăng Ngân";
             else
                 lbHD0.Text = "";
+            dt = _cDCHD.getDS_HDDC_Cho_DangNgan();
+            if (dt != null && dt.Rows.Count > 0)
+                lbHDDCCho.Text = dt.Rows.Count + " HĐ chờ HĐĐC";
+            else
+                lbHDDCCho.Text = "";
+            dt = _cDCHD.getDS_HDDC_DangNgan();
+            if (dt != null && dt.Rows.Count > 0)
+                lbHDDC.Text = dt.Rows.Count + " HĐĐC chưa Đăng Ngân";
+            else
+                lbHDDC.Text = "";
         }
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
@@ -178,15 +188,15 @@ namespace ThuTien.GUI.TongHop
             {
                 if (MessageBox.Show("Bạn có chắc chắn?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    if(CNguoiDung.Admin==false)
-                    foreach (DataGridViewRow item in dgvDCHD.SelectedRows)
-                        if (_cHoaDon.CheckDangNganBySoHoaDon(item.Cells["SoHoaDon_DC"].Value.ToString()))
-                        {
-                            dgvDCHD.ClearSelection();
-                            dgvDCHD.Rows[item.Index].Selected = true;
-                            MessageBox.Show("Hóa đơn đã Đăng Ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
+                    if (CNguoiDung.Admin == false)
+                        foreach (DataGridViewRow item in dgvDCHD.SelectedRows)
+                            if (_cHoaDon.CheckDangNganBySoHoaDon(item.Cells["SoHoaDon_DC"].Value.ToString()))
+                            {
+                                dgvDCHD.ClearSelection();
+                                dgvDCHD.Rows[item.Index].Selected = true;
+                                MessageBox.Show("Hóa đơn đã Đăng Ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                     try
                     {
                         _cDCHD.BeginTransaction();
@@ -401,7 +411,7 @@ namespace ThuTien.GUI.TongHop
         {
             try
             {
-                DataTable dt = _cDCHD.GetDSByNgayDC(dateTu.Value, dateDen.Value);
+                DataTable dt = _cDCHD.getDS_HDDC_Cho_DangNgan();
 
                 //Tạo các đối tượng Excel
                 Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
@@ -409,7 +419,6 @@ namespace ThuTien.GUI.TongHop
                 Microsoft.Office.Interop.Excel.Sheets oSheets;
                 Microsoft.Office.Interop.Excel.Workbook oBook;
                 Microsoft.Office.Interop.Excel.Worksheet oSheet;
-                //Microsoft.Office.Interop.Excel.Worksheet oSheetCQ;
 
                 //Tạo mới một Excel WorkBook 
                 oExcel.Visible = true;
@@ -422,7 +431,7 @@ namespace ThuTien.GUI.TongHop
                 oSheets = oBook.Worksheets;
                 oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
 
-                oSheet.Name = "Sheet1";
+                oSheet.Name = "TH_BinhThuong(" + dt.Rows.Count + ")";
                 // Tạo tiêu đề cột 
                 Microsoft.Office.Interop.Excel.Range cl1 = oSheet.get_Range("A1", "A1");
                 cl1.Value2 = "Đợt";
@@ -445,137 +454,144 @@ namespace ThuTien.GUI.TongHop
                 cl5.ColumnWidth = 10;
 
                 Microsoft.Office.Interop.Excel.Range cl6 = oSheet.get_Range("F1", "F1");
-                cl6.Value2 = "Số Hóa Đơn Cũ";
-                cl6.ColumnWidth = 15;
+                cl6.Value2 = "Chỉ Số Mới";
+                cl6.ColumnWidth = 10;
 
                 Microsoft.Office.Interop.Excel.Range cl7 = oSheet.get_Range("G1", "G1");
-                cl7.Value2 = "Giá Biểu Cũ";
-                cl7.ColumnWidth = 11;
+                cl7.Value2 = "Chỉ Số Cũ";
+                cl7.ColumnWidth = 10;
 
                 Microsoft.Office.Interop.Excel.Range cl8 = oSheet.get_Range("H1", "H1");
-                cl8.Value2 = "Định Mức Cũ";
-                cl8.ColumnWidth = 11;
+                cl8.Value2 = "Mẫu Số Cũ";
+                cl8.ColumnWidth = 10;
 
                 Microsoft.Office.Interop.Excel.Range cl9 = oSheet.get_Range("I1", "I1");
-                cl9.Value2 = "Tiêu Thụ Cũ";
-                cl9.ColumnWidth = 11;
+                cl9.Value2 = "Ký Hiệu Cũ";
+                cl9.ColumnWidth = 10;
 
                 Microsoft.Office.Interop.Excel.Range cl10 = oSheet.get_Range("J1", "J1");
-                cl10.Value2 = "Tiền Nước Cũ";
-                cl10.ColumnWidth = 15;
+                cl10.Value2 = "Số Hóa Đơn Cũ";
+                cl10.ColumnWidth = 10;
 
                 Microsoft.Office.Interop.Excel.Range cl11 = oSheet.get_Range("K1", "K1");
-                cl11.Value2 = "Thuế GTGT Cũ";
+                cl11.Value2 = "Họ Tên Người Mua Hàng";
                 cl11.ColumnWidth = 15;
 
                 Microsoft.Office.Interop.Excel.Range cl12 = oSheet.get_Range("L1", "L1");
-                cl12.Value2 = "Phí BVMT Cũ";
+                cl12.Value2 = "Tên Đơn Vị";
                 cl12.ColumnWidth = 15;
 
                 Microsoft.Office.Interop.Excel.Range cl13 = oSheet.get_Range("M1", "M1");
-                cl13.Value2 = "Tổng Cộng Cũ";
+                cl13.Value2 = "Địa Chỉ Đơn Vị Mua";
                 cl13.ColumnWidth = 15;
 
                 Microsoft.Office.Interop.Excel.Range cl14 = oSheet.get_Range("N1", "N1");
-                cl14.Value2 = "Giá Biểu Mới";
+                cl14.Value2 = "Mã Số Thuế";
                 cl14.ColumnWidth = 11;
 
                 Microsoft.Office.Interop.Excel.Range cl15 = oSheet.get_Range("O1", "O1");
-                cl15.Value2 = "Định Mức Mới";
-                cl15.ColumnWidth = 11;
+                cl15.Value2 = "Giá Biểu Mới";
+                cl15.ColumnWidth = 10;
 
                 Microsoft.Office.Interop.Excel.Range cl16 = oSheet.get_Range("P1", "P1");
-                cl16.Value2 = "Tiêu Thụ Mới";
-                cl16.ColumnWidth = 11;
+                cl16.Value2 = "Định Mức Mới";
+                cl16.ColumnWidth = 10;
 
                 Microsoft.Office.Interop.Excel.Range cl17 = oSheet.get_Range("Q1", "Q1");
-                cl17.Value2 = "Tiền Nước Mới";
-                cl17.ColumnWidth = 15;
+                cl17.Value2 = "Tiêu Thụ Mới";
+                cl17.ColumnWidth = 10;
 
                 Microsoft.Office.Interop.Excel.Range cl18 = oSheet.get_Range("R1", "R1");
-                cl18.Value2 = "Thuế GTGT Mới";
-                cl18.ColumnWidth = 15;
+                cl18.Value2 = "Số Lượng";
+                cl18.ColumnWidth = 10;
 
                 Microsoft.Office.Interop.Excel.Range cl19 = oSheet.get_Range("S1", "S1");
-                cl19.Value2 = "Phí BVMT Mới";
-                cl19.ColumnWidth = 15;
+                cl19.Value2 = "Đơn Giá";
+                cl19.ColumnWidth = 10;
 
                 Microsoft.Office.Interop.Excel.Range cl20 = oSheet.get_Range("T1", "T1");
-                cl20.Value2 = "Tổng Cộng Mới";
+                cl20.Value2 = "Thành Tiền";
                 cl20.ColumnWidth = 15;
 
                 Microsoft.Office.Interop.Excel.Range cl21 = oSheet.get_Range("U1", "U1");
-                cl21.Value2 = "Số Hóa Đơn Mới";
-                cl21.ColumnWidth = 15;
+                cl21.Value2 = "Thuế GTGT";
+                cl21.ColumnWidth = 10;
 
-                // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
-                // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
-                object[,] arr = new object[dt.Rows.Count, 20];
+                Microsoft.Office.Interop.Excel.Range cl22 = oSheet.get_Range("V1", "V1");
+                cl22.Value2 = "Phí BVMT";
+                cl22.ColumnWidth = 10;
 
-                //Chuyển dữ liệu từ DataTable vào mảng đối tượng
+                Microsoft.Office.Interop.Excel.Range cl23 = oSheet.get_Range("W1", "W1");
+                cl23.Value2 = "Cộng Tiền Dịch Vụ Chưa Thuế";
+                cl23.ColumnWidth = 15;
+
+                Microsoft.Office.Interop.Excel.Range cl24 = oSheet.get_Range("X1", "X1");
+                cl24.Value2 = "Thuế GTGT Mới";
+                cl24.ColumnWidth = 15;
+
+                Microsoft.Office.Interop.Excel.Range cl25 = oSheet.get_Range("Y1", "Y1");
+                cl25.Value2 = "Phí BVMT Mới";
+                cl25.ColumnWidth = 15;
+
+                Microsoft.Office.Interop.Excel.Range cl26 = oSheet.get_Range("Z1", "Z1");
+                cl26.Value2 = "Tổng Cộng Mới";
+                cl26.ColumnWidth = 15;
+
+                Microsoft.Office.Interop.Excel.Range cl27 = oSheet.get_Range("AA1", "AA1");
+                cl27.Value2 = "Thuế GTGT 10% ";
+                cl27.ColumnWidth = 15;
+
+                int indexRow = 1;
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     DataRow dr = dt.Rows[i];
-
-                    arr[i, 0] = dr["Dot"].ToString();
-                    arr[i, 1] = dr["Ky2"].ToString();
-                    arr[i, 2] = dr["Nam"].ToString();
-                    arr[i, 3] = dr["DanhBo"].ToString();
-                    arr[i, 4] = dr["SoPhatHanh"].ToString();
-                    arr[i, 5] = dr["SoHoaDon"].ToString();
-                    arr[i, 6] = dr["GiaBieuCu"].ToString();
-                    arr[i, 7] = dr["DinhMucCu"].ToString();
-                    arr[i, 8] = dr["TieuThuCu"].ToString();
-                    arr[i, 9] = dr["GiaBan_Start"].ToString();
-                    arr[i, 10] = dr["ThueGTGT_Start"].ToString();
-                    arr[i, 11] = dr["PhiBVMT_Start"].ToString();
-                    arr[i, 12] = dr["TongCong_Start"].ToString();
-                    arr[i, 13] = dr["GiaBieuMoi"].ToString();
-                    arr[i, 14] = dr["DinhMucMoi"].ToString();
-                    arr[i, 15] = dr["TieuThuMoi"].ToString();
-                    arr[i, 16] = dr["GiaBan_End"].ToString();
-                    arr[i, 17] = dr["ThueGTGT_End"].ToString();
-                    arr[i, 18] = dr["PhiBVMT_End"].ToString();
-                    arr[i, 19] = dr["TongCong_End"].ToString();
+                    indexRow++;
+                    oSheet.Cells[indexRow, 1] = dr["Dot"].ToString();
+                    oSheet.Cells[indexRow, 2] = dr["Ky2"].ToString();
+                    oSheet.Cells[indexRow, 3] = dr["Nam"].ToString();
+                    oSheet.Cells[indexRow, 4] = dr["DanhBo"].ToString();
+                    oSheet.Cells[indexRow, 5] = dr["SoPhatHanh"].ToString();
+                    oSheet.Cells[indexRow, 6] = "";
+                    oSheet.Cells[indexRow, 7] = "";
+                    if (dr["SoHoaDon"].ToString().Substring(0, 2).Contains("1K"))
+                    {
+                        oSheet.Cells[indexRow, 8] = _cHoaDon.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 7));
+                        oSheet.Cells[indexRow, 9] = dr["SoHoaDon"].ToString().Substring(0, 7);
+                        oSheet.Cells[indexRow, 10] = dr["SoHoaDon"].ToString().Substring(7, 7);
+                    }
+                    else
+                        if (dr["SoHoaDon"].ToString().Substring(0, 2).Contains("CT"))
+                        {
+                            oSheet.Cells[indexRow, 8] = _cHoaDon.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 6));
+                            oSheet.Cells[indexRow, 9] = dr["SoHoaDon"].ToString().Substring(0, 6);
+                            oSheet.Cells[indexRow, 10] = dr["SoHoaDon"].ToString().Substring(6, 7);
+                        }
+                    oSheet.Cells[indexRow, 11] = "";
+                    oSheet.Cells[indexRow, 12] = "";
+                    oSheet.Cells[indexRow, 13] = "";
+                    oSheet.Cells[indexRow, 14] = "";
+                    oSheet.Cells[indexRow, 15] = dr["GiaBieuMoi"].ToString();
+                    oSheet.Cells[indexRow, 16] = dr["DinhMucMoi"].ToString();
+                    oSheet.Cells[indexRow, 17] = dr["TieuThuMoi"].ToString();
+                    if (bool.Parse(dr["KhauTru"].ToString()) == true)
+                    {
+                        oSheet.Cells[indexRow, 18] = "0";
+                        oSheet.Cells[indexRow, 19] = "0";
+                    }
+                    else
+                    {
+                        oSheet.Cells[indexRow, 18] = dr["TieuThu_BD"].ToString();
+                        oSheet.Cells[indexRow, 19] = "0";
+                    }
+                    oSheet.Cells[indexRow, 20] = dr["GiaBan_BD"].ToString();
+                    oSheet.Cells[indexRow, 21] = "5";
+                    oSheet.Cells[indexRow, 22] = "15";
+                    oSheet.Cells[indexRow, 23] = dr["GiaBan_BD"].ToString();
+                    oSheet.Cells[indexRow, 24] = dr["ThueGTGT_BD"].ToString();
+                    oSheet.Cells[indexRow, 25] = dr["PhiBVMT_BD"].ToString();
+                    oSheet.Cells[indexRow, 26] = dr["TongCong_BD"].ToString();
+                    oSheet.Cells[indexRow, 27] = dr["PhiBVMT_Thue_BD"].ToString();
                 }
-
-                //Thiết lập vùng điền dữ liệu
-                int rowStart = 2;
-                int columnStart = 1;
-
-                int rowEnd = rowStart + dt.Rows.Count - 1;
-                int columnEnd = 20;
-
-                // Ô bắt đầu điền dữ liệu
-                Microsoft.Office.Interop.Excel.Range c1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, columnStart];
-                // Ô kết thúc điền dữ liệu
-                Microsoft.Office.Interop.Excel.Range c2 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, columnEnd];
-                // Lấy về vùng điền dữ liệu
-                Microsoft.Office.Interop.Excel.Range range = oSheet.get_Range(c1, c2);
-
-                Microsoft.Office.Interop.Excel.Range c1a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 1];
-                Microsoft.Office.Interop.Excel.Range c2a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 1];
-                Microsoft.Office.Interop.Excel.Range c3a = oSheet.get_Range(c1a, c2a);
-                c3a.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
-
-                Microsoft.Office.Interop.Excel.Range c1b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 2];
-                Microsoft.Office.Interop.Excel.Range c2b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 2];
-                Microsoft.Office.Interop.Excel.Range c3b = oSheet.get_Range(c1b, c2b);
-                c3b.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
-                c3b.NumberFormat = "@";
-
-                Microsoft.Office.Interop.Excel.Range c1c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 3];
-                Microsoft.Office.Interop.Excel.Range c2c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 3];
-                Microsoft.Office.Interop.Excel.Range c3c = oSheet.get_Range(c1c, c2c);
-                c3c.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
-
-                Microsoft.Office.Interop.Excel.Range c1d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 4];
-                Microsoft.Office.Interop.Excel.Range c2d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 4];
-                Microsoft.Office.Interop.Excel.Range c3d = oSheet.get_Range(c1d, c2d);
-                c3d.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
-
-                //Điền dữ liệu vào vùng đã thiết lập
-                range.Value2 = arr;
             }
             catch (Exception ex)
             {
@@ -690,7 +706,7 @@ namespace ThuTien.GUI.TongHop
                                 //}
                             }
                             MessageBox.Show("Đã xử lý xong " + countXuLy + " hđ\nĐã xử lý trước đó " + countDaXuLy + "\nLỗi Không Xử lý" + messageTCT + messageTV + "\nVui lòng kiểm tra lại dữ liệu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            loadHD0Ton();
+                            loadHoaDon();
                         }
                 }
                 else
@@ -721,7 +737,6 @@ namespace ThuTien.GUI.TongHop
                     dateDen.Enabled = true;
                 }
         }
-
 
         private void chkTong_CheckedChanged(object sender, EventArgs e)
         {
@@ -762,8 +777,9 @@ namespace ThuTien.GUI.TongHop
                         foreach (DataRow item in dt.Rows)
                         {
                             _cHoaDon.DangNgan("ChuyenKhoan", item["SoHoaDon"].ToString(), _cNguoiDung.getChuyenKhoan().MaND);
+                            _cDCHD.ExecuteNonQuery("delete from TT_HDDC_DangNgan where MaHD=" + item["MaHD"].ToString());
                         }
-                        loadHD0Ton();
+                        loadHoaDon();
                         MessageBox.Show("Xử Lý Hoàn Tất, Vui lòng kiểm tra lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
@@ -776,14 +792,49 @@ namespace ThuTien.GUI.TongHop
             }
         }
 
-        private void btnXem_HDDC_DangNgan_Click(object sender, EventArgs e)
+        private void btnXem_HDDC_Cho_DangNgan_Click(object sender, EventArgs e)
         {
-            dgvDCHD.DataSource = _cDCHD.getDS_HDDC_DangNgan();
+            dgvDCHD.DataSource = _cDCHD.getDS_HDDC_Cho_DangNgan();
         }
 
-
-
-
+        private void btnDangNgan_HDDC_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CNguoiDung.CheckQuyen("mnuDangNganChuyenKhoan", "Them"))
+                {
+                    if (MessageBox.Show("Bạn có chắc chắn?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        CNguoiDung _cNguoiDung = new CNguoiDung();
+                        CTienDu _cTienDu = new CTienDu();
+                        DataTable dt = _cDCHD.getDS_HDDC_DangNgan();
+                        foreach (DataRow item in dt.Rows)
+                        {
+                            var transactionOptions = new TransactionOptions();
+                            transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
+                            {
+                                if (_cHoaDon.DangNgan("ChuyenKhoan", item["SoHoaDon"].ToString(), _cNguoiDung.getChuyenKhoan().MaND))
+                                    if (_cTienDu.UpdateThem(item["SoHoaDon"].ToString()))
+                                    {
+                                        _cDCHD.ExecuteNonQuery("delete from TT_HDDC_DangNgan where MaHD=" + item["MaHD"].ToString());
+                                        scope.Complete();
+                                        scope.Dispose();
+                                    }
+                            }
+                        }
+                        loadHoaDon();
+                        MessageBox.Show("Xử Lý Hoàn Tất, Vui lòng kiểm tra lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Đăng Ngân Chuyển Khoản", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
     }
 }

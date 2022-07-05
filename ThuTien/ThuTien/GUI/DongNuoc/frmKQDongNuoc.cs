@@ -27,7 +27,7 @@ namespace ThuTien.GUI.DongNuoc
         CDongNuoc _cDongNuoc = new CDongNuoc();
         TT_DongNuoc _dongnuoc = null;
         TT_KQDongNuoc _kqdongnuoc = null;
-        CDHN _cCapNuocTanHoa = new CDHN();
+        CDHN _cDHN = new CDHN();
         CNiemChi _cNiemChi = new CNiemChi();
 
         public frmKQDongNuoc()
@@ -229,7 +229,7 @@ namespace ThuTien.GUI.DongNuoc
                         cmbTroNgai.SelectedItem = _dongnuoc.TroNgai;
                         txtGhiChuTroNgai.Text = _dongnuoc.GhiChuTroNgai;
 
-                        TB_DULIEUKHACHHANG ttkh = _cCapNuocTanHoa.GetTTKH(_dongnuoc.DanhBo);
+                        TB_DULIEUKHACHHANG ttkh = _cDHN.GetTTKH(_dongnuoc.DanhBo);
                         txtHieu.Text = ttkh.HIEUDH;
                         txtCo.Text = ttkh.CODH;
                         txtSoThan.Text = ttkh.SOTHANDH;
@@ -416,6 +416,9 @@ namespace ThuTien.GUI.DongNuoc
 
                         if (_cDongNuoc.SuaKQ(_kqdongnuoc))
                         {
+                            string NoiDung = "Đóng Nước, ngày " + _kqdongnuoc.NgayDN.Value.ToString("dd/MM/yyyy") + ", CS: " + _kqdongnuoc.ChiSoDN + ", " + _kqdongnuoc.LyDo;
+                            string sql = "insert into TB_GHICHU(DANHBO,DONVI,NOIDUNG,CREATEDATE,CREATEBY)values('" + _kqdongnuoc.DanhBo + "',N'DTT',N'" + NoiDung + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture) + "',N'" + CNguoiDung.HoTen + "')";
+                            _cDHN.ExecuteNonQuery(sql);
                             Clear();
                             btnXem.PerformClick();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -521,6 +524,9 @@ namespace ThuTien.GUI.DongNuoc
                                 {
                                     _cNiemChi.suDung(int.Parse(txtNiemChi.Text.Trim()));
                                 }
+                                string NoiDung = "Đóng Nước, ngày " + kqdongnuoc.NgayDN.Value.ToString("dd/MM/yyyy") + ", CS: " + kqdongnuoc.ChiSoDN + ", " + kqdongnuoc.LyDo;
+                                string sql = "insert into TB_GHICHU(DANHBO,DONVI,NOIDUNG,CREATEDATE,CREATEBY)values('" + kqdongnuoc.DanhBo + "',N'DTT',N'" + NoiDung + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture) + "',N'" + CNguoiDung.HoTen + "')";
+                                _cDHN.ExecuteNonQuery(sql);
                                 Clear();
                                 btnXem.PerformClick();
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -643,6 +649,9 @@ namespace ThuTien.GUI.DongNuoc
                         {
                             _cNiemChi.suDung(int.Parse(txtNiemChiMN.Text.Trim()));
                         }
+                        string NoiDung = "Mở Nước, ngày " + _kqdongnuoc.NgayDN.Value.ToString("dd/MM/yyyy") + ", CS: " + _kqdongnuoc.ChiSoDN + ", " + _kqdongnuoc.LyDo;
+                        string sql = "insert into TB_GHICHU(DANHBO,DONVI,NOIDUNG,CREATEDATE,CREATEBY)values('" + _kqdongnuoc.DanhBo + "',N'DTT',N'" + NoiDung + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture) + "',N'" + CNguoiDung.HoTen + "')";
+                        _cDHN.ExecuteNonQuery(sql);
                         Clear();
                         btnXem.PerformClick();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

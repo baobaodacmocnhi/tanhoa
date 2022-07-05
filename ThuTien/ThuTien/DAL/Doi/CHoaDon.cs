@@ -12764,6 +12764,11 @@ namespace ThuTien.DAL.Doi
             string sql = "select distinct top " + soluong + " DanhBo=DANHBA,HoTen=TENKH,DiaChi=SO+' '+DUONG,Hieu=HIEUDH,Co=CoDH from HOADON where KY=12 and DOT=20";
             return ExecuteQuery_DataTable(sql);
         }
+
+        public string getBieuMau(string KyHieu)
+        {
+            return ExecuteQuery_ReturnOneValue("select BieuMau from TT_BieuMauHoaDon where KyHieu='" + KyHieu + "'").ToString();
+        }
     }
 
 }
