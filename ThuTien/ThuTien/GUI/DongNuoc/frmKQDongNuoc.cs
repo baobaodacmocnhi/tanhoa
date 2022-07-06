@@ -416,9 +416,9 @@ namespace ThuTien.GUI.DongNuoc
 
                         if (_cDongNuoc.SuaKQ(_kqdongnuoc))
                         {
-                            string NoiDung = "Đóng Nước, ngày " + _kqdongnuoc.NgayDN.Value.ToString("dd/MM/yyyy") + ", CS: " + _kqdongnuoc.ChiSoDN + ", " + _kqdongnuoc.LyDo;
-                            string sql = "insert into TB_GHICHU(DANHBO,DONVI,NOIDUNG,CREATEDATE,CREATEBY)values('" + _kqdongnuoc.DanhBo + "',N'DTT',N'" + NoiDung + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture) + "',N'" + CNguoiDung.HoTen + "')";
-                            _cDHN.ExecuteNonQuery(sql);
+                            //string NoiDung = "Đóng Nước, ngày " + _kqdongnuoc.NgayDN.Value.ToString("dd/MM/yyyy") + ", CS: " + _kqdongnuoc.ChiSoDN + ", " + _kqdongnuoc.LyDo;
+                            //string sql = "insert into TB_GHICHU(DANHBO,DONVI,NOIDUNG,CREATEDATE,CREATEBY)values('" + _kqdongnuoc.DanhBo + "',N'DTT',N'" + NoiDung + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture) + "',N'" + CNguoiDung.HoTen + "')";
+                            //_cDHN.ExecuteNonQuery(sql);
                             Clear();
                             btnXem.PerformClick();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -524,9 +524,9 @@ namespace ThuTien.GUI.DongNuoc
                                 {
                                     _cNiemChi.suDung(int.Parse(txtNiemChi.Text.Trim()));
                                 }
-                                string NoiDung = "Đóng Nước, ngày " + kqdongnuoc.NgayDN.Value.ToString("dd/MM/yyyy") + ", CS: " + kqdongnuoc.ChiSoDN + ", " + kqdongnuoc.LyDo;
-                                string sql = "insert into TB_GHICHU(DANHBO,DONVI,NOIDUNG,CREATEDATE,CREATEBY)values('" + kqdongnuoc.DanhBo + "',N'DTT',N'" + NoiDung + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture) + "',N'" + CNguoiDung.HoTen + "')";
-                                _cDHN.ExecuteNonQuery(sql);
+                                //string NoiDung = "Đóng Nước, ngày " + kqdongnuoc.NgayDN.Value.ToString("dd/MM/yyyy") + ", CS: " + kqdongnuoc.ChiSoDN + ", " + kqdongnuoc.LyDo;
+                                //string sql = "insert into TB_GHICHU(DANHBO,DONVI,NOIDUNG,CREATEDATE,CREATEBY)values('" + kqdongnuoc.DanhBo + "',N'DTT',N'" + NoiDung + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture) + "',N'" + CNguoiDung.HoTen + "')";
+                                //_cDHN.ExecuteNonQuery(sql);
                                 Clear();
                                 btnXem.PerformClick();
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -649,9 +649,9 @@ namespace ThuTien.GUI.DongNuoc
                         {
                             _cNiemChi.suDung(int.Parse(txtNiemChiMN.Text.Trim()));
                         }
-                        string NoiDung = "Mở Nước, ngày " + _kqdongnuoc.NgayDN.Value.ToString("dd/MM/yyyy") + ", CS: " + _kqdongnuoc.ChiSoDN + ", " + _kqdongnuoc.LyDo;
-                        string sql = "insert into TB_GHICHU(DANHBO,DONVI,NOIDUNG,CREATEDATE,CREATEBY)values('" + _kqdongnuoc.DanhBo + "',N'DTT',N'" + NoiDung + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture) + "',N'" + CNguoiDung.HoTen + "')";
-                        _cDHN.ExecuteNonQuery(sql);
+                        //string NoiDung = "Mở Nước, ngày " + _kqdongnuoc.NgayDN.Value.ToString("dd/MM/yyyy") + ", CS: " + _kqdongnuoc.ChiSoDN + ", " + _kqdongnuoc.LyDo;
+                        //string sql = "insert into TB_GHICHU(DANHBO,DONVI,NOIDUNG,CREATEDATE,CREATEBY)values('" + _kqdongnuoc.DanhBo + "',N'DTT',N'" + NoiDung + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture) + "',N'" + CNguoiDung.HoTen + "')";
+                        //_cDHN.ExecuteNonQuery(sql);
                         Clear();
                         btnXem.PerformClick();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -916,6 +916,7 @@ namespace ThuTien.GUI.DongNuoc
                 if (MessageBox.Show("Bạn có chắc chắn In Phiếu?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
                     dsBaoCao dsBaoCao = new dsBaoCao();
+                    string sql = "";
                     if (radDongNuoc.Checked)
                     {
                         decimal SoPhieuDN = _cDongNuoc.GetNextSoPhieuDN();
@@ -930,6 +931,8 @@ namespace ThuTien.GUI.DongNuoc
                                     kqdongnuoc.SoPhieuDN = SoPhieuDN;
                                     kqdongnuoc.NgaySoPhieuDN = DateTime.Now;
                                     _cDongNuoc.SuaKQ(kqdongnuoc);
+                                    string NoiDung = "Số: " + kqdongnuoc.SoPhieuDN + ", Đóng Nước, ngày " + kqdongnuoc.NgayDN.Value.ToString("dd/MM/yyyy") + ", CS: " + kqdongnuoc.ChiSoDN + ", " + kqdongnuoc.LyDo;
+                                    sql += " insert into TB_GHICHU(DANHBO,DONVI,NOIDUNG,CREATEDATE,CREATEBY)values('" + kqdongnuoc.DanhBo + "',N'DTT',N'" + NoiDung + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture) + "',N'" + CNguoiDung.HoTen + "')";
                                 }
                                 else
                                     if (!lst.Any(itemlst => itemlst.SoPhieuDN == decimal.Parse(item.Cells["SoPhieuDN"].Value.ToString())))
@@ -989,6 +992,8 @@ namespace ThuTien.GUI.DongNuoc
                                         kqdongnuoc.SoPhieuMN = SoPhieuMN;
                                         kqdongnuoc.NgaySoPhieuMN = DateTime.Now;
                                         _cDongNuoc.SuaKQ(kqdongnuoc);
+                                        string NoiDung = "Số: " + kqdongnuoc.SoPhieuMN + ", Mở Nước, ngày " + kqdongnuoc.NgayDN.Value.ToString("dd/MM/yyyy") + ", CS: " + kqdongnuoc.ChiSoDN + ", " + kqdongnuoc.LyDo;
+                                        sql += " insert into TB_GHICHU(DANHBO,DONVI,NOIDUNG,CREATEDATE,CREATEBY)values('" + kqdongnuoc.DanhBo + "',N'DTT',N'" + NoiDung + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture) + "',N'" + CNguoiDung.HoTen + "')";
                                     }
                                     else
                                         if (!lst.Any(itemlst => itemlst.SoPhieuMN == decimal.Parse(item.Cells["SoPhieuMN"].Value.ToString())))
@@ -1044,7 +1049,8 @@ namespace ThuTien.GUI.DongNuoc
                                 dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                             }
                         }
-
+                    if (sql != "")
+                        _cDHN.ExecuteNonQuery(sql);
                     rptPhieuBaoDongMoNuoc rpt = new rptPhieuBaoDongMoNuoc();
                     rpt.SetDataSource(dsBaoCao);
                     frmBaoCao frm = new frmBaoCao(rpt);
