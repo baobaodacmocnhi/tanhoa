@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using DocSo_PC.DAL.sDHN;
 using DocSo_PC.DAL.QuanTri;
+using DocSo_PC.DAL.Doi;
 
 namespace DocSo_PC.GUI.sDHN
 {
@@ -103,6 +104,9 @@ namespace DocSo_PC.GUI.sDHN
                         {
                             case "Chỉ Số":
                                 dgvLichSu.DataSource = _csDHN.get_ChiSoNuoc_HoaSen(dgvDanhSach.CurrentRow.Cells["DanhBo"].Value.ToString(), dateTu.Value);
+                                break;
+                            case "Chỉ Số giờ":
+                                dgvLichSu.DataSource = _csDHN.get_ChiSoNuoc_HoaSen(dgvDanhSach.CurrentRow.Cells["DanhBo"].Value.ToString(), dateTu.Value, dateTu.Value.Hour);
                                 break;
                             case "Chất Lượng Sóng":
                                 dgvLichSu.DataSource = _csDHN.get_ChatLuongSong_HoaSen(dgvDanhSach.CurrentRow.Cells["DanhBo"].Value.ToString(), dateTu.Value);
@@ -240,6 +244,222 @@ namespace DocSo_PC.GUI.sDHN
             using (SolidBrush b = new SolidBrush(dgvDanhSach.RowHeadersDefaultCellStyle.ForeColor))
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Tạo các đối tượng Excel
+                Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
+                Microsoft.Office.Interop.Excel.Workbooks oBooks;
+                Microsoft.Office.Interop.Excel.Sheets oSheets;
+                Microsoft.Office.Interop.Excel.Workbook oBook;
+                Microsoft.Office.Interop.Excel.Worksheet oSheet;
+
+                //Tạo mới một Excel WorkBook 
+                oExcel.Visible = true;
+                oExcel.DisplayAlerts = false;
+                //khai báo số lượng sheet
+                oExcel.Application.SheetsInNewWorkbook = 1;
+                oBooks = oExcel.Workbooks;
+
+                oBook = (Microsoft.Office.Interop.Excel.Workbook)(oExcel.Workbooks.Add(Type.Missing));
+                oSheets = oBook.Worksheets;
+                oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
+
+                oSheet.Name = "Tân Hòa";
+                // Tạo tiêu đề cột 
+                Microsoft.Office.Interop.Excel.Range cl1 = oSheet.get_Range("A1", "A1");
+                cl1.Value2 = "TT";
+                cl1.ColumnWidth = 5;
+
+                Microsoft.Office.Interop.Excel.Range cl2 = oSheet.get_Range("B1", "B1");
+                cl2.Value2 = "Danh bộ (danh bạ KH)";
+                cl2.ColumnWidth = 12;
+
+                Microsoft.Office.Interop.Excel.Range cl3 = oSheet.get_Range("C1", "C1");
+                cl3.Value2 = "Địa chỉ (Số, đường, phường, quận)";
+                cl3.ColumnWidth = 20;
+
+                Microsoft.Office.Interop.Excel.Range cl4 = oSheet.get_Range("D1", "D1");
+                cl4.Value2 = "Tên khách hàng";
+                cl4.ColumnWidth = 20;
+
+                Microsoft.Office.Interop.Excel.Range cl5 = oSheet.get_Range("E1", "E1");
+                cl5.Value2 = "Mã DMA";
+                cl5.ColumnWidth = 10;
+
+                Microsoft.Office.Interop.Excel.Range cl6 = oSheet.get_Range("F1", "F1");
+                cl6.Value2 = "Cỡ ĐH";
+                cl6.ColumnWidth = 3;
+
+                Microsoft.Office.Interop.Excel.Range cl7 = oSheet.get_Range("G1", "G1");
+                cl7.Value2 = "Tên hiệu ĐHTM";
+                cl7.ColumnWidth = 8;
+
+                Microsoft.Office.Interop.Excel.Range cl8 = oSheet.get_Range("H1", "H1");
+                cl8.Value2 = "Kiểu loại ĐHTM";
+                cl8.ColumnWidth = 8;
+
+                Microsoft.Office.Interop.Excel.Range cl9 = oSheet.get_Range("I1", "I1");
+                cl9.Value2 = "Số thân đồng hồ (số Seri trên thân ĐH)";
+                cl9.ColumnWidth = 10;
+
+                Microsoft.Office.Interop.Excel.Range cl10 = oSheet.get_Range("J1", "J1");
+                cl10.Value2 = "Kiểu Module phát sóng";
+                cl10.ColumnWidth = 15;
+
+                Microsoft.Office.Interop.Excel.Range cl11 = oSheet.get_Range("K1", "K1");
+                cl11.Value2 = "Số seri bộ phát sóng (Seri Module)";
+                cl11.ColumnWidth = 10;
+
+                Microsoft.Office.Interop.Excel.Range cl12 = oSheet.get_Range("L1", "L1");
+                cl12.Value2 = "Đơn vị thi công lắp đặt";
+                cl12.ColumnWidth = 10;
+
+                Microsoft.Office.Interop.Excel.Range cl13 = oSheet.get_Range("M1", "M1");
+                cl13.Value2 = "Nhà cung cấp đồng hồ";
+                cl13.ColumnWidth = 15;
+
+                Microsoft.Office.Interop.Excel.Range cl14 = oSheet.get_Range("N1", "N1");
+                cl14.Value2 = "Nhà tích hợp đồng hồ thông minh";
+                cl14.ColumnWidth = 15;
+
+                Microsoft.Office.Interop.Excel.Range cl15 = oSheet.get_Range("O1", "O1");
+                cl15.Value2 = "Xuất xứ đồng hồ";
+                cl15.ColumnWidth = 8;
+
+                Microsoft.Office.Interop.Excel.Range cl16 = oSheet.get_Range("P1", "P1");
+                cl16.Value2 = "Hộp bảo vệ (Hộp đồng hồ)";
+                cl16.ColumnWidth = 5;
+
+                Microsoft.Office.Interop.Excel.Range cl17 = oSheet.get_Range("Q1", "Q1");
+                cl17.Value2 = "Ngày kiểm định";
+                cl17.ColumnWidth = 12;
+
+                Microsoft.Office.Interop.Excel.Range cl18 = oSheet.get_Range("R1", "R1");
+                cl18.Value2 = "Ngày lắp đặt";
+                cl18.ColumnWidth = 12;
+
+                Microsoft.Office.Interop.Excel.Range cl19 = oSheet.get_Range("S1", "S1");
+                cl19.Value2 = "Chỉ số trung bình 03 kỳ trước của đồng hồ cũ truyền thống (m3)";
+                cl19.ColumnWidth = 10;
+
+                Microsoft.Office.Interop.Excel.Range cl20 = oSheet.get_Range("T1", "T1");
+                cl20.Value2 = "Tỉ lệ chênh lệch đọc số kỳ 2";
+                cl20.ColumnWidth = 8;
+
+                Microsoft.Office.Interop.Excel.Range cl21 = oSheet.get_Range("U1", "U1");
+                cl21.Value2 = "Tỉ lệ chênh lệch đọc số kỳ 3";
+                cl21.ColumnWidth = 8;
+
+                Microsoft.Office.Interop.Excel.Range cl22 = oSheet.get_Range("V1", "V1");
+                cl22.Value2 = "Tỉ lệ chênh lệch đọc số kỳ 4";
+                cl22.ColumnWidth = 8;
+
+                Microsoft.Office.Interop.Excel.Range cl23 = oSheet.get_Range("W1", "W1");
+                cl23.Value2 = "Tỉ lệ chênh lệch đọc số kỳ 5";
+                cl23.ColumnWidth = 8;
+
+                Microsoft.Office.Interop.Excel.Range cl24 = oSheet.get_Range("X1", "X1");
+                cl24.Value2 = "Tỉ lệ chênh lệch đọc số kỳ 6";
+                cl24.ColumnWidth = 8;
+
+                Microsoft.Office.Interop.Excel.Range clHeader = oSheet.get_Range("A1", "X1");
+                clHeader.WrapText = true;
+                clHeader.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+                clHeader.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+                //Microsoft.Office.Interop.Excel.Range cl25 = oSheet.get_Range("Y1", "Y1");
+                //cl25.Value2 = "Phí BVMT Mới";
+                //cl25.ColumnWidth = 15;
+
+                //Microsoft.Office.Interop.Excel.Range cl26 = oSheet.get_Range("Z1", "Z1");
+                //cl26.Value2 = "Tổng Cộng Mới";
+                //cl26.ColumnWidth = 15;
+
+                //Microsoft.Office.Interop.Excel.Range cl27 = oSheet.get_Range("AA1", "AA1");
+                //cl27.Value2 = "Thuế GTGT 10% ";
+                //cl27.ColumnWidth = 15;
+                CDocSo _cDocSo = new CDocSo();
+                DataTable dt = CDocSo._cDAL.ExecuteQuery_DataTable("select top 10 *,NGAYKIEMDINH1=CONVERT(varchar(10),NGAYKIEMDINH,103),NGAYTHAY1=CONVERT(varchar(10),NGAYTHAY,103) from sDHN sdhn,[DHTM_TANHOA].[dbo].[DHTM_THONGTIN] ttdhn,[CAPNUOCTANHOA].[dbo].[TB_DULIEUKHACHHANG] ttkh"
+                + " where Valid=1 and sdhn.IDNCC=ttdhn.ID and sdhn.DanhBo=ttkh.DANHBO order by IDNCC");
+                int indexRow = 1;
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    DataRow dr = dt.Rows[i];
+                    indexRow++;
+                    oSheet.Cells[indexRow, 1] = i + 1;
+                    oSheet.Cells[indexRow, 2] = dr["DanhBo"].ToString();
+                    oSheet.Cells[indexRow, 3] = dr["SoNha"].ToString() + " " + dr["TenDuong"].ToString();
+                    oSheet.Cells[indexRow, 4] = dr["HoTen"].ToString();
+                    oSheet.Cells[indexRow, 5] = dr["MaDMA"].ToString();
+                    oSheet.Cells[indexRow, 6] = dr["CoDH"].ToString();
+                    oSheet.Cells[indexRow, 7] = dr["HIEU_DHTM"].ToString();
+                    oSheet.Cells[indexRow, 8] = dr["LOAI_DHTM"].ToString();
+                    oSheet.Cells[indexRow, 9] = dr["SoThanDH"].ToString();
+                    oSheet.Cells[indexRow, 10] = dr["KIEUPHATSONG"].ToString();
+                    oSheet.Cells[indexRow, 11] = dr["IDLogger"].ToString();
+                    oSheet.Cells[indexRow, 12] = dr["DVLAPDAT"].ToString();
+                    oSheet.Cells[indexRow, 13] = dr["NHA_CCDHN"].ToString();
+                    oSheet.Cells[indexRow, 14] = dr["NHA_TICHHOP"].ToString();
+                    oSheet.Cells[indexRow, 15] = dr["XUATXU"].ToString();
+                    if (bool.Parse(dr["ViTriDHN_Hop"].ToString()))
+                        oSheet.Cells[indexRow, 16] = "x";
+                    oSheet.Cells[indexRow, 17] = dr["NgayKiemDinh1"].ToString();
+                    oSheet.Cells[indexRow, 18] = dr["NgayThay1"].ToString();
+                    DataTable dtC = CDocSo._cDAL.ExecuteQuery_DataTable("select ky,nam,CSMoi,GIOGHI,TBTT from DocSo where Nam=2022 and ky in (2,3,4,5,6) and DanhBa='" + dr["DanhBo"].ToString() + "'");
+                    oSheet.Cells[indexRow, 19] = dtC.Rows[0]["TBTT"].ToString();
+                    foreach (DataRow item in dtC.Rows)
+                    {
+                        DateTime date = DateTime.Parse(item["GIOGHI"].ToString());
+                        DataTable dtTCT = new DataTable();
+                        switch (dr["IDNCC"].ToString())
+                        {
+                            case "1":
+                                dtTCT = _csDHN.get_ChiSoNuoc_HoaSen(dr["DanhBo"].ToString(), date, date.Hour);
+                                break;
+                            case "2":
+                                dtTCT = _csDHN.get_ChiSoNuoc_Rynan(dr["DanhBo"].ToString(), date, date.Hour);
+                                break;
+                            case "3":
+                                dtTCT = _csDHN.get_ChiSoNuoc_Deviwas(dr["DanhBo"].ToString(), date, date.Hour);
+                                break;
+                            case "4":
+                                dtTCT = _csDHN.get_ChiSoNuoc_PhamLam(dr["DanhBo"].ToString(), date, date.Hour);
+                                break;
+                            default:
+                                break;
+                        }
+                        switch (item["ky"].ToString())
+                        {
+                            case "02":
+                                oSheet.Cells[indexRow, 20] = (double.Parse(dtTCT.Rows[0]["ChiSo"].ToString()) - int.Parse(item["CSMoi"].ToString())) / int.Parse(item["CSMoi"].ToString()) * 100;
+                                break;
+                            case "03":
+                                oSheet.Cells[indexRow, 21] = (double.Parse(dtTCT.Rows[0]["ChiSo"].ToString()) - int.Parse(item["CSMoi"].ToString())) / int.Parse(item["CSMoi"].ToString()) * 100;
+                                break;
+                            case "04":
+                                oSheet.Cells[indexRow, 22] = (double.Parse(dtTCT.Rows[0]["ChiSo"].ToString()) - int.Parse(item["CSMoi"].ToString())) / int.Parse(item["CSMoi"].ToString()) * 100;
+                                break;
+                            case "05":
+                                oSheet.Cells[indexRow, 23] = (double.Parse(dtTCT.Rows[0]["ChiSo"].ToString()) - int.Parse(item["CSMoi"].ToString())) / int.Parse(item["CSMoi"].ToString()) * 100;
+                                break;
+                            case "06":
+                                oSheet.Cells[indexRow, 24] = (double.Parse(dtTCT.Rows[0]["ChiSo"].ToString()) - int.Parse(item["CSMoi"].ToString())) / int.Parse(item["CSMoi"].ToString()) * 100;
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

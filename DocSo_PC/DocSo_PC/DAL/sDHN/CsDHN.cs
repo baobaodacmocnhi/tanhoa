@@ -108,6 +108,41 @@ namespace DocSo_PC.DAL.sDHN
             }
         }
 
+        public DataTable get_ChiSoNuoc_HoaSen(string DanhBo, DateTime Time, int Hour)
+        {
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://swm.sawaco.com.vn:8033/api/Survey/?id=" + DanhBo + "&date=" + Time.ToString("dd-MM-yyyy") + " " + Hour + ":00:00");
+                request.Method = "GET";
+                request.ContentType = "application/json; charset=utf-8";
+
+                HttpWebResponse respuesta = (HttpWebResponse)request.GetResponse();
+                if (respuesta.StatusCode == HttpStatusCode.Accepted || respuesta.StatusCode == HttpStatusCode.OK || respuesta.StatusCode == HttpStatusCode.Created)
+                {
+                    StreamReader read = new StreamReader(respuesta.GetResponseStream());
+                    string result = read.ReadToEnd();
+                    read.Close();
+                    respuesta.Close();
+
+                    var obj = jss.Deserialize<dynamic>(result);
+                    DataTable dt = new DataTable();
+                    dt.Columns.Add("ChiSo", typeof(System.Double));
+                    dt.Columns.Add("ThoiGianCapNhat", typeof(System.DateTime));
+                    DataRow dr = dt.NewRow();
+                    dr["ChiSo"] = obj["Volume"];
+                    dr["ThoiGianCapNhat"] = DateTime.Parse(obj["Time"]);
+                    dt.Rows.Add(dr);
+                    return dt;
+                }
+                else
+                    return null;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public DataTable get_ChatLuongSong_HoaSen(string DanhBo, DateTime Time)
         {
             try

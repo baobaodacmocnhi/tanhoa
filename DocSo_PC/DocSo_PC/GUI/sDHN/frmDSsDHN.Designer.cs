@@ -241,6 +241,7 @@
             this.btnExcel.TabIndex = 61;
             this.btnExcel.Text = "Excel";
             this.btnExcel.UseVisualStyleBackColor = true;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
             // frmDSsDHN
             // 
