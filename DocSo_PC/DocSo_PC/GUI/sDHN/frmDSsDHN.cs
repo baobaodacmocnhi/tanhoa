@@ -372,6 +372,8 @@ namespace DocSo_PC.GUI.sDHN
                 clHeader.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
                 clHeader.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
 
+                
+
                 //Microsoft.Office.Interop.Excel.Range cl25 = oSheet.get_Range("Y1", "Y1");
                 //cl25.Value2 = "Phí BVMT Mới";
                 //cl25.ColumnWidth = 15;
@@ -384,13 +386,22 @@ namespace DocSo_PC.GUI.sDHN
                 //cl27.Value2 = "Thuế GTGT 10% ";
                 //cl27.ColumnWidth = 15;
                 CDocSo _cDocSo = new CDocSo();
-                DataTable dt = CDocSo._cDAL.ExecuteQuery_DataTable("select top 10 *,NGAYKIEMDINH1=CONVERT(varchar(10),NGAYKIEMDINH,103),NGAYTHAY1=CONVERT(varchar(10),NGAYTHAY,103) from sDHN sdhn,[DHTM_TANHOA].[dbo].[DHTM_THONGTIN] ttdhn,[CAPNUOCTANHOA].[dbo].[TB_DULIEUKHACHHANG] ttkh"
-                + " where Valid=1 and sdhn.IDNCC=ttdhn.ID and sdhn.DanhBo=ttkh.DANHBO order by IDNCC");
+                DataTable dt = CDocSo._cDAL.ExecuteQuery_DataTable("select top 5 *,NGAYKIEMDINH1=CONVERT(varchar(10),NGAYKIEMDINH,103),NGAYTHAY1=CONVERT(varchar(10),NGAYTHAY,103) from sDHN sdhn,[DHTM_TANHOA].[dbo].[DHTM_THONGTIN] ttdhn,[CAPNUOCTANHOA].[dbo].[TB_DULIEUKHACHHANG] ttkh"
+                + " where Valid=1 and sdhn.IDNCC=ttdhn.ID and sdhn.DanhBo=ttkh.DANHBO and IDNCC=1 order by IDNCC");
                 int indexRow = 1;
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     DataRow dr = dt.Rows[i];
                     indexRow++;
+                    Microsoft.Office.Interop.Excel.Range c1a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[1, 17];
+                    Microsoft.Office.Interop.Excel.Range c2a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[indexRow, 17];
+                    Microsoft.Office.Interop.Excel.Range c3a = oSheet.get_Range(c1a, c2a);
+                    c3a.NumberFormat = "@";
+
+                    Microsoft.Office.Interop.Excel.Range c1b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[1, 18];
+                    Microsoft.Office.Interop.Excel.Range c2b = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[indexRow, 18];
+                    Microsoft.Office.Interop.Excel.Range c3b = oSheet.get_Range(c1b, c2b);
+                    c3b.NumberFormat = "@";
                     oSheet.Cells[indexRow, 1] = i + 1;
                     oSheet.Cells[indexRow, 2] = dr["DanhBo"].ToString();
                     oSheet.Cells[indexRow, 3] = dr["SoNha"].ToString() + " " + dr["TenDuong"].ToString();
@@ -433,28 +444,36 @@ namespace DocSo_PC.GUI.sDHN
                             default:
                                 break;
                         }
+                        string TyLe = "";
+                        if (dtTCT != null && dtTCT.Rows.Count > 0 && dtTCT.Rows[0]["ChiSo"].ToString() != "")
+                        {
+                            double a = double.Parse(dtTCT.Rows[0]["ChiSo"].ToString());
+                            int b = (int)a;
+                            TyLe = (((double)b - int.Parse(item["CSMoi"].ToString())) / int.Parse(item["CSMoi"].ToString()) * 100).ToString("0.00");
+                        }
                         switch (item["ky"].ToString())
                         {
                             case "02":
-                                oSheet.Cells[indexRow, 20] = (double.Parse(dtTCT.Rows[0]["ChiSo"].ToString()) - int.Parse(item["CSMoi"].ToString())) / int.Parse(item["CSMoi"].ToString()) * 100;
+                                oSheet.Cells[indexRow, 20] = TyLe;
                                 break;
                             case "03":
-                                oSheet.Cells[indexRow, 21] = (double.Parse(dtTCT.Rows[0]["ChiSo"].ToString()) - int.Parse(item["CSMoi"].ToString())) / int.Parse(item["CSMoi"].ToString()) * 100;
+                                oSheet.Cells[indexRow, 21] = TyLe;
                                 break;
                             case "04":
-                                oSheet.Cells[indexRow, 22] = (double.Parse(dtTCT.Rows[0]["ChiSo"].ToString()) - int.Parse(item["CSMoi"].ToString())) / int.Parse(item["CSMoi"].ToString()) * 100;
+                                oSheet.Cells[indexRow, 22] = TyLe;
                                 break;
                             case "05":
-                                oSheet.Cells[indexRow, 23] = (double.Parse(dtTCT.Rows[0]["ChiSo"].ToString()) - int.Parse(item["CSMoi"].ToString())) / int.Parse(item["CSMoi"].ToString()) * 100;
+                                oSheet.Cells[indexRow, 23] = TyLe;
                                 break;
                             case "06":
-                                oSheet.Cells[indexRow, 24] = (double.Parse(dtTCT.Rows[0]["ChiSo"].ToString()) - int.Parse(item["CSMoi"].ToString())) / int.Parse(item["CSMoi"].ToString()) * 100;
+                                oSheet.Cells[indexRow, 24] = TyLe;
                                 break;
                             default:
                                 break;
                         }
                     }
                 }
+                
                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
