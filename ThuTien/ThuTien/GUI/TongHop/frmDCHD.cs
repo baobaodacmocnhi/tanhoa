@@ -52,10 +52,10 @@ namespace ThuTien.GUI.TongHop
         public void loadHoaDon()
         {
             DataTable dt = _cDCHD.getDS_HD0_Ton();
-            if (dt != null && dt.Rows.Count > 0)
-                lbHD0.Text = dt.Rows.Count + " HĐ = 0 chưa Đăng Ngân";
-            else
-                lbHD0.Text = "";
+            //if (dt != null && dt.Rows.Count > 0)
+            //    lbHD0.Text = dt.Rows.Count + " HĐ = 0 chưa Đăng Ngân";
+            //else
+            //    lbHD0.Text = "";
             dt = _cDCHD.getDS_HDDC_Cho_DangNgan();
             if (dt != null && dt.Rows.Count > 0)
                 lbHDDCCho.Text = dt.Rows.Count + " HĐ chờ HĐĐC";

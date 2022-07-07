@@ -737,6 +737,7 @@
             this.lbHD0.Size = new System.Drawing.Size(35, 13);
             this.lbHD0.TabIndex = 52;
             this.lbHD0.Text = "label7";
+            this.lbHD0.Visible = false;
             // 
             // btnDangNganHD0
             // 
@@ -746,6 +747,7 @@
             this.btnDangNganHD0.TabIndex = 53;
             this.btnDangNganHD0.Text = "Đăng Ngân HĐ=0";
             this.btnDangNganHD0.UseVisualStyleBackColor = true;
+            this.btnDangNganHD0.Visible = false;
             this.btnDangNganHD0.Click += new System.EventHandler(this.btnDangNganHD0_Click);
             // 
             // panel2
