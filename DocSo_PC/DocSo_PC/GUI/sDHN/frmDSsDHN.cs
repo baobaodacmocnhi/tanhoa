@@ -372,7 +372,7 @@ namespace DocSo_PC.GUI.sDHN
                 clHeader.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
                 clHeader.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
 
-                
+
 
                 //Microsoft.Office.Interop.Excel.Range cl25 = oSheet.get_Range("Y1", "Y1");
                 //cl25.Value2 = "Phí BVMT Mới";
@@ -386,8 +386,8 @@ namespace DocSo_PC.GUI.sDHN
                 //cl27.Value2 = "Thuế GTGT 10% ";
                 //cl27.ColumnWidth = 15;
                 CDocSo _cDocSo = new CDocSo();
-                DataTable dt = CDocSo._cDAL.ExecuteQuery_DataTable("select top 5 *,NGAYKIEMDINH1=CONVERT(varchar(10),NGAYKIEMDINH,103),NGAYTHAY1=CONVERT(varchar(10),NGAYTHAY,103) from sDHN sdhn,[DHTM_TANHOA].[dbo].[DHTM_THONGTIN] ttdhn,[CAPNUOCTANHOA].[dbo].[TB_DULIEUKHACHHANG] ttkh"
-                + " where Valid=1 and sdhn.IDNCC=ttdhn.ID and sdhn.DanhBo=ttkh.DANHBO and IDNCC=1 order by IDNCC");
+                DataTable dt = CDocSo._cDAL.ExecuteQuery_DataTable("select *,NGAYKIEMDINH1=CONVERT(varchar(10),NGAYKIEMDINH,103),NGAYTHAY1=CONVERT(varchar(10),NGAYTHAY,103) from sDHN sdhn,[DHTM_TANHOA].[dbo].[DHTM_THONGTIN] ttdhn,[CAPNUOCTANHOA].[dbo].[TB_DULIEUKHACHHANG] ttkh"
+                + " where Valid=1 and sdhn.IDNCC=ttdhn.ID and sdhn.DanhBo=ttkh.DANHBO and IDNCC=3 order by IDNCC");
                 int indexRow = 1;
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
@@ -424,56 +424,56 @@ namespace DocSo_PC.GUI.sDHN
                     DataTable dtC = CDocSo._cDAL.ExecuteQuery_DataTable("select ky,nam,CSMoi,GIOGHI,TBTT from DocSo where Nam=2022 and ky in (2,3,4,5,6) and DanhBa='" + dr["DanhBo"].ToString() + "'");
                     oSheet.Cells[indexRow, 19] = dtC.Rows[0]["TBTT"].ToString();
                     foreach (DataRow item in dtC.Rows)
-                    {
-                        DateTime date = DateTime.Parse(item["GIOGHI"].ToString());
-                        DataTable dtTCT = new DataTable();
-                        switch (dr["IDNCC"].ToString())
+                        if (item["GIOGHI"].ToString() != "")
                         {
-                            case "1":
-                                dtTCT = _csDHN.get_ChiSoNuoc_HoaSen(dr["DanhBo"].ToString(), date, date.Hour);
-                                break;
-                            case "2":
-                                dtTCT = _csDHN.get_ChiSoNuoc_Rynan(dr["DanhBo"].ToString(), date, date.Hour);
-                                break;
-                            case "3":
-                                dtTCT = _csDHN.get_ChiSoNuoc_Deviwas(dr["DanhBo"].ToString(), date, date.Hour);
-                                break;
-                            case "4":
-                                dtTCT = _csDHN.get_ChiSoNuoc_PhamLam(dr["DanhBo"].ToString(), date, date.Hour);
-                                break;
-                            default:
-                                break;
+                            DateTime date = DateTime.Parse(item["GIOGHI"].ToString());
+                            DataTable dtTCT = new DataTable();
+                            switch (dr["IDNCC"].ToString())
+                            {
+                                case "1":
+                                    dtTCT = _csDHN.get_ChiSoNuoc_HoaSen(dr["DanhBo"].ToString(), date, 9);
+                                    break;
+                                case "2":
+                                    dtTCT = _csDHN.get_ChiSoNuoc_Rynan(dr["DanhBo"].ToString(), date, date.Hour);
+                                    break;
+                                case "3":
+                                    dtTCT = _csDHN.get_ChiSoNuoc_Deviwas(dr["DanhBo"].ToString(), date, date.Hour);
+                                    break;
+                                case "4":
+                                    dtTCT = _csDHN.get_ChiSoNuoc_PhamLam(dr["DanhBo"].ToString(), date, date.Hour);
+                                    break;
+                                default:
+                                    break;
+                            }
+                            string TyLe = "";
+                            if (dtTCT != null && dtTCT.Rows.Count > 0 && dtTCT.Rows[0]["ChiSo"].ToString() != "")
+                            {
+                                double a = double.Parse(dtTCT.Rows[0]["ChiSo"].ToString());
+                                int b = (int)a;
+                                TyLe = (((double)b - int.Parse(item["CSMoi"].ToString())) / int.Parse(item["CSMoi"].ToString()) * 100).ToString("0.00");
+                            }
+                            switch (item["ky"].ToString())
+                            {
+                                case "02":
+                                    oSheet.Cells[indexRow, 20] = TyLe;
+                                    break;
+                                case "03":
+                                    oSheet.Cells[indexRow, 21] = TyLe;
+                                    break;
+                                case "04":
+                                    oSheet.Cells[indexRow, 22] = TyLe;
+                                    break;
+                                case "05":
+                                    oSheet.Cells[indexRow, 23] = TyLe;
+                                    break;
+                                case "06":
+                                    oSheet.Cells[indexRow, 24] = TyLe;
+                                    break;
+                                default:
+                                    break;
+                            }
                         }
-                        string TyLe = "";
-                        if (dtTCT != null && dtTCT.Rows.Count > 0 && dtTCT.Rows[0]["ChiSo"].ToString() != "")
-                        {
-                            double a = double.Parse(dtTCT.Rows[0]["ChiSo"].ToString());
-                            int b = (int)a;
-                            TyLe = (((double)b - int.Parse(item["CSMoi"].ToString())) / int.Parse(item["CSMoi"].ToString()) * 100).ToString("0.00");
-                        }
-                        switch (item["ky"].ToString())
-                        {
-                            case "02":
-                                oSheet.Cells[indexRow, 20] = TyLe;
-                                break;
-                            case "03":
-                                oSheet.Cells[indexRow, 21] = TyLe;
-                                break;
-                            case "04":
-                                oSheet.Cells[indexRow, 22] = TyLe;
-                                break;
-                            case "05":
-                                oSheet.Cells[indexRow, 23] = TyLe;
-                                break;
-                            case "06":
-                                oSheet.Cells[indexRow, 24] = TyLe;
-                                break;
-                            default:
-                                break;
-                        }
-                    }
                 }
-                
                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)

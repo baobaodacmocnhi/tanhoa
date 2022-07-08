@@ -476,10 +476,10 @@ namespace DocSo_PC.GUI.MaHoa
 
         private void btnXem_Click(object sender, EventArgs e)
         {
+            string str = "";
             switch (cmbTimTheo.Text)
             {
                 case "Thời Gian":
-                    string str = "";
                     for (int i = 0; i < chkcmbNoiDung.Properties.Items.Count; i++)
                         if (chkcmbNoiDung.Properties.Items[i].CheckState == CheckState.Checked)
                         {
@@ -495,6 +495,30 @@ namespace DocSo_PC.GUI.MaHoa
                     break;
                 case "Danh Bộ":
                     dgvDanhSach.DataSource = _cDonTu.getDS_DanhBo(txtSo.Text.Trim());
+                    break;
+                case "Tồn Theo Thời Gian":
+                    str = "";
+                    for (int i = 0; i < chkcmbNoiDung.Properties.Items.Count; i++)
+                        if (chkcmbNoiDung.Properties.Items[i].CheckState == CheckState.Checked)
+                        {
+                            if (str == "")
+                                str = chkcmbNoiDung.Properties.Items[i].Value.ToString();
+                            else
+                                str += ";" + chkcmbNoiDung.Properties.Items[i].Value.ToString();
+                        }
+                    dgvDanhSach.DataSource = _cDonTu.getDS_Ton(cmbTo.SelectedValue.ToString(), str, dateTuNgay.Value, dateDenNgay.Value);
+                    break;
+                case "Tồn Tất Cả":
+                    str = "";
+                    for (int i = 0; i < chkcmbNoiDung.Properties.Items.Count; i++)
+                        if (chkcmbNoiDung.Properties.Items[i].CheckState == CheckState.Checked)
+                        {
+                            if (str == "")
+                                str = chkcmbNoiDung.Properties.Items[i].Value.ToString();
+                            else
+                                str += ";" + chkcmbNoiDung.Properties.Items[i].Value.ToString();
+                        }
+                    dgvDanhSach.DataSource = _cDonTu.getDS_Ton(cmbTo.SelectedValue.ToString(), str);
                     break;
             }
 
