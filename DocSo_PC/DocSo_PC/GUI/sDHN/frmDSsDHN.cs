@@ -450,7 +450,10 @@ namespace DocSo_PC.GUI.sDHN
                             {
                                 double a = double.Parse(dtTCT.Rows[0]["ChiSo"].ToString());
                                 int b = (int)a;
-                                TyLe = (((double)b - int.Parse(item["CSMoi"].ToString())) / int.Parse(item["CSMoi"].ToString()) * 100).ToString("0.00");
+                                if (b != 0)
+                                    TyLe = (((double)b - int.Parse(item["CSMoi"].ToString())) / int.Parse(item["CSMoi"].ToString()) * 100).ToString("0.00");
+                                else
+                                    TyLe = "0";
                             }
                             switch (item["ky"].ToString())
                             {
