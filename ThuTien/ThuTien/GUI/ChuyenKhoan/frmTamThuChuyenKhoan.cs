@@ -873,6 +873,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                     {
                                         TT_HDDC_DangNgan en = new TT_HDDC_DangNgan();
                                         en.MaHD = int.Parse(item.Cells["MaHD_TT"].Value.ToString());
+                                        en.ChuyenKhoan = true;
                                         _cDCHD.Them_HDDC_DangNgan(en);
                                     }
                                 }
@@ -951,26 +952,34 @@ namespace ThuTien.GUI.ChuyenKhoan
                         string DanhBo = "";
                         if (_cDCHD.CheckExist_UpdatedHDDT(int.Parse(item.Cells["MaHD_TT"].Value.ToString()), ref DanhBo) == false)
                         {
-                            MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            dgvTamThu.CurrentCell = item.Cells["DanhBo_TT"];
-                            dgvTamThu.Rows[item.Index].Selected = true;
-                            return;
-                        }
-                        //đăng ngân
-                        if (_cHoaDon.checkExists_KyMoi(item.Cells["Ky_TT"].Value.ToString()) == false && (item.Cells["NgayGiaiTrach_TT"].Value == null || item.Cells["NgayGiaiTrach_TT"].Value.ToString() == ""))
-                        {
-                            var transactionOptions = new TransactionOptions();
-                            transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
-                            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
+                            //MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            //dgvTamThu.CurrentCell = item.Cells["DanhBo_TT"];
+                            //dgvTamThu.Rows[item.Index].Selected = true;
+                            //return;
+                            if (!_cDCHD.checkExist_HDDC_DangNgan(int.Parse(item.Cells["MaHD_TT"].Value.ToString())))
                             {
-                                if (_cHoaDon.DangNgan("ChuyenKhoan", item.Cells["SoHoaDon_TT"].Value.ToString(), CNguoiDung.MaND))
-                                    if (_cTienDu.UpdateThem(item.Cells["SoHoaDon_TT"].Value.ToString()))
-                                    {
-                                        scope.Complete();
-                                        scope.Dispose();
-                                    }
+                                TT_HDDC_DangNgan en = new TT_HDDC_DangNgan();
+                                en.MaHD = int.Parse(item.Cells["MaHD_TT"].Value.ToString());
+                                en.ChuyenKhoan = true;
+                                _cDCHD.Them_HDDC_DangNgan(en);
                             }
                         }
+                        else
+                            //đăng ngân
+                            if (_cHoaDon.checkExists_KyMoi(item.Cells["Ky_TT"].Value.ToString()) == false && (item.Cells["NgayGiaiTrach_TT"].Value == null || item.Cells["NgayGiaiTrach_TT"].Value.ToString() == ""))
+                            {
+                                var transactionOptions = new TransactionOptions();
+                                transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                                using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
+                                {
+                                    if (_cHoaDon.DangNgan("ChuyenKhoan", item.Cells["SoHoaDon_TT"].Value.ToString(), CNguoiDung.MaND))
+                                        if (_cTienDu.UpdateThem(item.Cells["SoHoaDon_TT"].Value.ToString()))
+                                        {
+                                            scope.Complete();
+                                            scope.Dispose();
+                                        }
+                                }
+                            }
                     }
             }
             catch (Exception ex)
@@ -1023,26 +1032,34 @@ namespace ThuTien.GUI.ChuyenKhoan
                     string DanhBo = "";
                     if (_cDCHD.CheckExist_UpdatedHDDT(int.Parse(item["MaHD"].ToString()), ref DanhBo) == false)
                     {
-                        MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                }
-                foreach (DataRow item in dt.Rows)
-                    if (item["SoHoaDon"].ToString() != "")
-                        if (_cHoaDon.checkExists_KyMoi(item["Ky"].ToString()) == false)
+                        //MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //return;
+                        if (!_cDCHD.checkExist_HDDC_DangNgan(int.Parse(item["MaHD"].ToString())))
                         {
-                            var transactionOptions = new TransactionOptions();
-                            transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
-                            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
-                            {
-                                if (_cHoaDon.DangNgan("ChuyenKhoan", item["SoHoaDon"].ToString(), CNguoiDung.MaND))
-                                    if (_cTienDu.UpdateThem(item["SoHoaDon"].ToString()))
-                                    {
-                                        scope.Complete();
-                                        scope.Dispose();
-                                    }
-                            }
+                            TT_HDDC_DangNgan en = new TT_HDDC_DangNgan();
+                            en.MaHD = int.Parse(item["MaHD"].ToString());
+                            en.ChuyenKhoan = true;
+                            _cDCHD.Them_HDDC_DangNgan(en);
                         }
+                    }
+                    else
+                        if (item["SoHoaDon"].ToString() != "")
+                            if (_cHoaDon.checkExists_KyMoi(item["Ky"].ToString()) == false)
+                            {
+                                var transactionOptions = new TransactionOptions();
+                                transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                                using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
+                                {
+                                    if (_cHoaDon.DangNgan("ChuyenKhoan", item["SoHoaDon"].ToString(), CNguoiDung.MaND))
+                                        if (_cTienDu.UpdateThem(item["SoHoaDon"].ToString()))
+                                        {
+                                            scope.Complete();
+                                            scope.Dispose();
+                                        }
+                                }
+                            }
+                }
+
             }
             catch (Exception ex)
             {

@@ -814,13 +814,25 @@ namespace ThuTien.GUI.TongHop
                             transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
                             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                             {
-                                if (_cHoaDon.DangNgan("ChuyenKhoan", item["SoHoaDon"].ToString(), _cNguoiDung.getChuyenKhoan().MaND))
-                                    if (_cTienDu.UpdateThem(item["SoHoaDon"].ToString()))
+                                if (bool.Parse(item["ChuyenKhoan"].ToString()))
+                                {
+                                    if (_cHoaDon.DangNgan("ChuyenKhoan", item["SoHoaDon"].ToString(), _cNguoiDung.getChuyenKhoan().MaND))
+                                        if (_cTienDu.UpdateThem(item["SoHoaDon"].ToString()))
+                                        {
+                                            _cDCHD.ExecuteNonQuery("delete from TT_HDDC_DangNgan where MaHD=" + item["MaHD"].ToString());
+                                            scope.Complete();
+                                            scope.Dispose();
+                                        }
+                                }
+                                else
+                                {
+                                    if (_cHoaDon.DangNgan("Quay", item["SoHoaDon"].ToString(), _cNguoiDung.getChuyenKhoan().MaND))
                                     {
                                         _cDCHD.ExecuteNonQuery("delete from TT_HDDC_DangNgan where MaHD=" + item["MaHD"].ToString());
                                         scope.Complete();
                                         scope.Dispose();
                                     }
+                                }
                             }
                         }
                         loadHoaDon();

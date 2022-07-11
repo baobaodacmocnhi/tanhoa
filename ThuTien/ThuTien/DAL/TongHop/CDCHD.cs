@@ -2407,6 +2407,7 @@ namespace ThuTien.DAL.TongHop
                             PhiBVMT_Start = itemDC.PHI_BD,
                             PhiBVMT_Thue_Start = itemDC.PHI_Thue_BD,
                             TongCong_Start = itemDC.TONGCONG_BD,
+                            itemHDDC.ChuyenKhoan,
                         };
             return LINQToDataTable(query);
         }
@@ -2461,6 +2462,7 @@ namespace ThuTien.DAL.TongHop
                             PhiBVMT_Start = itemDC.PHI_BD,
                             PhiBVMT_Thue_Start = itemDC.PHI_Thue_BD,
                             TongCong_Start = itemDC.TONGCONG_BD,
+                            itemHDDC.ChuyenKhoan,
                         };
             return LINQToDataTable(query);
         }
