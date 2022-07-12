@@ -9,7 +9,7 @@ using ThuTien.DAL.Doi;
 
 namespace ThuTien.DAL
 {
-    class CKinhDoanh
+    class CThuongVu
     {
         protected static string _connectionString;  // Chuỗi kết nối
         protected SqlConnection connection;         // Đối tượng kết nối
@@ -19,7 +19,7 @@ namespace ThuTien.DAL
         dbKTKS_DonKHDataContext _dbKinhDoanh = new dbKTKS_DonKHDataContext();
         private const int _GiamTienNuoc = 10;
 
-        public CKinhDoanh()
+        public CThuongVu()
         {
             try
             {

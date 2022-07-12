@@ -25,7 +25,7 @@ namespace ThuTien.GUI.TimKiem
     {
         CHoaDon _cHoaDon = new CHoaDon();
         CDongNuoc _cDongNuoc = new CDongNuoc();
-        CKinhDoanh _cKinhDoanh = new CKinhDoanh();
+        CThuongVu _cKinhDoanh = new CThuongVu();
         CChuyenNoKhoDoi _cCNKD = new CChuyenNoKhoDoi();
         CLenhHuy _cLenhHuy = new CLenhHuy();
         CToTrinhCatHuy _cTTCH = new CToTrinhCatHuy();

@@ -26,7 +26,7 @@ namespace ThuTien.GUI.TongHop
         CDCHD _cDCHD = new CDCHD();
         CHoaDon _cHoaDon = new CHoaDon();
         CTamThu _cTamThu = new CTamThu();
-        CKinhDoanh _cKinhDoanh = new CKinhDoanh();
+        CThuongVu _cKinhDoanh = new CThuongVu();
 
         public frmShowDCHD(int MaHD, string SoHoaDon)
         {

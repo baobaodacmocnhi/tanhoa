@@ -25,7 +25,7 @@ namespace ThuTien.GUI.Doi
         CTo _cTo = new CTo();
         CHoaDon _cHoaDon = new CHoaDon();
         CChotDangNgan _cChotDangNgan = new CChotDangNgan();
-        CKinhDoanh _cKinhDoanh = new CKinhDoanh();
+        CThuongVu _cKinhDoanh = new CThuongVu();
 
         frmLoading frm;
         string _actionNopTien = "";

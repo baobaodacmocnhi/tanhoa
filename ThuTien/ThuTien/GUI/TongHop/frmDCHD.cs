@@ -16,6 +16,7 @@ using ThuTien.BaoCao.TongHop;
 using ThuTien.GUI.BaoCao;
 using ThuTien.DAL.ChuyenKhoan;
 using System.Transactions;
+using ThuTien.DAL;
 
 namespace ThuTien.GUI.TongHop
 {
@@ -24,6 +25,7 @@ namespace ThuTien.GUI.TongHop
         string _mnu = "mnuDCHD";
         CDCHD _cDCHD = new CDCHD();
         CHoaDon _cHoaDon = new CHoaDon();
+        CThuongVu _cThuongVu = new CThuongVu();
 
         public frmDCHD()
         {
@@ -51,12 +53,13 @@ namespace ThuTien.GUI.TongHop
 
         public void loadHoaDon()
         {
-            DataTable dt = _cDCHD.getDS_HD0_Ton();
-            //if (dt != null && dt.Rows.Count > 0)
-            //    lbHD0.Text = dt.Rows.Count + " HĐ = 0 chưa Đăng Ngân";
-            //else
-            //    lbHD0.Text = "";
+            DataTable dt = _cDCHD.getDS_HDDC_DangNgan_HD0();
+            if (dt != null && dt.Rows.Count > 0)
+                lbHD0.Text = dt.Rows.Count + " HĐ = 0 chưa Đăng Ngân";
+            else
+                lbHD0.Text = "";
             dt = _cDCHD.getDS_HDDC_Cho_DangNgan();
+            dt.Merge(_cDCHD.getDS_HDDC_Cho_DangNgan_HD0());
             if (dt != null && dt.Rows.Count > 0)
                 lbHDDCCho.Text = dt.Rows.Count + " HĐ chờ HĐĐC";
             else
@@ -412,6 +415,7 @@ namespace ThuTien.GUI.TongHop
             try
             {
                 DataTable dt = _cDCHD.getDS_HDDC_Cho_DangNgan();
+                dt.Merge(_cDCHD.getDS_HDDC_Cho_DangNgan_HD0());
 
                 //Tạo các đối tượng Excel
                 Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
@@ -545,6 +549,7 @@ namespace ThuTien.GUI.TongHop
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     DataRow dr = dt.Rows[i];
+                    DCBD_ChiTietHoaDon dchd = _cThuongVu.get_HoaDon(decimal.Parse(dr["SoPhieu"].ToString()));
                     indexRow++;
                     oSheet.Cells[indexRow, 1] = dr["Dot"].ToString();
                     oSheet.Cells[indexRow, 2] = dr["Ky2"].ToString();
@@ -573,7 +578,7 @@ namespace ThuTien.GUI.TongHop
                     oSheet.Cells[indexRow, 15] = dr["GiaBieuMoi"].ToString();
                     oSheet.Cells[indexRow, 16] = dr["DinhMucMoi"].ToString();
                     oSheet.Cells[indexRow, 17] = dr["TieuThuMoi"].ToString();
-                    if (bool.Parse(dr["KhauTru"].ToString()) == true)
+                    if (dchd.KhauTru == true)
                     {
                         oSheet.Cells[indexRow, 18] = "0";
                         oSheet.Cells[indexRow, 19] = "0";
@@ -773,7 +778,7 @@ namespace ThuTien.GUI.TongHop
                     if (MessageBox.Show("Bạn có chắc chắn?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
                         CNguoiDung _cNguoiDung = new CNguoiDung();
-                        DataTable dt = _cDCHD.getDS_HD0_Ton();
+                        DataTable dt = _cDCHD.getDS_HDDC_DangNgan_HD0();
                         foreach (DataRow item in dt.Rows)
                         {
                             _cHoaDon.DangNgan("ChuyenKhoan", item["SoHoaDon"].ToString(), _cNguoiDung.getChuyenKhoan().MaND);
@@ -794,7 +799,9 @@ namespace ThuTien.GUI.TongHop
 
         private void btnXem_HDDC_Cho_DangNgan_Click(object sender, EventArgs e)
         {
-            dgvDCHD.DataSource = _cDCHD.getDS_HDDC_Cho_DangNgan();
+            DataTable dt = _cDCHD.getDS_HDDC_Cho_DangNgan();
+            dt.Merge(_cDCHD.getDS_HDDC_Cho_DangNgan_HD0());
+            dgvDCHD.DataSource = dt;
         }
 
         private void btnDangNgan_HDDC_Click(object sender, EventArgs e)

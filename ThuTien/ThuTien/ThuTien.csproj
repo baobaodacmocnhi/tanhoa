@@ -15,9 +15,9 @@
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\BaoBao\Desktop\ThuTienWFH\</PublishUrl>
+    <PublishUrl>\\server9\BaoBao%24\ThuTien\</PublishUrl>
     <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
+    <InstallFrom>Unc</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
@@ -25,14 +25,14 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <UpdateUrl>http://113.161.88.180:81/ThuTienWFH/</UpdateUrl>
+    <UpdateUrl>\\server9\BaoBao%24\ThuTien\</UpdateUrl>
     <TargetCulture>vi-VN</TargetCulture>
     <ProductName>Quản Lý Thu Ngân</ProductName>
     <PublisherName>T.CNTT</PublisherName>
     <MinimumRequiredVersion>1.0.0.1439</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>1.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -663,7 +663,7 @@
     <Compile Include="DAL\ChuyenKhoan\CPhiMoNuoc.cs" />
     <Compile Include="DAL\ChuyenKhoan\CTienDu.cs" />
     <Compile Include="DAL\ChuyenKhoan\CXacNhanThanhToan.cs" />
-    <Compile Include="DAL\CKinhDoanh.cs" />
+    <Compile Include="DAL\CThuongVu.cs" />
     <Compile Include="DAL\CDAL.cs" />
     <Compile Include="DAL\ChuyenKhoan\CDuLieuKhachHang.cs" />
     <Compile Include="DAL\ChuyenKhoan\CNganHang.cs" />

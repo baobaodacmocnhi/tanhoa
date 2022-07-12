@@ -26,7 +26,7 @@ namespace ThuTien.GUI.Quay
         CChuyenNoKhoDoi _cCNKD = new CChuyenNoKhoDoi();
         CTo _cTo = new CTo();
         CToTrinhCatHuy _cTTCH = new CToTrinhCatHuy();
-        CKinhDoanh _cKinhDoanh = new CKinhDoanh();
+        CThuongVu _cKinhDoanh = new CThuongVu();
 
         public frmLenhHuy()
         {

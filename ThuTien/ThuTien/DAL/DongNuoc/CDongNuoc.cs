@@ -268,6 +268,17 @@ namespace ThuTien.DAL.DongNuoc
             }
         }
 
+        public int countDongNuoc(decimal MaDN)
+        {
+            object result = ExecuteQuery_ReturnOneValue("select COUNT(MaDN) from TT_DongNuoc where YEAR(CreateDate)=(select YEAR(CreateDate) from TT_DongNuoc where MaDN=" + MaDN + ")"
+            + " and MONTH(CreateDate)=(select MONTH(CreateDate) from TT_DongNuoc where MaDN=" + MaDN + ") and CreateBy=(select CreateBy from TT_DongNuoc where MaDN=" + MaDN + ")"
+            + " and MaNV_DongNuoc is not null group by YEAR(CreateDate),MONTH(CreateDate)");
+            if (result != null)
+                return (int)result;
+            else
+                return 0;
+        }
+
         public DataSet getDS_Ton(string Loai, int MaNV_DongNuoc)
         {
             DataSet ds = new DataSet();
@@ -388,6 +399,8 @@ namespace ThuTien.DAL.DongNuoc
             ds.Tables.Add(dtDongNuoc);
 
             var queryCTDN = from itemCTDN in _db.TT_CTDongNuocs
+                            join itemDVT in _db.TT_DichVuThus on itemCTDN.MaHD equals itemDVT.MaHD into tableDVT
+                            from itemtableDVT in tableDVT.DefaultIfEmpty()
                             join itemDN in _db.TT_DongNuocs on itemCTDN.MaDN equals itemDN.MaDN
                             join itemHD in _db.HOADONs on itemCTDN.MaHD equals itemHD.ID_HOADON //into tableHD
                             //from itemtableHD in tableHD.DefaultIfEmpty()
@@ -404,6 +417,7 @@ namespace ThuTien.DAL.DongNuoc
                                 itemCTDN.PhiBVMT,
                                 itemCTDN.TongCong,
                                 NgayGiaiTrach = itemHD.NGAYGIAITRACH,
+                                itemtableDVT.TenDichVu,
                             };
             DataTable dtCTDongNuoc = new DataTable();
             dtCTDongNuoc = LINQToDataTable(queryCTDN);

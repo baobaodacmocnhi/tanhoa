@@ -18,7 +18,7 @@ namespace ThuTien.GUI.Doi
         CHoaDon _cHoaDon = new CHoaDon();
         CDCHD _cDCHD = new CDCHD();
         CGiaBanBinhQuan _cGBBQ = new CGiaBanBinhQuan();
-        CKinhDoanh _cKinhDoanh = new CKinhDoanh();
+        CThuongVu _cKinhDoanh = new CThuongVu();
 
         public frmTinhGiaBanBinhQuan()
         {

@@ -28,7 +28,7 @@ namespace ThuTien.GUI.ToTruong
         CTo _cTo = new CTo();
         CTamThu _cTamThu = new CTamThu();
         CTienDu _cTienDu = new CTienDu();
-        CKinhDoanh _cKinhDoanh = new CKinhDoanh();
+        CThuongVu _cKinhDoanh = new CThuongVu();
         CDocSo _cDocSo = new CDocSo();
         BindingSource bsHoaDon = new BindingSource();
         DataTable _dt = new DataTable();

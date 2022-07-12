@@ -30,7 +30,7 @@ namespace ThuTien.GUI.Doi
         CLenhHuy _cLenhHuy = new CLenhHuy();
         CDongNuoc _cDongNuoc = new CDongNuoc();
         CDuLieuKhachHang _cDLKH = new CDuLieuKhachHang();
-        CKinhDoanh _cKinhDoanh = new CKinhDoanh();
+        CThuongVu _cKinhDoanh = new CThuongVu();
         List<TT_To> _lstTo;
 
         public frmKiemTraTonDoi()

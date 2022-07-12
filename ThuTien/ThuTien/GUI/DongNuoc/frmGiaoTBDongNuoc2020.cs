@@ -31,7 +31,7 @@ namespace ThuTien.GUI.DongNuoc
         CDHN _cDocSo = new CDHN();
         CLenhHuy _cLenhHuy = new CLenhHuy();
         CHoaDon _cHoaDon = new CHoaDon();
-        CKinhDoanh _cKinhDoanh = new CKinhDoanh();
+        CThuongVu _cKinhDoanh = new CThuongVu();
 
         DataRowView _selectedRow = null;
 
@@ -125,19 +125,26 @@ namespace ThuTien.GUI.DongNuoc
                 else
                 {
                     int DangNgan = 0;
+                    int ThuHo = 0;
                     foreach (DataRow itemChild in childRows)
                     {
-                        DateTime NgayGiaiTrach;
-                        DateTime.TryParse(itemChild["NgayGiaiTrach"].ToString(), out NgayGiaiTrach);
+                        //DateTime NgayGiaiTrach;
+                        //DateTime.TryParse(itemChild["NgayGiaiTrach"].ToString(), out NgayGiaiTrach);
                         ///xét ngày đăng ngân để lấy tồn lùi
-                        if (!string.IsNullOrEmpty(itemChild["NgayGiaiTrach"].ToString()) && NgayGiaiTrach.Date <= dateDen.Value.Date)
+                        if (!string.IsNullOrEmpty(itemChild["NgayGiaiTrach"].ToString()))// && NgayGiaiTrach.Date <= dateDen.Value.Date)
                         {
                             //TinhTrang = "Đăng Ngân";
                             DangNgan++;
                         }
+                        else
+                            if (!string.IsNullOrEmpty(itemChild["NgayGiaiTrach"].ToString()))
+                                ThuHo++;
                     }
                     if (DangNgan == childRows.Count())
                         TinhTrang = "Đăng Ngân";
+                    else
+                        if (ThuHo == childRows.Count())
+                            TinhTrang = "Thu Hộ";
                 }
                 gridViewDN.SetRowCellValue(i, "TinhTrang", TinhTrang);
             }
@@ -153,12 +160,18 @@ namespace ThuTien.GUI.DongNuoc
                     DataTable dt = ((DataTable)gridControl.DataSource).DefaultView.Table;
                     foreach (DataRow item in dt.Rows)
                         if (bool.Parse(item["In"].ToString()))
-                            if (!_cDongNuoc.GiaoDongNuoc(decimal.Parse(item["MaDN"].ToString()), int.Parse(cmbNhanVienGiao.SelectedValue.ToString())))
+                            if (_cDongNuoc.countDongNuoc(decimal.Parse(item["MaDN"].ToString())) > 140)
                             {
-                                //_cDongNuoc.SqlRollbackTransaction();
-                                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Vượt quá 140 lệnh đã giao", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
+                            else
+                                if (!_cDongNuoc.GiaoDongNuoc(decimal.Parse(item["MaDN"].ToString()), int.Parse(cmbNhanVienGiao.SelectedValue.ToString())))
+                                {
+                                    //_cDongNuoc.SqlRollbackTransaction();
+                                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
                     //_cDongNuoc.SqlCommitTransaction();
                     btnXem.PerformClick();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -296,30 +309,33 @@ namespace ThuTien.GUI.DongNuoc
             if (cmbNhanVienLap.SelectedIndex > 0)
             {
                 dsBaoCao dsBaoCao = new dsBaoCao();
-                for (int i = 0; i < gridViewDN.DataRowCount; i++)
-                {
-                    DataRow row = gridViewDN.GetDataRow(i);
-                    DataRow[] childRows = row.GetChildRows("Chi Tiết Đóng Nước");
-
-                    foreach (DataRow itemChild in childRows)
+                DataTable dt = ((DataTable)gridControl.DataSource).DefaultView.Table;
+                //for (int i = 0; i < gridViewDN.DataRowCount; i++)
+                foreach (DataRow item in dt.Rows)
+                    if (bool.Parse(item["In"].ToString()))
                     {
-                        DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
-                        dr["Loai"] = "CHUYỂN";
-                        dr["MaDN"] = row["MaDN"].ToString().Insert(row["MaDN"].ToString().Length - 2, "-");
-                        dr["To"] = row["TenTo"];
-                        dr["HoTen"] = row["HoTen"];
-                        dr["DiaChi"] = row["DiaChi"];
-                        if (!string.IsNullOrEmpty(row["DanhBo"].ToString()))
-                            dr["DanhBo"] = row["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                        dr["MLT"] = row["MLT"].ToString().Insert(4, " ").Insert(2, " ");
-                        dr["Ky"] = itemChild["Ky"];
-                        dr["TongCong"] = itemChild["TongCong"];
-                        dr["NhanVien"] = cmbNhanVienLap.Text;
-                        dr["HanhThu"] = row["HanhThu"];
+                        //DataRow row = gridViewDN.GetDataRow(i);
+                        DataRow[] childRows = item.GetChildRows("Chi Tiết Đóng Nước");
 
-                        dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
+                        foreach (DataRow itemChild in childRows)
+                        {
+                            DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
+                            dr["Loai"] = "CHUYỂN";
+                            dr["MaDN"] = item["MaDN"].ToString().Insert(item["MaDN"].ToString().Length - 2, "-");
+                            dr["To"] = item["TenTo"];
+                            dr["HoTen"] = item["HoTen"];
+                            dr["DiaChi"] = item["DiaChi"];
+                            if (!string.IsNullOrEmpty(item["DanhBo"].ToString()))
+                                dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                            dr["MLT"] = item["MLT"].ToString().Insert(4, " ").Insert(2, " ");
+                            dr["Ky"] = itemChild["Ky"];
+                            dr["TongCong"] = itemChild["TongCong"];
+                            dr["NhanVien"] = cmbNhanVienLap.Text;
+                            dr["HanhThu"] = item["HanhThu"];
+
+                            dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
+                        }
                     }
-                }
                 rptDSHDDongNuoc rpt = new rptDSHDDongNuoc();
                 rpt.SetDataSource(dsBaoCao);
                 frmBaoCao frm = new frmBaoCao(rpt);

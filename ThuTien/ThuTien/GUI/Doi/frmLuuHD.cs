@@ -32,7 +32,7 @@ namespace ThuTien.GUI.Doi
         CDongNuoc _cDongNuoc = new CDongNuoc();
         CLenhHuy _cLenhHuy = new CLenhHuy();
         CChanHoaDonAuto _cChanHoaDonAuto = new CChanHoaDonAuto();
-        CKinhDoanh _cKinhDoanh = new CKinhDoanh();
+        CThuongVu _cKinhDoanh = new CThuongVu();
 
         public frmLuuHD()
         {
