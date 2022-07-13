@@ -163,13 +163,13 @@ namespace ThuTien.GUI.Quay
                             return;
                         }
                         string DanhBo = "";
-                        if (_cDCHD.CheckExist_UpdatedHDDT(int.Parse(item.Cells["MaHD"].Value.ToString()), ref DanhBo) == false)
-                        {
-                            //MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            //dgvHoaDon.CurrentCell = item.Cells["DanhBo"];
-                            //item.Selected = true;
-                            //return;
-                        }
+                        //if (_cDCHD.CheckExist_UpdatedHDDT(int.Parse(item.Cells["MaHD"].Value.ToString()), ref DanhBo) == false)
+                        //{
+                        //    //MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //    //dgvHoaDon.CurrentCell = item.Cells["DanhBo"];
+                        //    //item.Selected = true;
+                        //    //return;
+                        //}
                     }
                 List<TAMTHU> lstTamThu = new List<TAMTHU>();
                 try
