@@ -132,8 +132,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 lbKhongTinhPhiBVMT.Visible = true;
             else
                 lbKhongTinhPhiBVMT.Visible = false;
-            dgvDSSoDangKy.DataSource = _cChungTu.getDS_ChiTiet_DanhBo(hoadon.DANHBA);
-            dgvDSDieuChinh.DataSource = _cDCBD.getDSDCBD(hoadon.DANHBA);
+            dgvDSSoDangKy.DataSource = _cChungTu.getDS_ChiTiet_DanhBo(txtDanhBo.Text.Trim());
+            dgvDSDieuChinh.DataSource = _cDCBD.getDSDCBD(txtDanhBo.Text.Trim());
             if (dgvDSDieuChinh.Rows.Count > 0)
             {
                 dgvDSDieuChinh.Rows[0].DefaultCellStyle.ForeColor = Color.Red;
@@ -474,6 +474,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 }
                 else
                     MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
 

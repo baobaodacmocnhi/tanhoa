@@ -213,7 +213,7 @@ namespace KTKS_DonKH.GUI.VanBan
             {
                 if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
                 {
-                    if (cmbVeViec.SelectedIndex < 0 || txtNoiDung.Text.Trim() == "" || txtNoiNhan.Text.Trim() == "")
+                    if (txtVeViec.Text.Trim() == "" || txtNoiDung.Text.Trim() == "" || txtNoiNhan.Text.Trim() == "")
                     {
                         MessageBox.Show("Chưa nhập đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
