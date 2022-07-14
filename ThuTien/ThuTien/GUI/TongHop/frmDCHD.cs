@@ -826,7 +826,7 @@ namespace ThuTien.GUI.TongHop
                                     if (_cHoaDon.DangNgan("ChuyenKhoan", item["SoHoaDon"].ToString(), _cNguoiDung.getChuyenKhoan().MaND))
                                         if (_cTienDu.UpdateThem(item["SoHoaDon"].ToString()))
                                         {
-                                            _cDCHD.ExecuteNonQuery("delete from TT_HDDC_DangNgan where MaHD=" + item["MaHD"].ToString());
+                                            _cDCHD.LinQ_ExecuteNonQuery("delete from TT_HDDC_DangNgan where MaHD=" + item["MaHD"].ToString());
                                             scope.Complete();
                                             scope.Dispose();
                                         }
@@ -835,7 +835,7 @@ namespace ThuTien.GUI.TongHop
                                 {
                                     if (_cHoaDon.DangNgan("Quay", item["SoHoaDon"].ToString(), _cNguoiDung.getChuyenKhoan().MaND))
                                     {
-                                        _cDCHD.ExecuteNonQuery("delete from TT_HDDC_DangNgan where MaHD=" + item["MaHD"].ToString());
+                                        _cDCHD.LinQ_ExecuteNonQuery("delete from TT_HDDC_DangNgan where MaHD=" + item["MaHD"].ToString());
                                         scope.Complete();
                                         scope.Dispose();
                                     }

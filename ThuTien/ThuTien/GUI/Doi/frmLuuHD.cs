@@ -710,5 +710,53 @@ namespace ThuTien.GUI.Doi
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            int i = 1;
+            try
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                {
+                    if (txtDuongDan.Text.Trim() != "")
+                    {
+                        string[] lines = System.IO.File.ReadAllLines(txtDuongDan.Text.Trim());
+                        progressBar.Minimum = 0;
+                        progressBar.Maximum = lines.Count();
+                        foreach (string line in lines)
+                        {
+                            progressBar.Value = i++;
+                            string lineR = line.Replace("\",\"", "$").Replace("\"", "");
+                            string[] contents = lineR.Split('$');
+                            HOADON hoadon = new HOADON();
+                            if (!string.IsNullOrWhiteSpace(contents[2]))
+                                hoadon.DANHBA = contents[2];
+                            if (!string.IsNullOrWhiteSpace(contents[18]))
+                                hoadon.KY = int.Parse(contents[18]);
+                            if (!string.IsNullOrWhiteSpace(contents[19]))
+                                hoadon.NAM = int.Parse("20" + contents[19]);
+                            if (!string.IsNullOrWhiteSpace(contents[46]))
+                                hoadon.SOHOADON = contents[46];
+                            //Nếu có hóa đơn
+                            if (_cHoaDon.CheckExist(hoadon.DANHBA, hoadon.NAM, hoadon.KY))
+                            {
+                                HOADON hoadonCN = _cHoaDon.Get(hoadon.DANHBA, hoadon.NAM, hoadon.KY);
+                                hoadonCN.SOHOADON = hoadon.SOHOADON;
+                                _cHoaDon.Sua(hoadonCN);
+                            }
+                        }
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                        MessageBox.Show("File không tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Đăng Ngân Chuyển Khoản Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

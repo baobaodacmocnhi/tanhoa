@@ -162,7 +162,7 @@ namespace ThuTien.GUI.Quay
                             item.Selected = true;
                             return;
                         }
-                        string DanhBo = "";
+                        //string DanhBo = "";
                         //if (_cDCHD.CheckExist_UpdatedHDDT(int.Parse(item.Cells["MaHD"].Value.ToString()), ref DanhBo) == false)
                         //{
                         //    //MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
