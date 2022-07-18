@@ -160,12 +160,12 @@ namespace ThuTien.GUI.DongNuoc
                     DataTable dt = ((DataTable)gridControl.DataSource).DefaultView.Table;
                     foreach (DataRow item in dt.Rows)
                         if (bool.Parse(item["In"].ToString()))
-                            if (_cDongNuoc.countDongNuoc(decimal.Parse(item["MaDN"].ToString())) > 140)
-                            {
-                                MessageBox.Show("Vượt quá 140 lệnh đã giao", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
-                            else
+                            //if ((!CNguoiDung.Admin || !CNguoiDung.Doi || !CNguoiDung.ToTruong) && _cDongNuoc.countDongNuoc(decimal.Parse(item["MaDN"].ToString())) > 140)
+                            //{
+                            //    MessageBox.Show("Vượt quá 140 lệnh đã giao", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            //    return;
+                            //}
+                            //else
                                 if (!_cDongNuoc.GiaoDongNuoc(decimal.Parse(item["MaDN"].ToString()), int.Parse(cmbNhanVienGiao.SelectedValue.ToString())))
                                 {
                                     //_cDongNuoc.SqlRollbackTransaction();
