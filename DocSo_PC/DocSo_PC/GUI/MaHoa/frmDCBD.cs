@@ -269,7 +269,7 @@ namespace DocSo_PC.GUI.MaHoa
                             dr["DinhMucHN"] = en.DinhMucHN;
                             ///Biến Động
                             dr["GiaBieuBD"] = en.GiaBieu_BD;
-                            dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper() + " " + CNguoiDung.TenPhong.ToUpper();
+                            dr["ChucVu"] = "TUQ GIÁM ĐỐC\n" + CNguoiDung.ChucVu.ToUpper() + " " + CNguoiDung.TenPhong.ToUpper();
                             dr["NguoiKy"] = CNguoiDung.NguoiKy.ToUpper();
                             dsBaoCao.Tables["DCBD"].Rows.Add(dr);
                         }
@@ -314,7 +314,7 @@ namespace DocSo_PC.GUI.MaHoa
                             dr["DinhMucHN"] = en.DinhMucHN;
                             ///Biến Động
                             dr["GiaBieuBD"] = en.GiaBieu_BD;
-                            dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper() + " " + CNguoiDung.TenPhong.ToUpper();
+                            dr["ChucVu"] = "TUQ GIÁM ĐỐC\n" + CNguoiDung.ChucVu.ToUpper() + " " + CNguoiDung.TenPhong.ToUpper();
                             dr["NguoiKy"] = CNguoiDung.NguoiKy.ToUpper();
                             dsBaoCao.Tables["DCBD"].Rows.Add(dr);
                         }
