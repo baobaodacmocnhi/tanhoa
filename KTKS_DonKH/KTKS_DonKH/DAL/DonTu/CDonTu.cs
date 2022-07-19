@@ -2587,5 +2587,15 @@ namespace KTKS_DonKH.DAL.DonTu
                     + " where dt.MaDon=dtct.MaDon and CAST(dt.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(dt.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and Name_NhomDon like N'%chuyên đề%'";
             return ExecuteQuery_DataTable(sql);
         }
+
+        public DataTable getDS_KTXM_Ton(int MaNV_KTXM)
+        {
+            return ExecuteQuery_DataTable("select MaDonChiTiet=case when dt.TongDB=0 then CONVERT(varchar(8),dtct.MaDon)"
+                                       + " when dt.TongDB=1 then CONVERT(varchar(8),dtct.MaDon)"
+                                       + " when dt.TongDB>=2 then CONVERT(varchar(8),dtct.MaDon)+'.'+CONVERT(varchar(3),dtct.STT) end"
+                                       + " ,dtct.DanhBo,dtct.HoTen,dtct.DiaChi"
+                                       + " from DonTu dt,DonTu_ChiTiet dtct,DonTu_LichSu dtls where dtct.TinhTrang like N'Tồn (Kiểm Tra)' and ID_KTXM=" + MaNV_KTXM + " and dt.MaDon=dtct.MaDon and dtct.MaDon=dtls.MaDon and dtct.STT=dtls.STT");
+        }
+
     }
 }

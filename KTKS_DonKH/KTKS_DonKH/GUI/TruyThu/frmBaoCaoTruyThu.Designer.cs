@@ -81,7 +81,8 @@
             "Chuyển lập TB hủy",
             "Chuyển lập TB Đóng Nước",
             "Giữ nguyên",
-            "Tạm hoãn để bổ sung hồ sơ"});
+            "Tạm hoãn để bổ sung hồ sơ",
+            "Xếp đơn"});
             this.cmbTinhTrang.Location = new System.Drawing.Point(86, 87);
             this.cmbTinhTrang.Name = "cmbTinhTrang";
             this.cmbTinhTrang.Size = new System.Drawing.Size(172, 24);
@@ -203,7 +204,10 @@
             "Đã gửi TB tạm ngưng cung cấp nước",
             "Chuyển lập TB cắt tạm",
             "Chuyển lập TB hủy",
-            "Giữ nguyên"});
+            "Chuyển lập TB Đóng Nước",
+            "Giữ nguyên",
+            "Tạm hoãn để bổ sung hồ sơ",
+            "Xếp đơn"});
             this.cmbTinhTrang_TheoTinhTrang.Location = new System.Drawing.Point(89, 21);
             this.cmbTinhTrang_TheoTinhTrang.Name = "cmbTinhTrang_TheoTinhTrang";
             this.cmbTinhTrang_TheoTinhTrang.Size = new System.Drawing.Size(172, 24);

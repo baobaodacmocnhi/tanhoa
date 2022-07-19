@@ -16,6 +16,8 @@ using KTKS_DonKH.DAL.ToBamChi;
 using KTKS_DonKH.DAL.DonTu;
 using KTKS_DonKH.GUI.HeThong;
 using System.Transactions;
+using KTKS_DonKH.BaoCao;
+using KTKS_DonKH.GUI.BaoCao;
 
 namespace KTKS_DonKH.GUI.KiemTraXacMinh
 {
@@ -89,6 +91,11 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 _ctktxm = _cKTXM.GetCT(_MaCTKTXM);
                 LoadCTKTXM(_ctktxm);
             }
+            DataTable dt = _cDonTu.getDS_KTXM_Ton(CTaiKhoan.MaUser);
+            if (dt != null && dt.Rows.Count > 0)
+                lbTon.Text = "Hiện có " + dt.Rows.Count + " đơn TỒN KIỂM TRA";
+            else
+                lbTon.Text = "";
         }
 
         public void LoadTTKH(HOADON hoadon)
@@ -1201,6 +1208,29 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void lbTon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+            DataTable dt = _cDonTu.getDS_KTXM_Ton(CTaiKhoan.MaUser);
+            foreach (DataRow item in dt.Rows)
+                {
+                    DataRow dr = dsBaoCao.Tables["DanhSach"].NewRow();
+
+                    dr["LoaiBaoCao"] = "TỒN KIỂM TRA";
+                    dr["MaDon"] = item["MaDonChiTiet"];
+                    dr["DanhBo"] = item["DanhBo"];
+                    dr["HoTen"] = item["HoTen"];
+                    dr["DiaChi"] = item["DiaChi"];
+                    dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
+
+                    dsBaoCao.Tables["DanhSach"].Rows.Add(dr);
+                }
+            rptDanhSach_Doc rpt = new rptDanhSach_Doc();
+            rpt.SetDataSource(dsBaoCao);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.Show();
         }
 
 

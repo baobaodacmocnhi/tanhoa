@@ -1668,7 +1668,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                                     dr["PhiBVMTMoi1"] = 0;
                                     dr["PhiBVMT_ThueCu"] = 0;
                                     if ((PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) > 0)
-                                        dr["PhiBVMT_ThueMoi"] = (PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) * ThueTDVTN_VAT / 100;
+                                        dr["PhiBVMT_ThueMoi"] = (int)Math.Round((double)(PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) * ThueTDVTN_VAT / 100, 0, MidpointRounding.AwayFromZero);
                                     else
                                         dr["PhiBVMT_ThueMoi"] = 0;
                                 }
@@ -1680,11 +1680,11 @@ namespace KTKS_DonKH.GUI.TruyThu
                                     dr["PhiBVMTMoi"] = PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc;
 
                                     if ((PhiBVMTNamCu_Sau - PhiBVMTNamCu_Truoc) > 0)
-                                        dr["PhiBVMT_ThueCu"] = (PhiBVMTNamCu_Sau - PhiBVMTNamCu_Truoc) * ThueTDVTN_VAT / 100;
+                                        dr["PhiBVMT_ThueCu"] =(int)Math.Round((double)(PhiBVMTNamCu_Sau - PhiBVMTNamCu_Truoc) * ThueTDVTN_VAT / 100, 0, MidpointRounding.AwayFromZero);
                                     else
                                         dr["PhiBVMT_ThueCu"] = 0;
                                     if ((PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) > 0)
-                                        dr["PhiBVMT_ThueMoi"] = (PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) * ThueTDVTN_VAT / 100;
+                                        dr["PhiBVMT_ThueMoi"] =(int)Math.Round((double) (PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) * ThueTDVTN_VAT / 100, 0, MidpointRounding.AwayFromZero);
                                     else
                                         dr["PhiBVMT_ThueMoi"] = 0;
                                 }

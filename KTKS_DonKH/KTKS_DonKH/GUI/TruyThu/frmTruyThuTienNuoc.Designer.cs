@@ -285,7 +285,8 @@
             "Chuyển lập TB hủy",
             "Chuyển lập TB Đóng Nước",
             "Giữ nguyên",
-            "Tạm hoãn để bổ sung hồ sơ"});
+            "Tạm hoãn để bổ sung hồ sơ",
+            "Xếp đơn"});
             this.cmbTinhTrang.Location = new System.Drawing.Point(286, 160);
             this.cmbTinhTrang.Name = "cmbTinhTrang";
             this.cmbTinhTrang.Size = new System.Drawing.Size(172, 24);
@@ -948,28 +949,28 @@
             // 
             // txtPhiBVMT
             // 
-            this.txtPhiBVMT.Location = new System.Drawing.Point(753, 564);
+            this.txtPhiBVMT.Location = new System.Drawing.Point(815, 564);
             this.txtPhiBVMT.Name = "txtPhiBVMT";
             this.txtPhiBVMT.Size = new System.Drawing.Size(100, 22);
             this.txtPhiBVMT.TabIndex = 39;
             // 
             // txtThueGTGT
             // 
-            this.txtThueGTGT.Location = new System.Drawing.Point(643, 564);
+            this.txtThueGTGT.Location = new System.Drawing.Point(705, 564);
             this.txtThueGTGT.Name = "txtThueGTGT";
             this.txtThueGTGT.Size = new System.Drawing.Size(110, 22);
             this.txtThueGTGT.TabIndex = 37;
             // 
             // txtGiaBan
             // 
-            this.txtGiaBan.Location = new System.Drawing.Point(543, 564);
+            this.txtGiaBan.Location = new System.Drawing.Point(605, 564);
             this.txtGiaBan.Name = "txtGiaBan";
             this.txtGiaBan.Size = new System.Drawing.Size(100, 22);
             this.txtGiaBan.TabIndex = 35;
             // 
             // txtTongCongMoi
             // 
-            this.txtTongCongMoi.Location = new System.Drawing.Point(953, 564);
+            this.txtTongCongMoi.Location = new System.Drawing.Point(1015, 564);
             this.txtTongCongMoi.Name = "txtTongCongMoi";
             this.txtTongCongMoi.Size = new System.Drawing.Size(100, 22);
             this.txtTongCongMoi.TabIndex = 41;
@@ -985,7 +986,7 @@
             // 
             // txtTongCongCu
             // 
-            this.txtTongCongCu.Location = new System.Drawing.Point(339, 564);
+            this.txtTongCongCu.Location = new System.Drawing.Point(401, 564);
             this.txtTongCongCu.Name = "txtTongCongCu";
             this.txtTongCongCu.Size = new System.Drawing.Size(100, 22);
             this.txtTongCongCu.TabIndex = 42;
@@ -1457,7 +1458,7 @@
             // 
             // txtPhiBVMT_Thue
             // 
-            this.txtPhiBVMT_Thue.Location = new System.Drawing.Point(853, 564);
+            this.txtPhiBVMT_Thue.Location = new System.Drawing.Point(915, 564);
             this.txtPhiBVMT_Thue.Name = "txtPhiBVMT_Thue";
             this.txtPhiBVMT_Thue.Size = new System.Drawing.Size(100, 22);
             this.txtPhiBVMT_Thue.TabIndex = 151;
