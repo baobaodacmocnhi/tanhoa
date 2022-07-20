@@ -24,6 +24,7 @@ using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.GUI.DongNuoc;
 using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.DAL;
+using CrystalDecisions.CrystalReports.Engine;
 
 namespace KTKS_DonKH.GUI.CatHuyDanhBo
 {
@@ -474,12 +475,50 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                                 CHDB_ChiTietCatTam ctctdb = _cCHDB.GetCTCTDB(decimal.Parse(dgvDSCTCHDB["MaTB", i].Value.ToString()));
 
-                                //dr["SoPhieu"] = ctctdb.MaCTCTDB.ToString().Insert(ctctdb.MaCTCTDB.ToString().Length - 2, "-");
+                                ////dr["SoPhieu"] = ctctdb.MaCTCTDB.ToString().Insert(ctctdb.MaCTCTDB.ToString().Length - 2, "-");
+                                //dr["HoTen"] = ctctdb.HoTen;
+                                //dr["DiaChi"] = ctctdb.DiaChi;
+                                //if (!string.IsNullOrEmpty(ctctdb.DanhBo))
+                                //    dr["DanhBo"] = ctctdb.DanhBo.Insert(7, " ").Insert(4, " ");
+                                //dr["HopDong"] = ctctdb.HopDong;
+                                //dr["Quan"] = _cCHDB.getTenQuan(int.Parse(ctctdb.Quan));
+                                //dr["Phuong"] = _cCHDB.getTenPhuong(int.Parse(ctctdb.Quan), int.Parse(ctctdb.Phuong));
+
+                                //dr["ViTriDHN"] = "Vị trí ĐHN lắp đặt: " + ctctdb.ViTriDHN1 + ", " + ctctdb.ViTriDHN2;
+
+                                //if (ctctdb.LyDo != "Vấn Đề Khác")
+                                //    dr["LyDo"] = ctctdb.LyDo + ". ";
+                                //if (ctctdb.GhiChuLyDo != "")
+                                //    dr["LyDo"] += ctctdb.GhiChuLyDo + ". ";
+                                //if (ctctdb.SoTien.ToString() != "")
+                                //    dr["LyDo"] += "\r\nTổng số tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,## đồng}", ctctdb.SoTien);
+                                //dr["NoiDung"] = ctctdb.NoiDung;
+
+                                //dr["NoiNhan"] = ctctdb.NoiNhan + "\r\nTB" + ctctdb.MaCTCTDB.ToString().Insert(ctctdb.MaCTCTDB.ToString().Length - 2, "-");
+
+                                //if (ctctdb.NgayXuLy != null)
+                                //    dr["NgayXuLy"] = ctctdb.NgayXuLy.Value.ToString("dd/MM/yyyy") + " : " + ctctdb.NoiDungXuLy;
+
+                                //dr["ChucVu"] = ctctdb.ChucVu;
+                                //dr["NguoiKy"] = ctctdb.NguoiKy;
+                                //dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
+
+                                //dsBaoCao.Tables["ThongBaoCHDB"].Rows.Add(dr);
+
+                                //DataRow drLogo = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
+                                //drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
+                                //dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(drLogo);
+
+                                //rptThongBaoCTDB rpt = new rptThongBaoCTDB();
+                                //rpt.SetDataSource(dsBaoCao);
+
+                                //dr["SoPhieu"] = _ctctdb.MaCTCTDB.ToString().Insert(_ctctdb.MaCTCTDB.ToString().Length - 2, "-");
                                 dr["HoTen"] = ctctdb.HoTen;
                                 dr["DiaChi"] = ctctdb.DiaChi;
                                 if (!string.IsNullOrEmpty(ctctdb.DanhBo))
                                     dr["DanhBo"] = ctctdb.DanhBo.Insert(7, " ").Insert(4, " ");
                                 dr["HopDong"] = ctctdb.HopDong;
+                                dr["MLT"] = ctctdb.MLT;
                                 dr["Quan"] = _cCHDB.getTenQuan(int.Parse(ctctdb.Quan));
                                 dr["Phuong"] = _cCHDB.getTenPhuong(int.Parse(ctctdb.Quan), int.Parse(ctctdb.Phuong));
 
@@ -495,8 +534,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                                 dr["NoiNhan"] = ctctdb.NoiNhan + "\r\nTB" + ctctdb.MaCTCTDB.ToString().Insert(ctctdb.MaCTCTDB.ToString().Length - 2, "-");
 
-                                if (ctctdb.NgayXuLy != null)
-                                    dr["NgayXuLy"] = ctctdb.NgayXuLy.Value.ToString("dd/MM/yyyy") + " : " + ctctdb.NoiDungXuLy;
+                                dr["NgayThucHien"] = ctctdb.NgayThucHien.Value.ToString("dd/MM/yyyy");
 
                                 dr["ChucVu"] = ctctdb.ChucVu;
                                 dr["NguoiKy"] = ctctdb.NguoiKy;
@@ -508,8 +546,13 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
                                 dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(drLogo);
 
-                                rptThongBaoCTDB rpt = new rptThongBaoCTDB();
+                                ReportDocument rpt;
+                                //if (_ctctdb.LyDo.Contains("Nhiều Kỳ") == true)
+                                //    rpt = new rptThongBaoCHDB_NoNhieuKy();
+                                //else
+                                rpt = new rptThongBaoCTDB_PHT();
                                 rpt.SetDataSource(dsBaoCao);
+                                rpt.Subreports[0].SetDataSource(dsBaoCao);
 
                                 printDialog.AllowSomePages = true;
                                 printDialog.ShowHelp = true;
@@ -531,19 +574,57 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                                 CHDB_ChiTietCatHuy ctchdb = _cCHDB.GetCTCHDB(decimal.Parse(dgvDSCTCHDB["MaTB", i].Value.ToString()));
 
-                                //dr["SoPhieu"] = ctchdb.MaCTCHDB.ToString().Insert(ctchdb.MaCTCHDB.ToString().Length - 2, "-");
+                                ////dr["SoPhieu"] = ctchdb.MaCTCHDB.ToString().Insert(ctchdb.MaCTCHDB.ToString().Length - 2, "-");
+                                //dr["HoTen"] = ctchdb.HoTen;
+                                //dr["DiaChi"] = ctchdb.DiaChi;
+                                //if (!string.IsNullOrEmpty(ctchdb.DanhBo))
+                                //    dr["DanhBo"] = ctchdb.DanhBo.Insert(7, " ").Insert(4, " ");
+                                //dr["HopDong"] = ctchdb.HopDong;
+                                //dr["Quan"] = _cCHDB.getTenQuan(int.Parse(ctchdb.Quan));
+                                //dr["Phuong"] = _cCHDB.getTenPhuong(int.Parse(ctchdb.Quan), int.Parse(ctchdb.Phuong));
+
+                                //dr["ViTriDHN"] = "Vị trí ĐHN lắp đặt: " + ctchdb.ViTriDHN1 + ", " + ctchdb.ViTriDHN2;
+
+                                //if (ctchdb.LyDo != "Vấn Đề Khác")
+                                //    dr["LyDo"] = ctchdb.LyDo + ". ";
+                                //if (ctchdb.GhiChuLyDo != "")
+                                //    dr["LyDo"] += ctchdb.GhiChuLyDo + ". ";
+                                //if (ctchdb.SoTien.ToString() != "")
+                                //    dr["LyDo"] += "\r\nTổng số tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,## đồng}", ctchdb.SoTien);
+                                //dr["NoiDung"] = ctchdb.NoiDung;
+
+                                //dr["NoiNhan"] = ctchdb.NoiNhan + "\r\nTB" + ctchdb.MaCTCHDB.ToString().Insert(ctchdb.MaCTCHDB.ToString().Length - 2, "-");
+
+                                //if (ctchdb.NgayXuLy != null)
+                                //    dr["NgayXuLy"] = ctchdb.NgayXuLy.Value.ToString("dd/MM/yyyy") + " : " + ctchdb.NoiDungXuLy;
+
+                                //dr["ChucVu"] = ctchdb.ChucVu;
+                                //dr["NguoiKy"] = ctchdb.NguoiKy;
+                                //dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
+
+                                //dsBaoCao.Tables["ThongBaoCHDB"].Rows.Add(dr);
+
+                                //DataRow drLogo = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
+                                //drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
+                                //dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(drLogo);
+
+                                //rptThongBaoCHDB rpt = new rptThongBaoCHDB();
+                                //rpt.SetDataSource(dsBaoCao);
+
+                                //dr["SoPhieu"] = _ctchdb.MaCTCHDB.ToString().Insert(_ctchdb.MaCTCHDB.ToString().Length - 2, "-");
                                 dr["HoTen"] = ctchdb.HoTen;
                                 dr["DiaChi"] = ctchdb.DiaChi;
                                 if (!string.IsNullOrEmpty(ctchdb.DanhBo))
                                     dr["DanhBo"] = ctchdb.DanhBo.Insert(7, " ").Insert(4, " ");
                                 dr["HopDong"] = ctchdb.HopDong;
+                                dr["MLT"] = ctchdb.MLT;
                                 dr["Quan"] = _cCHDB.getTenQuan(int.Parse(ctchdb.Quan));
                                 dr["Phuong"] = _cCHDB.getTenPhuong(int.Parse(ctchdb.Quan), int.Parse(ctchdb.Phuong));
 
                                 dr["ViTriDHN"] = "Vị trí ĐHN lắp đặt: " + ctchdb.ViTriDHN1 + ", " + ctchdb.ViTriDHN2;
 
                                 if (ctchdb.LyDo != "Vấn Đề Khác")
-                                    dr["LyDo"] = ctchdb.LyDo + ". ";
+                                    dr["LyDo"] = ctchdb.LyDo + " ";
                                 if (ctchdb.GhiChuLyDo != "")
                                     dr["LyDo"] += ctchdb.GhiChuLyDo + ". ";
                                 if (ctchdb.SoTien.ToString() != "")
@@ -552,8 +633,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                                 dr["NoiNhan"] = ctchdb.NoiNhan + "\r\nTB" + ctchdb.MaCTCHDB.ToString().Insert(ctchdb.MaCTCHDB.ToString().Length - 2, "-");
 
-                                if (ctchdb.NgayXuLy != null)
-                                    dr["NgayXuLy"] = ctchdb.NgayXuLy.Value.ToString("dd/MM/yyyy") + " : " + ctchdb.NoiDungXuLy;
+                                dr["NgayThucHien"] = ctchdb.NgayThucHien.Value.ToString("dd/MM/yyyy");
 
                                 dr["ChucVu"] = ctchdb.ChucVu;
                                 dr["NguoiKy"] = ctchdb.NguoiKy;
@@ -561,12 +641,16 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
                                 dsBaoCao.Tables["ThongBaoCHDB"].Rows.Add(dr);
 
+                                ReportDocument rpt;
+                                //if (_ctchdb.LyDo.Contains("Nhiều Kỳ") == true)
+                                //    rpt = new rptThongBaoCHDB_NoNhieuKy();
+                                //else
                                 DataRow drLogo = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
                                 drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
                                 dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(drLogo);
-
-                                rptThongBaoCHDB rpt = new rptThongBaoCHDB();
+                                rpt = new rptThongBaoCHDB_PHT();
                                 rpt.SetDataSource(dsBaoCao);
+                                rpt.Subreports[0].SetDataSource(dsBaoCao);
 
                                 printDialog.AllowSomePages = true;
                                 printDialog.ShowHelp = true;
