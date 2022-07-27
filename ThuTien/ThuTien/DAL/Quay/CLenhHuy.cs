@@ -116,6 +116,11 @@ namespace ThuTien.DAL.Quay
             return _db.TT_LenhHuys.SingleOrDefault(item => item.SoHoaDon == SoHoaDon);
         }
 
+        public TT_LenhHuy Get(int MaHD)
+        {
+            return _db.TT_LenhHuys.SingleOrDefault(item => item.MaHD == MaHD);
+        }
+
         public TT_LenhHuy getMoiNhat(string DanhBo)
         {
             if (_db.TT_LenhHuys.Any(item => item.DanhBo == DanhBo) == true)
@@ -134,7 +139,7 @@ namespace ThuTien.DAL.Quay
                         select new
                         {
                             itemHD.NGAYGIAITRACH,
-                            itemHD.SOHOADON,
+                            itemHD.SOHOADON,itemLH.MaHD,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
                             DiaChi = itemHD.SO + " " + itemHD.DUONG,
@@ -164,7 +169,7 @@ namespace ThuTien.DAL.Quay
                         select new
                         {
                             itemHD.NGAYGIAITRACH,
-                            itemHD.SOHOADON,
+                            itemHD.SOHOADON,itemLH.MaHD,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
                             DiaChi = itemHD.SO + " " + itemHD.DUONG,
@@ -192,7 +197,7 @@ namespace ThuTien.DAL.Quay
                         orderby itemHD.MALOTRINH ascending
                         select new
                         {
-                            itemHD.SOHOADON,
+                            itemHD.SOHOADON,itemLH.MaHD,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
                             DiaChi = itemHD.SO + " " + itemHD.DUONG,
@@ -220,7 +225,7 @@ namespace ThuTien.DAL.Quay
                         orderby itemHD.MALOTRINH ascending
                         select new
                         {
-                            itemHD.SOHOADON,
+                            itemHD.SOHOADON,itemLH.MaHD,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
                             DiaChi = itemHD.SO + " " + itemHD.DUONG,
@@ -249,7 +254,7 @@ namespace ThuTien.DAL.Quay
                         select new
                         {
                             itemHD.NGAYGIAITRACH,
-                            itemHD.SOHOADON,
+                            itemHD.SOHOADON,itemLH.MaHD,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
                             DiaChi = itemHD.SO + " " + itemHD.DUONG,
@@ -278,7 +283,7 @@ namespace ThuTien.DAL.Quay
                         select new
                         {
                             itemHD.NGAYGIAITRACH,
-                            itemHD.SOHOADON,
+                            itemHD.SOHOADON,itemLH.MaHD,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
                             DiaChi = itemHD.SO + " " + itemHD.DUONG,
@@ -309,7 +314,7 @@ namespace ThuTien.DAL.Quay
                         select new
                         {
                             itemHD.NGAYGIAITRACH,
-                            itemHD.SOHOADON,
+                            itemHD.SOHOADON,itemLH.MaHD,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
                             DiaChi = itemHD.SO + " " + itemHD.DUONG,
@@ -340,7 +345,7 @@ namespace ThuTien.DAL.Quay
                         select new
                         {
                             itemHD.NGAYGIAITRACH,
-                            itemHD.SOHOADON,
+                            itemHD.SOHOADON,itemLH.MaHD,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
                             DiaChi = itemHD.SO + " " + itemHD.DUONG,
@@ -374,7 +379,7 @@ namespace ThuTien.DAL.Quay
                             DiaChi = itemHD.SO + " " + itemHD.DUONG,
                             DanhBo = itemHD.DANHBA,
                             MLT = itemHD.MALOTRINH,
-                            itemHD.SOHOADON,
+                            itemHD.SOHOADON,itemLH.MaHD,
                             Ky = itemHD.KY + "/" + itemHD.NAM,
                             itemHD.TONGCONG,
                             TenTo = "",
@@ -396,7 +401,7 @@ namespace ThuTien.DAL.Quay
                         select new
                         {
                             itemHD.NGAYGIAITRACH,
-                            itemHD.SOHOADON,
+                            itemHD.SOHOADON,itemLH.MaHD,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
                             DiaChi = itemHD.SO + " " + itemHD.DUONG,
@@ -428,7 +433,7 @@ namespace ThuTien.DAL.Quay
                         select new
                         {
                             itemHD.NGAYGIAITRACH,
-                            itemHD.SOHOADON,
+                            itemHD.SOHOADON,itemLH.MaHD,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
                             DiaChi = itemHD.SO + " " + itemHD.DUONG,
@@ -462,7 +467,7 @@ namespace ThuTien.DAL.Quay
                         select new
                         {
                             itemHD.NGAYGIAITRACH,
-                            itemHD.SOHOADON,
+                            itemHD.SOHOADON,itemLH.MaHD,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
                             DiaChi = itemHD.SO + " " + itemHD.DUONG,
@@ -496,7 +501,7 @@ namespace ThuTien.DAL.Quay
                         select new
                         {
                             itemHD.NGAYGIAITRACH,
-                            itemHD.SOHOADON,
+                            itemHD.SOHOADON,itemLH.MaHD,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
                             DiaChi = itemHD.SO + " " + itemHD.DUONG,

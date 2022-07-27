@@ -62,7 +62,7 @@ namespace ThuTien.GUI.Quay
             if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtSoHoaDon.Text.Trim()))
             {
                 foreach (string item in txtSoHoaDon.Lines)
-                    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && item.ToString().Length == 13)
+                    if (!string.IsNullOrEmpty(item.Trim().ToUpper()))
                     {
                         if (lstHD.FindItemWithText(item.Trim().ToUpper()) == null)
                         {
@@ -70,16 +70,16 @@ namespace ThuTien.GUI.Quay
                             lstHD.EnsureVisible(lstHD.Items.Count - 1);
                         }
                     }
-                    else
-                        ///Trung An thêm 'K' phía cuối liên hóa đơn
-                        if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && item.ToString().Length == 14)
-                        {
-                            if (lstHD.FindItemWithText(item.Trim().ToUpper().Replace("K", "")) == null)
-                            {
-                                lstHD.Items.Add(item.Trim().ToUpper().Replace("K", ""));
-                                lstHD.EnsureVisible(lstHD.Items.Count - 1);
-                            }
-                        }
+                    //else
+                    //    ///Trung An thêm 'K' phía cuối liên hóa đơn
+                    //    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && item.ToString().Length == 14)
+                    //    {
+                    //        if (lstHD.FindItemWithText(item.Trim().ToUpper().Replace("K", "")) == null)
+                    //        {
+                    //            lstHD.Items.Add(item.Trim().ToUpper().Replace("K", ""));
+                    //            lstHD.EnsureVisible(lstHD.Items.Count - 1);
+                    //        }
+                    //    }
                 txtSoLuong.Text = lstHD.Items.Count.ToString();
                 txtSoHoaDon.Text = "";
             }
@@ -178,7 +178,7 @@ namespace ThuTien.GUI.Quay
                         _cLenhHuy.BeginTransaction();
                         foreach (DataGridViewRow item in dgvHoaDon.SelectedRows)
                         {
-                            TT_LenhHuy lenhhuy = _cLenhHuy.Get(item.Cells["SoHoaDon"].Value.ToString());
+                            TT_LenhHuy lenhhuy = _cLenhHuy.Get(int.Parse(item.Cells["MaHD"].Value.ToString()));
                             if (!_cLenhHuy.Xoa(lenhhuy))
                             {
                                 _cLenhHuy.Rollback();
@@ -259,14 +259,14 @@ namespace ThuTien.GUI.Quay
             {
                 TT_CTChuyenNoKhoDoi ctcnkd = _cCNKD.GetCT(item.Cells["SoHoaDon"].Value.ToString());
                 //if (_cCNKD.CheckExistCT(item.Cells["SoHoaDon"].Value.ToString()))
-                if (ctcnkd!=null)
+                if (ctcnkd != null)
                 {
                     //TT_CTChuyenNoKhoDoi ctcnkd = _cCNKD.GetCT(item.Cells["SoHoaDon"].Value.ToString());
 
                     //item.Cells["NgayGiaiTrach"].Value = ctcnkd.CreateDate.Value.ToString("dd/MM/yyyy");
                     item.Cells["DangNgan"].Value = "CNKĐ";
                 }
-                if (chkKiemTraToTrinh.Checked==true)
+                if (chkKiemTraToTrinh.Checked == true)
                 {
                     item.Cells["MaTT"].Value = _cTTCH.getMaTT(item.Cells["SoHoaDon"].Value.ToString());
                     item.Cells["MaCatHuy"].Value = _cKinhDoanh.getLastMaCatHuy(item.Cells["DanhBo"].Value.ToString());
@@ -333,13 +333,13 @@ namespace ThuTien.GUI.Quay
             {
                 if (dgvHoaDon.Columns[e.ColumnIndex].Name == "TinhTrang")
                 {
-                    TT_LenhHuy lenhhuy = _cLenhHuy.Get(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString());
+                    TT_LenhHuy lenhhuy = _cLenhHuy.Get(int.Parse(dgvHoaDon["MaHD", e.RowIndex].Value.ToString()));
                     lenhhuy.TinhTrang = dgvHoaDon["TinhTrang", e.RowIndex].Value.ToString();
                     _cLenhHuy.Sua(lenhhuy);
                 }
                 if (dgvHoaDon.Columns[e.ColumnIndex].Name == "Cat")
                 {
-                    TT_LenhHuy lenhhuy = _cLenhHuy.Get(dgvHoaDon["SoHoaDon", e.RowIndex].Value.ToString());
+                    TT_LenhHuy lenhhuy = _cLenhHuy.Get(int.Parse(dgvHoaDon["MaHD", e.RowIndex].Value.ToString()));
                     lenhhuy.Cat = bool.Parse(dgvHoaDon["Cat", e.RowIndex].Value.ToString());
                     _cLenhHuy.Sua(lenhhuy);
                 }
@@ -354,14 +354,14 @@ namespace ThuTien.GUI.Quay
             dsBaoCao ds = new dsBaoCao();
             ds.Tables["TamThuChuyenKhoan"].PrimaryKey = new DataColumn[] { ds.Tables["TamThuChuyenKhoan"].Columns["DanhBo"] };
             foreach (DataRow item in dt.Rows)
-                if (string.IsNullOrEmpty(item["NgayGiaiTrach"].ToString())&&!ds.Tables["TamThuChuyenKhoan"].Rows.Contains(item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ")))
+                if (string.IsNullOrEmpty(item["NgayGiaiTrach"].ToString()) && !ds.Tables["TamThuChuyenKhoan"].Rows.Contains(item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ")))
                 {
                     DataRow[] drDGV = dt.Select("DanhBo=" + item["DanhBo"]);
-                    string Ky="";
-                    int TongCong = 0 ;
+                    string Ky = "";
+                    int TongCong = 0;
                     foreach (DataRow itemRow in drDGV)
                     {
-                        Ky += itemRow["Ky"].ToString().Trim()+", ";
+                        Ky += itemRow["Ky"].ToString().Trim() + ", ";
                         TongCong += int.Parse(itemRow["TongCong"].ToString());
                     }
                     DataRow dr = ds.Tables["TamThuChuyenKhoan"].NewRow();

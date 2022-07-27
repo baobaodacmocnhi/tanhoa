@@ -855,5 +855,27 @@ namespace ThuTien.GUI.TongHop
             }
         }
 
+        private void btnInGiaoNhan_Click(object sender, EventArgs e)
+        {
+            DataTable dt = _cDCHD.getDS_HDDC_DangNgan_GiaoNhan(dateTu.Value, dateDen.Value);
+            dsBaoCao ds = new dsBaoCao();
+            foreach (DataRow item in dt.Rows)
+            {
+                DataRow dr = ds.Tables["DSDCHD"].NewRow();
+                dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
+                dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
+                dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
+                dr["Ky"] = item["Ky"];
+                dr["TongCong"] = item["TongCong"];
+                dr["HanhThu"] = item["SoPhieu"].ToString().Insert(item["SoPhieu"].ToString().Length-2,"-");
+                dr["To"] = item["NgayGiaiTrach"];
+                ds.Tables["DSDCHD"].Rows.Add(dr);
+            }
+            rptDSDCHD_GiaoNhan rpt = new rptDSDCHD_GiaoNhan();
+            rpt.SetDataSource(ds);
+            frmBaoCao frm = new frmBaoCao(rpt);
+            frm.Show();
+        }
+
     }
 }

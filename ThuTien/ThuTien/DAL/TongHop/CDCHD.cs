@@ -2577,6 +2577,22 @@ namespace ThuTien.DAL.TongHop
             return LINQToDataTable(query);
         }
 
+        public DataTable getDS_HDDC_DangNgan_GiaoNhan(DateTime FromNgayDangNgan, DateTime ToNgayDangNgan)
+        {
+            var query = from itemDC in _db.DIEUCHINH_HDs
+                        join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
+                        where itemHD.NGAYGIAITRACH.Value.Date >= FromNgayDangNgan.Date && itemHD.NGAYGIAITRACH.Value.Date <= ToNgayDangNgan.Date && itemHD.MaNV_DangNgan != null
+                        select new
+                        {
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            DanhBo = itemHD.DANHBA,
+                            itemHD.TONGCONG,
+                            itemHD.NGAYGIAITRACH,
+                            itemDC.SoPhieu,
+                        };
+            return LINQToDataTable(query);
+        }
+
     }
 
 }

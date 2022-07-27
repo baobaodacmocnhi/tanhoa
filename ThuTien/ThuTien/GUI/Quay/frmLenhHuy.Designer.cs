@@ -54,6 +54,7 @@
             this.cmbNam = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.chkKiemTraToTrinh = new System.Windows.Forms.CheckBox();
+            this.MaHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ky = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MLT = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -99,6 +100,7 @@
             this.dgvHoaDon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvHoaDon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHoaDon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MaHD,
             this.CreateDate,
             this.Ky,
             this.MLT,
@@ -335,6 +337,13 @@
             this.chkKiemTraToTrinh.Text = "Kiểm Tra Tờ Trình";
             this.chkKiemTraToTrinh.UseVisualStyleBackColor = true;
             // 
+            // MaHD
+            // 
+            this.MaHD.DataPropertyName = "MaHD";
+            this.MaHD.HeaderText = "MaHD";
+            this.MaHD.Name = "MaHD";
+            this.MaHD.Visible = false;
+            // 
             // CreateDate
             // 
             this.CreateDate.DataPropertyName = "CreateDate";
@@ -524,6 +533,7 @@
         private System.Windows.Forms.ComboBox cmbNam;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.CheckBox chkKiemTraToTrinh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaHD;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky;
         private System.Windows.Forms.DataGridViewTextBoxColumn MLT;
