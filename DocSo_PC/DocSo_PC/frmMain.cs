@@ -419,6 +419,17 @@ namespace DocSo_PC
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuBaoCaosDHN_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuBaoCaosDHN", "Xem"))
+            {
+                frmBaoCaosDHN frm = new frmBaoCaosDHN();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
 
 
 

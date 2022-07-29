@@ -1971,5 +1971,14 @@ namespace DocSo_PC.DAL.sDHN
 
         #endregion
 
+        public DataTable getBaoCao()
+        {
+            string sql = "select dhn.DANHBO,HOTEN,DiaChi=SONHA+' '+TENDUONG,ttkh.NGAYGANDH,ttkh.NGAYTHAY"
++ " ,TieuThuCu=(select SUM(TieuThuMoi) from DocSo where DanhBa=dhn.DanhBo and NAM=2020)"
++ " from sDHN dhn,CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh"
++ " where Valid=1 and dhn.DanhBo=ttkh.DANHBO";
+            return _cDAL.ExecuteQuery_DataTable(sql);
+        }
+
     }
 }
