@@ -1696,7 +1696,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         {
                             dr["GiaBanCu"] = item.GiaBanMoi - item.GiaBanCu;
                             dr["ThueGTGTCu"] = item.ThueGTGTMoi - item.ThueGTGTCu;
-                            if (item.Nam.Value < 2022|| (item.Nam.Value == 2022 && (item.Ky.Value == 1 || item.Ky.Value == 2)))
+                            if (item.Nam.Value < 2022 || (item.Nam.Value == 2022 && (item.Ky.Value == 1 || item.Ky.Value == 2) && TienNuocNamCu_Sau > 0 && TienNuocNamMoi_Sau > 0))
                             {
                                 dr["PhiBVMTCu1"] = item.PhiBVMTMoi - item.PhiBVMTCu;
                                 dr["PhiBVMTCu"] = 0;
