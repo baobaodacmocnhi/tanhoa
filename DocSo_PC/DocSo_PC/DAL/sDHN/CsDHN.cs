@@ -153,6 +153,49 @@ namespace DocSo_PC.DAL.sDHN
             }
         }
 
+        public DataTable get_ChiSoNuoc_HoaSen_Survey(string DanhBo, DateTime Time)
+        {
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://swm.sawaco.com.vn:8033/api/Survey/?id=" + DanhBo + "&date=" + Time.ToString("dd-MM-yyyy"));
+                request.Method = "GET";
+                request.ContentType = "application/json; charset=utf-8";
+
+                HttpWebResponse respuesta = (HttpWebResponse)request.GetResponse();
+                if (respuesta.StatusCode == HttpStatusCode.Accepted || respuesta.StatusCode == HttpStatusCode.OK || respuesta.StatusCode == HttpStatusCode.Created)
+                {
+                    StreamReader read = new StreamReader(respuesta.GetResponseStream());
+                    string result = read.ReadToEnd();
+                    read.Close();
+                    respuesta.Close();
+                    if (result != "")
+                    {
+                        var obj = jss.Deserialize<dynamic>(result);
+                        DataTable dt = new DataTable();
+                        dt.Columns.Add("ChiSo", typeof(System.Double));
+                        dt.Columns.Add("ThoiGianCapNhat", typeof(System.DateTime));
+                        foreach (var item in obj)
+                        {
+                            DataRow dr = dt.NewRow();
+                            dr["ChiSo"] = item["Volume"];
+                            if (item["Time"] != "")
+                                dr["ThoiGianCapNhat"] = DateTime.Parse(item["Time"]);
+                            dt.Rows.Add(dr);
+                        }
+                        return dt;
+                    }
+                    else
+                        return null;
+                }
+                else
+                    return null;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
         public DataTable get_ChatLuongSong_HoaSen(string DanhBo, DateTime Time)
         {
             try

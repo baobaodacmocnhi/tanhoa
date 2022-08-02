@@ -343,36 +343,65 @@ namespace DocSo_PC.GUI.sDHN
                 cl18.Value2 = "Ngày lắp đặt";
                 cl18.ColumnWidth = 12;
 
+                //Microsoft.Office.Interop.Excel.Range cl19 = oSheet.get_Range("S1", "S1");
+                //cl19.Value2 = "Chỉ số trung bình 03 kỳ trước của đồng hồ cũ truyền thống (m3)";
+                //cl19.ColumnWidth = 10;
+
+                //Microsoft.Office.Interop.Excel.Range cl20 = oSheet.get_Range("T1", "T1");
+                //cl20.Value2 = "Tỉ lệ chênh lệch đọc số kỳ 2";
+                //cl20.ColumnWidth = 8;
+
+                //Microsoft.Office.Interop.Excel.Range cl21 = oSheet.get_Range("U1", "U1");
+                //cl21.Value2 = "Tỉ lệ chênh lệch đọc số kỳ 3";
+                //cl21.ColumnWidth = 8;
+
+                //Microsoft.Office.Interop.Excel.Range cl22 = oSheet.get_Range("V1", "V1");
+                //cl22.Value2 = "Tỉ lệ chênh lệch đọc số kỳ 4";
+                //cl22.ColumnWidth = 8;
+
+                //Microsoft.Office.Interop.Excel.Range cl23 = oSheet.get_Range("W1", "W1");
+                //cl23.Value2 = "Tỉ lệ chênh lệch đọc số kỳ 5";
+                //cl23.ColumnWidth = 8;
+
+                //Microsoft.Office.Interop.Excel.Range cl24 = oSheet.get_Range("X1", "X1");
+                //cl24.Value2 = "Tỉ lệ chênh lệch đọc số kỳ 6";
+                //cl24.ColumnWidth = 8;
                 Microsoft.Office.Interop.Excel.Range cl19 = oSheet.get_Range("S1", "S1");
-                cl19.Value2 = "Chỉ số trung bình 03 kỳ trước của đồng hồ cũ truyền thống (m3)";
+                cl19.Value2 = "25/7";
                 cl19.ColumnWidth = 10;
 
                 Microsoft.Office.Interop.Excel.Range cl20 = oSheet.get_Range("T1", "T1");
-                cl20.Value2 = "Tỉ lệ chênh lệch đọc số kỳ 2";
+                cl20.Value2 = "26/7";
                 cl20.ColumnWidth = 8;
 
                 Microsoft.Office.Interop.Excel.Range cl21 = oSheet.get_Range("U1", "U1");
-                cl21.Value2 = "Tỉ lệ chênh lệch đọc số kỳ 3";
+                cl21.Value2 = "27/7";
                 cl21.ColumnWidth = 8;
 
                 Microsoft.Office.Interop.Excel.Range cl22 = oSheet.get_Range("V1", "V1");
-                cl22.Value2 = "Tỉ lệ chênh lệch đọc số kỳ 4";
+                cl22.Value2 = "28/7";
                 cl22.ColumnWidth = 8;
 
                 Microsoft.Office.Interop.Excel.Range cl23 = oSheet.get_Range("W1", "W1");
-                cl23.Value2 = "Tỉ lệ chênh lệch đọc số kỳ 5";
+                cl23.Value2 = "29/7";
                 cl23.ColumnWidth = 8;
 
                 Microsoft.Office.Interop.Excel.Range cl24 = oSheet.get_Range("X1", "X1");
-                cl24.Value2 = "Tỉ lệ chênh lệch đọc số kỳ 6";
+                cl24.Value2 = "30/7";
                 cl24.ColumnWidth = 8;
 
-                Microsoft.Office.Interop.Excel.Range clHeader = oSheet.get_Range("A1", "X1");
+                Microsoft.Office.Interop.Excel.Range cl25 = oSheet.get_Range("Y1", "Y1");
+                cl25.Value2 = "31/7";
+                cl25.ColumnWidth = 8;
+
+                Microsoft.Office.Interop.Excel.Range cl26 = oSheet.get_Range("Z1", "Z1");
+                cl26.Value2 = "1/8";
+                cl26.ColumnWidth = 8;
+
+                Microsoft.Office.Interop.Excel.Range clHeader = oSheet.get_Range("A1", "Z1");
                 clHeader.WrapText = true;
                 clHeader.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
                 clHeader.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
-
-
 
                 //Microsoft.Office.Interop.Excel.Range cl25 = oSheet.get_Range("Y1", "Y1");
                 //cl25.Value2 = "Phí BVMT Mới";
@@ -387,7 +416,7 @@ namespace DocSo_PC.GUI.sDHN
                 //cl27.ColumnWidth = 15;
                 CDocSo _cDocSo = new CDocSo();
                 DataTable dt = CDocSo._cDAL.ExecuteQuery_DataTable("select *,NGAYKIEMDINH1=CONVERT(varchar(10),NGAYKIEMDINH,103),NGAYTHAY1=CONVERT(varchar(10),NGAYTHAY,103) from sDHN sdhn,[DHTM_TANHOA].[dbo].[DHTM_THONGTIN] ttdhn,[CAPNUOCTANHOA].[dbo].[TB_DULIEUKHACHHANG] ttkh"
-                + " where Valid=1 and sdhn.IDNCC=ttdhn.ID and sdhn.DanhBo=ttkh.DANHBO and IDNCC=3 order by IDNCC");
+                + " where Valid=1 and sdhn.IDNCC=ttdhn.ID and sdhn.DanhBo=ttkh.DANHBO and IDNCC=1 and MaDMA='TH-08-12' order by IDNCC");
                 int indexRow = 1;
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
@@ -421,61 +450,85 @@ namespace DocSo_PC.GUI.sDHN
                         oSheet.Cells[indexRow, 16] = "x";
                     oSheet.Cells[indexRow, 17] = dr["NgayKiemDinh1"].ToString();
                     oSheet.Cells[indexRow, 18] = dr["NgayThay1"].ToString();
-                    DataTable dtC = CDocSo._cDAL.ExecuteQuery_DataTable("select ky,nam,CSMoi,GIOGHI,TBTT from DocSo where Nam=2022 and ky in (2,3,4,5,6) and DanhBa='" + dr["DanhBo"].ToString() + "'");
-                    oSheet.Cells[indexRow, 19] = dtC.Rows[0]["TBTT"].ToString();
-                    foreach (DataRow item in dtC.Rows)
-                        if (item["GIOGHI"].ToString() != "")
-                        {
-                            DateTime date = DateTime.Parse(item["GIOGHI"].ToString());
-                            DataTable dtTCT = new DataTable();
-                            switch (dr["IDNCC"].ToString())
-                            {
-                                case "1":
-                                    dtTCT = _csDHN.get_ChiSoNuoc_HoaSen(dr["DanhBo"].ToString(), date, 9);
-                                    break;
-                                case "2":
-                                    dtTCT = _csDHN.get_ChiSoNuoc_Rynan(dr["DanhBo"].ToString(), date, date.Hour);
-                                    break;
-                                case "3":
-                                    dtTCT = _csDHN.get_ChiSoNuoc_Deviwas(dr["DanhBo"].ToString(), date, date.Hour);
-                                    break;
-                                case "4":
-                                    dtTCT = _csDHN.get_ChiSoNuoc_PhamLam(dr["DanhBo"].ToString(), date, date.Hour);
-                                    break;
-                                default:
-                                    break;
-                            }
-                            string TyLe = "";
-                            if (dtTCT != null && dtTCT.Rows.Count > 0 && dtTCT.Rows[0]["ChiSo"].ToString() != "")
-                            {
-                                double a = double.Parse(dtTCT.Rows[0]["ChiSo"].ToString());
-                                int b = (int)a;
-                                if (b != 0)
-                                    TyLe = (((double)b - int.Parse(item["CSMoi"].ToString())) / int.Parse(item["CSMoi"].ToString()) * 100).ToString("0.00");
-                                else
-                                    TyLe = "0";
-                            }
-                            switch (item["ky"].ToString())
-                            {
-                                case "02":
-                                    oSheet.Cells[indexRow, 20] = TyLe;
-                                    break;
-                                case "03":
-                                    oSheet.Cells[indexRow, 21] = TyLe;
-                                    break;
-                                case "04":
-                                    oSheet.Cells[indexRow, 22] = TyLe;
-                                    break;
-                                case "05":
-                                    oSheet.Cells[indexRow, 23] = TyLe;
-                                    break;
-                                case "06":
-                                    oSheet.Cells[indexRow, 24] = TyLe;
-                                    break;
-                                default:
-                                    break;
-                            }
-                        }
+                    //DataTable dtC = CDocSo._cDAL.ExecuteQuery_DataTable("select ky,nam,CSMoi,GIOGHI,TBTT from DocSo where Nam=2022 and ky in (2,3,4,5,6) and DanhBa='" + dr["DanhBo"].ToString() + "'");
+                    //oSheet.Cells[indexRow, 19] = dtC.Rows[0]["TBTT"].ToString();
+                    //foreach (DataRow item in dtC.Rows)
+                    //    if (item["GIOGHI"].ToString() != "")
+                    //    {
+                    //        DateTime date = DateTime.Parse(item["GIOGHI"].ToString());
+                    //        DataTable dtTCT = new DataTable();
+                    //        switch (dr["IDNCC"].ToString())
+                    //        {
+                    //            case "1":
+                    //                dtTCT = _csDHN.get_ChiSoNuoc_HoaSen(dr["DanhBo"].ToString(), date, 9);
+                    //                break;
+                    //            case "2":
+                    //                dtTCT = _csDHN.get_ChiSoNuoc_Rynan(dr["DanhBo"].ToString(), date, date.Hour);
+                    //                break;
+                    //            case "3":
+                    //                dtTCT = _csDHN.get_ChiSoNuoc_Deviwas(dr["DanhBo"].ToString(), date, date.Hour);
+                    //                break;
+                    //            case "4":
+                    //                dtTCT = _csDHN.get_ChiSoNuoc_PhamLam(dr["DanhBo"].ToString(), date, date.Hour);
+                    //                break;
+                    //            default:
+                    //                break;
+                    //        }
+                    //        string TyLe = "";
+                    //        if (dtTCT != null && dtTCT.Rows.Count > 0 && dtTCT.Rows[0]["ChiSo"].ToString() != "")
+                    //        {
+                    //            double a = double.Parse(dtTCT.Rows[0]["ChiSo"].ToString());
+                    //            int b = (int)a;
+                    //            if (b != 0)
+                    //                TyLe = (((double)b - int.Parse(item["CSMoi"].ToString())) / int.Parse(item["CSMoi"].ToString()) * 100).ToString("0.00");
+                    //            else
+                    //                TyLe = "0";
+                    //        }
+                    //        switch (item["ky"].ToString())
+                    //        {
+                    //            case "02":
+                    //                oSheet.Cells[indexRow, 20] = TyLe;
+                    //                break;
+                    //            case "03":
+                    //                oSheet.Cells[indexRow, 21] = TyLe;
+                    //                break;
+                    //            case "04":
+                    //                oSheet.Cells[indexRow, 22] = TyLe;
+                    //                break;
+                    //            case "05":
+                    //                oSheet.Cells[indexRow, 23] = TyLe;
+                    //                break;
+                    //            case "06":
+                    //                oSheet.Cells[indexRow, 24] = TyLe;
+                    //                break;
+                    //            default:
+                    //                break;
+                    //        }
+                    //    }
+                    DataTable dtTCT = _csDHN.get_ChiSoNuoc_HoaSen_Survey(dr["DanhBo"].ToString(), new DateTime(2022, 7, 25));
+                    if (dtTCT != null)
+                        oSheet.Cells[indexRow, 19] = dtTCT.Rows.Count.ToString();
+                    dtTCT = _csDHN.get_ChiSoNuoc_HoaSen_Survey(dr["DanhBo"].ToString(), new DateTime(2022, 7, 26));
+                    if (dtTCT != null)
+                        oSheet.Cells[indexRow, 20] = dtTCT.Rows.Count.ToString();
+                    dtTCT = _csDHN.get_ChiSoNuoc_HoaSen_Survey(dr["DanhBo"].ToString(), new DateTime(2022, 7, 27));
+                    if (dtTCT != null)
+                        oSheet.Cells[indexRow, 21] = dtTCT.Rows.Count.ToString();
+                    dtTCT = _csDHN.get_ChiSoNuoc_HoaSen_Survey(dr["DanhBo"].ToString(), new DateTime(2022, 7, 28));
+                    if (dtTCT != null)
+                        oSheet.Cells[indexRow, 22] = dtTCT.Rows.Count.ToString();
+                    dtTCT = _csDHN.get_ChiSoNuoc_HoaSen_Survey(dr["DanhBo"].ToString(), new DateTime(2022, 7, 29));
+                    if (dtTCT != null)
+                        oSheet.Cells[indexRow, 23] = dtTCT.Rows.Count.ToString();
+                    dtTCT = _csDHN.get_ChiSoNuoc_HoaSen_Survey(dr["DanhBo"].ToString(), new DateTime(2022, 7, 30));
+                    if (dtTCT != null)
+                        oSheet.Cells[indexRow, 24] = dtTCT.Rows.Count.ToString();
+                    dtTCT = _csDHN.get_ChiSoNuoc_HoaSen_Survey(dr["DanhBo"].ToString(), new DateTime(2022, 7, 31));
+                    if (dtTCT != null)
+                        oSheet.Cells[indexRow, 25] = dtTCT.Rows.Count.ToString();
+                    dtTCT = _csDHN.get_ChiSoNuoc_HoaSen_Survey(dr["DanhBo"].ToString(), new DateTime(2022, 8, 1));
+                    if (dtTCT != null)
+                        oSheet.Cells[indexRow, 26] = dtTCT.Rows.Count.ToString();
                 }
                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
