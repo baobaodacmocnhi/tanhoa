@@ -147,7 +147,7 @@ namespace ThuTien.GUI.Quay
                             dr["DanhBo"] = item.Cells["DanhBo_TienDu"].Value.ToString().Insert(4, " ").Insert(8, " ");
                             dr["HoTen"] = itemHD.TENKH;
                             dr["MLT"] = itemHD.MALOTRINH;
-                            dr["DienThoai"] = _cDocSo.GetDienThoai(itemHD.DANHBA);
+                            dr["DienThoai"] = _cDocSo.getDienThoai(itemHD.DANHBA);
                             dr["Ky"] = itemHD.KY + "/" + itemHD.NAM;
                             dr["TienDu"] = item.Cells["SoTien_TienDu"].Value;
                             dr["TongCong"] = itemHD.TONGCONG;
@@ -210,7 +210,7 @@ namespace ThuTien.GUI.Quay
                         dr["DanhBo"] = item.Cells["DanhBo_TienDu"].Value.ToString().Insert(4, " ").Insert(8, " ");
                         dr["HoTen"] = itemHD.TENKH;
                         dr["MLT"] = itemHD.MALOTRINH;
-                        dr["DienThoai"] = _cDocSo.GetDienThoai(itemHD.DANHBA);
+                        dr["DienThoai"] = _cDocSo.getDienThoai(itemHD.DANHBA);
                         dr["Ky"] = itemHD.KY + "/" + itemHD.NAM;
                         dr["TienDu"] = item.Cells["SoTien_TienDu"].Value;
                         dr["TongCong"] = itemHD.TONGCONG;

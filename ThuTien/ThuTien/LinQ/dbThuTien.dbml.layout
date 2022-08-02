@@ -26,7 +26,7 @@
         <elementListCompartment Id="82abc17d-e791-403c-8028-c57ae2ed3ab5" absoluteBounds="9.39, 6.085, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(6.53125 : 3.48240397135417); (6.53125 : 8.08975341796875); (9.04166666666667 : 8.08975341796875 : JumpStart); (9.20833333333333 : 8.08975341796875 : JumpEnd); (9.375 : 8.08975341796875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(6.53125 : 3.48240397135417); (6.53125 : 8.08975341796875); (9.375 : 8.08975341796875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbThuTienDataContext/TT_Menu/TT_Menu_TT_PhanQuyenNguoiDung" />
       <nodes>
         <classShapeMoniker Id="7af1395c-1def-4ae0-9d4f-f6d899fabde6" />
@@ -95,7 +95,7 @@
         <elementListCompartment Id="37308a30-6539-4493-be77-3284538a9d2f" absoluteBounds="4.1400000000000006, 1.21, 1.9700000000000002, 7.7491455078125009" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(11.25 : 10.875); (11.25 : 10.6939925130208); (9.125 : 10.6939925130208); (9.125 : 4.5); (6.375 : 4.5); (6.375 : 5.79970640364583); (6.125 : 5.79970640364583)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(11.25 : 10.875); (11.25 : 10.6939925130208); (9.125 : 10.6939925130208); (9.125 : 4.5); (6.61458333333333 : 4.5 : JumpStart); (6.44791666666667 : 4.5 : JumpEnd); (6.375 : 4.5); (6.375 : 5.79970640364583); (6.125 : 5.79970640364583)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbThuTienDataContext/TT_ChamCong/TT_ChamCong_TT_CTChamCong" />
       <nodes>
         <classShapeMoniker Id="8fcf9f9e-ab1a-45e7-9cc4-c1fc121a746d" />
@@ -335,12 +335,6 @@
         <elementListCompartment Id="48c2fd4e-0c01-4592-bcef-837e2d173364" absoluteBounds="15.39, 11.71, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="23422caf-45d8-4fc4-af9e-39bf336a6475" absoluteBounds="11.25, 0.5, 2, 2.5401025390625">
-      <DataClassMoniker Name="/dbThuTienDataContext/TT_LenhHuy" />
-      <nestedChildShapes>
-        <elementListCompartment Id="639fd5e6-062c-4d69-9419-1762b0f6300f" absoluteBounds="11.265, 0.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="13a08629-c2b3-4c1a-8ae1-ba5c166e0d0f" absoluteBounds="23.25, 23.875, 2, 2.9247054036458331">
       <DataClassMoniker Name="/dbThuTienDataContext/TT_XacNhanThanhToan" />
       <nestedChildShapes>
@@ -444,10 +438,10 @@
         <elementListCompartment Id="9a7c387e-0671-44e6-b893-7008b76e7801" absoluteBounds="1.0150000000000001, 0.96, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="4be81aaa-ab93-4756-9179-d602716403ae" absoluteBounds="18.5, 3.25, 2, 3.1170068359375">
+    <classShape Id="4be81aaa-ab93-4756-9179-d602716403ae" absoluteBounds="18.5, 3.5, 2, 3.1170068359375">
       <DataClassMoniker Name="/dbThuTienDataContext/TT_BangKe" />
       <nestedChildShapes>
-        <elementListCompartment Id="bed49165-ac37-440e-9c70-385eef28d66b" absoluteBounds="18.515, 3.71, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="bed49165-ac37-440e-9c70-385eef28d66b" absoluteBounds="18.515, 3.96, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="ec56d878-3a62-4af5-ab8f-c5e450260ee0" absoluteBounds="18.625, 0.5, 2, 2.9247054036458331">
@@ -462,7 +456,7 @@
         <elementListCompartment Id="340abebc-4d42-49f5-b0e0-ddf9e9a783d0" absoluteBounds="3.14, 10.085, 1.9700000000000002, 7.1722412109375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(4.4999995 : 9.625); (4.4999995 : 9.4341455078125); (6.25 : 9.4341455078125); (6.25 : 8.1170068359375); (8.875 : 8.1170068359375); (8.875 : 7.18350341796875); (9.375 : 7.18350341796875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(4.4999995 : 9.625); (4.4999995 : 9.4341455078125); (4.79166641666667 : 9.4341455078125 : JumpStart); (4.95833308333333 : 9.4341455078125 : JumpEnd); (6.25 : 9.4341455078125); (6.25 : 8.1170068359375); (7.54166666666667 : 8.1170068359375 : JumpStart); (7.70833333333333 : 8.1170068359375 : JumpEnd); (8.875 : 8.1170068359375); (8.875 : 7.18350341796875); (9.375 : 7.18350341796875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbThuTienDataContext/TT_NguoiDung/TT_NguoiDung_TT_PhanQuyenNguoiDung" />
       <nodes>
         <classShapeMoniker Id="07c74b76-7979-486a-9e9e-2191105966c0" />
@@ -593,6 +587,12 @@
       <DataClassMoniker Name="/dbThuTienDataContext/TT_HDDC_DangNgan" />
       <nestedChildShapes>
         <elementListCompartment Id="b1a09ffc-f6a2-4b4c-b82a-b87ced86f663" absoluteBounds="8.015, 14.085, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="835633c6-2398-48ac-8749-20fac39ef67b" absoluteBounds="11.25, 0.5, 2, 2.5401025390625">
+      <DataClassMoniker Name="/dbThuTienDataContext/TT_LenhHuy" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f193feb6-77fb-4a4c-bd13-6311c6e3fd3b" absoluteBounds="11.265, 0.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

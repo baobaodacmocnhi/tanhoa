@@ -1781,15 +1781,16 @@ namespace ThuTien.GUI.TongHop
             dsBaoCao dsLH = new dsBaoCao();
             DataTable dtLH = _cLenhHuy.getDS_DangNgan(dateGiaiTrachTongHopDangNgan.Value);
             foreach (DataRow item in dtLH.Rows)
-            {
-                DataRow dr = dsLH.Tables["DSHoaDon"].NewRow();
-                dr["LoaiBaoCao"] = "ĐĂNG NGÂN CÓ LỆNH HỦY";
-                dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
-                dr["HoTen"] = item["HoTen"];
-                dr["DiaChi"] = item["DiaChi"];
+                if (_cLenhHuy.CheckExist_Ton(item["DanhBo"].ToString()) == false)
+                {
+                    DataRow dr = dsLH.Tables["DSHoaDon"].NewRow();
+                    dr["LoaiBaoCao"] = "ĐĂNG NGÂN CÓ LỆNH HỦY";
+                    dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
+                    dr["HoTen"] = item["HoTen"];
+                    dr["DiaChi"] = item["DiaChi"];
 
-                dsLH.Tables["DSHoaDon"].Rows.Add(dr);
-            }
+                    dsLH.Tables["DSHoaDon"].Rows.Add(dr);
+                }
             if (dtLH.Rows.Count > 0)
             {
                 rptDSHoaDon rptLH = new rptDSHoaDon();
@@ -2792,15 +2793,16 @@ namespace ThuTien.GUI.TongHop
             dsBaoCao dsLH = new dsBaoCao();
             DataTable dtLH = _cLenhHuy.getDS_DangNgan(dateGiaiTrachTongHopDangNgan.Value, dateToGiaiTrachTongHopDangNgan.Value);
             foreach (DataRow item in dtLH.Rows)
-            {
-                DataRow dr = dsLH.Tables["DSHoaDon"].NewRow();
-                dr["LoaiBaoCao"] = "ĐĂNG NGÂN CÓ LỆNH HỦY";
-                dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
-                dr["HoTen"] = item["HoTen"];
-                dr["DiaChi"] = item["DiaChi"];
+                if (_cLenhHuy.CheckExist_Ton(item["DanhBo"].ToString()) == false)
+                {
+                    DataRow dr = dsLH.Tables["DSHoaDon"].NewRow();
+                    dr["LoaiBaoCao"] = "ĐĂNG NGÂN CÓ LỆNH HỦY";
+                    dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
+                    dr["HoTen"] = item["HoTen"];
+                    dr["DiaChi"] = item["DiaChi"];
 
-                dsLH.Tables["DSHoaDon"].Rows.Add(dr);
-            }
+                    dsLH.Tables["DSHoaDon"].Rows.Add(dr);
+                }
             if (dtLH.Rows.Count > 0)
             {
                 rptDSHoaDon rptLH = new rptDSHoaDon();

@@ -70,16 +70,16 @@ namespace ThuTien.GUI.Quay
                             lstHD.EnsureVisible(lstHD.Items.Count - 1);
                         }
                     }
-                    //else
-                    //    ///Trung An thêm 'K' phía cuối liên hóa đơn
-                    //    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && item.ToString().Length == 14)
-                    //    {
-                    //        if (lstHD.FindItemWithText(item.Trim().ToUpper().Replace("K", "")) == null)
-                    //        {
-                    //            lstHD.Items.Add(item.Trim().ToUpper().Replace("K", ""));
-                    //            lstHD.EnsureVisible(lstHD.Items.Count - 1);
-                    //        }
-                    //    }
+                //else
+                //    ///Trung An thêm 'K' phía cuối liên hóa đơn
+                //    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && item.ToString().Length == 14)
+                //    {
+                //        if (lstHD.FindItemWithText(item.Trim().ToUpper().Replace("K", "")) == null)
+                //        {
+                //            lstHD.Items.Add(item.Trim().ToUpper().Replace("K", ""));
+                //            lstHD.EnsureVisible(lstHD.Items.Count - 1);
+                //        }
+                //    }
                 txtSoLuong.Text = lstHD.Items.Count.ToString();
                 txtSoHoaDon.Text = "";
             }
@@ -157,10 +157,10 @@ namespace ThuTien.GUI.Quay
                     btnXem.PerformClick();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     //_cLenhHuy.Rollback();
-                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Lỗi, Vui lòng thử lại\n" + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -175,25 +175,25 @@ namespace ThuTien.GUI.Quay
                 {
                     try
                     {
-                        _cLenhHuy.BeginTransaction();
+                        //_cLenhHuy.BeginTransaction();
                         foreach (DataGridViewRow item in dgvHoaDon.SelectedRows)
                         {
                             TT_LenhHuy lenhhuy = _cLenhHuy.Get(int.Parse(item.Cells["MaHD"].Value.ToString()));
                             if (!_cLenhHuy.Xoa(lenhhuy))
                             {
-                                _cLenhHuy.Rollback();
+                                //_cLenhHuy.Rollback();
                                 MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
-                        _cLenhHuy.CommitTransaction();
+                        //_cLenhHuy.CommitTransaction();
                         lstHD.Items.Clear();
                         btnXem.PerformClick();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        _cLenhHuy.Rollback();
-                        MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //_cLenhHuy.Rollback();
+                        MessageBox.Show("Lỗi, Vui lòng thử lại\n" + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }

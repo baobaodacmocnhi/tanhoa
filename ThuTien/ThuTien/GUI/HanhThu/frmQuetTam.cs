@@ -556,7 +556,7 @@ namespace ThuTien.GUI.HanhThu
                         if (!string.IsNullOrEmpty(item.Cells["DanhBo_TG"].Value.ToString()))
                         {
                             dr["DanhBo"] = item.Cells["DanhBo_TG"].Value.ToString().Insert(7, " ").Insert(4, " ");
-                            dr["DienThoai"] = _cDocSo.GetDienThoai(item.Cells["DanhBo_TG"].Value.ToString());
+                            dr["DienThoai"] = _cDocSo.getDienThoai(item.Cells["DanhBo_TG"].Value.ToString());
                         }
                         dr["MLT"] = item.Cells["MLT_TG"].Value.ToString().Insert(4, " ").Insert(2, " ");
                         dr["Ky"] = Ky;
@@ -610,7 +610,7 @@ namespace ThuTien.GUI.HanhThu
                             if (!string.IsNullOrEmpty(item.Cells["DanhBo_CQ"].Value.ToString()))
                             {
                                 dr["DanhBo"] = item.Cells["DanhBo_CQ"].Value.ToString().Insert(7, " ").Insert(4, " ");
-                                dr["DienThoai"] = _cDocSo.GetDienThoai(item.Cells["DanhBo_CQ"].Value.ToString());
+                                dr["DienThoai"] = _cDocSo.getDienThoai(item.Cells["DanhBo_CQ"].Value.ToString());
                             }
                             dr["MLT"] = item.Cells["MLT_CQ"].Value.ToString().Insert(4, " ").Insert(2, " ");
                             dr["Ky"] = Ky;

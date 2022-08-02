@@ -29,7 +29,7 @@ namespace ThuTien.DAL
             {
                 //MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
 
         public void Connect()
@@ -169,16 +169,15 @@ namespace ThuTien.DAL
             return LINQToDataTable(_db.TB_GHICHUs.Where(item => item.DANHBO == DanhBo)
                 .OrderByDescending(item => item.CREATEDATE).Select(item => new { item.CREATEDATE, item.NOIDUNG }).Take(5).ToList());
         }
-        
-        public string GetDienThoai(string DanhBo)
+
+        public string getDienThoai(string DanhBo)
         {
-            return _db.TB_DULIEUKHACHHANGs.SingleOrDefault(item => item.DANHBO == DanhBo).DIENTHOAI;
+            return _db.SDT_DHNs.Where(item => item.DanhBo == DanhBo).OrderByDescending(item => item.CreateDate).First().DienThoai;
         }
 
         public string GetCoDHN(string DanhBo)
         {
             return _db.TB_DULIEUKHACHHANGs.SingleOrDefault(item => item.DANHBO == DanhBo).CODH;
-               
         }
 
         public void GetDMA(string DanhBo, out string Quan, out string Phuong, out  string CoDHN, out string MaDMA)
@@ -187,7 +186,7 @@ namespace ThuTien.DAL
             SqlCommand cmd = new SqlCommand("sp_ThongTin", connection);
             cmd.CommandType = CommandType.StoredProcedure;
 
-            SqlParameter inparm = cmd.Parameters.Add("@DANHBO", SqlDbType.VarChar,50);
+            SqlParameter inparm = cmd.Parameters.Add("@DANHBO", SqlDbType.VarChar, 50);
             inparm.Direction = ParameterDirection.Input;
             inparm.Value = DanhBo;
 
@@ -243,7 +242,7 @@ namespace ThuTien.DAL
                         };
             if (query.Count() > 0)
             {
-                return " P."+query.FirstOrDefault().TENPHUONG + ", Q."+query.FirstOrDefault().TENQUAN;
+                return " P." + query.FirstOrDefault().TENPHUONG + ", Q." + query.FirstOrDefault().TENQUAN;
             }
             else
                 return "";

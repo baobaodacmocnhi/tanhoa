@@ -2582,6 +2582,8 @@ namespace ThuTien.DAL.TongHop
             var query = from itemDC in _db.DIEUCHINH_HDs
                         join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                         where itemHD.NGAYGIAITRACH.Value.Date >= FromNgayDangNgan.Date && itemHD.NGAYGIAITRACH.Value.Date <= ToNgayDangNgan.Date && itemHD.MaNV_DangNgan != null
+                        && itemDC.NGAY_DC.Value.Date >= new DateTime(2022,07,01).Date
+                        orderby itemHD.NGAYGIAITRACH ascending
                         select new
                         {
                             Ky = itemHD.KY + "/" + itemHD.NAM,

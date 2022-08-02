@@ -463,7 +463,7 @@ namespace ThuTien.GUI.DongNuoc
                         dr["ThemHoaDon"] = item["ThemHoaDon"];
                         dr["HoTen"] = item["HoTen"];
                         dr["DiaChi"] = item["DiaChi"];
-                        dr["DienThoai"] = _cDocSo.GetDienThoai(item["DanhBo"].ToString());
+                        dr["DienThoai"] = _cDocSo.getDienThoai(item["DanhBo"].ToString());
                         if (!string.IsNullOrEmpty(item["DanhBo"].ToString()))
                         {
                             dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
@@ -792,7 +792,7 @@ namespace ThuTien.GUI.DongNuoc
                     dr["ThemHoaDon"] = item["ThemHoaDon"];
                     dr["HoTen"] = item["HoTen"];
                     dr["DiaChi"] = item["DiaChi"];
-                    dr["DienThoai"] = _cDocSo.GetDienThoai(item["DanhBo"].ToString());
+                    dr["DienThoai"] = _cDocSo.getDienThoai(item["DanhBo"].ToString());
                     if (!string.IsNullOrEmpty(item["DanhBo"].ToString()))
                     {
                         dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
