@@ -1243,6 +1243,12 @@
     <Compile Include="GUI\PhongKhachHang\frmCongVanDi_PKH.Designer.cs">
       <DependentUpon>frmCongVanDi_PKH.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\PhongKhachHang\frmSuCoNgungCungCapNuoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\PhongKhachHang\frmSuCoNgungCungCapNuoc.Designer.cs">
+      <DependentUpon>frmSuCoNgungCungCapNuoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\PhongKhachHang\frmTraHopDong.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2400,6 +2406,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\PhongKhachHang\frmCongVanDi_PKH.resx">
       <DependentUpon>frmCongVanDi_PKH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\PhongKhachHang\frmSuCoNgungCungCapNuoc.resx">
+      <DependentUpon>frmSuCoNgungCungCapNuoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\PhongKhachHang\frmTraHopDong.resx">
       <DependentUpon>frmTraHopDong.cs</DependentUpon>

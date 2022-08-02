@@ -1154,6 +1154,17 @@ namespace KTKS_DonKH
 
         #endregion
 
+        private void mnuSuCoNgungCungCapNuoc_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuSuCoNgungCungCapNuoc", "Xem"))
+            {
+                frmSuCoNgungCungCapNuoc frm = new frmSuCoNgungCungCapNuoc();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
       
 
        
