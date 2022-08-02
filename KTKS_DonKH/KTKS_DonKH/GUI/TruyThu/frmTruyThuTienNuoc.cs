@@ -1703,8 +1703,16 @@ namespace KTKS_DonKH.GUI.TruyThu
                             }
                             else
                             {
-                                dr["PhiBVMTCu1"] = 0;
-                                dr["PhiBVMTCu"] = item.PhiBVMTMoi - item.PhiBVMTCu;
+                                if (item.PhiBVMT_ThueCu != null && item.PhiBVMT_ThueCu > 0)
+                                {
+                                    dr["PhiBVMTCu1"] = 0;
+                                    dr["PhiBVMTCu"] = item.PhiBVMTMoi - item.PhiBVMTCu;
+                                }
+                                else
+                                {
+                                    dr["PhiBVMTCu1"] = item.PhiBVMTMoi - item.PhiBVMTCu;
+                                    dr["PhiBVMTCu"] = 0;
+                                }
                             }
                             if (item.PhiBVMT_ThueCu != null)
                                 dr["PhiBVMT_ThueCu"] = item.PhiBVMT_ThueMoi - item.PhiBVMT_ThueCu;
