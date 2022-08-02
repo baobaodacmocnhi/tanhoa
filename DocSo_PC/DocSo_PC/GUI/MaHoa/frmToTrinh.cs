@@ -14,6 +14,7 @@ using DocSo_PC.BaoCao;
 using DocSo_PC.BaoCao.MaHoa;
 using DocSo_PC.GUI.BaoCao;
 using DocSo_PC.DAL.Doi;
+using System.Transactions;
 
 namespace DocSo_PC.GUI.MaHoa
 {
@@ -265,10 +266,19 @@ namespace DocSo_PC.GUI.MaHoa
                 {
                     if (_totrinh != null && MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        if (_cToTrinh.Xoa(_totrinh) == true)
+                        string flagID = _totrinh.ID.ToString();
+                        var transactionOptions = new TransactionOptions();
+                        transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                        using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                         {
-                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Clear();
+                            if (_cToTrinh.Xoa(_totrinh))
+                            {
+                                _wsDHN.xoa_Folder_Hinh_MaHoa("ToTrinh", flagID);
+                                scope.Complete();
+                                scope.Dispose();
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                Clear();
+                            }
                         }
                     }
                 }

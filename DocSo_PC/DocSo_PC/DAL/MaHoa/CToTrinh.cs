@@ -57,7 +57,8 @@ namespace DocSo_PC.DAL.MaHoa
         {
             try
             {
-                _db.MaHoa_DonTu_LichSus.DeleteOnSubmit(_db.MaHoa_DonTu_LichSus.SingleOrDefault(item => item.TableName == "ToTrinh" && item.IDCT == ctktxm.ID));
+                if (_db.MaHoa_DonTu_LichSus.SingleOrDefault(item => item.TableName == "ToTrinh" && item.IDCT == ctktxm.ID) != null)
+                    _db.MaHoa_DonTu_LichSus.DeleteOnSubmit(_db.MaHoa_DonTu_LichSus.SingleOrDefault(item => item.TableName == "ToTrinh" && item.IDCT == ctktxm.ID));
                 _db.MaHoa_ToTrinh_Hinhs.DeleteAllOnSubmit(ctktxm.MaHoa_ToTrinh_Hinhs.ToList());
                 _db.MaHoa_ToTrinhs.DeleteOnSubmit(ctktxm);
                 _db.SubmitChanges();
