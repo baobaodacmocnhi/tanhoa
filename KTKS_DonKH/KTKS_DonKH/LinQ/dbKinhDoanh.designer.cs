@@ -469,6 +469,14 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		public System.Data.Linq.Table<CCCD_Configure> CCCD_Configures
+		{
+			get
+			{
+				return this.GetTable<CCCD_Configure>();
+			}
+		}
+		
 		public System.Data.Linq.Table<CHDB> CHDBs
 		{
 			get
@@ -4651,6 +4659,69 @@ namespace KTKS_DonKH.LinQ
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CCCD_Configure")]
+	public partial class CCCD_Configure
+	{
+		
+		private string _access_token;
+		
+		private System.Nullable<int> _expires_in;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		public CCCD_Configure()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_access_token", DbType="VarChar(500)")]
+		public string access_token
+		{
+			get
+			{
+				return this._access_token;
+			}
+			set
+			{
+				if ((this._access_token != value))
+				{
+					this._access_token = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_expires_in", DbType="Int")]
+		public System.Nullable<int> expires_in
+		{
+			get
+			{
+				return this._expires_in;
+			}
+			set
+			{
+				if ((this._expires_in != value))
+				{
+					this._expires_in = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this._CreateDate = value;
+				}
 			}
 		}
 	}

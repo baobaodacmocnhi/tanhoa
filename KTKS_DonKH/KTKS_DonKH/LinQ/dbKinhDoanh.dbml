@@ -149,6 +149,13 @@
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.CCCD_Configure" Member="CCCD_Configures">
+    <Type Name="CCCD_Configure">
+      <Column Name="access_token" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="expires_in" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.CHDB" Member="CHDBs">
     <Type Name="CHDB">
       <Column Name="MaCHDB" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />

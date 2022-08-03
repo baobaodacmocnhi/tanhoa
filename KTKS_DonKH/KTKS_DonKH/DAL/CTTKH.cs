@@ -5,6 +5,7 @@ using System.Text;
 using KTKS_DonKH.LinQ;
 using System.Data;
 using System.Data.SqlClient;
+using KTKS_DonKH.DAL.QuanTri;
 
 namespace KTKS_DonKH.DAL
 {
@@ -42,6 +43,11 @@ namespace KTKS_DonKH.DAL
                 connection.Close();
         }
 
+        public void Refresh()
+        {
+            db = new dbTrungTamKhachHangDataContext();
+        }
+
         public DataTable ExecuteQuery_DataTable(string sql)
         {
             this.Connect();
@@ -60,7 +66,68 @@ namespace KTKS_DonKH.DAL
             return dt;
         }
 
-     
+        public bool them(SuCoNgungCungCapNuoc en)
+        {
+            try
+            {
+                if (db.SuCoNgungCungCapNuocs.Count() > 0)
+                    en.ID = db.SuCoNgungCungCapNuocs.Max(item => item.ID) + 1;
+                else
+                    en.ID = 1;
+                en.CreateBy = CTaiKhoan.MaUser;
+                en.CreateDate = DateTime.Now;
+                db.SuCoNgungCungCapNuocs.InsertOnSubmit(en);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public bool sua(SuCoNgungCungCapNuoc en)
+        {
+            try
+            {
+                en.ModifyBy = CTaiKhoan.MaUser;
+                en.ModifyDate = DateTime.Now;
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public bool xoa(SuCoNgungCungCapNuoc en)
+        {
+            try
+            {
+                db.SuCoNgungCungCapNuocs.DeleteOnSubmit(en);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public SuCoNgungCungCapNuoc get(int ID)
+        {
+            return db.SuCoNgungCungCapNuocs.SingleOrDefault(item => item.ID == ID);
+        }
+
+        public DataTable getDS()
+        {
+            return ExecuteQuery_DataTable("select * from SuCoNgungCungCapNuoc order by CreateDate desc");
+        }
+
 
     }
 }
