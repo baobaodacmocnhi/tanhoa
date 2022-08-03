@@ -200,13 +200,15 @@ namespace ThuTien.GUI.Quay
                                         if (_cDCHD.CheckExist_UpdatedHDDT(int.Parse(item.Cells["MaHD"].Value.ToString()), ref DanhBo) == false)
                                         {
                                             lstTamThu.Add(tamthu);
-                                            //MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                            if (!_cDCHD.checkExist_HDDC_DangNgan(int.Parse(item.Cells["MaHD"].Value.ToString())))
-                                            {
-                                                TT_HDDC_DangNgan en = new TT_HDDC_DangNgan();
-                                                en.MaHD = int.Parse(item.Cells["MaHD"].Value.ToString());
-                                                _cDCHD.Them_HDDC_DangNgan(en);
-                                            }
+                                            if (!_cDCHD.checkExist_Chot_HDDC_DangNgan(int.Parse(item.Cells["MaHD"].Value.ToString())))
+                                                MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            else
+                                                if (!_cDCHD.checkExist_HDDC_DangNgan(int.Parse(item.Cells["MaHD"].Value.ToString())))
+                                                {
+                                                    TT_HDDC_DangNgan en = new TT_HDDC_DangNgan();
+                                                    en.MaHD = int.Parse(item.Cells["MaHD"].Value.ToString());
+                                                    _cDCHD.Them_HDDC_DangNgan(en);
+                                                }
                                         }
                                         else
                                         {
@@ -282,7 +284,12 @@ namespace ThuTien.GUI.Quay
                                             if (_cDCHD.CheckExist_UpdatedHDDT(int.Parse(item.Cells["MaHD"].Value.ToString()), ref DanhBo) == false)
                                             {
                                                 lstTamThu.Add(tamthu);
-                                                //MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                if (!_cDCHD.checkExist_Chot_HDDC_DangNgan(int.Parse(item.Cells["MaHD"].Value.ToString())))
+                                                {
+                                                    MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                    return;
+                                                }
+                                                else
                                                 if (!_cDCHD.checkExist_HDDC_DangNgan(int.Parse(item.Cells["MaHD"].Value.ToString())))
                                                 {
                                                     TT_HDDC_DangNgan en = new TT_HDDC_DangNgan();
@@ -436,6 +443,11 @@ namespace ThuTien.GUI.Quay
                             item.DefaultCellStyle.BackColor = Color.Yellow;
                             item.Cells["DongNuoc_TT"].Value = _cDongNuoc.GetNgayDNByMaHD(int.Parse(item.Cells["MaHD_TT"].Value.ToString()));
                         }
+                        else
+                            if (_cDCHD.CheckExist(int.Parse(item.Cells["MaHD_TT"].Value.ToString())))
+                            {
+                                item.DefaultCellStyle.BackColor = Color.YellowGreen;
+                            }
             }
         }
 

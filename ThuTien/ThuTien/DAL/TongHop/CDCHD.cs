@@ -170,7 +170,7 @@ namespace ThuTien.DAL.TongHop
                 return true;
         }
 
-        public bool CheckExist_ChuaUpdatedHDDT(string DanhBo)
+        public bool CheckExist_ChuaUpdatedHDDT1(string DanhBo)
         {
             string sql = "select COUNT(dchd.ID_DIEUCHINH_HD) from HOADON hd,DIEUCHINH_HD dchd"
                         + " where dchd.UpdatedHDDT=0 and hd.DANHBA='" + DanhBo + "' and hd.ID_HOADON=dchd.FK_HOADON"
@@ -2357,6 +2357,19 @@ namespace ThuTien.DAL.TongHop
             return _db.TT_HDDC_DangNgans.Any(item => item.MaHD == MaHD);
         }
 
+        public bool checkExist_Chot_HDDC_DangNgan(int MaHD)
+        {
+            HOADON hd = _db.HOADONs.SingleOrDefault(itemHD => itemHD.ID_HOADON == MaHD);
+            if (hd != null)
+            {
+                if (hd.NAM > 2022 || (hd.NAM == 2022 && hd.KY >= 5))
+                    return true;
+                else
+                    return false;
+            }
+            return false;
+        }
+
         public DataTable getDS_HDDC_Cho_DangNgan_HD0()
         {
             var query = from itemDC in _db.DIEUCHINH_HDs
@@ -2582,7 +2595,7 @@ namespace ThuTien.DAL.TongHop
             var query = from itemDC in _db.DIEUCHINH_HDs
                         join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                         where itemHD.NGAYGIAITRACH.Value.Date >= FromNgayDangNgan.Date && itemHD.NGAYGIAITRACH.Value.Date <= ToNgayDangNgan.Date && itemHD.MaNV_DangNgan != null
-                        && itemDC.NGAY_DC.Value.Date >= new DateTime(2022,07,01).Date
+                        && itemDC.NGAY_DC.Value.Date >= new DateTime(2022, 07, 01).Date
                         orderby itemHD.NGAYGIAITRACH ascending
                         select new
                         {
@@ -2591,6 +2604,8 @@ namespace ThuTien.DAL.TongHop
                             itemHD.TONGCONG,
                             itemHD.NGAYGIAITRACH,
                             itemDC.SoPhieu,
+                            itemHD.DangNgan_ChuyenKhoan,
+                            itemHD.DangNgan_Quay,
                         };
             return LINQToDataTable(query);
         }

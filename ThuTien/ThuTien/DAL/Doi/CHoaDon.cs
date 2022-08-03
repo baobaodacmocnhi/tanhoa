@@ -633,7 +633,7 @@ namespace ThuTien.DAL.Doi
                         join itemDC in _db.DIEUCHINH_HDs on itemHD.ID_HOADON equals itemDC.FK_HOADON into tableDC
                         from itemtableDC in tableDC.DefaultIfEmpty()
                         where itemHD.DANHBA == DanhBo && (itemHD.NGAYGIAITRACH == null || itemHD.ChanTienDu == true)
-                         && (itemtableDC == null || itemtableDC.TONGCONG_END != null)
+                         && (itemtableDC == null || itemtableDC.UpdatedHDDT == true || (itemtableDC.TONGCONG_END != null && (itemHD.NAM > 2022 || (itemHD.NAM == 2022 && itemHD.KY >= 5))))
                         orderby itemHD.ID_HOADON ascending
                         select itemHD;
             return query.ToList();
@@ -645,7 +645,7 @@ namespace ThuTien.DAL.Doi
                         join itemDC in _db.DIEUCHINH_HDs on itemHD.ID_HOADON equals itemDC.FK_HOADON into tableDC
                         from itemtableDC in tableDC.DefaultIfEmpty()
                         where itemHD.DANHBA == DanhBo && (itemHD.NGAYGIAITRACH == null || itemHD.ChanTienDu == true && (itemHD.GB != 10 && itemHD.DinhMucHN == null))
-                         && (itemtableDC == null || itemtableDC.TONGCONG_END != null)
+                         && (itemtableDC == null || itemtableDC.UpdatedHDDT == true || (itemtableDC.TONGCONG_END != null && (itemHD.NAM > 2022 || (itemHD.NAM == 2022 && itemHD.KY >= 5))))
                         orderby itemHD.ID_HOADON ascending
                         select itemHD;
             return query.ToList();
@@ -10146,7 +10146,7 @@ namespace ThuTien.DAL.Doi
                         join itemDC in _db.DIEUCHINH_HDs on itemHD.ID_HOADON equals itemDC.FK_HOADON into tableDC
                         from itemtableDC in tableDC.DefaultIfEmpty()
                         where itemHD.DANHBA == DanhBo && itemHD.NGAYGIAITRACH == null
-                         && (itemtableDC == null || itemtableDC.TONGCONG_END != null)
+                         && (itemtableDC == null || itemtableDC.UpdatedHDDT == true || (itemtableDC.TONGCONG_END != null && (itemHD.NAM > 2022 || (itemHD.NAM == 2022 && itemHD.KY >= 5))))
                         orderby itemHD.ID_HOADON descending
                         select new
                         {
@@ -10187,7 +10187,7 @@ namespace ThuTien.DAL.Doi
                         join itemDC in _db.DIEUCHINH_HDs on itemHD.ID_HOADON equals itemDC.FK_HOADON into tableDC
                         from itemtableDC in tableDC.DefaultIfEmpty()
                         where itemHD.DANHBA == DanhBo && itemHD.NGAYGIAITRACH == null && (itemHD.GB != 10 && itemHD.DinhMucHN == null)
-                        && (itemtableDC == null || itemtableDC.TONGCONG_END != null)
+                        && (itemtableDC == null || itemtableDC.UpdatedHDDT == true || (itemtableDC.TONGCONG_END != null && (itemHD.NAM > 2022 || (itemHD.NAM == 2022 && itemHD.KY >= 5))))
                         orderby itemHD.ID_HOADON descending
                         select new
                         {

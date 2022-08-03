@@ -342,6 +342,11 @@ namespace ThuTien.DAL.QuanTri
             return _db.TT_NguoiDungs.FirstOrDefault(item => item.HoTen.Contains("Chuyển Khoản"));
         }
 
+        public TT_NguoiDung getQuay()
+        {
+            return _db.TT_NguoiDungs.FirstOrDefault(item => item.HoTen.Contains("Quầy"));
+        }
+
         public bool DangNhap(string TaiKhoan, string MatKhau)
         {
             try

@@ -865,17 +865,21 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 string DanhBo = "";
                                 if (_cDCHD.CheckExist_UpdatedHDDT(int.Parse(item.Cells["MaHD_TT"].Value.ToString()), ref DanhBo) == false)
                                 {
-                                    //MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    //dgvTamThu.CurrentCell = item.Cells["DanhBo_TT"];
-                                    //dgvTamThu.Rows[item.Index].Selected = true;
-                                    //return;
-                                    if (!_cDCHD.checkExist_HDDC_DangNgan(int.Parse(item.Cells["MaHD_TT"].Value.ToString())))
+                                    if (!_cDCHD.checkExist_Chot_HDDC_DangNgan(int.Parse(item.Cells["MaHD_TT"].Value.ToString())))
                                     {
-                                        TT_HDDC_DangNgan en = new TT_HDDC_DangNgan();
-                                        en.MaHD = int.Parse(item.Cells["MaHD_TT"].Value.ToString());
-                                        en.ChuyenKhoan = true;
-                                        _cDCHD.Them_HDDC_DangNgan(en);
+                                        MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        dgvTamThu.CurrentCell = item.Cells["DanhBo_TT"];
+                                        dgvTamThu.Rows[item.Index].Selected = true;
+                                        return;
                                     }
+                                    else
+                                        if (!_cDCHD.checkExist_HDDC_DangNgan(int.Parse(item.Cells["MaHD_TT"].Value.ToString())))
+                                        {
+                                            TT_HDDC_DangNgan en = new TT_HDDC_DangNgan();
+                                            en.MaHD = int.Parse(item.Cells["MaHD_TT"].Value.ToString());
+                                            en.ChuyenKhoan = true;
+                                            _cDCHD.Them_HDDC_DangNgan(en);
+                                        }
                                 }
                                 else
                                     //đăng ngân
@@ -952,17 +956,21 @@ namespace ThuTien.GUI.ChuyenKhoan
                         string DanhBo = "";
                         if (_cDCHD.CheckExist_UpdatedHDDT(int.Parse(item.Cells["MaHD_TT"].Value.ToString()), ref DanhBo) == false)
                         {
-                            //MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            //dgvTamThu.CurrentCell = item.Cells["DanhBo_TT"];
-                            //dgvTamThu.Rows[item.Index].Selected = true;
-                            //return;
-                            if (!_cDCHD.checkExist_HDDC_DangNgan(int.Parse(item.Cells["MaHD_TT"].Value.ToString())))
+                            if (!_cDCHD.checkExist_Chot_HDDC_DangNgan(int.Parse(item.Cells["MaHD_TT"].Value.ToString())))
                             {
-                                TT_HDDC_DangNgan en = new TT_HDDC_DangNgan();
-                                en.MaHD = int.Parse(item.Cells["MaHD_TT"].Value.ToString());
-                                en.ChuyenKhoan = true;
-                                _cDCHD.Them_HDDC_DangNgan(en);
+                                MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                dgvTamThu.CurrentCell = item.Cells["DanhBo_TT"];
+                                dgvTamThu.Rows[item.Index].Selected = true;
+                                return;
                             }
+                            else
+                                if (!_cDCHD.checkExist_HDDC_DangNgan(int.Parse(item.Cells["MaHD_TT"].Value.ToString())))
+                                {
+                                    TT_HDDC_DangNgan en = new TT_HDDC_DangNgan();
+                                    en.MaHD = int.Parse(item.Cells["MaHD_TT"].Value.ToString());
+                                    en.ChuyenKhoan = true;
+                                    _cDCHD.Them_HDDC_DangNgan(en);
+                                }
                         }
                         else
                             //đăng ngân
@@ -1032,8 +1040,12 @@ namespace ThuTien.GUI.ChuyenKhoan
                     string DanhBo = "";
                     if (_cDCHD.CheckExist_UpdatedHDDT(int.Parse(item["MaHD"].ToString()), ref DanhBo) == false)
                     {
-                        //MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //return;
+                        if (!_cDCHD.checkExist_Chot_HDDC_DangNgan(int.Parse(item["MaHD"].ToString())))
+                        {
+                            MessageBox.Show("Hóa Đơn có Điều Chỉnh nhưng chưa update HĐĐT " + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        else
                         if (!_cDCHD.checkExist_HDDC_DangNgan(int.Parse(item["MaHD"].ToString())))
                         {
                             TT_HDDC_DangNgan en = new TT_HDDC_DangNgan();

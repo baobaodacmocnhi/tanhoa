@@ -833,7 +833,7 @@ namespace ThuTien.GUI.TongHop
                                 }
                                 else
                                 {
-                                    if (_cHoaDon.DangNgan("Quay", item["SoHoaDon"].ToString(), _cNguoiDung.getChuyenKhoan().MaND))
+                                    if (_cHoaDon.DangNgan("Quay", item["SoHoaDon"].ToString(), _cNguoiDung.getQuay().MaND))
                                     {
                                         _cDCHD.LinQ_ExecuteNonQuery("delete from TT_HDDC_DangNgan where MaHD=" + item["MaHD"].ToString());
                                         scope.Complete();
@@ -867,8 +867,13 @@ namespace ThuTien.GUI.TongHop
                 dr["DanhBo"] = item["DanhBo"].ToString().Insert(4, " ").Insert(8, " ");
                 dr["Ky"] = item["Ky"];
                 dr["TongCong"] = item["TongCong"];
-                dr["HanhThu"] = item["SoPhieu"].ToString().Insert(item["SoPhieu"].ToString().Length-2,"-");
+                dr["HanhThu"] = item["SoPhieu"].ToString().Insert(item["SoPhieu"].ToString().Length - 2, "-");
                 dr["To"] = item["NgayGiaiTrach"];
+                if (bool.Parse(item["DangNgan_ChuyenKhoan"].ToString()))
+                    dr["SoHoaDon"] ="CK";
+                else
+                    if (bool.Parse(item["DangNgan_Quay"].ToString()))
+                        dr["SoHoaDon"] = "Q";
                 ds.Tables["DSDCHD"].Rows.Add(dr);
             }
             rptDSDCHD_GiaoNhan rpt = new rptDSDCHD_GiaoNhan();
