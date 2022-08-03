@@ -119,6 +119,14 @@ namespace DocSo_PC.DAL.MaHoa
                 return _cDAL.LINQToDataTable(_db.MaHoa_DonTus.Where(item => item.TinhTrang.Contains("Tồn") && item.CreateDate.Date >= FromCreateDate.Date && item.CreateDate.Date <= ToCreateDate.Date && NoiDung.IndexOf(item.NoiDung) >= 0 && Convert.ToInt32(item.MLT.Substring(2, 2)) >= _db.Tos.SingleOrDefault(t => t.MaTo == Convert.ToInt32(MaTo)).TuMay && Convert.ToInt32(item.MLT.Substring(2, 2)) <= _db.Tos.SingleOrDefault(t => t.MaTo == Convert.ToInt32(MaTo)).DenMay));
         }
 
+        public DataTable getDS_Ton(string MaTo, string NoiDung, int Nam, int Ky, int Dot)
+        {
+            if (MaTo == "0")
+                return _cDAL.LINQToDataTable(_db.MaHoa_DonTus.Where(item => item.TinhTrang.Contains("Tồn") && NoiDung.IndexOf(item.NoiDung) >= 0 && item.Nam == Nam && item.Ky == Ky && item.Dot == Dot));
+            else
+                return _cDAL.LINQToDataTable(_db.MaHoa_DonTus.Where(item => item.TinhTrang.Contains("Tồn") && NoiDung.IndexOf(item.NoiDung) >= 0 && item.Nam == Nam && item.Ky == Ky && item.Dot == Dot && Convert.ToInt32(item.MLT.Substring(2, 2)) >= _db.Tos.SingleOrDefault(t => t.MaTo == Convert.ToInt32(MaTo)).TuMay && Convert.ToInt32(item.MLT.Substring(2, 2)) <= _db.Tos.SingleOrDefault(t => t.MaTo == Convert.ToInt32(MaTo)).DenMay));
+        }
+
         public DataTable getDS_ChuyenDCBD(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             var query = from item in _db.MaHoa_DonTus

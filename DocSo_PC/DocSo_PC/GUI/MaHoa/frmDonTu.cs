@@ -87,6 +87,11 @@ namespace DocSo_PC.GUI.MaHoa
                 cmbTo.DataSource = lst;
                 cmbTo.DisplayMember = "TenTo";
                 cmbTo.ValueMember = "MaTo";
+                cmbNam.DataSource = _cDocSo.getDS_Nam();
+                cmbNam.DisplayMember = "Nam";
+                cmbNam.ValueMember = "Nam";
+                cmbKy.SelectedItem = CNguoiDung.Ky;
+                cmbDot.SelectedItem = CNguoiDung.Dot;
             }
             catch (Exception ex)
             {
@@ -466,10 +471,17 @@ namespace DocSo_PC.GUI.MaHoa
                 case "Thời Gian":
                     panel_Time.Visible = true;
                     panel_NoiDung.Visible = false;
+                    panel_NamKyDot.Visible = false;
+                    break;
+                case "Năm Kỳ Đợt":
+                    panel_Time.Visible = false;
+                    panel_NoiDung.Visible = false;
+                    panel_NamKyDot.Visible = true;
                     break;
                 default:
                     panel_Time.Visible = false;
                     panel_NoiDung.Visible = true;
+                    panel_NamKyDot.Visible = false;
                     break;
             }
         }
@@ -520,8 +532,19 @@ namespace DocSo_PC.GUI.MaHoa
                         }
                     dgvDanhSach.DataSource = _cDonTu.getDS_Ton(cmbTo.SelectedValue.ToString(), str);
                     break;
+                case "Năm Kỳ Đợt":
+                    str = "";
+                    for (int i = 0; i < chkcmbNoiDung.Properties.Items.Count; i++)
+                        if (chkcmbNoiDung.Properties.Items[i].CheckState == CheckState.Checked)
+                        {
+                            if (str == "")
+                                str = chkcmbNoiDung.Properties.Items[i].Value.ToString();
+                            else
+                                str += ";" + chkcmbNoiDung.Properties.Items[i].Value.ToString();
+                        }
+                    dgvDanhSach.DataSource = _cDonTu.getDS_Ton(cmbTo.SelectedValue.ToString(), str, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
+                    break;
             }
-
         }
 
         private void btnXemTon_Click(object sender, EventArgs e)

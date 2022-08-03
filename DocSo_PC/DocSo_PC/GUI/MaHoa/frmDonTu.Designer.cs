@@ -136,6 +136,13 @@
             this.dateDen_DSChuyenKTXM = new System.Windows.Forms.DateTimePicker();
             this.label16 = new System.Windows.Forms.Label();
             this.dateTu_DSChuyenKTXM = new System.Windows.Forms.DateTimePicker();
+            this.panel_NamKyDot = new System.Windows.Forms.Panel();
+            this.cmbDot = new System.Windows.Forms.ComboBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.cmbKy = new System.Windows.Forms.ComboBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.cmbNam = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -149,6 +156,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.panel_NamKyDot.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -519,6 +527,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.panel_NamKyDot);
             this.tabPage2.Controls.Add(this.lbTo);
             this.tabPage2.Controls.Add(this.cmbTo);
             this.tabPage2.Controls.Add(this.btnXemTon);
@@ -687,7 +696,8 @@
             "Mã Đơn",
             "Danh Bộ",
             "Tồn Theo Thời Gian",
-            "Tồn Tất Cả"});
+            "Tồn Tất Cả",
+            "Năm Kỳ Đợt"});
             this.cmbTimTheo.Location = new System.Drawing.Point(389, 6);
             this.cmbTimTheo.Name = "cmbTimTheo";
             this.cmbTimTheo.Size = new System.Drawing.Size(80, 21);
@@ -1182,6 +1192,104 @@
             this.dateTu_DSChuyenKTXM.Size = new System.Drawing.Size(95, 20);
             this.dateTu_DSChuyenKTXM.TabIndex = 11;
             // 
+            // panel_NamKyDot
+            // 
+            this.panel_NamKyDot.Controls.Add(this.cmbDot);
+            this.panel_NamKyDot.Controls.Add(this.cmbNam);
+            this.panel_NamKyDot.Controls.Add(this.label22);
+            this.panel_NamKyDot.Controls.Add(this.label24);
+            this.panel_NamKyDot.Controls.Add(this.cmbKy);
+            this.panel_NamKyDot.Controls.Add(this.label23);
+            this.panel_NamKyDot.Location = new System.Drawing.Point(469, 2);
+            this.panel_NamKyDot.Name = "panel_NamKyDot";
+            this.panel_NamKyDot.Size = new System.Drawing.Size(244, 26);
+            this.panel_NamKyDot.TabIndex = 160;
+            // 
+            // cmbDot
+            // 
+            this.cmbDot.FormattingEnabled = true;
+            this.cmbDot.Items.AddRange(new object[] {
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20"});
+            this.cmbDot.Location = new System.Drawing.Point(199, 3);
+            this.cmbDot.Name = "cmbDot";
+            this.cmbDot.Size = new System.Drawing.Size(39, 21);
+            this.cmbDot.TabIndex = 166;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(169, 6);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(24, 13);
+            this.label22.TabIndex = 165;
+            this.label22.Text = "Đợt";
+            // 
+            // cmbKy
+            // 
+            this.cmbKy.FormattingEnabled = true;
+            this.cmbKy.Items.AddRange(new object[] {
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12"});
+            this.cmbKy.Location = new System.Drawing.Point(126, 3);
+            this.cmbKy.Name = "cmbKy";
+            this.cmbKy.Size = new System.Drawing.Size(37, 21);
+            this.cmbKy.TabIndex = 164;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(4, 6);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(32, 13);
+            this.label23.TabIndex = 161;
+            this.label23.Text = "Năm ";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(98, 6);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(22, 13);
+            this.label24.TabIndex = 163;
+            this.label24.Text = "Kỳ ";
+            // 
+            // cmbNam
+            // 
+            this.cmbNam.FormattingEnabled = true;
+            this.cmbNam.Location = new System.Drawing.Point(42, 3);
+            this.cmbNam.Name = "cmbNam";
+            this.cmbNam.Size = new System.Drawing.Size(50, 21);
+            this.cmbNam.TabIndex = 162;
+            // 
             // frmDonTu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1210,6 +1318,8 @@
             this.tabPage3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.panel_NamKyDot.ResumeLayout(false);
+            this.panel_NamKyDot.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1315,5 +1425,12 @@
         private System.Windows.Forms.Button btnXemTon;
         private System.Windows.Forms.Label lbTo;
         private System.Windows.Forms.ComboBox cmbTo;
+        private System.Windows.Forms.Panel panel_NamKyDot;
+        private System.Windows.Forms.ComboBox cmbDot;
+        private System.Windows.Forms.ComboBox cmbNam;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.ComboBox cmbKy;
+        private System.Windows.Forms.Label label23;
     }
 }

@@ -53,7 +53,27 @@ namespace DocSo_PC.GUI.MaHoa
                 item.Cells["Chon"].Value = true;
                 item.Cells["HieuLucKy"].Value = str;
                 if (item.Cells["DanhBo"].Value != null && item.Cells["DanhBo"].Value.ToString().Length == 11)
-                    item.Cells["GiaBieuCu"].Value = _cThuTien.GetMoiNhat(item.Cells["DanhBo"].Value.ToString()).GB;
+                {
+                    HOADON hd = _cThuTien.GetMoiNhat(item.Cells["DanhBo"].Value.ToString());
+                    if (hd != null )
+                        item.Cells["GiaBieuCu"].Value = hd.GB;
+                }
+            }
+        }
+
+        private void dgvDanhSach_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            string str = _cLDS.getHieuLucKyToi();
+            foreach (DataGridViewRow item in dgvDanhSach.Rows)
+            {
+                item.Cells["Chon"].Value = true;
+                item.Cells["HieuLucKy"].Value = str;
+                if (item.Cells["DanhBo"].Value != null && item.Cells["DanhBo"].Value.ToString().Length == 11)
+                {
+                    HOADON hd = _cThuTien.GetMoiNhat(item.Cells["DanhBo"].Value.ToString());
+                    if (hd != null )
+                        item.Cells["GiaBieuCu"].Value = hd.GB;
+                }
             }
         }
 
@@ -731,6 +751,7 @@ namespace DocSo_PC.GUI.MaHoa
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
 
     }
