@@ -146,7 +146,7 @@ namespace KTKS_DonKH.GUI.PhongKhachHang
                 {
                     if (_en != null)
                     {
-                        if (_cTTKH.xoa(_en))
+                        if (_cTTKH.xoa(_en) && MessageBox.Show("Bạn có chắc chắn xóa Toàn Bộ Truy Thu?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Clear();

@@ -188,6 +188,7 @@
             this.gridColumn127 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn128 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn129 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn130 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridViewDon = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -256,7 +257,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.gridColumn130 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewKTXM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -1849,6 +1849,9 @@
             this.gridViewVanBan.OptionsBehavior.ReadOnly = true;
             this.gridViewVanBan.OptionsView.ColumnAutoWidth = false;
             this.gridViewVanBan.OptionsView.ShowGroupPanel = false;
+            this.gridViewVanBan.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewVanBan_RowCellClick);
+            this.gridViewVanBan.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gridViewVanBan_CustomColumnDisplayText);
+            this.gridViewVanBan.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridViewVanBan_KeyDown);
             // 
             // gridColumn118
             // 
@@ -1908,6 +1911,15 @@
             this.gridColumn129.Visible = true;
             this.gridColumn129.VisibleIndex = 5;
             this.gridColumn129.Width = 300;
+            // 
+            // gridColumn130
+            // 
+            this.gridColumn130.Caption = "Người Lập";
+            this.gridColumn130.FieldName = "CreateBy";
+            this.gridColumn130.Name = "gridColumn130";
+            this.gridColumn130.Visible = true;
+            this.gridColumn130.VisibleIndex = 6;
+            this.gridColumn130.Width = 100;
             // 
             // gridViewDon
             // 
@@ -2546,15 +2558,6 @@
             this.label5.Size = new System.Drawing.Size(63, 16);
             this.label5.TabIndex = 12;
             this.label5.Text = "Danh Bộ:";
-            // 
-            // gridColumn130
-            // 
-            this.gridColumn130.Caption = "Người Lập";
-            this.gridColumn130.FieldName = "CreateBy";
-            this.gridColumn130.Name = "gridColumn130";
-            this.gridColumn130.Visible = true;
-            this.gridColumn130.VisibleIndex = 6;
-            this.gridColumn130.Width = 100;
             // 
             // frmTienTrinhDon
             // 

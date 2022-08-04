@@ -35,10 +35,16 @@ namespace KTKS_DonKH.GUI.VanBan
         DonTu_ChiTiet _dontu_ChiTiet = null;
         HOADON _hoadon = null;
         VanBan_ChiTiet _enCT = null;
-        //int _IDCT = -1;
+        int _IDCT = -1;
 
         public frmVanBan()
         {
+            InitializeComponent();
+        }
+
+        public frmVanBan(int IDCT)
+        {
+            _IDCT = IDCT;
             InitializeComponent();
         }
 
@@ -50,6 +56,14 @@ namespace KTKS_DonKH.GUI.VanBan
             cmbVeViec.ValueMember = "TenVV";
             cmbVeViec.DisplayMember = "TenVV";
             cmbVeViec.SelectedIndex = -1;
+
+            if (_IDCT != -1)
+            {
+                txtMaVanBan.Text = _IDCT.ToString();
+                KeyPressEventArgs arg = new KeyPressEventArgs(Convert.ToChar(Keys.Enter));
+
+                txtMaVanBan_KeyPress(sender, arg);
+            }
         }
 
         public void LoadTTKH(HOADON hoadon)

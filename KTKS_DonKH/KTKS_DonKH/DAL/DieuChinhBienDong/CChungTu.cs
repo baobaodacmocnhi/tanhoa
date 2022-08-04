@@ -214,7 +214,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         public DataTable getDS_ChiTiet_CCCD()
         {
             var query = from itemCTCT in db.ChungTu_ChiTiets
-                        where itemCTCT.ChungTu.MaLCT == 15
+                        where itemCTCT.ChungTu.MaLCT == 15 && itemCTCT.Cat == false
                         select new
                         {
                             itemCTCT.DanhBo,
@@ -228,7 +228,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         public DataTable getDS_ChiTiet_CMND()
         {
             var query = from itemCTCT in db.ChungTu_ChiTiets
-                        where itemCTCT.ChungTu.MaLCT == 16
+                        where itemCTCT.ChungTu.MaLCT == 16 && itemCTCT.Cat == false
                         select new
                         {
                             itemCTCT.DanhBo,

@@ -26,6 +26,7 @@ using KTKS_DonKH.GUI.ToBamChi;
 using KTKS_DonKH.GUI.TruyThu;
 using KTKS_DonKH.GUI.ThuMoi;
 using KTKS_DonKH.GUI.DonTu;
+using KTKS_DonKH.GUI.VanBan;
 
 namespace KTKS_DonKH.GUI.TimKiem
 {
@@ -603,6 +604,36 @@ namespace KTKS_DonKH.GUI.TimKiem
 
         #endregion
 
+        #region gridViewVanBan
+
+        private void gridViewVanBan_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            if (e.Column.FieldName == "IDCT" && e.Value != null)
+            {
+                e.DisplayText = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
+            }
+        }
+
+        private void gridViewVanBan_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
+            {
+                frmVanBan frm = new frmVanBan(int.Parse(_CTRow.Row["IDCT"].ToString()));
+                if (frm.ShowDialog() == DialogResult.Cancel)
+                {
+                    _CTRow = null;
+                }
+            }
+        }
+
+        private void gridViewVanBan_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            GridView gridview = (GridView)gridControl.GetViewAt(new Point(e.X, e.Y));
+            _CTRow = (DataRowView)gridview.GetRow(gridview.GetSelectedRows()[0]);
+        }
+
+        #endregion
+
         private void btnIn_Click(object sender, EventArgs e)
         {
             if (gridViewDon.RowCount > 0)
@@ -769,6 +800,8 @@ namespace KTKS_DonKH.GUI.TimKiem
             if (e.KeyChar == 13)
                 btnTimKiemTTKH.PerformClick();
         }
+
+        
 
 
     }
