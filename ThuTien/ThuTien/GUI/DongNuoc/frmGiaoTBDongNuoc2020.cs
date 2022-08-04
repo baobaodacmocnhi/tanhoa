@@ -48,9 +48,14 @@ namespace ThuTien.GUI.DongNuoc
                 cmbTo.DisplayMember = "TenTo";
                 cmbTo.ValueMember = "MaTo";
                 cmbTo.Visible = true;
+                btnXoaLenh.Visible = true;
             }
             else
             {
+                if(CNguoiDung.ToTruong)
+                    btnXoaLenh.Visible = true;
+                else
+                    btnXoaLenh.Visible = false;
                 TT_NguoiDung nguoidung = new TT_NguoiDung();
                 nguoidung.MaND = -1;
                 nguoidung.HoTen = "Tất cả";
@@ -152,9 +157,9 @@ namespace ThuTien.GUI.DongNuoc
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+            try
             {
-                try
+                if (CNguoiDung.CheckQuyen(_mnu, "Them"))
                 {
                     //_cDongNuoc.SqlBeginTransaction();
                     DataTable dt = ((DataTable)gridControl.DataSource).DefaultView.Table;
@@ -166,24 +171,24 @@ namespace ThuTien.GUI.DongNuoc
                             //    return;
                             //}
                             //else
-                                if (!_cDongNuoc.GiaoDongNuoc(decimal.Parse(item["MaDN"].ToString()), int.Parse(cmbNhanVienGiao.SelectedValue.ToString())))
-                                {
-                                    //_cDongNuoc.SqlRollbackTransaction();
-                                    MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    return;
-                                }
+                            if (!_cDongNuoc.GiaoDongNuoc(decimal.Parse(item["MaDN"].ToString()), int.Parse(cmbNhanVienGiao.SelectedValue.ToString())))
+                            {
+                                //_cDongNuoc.SqlRollbackTransaction();
+                                MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                     //_cDongNuoc.SqlCommitTransaction();
                     btnXem.PerformClick();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception ex)
-                {
-                    //_cDongNuoc.SqlRollbackTransaction();
-                    MessageBox.Show("Lỗi, Vui lòng thử lại\n" + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                //_cDongNuoc.SqlRollbackTransaction();
+                MessageBox.Show("Lỗi, Vui lòng thử lại\n" + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -198,9 +203,9 @@ namespace ThuTien.GUI.DongNuoc
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
+            try
             {
-                try
+                if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
                 {
                     //_cDongNuoc.SqlBeginTransaction();
                     if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
@@ -236,14 +241,14 @@ namespace ThuTien.GUI.DongNuoc
                         gridControl.DataSource = _cDongNuoc.GetDSByCreateByCreateDates(CNguoiDung.TenTo, int.Parse(cmbNhanVienLap.SelectedValue.ToString()), dateTu.Value, dateDen.Value).Tables["DongNuoc"];
                     }
                 }
-                catch (Exception ex)
-                {
-                    //_cDongNuoc.SqlRollbackTransaction();
-                    MessageBox.Show("Lỗi, Vui lòng thử lại\n" + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                else
+                    MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                //_cDongNuoc.SqlRollbackTransaction();
+                MessageBox.Show("Lỗi, Vui lòng thử lại\n" + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void gridViewDN_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
@@ -1044,6 +1049,37 @@ namespace ThuTien.GUI.DongNuoc
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnXoaLenh_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
+                {
+                    if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        DataTable dt = ((DataTable)gridControl.DataSource).DefaultView.Table;
+                        foreach (DataRow item in dt.Rows)
+                            if (bool.Parse(item["In"].ToString()))
+                            {
+                                if (!_cDongNuoc.CheckExist_KQDongNuoc(decimal.Parse(item["MaDN"].ToString())))
+                                    if (!_cDongNuoc.Xoa(decimal.Parse(item["MaDN"].ToString())))
+                                    {
+                                        
+                                    }
+                            }
+                        MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        btnXem.PerformClick();
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

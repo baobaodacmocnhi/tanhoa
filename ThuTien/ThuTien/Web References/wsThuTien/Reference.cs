@@ -153,7 +153,7 @@ namespace ThuTien.wsThuTien {
         
         /// <remarks/>
         public wsThuTien() {
-            this.Url = "http://server11:81/wsthutien.asmx";
+            this.Url = global::ThuTien.Properties.Settings.Default.ThuTien_wsThuTien_wsThuTien;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

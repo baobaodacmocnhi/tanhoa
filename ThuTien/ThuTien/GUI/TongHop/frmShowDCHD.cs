@@ -308,19 +308,19 @@ namespace ThuTien.GUI.TongHop
                                 _dchd.SoPhieu = _ctdchd.MaCTDCHD;
                                 _dchd.TangGiam = _ctdchd.TangGiam;
 
-                                _dchd.GIABAN_DC = _ctdchd.TienNuoc_BD.Value;
-                                _dchd.GIABAN_END = _ctdchd.TienNuoc_End.Value;
+                                _dchd.GIABAN_DC = _ctdchd.TienNuoc_BD;
+                                _dchd.GIABAN_END = _ctdchd.TienNuoc_End;
 
-                                _dchd.THUE_DC = _ctdchd.ThueGTGT_BD.Value;
-                                _dchd.THUE_END = _ctdchd.ThueGTGT_End.Value;
+                                _dchd.THUE_DC = _ctdchd.ThueGTGT_BD;
+                                _dchd.THUE_END = _ctdchd.ThueGTGT_End;
 
-                                _dchd.PHI_DC = _ctdchd.PhiBVMT_BD.Value;
-                                _dchd.PHI_END = _ctdchd.PhiBVMT_End.Value;
+                                _dchd.PHI_DC = _ctdchd.PhiBVMT_BD;
+                                _dchd.PHI_END = _ctdchd.PhiBVMT_End;
                                 _dchd.PHI_Thue_DC = _ctdchd.PhiBVMT_Thue_BD;
                                 _dchd.PHI_Thue_END = _ctdchd.PhiBVMT_Thue_End;
 
-                                _dchd.TONGCONG_DC = _ctdchd.TongCong_BD.Value;
-                                _dchd.TONGCONG_END = _ctdchd.TongCong_End.Value;
+                                _dchd.TONGCONG_DC = _ctdchd.TongCong_BD;
+                                _dchd.TONGCONG_END = _ctdchd.TongCong_End;
 
                                 _dchd.GB_DC = _ctdchd.GiaBieu_BD;
                                 _dchd.DM_DC = _ctdchd.DinhMuc_BD;
@@ -458,22 +458,22 @@ namespace ThuTien.GUI.TongHop
                                 dchd.TangGiam = _ctdchd.TangGiam;
 
                                 //_dchd.GIABAN_BD = _ctdchd.TienNuoc_Start.Value;
-                                dchd.GIABAN_DC = _ctdchd.TienNuoc_BD.Value;
-                                dchd.GIABAN_END = _ctdchd.TienNuoc_End.Value;
+                                dchd.GIABAN_DC = _ctdchd.TienNuoc_BD;
+                                dchd.GIABAN_END = _ctdchd.TienNuoc_End;
 
                                 //_dchd.THUE_BD = _ctdchd.ThueGTGT_Start.Value;
-                                dchd.THUE_DC = _ctdchd.ThueGTGT_BD.Value;
-                                dchd.THUE_END = _ctdchd.ThueGTGT_End.Value;
+                                dchd.THUE_DC = _ctdchd.ThueGTGT_BD;
+                                dchd.THUE_END = _ctdchd.ThueGTGT_End;
 
                                 //_dchd.PHI_BD = _ctdchd.PhiBVMT_Start.Value;
-                                dchd.PHI_DC = _ctdchd.PhiBVMT_BD.Value;
-                                dchd.PHI_END = _ctdchd.PhiBVMT_End.Value;
+                                dchd.PHI_DC = _ctdchd.PhiBVMT_BD;
+                                dchd.PHI_END = _ctdchd.PhiBVMT_End;
                                 dchd.PHI_Thue_DC = _ctdchd.PhiBVMT_Thue_BD;
                                 dchd.PHI_Thue_END = _ctdchd.PhiBVMT_Thue_End;
 
                                 //_dchd.TONGCONG_BD = _ctdchd.TongCong_Start.Value;
-                                dchd.TONGCONG_DC = _ctdchd.TongCong_BD.Value;
-                                dchd.TONGCONG_END = _ctdchd.TongCong_End.Value;
+                                dchd.TONGCONG_DC = _ctdchd.TongCong_BD;
+                                dchd.TONGCONG_END = _ctdchd.TongCong_End;
 
                                 dchd.GB_DC = _ctdchd.GiaBieu_BD;
                                 dchd.DM_DC = _ctdchd.DinhMuc_BD;

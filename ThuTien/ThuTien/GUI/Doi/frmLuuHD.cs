@@ -306,8 +306,9 @@ namespace ThuTien.GUI.Doi
                                             dchd.DinhMuc = (int)hoadon.DM;
                                         dchd.TIEUTHU_BD = (int)hoadon.TIEUTHU;
                                         dchd.GIABAN_BD = hoadon.GIABAN;
-                                        dchd.PHI_BD = hoadon.PHI;
                                         dchd.THUE_BD = hoadon.THUE;
+                                        dchd.PHI_BD = hoadon.PHI;
+                                        dchd.PHI_Thue_BD = hoadon.ThueGTGT_TDVTN;
                                         dchd.TONGCONG_BD = hoadon.TONGCONG;
                                         dchd.NgayChan = DateTime.Now;
                                         if (_cDCHD.Them(dchd))
