@@ -218,6 +218,7 @@ namespace ThuTien.GUI.TongHop
                             hd.GIABAN = dchd.GIABAN_BD;
                             hd.THUE = dchd.THUE_BD;
                             hd.PHI = dchd.PHI_BD;
+                            hd.ThueGTGT_TDVTN = dchd.PHI_Thue_BD;
                             hd.TONGCONG = dchd.TONGCONG_BD;
                             if (_cHoaDon.Sua(hd))
                                 _cDCHD.Xoa(dchd);
@@ -870,7 +871,7 @@ namespace ThuTien.GUI.TongHop
                 dr["HanhThu"] = item["SoPhieu"].ToString().Insert(item["SoPhieu"].ToString().Length - 2, "-");
                 dr["To"] = item["NgayGiaiTrach"];
                 if (bool.Parse(item["DangNgan_ChuyenKhoan"].ToString()))
-                    dr["SoHoaDon"] ="CK";
+                    dr["SoHoaDon"] = "CK";
                 else
                     if (bool.Parse(item["DangNgan_Quay"].ToString()))
                         dr["SoHoaDon"] = "Q";
