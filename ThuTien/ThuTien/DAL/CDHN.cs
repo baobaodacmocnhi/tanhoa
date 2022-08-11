@@ -172,7 +172,9 @@ namespace ThuTien.DAL
 
         public string getDienThoai(string DanhBo)
         {
-            return _db.SDT_DHNs.Where(item => item.DanhBo == DanhBo).OrderByDescending(item => item.CreateDate).First().DienThoai;
+            if (_db.SDT_DHNs.Any(item => item.DanhBo == DanhBo))
+                return _db.SDT_DHNs.Where(item => item.DanhBo == DanhBo).OrderByDescending(item => item.CreateDate).First().DienThoai;
+            else return "";
         }
 
         public string GetCoDHN(string DanhBo)
