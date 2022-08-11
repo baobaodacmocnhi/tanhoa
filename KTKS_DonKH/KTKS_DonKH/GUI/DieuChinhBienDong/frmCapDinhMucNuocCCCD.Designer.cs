@@ -47,11 +47,6 @@
             this.label21 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dgvHinh = new System.Windows.Forms.DataGridView();
-            this.ID_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Image_Hinh = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Name_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Bytes_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Loai_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnChonFile = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.txtDinhMuc = new System.Windows.Forms.TextBox();
@@ -137,11 +132,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.btnIn_Online = new System.Windows.Forms.Button();
             this.dgvDanhSach_Online = new System.Windows.Forms.DataGridView();
-            this.btnXem_Online = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.dateDen_Online = new System.Windows.Forms.DateTimePicker();
-            this.label7 = new System.Windows.Forms.Label();
-            this.dateTu_Online = new System.Windows.Forms.DateTimePicker();
             this.ID_Online = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -153,6 +143,17 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateBy_Online = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.actionThem = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btnXem_Online = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.dateDen_Online = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
+            this.dateTu_Online = new System.Windows.Forms.DateTimePicker();
+            this.ID_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Image_Hinh = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Name_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Bytes_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Loai_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateBy_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -263,50 +264,14 @@
             this.Image_Hinh,
             this.Name_Hinh,
             this.Bytes_Hinh,
-            this.Loai_Hinh});
+            this.Loai_Hinh,
+            this.CreateBy_Hinh});
             this.dgvHinh.Location = new System.Drawing.Point(6, 43);
             this.dgvHinh.Name = "dgvHinh";
             this.dgvHinh.Size = new System.Drawing.Size(261, 86);
             this.dgvHinh.TabIndex = 10;
             this.dgvHinh.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgvHinh_UserDeletingRow);
             this.dgvHinh.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvHinh_MouseDoubleClick);
-            // 
-            // ID_Hinh
-            // 
-            this.ID_Hinh.DataPropertyName = "ID";
-            this.ID_Hinh.HeaderText = "ID";
-            this.ID_Hinh.Name = "ID_Hinh";
-            this.ID_Hinh.Visible = false;
-            // 
-            // Image_Hinh
-            // 
-            this.Image_Hinh.HeaderText = "Image";
-            this.Image_Hinh.Image = global::KTKS_DonKH.Properties.Resources.file_24x24;
-            this.Image_Hinh.Name = "Image_Hinh";
-            this.Image_Hinh.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Image_Hinh.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Image_Hinh.Width = 50;
-            // 
-            // Name_Hinh
-            // 
-            this.Name_Hinh.DataPropertyName = "Name";
-            this.Name_Hinh.HeaderText = "File";
-            this.Name_Hinh.Name = "Name_Hinh";
-            this.Name_Hinh.Width = 150;
-            // 
-            // Bytes_Hinh
-            // 
-            this.Bytes_Hinh.DataPropertyName = "Bytes";
-            this.Bytes_Hinh.HeaderText = "Bytes";
-            this.Bytes_Hinh.Name = "Bytes_Hinh";
-            this.Bytes_Hinh.Visible = false;
-            // 
-            // Loai_Hinh
-            // 
-            this.Loai_Hinh.DataPropertyName = "Loai";
-            this.Loai_Hinh.HeaderText = "Loai_Hinh";
-            this.Loai_Hinh.Name = "Loai_Hinh";
-            this.Loai_Hinh.Visible = false;
             // 
             // btnChonFile
             // 
@@ -1180,52 +1145,6 @@
             this.dgvDanhSach_Online.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_Online_CellClick);
             this.dgvDanhSach_Online.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhSach_Online_RowPostPaint);
             // 
-            // btnXem_Online
-            // 
-            this.btnXem_Online.Location = new System.Drawing.Point(488, 4);
-            this.btnXem_Online.Name = "btnXem_Online";
-            this.btnXem_Online.Size = new System.Drawing.Size(75, 23);
-            this.btnXem_Online.TabIndex = 24;
-            this.btnXem_Online.Text = "Xem";
-            this.btnXem_Online.UseVisualStyleBackColor = true;
-            this.btnXem_Online.Click += new System.EventHandler(this.btnXem_Online_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(165, 9);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(55, 13);
-            this.label6.TabIndex = 22;
-            this.label6.Text = "Đến Ngày";
-            // 
-            // dateDen_Online
-            // 
-            this.dateDen_Online.CustomFormat = "dd/MM/yyyy";
-            this.dateDen_Online.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDen_Online.Location = new System.Drawing.Point(226, 6);
-            this.dateDen_Online.Name = "dateDen_Online";
-            this.dateDen_Online.Size = new System.Drawing.Size(95, 20);
-            this.dateDen_Online.TabIndex = 23;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(10, 9);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(48, 13);
-            this.label7.TabIndex = 20;
-            this.label7.Text = "Từ Ngày";
-            // 
-            // dateTu_Online
-            // 
-            this.dateTu_Online.CustomFormat = "dd/MM/yyyy";
-            this.dateTu_Online.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTu_Online.Location = new System.Drawing.Point(64, 6);
-            this.dateTu_Online.Name = "dateTu_Online";
-            this.dateTu_Online.Size = new System.Drawing.Size(95, 20);
-            this.dateTu_Online.TabIndex = 21;
-            // 
             // ID_Online
             // 
             this.ID_Online.DataPropertyName = "ID";
@@ -1302,6 +1221,96 @@
             this.actionThem.UseColumnTextForButtonValue = true;
             this.actionThem.Visible = false;
             this.actionThem.Width = 50;
+            // 
+            // btnXem_Online
+            // 
+            this.btnXem_Online.Location = new System.Drawing.Point(488, 4);
+            this.btnXem_Online.Name = "btnXem_Online";
+            this.btnXem_Online.Size = new System.Drawing.Size(75, 23);
+            this.btnXem_Online.TabIndex = 24;
+            this.btnXem_Online.Text = "Xem";
+            this.btnXem_Online.UseVisualStyleBackColor = true;
+            this.btnXem_Online.Click += new System.EventHandler(this.btnXem_Online_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(165, 9);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(55, 13);
+            this.label6.TabIndex = 22;
+            this.label6.Text = "Đến Ngày";
+            // 
+            // dateDen_Online
+            // 
+            this.dateDen_Online.CustomFormat = "dd/MM/yyyy";
+            this.dateDen_Online.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateDen_Online.Location = new System.Drawing.Point(226, 6);
+            this.dateDen_Online.Name = "dateDen_Online";
+            this.dateDen_Online.Size = new System.Drawing.Size(95, 20);
+            this.dateDen_Online.TabIndex = 23;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(10, 9);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(48, 13);
+            this.label7.TabIndex = 20;
+            this.label7.Text = "Từ Ngày";
+            // 
+            // dateTu_Online
+            // 
+            this.dateTu_Online.CustomFormat = "dd/MM/yyyy";
+            this.dateTu_Online.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTu_Online.Location = new System.Drawing.Point(64, 6);
+            this.dateTu_Online.Name = "dateTu_Online";
+            this.dateTu_Online.Size = new System.Drawing.Size(95, 20);
+            this.dateTu_Online.TabIndex = 21;
+            // 
+            // ID_Hinh
+            // 
+            this.ID_Hinh.DataPropertyName = "ID";
+            this.ID_Hinh.HeaderText = "ID";
+            this.ID_Hinh.Name = "ID_Hinh";
+            this.ID_Hinh.Visible = false;
+            // 
+            // Image_Hinh
+            // 
+            this.Image_Hinh.HeaderText = "Image";
+            this.Image_Hinh.Image = global::KTKS_DonKH.Properties.Resources.file_24x24;
+            this.Image_Hinh.Name = "Image_Hinh";
+            this.Image_Hinh.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Image_Hinh.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Image_Hinh.Width = 50;
+            // 
+            // Name_Hinh
+            // 
+            this.Name_Hinh.DataPropertyName = "Name";
+            this.Name_Hinh.HeaderText = "File";
+            this.Name_Hinh.Name = "Name_Hinh";
+            this.Name_Hinh.Width = 150;
+            // 
+            // Bytes_Hinh
+            // 
+            this.Bytes_Hinh.DataPropertyName = "Bytes";
+            this.Bytes_Hinh.HeaderText = "Bytes";
+            this.Bytes_Hinh.Name = "Bytes_Hinh";
+            this.Bytes_Hinh.Visible = false;
+            // 
+            // Loai_Hinh
+            // 
+            this.Loai_Hinh.DataPropertyName = "Loai";
+            this.Loai_Hinh.HeaderText = "Loai_Hinh";
+            this.Loai_Hinh.Name = "Loai_Hinh";
+            this.Loai_Hinh.Visible = false;
+            // 
+            // CreateBy_Hinh
+            // 
+            this.CreateBy_Hinh.DataPropertyName = "CreateBy";
+            this.CreateBy_Hinh.HeaderText = "CreateBy";
+            this.CreateBy_Hinh.Name = "CreateBy_Hinh";
+            this.CreateBy_Hinh.Visible = false;
             // 
             // frmCapDinhMucNuocCCCD
             // 
@@ -1417,11 +1426,6 @@
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.DataGridView dgvHinh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID_Hinh;
-        private System.Windows.Forms.DataGridViewImageColumn Image_Hinh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name_Hinh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Bytes_Hinh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Loai_Hinh;
         private System.Windows.Forms.Button btnChonFile;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
@@ -1445,5 +1449,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy_Online;
         private System.Windows.Forms.DataGridViewButtonColumn actionThem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_Hinh;
+        private System.Windows.Forms.DataGridViewImageColumn Image_Hinh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name_Hinh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Bytes_Hinh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Loai_Hinh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy_Hinh;
     }
 }

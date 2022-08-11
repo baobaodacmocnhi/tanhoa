@@ -1647,8 +1647,16 @@ namespace KTKS_DonKH.GUI.TruyThu
                         {
                             dr["GiaBanCu"] = TienNuocNamCu_Sau - TienNuocNamCu_Truoc;
                             dr["GiaBanMoi"] = TienNuocNamMoi_Sau - TienNuocNamMoi_Truoc;
-                            dr["ThueGTGTCu"] = (int)Math.Round((double)(TienNuocNamCu_Sau - TienNuocNamCu_Truoc) * 5 / 100);
-                            dr["ThueGTGTMoi"] = (int)Math.Round((double)(TienNuocNamMoi_Sau - TienNuocNamMoi_Truoc) * 5 / 100);
+                            if (chkLamTronLen.Checked)
+                            {
+                                dr["ThueGTGTCu"] = (int)Math.Round((double)(TienNuocNamCu_Sau - TienNuocNamCu_Truoc) * 5 / 100, 0, MidpointRounding.AwayFromZero);
+                                dr["ThueGTGTMoi"] = (int)Math.Round((double)(TienNuocNamMoi_Sau - TienNuocNamMoi_Truoc) * 5 / 100, 0, MidpointRounding.AwayFromZero);
+                            }
+                            else
+                            {
+                                dr["ThueGTGTCu"] = (int)Math.Round((double)(TienNuocNamCu_Sau - TienNuocNamCu_Truoc) * 5 / 100);
+                                dr["ThueGTGTMoi"] = (int)Math.Round((double)(TienNuocNamMoi_Sau - TienNuocNamMoi_Truoc) * 5 / 100);
+                            }
                             if (item.Nam.Value < 2022)
                             {
                                 dr["PhiBVMTCu1"] = PhiBVMTNamCu_Sau - PhiBVMTNamCu_Truoc;
@@ -1668,7 +1676,10 @@ namespace KTKS_DonKH.GUI.TruyThu
                                     dr["PhiBVMTMoi1"] = 0;
                                     dr["PhiBVMT_ThueCu"] = 0;
                                     if ((PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) > 0)
-                                        dr["PhiBVMT_ThueMoi"] = (int)Math.Round((double)(PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) * ThueTDVTN_VAT / 100);
+                                        if (chkLamTronLen.Checked)
+                                            dr["PhiBVMT_ThueMoi"] = (int)Math.Round((double)(PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) * ThueTDVTN_VAT / 100, 0, MidpointRounding.AwayFromZero);
+                                        else
+                                            dr["PhiBVMT_ThueMoi"] = (int)Math.Round((double)(PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) * ThueTDVTN_VAT / 100);
                                     else
                                         dr["PhiBVMT_ThueMoi"] = 0;
                                 }
@@ -1680,11 +1691,17 @@ namespace KTKS_DonKH.GUI.TruyThu
                                     dr["PhiBVMTMoi"] = PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc;
 
                                     if ((PhiBVMTNamCu_Sau - PhiBVMTNamCu_Truoc) > 0)
-                                        dr["PhiBVMT_ThueCu"] = (int)Math.Round((double)(PhiBVMTNamCu_Sau - PhiBVMTNamCu_Truoc) * ThueTDVTN_VAT / 100);
+                                        if (chkLamTronLen.Checked)
+                                            dr["PhiBVMT_ThueCu"] = (int)Math.Round((double)(PhiBVMTNamCu_Sau - PhiBVMTNamCu_Truoc) * ThueTDVTN_VAT / 100, 0, MidpointRounding.AwayFromZero);
+                                        else
+                                            dr["PhiBVMT_ThueCu"] = (int)Math.Round((double)(PhiBVMTNamCu_Sau - PhiBVMTNamCu_Truoc) * ThueTDVTN_VAT / 100);
                                     else
                                         dr["PhiBVMT_ThueCu"] = 0;
                                     if ((PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) > 0)
-                                        dr["PhiBVMT_ThueMoi"] = (int)Math.Round((double)(PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) * ThueTDVTN_VAT / 100);
+                                        if (chkLamTronLen.Checked)
+                                            dr["PhiBVMT_ThueMoi"] = (int)Math.Round((double)(PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) * ThueTDVTN_VAT / 100, 0, MidpointRounding.AwayFromZero);
+                                        else
+                                            dr["PhiBVMT_ThueMoi"] = (int)Math.Round((double)(PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) * ThueTDVTN_VAT / 100);
                                     else
                                         dr["PhiBVMT_ThueMoi"] = 0;
                                 }

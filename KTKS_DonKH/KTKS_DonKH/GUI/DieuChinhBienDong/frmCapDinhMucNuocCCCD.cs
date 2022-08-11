@@ -455,7 +455,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 if (_danhbo != null && e.Row.Cells["ID"].Value != null && e.Row.Cells["ID"].Value.ToString() != "")
                 {
-                    if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
+                    if (CTaiKhoan.CheckQuyen(_mnu, "Xoa") && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
                         if (_danhbo.DaXuLy)
                         {
@@ -1312,7 +1312,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             try
             {
                 if (_danhbo != null)
-                    if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+                    if (CTaiKhoan.CheckQuyen(_mnu, "Xoa") && CTaiKhoan.MaUser == 33)
                     {
                         if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
@@ -1328,7 +1328,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         }
                     }
                     else
-                        MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {

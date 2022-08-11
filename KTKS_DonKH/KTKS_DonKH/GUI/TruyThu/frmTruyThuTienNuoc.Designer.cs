@@ -171,6 +171,7 @@
             this.btnAutoTaiHoaDon = new System.Windows.Forms.Button();
             this.txtPhiBVMT_Thue = new System.Windows.Forms.TextBox();
             this.btnInKTTC = new System.Windows.Forms.Button();
+            this.chkLamTronLen = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTruyThuTienNuoc)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -1473,6 +1474,16 @@
             this.btnInKTTC.UseVisualStyleBackColor = true;
             this.btnInKTTC.Click += new System.EventHandler(this.btnInKTTC_Click);
             // 
+            // chkLamTronLen
+            // 
+            this.chkLamTronLen.AutoSize = true;
+            this.chkLamTronLen.Location = new System.Drawing.Point(1300, 511);
+            this.chkLamTronLen.Name = "chkLamTronLen";
+            this.chkLamTronLen.Size = new System.Drawing.Size(109, 20);
+            this.chkLamTronLen.TabIndex = 153;
+            this.chkLamTronLen.Text = "Làm Tròn Lên";
+            this.chkLamTronLen.UseVisualStyleBackColor = true;
+            // 
             // frmTruyThuTienNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1480,6 +1491,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1483, 590);
+            this.Controls.Add(this.chkLamTronLen);
             this.Controls.Add(this.btnInKTTC);
             this.Controls.Add(this.txtPhiBVMT_Thue);
             this.Controls.Add(this.groupBox5);
@@ -1685,5 +1697,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Bytes_Hinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn Loai_Hinh;
         private System.Windows.Forms.Button btnInKTTC;
+        private System.Windows.Forms.CheckBox chkLamTronLen;
     }
 }
