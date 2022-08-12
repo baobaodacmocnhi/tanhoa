@@ -1654,8 +1654,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                             }
                             else
                             {
-                                dr["ThueGTGTCu"] = (int)Math.Round((double)(TienNuocNamCu_Sau - TienNuocNamCu_Truoc) * 5 / 100);
-                                dr["ThueGTGTMoi"] = (int)Math.Round((double)(TienNuocNamMoi_Sau - TienNuocNamMoi_Truoc) * 5 / 100);
+                                dr["ThueGTGTCu"] = (int)Math.Round((double)(TienNuocNamCu_Sau - TienNuocNamCu_Truoc) * 5 / 100, 1, MidpointRounding.AwayFromZero);
+                                dr["ThueGTGTMoi"] = (int)Math.Round((double)(TienNuocNamMoi_Sau - TienNuocNamMoi_Truoc) * 5 / 100, 1, MidpointRounding.AwayFromZero);
                             }
                             if (item.Nam.Value < 2022)
                             {
@@ -1679,7 +1679,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                                         if (chkLamTronLen.Checked)
                                             dr["PhiBVMT_ThueMoi"] = (int)Math.Round((double)(PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) * ThueTDVTN_VAT / 100, 0, MidpointRounding.AwayFromZero);
                                         else
-                                            dr["PhiBVMT_ThueMoi"] = (int)Math.Round((double)(PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) * ThueTDVTN_VAT / 100);
+                                            dr["PhiBVMT_ThueMoi"] = (int)Math.Round((double)(PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) * ThueTDVTN_VAT / 100, 1, MidpointRounding.AwayFromZero);
                                     else
                                         dr["PhiBVMT_ThueMoi"] = 0;
                                 }
@@ -1694,14 +1694,14 @@ namespace KTKS_DonKH.GUI.TruyThu
                                         if (chkLamTronLen.Checked)
                                             dr["PhiBVMT_ThueCu"] = (int)Math.Round((double)(PhiBVMTNamCu_Sau - PhiBVMTNamCu_Truoc) * ThueTDVTN_VAT / 100, 0, MidpointRounding.AwayFromZero);
                                         else
-                                            dr["PhiBVMT_ThueCu"] = (int)Math.Round((double)(PhiBVMTNamCu_Sau - PhiBVMTNamCu_Truoc) * ThueTDVTN_VAT / 100);
+                                            dr["PhiBVMT_ThueCu"] = (int)Math.Round((double)(PhiBVMTNamCu_Sau - PhiBVMTNamCu_Truoc) * ThueTDVTN_VAT / 100, 1, MidpointRounding.AwayFromZero);
                                     else
                                         dr["PhiBVMT_ThueCu"] = 0;
                                     if ((PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) > 0)
                                         if (chkLamTronLen.Checked)
                                             dr["PhiBVMT_ThueMoi"] = (int)Math.Round((double)(PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) * ThueTDVTN_VAT / 100, 0, MidpointRounding.AwayFromZero);
                                         else
-                                            dr["PhiBVMT_ThueMoi"] = (int)Math.Round((double)(PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) * ThueTDVTN_VAT / 100);
+                                            dr["PhiBVMT_ThueMoi"] = (int)Math.Round((double)(PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) * ThueTDVTN_VAT / 100, 1, MidpointRounding.AwayFromZero);
                                     else
                                         dr["PhiBVMT_ThueMoi"] = 0;
                                 }
