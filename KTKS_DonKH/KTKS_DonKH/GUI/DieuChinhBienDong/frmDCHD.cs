@@ -588,6 +588,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 try
                 {
+                    if (_hoadon != null)
+                    {
+                        if (_hoadon.SOHOADON == null)
+                        {
+                            MessageBox.Show("Chưa có Số Hóa Đơn\nLiên hệ Đ.TT để cập nhật", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
                     if (chkKhuCongNghiep.Checked == false)
                         if (chkChuyenNhap.Checked == true)
                         {
