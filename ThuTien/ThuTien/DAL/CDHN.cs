@@ -177,6 +177,24 @@ namespace ThuTien.DAL
             else return "";
         }
 
+        public string getDienThoaiAll(string DanhBo)
+        {
+            DataTable dt = ExecuteQuery_DataTable("select g1.DanhBo"
+                                + " , stuff(("
+                                + "    select ' | ' + g.DienThoai+' '+g.HoTen"
+                                + "    from CAPNUOCTANHOA.dbo.SDT_DHN g"
+                                + "    where g.DanhBo = g1.DanhBo"
+                                + "    order by CreateDate desc"
+                                + "    for xml path('')"
+                                + " ),1,2,'') as DienThoai"
+                                + " from CAPNUOCTANHOA.dbo.SDT_DHN g1 where DanhBo='" + DanhBo + "'"
+                                + "group by g1.DanhBo");
+            if (dt != null && dt.Rows.Count > 0)
+                return dt.Rows[0]["DienThoai"].ToString();
+            else
+                return "";
+        }
+
         public string GetCoDHN(string DanhBo)
         {
             return _db.TB_DULIEUKHACHHANGs.SingleOrDefault(item => item.DANHBO == DanhBo).CODH;

@@ -308,7 +308,7 @@ namespace ThuTien.GUI.TimKiem
             if (CNguoiDung.MaND == 0)
                 if (dgvHoaDon.RowCount > 0 && e.Button == MouseButtons.Left)
                 {
-                    frmDoiSoHoaDon frm = new frmDoiSoHoaDon(int.Parse(dgvHoaDon.CurrentRow.Cells["MaHD"].Value.ToString()));
+                    frmXuLyHoaDon frm = new frmXuLyHoaDon(int.Parse(dgvHoaDon.CurrentRow.Cells["MaHD"].Value.ToString()));
                     if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
                         btnTimKiem.PerformClick();

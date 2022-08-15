@@ -79,50 +79,89 @@ namespace ThuTien.DAL.HanhThu
             return ExecuteQuery_DataTable(sql);
         }
 
-        public DataTable GetDS(string Loai, int MaNV, int Dot)
+        public DataTable GetDS(string Loai, int MaNV, int Dot, int Nam, int Ky)
         {
             string sql = "";
             if (Loai == "TG")
-                sql = "select * from"
-                       + " (select distinct(DANHBA),TENKH as HoTen,SO+' '+DUONG as DiaChi,MALOTRINH as MLT from HOADON hd"
+                //sql = "select * from"
+                //       + " (select distinct(DANHBA),TENKH as HoTen,SO+' '+DUONG as DiaChi,MALOTRINH as MLT from HOADON hd"
+                //       + " left join TT_NguoiDung nd on hd.MaNV_HanhThu=nd.MaND"
+                //       + " where DOT=" + Dot + " and MaNV_HanhThu=" + MaNV + " and GB<=20) hd"
+                //       + " left join"
+                //       + " (select DanhBo,DienThoai from TT_ThongTinKhachHang) ttkh on hd.DANHBA=ttkh.DanhBo"
+                //       + " order by hd.MLT asc";
+                sql = "select DanhBo=DANHBA,TENKH as HoTen,SO+' '+DUONG as DiaChi,MALOTRINH as MLT,stuff(("
+                       + "             select ' | ' + g.DienThoai"
+                       + "             from server8.CAPNUOCTANHOA.dbo.SDT_DHN g"
+                       + "             where g.DanhBo = DANHBA"
+                       + "             order by CreateDate desc"
+                       + "             for xml path('')"
+                       + "         ),1,2,'') as DienThoai from HOADON hd"
                        + " left join TT_NguoiDung nd on hd.MaNV_HanhThu=nd.MaND"
-                       + " where DOT=" + Dot + " and MaNV_HanhThu=" + MaNV + " and GB<=20) hd"
-                       + " left join"
-                       + " (select DanhBo,DienThoai from TT_ThongTinKhachHang) ttkh on hd.DANHBA=ttkh.DanhBo"
-                       + " order by hd.MLT asc";
+                       + " where DOT=" + Dot + " and MaNV_HanhThu=" + MaNV + " and GB<=20 and NAM=" + Nam + " and KY=" + Ky
+                       + " order by MLT asc";
             else
                 if (Loai == "CQ")
-                    sql = "select * from"
-                           + " (select distinct(DANHBA),TENKH as HoTen,SO+' '+DUONG as DiaChi,MALOTRINH as MLT from HOADON hd"
-                           + " left join TT_NguoiDung nd on hd.MaNV_HanhThu=nd.MaND"
-                           + " where DOT=" + Dot + " and MaNV_HanhThu=" + MaNV + " and GB>20) hd"
-                           + " left join"
-                           + " (select DanhBo,DienThoai from TT_ThongTinKhachHang) ttkh on hd.DANHBA=ttkh.DanhBo"
-                           + " order by hd.MLT asc";
-
+                    //sql = "select * from"
+                    //       + " (select distinct(DANHBA),TENKH as HoTen,SO+' '+DUONG as DiaChi,MALOTRINH as MLT from HOADON hd"
+                    //       + " left join TT_NguoiDung nd on hd.MaNV_HanhThu=nd.MaND"
+                    //       + " where DOT=" + Dot + " and MaNV_HanhThu=" + MaNV + " and GB>20) hd"
+                    //       + " left join"
+                    //       + " (select DanhBo,DienThoai from TT_ThongTinKhachHang) ttkh on hd.DANHBA=ttkh.DanhBo"
+                    //       + " order by hd.MLT asc";
+                    sql = "select DanhBo=DANHBA,TENKH as HoTen,SO+' '+DUONG as DiaChi,MALOTRINH as MLT,stuff(("
+                                   + "     select ' | ' + g.DienThoai"
+                                   + "     from server8.CAPNUOCTANHOA.dbo.SDT_DHN g"
+                                   + "     where g.DanhBo = DANHBA"
+                                   + "     order by CreateDate desc"
+                                   + "     for xml path('')"
+                                   + "     ),1,2,'') as DienThoai from HOADON hd"
+                                   + " left join TT_NguoiDung nd on hd.MaNV_HanhThu=nd.MaND"
+                                   + " where DOT=" + Dot + " and MaNV_HanhThu=" + MaNV + " and GB>20 and NAM=" + Nam + " and KY=" + Ky
+                                   + " order by MLT asc";
             return ExecuteQuery_DataTable(sql);
         }
 
-        public DataTable GetDS(string Loai, int MaNV, int FromDot, int ToDot)
+        public DataTable GetDS(string Loai, int MaNV, int FromDot, int ToDot, int Nam, int Ky)
         {
             string sql = "";
             if (Loai == "TG")
-                sql = "select * from"
-                       + " (select distinct(DANHBA),TENKH as HoTen,SO+' '+DUONG as DiaChi,MALOTRINH as MLT from HOADON hd"
-                       + " left join TT_NguoiDung nd on hd.MaNV_HanhThu=nd.MaND"
-                       + " where DOT>=" + FromDot + " and DOT<=" + ToDot + " and MaNV_HanhThu=" + MaNV + " and GB<=20) hd"
-                       + " left join"
-                       + " (select DanhBo,DienThoai from TT_ThongTinKhachHang) ttkh on hd.DANHBA=ttkh.DanhBo"
-                       + " order by hd.MLT asc";
+                //sql = "select * from"
+                //       + " (select distinct(DANHBA),TENKH as HoTen,SO+' '+DUONG as DiaChi,MALOTRINH as MLT from HOADON hd"
+                //       + " left join TT_NguoiDung nd on hd.MaNV_HanhThu=nd.MaND"
+                //       + " where DOT>=" + FromDot + " and DOT<=" + ToDot + " and MaNV_HanhThu=" + MaNV + " and GB<=20) hd"
+                //       + " left join"
+                //       + " (select DanhBo,DienThoai from TT_ThongTinKhachHang) ttkh on hd.DANHBA=ttkh.DanhBo"
+                //       + " order by hd.MLT asc";
+                sql = "select DanhBo=DANHBA,TENKH as HoTen,SO+' '+DUONG as DiaChi,MALOTRINH as MLT,stuff(("
+                                   + "     select ' | ' + g.DienThoai"
+                                   + "     from server8.CAPNUOCTANHOA.dbo.SDT_DHN g"
+                                   + "     where g.DanhBo = DANHBA"
+                                   + "     order by CreateDate desc"
+                                   + "     for xml path('')"
+                                   + "     ),1,2,'') as DienThoai from HOADON hd"
+                      + " left join TT_NguoiDung nd on hd.MaNV_HanhThu=nd.MaND"
+                      + " where DOT>=" + FromDot + " and DOT<=" + ToDot + " and MaNV_HanhThu=" + MaNV + " and GB<=20 and NAM=" + Nam + " and KY=" + Ky
+                      + " order by MLT asc";
             else
                 if (Loai == "CQ")
-                    sql = "select * from"
-                    + " (select distinct(DANHBA),TENKH as HoTen,SO+' '+DUONG as DiaChi,MALOTRINH as MLT from HOADON hd"
-                    + " left join TT_NguoiDung nd on hd.MaNV_HanhThu=nd.MaND"
-                    + " where DOT>=" + FromDot + " and DOT<=" + ToDot + " and MaNV_HanhThu=" + MaNV + " and GB>20) hd"
-                    + " left join"
-                    + " (select DanhBo,DienThoai from TT_ThongTinKhachHang) ttkh on hd.DANHBA=ttkh.DanhBo"
-                    + " order by hd.MLT asc";
+                    //sql = "select * from"
+                    //+ " (select distinct(DANHBA),TENKH as HoTen,SO+' '+DUONG as DiaChi,MALOTRINH as MLT from HOADON hd"
+                    //+ " left join TT_NguoiDung nd on hd.MaNV_HanhThu=nd.MaND"
+                    //+ " where DOT>=" + FromDot + " and DOT<=" + ToDot + " and MaNV_HanhThu=" + MaNV + " and GB>20) hd"
+                    //+ " left join"
+                    //+ " (select DanhBo,DienThoai from TT_ThongTinKhachHang) ttkh on hd.DANHBA=ttkh.DanhBo"
+                    //+ " order by hd.MLT asc";
+                    sql = "select DanhBo=DANHBA,TENKH as HoTen,SO+' '+DUONG as DiaChi,MALOTRINH as MLT,stuff(("
+                                   + "     select ' | ' + g.DienThoai"
+                                   + "     from server8.CAPNUOCTANHOA.dbo.SDT_DHN g"
+                                   + "     where g.DanhBo = DANHBA"
+                                   + "     order by CreateDate desc"
+                                   + "     for xml path('')"
+                                   + "     ),1,2,'') as DienThoai from HOADON hd"
+                            + " left join TT_NguoiDung nd on hd.MaNV_HanhThu=nd.MaND"
+                            + " where DOT>=" + FromDot + " and DOT<=" + ToDot + " and MaNV_HanhThu=" + MaNV + " and GB>20 and NAM=" + Nam + " and KY=" + Ky
+                            + " order by MLT asc";
 
             return ExecuteQuery_DataTable(sql);
         }

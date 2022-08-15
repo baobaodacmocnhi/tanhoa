@@ -37,11 +37,6 @@
             this.txtDienThoai = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvTTKH = new System.Windows.Forms.DataGridView();
-            this.MLT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnLuu = new System.Windows.Forms.Button();
             this.cmbDenDot = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -56,6 +51,11 @@
             this.radTG = new System.Windows.Forms.RadioButton();
             this.radCQ = new System.Windows.Forms.RadioButton();
             this.btnIn = new System.Windows.Forms.Button();
+            this.MLT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTTKH)).BeginInit();
             this.SuspendLayout();
             // 
@@ -132,49 +132,10 @@
             this.dgvTTKH.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvTTKH.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvTTKH.Size = new System.Drawing.Size(742, 547);
+            this.dgvTTKH.Size = new System.Drawing.Size(992, 547);
             this.dgvTTKH.TabIndex = 32;
             this.dgvTTKH.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvTTKH_CellFormatting);
             this.dgvTTKH.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvTTKH_RowPostPaint);
-            // 
-            // MLT
-            // 
-            this.MLT.DataPropertyName = "MLT";
-            this.MLT.HeaderText = "MLT";
-            this.MLT.Name = "MLT";
-            this.MLT.ReadOnly = true;
-            this.MLT.Width = 80;
-            // 
-            // DanhBo
-            // 
-            this.DanhBo.DataPropertyName = "DanhBo";
-            this.DanhBo.HeaderText = "Danh Bộ";
-            this.DanhBo.Name = "DanhBo";
-            this.DanhBo.ReadOnly = true;
-            // 
-            // HoTen
-            // 
-            this.HoTen.DataPropertyName = "HoTen";
-            this.HoTen.HeaderText = "Khách Hàng";
-            this.HoTen.Name = "HoTen";
-            this.HoTen.ReadOnly = true;
-            this.HoTen.Width = 150;
-            // 
-            // DiaChi
-            // 
-            this.DiaChi.DataPropertyName = "DiaChi";
-            this.DiaChi.HeaderText = "Địa Chỉ";
-            this.DiaChi.Name = "DiaChi";
-            this.DiaChi.ReadOnly = true;
-            this.DiaChi.Width = 200;
-            // 
-            // DienThoai
-            // 
-            this.DienThoai.DataPropertyName = "DienThoai";
-            this.DienThoai.HeaderText = "Điện Thoại";
-            this.DienThoai.Name = "DienThoai";
-            this.DienThoai.ReadOnly = true;
-            this.DienThoai.Width = 150;
             // 
             // btnLuu
             // 
@@ -184,6 +145,7 @@
             this.btnLuu.TabIndex = 33;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Visible = false;
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // cmbDenDot
@@ -352,12 +314,51 @@
             this.btnIn.UseVisualStyleBackColor = true;
             this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
             // 
+            // MLT
+            // 
+            this.MLT.DataPropertyName = "MLT";
+            this.MLT.HeaderText = "MLT";
+            this.MLT.Name = "MLT";
+            this.MLT.ReadOnly = true;
+            this.MLT.Width = 80;
+            // 
+            // DanhBo
+            // 
+            this.DanhBo.DataPropertyName = "DanhBo";
+            this.DanhBo.HeaderText = "Danh Bộ";
+            this.DanhBo.Name = "DanhBo";
+            this.DanhBo.ReadOnly = true;
+            // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Khách Hàng";
+            this.HoTen.Name = "HoTen";
+            this.HoTen.ReadOnly = true;
+            this.HoTen.Width = 150;
+            // 
+            // DiaChi
+            // 
+            this.DiaChi.DataPropertyName = "DiaChi";
+            this.DiaChi.HeaderText = "Địa Chỉ";
+            this.DiaChi.Name = "DiaChi";
+            this.DiaChi.ReadOnly = true;
+            this.DiaChi.Width = 200;
+            // 
+            // DienThoai
+            // 
+            this.DienThoai.DataPropertyName = "DienThoai";
+            this.DienThoai.HeaderText = "Điện Thoại";
+            this.DienThoai.Name = "DienThoai";
+            this.DienThoai.ReadOnly = true;
+            this.DienThoai.Width = 400;
+            // 
             // frmTimKiemDienThoai
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(787, 627);
+            this.ClientSize = new System.Drawing.Size(1017, 627);
             this.Controls.Add(this.btnIn);
             this.Controls.Add(this.radCQ);
             this.Controls.Add(this.radTG);
@@ -404,13 +405,13 @@
         private System.Windows.Forms.Label lbTo;
         private System.Windows.Forms.Label lbNhanVien;
         private System.Windows.Forms.ComboBox cmbNhanVien;
+        private System.Windows.Forms.RadioButton radTG;
+        private System.Windows.Forms.RadioButton radCQ;
+        private System.Windows.Forms.Button btnIn;
         private System.Windows.Forms.DataGridViewTextBoxColumn MLT;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
         private System.Windows.Forms.DataGridViewTextBoxColumn DienThoai;
-        private System.Windows.Forms.RadioButton radTG;
-        private System.Windows.Forms.RadioButton radCQ;
-        private System.Windows.Forms.Button btnIn;
     }
 }

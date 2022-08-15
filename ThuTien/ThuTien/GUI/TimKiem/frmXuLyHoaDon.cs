@@ -11,12 +11,12 @@ using ThuTien.LinQ;
 
 namespace ThuTien.GUI.TimKiem
 {
-    public partial class frmDoiSoHoaDon : Form
+    public partial class frmXuLyHoaDon : Form
     {
         int _MaHD = 0;
         CHoaDon _cHoaDon = new CHoaDon();
 
-        public frmDoiSoHoaDon(int MaHD)
+        public frmXuLyHoaDon(int MaHD)
         {
             _MaHD = MaHD;
             InitializeComponent();
@@ -24,7 +24,8 @@ namespace ThuTien.GUI.TimKiem
 
         private void frmDoiSoHoaDon_Load(object sender, EventArgs e)
         {
-           
+            dgvDanhSach.AutoGenerateColumns = false;
+            dgvDanhSach.DataSource = _cHoaDon.getDS_LichSuDangNgan(_MaHD);
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -67,7 +68,11 @@ namespace ThuTien.GUI.TimKiem
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
             wsThuTien.wsThuTien wsThuTien = new wsThuTien.wsThuTien();
-            string result = wsThuTien.syncThanhToan(_MaHD, true, 0);
+            string result = "";
+            if (chkTruoc01072022.Checked)
+                result = wsThuTien.syncThanhToan_01072022(_MaHD, true, 0);
+            else
+                result = wsThuTien.syncThanhToan(_MaHD, true, 0);
             string[] results = result.Split(';');
             if (bool.Parse(results[0]) == true)
             {
@@ -79,7 +84,11 @@ namespace ThuTien.GUI.TimKiem
         private void btnNopTien_Click(object sender, EventArgs e)
         {
             wsThuTien.wsThuTien wsThuTien = new wsThuTien.wsThuTien();
-            string result = wsThuTien.syncNopTien(_MaHD);
+            string result = "";
+            if (chkTruoc01072022.Checked)
+                result = wsThuTien.syncNopTien_01072022(_MaHD);
+            else
+                result = wsThuTien.syncNopTien(_MaHD);
             string[] results = result.Split(';');
             if (bool.Parse(results[0]) == true)
             {

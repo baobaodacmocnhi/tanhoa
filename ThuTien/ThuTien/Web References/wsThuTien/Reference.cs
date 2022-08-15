@@ -129,9 +129,13 @@ namespace ThuTien.wsThuTien {
         
         private System.Threading.SendOrPostCallback chotDangNganOperationCompleted;
         
+        private System.Threading.SendOrPostCallback syncThanhToan_01072022OperationCompleted;
+        
         private System.Threading.SendOrPostCallback syncThanhToanOperationCompleted;
         
         private System.Threading.SendOrPostCallback syncThanhToan_ThuHoOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback syncNopTien_01072022OperationCompleted;
         
         private System.Threading.SendOrPostCallback syncNopTienOperationCompleted;
         
@@ -338,10 +342,16 @@ namespace ThuTien.wsThuTien {
         public event chotDangNganCompletedEventHandler chotDangNganCompleted;
         
         /// <remarks/>
+        public event syncThanhToan_01072022CompletedEventHandler syncThanhToan_01072022Completed;
+        
+        /// <remarks/>
         public event syncThanhToanCompletedEventHandler syncThanhToanCompleted;
         
         /// <remarks/>
         public event syncThanhToan_ThuHoCompletedEventHandler syncThanhToan_ThuHoCompleted;
+        
+        /// <remarks/>
+        public event syncNopTien_01072022CompletedEventHandler syncNopTien_01072022Completed;
         
         /// <remarks/>
         public event syncNopTienCompletedEventHandler syncNopTienCompleted;
@@ -2135,6 +2145,39 @@ namespace ThuTien.wsThuTien {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/syncThanhToan_01072022", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string syncThanhToan_01072022(int MaHD, bool GiaiTrach, int IDTemp_SyncHoaDon) {
+            object[] results = this.Invoke("syncThanhToan_01072022", new object[] {
+                        MaHD,
+                        GiaiTrach,
+                        IDTemp_SyncHoaDon});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void syncThanhToan_01072022Async(int MaHD, bool GiaiTrach, int IDTemp_SyncHoaDon) {
+            this.syncThanhToan_01072022Async(MaHD, GiaiTrach, IDTemp_SyncHoaDon, null);
+        }
+        
+        /// <remarks/>
+        public void syncThanhToan_01072022Async(int MaHD, bool GiaiTrach, int IDTemp_SyncHoaDon, object userState) {
+            if ((this.syncThanhToan_01072022OperationCompleted == null)) {
+                this.syncThanhToan_01072022OperationCompleted = new System.Threading.SendOrPostCallback(this.OnsyncThanhToan_01072022OperationCompleted);
+            }
+            this.InvokeAsync("syncThanhToan_01072022", new object[] {
+                        MaHD,
+                        GiaiTrach,
+                        IDTemp_SyncHoaDon}, this.syncThanhToan_01072022OperationCompleted, userState);
+        }
+        
+        private void OnsyncThanhToan_01072022OperationCompleted(object arg) {
+            if ((this.syncThanhToan_01072022Completed != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.syncThanhToan_01072022Completed(this, new syncThanhToan_01072022CompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/syncThanhToan", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string syncThanhToan(int MaHD, bool GiaiTrach, int IDTemp_SyncHoaDon) {
             object[] results = this.Invoke("syncThanhToan", new object[] {
@@ -2197,6 +2240,35 @@ namespace ThuTien.wsThuTien {
             if ((this.syncThanhToan_ThuHoCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.syncThanhToan_ThuHoCompleted(this, new syncThanhToan_ThuHoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/syncNopTien_01072022", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string syncNopTien_01072022(int MaHD) {
+            object[] results = this.Invoke("syncNopTien_01072022", new object[] {
+                        MaHD});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void syncNopTien_01072022Async(int MaHD) {
+            this.syncNopTien_01072022Async(MaHD, null);
+        }
+        
+        /// <remarks/>
+        public void syncNopTien_01072022Async(int MaHD, object userState) {
+            if ((this.syncNopTien_01072022OperationCompleted == null)) {
+                this.syncNopTien_01072022OperationCompleted = new System.Threading.SendOrPostCallback(this.OnsyncNopTien_01072022OperationCompleted);
+            }
+            this.InvokeAsync("syncNopTien_01072022", new object[] {
+                        MaHD}, this.syncNopTien_01072022OperationCompleted, userState);
+        }
+        
+        private void OnsyncNopTien_01072022OperationCompleted(object arg) {
+            if ((this.syncNopTien_01072022Completed != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.syncNopTien_01072022Completed(this, new syncNopTien_01072022CompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -3918,6 +3990,32 @@ namespace ThuTien.wsThuTien {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void syncThanhToan_01072022CompletedEventHandler(object sender, syncThanhToan_01072022CompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class syncThanhToan_01072022CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal syncThanhToan_01072022CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void syncThanhToanCompletedEventHandler(object sender, syncThanhToanCompletedEventArgs e);
     
     /// <remarks/>
@@ -3955,6 +4053,32 @@ namespace ThuTien.wsThuTien {
         private object[] results;
         
         internal syncThanhToan_ThuHoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void syncNopTien_01072022CompletedEventHandler(object sender, syncNopTien_01072022CompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class syncNopTien_01072022CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal syncNopTien_01072022CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

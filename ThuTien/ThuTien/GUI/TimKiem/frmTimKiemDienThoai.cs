@@ -12,6 +12,7 @@ using ThuTien.DAL.QuanTri;
 using ThuTien.BaoCao;
 using ThuTien.BaoCao.NhanVien;
 using ThuTien.GUI.BaoCao;
+using ThuTien.DAL;
 
 namespace ThuTien.GUI.TimKiem
 {
@@ -87,12 +88,16 @@ namespace ThuTien.GUI.TimKiem
             else
                 if (radCQ.Checked)
                     Loai = "CQ";
-
-            if (cmbDot.SelectedIndex >= 0 && cmbDenDot.SelectedIndex < 0)
-                dgvTTKH.DataSource = _cTTKH.GetDS(Loai,int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbDot.SelectedItem.ToString()));
-            else
-                if (cmbDot.SelectedIndex >= 0 && cmbDenDot.SelectedIndex >= 0)
-                    dgvTTKH.DataSource = _cTTKH.GetDS(Loai, int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(cmbDenDot.SelectedItem.ToString()));
+            DataTable dt = _cTTKH.ExecuteQuery_DataTable("select Nam,Ky,Dot,COUNT(KY) from HOADON"
+                                                    + " group by Nam,Ky,Dot"
+                                                    + " having DOT=20"
+                                                    + " order by Nam desc,Ky desc,Dot desc");
+            if (dt != null && dt.Rows.Count > 0)
+                if (cmbDot.SelectedIndex >= 0 && cmbDenDot.SelectedIndex < 0)
+                    dgvTTKH.DataSource = _cTTKH.GetDS(Loai, int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(dt.Rows[0]["Nam"].ToString()), int.Parse(dt.Rows[0]["Ky"].ToString()));
+                else
+                    if (cmbDot.SelectedIndex >= 0 && cmbDenDot.SelectedIndex >= 0)
+                        dgvTTKH.DataSource = _cTTKH.GetDS(Loai, int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(cmbDenDot.SelectedItem.ToString()), int.Parse(dt.Rows[0]["Nam"].ToString()), int.Parse(dt.Rows[0]["Ky"].ToString()));
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -140,13 +145,15 @@ namespace ThuTien.GUI.TimKiem
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13 && txtDanhBo.Text.Trim().Replace(" ","").Length == 11)
+            if (e.KeyChar == 13 && txtDanhBo.Text.Trim().Replace(" ", "").Length == 11)
             {
-                if (_cTTKH.CheckExist(txtDanhBo.Text.Trim().Replace(" ", "")))
-                {
-                    TT_ThongTinKhachHang ttkh = _cTTKH.Get(txtDanhBo.Text.Trim().Replace(" ", ""));
-                    txtDienThoai.Text = ttkh.DienThoai;
-                }
+                //if (_cTTKH.CheckExist(txtDanhBo.Text.Trim().Replace(" ", "")))
+                //{
+                //    TT_ThongTinKhachHang ttkh = _cTTKH.Get(txtDanhBo.Text.Trim().Replace(" ", ""));
+                //    txtDienThoai.Text = ttkh.DienThoai;
+                //}
+                CDHN cDHN = new CDHN();
+                txtDienThoai.Text = cDHN.getDienThoaiAll(txtDanhBo.Text.Trim().Replace(" ", ""));
             }
         }
 
@@ -175,8 +182,8 @@ namespace ThuTien.GUI.TimKiem
             foreach (DataGridViewRow item in dgvTTKH.Rows)
             {
                 DataRow dr = ds.Tables["ThongTinKhachHang"].NewRow();
-                if (item.Cells["DanhBo"].Value.ToString().Length==11)
-                dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
+                if (item.Cells["DanhBo"].Value.ToString().Length == 11)
+                    dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
                 else
                     MessageBox.Show(item.Cells["DanhBo"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dr["HoTen"] = item.Cells["HoTen"].Value;

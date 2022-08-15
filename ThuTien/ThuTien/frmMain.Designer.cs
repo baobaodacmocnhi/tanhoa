@@ -961,14 +961,14 @@
             // mnuTimKiemKhachHang
             // 
             this.mnuTimKiemKhachHang.Name = "mnuTimKiemKhachHang";
-            this.mnuTimKiemKhachHang.Size = new System.Drawing.Size(139, 22);
+            this.mnuTimKiemKhachHang.Size = new System.Drawing.Size(152, 22);
             this.mnuTimKiemKhachHang.Text = "Khách Hàng";
             this.mnuTimKiemKhachHang.Click += new System.EventHandler(this.mnuTimKiemKhachHang_Click);
             // 
             // mnuTimKiemDienThoai
             // 
             this.mnuTimKiemDienThoai.Name = "mnuTimKiemDienThoai";
-            this.mnuTimKiemDienThoai.Size = new System.Drawing.Size(139, 22);
+            this.mnuTimKiemDienThoai.Size = new System.Drawing.Size(152, 22);
             this.mnuTimKiemDienThoai.Text = "Điện Thoại";
             this.mnuTimKiemDienThoai.Click += new System.EventHandler(this.mnuTimKiemDienThoai_Click);
             // 
