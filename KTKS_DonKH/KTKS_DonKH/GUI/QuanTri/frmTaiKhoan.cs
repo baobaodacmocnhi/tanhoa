@@ -57,7 +57,7 @@ namespace KTKS_DonKH.GUI.QuanTri
                 _blNguoiDung = new BindingList<User>(_cTaiKhoan.GetDSExceptMaND(CTaiKhoan.MaUser));
                 dgvDSTaiKhoan.DataSource = _blNguoiDung;
             }
-            
+
             cmbTo.DataSource = _cTo.getDS();
             cmbTo.DisplayMember = "TenTo";
             cmbTo.ValueMember = "MaTo";
@@ -234,7 +234,7 @@ namespace KTKS_DonKH.GUI.QuanTri
 
         private void dgvDSTaiKhoan_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvDSTaiKhoan.RowCount>0)
+            if (dgvDSTaiKhoan.RowCount > 0 && (dgvDSTaiKhoan.Columns[e.ColumnIndex].Name == "ThuKy" || dgvDSTaiKhoan.Columns[e.ColumnIndex].Name == "ChuKy"))
             {
                 User taikhoan = _cTaiKhoan.Get(int.Parse(dgvDSTaiKhoan["MaU", e.RowIndex].Value.ToString()));
                 //taikhoan.ToGD = bool.Parse(dgvDSTaiKhoan["ToGD", e.RowIndex].Value.ToString());
@@ -242,6 +242,8 @@ namespace KTKS_DonKH.GUI.QuanTri
                 //taikhoan.ToTP = bool.Parse(dgvDSTaiKhoan["ToTP", e.RowIndex].Value.ToString());
                 //taikhoan.ToBC = bool.Parse(dgvDSTaiKhoan["ToBC", e.RowIndex].Value.ToString());
                 //taikhoan.ToVP = bool.Parse(dgvDSTaiKhoan["ToVP", e.RowIndex].Value.ToString());
+                taikhoan.ThuKy = bool.Parse(dgvDSTaiKhoan["ThuKy", e.RowIndex].Value.ToString());
+                taikhoan.ChuKy = bool.Parse(dgvDSTaiKhoan["ChuKy", e.RowIndex].Value.ToString());
                 _cTaiKhoan.Sua(taikhoan);
             }
         }
@@ -323,6 +325,6 @@ namespace KTKS_DonKH.GUI.QuanTri
             dgvDSTaiKhoan.DataSource = _blNguoiDung;
         }
 
-        
+
     }
 }
