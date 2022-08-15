@@ -30,6 +30,7 @@ namespace DocSo_PC.GUI.MaHoa
         CDCBD _cDCBD = new CDCBD();
         CTo _cTo = new CTo();
         wrDHN.wsDHN _wsDHN = new wrDHN.wsDHN();
+        CDanhBoBoQua _cDBBQ = new CDanhBoBoQua();
 
         MaHoa_DonTu _dontu = null;
         BienDong _biendong = null;
@@ -181,6 +182,11 @@ namespace DocSo_PC.GUI.MaHoa
                         MessageBox.Show("Đã lập Đơn trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
+                    if (txtNoiDung.Text.Trim().Contains("Giá Biểu") && _cDBBQ.checkExist(txtDanhBo.Text.Trim().Replace(" ", "")))
+                    {
+                        MessageBox.Show("Danh Bộ nằm trong danh sách bỏ qua", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     MaHoa_DonTu en = new MaHoa_DonTu();
                     en.DanhBo = txtDanhBo.Text.Trim().Replace(" ", "");
                     en.HoTen = txtHoTen.Text.Trim();
@@ -260,6 +266,16 @@ namespace DocSo_PC.GUI.MaHoa
                 {
                     if (_dontu != null)
                     {
+                        if (_cDonTu.checkExists(txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now) == true)
+                        {
+                            MessageBox.Show("Đã lập Đơn trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        if (txtNoiDung.Text.Trim().Contains("Giá Biểu") && _cDBBQ.checkExist(txtDanhBo.Text.Trim().Replace(" ", "")))
+                        {
+                            MessageBox.Show("Danh Bộ nằm trong danh sách bỏ qua", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                         _dontu.DanhBo = txtDanhBo.Text.Trim().Replace(" ", "");
                         _dontu.HoTen = txtHoTen.Text.Trim();
                         _dontu.DiaChi = txtDiaChi.Text.Trim();

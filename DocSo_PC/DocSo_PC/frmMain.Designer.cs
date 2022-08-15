@@ -73,6 +73,7 @@
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.StripStatus_HoTen = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.mnuDanhBoBoQua = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -277,7 +278,8 @@
             this.mnuKTXM,
             this.mnuDieuChinhThongTin,
             this.mnuToTrinh,
-            this.mnuTimKiem});
+            this.mnuTimKiem,
+            this.mnuDanhBoBoQua});
             this.mnuMaHoa.Name = "mnuMaHoa";
             this.mnuMaHoa.Size = new System.Drawing.Size(61, 20);
             this.mnuMaHoa.Text = "Mã Hóa";
@@ -359,14 +361,14 @@
             // mnuDSsDHN
             // 
             this.mnuDSsDHN.Name = "mnuDSsDHN";
-            this.mnuDSsDHN.Size = new System.Drawing.Size(152, 22);
+            this.mnuDSsDHN.Size = new System.Drawing.Size(130, 22);
             this.mnuDSsDHN.Text = "Danh Sách";
             this.mnuDSsDHN.Click += new System.EventHandler(this.mnuDSsDHN_Click);
             // 
             // mnuBaoCaosDHN
             // 
             this.mnuBaoCaosDHN.Name = "mnuBaoCaosDHN";
-            this.mnuBaoCaosDHN.Size = new System.Drawing.Size(152, 22);
+            this.mnuBaoCaosDHN.Size = new System.Drawing.Size(130, 22);
             this.mnuBaoCaosDHN.Text = "Báo Cáo";
             this.mnuBaoCaosDHN.Click += new System.EventHandler(this.mnuBaoCaosDHN_Click);
             // 
@@ -423,6 +425,13 @@
             // 
             this.timer.Interval = 1200000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // mnuDanhBoBoQua
+            // 
+            this.mnuDanhBoBoQua.Name = "mnuDanhBoBoQua";
+            this.mnuDanhBoBoQua.Size = new System.Drawing.Size(189, 22);
+            this.mnuDanhBoBoQua.Text = "Danh Bộ (Bỏ Qua)";
+            this.mnuDanhBoBoQua.Click += new System.EventHandler(this.mnuDanhBoBoQua_Click);
             // 
             // frmMain
             // 
@@ -498,6 +507,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuToTrinh;
         private System.Windows.Forms.ToolStripMenuItem mnuTimKiem;
         private System.Windows.Forms.ToolStripMenuItem mnuBaoCaosDHN;
+        private System.Windows.Forms.ToolStripMenuItem mnuDanhBoBoQua;
     }
 }
 

@@ -380,6 +380,17 @@ namespace DocSo_PC
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuDanhBoBoQua_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuDanhBoBoQua", "Xem"))
+            {
+                frmDanhBoBoQua frm = new frmDanhBoBoQua();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion
 
         #region Văn Thư
@@ -429,6 +440,8 @@ namespace DocSo_PC
             else
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        
 
 
 
