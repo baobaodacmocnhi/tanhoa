@@ -345,7 +345,7 @@
             this.txtSoKy.Name = "txtSoKy";
             this.txtSoKy.Size = new System.Drawing.Size(50, 20);
             this.txtSoKy.TabIndex = 65;
-            this.txtSoKy.Text = "0";
+            this.txtSoKy.Text = "1";
             // 
             // label5
             // 

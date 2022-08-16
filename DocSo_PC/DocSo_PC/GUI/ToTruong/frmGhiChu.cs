@@ -113,9 +113,17 @@ namespace DocSo_PC.GUI.ToTruong
                 chkViTriDHN_Hop.Checked = en.ViTriDHN_Hop;
                 chkGieng.Checked = en.Gieng;
                 chkAmSau.Checked = en.AmSau;
+                if (en.AmSau == true)
+                    dateAmSau.Value = en.AmSau_Ngay.Value;
                 chkXayDung.Checked = en.XayDung;
+                if (en.XayDung == true)
+                    dateXayDung.Value = en.XayDung_Ngay.Value;
                 chkDutChiGoc.Checked = en.DutChi_Goc;
+                if (en.DutChi_Goc == true)
+                    dateDutChiGoc.Value = en.DutChi_Goc_Ngay.Value;
                 chkDutChiThan.Checked = en.DutChi_Than;
+                if (en.DutChi_Than == true)
+                    dateDutChiThan.Value = en.DutChi_Than_Ngay.Value;
                 cmbMauSacChiGoc.SelectedItem = en.MauSacChiGoc;
                 dgvDienThoai.DataSource = _cDHN.getDS_DienThoai(en.DANHBO);
             }
@@ -524,25 +532,31 @@ namespace DocSo_PC.GUI.ToTruong
         private void btnHinhAmSau_Click(object sender, EventArgs e)
         {
             if (_enDLKH != null)
-                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("AmSau", "", _enDLKH.DANHBO))));
+                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("AmSau", "", _enDLKH.DANHBO + ".jpg"))));
         }
 
         private void btnHinhXayDung_Click(object sender, EventArgs e)
         {
             if (_enDLKH != null)
-                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("XayDung", "", _enDLKH.DANHBO))));
+                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("XayDung", "", _enDLKH.DANHBO + ".jpg"))));
         }
 
         private void btnHinhDutChiGoc_Click(object sender, EventArgs e)
         {
             if (_enDLKH != null)
-                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("DutChi", "", _enDLKH.DANHBO))));
+                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("DutChi", "", _enDLKH.DANHBO + ".jpg"))));
         }
 
         private void btnHinhDutChiThan_Click(object sender, EventArgs e)
         {
             if (_enDLKH != null)
-                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("DutChi", "", _enDLKH.DANHBO))));
+                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("DutChi", "", _enDLKH.DANHBO + ".jpg"))));
+        }
+
+        private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && txtDanhBo.Text.Trim().Replace(" ", "").Replace("-", "").Length == 11)
+                btnXem.PerformClick();
         }
 
 
