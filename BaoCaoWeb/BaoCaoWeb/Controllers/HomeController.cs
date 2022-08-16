@@ -25,7 +25,7 @@ namespace BaoCaoWeb.Controllers
             enTT.lstSanLuong = getlstSanLuong();
             enTT.lstDoanhThu = getlstDoanhThu();
             enTT.lstGiaBanBinhQuan = getlstGiaBanBinhQuan();
-            enTT.ThatThoatNuoc = 18.30;
+            enTT.ThatThoatNuoc = (double)_cTTKH.ExecuteQuery_ReturnOneValue("select TyLeThatThoatNuoc2 from BC_SoLieu where Nam=2022");
             return View(enTT);
         }
 
