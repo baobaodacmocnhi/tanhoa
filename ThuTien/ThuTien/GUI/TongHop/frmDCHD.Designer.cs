@@ -110,6 +110,7 @@
             this.lbHDDC = new System.Windows.Forms.Label();
             this.lbHDDCCho = new System.Windows.Forms.Label();
             this.btnInGiaoNhan = new System.Windows.Forms.Button();
+            this.btnExportExcelTruoc = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDCHD)).BeginInit();
             this.panel1.SuspendLayout();
@@ -657,17 +658,17 @@
             // 
             // btnExportExcel
             // 
-            this.btnExportExcel.Location = new System.Drawing.Point(916, 233);
+            this.btnExportExcel.Location = new System.Drawing.Point(916, 249);
             this.btnExportExcel.Name = "btnExportExcel";
-            this.btnExportExcel.Size = new System.Drawing.Size(75, 23);
+            this.btnExportExcel.Size = new System.Drawing.Size(105, 23);
             this.btnExportExcel.TabIndex = 45;
-            this.btnExportExcel.Text = "Export Excel";
+            this.btnExportExcel.Text = "Export Excel Sau";
             this.btnExportExcel.UseVisualStyleBackColor = true;
             this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
             // 
             // btnImportExcel
             // 
-            this.btnImportExcel.Location = new System.Drawing.Point(997, 233);
+            this.btnImportExcel.Location = new System.Drawing.Point(1028, 233);
             this.btnImportExcel.Name = "btnImportExcel";
             this.btnImportExcel.Size = new System.Drawing.Size(75, 23);
             this.btnImportExcel.TabIndex = 46;
@@ -814,7 +815,7 @@
             // 
             this.lbHDDCCho.AutoSize = true;
             this.lbHDDCCho.ForeColor = System.Drawing.Color.Red;
-            this.lbHDDCCho.Location = new System.Drawing.Point(1078, 238);
+            this.lbHDDCCho.Location = new System.Drawing.Point(1109, 238);
             this.lbHDDCCho.Name = "lbHDDCCho";
             this.lbHDDCCho.Size = new System.Drawing.Size(35, 13);
             this.lbHDDCCho.TabIndex = 58;
@@ -830,12 +831,23 @@
             this.btnInGiaoNhan.UseVisualStyleBackColor = true;
             this.btnInGiaoNhan.Click += new System.EventHandler(this.btnInGiaoNhan_Click);
             // 
+            // btnExportExcelTruoc
+            // 
+            this.btnExportExcelTruoc.Location = new System.Drawing.Point(916, 221);
+            this.btnExportExcelTruoc.Name = "btnExportExcelTruoc";
+            this.btnExportExcelTruoc.Size = new System.Drawing.Size(105, 23);
+            this.btnExportExcelTruoc.TabIndex = 60;
+            this.btnExportExcelTruoc.Text = "Export Excel Trước";
+            this.btnExportExcelTruoc.UseVisualStyleBackColor = true;
+            this.btnExportExcelTruoc.Click += new System.EventHandler(this.btnExportExcelTruoc_Click);
+            // 
             // frmDCHD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1360, 635);
+            this.Controls.Add(this.btnExportExcelTruoc);
             this.Controls.Add(this.btnInGiaoNhan);
             this.Controls.Add(this.lbHDDCCho);
             this.Controls.Add(this.lbHDDC);
@@ -957,5 +969,6 @@
         private System.Windows.Forms.Label lbHDDC;
         private System.Windows.Forms.Label lbHDDCCho;
         private System.Windows.Forms.Button btnInGiaoNhan;
+        private System.Windows.Forms.Button btnExportExcelTruoc;
     }
 }
