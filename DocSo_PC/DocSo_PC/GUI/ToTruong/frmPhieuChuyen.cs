@@ -107,6 +107,71 @@ namespace DocSo_PC.GUI.ToTruong
                         dgvDanhSach.DataSource = _cDHN.getDS_DutChiThan(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
                     }
                     break;
+                case "Ngập Nước":
+                    if (CNguoiDung.Doi)
+                    {
+                        if (cmbTo.SelectedIndex == 0)
+                            dgvDanhSach.DataSource = _cDHN.getDS_NgapNuoc(dateTuNgay.Value, dateDenNgay.Value);
+                        else
+                            dgvDanhSach.DataSource = _cDHN.getDS_NgapNuoc(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
+                    }
+                    else
+                    {
+                        dgvDanhSach.DataSource = _cDHN.getDS_NgapNuoc(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
+                    }
+                    break;
+                case "Kẹt Tường":
+                    if (CNguoiDung.Doi)
+                    {
+                        if (cmbTo.SelectedIndex == 0)
+                            dgvDanhSach.DataSource = _cDHN.getDS_KetTuong(dateTuNgay.Value, dateDenNgay.Value);
+                        else
+                            dgvDanhSach.DataSource = _cDHN.getDS_KetTuong(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
+                    }
+                    else
+                    {
+                        dgvDanhSach.DataSource = _cDHN.getDS_KetTuong(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
+                    }
+                    break;
+                case "Lấp Khóa Góc":
+                    if (CNguoiDung.Doi)
+                    {
+                        if (cmbTo.SelectedIndex == 0)
+                            dgvDanhSach.DataSource = _cDHN.getDS_LapKhoaGoc(dateTuNgay.Value, dateDenNgay.Value);
+                        else
+                            dgvDanhSach.DataSource = _cDHN.getDS_LapKhoaGoc(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
+                    }
+                    else
+                    {
+                        dgvDanhSach.DataSource = _cDHN.getDS_LapKhoaGoc(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
+                    }
+                    break;
+                case "Bể Hộp Bảo Vệ":
+                    if (CNguoiDung.Doi)
+                    {
+                        if (cmbTo.SelectedIndex == 0)
+                            dgvDanhSach.DataSource = _cDHN.getDS_BeHBV(dateTuNgay.Value, dateDenNgay.Value);
+                        else
+                            dgvDanhSach.DataSource = _cDHN.getDS_BeHBV(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
+                    }
+                    else
+                    {
+                        dgvDanhSach.DataSource = _cDHN.getDS_BeHBV(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
+                    }
+                    break;
+                case "Bể Nấp, Mất Nấp Hộp Bảo Vệ":
+                    if (CNguoiDung.Doi)
+                    {
+                        if (cmbTo.SelectedIndex == 0)
+                            dgvDanhSach.DataSource = _cDHN.getDS_BeNapMatNapHBV(dateTuNgay.Value, dateDenNgay.Value);
+                        else
+                            dgvDanhSach.DataSource = _cDHN.getDS_BeNapMatNapHBV(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
+                    }
+                    else
+                    {
+                        dgvDanhSach.DataSource = _cDHN.getDS_BeNapMatNapHBV(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
+                    }
+                    break;
                 default:
                     DataTable dt = new DataTable();
                     if (CNguoiDung.Doi)
@@ -117,6 +182,11 @@ namespace DocSo_PC.GUI.ToTruong
                             dt.Merge(_cDHN.getDS_XayDung(dateTuNgay.Value, dateDenNgay.Value));
                             dt.Merge(_cDHN.getDS_DutChiGoc(dateTuNgay.Value, dateDenNgay.Value));
                             dt.Merge(_cDHN.getDS_DutChiThan(dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDHN.getDS_NgapNuoc(dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDHN.getDS_KetTuong(dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDHN.getDS_LapKhoaGoc(dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDHN.getDS_BeHBV(dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDHN.getDS_BeNapMatNapHBV(dateTuNgay.Value, dateDenNgay.Value));
                         }
                         else
                         {
@@ -124,6 +194,11 @@ namespace DocSo_PC.GUI.ToTruong
                             dt.Merge(_cDHN.getDS_XayDung(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
                             dt.Merge(_cDHN.getDS_DutChiGoc(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
                             dt.Merge(_cDHN.getDS_DutChiThan(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDHN.getDS_NgapNuoc(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDHN.getDS_KetTuong(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDHN.getDS_LapKhoaGoc(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDHN.getDS_BeHBV(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDHN.getDS_BeNapMatNapHBV(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
                         }
                     }
                     else
@@ -132,6 +207,11 @@ namespace DocSo_PC.GUI.ToTruong
                         dt.Merge(_cDHN.getDS_XayDung(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
                         dt.Merge(_cDHN.getDS_DutChiGoc(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
                         dt.Merge(_cDHN.getDS_DutChiThan(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
+                        dt.Merge(_cDHN.getDS_NgapNuoc(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
+                        dt.Merge(_cDHN.getDS_KetTuong(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
+                        dt.Merge(_cDHN.getDS_LapKhoaGoc(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
+                        dt.Merge(_cDHN.getDS_BeHBV(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
+                        dt.Merge(_cDHN.getDS_BeNapMatNapHBV(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
                     }
                     dgvDanhSach.DataSource = dt;
                     break;
@@ -195,6 +275,29 @@ namespace DocSo_PC.GUI.ToTruong
                                 dr["TieuDe"] = "DANH SÁCH ĐỒNG HỒ NƯỚC " + item.Cells["NoiDung"].Value.ToString().ToUpper() + " TRONG BẤT ĐỘNG SẢN";
                                 dr["NoiNhan"] = "P. GNKDT\nP. KHĐT\nĐ. TCTB\nP. Thương Vụ\nLưu";
                             }
+                            break;
+                        case "Ngập Nước":
+                        case "Kẹt Tường":
+                            if (ttkh.ViTriDHN_Ngoai)
+                            {
+                                dr["TieuDe"] = "DANH SÁCH ĐỒNG HỒ NƯỚC " + item.Cells["NoiDung"].Value.ToString().ToUpper() + " NGOÀI BẤT ĐỘNG SẢN";
+                            }
+                            else
+                            {
+                                dr["TieuDe"] = "DANH SÁCH ĐỒNG HỒ NƯỚC " + item.Cells["NoiDung"].Value.ToString().ToUpper() + " TRONG BẤT ĐỘNG SẢN";
+                            }
+                            dr["NoiNhan"] = "P. Thương Vụ\nĐ. TCTB\nLưu";
+                            break;
+                        case "Lấp Khóa Góc":
+                            if (ttkh.ViTriDHN_Ngoai)
+                            {
+                                dr["TieuDe"] = "DANH SÁCH ĐỒNG HỒ NƯỚC " + item.Cells["NoiDung"].Value.ToString().ToUpper() + " NGOÀI BẤT ĐỘNG SẢN";
+                            }
+                            else
+                            {
+                                dr["TieuDe"] = "DANH SÁCH ĐỒNG HỒ NƯỚC " + item.Cells["NoiDung"].Value.ToString().ToUpper() + " TRONG BẤT ĐỘNG SẢN";
+                            }
+                            dr["NoiNhan"] = "P. Thương Vụ\nLưu";
                             break;
                         default:
                             dr["TieuDe"] = "DANH SÁCH ĐỒNG HỒ NƯỚC " + item.Cells["NoiDung"].Value.ToString().ToUpper();
@@ -272,6 +375,26 @@ namespace DocSo_PC.GUI.ToTruong
                                     ttkh.DutChi_Than = true;
                                     ttkh.DutChi_Than_Ngay = DateTime.Now;
                                     break;
+                                case "Ngập Nước":
+                                    ttkh.NgapNuoc = true;
+                                    ttkh.NgapNuoc_Ngay = DateTime.Now;
+                                    break;
+                                case "Kẹt Tường":
+                                    ttkh.KetTuong = true;
+                                    ttkh.KetTuong_Ngay = DateTime.Now;
+                                    break;
+                                case "Lấp Khóa Góc":
+                                    ttkh.LapKhoaGoc = true;
+                                    ttkh.LapKhoaGoc_Ngay = DateTime.Now;
+                                    break;
+                                case "Bể Hộp Bảo Vệ":
+                                    ttkh.BeHBV = true;
+                                    ttkh.BeHBV_Ngay = DateTime.Now;
+                                    break;
+                                case "Bể Nấp, Mất Nấp Hộp Bảo Vệ":
+                                    ttkh.BeNapMatNapHBV = true;
+                                    ttkh.BeNapMatNapHBV_Ngay = DateTime.Now;
+                                    break;
                                 default:
                                     break;
                             }
@@ -313,6 +436,21 @@ namespace DocSo_PC.GUI.ToTruong
                                 case "Đứt Chì Thân":
                                     ttkh.DutChi_Goc = false;
                                     ttkh.DutChi_Than = false;
+                                    break;
+                                case "Ngập Nước":
+                                    ttkh.NgapNuoc = false;
+                                    break;
+                                case "Kẹt Tường":
+                                    ttkh.KetTuong = false;
+                                    break;
+                                case "Lấp Khóa Góc":
+                                    ttkh.LapKhoaGoc = false;
+                                    break;
+                                case "Bể Hộp Bảo Vệ":
+                                    ttkh.BeHBV = false;
+                                    break;
+                                case "Bể Nấp, Mất Nấp Hộp Bảo Vệ":
+                                    ttkh.BeNapMatNapHBV = false;
                                     break;
                                 default:
                                     break;

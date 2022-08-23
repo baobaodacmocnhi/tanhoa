@@ -537,5 +537,86 @@ namespace DocSo_PC.GUI.sDHN
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnExcelTinHieu_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Tạo các đối tượng Excel
+                Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
+                Microsoft.Office.Interop.Excel.Workbooks oBooks;
+                Microsoft.Office.Interop.Excel.Sheets oSheets;
+                Microsoft.Office.Interop.Excel.Workbook oBook;
+                Microsoft.Office.Interop.Excel.Worksheet oSheet;
+
+                //Tạo mới một Excel WorkBook 
+                oExcel.Visible = true;
+                oExcel.DisplayAlerts = false;
+                //khai báo số lượng sheet
+                oExcel.Application.SheetsInNewWorkbook = 1;
+                oBooks = oExcel.Workbooks;
+
+                oBook = (Microsoft.Office.Interop.Excel.Workbook)(oExcel.Workbooks.Add(Type.Missing));
+                oSheets = oBook.Worksheets;
+                oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
+
+                oSheet.Name = "Tân Hòa";
+                DateTime FromDate = new DateTime(2022, 08, 01);
+                DateTime ToDate = new DateTime(2022, 08, 21);
+                TimeSpan t = ToDate - FromDate;
+                int count = t.Days + 1;
+                int k = 0;
+                while (k < count)
+                {
+                    Microsoft.Office.Interop.Excel.Range c1a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[1, k + 3];
+                    Microsoft.Office.Interop.Excel.Range c2a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[1, k + 3];
+                    Microsoft.Office.Interop.Excel.Range c3a = oSheet.get_Range(c1a, c2a);
+                    c3a.NumberFormat = "@";
+                    DateTime date = FromDate.AddDays(k);
+                    c3a.Value2 = date.ToString("dd/MM/yyyy");
+                    k++;
+                }
+                oSheet.Cells[1, 1] = "Danh Bộ";
+                oSheet.Cells[1, 2] = "DMA";
+                //Microsoft.Office.Interop.Excel.Range clHeader = oSheet.get_Range("A1", "Z1");
+                //clHeader.WrapText = true;
+                //clHeader.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+                //clHeader.VerticalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+                CDocSo _cDocSo = new CDocSo();
+                DataTable dt = CDocSo._cDAL.ExecuteQuery_DataTable("select *,NGAYKIEMDINH1=CONVERT(varchar(10),NGAYKIEMDINH,103),NGAYTHAY1=CONVERT(varchar(10),NGAYTHAY,103) from sDHN sdhn,[DHTM_TANHOA].[dbo].[DHTM_THONGTIN] ttdhn,[CAPNUOCTANHOA].[dbo].[TB_DULIEUKHACHHANG] ttkh"
+                + " where Valid=1 and sdhn.IDNCC=ttdhn.ID and sdhn.DanhBo=ttkh.DANHBO and IDNCC=1 order by IDNCC");
+                int indexRow = 1;
+                for (int i = 0; i < dt.Rows.Count; i++)
+                    if (i >= 885)
+                    {
+                        DataRow dr = dt.Rows[i];
+                        indexRow++;
+                        oSheet.Cells[indexRow, 1] = dr["DanhBo"].ToString();
+                        oSheet.Cells[indexRow, 2] = dr["MaDMA"].ToString();
+                        k = 0;
+                        while (k < count)
+                        {
+                            DateTime date = FromDate.AddDays(k);
+                            DataTable dtTCT = _csDHN.get_ChiSoNuoc_HoaSen_Survey(dr["DanhBo"].ToString(), date);
+                            if (dtTCT != null)
+                            {
+                                Microsoft.Office.Interop.Excel.Range c1a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[indexRow, k + 3];
+                                Microsoft.Office.Interop.Excel.Range c2a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[indexRow, k + 3];
+                                Microsoft.Office.Interop.Excel.Range c3a = oSheet.get_Range(c1a, c2a);
+                                c3a.NumberFormat = "@";
+                                c3a.Value2 = dtTCT.Rows.Count.ToString();
+                            }
+                            k++;
+                        }
+                    }
+                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }

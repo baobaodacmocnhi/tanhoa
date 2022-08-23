@@ -50,6 +50,7 @@
             this.cmbLoaiXem = new System.Windows.Forms.ComboBox();
             this.dateTu = new System.Windows.Forms.DateTimePicker();
             this.btnExcel = new System.Windows.Forms.Button();
+            this.btnExcelTinHieu = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLichSu)).BeginInit();
             this.SuspendLayout();
@@ -243,11 +244,22 @@
             this.btnExcel.UseVisualStyleBackColor = true;
             this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
+            // btnExcelTinHieu
+            // 
+            this.btnExcelTinHieu.Location = new System.Drawing.Point(744, 12);
+            this.btnExcelTinHieu.Name = "btnExcelTinHieu";
+            this.btnExcelTinHieu.Size = new System.Drawing.Size(90, 23);
+            this.btnExcelTinHieu.TabIndex = 62;
+            this.btnExcelTinHieu.Text = "Excel Tín Hiệu";
+            this.btnExcelTinHieu.UseVisualStyleBackColor = true;
+            this.btnExcelTinHieu.Click += new System.EventHandler(this.btnExcelTinHieu_Click);
+            // 
             // frmDSsDHN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1437, 634);
+            this.Controls.Add(this.btnExcelTinHieu);
             this.Controls.Add(this.btnExcel);
             this.Controls.Add(this.dateTu);
             this.Controls.Add(this.cmbLoaiXem);
@@ -283,5 +295,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
         private System.Windows.Forms.Button btnExcel;
+        private System.Windows.Forms.Button btnExcelTinHieu;
     }
 }
