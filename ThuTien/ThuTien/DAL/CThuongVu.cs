@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Data;
 using ThuTien.LinQ;
 using ThuTien.DAL.Doi;
+using System.Reflection;
 
 namespace ThuTien.DAL
 {
@@ -94,6 +95,56 @@ namespace ThuTien.DAL
                 _dbKinhDoanh = new dbKTKS_DonKHDataContext();
                 return true;
             }
+        }
+
+        /// <summary>
+        /// var vrCountry = from country in objEmpDataContext.CountryMaster
+        ///                select new {country.CountryID,country.CountryName};
+        /// DataTable dt = LINQToDataTable(vrCountry);
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="varlist"></param>
+        /// <returns></returns>
+        public DataTable LINQToDataTable<T>(IEnumerable<T> varlist)
+        {
+            DataTable dtReturn = new DataTable();
+
+            // column names 
+            PropertyInfo[] oProps = null;
+
+            if (varlist == null) return dtReturn;
+
+            foreach (T rec in varlist)
+            {
+                // Use reflection to get property names, to create table, Only first time, others will follow 
+                if (oProps == null)
+                {
+                    oProps = ((Type)rec.GetType()).GetProperties();
+                    foreach (PropertyInfo pi in oProps)
+                    {
+                        Type colType = pi.PropertyType;
+
+                        if ((colType.IsGenericType) && (colType.GetGenericTypeDefinition()
+                        == typeof(Nullable<>)))
+                        {
+                            colType = colType.GetGenericArguments()[0];
+                        }
+
+                        dtReturn.Columns.Add(new DataColumn(pi.Name, colType));
+                    }
+                }
+
+                DataRow dr = dtReturn.NewRow();
+
+                foreach (PropertyInfo pi in oProps)
+                {
+                    dr[pi.Name] = pi.GetValue(rec, null) == null ? DBNull.Value : pi.GetValue
+                    (rec, null);
+                }
+
+                dtReturn.Rows.Add(dr);
+            }
+            return dtReturn;
         }
 
         public DataTable GetDSP_KinhDoanh(string DanhBo)
@@ -2806,9 +2857,64 @@ namespace ThuTien.DAL
             return _dbKinhDoanh.DonTXLs.SingleOrDefault(itemDonTXL => itemDonTXL.MaDon == MaDon);
         }
 
-        public DCBD_ChiTietHoaDon get_HoaDon(decimal SoPhieu)
+        public DCBD_ChiTietHoaDon getHoaDon(decimal SoPhieu)
         {
             return _dbKinhDoanh.DCBD_ChiTietHoaDons.SingleOrDefault(item => item.MaCTDCHD == SoPhieu);
+        }
+
+        public DataTable getHoaDon_DataTable(decimal MaCTDCHD)
+        {
+            var query = from itemCTDCHD in _dbKinhDoanh.DCBD_ChiTietHoaDons
+                        where itemCTDCHD.MaCTDCHD == MaCTDCHD
+                        && (itemCTDCHD.Nam > 2020 || (itemCTDCHD.Nam == 2020 && itemCTDCHD.Ky >= 7)) && itemCTDCHD.PhieuDuocKy == true
+                        orderby itemCTDCHD.CreateDate ascending
+                        select new
+                        {
+                            itemCTDCHD.ChuyenThuTien,
+                            ID = itemCTDCHD.MaCTDCHD,
+                            DieuChinh = "Hóa Đơn",
+                            itemCTDCHD.KyHD,
+                            itemCTDCHD.ThongTin,
+                            itemCTDCHD.LyDoDieuChinh,
+                            itemCTDCHD.CreateDate,
+                            itemCTDCHD.CodeF2,
+                            itemCTDCHD.BaoCaoThue,
+                            itemCTDCHD.DanhBo,
+                            itemCTDCHD.GiaBieu,
+                            itemCTDCHD.GiaBieu_BD,
+                            itemCTDCHD.DinhMuc,
+                            itemCTDCHD.DinhMuc_BD,
+                            itemCTDCHD.DinhMucHN,
+                            itemCTDCHD.DinhMucHN_BD,
+                            itemCTDCHD.TieuThu,
+                            itemCTDCHD.TieuThu_BD,
+                            itemCTDCHD.TienNuoc_Start,
+                            itemCTDCHD.TienNuoc_End,
+                            itemCTDCHD.ThueGTGT_Start,
+                            itemCTDCHD.ThueGTGT_End,
+                            itemCTDCHD.PhiBVMT_Start,
+                            itemCTDCHD.PhiBVMT_End,
+                            itemCTDCHD.PhiBVMT_Thue_End,
+                            itemCTDCHD.TongCong_Start,
+                            itemCTDCHD.TongCong_End,
+                            itemCTDCHD.TongCong_BD,
+                            itemCTDCHD.TangGiam,
+                            itemCTDCHD.PhieuDuocKy,
+                            itemCTDCHD.NguoiKy,
+                            itemCTDCHD.Dot,
+                            itemCTDCHD.Ky,
+                            itemCTDCHD.Nam,
+                            SoPhatHanh = itemCTDCHD.SoHD,
+                            itemCTDCHD.SoHoaDon,
+                            itemCTDCHD.HoTen_BD,
+                            itemCTDCHD.DiaChi_BD,
+                            itemCTDCHD.MST_BD,
+                            itemCTDCHD.ChiTietMoi,
+                            itemCTDCHD.KhauTru,
+                            itemCTDCHD.DieuChinhGia,
+                            itemCTDCHD.DieuChinhGia2,
+                        };
+            return LINQToDataTable(query);
         }
 
         public DataTable getTong_HoaDon(string DanhBo, int Nam, int Ky)

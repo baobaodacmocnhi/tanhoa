@@ -38,7 +38,10 @@ namespace ThuTien.GUI.ChuyenKhoan
             dateTu.Value = DateTime.Now;
             dateDen.Value = DateTime.Now;
             dateNgayLap.Value = DateTime.Now;
-
+            if (CNguoiDung.Admin)
+                btnXoaLuonLichSu.Visible = true;
+            else
+                btnXoaLuonLichSu.Visible = false;
         }
 
         private void btnChonFile_Click(object sender, EventArgs e)
@@ -472,6 +475,41 @@ namespace ThuTien.GUI.ChuyenKhoan
                 dateNgayLap.Enabled = true;
             else
                 dateNgayLap.Enabled = false;
+        }
+
+        private void btnXoaLuonLichSu_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
+                {
+                    if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        _cBangKe.BeginTransaction();
+                        foreach (DataGridViewRow item in dgvBangKe.SelectedRows)
+                        {
+                            TT_BangKe bangke = _cBangKe.get(int.Parse(item.Cells["MaBK"].Value.ToString()));
+                            TT_TienDu tiendu = _cTienDu.Get(bangke.DanhBo);
+                            TT_TienDuLichSu tiendulichsu = _cTienDu.get_LichSu(bangke.DanhBo, bangke.SoTien.Value, bangke.CreateDate.Value, bangke.MaBK);
+                            if (bangke != null && tiendu != null && tiendulichsu != null)
+                            {
+                                tiendu.SoTien -= bangke.SoTien.Value;
+                                _cTienDu.xoa_LichSu(tiendulichsu);
+                                _cBangKe.Xoa(bangke);
+                            }
+                        }
+                        _cBangKe.CommitTransaction();
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                _cBangKe.Rollback();
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
     }

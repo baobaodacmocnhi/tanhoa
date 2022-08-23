@@ -1508,21 +1508,8 @@ namespace ThuTien.GUI.ToTruong
                                 DataTable dt = _cHoaDon.GetDSTonDenKy_NV(int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()), int.Parse(txtSoKy.Text.Trim()));
                                 foreach (DataRow item in dt.Rows)
                                     if (int.Parse(dt.Compute("sum(TongCong)", "DanhBo like '" + item["DanhBo"].ToString() + "'").ToString()) >= int.Parse(txtTongTien.Text.Trim()))
-                                        if (_cLenhHuy.CheckExist(item["SoHoaDon"].ToString()) == false)
-                                            if (_cQuetTam.CheckExist(item["SoHoaDon"].ToString(), CNguoiDung.MaND, DateTime.Now) == false)
-                                            {
-                                                TT_QuetTam quettam = new TT_QuetTam();
-                                                quettam.MaHD = int.Parse(item["MaHD"].ToString());
-                                                quettam.SoHoaDon = item["SoHoaDon"].ToString();
-                                                _cQuetTam.Them(quettam);
-                                            }
-                            }
-                            else
-                                if (cmbNhanVien.SelectedIndex > 0)
-                                {
-                                    DataTable dt = _cHoaDon.GetDSTonDenKy_NV(int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(dgvHDTuGia.SelectedRows[0].Cells["Dot_TG"].Value.ToString()), int.Parse(txtSoKy.Text.Trim()));
-                                    foreach (DataRow item in dt.Rows)
-                                        if (int.Parse(dt.Compute("sum(TongCong)", "DanhBo like '" + item["DanhBo"].ToString() + "'").ToString()) >= int.Parse(txtTongTien.Text.Trim()))
+                                        if (chkBoLenhHuy.Checked == false)
+                                        {
                                             if (_cLenhHuy.CheckExist(item["SoHoaDon"].ToString()) == false)
                                                 if (_cQuetTam.CheckExist(item["SoHoaDon"].ToString(), CNguoiDung.MaND, DateTime.Now) == false)
                                                 {
@@ -1531,6 +1518,45 @@ namespace ThuTien.GUI.ToTruong
                                                     quettam.SoHoaDon = item["SoHoaDon"].ToString();
                                                     _cQuetTam.Them(quettam);
                                                 }
+                                        }
+                                        else
+                                        {
+                                            if (_cQuetTam.CheckExist(item["SoHoaDon"].ToString(), CNguoiDung.MaND, DateTime.Now) == false)
+                                            {
+                                                TT_QuetTam quettam = new TT_QuetTam();
+                                                quettam.MaHD = int.Parse(item["MaHD"].ToString());
+                                                quettam.SoHoaDon = item["SoHoaDon"].ToString();
+                                                _cQuetTam.Them(quettam);
+                                            }
+                                        }
+                            }
+                            else
+                                if (cmbNhanVien.SelectedIndex > 0)
+                                {
+                                    DataTable dt = _cHoaDon.GetDSTonDenKy_NV(int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(dgvHDTuGia.SelectedRows[0].Cells["Dot_TG"].Value.ToString()), int.Parse(txtSoKy.Text.Trim()));
+                                    foreach (DataRow item in dt.Rows)
+                                        if (int.Parse(dt.Compute("sum(TongCong)", "DanhBo like '" + item["DanhBo"].ToString() + "'").ToString()) >= int.Parse(txtTongTien.Text.Trim()))
+                                            if (chkBoLenhHuy.Checked == false)
+                                            {
+                                                if (_cLenhHuy.CheckExist(item["SoHoaDon"].ToString()) == false)
+                                                    if (_cQuetTam.CheckExist(item["SoHoaDon"].ToString(), CNguoiDung.MaND, DateTime.Now) == false)
+                                                    {
+                                                        TT_QuetTam quettam = new TT_QuetTam();
+                                                        quettam.MaHD = int.Parse(item["MaHD"].ToString());
+                                                        quettam.SoHoaDon = item["SoHoaDon"].ToString();
+                                                        _cQuetTam.Them(quettam);
+                                                    }
+                                            }
+                                            else
+                                            {
+                                                if (_cQuetTam.CheckExist(item["SoHoaDon"].ToString(), CNguoiDung.MaND, DateTime.Now) == false)
+                                                {
+                                                    TT_QuetTam quettam = new TT_QuetTam();
+                                                    quettam.MaHD = int.Parse(item["MaHD"].ToString());
+                                                    quettam.SoHoaDon = item["SoHoaDon"].ToString();
+                                                    _cQuetTam.Them(quettam);
+                                                }
+                                            }
                                 }
                         }
                         else

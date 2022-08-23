@@ -117,6 +117,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnTaoFileDienThoai = new System.Windows.Forms.Button();
             this.cmbTo = new System.Windows.Forms.ComboBox();
+            this.chkBoLenhHuy = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDCoQuan)).BeginInit();
             this.tabCoQuan.SuspendLayout();
             this.tabControl.SuspendLayout();
@@ -993,12 +994,23 @@
             this.cmbTo.Visible = false;
             this.cmbTo.SelectedIndexChanged += new System.EventHandler(this.cmbTo_SelectedIndexChanged);
             // 
+            // chkBoLenhHuy
+            // 
+            this.chkBoLenhHuy.AutoSize = true;
+            this.chkBoLenhHuy.Location = new System.Drawing.Point(1026, 58);
+            this.chkBoLenhHuy.Name = "chkBoLenhHuy";
+            this.chkBoLenhHuy.Size = new System.Drawing.Size(88, 17);
+            this.chkBoLenhHuy.TabIndex = 106;
+            this.chkBoLenhHuy.Text = "Bỏ Lệnh Hủy";
+            this.chkBoLenhHuy.UseVisualStyleBackColor = true;
+            // 
             // frmKiemTraTonTo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1310, 476);
+            this.Controls.Add(this.chkBoLenhHuy);
             this.Controls.Add(this.cmbTo);
             this.Controls.Add(this.btnTaoFileDienThoai);
             this.Controls.Add(this.txtTongTien);
@@ -1126,5 +1138,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnTaoFileDienThoai;
         private System.Windows.Forms.ComboBox cmbTo;
+        private System.Windows.Forms.CheckBox chkBoLenhHuy;
     }
 }

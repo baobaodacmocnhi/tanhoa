@@ -411,7 +411,7 @@ namespace ThuTien.GUI.TongHop
                 panel1.Enabled = false;
         }
 
-        private void btnExportExcel_Click(object sender, EventArgs e)
+        private void btnExportExcelTangGiam_Click(object sender, EventArgs e)
         {
             try
             {
@@ -436,7 +436,7 @@ namespace ThuTien.GUI.TongHop
                 oSheets = oBook.Worksheets;
                 oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
 
-                oSheet.Name = "TH_BinhThuong(" + dt.Rows.Count + ")";
+                oSheet.Name = "TH_TangGiam(" + dt.Rows.Count + ")";
                 // Tạo tiêu đề cột 
                 Microsoft.Office.Interop.Excel.Range cl1 = oSheet.get_Range("A1", "A1");
                 cl1.Value2 = "Đợt";
@@ -548,56 +548,57 @@ namespace ThuTien.GUI.TongHop
 
                 int indexRow = 1;
                 for (int i = 0; i < dt.Rows.Count; i++)
-                {
-                    DataRow dr = dt.Rows[i];
-                    DCBD_ChiTietHoaDon dchd = _cThuongVu.get_HoaDon(decimal.Parse(dr["SoPhieu"].ToString()));
-                    indexRow++;
-                    oSheet.Cells[indexRow, 1] = dr["Dot"].ToString();
-                    oSheet.Cells[indexRow, 2] = dr["Ky2"].ToString();
-                    oSheet.Cells[indexRow, 3] = dr["Nam"].ToString();
-                    oSheet.Cells[indexRow, 4] = dr["DanhBo"].ToString();
-                    oSheet.Cells[indexRow, 5] = dr["SoPhatHanh"].ToString();
-                    oSheet.Cells[indexRow, 6] = "";
-                    oSheet.Cells[indexRow, 7] = "";
-                    if (dr["SoHoaDon"].ToString().Substring(0, 2).Contains("1K"))
+                    if (int.Parse(dt.Rows[i]["Nam"].ToString()) > 2022 || (int.Parse(dt.Rows[i]["Nam"].ToString()) == 2022 && int.Parse(dt.Rows[i]["Ky2"].ToString()) >= 5))
                     {
-                        oSheet.Cells[indexRow, 8] = _cHoaDon.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 7));
-                        oSheet.Cells[indexRow, 9] = dr["SoHoaDon"].ToString().Substring(0, 7);
-                        oSheet.Cells[indexRow, 10] = dr["SoHoaDon"].ToString().Substring(7, 7);
-                    }
-                    else
-                        if (dr["SoHoaDon"].ToString().Substring(0, 2).Contains("CT"))
+                        DataRow dr = dt.Rows[i];
+                        DCBD_ChiTietHoaDon dchd = _cThuongVu.getHoaDon(decimal.Parse(dr["SoPhieu"].ToString()));
+                        indexRow++;
+                        oSheet.Cells[indexRow, 1] = dr["Dot"].ToString();
+                        oSheet.Cells[indexRow, 2] = dr["Ky2"].ToString();
+                        oSheet.Cells[indexRow, 3] = dr["Nam"].ToString();
+                        oSheet.Cells[indexRow, 4] = dr["DanhBo"].ToString();
+                        oSheet.Cells[indexRow, 5] = dr["SoPhatHanh"].ToString();
+                        oSheet.Cells[indexRow, 6] = "";
+                        oSheet.Cells[indexRow, 7] = "";
+                        if (dr["SoHoaDon"].ToString().Substring(0, 2).Contains("1K"))
                         {
-                            oSheet.Cells[indexRow, 8] = _cHoaDon.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 6));
-                            oSheet.Cells[indexRow, 9] = dr["SoHoaDon"].ToString().Substring(0, 6);
-                            oSheet.Cells[indexRow, 10] = dr["SoHoaDon"].ToString().Substring(6, 7);
+                            oSheet.Cells[indexRow, 8] = _cHoaDon.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 7));
+                            oSheet.Cells[indexRow, 9] = dr["SoHoaDon"].ToString().Substring(0, 7);
+                            oSheet.Cells[indexRow, 10] = dr["SoHoaDon"].ToString().Substring(7, 7);
                         }
-                    oSheet.Cells[indexRow, 11] = "";
-                    oSheet.Cells[indexRow, 12] = "";
-                    oSheet.Cells[indexRow, 13] = "";
-                    oSheet.Cells[indexRow, 14] = "";
-                    oSheet.Cells[indexRow, 15] = dr["GiaBieuMoi"].ToString();
-                    oSheet.Cells[indexRow, 16] = dr["DinhMucMoi"].ToString();
-                    oSheet.Cells[indexRow, 17] = dr["TieuThuMoi"].ToString();
-                    if (dchd.KhauTru == true)
-                    {
-                        oSheet.Cells[indexRow, 18] = "0";
-                        oSheet.Cells[indexRow, 19] = "0";
+                        else
+                            if (dr["SoHoaDon"].ToString().Substring(0, 2).Contains("CT"))
+                            {
+                                oSheet.Cells[indexRow, 8] = _cHoaDon.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 6));
+                                oSheet.Cells[indexRow, 9] = dr["SoHoaDon"].ToString().Substring(0, 6);
+                                oSheet.Cells[indexRow, 10] = dr["SoHoaDon"].ToString().Substring(6, 7);
+                            }
+                        oSheet.Cells[indexRow, 11] = "";
+                        oSheet.Cells[indexRow, 12] = "";
+                        oSheet.Cells[indexRow, 13] = "";
+                        oSheet.Cells[indexRow, 14] = "";
+                        oSheet.Cells[indexRow, 15] = dr["GiaBieuMoi"].ToString();
+                        oSheet.Cells[indexRow, 16] = dr["DinhMucMoi"].ToString();
+                        oSheet.Cells[indexRow, 17] = dr["TieuThuMoi"].ToString();
+                        if (dchd.KhauTru == true)
+                        {
+                            oSheet.Cells[indexRow, 18] = "0";
+                            oSheet.Cells[indexRow, 19] = "0";
+                        }
+                        else
+                        {
+                            oSheet.Cells[indexRow, 18] = dr["TieuThu_BD"].ToString();
+                            oSheet.Cells[indexRow, 19] = "0";
+                        }
+                        oSheet.Cells[indexRow, 20] = dr["GiaBan_BD"].ToString();
+                        oSheet.Cells[indexRow, 21] = "5";
+                        oSheet.Cells[indexRow, 22] = "15";
+                        oSheet.Cells[indexRow, 23] = dr["GiaBan_BD"].ToString();
+                        oSheet.Cells[indexRow, 24] = dr["ThueGTGT_BD"].ToString();
+                        oSheet.Cells[indexRow, 25] = dr["PhiBVMT_BD"].ToString();
+                        oSheet.Cells[indexRow, 26] = dr["TongCong_BD"].ToString();
+                        oSheet.Cells[indexRow, 27] = dr["PhiBVMT_Thue_BD"].ToString();
                     }
-                    else
-                    {
-                        oSheet.Cells[indexRow, 18] = dr["TieuThu_BD"].ToString();
-                        oSheet.Cells[indexRow, 19] = "0";
-                    }
-                    oSheet.Cells[indexRow, 20] = dr["GiaBan_BD"].ToString();
-                    oSheet.Cells[indexRow, 21] = "5";
-                    oSheet.Cells[indexRow, 22] = "15";
-                    oSheet.Cells[indexRow, 23] = dr["GiaBan_BD"].ToString();
-                    oSheet.Cells[indexRow, 24] = dr["ThueGTGT_BD"].ToString();
-                    oSheet.Cells[indexRow, 25] = dr["PhiBVMT_BD"].ToString();
-                    oSheet.Cells[indexRow, 26] = dr["TongCong_BD"].ToString();
-                    oSheet.Cells[indexRow, 27] = dr["PhiBVMT_Thue_BD"].ToString();
-                }
             }
             catch (Exception ex)
             {
@@ -883,22 +884,24 @@ namespace ThuTien.GUI.TongHop
             frm.Show();
         }
 
-        private void btnExportExcelTruoc_Click(object sender, EventArgs e)
+        private void btnExportExcelThayThe_Click(object sender, EventArgs e)
         {
             try
             {
                 DataTable dtBinhThuong2021 = new DataTable();
                 DataTable dtBinhThuong2022 = new DataTable();
-                DataTable dt = new DataTable();
+                DataTable dt = _cDCHD.getDS_HDDC_Cho_DangNgan_ThayThe();
+                dt.Merge(_cDCHD.getDS_HDDC_Cho_DangNgan_HD0_ThayThe());
                 for (int i = 0; i < dt.Rows.Count; i++)
-                {
-                    if (bool.Parse(dt.Rows[i]["BaoCaoThue"].ToString()) == false)
-                        if (dt.Rows[i]["SoHoaDon"].ToString().Contains("CT/22E") || dt.Rows[i]["SoHoaDon"].ToString().Contains("1K22TCT"))
-                            dtBinhThuong2022.Rows.Add(dt.Rows[i]);
+                    if (int.Parse(dt.Rows[i]["Nam"].ToString()) < 2022 || (int.Parse(dt.Rows[i]["Nam"].ToString()) == 2022 && int.Parse(dt.Rows[i]["Ky2"].ToString()) < 5))
+                    {
+                        DataTable dtDCHD = _cThuongVu.getHoaDon_DataTable(decimal.Parse(dt.Rows[i]["SoPhieu"].ToString()));
+                        if (dtDCHD.Rows[0]["SoHoaDon"].ToString().Contains("CT/22E") || dtDCHD.Rows[0]["SoHoaDon"].ToString().Contains("1K22TCT"))
+                            dtBinhThuong2022.ImportRow(dtDCHD.Rows[0]);
                         else
-                            if (dt.Rows[i]["SoHoaDon"].ToString().Contains("CT/20E") || dt.Rows[i]["SoHoaDon"].ToString().Contains("CT/21E"))
-                                dtBinhThuong2021.Rows.Add(dt.Rows[i]);
-                }
+                            if (dtDCHD.Rows[0]["SoHoaDon"].ToString().Contains("CT/20E") || dtDCHD.Rows[0]["SoHoaDon"].ToString().Contains("CT/21E"))
+                                dtBinhThuong2021.ImportRow(dtDCHD.Rows[0]);
+                    }
                 if (dtBinhThuong2021.Rows.Count > 0)
                 {
                     int scale = 1000;
@@ -971,7 +974,7 @@ namespace ThuTien.GUI.TongHop
             oSheets = oBook.Worksheets;
             oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
 
-            oSheet.Name = "TH_BinhThuong(" + dt.Rows.Count + ")";
+            oSheet.Name = "TH_ThayThe(" + dt.Rows.Count + ")";
             // Tạo tiêu đề cột 
             Microsoft.Office.Interop.Excel.Range cl1 = oSheet.get_Range("A1", "A1");
             cl1.Value2 = "Đợt";
@@ -1228,7 +1231,7 @@ namespace ThuTien.GUI.TongHop
             oSheets = oBook.Worksheets;
             oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
 
-            oSheet.Name = "TH_BinhThuong(" + dt.Rows.Count + ")";
+            oSheet.Name = "TH_ThayThe(" + dt.Rows.Count + ")";
             // Tạo tiêu đề cột 
             Microsoft.Office.Interop.Excel.Range cl1 = oSheet.get_Range("A1", "A1");
             cl1.Value2 = "Đợt";
@@ -1354,14 +1357,14 @@ namespace ThuTien.GUI.TongHop
                     oSheet.Cells[indexRow, 7] = "";
                     if (dr["SoHoaDon"].ToString().Substring(0, 2).Contains("1K"))
                     {
-                        oSheet.Cells[indexRow, 8] = _cThuTien.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 7));
+                        oSheet.Cells[indexRow, 8] = _cHoaDon.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 7));
                         oSheet.Cells[indexRow, 9] = dr["SoHoaDon"].ToString().Substring(0, 7);
                         oSheet.Cells[indexRow, 10] = dr["SoHoaDon"].ToString().Substring(7, 7);
                     }
                     else
                         if (dr["SoHoaDon"].ToString().Substring(0, 2).Contains("CT"))
                         {
-                            oSheet.Cells[indexRow, 8] = _cThuTien.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 6));
+                            oSheet.Cells[indexRow, 8] = _cHoaDon.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 6));
                             oSheet.Cells[indexRow, 9] = dr["SoHoaDon"].ToString().Substring(0, 6);
                             oSheet.Cells[indexRow, 10] = dr["SoHoaDon"].ToString().Substring(6, 7);
                         }
@@ -1395,14 +1398,14 @@ namespace ThuTien.GUI.TongHop
                         oSheet.Cells[indexRow, 7] = "";
                         if (dr["SoHoaDon"].ToString().Substring(0, 2).Contains("1K"))
                         {
-                            oSheet.Cells[indexRow, 8] = _cThuTien.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 7));
+                            oSheet.Cells[indexRow, 8] = _cHoaDon.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 7));
                             oSheet.Cells[indexRow, 9] = dr["SoHoaDon"].ToString().Substring(0, 7);
                             oSheet.Cells[indexRow, 10] = dr["SoHoaDon"].ToString().Substring(7, 7);
                         }
                         else
                             if (dr["SoHoaDon"].ToString().Substring(0, 2).Contains("CT"))
                             {
-                                oSheet.Cells[indexRow, 8] = _cThuTien.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 6));
+                                oSheet.Cells[indexRow, 8] = _cHoaDon.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 6));
                                 oSheet.Cells[indexRow, 9] = dr["SoHoaDon"].ToString().Substring(0, 6);
                                 oSheet.Cells[indexRow, 10] = dr["SoHoaDon"].ToString().Substring(6, 7);
                             }
@@ -1438,14 +1441,14 @@ namespace ThuTien.GUI.TongHop
                                 oSheet.Cells[indexRow, 7] = "";
                                 if (dr["SoHoaDon"].ToString().Substring(0, 2).Contains("1K"))
                                 {
-                                    oSheet.Cells[indexRow, 8] = _cThuTien.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 7));
+                                    oSheet.Cells[indexRow, 8] = _cHoaDon.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 7));
                                     oSheet.Cells[indexRow, 9] = dr["SoHoaDon"].ToString().Substring(0, 7);
                                     oSheet.Cells[indexRow, 10] = dr["SoHoaDon"].ToString().Substring(7, 7);
                                 }
                                 else
                                     if (dr["SoHoaDon"].ToString().Substring(0, 2).Contains("CT"))
                                     {
-                                        oSheet.Cells[indexRow, 8] = _cThuTien.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 6));
+                                        oSheet.Cells[indexRow, 8] = _cHoaDon.getBieuMau(dr["SoHoaDon"].ToString().Substring(0, 6));
                                         oSheet.Cells[indexRow, 9] = dr["SoHoaDon"].ToString().Substring(0, 6);
                                         oSheet.Cells[indexRow, 10] = dr["SoHoaDon"].ToString().Substring(6, 7);
                                     }
