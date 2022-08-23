@@ -2270,6 +2270,26 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _KhoaTu;
 		
+		private bool _NgapNuoc;
+		
+		private System.Nullable<System.DateTime> _NgapNuoc_Ngay;
+		
+		private bool _KetTuong;
+		
+		private System.Nullable<System.DateTime> _KetTuong_Ngay;
+		
+		private bool _LapKhoaGoc;
+		
+		private System.Nullable<System.DateTime> _LapKhoaGoc_Ngay;
+		
+		private bool _BeHBV;
+		
+		private System.Nullable<System.DateTime> _BeHBV_Ngay;
+		
+		private bool _BeNapMatNapHBV;
+		
+		private System.Nullable<System.DateTime> _BeNapMatNapHBV_Ngay;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -2400,6 +2420,26 @@ namespace KTKS_DonKH.LinQ
     partial void OnMauSacChiGocChanged();
     partial void OnKhoaTuChanging(bool value);
     partial void OnKhoaTuChanged();
+    partial void OnNgapNuocChanging(bool value);
+    partial void OnNgapNuocChanged();
+    partial void OnNgapNuoc_NgayChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgapNuoc_NgayChanged();
+    partial void OnKetTuongChanging(bool value);
+    partial void OnKetTuongChanged();
+    partial void OnKetTuong_NgayChanging(System.Nullable<System.DateTime> value);
+    partial void OnKetTuong_NgayChanged();
+    partial void OnLapKhoaGocChanging(bool value);
+    partial void OnLapKhoaGocChanged();
+    partial void OnLapKhoaGoc_NgayChanging(System.Nullable<System.DateTime> value);
+    partial void OnLapKhoaGoc_NgayChanged();
+    partial void OnBeHBVChanging(bool value);
+    partial void OnBeHBVChanged();
+    partial void OnBeHBV_NgayChanging(System.Nullable<System.DateTime> value);
+    partial void OnBeHBV_NgayChanged();
+    partial void OnBeNapMatNapHBVChanging(bool value);
+    partial void OnBeNapMatNapHBVChanged();
+    partial void OnBeNapMatNapHBV_NgayChanging(System.Nullable<System.DateTime> value);
+    partial void OnBeNapMatNapHBV_NgayChanged();
     #endregion
 		
 		public TB_DULIEUKHACHHANG()
@@ -3663,6 +3703,206 @@ namespace KTKS_DonKH.LinQ
 					this._KhoaTu = value;
 					this.SendPropertyChanged("KhoaTu");
 					this.OnKhoaTuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgapNuoc", DbType="Bit NOT NULL")]
+		public bool NgapNuoc
+		{
+			get
+			{
+				return this._NgapNuoc;
+			}
+			set
+			{
+				if ((this._NgapNuoc != value))
+				{
+					this.OnNgapNuocChanging(value);
+					this.SendPropertyChanging();
+					this._NgapNuoc = value;
+					this.SendPropertyChanged("NgapNuoc");
+					this.OnNgapNuocChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgapNuoc_Ngay", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NgapNuoc_Ngay
+		{
+			get
+			{
+				return this._NgapNuoc_Ngay;
+			}
+			set
+			{
+				if ((this._NgapNuoc_Ngay != value))
+				{
+					this.OnNgapNuoc_NgayChanging(value);
+					this.SendPropertyChanging();
+					this._NgapNuoc_Ngay = value;
+					this.SendPropertyChanged("NgapNuoc_Ngay");
+					this.OnNgapNuoc_NgayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KetTuong", DbType="Bit NOT NULL")]
+		public bool KetTuong
+		{
+			get
+			{
+				return this._KetTuong;
+			}
+			set
+			{
+				if ((this._KetTuong != value))
+				{
+					this.OnKetTuongChanging(value);
+					this.SendPropertyChanging();
+					this._KetTuong = value;
+					this.SendPropertyChanged("KetTuong");
+					this.OnKetTuongChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KetTuong_Ngay", DbType="DateTime")]
+		public System.Nullable<System.DateTime> KetTuong_Ngay
+		{
+			get
+			{
+				return this._KetTuong_Ngay;
+			}
+			set
+			{
+				if ((this._KetTuong_Ngay != value))
+				{
+					this.OnKetTuong_NgayChanging(value);
+					this.SendPropertyChanging();
+					this._KetTuong_Ngay = value;
+					this.SendPropertyChanged("KetTuong_Ngay");
+					this.OnKetTuong_NgayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LapKhoaGoc", DbType="Bit NOT NULL")]
+		public bool LapKhoaGoc
+		{
+			get
+			{
+				return this._LapKhoaGoc;
+			}
+			set
+			{
+				if ((this._LapKhoaGoc != value))
+				{
+					this.OnLapKhoaGocChanging(value);
+					this.SendPropertyChanging();
+					this._LapKhoaGoc = value;
+					this.SendPropertyChanged("LapKhoaGoc");
+					this.OnLapKhoaGocChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LapKhoaGoc_Ngay", DbType="DateTime")]
+		public System.Nullable<System.DateTime> LapKhoaGoc_Ngay
+		{
+			get
+			{
+				return this._LapKhoaGoc_Ngay;
+			}
+			set
+			{
+				if ((this._LapKhoaGoc_Ngay != value))
+				{
+					this.OnLapKhoaGoc_NgayChanging(value);
+					this.SendPropertyChanging();
+					this._LapKhoaGoc_Ngay = value;
+					this.SendPropertyChanged("LapKhoaGoc_Ngay");
+					this.OnLapKhoaGoc_NgayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BeHBV", DbType="Bit NOT NULL")]
+		public bool BeHBV
+		{
+			get
+			{
+				return this._BeHBV;
+			}
+			set
+			{
+				if ((this._BeHBV != value))
+				{
+					this.OnBeHBVChanging(value);
+					this.SendPropertyChanging();
+					this._BeHBV = value;
+					this.SendPropertyChanged("BeHBV");
+					this.OnBeHBVChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BeHBV_Ngay", DbType="DateTime")]
+		public System.Nullable<System.DateTime> BeHBV_Ngay
+		{
+			get
+			{
+				return this._BeHBV_Ngay;
+			}
+			set
+			{
+				if ((this._BeHBV_Ngay != value))
+				{
+					this.OnBeHBV_NgayChanging(value);
+					this.SendPropertyChanging();
+					this._BeHBV_Ngay = value;
+					this.SendPropertyChanged("BeHBV_Ngay");
+					this.OnBeHBV_NgayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BeNapMatNapHBV", DbType="Bit NOT NULL")]
+		public bool BeNapMatNapHBV
+		{
+			get
+			{
+				return this._BeNapMatNapHBV;
+			}
+			set
+			{
+				if ((this._BeNapMatNapHBV != value))
+				{
+					this.OnBeNapMatNapHBVChanging(value);
+					this.SendPropertyChanging();
+					this._BeNapMatNapHBV = value;
+					this.SendPropertyChanged("BeNapMatNapHBV");
+					this.OnBeNapMatNapHBVChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BeNapMatNapHBV_Ngay", DbType="DateTime")]
+		public System.Nullable<System.DateTime> BeNapMatNapHBV_Ngay
+		{
+			get
+			{
+				return this._BeNapMatNapHBV_Ngay;
+			}
+			set
+			{
+				if ((this._BeNapMatNapHBV_Ngay != value))
+				{
+					this.OnBeNapMatNapHBV_NgayChanging(value);
+					this.SendPropertyChanging();
+					this._BeNapMatNapHBV_Ngay = value;
+					this.SendPropertyChanged("BeNapMatNapHBV_Ngay");
+					this.OnBeNapMatNapHBV_NgayChanged();
 				}
 			}
 		}
