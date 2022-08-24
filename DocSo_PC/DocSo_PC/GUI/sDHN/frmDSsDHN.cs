@@ -561,8 +561,8 @@ namespace DocSo_PC.GUI.sDHN
                 oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
 
                 oSheet.Name = "Tân Hòa";
-                DateTime FromDate = new DateTime(2022, 08, 01);
-                DateTime ToDate = new DateTime(2022, 08, 21);
+                DateTime FromDate = new DateTime(2022, 08, 20);
+                DateTime ToDate = new DateTime(2022, 08, 22);
                 TimeSpan t = ToDate - FromDate;
                 int count = t.Days + 1;
                 int k = 0;
@@ -585,10 +585,9 @@ namespace DocSo_PC.GUI.sDHN
 
                 CDocSo _cDocSo = new CDocSo();
                 DataTable dt = CDocSo._cDAL.ExecuteQuery_DataTable("select *,NGAYKIEMDINH1=CONVERT(varchar(10),NGAYKIEMDINH,103),NGAYTHAY1=CONVERT(varchar(10),NGAYTHAY,103) from sDHN sdhn,[DHTM_TANHOA].[dbo].[DHTM_THONGTIN] ttdhn,[CAPNUOCTANHOA].[dbo].[TB_DULIEUKHACHHANG] ttkh"
-                + " where Valid=1 and sdhn.IDNCC=ttdhn.ID and sdhn.DanhBo=ttkh.DANHBO and IDNCC=1 order by IDNCC");
+                + " where Valid=1 and sdhn.IDNCC=ttdhn.ID and sdhn.DanhBo=ttkh.DANHBO and IDNCC=" + int.Parse(cmbNCC.SelectedValue.ToString()) + " order by IDNCC");
                 int indexRow = 1;
                 for (int i = 0; i < dt.Rows.Count; i++)
-                    if (i >= 885)
                     {
                         DataRow dr = dt.Rows[i];
                         indexRow++;
@@ -598,7 +597,22 @@ namespace DocSo_PC.GUI.sDHN
                         while (k < count)
                         {
                             DateTime date = FromDate.AddDays(k);
-                            DataTable dtTCT = _csDHN.get_ChiSoNuoc_HoaSen_Survey(dr["DanhBo"].ToString(), date);
+                            DataTable dtTCT = new DataTable();
+                            switch (int.Parse(cmbNCC.SelectedValue.ToString()))
+                            {
+                                case 1:
+                                    dtTCT = _csDHN.get_ChiSoNuoc_HoaSen_Survey(dr["DanhBo"].ToString(), date);
+                                    break;
+                                case 2:
+                                    dtTCT = _csDHN.get_ChiSoNuoc_Rynan(dr["DanhBo"].ToString(), date);
+                                    break;
+                                case 3:
+                                    dtTCT = _csDHN.get_ChiSoNuoc_Deviwas(dr["DanhBo"].ToString(), date);
+                                    break;
+                                case 4:
+                                    dtTCT = _csDHN.get_ChiSoNuoc_PhamLam(dr["DanhBo"].ToString(), date);
+                                    break;
+                            }
                             if (dtTCT != null)
                             {
                                 Microsoft.Office.Interop.Excel.Range c1a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[indexRow, k + 3];
