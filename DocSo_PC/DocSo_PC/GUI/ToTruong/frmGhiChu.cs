@@ -124,6 +124,21 @@ namespace DocSo_PC.GUI.ToTruong
                 chkDutChiThan.Checked = en.DutChi_Than;
                 if (en.DutChi_Than == true)
                     dateDutChiThan.Value = en.DutChi_Than_Ngay.Value;
+                chkNgapNuoc.Checked = en.NgapNuoc;
+                if (en.NgapNuoc == true)
+                    dateNgapNuoc.Value = en.NgapNuoc_Ngay.Value;
+                chkKetTuong.Checked = en.KetTuong;
+                if (en.KetTuong == true)
+                    dateKetTuong.Value = en.KetTuong_Ngay.Value;
+                chkLapKhoaGoc.Checked = en.LapKhoaGoc;
+                if (en.LapKhoaGoc == true)
+                    dateLapKhoaGoc.Value = en.LapKhoaGoc_Ngay.Value;
+                chkBeHBV.Checked = en.BeHBV;
+                if (en.BeHBV == true)
+                    dateBeHBV.Value = en.BeHBV_Ngay.Value;
+                chkBeNapMatNapHBV.Checked = en.BeNapMatNapHBV;
+                if (en.BeNapMatNapHBV == true)
+                    dateBeNapMatNapHBV.Value = en.BeNapMatNapHBV_Ngay.Value;
                 cmbMauSacChiGoc.SelectedItem = en.MauSacChiGoc;
                 dgvDienThoai.DataSource = _cDHN.getDS_DienThoai(en.DANHBO);
             }
@@ -255,6 +270,11 @@ namespace DocSo_PC.GUI.ToTruong
                         _enDLKH.XayDung = chkXayDung.Checked;
                         _enDLKH.DutChi_Goc = chkDutChiGoc.Checked;
                         _enDLKH.DutChi_Than = chkDutChiThan.Checked;
+                        _enDLKH.NgapNuoc = chkNgapNuoc.Checked;
+                        _enDLKH.KetTuong = chkKetTuong.Checked;
+                        _enDLKH.LapKhoaGoc = chkLapKhoaGoc.Checked;
+                        _enDLKH.BeHBV = chkBeHBV.Checked;
+                        _enDLKH.BeNapMatNapHBV = chkBeNapMatNapHBV.Checked;
                         _enDLKH.MauSacChiGoc = cmbMauSacChiGoc.SelectedItem.ToString();
                         _cDHN.SubmitChanges();
                         //foreach (DataGridViewRow item in dgvDienThoai.Rows)
@@ -557,6 +577,106 @@ namespace DocSo_PC.GUI.ToTruong
         {
             if (e.KeyChar == 13 && txtDanhBo.Text.Trim().Replace(" ", "").Replace("-", "").Length == 11)
                 btnXem.PerformClick();
+        }
+
+        private void chkNgapNuoc_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkNgapNuoc.Checked)
+            {
+                dateNgapNuoc.Enabled = true;
+                btnHinhNgapNuoc.Enabled = true;
+            }
+            else
+            {
+                dateNgapNuoc.Enabled = false;
+                btnHinhNgapNuoc.Enabled = false;
+            }
+        }
+
+        private void chkKetTuong_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkKetTuong.Checked)
+            {
+                dateKetTuong.Enabled = true;
+                btnHinhKetTuong.Enabled = true;
+            }
+            else
+            {
+                dateKetTuong.Enabled = false;
+                btnHinhKetTuong.Enabled = false;
+            }
+        }
+
+        private void chkLapKhoaGoc_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkLapKhoaGoc.Checked)
+            {
+                dateLapKhoaGoc.Enabled = true;
+                btnHinhLapKhoaGoc.Enabled = true;
+            }
+            else
+            {
+                dateLapKhoaGoc.Enabled = false;
+                btnHinhLapKhoaGoc.Enabled = false;
+            }
+        }
+
+        private void chkBeHBV_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkBeHBV.Checked)
+            {
+                dateBeHBV.Enabled = true;
+                btnHinhBeHBV.Enabled = true;
+            }
+            else
+            {
+                dateBeHBV.Enabled = false;
+                btnHinhBeHBV.Enabled = false;
+            }
+        }
+
+        private void chkBeNapMatNapHBV_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkBeNapMatNapHBV.Checked)
+            {
+                dateBeNapMatNapHBV.Enabled = true;
+                btnHinhBeNapMatNapHBV.Enabled = true;
+            }
+            else
+            {
+                dateBeNapMatNapHBV.Enabled = false;
+                btnHinhBeNapMatNapHBV.Enabled = false;
+            }
+        }
+
+        private void btnHinhNgapNuoc_Click(object sender, EventArgs e)
+        {
+            if (_enDLKH != null)
+                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("NgapNuoc", "", _enDLKH.DANHBO + ".jpg"))));
+        }
+
+        private void btnHinhKetTuong_Click(object sender, EventArgs e)
+        {
+            if (_enDLKH != null)
+                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("KetTuong", "", _enDLKH.DANHBO + ".jpg"))));
+        }
+
+        private void btnHinhLapKhoaGoc_Click(object sender, EventArgs e)
+        {
+            if (_enDLKH != null)
+                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("LapKhoaGoc", "", _enDLKH.DANHBO + ".jpg"))));
+        }
+
+        private void btnHinhBeHBV_Click(object sender, EventArgs e)
+        {
+            if (_enDLKH != null)
+                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("BeHBV", "", _enDLKH.DANHBO + ".jpg"))));
+        }
+
+        private void btnHinhBeNapMatNapHBV_Click(object sender, EventArgs e)
+        {
+            if (_enDLKH != null)
+                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("BeNapMatNapHBV", "", _enDLKH.DANHBO + ".jpg"))));
         }
 
 
