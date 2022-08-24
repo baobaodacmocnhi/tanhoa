@@ -2057,6 +2057,9 @@ namespace ThuTien.GUI.TongHop
                         case "Khác Kỳ Năm":
                             dr["PhanKy"] = "của Kỳ 12 năm " + (dateDen_KeToan.Value.Year - 1).ToString() + " trở về trước" + " nộp về Tổng Công ty trong tháng " + dr["TuNgay"] + " năm " + dr["DenNgay"];
                             break;
+                        case "Khác Kỳ Năm 2018":
+                            dr["PhanKy"] = "của Kỳ 12 năm 2018 trở về trước" + " nộp về Tổng Công ty trong tháng " + dr["TuNgay"] + " năm " + dr["DenNgay"];
+                            break;
                         default:
                             break;
                     }
@@ -2071,6 +2074,9 @@ namespace ThuTien.GUI.TongHop
                             break;
                         case "Khác Kỳ Năm":
                             dr["PhanKy"] = "của năm " + (dateDen_KeToan.Value.Year - 1).ToString() + " trở về trước" + " nộp về Tổng Công ty đến tháng " + dr["TuNgay"] + " năm " + dr["DenNgay"];
+                            break;
+                        case "Khác Kỳ Năm 2018":
+                            dr["PhanKy"] = "của năm 2018 trở về trước" + " nộp về Tổng Công ty đến tháng " + dr["TuNgay"] + " năm " + dr["DenNgay"];
                             break;
                         default:
                             break;
