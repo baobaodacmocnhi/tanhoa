@@ -40,3 +40,5 @@ select hd.danhba,tv.danhbo,ID_DIEUCHINH_HD,FK_HOADON,tt.PHI_BD,mactdchd,phibvmt_
 where  hd.MaNV_DangNgan is null and PHIEU_DC is not null
 and tt.FK_HOADON=hd.ID_HOADON and hd.NAm=tv.Nam and hd.ky=tv.Ky and hd.DANHBA=tv.DanhBo
 and tt.phi_bd!=tv.phibvmt_start 
+
+select DANHBA,SOHOADON,SOPHATHANH,NAM,KY,GIABAN,THUE,PHI,ThueGTGT_TDVTN,TONGCONG from HOADON where CAST(NGAYGIAITRACH as date)='20220825' and MaNV_DangNgan is not null
