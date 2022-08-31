@@ -278,14 +278,15 @@ namespace DocSo_PC.GUI.ToTruong
                             break;
                         case "Ngập Nước":
                         case "Kẹt Tường":
-                            if (ttkh.ViTriDHN_Ngoai)
-                            {
-                                dr["TieuDe"] = "DANH SÁCH ĐỒNG HỒ NƯỚC " + item.Cells["NoiDung"].Value.ToString().ToUpper() + " NGOÀI BẤT ĐỘNG SẢN";
-                            }
-                            else
-                            {
-                                dr["TieuDe"] = "DANH SÁCH ĐỒNG HỒ NƯỚC " + item.Cells["NoiDung"].Value.ToString().ToUpper() + " TRONG BẤT ĐỘNG SẢN";
-                            }
+                            //if (ttkh.ViTriDHN_Ngoai)
+                            //{
+                            //    dr["TieuDe"] = "DANH SÁCH ĐỒNG HỒ NƯỚC " + item.Cells["NoiDung"].Value.ToString().ToUpper() + " NGOÀI BẤT ĐỘNG SẢN";
+                            //}
+                            //else
+                            //{
+                            //    dr["TieuDe"] = "DANH SÁCH ĐỒNG HỒ NƯỚC " + item.Cells["NoiDung"].Value.ToString().ToUpper() + " TRONG BẤT ĐỘNG SẢN";
+                            //}
+                            dr["TieuDe"] = "DANH SÁCH ĐỒNG HỒ NƯỚC " + item.Cells["NoiDung"].Value.ToString().ToUpper();
                             dr["NoiNhan"] = "P. Thương Vụ\nĐ. TCTB\nLưu";
                             break;
                         case "Lấp Khóa Góc":
