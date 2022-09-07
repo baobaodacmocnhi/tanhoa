@@ -49,6 +49,10 @@ namespace ThuTien.GUI.TongHop
             cmbNam.ValueMember = "Nam";
 
             loadHoaDon();
+            if (CNguoiDung.Admin)
+                btnExportExcelThayThe.Visible = true;
+            else
+                btnExportExcelThayThe.Visible = false;
         }
 
         public void loadHoaDon()
@@ -573,10 +577,10 @@ namespace ThuTien.GUI.TongHop
                                 oSheet.Cells[indexRow, 9] = dr["SoHoaDon"].ToString().Substring(0, 6);
                                 oSheet.Cells[indexRow, 10] = dr["SoHoaDon"].ToString().Substring(6, 7);
                             }
-                        oSheet.Cells[indexRow, 11] = "";
-                        oSheet.Cells[indexRow, 12] = "";
-                        oSheet.Cells[indexRow, 13] = "";
-                        oSheet.Cells[indexRow, 14] = "";
+                        oSheet.Cells[indexRow, 11] = dr["HoTenMoi"].ToString();
+                        oSheet.Cells[indexRow, 12] = dr["HoTenMoi"].ToString();
+                        oSheet.Cells[indexRow, 13] = dr["DiaChiMoi"].ToString();
+                        oSheet.Cells[indexRow, 14] = dr["MSTMoi"].ToString();
                         oSheet.Cells[indexRow, 15] = dr["GiaBieuMoi"].ToString();
                         oSheet.Cells[indexRow, 16] = dr["DinhMucMoi"].ToString();
                         oSheet.Cells[indexRow, 17] = dr["TieuThuMoi"].ToString();
@@ -890,17 +894,18 @@ namespace ThuTien.GUI.TongHop
             {
                 DataTable dtBinhThuong2021 = new DataTable();
                 DataTable dtBinhThuong2022 = new DataTable();
-                DataTable dt = _cDCHD.getDS_HDDC_Cho_DangNgan_ThayThe();
-                dt.Merge(_cDCHD.getDS_HDDC_Cho_DangNgan_HD0_ThayThe());
+                DataTable dt = _cDCHD.getDS_HDDC_Cho_DangNgan_ThayThe_Admin();
+                //DataTable dt = _cDCHD.getDS_HDDC_Cho_DangNgan_ThayThe();
+                //dt.Merge(_cDCHD.getDS_HDDC_Cho_DangNgan_HD0_ThayThe());
                 for (int i = 0; i < dt.Rows.Count; i++)
                     if (int.Parse(dt.Rows[i]["Nam"].ToString()) < 2022 || (int.Parse(dt.Rows[i]["Nam"].ToString()) == 2022 && int.Parse(dt.Rows[i]["Ky2"].ToString()) < 5))
                     {
                         DataTable dtDCHD = _cThuongVu.getHoaDon_DataTable(decimal.Parse(dt.Rows[i]["SoPhieu"].ToString()));
                         if (dtDCHD.Rows[0]["SoHoaDon"].ToString().Contains("CT/22E") || dtDCHD.Rows[0]["SoHoaDon"].ToString().Contains("1K22TCT"))
-                            dtBinhThuong2022.ImportRow(dtDCHD.Rows[0]);
+                            dtBinhThuong2022.Merge(dtDCHD);
                         else
                             if (dtDCHD.Rows[0]["SoHoaDon"].ToString().Contains("CT/20E") || dtDCHD.Rows[0]["SoHoaDon"].ToString().Contains("CT/21E"))
-                                dtBinhThuong2021.ImportRow(dtDCHD.Rows[0]);
+                                dtBinhThuong2021.Merge(dtDCHD);
                     }
                 if (dtBinhThuong2021.Rows.Count > 0)
                 {

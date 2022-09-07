@@ -100,6 +100,9 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtMST_Start = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.txtMST_End = new System.Windows.Forms.TextBox();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
@@ -705,6 +708,9 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtMST_Start);
+            this.groupBox2.Controls.Add(this.label21);
+            this.groupBox2.Controls.Add(this.txtMST_End);
             this.groupBox2.Controls.Add(this.label17);
             this.groupBox2.Controls.Add(this.txtHoTen_Start);
             this.groupBox2.Controls.Add(this.txtDiaChi_Start);
@@ -715,7 +721,7 @@
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Location = new System.Drawing.Point(2, 360);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(480, 129);
+            this.groupBox2.Size = new System.Drawing.Size(686, 129);
             this.groupBox2.TabIndex = 33;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Kết Quả Điều Chỉnh Họ Tên - Địa Chỉ";
@@ -807,6 +813,35 @@
             this.textBox6.Size = new System.Drawing.Size(94, 20);
             this.textBox6.TabIndex = 34;
             this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtMST_Start
+            // 
+            this.txtMST_Start.Location = new System.Drawing.Point(478, 36);
+            this.txtMST_Start.Multiline = true;
+            this.txtMST_Start.Name = "txtMST_Start";
+            this.txtMST_Start.Size = new System.Drawing.Size(107, 40);
+            this.txtMST_Start.TabIndex = 27;
+            this.txtMST_Start.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label21.Location = new System.Drawing.Point(478, 18);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(107, 15);
+            this.label21.TabIndex = 26;
+            this.label21.Text = "           MST              ";
+            // 
+            // txtMST_End
+            // 
+            this.txtMST_End.ForeColor = System.Drawing.Color.Red;
+            this.txtMST_End.Location = new System.Drawing.Point(478, 82);
+            this.txtMST_End.Multiline = true;
+            this.txtMST_End.Name = "txtMST_End";
+            this.txtMST_End.Size = new System.Drawing.Size(107, 40);
+            this.txtMST_End.TabIndex = 28;
+            this.txtMST_End.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // frmShowDCHD
             // 
@@ -931,5 +966,8 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox txtPhiBVMT_Thue_BD;
         private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtMST_Start;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox txtMST_End;
     }
 }

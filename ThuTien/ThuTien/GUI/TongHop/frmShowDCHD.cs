@@ -123,6 +123,8 @@ namespace ThuTien.GUI.TongHop
                         txtHoTen_End.Text = _dchd.HoTen_End;
                         txtDiaChi_Start.Text = _dchd.DiaChi_BD;
                         txtDiaChi_End.Text = _dchd.DiaChi_End;
+                        txtMST_Start.Text = _dchd.MST_BD;
+                        txtMST_End.Text = _dchd.MST_End;
                     }
 
                     dgvDanhSach.DataSource = _cDCHD.getLichSu(hd.ID_HOADON);
@@ -229,6 +231,11 @@ namespace ThuTien.GUI.TongHop
                 {
                     txtDiaChi_Start.Text = _ctdchd.DiaChi;
                     txtDiaChi_End.Text = _ctdchd.DiaChi_BD;
+                }
+                if (_ctdchd.MST_BD != "")
+                {
+                    txtMST_Start.Text = _ctdchd.MST;
+                    txtMST_End.Text = _ctdchd.MST_BD;
                 }
             }
         }
@@ -346,6 +353,16 @@ namespace ThuTien.GUI.TongHop
                                 {
                                     _dchd.DiaChi_BD = null;
                                     _dchd.DiaChi_End = null;
+                                }
+                                if (_ctdchd.MST_BD != "")
+                                {
+                                    _dchd.MST_BD = _ctdchd.MST;
+                                    _dchd.MST_End = _ctdchd.MST_BD;
+                                }
+                                else
+                                {
+                                    _dchd.MST_BD = null;
+                                    _dchd.MST_End = null;
                                 }
                             }
                             ///không có phiếu điều chỉnh hóa đơn bên P.Kinh Doanh
@@ -488,6 +505,11 @@ namespace ThuTien.GUI.TongHop
                                 {
                                     dchd.DiaChi_BD = _ctdchd.DiaChi;
                                     dchd.DiaChi_End = _ctdchd.DiaChi_BD;
+                                }
+                                if (_ctdchd.MST_BD != "")
+                                {
+                                    dchd.MST_BD = _ctdchd.MST;
+                                    dchd.MST_End = _ctdchd.MST_BD;
                                 }
                             }
                             ///không có phiếu điều chỉnh hóa đơn bên P.Kinh Doanh
