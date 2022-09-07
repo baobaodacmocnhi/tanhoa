@@ -3376,7 +3376,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                             dchd.DiaChi_BD = null;
                                                             dchd.DiaChi_End = null;
                                                         }
-
+                                                        if (ctdchd.MST_BD != "")
+                                                        {
+                                                            dchd.MST_BD = ctdchd.MST;
+                                                            dchd.MST_End = ctdchd.MST_BD;
+                                                        }
+                                                        else
+                                                        {
+                                                            dchd.MST_BD = null;
+                                                            dchd.MST_End = null;
+                                                        }
                                                         dchd.ModifyDate = DateTime.Now;
                                                         ///lưu lịch sử
                                                         _cThuTien.LuuLichSuDC(dchd);
@@ -3483,7 +3492,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                             dchd1.DiaChi_BD = ctdchd.DiaChi;
                                                             dchd1.DiaChi_End = ctdchd.DiaChi_BD;
                                                         }
-
+                                                        if (ctdchd.MST_BD != "")
+                                                        {
+                                                            dchd1.MST_BD = ctdchd.MST;
+                                                            dchd1.MST_End = ctdchd.MST_BD;
+                                                        }
                                                         dchd1.CreateDate = DateTime.Now;
                                                         _cThuTien.Them(dchd1);
                                                         ///lưu lịch sử
