@@ -249,7 +249,8 @@ namespace DocSo_PC.GUI.ToTruong
                     item.DefaultCellStyle.BackColor = Color.Red;
                 //tiêu thu giảm cao
                 if (item.Cells["TieuThuMoi"].Value != null && item.Cells["TieuThuMoi"].Value.ToString() != ""
-                    && int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) <= int.Parse(item.Cells["TBTT"].Value.ToString()) * (1 - 0.3))
+                    && int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) <= int.Parse(item.Cells["TBTT"].Value.ToString()) * (1 - 0.3)
+                    && int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) > 0)
                     item.DefaultCellStyle.BackColor = Color.DeepPink;
                 //có BBKT, tờ trình, code 8 không có hoàn công thay (bồi thường, tái lập,...)
                 if (bool.Parse(item.Cells["BaoThayBT"].Value.ToString()) == true)
@@ -604,6 +605,12 @@ namespace DocSo_PC.GUI.ToTruong
             {
                 DataTable dtCode = _cDocSo.getDS_Code(cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString());
                 DataRow dr = dtCode.NewRow();
+                dr["Code"] = "Giảm";
+                dtCode.Rows.InsertAt(dr, 0);
+                dr = dtCode.NewRow();
+                dr["Code"] = "Tăng";
+                dtCode.Rows.InsertAt(dr, 0);
+                dr = dtCode.NewRow();
                 dr["Code"] = "Tất Cả";
                 dtCode.Rows.InsertAt(dr, 0);
                 cmbCode.DataSource = dtCode;

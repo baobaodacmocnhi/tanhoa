@@ -398,10 +398,16 @@ namespace DocSo_PC.DAL.Doi
             if (Code == "Tất Cả")
                 Code = "";
             else
-                if (Code == "")
-                    Code = " and (CodeMoi is null or CodeMoi='')";
+                if (Code == "Tăng")
+                    Code = " and CodeMoi not like '' and TieuThuMoi>=TBTT*1.3 and TieuThuMoi-TBTT>20";
                 else
-                    Code = " and CodeMoi like '" + Code + "'";
+                    if (Code == "Giảm")
+                        Code = " and CodeMoi not like '' and TieuThuMoi<=TBTT*(1-0.3) and TieuThuMoi-TBTT<-20";
+                    else
+                        if (Code == "")
+                            Code = " and (CodeMoi is null or CodeMoi='')";
+                        else
+                            Code = " and CodeMoi like '" + Code + "'";
             string sql = "select ds.*,BaoThayDK=case when baothay.DanhBo is not null then 'true' else 'false' end"
                         + " ,BaoThayBT=case when thwater.DanhBo is not null then 'true' else 'false' end,GCKH=GhiChuKH"
                         + " ,CSGo=case when baothay.DanhBo is not null then CAST(baothay.CSGo as varchar(10)) else case when thwater.DanhBo is not null then thwater.CSGo else '' end end"
