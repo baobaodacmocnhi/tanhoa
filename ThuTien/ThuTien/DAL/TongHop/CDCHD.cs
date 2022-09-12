@@ -223,7 +223,7 @@ namespace ThuTien.DAL.TongHop
 
         public DIEUCHINH_HD get(string SoHoaDon)
         {
-            DIEUCHINH_HD dchd = _db.DIEUCHINH_HDs.SingleOrDefault(item => item.SoHoaDon == SoHoaDon);
+            DIEUCHINH_HD dchd = _db.DIEUCHINH_HDs.SingleOrDefault(item => item.FK_HOADON == _db.HOADONs.SingleOrDefault(hd => hd.SOHOADON == SoHoaDon).ID_HOADON);
             if (dchd != null)
             {
                 return dchd;
@@ -2550,7 +2550,7 @@ namespace ThuTien.DAL.TongHop
                         join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
-                        where itemHDDC.CreateBy==51 &&  (itemHD.NAM < 2022 || (itemHD.NAM == 2022 && itemHD.KY < 5))
+                        where itemHDDC.CreateBy == 51 && (itemHD.NAM < 2022 || (itemHD.NAM == 2022 && itemHD.KY < 5))
                         select new
                         {
                             NgayDC = itemDC.NGAY_DC,
@@ -2790,7 +2790,7 @@ namespace ThuTien.DAL.TongHop
             return LINQToDataTable(query);
         }
 
-       
+
     }
 
 }
