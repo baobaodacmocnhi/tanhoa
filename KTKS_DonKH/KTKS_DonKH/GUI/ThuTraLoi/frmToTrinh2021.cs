@@ -769,7 +769,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     dr["ChucVu"] = CTaiKhoan.ChucVu.ToUpper();
                     dr["NguoiKy"] = CTaiKhoan.NguoiKy.ToUpper();
 
-                    if (_cttt.VeViec.Contains("Hạ cỡ"))
+                    if (_cttt.VeViec.Contains("Hạ cỡ") || _cttt.VeViec.Contains("hộp bảo vệ"))
                     {
                         dr["ChucVuThongQua"] = "TRÌNH DUYỆT\n" + bgdTQ.ChucVu.ToUpper();
                         dr["NguoiKyThongQua"] = bgdTQ.HoTen.ToUpper();
@@ -787,7 +787,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     ReportDocument rpt;
                     //if (_cttt.KinhTrinh.ToLower().Contains("thông qua") == true)
                     //{
-                    if (_cttt.VeViec.Contains("Hạ cỡ"))
+                    if (_cttt.VeViec.Contains("Hạ cỡ") || _cttt.VeViec.Contains("hộp bảo vệ"))
                         rpt = new rptToTrinh_ThongQuaPGD();
                     else
                         rpt = new rptToTrinh_ThongQuaPGD_2022();
