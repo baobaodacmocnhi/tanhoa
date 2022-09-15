@@ -8,23 +8,29 @@ using System.Web.Script.Serialization;
 using System.Data;
 using DocSo_PC.DAL.QuanTri;
 
+
 namespace DocSo_PC.DAL.sDHN
 {
-    class CsDHN : CDAL
+    class CsDHN
     {
+        public static CConnection _cDAL = new CConnection("Data Source=113.161.88.180,1133;Initial Catalog=sDHN;Persist Security Info=True;User ID=sa;Password=db11@tanhoa");
         JavaScriptSerializer jss = new JavaScriptSerializer();
 
         public DataTable getDS(int IDNCC)
         {
             string sql = "select IDLogger,db.DanhBo,MLT=kh.LOTRINH,HOTEN,DiaChi=SONHA+' '+TENDUONG"
-                        + " from sDHN db,CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG kh"
+                        + " from sDHN db,server8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG kh"
                         + " where IDNCC=" + IDNCC + " and Valid=1 and db.DanhBo=kh.DanhBo";
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
         public bool checkExists(string DanhBo)
         {
-            return _db.sDHNs.Any(item => item.DanhBo == DanhBo);
+            DataTable dt= _cDAL.ExecuteQuery_DataTable("select * from sDHN where DanhBo='" + DanhBo + "'");
+            if (dt != null && dt.Rows.Count > 0)
+                return true;
+            else
+                return false;
         }
 
         public DataTable getDS_NCC()
@@ -2018,7 +2024,7 @@ namespace DocSo_PC.DAL.sDHN
         {
             string sql = "select dhn.DANHBO,HOTEN,DiaChi=SONHA+' '+TENDUONG,ttkh.NGAYGANDH,ttkh.NGAYTHAY"
 + " ,TieuThuCu=(select SUM(TieuThuMoi) from DocSo where DanhBa=dhn.DanhBo and NAM=2020)"
-+ " from sDHN dhn,CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh"
++ " from sDHN dhn,server8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh"
 + " where Valid=1 and dhn.DanhBo=ttkh.DANHBO";
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
