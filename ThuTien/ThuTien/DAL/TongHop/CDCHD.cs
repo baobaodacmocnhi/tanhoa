@@ -2209,7 +2209,7 @@ namespace ThuTien.DAL.TongHop
                             + " from TT_LichSuDieuChinhHD"
                             + " where FK_HOADON=" + MaHD + " and SoPhieu is not null"
                             + " )"
-                            + " SELECT * FROM temp WHERE rn=1";
+                            + " SELECT * FROM temp WHERE rn=1 order by Ngay_DC desc";
             return ExecuteQuery_DataTable(sql);
         }
 
