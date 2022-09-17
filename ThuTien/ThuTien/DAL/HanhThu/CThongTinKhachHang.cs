@@ -92,7 +92,7 @@ namespace ThuTien.DAL.HanhThu
                 //       + " order by hd.MLT asc";
                 sql = "select DanhBo=DANHBA,TENKH as HoTen,SO+' '+DUONG as DiaChi,MALOTRINH as MLT,stuff(("
                        + "             select ' | ' + g.DienThoai"
-                       + "             from server8.CAPNUOCTANHOA.dbo.SDT_DHN g"
+                       + "             from CAPNUOCTANHOA.dbo.SDT_DHN g"
                        + "             where g.DanhBo = DANHBA"
                        + "             order by CreateDate desc"
                        + "             for xml path('')"
@@ -111,7 +111,7 @@ namespace ThuTien.DAL.HanhThu
                     //       + " order by hd.MLT asc";
                     sql = "select DanhBo=DANHBA,TENKH as HoTen,SO+' '+DUONG as DiaChi,MALOTRINH as MLT,stuff(("
                                    + "     select ' | ' + g.DienThoai"
-                                   + "     from server8.CAPNUOCTANHOA.dbo.SDT_DHN g"
+                                   + "     from CAPNUOCTANHOA.dbo.SDT_DHN g"
                                    + "     where g.DanhBo = DANHBA"
                                    + "     order by CreateDate desc"
                                    + "     for xml path('')"
@@ -135,7 +135,7 @@ namespace ThuTien.DAL.HanhThu
                 //       + " order by hd.MLT asc";
                 sql = "select DanhBo=DANHBA,TENKH as HoTen,SO+' '+DUONG as DiaChi,MALOTRINH as MLT,stuff(("
                                    + "     select ' | ' + g.DienThoai"
-                                   + "     from server8.CAPNUOCTANHOA.dbo.SDT_DHN g"
+                                   + "     from CAPNUOCTANHOA.dbo.SDT_DHN g"
                                    + "     where g.DanhBo = DANHBA"
                                    + "     order by CreateDate desc"
                                    + "     for xml path('')"
@@ -154,7 +154,7 @@ namespace ThuTien.DAL.HanhThu
                     //+ " order by hd.MLT asc";
                     sql = "select DanhBo=DANHBA,TENKH as HoTen,SO+' '+DUONG as DiaChi,MALOTRINH as MLT,stuff(("
                                    + "     select ' | ' + g.DienThoai"
-                                   + "     from server8.CAPNUOCTANHOA.dbo.SDT_DHN g"
+                                   + "     from CAPNUOCTANHOA.dbo.SDT_DHN g"
                                    + "     where g.DanhBo = DANHBA"
                                    + "     order by CreateDate desc"
                                    + "     for xml path('')"
