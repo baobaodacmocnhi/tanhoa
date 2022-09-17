@@ -3141,7 +3141,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 //                    + "            dchd.MST_BD,"
                 //                   + "             dchd.ChiTietMoi"
                 //+ " from DCBD_ChiTietHoaDon dchd,"
-                //+ " (select DANHBA,NAM,KY,dot from server9.HOADON_TA.dbo.HOADON where CAST(NGAYGIAITRACH as date)='20211230' and MaNV_DangNgan is not  null and BaoCaoThue=1)hd"
+                //+ " (select DANHBA,NAM,KY,dot from HOADON_TA.dbo.HOADON where CAST(NGAYGIAITRACH as date)='20211230' and MaNV_DangNgan is not  null and BaoCaoThue=1)hd"
                 //+ " where dchd.Nam=hd.NAM and dchd.Ky=hd.KY and dchd.Dot=hd.dot and hd.DANHBA=dchd.DanhBo and dchd.MaCTDCHD not in (2269721,6921)"
                 //+ " order by DANHBA";
                 //                return ExecuteQuery_DataTable(sql);
@@ -3663,7 +3663,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         + " ChiTietMoi"
                 + " from DCBD_ChiTietHoaDon dchd"
                 + " left join Users u on dchd.CreateBy=u.MaU,"
-                + " server9.HOADON_TA.dbo.HOADON hd"
+                + " HOADON_TA.dbo.HOADON hd"
                 + " where CAST(NGAYGIAITRACH as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(NGAYGIAITRACH as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and hd.BaoCaoThue=1"
                 + " and dchd.DanhBo=hd.DANHBA and dchd.Nam=hd.NAM and dchd.Ky=hd.KY"
                 + " order by dchd.CreateDate asc";

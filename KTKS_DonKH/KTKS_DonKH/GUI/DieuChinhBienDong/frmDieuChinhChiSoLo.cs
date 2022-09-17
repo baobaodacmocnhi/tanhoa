@@ -51,7 +51,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             ds.Tables.Add(dtParent);
 
             sql = "select b.*,TinhTrang=case when MaNV_DangNgan is not null then N'Đã Đăng Ngân' else '' end "
-                    + " from ChiSoLo_DanhBo a,ChiSoLo_HoaDon b,server9.HOADON_TA.dbo.HOADON hd where a.Nam=" + txtNam.Text.Trim() + " and a.Ky=" + txtKy.Text.Trim() + " and a.Dot=" + txtDot.Text.Trim() + ""
+                    + " from ChiSoLo_DanhBo a,ChiSoLo_HoaDon b,HOADON_TA.dbo.HOADON hd where a.Nam=" + txtNam.Text.Trim() + " and a.Ky=" + txtKy.Text.Trim() + " and a.Dot=" + txtDot.Text.Trim() + ""
                     + " and a.ID=b.ID and b.MaHD=hd.ID_HOADON order by MaHD desc";
             DataTable dtChild = _cDCBD.ExecuteQuery_DataTable(sql);
             dtChild.TableName = "Child";
@@ -234,7 +234,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             ds.Tables.Add(dtParent);
 
             sql = "select b.*,TinhTrang=case when MaNV_DangNgan is not null then N'Đã Đăng Ngân' else '' end "
-                    + " from ChiSoLo_DanhBo a,ChiSoLo_HoaDon b,server9.HOADON_TA.dbo.HOADON hd where a.Nam=" + txtNam.Text.Trim() + " and a.Ky=" + txtKy.Text.Trim() + " and a.Dot=" + txtDot.Text.Trim() + ""
+                    + " from ChiSoLo_DanhBo a,ChiSoLo_HoaDon b,HOADON_TA.dbo.HOADON hd where a.Nam=" + txtNam.Text.Trim() + " and a.Ky=" + txtKy.Text.Trim() + " and a.Dot=" + txtDot.Text.Trim() + ""
                     + " and a.ID=b.ID and b.MaHD=hd.ID_HOADON order by MaHD desc";
             DataTable dtChild = _cDCBD.ExecuteQuery_DataTable(sql);
             dtChild.TableName = "Child";

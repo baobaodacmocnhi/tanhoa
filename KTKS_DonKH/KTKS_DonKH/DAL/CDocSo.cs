@@ -106,7 +106,7 @@ namespace KTKS_DonKH.DAL
                         + "(select DocSoID,DanhBo=DanhBa,MLT=MLT1,HoTen=TenKH,DiaChi=SoNhaCu+' '+Duong,Nam,Ky,Dot,CodeCu,CodeMoi,CSC=CSCu,CSM=CSMoi,TieuThu=TieuThuMoi"
                         + " from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " and CodeMoi='N')t1,"
                         + "	(select DocSoID,DanhBo=ds.DanhBa,MLT=MLT1,HoTen=ds.TenKH,DiaChi=SoNhaCu+' '+ds.Duong,ds.Nam,ds.Ky,ds.Dot,CodeCu,CodeMoi,CSC=ds.CSCu,CSM=ds.CSMoi,TieuThu=hd.TIEUTHU,TieuThuDC='',TinhTrang=case when MaNV_DangNgan is not null then N'Đã Đăng Ngân' else '' end,MaHD=ID_HOADON"
-                        + " from DocSo ds,server9.HOADON_TA.dbo.HOADON hd where ds.Nam=" + Nam + " and ds.Ky>=1 and ds.Ky<" + Ky + " and ds.Dot=" + Dot + ""
+                        + " from DocSo ds,HOADON_TA.dbo.HOADON hd where ds.Nam=" + Nam + " and ds.Ky>=1 and ds.Ky<" + Ky + " and ds.Dot=" + Dot + ""
                         + "	and ds.Nam=hd.NAM and ds.Ky=hd.KY and ds.DanhBa=hd.DANHBA)t2"
                         + "	where t1.DanhBo=t2.DanhBo)"
                         + "	order by DanhBo,DocSoID desc";
