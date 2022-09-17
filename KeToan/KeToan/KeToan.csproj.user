@@ -2,7 +2,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectView>ProjectFiles</ProjectView>
-    <PublishUrlHistory>\\server9\baobao%24\KeToan\|C:\Users\Admin\Desktop\KeToan\|\\192.168.90.9\baobao%24\KeToan\|publish\</PublishUrlHistory>
+    <PublishUrlHistory>C:\Users\Admin\Desktop\KeToan\|\\server9\baobao%24\KeToan\|\\192.168.90.9\baobao%24\KeToan\|publish\</PublishUrlHistory>
     <InstallUrlHistory />
     <SupportUrlHistory />
     <UpdateUrlHistory>\\server9\baobao%24\KeToan\|\\192.168.90.9\baobao%24\KeToan\</UpdateUrlHistory>

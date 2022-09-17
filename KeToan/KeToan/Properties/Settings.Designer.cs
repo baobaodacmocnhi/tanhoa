@@ -26,7 +26,7 @@ namespace KeToan.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=server11;Initial Catalog=KETOAN;User ID=sa;Password=db11@tanhoa")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=server9;Initial Catalog=KETOAN;User ID=sa;Password=db9@tanhoa")]
         public string KETOANConnectionString {
             get {
                 return ((string)(this["KETOANConnectionString"]));
