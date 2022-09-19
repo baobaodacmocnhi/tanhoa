@@ -2,10 +2,10 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ReferencePath>C:\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\</ReferencePath>
-    <PublishUrlHistory>C:\Users\Admin\Desktop\ThuongVu\|C:\Users\Admin\Desktop\ThuongVuWFH\|C:\Users\BaoBao\Desktop\ThuongVuWFH\|\\server9\baobao%24\KTKS_DonKH\</PublishUrlHistory>
+    <PublishUrlHistory>\\server9\baobao%24\KTKS_DonKH\|C:\Users\BaoBao\Desktop\ThuongVuWFH\|C:\Users\Admin\Desktop\ThuongVu\|C:\Users\Admin\Desktop\ThuongVuWFH\</PublishUrlHistory>
     <InstallUrlHistory />
     <SupportUrlHistory />
-    <UpdateUrlHistory>\\server9\BaoBao%24\KTKS_DonKH\|http://113.161.88.180:81/ThuongVuWFH/</UpdateUrlHistory>
+    <UpdateUrlHistory>http://113.161.88.180:81/ThuongVuWFH/|\\server9\BaoBao%24\KTKS_DonKH\</UpdateUrlHistory>
     <BootstrapperUrlHistory>\\server9\BaoBao%24\KTKS_DonKH</BootstrapperUrlHistory>
     <ErrorReportUrlHistory />
     <FallbackCulture>en-US</FallbackCulture>

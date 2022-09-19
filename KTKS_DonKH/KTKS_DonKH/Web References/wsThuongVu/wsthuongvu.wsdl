@@ -66,6 +66,32 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="getAccess_token_CCCD">
+        <s:complexType />
+      </s:element>
+      <s:element name="getAccess_token_CCCDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAccess_token_CCCDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="checkExists_CCCD">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DanhBo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CCCD" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CMND" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="checkExists_CCCDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="checkExists_CCCDResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="get_HinhSoapIn">
@@ -92,6 +118,18 @@
   <wsdl:message name="xoa_Folder_HinhSoapOut">
     <wsdl:part name="parameters" element="tns:xoa_Folder_HinhResponse" />
   </wsdl:message>
+  <wsdl:message name="getAccess_token_CCCDSoapIn">
+    <wsdl:part name="parameters" element="tns:getAccess_token_CCCD" />
+  </wsdl:message>
+  <wsdl:message name="getAccess_token_CCCDSoapOut">
+    <wsdl:part name="parameters" element="tns:getAccess_token_CCCDResponse" />
+  </wsdl:message>
+  <wsdl:message name="checkExists_CCCDSoapIn">
+    <wsdl:part name="parameters" element="tns:checkExists_CCCD" />
+  </wsdl:message>
+  <wsdl:message name="checkExists_CCCDSoapOut">
+    <wsdl:part name="parameters" element="tns:checkExists_CCCDResponse" />
+  </wsdl:message>
   <wsdl:portType name="wsThuongVuSoap">
     <wsdl:operation name="get_Hinh">
       <wsdl:input message="tns:get_HinhSoapIn" />
@@ -108,6 +146,14 @@
     <wsdl:operation name="xoa_Folder_Hinh">
       <wsdl:input message="tns:xoa_Folder_HinhSoapIn" />
       <wsdl:output message="tns:xoa_Folder_HinhSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAccess_token_CCCD">
+      <wsdl:input message="tns:getAccess_token_CCCDSoapIn" />
+      <wsdl:output message="tns:getAccess_token_CCCDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="checkExists_CCCD">
+      <wsdl:input message="tns:checkExists_CCCDSoapIn" />
+      <wsdl:output message="tns:checkExists_CCCDSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="wsThuongVuSoap" type="tns:wsThuongVuSoap">
@@ -141,6 +187,24 @@
     </wsdl:operation>
     <wsdl:operation name="xoa_Folder_Hinh">
       <soap:operation soapAction="http://tempuri.org/xoa_Folder_Hinh" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccess_token_CCCD">
+      <soap:operation soapAction="http://tempuri.org/getAccess_token_CCCD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkExists_CCCD">
+      <soap:operation soapAction="http://tempuri.org/checkExists_CCCD" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -187,13 +251,31 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getAccess_token_CCCD">
+      <soap12:operation soapAction="http://tempuri.org/getAccess_token_CCCD" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkExists_CCCD">
+      <soap12:operation soapAction="http://tempuri.org/checkExists_CCCD" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="wsThuongVu">
     <wsdl:port name="wsThuongVuSoap" binding="tns:wsThuongVuSoap">
-      <soap:address location="http://server11:81/wsthuongvu.asmx" />
+      <soap:address location="http://server5:81/wsthuongvu.asmx" />
     </wsdl:port>
     <wsdl:port name="wsThuongVuSoap12" binding="tns:wsThuongVuSoap12">
-      <soap12:address location="http://server11:81/wsthuongvu.asmx" />
+      <soap12:address location="http://server5:81/wsthuongvu.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
