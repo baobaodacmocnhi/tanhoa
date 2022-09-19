@@ -13,7 +13,7 @@ namespace DocSo_PC.DAL.sDHN
 {
     class CsDHN
     {
-        public static CConnection _cDAL = new CConnection("Data Source=113.161.88.180,1133;Initial Catalog=sDHN;Persist Security Info=True;User ID=sa;Password=db11@tanhoa");
+        public static CConnection _cDAL = new CConnection("Data Source=server9;Initial Catalog=sDHN;Persist Security Info=True;User ID=sa;Password=db9@tanhoa");
         JavaScriptSerializer jss = new JavaScriptSerializer();
 
         public DataTable getDS(int IDNCC)

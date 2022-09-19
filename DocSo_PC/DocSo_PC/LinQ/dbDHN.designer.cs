@@ -3180,6 +3180,10 @@ namespace DocSo_PC.LinQ
 		
 		private System.Nullable<System.DateTime> _BeNapMatNapHBV_Ngay;
 		
+		private System.Nullable<bool> _QRIn;
+		
+		private System.Nullable<bool> _QRDan;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -3330,6 +3334,10 @@ namespace DocSo_PC.LinQ
     partial void OnBeNapMatNapHBVChanged();
     partial void OnBeNapMatNapHBV_NgayChanging(System.Nullable<System.DateTime> value);
     partial void OnBeNapMatNapHBV_NgayChanged();
+    partial void OnQRInChanging(System.Nullable<bool> value);
+    partial void OnQRInChanged();
+    partial void OnQRDanChanging(System.Nullable<bool> value);
+    partial void OnQRDanChanged();
     #endregion
 		
 		public TB_DULIEUKHACHHANG()
@@ -4793,6 +4801,46 @@ namespace DocSo_PC.LinQ
 					this._BeNapMatNapHBV_Ngay = value;
 					this.SendPropertyChanged("BeNapMatNapHBV_Ngay");
 					this.OnBeNapMatNapHBV_NgayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QRIn", DbType="Bit")]
+		public System.Nullable<bool> QRIn
+		{
+			get
+			{
+				return this._QRIn;
+			}
+			set
+			{
+				if ((this._QRIn != value))
+				{
+					this.OnQRInChanging(value);
+					this.SendPropertyChanging();
+					this._QRIn = value;
+					this.SendPropertyChanged("QRIn");
+					this.OnQRInChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QRDan", DbType="Bit")]
+		public System.Nullable<bool> QRDan
+		{
+			get
+			{
+				return this._QRDan;
+			}
+			set
+			{
+				if ((this._QRDan != value))
+				{
+					this.OnQRDanChanging(value);
+					this.SendPropertyChanging();
+					this._QRDan = value;
+					this.SendPropertyChanged("QRDan");
+					this.OnQRDanChanged();
 				}
 			}
 		}

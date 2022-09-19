@@ -416,8 +416,10 @@ namespace DocSo_PC.GUI.sDHN
                 //cl27.Value2 = "Thuế GTGT 10% ";
                 //cl27.ColumnWidth = 15;
                 CDocSo _cDocSo = new CDocSo();
-                DataTable dt = CsDHN._cDAL.ExecuteQuery_DataTable("select *,NGAYKIEMDINH1=CONVERT(varchar(10),NGAYKIEMDINH,103),NGAYTHAY1=CONVERT(varchar(10),NGAYTHAY,103) from sDHN sdhn,[DHTM_THONGTIN] ttdhn,server8.[CAPNUOCTANHOA].[dbo].[TB_DULIEUKHACHHANG] ttkh"
-                + " where Valid=1 and sdhn.IDNCC=ttdhn.ID and sdhn.DanhBo=ttkh.DANHBO and MADMA='TH-08-12' and sdhn.DanhBo not in (select DanhBo from server8.[CAPNUOCTANHOA].[dbo].DHTM_NGHIEMTHU) order by IDNCC");
+                //DataTable dt = CsDHN._cDAL.ExecuteQuery_DataTable("select *,NGAYKIEMDINH1=CONVERT(varchar(10),NGAYKIEMDINH,103),NGAYTHAY1=CONVERT(varchar(10),NGAYTHAY,103) from sDHN sdhn,[DHTM_THONGTIN] ttdhn,[CAPNUOCTANHOA].[dbo].[TB_DULIEUKHACHHANG] ttkh"
+                //+ " where Valid=1 and sdhn.IDNCC=ttdhn.ID and sdhn.DanhBo=ttkh.DANHBO and MADMA='TH-08-12' and sdhn.DanhBo not in (select DanhBo from DHTM_NGHIEMTHU) order by IDNCC");
+                DataTable dt = CsDHN._cDAL.ExecuteQuery_DataTable("select *,NGAYKIEMDINH1=CONVERT(varchar(10),NGAYKIEMDINH,103),NGAYTHAY1=CONVERT(varchar(10),NGAYTHAY,103) from sDHN sdhn,[DHTM_THONGTIN] ttdhn,[CAPNUOCTANHOA].[dbo].[TB_DULIEUKHACHHANG] ttkh"
+                + " where Valid=1 and sdhn.IDNCC=ttdhn.ID and sdhn.DanhBo=ttkh.DANHBO and sdhn.DanhBo in (select DanhBo from DHTM_NGHIEMTHU_TD) order by IDNCC");
                 int indexRow = 1;
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
@@ -453,19 +455,21 @@ namespace DocSo_PC.GUI.sDHN
                     oSheet.Cells[indexRow, 18] = dr["NgayThay1"].ToString();
 
                     DataTable dtTCT = new DataTable();
+                    DataTable dtTCTHour = new DataTable();
                     switch (dr["IDNCC"].ToString())
                     {
                         case "1":
-                            dtTCT = _csDHN.get_ChiSoNuoc_HoaSen_Survey(dr["DanhBo"].ToString(), new DateTime(2022, 09, 14));
+                            dtTCT = _csDHN.get_ChiSoNuoc_HoaSen_Survey(dr["DanhBo"].ToString(), new DateTime(2022, 09, 17));
+                            //dtTCTHour = _csDHN.get_ChiSoNuoc_HoaSen(dr["DanhBo"].ToString(), new DateTime(2022, 09, 18),9);
                             break;
                         case "2":
-                            dtTCT = _csDHN.get_ChiSoNuoc_Rynan(dr["DanhBo"].ToString(), new DateTime(2022, 09, 14));
+                            dtTCT = _csDHN.get_ChiSoNuoc_Rynan(dr["DanhBo"].ToString(), new DateTime(2022, 09, 17));
                             break;
                         case "3":
-                            dtTCT = _csDHN.get_ChiSoNuoc_Deviwas(dr["DanhBo"].ToString(), new DateTime(2022, 09, 14));
+                            dtTCT = _csDHN.get_ChiSoNuoc_Deviwas(dr["DanhBo"].ToString(), new DateTime(2022, 09, 17));
                             break;
                         case "4":
-                            dtTCT = _csDHN.get_ChiSoNuoc_PhamLam(dr["DanhBo"].ToString(), new DateTime(2022, 09, 14));
+                            dtTCT = _csDHN.get_ChiSoNuoc_PhamLam(dr["DanhBo"].ToString(), new DateTime(2022, 09, 17));
                             break;
                         default:
                             break;
@@ -476,6 +480,32 @@ namespace DocSo_PC.GUI.sDHN
                         //oSheet.Cells[indexRow, 21] = dtTCT.Rows[0]["ChiSo"].ToString();
                     }
 
+                    switch (dr["IDNCC"].ToString())
+                    {
+                        case "1":
+                            dtTCT = _csDHN.get_ChiSoNuoc_HoaSen_Survey(dr["DanhBo"].ToString(), new DateTime(2022, 09, 18));
+                            break;
+                        case "2":
+                            dtTCT = _csDHN.get_ChiSoNuoc_Rynan(dr["DanhBo"].ToString(), new DateTime(2022, 09, 18));
+                            break;
+                        case "3":
+                            dtTCT = _csDHN.get_ChiSoNuoc_Deviwas(dr["DanhBo"].ToString(), new DateTime(2022, 09, 18));
+                            break;
+                        case "4":
+                            dtTCT = _csDHN.get_ChiSoNuoc_PhamLam(dr["DanhBo"].ToString(), new DateTime(2022, 09, 18));
+                            break;
+                        default:
+                            break;
+                    }
+                    if (dtTCT != null && dtTCT.Rows.Count > 0)
+                    {
+                        oSheet.Cells[indexRow, 21] = dtTCT.Rows.Count.ToString();
+                        //oSheet.Cells[indexRow, 21] = dtTCT.Rows[0]["ChiSo"].ToString();
+                    }
+                    //if (dtTCTHour != null && dtTCTHour.Rows.Count > 0)
+                    //{
+                    //    oSheet.Cells[indexRow, 21] = dtTCTHour.Rows[0]["ChiSo"].ToString();
+                    //}
                     // ======================
                     //DataTable dtC = CDocSo._cDAL.ExecuteQuery_DataTable("select ky,nam,CSMoi,GIOGHI,TBTT,CodeMoi from DocSo where Nam=2022 and ky in (9) and DanhBa='" + dr["DanhBo"].ToString() + "'");
                     //oSheet.Cells[indexRow, 19] = dtC.Rows[0]["TBTT"].ToString();

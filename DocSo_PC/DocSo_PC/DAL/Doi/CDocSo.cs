@@ -213,7 +213,7 @@ namespace DocSo_PC.DAL.Doi
             string sql = "";
             if (Ky == "01")
                 sql = "select *"
-                            + " ,TongHD=(select COUNT(*) from server9.HOADON_TA.dbo.HOADON where NAM=t1.Nam-1 and KY=12 and DOT=t1.Dot)"
+                            + " ,TongHD=(select COUNT(*) from HOADON_TA.dbo.HOADON where NAM=t1.Nam-1 and KY=12 and DOT=t1.Dot)"
                             + " ,TongBD=(select COUNT(*) from BienDong where Nam=t1.Nam and Ky=t1.Ky and Dot=t1.Dot)"
                             + " ,TongTD=(select COUNT(*) from DocSo where Nam=t1.Nam and Ky=t1.Ky and Dot=t1.Dot)"
                             + " ,CreateDateBD=(select top 1 NgayCapNhat from BienDong where Nam=t1.Nam and Ky=t1.Ky and Dot=t1.Dot)"
@@ -227,7 +227,7 @@ namespace DocSo_PC.DAL.Doi
                             + " from BillState where BillID like '" + Nam + Ky + "%')t1";
             else
                 sql = "select *"
-                        + " ,TongHD=(select COUNT(*) from server9.HOADON_TA.dbo.HOADON where NAM=t1.Nam and KY=t1.Ky-1 and DOT=t1.Dot)"
+                        + " ,TongHD=(select COUNT(*) from HOADON_TA.dbo.HOADON where NAM=t1.Nam and KY=t1.Ky-1 and DOT=t1.Dot)"
                         + " ,TongBD=(select COUNT(*) from BienDong where Nam=t1.Nam and Ky=t1.Ky and Dot=t1.Dot)"
                         + " ,TongTD=(select COUNT(*) from DocSo where Nam=t1.Nam and Ky=t1.Ky and Dot=t1.Dot)"
                         + " ,CreateDateBD=(select top 1 NgayCapNhat from BienDong where Nam=t1.Nam and Ky=t1.Ky and Dot=t1.Dot)"
@@ -258,10 +258,10 @@ namespace DocSo_PC.DAL.Doi
             //            + " 		set @Nam2=@Nam"
             //            + " 		set @Ky2=@Ky-1"
             //            + " 	end"
-            //            + " select Chon='false',DocSoID,DanhBo=ds.DanhBa,ds.CSCu,TieuThuDS=TieuThuCu,TieuThuHD=hd.TieuThu,ds.Nam,ds.Ky,ds.Dot from DocSo ds,server9.HOADON_TA.dbo.HOADON hd"
+            //            + " select Chon='false',DocSoID,DanhBo=ds.DanhBa,ds.CSCu,TieuThuDS=TieuThuCu,TieuThuHD=hd.TieuThu,ds.Nam,ds.Ky,ds.Dot from DocSo ds,HOADON_TA.dbo.HOADON hd"
             //            + " where ds.Nam=@Nam and ds.Ky=@Ky and ds.Dot=@Dot and ds.TieuThuCu!=hd.TieuThu"
             //            + " and ds.DanhBa=hd.DanhBa and hd.Nam=@Nam2 and hd.Ky=@Ky2";
-            string sql = "select Chon='false',DocSoID,DanhBo=ds.DanhBa,ds.CSCu,TieuThuDS=TieuThuCu,ds.Nam,ds.Ky,ds.Dot,ThongTin=dc.KyHD+' - '+dc.ThongTin from DocSo ds,server11.KTKS_DonKH.dbo.DCBD_ChiTietHoaDon dc"
+            string sql = "select Chon='false',DocSoID,DanhBo=ds.DanhBa,ds.CSCu,TieuThuDS=TieuThuCu,ds.Nam,ds.Ky,ds.Dot,ThongTin=dc.KyHD+' - '+dc.ThongTin from DocSo ds,KTKS_DonKH.dbo.DCBD_ChiTietHoaDon dc"
                         + " where ds.Nam=" + Nam + " and ds.Ky=" + Ky + " and ds.Dot=" + Dot
                         + " and ds.DanhBa=dc.DanhBo and DATEADD(DAY,30,dc.CreateDate)>=GETDATE()";
             return _cDAL.ExecuteQuery_DataTable(sql);
@@ -478,11 +478,11 @@ namespace DocSo_PC.DAL.Doi
             dt = _cDAL.ExecuteQuery_DataTable(sql);
             sql = "select Col,Ky11,Ky10,Ky9,Ky8,Ky7,Ky6,Ky5,Ky4,Ky3,Ky2,Ky1,Ky0 from"
             + "      (select 'Ky'+convert(varchar(5),(2021*12+12)-Nam*12-Ky+" + Ky + ") as KyN,Col,Val"
-            + "      from server9.HOADON_TA.dbo.HOADON cross apply"
+            + "      from HOADON_TA.dbo.HOADON cross apply"
             + "          (values"
             + "              (N'6. Tiêu Thụ HĐ',convert(varchar(10),TIEUTHU)),"
             + "              (N'7. Đăng Ngân',convert(varchar(10),NgayGiaiTrach,103)),"
-            + "              (N'8. ĐCHĐ',(select SoHoaDon from server9.HOADON_TA.dbo.DIEUCHINH_HD where FK_HOADON=ID_HOADON))"
+            + "              (N'8. ĐCHĐ',(select SoHoaDon from HOADON_TA.dbo.DIEUCHINH_HD where FK_HOADON=ID_HOADON))"
             + "              )"
             + "          cs (Col,Val)"
             + "      where DanhBa = '" + DanhBo + "') src"

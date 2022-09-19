@@ -101,6 +101,8 @@ namespace DocSo_PC.wrDHN {
         
         private System.Threading.SendOrPostCallback getTonFromDienThoaiOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getTonCongTyOperationCompleted;
+        
         private System.Threading.SendOrPostCallback SendNotificationToClientOperationCompleted;
         
         private System.Threading.SendOrPostCallback get_Hinh_MaHoaOperationCompleted;
@@ -268,6 +270,9 @@ namespace DocSo_PC.wrDHN {
         
         /// <remarks/>
         public event getTonFromDienThoaiCompletedEventHandler getTonFromDienThoaiCompleted;
+        
+        /// <remarks/>
+        public event getTonCongTyCompletedEventHandler getTonCongTyCompleted;
         
         /// <remarks/>
         public event SendNotificationToClientCompletedEventHandler SendNotificationToClientCompleted;
@@ -937,7 +942,27 @@ namespace DocSo_PC.wrDHN {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/update_GhiChu", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string update_GhiChu(string DanhBo, string SoNha, string TenDuong, string ViTri, string ViTriNgoai, string ViTriHop, string Gieng, string KhoaTu, string AmSau, string XayDung, string DutChiGoc, string DutChiThan, string MauSacChiGoc, string GhiChu, string MaNV) {
+        public string update_GhiChu(
+                    string DanhBo, 
+                    string SoNha, 
+                    string TenDuong, 
+                    string ViTri, 
+                    string ViTriNgoai, 
+                    string ViTriHop, 
+                    string Gieng, 
+                    string KhoaTu, 
+                    string AmSau, 
+                    string XayDung, 
+                    string DutChiGoc, 
+                    string DutChiThan, 
+                    string NgapNuoc, 
+                    string KetTuong, 
+                    string LapKhoaGoc, 
+                    string BeHBV, 
+                    string BeNapMatNapHBV, 
+                    string MauSacChiGoc, 
+                    string GhiChu, 
+                    string MaNV) {
             object[] results = this.Invoke("update_GhiChu", new object[] {
                         DanhBo,
                         SoNha,
@@ -951,15 +976,15 @@ namespace DocSo_PC.wrDHN {
                         XayDung,
                         DutChiGoc,
                         DutChiThan,
+                        NgapNuoc,
+                        KetTuong,
+                        LapKhoaGoc,
+                        BeHBV,
+                        BeNapMatNapHBV,
                         MauSacChiGoc,
                         GhiChu,
                         MaNV});
             return ((string)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void update_GhiChuAsync(string DanhBo, string SoNha, string TenDuong, string ViTri, string ViTriNgoai, string ViTriHop, string Gieng, string KhoaTu, string AmSau, string XayDung, string DutChiGoc, string DutChiThan, string MauSacChiGoc, string GhiChu, string MaNV) {
-            this.update_GhiChuAsync(DanhBo, SoNha, TenDuong, ViTri, ViTriNgoai, ViTriHop, Gieng, KhoaTu, AmSau, XayDung, DutChiGoc, DutChiThan, MauSacChiGoc, GhiChu, MaNV, null);
         }
         
         /// <remarks/>
@@ -976,6 +1001,36 @@ namespace DocSo_PC.wrDHN {
                     string XayDung, 
                     string DutChiGoc, 
                     string DutChiThan, 
+                    string NgapNuoc, 
+                    string KetTuong, 
+                    string LapKhoaGoc, 
+                    string BeHBV, 
+                    string BeNapMatNapHBV, 
+                    string MauSacChiGoc, 
+                    string GhiChu, 
+                    string MaNV) {
+            this.update_GhiChuAsync(DanhBo, SoNha, TenDuong, ViTri, ViTriNgoai, ViTriHop, Gieng, KhoaTu, AmSau, XayDung, DutChiGoc, DutChiThan, NgapNuoc, KetTuong, LapKhoaGoc, BeHBV, BeNapMatNapHBV, MauSacChiGoc, GhiChu, MaNV, null);
+        }
+        
+        /// <remarks/>
+        public void update_GhiChuAsync(
+                    string DanhBo, 
+                    string SoNha, 
+                    string TenDuong, 
+                    string ViTri, 
+                    string ViTriNgoai, 
+                    string ViTriHop, 
+                    string Gieng, 
+                    string KhoaTu, 
+                    string AmSau, 
+                    string XayDung, 
+                    string DutChiGoc, 
+                    string DutChiThan, 
+                    string NgapNuoc, 
+                    string KetTuong, 
+                    string LapKhoaGoc, 
+                    string BeHBV, 
+                    string BeNapMatNapHBV, 
                     string MauSacChiGoc, 
                     string GhiChu, 
                     string MaNV, 
@@ -996,6 +1051,11 @@ namespace DocSo_PC.wrDHN {
                         XayDung,
                         DutChiGoc,
                         DutChiThan,
+                        NgapNuoc,
+                        KetTuong,
+                        LapKhoaGoc,
+                        BeHBV,
+                        BeNapMatNapHBV,
                         MauSacChiGoc,
                         GhiChu,
                         MaNV}, this.update_GhiChuOperationCompleted, userState);
@@ -1481,6 +1541,41 @@ namespace DocSo_PC.wrDHN {
             if ((this.getTonFromDienThoaiCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getTonFromDienThoaiCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getTonCongTy", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getTonCongTy(string Nam, string Ky, string Dot, string May) {
+            object[] results = this.Invoke("getTonCongTy", new object[] {
+                        Nam,
+                        Ky,
+                        Dot,
+                        May});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getTonCongTyAsync(string Nam, string Ky, string Dot, string May) {
+            this.getTonCongTyAsync(Nam, Ky, Dot, May, null);
+        }
+        
+        /// <remarks/>
+        public void getTonCongTyAsync(string Nam, string Ky, string Dot, string May, object userState) {
+            if ((this.getTonCongTyOperationCompleted == null)) {
+                this.getTonCongTyOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetTonCongTyOperationCompleted);
+            }
+            this.InvokeAsync("getTonCongTy", new object[] {
+                        Nam,
+                        Ky,
+                        Dot,
+                        May}, this.getTonCongTyOperationCompleted, userState);
+        }
+        
+        private void OngetTonCongTyOperationCompleted(object arg) {
+            if ((this.getTonCongTyCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getTonCongTyCompleted(this, new getTonCongTyCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -2866,6 +2961,32 @@ namespace DocSo_PC.wrDHN {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void getTonFromDienThoaiCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void getTonCongTyCompletedEventHandler(object sender, getTonCongTyCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getTonCongTyCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getTonCongTyCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]

@@ -296,6 +296,11 @@
             <s:element minOccurs="0" maxOccurs="1" name="XayDung" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="DutChiGoc" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="DutChiThan" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NgapNuoc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="KetTuong" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LapKhoaGoc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BeHBV" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BeNapMatNapHBV" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="MauSacChiGoc" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="GhiChu" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="MaNV" type="s:string" />
@@ -537,6 +542,23 @@
       </s:element>
       <s:element name="getTonFromDienThoaiResponse">
         <s:complexType />
+      </s:element>
+      <s:element name="getTonCongTy">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Nam" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ky" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dot" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="May" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTonCongTyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getTonCongTyResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
       <s:element name="SendNotificationToClient">
         <s:complexType>
@@ -932,6 +954,12 @@
   <wsdl:message name="getTonFromDienThoaiSoapOut">
     <wsdl:part name="parameters" element="tns:getTonFromDienThoaiResponse" />
   </wsdl:message>
+  <wsdl:message name="getTonCongTySoapIn">
+    <wsdl:part name="parameters" element="tns:getTonCongTy" />
+  </wsdl:message>
+  <wsdl:message name="getTonCongTySoapOut">
+    <wsdl:part name="parameters" element="tns:getTonCongTyResponse" />
+  </wsdl:message>
   <wsdl:message name="SendNotificationToClientSoapIn">
     <wsdl:part name="parameters" element="tns:SendNotificationToClient" />
   </wsdl:message>
@@ -1142,6 +1170,10 @@
     <wsdl:operation name="getTonFromDienThoai">
       <wsdl:input message="tns:getTonFromDienThoaiSoapIn" />
       <wsdl:output message="tns:getTonFromDienThoaiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getTonCongTy">
+      <wsdl:input message="tns:getTonCongTySoapIn" />
+      <wsdl:output message="tns:getTonCongTySoapOut" />
     </wsdl:operation>
     <wsdl:operation name="SendNotificationToClient">
       <wsdl:input message="tns:SendNotificationToClientSoapIn" />
@@ -1507,6 +1539,15 @@
     </wsdl:operation>
     <wsdl:operation name="getTonFromDienThoai">
       <soap:operation soapAction="http://tempuri.org/getTonFromDienThoai" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTonCongTy">
+      <soap:operation soapAction="http://tempuri.org/getTonCongTy" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1940,6 +1981,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getTonCongTy">
+      <soap12:operation soapAction="http://tempuri.org/getTonCongTy" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="SendNotificationToClient">
       <soap12:operation soapAction="http://tempuri.org/SendNotificationToClient" style="document" />
       <wsdl:input>
@@ -2042,10 +2092,10 @@
   </wsdl:binding>
   <wsdl:service name="wsDHN">
     <wsdl:port name="wsDHNSoap" binding="tns:wsDHNSoap">
-      <soap:address location="http://server11:81/wsdhn.asmx" />
+      <soap:address location="http://server5:81/wsdhn.asmx" />
     </wsdl:port>
     <wsdl:port name="wsDHNSoap12" binding="tns:wsDHNSoap12">
-      <soap12:address location="http://server11:81/wsdhn.asmx" />
+      <soap12:address location="http://server5:81/wsdhn.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
