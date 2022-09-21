@@ -667,12 +667,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                     ctdchd.TangGiam = "Giảm";
 
                                             ///Ký Tên
-                                            BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
-                                            if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                                                ctdchd.ChucVu = "GIÁM ĐỐC";
-                                            else
-                                                ctdchd.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
-                                            ctdchd.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                                            //BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                                            //if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                            //    ctdchd.ChucVu = "GIÁM ĐỐC";
+                                            //else
+                                            //    ctdchd.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                                            //ctdchd.NguoiKy = bangiamdoc.HoTen.ToUpper();
                                             ctdchd.PhieuDuocKy = true;
                                             _cDCBD.ThemDCHD(ctdchd);
                                         }

@@ -740,12 +740,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         ctdcbd.PhieuDuocKy = false;
                     else
                     {
-                        BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
-                        if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                            ctdcbd.ChucVu = "GIÁM ĐỐC";
-                        else
-                            ctdcbd.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
-                        ctdcbd.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                        //BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                        //if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                        //    ctdcbd.ChucVu = "GIÁM ĐỐC";
+                        //else
+                        //    ctdcbd.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                        //ctdcbd.NguoiKy = bangiamdoc.HoTen.ToUpper();
                         ctdcbd.PhieuDuocKy = true;
                     }
                     //không chạy transaction đc vì hàm xử lý hiệu lực kỳ
@@ -973,12 +973,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         }
                         else
                         {
-                            BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
-                            if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                                _ctdcbd.ChucVu = "GIÁM ĐỐC";
-                            else
-                                _ctdcbd.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
-                            _ctdcbd.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                            //BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                            //if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                            //    _ctdcbd.ChucVu = "GIÁM ĐỐC";
+                            //else
+                            //    _ctdcbd.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                            //_ctdcbd.NguoiKy = bangiamdoc.HoTen.ToUpper();
                             _ctdcbd.PhieuDuocKy = true;
                         }
                         if (_cDCBD.SuaDCBD(_ctdcbd))

@@ -442,12 +442,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             if (item.Cells["CongDung"].Value != null)
                                 ctdcbd.CongDung = item.Cells["CongDung"].Value.ToString();
 
-                            BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
-                            if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                                ctdcbd.ChucVu = "GIÁM ĐỐC";
-                            else
-                                ctdcbd.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
-                            ctdcbd.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                            //BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                            //if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                            //    ctdcbd.ChucVu = "GIÁM ĐỐC";
+                            //else
+                            //    ctdcbd.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                            //ctdcbd.NguoiKy = bangiamdoc.HoTen.ToUpper();
                             ctdcbd.PhieuDuocKy = true;
 
                             if (_cDCBD.ThemDCBD(ctdcbd))

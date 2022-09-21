@@ -869,12 +869,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             ctdchd.TangGiam = "Giảm";
 
                     ///Ký Tên
-                    BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
-                    if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                        ctdchd.ChucVu = "GIÁM ĐỐC";
-                    else
-                        ctdchd.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
-                    ctdchd.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                    //BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                    //if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                    //    ctdchd.ChucVu = "GIÁM ĐỐC";
+                    //else
+                    //    ctdchd.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                    //ctdchd.NguoiKy = bangiamdoc.HoTen.ToUpper();
                     ctdchd.PhieuDuocKy = true;
 
                     ctdchd.CodeF2 = chkCodeF2.Checked;
@@ -1150,12 +1150,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 _ctdchd.TangGiam = "Giảm";
 
                         ///Ký Tên
-                        BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
-                        if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                            _ctdchd.ChucVu = "GIÁM ĐỐC";
-                        else
-                            _ctdchd.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
-                        _ctdchd.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                        //BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                        //if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                        //    _ctdchd.ChucVu = "GIÁM ĐỐC";
+                        //else
+                        //    _ctdchd.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                        //_ctdchd.NguoiKy = bangiamdoc.HoTen.ToUpper();
                         _ctdchd.PhieuDuocKy = true;
 
                         _ctdchd.CodeF2 = chkCodeF2.Checked;

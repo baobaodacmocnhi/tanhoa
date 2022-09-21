@@ -678,7 +678,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         int ID = _cDonTu.getMaxID_ChiTiet();
                         int STT = 0;
                         foreach (DataGridViewRow item in dgvDanhSach2.Rows)
-                            if (item.Cells["DanhBo"].Value.ToString().Trim() != "" && bool.Parse(item.Cells["DaXuLy"].Value.ToString()) == false && (item.Cells["MaDon"].Value == null || item.Cells["MaDon"].Value.ToString() == "") && (item.Cells["DCBD_MaDon"].Value == null || item.Cells["DCBD_MaDon"].Value.ToString() == "") && int.Parse(item.Cells["DinhMucCu"].Value.ToString()) != int.Parse(item.Cells["DinhMucMoi"].Value.ToString()))
+                            if (item.Cells["DanhBo"].Value.ToString().Trim() != "" && bool.Parse(item.Cells["DaXuLy"].Value.ToString()) == false && (item.Cells["MaDon"].Value == null || item.Cells["MaDon"].Value.ToString() == "") && (item.Cells["DCBD_MaDon"].Value == null || item.Cells["DCBD_MaDon"].Value.ToString() == ""))
                             {
                                 HOADON hd = _cThuTien.GetMoiNhat(item.Cells["DanhBo"].Value.ToString());
                                 if (hd != null)
@@ -720,7 +720,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 if (_cDonTu.Them(entity))
                                 {
                                     foreach (DataGridViewRow item in dgvDanhSach2.Rows)
-                                        if (item.Cells["DanhBo"].Value.ToString().Trim() != "" && bool.Parse(item.Cells["DaXuLy"].Value.ToString()) == false && (item.Cells["MaDon"].Value == null || item.Cells["MaDon"].Value.ToString() == "") && (item.Cells["DCBD_MaDon"].Value == null || item.Cells["DCBD_MaDon"].Value.ToString() == "") && int.Parse(item.Cells["DinhMucCu"].Value.ToString()) != int.Parse(item.Cells["DinhMucMoi"].Value.ToString()))
+                                        if (item.Cells["DanhBo"].Value.ToString().Trim() != "" && bool.Parse(item.Cells["DaXuLy"].Value.ToString()) == false && (item.Cells["MaDon"].Value == null || item.Cells["MaDon"].Value.ToString() == "") && (item.Cells["DCBD_MaDon"].Value == null || item.Cells["DCBD_MaDon"].Value.ToString() == ""))
                                         {
                                             item.Cells["DCBD_MaDon"].Value = entity.MaDon;
                                             DCBD_DKDM_DanhBo danhbo = _cDKDM.get(int.Parse(item.Cells["ID_DS"].Value.ToString()));
@@ -733,7 +733,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                         foreach (DataGridViewRow item in dgvDanhSach2.Rows)
                             if (item.Cells["DanhBo"].Value.ToString().Trim() != "" && bool.Parse(item.Cells["DaXuLy"].Value.ToString()) == false && bool.Parse(item.Cells["DCBD"].Value.ToString()) == false)
-                                if ((item.Cells["MaDon"].Value.ToString() != "" || item.Cells["DCBD_MaDon"].Value.ToString() != "") && int.Parse(item.Cells["DinhMucCu"].Value.ToString()) != int.Parse(item.Cells["DinhMucMoi"].Value.ToString()))
+                                if ((item.Cells["MaDon"].Value.ToString() != "" || item.Cells["DCBD_MaDon"].Value.ToString() != ""))
                                 {
                                     DCBD_DKDM_DanhBo danhbo = _cDKDM.get(int.Parse(item.Cells["ID_DS"].Value.ToString()));
                                     DonTu_ChiTiet dontu_ChiTiet = new DonTu_ChiTiet();
@@ -829,7 +829,21 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                 else
                                                     ThongTin += ". Định Mức";
                                                 ctdcbd.DinhMuc_BD = int.Parse(item.Cells["DinhMucMoi"].Value.ToString());
+                                                //BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                                                //if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                                //    ctdcbd.ChucVu = "GIÁM ĐỐC";
+                                                //else
+                                                //    ctdcbd.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                                                //ctdcbd.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                                                ctdcbd.PhieuDuocKy = true;
                                             }
+                                            else
+                                                if (item.Cells["DinhMucCu"].Value.ToString() == item.Cells["DinhMucMoi"].Value.ToString())
+                                                {
+                                                    ctdcbd.DinhMuc_BD = int.Parse(item.Cells["DinhMucMoi"].Value.ToString());
+                                                    ctdcbd.PhieuDuocKy = false;
+                                                    ctdcbd.DMGiuNguyen = true;
+                                                }
                                             //if (txtDinhMucHN_BD.Text.Trim() != "" && txtDinhMucHN_BD.Text.Trim() != txtDinhMucHN.Text.Trim())
                                             //{
                                             //    if (string.IsNullOrEmpty(ThongTin) == true)
@@ -839,13 +853,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             //    ctdcbd.DinhMucHN_BD = int.Parse(txtDinhMucHN_BD.Text.Trim());
                                             //}
                                             ctdcbd.ThongTin = ThongTin;
-                                            BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
-                                            if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                                                ctdcbd.ChucVu = "GIÁM ĐỐC";
-                                            else
-                                                ctdcbd.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
-                                            ctdcbd.NguoiKy = bangiamdoc.HoTen.ToUpper();
-                                            ctdcbd.PhieuDuocKy = true;
+
                                             using (var scope = new TransactionScope())
                                                 if (_cDCBD.ThemDCBD(ctdcbd))
                                                 {

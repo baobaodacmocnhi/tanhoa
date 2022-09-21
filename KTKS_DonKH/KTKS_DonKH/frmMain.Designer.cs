@@ -640,6 +640,7 @@
             this.mnuGiaNuoc.Name = "mnuGiaNuoc";
             this.mnuGiaNuoc.Size = new System.Drawing.Size(243, 22);
             this.mnuGiaNuoc.Text = "Giá Nước";
+            this.mnuGiaNuoc.Visible = false;
             this.mnuGiaNuoc.Click += new System.EventHandler(this.mnuGiaNuoc_Click);
             // 
             // mnuChiNhanhCapNuoc
