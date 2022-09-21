@@ -19,7 +19,7 @@ namespace KTKS_DonKH.DAL
         {
             try
             {
-                _connectionString = "Data Source=hp_g7\\KD;Initial Catalog=TANHOA_WATER;Persist Security Info=True;User ID=sa;Password=db8@tanhoa";
+                _connectionString = "Data Source=server9;Initial Catalog=TANHOA_WATER;Persist Security Info=True;User ID=sa;Password=db9@tanhoa";
                 connection = new SqlConnection(_connectionString);
             }
             catch (Exception)

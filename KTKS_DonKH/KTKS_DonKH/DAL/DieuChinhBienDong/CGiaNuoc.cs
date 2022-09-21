@@ -7594,7 +7594,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 ThueGTGT = (int)Math.Round((double)(TienNuocNamCu + TienNuocNamMoi) * 5 / 100, 0, MidpointRounding.AwayFromZero);
                 TDVTN = PhiBVMTNamCu + PhiBVMTNamMoi;
                 //Từ 2022 Phí BVMT -> Tiền Dịch Vụ Thoát Nước
-                
+
                 if (dtGiaNuoc.Rows[index]["VAT2_Ky"].ToString().Contains(Ky.ToString("00") + "/" + Nam))
                     ThueTDVTN_VAT = int.Parse(dtGiaNuoc.Rows[index]["VAT2"].ToString());
                 else
@@ -9923,20 +9923,21 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                     case 10:
                     case 11:
                     case 21:
-                        return lstGiaNuoc[2];
+                        return (int)(lstGiaNuoc[2] + (lstGiaNuoc[2] * 0.05) + (lstGiaNuoc[2] * lstGiaNuoc[7] / 100) + ((lstGiaNuoc[2] * lstGiaNuoc[7] / 100) * lstGiaNuoc[8] / 100));
                     case 12:
                     case 14:
                     case 32:
-                        return lstGiaNuoc[3];
+                        return (int)(lstGiaNuoc[3] + (lstGiaNuoc[3] * 0.05) + (lstGiaNuoc[3] * lstGiaNuoc[7] / 100) + ((lstGiaNuoc[3] * lstGiaNuoc[7] / 100) * lstGiaNuoc[8] / 100));
                     case 31:
-                        return lstGiaNuoc[4];
+                        return (int)(lstGiaNuoc[4] + (lstGiaNuoc[4] * 0.05) + (lstGiaNuoc[4] * lstGiaNuoc[7] / 100) + ((lstGiaNuoc[4] * lstGiaNuoc[7] / 100) * lstGiaNuoc[8] / 100));
                     case 13:
                     case 15:
                     case 33:
-                        return lstGiaNuoc[5];
+                        return (int)(lstGiaNuoc[5] + (lstGiaNuoc[5] * 0.05) + (lstGiaNuoc[5] * lstGiaNuoc[7] / 100) + ((lstGiaNuoc[5] * lstGiaNuoc[7] / 100) * lstGiaNuoc[8] / 100));
                     default:
                         return 0;
                 }
+
             }
             catch (Exception ex)
             {
@@ -9976,7 +9977,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             if (index != -1)
             {
                 List<int> lstGiaNuoc = new List<int>();
-                lstGiaNuoc = new List<int> { lst[index].SHTM.Value, lst[index].SHVM1.Value, lst[index].SHVM2.Value, lst[index].SX.Value, lst[index].HCSN.Value, lst[index].KDDV.Value, lst[index].SHN.Value };
+                lstGiaNuoc = new List<int> { lst[index].SHTM.Value, lst[index].SHVM1.Value, lst[index].SHVM2.Value, lst[index].SX.Value, lst[index].HCSN.Value, lst[index].KDDV.Value, lst[index].SHN.Value, lst[index].PhiBVMT.Value, lst[index].VAT.Value };
                 return getDonGiaCaoNhat(lstGiaNuoc, GiaBieu);
             }
             else
@@ -10004,16 +10005,16 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 List<int> lstGiaNuoc = new List<int>();
                 if (DenNgay.Date < new DateTime(2019, 11, 15))
                 {
-                    lstGiaNuoc = new List<int> { lst[index].SHTM.Value, lst[index].SHVM1.Value, lst[index].SHVM2.Value, lst[index].SX.Value, lst[index].HCSN.Value, lst[index].KDDV.Value, lst[index].SHN.Value };
+                    lstGiaNuoc = new List<int> { lst[index].SHTM.Value, lst[index].SHVM1.Value, lst[index].SHVM2.Value, lst[index].SX.Value, lst[index].HCSN.Value, lst[index].KDDV.Value, lst[index].SHN.Value, lst[index].PhiBVMT.Value, lst[index].VAT.Value };
                 }
                 else
                     if (TuNgay.Date < lst[index].NgayTangGia.Value.Date && lst[index].NgayTangGia.Value.Date < DenNgay.Date)
                     {
-                        lstGiaNuoc = new List<int> { lst[index - 1].SHTM.Value, lst[index - 1].SHVM1.Value, lst[index - 1].SHVM2.Value, lst[index - 1].SX.Value, lst[index - 1].HCSN.Value, lst[index - 1].KDDV.Value, lst[index - 1].SHN.Value };
+                        lstGiaNuoc = new List<int> { lst[index - 1].SHTM.Value, lst[index - 1].SHVM1.Value, lst[index - 1].SHVM2.Value, lst[index - 1].SX.Value, lst[index - 1].HCSN.Value, lst[index - 1].KDDV.Value, lst[index - 1].SHN.Value, lst[index].PhiBVMT.Value, lst[index].VAT.Value };
                     }
                     else
                     {
-                        lstGiaNuoc = new List<int> { lst[index].SHTM.Value, lst[index].SHVM1.Value, lst[index].SHVM2.Value, lst[index].SX.Value, lst[index].HCSN.Value, lst[index].KDDV.Value, lst[index].SHN.Value };
+                        lstGiaNuoc = new List<int> { lst[index].SHTM.Value, lst[index].SHVM1.Value, lst[index].SHVM2.Value, lst[index].SX.Value, lst[index].HCSN.Value, lst[index].KDDV.Value, lst[index].SHN.Value, lst[index].PhiBVMT.Value, lst[index].VAT.Value };
                     }
                 return getDonGiaCaoNhat(lstGiaNuoc, GiaBieu);
             }

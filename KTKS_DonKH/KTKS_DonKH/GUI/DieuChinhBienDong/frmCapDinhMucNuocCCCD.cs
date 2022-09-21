@@ -738,6 +738,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     DCBD_DKDM_DanhBo danhbo = _cDKDM.get(int.Parse(item.Cells["ID_DS"].Value.ToString()));
                                     DonTu_ChiTiet dontu_ChiTiet = new DonTu_ChiTiet();
                                     if (item.Cells["MaDon"].Value.ToString() != "")
+
                                         dontu_ChiTiet = _cDonTu.get_ChiTiet(int.Parse(item.Cells["MaDon"].Value.ToString()), 1);
                                     else
                                         if (item.Cells["DCBD_MaDon"].Value.ToString() != "")
