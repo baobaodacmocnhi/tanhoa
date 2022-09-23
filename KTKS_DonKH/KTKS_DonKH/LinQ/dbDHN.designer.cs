@@ -2294,6 +2294,10 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<bool> _QRDan;
 		
+		private bool _GayTayVan;
+		
+		private System.Nullable<System.DateTime> _GayTayVan_Ngay;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -2448,6 +2452,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnQRInChanged();
     partial void OnQRDanChanging(System.Nullable<bool> value);
     partial void OnQRDanChanged();
+    partial void OnGayTayVanChanging(bool value);
+    partial void OnGayTayVanChanged();
+    partial void OnGayTayVan_NgayChanging(System.Nullable<System.DateTime> value);
+    partial void OnGayTayVan_NgayChanged();
     #endregion
 		
 		public TB_DULIEUKHACHHANG()
@@ -3951,6 +3959,46 @@ namespace KTKS_DonKH.LinQ
 					this._QRDan = value;
 					this.SendPropertyChanged("QRDan");
 					this.OnQRDanChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GayTayVan", DbType="Bit NOT NULL")]
+		public bool GayTayVan
+		{
+			get
+			{
+				return this._GayTayVan;
+			}
+			set
+			{
+				if ((this._GayTayVan != value))
+				{
+					this.OnGayTayVanChanging(value);
+					this.SendPropertyChanging();
+					this._GayTayVan = value;
+					this.SendPropertyChanged("GayTayVan");
+					this.OnGayTayVanChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GayTayVan_Ngay", DbType="DateTime")]
+		public System.Nullable<System.DateTime> GayTayVan_Ngay
+		{
+			get
+			{
+				return this._GayTayVan_Ngay;
+			}
+			set
+			{
+				if ((this._GayTayVan_Ngay != value))
+				{
+					this.OnGayTayVan_NgayChanging(value);
+					this.SendPropertyChanging();
+					this._GayTayVan_Ngay = value;
+					this.SendPropertyChanged("GayTayVan_Ngay");
+					this.OnGayTayVan_NgayChanged();
 				}
 			}
 		}
