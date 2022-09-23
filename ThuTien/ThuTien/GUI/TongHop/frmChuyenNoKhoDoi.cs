@@ -51,16 +51,16 @@ namespace ThuTien.GUI.TongHop
                             lstHD.EnsureVisible(lstHD.Items.Count - 1);
                         }
                     }
-                    //else
-                    //    ///Trung An thêm 'K' phía cuối liên hóa đơn
-                    //    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && item.ToString().Length == 14)
-                    //    {
-                    //        if (lstHD.FindItemWithText(item.Trim().ToUpper().Replace("K", "")) == null)
-                    //        {
-                    //            lstHD.Items.Add(item.Trim().ToUpper().Replace("K", ""));
-                    //            lstHD.EnsureVisible(lstHD.Items.Count - 1);
-                    //        }
-                    //    }
+                //else
+                //    ///Trung An thêm 'K' phía cuối liên hóa đơn
+                //    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && item.ToString().Length == 14)
+                //    {
+                //        if (lstHD.FindItemWithText(item.Trim().ToUpper().Replace("K", "")) == null)
+                //        {
+                //            lstHD.Items.Add(item.Trim().ToUpper().Replace("K", ""));
+                //            lstHD.EnsureVisible(lstHD.Items.Count - 1);
+                //        }
+                //    }
                 txtSoLuong.Text = lstHD.Items.Count.ToString();
                 txtSoHoaDon.Text = "";
             }
@@ -108,7 +108,7 @@ namespace ThuTien.GUI.TongHop
                         }
                         lstHDTemp.Add(_cHoaDon.Get(item.Text));
                     }
-                    //insert from datagridview
+                //insert from datagridview
                 else
                     foreach (DataGridViewRow item in dgvHoaDon_Chon.Rows)
                     {
@@ -207,7 +207,7 @@ namespace ThuTien.GUI.TongHop
                                     //_cCNKD.SqlRollbackTransaction();
                                     MessageBox.Show("Lỗi Cập Nhật Hóa Đơn Chuyển Nợ Khó Đòi, Vui lòng thử lại \r\n" + item.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
-                                }    
+                                }
                             }
                             else
                             {
@@ -215,7 +215,7 @@ namespace ThuTien.GUI.TongHop
                                 MessageBox.Show("Lỗi, Vui lòng thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                             _cCNKD.CountCT(ctcnkd.MaCNKD);
-                                //_cCNKD.Xoa(ctcnkd.MaCNKD);
+                            //_cCNKD.Xoa(ctcnkd.MaCNKD);
                         }
                         //_cCNKD.CommitTransaction();
                         lstHD.Items.Clear();
@@ -264,9 +264,9 @@ namespace ThuTien.GUI.TongHop
             {
                 e.Value = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
-            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "MaCNKD" && e.Value.ToString().Length>2)
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "MaCNKD" && e.Value.ToString().Length > 2)
             {
-                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length-2, "-");
+                e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
         }
 
@@ -282,12 +282,12 @@ namespace ThuTien.GUI.TongHop
         {
             dsBaoCao ds = new dsBaoCao();
             foreach (DataGridViewRow item in dgvHoaDon.SelectedRows)
-                if (!string.IsNullOrEmpty(item.Cells["MaCNKD"].Value.ToString()) && ds.Tables["TongHopNo"].AsEnumerable().Any(itemL => itemL.Field<String>("DanhBo").Replace(" ","") == item.Cells["DanhBo"].Value.ToString())==false)
+                if (!string.IsNullOrEmpty(item.Cells["MaCNKD"].Value.ToString()) && ds.Tables["TongHopNo"].AsEnumerable().Any(itemL => itemL.Field<String>("DanhBo").Replace(" ", "") == item.Cells["DanhBo"].Value.ToString()) == false)
                 {
                     TT_ChuyenNoKhoDoi cnkd = _cCNKD.Get(decimal.Parse(item.Cells["MaCNKD"].Value.ToString()));
                     DataTable dt = _cCNKD.GetDSCT(decimal.Parse(item.Cells["MaCNKD"].Value.ToString()));
 
-                    
+
                     foreach (DataRow itemC in dt.Rows)
                     {
                         DataRow dr = ds.Tables["TongHopNo"].NewRow();
@@ -310,6 +310,7 @@ namespace ThuTien.GUI.TongHop
                             dr["GiaBan"] = dchd.GIABAN_BD;
                             dr["ThueGTGT"] = dchd.THUE_BD;
                             dr["PhiBVMT"] = dchd.PHI_BD;
+                            dr["PhiBVMT_Thue"] = dchd.PHI_Thue_BD == null ? 0 : dchd.PHI_Thue_BD;
                             dr["TongCong"] = dchd.TONGCONG_BD;
                         }
                         else
@@ -317,6 +318,7 @@ namespace ThuTien.GUI.TongHop
                             dr["GiaBan"] = itemC["GiaBan"];
                             dr["ThueGTGT"] = itemC["ThueGTGT"];
                             dr["PhiBVMT"] = itemC["PhiBVMT"];
+                            dr["PhiBVMT_Thue"] = itemC["PhiBVMT_Thue"];
                             dr["TongCong"] = itemC["TongCong"];
                         }
                         ds.Tables["TongHopNo"].Rows.Add(dr);
