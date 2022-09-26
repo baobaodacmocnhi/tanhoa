@@ -91,6 +91,9 @@
             this.TongCong_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCong_End = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtMST_Start = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.txtMST_End = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.txtHoTen_Start = new System.Windows.Forms.TextBox();
             this.txtDiaChi_Start = new System.Windows.Forms.TextBox();
@@ -100,9 +103,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
-            this.txtMST_Start = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.txtMST_End = new System.Windows.Forms.TextBox();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
@@ -726,6 +726,35 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Kết Quả Điều Chỉnh Họ Tên - Địa Chỉ";
             // 
+            // txtMST_Start
+            // 
+            this.txtMST_Start.Location = new System.Drawing.Point(478, 36);
+            this.txtMST_Start.Multiline = true;
+            this.txtMST_Start.Name = "txtMST_Start";
+            this.txtMST_Start.Size = new System.Drawing.Size(107, 40);
+            this.txtMST_Start.TabIndex = 27;
+            this.txtMST_Start.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label21.Location = new System.Drawing.Point(478, 18);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(107, 15);
+            this.label21.TabIndex = 26;
+            this.label21.Text = "           MST              ";
+            // 
+            // txtMST_End
+            // 
+            this.txtMST_End.ForeColor = System.Drawing.Color.Red;
+            this.txtMST_End.Location = new System.Drawing.Point(478, 82);
+            this.txtMST_End.Multiline = true;
+            this.txtMST_End.Name = "txtMST_End";
+            this.txtMST_End.Size = new System.Drawing.Size(107, 40);
+            this.txtMST_End.TabIndex = 28;
+            this.txtMST_End.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // label17
             // 
             this.label17.AutoSize = true;
@@ -735,7 +764,6 @@
             this.label17.Size = new System.Drawing.Size(201, 15);
             this.label17.TabIndex = 20;
             this.label17.Text = "                            Họ Tên                        ";
-            this.label17.Visible = false;
             // 
             // txtHoTen_Start
             // 
@@ -745,7 +773,6 @@
             this.txtHoTen_Start.Size = new System.Drawing.Size(201, 40);
             this.txtHoTen_Start.TabIndex = 22;
             this.txtHoTen_Start.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtHoTen_Start.Visible = false;
             // 
             // txtDiaChi_Start
             // 
@@ -785,7 +812,6 @@
             this.txtHoTen_End.Size = new System.Drawing.Size(201, 40);
             this.txtHoTen_End.TabIndex = 24;
             this.txtHoTen_End.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtHoTen_End.Visible = false;
             // 
             // label9
             // 
@@ -813,35 +839,6 @@
             this.textBox6.Size = new System.Drawing.Size(94, 20);
             this.textBox6.TabIndex = 34;
             this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtMST_Start
-            // 
-            this.txtMST_Start.Location = new System.Drawing.Point(478, 36);
-            this.txtMST_Start.Multiline = true;
-            this.txtMST_Start.Name = "txtMST_Start";
-            this.txtMST_Start.Size = new System.Drawing.Size(107, 40);
-            this.txtMST_Start.TabIndex = 27;
-            this.txtMST_Start.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label21.Location = new System.Drawing.Point(478, 18);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(107, 15);
-            this.label21.TabIndex = 26;
-            this.label21.Text = "           MST              ";
-            // 
-            // txtMST_End
-            // 
-            this.txtMST_End.ForeColor = System.Drawing.Color.Red;
-            this.txtMST_End.Location = new System.Drawing.Point(478, 82);
-            this.txtMST_End.Multiline = true;
-            this.txtMST_End.Name = "txtMST_End";
-            this.txtMST_End.Size = new System.Drawing.Size(107, 40);
-            this.txtMST_End.TabIndex = 28;
-            this.txtMST_End.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // frmShowDCHD
             // 

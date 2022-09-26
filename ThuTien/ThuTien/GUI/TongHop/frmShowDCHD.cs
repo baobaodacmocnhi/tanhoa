@@ -157,86 +157,97 @@ namespace ThuTien.GUI.TongHop
 
         private void txtSoPhieu_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtSoPhieu.Text.Trim()) && e.KeyChar == 13)
+            try
             {
-                _ctdchd = _cKinhDoanh.getHoaDon(decimal.Parse(txtSoPhieu.Text.Trim().Replace("-", "")));
+                if (!string.IsNullOrEmpty(txtSoPhieu.Text.Trim()) && e.KeyChar == 13)
+                {
+                    _ctdchd = _cKinhDoanh.getHoaDon(decimal.Parse(txtSoPhieu.Text.Trim().Replace("-", "")));
 
-                if (_ctdchd.DCBD.MaDon != null)
-                {
-                    txtMaDon.Text = _ctdchd.DCBD.MaDon.ToString().Insert(_ctdchd.DCBD.MaDon.ToString().Length - 2, "-");
-                    dateLap.Value = _ctdchd.DCBD.DonKH.CreateDate.Value;
-                }
-                if (_ctdchd.DCBD.MaDonTXL != null)
-                {
-                    txtMaDon.Text = "TXL" + _ctdchd.DCBD.MaDonTXL.ToString().Insert(_ctdchd.DCBD.MaDonTXL.ToString().Length - 2, "-");
-                    dateLap.Value = _ctdchd.DCBD.DonTXL.CreateDate.Value;
-                }
-                else
-                    if (_ctdchd.DCBD.MaDonTBC != null)
+                    if (_ctdchd.DCBD.MaDon != null)
                     {
-                        txtMaDon.Text = "TBC" + _ctdchd.DCBD.MaDonTBC.ToString().Insert(_ctdchd.DCBD.MaDonTBC.ToString().Length - 2, "-");
-                        dateLap.Value = _ctdchd.DCBD.DonTBC.CreateDate.Value;
+                        txtMaDon.Text = _ctdchd.DCBD.MaDon.ToString().Insert(_ctdchd.DCBD.MaDon.ToString().Length - 2, "-");
+                        dateLap.Value = _ctdchd.DCBD.DonKH.CreateDate.Value;
                     }
+                    if (_ctdchd.DCBD.MaDonTXL != null)
+                    {
+                        txtMaDon.Text = "TXL" + _ctdchd.DCBD.MaDonTXL.ToString().Insert(_ctdchd.DCBD.MaDonTXL.ToString().Length - 2, "-");
+                        dateLap.Value = _ctdchd.DCBD.DonTXL.CreateDate.Value;
+                    }
+                    else
+                        if (_ctdchd.DCBD.MaDonTBC != null)
+                        {
+                            txtMaDon.Text = "TBC" + _ctdchd.DCBD.MaDonTBC.ToString().Insert(_ctdchd.DCBD.MaDonTBC.ToString().Length - 2, "-");
+                            dateLap.Value = _ctdchd.DCBD.DonTBC.CreateDate.Value;
+                        }
 
-                //if (_dchd.TXL)
-                //{
-                //    if (_dchd.PHIEU_DC.Value != _ctdchd.DCBD.MaDonTXL)
-                //        MessageBox.Show("Mã Đơn lúc Rút & nhập Kết Quả có khác nhau \nVui lòng kiểm tra lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //}
-                //else
-                //{
-                //    if (_dchd.PHIEU_DC.Value != _ctdchd.DCBD.MaDon)
-                //        MessageBox.Show("Mã Đơn lúc Rút & nhập Kết Quả có khác nhau \nVui lòng kiểm tra lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //}
+                    //if (_dchd.TXL)
+                    //{
+                    //    if (_dchd.PHIEU_DC.Value != _ctdchd.DCBD.MaDonTXL)
+                    //        MessageBox.Show("Mã Đơn lúc Rút & nhập Kết Quả có khác nhau \nVui lòng kiểm tra lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //}
+                    //else
+                    //{
+                    //    if (_dchd.PHIEU_DC.Value != _ctdchd.DCBD.MaDon)
+                    //        MessageBox.Show("Mã Đơn lúc Rút & nhập Kết Quả có khác nhau \nVui lòng kiểm tra lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //}
 
-                txtSoPhieu.Text = _ctdchd.MaCTDCHD.ToString().Insert(_ctdchd.MaCTDCHD.ToString().Length - 2, "-");
+                    txtSoPhieu.Text = _ctdchd.MaCTDCHD.ToString().Insert(_ctdchd.MaCTDCHD.ToString().Length - 2, "-");
 
-                lbTangGiam.Text = _ctdchd.TangGiam;
+                    lbTangGiam.Text = _ctdchd.TangGiam;
 
-                txtTienNuoc_Start.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.TienNuoc_Start.Value);
-                txtTienNuoc_BD.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.TienNuoc_BD.Value);
-                txtTienNuoc_End.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.TienNuoc_End.Value);
+                    txtTienNuoc_Start.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.TienNuoc_Start.Value);
+                    txtTienNuoc_BD.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.TienNuoc_BD.Value);
+                    txtTienNuoc_End.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.TienNuoc_End.Value);
 
-                txtThueGTGT_Start.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.ThueGTGT_Start.Value);
-                txtThueGTGT_BD.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.ThueGTGT_BD.Value);
-                txtThueGTGT_End.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.ThueGTGT_End.Value);
+                    txtThueGTGT_Start.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.ThueGTGT_Start.Value);
+                    txtThueGTGT_BD.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.ThueGTGT_BD.Value);
+                    txtThueGTGT_End.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.ThueGTGT_End.Value);
 
-                txtPhiBVMT_Start.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.PhiBVMT_Start.Value);
-                txtPhiBVMT_BD.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.PhiBVMT_BD.Value);
-                txtPhiBVMT_End.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.PhiBVMT_End.Value);
+                    txtPhiBVMT_Start.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.PhiBVMT_Start.Value);
+                    txtPhiBVMT_BD.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.PhiBVMT_BD.Value);
+                    txtPhiBVMT_End.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.PhiBVMT_End.Value);
 
-                if (_ctdchd.PhiBVMT_Thue_Start != null)
-                    txtPhiBVMT_Thue_Start.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.PhiBVMT_Thue_Start.Value);
-                else
-                    txtPhiBVMT_Thue_Start.Text = "0";
-                if (_ctdchd.PhiBVMT_Thue_BD != null)
-                    txtPhiBVMT_Thue_BD.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.PhiBVMT_Thue_BD.Value);
-                else
-                    txtPhiBVMT_Thue_BD.Text = "0";
-                if (_ctdchd.PhiBVMT_Thue_End != null)
-                    txtPhiBVMT_Thue_End.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.PhiBVMT_Thue_End.Value);
-                else
-                    txtPhiBVMT_Thue_End.Text = "0";
+                    if (_ctdchd.PhiBVMT_Thue_Start != null)
+                        txtPhiBVMT_Thue_Start.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.PhiBVMT_Thue_Start.Value);
+                    else
+                        txtPhiBVMT_Thue_Start.Text = "0";
+                    if (_ctdchd.PhiBVMT_Thue_BD != null)
+                        txtPhiBVMT_Thue_BD.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.PhiBVMT_Thue_BD.Value);
+                    else
+                        txtPhiBVMT_Thue_BD.Text = "0";
+                    if (_ctdchd.PhiBVMT_Thue_End != null)
+                        txtPhiBVMT_Thue_End.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.PhiBVMT_Thue_End.Value);
+                    else
+                        txtPhiBVMT_Thue_End.Text = "0";
 
-                txtTongCong_Start.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.TongCong_Start.Value);
-                txtTongCong_BD.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.TongCong_BD.Value);
-                txtTongCong_End.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.TongCong_End.Value);
+                    txtTongCong_Start.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.TongCong_Start.Value);
+                    txtTongCong_BD.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.TongCong_BD.Value);
+                    txtTongCong_End.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _ctdchd.TongCong_End.Value);
 
-                if (_ctdchd.HoTen_BD != "")
-                {
-                    txtHoTen_Start.Text = _ctdchd.HoTen;
-                    txtHoTen_End.Text = _ctdchd.HoTen_BD;
+                    if (_ctdchd.HoTen_BD != "")
+                    {
+                        txtHoTen_Start.Text = _ctdchd.HoTen;
+                        txtHoTen_End.Text = _ctdchd.HoTen_BD;
+                    }
+                    if (_ctdchd.DiaChi_BD != "")
+                    {
+                        txtDiaChi_Start.Text = _ctdchd.DiaChi;
+                        txtDiaChi_End.Text = _ctdchd.DiaChi_BD;
+                    }
+                    if (_ctdchd.MST_BD != "")
+                    {
+                        txtMST_Start.Text = _ctdchd.MST;
+                        txtMST_End.Text = _ctdchd.MST_BD;
+                    }
+                    //check số tiền
+                    if (_ctdchd.TienNuoc_End.Value + _ctdchd.ThueGTGT_End.Value + _ctdchd.PhiBVMT_End.Value + _ctdchd.PhiBVMT_Thue_End.Value != _ctdchd.TongCong_End.Value
+                        || _ctdchd.TienNuoc_BD.Value + _ctdchd.ThueGTGT_BD.Value + _ctdchd.PhiBVMT_BD.Value + _ctdchd.PhiBVMT_Thue_BD.Value != _ctdchd.TongCong_BD.Value)
+                        MessageBox.Show("Lệch số tiền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                if (_ctdchd.DiaChi_BD != "")
-                {
-                    txtDiaChi_Start.Text = _ctdchd.DiaChi;
-                    txtDiaChi_End.Text = _ctdchd.DiaChi_BD;
-                }
-                if (_ctdchd.MST_BD != "")
-                {
-                    txtMST_Start.Text = _ctdchd.MST;
-                    txtMST_End.Text = _ctdchd.MST_BD;
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
