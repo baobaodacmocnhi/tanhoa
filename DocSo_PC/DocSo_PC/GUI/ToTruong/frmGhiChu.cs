@@ -139,6 +139,9 @@ namespace DocSo_PC.GUI.ToTruong
                 chkBeNapMatNapHBV.Checked = en.BeNapMatNapHBV;
                 if (en.BeNapMatNapHBV == true)
                     dateBeNapMatNapHBV.Value = en.BeNapMatNapHBV_Ngay.Value;
+                chkGayTayVan.Checked = en.GayTayVan;
+                if (en.GayTayVan == true)
+                    dateGayTayVan.Value = en.GayTayVan_Ngay.Value;
                 cmbMauSacChiGoc.SelectedItem = en.MauSacChiGoc;
                 dgvDienThoai.DataSource = _cDHN.getDS_DienThoai(en.DANHBO);
             }
@@ -266,15 +269,26 @@ namespace DocSo_PC.GUI.ToTruong
                         _enDLKH.ViTriDHN_Ngoai = chkViTriDHN_Ngoai.Checked;
                         _enDLKH.ViTriDHN_Hop = chkViTriDHN_Hop.Checked;
                         _enDLKH.Gieng = chkGieng.Checked;
-                        _enDLKH.AmSau = chkAmSau.Checked;
-                        _enDLKH.XayDung = chkXayDung.Checked;
-                        _enDLKH.DutChi_Goc = chkDutChiGoc.Checked;
-                        _enDLKH.DutChi_Than = chkDutChiThan.Checked;
-                        _enDLKH.NgapNuoc = chkNgapNuoc.Checked;
-                        _enDLKH.KetTuong = chkKetTuong.Checked;
-                        _enDLKH.LapKhoaGoc = chkLapKhoaGoc.Checked;
-                        _enDLKH.BeHBV = chkBeHBV.Checked;
-                        _enDLKH.BeNapMatNapHBV = chkBeNapMatNapHBV.Checked;
+                        if (_enDLKH.AmSau)
+                            _enDLKH.AmSau = chkAmSau.Checked;
+                        if (_enDLKH.XayDung)
+                            _enDLKH.XayDung = chkXayDung.Checked;
+                        if (_enDLKH.DutChi_Goc)
+                            _enDLKH.DutChi_Goc = chkDutChiGoc.Checked;
+                        if (_enDLKH.DutChi_Than)
+                            _enDLKH.DutChi_Than = chkDutChiThan.Checked;
+                        if (_enDLKH.NgapNuoc)
+                            _enDLKH.NgapNuoc = chkNgapNuoc.Checked;
+                        if (_enDLKH.KetTuong)
+                            _enDLKH.KetTuong = chkKetTuong.Checked;
+                        if (_enDLKH.LapKhoaGoc)
+                            _enDLKH.LapKhoaGoc = chkLapKhoaGoc.Checked;
+                        if (_enDLKH.BeHBV)
+                            _enDLKH.BeHBV = chkBeHBV.Checked;
+                        if (_enDLKH.BeNapMatNapHBV)
+                            _enDLKH.BeNapMatNapHBV = chkBeNapMatNapHBV.Checked;
+                        if (_enDLKH.GayTayVan)
+                            _enDLKH.GayTayVan = chkGayTayVan.Checked;
                         _enDLKH.MauSacChiGoc = cmbMauSacChiGoc.SelectedItem.ToString();
                         _cDHN.SubmitChanges();
                         //foreach (DataGridViewRow item in dgvDienThoai.Rows)
@@ -677,6 +691,26 @@ namespace DocSo_PC.GUI.ToTruong
         {
             if (_enDLKH != null)
                 _cDocSo.LoadImageView(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("BeNapMatNapHBV", "", _enDLKH.DANHBO + ".jpg"))));
+        }
+
+        private void chkGayTayVan_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkGayTayVan.Checked)
+            {
+                dateGayTayVan.Enabled = true;
+                btnHinhGayTayVan.Enabled = true;
+            }
+            else
+            {
+                dateGayTayVan.Enabled = false;
+                btnHinhGayTayVan.Enabled = false;
+            }
+        }
+
+        private void btnHinhGayTayVan_Click(object sender, EventArgs e)
+        {
+            if (_enDLKH != null)
+                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("GayTayVan", "", _enDLKH.DANHBO + ".jpg"))));
         }
 
 

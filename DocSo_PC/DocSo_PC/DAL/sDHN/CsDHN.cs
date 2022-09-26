@@ -15,18 +15,19 @@ namespace DocSo_PC.DAL.sDHN
     {
         public static CConnection _cDAL = new CConnection("Data Source=server9;Initial Catalog=sDHN;Persist Security Info=True;User ID=sa;Password=db9@tanhoa");
         JavaScriptSerializer jss = new JavaScriptSerializer();
+        CDHN _cDHN = new CDHN();
 
         public DataTable getDS(int IDNCC)
         {
             string sql = "select IDLogger,db.DanhBo,MLT=kh.LOTRINH,HOTEN,DiaChi=SONHA+' '+TENDUONG"
-                        + " from sDHN db,server8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG kh"
+                        + " from sDHN db,CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG kh"
                         + " where IDNCC=" + IDNCC + " and Valid=1 and db.DanhBo=kh.DanhBo";
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
         public bool checkExists(string DanhBo)
         {
-            DataTable dt= _cDAL.ExecuteQuery_DataTable("select * from sDHN where DanhBo='" + DanhBo + "'");
+            DataTable dt = _cDAL.ExecuteQuery_DataTable("select * from sDHN where DanhBo='" + DanhBo + "'");
             if (dt != null && dt.Rows.Count > 0)
                 return true;
             else
@@ -60,13 +61,19 @@ namespace DocSo_PC.DAL.sDHN
                     var obj = jss.Deserialize<dynamic>(result);
                     foreach (var item in obj)
                     {
-                        if (checkExists(item["MaDanhbo"]) == false)
-                            if (string.IsNullOrEmpty(item["SeriModule"]))
-                                _cDAL.ExecuteNonQuery("insert into sDHN(DanhBo,IDNCC,Valid,CreateBy)values('" + item["MaDanhbo"] + "',1,1," + CNguoiDung.MaND + ")");
+                        if (_cDHN.checkExists(item["MaDanhbo"]) == true)
+                            if (checkExists(item["MaDanhbo"]) == false)
+                                if (string.IsNullOrEmpty(item["SeriModule"]))
+                                    _cDAL.ExecuteNonQuery("insert into sDHN(DanhBo,IDNCC,Valid,CreateBy)values('" + item["MaDanhbo"] + "',1,1," + CNguoiDung.MaND + ")");
+                                else
+                                    _cDAL.ExecuteNonQuery("insert into sDHN(DanhBo,IDNCC,IDLogger,Valid,CreateBy)values('" + item["MaDanhbo"] + "',1,'" + item["SeriModule"] + "',1," + CNguoiDung.MaND + ")");
                             else
-                                _cDAL.ExecuteNonQuery("insert into sDHN(DanhBo,IDNCC,IDLogger,Valid,CreateBy)values('" + item["MaDanhbo"] + "',1,'" + item["SeriModule"] + "',1," + CNguoiDung.MaND + ")");
+                                if (string.IsNullOrEmpty(item["SeriModule"]))
+                                    _cDAL.ExecuteNonQuery("update sDHN set Valid=1 where DanhBo='" + item["MaDanhbo"] + "' and IDNCC=1");
+                                else
+                                    _cDAL.ExecuteNonQuery("update sDHN set Valid=1,IDLogger='" + item["SeriModule"] + "' where DanhBo='" + item["MaDanhbo"] + "' and IDNCC=1");
                         else
-                            _cDAL.ExecuteNonQuery("update sDHN set Valid=1 where DanhBo='" + item["MaDanhbo"] + "' and IDNCC=1");
+                            _cDAL.ExecuteNonQuery("insert into sDHN_Temp(DanhBo)values('" + item["MaDanhbo"] + "')");
                     }
                     return true;
                 }
@@ -495,10 +502,13 @@ namespace DocSo_PC.DAL.sDHN
                     var obj = jss.Deserialize<dynamic>(result);
                     foreach (var item in obj)
                     {
-                        if (checkExists(item) == false)
-                            _cDAL.ExecuteNonQuery("insert into sDHN(DanhBo,IDNCC,Valid,CreateBy)values('" + item + "',2,1," + CNguoiDung.MaND + ")");
+                        if (_cDHN.checkExists(item) == true)
+                            if (checkExists(item) == false)
+                                _cDAL.ExecuteNonQuery("insert into sDHN(DanhBo,IDNCC,Valid,CreateBy)values('" + item + "',2,1," + CNguoiDung.MaND + ")");
+                            else
+                                _cDAL.ExecuteNonQuery("update sDHN set Valid=1 where DanhBo='" + item + "' and IDNCC=2");
                         else
-                            _cDAL.ExecuteNonQuery("update sDHN set Valid=1 where DanhBo='" + item + "' and IDNCC=2");
+                            _cDAL.ExecuteNonQuery("insert into sDHN_Temp(DanhBo)values('" + item + "')");
                     }
                     return true;
                 }
@@ -1029,13 +1039,19 @@ namespace DocSo_PC.DAL.sDHN
                     var obj = jss.Deserialize<dynamic>(result);
                     foreach (var item in obj)
                     {
-                        if (checkExists(item["MaDanhbo"]) == false)
-                            if (string.IsNullOrEmpty(item["SeriModule"]))
-                                _cDAL.ExecuteNonQuery("insert into sDHN(DanhBo,IDNCC,Valid,CreateBy)values('" + item["MaDanhbo"] + "',3,1," + CNguoiDung.MaND + ")");
+                        if (_cDHN.checkExists(item["MaDanhbo"]) == true)
+                            if (checkExists(item["MaDanhbo"]) == false)
+                                if (string.IsNullOrEmpty(item["SeriModule"]))
+                                    _cDAL.ExecuteNonQuery("insert into sDHN(DanhBo,IDNCC,Valid,CreateBy)values('" + item["MaDanhbo"] + "',3,1," + CNguoiDung.MaND + ")");
+                                else
+                                    _cDAL.ExecuteNonQuery("insert into sDHN(DanhBo,IDNCC,IDLogger,Valid,CreateBy)values('" + item["MaDanhbo"] + "',3,'" + item["SeriModule"] + "',1," + CNguoiDung.MaND + ")");
                             else
-                                _cDAL.ExecuteNonQuery("insert into sDHN(DanhBo,IDNCC,IDLogger,Valid,CreateBy)values('" + item["MaDanhbo"] + "',3,'" + item["SeriModule"] + "',1," + CNguoiDung.MaND + ")");
+                                if (string.IsNullOrEmpty(item["SeriModule"]))
+                                    _cDAL.ExecuteNonQuery("update sDHN set Valid=1 where DanhBo='" + item["MaDanhbo"] + "' and IDNCC=3");
+                                else
+                                    _cDAL.ExecuteNonQuery("update sDHN set Valid=1,IDLogger='" + item["SeriModule"] + "' where DanhBo='" + item["MaDanhbo"] + "' and IDNCC=3");
                         else
-                            _cDAL.ExecuteNonQuery("update sDHN set Valid=1,IDLogger='" + item["SeriModule"] + "' where DanhBo='" + item["MaDanhbo"] + "' and IDNCC=3");
+                            _cDAL.ExecuteNonQuery("insert into sDHN_Temp(DanhBo)values('" + item["MaDanhbo"] + "')");
                     }
                     return true;
                 }
@@ -1496,13 +1512,19 @@ namespace DocSo_PC.DAL.sDHN
                     var obj = jss.Deserialize<dynamic>(result);
                     foreach (var item in obj)
                     {
-                        if (checkExists(item["wmid"]) == false)
-                            if (string.IsNullOrEmpty(item["idlogger"]))
-                                _cDAL.ExecuteNonQuery("insert into sDHN(DanhBo,IDNCC,Valid,CreateBy)values('" + item["wmid"] + "',4,1," + CNguoiDung.MaND + ")");
+                        if (_cDHN.checkExists(item["wmid"]) == true)
+                            if (checkExists(item["wmid"]) == false)
+                                if (string.IsNullOrEmpty(item["idlogger"]))
+                                    _cDAL.ExecuteNonQuery("insert into sDHN(DanhBo,IDNCC,Valid,CreateBy)values('" + item["wmid"] + "',4,1," + CNguoiDung.MaND + ")");
+                                else
+                                    _cDAL.ExecuteNonQuery("insert into sDHN(DanhBo,IDNCC,IDLogger,Valid,CreateBy)values('" + item["wmid"] + "',4,'" + item["idlogger"] + "',1," + CNguoiDung.MaND + ")");
                             else
-                                _cDAL.ExecuteNonQuery("insert into sDHN(DanhBo,IDNCC,IDLogger,Valid,CreateBy)values('" + item["wmid"] + "',4,'" + item["idlogger"] + "',1," + CNguoiDung.MaND + ")");
+                                if (string.IsNullOrEmpty(item["idlogger"]))
+                                    _cDAL.ExecuteNonQuery("update sDHN set Valid=1 where DanhBo='" + item["wmid"] + "' and IDNCC=4");
+                                else
+                                    _cDAL.ExecuteNonQuery("update sDHN set Valid=1,IDLogger='" + item["idlogger"] + "' where DanhBo='" + item["wmid"] + "' and IDNCC=4");
                         else
-                            _cDAL.ExecuteNonQuery("update sDHN set Valid=1,IDLogger='" + item["idlogger"] + "' where DanhBo='" + item["wmid"] + "' and IDNCC=4");
+                            _cDAL.ExecuteNonQuery("insert into sDHN_Temp(DanhBo)values('" + item["wmid"] + "')");
                     }
                     return true;
                 }
@@ -2024,7 +2046,7 @@ namespace DocSo_PC.DAL.sDHN
         {
             string sql = "select dhn.DANHBO,HOTEN,DiaChi=SONHA+' '+TENDUONG,ttkh.NGAYGANDH,ttkh.NGAYTHAY"
 + " ,TieuThuCu=(select SUM(TieuThuMoi) from DocSo where DanhBa=dhn.DanhBo and NAM=2020)"
-+ " from sDHN dhn,server8.CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh"
++ " from sDHN dhn,CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh"
 + " where Valid=1 and dhn.DanhBo=ttkh.DANHBO";
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
