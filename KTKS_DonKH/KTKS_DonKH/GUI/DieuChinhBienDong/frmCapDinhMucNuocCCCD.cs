@@ -79,28 +79,35 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13 && txtDanhBo.Text.Trim() != "")
+            try
             {
-                _hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
-                if (_hoadon != null)
+                if (e.KeyChar == 13 && txtDanhBo.Text.Trim() != "")
                 {
-                    txtDanhBo.Text = _hoadon.DANHBA;
-                    txtHoTen.Text = _hoadon.TENKH;
-                    txtDiaChi.Text = _hoadon.SO + " " + _hoadon.DUONG;
-                    txtGiaBieu.Text = _hoadon.GB.ToString();
-                    if (_hoadon.DM != null)
-                        txtDinhMuc.Text = _hoadon.DM.Value.ToString();
-                    txtDienThoai.Focus();
-                    if (_cDKDM.checkExists(_hoadon.DANHBA))
-                        MessageBox.Show("Danh Bộ này đã nhập rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    if (lstKhongChoNhap.Any(x => x == _hoadon.GB.ToString()))
+                    _hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
+                    if (_hoadon != null)
                     {
-                        MessageBox.Show("Giá Biểu không cho nhập", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        return;
+                        txtDanhBo.Text = _hoadon.DANHBA;
+                        txtHoTen.Text = _hoadon.TENKH;
+                        txtDiaChi.Text = _hoadon.SO + " " + _hoadon.DUONG;
+                        txtGiaBieu.Text = _hoadon.GB.ToString();
+                        if (_hoadon.DM != null)
+                            txtDinhMuc.Text = _hoadon.DM.Value.ToString();
+                        txtDienThoai.Focus();
+                        if (_cDKDM.checkExists(_hoadon.DANHBA))
+                            MessageBox.Show("Danh Bộ này đã nhập rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (lstKhongChoNhap.Any(x => x == _hoadon.GB.ToString()))
+                        {
+                            MessageBox.Show("Giá Biểu không cho nhập", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            return;
+                        }
                     }
+                    else
+                        MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                else
-                    MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
