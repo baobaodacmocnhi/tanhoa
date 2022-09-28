@@ -2772,22 +2772,28 @@ namespace ThuTien.DAL.TongHop
 
         public DataTable getDS_HDDC_DangNgan_GiaoNhan(DateTime FromNgayDangNgan, DateTime ToNgayDangNgan)
         {
-            var query = from itemDC in _db.DIEUCHINH_HDs
-                        join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
-                        where itemHD.NGAYGIAITRACH.Value.Date >= FromNgayDangNgan.Date && itemHD.NGAYGIAITRACH.Value.Date <= ToNgayDangNgan.Date && itemHD.MaNV_DangNgan != null
-                        && itemDC.NGAY_DC.Value.Date >= new DateTime(2022, 07, 01).Date
-                        orderby itemHD.NGAYGIAITRACH ascending
-                        select new
-                        {
-                            Ky = itemHD.KY + "/" + itemHD.NAM,
-                            DanhBo = itemHD.DANHBA,
-                            itemHD.TONGCONG,
-                            itemHD.NGAYGIAITRACH,
-                            itemDC.SoPhieu,
-                            itemHD.DangNgan_ChuyenKhoan,
-                            itemHD.DangNgan_Quay,
-                        };
-            return LINQToDataTable(query);
+            //var query = from itemDC in _db.DIEUCHINH_HDs
+            //            join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
+            //            where itemHD.NGAYGIAITRACH.Value.Date >= FromNgayDangNgan.Date && itemHD.NGAYGIAITRACH.Value.Date <= ToNgayDangNgan.Date && itemHD.MaNV_DangNgan != null
+            //            && itemDC.NGAY_DC.Value.Date >= new DateTime(2022, 07, 01).Date
+            //            orderby itemHD.NGAYGIAITRACH ascending
+            //            select new
+            //            {
+            //                Ky = itemHD.KY + "/" + itemHD.NAM,
+            //                DanhBo = itemHD.DANHBA,
+            //                itemHD.TONGCONG,
+            //                itemHD.NGAYGIAITRACH,
+            //                itemDC.SoPhieu,
+            //                itemHD.DangNgan_ChuyenKhoan,
+            //                itemHD.DangNgan_Quay,
+            //            };
+            //return LINQToDataTable(query);
+            return ExecuteQuery_DataTable("select Ky=CONVERT(varchar(2),Ky)+'/'+CONVERT(varchar(4),NAM),DanhBo=hd.DANHBA"
++ " ,hd.TONGCONG,NGAYGIAITRACH,dc.SoPhieu,DangNgan_ChuyenKhoan,DangNgan_Quay"
++ " from DIEUCHINH_HD dc,HOADON hd"
++ " where dc.FK_HOADON=hd.ID_HOADON and MaNV_DangNgan is not null"
++ " and CAST(NGAYGIAITRACH as date)>='" + FromNgayDangNgan.ToString("yyyyMMdd") + "' and CAST(NGAYGIAITRACH as date)<='" + ToNgayDangNgan.ToString("yyyyMMdd") + "'"
++ " and CAST(NGAY_DC as date)>='20220701'");
         }
 
 
