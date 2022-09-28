@@ -163,179 +163,238 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         public DataTable getDS(string DanhBo)
         {
-            var query = from item in db.DCBD_DKDM_DanhBos
-                        join itemND in db.Users on item.CreateBy equals itemND.MaU into tableND
-                        from itemtableND in tableND.DefaultIfEmpty()
-                        where item.DanhBo == DanhBo && item.CreateBy != null
-                        select new
-                        {
-                            item.ID,
-                            item.DanhBo,
-                            item.GiaBieu,
-                            item.DinhMuc,
-                            item.SDT,
-                            item.Quan,
-                            item.Thung,
-                            item.STT,
-                            item.CreateDate,
-                            DinhMucMoi = item.DCBD_DKDM_CCCDs.Count * 4,
-                            item.MaDon,
-                            item.DaXuLy,
-                            item.GhiChu,
-                            item.DCBD,
-                            item.DCBD_MaDon,
-                            item.DCBD_STT,
-                            CreateBy = itemtableND.HoTen,
-                        };
-            return LINQToDataTable(query);
+            //var query = from item in db.DCBD_DKDM_DanhBos
+            //            join itemND in db.Users on item.CreateBy equals itemND.MaU into tableND
+            //            from itemtableND in tableND.DefaultIfEmpty()
+            //            where item.DanhBo == DanhBo && item.CreateBy != null
+            //            select new
+            //            {
+            //                item.ID,
+            //                item.DanhBo,
+            //                item.GiaBieu,
+            //                item.DinhMuc,
+            //                item.SDT,
+            //                item.Quan,
+            //                item.Thung,
+            //                item.STT,
+            //                item.CreateDate,
+            //                DinhMucMoi = item.DCBD_DKDM_CCCDs.Count * 4,
+            //                item.MaDon,
+            //                item.DaXuLy,
+            //                item.GhiChu,
+            //                item.DCBD,
+            //                item.DCBD_MaDon,
+            //                item.DCBD_STT,
+            //                CreateBy = itemtableND.HoTen,
+            //                DiaChi = dbThuTien.HOADONs.Where(hd => hd.DANHBA == item.DanhBo).OrderByDescending(hd => hd.CreateDate).FirstOrDefault().SO + " " + dbThuTien.HOADONs.Where(hd => hd.DANHBA == item.DanhBo).OrderByDescending(hd => hd.CreateDate).FirstOrDefault().DUONG,
+            //                Phuong = dbThuTien.HOADONs.Where(hd => hd.DANHBA == item.DanhBo).OrderByDescending(hd => hd.CreateDate).FirstOrDefault().Phuong
+            //            };
+            //return LINQToDataTable(query);
+            return ExecuteQuery_DataTable("select CreateBy=s.HoTen,db.*,DinhMucMoi=(select count(*)*4 from DCBD_DKDM_CCCD where IDDanhBo=db.ID)"
++ " ,DiaChi=ttkh.SONHA+' '+ttkh.TENDUONG,ttkh.PHUONG"
++ " from DCBD_DKDM_DanhBo db left join Users s on s.MaU=db.CreateBy,CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh"
++ " where db.DanhBo=ttkh.DANHBO and db.DanhBo='" + DanhBo + "' and db.CreateBy is not null");
         }
 
         public DataTable getDS_Quan(string Quan)
         {
-            var query = from item in db.DCBD_DKDM_DanhBos
-                        join itemND in db.Users on item.CreateBy equals itemND.MaU into tableND
-                        from itemtableND in tableND.DefaultIfEmpty()
-                        where item.Quan == Quan && item.CreateBy != null
-                        select new
-                        {
-                            item.ID,
-                            item.DanhBo,
-                            item.GiaBieu,
-                            item.DinhMuc,
-                            item.SDT,
-                            item.Quan,
-                            item.Thung,
-                            item.STT,
-                            item.CreateDate,
-                            DinhMucMoi = item.DCBD_DKDM_CCCDs.Count * 4,
-                            item.MaDon,
-                            item.DaXuLy,
-                            item.GhiChu,
-                            item.DCBD,
-                            item.DCBD_MaDon,
-                            item.DCBD_STT,
-                            CreateBy = itemtableND.HoTen,
-                        };
-            return LINQToDataTable(query);
+            //var query = from item in db.DCBD_DKDM_DanhBos
+            //            join itemND in db.Users on item.CreateBy equals itemND.MaU into tableND
+            //            from itemtableND in tableND.DefaultIfEmpty()
+            //            where item.Quan == Quan && item.CreateBy != null
+            //            select new
+            //            {
+            //                item.ID,
+            //                item.DanhBo,
+            //                item.GiaBieu,
+            //                item.DinhMuc,
+            //                item.SDT,
+            //                item.Quan,
+            //                item.Thung,
+            //                item.STT,
+            //                item.CreateDate,
+            //                DinhMucMoi = item.DCBD_DKDM_CCCDs.Count * 4,
+            //                item.MaDon,
+            //                item.DaXuLy,
+            //                item.GhiChu,
+            //                item.DCBD,
+            //                item.DCBD_MaDon,
+            //                item.DCBD_STT,
+            //                CreateBy = itemtableND.HoTen,
+            //            };
+            //return LINQToDataTable(query);
+            return ExecuteQuery_DataTable("select CreateBy=s.HoTen,db.*,DinhMucMoi=(select count(*)*4 from DCBD_DKDM_CCCD where IDDanhBo=db.ID)"
++ " ,DiaChi=ttkh.SONHA+' '+ttkh.TENDUONG,ttkh.PHUONG"
++ " from DCBD_DKDM_DanhBo db left join Users s on s.MaU=db.CreateBy,CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh"
++ " where db.DanhBo=ttkh.DANHBO and db.Quan='" + Quan + "' and db.CreateBy is not null");
         }
 
         public DataTable getDS_Quan(int CreateBy, string Quan)
         {
-            var query = from item in db.DCBD_DKDM_DanhBos
-                        join itemND in db.Users on item.CreateBy equals itemND.MaU into tableND
-                        from itemtableND in tableND.DefaultIfEmpty()
-                        where item.Quan == Quan && item.CreateBy == CreateBy
-                        select new
-                        {
-                            item.ID,
-                            item.DanhBo,
-                            item.GiaBieu,
-                            item.DinhMuc,
-                            item.SDT,
-                            item.Quan,
-                            item.Thung,
-                            item.STT,
-                            item.CreateDate,
-                            DinhMucMoi = item.DCBD_DKDM_CCCDs.Count * 4,
-                            item.MaDon,
-                            item.DaXuLy,
-                            item.GhiChu,
-                            item.DCBD,
-                            item.DCBD_MaDon,
-                            item.DCBD_STT,
-                            CreateBy = itemtableND.HoTen,
-                        };
-            return LINQToDataTable(query);
+            //var query = from item in db.DCBD_DKDM_DanhBos
+            //            join itemND in db.Users on item.CreateBy equals itemND.MaU into tableND
+            //            from itemtableND in tableND.DefaultIfEmpty()
+            //            where item.Quan == Quan && item.CreateBy == CreateBy
+            //            select new
+            //            {
+            //                item.ID,
+            //                item.DanhBo,
+            //                item.GiaBieu,
+            //                item.DinhMuc,
+            //                item.SDT,
+            //                item.Quan,
+            //                item.Thung,
+            //                item.STT,
+            //                item.CreateDate,
+            //                DinhMucMoi = item.DCBD_DKDM_CCCDs.Count * 4,
+            //                item.MaDon,
+            //                item.DaXuLy,
+            //                item.GhiChu,
+            //                item.DCBD,
+            //                item.DCBD_MaDon,
+            //                item.DCBD_STT,
+            //                CreateBy = itemtableND.HoTen,
+            //            };
+            //return LINQToDataTable(query);
+            return ExecuteQuery_DataTable("select CreateBy=s.HoTen,db.*,DinhMucMoi=(select count(*)*4 from DCBD_DKDM_CCCD where IDDanhBo=db.ID)"
++ " ,DiaChi=ttkh.SONHA+' '+ttkh.TENDUONG,ttkh.PHUONG"
++ " from DCBD_DKDM_DanhBo db left join Users s on s.MaU=db.CreateBy,CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh"
++ " where db.DanhBo=ttkh.DANHBO and db.Quan='" + Quan + "' and db.CreateBy=" + CreateBy);
         }
 
         public DataTable getDS_Quan_Thung(string Quan, int Thung)
         {
-            var query = from item in db.DCBD_DKDM_DanhBos
-                        join itemND in db.Users on item.CreateBy equals itemND.MaU into tableND
-                        from itemtableND in tableND.DefaultIfEmpty()
-                        where item.Quan == Quan && item.Thung == Thung && item.CreateBy != null
-                        orderby item.ID ascending
-                        select new
-                        {
-                            item.ID,
-                            item.DanhBo,
-                            item.GiaBieu,
-                            item.DinhMuc,
-                            item.SDT,
-                            item.Quan,
-                            item.Thung,
-                            item.STT,
-                            item.CreateDate,
-                            DinhMucMoi = item.DCBD_DKDM_CCCDs.Count * 4,
-                            item.MaDon,
-                            item.DaXuLy,
-                            item.GhiChu,
-                            item.DCBD,
-                            item.DCBD_MaDon,
-                            item.DCBD_STT,
-                            CreateBy = itemtableND.HoTen,
-                        };
-            return LINQToDataTable(query);
+            //var query = from item in db.DCBD_DKDM_DanhBos
+            //            join itemND in db.Users on item.CreateBy equals itemND.MaU into tableND
+            //            from itemtableND in tableND.DefaultIfEmpty()
+            //            where item.Quan == Quan && item.Thung == Thung && item.CreateBy != null
+            //            orderby item.ID ascending
+            //            select new
+            //            {
+            //                item.ID,
+            //                item.DanhBo,
+            //                item.GiaBieu,
+            //                item.DinhMuc,
+            //                item.SDT,
+            //                item.Quan,
+            //                item.Thung,
+            //                item.STT,
+            //                item.CreateDate,
+            //                DinhMucMoi = item.DCBD_DKDM_CCCDs.Count * 4,
+            //                item.MaDon,
+            //                item.DaXuLy,
+            //                item.GhiChu,
+            //                item.DCBD,
+            //                item.DCBD_MaDon,
+            //                item.DCBD_STT,
+            //                CreateBy = itemtableND.HoTen,
+            //            };
+            //return LINQToDataTable(query);
+            return ExecuteQuery_DataTable("select CreateBy=s.HoTen,db.*,DinhMucMoi=(select count(*)*4 from DCBD_DKDM_CCCD where IDDanhBo=db.ID)"
++ " ,DiaChi=ttkh.SONHA+' '+ttkh.TENDUONG,ttkh.PHUONG"
++ " from DCBD_DKDM_DanhBo db left join Users s on s.MaU=db.CreateBy,CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh"
++ " where db.DanhBo=ttkh.DANHBO and db.Quan='" + Quan + "' and db.Thung=" + Thung + " and db.CreateBy is not null");
         }
 
         public DataTable getDS_Quan_Thung(int CreateBy, string Quan, int Thung)
         {
-            var query = from item in db.DCBD_DKDM_DanhBos
-                        join itemND in db.Users on item.CreateBy equals itemND.MaU into tableND
-                        from itemtableND in tableND.DefaultIfEmpty()
-                        where item.Quan == Quan && item.Thung == Thung && item.CreateBy == CreateBy
-                        orderby item.ID ascending
-                        select new
-                        {
-                            item.ID,
-                            item.DanhBo,
-                            item.GiaBieu,
-                            item.DinhMuc,
-                            item.SDT,
-                            item.Quan,
-                            item.Thung,
-                            item.STT,
-                            item.CreateDate,
-                            DinhMucMoi = item.DCBD_DKDM_CCCDs.Count * 4,
-                            item.MaDon,
-                            item.DaXuLy,
-                            item.GhiChu,
-                            item.DCBD,
-                            item.DCBD_MaDon,
-                            item.DCBD_STT,
-                            CreateBy = itemtableND.HoTen,
-                        };
-            return LINQToDataTable(query);
+            //var query = from item in db.DCBD_DKDM_DanhBos
+            //            join itemND in db.Users on item.CreateBy equals itemND.MaU into tableND
+            //            from itemtableND in tableND.DefaultIfEmpty()
+            //            where item.Quan == Quan && item.Thung == Thung && item.CreateBy == CreateBy
+            //            orderby item.ID ascending
+            //            select new
+            //            {
+            //                item.ID,
+            //                item.DanhBo,
+            //                item.GiaBieu,
+            //                item.DinhMuc,
+            //                item.SDT,
+            //                item.Quan,
+            //                item.Thung,
+            //                item.STT,
+            //                item.CreateDate,
+            //                DinhMucMoi = item.DCBD_DKDM_CCCDs.Count * 4,
+            //                item.MaDon,
+            //                item.DaXuLy,
+            //                item.GhiChu,
+            //                item.DCBD,
+            //                item.DCBD_MaDon,
+            //                item.DCBD_STT,
+            //                CreateBy = itemtableND.HoTen,
+            //            };
+            //return LINQToDataTable(query);
+            return ExecuteQuery_DataTable("select CreateBy=s.HoTen,db.*,DinhMucMoi=(select count(*)*4 from DCBD_DKDM_CCCD where IDDanhBo=db.ID)"
++ " ,DiaChi=ttkh.SONHA+' '+ttkh.TENDUONG,ttkh.PHUONG"
++ " from DCBD_DKDM_DanhBo db left join Users s on s.MaU=db.CreateBy,CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh"
++ " where db.DanhBo=ttkh.DANHBO and db.Quan='" + Quan + "' and db.Thung=" + Thung + " and db.CreateBy=" + CreateBy);
         }
 
         public DataTable getDS(DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            var query = from item in db.DCBD_DKDM_DanhBos
-                        join itemND in db.Users on item.CreateBy equals itemND.MaU into tableND
-                        from itemtableND in tableND.DefaultIfEmpty()
-                        where item.CreateDate.Date >= FromCreateDate.Date && item.CreateDate.Date <= ToCreateDate.Date && item.CreateBy != null
-                        orderby item.ID ascending
-                        select new
-                        {
-                            item.ID,
-                            item.DanhBo,
-                            item.GiaBieu,
-                            item.DinhMuc,
-                            item.SDT,
-                            item.Quan,
-                            item.Thung,
-                            item.STT,
-                            item.CreateDate,
-                            CreateBy = itemtableND.HoTen,
-                            DinhMucMoi = item.DCBD_DKDM_CCCDs.Count * 4,
-                            item.MaDon,
-                            item.DaXuLy,
-                            item.GhiChu,
-                            item.DCBD,
-                            item.DCBD_MaDon,
-                            item.DCBD_STT,
-                        };
-            return LINQToDataTable(query);
+            //var query = from item in db.DCBD_DKDM_DanhBos
+            //            join itemND in db.Users on item.CreateBy equals itemND.MaU into tableND
+            //            from itemtableND in tableND.DefaultIfEmpty()
+            //            where item.CreateDate.Date >= FromCreateDate.Date && item.CreateDate.Date <= ToCreateDate.Date && item.CreateBy != null
+            //            orderby item.ID ascending
+            //            select new
+            //            {
+            //                item.ID,
+            //                item.DanhBo,
+            //                item.GiaBieu,
+            //                item.DinhMuc,
+            //                item.SDT,
+            //                item.Quan,
+            //                item.Thung,
+            //                item.STT,
+            //                item.CreateDate,
+            //                CreateBy = itemtableND.HoTen,
+            //                DinhMucMoi = item.DCBD_DKDM_CCCDs.Count * 4,
+            //                item.MaDon,
+            //                item.DaXuLy,
+            //                item.GhiChu,
+            //                item.DCBD,
+            //                item.DCBD_MaDon,
+            //                item.DCBD_STT,
+            //            };
+            //return LINQToDataTable(query);
+            return ExecuteQuery_DataTable("select CreateBy=s.HoTen,db.*,DinhMucMoi=(select count(*)*4 from DCBD_DKDM_CCCD where IDDanhBo=db.ID)"
++ " ,DiaChi=ttkh.SONHA+' '+ttkh.TENDUONG,ttkh.PHUONG"
++ " from DCBD_DKDM_DanhBo db left join Users s on s.MaU=db.CreateBy,CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh"
++ " where db.DanhBo=ttkh.DANHBO and cast(db.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and cast(db.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and db.CreateBy is not null");
+        }
+
+        public DataTable getDS(int CreateBy, DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            //var query = from item in db.DCBD_DKDM_DanhBos
+            //            join itemND in db.Users on item.CreateBy equals itemND.MaU into tableND
+            //            from itemtableND in tableND.DefaultIfEmpty()
+            //            where item.CreateDate.Date >= FromCreateDate.Date && item.CreateDate.Date <= ToCreateDate.Date && item.CreateBy == CreateBy
+            //            orderby item.ID ascending
+            //            select new
+            //            {
+            //                item.ID,
+            //                item.DanhBo,
+            //                item.GiaBieu,
+            //                item.DinhMuc,
+            //                item.SDT,
+            //                item.Quan,
+            //                item.Thung,
+            //                item.STT,
+            //                item.CreateDate,
+            //                CreateBy = itemtableND.HoTen,
+            //                DinhMucMoi = item.DCBD_DKDM_CCCDs.Count * 4,
+            //                item.DaXuLy,
+            //                item.GhiChu,
+            //                item.DCBD,
+            //                item.DCBD_MaDon,
+            //                item.DCBD_STT,
+            //            };
+            //return LINQToDataTable(query);
+            return ExecuteQuery_DataTable("select CreateBy=s.HoTen,db.*,DinhMucMoi=(select count(*)*4 from DCBD_DKDM_CCCD where IDDanhBo=db.ID)"
++ " ,DiaChi=ttkh.SONHA+' '+ttkh.TENDUONG,ttkh.PHUONG"
++ " from DCBD_DKDM_DanhBo db left join Users s on s.MaU=db.CreateBy,CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh"
++ " where db.DanhBo=ttkh.DANHBO and cast(db.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and cast(db.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and db.CreateBy=" + CreateBy);
         }
 
         public DataTable getDS_FileScan(DateTime FromCreateDate, DateTime ToCreateDate)
@@ -368,6 +427,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         };
             return LINQToDataTable(query);
         }
+
+
 
         public DataTable getDS_KiemTra_Tang(DateTime FromCreateDate, DateTime ToCreateDate)
         {
@@ -416,34 +477,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             return ExecuteQuery_DataTable(sql);
         }
 
-        public DataTable getDS(int CreateBy, DateTime FromCreateDate, DateTime ToCreateDate)
-        {
-            var query = from item in db.DCBD_DKDM_DanhBos
-                        join itemND in db.Users on item.CreateBy equals itemND.MaU into tableND
-                        from itemtableND in tableND.DefaultIfEmpty()
-                        where item.CreateDate.Date >= FromCreateDate.Date && item.CreateDate.Date <= ToCreateDate.Date && item.CreateBy == CreateBy
-                        orderby item.ID ascending
-                        select new
-                        {
-                            item.ID,
-                            item.DanhBo,
-                            item.GiaBieu,
-                            item.DinhMuc,
-                            item.SDT,
-                            item.Quan,
-                            item.Thung,
-                            item.STT,
-                            item.CreateDate,
-                            CreateBy = itemtableND.HoTen,
-                            DinhMucMoi = item.DCBD_DKDM_CCCDs.Count * 4,
-                            item.DaXuLy,
-                            item.GhiChu,
-                            item.DCBD,
-                            item.DCBD_MaDon,
-                            item.DCBD_STT,
-                        };
-            return LINQToDataTable(query);
-        }
+
 
         public DataTable getDS_Online(string DanhBo)
         {

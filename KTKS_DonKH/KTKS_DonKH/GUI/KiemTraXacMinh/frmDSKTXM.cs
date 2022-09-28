@@ -248,7 +248,9 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 dr["HoTen"] = itemRow["HoTen"];
                 dr["DiaChi"] = itemRow["DiaChi"];
                 dr["NoiDungKiemTra"] = itemRow["NoiDungKiemTra"];
-                dr["NguoiLap"] = itemRow["CreateBy"];
+                dr["NguoiLap"] = CTaiKhoan.HoTen;
+                dr["NgayLapBangGia"] = itemRow["NgayKTXM"];
+                dr["NgayDongTienBoiThuong"] = itemRow["CreateBy"];
 
                 dsBaoCao.Tables["DSKTXM"].Rows.Add(dr);
             }
