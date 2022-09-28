@@ -443,7 +443,7 @@ namespace DocSo_PC.GUI.ToTruong
                 {
                     if (_docso != null)
                     {
-                        if (CNguoiDung.updateChuyenListing == false)
+                        if (CNguoiDung.updateChuyenListing == false && CNguoiDung.Admin == false)
                             if (_cDocSo.checkChot_BillState(_docso.Nam.Value.ToString(), _docso.Ky, _docso.Dot) == true)
                             {
                                 MessageBox.Show("Năm " + _docso.Nam.Value.ToString() + " Kỳ " + _docso.Ky + " Đợt " + _docso.Dot + " đã chuyển billing", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -116,9 +116,9 @@ namespace DocSo_PC.GUI.Doi
                         if (!string.IsNullOrWhiteSpace(contents[17]))
                             en.SH = short.Parse(contents[17]);
                         if (!string.IsNullOrWhiteSpace(contents[18]))
-                            en.SX = short.Parse(contents[18]);
+                            en.HC = short.Parse(contents[18]);
                         if (!string.IsNullOrWhiteSpace(contents[19]))
-                            en.HC = short.Parse(contents[19]);
+                            en.SX = short.Parse(contents[19]);
                         if (!string.IsNullOrWhiteSpace(contents[20]))
                             en.DV = short.Parse(contents[20]);
                         if (!string.IsNullOrWhiteSpace(contents[21]))

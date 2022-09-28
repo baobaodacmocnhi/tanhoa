@@ -22,6 +22,7 @@ namespace DocSo_PC.GUI.ToTruong
         CTo _cTo = new CTo();
         CDHN _cDHN = new CDHN();
         CDocSo _cDocSo = new CDocSo();
+        CThuTien _cThuTien = new CThuTien();
         wrDHN.wsDHN _wsDHN = new wrDHN.wsDHN();
 
         public frmPhieuChuyen()
@@ -284,12 +285,12 @@ namespace DocSo_PC.GUI.ToTruong
                             if (ttkh.ViTriDHN_Ngoai)
                             {
                                 dr["TieuDe"] = "DANH SÁCH ĐỒNG HỒ NƯỚC " + item.Cells["NoiDung"].Value.ToString().ToUpper() + " NGOÀI BẤT ĐỘNG SẢN";
-                                dr["NoiNhan"] = "P. GNKDT\nP. KHĐT\nĐ. TCTB\nLưu";
+                                dr["NoiNhan"] = "P. KHĐT\nLưu";
                             }
                             else
                             {
                                 dr["TieuDe"] = "DANH SÁCH ĐỒNG HỒ NƯỚC " + item.Cells["NoiDung"].Value.ToString().ToUpper() + " TRONG BẤT ĐỘNG SẢN";
-                                dr["NoiNhan"] = "P. GNKDT\nP. KHĐT\nĐ. TCTB\nP. Thương Vụ\nLưu";
+                                dr["NoiNhan"] = "P. Thương Vụ\nLưu";
                             }
                             break;
                         case "Kẹt Tường":
@@ -310,6 +311,9 @@ namespace DocSo_PC.GUI.ToTruong
                     dr["MLT"] = ttkh.LOTRINH;
                     dr["HoTen"] = ttkh.HOTEN;
                     dr["DiaChi"] = ttkh.SONHA + " " + ttkh.TENDUONG + _cDHN.getPhuongQuan(ttkh.QUAN, ttkh.PHUONG);
+                    HOADON hd = _cThuTien.GetMoiNhat(ttkh.DANHBO);
+                    if (hd != null)
+                        dr["HopDong"] = hd.SO + " " + hd.DUONG + _cDHN.getPhuongQuan(hd.Quan, hd.Phuong);
                     dr["Hieu"] = ttkh.HIEUDH;
                     dr["Co"] = ttkh.CODH;
                     dr["SoThan"] = ttkh.SOTHANDH;
