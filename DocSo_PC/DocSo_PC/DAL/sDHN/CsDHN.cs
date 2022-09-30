@@ -1791,7 +1791,7 @@ namespace DocSo_PC.DAL.sDHN
                         foreach (var item in obj)
                         {
                             DataRow dr = dt.NewRow();
-                            dr["ChiSo"] = item["flow"];
+                            dr["ChiSo"] = item["vol"];
                             //dr["Pin"] = item["Battery"];
                             //dr["ThoiLuongPinConLai"] = item["RemainBatt"];
                             //dr["LuuLuong"] = item["Flow"] ?? DBNull.Value;
@@ -1863,7 +1863,7 @@ namespace DocSo_PC.DAL.sDHN
                         //foreach (var item in obj)
                         {
                             DataRow dr = dt.NewRow();
-                            dr["ChiSo"] = obj["flow"];
+                            dr["ChiSo"] = obj["vol"];
                             //dr["Pin"] = item["Battery"];
                             //dr["ThoiLuongPinConLai"] = item["RemainBatt"];
                             //dr["LuuLuong"] = item["Flow"] ?? DBNull.Value;
@@ -1900,7 +1900,7 @@ namespace DocSo_PC.DAL.sDHN
         {
             try
             {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://swm.sawaco.com.vn:8032/apipl/All/" + DanhBo + "/" + FromTime.ToString("dd-MM-yyyy") + "/" + ToTime.ToString("dd-MM-yyyy"));
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://swm.sawaco.com.vn:8032/apipl/AllInfo/" + DanhBo + "/" + FromTime.ToString("dd-MM-yyyy") + "/" + ToTime.ToString("dd-MM-yyyy"));
                 request.Method = "GET";
                 request.ContentType = "application/json; charset=utf-8";
 
@@ -1935,7 +1935,7 @@ namespace DocSo_PC.DAL.sDHN
                         foreach (var item in obj)
                         {
                             DataRow dr = dt.NewRow();
-                            dr["ChiSo"] = item["flow"];
+                            dr["ChiSo"] = item["vol"];
                             //dr["Pin"] = item["Battery"];
                             //dr["ThoiLuongPinConLai"] = item["RemainBatt"];
                             //dr["LuuLuong"] = item["Flow"] ?? DBNull.Value;
@@ -1972,7 +1972,7 @@ namespace DocSo_PC.DAL.sDHN
         {
             try
             {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://swm.sawaco.com.vn:8032/apipl/All/" + DanhBo + "/" + FromTime.ToString("dd-MM-yyyy") + "/" + ToTime.ToString("dd-MM-yyyy") + "/" + Hour);
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://swm.sawaco.com.vn:8032/apipl/AllInfo/" + DanhBo + "/" + FromTime.ToString("dd-MM-yyyy") + "/" + ToTime.ToString("dd-MM-yyyy") + "/" + Hour);
                 request.Method = "GET";
                 request.ContentType = "application/json; charset=utf-8";
 
@@ -2007,7 +2007,7 @@ namespace DocSo_PC.DAL.sDHN
                         foreach (var item in obj)
                         {
                             DataRow dr = dt.NewRow();
-                            dr["ChiSo"] = item["flow"];
+                            dr["ChiSo"] = item["vol"];
                             //dr["Pin"] = item["Battery"];
                             //dr["ThoiLuongPinConLai"] = item["RemainBatt"];
                             //dr["LuuLuong"] = item["Flow"] ?? DBNull.Value;
