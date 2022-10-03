@@ -1293,5 +1293,30 @@ namespace ThuTien.GUI.DongNuoc
                 txtKhoaKhac_GhiChu.ReadOnly = true;
         }
 
+        private void btnCapNhatNgayTBDongNuoc_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_dongnuoc != null)
+                {
+                    CHoaDon _cHoaDon = new CHoaDon();
+                    foreach (TT_CTDongNuoc item in _dongnuoc.TT_CTDongNuocs)
+                    {
+                        HOADON hd = _cHoaDon.Get(item.MaHD);
+                        if (hd != null&&hd.TBDongNuoc_Ngay==null)
+                        {
+                            hd.TBDongNuoc_Ngay = item.CreateDate;
+                            _cHoaDon.Sua(hd);
+                        }
+                    }
+                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }

@@ -33,6 +33,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cmbMauSacMN = new System.Windows.Forms.ComboBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.txtNiemChiMN = new System.Windows.Forms.TextBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.cmbMauSacDN = new System.Windows.Forms.ComboBox();
+            this.label31 = new System.Windows.Forms.Label();
             this.txtMaKemBamChi = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
             this.cmbViTri = new System.Windows.Forms.ComboBox();
@@ -122,6 +128,10 @@
             this.btnInPhieu = new System.Windows.Forms.Button();
             this.btnXoaPhieu = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cmbMauSac1 = new System.Windows.Forms.ComboBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.cmbMauSac2 = new System.Windows.Forms.ComboBox();
+            this.label34 = new System.Windows.Forms.Label();
             this.txtMaKemBamChi1 = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
             this.txtMaKemBamChi2 = new System.Windows.Forms.TextBox();
@@ -148,16 +158,7 @@
             this.btnInDS = new System.Windows.Forms.Button();
             this.cmbTo = new System.Windows.Forms.ComboBox();
             this.lbTo = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.cmbMauSacDN = new System.Windows.Forms.ComboBox();
-            this.cmbMauSacMN = new System.Windows.Forms.ComboBox();
-            this.label32 = new System.Windows.Forms.Label();
-            this.txtNiemChiMN = new System.Windows.Forms.TextBox();
-            this.label33 = new System.Windows.Forms.Label();
-            this.cmbMauSac2 = new System.Windows.Forms.ComboBox();
-            this.label34 = new System.Windows.Forms.Label();
-            this.cmbMauSac1 = new System.Windows.Forms.ComboBox();
-            this.label35 = new System.Windows.Forms.Label();
+            this.btnCapNhatNgayTBDongNuoc = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKQDongNuoc)).BeginInit();
@@ -213,6 +214,64 @@
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Kết Quả Đóng Nước";
+            // 
+            // cmbMauSacMN
+            // 
+            this.cmbMauSacMN.Enabled = false;
+            this.cmbMauSacMN.FormattingEnabled = true;
+            this.cmbMauSacMN.Items.AddRange(new object[] {
+            "Xanh",
+            "Vàng"});
+            this.cmbMauSacMN.Location = new System.Drawing.Point(437, 72);
+            this.cmbMauSacMN.Name = "cmbMauSacMN";
+            this.cmbMauSacMN.Size = new System.Drawing.Size(50, 21);
+            this.cmbMauSacMN.TabIndex = 56;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(381, 75);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(50, 13);
+            this.label32.TabIndex = 55;
+            this.label32.Text = "Màu Sắc";
+            // 
+            // txtNiemChiMN
+            // 
+            this.txtNiemChiMN.Location = new System.Drawing.Point(325, 72);
+            this.txtNiemChiMN.Name = "txtNiemChiMN";
+            this.txtNiemChiMN.ReadOnly = true;
+            this.txtNiemChiMN.Size = new System.Drawing.Size(50, 20);
+            this.txtNiemChiMN.TabIndex = 54;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(252, 75);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(67, 13);
+            this.label33.TabIndex = 53;
+            this.label33.Text = "Mã Niêm Chì";
+            // 
+            // cmbMauSacDN
+            // 
+            this.cmbMauSacDN.FormattingEnabled = true;
+            this.cmbMauSacDN.Items.AddRange(new object[] {
+            "Xanh",
+            "Vàng"});
+            this.cmbMauSacDN.Location = new System.Drawing.Point(191, 72);
+            this.cmbMauSacDN.Name = "cmbMauSacDN";
+            this.cmbMauSacDN.Size = new System.Drawing.Size(50, 21);
+            this.cmbMauSacDN.TabIndex = 52;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(135, 75);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(50, 13);
+            this.label31.TabIndex = 51;
+            this.label31.Text = "Màu Sắc";
             // 
             // txtMaKemBamChi
             // 
@@ -1076,6 +1135,47 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Kết Quả Đóng Nước lần 2";
             // 
+            // cmbMauSac1
+            // 
+            this.cmbMauSac1.Enabled = false;
+            this.cmbMauSac1.FormattingEnabled = true;
+            this.cmbMauSac1.Items.AddRange(new object[] {
+            "Xanh",
+            "Vàng"});
+            this.cmbMauSac1.Location = new System.Drawing.Point(492, 101);
+            this.cmbMauSac1.Name = "cmbMauSac1";
+            this.cmbMauSac1.Size = new System.Drawing.Size(50, 21);
+            this.cmbMauSac1.TabIndex = 60;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(436, 104);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(50, 13);
+            this.label35.TabIndex = 59;
+            this.label35.Text = "Màu Sắc";
+            // 
+            // cmbMauSac2
+            // 
+            this.cmbMauSac2.FormattingEnabled = true;
+            this.cmbMauSac2.Items.AddRange(new object[] {
+            "Xanh",
+            "Vàng"});
+            this.cmbMauSac2.Location = new System.Drawing.Point(219, 100);
+            this.cmbMauSac2.Name = "cmbMauSac2";
+            this.cmbMauSac2.Size = new System.Drawing.Size(50, 21);
+            this.cmbMauSac2.TabIndex = 58;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(163, 103);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(50, 13);
+            this.label34.TabIndex = 57;
+            this.label34.Text = "Màu Sắc";
+            // 
             // txtMaKemBamChi1
             // 
             this.txtMaKemBamChi1.Location = new System.Drawing.Point(380, 126);
@@ -1310,104 +1410,15 @@
             this.lbTo.TabIndex = 47;
             this.lbTo.Text = "Tổ:";
             // 
-            // label31
+            // btnCapNhatNgayTBDongNuoc
             // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(135, 75);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(50, 13);
-            this.label31.TabIndex = 51;
-            this.label31.Text = "Màu Sắc";
-            // 
-            // cmbMauSacDN
-            // 
-            this.cmbMauSacDN.FormattingEnabled = true;
-            this.cmbMauSacDN.Items.AddRange(new object[] {
-            "Xanh",
-            "Vàng"});
-            this.cmbMauSacDN.Location = new System.Drawing.Point(191, 72);
-            this.cmbMauSacDN.Name = "cmbMauSacDN";
-            this.cmbMauSacDN.Size = new System.Drawing.Size(50, 21);
-            this.cmbMauSacDN.TabIndex = 52;
-            // 
-            // cmbMauSacMN
-            // 
-            this.cmbMauSacMN.Enabled = false;
-            this.cmbMauSacMN.FormattingEnabled = true;
-            this.cmbMauSacMN.Items.AddRange(new object[] {
-            "Xanh",
-            "Vàng"});
-            this.cmbMauSacMN.Location = new System.Drawing.Point(437, 72);
-            this.cmbMauSacMN.Name = "cmbMauSacMN";
-            this.cmbMauSacMN.Size = new System.Drawing.Size(50, 21);
-            this.cmbMauSacMN.TabIndex = 56;
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(381, 75);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(50, 13);
-            this.label32.TabIndex = 55;
-            this.label32.Text = "Màu Sắc";
-            // 
-            // txtNiemChiMN
-            // 
-            this.txtNiemChiMN.Location = new System.Drawing.Point(325, 72);
-            this.txtNiemChiMN.Name = "txtNiemChiMN";
-            this.txtNiemChiMN.ReadOnly = true;
-            this.txtNiemChiMN.Size = new System.Drawing.Size(50, 20);
-            this.txtNiemChiMN.TabIndex = 54;
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(252, 75);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(67, 13);
-            this.label33.TabIndex = 53;
-            this.label33.Text = "Mã Niêm Chì";
-            // 
-            // cmbMauSac2
-            // 
-            this.cmbMauSac2.FormattingEnabled = true;
-            this.cmbMauSac2.Items.AddRange(new object[] {
-            "Xanh",
-            "Vàng"});
-            this.cmbMauSac2.Location = new System.Drawing.Point(219, 100);
-            this.cmbMauSac2.Name = "cmbMauSac2";
-            this.cmbMauSac2.Size = new System.Drawing.Size(50, 21);
-            this.cmbMauSac2.TabIndex = 58;
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(163, 103);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(50, 13);
-            this.label34.TabIndex = 57;
-            this.label34.Text = "Màu Sắc";
-            // 
-            // cmbMauSac1
-            // 
-            this.cmbMauSac1.Enabled = false;
-            this.cmbMauSac1.FormattingEnabled = true;
-            this.cmbMauSac1.Items.AddRange(new object[] {
-            "Xanh",
-            "Vàng"});
-            this.cmbMauSac1.Location = new System.Drawing.Point(492, 101);
-            this.cmbMauSac1.Name = "cmbMauSac1";
-            this.cmbMauSac1.Size = new System.Drawing.Size(50, 21);
-            this.cmbMauSac1.TabIndex = 60;
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(436, 104);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(50, 13);
-            this.label35.TabIndex = 59;
-            this.label35.Text = "Màu Sắc";
+            this.btnCapNhatNgayTBDongNuoc.Location = new System.Drawing.Point(446, 76);
+            this.btnCapNhatNgayTBDongNuoc.Name = "btnCapNhatNgayTBDongNuoc";
+            this.btnCapNhatNgayTBDongNuoc.Size = new System.Drawing.Size(75, 52);
+            this.btnCapNhatNgayTBDongNuoc.TabIndex = 49;
+            this.btnCapNhatNgayTBDongNuoc.Text = "Cập Nhật Ngày TB Đóng Nước";
+            this.btnCapNhatNgayTBDongNuoc.UseVisualStyleBackColor = true;
+            this.btnCapNhatNgayTBDongNuoc.Click += new System.EventHandler(this.btnCapNhatNgayTBDongNuoc_Click);
             // 
             // frmKQDongNuoc
             // 
@@ -1415,6 +1426,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1360, 666);
+            this.Controls.Add(this.btnCapNhatNgayTBDongNuoc);
             this.Controls.Add(this.cmbTo);
             this.Controls.Add(this.lbTo);
             this.Controls.Add(this.btnInDS);
@@ -1585,5 +1597,6 @@
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.ComboBox cmbMauSac2;
         private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Button btnCapNhatNgayTBDongNuoc;
     }
 }
