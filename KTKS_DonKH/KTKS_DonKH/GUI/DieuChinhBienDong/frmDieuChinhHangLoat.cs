@@ -61,15 +61,23 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     if (_db.DieuChinhHangLoats.Any(itemA => itemA.DanhBo == DanhBo && itemA.Nam == int.Parse(txtNam.Text.Trim()) && itemA.Ky == int.Parse(txtKy.Text.Trim())) == false)
                                     {
                                         DieuChinhHangLoat en = new DieuChinhHangLoat();
-                                        en.STT2 = int.Parse(item[0].ToString().Trim());
                                         en.DanhBo = DanhBo;
-                                        en.CSC = item[2].ToString().Trim();
-                                        en.CSM = item[3].ToString().Trim();
-                                        en.Code = item[5].ToString().Trim();
-                                        en.TieuThu = int.Parse(item[4].ToString().Trim());
                                         en.Nam = int.Parse(txtNam.Text.Trim());
                                         en.Ky = int.Parse(txtKy.Text.Trim());
                                         en.Dot = int.Parse(txtDot.Text.Trim());
+                                        en.STT2 = int.Parse(item[0].ToString().Trim());
+                                        //en.CSC = item[2].ToString().Trim();
+                                        //en.CSM = item[3].ToString().Trim();
+                                        //en.Code = item[5].ToString().Trim();
+                                        //en.TieuThu = int.Parse(item[4].ToString().Trim());
+                                        DocSo docso = _cDocSo.get(en.DanhBo, en.Ky, en.Nam);
+                                        if (docso != null)
+                                        {
+                                            en.CSC = docso.CSCu.Value.ToString();
+                                            en.CSM = docso.CSMoi.Value.ToString();
+                                            en.Code = docso.CodeMoi;
+                                            en.TieuThu = docso.TieuThuMoi;
+                                        }
                                         en.CreateBy = CTaiKhoan.MaUser;
                                         en.CreateDate = DateTime.Now;
                                         _db.DieuChinhHangLoats.InsertOnSubmit(en);

@@ -147,7 +147,7 @@
             this.txtDot.Name = "txtDot";
             this.txtDot.Size = new System.Drawing.Size(50, 20);
             this.txtDot.TabIndex = 89;
-            this.txtDot.Text = "1";
+            this.txtDot.Text = "8";
             // 
             // label3
             // 
@@ -164,7 +164,7 @@
             this.txtKy.Name = "txtKy";
             this.txtKy.Size = new System.Drawing.Size(50, 20);
             this.txtKy.TabIndex = 87;
-            this.txtKy.Text = "12";
+            this.txtKy.Text = "10";
             // 
             // label2
             // 
@@ -181,7 +181,7 @@
             this.txtNam.Name = "txtNam";
             this.txtNam.Size = new System.Drawing.Size(50, 20);
             this.txtNam.TabIndex = 85;
-            this.txtNam.Text = "2021";
+            this.txtNam.Text = "2022";
             // 
             // label1
             // 
