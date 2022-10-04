@@ -55,7 +55,7 @@ namespace DocSo_PC.GUI.MaHoa
                 if (item.Cells["DanhBo"].Value != null && item.Cells["DanhBo"].Value.ToString().Length == 11)
                 {
                     HOADON hd = _cThuTien.GetMoiNhat(item.Cells["DanhBo"].Value.ToString());
-                    if (hd != null )
+                    if (hd != null)
                         item.Cells["GiaBieuCu"].Value = hd.GB;
                 }
             }
@@ -71,7 +71,7 @@ namespace DocSo_PC.GUI.MaHoa
                 if (item.Cells["DanhBo"].Value != null && item.Cells["DanhBo"].Value.ToString().Length == 11)
                 {
                     HOADON hd = _cThuTien.GetMoiNhat(item.Cells["DanhBo"].Value.ToString());
-                    if (hd != null )
+                    if (hd != null)
                         item.Cells["GiaBieuCu"].Value = hd.GB;
                 }
             }
@@ -143,11 +143,22 @@ namespace DocSo_PC.GUI.MaHoa
                                 ctdcbd.Phuong = dontu.Phuong;
                                 ctdcbd.Quan = dontu.Quan;
                                 ctdcbd.GiaBieu = int.Parse(item.Cells["GiaBieuCu"].Value.ToString());
-                                ctdcbd.GiaBieu_BD = int.Parse(item.Cells["GiaBieuMoi"].Value.ToString());
+                                if (item.Cells["DiaChi_BD"].Value != null && item.Cells["DiaChi_BD"].Value.ToString() != "")
+                                {
+                                    ctdcbd.DiaChi_BD = item.Cells["DiaChi_BD"].Value.ToString();
+                                    ctdcbd.ThongTin = "Địa Chỉ";
+                                }
+                                if (item.Cells["GiaBieuMoi"].Value != null && item.Cells["GiaBieuMoi"].Value.ToString() != "")
+                                {
+                                    ctdcbd.GiaBieu_BD = int.Parse(item.Cells["GiaBieuMoi"].Value.ToString());
+                                    if (ctdcbd.ThongTin == "")
+                                        ctdcbd.ThongTin = "Giá Biểu";
+                                    else
+                                        ctdcbd.ThongTin += ", Giá Biểu";
+                                }
                                 ctdcbd.DinhMuc = dontu.DinhMuc;
                                 ctdcbd.DinhMucHN = dontu.DinhMucHN;
                                 ctdcbd.HieuLucKy = item.Cells["HieuLucKy"].Value.ToString();
-                                ctdcbd.ThongTin = "Giá Biểu";
                                 ctdcbd.CongDung = item.Cells["GhiChu"].Value.ToString();
                                 ctdcbd.PhieuDuocKy = true;
                                 if (_cDCBD.Them(ctdcbd))
@@ -283,6 +294,8 @@ namespace DocSo_PC.GUI.MaHoa
                             //dr["HopDong"] = en.HopDong;
                             dr["HoTen"] = en.HoTen;
                             dr["DiaChi"] = en.DiaChi;
+                            dr["HoTenBD"] = en.HoTen_BD;
+                            dr["DiaChiBD"] = en.DiaChi_BD;
                             dr["MaQuanPhuong"] = en.MaQuanPhuong;
                             dr["GiaBieu"] = en.GiaBieu;
                             dr["DinhMuc"] = en.DinhMuc;
@@ -328,6 +341,8 @@ namespace DocSo_PC.GUI.MaHoa
                             //dr["HopDong"] = en.HopDong;
                             dr["HoTen"] = en.HoTen;
                             dr["DiaChi"] = en.DiaChi;
+                            dr["HoTenBD"] = en.HoTen_BD;
+                            dr["DiaChiBD"] = en.DiaChi_BD;
                             dr["MaQuanPhuong"] = en.MaQuanPhuong;
                             dr["GiaBieu"] = en.GiaBieu;
                             dr["DinhMuc"] = en.DinhMuc;
@@ -666,16 +681,33 @@ namespace DocSo_PC.GUI.MaHoa
                                 MaHoa_DCBD en = _cDCBD.get(int.Parse(item.Cells["ID_DS"].Value.ToString()));
                                 if (en != null)
                                 {
+                                    string sql = "";
+                                    if (!string.IsNullOrEmpty(en.DiaChi_BD))
+                                    {
+                                        if (sql == "")
+                                            sql += " DiaChiHoaDon=N'" + en.DiaChi_BD + "',SOHO=SONHA+' '+TENDUONG,SONHA=N'" + en.DiaChi_BD.Substring(0, en.DiaChi_BD.IndexOf(" ")) + "',TENDUONG=N'" + en.DiaChi_BD.Substring((en.DiaChi_BD.IndexOf(" ") + 1), en.DiaChi_BD.Length - en.DiaChi_BD.IndexOf(" ") - 1) + "'";
+                                        else
+                                            sql += ",DiaChiHoaDon=N'" + en.DiaChi_BD + "',SOHO=SONHA+' '+TENDUONG,SONHA=N'" + en.DiaChi_BD.Substring(0, en.DiaChi_BD.IndexOf(" ")) + "',TENDUONG=N'" + en.DiaChi_BD.Substring((en.DiaChi_BD.IndexOf(" ") + 1), en.DiaChi_BD.Length - en.DiaChi_BD.IndexOf(" ") - 1) + "'";
+                                    }
                                     if (!string.IsNullOrEmpty(en.GiaBieu_BD.ToString()))
                                     {
-                                        CDHN._cDAL.ExecuteNonQuery("update TB_DULIEUKHACHHANG set GIABIEU=" + en.GiaBieu_BD.Value.ToString() + " where DANHBO='" + en.DanhBo + "'");
+                                        if (sql == "")
+                                            sql += "GIABIEU=" + en.GiaBieu_BD.Value.ToString();
+                                        else
+                                            sql += ",GIABIEU=" + en.GiaBieu_BD.Value.ToString();
                                     }
+                                    if (sql != "")
+                                        CDHN._cDAL.ExecuteNonQuery("update TB_DULIEUKHACHHANG set " + sql + " where DANHBO='" + en.DanhBo + "'");
                                     TB_GHICHU ghichu = new TB_GHICHU();
                                     ghichu.DANHBO = en.DanhBo;
                                     ghichu.DONVI = "QLDHN";
                                     ghichu.NOIDUNG = "PYC: " + en.ID.ToString();
                                     ghichu.NOIDUNG += " ," + en.CreateDate.Value.ToString("dd/MM/yyyy");
                                     ghichu.NOIDUNG += " - HL : " + en.HieuLucKy + " - ĐC";
+                                    if (!string.IsNullOrEmpty(en.DiaChi_BD))
+                                    {
+                                        ghichu.NOIDUNG += " Địa Chỉ: " + en.DiaChi_BD + ",";
+                                    }
                                     if (!string.IsNullOrEmpty(en.GiaBieu_BD.ToString()))
                                     {
                                         ghichu.NOIDUNG += " Giá Biểu Từ " + en.GiaBieu + " -> " + en.GiaBieu_BD + ",";
@@ -716,20 +748,23 @@ namespace DocSo_PC.GUI.MaHoa
                                 MaHoa_DCBD en = _cDCBD.get(int.Parse(item.Cells["ID_DS"].Value.ToString()));
                                 if (en != null)
                                 {
+                                    string sql = "";
+                                    if (!string.IsNullOrEmpty(en.DiaChi_BD))
+                                    {
+                                        if (sql == "")
+                                            sql += " DiaChiHoaDon=N'" + en.DiaChi + "',SONHA=N'" + en.DiaChi.Substring(0, en.DiaChi.IndexOf(" ")) + "',TENDUONG=N'" + en.DiaChi.Substring((en.DiaChi.IndexOf(" ") + 1), en.DiaChi.Length - en.DiaChi.IndexOf(" ") - 1) + "'";
+                                        else
+                                            sql += ",DiaChiHoaDon=N'" + en.DiaChi + "',SONHA=N'" + en.DiaChi.Substring(0, en.DiaChi.IndexOf(" ")) + "',TENDUONG=N'" + en.DiaChi.Substring((en.DiaChi.IndexOf(" ") + 1), en.DiaChi.Length - en.DiaChi.IndexOf(" ") - 1) + "'";
+                                    }
                                     if (!string.IsNullOrEmpty(en.GiaBieu_BD.ToString()))
                                     {
-                                        CDHN._cDAL.ExecuteNonQuery("update TB_DULIEUKHACHHANG set GIABIEU=" + en.GiaBieu.Value.ToString() + " where DANHBO='" + en.DanhBo + "'");
+                                        if (sql == "")
+                                            sql += " GIABIEU=" + en.GiaBieu.Value.ToString();
+                                        else
+                                            sql += ",GIABIEU=" + en.GiaBieu.Value.ToString();
                                     }
-                                    //TB_GHICHU ghichu = new TB_GHICHU();
-                                    //ghichu.DANHBO = en.DanhBo;
-                                    //ghichu.DONVI = "Đ. QLĐHN";
-                                    //ghichu.NOIDUNG = "PYC: " + en.ID.ToString();
-                                    //ghichu.NOIDUNG += " ," + en.CreateDate.Value.ToString("dd/MM/yyyy");
-                                    //ghichu.NOIDUNG += " - HL : " + en.HieuLucKy + " - ĐC";
-                                    //if (!string.IsNullOrEmpty(en.GiaBieu_BD.ToString()))
-                                    //{
-                                    //    ghichu.NOIDUNG += " Giá Biểu Từ " + en.GiaBieu + " -> " + en.GiaBieu_BD + ",";
-                                    //}
+                                    if (sql != "")
+                                        CDHN._cDAL.ExecuteNonQuery("update TB_DULIEUKHACHHANG set " + sql + " where DANHBO='" + en.DanhBo + "'");
                                     string sqlGhiChu = "delete from TB_GHICHU where DONVI=N'QLDHN' and DANHBO='" + en.DanhBo + "' and NOIDUNG like 'PYC: " + en.ID.ToString() + "%'";
                                     if (CDHN._cDAL.ExecuteNonQuery(sqlGhiChu))
                                     {
