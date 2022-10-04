@@ -263,6 +263,7 @@ namespace ThuTien.GUI.Doi
                                             hoadon.TBDongNuoc_Ngay = hoadonLenh.TBDongNuoc_Ngay;
                                             hoadon.TBDongNuoc_NgayHen = hoadonLenh.TBDongNuoc_NgayHen;
                                             hoadon.TBDongNuoc_Location = hoadonLenh.TBDongNuoc_Location;
+                                            //_cHoaDon.Sua(hoadon);
                                             TT_CTDongNuoc ctdongnuoc = new TT_CTDongNuoc();
                                             ctdongnuoc.MaDN = dongnuoc.MaDN;
                                             ctdongnuoc.MaHD = _cHoaDon.Get(hoadon.DANHBA, hoadon.NAM, hoadon.KY).ID_HOADON;
@@ -277,6 +278,7 @@ namespace ThuTien.GUI.Doi
                                             ctdongnuoc.CreateDate = DateTime.Now;
                                             dongnuoc.TT_CTDongNuocs.Add(ctdongnuoc);
                                             _cDongNuoc.SuaDN(dongnuoc);
+
                                         }
                                         //thêm hóa đơn mới vào lệnh hủy
                                         if (_cLenhHuy.CheckExist_Ton(hoadon.DANHBA, NamTemp, KyTemp) == true)
