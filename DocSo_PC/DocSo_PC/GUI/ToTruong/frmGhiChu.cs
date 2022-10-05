@@ -11,6 +11,7 @@ using DocSo_PC.DAL.QuanTri;
 using DocSo_PC.LinQ;
 using DocSo_PC.DAL;
 using System.Globalization;
+using DocSo_PC.DAL.MaHoa;
 
 namespace DocSo_PC.GUI.ToTruong
 {
@@ -269,26 +270,56 @@ namespace DocSo_PC.GUI.ToTruong
                         _enDLKH.ViTriDHN_Ngoai = chkViTriDHN_Ngoai.Checked;
                         _enDLKH.ViTriDHN_Hop = chkViTriDHN_Hop.Checked;
                         _enDLKH.Gieng = chkGieng.Checked;
-                        if (_enDLKH.AmSau)
+                        if (_enDLKH.AmSau && _enDLKH.AmSau != chkAmSau.Checked)
+                        {
                             _enDLKH.AmSau = chkAmSau.Checked;
-                        if (_enDLKH.XayDung)
+                            CPhieuChuyenLichSu.them(_enDLKH.DANHBO, "Âm Sâu", "Xóa");
+                        }
+                        if (_enDLKH.XayDung && _enDLKH.XayDung != chkXayDung.Checked)
+                        {
                             _enDLKH.XayDung = chkXayDung.Checked;
-                        if (_enDLKH.DutChi_Goc)
+                            CPhieuChuyenLichSu.them(_enDLKH.DANHBO, "Xây Dựng", "Xóa");
+                        }
+                        if (_enDLKH.DutChi_Goc && _enDLKH.DutChi_Goc != chkDutChiGoc.Checked)
+                        {
                             _enDLKH.DutChi_Goc = chkDutChiGoc.Checked;
-                        if (_enDLKH.DutChi_Than)
+                            CPhieuChuyenLichSu.them(_enDLKH.DANHBO, "Đứt Chì Góc", "Xóa");
+                        }
+                        if (_enDLKH.DutChi_Than && _enDLKH.DutChi_Than != chkDutChiThan.Checked)
+                        {
                             _enDLKH.DutChi_Than = chkDutChiThan.Checked;
-                        if (_enDLKH.NgapNuoc)
+                            CPhieuChuyenLichSu.them(_enDLKH.DANHBO, "Đứt Chì Thân", "Xóa");
+                        }
+                        if (_enDLKH.NgapNuoc && _enDLKH.NgapNuoc != chkNgapNuoc.Checked)
+                        {
                             _enDLKH.NgapNuoc = chkNgapNuoc.Checked;
-                        if (_enDLKH.KetTuong)
+                            CPhieuChuyenLichSu.them(_enDLKH.DANHBO, "Ngập Nước", "Xóa");
+                        }
+                        if (_enDLKH.KetTuong && _enDLKH.KetTuong != chkKetTuong.Checked)
+                        {
                             _enDLKH.KetTuong = chkKetTuong.Checked;
-                        if (_enDLKH.LapKhoaGoc)
+                            CPhieuChuyenLichSu.them(_enDLKH.DANHBO, "Kẹt Tường", "Xóa");
+                        }
+                        if (_enDLKH.LapKhoaGoc && _enDLKH.LapKhoaGoc != chkLapKhoaGoc.Checked)
+                        {
                             _enDLKH.LapKhoaGoc = chkLapKhoaGoc.Checked;
-                        if (_enDLKH.BeHBV)
+                            CPhieuChuyenLichSu.them(_enDLKH.DANHBO, "Lấp Khóa Góc", "Xóa");
+                        }
+                        if (_enDLKH.BeHBV && _enDLKH.BeHBV != chkBeHBV.Checked)
+                        {
                             _enDLKH.BeHBV = chkBeHBV.Checked;
-                        if (_enDLKH.BeNapMatNapHBV)
+                            CPhieuChuyenLichSu.them(_enDLKH.DANHBO, "Bể Hộp Bảo Vệ", "Xóa");
+                        }
+                        if (_enDLKH.BeNapMatNapHBV && _enDLKH.BeNapMatNapHBV != chkBeNapMatNapHBV.Checked)
+                        {
                             _enDLKH.BeNapMatNapHBV = chkBeNapMatNapHBV.Checked;
-                        if (_enDLKH.GayTayVan)
+                            CPhieuChuyenLichSu.them(_enDLKH.DANHBO, "Bể Nấp, Mất Nấp Hộp Bảo Vệ", "Xóa");
+                        }
+                        if (_enDLKH.GayTayVan && _enDLKH.GayTayVan != chkGayTayVan.Checked)
+                        {
                             _enDLKH.GayTayVan = chkGayTayVan.Checked;
+                            CPhieuChuyenLichSu.them(_enDLKH.DANHBO, "Gãy Tay Van", "Xóa");
+                        }
                         _enDLKH.MauSacChiGoc = cmbMauSacChiGoc.SelectedItem.ToString();
                         _cDHN.SubmitChanges();
                         //foreach (DataGridViewRow item in dgvDienThoai.Rows)

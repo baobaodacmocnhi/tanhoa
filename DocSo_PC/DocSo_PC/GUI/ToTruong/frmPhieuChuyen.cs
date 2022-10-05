@@ -13,6 +13,7 @@ using DocSo_PC.BaoCao;
 using DocSo_PC.BaoCao.ToTruong;
 using DocSo_PC.GUI.BaoCao;
 using DocSo_PC.DAL.Doi;
+using DocSo_PC.DAL.MaHoa;
 
 namespace DocSo_PC.GUI.ToTruong
 {
@@ -23,6 +24,7 @@ namespace DocSo_PC.GUI.ToTruong
         CDHN _cDHN = new CDHN();
         CDocSo _cDocSo = new CDocSo();
         CThuTien _cThuTien = new CThuTien();
+        CDonTu _cDonTu = new CDonTu();
         wrDHN.wsDHN _wsDHN = new wrDHN.wsDHN();
 
         public frmPhieuChuyen()
@@ -49,6 +51,13 @@ namespace DocSo_PC.GUI.ToTruong
             {
                 lbTo.Text = "Tổ  " + CNguoiDung.TenTo;
             }
+            DataTable dt = _cDonTu.getDS_PhieuChuyenApp_KhongLapDon();
+            DataRow dr = dt.NewRow();
+            dr["Name"] = "Tất Cả";
+            dt.Rows.InsertAt(dr, 0);
+            cmbLoai.DataSource = dt;
+            cmbLoai.DisplayMember = "Name";
+            cmbLoai.ValueMember = "Name";
             cmbLoai.SelectedIndex = 0;
         }
 
@@ -108,6 +117,19 @@ namespace DocSo_PC.GUI.ToTruong
                         dgvDanhSach.DataSource = _cDHN.getDS_DutChiThan(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
                     }
                     break;
+                case "Đứt Chì Góc + Thân":
+                    if (CNguoiDung.Doi)
+                    {
+                        if (cmbTo.SelectedIndex == 0)
+                            dgvDanhSach.DataSource = _cDHN.getDS_DutChiGocThan(dateTuNgay.Value, dateDenNgay.Value);
+                        else
+                            dgvDanhSach.DataSource = _cDHN.getDS_DutChiGocThan(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
+                    }
+                    else
+                    {
+                        dgvDanhSach.DataSource = _cDHN.getDS_DutChiGocThan(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
+                    }
+                    break;
                 case "Ngập Nước":
                     if (CNguoiDung.Doi)
                     {
@@ -147,7 +169,7 @@ namespace DocSo_PC.GUI.ToTruong
                         dgvDanhSach.DataSource = _cDHN.getDS_LapKhoaGoc(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
                     }
                     break;
-                case "Bể Hộp Bảo Vệ":
+                case "Bể HBV":
                     if (CNguoiDung.Doi)
                     {
                         if (cmbTo.SelectedIndex == 0)
@@ -160,7 +182,7 @@ namespace DocSo_PC.GUI.ToTruong
                         dgvDanhSach.DataSource = _cDHN.getDS_BeHBV(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
                     }
                     break;
-                case "Bể Nấp, Mất Nấp Hộp Bảo Vệ":
+                case "Bể Nấp, Mất Nấp HBV":
                     if (CNguoiDung.Doi)
                     {
                         if (cmbTo.SelectedIndex == 0)
@@ -196,6 +218,7 @@ namespace DocSo_PC.GUI.ToTruong
                             dt.Merge(_cDHN.getDS_XayDung(dateTuNgay.Value, dateDenNgay.Value));
                             dt.Merge(_cDHN.getDS_DutChiGoc(dateTuNgay.Value, dateDenNgay.Value));
                             dt.Merge(_cDHN.getDS_DutChiThan(dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDHN.getDS_DutChiGocThan(dateTuNgay.Value, dateDenNgay.Value));
                             dt.Merge(_cDHN.getDS_NgapNuoc(dateTuNgay.Value, dateDenNgay.Value));
                             dt.Merge(_cDHN.getDS_KetTuong(dateTuNgay.Value, dateDenNgay.Value));
                             dt.Merge(_cDHN.getDS_LapKhoaGoc(dateTuNgay.Value, dateDenNgay.Value));
@@ -209,6 +232,7 @@ namespace DocSo_PC.GUI.ToTruong
                             dt.Merge(_cDHN.getDS_XayDung(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
                             dt.Merge(_cDHN.getDS_DutChiGoc(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
                             dt.Merge(_cDHN.getDS_DutChiThan(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDHN.getDS_DutChiGocThan(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
                             dt.Merge(_cDHN.getDS_NgapNuoc(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
                             dt.Merge(_cDHN.getDS_KetTuong(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
                             dt.Merge(_cDHN.getDS_LapKhoaGoc(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
@@ -223,6 +247,7 @@ namespace DocSo_PC.GUI.ToTruong
                         dt.Merge(_cDHN.getDS_XayDung(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
                         dt.Merge(_cDHN.getDS_DutChiGoc(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
                         dt.Merge(_cDHN.getDS_DutChiThan(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
+                        dt.Merge(_cDHN.getDS_DutChiGocThan(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
                         dt.Merge(_cDHN.getDS_NgapNuoc(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
                         dt.Merge(_cDHN.getDS_KetTuong(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
                         dt.Merge(_cDHN.getDS_LapKhoaGoc(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
@@ -367,42 +392,59 @@ namespace DocSo_PC.GUI.ToTruong
                                 case "Âm Sâu":
                                     ttkh.AmSau = true;
                                     ttkh.AmSau_Ngay = DateTime.Now;
+                                    CPhieuChuyenLichSu.them(ttkh.DANHBO, "Âm Sâu", "Thêm");
                                     break;
                                 case "Xây Dựng":
                                     ttkh.XayDung = true;
                                     ttkh.XayDung_Ngay = DateTime.Now;
+                                    CPhieuChuyenLichSu.them(ttkh.DANHBO, "Xây Dựng", "Thêm");
                                     break;
                                 case "Đứt Chì Góc":
                                     ttkh.DutChi_Goc = true;
                                     ttkh.DutChi_Goc_Ngay = DateTime.Now;
+                                    CPhieuChuyenLichSu.them(ttkh.DANHBO, "Đứt Chì Góc", "Thêm");
                                     break;
                                 case "Đứt Chì Thân":
                                     ttkh.DutChi_Than = true;
                                     ttkh.DutChi_Than_Ngay = DateTime.Now;
+                                    CPhieuChuyenLichSu.them(ttkh.DANHBO, "Đứt Chì Thân", "Thêm");
+                                    break;
+                                case "Đứt Chì Góc + Thân":
+                                    ttkh.DutChi_Goc = true;
+                                    ttkh.DutChi_Goc_Ngay = DateTime.Now;
+                                    ttkh.DutChi_Than = true;
+                                    ttkh.DutChi_Than_Ngay = DateTime.Now;
+                                    CPhieuChuyenLichSu.them(ttkh.DANHBO, "Đứt Chì Góc + Thân", "Thêm");
                                     break;
                                 case "Ngập Nước":
                                     ttkh.NgapNuoc = true;
                                     ttkh.NgapNuoc_Ngay = DateTime.Now;
+                                    CPhieuChuyenLichSu.them(ttkh.DANHBO, "Ngập Nước", "Thêm");
                                     break;
                                 case "Kẹt Tường":
                                     ttkh.KetTuong = true;
                                     ttkh.KetTuong_Ngay = DateTime.Now;
+                                    CPhieuChuyenLichSu.them(ttkh.DANHBO, "Kẹt Tường", "Thêm");
                                     break;
                                 case "Lấp Khóa Góc":
                                     ttkh.LapKhoaGoc = true;
                                     ttkh.LapKhoaGoc_Ngay = DateTime.Now;
+                                    CPhieuChuyenLichSu.them(ttkh.DANHBO, "Lấp Khóa Góc", "Thêm");
                                     break;
-                                case "Bể Hộp Bảo Vệ":
+                                case "Bể HBV":
                                     ttkh.BeHBV = true;
                                     ttkh.BeHBV_Ngay = DateTime.Now;
+                                    CPhieuChuyenLichSu.them(ttkh.DANHBO, "Bể HBV", "Thêm");
                                     break;
-                                case "Bể Nấp, Mất Nấp Hộp Bảo Vệ":
+                                case "Bể Nấp, Mất Nấp HBV":
                                     ttkh.BeNapMatNapHBV = true;
                                     ttkh.BeNapMatNapHBV_Ngay = DateTime.Now;
+                                    CPhieuChuyenLichSu.them(ttkh.DANHBO, "Bể Nấp, Mất Nấp HBV", "Thêm");
                                     break;
                                 case "Gãy Tay Van":
                                     ttkh.GayTayVan = true;
                                     ttkh.GayTayVan_Ngay = DateTime.Now;
+                                    CPhieuChuyenLichSu.them(ttkh.DANHBO, "Gãy Tay Van", "Thêm");
                                     break;
                                 default:
                                     break;

@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>195</ApplicationRevision>
+    <ApplicationRevision>197</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -208,6 +208,7 @@
     <Compile Include="DAL\MaHoa\CDCBD.cs" />
     <Compile Include="DAL\MaHoa\CDonTu.cs" />
     <Compile Include="DAL\MaHoa\CKTXM.cs" />
+    <Compile Include="DAL\MaHoa\CPhieuChuyenLichSu.cs" />
     <Compile Include="DAL\MaHoa\CToTrinh.cs" />
     <Compile Include="DAL\QuanTri\CMayDS.cs" />
     <Compile Include="DAL\sDHN\CsDHN.cs" />

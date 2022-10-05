@@ -784,6 +784,14 @@ namespace DocSo_PC.LinQ
 				return this.GetTable<UserGroup>();
 			}
 		}
+		
+		public System.Data.Linq.Table<MaHoa_PhieuChuyen_LichSu> MaHoa_PhieuChuyen_LichSus
+		{
+			get
+			{
+				return this.GetTable<MaHoa_PhieuChuyen_LichSu>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.BaoThay")]
@@ -32041,6 +32049,87 @@ namespace DocSo_PC.LinQ
 				if ((this._DS != value))
 				{
 					this._DS = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.MaHoa_PhieuChuyen_LichSu")]
+	public partial class MaHoa_PhieuChuyen_LichSu
+	{
+		
+		private string _DanhBo;
+		
+		private string _NoiDung;
+		
+		private string _GhiChu;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		public MaHoa_PhieuChuyen_LichSu()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DanhBo", DbType="Char(11)")]
+		public string DanhBo
+		{
+			get
+			{
+				return this._DanhBo;
+			}
+			set
+			{
+				if ((this._DanhBo != value))
+				{
+					this._DanhBo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NoiDung", DbType="NVarChar(200)")]
+		public string NoiDung
+		{
+			get
+			{
+				return this._NoiDung;
+			}
+			set
+			{
+				if ((this._NoiDung != value))
+				{
+					this._NoiDung = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GhiChu", DbType="NVarChar(50)")]
+		public string GhiChu
+		{
+			get
+			{
+				return this._GhiChu;
+			}
+			set
+			{
+				if ((this._GhiChu != value))
+				{
+					this._GhiChu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this._CreateDate = value;
 				}
 			}
 		}

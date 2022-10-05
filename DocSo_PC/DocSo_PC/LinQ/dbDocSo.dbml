@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DocSoTH" Class="dbDocSoDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=hp_g7\kd;Initial Catalog=DocSoTH;Persist Security Info=True;User ID=sa" SettingsObjectName="DocSo_PC.Properties.Settings" SettingsPropertyName="DocSoTHConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=server9;Initial Catalog=DocSoTH;Persist Security Info=True;User ID=sa" SettingsObjectName="DocSo_PC.Properties.Settings" SettingsPropertyName="DocSoTHConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.BaoThay" Member="BaoThays">
     <Type Name="BaoThay">
       <Column Name="BaoThayID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -1514,6 +1514,14 @@
       <Column Name="T4" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="TV" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="DS" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MaHoa_PhieuChuyen_LichSu" Member="MaHoa_PhieuChuyen_LichSus">
+    <Type Name="MaHoa_PhieuChuyen_LichSu">
+      <Column Name="DanhBo" Type="System.String" DbType="Char(11)" CanBeNull="true" />
+      <Column Name="NoiDung" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="GhiChu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
 </Database>
