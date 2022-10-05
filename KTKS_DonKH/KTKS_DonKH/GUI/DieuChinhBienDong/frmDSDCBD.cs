@@ -3282,8 +3282,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void btnCapNhatThuTien_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Tính năng tạm dừng do yêu cầu của Đ. Thu Tiền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            return;
+            if (!CTaiKhoan.Admin)
+            {
+                MessageBox.Show("Tính năng tạm dừng do yêu cầu của Đ. Thu Tiền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             try
             {
                 if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))

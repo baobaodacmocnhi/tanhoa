@@ -132,6 +132,7 @@
             this.mnuCongVanDi_PKH = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuGuiTinNhanZalo = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSuCoNgungCungCapNuoc = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCapNhatDienThoai = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -938,7 +939,8 @@
             this.mnuTraHopDong,
             this.mnuCongVanDi_PKH,
             this.mnuGuiTinNhanZalo,
-            this.mnuSuCoNgungCungCapNuoc});
+            this.mnuSuCoNgungCungCapNuoc,
+            this.mnuCapNhatDienThoai});
             this.mnuPhongKhachHang.Name = "mnuPhongKhachHang";
             this.mnuPhongKhachHang.Size = new System.Drawing.Size(135, 20);
             this.mnuPhongKhachHang.Text = "Phòng Khách Hàng";
@@ -971,6 +973,13 @@
             this.mnuSuCoNgungCungCapNuoc.Size = new System.Drawing.Size(252, 22);
             this.mnuSuCoNgungCungCapNuoc.Text = "Sự Cố Ngưng Cung Cấp Nước";
             this.mnuSuCoNgungCungCapNuoc.Click += new System.EventHandler(this.mnuSuCoNgungCungCapNuoc_Click);
+            // 
+            // mnuCapNhatDienThoai
+            // 
+            this.mnuCapNhatDienThoai.Name = "mnuCapNhatDienThoai";
+            this.mnuCapNhatDienThoai.Size = new System.Drawing.Size(252, 22);
+            this.mnuCapNhatDienThoai.Text = "Cập Nhật Điện Thoại";
+            this.mnuCapNhatDienThoai.Click += new System.EventHandler(this.mnuCapNhatDienThoai_Click);
             // 
             // tabControl
             // 
@@ -1142,5 +1151,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuDieuChinhHangLoat;
         private System.Windows.Forms.ToolStripMenuItem mnuCapDinhMucNuocCCCD;
         private System.Windows.Forms.ToolStripMenuItem mnuSuCoNgungCungCapNuoc;
+        private System.Windows.Forms.ToolStripMenuItem mnuCapNhatDienThoai;
     }
 }

@@ -1165,6 +1165,17 @@ namespace KTKS_DonKH
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuCapNhatDienThoai_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuCapNhatDienThoai", "Xem"))
+            {
+                frmCapNhatDienThoai frm = new frmCapNhatDienThoai();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
       
 
        

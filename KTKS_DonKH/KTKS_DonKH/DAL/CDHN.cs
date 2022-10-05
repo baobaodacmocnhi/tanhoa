@@ -82,7 +82,7 @@ namespace KTKS_DonKH.DAL
         public TB_DULIEUKHACHHANG GetTTKH(string DanhBo)
         {
             //if (db.TB_DULIEUKHACHHANGs.Any(item => item.DANHBO == DanhBo) == true)
-                return db.TB_DULIEUKHACHHANGs.SingleOrDefault(itemDLKH => itemDLKH.DANHBO == DanhBo);
+            return db.TB_DULIEUKHACHHANGs.SingleOrDefault(itemDLKH => itemDLKH.DANHBO == DanhBo);
             //else
             //{
             //    TB_DULIEUKHACHHANG entity = new TB_DULIEUKHACHHANG();
@@ -254,8 +254,8 @@ namespace KTKS_DonKH.DAL
 
         public string GetDot(string DanhBo)
         {
-            if (db.TB_DULIEUKHACHHANGs.Any(item => item.DANHBO == DanhBo)==true)
-            return db.TB_DULIEUKHACHHANGs.SingleOrDefault(item => item.DANHBO == DanhBo).LOTRINH.Substring(0, 2);
+            if (db.TB_DULIEUKHACHHANGs.Any(item => item.DANHBO == DanhBo) == true)
+                return db.TB_DULIEUKHACHHANGs.SingleOrDefault(item => item.DANHBO == DanhBo).LOTRINH.Substring(0, 2);
             else
                 return db.TB_DULIEUKHACHHANG_HUYDBs.SingleOrDefault(item => item.DANHBO == DanhBo).LOTRINH.Substring(0, 2);
         }
@@ -277,12 +277,63 @@ namespace KTKS_DonKH.DAL
 
         public DataTable TimKiem(string DanhBo)
         {
-            return ExecuteQuery_DataTable("select DanhBo,HoTen,DiaChi=(SONHA+' '+TENDUONG) from TB_DULIEUKHACHHANG where DanhBo like '%"+DanhBo+"%'");
+            return ExecuteQuery_DataTable("select DanhBo,HoTen,DiaChi=(SONHA+' '+TENDUONG) from TB_DULIEUKHACHHANG where DanhBo like '%" + DanhBo + "%'");
         }
 
-        public DataTable TimKiem(string HoTen,string SoNha,string TenDuong)
+        public DataTable TimKiem(string HoTen, string SoNha, string TenDuong)
         {
             return ExecuteQuery_DataTable("select DanhBo,HoTen,DiaChi=(SONHA+' '+TENDUONG) from TB_DULIEUKHACHHANG where HoTen like '%" + HoTen + "%' and SONHA like '%" + SoNha + "%' and TENDUONG like '%" + TenDuong + "%'");
         }
+
+        //điện thoại
+        public bool checkExists_DienThoai(string DanhBo, string DienThoai)
+        {
+            return db.SDT_DHNs.Any(item => item.DanhBo == DanhBo && item.DienThoai == DienThoai);
+        }
+
+        public bool them_DienThoai(SDT_DHN en)
+        {
+            try
+            {
+                en.CreateBy = CTaiKhoan.MaUser;
+                en.CreateDate = DateTime.Now;
+                db.SDT_DHNs.InsertOnSubmit(en);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+
+        }
+
+        public bool xoa_DienThoai(SDT_DHN en)
+        {
+            try
+            {
+                db.SDT_DHNs.DeleteOnSubmit(en);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+
+        }
+
+        public SDT_DHN get_DienThoai(string DanhBo, string DienThoai)
+        {
+            return db.SDT_DHNs.SingleOrDefault(item => item.DanhBo == DanhBo && item.DienThoai == DienThoai);
+        }
+
+        public DataTable getDS_DienThoai(string DanhBo)
+        {
+            return ExecuteQuery_DataTable("select * from SDT_DHN where DanhBo='" + DanhBo + "' order by CreateDate desc");
+        }
+
     }
 }
