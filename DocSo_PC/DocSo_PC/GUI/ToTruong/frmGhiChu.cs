@@ -321,6 +321,8 @@ namespace DocSo_PC.GUI.ToTruong
                             CPhieuChuyenLichSu.them(_enDLKH.DANHBO, "Gãy Tay Van", "Xóa");
                         }
                         _enDLKH.MauSacChiGoc = cmbMauSacChiGoc.SelectedItem.ToString();
+                        _enDLKH.MODIFYBY = CNguoiDung.MaND.ToString();
+                        _enDLKH.MODIFYDATE = DateTime.Now;
                         _cDHN.SubmitChanges();
                         //foreach (DataGridViewRow item in dgvDienThoai.Rows)
                         //{

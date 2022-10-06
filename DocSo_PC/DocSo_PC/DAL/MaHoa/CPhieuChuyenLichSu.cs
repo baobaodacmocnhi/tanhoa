@@ -10,7 +10,8 @@ namespace DocSo_PC.DAL.MaHoa
     {
         public static bool them(string DanhBo, string NoiDung, string GhiChu)
         {
-            return _cDAL.ExecuteNonQuery("insert into MaHoa_PhieuChuyen_LichSu(DanhBo,NoiDung,GhiChu,CreateBy,CreateDate)values('" + DanhBo + "',N'" + NoiDung + "',N'" + GhiChu + "'," + CNguoiDung.MaND + ",getdate())");
+            //return _cDAL.ExecuteNonQuery("insert into MaHoa_PhieuChuyen_LichSu(DanhBo,NoiDung,GhiChu,CreateBy,CreateDate)values('" + DanhBo + "',N'" + NoiDung + "',N'" + GhiChu + "'," + CNguoiDung.MaND + ",getdate())");
+            return true;
         }
     }
 }

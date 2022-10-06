@@ -63,7 +63,7 @@ namespace DocSo_PC.GUI.ToTruong
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            switch (cmbLoai.SelectedItem.ToString())
+            switch (cmbLoai.SelectedValue.ToString())
             {
                 case "Âm Sâu":
                     if (CNguoiDung.Doi)
@@ -387,7 +387,7 @@ namespace DocSo_PC.GUI.ToTruong
                         TB_DULIEUKHACHHANG ttkh = _cDHN.get(txtDanhBo.Text.Trim().Replace("-", "").Replace(" ", ""));
                         if (ttkh != null)
                         {
-                            switch (cmbLoai.SelectedItem.ToString())
+                            switch (cmbLoai.SelectedValue.ToString())
                             {
                                 case "Âm Sâu":
                                     ttkh.AmSau = true;
