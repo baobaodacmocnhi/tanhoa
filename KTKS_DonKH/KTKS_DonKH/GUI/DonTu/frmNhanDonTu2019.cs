@@ -33,7 +33,7 @@ namespace KTKS_DonKH.GUI.DonTu
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
         CPhongBanDoi _cPBD = new CPhongBanDoi();
         CDocSo _cDocSo = new CDocSo();
-
+        wsThuongVu.wsThuongVu _wsThuongVu = new wsThuongVu.wsThuongVu();
         LinQ.DonTu _dontu = null;
         HOADON _hoadon = null;
         int _MaDon = -1;
@@ -138,8 +138,6 @@ namespace KTKS_DonKH.GUI.DonTu
             string strDuongCamDao = _cGanMoi.getDuongCamDao(entity.SO, entity.DUONG);
             if (strDuongCamDao != "")
                 MessageBox.Show(strDuongCamDao, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            if (_cDHN.CheckExist(entity.DANHBA) == false)
-                MessageBox.Show("Danh Bộ Hủy", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void LoadDonTu(LinQ.DonTu entity)
@@ -477,6 +475,7 @@ namespace KTKS_DonKH.GUI.DonTu
                             if (MessageBox.Show("Danh Bộ " + txtDanhBo.Text.Trim().Replace(" ", "") + " đã nhận đơn trong ngày hôm nay rồi\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                                 return;
                         }
+
                         //if (_cKTXM.checkKhongLienHe(txtDanhBo.Text.Trim().Replace(" ", "")) == true)
                         //{
                         //    if (MessageBox.Show("Danh Bộ này Đã có THƯ MỜI bên Kiểm Tra Xác Minh, nhưng không liên hệ\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
@@ -610,9 +609,12 @@ namespace KTKS_DonKH.GUI.DonTu
                     entity.NgayHenGiaiQuyet = "Trong thời gian 5 ngày làm việc kể từ ngày nhận hồ sơ, sẽ có nhân viên đến liên hệ với Khách Hàng. ";
                     //entity.NgayHenGiaiQuyet = "";
                     entity.ID_NhomDon_PKH = "";
+                    bool flag = false;
                     for (int i = 0; i < chkcmbDieuChinh.Properties.Items.Count; i++)
                         if (chkcmbDieuChinh.Properties.Items[i].CheckState == CheckState.Checked)
                         {
+                            if (!flag)
+                                flag = _wsThuongVu.checkExists_DonTu(entity.DanhBo, chkcmbDieuChinh.Properties.Items[i].Value.ToString(), "30");
                             if (entity.ID_NhomDon_PKH == "")
                                 entity.ID_NhomDon_PKH = chkcmbDieuChinh.Properties.Items[i].Value.ToString();
                             else
@@ -623,6 +625,8 @@ namespace KTKS_DonKH.GUI.DonTu
                     for (int i = 0; i < chkcmbKhieuNai.Properties.Items.Count; i++)
                         if (chkcmbKhieuNai.Properties.Items[i].CheckState == CheckState.Checked)
                         {
+                            if (!flag)
+                                flag = _wsThuongVu.checkExists_DonTu(entity.DanhBo, chkcmbKhieuNai.Properties.Items[i].Value.ToString(), "30");
                             if (entity.ID_NhomDon_PKH == "")
                                 entity.ID_NhomDon_PKH = chkcmbKhieuNai.Properties.Items[i].Value.ToString();
                             else
@@ -631,6 +635,8 @@ namespace KTKS_DonKH.GUI.DonTu
                     for (int i = 0; i < chkcmbDHN.Properties.Items.Count; i++)
                         if (chkcmbDHN.Properties.Items[i].CheckState == CheckState.Checked)
                         {
+                            if (!flag)
+                                flag = _wsThuongVu.checkExists_DonTu(entity.DanhBo, chkcmbDHN.Properties.Items[i].Value.ToString(), "30");
                             if (entity.ID_NhomDon_PKH == "")
                                 entity.ID_NhomDon_PKH = chkcmbDHN.Properties.Items[i].Value.ToString();
                             else
@@ -639,6 +645,8 @@ namespace KTKS_DonKH.GUI.DonTu
                     for (int i = 0; i < chkcmbQuanLy.Properties.Items.Count; i++)
                         if (chkcmbQuanLy.Properties.Items[i].CheckState == CheckState.Checked)
                         {
+                            if (!flag)
+                                flag = _wsThuongVu.checkExists_DonTu(entity.DanhBo, chkcmbQuanLy.Properties.Items[i].Value.ToString(), "30");
                             if (entity.ID_NhomDon_PKH == "")
                                 entity.ID_NhomDon_PKH = chkcmbQuanLy.Properties.Items[i].Value.ToString();
                             else
@@ -652,6 +660,11 @@ namespace KTKS_DonKH.GUI.DonTu
                     //    entity.ID_NhomDon_ChiTiet = int.Parse(cmbNhomDon_ChiTiet.SelectedValue.ToString());
                     //    entity.Name_NhomDon_ChiTiet = cmbNhomDon_ChiTiet.Text;
                     //}
+                    if (flag)
+                    {
+                        if (MessageBox.Show("Danh Bộ " + txtDanhBo.Text.Trim().Replace(" ", "") + " đã nhận đơn cùng nội dùng trong 30 ngày\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                            return;
+                    }
                     ///
                     if (chkCT_HopDongNganHang.Checked)
                         entity.CT_HopDongNganHang = true;
@@ -967,7 +980,12 @@ namespace KTKS_DonKH.GUI.DonTu
                     LoadTTKH(_hoadon);
                 }
                 else
-                    MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                {
+                    if (_cDHN.CheckExist(txtDanhBo.Text.Trim().Replace(" ", "")) == false)
+                        MessageBox.Show("Danh Bộ Hủy", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    else
+                        MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

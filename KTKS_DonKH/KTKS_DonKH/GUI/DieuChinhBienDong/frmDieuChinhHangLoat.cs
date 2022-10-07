@@ -378,6 +378,24 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             else
                                                 ctdchd.PhiBVMT_End = 0;
 
+                                            ///Phí BVMT Thuế
+                                            if ((int)hd.GIABAN.Value != 0)
+                                                ctdchd.PhiBVMT_Thue_Start = (int)hd.ThueGTGT_TDVTN.Value;
+                                            else
+                                                ctdchd.PhiBVMT_Thue_Start = 0;
+
+                                            if (TienNuocSau - (int)hd.GIABAN.Value != 0)
+                                                //ctdchd.PhiBVMT_BD = (int)(Math.Round((double)TienNuocSau * 10 / 100, 0, MidpointRounding.AwayFromZero) - (int)hd.PHI.Value);
+                                                ctdchd.PhiBVMT_Thue_BD = ThueTDVTNSau - (int)hd.ThueGTGT_TDVTN.Value;
+                                            else
+                                                ctdchd.PhiBVMT_Thue_BD = 0;
+
+                                            if (TienNuocSau != 0)
+                                                //ctdchd.PhiBVMT_End = (int)Math.Round((double)TienNuocSau * 10 / 100, 0, MidpointRounding.AwayFromZero);
+                                                ctdchd.PhiBVMT_Thue_End = ThueTDVTNSau;
+                                            else
+                                                ctdchd.PhiBVMT_Thue_End = 0;
+
                                             ///Tổng Cộng
                                             if ((int)hd.GIABAN.Value != 0)
                                                 ctdchd.TongCong_Start = (int)hd.TONGCONG.Value;
