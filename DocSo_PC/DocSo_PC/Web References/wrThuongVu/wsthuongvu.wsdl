@@ -66,6 +66,22 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="checkExists_DonTu">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DanhBo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NoiDung" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SoNgay" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="checkExists_DonTuResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="checkExists_DonTuResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="getAccess_token_CCCD">
         <s:complexType />
       </s:element>
@@ -118,6 +134,12 @@
   <wsdl:message name="xoa_Folder_HinhSoapOut">
     <wsdl:part name="parameters" element="tns:xoa_Folder_HinhResponse" />
   </wsdl:message>
+  <wsdl:message name="checkExists_DonTuSoapIn">
+    <wsdl:part name="parameters" element="tns:checkExists_DonTu" />
+  </wsdl:message>
+  <wsdl:message name="checkExists_DonTuSoapOut">
+    <wsdl:part name="parameters" element="tns:checkExists_DonTuResponse" />
+  </wsdl:message>
   <wsdl:message name="getAccess_token_CCCDSoapIn">
     <wsdl:part name="parameters" element="tns:getAccess_token_CCCD" />
   </wsdl:message>
@@ -146,6 +168,10 @@
     <wsdl:operation name="xoa_Folder_Hinh">
       <wsdl:input message="tns:xoa_Folder_HinhSoapIn" />
       <wsdl:output message="tns:xoa_Folder_HinhSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="checkExists_DonTu">
+      <wsdl:input message="tns:checkExists_DonTuSoapIn" />
+      <wsdl:output message="tns:checkExists_DonTuSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="getAccess_token_CCCD">
       <wsdl:input message="tns:getAccess_token_CCCDSoapIn" />
@@ -187,6 +213,15 @@
     </wsdl:operation>
     <wsdl:operation name="xoa_Folder_Hinh">
       <soap:operation soapAction="http://tempuri.org/xoa_Folder_Hinh" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkExists_DonTu">
+      <soap:operation soapAction="http://tempuri.org/checkExists_DonTu" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -244,6 +279,15 @@
     </wsdl:operation>
     <wsdl:operation name="xoa_Folder_Hinh">
       <soap12:operation soapAction="http://tempuri.org/xoa_Folder_Hinh" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkExists_DonTu">
+      <soap12:operation soapAction="http://tempuri.org/checkExists_DonTu" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

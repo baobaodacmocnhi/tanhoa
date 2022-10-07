@@ -30,6 +30,7 @@ namespace DocSo_PC.GUI.MaHoa
         CDCBD _cDCBD = new CDCBD();
         CTo _cTo = new CTo();
         wrDHN.wsDHN _wsDHN = new wrDHN.wsDHN();
+        wrThuongVu.wsThuongVu _wsThuongVu = new wrThuongVu.wsThuongVu();
         CDanhBoBoQua _cDBBQ = new CDanhBoBoQua();
 
         MaHoa_DonTu _dontu = null;
@@ -185,6 +186,11 @@ namespace DocSo_PC.GUI.MaHoa
                     if (txtNoiDung.Text.Trim().Contains("Giá Biểu") && _cDBBQ.checkExist(txtDanhBo.Text.Trim().Replace(" ", "")))
                     {
                         MessageBox.Show("Danh Bộ nằm trong danh sách bỏ qua", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    if (txtNoiDung.Text.Trim().Contains("Giá Biểu") && _wsThuongVu.checkExists_DonTu(txtDanhBo.Text.Trim().Replace(" ", ""), "Giá Biểu", "30"))
+                    {
+                        MessageBox.Show("Danh Bộ có đơn Thương Vụ cùng nội dung trong 30 ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     MaHoa_DonTu en = new MaHoa_DonTu();
