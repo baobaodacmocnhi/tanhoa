@@ -71,7 +71,7 @@ namespace DocSo_PC.DAL
 
         public DataTable getGiaNuoc(string Nam)
         {
-            return _cDAL.ExecuteQuery_DataTable("select * from GiaNuoc2 where Name=" + Nam);
+            return _cDAL.ExecuteQuery_DataTable("select top 1 * from GiaNuoc2 where Name<=" + Nam +" order by Name desc");
         }
 
         public string getChucVu_Duyet()

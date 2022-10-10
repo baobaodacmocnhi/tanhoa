@@ -393,10 +393,15 @@ namespace DocSo_PC.GUI.MaHoa
                                 DataTable gn = _cThuongVu.getGiaNuoc(HieuLucKys[1]);
                                 if (gn != null && gn.Rows.Count > 0)
                                 {
-                                    dr["TienNuocSH"] = (int)(int.Parse(gn.Rows[0]["SHTM"].ToString()) + int.Parse(gn.Rows[0]["SHTM"].ToString()) * 0.05 + int.Parse(gn.Rows[0]["SHTM"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 + int.Parse(gn.Rows[0]["SHTM"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 * 0.1);
-                                    dr["TienNuocSHVuot1"] = (int)(int.Parse(gn.Rows[0]["SHVM1"].ToString()) + int.Parse(gn.Rows[0]["SHVM1"].ToString()) * 0.05 + int.Parse(gn.Rows[0]["SHVM1"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 + int.Parse(gn.Rows[0]["SHVM1"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 * 0.1);
-                                    dr["TienNuocSHVuot2"] = (int)(int.Parse(gn.Rows[0]["SHVM2"].ToString()) + int.Parse(gn.Rows[0]["SHVM2"].ToString()) * 0.05 + int.Parse(gn.Rows[0]["SHVM2"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 + int.Parse(gn.Rows[0]["SHVM2"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 * 0.1);
-                                    dr["TienNuocKDDV"] = (int)(int.Parse(gn.Rows[0]["KDDV"].ToString()) + int.Parse(gn.Rows[0]["KDDV"].ToString()) * 0.05 + int.Parse(gn.Rows[0]["KDDV"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 + int.Parse(gn.Rows[0]["KDDV"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 * 0.1);
+                                    int ThueTDVTN_VAT = 0;
+                                    if (gn.Rows[0]["VAT2_Ky"].ToString().Contains(int.Parse(HieuLucKys[0]).ToString("00") + "/" + HieuLucKys[1]))
+                                        ThueTDVTN_VAT = int.Parse(gn.Rows[0]["VAT2"].ToString());
+                                    else
+                                        ThueTDVTN_VAT = int.Parse(gn.Rows[0]["VAT"].ToString());
+                                    dr["TienNuocSH"] = (int)(int.Parse(gn.Rows[0]["SHTM"].ToString()) + int.Parse(gn.Rows[0]["SHTM"].ToString()) * 0.05 + int.Parse(gn.Rows[0]["SHTM"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 + int.Parse(gn.Rows[0]["SHTM"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 * ThueTDVTN_VAT / 100);
+                                    dr["TienNuocSHVuot1"] = (int)(int.Parse(gn.Rows[0]["SHVM1"].ToString()) + int.Parse(gn.Rows[0]["SHVM1"].ToString()) * 0.05 + int.Parse(gn.Rows[0]["SHVM1"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 + int.Parse(gn.Rows[0]["SHVM1"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 * ThueTDVTN_VAT / 100);
+                                    dr["TienNuocSHVuot2"] = (int)(int.Parse(gn.Rows[0]["SHVM2"].ToString()) + int.Parse(gn.Rows[0]["SHVM2"].ToString()) * 0.05 + int.Parse(gn.Rows[0]["SHVM2"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 + int.Parse(gn.Rows[0]["SHVM2"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 * ThueTDVTN_VAT / 100);
+                                    dr["TienNuocKDDV"] = (int)(int.Parse(gn.Rows[0]["KDDV"].ToString()) + int.Parse(gn.Rows[0]["KDDV"].ToString()) * 0.05 + int.Parse(gn.Rows[0]["KDDV"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 + int.Parse(gn.Rows[0]["KDDV"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 * ThueTDVTN_VAT / 100);
                                 }
                                 if (en.SH_BD != "")
                                     dr["SH"] = en.SH_BD;
@@ -435,10 +440,15 @@ namespace DocSo_PC.GUI.MaHoa
                                 DataTable gn = _cThuongVu.getGiaNuoc(HieuLucKys[1]);
                                 if (gn != null)
                                 {
-                                    dr["TienNuocSH"] = (int)(int.Parse(gn.Rows[0]["SHTM"].ToString()) + int.Parse(gn.Rows[0]["SHTM"].ToString()) * 0.05 + int.Parse(gn.Rows[0]["SHTM"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 + int.Parse(gn.Rows[0]["SHTM"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 * 0.1);
-                                    dr["TienNuocSHVuot1"] = (int)(int.Parse(gn.Rows[0]["SHVM1"].ToString()) + int.Parse(gn.Rows[0]["SHVM1"].ToString()) * 0.05 + int.Parse(gn.Rows[0]["SHVM1"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 + int.Parse(gn.Rows[0]["SHVM1"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 * 0.1);
-                                    dr["TienNuocSHVuot2"] = (int)(int.Parse(gn.Rows[0]["SHVM2"].ToString()) + int.Parse(gn.Rows[0]["SHVM2"].ToString()) * 0.05 + int.Parse(gn.Rows[0]["SHVM2"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 + int.Parse(gn.Rows[0]["SHVM2"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 * 0.1);
-                                    dr["TienNuocKDDV"] = (int)(int.Parse(gn.Rows[0]["KDDV"].ToString()) + int.Parse(gn.Rows[0]["KDDV"].ToString()) * 0.05 + int.Parse(gn.Rows[0]["KDDV"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 + int.Parse(gn.Rows[0]["KDDV"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 * 0.1);
+                                    int ThueTDVTN_VAT = 0;
+                                    if (gn.Rows[0]["VAT2_Ky"].ToString().Contains(int.Parse(HieuLucKys[0]).ToString("00") + "/" + HieuLucKys[1]))
+                                        ThueTDVTN_VAT = int.Parse(gn.Rows[0]["VAT2"].ToString());
+                                    else
+                                        ThueTDVTN_VAT = int.Parse(gn.Rows[0]["VAT"].ToString());
+                                    dr["TienNuocSH"] = (int)(int.Parse(gn.Rows[0]["SHTM"].ToString()) + int.Parse(gn.Rows[0]["SHTM"].ToString()) * 0.05 + int.Parse(gn.Rows[0]["SHTM"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 + int.Parse(gn.Rows[0]["SHTM"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 * ThueTDVTN_VAT / 100);
+                                    dr["TienNuocSHVuot1"] = (int)(int.Parse(gn.Rows[0]["SHVM1"].ToString()) + int.Parse(gn.Rows[0]["SHVM1"].ToString()) * 0.05 + int.Parse(gn.Rows[0]["SHVM1"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 + int.Parse(gn.Rows[0]["SHVM1"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 * ThueTDVTN_VAT / 100);
+                                    dr["TienNuocSHVuot2"] = (int)(int.Parse(gn.Rows[0]["SHVM2"].ToString()) + int.Parse(gn.Rows[0]["SHVM2"].ToString()) * 0.05 + int.Parse(gn.Rows[0]["SHVM2"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 + int.Parse(gn.Rows[0]["SHVM2"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 * ThueTDVTN_VAT / 100);
+                                    dr["TienNuocKDDV"] = (int)(int.Parse(gn.Rows[0]["KDDV"].ToString()) + int.Parse(gn.Rows[0]["KDDV"].ToString()) * 0.05 + int.Parse(gn.Rows[0]["KDDV"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 + int.Parse(gn.Rows[0]["KDDV"].ToString()) * int.Parse(gn.Rows[0]["PhiBVMT"].ToString()) / 100 * ThueTDVTN_VAT / 100);
                                 }
                                 if (en.SH_BD != "")
                                     dr["SH"] = en.SH_BD;
