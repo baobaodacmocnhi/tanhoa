@@ -83,31 +83,31 @@ namespace KTKS_DonKH.GUI.TimKiem
             {
                 //_log = System.IO.File.AppendText("\\\\192.168.90.9\\BaoBao$\\TrungTamKhachHang\\log.txt");
                 //DateTime date = DateTime.Now;
-                
+
                 switch (cmbTimTheo.SelectedItem.ToString())
                 {
                     case "Mã Đơn":
                         if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TKH"))
                             dt = _cTimKiem.GetTienTrinh_DonTKH(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", ""))).Tables["DonTu"];
-                    else
-                        if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
-                            dt = _cTimKiem.GetTienTrinh_DonTXL(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", ""))).Tables["DonTu"];
                         else
-                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
-                                dt = _cTimKiem.GetTienTrinh_DonTBC(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", ""))).Tables["DonTu"];
+                            if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TXL"))
+                                dt = _cTimKiem.GetTienTrinh_DonTXL(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", ""))).Tables["DonTu"];
                             else
-                            {
-                                if (txtNoiDungTimKiem.Text.Trim().Contains("."))
-                                {
-                                    string[] MaDons = txtNoiDungTimKiem.Text.Trim().Split('.');
-                                    dt = _cTimKiem.GetTienTrinh_DonTu(int.Parse(MaDons[0]), int.Parse(MaDons[1])).Tables["DonTu"];
-                                }
+                                if (txtNoiDungTimKiem.Text.Trim().ToUpper().Contains("TBC"))
+                                    dt = _cTimKiem.GetTienTrinh_DonTBC(decimal.Parse(txtNoiDungTimKiem.Text.Trim().Substring(3).Replace("-", ""))).Tables["DonTu"];
                                 else
-                                    dt = _cTimKiem.GetTienTrinh_DonTu(int.Parse(txtNoiDungTimKiem.Text.Trim())).Tables["DonTu"];
-                            }
+                                {
+                                    if (txtNoiDungTimKiem.Text.Trim().Contains("."))
+                                    {
+                                        string[] MaDons = txtNoiDungTimKiem.Text.Trim().Split('.');
+                                        dt = _cTimKiem.GetTienTrinh_DonTu(int.Parse(MaDons[0]), int.Parse(MaDons[1])).Tables["DonTu"];
+                                    }
+                                    else
+                                        dt = _cTimKiem.GetTienTrinh_DonTu(int.Parse(txtNoiDungTimKiem.Text.Trim())).Tables["DonTu"];
+                                }
                         break;
                     case "Danh Bộ":
-                        dt = _cTimKiem.getTienTrinhByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace(" ","")).Tables["DonTu"];
+                        dt = _cTimKiem.getTienTrinhByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace(" ", "")).Tables["DonTu"];
                         break;
                     case "Họ Tên":
                         dt = _cTimKiem.getTienTrinhByHoTen(txtNoiDungTimKiem.Text.Trim()).Tables["DonTu"];
@@ -130,7 +130,7 @@ namespace KTKS_DonKH.GUI.TimKiem
             }
             catch (Exception)
             {
-               
+
             }
         }
 
@@ -146,7 +146,7 @@ namespace KTKS_DonKH.GUI.TimKiem
 
         private void gridViewDon_KeyDown(object sender, KeyEventArgs e)
         {
-            if (gridViewDon.RowCount > 0 && e.Control && e.KeyCode == Keys.F)
+            if (gridViewDon.RowCount > 0 && e.Control && e.KeyCode == Keys.F && ((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["Phong"].ToString() == "TV")
             {
                 if (((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["MaDon"].ToString().ToUpper().Contains("TKH"))
                 {
@@ -170,7 +170,7 @@ namespace KTKS_DonKH.GUI.TimKiem
                             string MaDon = ((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["MaDon"].ToString();
 
                             if (MaDon.Contains(".") == true)
-                                MaDon = MaDon.Substring(0,MaDon.IndexOf("."));
+                                MaDon = MaDon.Substring(0, MaDon.IndexOf("."));
 
                             frmNhanDonTu2019 frm = new frmNhanDonTu2019(int.Parse(MaDon));
                             frm.ShowDialog();
@@ -212,7 +212,7 @@ namespace KTKS_DonKH.GUI.TimKiem
 
         private void gridViewKTXM_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
+            if (e.Control && e.KeyCode == Keys.F && _CTRow != null && _CTRow.Row["Phong"].ToString() == "TV")
             {
                 frmKTXM frm = new frmKTXM(decimal.Parse(_CTRow.Row["MaCTKTXM"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
@@ -220,7 +220,16 @@ namespace KTKS_DonKH.GUI.TimKiem
                     _CTRow = null;
                 }
             }
+            if (e.Control && e.KeyCode == Keys.H && _CTRow != null && _CTRow.Row["Phong"].ToString() == "TV")
+            {
+                System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/ThuongVu/viewFile?TableName=KTXM_ChiTiet_Hinh&IDFileName=IDKTXM_ChiTiet&IDFileContent=" + _CTRow.Row["MaCTKTXM"].ToString());
+            }
+            if (e.Control && e.KeyCode == Keys.H && _CTRow != null && _CTRow.Row["Phong"].ToString() == "QLDHN")
+            {
+                System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/QLDHN/viewFile?TableName=MaHoa_KTXM_Hinh&ID=" + _CTRow.Row["MaCTKTXM"].ToString());
+            }
         }
+
 
         #endregion
 
@@ -242,11 +251,14 @@ namespace KTKS_DonKH.GUI.TimKiem
 
         private void gridViewBamChi_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
+            if (e.Control && e.KeyCode == Keys.F && _CTRow != null && _CTRow.Row["Phong"].ToString() == "TV")
             {
                 frmBamChi frm = new frmBamChi(decimal.Parse(_CTRow.Row["MaCTBC"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
                     _CTRow = null;
+            } if (e.Control && e.KeyCode == Keys.H && _CTRow != null && _CTRow.Row["Phong"].ToString() == "TV")
+            {
+                System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/ThuongVu/viewFile?TableName=BamChi_ChiTiet_Hinh&IDFileName=IDBamChi_ChiTiet&IDFileContent=" + _CTRow.Row["MaCTBC"].ToString());
             }
         }
 
@@ -321,7 +333,7 @@ namespace KTKS_DonKH.GUI.TimKiem
 
         private void gridViewDCBD_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Control && e.KeyCode == Keys.F && _CTRow != null && _CTRow.Row["DieuChinh"].ToString() == "Biến Động")
+            if (e.Control && e.KeyCode == Keys.F && _CTRow != null && _CTRow.Row["DieuChinh"].ToString() == "Biến Động" && _CTRow.Row["Phong"].ToString() == "TV")
             {
                 frmDCBD frm = new frmDCBD(decimal.Parse(_CTRow.Row["MaDC"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
@@ -329,13 +341,25 @@ namespace KTKS_DonKH.GUI.TimKiem
                     _CTRow = null;
                 }
             }
-            if (e.Control && e.KeyCode == Keys.F && _CTRow != null && _CTRow.Row["DieuChinh"].ToString() == "Hóa Đơn")
+            if (e.Control && e.KeyCode == Keys.F && _CTRow != null && _CTRow.Row["DieuChinh"].ToString() == "Hóa Đơn" && _CTRow.Row["Phong"].ToString() == "TV")
             {
                 frmDCHD frm = new frmDCHD(decimal.Parse(_CTRow.Row["MaDC"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
                 {
                     _CTRow = null;
                 }
+            }
+            if (e.Control && e.KeyCode == Keys.H && _CTRow != null && _CTRow.Row["DieuChinh"].ToString() == "Biến Động" && _CTRow.Row["Phong"].ToString() == "TV")
+            {
+                System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/ThuongVu/viewFile?TableName=DCBD_ChiTietBienDong_Hinh&IDFileName=IDDCBD_ChiTietBienDong&IDFileContent=" + _CTRow.Row["MaDC"].ToString());
+            }
+            if (e.Control && e.KeyCode == Keys.H && _CTRow != null && _CTRow.Row["DieuChinh"].ToString() == "Hóa Đơn" && _CTRow.Row["Phong"].ToString() == "TV")
+            {
+                System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/ThuongVu/viewFile?TableName=DCBD_ChiTietHoaDon_Hinh&IDFileName=IDDCBD_ChiTietHoaDon&IDFileContent=" + _CTRow.Row["MaDC"].ToString());
+            }
+            if (e.Control && e.KeyCode == Keys.H && _CTRow != null && _CTRow.Row["DieuChinh"].ToString() == "Biến Động" && _CTRow.Row["Phong"].ToString() == "QLDHN")
+            {
+                System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/ThuongVu/viewFile?TableName=MaHoa_DCBD_Hinh&ID=" + _CTRow.Row["MaDC"].ToString());
             }
         }
 
@@ -365,7 +389,7 @@ namespace KTKS_DonKH.GUI.TimKiem
 
         private void gridViewCHDB_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Control && e.KeyCode == Keys.F && _CTRow != null && _CTRow.Row["LoaiCat"].ToString() == "Cắt Hủy")
+            if (e.Control && e.KeyCode == Keys.F && _CTRow != null && _CTRow.Row["LoaiCat"].ToString() == "Cắt Hủy" && _CTRow.Row["Phong"].ToString() == "TV")
             {
                 frmCHDB frm = new frmCHDB(decimal.Parse(_CTRow.Row["MaCH"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
@@ -373,13 +397,21 @@ namespace KTKS_DonKH.GUI.TimKiem
                     _CTRow = null;
                 }
             }
-            if (e.Control && e.KeyCode == Keys.F && _CTRow != null && _CTRow.Row["LoaiCat"].ToString() == "Cắt Tạm")
+            if (e.Control && e.KeyCode == Keys.F && _CTRow != null && _CTRow.Row["LoaiCat"].ToString() == "Cắt Tạm" && _CTRow.Row["Phong"].ToString() == "TV")
             {
                 frmCTDB frm = new frmCTDB(decimal.Parse(_CTRow.Row["MaCH"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
                 {
                     _CTRow = null;
                 }
+            }
+            if (e.Control && e.KeyCode == Keys.H && _CTRow != null && _CTRow.Row["LoaiCat"].ToString() == "Cắt Hủy" && _CTRow.Row["Phong"].ToString() == "TV")
+            {
+                System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/ThuongVu/viewFile?TableName=CHDB_ChiTietCatHuy_Hinh&IDFileName=IDCHDB_ChiTietCatHuy&IDFileContent=" + _CTRow.Row["MaCH"].ToString());
+            }
+            if (e.Control && e.KeyCode == Keys.H && _CTRow != null && _CTRow.Row["LoaiCat"].ToString() == "Cắt Tạm" && _CTRow.Row["Phong"].ToString() == "TV")
+            {
+                System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/ThuongVu/viewFile?TableName=CHDB_ChiTietCatTam_Hinh&IDFileName=IDCHDB_ChiTietCatTam&IDFileContent=" + _CTRow.Row["MaCH"].ToString());
             }
         }
 
@@ -409,13 +441,18 @@ namespace KTKS_DonKH.GUI.TimKiem
 
         private void gridViewDongNuoc_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
+            if (e.Control && e.KeyCode == Keys.F && _CTRow != null && _CTRow.Row["Phong"].ToString() == "TV")
             {
                 frmDongNuoc frm = new frmDongNuoc(decimal.Parse(_CTRow.Row["MaCTDN"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
                     _CTRow = null;
             }
+            if (e.Control && e.KeyCode == Keys.H && _CTRow != null && _CTRow.Row["Phong"].ToString() == "TV")
+            {
+                System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/ThuongVu/viewFile?TableName=DongNuoc_ChiTiet_Hinh&IDFileName=IDDongNuoc_ChiTiet&IDFileContent=" + _CTRow.Row["MaCTDN"].ToString());
+            }
         }
+
         #endregion
 
         #region gridViewPhieuCHDB
@@ -436,11 +473,15 @@ namespace KTKS_DonKH.GUI.TimKiem
 
         private void gridViewPhieuCHDB_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
+            if (e.Control && e.KeyCode == Keys.F && _CTRow != null && _CTRow.Row["Phong"].ToString() == "TV")
             {
                 frmYCCHDB frm = new frmYCCHDB(decimal.Parse(_CTRow.Row["MaYCCHDB"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
                     _CTRow = null;
+            }
+            if (e.Control && e.KeyCode == Keys.H && _CTRow != null && _CTRow.Row["Phong"].ToString() == "TV")
+            {
+                System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/ThuongVu/viewFile?TableName=CHDB_Phieu_Hinh&IDFileName=IDCHDB_Phieu&IDFileContent=" + _CTRow.Row["MaYCCHDB"].ToString());
             }
         }
 
@@ -464,13 +505,17 @@ namespace KTKS_DonKH.GUI.TimKiem
 
         private void gridViewTTTL_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
+            if (e.Control && e.KeyCode == Keys.F && _CTRow != null && _CTRow.Row["Phong"].ToString() == "TV")
             {
                 frmTTTL frm = new frmTTTL(decimal.Parse(_CTRow.Row["MaCTTTTL"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
                 {
                     _CTRow = null;
                 }
+            }
+            if (e.Control && e.KeyCode == Keys.H && _CTRow != null && _CTRow.Row["Phong"].ToString() == "TV")
+            {
+                System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/ThuongVu/viewFile?TableName=ThuTraLoi_ChiTiet_Hinh&IDFileName=IDTTTL_ChiTiet&IDFileContent=" + _CTRow.Row["MaCTTTTL"].ToString());
             }
         }
 
@@ -494,13 +539,17 @@ namespace KTKS_DonKH.GUI.TimKiem
 
         private void gridViewGianLan_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
+            if (e.Control && e.KeyCode == Keys.F && _CTRow != null && _CTRow.Row["Phong"].ToString() == "TV")
             {
                 frmGianLan frm = new frmGianLan(int.Parse(_CTRow.Row["ID"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
                 {
                     _CTRow = null;
                 }
+            }
+            if (e.Control && e.KeyCode == Keys.H && _CTRow != null && _CTRow.Row["Phong"].ToString() == "TV")
+            {
+                System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/ThuongVu/viewFile?TableName=GianLan_ChiTiet_Hinh&IDFileName=IDGianLan_ChiTiet&IDFileContent=" + _CTRow.Row["ID"].ToString());
             }
         }
 
@@ -532,13 +581,17 @@ namespace KTKS_DonKH.GUI.TimKiem
 
         private void gridViewTruyThu_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
+            if (e.Control && e.KeyCode == Keys.F && _CTRow != null && _CTRow.Row["Phong"].ToString() == "TV")
             {
                 frmTruyThuTienNuoc frm = new frmTruyThuTienNuoc(int.Parse(_CTRow.Row["IDCT"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
                 {
                     _CTRow = null;
                 }
+            }
+            if (e.Control && e.KeyCode == Keys.H && _CTRow != null && _CTRow.Row["Phong"].ToString() == "TV")
+            {
+                System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/ThuongVu/viewFile?TableName=TruyThuTienNuoc_ChiTiet_Hinh&IDFileName=IDTruyThuTienNuoc_ChiTiet&IDFileContent=" + _CTRow.Row["IDCT"].ToString());
             }
         }
 
@@ -562,14 +615,22 @@ namespace KTKS_DonKH.GUI.TimKiem
 
         private void gridViewToTrinh_KeyDown(object sender, KeyEventArgs e)
         {
-            //if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
-            //{
-            //    frmToTrinh frm = new frmToTrinh(decimal.Parse(_CTRow.Row["IDCT"].ToString()));
-            //    if (frm.ShowDialog() == DialogResult.Cancel)
-            //    {
-            //        _CTRow = null;
-            //    }
-            //}
+            if (e.Control && e.KeyCode == Keys.F && _CTRow != null && _CTRow.Row["Phong"].ToString() == "TV")
+            {
+                frmToTrinh frm = new frmToTrinh(int.Parse(_CTRow.Row["IDCT"].ToString()));
+                if (frm.ShowDialog() == DialogResult.Cancel)
+                {
+                    _CTRow = null;
+                }
+            }
+            if (e.Control && e.KeyCode == Keys.H && _CTRow != null && _CTRow.Row["Phong"].ToString() == "TV")
+            {
+                System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/ThuongVu/viewFile?TableName=ToTrinh_ChiTiet_Hinh&IDFileName=IDToTrinh_ChiTiet&IDFileContent=" + _CTRow.Row["IDCT"].ToString());
+            }
+            if (e.Control && e.KeyCode == Keys.H && _CTRow != null && _CTRow.Row["Phong"].ToString() == "QLDHN")
+            {
+                System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/ThuongVu/viewFile?TableName=MaHoa_ToTrinh_Hinh&ID=" + _CTRow.Row["IDCT"].ToString());
+            }
         }
 
         #endregion
@@ -592,13 +653,17 @@ namespace KTKS_DonKH.GUI.TimKiem
 
         private void gridViewThuMoi_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
+            if (e.Control && e.KeyCode == Keys.F && _CTRow != null && _CTRow.Row["Phong"].ToString() == "TV")
             {
                 frmThaoThuMoi frm = new frmThaoThuMoi(int.Parse(_CTRow.Row["IDCT"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
                 {
                     _CTRow = null;
                 }
+            }
+            if (e.Control && e.KeyCode == Keys.H && _CTRow != null && _CTRow.Row["Phong"].ToString() == "TV")
+            {
+                System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/ThuongVu/viewFile?TableName=ThuMoi_ChiTiet_Hinh&IDFileName=IDThuMoi_ChiTiet&IDFileContent=" + _CTRow.Row["IDCT"].ToString());
             }
         }
 
@@ -616,13 +681,17 @@ namespace KTKS_DonKH.GUI.TimKiem
 
         private void gridViewVanBan_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Control && e.KeyCode == Keys.F && _CTRow != null)
+            if (e.Control && e.KeyCode == Keys.F && _CTRow != null && _CTRow.Row["Phong"].ToString() == "TV")
             {
                 frmVanBan frm = new frmVanBan(int.Parse(_CTRow.Row["IDCT"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
                 {
                     _CTRow = null;
                 }
+            }
+            if (e.Control && e.KeyCode == Keys.H && _CTRow != null && _CTRow.Row["Phong"].ToString() == "TV")
+            {
+                System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/ThuongVu/viewFile?TableName=VanBan_ChiTiet_Hinh&IDFileName=IDVanBan_ChiTiet&IDFileContent=" + _CTRow.Row["IDCT"].ToString());
             }
         }
 
@@ -764,7 +833,7 @@ namespace KTKS_DonKH.GUI.TimKiem
                 dgvHoaDon.DataSource = _cDocSo.GetDS(txtSoThanDHN.Text.Trim());
             else
                 if (!string.IsNullOrEmpty(txtDanhBo.Text.Trim().Replace(" ", "")))
-                    dgvHoaDon.DataSource = _cThuTien.GetDSTimKiem(txtDanhBo.Text.Trim().Replace(" ", ""),"");
+                    dgvHoaDon.DataSource = _cThuTien.GetDSTimKiem(txtDanhBo.Text.Trim().Replace(" ", ""), "");
                 else
                     dgvHoaDon.DataSource = _cThuTien.GetDSTimKiemTTKH(txtHoTen.Text.Trim(), txtSoNha.Text.Trim(), txtTenDuong.Text.Trim());
         }
@@ -801,7 +870,9 @@ namespace KTKS_DonKH.GUI.TimKiem
                 btnTimKiemTTKH.PerformClick();
         }
 
-        
+
+
+
 
 
     }

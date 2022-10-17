@@ -13,7 +13,7 @@
 // 
 #pragma warning disable 1591
 
-namespace KTKS_DonKH.wsThuongVu {
+namespace KTKS_DonKH.wrThuongVu {
     using System;
     using System.Web.Services;
     using System.Diagnostics;

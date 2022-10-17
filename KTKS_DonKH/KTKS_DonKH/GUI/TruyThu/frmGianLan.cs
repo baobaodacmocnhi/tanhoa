@@ -21,6 +21,7 @@ using KTKS_DonKH.DAL.DonTu;
 using KTKS_DonKH.GUI.DonTu;
 using KTKS_DonKH.DAL.ToXuLy;
 using System.Transactions;
+using KTKS_DonKH.wrThuongVu;
 
 namespace KTKS_DonKH.GUI.TruyThu
 {
@@ -34,7 +35,7 @@ namespace KTKS_DonKH.GUI.TruyThu
         CThuTien _cThuTien = new CThuTien();
         CDHN _cDHN = new CDHN();
         CGianLan _cGianLan = new CGianLan();
-        wsThuongVu.wsThuongVu _wsThuongVu = new wsThuongVu.wsThuongVu();
+        wsThuongVu _wsThuongVu = new wsThuongVu();
 
         DonTu_ChiTiet _dontu_ChiTiet = null;
         DonKH _dontkh = null;

@@ -16,6 +16,7 @@ using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.DAL.TruyThu;
 using KTKS_DonKH.DAL.KiemTraXacMinh;
 using KTKS_DonKH.DAL.ThuMoi;
+using KTKS_DonKH.wrThuongVu;
 
 namespace KTKS_DonKH.GUI.DonTu
 {
@@ -33,7 +34,7 @@ namespace KTKS_DonKH.GUI.DonTu
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
         CPhongBanDoi _cPBD = new CPhongBanDoi();
         CDocSo _cDocSo = new CDocSo();
-        wsThuongVu.wsThuongVu _wsThuongVu = new wsThuongVu.wsThuongVu();
+        wsThuongVu _wsThuongVu = new wsThuongVu();
         LinQ.DonTu _dontu = null;
         HOADON _hoadon = null;
         int _MaDon = -1;

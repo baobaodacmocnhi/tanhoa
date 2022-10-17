@@ -18,6 +18,7 @@ using CrystalDecisions.CrystalReports.Engine;
 using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.BaoCao.VanBan;
 using KTKS_DonKH.DAL.ThuTraLoi;
+using KTKS_DonKH.wrThuongVu;
 
 namespace KTKS_DonKH.GUI.VanBan
 {
@@ -30,7 +31,7 @@ namespace KTKS_DonKH.GUI.VanBan
         CDHN _cDocSo = new CDHN();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         CTTTL_VeViec _cVeViecTTTL = new CTTTL_VeViec();
-        wsThuongVu.wsThuongVu _wsThuongVu = new wsThuongVu.wsThuongVu();
+        wsThuongVu _wsThuongVu = new wsThuongVu();
 
         DonTu_ChiTiet _dontu_ChiTiet = null;
         HOADON _hoadon = null;

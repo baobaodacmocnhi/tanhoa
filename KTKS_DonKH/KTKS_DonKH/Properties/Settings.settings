@@ -53,5 +53,8 @@
     <Setting Name="KTKS_DonKH_wsThuongVu_wsThuongVu" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://server5:81/wsthuongvu.asmx</Value>
     </Setting>
+    <Setting Name="KTKS_DonKH_wrDHN_wsDHN" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://server5:81/wsDHN.asmx</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

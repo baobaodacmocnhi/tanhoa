@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>32</ApplicationRevision>
+    <ApplicationRevision>35</ApplicationRevision>
     <ApplicationVersion>1.5.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -1731,7 +1731,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Web References\wsThuongVu\Reference.cs">
+    <Compile Include="Web References\wrDHN\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\wrThuongVu\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -2691,11 +2696,16 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="Sources\Test.pdf" />
-    <None Include="Web References\wsThuongVu\Reference.map">
+    <None Include="Web References\wrDHN\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\wsThuongVu\wsthuongvu.wsdl" />
+    <None Include="Web References\wrDHN\wsDHN.wsdl" />
+    <None Include="Web References\wrThuongVu\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\wrThuongVu\wsthuongvu.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logoicon.ico" />
@@ -2738,7 +2748,8 @@
     <None Include="Resources\key 48x48.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\wsThuongVu\wsthuongvu.disco" />
+    <None Include="Web References\wrDHN\wsDHN.disco" />
+    <None Include="Web References\wrThuongVu\wsthuongvu.disco" />
     <None Include="Resources\save 24x24.png" />
     <None Include="Resources\print 24x24.png" />
     <None Include="Resources\cash 48x48.png" />
@@ -3189,7 +3200,7 @@
   <ItemGroup>
     <WebReferenceUrl Include="http://server5:81/wsthuongvu.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\wsThuongVu\</RelPath>
+      <RelPath>Web References\wrThuongVu\</RelPath>
       <UpdateFromURL>http://server5:81/wsthuongvu.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
@@ -3197,6 +3208,17 @@
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>KTKS_DonKH_wsThuongVu_wsThuongVu</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://server5:81/wsDHN.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\wrDHN\</RelPath>
+      <UpdateFromURL>http://server5:81/wsDHN.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>KTKS_DonKH_wrDHN_wsDHN</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -98,5 +98,15 @@ namespace KTKS_DonKH.Properties {
                 return ((string)(this["KTKS_DonKH_wsThuongVu_wsThuongVu"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://server5:81/wsDHN.asmx")]
+        public string KTKS_DonKH_wrDHN_wsDHN {
+            get {
+                return ((string)(this["KTKS_DonKH_wrDHN_wsDHN"]));
+            }
+        }
     }
 }

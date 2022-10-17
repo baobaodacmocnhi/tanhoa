@@ -22,6 +22,7 @@ using KTKS_DonKH.DAL.DonTu;
 using KTKS_DonKH.GUI.DonTu;
 using System.Transactions;
 using CrystalDecisions.CrystalReports.Engine;
+using KTKS_DonKH.wrThuongVu;
 
 namespace KTKS_DonKH.GUI.CatHuyDanhBo
 {
@@ -39,7 +40,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         CCHDB_LyDo _cLyDoCHDB = new CCHDB_LyDo();
         CCHDB_NoiDungXuLy _cNoiDungXuLyCHDB = new CCHDB_NoiDungXuLy();
         CKTXM _cKTXM = new CKTXM();
-        wsThuongVu.wsThuongVu _wsThuongVu = new wsThuongVu.wsThuongVu();
+        wsThuongVu _wsThuongVu = new wsThuongVu();
 
         DonTu_ChiTiet _dontu_ChiTiet = null;
         DonKH _dontkh = null;

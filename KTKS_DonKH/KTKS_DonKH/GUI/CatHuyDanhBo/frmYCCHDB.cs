@@ -20,6 +20,7 @@ using KTKS_DonKH.DAL.ToBamChi;
 using KTKS_DonKH.DAL.DonTu;
 using KTKS_DonKH.GUI.DonTu;
 using System.Transactions;
+using KTKS_DonKH.wrThuongVu;
 
 namespace KTKS_DonKH.GUI.CatHuyDanhBo
 {
@@ -35,7 +36,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         CCHDB _cCHDB = new CCHDB();
         CCHDB_LyDo _cLyDoCHDB = new CCHDB_LyDo();
-        wsThuongVu.wsThuongVu _wsThuongVu = new wsThuongVu.wsThuongVu();
+        wsThuongVu _wsThuongVu = new wsThuongVu();
 
         DonTu_ChiTiet _dontu_ChiTiet = null;
         DonKH _dontkh = null;

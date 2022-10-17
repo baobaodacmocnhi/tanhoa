@@ -20,6 +20,7 @@ using KTKS_DonKH.DAL.ToBamChi;
 using KTKS_DonKH.DAL.DonTu;
 using KTKS_DonKH.GUI.DonTu;
 using System.Transactions;
+using KTKS_DonKH.wrThuongVu;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
@@ -38,7 +39,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CDocSo _cDocSo = new CDocSo();
         CThuTien _cThuTien = new CThuTien();
         CKhuCongNghiep _cKCN = new CKhuCongNghiep();
-        wsThuongVu.wsThuongVu _wsThuongVu = new wsThuongVu.wsThuongVu();
+        wsThuongVu _wsThuongVu = new wsThuongVu();
 
         DonTu_ChiTiet _dontu_ChiTiet = null;
         DonKH _dontkh = null;

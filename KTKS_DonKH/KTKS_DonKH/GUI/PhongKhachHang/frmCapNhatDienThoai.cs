@@ -16,7 +16,6 @@ namespace KTKS_DonKH.GUI.PhongKhachHang
     {
         string _mnu = "mnuCapNhatDienThoai";
         CDHN _cDHN = new CDHN();
-        TB_DULIEUKHACHHANG _ttkh = null;
         SDT_DHN _en = null;
 
         public frmCapNhatDienThoai()
@@ -35,8 +34,8 @@ namespace KTKS_DonKH.GUI.PhongKhachHang
             {
                 if (e.KeyChar == 13 && txtDanhBo.Text.Trim().Replace("-", "").Replace(" ", "").Length == 11)
                 {
-                    _ttkh = _cDHN.GetTTKH(txtDanhBo.Text.Trim().Replace("-", "").Replace(" ", ""));
-                    if (_ttkh != null)
+                    TB_DULIEUKHACHHANG ttkh = _cDHN.GetTTKH(txtDanhBo.Text.Trim().Replace("-", "").Replace(" ", ""));
+                    if (ttkh != null)
                         dgvDanhSach.DataSource = _cDHN.getDS_DienThoai(txtDanhBo.Text.Trim().Replace("-", "").Replace(" ", ""));
                     else
                         MessageBox.Show("Danh Bộ không tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -54,20 +53,21 @@ namespace KTKS_DonKH.GUI.PhongKhachHang
             {
                 if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
                 {
-                    if (_ttkh != null)
+                    TB_DULIEUKHACHHANG ttkh = _cDHN.GetTTKH(txtDanhBo.Text.Trim().Replace("-", "").Replace(" ", ""));
+                    if (ttkh != null)
                     {
                         if (txtDienThoai.Text.Trim().Replace("-", "").Replace(" ", "").Length != 10)
                         {
                             MessageBox.Show("Điện Thoại phải là 10 số", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        if (_cDHN.checkExists_DienThoai(_ttkh.DANHBO, txtDienThoai.Text.Trim().Replace("-", "").Replace(" ", "")))
+                        if (_cDHN.checkExists_DienThoai(ttkh.DANHBO, txtDienThoai.Text.Trim().Replace("-", "").Replace(" ", "")))
                         {
                             MessageBox.Show("Điện Thoại đã tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         SDT_DHN en = new SDT_DHN();
-                        en.DanhBo = _ttkh.DANHBO;
+                        en.DanhBo = ttkh.DANHBO;
                         en.DienThoai = txtDienThoai.Text.Trim().Replace("-", "").Replace(" ", "");
                         en.SoChinh = true;
                         en.GhiChu = "P. KH";
@@ -75,7 +75,7 @@ namespace KTKS_DonKH.GUI.PhongKhachHang
                         {
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             _en = null;
-                            dgvDanhSach.DataSource = _cDHN.getDS_DienThoai(_ttkh.DANHBO);
+                            dgvDanhSach.DataSource = _cDHN.getDS_DienThoai(ttkh.DANHBO);
                         }
                     }
                     else
@@ -109,7 +109,7 @@ namespace KTKS_DonKH.GUI.PhongKhachHang
                             {
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 _en = null;
-                                dgvDanhSach.DataSource = _cDHN.getDS_DienThoai(_ttkh.DANHBO);
+                                dgvDanhSach.DataSource = _cDHN.getDS_DienThoai(txtDanhBo.Text.Trim().Replace("-", "").Replace(" ", ""));
                             }
                         }
                         else
@@ -129,8 +129,8 @@ namespace KTKS_DonKH.GUI.PhongKhachHang
         {
             try
             {
-                _en = _cDHN.get_DienThoai(_ttkh.DANHBO, dgvDanhSach["DienThoai", e.RowIndex].Value.ToString());
-                txtDanhBo.Text = _ttkh.DANHBO;
+                _en = _cDHN.get_DienThoai(dgvDanhSach["DanhBo", e.RowIndex].Value.ToString(), dgvDanhSach["DienThoai", e.RowIndex].Value.ToString());
+                txtDanhBo.Text = _en.DanhBo;
                 txtDienThoai.Text = _en.DienThoai;
             }
             catch

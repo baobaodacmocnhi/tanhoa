@@ -16,6 +16,7 @@ using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.BaoCao.DieuChinhBienDong;
 using KTKS_DonKH.GUI.BaoCao;
 using System.Transactions;
+using KTKS_DonKH.wrThuongVu;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
@@ -30,7 +31,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CChungTu _cChungTu = new CChungTu();
         CDHN _cDHN = new CDHN();
         CDocSo _cDocSo = new CDocSo();
-        wsThuongVu.wsThuongVu _wsThuongVu = new wsThuongVu.wsThuongVu();
+        wsThuongVu _wsThuongVu = new wsThuongVu();
         HOADON _hoadon = null;
         DCBD_DKDM_DanhBo _danhbo = null;
         bool _flag = false;

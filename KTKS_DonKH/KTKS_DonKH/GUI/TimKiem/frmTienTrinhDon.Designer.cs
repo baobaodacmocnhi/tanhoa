@@ -190,6 +190,7 @@
             this.gridColumn129 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn130 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridViewDon = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn131 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -257,7 +258,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.gridColumn131 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewKTXM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -1960,6 +1962,14 @@
             this.gridViewDon.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gridViewDon_CustomColumnDisplayText);
             this.gridViewDon.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridViewDon_KeyDown);
             // 
+            // gridColumn131
+            // 
+            this.gridColumn131.Caption = "Phòng";
+            this.gridColumn131.FieldName = "Phong";
+            this.gridColumn131.Name = "gridColumn131";
+            this.gridColumn131.Visible = true;
+            this.gridColumn131.VisibleIndex = 0;
+            // 
             // gridColumn1
             // 
             this.gridColumn1.Caption = "Mã Đơn";
@@ -2181,6 +2191,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label8);
+            this.tabPage1.Controls.Add(this.label7);
             this.tabPage1.Controls.Add(this.txtNoiDungTimKiem);
             this.tabPage1.Controls.Add(this.gridControl);
             this.tabPage1.Controls.Add(this.btnIn);
@@ -2561,13 +2573,25 @@
             this.label5.TabIndex = 12;
             this.label5.Text = "Danh Bộ:";
             // 
-            // gridColumn131
+            // label7
             // 
-            this.gridColumn131.Caption = "Phòng";
-            this.gridColumn131.FieldName = "Phòng";
-            this.gridColumn131.Name = "gridColumn131";
-            this.gridColumn131.Visible = true;
-            this.gridColumn131.VisibleIndex = 0;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(643, 8);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(137, 16);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "Ctrl+F : xem chi tiết";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(786, 8);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(118, 16);
+            this.label8.TabIndex = 10;
+            this.label8.Text = "Ctrl+H: xem hình";
             // 
             // frmTienTrinhDon
             // 
@@ -2831,5 +2855,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn129;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn130;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn131;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
     }
 }

@@ -8253,6 +8253,7 @@ namespace KTKS_DonKH.DAL.TimKiem
 
             DataTable dt = ExecuteQuery_DataTable("exec spTimKiemByBanhBo_DonTu '" + DanhBo + "'");
             DataTable dtDon = new DataTable();
+            dtDon.Columns.Add("Phong", typeof(string));
             dtDon.Columns.Add("MaDon", typeof(string));
             dtDon.Columns.Add("TenLD", typeof(string));
             dtDon.Columns.Add("CreateDate", typeof(DateTime));
@@ -8333,6 +8334,7 @@ namespace KTKS_DonKH.DAL.TimKiem
 
             DataTable dt = ExecuteQuery_DataTable("exec spTimKiemByHoTen_DonTu '" + HoTen + "'");
             DataTable dtDon = new DataTable();
+            dtDon.Columns.Add("Phong", typeof(string));
             dtDon.Columns.Add("MaDon", typeof(string));
             dtDon.Columns.Add("TenLD", typeof(string));
             dtDon.Columns.Add("CreateDate", typeof(DateTime));
@@ -8413,6 +8415,7 @@ namespace KTKS_DonKH.DAL.TimKiem
 
             DataTable dt = ExecuteQuery_DataTable("exec spTimKiemByDiaChi_DonTu '" + DiaChi + "'");
             DataTable dtDon = new DataTable();
+            dtDon.Columns.Add("Phong", typeof(string));
             dtDon.Columns.Add("MaDon", typeof(string));
             dtDon.Columns.Add("TenLD", typeof(string));
             dtDon.Columns.Add("CreateDate", typeof(DateTime));
@@ -8500,6 +8503,7 @@ namespace KTKS_DonKH.DAL.TimKiem
             }
 
             DataTable dtDon = new DataTable();
+            dtDon.Columns.Add("Phong", typeof(string));
             dtDon.Columns.Add("MaDon", typeof(string));
             dtDon.Columns.Add("TenLD", typeof(string));
             dtDon.Columns.Add("CreateDate", typeof(DateTime));
@@ -8587,6 +8591,7 @@ namespace KTKS_DonKH.DAL.TimKiem
             }
 
             DataTable dtDon = new DataTable();
+            dtDon.Columns.Add("Phong", typeof(string));
             dtDon.Columns.Add("MaDon", typeof(string));
             dtDon.Columns.Add("TenLD", typeof(string));
             dtDon.Columns.Add("CreateDate", typeof(DateTime));

@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.LinQ;
+using KTKS_DonKH.wrThuongVu;
 
 namespace KTKS_DonKH.GUI.HeThong
 {
@@ -138,7 +139,7 @@ namespace KTKS_DonKH.GUI.HeThong
         {
             try
             {
-                wsThuongVu.wsThuongVu ws = new wsThuongVu.wsThuongVu();
+                wsThuongVu ws = new wsThuongVu();
                 DataTable dt = _cMenu.ExecuteQuery_DataTable(textBox1.Text.Trim());
                 foreach (DataRow item in dt.Rows)
                 {
@@ -159,7 +160,7 @@ namespace KTKS_DonKH.GUI.HeThong
         {
             try
             {
-                wsThuongVu.wsThuongVu ws = new wsThuongVu.wsThuongVu();
+                wsThuongVu ws = new wsThuongVu();
                 DataTable dt = _cMenu.ExecuteQuery_DataTable(textBox1.Text.Trim());
                 foreach (DataRow item in dt.Rows)
                 {
