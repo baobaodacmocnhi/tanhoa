@@ -21,7 +21,6 @@ namespace DocSo_PC.GUI.Doi
         string _fileName = "";
         CDocSo _cDocSo = new CDocSo();
         CLichDocSo _cLichDocSo = new CLichDocSo();
-        CChuanBiDS _cChuanBi = new CChuanBiDS();
         CTo _cTo = new CTo();
 
         public frmTaoDot()

@@ -15,6 +15,7 @@ namespace DocSo_PC.DAL.MaHoa
             try
             {
                 ctktxm.CreateBy = CNguoiDung.MaND;
+                ctktxm.CreateDate = DateTime.Now;
                 _db.MaHoa_DanhBo_Excepts.InsertOnSubmit(ctktxm);
                 _db.SubmitChanges();
                 return true;
