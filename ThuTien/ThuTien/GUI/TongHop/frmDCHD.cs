@@ -632,28 +632,28 @@ namespace ThuTien.GUI.TongHop
                             foreach (DataRow item in dtExcel.Rows)
                             {
                                 //cấu hình điều chỉnh bằng chương trình
-                                //DIEUCHINH_HD dchd = _cDCHD.get(item[1].ToString().Trim() + item[2].ToString().Trim());
-                                //if (dchd != null && dchd.UpdatedHDDT == false)
-                                //    if (dchd.TONGCONG_END != null)
+                                DIEUCHINH_HD dchd = _cDCHD.get(item[1].ToString().Trim() + item[2].ToString().Trim());
+                                if (dchd != null && dchd.UpdatedHDDT == false)
+                                    if (dchd.TONGCONG_END != null)
                                         using (TransactionScope scope = new TransactionScope())
                                         {
                                             if (item[3].ToString().All(char.IsDigit) == true)
                                             {
-                                                //dchd.UpdatedHDDT = true;
-                                                //dchd.SoHoaDonMoi = item[1].ToString().Trim() + item[3].ToString().Trim();
-                                                //if (_cDCHD.Sua(dchd) == true)
+                                                dchd.UpdatedHDDT = true;
+                                                dchd.SoHoaDonMoi = item[1].ToString().Trim() + item[3].ToString().Trim();
+                                                if (_cDCHD.Sua(dchd) == true)
                                                 {
-                                                    HOADON hd = _cHoaDon.Get(item[1].ToString().Trim() + item[2].ToString().Trim());
-                                                    //if (hd.SOHOADON != dchd.SoHoaDonMoi)
+                                                    HOADON hd = _cHoaDon.Get(dchd.FK_HOADON);
+                                                    if (hd.SOHOADON != dchd.SoHoaDonMoi)
                                                     {
                                                         hd.SoHoaDonCu = hd.SOHOADON;
-                                                        hd.SOHOADON = item[1].ToString().Trim() + item[3].ToString().Trim();
+                                                        hd.SOHOADON = dchd.SoHoaDonMoi;
                                                     }
-                                                    //hd.BaoCaoThue = dchd.BaoCaoThue;
+                                                    hd.BaoCaoThue = dchd.BaoCaoThue;
                                                     if (_cHoaDon.Sua(hd) == true)
                                                     {
                                                         ///lưu lịch sử
-                                                        //_cDCHD.LuuLichSuDC(dchd);
+                                                        _cDCHD.LuuLichSuDC(dchd);
                                                         scope.Complete();
                                                         scope.Dispose();
                                                         countXuLy++;
@@ -662,19 +662,19 @@ namespace ThuTien.GUI.TongHop
                                             }
                                             else
                                             {
-                                                //HOADON hd = _cHoaDon.Get(dchd.FK_HOADON);
-                                                //messageTCT += "\n" + item[3].ToString() + " - " + hd.DANHBA + " - " + hd.KY + "/" + hd.NAM;
+                                                HOADON hd = _cHoaDon.Get(dchd.FK_HOADON);
+                                                messageTCT += "\n" + item[3].ToString() + " - " + hd.DANHBA + " - " + hd.KY + "/" + hd.NAM;
                                             }
                                         }
-                                //    else
-                                //    {
-                                //        HOADON hd = _cHoaDon.Get(dchd.FK_HOADON);
-                                //        messageTV += "\n" + item[3].ToString() + " - " + hd.DANHBA + " - " + hd.KY + "/" + hd.NAM;
-                                //    }
-                                //else
-                                //{
-                                //    countDaXuLy++;
-                                //}
+                                    else
+                                    {
+                                        HOADON hd = _cHoaDon.Get(dchd.FK_HOADON);
+                                        messageTV += "\n" + item[3].ToString() + " - " + hd.DANHBA + " - " + hd.KY + "/" + hd.NAM;
+                                    }
+                                else
+                                {
+                                    countDaXuLy++;
+                                }
                                 //cấu hình điều chỉnh bằng tay
                                 //if (string.IsNullOrEmpty(item[20].ToString().Trim()) == false && item[20].ToString().Trim() != "")
                                 //{
