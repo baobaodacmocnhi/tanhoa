@@ -21,6 +21,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                where itemDon.MaDon == MaDon
                                select new
                                {
+                                   Phong="TV",
                                    MaDon = itemDon.DonTu.DonTu_ChiTiets.Count == 1 ? itemDon.MaDon.Value.ToString() : itemDon.MaDon.Value.ToString() + "." + itemDon.STT.Value.ToString(),
                                    TenLD = itemDon.DonTu.SoCongVan_PhongBanDoi + ": " + itemDon.DonTu.SoCongVan,
                                    itemDon.CreateDate,
@@ -47,6 +48,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 orderby itemCTKTXM.NgayKTXM
                                 select new
                                 {
+                                    Phong = "TV",
                                     MaDon = itemCTKTXM.KTXM.DonTu.DonTu_ChiTiets.Count == 1 ? itemCTKTXM.KTXM.MaDonMoi.Value.ToString() : itemCTKTXM.KTXM.MaDonMoi.Value.ToString() + "." + itemCTKTXM.STT.Value.ToString(),
                                     itemCTKTXM.MaCTKTXM,
                                     itemCTKTXM.NgayKTXM,
@@ -72,6 +74,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   orderby itemCTBamChi.NgayBC
                                   select new
                                   {
+                                      Phong = "TV",
                                       MaDon = itemCTBamChi.BamChi.DonTu.DonTu_ChiTiets.Count == 1 ? itemCTBamChi.BamChi.MaDonMoi.Value.ToString() : itemCTBamChi.BamChi.MaDonMoi.Value.ToString() + "." + itemCTBamChi.STT.Value.ToString(),
                                       itemCTBamChi.MaCTBC,
                                       itemCTBamChi.NgayBC,
@@ -95,6 +98,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     orderby itemCTDongNuoc.NgayDN
                                     select new
                                     {
+                                        Phong = "TV",
                                         MaDon = itemCTDongNuoc.DongNuoc.DonTu.DonTu_ChiTiets.Count == 1 ? itemCTDongNuoc.DongNuoc.MaDonMoi.Value.ToString() : itemCTDongNuoc.DongNuoc.MaDonMoi.Value.ToString() + "." + itemCTDongNuoc.STT.Value.ToString(),
                                         itemCTDongNuoc.MaCTDN,
                                         itemCTDongNuoc.NgayDN,
@@ -117,6 +121,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   orderby itemCTDCBD.CreateDate
                                   select new
                                   {
+                                      Phong = "TV",
                                       MaDon = itemCTDCBD.DCBD.DonTu.DonTu_ChiTiets.Count == 1 ? itemCTDCBD.DCBD.MaDonMoi.Value.ToString() : itemCTDCBD.DCBD.MaDonMoi.Value.ToString() + "." + itemCTDCBD.STT.Value.ToString(),
                                       MaDC = itemCTDCBD.MaCTDCBD,
                                       DieuChinh = "Biến Động",
@@ -145,6 +150,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   orderby itemCTDCHD.CreateDate
                                   select new
                                   {
+                                      Phong = "TV",
                                       MaDon = itemCTDCHD.DCBD.DonTu.DonTu_ChiTiets.Count == 1 ? itemCTDCHD.DCBD.MaDonMoi.Value.ToString() : itemCTDCHD.DCBD.MaDonMoi.Value.ToString() + "." + itemCTDCHD.STT.Value.ToString(),
                                       MaDC = itemCTDCHD.MaCTDCHD,
                                       DieuChinh = "Hóa Đơn",
@@ -179,6 +185,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   orderby itemCTCTDB.CreateDate
                                   select new
                                   {
+                                      Phong = "TV",
                                       MaDon = itemCTCTDB.CHDB.DonTu.DonTu_ChiTiets.Count == 1 ? itemCTCTDB.CHDB.MaDonMoi.Value.ToString() : itemCTCTDB.CHDB.MaDonMoi.Value.ToString() + "." + itemCTCTDB.STT.Value.ToString(),
                                       MaCH = itemCTCTDB.MaCTCTDB,
                                       LoaiCat = "Cắt Tạm",
@@ -198,6 +205,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   orderby itemCTCHDB.CreateDate
                                   select new
                                   {
+                                      Phong = "TV",
                                       MaDon = itemCTCHDB.CHDB.DonTu.DonTu_ChiTiets.Count == 1 ? itemCTCHDB.CHDB.MaDonMoi.Value.ToString() : itemCTCHDB.CHDB.MaDonMoi.Value.ToString() + "." + itemCTCHDB.STT.Value.ToString(),
                                       MaCH = itemCTCHDB.MaCTCHDB,
                                       LoaiCat = "Cắt Hủy",
@@ -223,6 +231,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                      orderby itemYCCHDB.CreateDate
                                      select new
                                      {
+                                         Phong = "TV",
                                          MaDon = itemYCCHDB.CHDB.DonTu.DonTu_ChiTiets.Count == 1 ? itemYCCHDB.CHDB.MaDonMoi.Value.ToString() : itemYCCHDB.CHDB.MaDonMoi.Value.ToString() + "." + itemYCCHDB.STT.Value.ToString(),
                                          itemYCCHDB.MaYCCHDB,
                                          itemYCCHDB.CreateDate,
@@ -244,6 +253,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 orderby itemCTTTTL.CreateDate
                                 select new
                                 {
+                                    Phong = "TV",
                                     MaDon = itemCTTTTL.ThuTraLoi.DonTu.DonTu_ChiTiets.Count == 1 ? itemCTTTTL.ThuTraLoi.MaDonMoi.Value.ToString() : itemCTTTTL.ThuTraLoi.MaDonMoi.Value.ToString() + "." + itemCTTTTL.STT.Value.ToString(),
                                     itemCTTTTL.MaCTTTTL,
                                     itemCTTTTL.CreateDate,
@@ -265,6 +275,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                    orderby itemGL.CreateDate
                                    select new
                                    {
+                                       Phong = "TV",
                                        MaDon = itemGL.GianLan.DonTu.DonTu_ChiTiets.Count == 1 ? itemGL.GianLan.MaDonMoi.Value.ToString() : itemGL.GianLan.MaDonMoi.Value.ToString() + "." + itemGL.STT.Value.ToString(),
                                        ID = itemGL.MaCTGL,
                                        itemGL.DanhBo,
@@ -289,6 +300,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                    orderby itemTT.CreateDate
                                    select new
                                    {
+                                       Phong = "TV",
                                        MaDon = itemTT.TruyThuTienNuoc.DonTu.DonTu_ChiTiets.Count == 1 ? itemTT.TruyThuTienNuoc.MaDonMoi.Value.ToString() : itemTT.TruyThuTienNuoc.MaDonMoi.Value.ToString() + "." + itemTT.STT.Value.ToString(),
                                        itemTT.IDCT,
                                        itemTT.DanhBo,
@@ -311,6 +323,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                    orderby itemCTTT.CreateDate
                                    select new
                                    {
+                                       Phong = "TV",
                                        MaDon = itemCTTT.ToTrinh.DonTu.DonTu_ChiTiets.Count == 1 ? itemCTTT.ToTrinh.MaDonMoi.Value.ToString() : itemCTTT.ToTrinh.MaDonMoi.Value.ToString() + "." + itemCTTT.STT.Value.ToString(),
                                        itemCTTT.IDCT,
                                        itemCTTT.DanhBo,
@@ -327,6 +340,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     orderby itemCTTT.CreateDate
                                     select new
                                     {
+                                        Phong = "TV",
                                         MaDon = db.DonTu_ChiTiets.Count(itemA => itemA.MaDon == itemCTTT.MaDon) == 1 ? itemCTTT.MaDon.Value.ToString() : itemCTTT.MaDon.Value.ToString() + "." + itemCTTT.STT.Value.ToString(),
                                         itemCTTT.IDCT,
                                         itemCTTT.DanhBo,
@@ -346,6 +360,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   orderby item.CreateDate
                                   select new
                                   {
+                                      Phong = "TV",
                                       MaDon = item.ThuMoi.DonTu.DonTu_ChiTiets.Count == 1 ? item.ThuMoi.MaDonMoi.Value.ToString() : item.ThuMoi.MaDonMoi.Value.ToString() + "." + item.STT.Value.ToString(),
                                       item.IDCT,
                                       item.Lan,
@@ -366,6 +381,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   orderby item.CreateDate
                                   select new
                                   {
+                                      Phong = "TV",
                                       MaDon = item.VanBan.DonTu.DonTu_ChiTiets.Count == 1 ? item.VanBan.MaDon.Value.ToString() : item.VanBan.MaDon.Value.ToString() + "." + item.STT.Value.ToString(),
                                       item.IDCT,
                                       item.DanhBo,
@@ -386,6 +402,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                      orderby item.NgayChuyen descending, item.ID descending
                                      select new
                                      {
+                                         Phong = "TV",
                                          MaDon = item.DonTu.DonTu_ChiTiets.Count == 1 ? item.MaDon.Value.ToString() : item.MaDon.Value.ToString() + "." + item.STT.Value.ToString(),
                                          item.NgayChuyen,
                                          item.NoiChuyen,
@@ -457,6 +474,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                where itemDon.MaDon == MaDon && itemDon.STT == STT
                                select new
                                {
+                                   Phong = "TV",
                                    MaDon = itemDon.MaDon.Value.ToString() + "." + itemDon.STT.Value.ToString(),
                                    TenLD = itemDon.DonTu.SoCongVan_PhongBanDoi + ": " + itemDon.DonTu.SoCongVan,
                                    itemDon.CreateDate,
@@ -483,6 +501,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 orderby itemCTKTXM.NgayKTXM
                                 select new
                                 {
+                                    Phong = "TV",
                                     MaDon = itemCTKTXM.KTXM.MaDonMoi.Value.ToString() + "." + itemCTKTXM.STT.Value.ToString(),
                                     itemCTKTXM.MaCTKTXM,
                                     itemCTKTXM.NgayKTXM,
@@ -508,6 +527,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   orderby itemCTBamChi.NgayBC
                                   select new
                                   {
+                                      Phong = "TV",
                                       MaDon = itemCTBamChi.BamChi.MaDonMoi.Value.ToString() + "." + itemCTBamChi.STT.Value.ToString(),
                                       itemCTBamChi.MaCTBC,
                                       itemCTBamChi.NgayBC,
@@ -531,6 +551,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     orderby itemCTDongNuoc.NgayDN
                                     select new
                                     {
+                                        Phong = "TV",
                                         MaDon = itemCTDongNuoc.DongNuoc.MaDonMoi.Value.ToString() + "." + itemCTDongNuoc.STT.Value.ToString(),
                                         itemCTDongNuoc.MaCTDN,
                                         itemCTDongNuoc.NgayDN,
@@ -553,6 +574,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   orderby itemCTDCBD.CreateDate
                                   select new
                                   {
+                                      Phong = "TV",
                                       MaDon = itemCTDCBD.DCBD.MaDonMoi.Value.ToString() + "." + itemCTDCBD.STT.Value.ToString(),
                                       MaDC = itemCTDCBD.MaCTDCBD,
                                       DieuChinh = "Biến Động",
@@ -581,6 +603,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   orderby itemCTDCHD.CreateDate
                                   select new
                                   {
+                                      Phong = "TV",
                                       MaDon = itemCTDCHD.DCBD.MaDonMoi.Value.ToString() + "." + itemCTDCHD.STT.Value.ToString(),
                                       MaDC = itemCTDCHD.MaCTDCHD,
                                       DieuChinh = "Hóa Đơn",
@@ -615,6 +638,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   orderby itemCTCTDB.CreateDate
                                   select new
                                   {
+                                      Phong = "TV",
                                       MaDon = itemCTCTDB.CHDB.MaDonMoi.Value.ToString() + "." + itemCTCTDB.STT.Value.ToString(),
                                       MaCH = itemCTCTDB.MaCTCTDB,
                                       LoaiCat = "Cắt Tạm",
@@ -634,6 +658,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   orderby itemCTCHDB.CreateDate
                                   select new
                                   {
+                                      Phong = "TV",
                                       MaDon = itemCTCHDB.CHDB.MaDonMoi.Value.ToString() + "." + itemCTCHDB.STT.Value.ToString(),
                                       MaCH = itemCTCHDB.MaCTCHDB,
                                       LoaiCat = "Cắt Hủy",
@@ -659,6 +684,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                      orderby itemYCCHDB.CreateDate
                                      select new
                                      {
+                                         Phong = "TV",
                                          MaDon = itemYCCHDB.CHDB.MaDonMoi.Value.ToString() + "." + itemYCCHDB.STT.Value.ToString(),
                                          itemYCCHDB.MaYCCHDB,
                                          itemYCCHDB.CreateDate,
@@ -680,6 +706,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 orderby itemCTTTTL.CreateDate
                                 select new
                                 {
+                                    Phong = "TV",
                                     MaDon = itemCTTTTL.ThuTraLoi.MaDonMoi.Value.ToString() + "." + itemCTTTTL.STT.Value.ToString(),
                                     itemCTTTTL.MaCTTTTL,
                                     itemCTTTTL.CreateDate,
@@ -701,6 +728,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                    orderby itemGL.CreateDate
                                    select new
                                    {
+                                       Phong = "TV",
                                        MaDon = itemGL.GianLan.MaDonMoi.Value.ToString() + "." + itemGL.STT.Value.ToString(),
                                        ID = itemGL.MaCTGL,
                                        itemGL.DanhBo,
@@ -725,6 +753,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                    orderby itemTT.CreateDate
                                    select new
                                    {
+                                       Phong = "TV",
                                        MaDon = itemTT.TruyThuTienNuoc.MaDonMoi.Value.ToString() + "." + itemTT.STT.Value.ToString(),
                                        itemTT.IDCT,
                                        itemTT.DanhBo,
@@ -747,6 +776,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                    orderby itemCTTT.CreateDate
                                    select new
                                    {
+                                       Phong = "TV",
                                        MaDon = itemCTTT.ToTrinh.MaDonMoi.Value.ToString() + "." + itemCTTT.STT.Value.ToString(),
                                        itemCTTT.IDCT,
                                        itemCTTT.DanhBo,
@@ -763,6 +793,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                     orderby itemCTTT.CreateDate
                                     select new
                                     {
+                                        Phong = "TV",
                                         MaDon = itemCTTT.MaDon.Value.ToString() + "." + itemCTTT.STT.Value.ToString(),
                                         itemCTTT.IDCT,
                                         itemCTTT.DanhBo,
@@ -783,6 +814,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   orderby item.CreateDate
                                   select new
                                   {
+                                      Phong = "TV",
                                       MaDon = item.ThuMoi.MaDonMoi.Value.ToString() + "." + item.STT.Value.ToString(),
                                       item.IDCT,
                                       item.Lan,
@@ -803,6 +835,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                   orderby item.CreateDate
                                   select new
                                   {
+                                      Phong = "TV",
                                       MaDon = item.VanBan.MaDon.Value.ToString() + "." + item.STT.Value.ToString(),
                                       item.IDCT,
                                       item.DanhBo,
@@ -823,6 +856,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                      orderby item.NgayChuyen descending, item.ID descending
                                      select new
                                      {
+                                         Phong = "TV",
                                          MaDon = item.MaDon.Value.ToString() + "." + item.STT.Value.ToString(),
                                          item.NgayChuyen,
                                          item.NoiChuyen,
