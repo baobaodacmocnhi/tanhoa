@@ -67,7 +67,7 @@ namespace ThuTien.GUI.TimKiem
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
-            wsThuTien.wsThuTien wsThuTien = new wsThuTien.wsThuTien();
+            wrThuTien.wsThuTien wsThuTien = new wrThuTien.wsThuTien();
             string result = "";
             if (chkTruoc01072022.Checked)
                 result = wsThuTien.syncThanhToan_01072022(_MaHD, true, 0);
@@ -83,7 +83,7 @@ namespace ThuTien.GUI.TimKiem
 
         private void btnNopTien_Click(object sender, EventArgs e)
         {
-            wsThuTien.wsThuTien wsThuTien = new wsThuTien.wsThuTien();
+            wrThuTien.wsThuTien wsThuTien = new wrThuTien.wsThuTien();
             string result = "";
             if (chkTruoc01072022.Checked)
                 result = wsThuTien.syncNopTien_01072022(_MaHD);

@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.1439</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>38</ApplicationRevision>
+    <ApplicationRevision>39</ApplicationRevision>
     <ApplicationVersion>1.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -1375,7 +1375,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
-    <Compile Include="Web References\wsThuTien\Reference.cs">
+    <Compile Include="Web References\wrThuTien\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -1731,12 +1731,12 @@
       <LastGenOutput>dbDocSo.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="Web References\wsThuTien\Reference.map">
+    <None Include="Web References\wrThuTien\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="Web References\wsThuTien\wsthutien.wsdl">
+    <None Include="Web References\wrThuTien\wsthutien.wsdl">
       <SubType>Designer</SubType>
     </None>
     <None Include="BaoCao\dsBaoCao.xsc">
@@ -2440,10 +2440,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://server11:81/wsthutien.asmx">
+    <WebReferenceUrl Include="http://server5:81/wsthutien.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\wsThuTien\</RelPath>
-      <UpdateFromURL>http://server11:81/wsthutien.asmx</UpdateFromURL>
+      <RelPath>Web References\wrThuTien\</RelPath>
+      <UpdateFromURL>http://server5:81/wsthutien.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -2453,7 +2453,7 @@
     </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\wsThuTien\wsthutien.disco">
+    <None Include="Web References\wrThuTien\wsthutien.disco">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>

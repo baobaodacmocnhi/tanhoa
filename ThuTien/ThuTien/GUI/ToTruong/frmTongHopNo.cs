@@ -673,7 +673,7 @@ namespace ThuTien.GUI.ToTruong
                 MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        wsThuTien.wsThuTien wsThuTien = new wsThuTien.wsThuTien();
+        wrThuTien.wsThuTien wsThuTien = new wrThuTien.wsThuTien();
         private void dgvHoaDon_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvHoaDon.RowCount > 0)

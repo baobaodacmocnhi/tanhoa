@@ -13,7 +13,7 @@
 // 
 #pragma warning disable 1591
 
-namespace ThuTien.wsThuTien {
+namespace ThuTien.wrThuTien {
     using System;
     using System.Web.Services;
     using System.Diagnostics;

@@ -620,7 +620,7 @@ namespace ThuTien.GUI.Doi
                                 MessageBox.Show("Ngày Đăng Ngân đã Chốt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
-                            wsThuTien.wsThuTien wsThuTien = new wsThuTien.wsThuTien();
+                            wrThuTien.wsThuTien wsThuTien = new wrThuTien.wsThuTien();
                             wsThuTien.syncNopTienLo(en.NgayChot.Value.ToString("dd/MM/yyyy"));
                         }
                     }

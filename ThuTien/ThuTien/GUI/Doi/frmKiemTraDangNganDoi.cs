@@ -1021,7 +1021,7 @@ namespace ThuTien.GUI.Doi
 
         private void backgroundWorker_NopTien_DoWork(object sender, DoWorkEventArgs e)
         {
-            wsThuTien.wsThuTien wsThuTien = new wsThuTien.wsThuTien();
+            wrThuTien.wsThuTien wsThuTien = new wrThuTien.wsThuTien();
             TT_ChotDangNgan en = _cChotDangNgan.get(int.Parse(dgvChotDangNgan.CurrentRow.Cells["ID"].Value.ToString()));
             string result = "";
             switch (_actionNopTien)
