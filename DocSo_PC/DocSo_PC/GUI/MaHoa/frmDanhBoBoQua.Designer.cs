@@ -38,7 +38,10 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.dgvDanhSach = new System.Windows.Forms.DataGridView();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtNoiDung = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,6 +96,7 @@
             this.dgvDanhSach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDanhSach.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DanhBo,
+            this.NoiDung,
             this.CreateDate});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
@@ -102,7 +106,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvDanhSach.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvDanhSach.Location = new System.Drawing.Point(12, 41);
+            this.dgvDanhSach.Location = new System.Drawing.Point(12, 66);
             this.dgvDanhSach.Name = "dgvDanhSach";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -114,7 +118,7 @@
             this.dgvDanhSach.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvDanhSach.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvDanhSach.Size = new System.Drawing.Size(265, 511);
+            this.dgvDanhSach.Size = new System.Drawing.Size(361, 511);
             this.dgvDanhSach.TabIndex = 71;
             this.dgvDanhSach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellClick);
             this.dgvDanhSach.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhSach_RowPostPaint);
@@ -125,17 +129,41 @@
             this.DanhBo.HeaderText = "Danh Bộ";
             this.DanhBo.Name = "DanhBo";
             // 
+            // NoiDung
+            // 
+            this.NoiDung.DataPropertyName = "NoiDung";
+            this.NoiDung.HeaderText = "Nội Dung";
+            this.NoiDung.Name = "NoiDung";
+            // 
             // CreateDate
             // 
             this.CreateDate.DataPropertyName = "CreateDate";
             this.CreateDate.HeaderText = "Ngày Lập";
             this.CreateDate.Name = "CreateDate";
             // 
+            // txtNoiDung
+            // 
+            this.txtNoiDung.Location = new System.Drawing.Point(58, 40);
+            this.txtNoiDung.Name = "txtNoiDung";
+            this.txtNoiDung.Size = new System.Drawing.Size(181, 20);
+            this.txtNoiDung.TabIndex = 73;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 43);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(52, 13);
+            this.label2.TabIndex = 72;
+            this.label2.Text = "Nội Dung";
+            // 
             // frmDanhBoBoQua
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(336, 574);
+            this.ClientSize = new System.Drawing.Size(516, 627);
+            this.Controls.Add(this.txtNoiDung);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.dgvDanhSach);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnThem);
@@ -158,6 +186,9 @@
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.DataGridView dgvDanhSach;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
+        private System.Windows.Forms.TextBox txtNoiDung;
+        private System.Windows.Forms.Label label2;
     }
 }

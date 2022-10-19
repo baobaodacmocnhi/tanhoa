@@ -15,6 +15,7 @@ using DocSo_PC.BaoCao.MaHoa;
 using DocSo_PC.GUI.BaoCao;
 using DocSo_PC.DAL.Doi;
 using System.Transactions;
+using CrystalDecisions.CrystalReports.Engine;
 
 namespace DocSo_PC.GUI.MaHoa
 {
@@ -489,12 +490,34 @@ namespace DocSo_PC.GUI.MaHoa
                             dr["NoiNhan"] = en.NoiNhan;
                             dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper();
                             dr["NguoiKy"] = CNguoiDung.NguoiKy.ToUpper();
-                            dr["ChucVuDuyet"] = "DUYỆT\n" + _cThuongVu.getChucVu_Duyet().ToUpper();
-                            dr["NguoiKyDuyet"] = _cThuongVu.getNguoiKy_Duyet().ToUpper();
+                            if (radPGD.Checked)
+                            {
+                                dr["ChucVuDuyet"] = "DUYỆT\n" + _cThuongVu.getChucVu_Duyet().ToUpper();
+                                dr["NguoiKyDuyet"] = _cThuongVu.getNguoiKy_Duyet().ToUpper();
+                            }
+                            else
+                                if (radGD.Checked)
+                                {
+                                    dr["ChucVuDuyet"] = "DUYỆT\n" + _cThuongVu.getChucVu_GDDuyet().ToUpper();
+                                    dr["NguoiKyDuyet"] = _cThuongVu.getNguoiKy_GDDuyet().ToUpper();
+                                }
+                                else
+                                    if (radGDDuyet.Checked)
+                                    {
+                                        dr["ChucVuThongQua"] = "TRÌNH DUYỆT\n" + _cThuongVu.getChucVu_Duyet().ToUpper();
+                                        dr["NguoiKyThongQua"] = _cThuongVu.getNguoiKy_Duyet().ToUpper();
+                                        dr["ChucVuDuyet"] = _cThuongVu.getChucVu_GDDuyet().ToUpper();
+                                        dr["NguoiKyDuyet"] = _cThuongVu.getNguoiKy_GDDuyet().ToUpper();
+                                    }
                             dsBaoCao.Tables["BaoCao"].Rows.Add(dr);
                         }
                     }
-                rptToTrinh_ThongQuaPGD_2022 rpt = new rptToTrinh_ThongQuaPGD_2022();
+                ReportDocument rpt = new ReportDocument();
+                if (radPGD.Checked || radGD.Checked)
+                    rpt = new rptToTrinh_PGD_2022();
+                else
+                    if (radGDDuyet.Checked)
+                        rpt = new rptToTrinh_ThongQuaPGD_2022();
                 rpt.SetDataSource(dsBaoCao);
                 frmShowBaoCao frm = new frmShowBaoCao(rpt);
                 frm.Show();

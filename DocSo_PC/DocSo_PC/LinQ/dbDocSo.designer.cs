@@ -12868,6 +12868,8 @@ namespace DocSo_PC.LinQ
 		
 		private string _DanhBo;
 		
+		private string _NoiDung;
+		
 		private System.Nullable<int> _CreateBy;
 		
 		private System.DateTime _CreateDate;
@@ -12878,6 +12880,8 @@ namespace DocSo_PC.LinQ
     partial void OnCreated();
     partial void OnDanhBoChanging(string value);
     partial void OnDanhBoChanged();
+    partial void OnNoiDungChanging(string value);
+    partial void OnNoiDungChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.DateTime value);
@@ -12905,6 +12909,26 @@ namespace DocSo_PC.LinQ
 					this._DanhBo = value;
 					this.SendPropertyChanged("DanhBo");
 					this.OnDanhBoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NoiDung", DbType="NVarChar(200)")]
+		public string NoiDung
+		{
+			get
+			{
+				return this._NoiDung;
+			}
+			set
+			{
+				if ((this._NoiDung != value))
+				{
+					this.OnNoiDungChanging(value);
+					this.SendPropertyChanging();
+					this._NoiDung = value;
+					this.SendPropertyChanged("NoiDung");
+					this.OnNoiDungChanged();
 				}
 			}
 		}

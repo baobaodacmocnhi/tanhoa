@@ -580,6 +580,7 @@
   <Table Name="dbo.MaHoa_DanhBo_Except" Member="MaHoa_DanhBo_Excepts">
     <Type Name="MaHoa_DanhBo_Except">
       <Column Name="DanhBo" Type="System.String" DbType="Char(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NoiDung" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
     </Type>

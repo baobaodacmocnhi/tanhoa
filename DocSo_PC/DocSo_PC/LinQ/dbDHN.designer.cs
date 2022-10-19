@@ -3188,6 +3188,10 @@ namespace DocSo_PC.LinQ
 		
 		private System.Nullable<System.DateTime> _GayTayVan_Ngay;
 		
+		private bool _TroNgaiThay;
+		
+		private System.Nullable<System.DateTime> _TroNgaiThay_Ngay;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -3346,6 +3350,10 @@ namespace DocSo_PC.LinQ
     partial void OnGayTayVanChanged();
     partial void OnGayTayVan_NgayChanging(System.Nullable<System.DateTime> value);
     partial void OnGayTayVan_NgayChanged();
+    partial void OnTroNgaiThayChanging(bool value);
+    partial void OnTroNgaiThayChanged();
+    partial void OnTroNgaiThay_NgayChanging(System.Nullable<System.DateTime> value);
+    partial void OnTroNgaiThay_NgayChanged();
     #endregion
 		
 		public TB_DULIEUKHACHHANG()
@@ -4889,6 +4897,46 @@ namespace DocSo_PC.LinQ
 					this._GayTayVan_Ngay = value;
 					this.SendPropertyChanged("GayTayVan_Ngay");
 					this.OnGayTayVan_NgayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TroNgaiThay", DbType="Bit NOT NULL")]
+		public bool TroNgaiThay
+		{
+			get
+			{
+				return this._TroNgaiThay;
+			}
+			set
+			{
+				if ((this._TroNgaiThay != value))
+				{
+					this.OnTroNgaiThayChanging(value);
+					this.SendPropertyChanging();
+					this._TroNgaiThay = value;
+					this.SendPropertyChanged("TroNgaiThay");
+					this.OnTroNgaiThayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TroNgaiThay_Ngay", DbType="DateTime")]
+		public System.Nullable<System.DateTime> TroNgaiThay_Ngay
+		{
+			get
+			{
+				return this._TroNgaiThay_Ngay;
+			}
+			set
+			{
+				if ((this._TroNgaiThay_Ngay != value))
+				{
+					this.OnTroNgaiThay_NgayChanging(value);
+					this.SendPropertyChanging();
+					this._TroNgaiThay_Ngay = value;
+					this.SendPropertyChanged("TroNgaiThay_Ngay");
+					this.OnTroNgaiThay_NgayChanged();
 				}
 			}
 		}

@@ -84,5 +84,14 @@ namespace DocSo_PC.DAL
             return _cDAL.ExecuteQuery_ReturnOneValue("select HoTen from BanGiamDoc where KyTen=1").ToString();
         }
 
+        public string getChucVu_GDDuyet()
+        {
+            return _cDAL.ExecuteQuery_ReturnOneValue("select ChucVu from BanGiamDoc where KyTenDuyet=1").ToString();
+        }
+
+        public string getNguoiKy_GDDuyet()
+        {
+            return _cDAL.ExecuteQuery_ReturnOneValue("select HoTen from BanGiamDoc where KyTenDuyet=1").ToString();
+        }
     }
 }

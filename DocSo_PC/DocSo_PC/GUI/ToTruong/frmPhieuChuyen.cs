@@ -446,6 +446,11 @@ namespace DocSo_PC.GUI.ToTruong
                                     ttkh.GayTayVan_Ngay = DateTime.Now;
                                     CPhieuChuyenLichSu.them(ttkh.DANHBO, "Gãy Tay Van", "Thêm");
                                     break;
+                                case "Trở Ngại Thay":
+                                    ttkh.TroNgaiThay = true;
+                                    ttkh.TroNgaiThay_Ngay = DateTime.Now;
+                                    CPhieuChuyenLichSu.them(ttkh.DANHBO, "Trở Ngại Thay", "Thêm");
+                                    break;
                                 default:
                                     break;
                             }
@@ -505,6 +510,9 @@ namespace DocSo_PC.GUI.ToTruong
                                     break;
                                 case "Gãy Tay Van":
                                     ttkh.GayTayVan = false;
+                                    break;
+                                case "Trở Ngại Thay":
+                                    ttkh.TroNgaiThay = false;
                                     break;
                                 default:
                                     break;

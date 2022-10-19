@@ -46,6 +46,7 @@ namespace DocSo_PC.GUI.MaHoa
                     {
                         MaHoa_DanhBo_Except en = new MaHoa_DanhBo_Except();
                         en.DanhBo = txtDanhBo.Text.Trim().Replace(" ", "").Replace("-", "");
+                        en.NoiDung = txtNoiDung.Text.Trim();
                         if (_cDBBQ.Them(en))
                         {
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -95,7 +96,10 @@ namespace DocSo_PC.GUI.MaHoa
             {
                 _danhbo = _cDBBQ.get(dgvDanhSach.Rows[e.RowIndex].Cells["DanhBo"].Value.ToString());
                 if (_danhbo != null)
+                {
                     txtDanhBo.Text = _danhbo.DanhBo;
+                    txtNoiDung.Text = _danhbo.NoiDung;
+                }
             }
             catch { }
         }

@@ -100,6 +100,17 @@ namespace DocSo_PC.GUI.ToTruong
             chkViTriDHN_Ngoai.Checked = false;
             chkViTriDHN_Hop.Checked = false;
             chkGieng.Checked = false;
+            chkAmSau.Checked = false;
+            chkXayDung.Checked = false;
+            chkDutChiGoc.Checked = false;
+            chkDutChiThan.Checked = false;
+            chkNgapNuoc.Checked = false;
+            chkKetTuong.Checked = false;
+            chkLapKhoaGoc.Checked = false;
+            chkBeHBV.Checked = false;
+            chkBeNapMatNapHBV.Checked = false;
+            chkGayTayVan.Checked = false;
+            chkTroNgaiThay.Checked = false;
         }
 
         public void loadthongtin(TB_DULIEUKHACHHANG en)
@@ -319,6 +330,11 @@ namespace DocSo_PC.GUI.ToTruong
                         {
                             _enDLKH.GayTayVan = chkGayTayVan.Checked;
                             CPhieuChuyenLichSu.them(_enDLKH.DANHBO, "Gãy Tay Van", "Xóa");
+                        }
+                        if (_enDLKH.TroNgaiThay && _enDLKH.TroNgaiThay != chkTroNgaiThay.Checked)
+                        {
+                            _enDLKH.TroNgaiThay = chkTroNgaiThay.Checked;
+                            CPhieuChuyenLichSu.them(_enDLKH.DANHBO, "Trở Ngại Thay", "Xóa");
                         }
                         _enDLKH.MauSacChiGoc = cmbMauSacChiGoc.SelectedItem.ToString();
                         _enDLKH.MODIFYBY = CNguoiDung.MaND.ToString();
@@ -744,6 +760,26 @@ namespace DocSo_PC.GUI.ToTruong
         {
             if (_enDLKH != null)
                 _cDocSo.LoadImageView(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("GayTayVan", "", _enDLKH.DANHBO + ".jpg"))));
+        }
+
+        private void chkTroNgaiThay_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkTroNgaiThay.Checked)
+            {
+                dateTroNgaiThay.Enabled = true;
+                btnHinhTroNgaiThay.Enabled = true;
+            }
+            else
+            {
+                dateTroNgaiThay.Enabled = false;
+                btnHinhTroNgaiThay.Enabled = false;
+            }
+        }
+
+        private void btnHinhTroNgaiThay_Click(object sender, EventArgs e)
+        {
+            if (_enDLKH != null)
+                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("TroNgaiThay", "", _enDLKH.DANHBO + ".jpg"))));
         }
 
 
