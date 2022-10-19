@@ -2448,6 +2448,10 @@ namespace ThuTien.LinQ
 		
 		private System.Nullable<System.DateTime> _TroNgaiThay_Ngay;
 		
+		private bool _DauChungMayBom;
+		
+		private System.Nullable<System.DateTime> _DauChungMayBom_Ngay;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -2610,6 +2614,10 @@ namespace ThuTien.LinQ
     partial void OnTroNgaiThayChanged();
     partial void OnTroNgaiThay_NgayChanging(System.Nullable<System.DateTime> value);
     partial void OnTroNgaiThay_NgayChanged();
+    partial void OnDauChungMayBomChanging(bool value);
+    partial void OnDauChungMayBomChanged();
+    partial void OnDauChungMayBom_NgayChanging(System.Nullable<System.DateTime> value);
+    partial void OnDauChungMayBom_NgayChanged();
     #endregion
 		
 		public TB_DULIEUKHACHHANG()
@@ -4193,6 +4201,46 @@ namespace ThuTien.LinQ
 					this._TroNgaiThay_Ngay = value;
 					this.SendPropertyChanged("TroNgaiThay_Ngay");
 					this.OnTroNgaiThay_NgayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DauChungMayBom", DbType="Bit NOT NULL")]
+		public bool DauChungMayBom
+		{
+			get
+			{
+				return this._DauChungMayBom;
+			}
+			set
+			{
+				if ((this._DauChungMayBom != value))
+				{
+					this.OnDauChungMayBomChanging(value);
+					this.SendPropertyChanging();
+					this._DauChungMayBom = value;
+					this.SendPropertyChanged("DauChungMayBom");
+					this.OnDauChungMayBomChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DauChungMayBom_Ngay", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DauChungMayBom_Ngay
+		{
+			get
+			{
+				return this._DauChungMayBom_Ngay;
+			}
+			set
+			{
+				if ((this._DauChungMayBom_Ngay != value))
+				{
+					this.OnDauChungMayBom_NgayChanging(value);
+					this.SendPropertyChanging();
+					this._DauChungMayBom_Ngay = value;
+					this.SendPropertyChanged("DauChungMayBom_Ngay");
+					this.OnDauChungMayBom_NgayChanged();
 				}
 			}
 		}
