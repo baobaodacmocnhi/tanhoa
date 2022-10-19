@@ -208,6 +208,32 @@ namespace DocSo_PC.GUI.ToTruong
                         dgvDanhSach.DataSource = _cDHN.getDS_GayTayVan(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
                     }
                     break;
+                case "Trở Ngại Thay":
+                    if (CNguoiDung.Doi)
+                    {
+                        if (cmbTo.SelectedIndex == 0)
+                            dgvDanhSach.DataSource = _cDHN.getDS_TroNgaiThay(dateTuNgay.Value, dateDenNgay.Value);
+                        else
+                            dgvDanhSach.DataSource = _cDHN.getDS_TroNgaiThay(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
+                    }
+                    else
+                    {
+                        dgvDanhSach.DataSource = _cDHN.getDS_TroNgaiThay(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
+                    }
+                    break;
+                case "Đấu Chung Máy Bơm":
+                    if (CNguoiDung.Doi)
+                    {
+                        if (cmbTo.SelectedIndex == 0)
+                            dgvDanhSach.DataSource = _cDHN.getDS_DauChungMayBom(dateTuNgay.Value, dateDenNgay.Value);
+                        else
+                            dgvDanhSach.DataSource = _cDHN.getDS_DauChungMayBom(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
+                    }
+                    else
+                    {
+                        dgvDanhSach.DataSource = _cDHN.getDS_DauChungMayBom(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
+                    }
+                    break;
                 default:
                     DataTable dt = new DataTable();
                     if (CNguoiDung.Doi)
@@ -225,6 +251,8 @@ namespace DocSo_PC.GUI.ToTruong
                             dt.Merge(_cDHN.getDS_BeHBV(dateTuNgay.Value, dateDenNgay.Value));
                             dt.Merge(_cDHN.getDS_BeNapMatNapHBV(dateTuNgay.Value, dateDenNgay.Value));
                             dt.Merge(_cDHN.getDS_GayTayVan(dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDHN.getDS_TroNgaiThay(dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDHN.getDS_DauChungMayBom(dateTuNgay.Value, dateDenNgay.Value));
                         }
                         else
                         {
@@ -239,6 +267,8 @@ namespace DocSo_PC.GUI.ToTruong
                             dt.Merge(_cDHN.getDS_BeHBV(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
                             dt.Merge(_cDHN.getDS_BeNapMatNapHBV(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
                             dt.Merge(_cDHN.getDS_GayTayVan(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDHN.getDS_TroNgaiThay(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDHN.getDS_DauChungMayBom(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
                         }
                     }
                     else
@@ -254,6 +284,8 @@ namespace DocSo_PC.GUI.ToTruong
                         dt.Merge(_cDHN.getDS_BeHBV(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
                         dt.Merge(_cDHN.getDS_BeNapMatNapHBV(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
                         dt.Merge(_cDHN.getDS_GayTayVan(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
+                        dt.Merge(_cDHN.getDS_TroNgaiThay(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
+                        dt.Merge(_cDHN.getDS_DauChungMayBom(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
                     }
                     dgvDanhSach.DataSource = dt;
                     break;
@@ -392,64 +424,56 @@ namespace DocSo_PC.GUI.ToTruong
                                 case "Âm Sâu":
                                     ttkh.AmSau = true;
                                     ttkh.AmSau_Ngay = DateTime.Now;
-                                    CPhieuChuyenLichSu.them(ttkh.DANHBO, "Âm Sâu", "Thêm");
                                     break;
                                 case "Xây Dựng":
                                     ttkh.XayDung = true;
                                     ttkh.XayDung_Ngay = DateTime.Now;
-                                    CPhieuChuyenLichSu.them(ttkh.DANHBO, "Xây Dựng", "Thêm");
                                     break;
                                 case "Đứt Chì Góc":
                                     ttkh.DutChi_Goc = true;
                                     ttkh.DutChi_Goc_Ngay = DateTime.Now;
-                                    CPhieuChuyenLichSu.them(ttkh.DANHBO, "Đứt Chì Góc", "Thêm");
                                     break;
                                 case "Đứt Chì Thân":
                                     ttkh.DutChi_Than = true;
                                     ttkh.DutChi_Than_Ngay = DateTime.Now;
-                                    CPhieuChuyenLichSu.them(ttkh.DANHBO, "Đứt Chì Thân", "Thêm");
                                     break;
                                 case "Đứt Chì Góc + Thân":
                                     ttkh.DutChi_Goc = true;
                                     ttkh.DutChi_Goc_Ngay = DateTime.Now;
                                     ttkh.DutChi_Than = true;
                                     ttkh.DutChi_Than_Ngay = DateTime.Now;
-                                    CPhieuChuyenLichSu.them(ttkh.DANHBO, "Đứt Chì Góc + Thân", "Thêm");
                                     break;
                                 case "Ngập Nước":
                                     ttkh.NgapNuoc = true;
                                     ttkh.NgapNuoc_Ngay = DateTime.Now;
-                                    CPhieuChuyenLichSu.them(ttkh.DANHBO, "Ngập Nước", "Thêm");
                                     break;
                                 case "Kẹt Tường":
                                     ttkh.KetTuong = true;
                                     ttkh.KetTuong_Ngay = DateTime.Now;
-                                    CPhieuChuyenLichSu.them(ttkh.DANHBO, "Kẹt Tường", "Thêm");
                                     break;
                                 case "Lấp Khóa Góc":
                                     ttkh.LapKhoaGoc = true;
                                     ttkh.LapKhoaGoc_Ngay = DateTime.Now;
-                                    CPhieuChuyenLichSu.them(ttkh.DANHBO, "Lấp Khóa Góc", "Thêm");
                                     break;
                                 case "Bể HBV":
                                     ttkh.BeHBV = true;
                                     ttkh.BeHBV_Ngay = DateTime.Now;
-                                    CPhieuChuyenLichSu.them(ttkh.DANHBO, "Bể HBV", "Thêm");
                                     break;
                                 case "Bể Nấp, Mất Nấp HBV":
                                     ttkh.BeNapMatNapHBV = true;
                                     ttkh.BeNapMatNapHBV_Ngay = DateTime.Now;
-                                    CPhieuChuyenLichSu.them(ttkh.DANHBO, "Bể Nấp, Mất Nấp HBV", "Thêm");
                                     break;
                                 case "Gãy Tay Van":
                                     ttkh.GayTayVan = true;
                                     ttkh.GayTayVan_Ngay = DateTime.Now;
-                                    CPhieuChuyenLichSu.them(ttkh.DANHBO, "Gãy Tay Van", "Thêm");
                                     break;
                                 case "Trở Ngại Thay":
                                     ttkh.TroNgaiThay = true;
                                     ttkh.TroNgaiThay_Ngay = DateTime.Now;
-                                    CPhieuChuyenLichSu.them(ttkh.DANHBO, "Trở Ngại Thay", "Thêm");
+                                    break;
+                                case "Đấu Chung Máy Bơm":
+                                    ttkh.DauChungMayBom = true;
+                                    ttkh.DauChungMayBom_Ngay = DateTime.Now;
                                     break;
                                 default:
                                     break;
@@ -513,6 +537,9 @@ namespace DocSo_PC.GUI.ToTruong
                                     break;
                                 case "Trở Ngại Thay":
                                     ttkh.TroNgaiThay = false;
+                                    break;
+                                case "Đấu Chung Máy Bơm":
+                                    ttkh.DauChungMayBom = false;
                                     break;
                                 default:
                                     break;
