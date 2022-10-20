@@ -894,9 +894,9 @@ namespace ThuTien.GUI.TongHop
             {
                 DataTable dtBinhThuong2021 = new DataTable();
                 DataTable dtBinhThuong2022 = new DataTable();
-                DataTable dt = _cDCHD.getDS_HDDC_Cho_DangNgan_ThayThe_Admin();
-                //DataTable dt = _cDCHD.getDS_HDDC_Cho_DangNgan_ThayThe();
-                //dt.Merge(_cDCHD.getDS_HDDC_Cho_DangNgan_HD0_ThayThe());
+                //DataTable dt = _cDCHD.getDS_HDDC_Cho_DangNgan_ThayThe_Admin();
+                DataTable dt = _cDCHD.getDS_HDDC_Cho_DangNgan_ThayThe();
+                dt.Merge(_cDCHD.getDS_HDDC_Cho_DangNgan_HD0_ThayThe());
                 for (int i = 0; i < dt.Rows.Count; i++)
                     if (int.Parse(dt.Rows[i]["Nam"].ToString()) < 2022 || (int.Parse(dt.Rows[i]["Nam"].ToString()) == 2022 && int.Parse(dt.Rows[i]["Ky2"].ToString()) < 5))
                     {
