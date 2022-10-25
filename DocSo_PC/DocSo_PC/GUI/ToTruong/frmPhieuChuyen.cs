@@ -117,19 +117,6 @@ namespace DocSo_PC.GUI.ToTruong
                         dgvDanhSach.DataSource = _cDHN.getDS_DutChiThan(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
                     }
                     break;
-                case "Đứt Chì Góc + Thân":
-                    if (CNguoiDung.Doi)
-                    {
-                        if (cmbTo.SelectedIndex == 0)
-                            dgvDanhSach.DataSource = _cDHN.getDS_DutChiGocThan(dateTuNgay.Value, dateDenNgay.Value);
-                        else
-                            dgvDanhSach.DataSource = _cDHN.getDS_DutChiGocThan(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
-                    }
-                    else
-                    {
-                        dgvDanhSach.DataSource = _cDHN.getDS_DutChiGocThan(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
-                    }
-                    break;
                 case "Ngập Nước":
                     if (CNguoiDung.Doi)
                     {
@@ -437,12 +424,6 @@ namespace DocSo_PC.GUI.ToTruong
                                     ttkh.DutChi_Than = true;
                                     ttkh.DutChi_Than_Ngay = DateTime.Now;
                                     break;
-                                case "Đứt Chì Góc + Thân":
-                                    ttkh.DutChi_Goc = true;
-                                    ttkh.DutChi_Goc_Ngay = DateTime.Now;
-                                    ttkh.DutChi_Than = true;
-                                    ttkh.DutChi_Than_Ngay = DateTime.Now;
-                                    break;
                                 case "Ngập Nước":
                                     ttkh.NgapNuoc = true;
                                     ttkh.NgapNuoc_Ngay = DateTime.Now;
@@ -512,10 +493,6 @@ namespace DocSo_PC.GUI.ToTruong
                                     break;
                                 case "Đứt Chì Góc":
                                     ttkh.DutChi_Goc = false;
-                                    break;
-                                case "Đứt Chì Thân":
-                                    ttkh.DutChi_Goc = false;
-                                    ttkh.DutChi_Than = false;
                                     break;
                                 case "Ngập Nước":
                                     ttkh.NgapNuoc = false;
