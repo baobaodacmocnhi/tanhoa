@@ -143,7 +143,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         public bool CheckDinhMucNhaTro(string DanhBo)
         {
-            return db.ChungTu_ChiTiets.Any(item => item.DanhBo == DanhBo && item.Cat == false && (item.ChungTu.LoaiChungTu.MaLCT == 7 || item.ChungTu.LoaiChungTu.MaLCT == 8));
+            return db.ChungTu_ChiTiets.Any(item => item.DanhBo == DanhBo && item.Cat == false && item.NgayHetHan != null);
         }
 
         public ChungTu_ChiTiet GetCT(string DanhBo, string MaCT, int MaLCT)
@@ -3293,8 +3293,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             try
             {
                 var query = from itemCTChungTu in db.ChungTu_ChiTiets
-                            where (itemCTChungTu.ChungTu.MaLCT == 2 || itemCTChungTu.ChungTu.MaLCT == 5 || itemCTChungTu.ChungTu.MaLCT == 6 || itemCTChungTu.ChungTu.MaLCT == 7 || itemCTChungTu.ChungTu.MaLCT == 8)
-                            && itemCTChungTu.NgayHetHan != null
+                            where  itemCTChungTu.NgayHetHan != null
                             && itemCTChungTu.CreateDate.Value.Date >= TuNgay.Date && itemCTChungTu.CreateDate.Value.Date <= DenNgay.Date
                             && itemCTChungTu.Cat == false
                             orderby itemCTChungTu.NgayHetHan ascending
@@ -3350,7 +3349,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             try
             {
                 var query = from itemCTChungTu in db.ChungTu_ChiTiets
-                            where (itemCTChungTu.ChungTu.MaLCT == 2 || itemCTChungTu.ChungTu.MaLCT == 5 || itemCTChungTu.ChungTu.MaLCT == 6 || itemCTChungTu.ChungTu.MaLCT == 7 || itemCTChungTu.ChungTu.MaLCT == 8) && itemCTChungTu.CreateDate.Value.Date >= TuNgay.Date && itemCTChungTu.CreateDate.Value.Date <= DenNgay.Date
+                            where itemCTChungTu.CreateDate.Value.Date >= TuNgay.Date && itemCTChungTu.CreateDate.Value.Date <= DenNgay.Date
                             && itemCTChungTu.Cat == false && itemCTChungTu.ThoiHan != null
                             orderby itemCTChungTu.NgayHetHan ascending
                             select new
@@ -3407,7 +3406,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             try
             {
                 var query = from itemCTChungTu in db.ChungTu_ChiTiets
-                            where (itemCTChungTu.ChungTu.MaLCT == 2 || itemCTChungTu.ChungTu.MaLCT == 5 || itemCTChungTu.ChungTu.MaLCT == 6 || itemCTChungTu.ChungTu.MaLCT == 7 || itemCTChungTu.ChungTu.MaLCT == 8) && itemCTChungTu.NgayHetHan.Value.Date >= TuNgay.Date && itemCTChungTu.NgayHetHan.Value.Date <= DenNgay.Date
+                            where itemCTChungTu.NgayHetHan.Value.Date >= TuNgay.Date && itemCTChungTu.NgayHetHan.Value.Date <= DenNgay.Date
                             && itemCTChungTu.Cat == false
                             orderby itemCTChungTu.NgayHetHan ascending
                             select new
@@ -3470,8 +3469,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             try
             {
                 var query = from itemCTChungTu in db.ChungTu_ChiTiets
-                            where (itemCTChungTu.ChungTu.MaLCT != 2 && itemCTChungTu.ChungTu.MaLCT != 5 && itemCTChungTu.ChungTu.MaLCT != 6 && itemCTChungTu.ChungTu.MaLCT != 7 && itemCTChungTu.ChungTu.MaLCT != 8)
-                            && itemCTChungTu.NgayHetHan == null
+                            where itemCTChungTu.NgayHetHan == null
                             && itemCTChungTu.CreateDate.Value.Date >= TuNgay.Date && itemCTChungTu.CreateDate.Value.Date <= DenNgay.Date
                             && itemCTChungTu.Cat == false
                             orderby itemCTChungTu.NgayHetHan ascending
@@ -3611,7 +3609,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             string sql = "select dcbd.DanhBo,CreateDate=CAST(dcbd.CreateDate as date),Quan=(select Name2 from Quan where ID=dcbd.Quan),DinhMuc=SUM(DinhMuc),DinhMuc_BD=SUM(DinhMuc_BD)"
                         + " from DCBD_ChiTietBienDong dcbd,ChungTu_ChiTiet ctct"
-                        + " where CAST(dcbd.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and DinhMuc_BD is not null and ctct.Cat=0 and (MaLCT=7 or MaLCT=8) and dcbd.DanhBo=ctct.DanhBo"
+                        + " where CAST(dcbd.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and DinhMuc_BD is not null and ctct.Cat=0 and ctct.NgayHetHan is not null and dcbd.DanhBo=ctct.DanhBo"
                         + " group by dcbd.DanhBo,CAST(dcbd.CreateDate as date),dcbd.Quan"
                         + " order by CreateDate,Quan";
             //string sql = "select dcbd.DanhBo,CreateDate=CAST(dcbd.CreateDate as date),Quan=(select Name2 from Quan where ID=dcbd.Quan),DinhMuc=SUM(DinhMuc),DinhMuc_BD=SUM(DinhMuc_BD)"
