@@ -143,6 +143,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             LoadTongNK();
             if (_cDHN.CheckExist(hoadon.DANHBA) == false)
                 MessageBox.Show("Danh Bộ Hủy", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            chkNhaTro.Checked = _cDCBD.checkExist_NhaTro(hoadon.DANHBA);
         }
 
         private void LoadDCBD(DCBD_ChiTietBienDong ctdcbd)
@@ -291,6 +292,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             chkTinhPhiBVMT.Checked = false;
             chkKhongTinhPhiBVMT.Checked = false;
             chkChuaKTXM.Checked = false;
+            chkNhaTro.Checked = false;
             ///
             txtHoTen_BD.Text = "";
             txtDiaChi_BD.Text = "";
@@ -749,6 +751,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         //ctdcbd.NguoiKy = bangiamdoc.HoTen.ToUpper();
                         ctdcbd.PhieuDuocKy = true;
                     }
+                    if (chkNhaTro.Checked)
+                        _cDCBD.them_NhaTro(ctdcbd.DanhBo);
+                    else
+                        _cDCBD.xoa_NhaTro(ctdcbd.DanhBo);
                     //không chạy transaction đc vì hàm xử lý hiệu lực kỳ
                     //using (TransactionScope scope = new TransactionScope())
                     if (_cDCBD.ThemDCBD(ctdcbd))
@@ -982,6 +988,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             //_ctdcbd.NguoiKy = bangiamdoc.HoTen.ToUpper();
                             _ctdcbd.PhieuDuocKy = true;
                         }
+                        if (chkNhaTro.Checked)
+                            _cDCBD.them_NhaTro(_ctdcbd.DanhBo);
+                        else
+                            _cDCBD.xoa_NhaTro(_ctdcbd.DanhBo);
                         if (_cDCBD.SuaDCBD(_ctdcbd))
                         {
                             Clear();

@@ -40,6 +40,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtDiaChi_XuatHoaDon = new System.Windows.Forms.TextBox();
             this.txtDinhMucHN = new System.Windows.Forms.TextBox();
             this.label36 = new System.Windows.Forms.Label();
             this.txtHCSN = new System.Windows.Forms.TextBox();
@@ -65,7 +66,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtDiaChi_XuatHoaDon = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtDinhMucHN_BD = new System.Windows.Forms.TextBox();
             this.label37 = new System.Windows.Forms.Label();
@@ -197,6 +197,7 @@
             this.label38 = new System.Windows.Forms.Label();
             this.txtGhiChu = new System.Windows.Forms.TextBox();
             this.label39 = new System.Windows.Forms.Label();
+            this.chkNhaTro = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox_DSSoDangKy.SuspendLayout();
@@ -245,6 +246,13 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin Khách Hàng Ban Đầu";
+            // 
+            // txtDiaChi_XuatHoaDon
+            // 
+            this.txtDiaChi_XuatHoaDon.Location = new System.Drawing.Point(410, 68);
+            this.txtDiaChi_XuatHoaDon.Name = "txtDiaChi_XuatHoaDon";
+            this.txtDiaChi_XuatHoaDon.Size = new System.Drawing.Size(456, 22);
+            this.txtDiaChi_XuatHoaDon.TabIndex = 129;
             // 
             // txtDinhMucHN
             // 
@@ -460,13 +468,6 @@
             this.label1.Size = new System.Drawing.Size(60, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Danh Bộ";
-            // 
-            // txtDiaChi_XuatHoaDon
-            // 
-            this.txtDiaChi_XuatHoaDon.Location = new System.Drawing.Point(410, 68);
-            this.txtDiaChi_XuatHoaDon.Name = "txtDiaChi_XuatHoaDon";
-            this.txtDiaChi_XuatHoaDon.Size = new System.Drawing.Size(456, 22);
-            this.txtDiaChi_XuatHoaDon.TabIndex = 129;
             // 
             // groupBox2
             // 
@@ -1710,7 +1711,7 @@
             // chkChuaKTXM
             // 
             this.chkChuaKTXM.AutoSize = true;
-            this.chkChuaKTXM.Location = new System.Drawing.Point(1122, 288);
+            this.chkChuaKTXM.Location = new System.Drawing.Point(1122, 317);
             this.chkChuaKTXM.Name = "chkChuaKTXM";
             this.chkChuaKTXM.Size = new System.Drawing.Size(97, 20);
             this.chkChuaKTXM.TabIndex = 126;
@@ -1749,6 +1750,16 @@
             this.label39.TabIndex = 129;
             this.label39.Text = "Ghi Chú";
             // 
+            // chkNhaTro
+            // 
+            this.chkNhaTro.AutoSize = true;
+            this.chkNhaTro.Location = new System.Drawing.Point(1122, 286);
+            this.chkNhaTro.Name = "chkNhaTro";
+            this.chkNhaTro.Size = new System.Drawing.Size(76, 20);
+            this.chkNhaTro.TabIndex = 131;
+            this.chkNhaTro.Text = "Nhà Trọ";
+            this.chkNhaTro.UseVisualStyleBackColor = true;
+            // 
             // frmDCBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1756,6 +1767,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1437, 659);
+            this.Controls.Add(this.chkNhaTro);
             this.Controls.Add(this.txtGhiChu);
             this.Controls.Add(this.label39);
             this.Controls.Add(this.txtDienThoai);
@@ -1994,6 +2006,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Name_Hinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bytes_Hinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn Loai_Hinh;
+        private System.Windows.Forms.CheckBox chkNhaTro;
         
     }
 }

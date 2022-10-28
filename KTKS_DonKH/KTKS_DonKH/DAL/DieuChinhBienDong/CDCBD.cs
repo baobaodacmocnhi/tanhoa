@@ -3787,5 +3787,43 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             return db.DCBD_ChiTietHoaDon_Hinhs.SingleOrDefault(item => item.ID == ID);
         }
         #endregion
+
+        //nhà trọ
+
+        public bool checkExist_NhaTro(string DanhBo)
+        {
+            return db.DCBD_NhaTros.Any(o => o.DanhBo == DanhBo);
+        }
+
+        public bool them_NhaTro(string DanhBo)
+        {
+            try
+            {
+                return ExecuteNonQuery("if not exists(select DanhBo from DCBD_NhaTro where DanhBo='" + DanhBo + "')"
+                                    + " insert into DCBD_NhaTro(DanhBo,CreateBy)"
+                                    + " values('" + DanhBo + "'," + CTaiKhoan.MaUser + ")");
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public bool xoa_NhaTro(string DanhBo)
+        {
+            try
+            {
+                return ExecuteNonQuery("delete DCBD_NhaTro where DanhBo='" + DanhBo + "'");
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+
+
     }
 }
