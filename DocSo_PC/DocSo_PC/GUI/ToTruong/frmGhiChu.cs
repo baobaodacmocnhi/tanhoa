@@ -125,6 +125,8 @@ namespace DocSo_PC.GUI.ToTruong
                 chkViTriDHN_Ngoai.Checked = en.ViTriDHN_Ngoai;
                 chkViTriDHN_Hop.Checked = en.ViTriDHN_Hop;
                 chkGieng.Checked = en.Gieng;
+                cmbMauSacChiGoc.SelectedItem = en.MauSacChiGoc;
+                dgvDienThoai.DataSource = _cDHN.getDS_DienThoai(en.DANHBO);
                 chkAmSau.Checked = en.AmSau;
                 if (en.AmSau == true)
                     dateAmSau.Value = en.AmSau_Ngay.Value;
@@ -155,8 +157,12 @@ namespace DocSo_PC.GUI.ToTruong
                 chkGayTayVan.Checked = en.GayTayVan;
                 if (en.GayTayVan == true)
                     dateGayTayVan.Value = en.GayTayVan_Ngay.Value;
-                cmbMauSacChiGoc.SelectedItem = en.MauSacChiGoc;
-                dgvDienThoai.DataSource = _cDHN.getDS_DienThoai(en.DANHBO);
+                chkTroNgaiThay.Checked = en.TroNgaiThay;
+                if (en.TroNgaiThay == true)
+                    dateTroNgaiThay.Value = en.TroNgaiThay_Ngay.Value;
+                chkDauChungMayBom.Checked = en.DauChungMayBom;
+                if (en.DauChungMayBom == true)
+                    dateDauChungMayBom.Value = en.DauChungMayBom_Ngay.Value;
             }
         }
 
