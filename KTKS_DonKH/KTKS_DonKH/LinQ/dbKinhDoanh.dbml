@@ -18,6 +18,18 @@
       <Association Name="DonTXL_BamChi" Member="DonTXL" ThisKey="MaDonTXL" OtherKey="MaDon" Type="DonTXL" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.VanBan_ChiTiet_Hinh" Member="VanBan_ChiTiet_Hinhs">
+    <Type Name="VanBan_ChiTiet_Hinh">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IDVanBan_ChiTiet" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Loai" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Association Name="VanBan_ChiTiet_VanBan_ChiTiet_Hinh" Member="VanBan_ChiTiet" ThisKey="IDVanBan_ChiTiet" OtherKey="IDCT" Type="VanBan_ChiTiet" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.BamChi_ChiTiet" Member="BamChi_ChiTiets">
     <Type Name="BamChi_ChiTiet">
       <Column Name="MaCTBC" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -40,6 +52,7 @@
       <Column Name="Co" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="SoThan" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="ChiSo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="KyHieu" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
       <Column Name="NiemChi" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="MauSac" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="TinhTrangChiSo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
@@ -2111,6 +2124,7 @@
   <Table Name="dbo.NiemChi" Member="NiemChis">
     <Type Name="NiemChi">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="KyHieu" Type="System.String" DbType="VarChar(3) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="MaNV" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DotChia" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="SuDung" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
@@ -2843,18 +2857,6 @@
       <Column Name="DocSo_GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Association Name="VanBan_ChiTiet_VanBan_ChiTiet_Hinh" Member="VanBan_ChiTiet_Hinhs" ThisKey="IDCT" OtherKey="IDVanBan_ChiTiet" Type="VanBan_ChiTiet_Hinh" />
       <Association Name="VanBan_VanBan_ChiTiet" Member="VanBan" ThisKey="ID" OtherKey="ID" Type="VanBan" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.VanBan_ChiTiet_Hinh" Member="VanBan_ChiTiet_Hinhs">
-    <Type Name="VanBan_ChiTiet_Hinh">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="IDVanBan_ChiTiet" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Loai" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
-      <Association Name="VanBan_ChiTiet_VanBan_ChiTiet_Hinh" Member="VanBan_ChiTiet" ThisKey="IDVanBan_ChiTiet" OtherKey="IDCT" Type="VanBan_ChiTiet" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

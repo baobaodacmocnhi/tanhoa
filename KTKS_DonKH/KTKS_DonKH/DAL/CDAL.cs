@@ -512,5 +512,10 @@ namespace KTKS_DonKH.DAL
             return File.ReadAllBytes(path);
         }
 
+        public bool isNumber(string str)
+        {
+            return str.All(char.IsDigit);
+        }
+
     }
 }

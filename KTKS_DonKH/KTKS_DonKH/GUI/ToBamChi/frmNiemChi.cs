@@ -90,7 +90,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
                         int DenSo = int.Parse(txtDenSo_Nhap.Text.Trim());
                         for (int i = TuSo; i <= DenSo; i++)
                         {
-                            if (_cNiemChi.checkExist(TuSo) == true)
+                            if (_cNiemChi.checkExist(txtKyHieu.Text.Trim().ToUpper(), TuSo) == true)
                             {
                                 MessageBox.Show("Mã " + TuSo + " đã có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
@@ -102,7 +102,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
                             //NiemChi en = new NiemChi();
                             //en.ID = i;
                             //_cNiemChi.Them(en);
-                            sql += " insert into NiemChi(ID,MauSac,CreateBy,CreateDate)values(" + i + ",N'" + cmbMauSac.Text + "'," + CTaiKhoan.MaUser + ",getDate())";
+                            sql += " insert into NiemChi(KyHieu,ID,MauSac,CreateBy,CreateDate)values('" + txtKyHieu.Text.Trim().ToUpper() + "'," + i + ",N'" + cmbMauSac.Text + "'," + CTaiKhoan.MaUser + ",getDate())";
                         }
                         _cNiemChi.SqlBeginTransaction();
                         _cNiemChi.ExecuteNonQuery_Transaction(sql);
@@ -219,18 +219,18 @@ namespace KTKS_DonKH.GUI.ToBamChi
                 {
                     if (int.Parse(txtDenSo_Giao.Text.Trim()) >= int.Parse(txtTuSo_Giao.Text.Trim()))
                     {
-                        if (_cNiemChi.checkSuDung(int.Parse(txtTuSo_Giao.Text.Trim()), int.Parse(txtDenSo_Giao.Text.Trim())) == true)
+                        if (_cNiemChi.checkSuDung(txtKyHieu_Giao.Text.Trim().ToUpper(), int.Parse(txtTuSo_Giao.Text.Trim()), int.Parse(txtDenSo_Giao.Text.Trim())) == true)
                         {
                             MessageBox.Show("Niêm Chì đã Sử Dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        if (_cNiemChi.checkGiao(int.Parse(txtTuSo_Giao.Text.Trim()), int.Parse(txtDenSo_Giao.Text.Trim())) == true)
+                        if (_cNiemChi.checkGiao(txtKyHieu_Giao.Text.Trim().ToUpper(), int.Parse(txtTuSo_Giao.Text.Trim()), int.Parse(txtDenSo_Giao.Text.Trim())) == true)
                         {
                             MessageBox.Show("Niêm Chì đã Giao", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         _cNiemChi.SqlBeginTransaction();
-                        string sql = "update NiemChi set MaNV=" + cmbNhanVien_Giao.SelectedValue.ToString() + ",DotChia=" + cmbDotChia.SelectedItem.ToString() + ",ModifyBy=" + CTaiKhoan.MaUser + ",ModifyDate=getDate() where ID>=" + txtTuSo_Giao.Text.Trim() + " and ID<=" + txtDenSo_Giao.Text.Trim() + " and SuDung=0";
+                        string sql = "update NiemChi set MaNV=" + cmbNhanVien_Giao.SelectedValue.ToString() + ",DotChia=" + cmbDotChia.SelectedItem.ToString() + ",ModifyBy=" + CTaiKhoan.MaUser + ",ModifyDate=getDate() where KyHieu='" + txtKyHieu_Giao.Text.Trim().ToUpper() + "' and ID>=" + txtTuSo_Giao.Text.Trim() + " and ID<=" + txtDenSo_Giao.Text.Trim() + " and SuDung=0";
                         _cNiemChi.ExecuteNonQuery_Transaction(sql);
                         _cNiemChi.SqlCommitTransaction();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -253,13 +253,13 @@ namespace KTKS_DonKH.GUI.ToBamChi
             {
                 try
                 {
-                    if (_cNiemChi.checkSuDung(int.Parse(dgvNiemChi_Giao.CurrentRow.Cells["TuSo_Giao"].Value.ToString()), int.Parse(dgvNiemChi_Giao.CurrentRow.Cells["DenSo_Giao"].Value.ToString())) == true)
+                    if (_cNiemChi.checkSuDung(dgvNiemChi_Giao.CurrentRow.Cells["KyHieu_Giao"].Value.ToString(), int.Parse(dgvNiemChi_Giao.CurrentRow.Cells["TuSo_Giao"].Value.ToString()), int.Parse(dgvNiemChi_Giao.CurrentRow.Cells["DenSo_Giao"].Value.ToString())) == true)
                     {
                         MessageBox.Show("Niêm Chì đã Sử Dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     _cNiemChi.SqlBeginTransaction();
-                    string sql = "update NiemChi set MaNV=NULL,DotChia=NULL,ModifyBy=" + CTaiKhoan.MaUser + ",ModifyDate=getDate() where ID>=" + dgvNiemChi_Giao.CurrentRow.Cells["TuSo_Giao"].Value.ToString() + " and ID<=" + dgvNiemChi_Giao.CurrentRow.Cells["DenSo_Giao"].Value.ToString() + " and SuDung=0";
+                    string sql = "update NiemChi set MaNV=NULL,DotChia=NULL,ModifyBy=" + CTaiKhoan.MaUser + ",ModifyDate=getDate() where KyHieu='" + txtKyHieu_Giao.Text.Trim().ToUpper() + "' and ID>=" + dgvNiemChi_Giao.CurrentRow.Cells["TuSo_Giao"].Value.ToString() + " and ID<=" + dgvNiemChi_Giao.CurrentRow.Cells["DenSo_Giao"].Value.ToString() + " and SuDung=0";
                     _cNiemChi.ExecuteNonQuery_Transaction(sql);
                     _cNiemChi.SqlCommitTransaction();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -340,7 +340,11 @@ namespace KTKS_DonKH.GUI.ToBamChi
             {
                 try
                 {
-                    NiemChi en = _cNiemChi.get(int.Parse(txtID_HuHong.Text.Trim()));
+                    NiemChi en = null;
+                    if (_cNiemChi.isNumber(txtID_HuHong.Text.Trim()))
+                        en = _cNiemChi.get("", int.Parse(txtID_HuHong.Text.Trim()));
+                    else
+                        en = _cNiemChi.get(txtID_HuHong.Text.Trim().Substring(0, 1).ToUpper(), int.Parse(txtID_HuHong.Text.Trim().Substring(1)));
                     if (en != null)
                     {
                         if (en.MaNV == null)
@@ -444,7 +448,11 @@ namespace KTKS_DonKH.GUI.ToBamChi
             {
                 try
                 {
-                    NiemChi en = _cNiemChi.get(int.Parse(txtID_Chuyen.Text.Trim()));
+                    NiemChi en = null;
+                    if (_cNiemChi.isNumber(txtID_Chuyen.Text.Trim()))
+                        en = _cNiemChi.get("", int.Parse(txtID_Chuyen.Text.Trim()));
+                    else
+                        en = _cNiemChi.get(txtID_Chuyen.Text.Trim().Substring(0, 1).ToUpper(), int.Parse(txtID_Chuyen.Text.Trim().Substring(1)));
                     if (en != null)
                     {
                         if (en.MaNV == null)
@@ -477,6 +485,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
             else
                 MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
 
 
     }

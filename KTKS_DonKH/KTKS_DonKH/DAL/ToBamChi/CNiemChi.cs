@@ -73,9 +73,9 @@ namespace KTKS_DonKH.DAL.ToBamChi
             }
         }
 
-        public bool checkExist(int ID)
+        public bool checkExist(string KyHieu, int ID)
         {
-            return db.NiemChis.Any(item => item.ID == ID);
+            return db.NiemChis.Any(item => item.ID == ID && item.KyHieu == KyHieu);
         }
 
         public bool checkSuDung(DateTime CreateDate)
@@ -83,24 +83,24 @@ namespace KTKS_DonKH.DAL.ToBamChi
             return db.NiemChis.Any(item => item.CreateDate.Value.Date == CreateDate.Date && item.SuDung == true);
         }
 
-        public bool checkSuDung(int ID)
+        public bool checkSuDung(string KyHieu, int ID)
         {
-            return db.NiemChis.Any(item => item.ID == ID && item.SuDung == true);
+            return db.NiemChis.Any(item => item.ID == ID && item.SuDung == true && item.KyHieu == KyHieu);
         }
 
-        public bool checkSuDung(int FromID, int ToID)
+        public bool checkSuDung(string KyHieu, int FromID, int ToID)
         {
-            return db.NiemChis.Any(item => item.ID >= FromID && item.ID <= ToID && item.SuDung == true);
+            return db.NiemChis.Any(item => item.ID >= FromID && item.ID <= ToID && item.SuDung == true && item.KyHieu == KyHieu);
         }
 
-        public bool checkGiao(int FromID, int ToID)
+        public bool checkGiao(string KyHieu, int FromID, int ToID)
         {
-            return db.NiemChis.Any(item => item.ID >= FromID && item.ID <= ToID && item.MaNV != null);
+            return db.NiemChis.Any(item => item.ID >= FromID && item.ID <= ToID && item.MaNV != null && item.KyHieu == KyHieu);
         }
 
-        public bool checkGiao_MaNV(int ID, int MaNV)
+        public bool checkGiao_MaNV(string KyHieu, int ID, int MaNV)
         {
-            return db.NiemChis.Any(item => item.ID == ID && item.MaNV == MaNV);
+            return db.NiemChis.Any(item => item.ID == ID && item.MaNV == MaNV && item.KyHieu == KyHieu);
         }
 
         public bool checkGiao(DateTime CreateDate)
@@ -108,11 +108,11 @@ namespace KTKS_DonKH.DAL.ToBamChi
             return db.NiemChis.Any(item => item.CreateDate.Value.Date == CreateDate.Date && item.MaNV != null);
         }
 
-        public bool suDung(int ID)
+        public bool suDung(string KyHieu, int ID)
         {
             try
             {
-                NiemChi en = db.NiemChis.SingleOrDefault(item => item.ID == ID);
+                NiemChi en = db.NiemChis.SingleOrDefault(item => item.ID == ID && item.KyHieu == KyHieu);
                 en.SuDung = true;
                 en.ModifyDate = DateTime.Now;
                 en.ModifyBy = CTaiKhoan.MaUser;
@@ -126,11 +126,11 @@ namespace KTKS_DonKH.DAL.ToBamChi
             }
         }
 
-        public bool traSuDung(int ID)
+        public bool traSuDung(string KyHieu, int ID)
         {
             try
             {
-                NiemChi en = db.NiemChis.SingleOrDefault(item => item.ID == ID);
+                NiemChi en = db.NiemChis.SingleOrDefault(item => item.ID == ID && item.KyHieu == KyHieu);
                 en.SuDung = false;
                 en.ModifyDate = DateTime.Now;
                 en.ModifyBy = CTaiKhoan.MaUser;
@@ -144,9 +144,9 @@ namespace KTKS_DonKH.DAL.ToBamChi
             }
         }
 
-        public NiemChi get(int ID)
+        public NiemChi get(string KyHieu, int ID)
         {
-            return db.NiemChis.SingleOrDefault(item => item.ID == ID);
+            return db.NiemChis.SingleOrDefault(item => item.ID == ID && item.KyHieu == KyHieu);
         }
 
         public List<NiemChi> getDS(DateTime CreateDate)
@@ -161,6 +161,7 @@ namespace KTKS_DonKH.DAL.ToBamChi
                         select new
                         {
                             CreateDate = itemGroup.Key,
+                            KyHieu = itemGroup.FirstOrDefault().KyHieu,
                             TuSo = itemGroup.Min(groupItem => groupItem.ID),
                             DenSo = itemGroup.Max(groupItem => groupItem.ID),
                             SLNhap = itemGroup.Count(),
@@ -183,6 +184,7 @@ namespace KTKS_DonKH.DAL.ToBamChi
                             itemGroup.Key.DotChia,
                             HoTen = db.Users.SingleOrDefault(itemT => itemT.MaU == itemGroup.Key.MaNV).HoTen,
                             CreateDate = itemGroup.Key,
+                            KyHieu = itemGroup.FirstOrDefault().KyHieu,
                             TuSo = itemGroup.Min(groupItem => groupItem.ID),
                             DenSo = itemGroup.Max(groupItem => groupItem.ID),
                             SLNhap = itemGroup.Count(),
