@@ -147,7 +147,7 @@ namespace KTKS_DonKH.GUI.BamChi
             txtChiSo.Text = ctbamchi.ChiSo.ToString();
             if (ctbamchi.NiemChi != null)
             {
-                txtNiemChi.Text = ctbamchi.NiemChi.Value.ToString();
+                txtNiemChi.Text = ctbamchi.NiemChi;
             }
             if (ctbamchi.MauSac != null)
             {
@@ -584,33 +584,25 @@ namespace KTKS_DonKH.GUI.BamChi
                         MessageBox.Show("Thiếu Số Niêm Chì - Màu sắc", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    string KyHieu = "", IDNiemChi = "";
-                    if (_cNiemChi.isNumber(txtNiemChi.Text.Trim()))
-                        IDNiemChi = txtNiemChi.Text.Trim();
-                    else
-                    {
-                        KyHieu = txtNiemChi.Text.Trim().Substring(0, 1).ToUpper();
-                        IDNiemChi = txtNiemChi.Text.Trim().Substring(1);
-                    }
                     if (!string.IsNullOrEmpty(txtNiemChi.Text.Trim()))
                     {
 
-                        if (_cNiemChi.checkExist(KyHieu, int.Parse(IDNiemChi)) == false)
+                        if (_cNiemChi.checkExist(txtNiemChi.Text.Trim().ToUpper()) == false)
                         {
                             MessageBox.Show("Số Niêm Chì không Tồn Tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        if (_cNiemChi.checkGiao_MaNV(KyHieu, int.Parse(IDNiemChi), CTaiKhoan.MaUser) == false)
+                        if (_cNiemChi.checkGiao_MaNV(txtNiemChi.Text.Trim().ToUpper(), CTaiKhoan.MaUser) == false)
                         {
                             MessageBox.Show("Số Niêm Chì này không được Giao Cho Bạn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        if (_cNiemChi.checkSuDung(KyHieu, int.Parse(IDNiemChi)) == true)
+                        if (_cNiemChi.checkSuDung(txtNiemChi.Text.Trim().ToUpper()) == true)
                         {
                             MessageBox.Show("Số Niêm Chì đã Sử Dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        ctbamchi.NiemChi = int.Parse(txtNiemChi.Text.Trim());
+                        ctbamchi.NiemChi = txtNiemChi.Text.Trim().ToUpper();
                         ctbamchi.MauSac = cmbMauSac.Text;
                         //_cNiemChi.suDung(int.Parse(txtNiemChi.Text.Trim()));
                     }
@@ -643,7 +635,7 @@ namespace KTKS_DonKH.GUI.BamChi
                     using (TransactionScope scope = new TransactionScope())
                         if (_cBamChi.ThemCT(ctbamchi))
                         {
-                            _cNiemChi.suDung(KyHieu, int.Parse(IDNiemChi));
+                            _cNiemChi.suDung(txtNiemChi.Text.Trim().ToUpper());
                             foreach (DataGridViewRow item in dgvHinh.Rows)
                             {
                                 BamChi_ChiTiet_Hinh en = new BamChi_ChiTiet_Hinh();
@@ -759,36 +751,29 @@ namespace KTKS_DonKH.GUI.BamChi
                             MessageBox.Show("Thiếu Số Niêm Chì - Màu sắc", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        string KyHieu = "", IDNiemChi = "";
-                        if (_cNiemChi.isNumber(txtNiemChi.Text.Trim()))
-                            IDNiemChi = txtNiemChi.Text.Trim();
-                        else
+
+                        if (!string.IsNullOrEmpty(txtNiemChi.Text.Trim()) && (_ctbamchi.NiemChi == null || _ctbamchi.NiemChi != txtNiemChi.Text.Trim().ToUpper()))
                         {
-                            KyHieu = txtNiemChi.Text.Trim().Substring(0, 1).ToUpper();
-                            IDNiemChi = txtNiemChi.Text.Trim().Substring(1);
-                        }
-                        if (!string.IsNullOrEmpty(txtNiemChi.Text.Trim()) && (_ctbamchi.NiemChi == null || _ctbamchi.NiemChi.Value != int.Parse(txtNiemChi.Text.Trim())))
-                        {
-                            if (_cNiemChi.checkExist(KyHieu,int.Parse(IDNiemChi)) == false)
+                            if (_cNiemChi.checkExist(txtNiemChi.Text.Trim().ToUpper()) == false)
                             {
                                 MessageBox.Show("Số Niêm Chì không Tồn Tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
                             if (CTaiKhoan.ToTruong == false)
-                                if (_cNiemChi.checkGiao_MaNV(KyHieu, int.Parse(IDNiemChi), CTaiKhoan.MaUser) == false)
+                                if (_cNiemChi.checkGiao_MaNV(txtNiemChi.Text.Trim().ToUpper(), CTaiKhoan.MaUser) == false)
                                 {
                                     MessageBox.Show("Số Niêm Chì này không được Giao Cho Bạn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
                                 }
-                            if (_cNiemChi.checkSuDung(KyHieu, int.Parse(IDNiemChi)) == true)
+                            if (_cNiemChi.checkSuDung(txtNiemChi.Text.Trim().ToUpper()) == true)
                             {
                                 MessageBox.Show("Số Niêm Chì đã Sử Dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
                             if (_ctbamchi.NiemChi != null)
-                                _cNiemChi.traSuDung(_ctbamchi.NiemChi.Value);
-                            _ctbamchi.NiemChi = int.Parse(txtNiemChi.Text.Trim());
-                            _cNiemChi.suDung(int.Parse(txtNiemChi.Text.Trim()));
+                                _cNiemChi.traSuDung(_ctbamchi.NiemChi);
+                            _ctbamchi.NiemChi = txtNiemChi.Text.Trim().ToUpper();
+                            _cNiemChi.suDung(txtNiemChi.Text.Trim().ToUpper());
                         }
                         _ctbamchi.MauSac = cmbMauSac.Text;
                         if (cmbTinhTrangChiSo.SelectedItem != null)
@@ -853,7 +838,7 @@ namespace KTKS_DonKH.GUI.BamChi
                                 return;
                             }
                         if (_ctbamchi.NiemChi != null)
-                            _cNiemChi.traSuDung(_ctbamchi.NiemChi.Value);
+                            _cNiemChi.traSuDung(_ctbamchi.NiemChi);
                         string flagID = _ctbamchi.MaCTBC.ToString();
                         var transactionOptions = new TransactionOptions();
                         transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;

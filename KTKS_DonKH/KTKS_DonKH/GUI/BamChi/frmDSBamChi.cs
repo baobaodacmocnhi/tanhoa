@@ -78,7 +78,7 @@ namespace KTKS_DonKH.GUI.BamChi
                         break;
                     case "Danh Bộ":
                         if (txtNoiDungTimKiem.Text.Trim() != "")
-                            dgvDSCTBamChi.DataSource = _cBamChi.getDS(txtNoiDungTimKiem.Text.Trim());
+                            dgvDSCTBamChi.DataSource = _cBamChi.getDS_DanhBo(txtNoiDungTimKiem.Text.Trim());
                         break;
                     case "Ngày":
                         dgvDSCTBamChi.DataSource = _cBamChi.getDS(dateTu.Value, dateDen.Value);

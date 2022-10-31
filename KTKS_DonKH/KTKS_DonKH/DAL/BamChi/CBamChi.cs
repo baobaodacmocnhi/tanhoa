@@ -556,7 +556,7 @@ namespace KTKS_DonKH.DAL.BamChi
             }
         }
 
-        public DataTable getDS(string DanhBo)
+        public DataTable getDS_DanhBo(string DanhBo)
         {
             var query = from itemCTBamChi in db.BamChi_ChiTiets
                         join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU
@@ -630,7 +630,7 @@ namespace KTKS_DonKH.DAL.BamChi
             return LINQToDataTable(query);
         }
 
-        public DataTable getDS(int NiemChi)
+        public DataTable getDS_NiemChi(string NiemChi)
         {
             var query = from itemCTBamChi in db.BamChi_ChiTiets
                         join itemUser in db.Users on itemCTBamChi.CreateBy equals itemUser.MaU

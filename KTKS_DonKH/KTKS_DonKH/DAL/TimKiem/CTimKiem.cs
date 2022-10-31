@@ -8524,10 +8524,10 @@ namespace KTKS_DonKH.DAL.TimKiem
             return ds;
         }
 
-        public DataSet getTienTrinhByNiemChi(int NiemChi)
+        public DataSet getTienTrinhByNiemChi(string NiemChi)
         {
             CBamChi cBamChi = new CBamChi();
-            DataTable dtBamChi = cBamChi.getDS(NiemChi);
+            DataTable dtBamChi = cBamChi.getDS_NiemChi(NiemChi);
             DataSet ds = new DataSet();
             DataTable dt = new DataTable();
             foreach (DataRow item in dtBamChi.Rows)

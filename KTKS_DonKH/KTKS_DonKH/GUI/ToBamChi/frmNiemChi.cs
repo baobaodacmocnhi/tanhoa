@@ -90,7 +90,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
                         int DenSo = int.Parse(txtDenSo_Nhap.Text.Trim());
                         for (int i = TuSo; i <= DenSo; i++)
                         {
-                            if (_cNiemChi.checkExist(txtKyHieu.Text.Trim().ToUpper(), TuSo) == true)
+                            if (_cNiemChi.checkExist(txtKyHieu.Text.Trim().ToUpper() + TuSo) == true)
                             {
                                 MessageBox.Show("Mã " + TuSo + " đã có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
@@ -102,7 +102,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
                             //NiemChi en = new NiemChi();
                             //en.ID = i;
                             //_cNiemChi.Them(en);
-                            sql += " insert into NiemChi(KyHieu,ID,MauSac,CreateBy,CreateDate)values('" + txtKyHieu.Text.Trim().ToUpper() + "'," + i + ",N'" + cmbMauSac.Text + "'," + CTaiKhoan.MaUser + ",getDate())";
+                            sql += " insert into NiemChi(ID,KyHieu,STT,MauSac,CreateBy,CreateDate)values('" + txtKyHieu.Text.Trim().ToUpper() + i + "','" + txtKyHieu.Text.Trim().ToUpper() + "'," + i + ",N'" + cmbMauSac.Text + "'," + CTaiKhoan.MaUser + ",getDate())";
                         }
                         _cNiemChi.SqlBeginTransaction();
                         _cNiemChi.ExecuteNonQuery_Transaction(sql);
@@ -340,11 +340,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
             {
                 try
                 {
-                    NiemChi en = null;
-                    if (_cNiemChi.isNumber(txtID_HuHong.Text.Trim()))
-                        en = _cNiemChi.get("", int.Parse(txtID_HuHong.Text.Trim()));
-                    else
-                        en = _cNiemChi.get(txtID_HuHong.Text.Trim().Substring(0, 1).ToUpper(), int.Parse(txtID_HuHong.Text.Trim().Substring(1)));
+                    NiemChi en = _cNiemChi.get(txtID_HuHong.Text.Trim().ToUpper());
                     if (en != null)
                     {
                         if (en.MaNV == null)
@@ -388,7 +384,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
             {
                 try
                 {
-                    NiemChi en = _cNiemChi.get(int.Parse(dgvNiemChi_HuHong.CurrentRow.Cells["ID_HuHong"].Value.ToString()));
+                    NiemChi en = _cNiemChi.get(dgvNiemChi_HuHong.CurrentRow.Cells["ID_HuHong"].Value.ToString());
                     if (en != null)
                     {
                         en.imgHuHong = null;
@@ -448,11 +444,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
             {
                 try
                 {
-                    NiemChi en = null;
-                    if (_cNiemChi.isNumber(txtID_Chuyen.Text.Trim()))
-                        en = _cNiemChi.get("", int.Parse(txtID_Chuyen.Text.Trim()));
-                    else
-                        en = _cNiemChi.get(txtID_Chuyen.Text.Trim().Substring(0, 1).ToUpper(), int.Parse(txtID_Chuyen.Text.Trim().Substring(1)));
+                    NiemChi en =  _cNiemChi.get(txtID_Chuyen.Text.Trim().ToUpper());
                     if (en != null)
                     {
                         if (en.MaNV == null)
