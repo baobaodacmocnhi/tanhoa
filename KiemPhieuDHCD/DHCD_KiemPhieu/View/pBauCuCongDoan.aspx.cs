@@ -28,7 +28,7 @@ namespace DHCD_KiemPhieu.View
         private void Binddata()
         {
             //checkName.DataSource = Class.LinQConnection.getDataTable("SELECT ID,  (CAST(ID AS VARCHAR) + '. ' +TENBC) AS  TENBC FROM BB_THANHVIENBAUCU WHERE LANBC= " + DropDownList1.SelectedValue.ToString() + " AND CONVERT(VARCHAR(50),NGAYBC,103)='" + this.tungay.Text + "'  ORDER BY ID ASC ");
-            checkName.DataSource = Class.LinQConnection.getDataTable("SELECT ID,  (CAST(ID AS VARCHAR) + '. ' +TENBC) AS  TENBC FROM BB_THANHVIENBAUCU WHERE LANBC= " + DropDownList1.SelectedValue.ToString() + " ORDER BY ID ASC ");
+            checkName.DataSource = Class.LinQConnection.getDataTable("SELECT ID,  (CAST(STT AS VARCHAR) + '. ' +TENBC) AS  TENBC FROM BB_THANHVIENBAUCU WHERE LANBC= " + DropDownList1.SelectedValue.ToString() + " ORDER BY ID ASC ");
             checkName.DataTextField = "TENBC";
             checkName.DataValueField = "ID";
             checkName.DataBind();
