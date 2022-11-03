@@ -2793,7 +2793,7 @@ namespace ThuTien.DAL.TongHop
 + " from DIEUCHINH_HD dc,HOADON hd"
 + " where dc.FK_HOADON=hd.ID_HOADON and MaNV_DangNgan is not null"
 + " and CAST(NGAYGIAITRACH as date)>='" + FromNgayDangNgan.ToString("yyyyMMdd") + "' and CAST(NGAYGIAITRACH as date)<='" + ToNgayDangNgan.ToString("yyyyMMdd") + "'"
-+ " and CAST(NGAY_DC as date)>='20220701' order by NGAYGIAITRACH");
++ " and CAST(NGAY_DC as date)>='20220701' order by CAST(NGAYGIAITRACH as date)");
         }
 
 

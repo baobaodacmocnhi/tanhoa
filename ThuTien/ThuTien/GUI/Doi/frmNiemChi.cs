@@ -80,7 +80,7 @@ namespace ThuTien.GUI.Doi
                         int DenSo = int.Parse(txtDenSo_Nhap.Text.Trim());
                         for (int i = TuSo; i <= DenSo; i++)
                         {
-                            if (_cNiemChi.checkExist(TuSo) == true)
+                            if (_cNiemChi.checkExist(txtKyHieu_Nhap.Text.Trim().ToUpper() + TuSo.ToString("000000")) == true)
                             {
                                 MessageBox.Show("Mã " + TuSo + " đã có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
@@ -92,7 +92,7 @@ namespace ThuTien.GUI.Doi
                             //TT_NiemChi en = new TT_NiemChi();
                             //en.ID = i;
                             //_cNiemChi.Them(en);
-                            sql += " insert into TT_NiemChi(ID,MauSac,CreateBy,CreateDate)values(" + i + ",N'" + cmbMauSac.SelectedItem.ToString() + "'," + CNguoiDung.MaND + ",getDate())";
+                            sql += " insert into TT_NiemChi(ID,KyHieu,STT,MauSac,CreateBy,CreateDate)values('" + txtKyHieu_Nhap.Text.Trim().ToUpper() + i.ToString("000000") + "','" + txtKyHieu_Nhap.Text.Trim().ToUpper() + "','" + i.ToString("000000") + "',N'" + cmbMauSac.SelectedItem.ToString() + "'," + CNguoiDung.MaND + ",getDate())";
                         }
                         _cNiemChi.SqlBeginTransaction();
                         _cNiemChi.ExecuteNonQuery_Transaction(sql);
@@ -234,18 +234,18 @@ namespace ThuTien.GUI.Doi
                 {
                     if (int.Parse(txtTuSo_Giao.Text.Trim()) <= int.Parse(txtDenSo_Giao.Text.Trim()))
                     {
-                        if (_cNiemChi.checkSuDung(int.Parse(txtTuSo_Giao.Text.Trim()), int.Parse(txtDenSo_Giao.Text.Trim())) == true)
+                        if (_cNiemChi.checkSuDung(txtKyHieu_Giao.Text.Trim().ToUpper(), int.Parse(txtTuSo_Giao.Text.Trim()), int.Parse(txtDenSo_Giao.Text.Trim())) == true)
                         {
                             MessageBox.Show("Niêm Chì đã Sử Dụng, Không Xóa được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        if (_cNiemChi.checkGiao(int.Parse(txtTuSo_Giao.Text.Trim()), int.Parse(txtDenSo_Giao.Text.Trim())) == true)
+                        if (_cNiemChi.checkGiao(txtKyHieu_Giao.Text.Trim().ToUpper(), int.Parse(txtTuSo_Giao.Text.Trim()), int.Parse(txtDenSo_Giao.Text.Trim())) == true)
                         {
                             MessageBox.Show("Niêm Chì đã Giao, Không Xóa được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         _cNiemChi.SqlBeginTransaction();
-                        string sql = "update TT_NiemChi set MaTo=" + cmbTo_Giao.SelectedValue.ToString() + ",MaNV=" + cmbNhanVien_Giao.SelectedValue.ToString() + ",ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=getDate() where ID>=" + txtTuSo_Giao.Text.Trim() + " and ID<=" + txtDenSo_Giao.Text.Trim() + " and SuDung=0";
+                        string sql = "update TT_NiemChi set MaTo=" + cmbTo_Giao.SelectedValue.ToString() + ",MaNV=" + cmbNhanVien_Giao.SelectedValue.ToString() + ",ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=getDate() where KyHieu='" + txtKyHieu_Giao.Text.Trim().ToUpper() + "' and ID>=" + txtTuSo_Giao.Text.Trim() + " and ID<=" + txtDenSo_Giao.Text.Trim() + " and SuDung=0";
                         //string sql = "update TT_NiemChi set MaTo=" + cmbTo_Giao.SelectedValue.ToString() + ",MaNV=" + cmbNhanVien_Giao.SelectedValue.ToString() + ",ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=getDate() where ID>=" + txtTuSo_Giao.Text.Trim() + " and ID<=" + txtDenSo_Giao.Text.Trim();
                         _cNiemChi.ExecuteNonQuery_Transaction(sql);
                         _cNiemChi.SqlCommitTransaction();
@@ -279,13 +279,13 @@ namespace ThuTien.GUI.Doi
             {
                 try
                 {
-                    if (_cNiemChi.checkSuDung(int.Parse(dgvNiemChi_Giao.CurrentRow.Cells["TuSo_Giao"].Value.ToString()), int.Parse(dgvNiemChi_Giao.CurrentRow.Cells["DenSo_Giao"].Value.ToString())) == true)
+                    if (_cNiemChi.checkSuDung(dgvNiemChi_Giao.CurrentRow.Cells["KyHieu_Giao"].Value.ToString(), int.Parse(dgvNiemChi_Giao.CurrentRow.Cells["TuSo_Giao"].Value.ToString()), int.Parse(dgvNiemChi_Giao.CurrentRow.Cells["DenSo_Giao"].Value.ToString())) == true)
                     {
                         MessageBox.Show("Niêm Chì đã Sử Dụng, Không Xóa được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     _cNiemChi.SqlBeginTransaction();
-                    string sql = "update TT_NiemChi set MaTo=NULL,MaNV=NULL,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=getDate() where ID>=" + dgvNiemChi_Giao.CurrentRow.Cells["TuSo_Giao"].Value.ToString() + " and ID<=" + dgvNiemChi_Giao.CurrentRow.Cells["DenSo_Giao"].Value.ToString() + " and SuDung=0";
+                    string sql = "update TT_NiemChi set MaTo=NULL,MaNV=NULL,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=getDate() where KyHieu='" + txtKyHieu_Giao.Text.Trim().ToUpper() + "' and ID>=" + dgvNiemChi_Giao.CurrentRow.Cells["TuSo_Giao"].Value.ToString() + " and ID<=" + dgvNiemChi_Giao.CurrentRow.Cells["DenSo_Giao"].Value.ToString() + " and SuDung=0";
                     //string sql = "update TT_NiemChi set MaTo=NULL,MaNV=NULL,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=getDate() where ID>=" + dgvNiemChi_Giao.CurrentRow.Cells["TuSo_Giao"].Value.ToString() + " and ID<=" + dgvNiemChi_Giao.CurrentRow.Cells["DenSo_Giao"].Value.ToString();
                     _cNiemChi.ExecuteNonQuery_Transaction(sql);
                     _cNiemChi.SqlCommitTransaction();
@@ -309,6 +309,7 @@ namespace ThuTien.GUI.Doi
                     cmbTo_Giao.SelectedValue = dgvNiemChi_Giao["MaTo_Giao", e.RowIndex].Value;
                 if (dgvNiemChi_Giao["MaNV_Giao", e.RowIndex].Value.ToString() != "")
                     cmbNhanVien_Giao.SelectedValue = dgvNiemChi_Giao["MaNV_Giao", e.RowIndex].Value;
+                txtKyHieu_Giao.Text = dgvNiemChi_Giao["KyHieu_Giao", e.RowIndex].Value.ToString();
                 txtTuSo_Giao.Text = dgvNiemChi_Giao["TuSo_Giao", e.RowIndex].Value.ToString();
                 txtDenSo_Giao.Text = dgvNiemChi_Giao["DenSo_Giao", e.RowIndex].Value.ToString();
                 //lấy niêm chì tồn
@@ -350,7 +351,7 @@ namespace ThuTien.GUI.Doi
             {
                 try
                 {
-                    TT_NiemChi en = _cNiemChi.get(int.Parse(txtID_HuHong.Text.Trim()));
+                    TT_NiemChi en = _cNiemChi.get(txtID_HuHong.Text.Trim());
                     if (en != null)
                     {
                         if (en.MaNV == null)
@@ -395,7 +396,7 @@ namespace ThuTien.GUI.Doi
             {
                 try
                 {
-                    TT_NiemChi en = _cNiemChi.get(int.Parse(dgvNiemChi_HuHong.CurrentRow.Cells["ID_HuHong"].Value.ToString()));
+                    TT_NiemChi en = _cNiemChi.get(dgvNiemChi_HuHong.CurrentRow.Cells["ID_HuHong"].Value.ToString());
                     if (en != null)
                     {
                         en.imgHuHong = null;
@@ -426,7 +427,7 @@ namespace ThuTien.GUI.Doi
                 {
                     foreach (DataGridViewRow item in dgvNiemChi_HuHong.Rows)
                     {
-                        TT_NiemChi en = _cNiemChi.get(int.Parse(item.Cells["ID_HuHong"].Value.ToString()));
+                        TT_NiemChi en = _cNiemChi.get(item.Cells["ID_HuHong"].Value.ToString());
                         if (en != null && en.QuyetToan == false)
                         {
                             en.QuyetToan = true;

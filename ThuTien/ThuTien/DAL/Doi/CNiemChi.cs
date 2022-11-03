@@ -73,7 +73,7 @@ namespace ThuTien.DAL.Doi
             }
         }
 
-        public bool checkExist(int ID)
+        public bool checkExist(string ID)
         {
             return _db.TT_NiemChis.Any(item => item.ID == ID);
         }
@@ -83,19 +83,19 @@ namespace ThuTien.DAL.Doi
             return _db.TT_NiemChis.Any(item => item.CreateDate.Value.Date == CreateDate.Date && item.SuDung == true);
         }
 
-        public bool checkSuDung(int ID)
+        public bool checkSuDung(string ID)
         {
             return _db.TT_NiemChis.Any(item => item.ID == ID && item.SuDung == true);
         }
 
-        public bool checkSuDung(int FromID, int ToID)
+        public bool checkSuDung(string KyHieu, int FromID, int ToID)
         {
-            return _db.TT_NiemChis.Any(item => item.ID >= FromID && item.ID <= ToID && item.SuDung == true);
+            return _db.TT_NiemChis.Any(item => item.KyHieu == KyHieu && Convert.ToInt32(item.STT) >= FromID && Convert.ToInt32(item.STT) <= ToID && item.SuDung == true);
         }
 
-        public bool checkGiao(int FromID, int ToID)
+        public bool checkGiao(string KyHieu, int FromID, int ToID)
         {
-            return _db.TT_NiemChis.Any(item => item.ID >= FromID && item.ID <= ToID && item.MaNV != null);
+            return _db.TT_NiemChis.Any(item => item.KyHieu == KyHieu && Convert.ToInt32(item.STT) >= FromID && Convert.ToInt32(item.STT) <= ToID && item.MaNV != null);
         }
 
         public bool checkGiao(DateTime CreateDate)
@@ -103,7 +103,7 @@ namespace ThuTien.DAL.Doi
             return _db.TT_NiemChis.Any(item => item.CreateDate.Value.Date == CreateDate.Date && item.MaNV != null);
         }
 
-        public bool suDung(int ID)
+        public bool suDung(string ID)
         {
             try
             {
@@ -121,7 +121,7 @@ namespace ThuTien.DAL.Doi
             }
         }
 
-        public bool traSuDung(int ID)
+        public bool traSuDung(string ID)
         {
             try
             {
@@ -139,7 +139,7 @@ namespace ThuTien.DAL.Doi
             }
         }
 
-        public TT_NiemChi get(int ID)
+        public TT_NiemChi get(string ID)
         {
             return _db.TT_NiemChis.SingleOrDefault(item => item.ID == ID);
         }
@@ -156,8 +156,9 @@ namespace ThuTien.DAL.Doi
                         select new
                         {
                             CreateDate = itemGroup.Key,
-                            TuSo = itemGroup.Min(groupItem => groupItem.ID),
-                            DenSo = itemGroup.Max(groupItem => groupItem.ID),
+                            KyHieu = itemGroup.FirstOrDefault().KyHieu,
+                            TuSo = itemGroup.Min(groupItem => groupItem.STT),
+                            DenSo = itemGroup.Max(groupItem => groupItem.STT),
                             SLNhap = itemGroup.Count(),
                             SLSuDung = itemGroup.Count(groupItem => groupItem.SuDung == true),
                             SLHuHong = itemGroup.Count(groupItem => groupItem.HuHong == true),
@@ -178,8 +179,9 @@ namespace ThuTien.DAL.Doi
                             itemGroup.Key.MaNV,
                             NhanVien = _db.TT_NguoiDungs.SingleOrDefault(itemT => itemT.MaND == itemGroup.Key.MaNV).HoTen,
                             CreateDate = itemGroup.Key,
-                            TuSo = itemGroup.Min(groupItem => groupItem.ID),
-                            DenSo = itemGroup.Max(groupItem => groupItem.ID),
+                            KyHieu = itemGroup.FirstOrDefault().KyHieu,
+                            TuSo = itemGroup.Min(groupItem => groupItem.STT),
+                            DenSo = itemGroup.Max(groupItem => groupItem.STT),
                             SLNhap = itemGroup.Count(),
                             SLSuDung = itemGroup.Count(groupItem => groupItem.SuDung == true),
                             SLHuHong = itemGroup.Count(groupItem => groupItem.HuHong == true),

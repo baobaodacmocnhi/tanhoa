@@ -116,7 +116,7 @@ namespace ThuTien.GUI.DongNuoc
             if (entity.ChiSoDN != null)
                 txtChiSoDN.Text = entity.ChiSoDN.Value.ToString();
             if (entity.NiemChi != null)
-                txtNiemChi.Text = entity.NiemChi.Value.ToString();
+                txtNiemChi.Text = entity.NiemChi;
             if (entity.MauSac != null)
                 cmbMauSacDN.SelectedItem = entity.MauSac;
             txtHieu.Text = entity.Hieu;
@@ -139,7 +139,7 @@ namespace ThuTien.GUI.DongNuoc
                 if (entity.ChiSoMN != null)
                     txtChiSoMN.Text = entity.ChiSoMN.Value.ToString();
                 if (entity.NiemChiMN != null)
-                    txtNiemChiMN.Text = entity.NiemChiMN.Value.ToString();
+                    txtNiemChiMN.Text = entity.NiemChiMN;
                 if (entity.MauSacMN != null)
                     cmbMauSacMN.SelectedItem = entity.MauSacMN;
                 txtGhiChuMN.Text = entity.GhiChuMN;
@@ -153,7 +153,7 @@ namespace ThuTien.GUI.DongNuoc
                 if (entity.MaKemBamChi != null)
                     txtMaKemBamChi2.Text = entity.MaKemBamChi;
                 if (entity.NiemChi != null)
-                    txtNiemChi2.Text = entity.NiemChi.Value.ToString();
+                    txtNiemChi2.Text = entity.NiemChi;
                 if (entity.MauSac != null)
                     cmbMauSac2.SelectedItem = entity.MauSac;
                 dateDongNuoc1.Value = entity.NgayDN1.Value;
@@ -162,7 +162,7 @@ namespace ThuTien.GUI.DongNuoc
                 if (entity.MaKemBamChi1 != null)
                     txtMaKemBamChi1.Text = entity.MaKemBamChi1;
                 if (entity.NiemChi1 != null)
-                    txtNiemChi1.Text = entity.NiemChi1.Value.ToString();
+                    txtNiemChi1.Text = entity.NiemChi1;
                 if (entity.MauSac1 != null)
                     cmbMauSac1.SelectedItem = entity.MauSac1;
             }
@@ -307,34 +307,34 @@ namespace ThuTien.GUI.DongNuoc
                                 _kqdongnuoc.ChiSoDN = int.Parse(txtChiSoDN2.Text.Trim());
                             if (chkKhoaTu.Checked == false && chkKhoaKhac.Checked == false)
                             {
-                                if (txtNiemChi2.Text.Trim() == "" && cmbMauSac2.SelectedIndex == -1)
+                                if (txtNiemChi2.Text.Trim().ToUpper() == "" && cmbMauSac2.SelectedIndex == -1)
                                 {
                                     MessageBox.Show("Thiếu Số Niêm Chì", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
                                 }
-                                if (!string.IsNullOrEmpty(txtNiemChi2.Text.Trim()))
+                                if (!string.IsNullOrEmpty(txtNiemChi2.Text.Trim().ToUpper()))
                                 {
                                     if (_kqdongnuoc.NgayDN1.Value.Date > DateTime.Parse("2018-10-17"))
-                                        if (_kqdongnuoc.NiemChi.Value == int.Parse(txtNiemChi2.Text.Trim()))
+                                        if (_kqdongnuoc.NiemChi == txtNiemChi2.Text.Trim().ToUpper())
                                         {
                                             MessageBox.Show("Số Niêm Chì đã Sử Dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                             return;
                                         }
-                                    if (_cNiemChi.checkExist(int.Parse(txtNiemChi2.Text.Trim())) == false)
+                                    if (_cNiemChi.checkExist(txtNiemChi2.Text.Trim().ToUpper()) == false)
                                     {
                                         MessageBox.Show("Số Niêm Chì không Tồn Tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                         return;
                                     }
-                                    if (_cNiemChi.checkSuDung(int.Parse(txtNiemChi2.Text.Trim())) == true)
+                                    if (_cNiemChi.checkSuDung(txtNiemChi2.Text.Trim().ToUpper()) == true)
                                     {
                                         MessageBox.Show("Số Niêm Chì đã Sử Dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                         return;
                                     }
                                     //if (_kqdongnuoc.NiemChi != null)
                                     //    _cNiemChi.traSuDung(_kqdongnuoc.NiemChi.Value);
-                                    _kqdongnuoc.NiemChi = int.Parse(txtNiemChi2.Text.Trim());
+                                    _kqdongnuoc.NiemChi = txtNiemChi2.Text.Trim().ToUpper();
                                     _kqdongnuoc.MauSac = cmbMauSac2.SelectedItem.ToString();
-                                    _cNiemChi.suDung(int.Parse(txtNiemChi2.Text.Trim()));
+                                    _cNiemChi.suDung(txtNiemChi2.Text.Trim().ToUpper());
                                 }
                                 else
                                 {
@@ -366,7 +366,7 @@ namespace ThuTien.GUI.DongNuoc
                                 _kqdongnuoc.ChiSoDN = _kqdongnuoc.ChiSoDN1;
                                 _kqdongnuoc.MaKemBamChi = _kqdongnuoc.MaKemBamChi1;
                                 if (_kqdongnuoc.NiemChi != null)
-                                    _cNiemChi.traSuDung(_kqdongnuoc.NiemChi.Value);
+                                    _cNiemChi.traSuDung(_kqdongnuoc.NiemChi);
                                 _kqdongnuoc.MauSac = _kqdongnuoc.MauSac1;
                                 _kqdongnuoc.NiemChi = _kqdongnuoc.NiemChi1;
                                 _kqdongnuoc.NgayDN1 = null;
@@ -386,27 +386,27 @@ namespace ThuTien.GUI.DongNuoc
                         //cập nhật đóng nước lần 1
                         if (chkKhoaKhac.Checked == false && chkKhoaTu.Checked == false && _kqdongnuoc.NgayDN.Value.Date > DateTime.Parse("2018-10-17"))
                         {
-                            if (txtNiemChi.Text.Trim() == "" && cmbMauSacDN.SelectedIndex == -1)
+                            if (txtNiemChi.Text.Trim().ToUpper() == "" && cmbMauSacDN.SelectedIndex == -1)
                             {
                                 MessageBox.Show("Thiếu Số Niêm Chì", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
-                            if (!string.IsNullOrEmpty(txtNiemChi.Text.Trim()) && (_kqdongnuoc.NiemChi == null || _kqdongnuoc.NiemChi.Value != int.Parse(txtNiemChi.Text.Trim())))
+                            if (!string.IsNullOrEmpty(txtNiemChi.Text.Trim().ToUpper()) && (_kqdongnuoc.NiemChi == null || _kqdongnuoc.NiemChi != txtNiemChi.Text.Trim().ToUpper()))
                             {
-                                if (_cNiemChi.checkExist(int.Parse(txtNiemChi.Text.Trim())) == false)
+                                if (_cNiemChi.checkExist(txtNiemChi.Text.Trim().ToUpper()) == false)
                                 {
                                     MessageBox.Show("Số Niêm Chì không Tồn Tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
                                 }
-                                if (_cNiemChi.checkSuDung(int.Parse(txtNiemChi.Text.Trim())) == true)
+                                if (_cNiemChi.checkSuDung(txtNiemChi.Text.Trim().ToUpper()) == true)
                                 {
                                     MessageBox.Show("Số Niêm Chì đã Sử Dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
                                 }
-                                _cNiemChi.traSuDung(_kqdongnuoc.NiemChi.Value);
-                                _kqdongnuoc.NiemChi = int.Parse(txtNiemChi.Text.Trim());
+                                _cNiemChi.traSuDung(_kqdongnuoc.NiemChi);
+                                _kqdongnuoc.NiemChi = txtNiemChi.Text.Trim().ToUpper();
                                 _kqdongnuoc.MauSac = cmbMauSacDN.SelectedItem.ToString();
-                                _cNiemChi.suDung(int.Parse(txtNiemChi.Text.Trim()));
+                                _cNiemChi.suDung(txtNiemChi.Text.Trim().ToUpper());
                             }
                             else
                             {
@@ -464,24 +464,24 @@ namespace ThuTien.GUI.DongNuoc
                                 kqdongnuoc.ChiSoDN = int.Parse(txtChiSoDN.Text.Trim());
                             if (chkKhoaKhac.Checked == false && chkKhoaTu.Checked == false)
                             {
-                                if (txtNiemChi.Text.Trim() == "" && cmbMauSacDN.SelectedIndex == -1)
+                                if (txtNiemChi.Text.Trim().ToUpper() == "" && cmbMauSacDN.SelectedIndex == -1)
                                 {
                                     MessageBox.Show("Thiếu Số Niêm Chì", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
                                 }
-                                if (!string.IsNullOrEmpty(txtNiemChi.Text.Trim()))
+                                if (!string.IsNullOrEmpty(txtNiemChi.Text.Trim().ToUpper()))
                                 {
-                                    if (_cNiemChi.checkExist(int.Parse(txtNiemChi.Text.Trim())) == false)
+                                    if (_cNiemChi.checkExist(txtNiemChi.Text.Trim().ToUpper()) == false)
                                     {
                                         MessageBox.Show("Số Niêm Chì không Tồn Tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                         return;
                                     }
-                                    if (_cNiemChi.checkSuDung(int.Parse(txtNiemChi.Text.Trim())) == true)
+                                    if (_cNiemChi.checkSuDung(txtNiemChi.Text.Trim().ToUpper()) == true)
                                     {
                                         MessageBox.Show("Số Niêm Chì đã Sử Dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                         return;
                                     }
-                                    kqdongnuoc.NiemChi = int.Parse(txtNiemChi.Text.Trim());
+                                    kqdongnuoc.NiemChi = txtNiemChi.Text.Trim().ToUpper();
                                     kqdongnuoc.MauSac = cmbMauSacDN.SelectedItem.ToString();
                                 }
                                 else
@@ -522,7 +522,7 @@ namespace ThuTien.GUI.DongNuoc
                                 //_cDongNuoc.ThemKQ_Hinh(en);
                                 if (chkKhoaKhac.Checked == false && chkKhoaTu.Checked == false && kqdongnuoc.NiemChi != null)
                                 {
-                                    _cNiemChi.suDung(int.Parse(txtNiemChi.Text.Trim()));
+                                    _cNiemChi.suDung(txtNiemChi.Text.Trim().ToUpper());
                                 }
                                 //string NoiDung = "Đóng Nước, ngày " + kqdongnuoc.NgayDN.Value.ToString("dd/MM/yyyy") + ", CS: " + kqdongnuoc.ChiSoDN + ", " + kqdongnuoc.LyDo;
                                 //string sql = "insert into TB_GHICHU(DANHBO,DONVI,NOIDUNG,CREATEDATE,CREATEBY)values('" + kqdongnuoc.DanhBo + "',N'DTT',N'" + NoiDung + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture) + "',N'" + CNguoiDung.HoTen + "')";
@@ -602,24 +602,24 @@ namespace ThuTien.GUI.DongNuoc
                     {
                         if (chkKhoaKhac.Checked == false && chkKhoaTu.Checked == false)
                         {
-                            if (txtNiemChiMN.Text.Trim() == "" && cmbMauSacMN.SelectedIndex == -1)
+                            if (txtNiemChiMN.Text.Trim().ToUpper() == "" && cmbMauSacMN.SelectedIndex == -1)
                             {
                                 MessageBox.Show("Thiếu Số Niêm Chì", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
-                            if (!string.IsNullOrEmpty(txtNiemChiMN.Text.Trim()))
+                            if (!string.IsNullOrEmpty(txtNiemChiMN.Text.Trim().ToUpper()))
                             {
-                                if (_cNiemChi.checkExist(int.Parse(txtNiemChiMN.Text.Trim())) == false)
+                                if (_cNiemChi.checkExist(txtNiemChiMN.Text.Trim().ToUpper()) == false)
                                 {
                                     MessageBox.Show("Số Niêm Chì không Tồn Tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
                                 }
-                                if (_cNiemChi.checkSuDung(int.Parse(txtNiemChiMN.Text.Trim())) == true)
+                                if (_cNiemChi.checkSuDung(txtNiemChiMN.Text.Trim().ToUpper()) == true)
                                 {
                                     MessageBox.Show("Số Niêm Chì đã Sử Dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
                                 }
-                                _kqdongnuoc.NiemChiMN = int.Parse(txtNiemChiMN.Text.Trim());
+                                _kqdongnuoc.NiemChiMN = txtNiemChiMN.Text.Trim().ToUpper();
                                 _kqdongnuoc.MauSacMN = cmbMauSacMN.SelectedItem.ToString();
                             }
                         }
@@ -633,7 +633,7 @@ namespace ThuTien.GUI.DongNuoc
                     else
                     {
                         if (_kqdongnuoc.NiemChiMN != null)
-                            _cNiemChi.traSuDung(_kqdongnuoc.NiemChiMN.Value);
+                            _cNiemChi.traSuDung(_kqdongnuoc.NiemChiMN);
                         _kqdongnuoc.MoNuoc = false;
                         _kqdongnuoc.NgayMN = null;
                         _kqdongnuoc.NgayMN_ThucTe = null;
@@ -647,7 +647,7 @@ namespace ThuTien.GUI.DongNuoc
                     {
                         if (chkKhoaKhac.Checked == false && chkKhoaTu.Checked == false && _kqdongnuoc.NiemChiMN != null)
                         {
-                            _cNiemChi.suDung(int.Parse(txtNiemChiMN.Text.Trim()));
+                            _cNiemChi.suDung(txtNiemChiMN.Text.Trim().ToUpper());
                         }
                         //string NoiDung = "Mở Nước, ngày " + _kqdongnuoc.NgayDN.Value.ToString("dd/MM/yyyy") + ", CS: " + _kqdongnuoc.ChiSoDN + ", " + _kqdongnuoc.LyDo;
                         //string sql = "insert into TB_GHICHU(DANHBO,DONVI,NOIDUNG,CREATEDATE,CREATEBY)values('" + _kqdongnuoc.DanhBo + "',N'DTT',N'" + NoiDung + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture) + "',N'" + CNguoiDung.HoTen + "')";
@@ -684,9 +684,9 @@ namespace ThuTien.GUI.DongNuoc
                                 return;
                             }
                             if (kqdongnuoc.NiemChi != null)
-                                _cNiemChi.traSuDung(kqdongnuoc.NiemChi.Value);
+                                _cNiemChi.traSuDung(kqdongnuoc.NiemChi);
                             if (kqdongnuoc.NiemChi1 != null)
-                                _cNiemChi.traSuDung(kqdongnuoc.NiemChi1.Value);
+                                _cNiemChi.traSuDung(kqdongnuoc.NiemChi1);
                             if (_cDongNuoc.XoaKQ(kqdongnuoc))
                             {
                                 Clear();
@@ -709,9 +709,9 @@ namespace ThuTien.GUI.DongNuoc
                                 return;
                             }
                             if (kqdongnuoc.NiemChi != null)
-                                _cNiemChi.traSuDung(kqdongnuoc.NiemChi.Value);
+                                _cNiemChi.traSuDung(kqdongnuoc.NiemChi);
                             if (kqdongnuoc.NiemChi1 != null)
-                                _cNiemChi.traSuDung(kqdongnuoc.NiemChi1.Value);
+                                _cNiemChi.traSuDung(kqdongnuoc.NiemChi1);
                             if (_cDongNuoc.XoaKQ(kqdongnuoc))
                             {
                                 Clear();
