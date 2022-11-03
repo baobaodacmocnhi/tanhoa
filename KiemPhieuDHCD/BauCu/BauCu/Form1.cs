@@ -690,7 +690,7 @@ namespace BauCu
                             }
                             en.CDGD = 0;
                             en.PHONGTOA = 0;
-                            en.TONGCD = int.Parse(dtExcel.Rows[i][7].ToString());
+                            en.TONGCD = int.Parse(dtExcel.Rows[i][5].ToString());
                             db.DSCODONGs.InsertOnSubmit(en);
                             db.SubmitChanges();
                         }

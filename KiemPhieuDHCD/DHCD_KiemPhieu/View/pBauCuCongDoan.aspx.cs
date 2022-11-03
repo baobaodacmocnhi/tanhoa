@@ -40,10 +40,15 @@ namespace DHCD_KiemPhieu.View
             Binddata();
             if (DropDownList1.SelectedIndex == 1)
             {
-                title.Text = "..: KIỂM PHIẾU BẦU BAN CHẤP HÀNH CÔNG ĐOÀN KHÓA II, NHIỆM KỲ 2020-2025 :..";
-                lbKetqua.Text = "KẾT QUẢ BẦU BAN CHẤP HÀNH CÔNG ĐOÀN KHÓA II, NHIỆM KỲ 2020-2025";
+                title.Text = "..: KIỂM PHIẾU BẦU BAN CHẤP HÀNH CÔNG ĐOÀN KHÓA III, NHIỆM KỲ 2022-2027 :..";
+                lbKetqua.Text = "KẾT QUẢ BẦU BAN CHẤP HÀNH CÔNG ĐOÀN KHÓA III, NHIỆM KỲ 2022-2027";
             }
-
+            else
+                if (DropDownList1.SelectedIndex == 2)
+                {
+                    title.Text = "..: KIỂM PHIẾU BẦU ĐẠI BIỂU THAM DỰ ĐẠI HỘI CÔNG ĐOÀN TCT LẦN IV, NHIỆM KỲ 2023-2028 :..";
+                    lbKetqua.Text = "KẾT QUẢ BẦU ĐẠI BIỂU THAM DỰ ĐẠI HỘI CÔNG ĐOÀN TCT LẦN IV, NHIỆM KỲ 2023-2028";
+                }
         }
 
         protected void G_KDY_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -67,7 +72,7 @@ namespace DHCD_KiemPhieu.View
         public void LoadDSDaNhap()
         {
             //load danh sách đã nhập
-            DataTable dt = Class.LinQConnection.getDataTable("select ID,STT=ROW_NUMBER() OVER(ORDER BY ID ASC),CreateDate,KHONGHOPLE,SoLuong=COUNT(*) from BB_KETQUABAUCU where CreateBy=" + Session["login"] + " group by ID,CreateDate,KHONGHOPLE order by ID desc");
+            DataTable dt = Class.LinQConnection.getDataTable("select ID,STT=ROW_NUMBER() OVER(ORDER BY ID ASC),CreateDate,KHONGHOPLE,SoLuong=COUNT(*) from BB_KETQUABAUCU where LANBC= " + DropDownList1.SelectedValue.ToString() + " and CreateBy=" + Session["login"] + " group by ID,CreateDate,KHONGHOPLE order by ID desc");
             dgvDaBau.DataSource = dt;
             dgvDaBau.DataBind();
         }
@@ -78,12 +83,12 @@ namespace DHCD_KiemPhieu.View
 
             this.tc_thuvao.Text = "0";
 
-            string sql = "select STT=ROW_NUMBER() OVER(ORDER BY IDUngVien ASC),TenBC=(select TenBC from BB_THANHVIENBAUCU where ID=IDUngVien)"
+            string sql = "select top " + DropDownList2.SelectedValue.ToString() + " STT=ROW_NUMBER() OVER(ORDER BY IDUngVien ASC),TenBC=(select TenBC from BB_THANHVIENBAUCU where ID=IDUngVien)"
                         + " ,DY=SUM(CASE WHEN DongY=1 THEN 1 else 0 END)"
                         + " ,TLDY=ROUND(100.0*((SUM(CASE WHEN DongY=1 THEN 1 else 0 END)*1.0)/(SUM(CASE WHEN DongY=1 THEN 1 else 0 END)+SUM(CASE WHEN KhongDongY=1 THEN 1 else 0 END) )),2)"
                         + " ,KDY=SUM(CASE WHEN KhongDongY=1 THEN 1 else 0 END)"
                         + " ,TLKDY=ROUND(100.0*((SUM(CASE WHEN KhongDongY=1 THEN 1 else 0 END)*1.0)/(SUM(CASE WHEN DongY=1 THEN 1 else 0 END)+SUM(CASE WHEN KhongDongY=1 THEN 1 else 0 END) )),2)"
-                        + " from BB_KETQUABAUCU where (IDUngVien > 0 AND IDUngVien <= " + DropDownList2.SelectedValue.ToString() + "  ) group by IDUngVien";
+                        + " from BB_KETQUABAUCU where LANBC= " + DropDownList1.SelectedValue.ToString() + " group by IDUngVien";
 
             DataTable tb = Class.LinQConnection.getDataTable(sql);
             gTK.DataSource = tb;
@@ -102,9 +107,9 @@ namespace DHCD_KiemPhieu.View
             gTK.DataBind();
             try
             {
-                string sql1 = "select HopLe=COUNT(*) from (select distinct ID,CreateDate from BB_KETQUABAUCU where KHONGHOPLE=0)t1";
+                string sql1 = "select HopLe=COUNT(*) from (select distinct ID,CreateDate from BB_KETQUABAUCU where LANBC= " + DropDownList1.SelectedValue.ToString() + " and KHONGHOPLE=0)t1";
                 double hople = Class.LinQConnection.ReturnResult(sql1);
-                string sql2 = "select KhongHopLe=COUNT(*) from (select distinct ID,CreateDate from BB_KETQUABAUCU where KHONGHOPLE=1)t1";
+                string sql2 = "select KhongHopLe=COUNT(*) from (select distinct ID,CreateDate from BB_KETQUABAUCU where LANBC= " + DropDownList1.SelectedValue.ToString() + " and KHONGHOPLE=1)t1";
                 double khonghople = Class.LinQConnection.ReturnResult(sql2);
 
                 this.tc_hople.Text = hople + "";
@@ -134,7 +139,7 @@ namespace DHCD_KiemPhieu.View
                             + " set @ID=(case when not exists(select ID from BB_KETQUABAUCU) then 1 else (select MAX(ID) from BB_KETQUABAUCU)+1 end)";
                 for (int i = 1; i < checkName.Items.Count; i++)
                 {
-                    sql += " insert into BB_KETQUABAUCU(ID,IDUNGVIEN,KHONGHOPLE,DONGY,KHONGDONGY,CREATEBY,CREATEDATE)values(@ID," + checkName.Items[i].Value + ",1,0,1," + Session["login"] + ",'" + date.ToString("yyyyMMdd HH:mm:ss") + "')";
+                    sql += " insert into BB_KETQUABAUCU(ID,IDUNGVIEN,KHONGHOPLE,DONGY,KHONGDONGY,LANBC,CREATEBY,CREATEDATE)values(@ID," + checkName.Items[i].Value + ",1,0,1," + DropDownList1.SelectedValue.ToString() + "," + Session["login"] + ",'" + date.ToString("yyyyMMdd HH:mm:ss") + "')";
                 }
                 using (TransactionScope scope = new TransactionScope())
                 {
@@ -151,12 +156,12 @@ namespace DHCD_KiemPhieu.View
                 {
                     if (checkName.Items[i].Selected)
                     {
-                        sql += " insert into BB_KETQUABAUCU(ID,IDUNGVIEN,DONGY,KHONGDONGY,CREATEBY,CREATEDATE)values(@ID," + checkName.Items[i].Value + ",0,1," + Session["login"] + ",'" + date.ToString("yyyyMMdd HH:mm:ss") + "')";
+                        sql += " insert into BB_KETQUABAUCU(ID,IDUNGVIEN,DONGY,KHONGDONGY,LANBC,CREATEBY,CREATEDATE)values(@ID," + checkName.Items[i].Value + ",0,1," + DropDownList1.SelectedValue.ToString() + "," + Session["login"] + ",'" + date.ToString("yyyyMMdd HH:mm:ss") + "')";
                         checkName.Items[i].Selected = false;
                     }
                     else
                     {
-                        sql += " insert into BB_KETQUABAUCU(ID,IDUNGVIEN,DONGY,KHONGDONGY,CREATEBY,CREATEDATE)values(@ID," + checkName.Items[i].Value + ",1,0," + Session["login"] + ",'" + date.ToString("yyyyMMdd HH:mm:ss") + "')";
+                        sql += " insert into BB_KETQUABAUCU(ID,IDUNGVIEN,DONGY,KHONGDONGY,LANBC,CREATEBY,CREATEDATE)values(@ID," + checkName.Items[i].Value + ",1,0," + DropDownList1.SelectedValue.ToString() + "," + Session["login"] + ",'" + date.ToString("yyyyMMdd HH:mm:ss") + "')";
                     }
                 }
                 using (TransactionScope scope = new TransactionScope())
@@ -198,7 +203,7 @@ namespace DHCD_KiemPhieu.View
                         + " ,TLDY=ROUND(100.0*((SUM(CASE WHEN DongY=1 THEN 1 else 0 END)*1.0)/(SUM(CASE WHEN DongY=1 THEN 1 else 0 END)+SUM(CASE WHEN KhongDongY=1 THEN 1 else 0 END) )),2)"
                         + " ,KDY=SUM(CASE WHEN KhongDongY=1 THEN 1 else 0 END)"
                         + " ,TLKDY=ROUND(100.0*((SUM(CASE WHEN KhongDongY=1 THEN 1 else 0 END)*1.0)/(SUM(CASE WHEN DongY=1 THEN 1 else 0 END)+SUM(CASE WHEN KhongDongY=1 THEN 1 else 0 END) )),2)"
-                        + " from BB_KETQUABAUCU where (IDUngVien > 0 AND IDUngVien <= " + DropDownList2.SelectedValue.ToString() + "  ) group by IDUngVien"
+                        + " from BB_KETQUABAUCU where LANBC= " + DropDownList1.SelectedValue.ToString() + " group by IDUngVien"
                         + " order by SUM(CASE WHEN DongY=1 THEN 1 else 0 END) desc";
 
             gTK.DataSource = Class.LinQConnection.getDataTable(sql);
@@ -223,7 +228,7 @@ namespace DHCD_KiemPhieu.View
                         + " ,TLDY=ROUND(100.0*((SUM(CASE WHEN DongY=1 THEN 1 else 0 END)*1.0)/(SUM(CASE WHEN DongY=1 THEN 1 else 0 END)+SUM(CASE WHEN KhongDongY=1 THEN 1 else 0 END) )),2)"
                         + " ,KDY=SUM(CASE WHEN KhongDongY=1 THEN 1 else 0 END)"
                         + " ,TLKDY=ROUND(100.0*((SUM(CASE WHEN KhongDongY=1 THEN 1 else 0 END)*1.0)/(SUM(CASE WHEN DongY=1 THEN 1 else 0 END)+SUM(CASE WHEN KhongDongY=1 THEN 1 else 0 END) )),2)"
-                        + " from BB_KETQUABAUCU where (IDUngVien > 0 AND IDUngVien <= " + DropDownList2.SelectedValue.ToString() + "  ) group by IDUngVien"
+                        + " from BB_KETQUABAUCU where LANBC= " + DropDownList1.SelectedValue.ToString() + " group by IDUngVien"
                         + " order by SUM(CASE WHEN DongY=1 THEN 1 else 0 END) desc";
 
                 DataTable dt = Class.LinQConnection.getDataTable(sql);
@@ -236,12 +241,12 @@ namespace DHCD_KiemPhieu.View
                 gTK.DataBind();
 
                 // sort
-                string sqlSort = " SELECT TOP(" + DropDownList3.SelectedValue.ToString() + ")  STT,  TENBC,TENBC2,SUM(SLDY) AS DY, ";
-                sqlSort += " ROUND(100.0*((SUM(SLDY)*1.0)/(SUM(SLDY)+SUM(SLKDY) )),2)  AS TLDY ,";
-                sqlSort += " SUM(SLKDY) AS KDY ,  ";
-                sqlSort += " ROUND(100.0*((SUM(SLKDY)*1.0)/(SUM(SLDY)+SUM(SLKDY) )),2)  AS TLKDY1 ";
-                sqlSort += " FROM BAUCU WHERE STT > 0 AND LANBC= " + DropDownList1.SelectedValue.ToString() + " AND CONVERT(VARCHAR(50),NGAYBC,103)='" + this.tungay.Text + "' ";
-                sqlSort += " GROUP BY STT,TENBC,TENBC2 ORDER BY SUM(SLDY) DESC,TENBC2 ASC ";
+                string sqlSort = " SELECT TOP(" + DropDownList3.SelectedValue.ToString() + ")  STT,  TENBC,TENBC2,SUM(SLDY) AS DY, "
+                 + " ROUND(100.0*((SUM(SLDY)*1.0)/(SUM(SLDY)+SUM(SLKDY) )),2)  AS TLDY ,"
+                 + " SUM(SLKDY) AS KDY ,  "
+                 + " ROUND(100.0*((SUM(SLKDY)*1.0)/(SUM(SLDY)+SUM(SLKDY) )),2)  AS TLKDY1 "
+                 + " FROM BAUCU WHERE STT > 0 AND LANBC= " + DropDownList1.SelectedValue.ToString() + " AND CONVERT(VARCHAR(50),NGAYBC,103)='" + this.tungay.Text + "' "
+                 + " GROUP BY STT,TENBC,TENBC2 ORDER BY SUM(SLDY) DESC,TENBC2 ASC ";
                 Session["SQL2"] = sql;
                 //
             }

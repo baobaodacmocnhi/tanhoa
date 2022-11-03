@@ -343,6 +343,10 @@
                                 <asp:ListItem>10</asp:ListItem>
                                 <asp:ListItem>11</asp:ListItem>
                                 <asp:ListItem>12</asp:ListItem>
+                                <asp:ListItem>13</asp:ListItem>
+                                <asp:ListItem>14</asp:ListItem>
+                                <asp:ListItem>15</asp:ListItem>
+                                <asp:ListItem>16</asp:ListItem>
                             </asp:DropDownList>
                             <b><a href="Print.aspx?page=CongDoan">
                                 <asp:Label ID="lbTongCong" Text="IN KẾT QUẢ" runat="server" Font-Size="Large" Style="text-align: left"></asp:Label>
@@ -364,6 +368,10 @@
                                 <asp:ListItem>10</asp:ListItem>
                                 <asp:ListItem>11</asp:ListItem>
                                 <asp:ListItem>12</asp:ListItem>
+                                <asp:ListItem>13</asp:ListItem>
+                                <asp:ListItem>14</asp:ListItem>
+                                <asp:ListItem>15</asp:ListItem>
+                                <asp:ListItem>16</asp:ListItem>
                             </asp:DropDownList>
                         </td>
                     </tr>

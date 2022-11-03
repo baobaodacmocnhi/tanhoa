@@ -1513,3 +1513,51 @@ The statement has been terminated.
 2021-04-26 10:18:21,797 [4360] ERROR File LinQConnection getDataTableIncorrect syntax near '='.
 2021-04-26 10:18:51,037 [2260] ERROR File LinQConnection getDataTableConversion failed when converting the varchar value '----' to data type int.
 2021-04-26 10:18:51,119 [2260] ERROR File LinQConnection getDataTableIncorrect syntax near '='.
+2022-10-31 08:19:21,509 [13100] ERROR File LinQConnection getDataTableInvalid column name 'LANBC'.
+2022-10-31 08:19:21,609 [13100] ERROR File LinQConnection getDataTableInvalid column name 'LANBC'.
+2022-10-31 08:19:21,702 [13100] ERROR File LinQConnection ExecuteCommand : select HopLe=COUNT(*) from (select distinct ID,CreateDate from BB_KETQUABAUCU where LANBC= 1 and KHONGHOPLE=0)t1
+2022-10-31 08:19:21,702 [13100] ERROR File LinQConnection ExecuteCommand : Invalid column name 'LANBC'.
+2022-10-31 08:19:21,784 [13100] ERROR File LinQConnection ExecuteCommand : select KhongHopLe=COUNT(*) from (select distinct ID,CreateDate from BB_KETQUABAUCU where LANBC= 1 and KHONGHOPLE=1)t1
+2022-10-31 08:19:21,784 [13100] ERROR File LinQConnection ExecuteCommand : Invalid column name 'LANBC'.
+2022-10-31 08:19:25,274 [13920] ERROR File LinQConnection getDataTableInvalid column name 'LANBC'.
+2022-10-31 08:19:25,356 [13920] ERROR File LinQConnection getDataTableInvalid column name 'LANBC'.
+2022-10-31 08:19:25,435 [13920] ERROR File LinQConnection ExecuteCommand : select HopLe=COUNT(*) from (select distinct ID,CreateDate from BB_KETQUABAUCU where LANBC= 2 and KHONGHOPLE=0)t1
+2022-10-31 08:19:25,435 [13920] ERROR File LinQConnection ExecuteCommand : Invalid column name 'LANBC'.
+2022-10-31 08:19:25,516 [13920] ERROR File LinQConnection ExecuteCommand : select KhongHopLe=COUNT(*) from (select distinct ID,CreateDate from BB_KETQUABAUCU where LANBC= 2 and KHONGHOPLE=1)t1
+2022-10-31 08:19:25,516 [13920] ERROR File LinQConnection ExecuteCommand : Invalid column name 'LANBC'.
+2022-10-31 08:19:30,034 [13920] ERROR File LinQConnection getDataTableInvalid column name 'LANBC'.
+2022-10-31 08:19:30,111 [13920] ERROR File LinQConnection getDataTableInvalid column name 'LANBC'.
+2022-10-31 08:19:30,188 [13920] ERROR File LinQConnection ExecuteCommand : select HopLe=COUNT(*) from (select distinct ID,CreateDate from BB_KETQUABAUCU where LANBC= 3 and KHONGHOPLE=0)t1
+2022-10-31 08:19:30,188 [13920] ERROR File LinQConnection ExecuteCommand : Invalid column name 'LANBC'.
+2022-10-31 08:19:30,291 [13920] ERROR File LinQConnection ExecuteCommand : select KhongHopLe=COUNT(*) from (select distinct ID,CreateDate from BB_KETQUABAUCU where LANBC= 3 and KHONGHOPLE=1)t1
+2022-10-31 08:19:30,291 [13920] ERROR File LinQConnection ExecuteCommand : Invalid column name 'LANBC'.
+2022-10-31 08:20:58,931 [13100] ERROR File LinQConnection getDataTableInvalid column name 'LANBC'.
+2022-10-31 08:20:59,009 [13100] ERROR File LinQConnection getDataTableInvalid column name 'LANBC'.
+2022-10-31 08:20:59,137 [13100] ERROR File LinQConnection ExecuteCommand : select HopLe=COUNT(*) from (select distinct ID,CreateDate from BB_KETQUABAUCU where LANBC= 3 and KHONGHOPLE=0)t1
+2022-10-31 08:20:59,137 [13100] ERROR File LinQConnection ExecuteCommand : Invalid column name 'LANBC'.
+2022-10-31 08:20:59,216 [13100] ERROR File LinQConnection ExecuteCommand : select KhongHopLe=COUNT(*) from (select distinct ID,CreateDate from BB_KETQUABAUCU where LANBC= 3 and KHONGHOPLE=1)t1
+2022-10-31 08:20:59,216 [13100] ERROR File LinQConnection ExecuteCommand : Invalid column name 'LANBC'.
+2022-10-31 08:21:14,194 [13100] ERROR File LinQConnection getDataTableInvalid column name 'LANBC'.
+2022-10-31 08:21:14,271 [13100] ERROR File LinQConnection getDataTableInvalid column name 'LANBC'.
+2022-10-31 08:21:14,343 [13100] ERROR File LinQConnection ExecuteCommand : select HopLe=COUNT(*) from (select distinct ID,CreateDate from BB_KETQUABAUCU where LANBC= 3 and KHONGHOPLE=0)t1
+2022-10-31 08:21:14,343 [13100] ERROR File LinQConnection ExecuteCommand : Invalid column name 'LANBC'.
+2022-10-31 08:21:14,424 [13100] ERROR File LinQConnection ExecuteCommand : select KhongHopLe=COUNT(*) from (select distinct ID,CreateDate from BB_KETQUABAUCU where LANBC= 3 and KHONGHOPLE=1)t1
+2022-10-31 08:21:14,424 [13100] ERROR File LinQConnection ExecuteCommand : Invalid column name 'LANBC'.
+2022-10-31 08:21:26,579 [13796] ERROR File LinQConnection getDataTableInvalid column name 'LANBC'.
+2022-10-31 08:21:26,656 [13796] ERROR File LinQConnection getDataTableInvalid column name 'LANBC'.
+2022-10-31 08:21:26,731 [13796] ERROR File LinQConnection ExecuteCommand : select HopLe=COUNT(*) from (select distinct ID,CreateDate from BB_KETQUABAUCU where LANBC= 3 and KHONGHOPLE=0)t1
+2022-10-31 08:21:26,731 [13796] ERROR File LinQConnection ExecuteCommand : Invalid column name 'LANBC'.
+2022-10-31 08:21:26,845 [13796] ERROR File LinQConnection ExecuteCommand : select KhongHopLe=COUNT(*) from (select distinct ID,CreateDate from BB_KETQUABAUCU where LANBC= 3 and KHONGHOPLE=1)t1
+2022-10-31 08:21:26,845 [13796] ERROR File LinQConnection ExecuteCommand : Invalid column name 'LANBC'.
+2022-10-31 08:21:57,085 [13100] ERROR File LinQConnection getDataTableInvalid column name 'LANBC'.
+2022-10-31 08:21:57,162 [13100] ERROR File LinQConnection getDataTableInvalid column name 'LANBC'.
+2022-10-31 08:21:57,236 [13100] ERROR File LinQConnection ExecuteCommand : select HopLe=COUNT(*) from (select distinct ID,CreateDate from BB_KETQUABAUCU where LANBC= 1 and KHONGHOPLE=0)t1
+2022-10-31 08:21:57,236 [13100] ERROR File LinQConnection ExecuteCommand : Invalid column name 'LANBC'.
+2022-10-31 08:21:57,317 [13100] ERROR File LinQConnection ExecuteCommand : select KhongHopLe=COUNT(*) from (select distinct ID,CreateDate from BB_KETQUABAUCU where LANBC= 1 and KHONGHOPLE=1)t1
+2022-10-31 08:21:57,317 [13100] ERROR File LinQConnection ExecuteCommand : Invalid column name 'LANBC'.
+2022-10-31 08:21:59,635 [13920] ERROR File LinQConnection getDataTableInvalid column name 'LANBC'.
+2022-10-31 08:21:59,709 [13920] ERROR File LinQConnection getDataTableInvalid column name 'LANBC'.
+2022-10-31 08:21:59,782 [13920] ERROR File LinQConnection ExecuteCommand : select HopLe=COUNT(*) from (select distinct ID,CreateDate from BB_KETQUABAUCU where LANBC= 2 and KHONGHOPLE=0)t1
+2022-10-31 08:21:59,782 [13920] ERROR File LinQConnection ExecuteCommand : Invalid column name 'LANBC'.
+2022-10-31 08:21:59,874 [13920] ERROR File LinQConnection ExecuteCommand : select KhongHopLe=COUNT(*) from (select distinct ID,CreateDate from BB_KETQUABAUCU where LANBC= 2 and KHONGHOPLE=1)t1
+2022-10-31 08:21:59,874 [13920] ERROR File LinQConnection ExecuteCommand : Invalid column name 'LANBC'.

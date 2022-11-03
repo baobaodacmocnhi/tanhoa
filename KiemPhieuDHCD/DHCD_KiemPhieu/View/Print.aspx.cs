@@ -110,7 +110,7 @@ namespace DHCD_KiemPhieu.View
                 adapter = new SqlDataAdapter(sql2, db.Connection.ConnectionString);
                 adapter.Fill(ds, "KQTRUNGCU");
 
-                if ("1".Equals(Session["LoaiBaoCao"].ToString()))
+                //if ("1".Equals(Session["LoaiBaoCao"].ToString()))
                 {
                     CrystalReportSource1.Report.FileName = "inKQBauCu_CongDoan.rpt";
                     CrystalReportSource1.ReportDocument.SetDataSource(ds);

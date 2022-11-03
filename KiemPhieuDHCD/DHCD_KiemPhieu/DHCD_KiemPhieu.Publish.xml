@@ -1,51 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <publishData>
   <publishProfile publishUrl="C:\Users\BaoBao\Desktop\BauCu" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="View/mavach/mavach (104).jpg" publishTime="04/12/2018 11:21:10" />
     <file relUrl="View/mavach/mavach (51).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="Image/1down.png" publishTime="09/08/2017 23:22:31" />
-    <file relUrl="View/qrcode/075.jpg" publishTime="04/13/2022 12:42:17" />
+    <file relUrl="View/mavach/mavach (88).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="ckeditor/plugins/forms/dialogs/form.js" publishTime="09/08/2017 23:26:06" />
     <file relUrl="ckeditor/skins/kama/images/toolbar_start.gif" publishTime="09/08/2017 23:26:15" />
+    <file relUrl="View/mavach/mavach (29).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="ckeditor/plugins/forms/dialogs/hiddenfield.js" publishTime="09/08/2017 23:26:06" />
     <file relUrl="ckeditor/lang/lt.js" publishTime="09/08/2017 23:26:01" />
+    <file relUrl="View/Home.aspx" publishTime="09/08/2017 23:25:19" />
     <file relUrl="ckeditor/CHANGES.html" publishTime="09/08/2017 23:25:24" />
-    <file relUrl="ckeditor/lang/fi.js" publishTime="09/08/2017 23:26:01" />
+    <file relUrl="View/mavach/mavach (56).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="ckeditor/plugins/autogrow/plugin.js" publishTime="09/08/2017 23:26:03" />
+    <file relUrl="ckeditor/plugins/uicolor/yui/yui.js" publishTime="09/08/2017 23:26:13" />
     <file relUrl="View/qrcode/156.jpg" publishTime="04/13/2022 12:42:18" />
-    <file relUrl="ckeditor/lang/da.js" publishTime="09/08/2017 23:26:01" />
+    <file relUrl="ckeditor/skins/v2/editor.css" publishTime="09/08/2017 23:26:18" />
     <file relUrl="ckeditor/plugins/uicolor/yui/assets/picker_thumb.png" publishTime="09/08/2017 23:26:11" />
     <file relUrl="ckeditor/plugins/wsc/dialogs/wsc.js" publishTime="09/08/2017 23:26:13" />
-    <file relUrl="ckeditor/plugins/image/dialogs/image.js" publishTime="09/08/2017 23:26:06" />
     <file relUrl="View/qrcode/069.jpg" publishTime="04/13/2022 12:42:17" />
+    <file relUrl="View/mavach/mavach (93).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="Image/bullet0_over.png" publishTime="09/08/2017 23:22:31" />
-    <file relUrl="View/qrcode/157.jpg" publishTime="04/13/2022 12:42:18" />
     <file relUrl="View/qrcode/027.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="ckeditor/skins/office2003/images/dialog_sides_rtl.png" publishTime="09/08/2017 23:26:17" />
     <file relUrl="View/mavach/mavach (19).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="ckeditor/skins/v2/images/noimage.png" publishTime="09/08/2017 23:26:18" />
     <file relUrl="View/qrcode/018.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/mavach/mavach (42).jpg" publishTime="09/08/2017 23:25:19" />
-    <file relUrl="Image/delete2.ico" publishTime="09/08/2017 23:22:31" />
+    <file relUrl="bin/DHCD_KiemPhieu.pdb" publishTime="10/31/2022 09:34:43" />
     <file relUrl="ckeditor/lang/eu.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="View/mavach/mavach (40).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="ckeditor/lang/pl.js" publishTime="09/08/2017 23:26:01" />
-    <file relUrl="View/qrcode/150.jpg" publishTime="04/13/2022 12:42:18" />
+    <file relUrl="View/qrcode/198.jpg" publishTime="04/13/2022 12:42:18" />
+    <file relUrl="View/qrcode/162.jpg" publishTime="04/13/2022 12:42:18" />
     <file relUrl="ckeditor/lang/ja.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="View/mavach/mavach (65).jpg" publishTime="09/08/2017 23:25:19" />
-    <file relUrl="ckeditor/lang/bs.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="ckeditor/skins/kama/images/dialog_sides.png" publishTime="09/08/2017 23:26:15" />
     <file relUrl="ckeditor/plugins/flash/images/placeholder.png" publishTime="09/08/2017 23:26:06" />
-    <file relUrl="View/mavach/mavach (121).jpg" publishTime="04/10/2019 14:14:16" />
     <file relUrl="ckeditor/lang/bn.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="View/qrcode/019.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="ckeditor/skins/office2003/images/sprites.png" publishTime="09/08/2017 23:26:17" />
     <file relUrl="View/mavach/mavach (89).jpg" publishTime="09/08/2017 23:25:19" />
-    <file relUrl="ckeditor/lang/hu.js" publishTime="09/08/2017 23:26:01" />
-    <file relUrl="View/pBauCuDHCD.aspx" publishTime="12/11/2019 10:19:13" />
+    <file relUrl="View/mavach/mavach (106).jpg" publishTime="04/12/2018 11:21:10" />
     <file relUrl="View/mavach/mavach (131).jpg" publishTime="04/10/2019 14:14:16" />
     <file relUrl="View/mavach/mavach (67).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/pBauCuHDTV_01.aspx" publishTime="09/08/2017 23:25:21" />
-    <file relUrl="ckeditor/lang/bg.js" publishTime="09/08/2017 23:26:01" />
+    <file relUrl="View/mavach/mavach (142).jpg" publishTime="04/10/2019 14:14:16" />
     <file relUrl="ckeditor/skins/office2003/images/mini.gif" publishTime="09/08/2017 23:26:17" />
     <file relUrl="ckeditor/plugins/styles/styles/default.js" publishTime="09/08/2017 23:26:09" />
     <file relUrl="View/qrcode/197.jpg" publishTime="04/13/2022 12:42:18" />
@@ -55,16 +56,15 @@
     <file relUrl="View/mavach/mavach (103).jpg" publishTime="04/12/2018 11:21:10" />
     <file relUrl="View/qrcode/160.jpg" publishTime="04/13/2022 12:42:18" />
     <file relUrl="View/mavach/mavach (36).jpg" publishTime="09/08/2017 23:25:19" />
-    <file relUrl="View/qrcode/039.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="ckeditor/lang/lv.js" publishTime="09/08/2017 23:26:01" />
+    <file relUrl="ckeditor/lang/hr.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="View/qrcode/139.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="bin/AjaxControlToolkit.dll" publishTime="09/08/2017 23:24:29" />
-    <file relUrl="ckeditor/plugins/devtools/lang/en.js" publishTime="09/08/2017 23:26:04" />
     <file relUrl="Lib/CKEditor.NET.dll" publishTime="09/08/2017 23:24:29" />
     <file relUrl="ckeditor/plugins/smiley/images/regular_smile.gif" publishTime="09/08/2017 23:26:09" />
-    <file relUrl="ckeditor/lang/fr-ca.js" publishTime="09/08/2017 23:26:01" />
+    <file relUrl="View/mavach/mavach (66).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/mavach/mavach (119).jpg" publishTime="04/10/2019 14:14:16" />
     <file relUrl="ckeditor/skins/office2003/images/noimage.png" publishTime="09/08/2017 23:26:17" />
+    <file relUrl="View/qrcode/174.jpg" publishTime="04/13/2022 12:42:18" />
     <file relUrl="View/mavach/mavach (78).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/mavach/mavach (110).jpg" publishTime="04/10/2019 14:14:16" />
     <file relUrl="ckeditor/plugins/bbcode/plugin.js" publishTime="09/08/2017 23:26:03" />
@@ -72,74 +72,69 @@
     <file relUrl="View/qrcode/125.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/qrcode/002.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="ckeditor/plugins/uicolor/yui/assets/hue_thumb.png" publishTime="09/08/2017 23:26:11" />
-    <file relUrl="View/mavach/mavach (117).jpg" publishTime="04/10/2019 14:14:16" />
     <file relUrl="View/mavach/mavach (141).jpg" publishTime="04/10/2019 14:14:16" />
     <file relUrl="View/qrcode/193.jpg" publishTime="04/13/2022 12:42:18" />
     <file relUrl="View/mavach/mavach (94).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/mavach/mavach (77).jpg" publishTime="09/08/2017 23:25:19" />
-    <file relUrl="View/mavach/mavach (55).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/qrcode/003.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="ckeditor/lang/en.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="View/qrcode/164.jpg" publishTime="04/13/2022 12:42:18" />
     <file relUrl="View/inKQBauCu_CongDoan.rpt" publishTime="12/17/2019 16:30:30" />
     <file relUrl="View/mavach/mavach (2).jpg" publishTime="09/08/2017 23:25:19" />
-    <file relUrl="View/mavach/mavach (120).jpg" publishTime="04/10/2019 14:14:16" />
     <file relUrl="ckeditor/lang/en-gb.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="Lib/AjaxControlToolkit.dll" publishTime="09/08/2017 23:24:29" />
-    <file relUrl="View/mavach/mavach (106).jpg" publishTime="04/12/2018 11:21:10" />
+    <file relUrl="View/qrcode/142.jpg" publishTime="04/13/2022 12:42:17" />
+    <file relUrl="View/qrcode/189.jpg" publishTime="04/13/2022 12:42:18" />
     <file relUrl="Image/button_bg.png" publishTime="09/08/2017 23:22:31" />
-    <file relUrl="ckeditor/plugins/templates/templates/default.js" publishTime="09/08/2017 23:26:10" />
-    <file relUrl="View/mavach/mavach (146).jpg" publishTime="04/10/2019 14:14:16" />
-    <file relUrl="ckeditor/skins/kama/editor.css" publishTime="09/08/2017 23:26:15" />
+    <file relUrl="bin/DHCD_KiemPhieu.dll" publishTime="10/31/2022 09:34:44" />
+    <file relUrl="View/qrcode/134.jpg" publishTime="04/13/2022 12:42:17" />
+    <file relUrl="ckeditor/plugins/wsc/dialogs/wsc.css" publishTime="09/08/2017 23:26:13" />
     <file relUrl="ckeditor/lang/_languages.js" publishTime="09/08/2017 23:26:01" />
-    <file relUrl="View/qrcode/083.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="ckeditor/plugins/clipboard/dialogs/paste.js" publishTime="09/08/2017 23:26:04" />
     <file relUrl="View/qrcode/121.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="ckeditor/skins/v2/images/sprites.png" publishTime="09/08/2017 23:26:18" />
-    <file relUrl="View/qrcode/063.jpg" publishTime="04/13/2022 12:42:17" />
+    <file relUrl="ckeditor/lang/gu.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="ckeditor/plugins/showblocks/images/block_h1.png" publishTime="09/08/2017 23:26:08" />
     <file relUrl="View/mavach/mavach (144).jpg" publishTime="04/10/2019 14:14:16" />
     <file relUrl="View/mavach/mavach (17).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/qrcode/110.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="Image/add.ico" publishTime="09/08/2017 23:22:31" />
-    <file relUrl="ckeditor/lang/fa.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="Image/bg_head.jpg" publishTime="09/08/2017 23:22:31" />
-    <file relUrl="Lib/log4net.dll" publishTime="09/08/2017 23:24:29" />
-    <file relUrl="ckeditor/plugins/wsc/dialogs/ciframe.html" publishTime="09/08/2017 23:26:13" />
+    <file relUrl="View/mavach/mavach (55).jpg" publishTime="09/08/2017 23:25:19" />
+    <file relUrl="View/qrcode/092.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/qrcode/171.jpg" publishTime="04/13/2022 12:42:18" />
     <file relUrl="ckeditor/plugins/showblocks/images/block_h4.png" publishTime="09/08/2017 23:26:08" />
     <file relUrl="View/qrcode/005.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="iisstart.aspx" publishTime="09/08/2017 23:26:18" />
     <file relUrl="ckeditor/lang/nl.js" publishTime="09/08/2017 23:26:01" />
+    <file relUrl="View/mavach/mavach (37).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/qrcode/055.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="Image/edit.ico" publishTime="09/08/2017 23:22:31" />
     <file relUrl="View/qrcode/130.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/mavach/mavach (34).jpg" publishTime="09/08/2017 23:25:19" />
-    <file relUrl="View/qrcode/020.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="ckeditor/plugins/smiley/images/envelope.gif" publishTime="09/08/2017 23:26:09" />
     <file relUrl="ckeditor/plugins/placeholder/dialogs/placeholder.js" publishTime="09/08/2017 23:26:07" />
     <file relUrl="Image/up.png" publishTime="09/08/2017 23:22:31" />
     <file relUrl="View/pBieuQuyetDHCD_2.aspx" publishTime="09/08/2017 23:25:21" />
-    <file relUrl="Image/Capture.JPG" publishTime="09/08/2017 23:22:31" />
-    <file relUrl="Web.config" publishTime="04/26/2022 14:37:01" />
-    <file relUrl="Lib/String_Indentity_.dll" publishTime="09/08/2017 23:24:29" />
+    <file relUrl="Image/ss-TANG.PNG" publishTime="09/08/2017 23:22:31" />
+    <file relUrl="View/qrcode/057.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/mavach/mavach (50).jpg" publishTime="09/08/2017 23:25:19" />
+    <file relUrl="ckeditor/lang/mn.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="View/mavach/mavach (31).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/mavach/mavach (12).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/mavach/mavach (15).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/qrcode/064.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="ckeditor/plugins/smiley/images/broken_heart.gif" publishTime="09/08/2017 23:26:09" />
     <file relUrl="View/qrcode/078.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="ckeditor/skins/kama/images/mini.gif" publishTime="09/08/2017 23:26:15" />
     <file relUrl="ckeditor/skins/kama/images/dialog_sides_rtl.png" publishTime="09/08/2017 23:26:15" />
     <file relUrl="View/qrcode/074.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="ckeditor/lang/ms.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="ckeditor/plugins/a11yhelp/lang/en.js" publishTime="09/08/2017 23:26:02" />
-    <file relUrl="ckeditor/skins/office2003/dialog.css" publishTime="09/08/2017 23:26:17" />
     <file relUrl="View/pBauCuBanKS_2.aspx" publishTime="09/08/2017 23:25:21" />
+    <file relUrl="View/qrcode/096.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="JavaScript/jquery-1.2.6.js" publishTime="09/08/2017 23:22:45" />
     <file relUrl="View/qrcode/168.jpg" publishTime="04/13/2022 12:42:18" />
     <file relUrl="ckeditor/skins/kama/dialog.css" publishTime="09/08/2017 23:26:15" />
+    <file relUrl="View/mavach/mavach (114).jpg" publishTime="04/10/2019 14:14:16" />
     <file relUrl="View/pKetQuaBauCuDHCD.aspx" publishTime="06/15/2020 16:10:31" />
     <file relUrl="View/mavach/mavach (18).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/qrcode/187.jpg" publishTime="04/13/2022 12:42:18" />
@@ -148,66 +143,64 @@
     <file relUrl="ckeditor/plugins/scayt/dialogs/options.js" publishTime="09/08/2017 23:26:08" />
     <file relUrl="ckeditor/plugins/ajax/plugin.js" publishTime="09/08/2017 23:26:03" />
     <file relUrl="Image/table_list_bghead.png" publishTime="09/08/2017 23:22:31" />
-    <file relUrl="View/qrcode/010.jpg" publishTime="04/13/2022 12:42:17" />
+    <file relUrl="ckeditor/plugins/uicolor/uicolor.gif" publishTime="09/08/2017 23:26:11" />
     <file relUrl="bin/CrystalDecisions.ReportSource.dll" publishTime="03/03/2011 12:25:18" />
     <file relUrl="View/qrcode/186.jpg" publishTime="04/13/2022 12:42:18" />
-    <file relUrl="ckeditor/themes/default/theme.js" publishTime="09/08/2017 23:26:18" />
+    <file relUrl="View/mavach/mavach (140).jpg" publishTime="04/10/2019 14:14:16" />
     <file relUrl="View/qrcode/034.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="ckeditor/lang/af.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="View/qrcode/129.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="View/mavach/mavach (62).jpg" publishTime="09/08/2017 23:25:19" />
+    <file relUrl="ckeditor/skins/v2/dialog.css" publishTime="09/08/2017 23:26:18" />
     <file relUrl="View/mavach/mavach (46).jpg" publishTime="09/08/2017 23:25:19" />
-    <file relUrl="View/mavach/mavach (69).jpg" publishTime="09/08/2017 23:25:19" />
-    <file relUrl="ckeditor/plugins/placeholder/plugin.js" publishTime="09/08/2017 23:26:08" />
+    <file relUrl="Image/down.png" publishTime="09/08/2017 23:22:31" />
     <file relUrl="View/mavach/mavach (105).jpg" publishTime="04/12/2018 11:21:10" />
     <file relUrl="ckeditor/plugins/templates/templates/images/template1.gif" publishTime="09/08/2017 23:26:10" />
     <file relUrl="ckeditor/plugins/scayt/dialogs/toolbar.css" publishTime="09/08/2017 23:26:08" />
-    <file relUrl="ckeditor/contents.css" publishTime="09/08/2017 23:25:30" />
-    <file relUrl="View/pBauCuDoanThanhNien.aspx" publishTime="03/22/2022 13:44:44" />
+    <file relUrl="ckeditor/skins/kama/icons.png" publishTime="09/08/2017 23:26:15" />
     <file relUrl="View/Print.aspx" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/qrcode/122.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="JavaScript/headmenu.css" publishTime="09/08/2017 23:22:45" />
     <file relUrl="View/qrcode/004.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="ckeditor/lang/it.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="View/qrcode/107.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="ckeditor/LICENSE.html" publishTime="09/08/2017 23:25:24" />
     <file relUrl="View/qrcode/195.jpg" publishTime="04/13/2022 12:42:18" />
-    <file relUrl="View/qrcode/182.jpg" publishTime="04/13/2022 12:42:18" />
+    <file relUrl="ckeditor/lang/cy.js" publishTime="09/08/2017 23:26:01" />
+    <file relUrl="ckeditor/plugins/templates/templates/default.js" publishTime="09/08/2017 23:26:10" />
     <file relUrl="View/mavach/mavach (102).jpg" publishTime="04/12/2018 11:21:10" />
-    <file relUrl="View/qrcode/032.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="View/qrcode/106.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="ckeditor/plugins/docprops/dialogs/docprops.js" publishTime="09/08/2017 23:26:05" />
+    <file relUrl="View/qrcode/063.jpg" publishTime="04/13/2022 12:42:17" />
+    <file relUrl="View/mavach/mavach (143).jpg" publishTime="04/10/2019 14:14:16" />
     <file relUrl="View/qrcode/030.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/mavach/mavach (86).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="Lib/String_Indentity.dll" publishTime="09/08/2017 23:24:29" />
     <file relUrl="ckeditor/skins/kama/templates.css" publishTime="09/08/2017 23:26:15" />
-    <file relUrl="bin/CrystalDecisions.CrystalReports.Engine.dll" publishTime="03/03/2011 12:25:16" />
     <file relUrl="View/mavach/mavach (122).jpg" publishTime="04/10/2019 14:14:16" />
-    <file relUrl="View/qrcode/023.jpg" publishTime="04/13/2022 12:42:17" />
+    <file relUrl="ckeditor/plugins/about/dialogs/about.js" publishTime="09/08/2017 23:26:03" />
     <file relUrl="ckeditor/plugins/forms/dialogs/select.js" publishTime="09/08/2017 23:26:06" />
     <file relUrl="View/mavach/mavach (100).jpg" publishTime="04/12/2018 11:21:10" />
     <file relUrl="View/qrcode/118.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/mavach/mavach (4).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/mavach/mavach (25).jpg" publishTime="09/08/2017 23:25:19" />
+    <file relUrl="View/mavach/mavach (115).jpg" publishTime="04/10/2019 14:14:16" />
     <file relUrl="View/qrcode/179.jpg" publishTime="04/13/2022 12:42:18" />
     <file relUrl="View/qrcode/026.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="ckeditor/skins/kama/icons.png" publishTime="09/08/2017 23:26:15" />
+    <file relUrl="View/mavach/mavach (95).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/pDanhSachCoDongThamDu.aspx" publishTime="04/19/2019 07:43:08" />
-    <file relUrl="View/inTheBieuQuyet_N.rpt" publishTime="04/22/2021 13:52:15" />
+    <file relUrl="View/qrcode/106.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/qrcode/103.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/qrcode/097.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/qrcode/191.jpg" publishTime="04/13/2022 12:42:18" />
     <file relUrl="ckeditor/skins/office2003/templates.css" publishTime="09/08/2017 23:26:17" />
     <file relUrl="View/qrcode/138.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="ckeditor/plugins/smiley/images/tounge_smile.gif" publishTime="09/08/2017 23:26:09" />
+    <file relUrl="ckeditor/plugins/liststyle/dialogs/liststyle.js" publishTime="09/08/2017 23:26:07" />
     <file relUrl="View/qrcode/001.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/mavach/mavach (27).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/qrcode/102.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/mavach/mavach (3).jpg" publishTime="09/08/2017 23:25:19" />
-    <file relUrl="View/qrcode/177.jpg" publishTime="04/13/2022 12:42:18" />
+    <file relUrl="View/mavach/mavach (14).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/qrcode/042.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="ckeditor/lang/sr-latn.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="View/mavach/mavach (145).jpg" publishTime="04/10/2019 14:14:16" />
+    <file relUrl="ckeditor/lang/hi.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="View/mavach/mavach (90).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/mavach/mavach (148).jpg" publishTime="04/10/2019 14:14:16" />
     <file relUrl="View/mavach/mavach (128).jpg" publishTime="04/10/2019 14:14:16" />
@@ -215,45 +208,46 @@
     <file relUrl="ckeditor/plugins/a11yhelp/dialogs/a11yhelp.js" publishTime="09/08/2017 23:26:02" />
     <file relUrl="View/qrcode/136.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/qrcode/188.jpg" publishTime="04/13/2022 12:42:18" />
-    <file relUrl="View/mavach/mavach (75).jpg" publishTime="09/08/2017 23:25:19" />
+    <file relUrl="View/qrcode/080.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="ckeditor/plugins/adobeair/plugin.js" publishTime="09/08/2017 23:26:03" />
     <file relUrl="View/mavach/mavach (1).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/qrcode/022.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/mavach/mavach (85).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/mavach/mavach (91).jpg" publishTime="09/08/2017 23:25:19" />
-    <file relUrl="ckeditor/lang/zh.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="View/qrcode/133.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="JavaScript/jquery-1.6.2.js" publishTime="09/08/2017 23:22:45" />
-    <file relUrl="Image/EDIT.png" publishTime="09/08/2017 23:22:31" />
-    <file relUrl="View/pDanhSachCoDong.aspx" publishTime="04/10/2019 15:04:08" />
-    <file relUrl="ckeditor/plugins/smiley/images/whatchutalkingabout_smile.gif" publishTime="09/08/2017 23:26:09" />
-    <file relUrl="ckeditor/skins/v2/dialog.css" publishTime="09/08/2017 23:26:18" />
+    <file relUrl="Image/bg.gif" publishTime="09/08/2017 23:22:31" />
+    <file relUrl="View/mavach/mavach (70).jpg" publishTime="09/08/2017 23:25:19" />
+    <file relUrl="View/qrcode/013.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="ckeditor/skins/office2003/images/dialog_sides.png" publishTime="09/08/2017 23:26:17" />
     <file relUrl="View/qrcode/046.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="ckeditor/lang/es.js" publishTime="09/08/2017 23:26:01" />
-    <file relUrl="ckeditor/lang/el.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="ckeditor/plugins/flash/dialogs/flash.js" publishTime="09/08/2017 23:26:06" />
     <file relUrl="View/qrcode/072.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/mavach/mavach (13).jpg" publishTime="09/08/2017 23:25:19" />
-    <file relUrl="ckeditor/plugins/showblocks/images/block_h6.png" publishTime="09/08/2017 23:26:08" />
+    <file relUrl="View/qrcode/150.jpg" publishTime="04/13/2022 12:42:18" />
     <file relUrl="Global.asax" publishTime="09/08/2017 23:22:31" />
     <file relUrl="View/qrcode/132.jpg" publishTime="04/13/2022 12:42:17" />
+    <file relUrl="View/qrcode/024.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="Image/Logo Tan Hoa.png" publishTime="09/08/2017 23:22:31" />
     <file relUrl="ckeditor/plugins/uicolor/yui/assets/yui.css" publishTime="09/08/2017 23:26:11" />
-    <file relUrl="ckeditor/plugins/uicolor/lang/en.js" publishTime="09/08/2017 23:26:10" />
     <file relUrl="ckeditor/lang/he.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="View/qrcode/128.jpg" publishTime="04/13/2022 12:42:17" />
+    <file relUrl="ckeditor/plugins/table/dialogs/table.js" publishTime="09/08/2017 23:26:09" />
     <file relUrl="View/mavach/mavach (59).jpg" publishTime="09/08/2017 23:25:19" />
+    <file relUrl="View/mavach/mavach (73).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/qrcode/196.jpg" publishTime="04/13/2022 12:42:18" />
     <file relUrl="ckeditor/skins/v2/templates.css" publishTime="09/08/2017 23:26:18" />
     <file relUrl="ckeditor/lang/eo.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="ckeditor/plugins/showblocks/images/block_h5.png" publishTime="09/08/2017 23:26:08" />
     <file relUrl="ckeditor/skins/kama/icons_rtl.png" publishTime="09/08/2017 23:26:15" />
-    <file relUrl="ckeditor/plugins/forms/dialogs/radio.js" publishTime="09/08/2017 23:26:06" />
-    <file relUrl="ckeditor/skins/kama/images/sprites_ie6.png" publishTime="09/08/2017 23:26:15" />
-    <file relUrl="View/mavach/mavach (66).jpg" publishTime="09/08/2017 23:25:19" />
+    <file relUrl="ckeditor/plugins/showblocks/images/block_pre.png" publishTime="09/08/2017 23:26:08" />
+    <file relUrl="ckeditor/plugins/smiley/images/angel_smile.gif" publishTime="09/08/2017 23:26:09" />
+    <file relUrl="View/mavach/mavach (127).jpg" publishTime="04/10/2019 14:14:16" />
     <file relUrl="View/qrcode/165.jpg" publishTime="04/13/2022 12:42:18" />
     <file relUrl="View/mavach/mavach (126).jpg" publishTime="04/10/2019 14:14:16" />
+    <file relUrl="View/qrcode/183.jpg" publishTime="04/13/2022 12:42:18" />
+    <file relUrl="View/mavach/mavach (79).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/mavach/mavach (54).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="ckeditor/plugins/smiley/images/thumbs_down.gif" publishTime="09/08/2017 23:26:09" />
     <file relUrl="View/mavach/mavach (24).jpg" publishTime="09/08/2017 23:25:19" />
@@ -261,75 +255,67 @@
     <file relUrl="View/mavach/mavach (32).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/qrcode/154.jpg" publishTime="04/13/2022 12:42:18" />
     <file relUrl="ckeditor/plugins/link/images/anchor.gif" publishTime="09/08/2017 23:26:07" />
-    <file relUrl="View/qrcode/149.jpg" publishTime="04/13/2022 12:42:18" />
     <file relUrl="View/pBieuQuyetDHCD.aspx" publishTime="09/08/2017 23:25:21" />
+    <file relUrl="View/mavach/mavach (146).jpg" publishTime="04/10/2019 14:14:16" />
+    <file relUrl="View/pBieuQuyetDHCD_TIEUCHI_2020.aspx" publishTime="04/26/2022 14:35:18" />
     <file relUrl="View/qrcode/038.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="ckeditor/plugins/iframe/images/placeholder.png" publishTime="09/08/2017 23:26:06" />
+    <file relUrl="ckeditor/lang/fr.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="View/qrcode/098.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="ckeditor/skins/office2003/icons.png" publishTime="09/08/2017 23:26:17" />
     <file relUrl="View/qrcode/185.jpg" publishTime="04/13/2022 12:42:18" />
     <file relUrl="View/qrcode/192.jpg" publishTime="04/13/2022 12:42:18" />
     <file relUrl="ckeditor/plugins/stylesheetparser/plugin.js" publishTime="09/08/2017 23:26:09" />
-    <file relUrl="View/qrcode/174.jpg" publishTime="04/13/2022 12:42:18" />
-    <file relUrl="ckeditor/plugins/specialchar/dialogs/specialchar.js" publishTime="09/08/2017 23:26:09" />
+    <file relUrl="ckeditor/lang/zh.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="View/qrcode/184.jpg" publishTime="04/13/2022 12:42:18" />
-    <file relUrl="View/mavach/mavach (63).jpg" publishTime="09/08/2017 23:25:19" />
+    <file relUrl="ckeditor/plugins/pastefromword/filter/default.js" publishTime="09/08/2017 23:26:07" />
     <file relUrl="Image/box-bullet1.gif" publishTime="09/08/2017 23:22:31" />
     <file relUrl="ckeditor/lang/nb.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="View/qrcode/036.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="View/mavach/mavach (68).jpg" publishTime="09/08/2017 23:25:19" />
+    <file relUrl="ckeditor/plugins/templates/templates/images/template2.gif" publishTime="09/08/2017 23:26:10" />
     <file relUrl="View/qrcode/117.jpg" publishTime="04/13/2022 12:42:17" />
+    <file relUrl="View/mavach/mavach (35).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="ckeditor/plugins/placeholder/lang/en.js" publishTime="09/08/2017 23:26:07" />
     <file relUrl="View/qrcode/008.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="ckeditor/lang/pt-br.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="View/qrcode/099.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="ckeditor/plugins/placeholder/lang/he.js" publishTime="09/08/2017 23:26:07" />
-    <file relUrl="View/mavach/mavach (61).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/mavach/mavach (139).jpg" publishTime="04/10/2019 14:14:16" />
-    <file relUrl="ckeditor/plugins/wsc/dialogs/wsc.css" publishTime="09/08/2017 23:26:13" />
+    <file relUrl="ckeditor/plugins/smiley/images/teeth_smile.gif" publishTime="09/08/2017 23:26:09" />
     <file relUrl="View/qrcode/009.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="ckeditor/plugins/smiley/images/sad_smile.gif" publishTime="09/08/2017 23:26:09" />
     <file relUrl="View/mavach/mavach (130).jpg" publishTime="04/10/2019 14:14:16" />
     <file relUrl="Image/nochange.png" publishTime="09/08/2017 23:22:31" />
     <file relUrl="View/qrcode/181.jpg" publishTime="04/13/2022 12:42:18" />
+    <file relUrl="View/pBauCuDHCD.aspx" publishTime="12/11/2019 10:19:13" />
     <file relUrl="View/mavach/mavach (101).jpg" publishTime="04/12/2018 11:21:10" />
     <file relUrl="View/qrcode/105.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="ckeditor/plugins/smiley/images/angry_smile.gif" publishTime="09/08/2017 23:26:09" />
-    <file relUrl="ckeditor/lang/pt.js" publishTime="09/08/2017 23:26:01" />
-    <file relUrl="ckeditor/lang/zh-cn.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="View/qrcode/180.jpg" publishTime="04/13/2022 12:42:18" />
     <file relUrl="ckeditor/skins/office2003/images/dialog_sides.gif" publishTime="09/08/2017 23:26:17" />
     <file relUrl="View/qrcode/104.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="View/qrcode/162.jpg" publishTime="04/13/2022 12:42:18" />
+    <file relUrl="View/qrcode/032.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/qrcode/113.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="bin/CrystalDecisions.Shared.dll" publishTime="03/03/2011 12:25:18" />
-    <file relUrl="bin/CrystalDecisions.Web.dll" publishTime="03/03/2011 12:25:18" />
-    <file relUrl="View/qrcode/134.jpg" publishTime="04/13/2022 12:42:17" />
+    <file relUrl="View/mavach/mavach (83).jpg" publishTime="09/08/2017 23:25:19" />
+    <file relUrl="ckeditor/lang/ko.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="View/mavach/mavach (118).jpg" publishTime="04/10/2019 14:14:16" />
-    <file relUrl="View/mavach/mavach (88).jpg" publishTime="09/08/2017 23:25:19" />
+    <file relUrl="ckeditor/plugins/uicolor/lang/en.js" publishTime="09/08/2017 23:26:10" />
+    <file relUrl="View/qrcode/058.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/mavach/mavach (82).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/qrcode/169.jpg" publishTime="04/13/2022 12:42:18" />
     <file relUrl="ckeditor/plugins/tabletools/dialogs/tableCell.js" publishTime="09/08/2017 23:26:10" />
     <file relUrl="View/mavach/mavach (149).jpg" publishTime="04/10/2019 14:14:16" />
     <file relUrl="View/mavach/mavach (129).jpg" publishTime="04/10/2019 14:14:16" />
-    <file relUrl="Default.aspx" publishTime="09/08/2017 23:22:31" />
     <file relUrl="View/qrcode/127.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="View/qrcode/092.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/qrcode/101.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="ckeditor/plugins/forms/images/hiddenfield.gif" publishTime="09/08/2017 23:26:06" />
-    <file relUrl="View/qrcode/035.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="View/qrcode/025.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="bin/DHCD_KiemPhieu.dll" publishTime="04/26/2022 14:25:02" />
+    <file relUrl="View/mavach/mavach (117).jpg" publishTime="04/10/2019 14:14:16" />
+    <file relUrl="ckeditor/ckeditor.js" publishTime="09/08/2017 23:25:30" />
     <file relUrl="View/mavach/mavach (21).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="ckeditor/plugins/smiley/images/omg_smile.gif" publishTime="09/08/2017 23:26:09" />
     <file relUrl="ckeditor/plugins/showblocks/images/block_address.png" publishTime="09/08/2017 23:26:08" />
     <file relUrl="View/qrcode/100.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="View/mavach/mavach (16).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/qrcode/166.jpg" publishTime="04/13/2022 12:42:18" />
     <file relUrl="View/qrcode/040.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="ckeditor/lang/en-au.js" publishTime="09/08/2017 23:26:01" />
+    <file relUrl="View/qrcode/075.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/qrcode/143.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="Image/1up.png" publishTime="09/08/2017 23:22:31" />
     <file relUrl="ckeditor/plugins/smiley/images/cry_smile.gif" publishTime="09/08/2017 23:26:09" />
     <file relUrl="View/mavach/mavach (45).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/qrcode/178.jpg" publishTime="04/13/2022 12:42:18" />
@@ -338,128 +324,135 @@
     <file relUrl="View/qrcode/012.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/qrcode/094.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="ckeditor/lang/sk.js" publishTime="09/08/2017 23:26:01" />
+    <file relUrl="View/qrcode/120.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="ckeditor/lang/km.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="ckeditor/plugins/smiley/images/devil_smile.gif" publishTime="09/08/2017 23:26:09" />
-    <file relUrl="ckeditor/ckeditor.js" publishTime="09/08/2017 23:25:30" />
-    <file relUrl="View/qrcode/123.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="View/qrcode/095.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="ckeditor/lang/en-ca.js" publishTime="09/08/2017 23:26:01" />
+    <file relUrl="Image/EDIT.png" publishTime="09/08/2017 23:22:31" />
+    <file relUrl="View/pBauCuCongDoan.aspx" publishTime="10/31/2022 09:02:46" />
+    <file relUrl="View/pBauCuDoanThanhNien.aspx" publishTime="03/22/2022 13:44:44" />
+    <file relUrl="View/mavach/mavach (69).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="ckeditor/plugins/devtools/plugin.js" publishTime="09/08/2017 23:26:04" />
     <file relUrl="View/mavach/mavach (71).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/mavach/mavach (52).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/qrcode/059.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="ckeditor/lang/ka.js" publishTime="09/08/2017 23:26:01" />
-    <file relUrl="View/mavach/mavach (104).jpg" publishTime="04/12/2018 11:21:10" />
+    <file relUrl="View/qrcode/035.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/qrcode/067.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/qrcode/062.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="ckeditor/skins/v2/icons_rtl.png" publishTime="09/08/2017 23:26:18" />
     <file relUrl="View/qrcode/044.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="View/qrcode/090.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="View/qrcode/173.jpg" publishTime="04/13/2022 12:42:18" />
-    <file relUrl="View/qrcode/153.jpg" publishTime="04/13/2022 12:42:18" />
-    <file relUrl="ckeditor/lang/vi.js" publishTime="09/08/2017 23:26:01" />
+    <file relUrl="ckeditor/lang/fa.js" publishTime="09/08/2017 23:26:01" />
+    <file relUrl="ckeditor/lang/ms.js" publishTime="09/08/2017 23:26:01" />
+    <file relUrl="View/qrcode/182.jpg" publishTime="04/13/2022 12:42:18" />
     <file relUrl="ckeditor/skins/office2003/icons_rtl.png" publishTime="09/08/2017 23:26:17" />
-    <file relUrl="ckeditor/skins/v2/editor.css" publishTime="09/08/2017 23:26:18" />
+    <file relUrl="View/qrcode/023.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/qrcode/146.jpg" publishTime="04/13/2022 12:42:17" />
+    <file relUrl="View/qrcode/111.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/pBieuQuyetDHCD_TIEUCHI.aspx" publishTime="04/26/2021 10:29:10" />
     <file relUrl="ckeditor/lang/ar.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="View/pInCoDong.aspx" publishTime="04/04/2018 15:50:47" />
     <file relUrl="ckeditor/plugins/a11yhelp/lang/he.js" publishTime="09/08/2017 23:26:02" />
     <file relUrl="ckeditor/plugins/showblocks/images/block_p.png" publishTime="09/08/2017 23:26:08" />
+    <file relUrl="ckeditor/skins/kama/skin.js" publishTime="09/08/2017 23:26:15" />
     <file relUrl="View/mavach/mavach (80).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="ckeditor/plugins/div/dialogs/div.js" publishTime="09/08/2017 23:26:04" />
     <file relUrl="View/mavach/mavach (39).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/qrcode/091.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/qrcode/172.jpg" publishTime="04/13/2022 12:42:18" />
-    <file relUrl="ckeditor/plugins/templates/templates/images/template2.gif" publishTime="09/08/2017 23:26:10" />
-    <file relUrl="View/mavach/mavach (138).jpg" publishTime="04/10/2019 14:14:16" />
+    <file relUrl="Image/delete2.ico" publishTime="09/08/2017 23:22:31" />
+    <file relUrl="View/inKQBauCu_TDT.rpt" publishTime="06/26/2020 10:58:48" />
+    <file relUrl="ckeditor/plugins/about/dialogs/logo_ckeditor.png" publishTime="09/08/2017 23:26:03" />
     <file relUrl="View/qrcode/031.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="View/mavach/mavach (60).jpg" publishTime="09/08/2017 23:25:19" />
+    <file relUrl="ckeditor/plugins/showblocks/images/block_h6.png" publishTime="09/08/2017 23:26:08" />
     <file relUrl="View/qrcode/066.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="ckeditor/lang/sr.js" publishTime="09/08/2017 23:26:01" />
-    <file relUrl="ckeditor/plugins/smiley/images/angel_smile.gif" publishTime="09/08/2017 23:26:09" />
-    <file relUrl="View/Home.aspx" publishTime="09/08/2017 23:25:19" />
-    <file relUrl="ckeditor/lang/cs.js" publishTime="09/08/2017 23:26:01" />
+    <file relUrl="ckeditor/plugins/placeholder/lang/he.js" publishTime="09/08/2017 23:26:07" />
+    <file relUrl="View/qrcode/177.jpg" publishTime="04/13/2022 12:42:18" />
+    <file relUrl="View/qrcode/050.jpg" publishTime="04/13/2022 12:42:17" />
+    <file relUrl="View/qrcode/175.jpg" publishTime="04/13/2022 12:42:18" />
     <file relUrl="ckeditor/plugins/dialog/dialogDefinition.js" publishTime="09/08/2017 23:26:04" />
     <file relUrl="ckeditor/plugins/smiley/images/embaressed_smile.gif" publishTime="09/08/2017 23:26:09" />
     <file relUrl="ckeditor/plugins/uicolor/yui/assets/hue_bg.png" publishTime="09/08/2017 23:26:11" />
-    <file relUrl="View/mavach/mavach (74).jpg" publishTime="09/08/2017 23:25:19" />
+    <file relUrl="View/qrcode/089.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="Image/XOA.png" publishTime="09/08/2017 23:22:31" />
     <file relUrl="View/qrcode/060.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="ckeditor/lang/fr.js" publishTime="09/08/2017 23:26:01" />
-    <file relUrl="View/mavach/mavach (116).jpg" publishTime="04/10/2019 14:14:16" />
+    <file relUrl="Image/Capture.JPG" publishTime="09/08/2017 23:22:31" />
+    <file relUrl="View/qrcode/095.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/pBauCuNLD.aspx" publishTime="06/29/2020 10:34:41" />
     <file relUrl="View/mavach/mavach (20).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/qrcode/071.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/qrcode/176.jpg" publishTime="04/13/2022 12:42:18" />
-    <file relUrl="View/qrcode/079.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="ckeditor/plugins/forms/dialogs/textarea.js" publishTime="09/08/2017 23:26:06" />
+    <file relUrl="View/qrcode/056.jpg" publishTime="04/13/2022 12:42:17" />
+    <file relUrl="Lib/log4net.dll" publishTime="09/08/2017 23:24:29" />
     <file relUrl="StyleSheet/StyleSheet.css" publishTime="09/08/2017 23:24:30" />
     <file relUrl="View/mavach/mavach (136).jpg" publishTime="04/10/2019 14:14:16" />
     <file relUrl="View/mavach/mavach (137).jpg" publishTime="04/10/2019 14:14:16" />
     <file relUrl="View/qrcode/070.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="ckeditor/plugins/colordialog/dialogs/colordialog.js" publishTime="09/08/2017 23:26:04" />
     <file relUrl="ckeditor/plugins/wsc/dialogs/tmpFrameset.html" publishTime="09/08/2017 23:26:13" />
+    <file relUrl="View/qrcode/123.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/qrcode/115.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="Image/ss-TANG.PNG" publishTime="09/08/2017 23:22:31" />
+    <file relUrl="View/mavach/mavach (116).jpg" publishTime="04/10/2019 14:14:16" />
+    <file relUrl="Image/ss-GIAM.PNG" publishTime="09/08/2017 23:22:31" />
+    <file relUrl="View/qrcode/152.jpg" publishTime="04/13/2022 12:42:18" />
     <file relUrl="JavaScript/transmenu.js" publishTime="09/08/2017 23:22:45" />
     <file relUrl="ckeditor/plugins/smiley/images/lightbulb.gif" publishTime="09/08/2017 23:26:09" />
     <file relUrl="View/mavach/mavach (97).jpg" publishTime="09/08/2017 23:25:19" />
-    <file relUrl="ckeditor/images/spacer.gif" publishTime="09/08/2017 23:25:30" />
+    <file relUrl="ckeditor/contents.css" publishTime="09/08/2017 23:25:30" />
     <file relUrl="ckeditor/skins/office2003/skin.js" publishTime="09/08/2017 23:26:17" />
     <file relUrl="ckeditor/plugins/templates/templates/images/template3.gif" publishTime="09/08/2017 23:26:10" />
-    <file relUrl="ckeditor/lang/hr.js" publishTime="09/08/2017 23:26:01" />
+    <file relUrl="ckeditor/lang/pt.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="View/qrcode/108.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="ckeditor/plugins/about/dialogs/logo_ckeditor.png" publishTime="09/08/2017 23:26:03" />
-    <file relUrl="View/mavach/mavach (14).jpg" publishTime="09/08/2017 23:25:19" />
+    <file relUrl="View/mavach/mavach (68).jpg" publishTime="09/08/2017 23:25:19" />
+    <file relUrl="ckeditor/lang/pt-br.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="View/mavach/mavach (33).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/qrcode/048.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/qrcode/200.jpg" publishTime="04/13/2022 12:42:18" />
     <file relUrl="View/HomePage.Master" publishTime="04/26/2022 13:55:47" />
-    <file relUrl="ckeditor/lang/sv.js" publishTime="09/08/2017 23:26:01" />
+    <file relUrl="View/qrcode/025.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="ckeditor/plugins/smiley/images/wink_smile.gif" publishTime="09/08/2017 23:26:09" />
     <file relUrl="View/qrcode/049.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/mavach/mavach (84).jpg" publishTime="09/08/2017 23:25:19" />
+    <file relUrl="ckeditor/skins/v2/images/dialog_sides_rtl.png" publishTime="09/08/2017 23:26:18" />
     <file relUrl="View/mavach/mavach (43).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/mavach/mavach (123).jpg" publishTime="04/10/2019 14:14:16" />
     <file relUrl="View/mavach/mavach (11).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="ckeditor/plugins/smiley/images/thumbs_up.gif" publishTime="09/08/2017 23:26:09" />
     <file relUrl="ckeditor/lang/_translationstatus.txt" publishTime="09/08/2017 23:26:01" />
-    <file relUrl="View/qrcode/111.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="View/mavach/mavach (70).jpg" publishTime="09/08/2017 23:25:19" />
-    <file relUrl="View/mavach/mavach (108).jpg" publishTime="04/10/2019 14:14:16" />
-    <file relUrl="View/qrcode/198.jpg" publishTime="04/13/2022 12:42:18" />
+    <file relUrl="ckeditor/plugins/smiley/images/sad_smile.gif" publishTime="09/08/2017 23:26:09" />
+    <file relUrl="View/mavach/mavach (76).jpg" publishTime="09/08/2017 23:25:19" />
+    <file relUrl="ckeditor/lang/bg.js" publishTime="09/08/2017 23:26:01" />
+    <file relUrl="ckeditor/plugins/smiley/images/tounge_smile.gif" publishTime="09/08/2017 23:26:09" />
     <file relUrl="View/mavach/mavach (92).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/mavach/mavach (134).jpg" publishTime="04/10/2019 14:14:16" />
-    <file relUrl="ckeditor/plugins/uicolor/yui/assets/picker_mask.png" publishTime="09/08/2017 23:26:11" />
-    <file relUrl="ckeditor/plugins/uicolor/uicolor.gif" publishTime="09/08/2017 23:26:11" />
-    <file relUrl="Image/bg.gif" publishTime="09/08/2017 23:22:31" />
+    <file relUrl="View/qrcode/155.jpg" publishTime="04/13/2022 12:42:18" />
+    <file relUrl="ckeditor/LICENSE.html" publishTime="09/08/2017 23:25:24" />
+    <file relUrl="View/qrcode/153.jpg" publishTime="04/13/2022 12:42:18" />
     <file relUrl="ckeditor/skins/kama/images/sprites.png" publishTime="09/08/2017 23:26:15" />
     <file relUrl="ckeditor/config.js" publishTime="09/08/2017 23:25:30" />
-    <file relUrl="ckeditor/lang/ru.js" publishTime="09/08/2017 23:26:01" />
+    <file relUrl="View/pDanhSachCoDong.aspx" publishTime="04/10/2019 15:04:08" />
     <file relUrl="View/mavach/mavach (49).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="ckeditor/plugins/placeholder/placeholder.gif" publishTime="09/08/2017 23:26:08" />
     <file relUrl="ckeditor/INSTALL.html" publishTime="09/08/2017 23:25:24" />
     <file relUrl="Image/news_list_bg.gif" publishTime="09/08/2017 23:22:31" />
-    <file relUrl="ckeditor/plugins/table/dialogs/table.js" publishTime="09/08/2017 23:26:09" />
+    <file relUrl="ckeditor/plugins/specialchar/dialogs/specialchar.js" publishTime="09/08/2017 23:26:09" />
     <file relUrl="ckeditor/skins/kama/images/dialog_sides.gif" publishTime="09/08/2017 23:26:15" />
     <file relUrl="ckeditor/plugins/smiley/images/shades_smile.gif" publishTime="09/08/2017 23:26:09" />
     <file relUrl="View/mavach/mavach (26).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/qrcode/047.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="View/inKQBauCu_BTT.rpt" publishTime="12/13/2019 13:24:36" />
-    <file relUrl="View/qrcode/017.jpg" publishTime="04/13/2022 12:42:17" />
+    <file relUrl="ckeditor/plugins/image/dialogs/image.js" publishTime="09/08/2017 23:26:06" />
+    <file relUrl="ckeditor/skins/office2003/dialog.css" publishTime="09/08/2017 23:26:17" />
     <file relUrl="View/qrcode/093.jpg" publishTime="04/13/2022 12:42:17" />
+    <file relUrl="View/mavach/mavach (72).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="JavaScript/headmenu.js" publishTime="09/08/2017 23:22:45" />
-    <file relUrl="View/mavach/mavach (5).jpg" publishTime="09/08/2017 23:25:19" />
+    <file relUrl="ckeditor/skins/v2/icons_rtl.png" publishTime="09/08/2017 23:26:18" />
     <file relUrl="View/mavach/mavach (113).jpg" publishTime="04/10/2019 14:14:16" />
     <file relUrl="View/qrcode/199.jpg" publishTime="04/13/2022 12:42:18" />
     <file relUrl="View/qrcode/170.jpg" publishTime="04/13/2022 12:42:18" />
     <file relUrl="ckeditor/lang/fo.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="View/qrcode/140.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="ckeditor/lang/sl.js" publishTime="09/08/2017 23:26:01" />
-    <file relUrl="ckeditor/plugins/liststyle/dialogs/liststyle.js" publishTime="09/08/2017 23:26:07" />
+    <file relUrl="View/qrcode/039.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="ckeditor/skins/v2/images/dialog_sides.gif" publishTime="09/08/2017 23:26:18" />
-    <file relUrl="ckeditor/lang/gu.js" publishTime="09/08/2017 23:26:01" />
+    <file relUrl="View/qrcode/157.jpg" publishTime="04/13/2022 12:42:18" />
     <file relUrl="View/qrcode/086.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/mavach/mavach (133).jpg" publishTime="04/10/2019 14:14:16" />
     <file relUrl="ckeditor/ckeditor_basic.js" publishTime="09/08/2017 23:25:30" />
@@ -467,42 +460,41 @@
     <file relUrl="ckeditor/lang/ca.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="ckeditor/plugins/forms/dialogs/checkbox.js" publishTime="09/08/2017 23:26:06" />
     <file relUrl="View/qrcode/087.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="View/qrcode/052.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="View/qrcode/061.jpg" publishTime="04/13/2022 12:42:17" />
+    <file relUrl="ckeditor/lang/el.js" publishTime="09/08/2017 23:26:01" />
+    <file relUrl="View/mavach/mavach (30).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="ckeditor/skins/kama/images/noimage.png" publishTime="09/08/2017 23:26:15" />
     <file relUrl="ckeditor/plugins/iframedialog/plugin.js" publishTime="09/08/2017 23:26:06" />
     <file relUrl="View/qrcode/116.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="View/qrcode/013.jpg" publishTime="04/13/2022 12:42:17" />
+    <file relUrl="ckeditor/lang/hu.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="ckeditor/plugins/templates/dialogs/templates.js" publishTime="09/08/2017 23:26:10" />
     <file relUrl="View/qrcode/163.jpg" publishTime="04/13/2022 12:42:18" />
-    <file relUrl="View/qrcode/147.jpg" publishTime="04/13/2022 12:42:18" />
-    <file relUrl="View/mavach/mavach (143).jpg" publishTime="04/10/2019 14:14:16" />
+    <file relUrl="ckeditor/plugins/forms/dialogs/radio.js" publishTime="09/08/2017 23:26:06" />
+    <file relUrl="ckeditor/themes/default/theme.js" publishTime="09/08/2017 23:26:18" />
     <file relUrl="View/mavach/mavach (124).jpg" publishTime="04/10/2019 14:14:16" />
-    <file relUrl="View/mavach/mavach (72).jpg" publishTime="09/08/2017 23:25:19" />
-    <file relUrl="View/mavach/mavach (56).jpg" publishTime="09/08/2017 23:25:19" />
+    <file relUrl="View/mavach/mavach (75).jpg" publishTime="09/08/2017 23:25:19" />
+    <file relUrl="ckeditor/plugins/forms/dialogs/textarea.js" publishTime="09/08/2017 23:26:06" />
     <file relUrl="ckeditor/adapters/jquery.js" publishTime="09/08/2017 23:25:24" />
-    <file relUrl="ckeditor/lang/de.js" publishTime="09/08/2017 23:26:01" />
+    <file relUrl="ckeditor/lang/zh-cn.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="ckeditor/skins/v2/icons.png" publishTime="09/08/2017 23:26:18" />
     <file relUrl="View/qrcode/144.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/mavach/mavach (7).jpg" publishTime="09/08/2017 23:25:19" />
-    <file relUrl="Image/ss-GIAM.PNG" publishTime="09/08/2017 23:22:31" />
+    <file relUrl="ckeditor/images/spacer.gif" publishTime="09/08/2017 23:25:30" />
     <file relUrl="View/mavach/mavach (81).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/qrcode/016.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/mavach/mavach (99).jpg" publishTime="04/12/2018 11:20:44" />
+    <file relUrl="ckeditor/lang/en-ca.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="View/mavach/mavach (6).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/mavach/mavach (38).jpg" publishTime="09/08/2017 23:25:19" />
-    <file relUrl="View/qrcode/194.jpg" publishTime="04/13/2022 12:42:18" />
-    <file relUrl="View/qrcode/056.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="View/mavach/mavach (37).jpg" publishTime="09/08/2017 23:25:19" />
+    <file relUrl="View/qrcode/083.jpg" publishTime="04/13/2022 12:42:17" />
+    <file relUrl="View/mavach/mavach (60).jpg" publishTime="09/08/2017 23:25:19" />
+    <file relUrl="ckeditor/lang/ru.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="ckeditor/plugins/iframe/dialogs/iframe.js" publishTime="09/08/2017 23:26:06" />
-    <file relUrl="View/mavach/mavach (98).jpg" publishTime="09/08/2017 23:25:19" />
-    <file relUrl="ckeditor/skins/v2/skin.js" publishTime="09/08/2017 23:26:18" />
+    <file relUrl="ckeditor/plugins/specialchar/lang/en.js" publishTime="09/08/2017 23:26:09" />
     <file relUrl="ckeditor/skins/office2003/images/sprites_ie6.png" publishTime="09/08/2017 23:26:17" />
     <file relUrl="View/qrcode/076.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="View/mavach/mavach (115).jpg" publishTime="04/10/2019 14:14:16" />
+    <file relUrl="ckeditor/lang/lv.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="View/qrcode/167.jpg" publishTime="04/13/2022 12:42:18" />
     <file relUrl="View/mavach/mavach (96).jpg" publishTime="09/08/2017 23:25:19" />
-    <file relUrl="View/mavach/mavach (28).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/qrcode/145.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="Image/print_icon.gif" publishTime="09/08/2017 23:22:31" />
     <file relUrl="ckeditor/plugins/smiley/images/kiss.gif" publishTime="09/08/2017 23:26:09" />
@@ -513,13 +505,14 @@
     <file relUrl="View/qrcode/045.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/qrcode/119.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="ckeditor/lang/tr.js" publishTime="09/08/2017 23:26:01" />
+    <file relUrl="View/qrcode/033.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/qrcode/054.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="ckeditor/plugins/uicolor/yui/yui.js" publishTime="09/08/2017 23:26:13" />
+    <file relUrl="View/mavach/mavach (121).jpg" publishTime="04/10/2019 14:14:16" />
     <file relUrl="View/qrcode/190.jpg" publishTime="04/13/2022 12:42:18" />
     <file relUrl="View/qrcode/112.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="Image/down.png" publishTime="09/08/2017 23:22:31" />
-    <file relUrl="View/mavach/mavach (112).jpg" publishTime="04/10/2019 14:14:16" />
-    <file relUrl="View/qrcode/189.jpg" publishTime="04/13/2022 12:42:18" />
+    <file relUrl="View/qrcode/079.jpg" publishTime="04/13/2022 12:42:17" />
+    <file relUrl="ckeditor/lang/da.js" publishTime="09/08/2017 23:26:01" />
+    <file relUrl="ckeditor/plugins/smiley/images/whatchutalkingabout_smile.gif" publishTime="09/08/2017 23:26:09" />
     <file relUrl="View/qrcode/088.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="ckeditor/skins/v2/images/toolbar_start.gif" publishTime="09/08/2017 23:26:18" />
     <file relUrl="View/qrcode/114.jpg" publishTime="04/13/2022 12:42:17" />
@@ -527,123 +520,130 @@
     <file relUrl="View/mavach/mavach (9).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/qrcode/029.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="bin/log4net.dll" publishTime="09/08/2017 23:24:29" />
-    <file relUrl="View/qrcode/089.jpg" publishTime="04/13/2022 12:42:17" />
+    <file relUrl="ckeditor/lang/sv.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="View/mavach/mavach (132).jpg" publishTime="04/10/2019 14:14:16" />
-    <file relUrl="ckeditor/plugins/showblocks/images/block_div.png" publishTime="09/08/2017 23:26:08" />
+    <file relUrl="ckeditor/skins/kama/editor.css" publishTime="09/08/2017 23:26:15" />
+    <file relUrl="View/mavach/mavach (138).jpg" publishTime="04/10/2019 14:14:16" />
     <file relUrl="View/mavach/mavach (64).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/qrcode/006.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/mavach/mavach (53).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/mavach/mavach (109).jpg" publishTime="04/10/2019 14:14:16" />
     <file relUrl="ckeditor/plugins/link/dialogs/link.js" publishTime="09/08/2017 23:26:07" />
-    <file relUrl="ckeditor/plugins/uicolor/lang/he.js" publishTime="09/08/2017 23:26:10" />
-    <file relUrl="ckeditor/plugins/smiley/images/confused_smile.gif" publishTime="09/08/2017 23:26:09" />
-    <file relUrl="View/mavach/mavach (93).jpg" publishTime="09/08/2017 23:25:19" />
+    <file relUrl="ckeditor/lang/de.js" publishTime="09/08/2017 23:26:01" />
+    <file relUrl="View/qrcode/149.jpg" publishTime="04/13/2022 12:42:18" />
+    <file relUrl="ckeditor/skins/office2003/icons.png" publishTime="09/08/2017 23:26:17" />
     <file relUrl="View/qrcode/124.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="ckeditor/plugins/pagebreak/images/pagebreak.gif" publishTime="09/08/2017 23:26:07" />
-    <file relUrl="View/inTheBieuQuyet.rpt" publishTime="04/13/2022 12:24:28" />
+    <file relUrl="View/mavach/mavach (61).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/qrcode/148.jpg" publishTime="04/13/2022 12:42:18" />
     <file relUrl="View/mavach/mavach (147).jpg" publishTime="04/10/2019 14:14:16" />
     <file relUrl="View/mavach/mavach (10).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="ckeditor/plugins/tableresize/plugin.js" publishTime="09/08/2017 23:26:10" />
-    <file relUrl="View/mavach/mavach (83).jpg" publishTime="09/08/2017 23:25:19" />
-    <file relUrl="Image/btn-chitiet.gif" publishTime="09/08/2017 23:22:31" />
-    <file relUrl="View/qrcode/096.jpg" publishTime="04/13/2022 12:42:17" />
+    <file relUrl="ckeditor/plugins/docprops/dialogs/docprops.js" publishTime="09/08/2017 23:26:05" />
     <file relUrl="View/qrcode/137.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="ckeditor/plugins/forms/dialogs/textfield.js" publishTime="09/08/2017 23:26:06" />
     <file relUrl="View/qrcode/073.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="Image/foot.png" publishTime="09/08/2017 23:22:31" />
     <file relUrl="ckeditor/lang/is.js" publishTime="09/08/2017 23:26:01" />
-    <file relUrl="View/mavach/mavach (135).jpg" publishTime="04/10/2019 14:14:16" />
-    <file relUrl="ckeditor/lang/hi.js" publishTime="09/08/2017 23:26:01" />
-    <file relUrl="View/inKQBauCu_TDT.rpt" publishTime="06/26/2020 10:58:48" />
+    <file relUrl="ckeditor/plugins/wsc/dialogs/ciframe.html" publishTime="09/08/2017 23:26:13" />
+    <file relUrl="Default.aspx" publishTime="09/08/2017 23:22:31" />
+    <file relUrl="View/mavach/mavach (63).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/mavach/mavach (47).jpg" publishTime="09/08/2017 23:25:19" />
+    <file relUrl="ckeditor/lang/en-au.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="View/qrcode/014.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="ckeditor/plugins/pastetext/dialogs/pastetext.js" publishTime="09/08/2017 23:26:07" />
     <file relUrl="View/qrcode/151.jpg" publishTime="04/13/2022 12:42:18" />
-    <file relUrl="ckeditor/plugins/pastefromword/filter/default.js" publishTime="09/08/2017 23:26:07" />
-    <file relUrl="ckeditor/lang/mn.js" publishTime="09/08/2017 23:26:01" />
+    <file relUrl="ckeditor/lang/fr-ca.js" publishTime="09/08/2017 23:26:01" />
+    <file relUrl="View/mavach/mavach (62).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="ckeditor/plugins/showblocks/images/block_blockquote.png" publishTime="09/08/2017 23:26:08" />
-    <file relUrl="ckeditor/skins/v2/images/mini.gif" publishTime="09/08/2017 23:26:18" />
+    <file relUrl="View/qrcode/037.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/mavach/mavach (8).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="ckeditor/plugins/find/dialogs/find.js" publishTime="09/08/2017 23:26:05" />
-    <file relUrl="View/qrcode/120.jpg" publishTime="04/13/2022 12:42:17" />
+    <file relUrl="ckeditor/lang/vi.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="ckeditor/skins/office2003/editor.css" publishTime="09/08/2017 23:26:17" />
     <file relUrl="View/mavach/mavach (58).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/mavach/mavach (44).jpg" publishTime="09/08/2017 23:25:19" />
-    <file relUrl="View/qrcode/161.jpg" publishTime="04/13/2022 12:42:18" />
+    <file relUrl="ckeditor/skins/v2/skin.js" publishTime="09/08/2017 23:26:18" />
     <file relUrl="View/mavach/mavach (107).jpg" publishTime="04/10/2019 14:14:16" />
     <file relUrl="View/qrcode/015.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="View/mavach/mavach (127).jpg" publishTime="04/10/2019 14:14:16" />
+    <file relUrl="View/qrcode/061.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/qrcode/021.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/qrcode/077.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/mavach/mavach (87).jpg" publishTime="09/08/2017 23:25:19" />
-    <file relUrl="View/qrcode/175.jpg" publishTime="04/13/2022 12:42:18" />
-    <file relUrl="View/mavach/mavach (114).jpg" publishTime="04/10/2019 14:14:16" />
+    <file relUrl="ckeditor/plugins/smiley/images/confused_smile.gif" publishTime="09/08/2017 23:26:09" />
+    <file relUrl="ckeditor/plugins/devtools/lang/en.js" publishTime="09/08/2017 23:26:04" />
     <file relUrl="View/qrcode/158.jpg" publishTime="04/13/2022 12:42:18" />
-    <file relUrl="View/pBauCuCongDoan.aspx" publishTime="12/17/2019 12:58:15" />
+    <file relUrl="ckeditor/lang/cs.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="View/mavach/mavach (22).jpg" publishTime="09/08/2017 23:25:19" />
-    <file relUrl="ckeditor/lang/cy.js" publishTime="09/08/2017 23:26:01" />
+    <file relUrl="View/inTheBieuQuyet.rpt" publishTime="04/13/2022 12:24:28" />
+    <file relUrl="View/qrcode/010.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="ckeditor/skins/v2/images/dialog_sides.png" publishTime="09/08/2017 23:26:18" />
-    <file relUrl="View/qrcode/155.jpg" publishTime="04/13/2022 12:42:18" />
+    <file relUrl="View/qrcode/081.jpg" publishTime="04/13/2022 12:42:17" />
+    <file relUrl="ckeditor/plugins/smiley/images/broken_heart.gif" publishTime="09/08/2017 23:26:09" />
     <file relUrl="View/mavach/mavach (125).jpg" publishTime="04/10/2019 14:14:16" />
-    <file relUrl="View/mavach/mavach (73).jpg" publishTime="09/08/2017 23:25:19" />
+    <file relUrl="Lib/String_Indentity_.dll" publishTime="09/08/2017 23:24:29" />
     <file relUrl="View/mavach/mavach (57).jpg" publishTime="09/08/2017 23:25:19" />
-    <file relUrl="View/mavach/mavach (79).jpg" publishTime="09/08/2017 23:25:19" />
+    <file relUrl="View/qrcode/090.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="ckeditor/plugins/showblocks/images/block_h2.png" publishTime="09/08/2017 23:26:08" />
-    <file relUrl="View/qrcode/024.jpg" publishTime="04/13/2022 12:42:17" />
+    <file relUrl="ckeditor/lang/ka.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="View/qrcode/085.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/mavach/mavach (41).jpg" publishTime="09/08/2017 23:25:19" />
-    <file relUrl="View/pBieuQuyetDHCD_TIEUCHI_2020.aspx" publishTime="04/26/2022 14:35:18" />
+    <file relUrl="Web.config" publishTime="04/26/2022 14:37:01" />
     <file relUrl="View/qrcode/141.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="View/mavach/mavach (30).jpg" publishTime="09/08/2017 23:25:19" />
-    <file relUrl="View/qrcode/142.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="ckeditor/plugins/smiley/images/teeth_smile.gif" publishTime="09/08/2017 23:26:09" />
+    <file relUrl="Image/1up.png" publishTime="09/08/2017 23:22:31" />
+    <file relUrl="ckeditor/plugins/uicolor/lang/he.js" publishTime="09/08/2017 23:26:10" />
+    <file relUrl="View/qrcode/173.jpg" publishTime="04/13/2022 12:42:18" />
     <file relUrl="ckeditor/lang/uk.js" publishTime="09/08/2017 23:26:01" />
-    <file relUrl="View/qrcode/037.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="View/mavach/mavach (95).jpg" publishTime="09/08/2017 23:25:19" />
+    <file relUrl="ckeditor/plugins/placeholder/plugin.js" publishTime="09/08/2017 23:26:08" />
+    <file relUrl="ckeditor/skins/v2/images/mini.gif" publishTime="09/08/2017 23:26:18" />
     <file relUrl="View/qrcode/011.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/qrcode/065.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="View/mavach/mavach (142).jpg" publishTime="04/10/2019 14:14:16" />
+    <file relUrl="View/qrcode/147.jpg" publishTime="04/13/2022 12:42:18" />
     <file relUrl="ckeditor/lang/ro.js" publishTime="09/08/2017 23:26:01" />
-    <file relUrl="ckeditor/lang/et.js" publishTime="09/08/2017 23:26:01" />
+    <file relUrl="View/mavach/mavach (74).jpg" publishTime="09/08/2017 23:25:19" />
+    <file relUrl="ckeditor/plugins/showblocks/images/block_div.png" publishTime="09/08/2017 23:26:08" />
     <file relUrl="ckeditor/plugins/showblocks/images/block_h3.png" publishTime="09/08/2017 23:26:08" />
-    <file relUrl="View/mavach/mavach (29).jpg" publishTime="09/08/2017 23:25:19" />
+    <file relUrl="View/qrcode/159.jpg" publishTime="04/13/2022 12:42:18" />
+    <file relUrl="View/inTheBieuQuyet_N.rpt" publishTime="04/22/2021 13:52:15" />
     <file relUrl="View/qrcode/053.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="ckeditor/plugins/showblocks/images/block_pre.png" publishTime="09/08/2017 23:26:08" />
-    <file relUrl="View/qrcode/080.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="View/mavach/mavach (140).jpg" publishTime="04/10/2019 14:14:16" />
-    <file relUrl="ckeditor/skins/kama/skin.js" publishTime="09/08/2017 23:26:15" />
+    <file relUrl="View/qrcode/161.jpg" publishTime="04/13/2022 12:42:18" />
+    <file relUrl="View/mavach/mavach (98).jpg" publishTime="09/08/2017 23:25:19" />
+    <file relUrl="bin/CrystalDecisions.Web.dll" publishTime="03/03/2011 12:25:18" />
+    <file relUrl="View/mavach/mavach (120).jpg" publishTime="04/10/2019 14:14:16" />
     <file relUrl="Image/logo.png" publishTime="09/08/2017 23:22:31" />
-    <file relUrl="View/mavach/mavach (76).jpg" publishTime="09/08/2017 23:25:19" />
-    <file relUrl="View/qrcode/051.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="View/qrcode/081.jpg" publishTime="04/13/2022 12:42:17" />
+    <file relUrl="Image/btn-chitiet.gif" publishTime="09/08/2017 23:22:31" />
+    <file relUrl="View/qrcode/020.jpg" publishTime="04/13/2022 12:42:17" />
+    <file relUrl="View/qrcode/194.jpg" publishTime="04/13/2022 12:42:18" />
     <file relUrl="View/qrcode/082.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/qrcode/028.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/qrcode/131.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="ckeditor/skins/v2/images/sprites_ie6.png" publishTime="09/08/2017 23:26:18" />
-    <file relUrl="ckeditor/skins/v2/images/dialog_sides_rtl.png" publishTime="09/08/2017 23:26:18" />
+    <file relUrl="View/qrcode/017.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/qrcode/068.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="View/qrcode/033.jpg" publishTime="04/13/2022 12:42:17" />
+    <file relUrl="View/inKQBauCu_BTT.rpt" publishTime="12/13/2019 13:24:36" />
     <file relUrl="StyleSheet/Menu.css" publishTime="09/08/2017 23:24:30" />
-    <file relUrl="ckeditor/plugins/specialchar/lang/en.js" publishTime="09/08/2017 23:26:09" />
-    <file relUrl="bin/DHCD_KiemPhieu.pdb" publishTime="04/26/2022 14:25:02" />
+    <file relUrl="View/mavach/mavach (135).jpg" publishTime="04/10/2019 14:14:16" />
+    <file relUrl="View/qrcode/051.jpg" publishTime="04/13/2022 12:42:17" />
+    <file relUrl="ckeditor/lang/bs.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="ckeditor/plugins/link/dialogs/anchor.js" publishTime="09/08/2017 23:26:07" />
-    <file relUrl="View/qrcode/183.jpg" publishTime="04/13/2022 12:42:18" />
+    <file relUrl="bin/CrystalDecisions.CrystalReports.Engine.dll" publishTime="03/03/2011 12:25:16" />
     <file relUrl="Image/Untitled.png" publishTime="09/08/2017 23:22:31" />
     <file relUrl="ckeditor/lang/no.js" publishTime="09/08/2017 23:26:01" />
     <file relUrl="View/qrcode/109.jpg" publishTime="04/13/2022 12:42:17" />
     <file relUrl="View/qrcode/135.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="View/qrcode/152.jpg" publishTime="04/13/2022 12:42:18" />
-    <file relUrl="View/qrcode/057.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="View/qrcode/159.jpg" publishTime="04/13/2022 12:42:18" />
+    <file relUrl="ckeditor/skins/kama/images/sprites_ie6.png" publishTime="09/08/2017 23:26:15" />
+    <file relUrl="ckeditor/plugins/uicolor/yui/assets/picker_mask.png" publishTime="09/08/2017 23:26:11" />
+    <file relUrl="View/mavach/mavach (28).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="ckeditor/plugins/smiley/dialogs/smiley.js" publishTime="09/08/2017 23:26:08" />
     <file relUrl="Image/menu_bg.png" publishTime="09/08/2017 23:22:31" />
-    <file relUrl="View/mavach/mavach (35).jpg" publishTime="09/08/2017 23:25:19" />
-    <file relUrl="ckeditor/plugins/about/dialogs/about.js" publishTime="09/08/2017 23:26:03" />
-    <file relUrl="View/qrcode/058.jpg" publishTime="04/13/2022 12:42:17" />
+    <file relUrl="View/qrcode/052.jpg" publishTime="04/13/2022 12:42:17" />
+    <file relUrl="View/mavach/mavach (16).jpg" publishTime="09/08/2017 23:25:19" />
+    <file relUrl="ckeditor/lang/et.js" publishTime="09/08/2017 23:26:01" />
+    <file relUrl="View/mavach/mavach (5).jpg" publishTime="09/08/2017 23:25:19" />
     <file relUrl="View/qrcode/084.jpg" publishTime="04/13/2022 12:42:17" />
-    <file relUrl="ckeditor/lang/ko.js" publishTime="09/08/2017 23:26:01" />
+    <file relUrl="View/mavach/mavach (112).jpg" publishTime="04/10/2019 14:14:16" />
+    <file relUrl="View/mavach/mavach (108).jpg" publishTime="04/10/2019 14:14:16" />
     <file relUrl="ckeditor/plugins/xml/plugin.js" publishTime="09/08/2017 23:26:13" />
-    <file relUrl="View/qrcode/050.jpg" publishTime="04/13/2022 12:42:17" />
+    <file relUrl="ckeditor/lang/fi.js" publishTime="09/08/2017 23:26:01" />
   </publishProfile>
 </publishData>
