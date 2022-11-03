@@ -42,6 +42,7 @@
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtNoiDung = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnSua = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.SuspendLayout();
             // 
@@ -157,11 +158,22 @@
             this.label2.TabIndex = 72;
             this.label2.Text = "Nội Dung";
             // 
+            // btnSua
+            // 
+            this.btnSua.Location = new System.Drawing.Point(326, 12);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(75, 23);
+            this.btnSua.TabIndex = 74;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            // 
             // frmDanhBoBoQua
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(516, 627);
+            this.Controls.Add(this.btnSua);
             this.Controls.Add(this.txtNoiDung);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dgvDanhSach);
@@ -190,5 +202,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
         private System.Windows.Forms.TextBox txtNoiDung;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnSua;
     }
 }

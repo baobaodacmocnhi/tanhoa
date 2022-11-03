@@ -3196,6 +3196,8 @@ namespace DocSo_PC.LinQ
 		
 		private System.Nullable<System.DateTime> _DauChungMayBom_Ngay;
 		
+		private string _KinhDoanh;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -3362,6 +3364,8 @@ namespace DocSo_PC.LinQ
     partial void OnDauChungMayBomChanged();
     partial void OnDauChungMayBom_NgayChanging(System.Nullable<System.DateTime> value);
     partial void OnDauChungMayBom_NgayChanged();
+    partial void OnKinhDoanhChanging(string value);
+    partial void OnKinhDoanhChanged();
     #endregion
 		
 		public TB_DULIEUKHACHHANG()
@@ -4985,6 +4989,26 @@ namespace DocSo_PC.LinQ
 					this._DauChungMayBom_Ngay = value;
 					this.SendPropertyChanged("DauChungMayBom_Ngay");
 					this.OnDauChungMayBom_NgayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KinhDoanh", DbType="NVarChar(100)")]
+		public string KinhDoanh
+		{
+			get
+			{
+				return this._KinhDoanh;
+			}
+			set
+			{
+				if ((this._KinhDoanh != value))
+				{
+					this.OnKinhDoanhChanging(value);
+					this.SendPropertyChanging();
+					this._KinhDoanh = value;
+					this.SendPropertyChanged("KinhDoanh");
+					this.OnKinhDoanhChanged();
 				}
 			}
 		}
