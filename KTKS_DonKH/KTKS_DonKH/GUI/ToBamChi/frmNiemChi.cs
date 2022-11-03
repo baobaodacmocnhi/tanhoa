@@ -90,7 +90,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
                         int DenSo = int.Parse(txtDenSo_Nhap.Text.Trim());
                         for (int i = TuSo; i <= DenSo; i++)
                         {
-                            if (_cNiemChi.checkExist(txtKyHieu.Text.Trim().ToUpper() + TuSo) == true)
+                            if (_cNiemChi.checkExist(txtKyHieu.Text.Trim().ToUpper() + TuSo.ToString("000000")) == true)
                             {
                                 MessageBox.Show("Mã " + TuSo + " đã có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
@@ -102,7 +102,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
                             //NiemChi en = new NiemChi();
                             //en.ID = i;
                             //_cNiemChi.Them(en);
-                            sql += " insert into NiemChi(ID,KyHieu,STT,MauSac,CreateBy,CreateDate)values('" + txtKyHieu.Text.Trim().ToUpper() + i + "','" + txtKyHieu.Text.Trim().ToUpper() + "'," + i + ",N'" + cmbMauSac.Text + "'," + CTaiKhoan.MaUser + ",getDate())";
+                            sql += " insert into NiemChi(ID,KyHieu,STT,MauSac,CreateBy,CreateDate)values('" + txtKyHieu.Text.Trim().ToUpper() + i.ToString("000000") + "','" + txtKyHieu.Text.Trim().ToUpper() + "','" + i.ToString("000000") + "',N'" + cmbMauSac.Text + "'," + CTaiKhoan.MaUser + ",getDate())";
                         }
                         _cNiemChi.SqlBeginTransaction();
                         _cNiemChi.ExecuteNonQuery_Transaction(sql);
@@ -293,22 +293,6 @@ namespace KTKS_DonKH.GUI.ToBamChi
                 txtSoLuong_Giao.Text = (int.Parse(txtDenSo_Giao.Text.Trim()) - int.Parse(txtTuSo_Giao.Text.Trim()) + 1).ToString();
         }
 
-        private void dgvNiemChi_Giao_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                if (dgvNiemChi_Giao["MaNV_Giao", e.RowIndex].Value.ToString() != "")
-                    cmbNhanVien_Giao.SelectedValue = dgvNiemChi_Giao["MaNV_Giao", e.RowIndex].Value;
-                if (dgvNiemChi_Giao["DotChia_Giao", e.RowIndex].Value.ToString() != "")
-                    cmbDotChia.SelectedValue = dgvNiemChi_Giao["DotChia_Giao", e.RowIndex].Value;
-                txtTuSo_Giao.Text = dgvNiemChi_Giao["TuSo_Giao", e.RowIndex].Value.ToString();
-                txtDenSo_Giao.Text = dgvNiemChi_Giao["DenSo_Giao", e.RowIndex].Value.ToString();
-            }
-            catch (Exception)
-            {
-            }
-        }
-
         private void dgvNiemChiTong_Giao_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -476,6 +460,23 @@ namespace KTKS_DonKH.GUI.ToBamChi
             }
             else
                 MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void dgvNiemChi_Giao_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dgvNiemChi_Giao["MaNV_Giao", e.RowIndex].Value.ToString() != "")
+                    cmbNhanVien_Giao.SelectedValue = dgvNiemChi_Giao["MaNV_Giao", e.RowIndex].Value;
+                if (dgvNiemChi_Giao["DotChia_Giao", e.RowIndex].Value.ToString() != "")
+                    cmbDotChia.SelectedValue = dgvNiemChi_Giao["DotChia_Giao", e.RowIndex].Value;
+                txtKyHieu_Giao.Text = dgvNiemChi_Giao["KyHieu_Giao", e.RowIndex].Value.ToString();
+                txtTuSo_Giao.Text = dgvNiemChi_Giao["TuSo_Giao", e.RowIndex].Value.ToString();
+                txtDenSo_Giao.Text = dgvNiemChi_Giao["DenSo_Giao", e.RowIndex].Value.ToString();
+            }
+            catch (Exception)
+            {
+            }
         }
 
 

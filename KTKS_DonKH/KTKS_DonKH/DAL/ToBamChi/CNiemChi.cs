@@ -90,12 +90,12 @@ namespace KTKS_DonKH.DAL.ToBamChi
 
         public bool checkSuDung(string KyHieu, int FromID, int ToID)
         {
-            return db.NiemChis.Any(item => item.KyHieu == KyHieu && item.STT >= FromID && item.STT <= ToID && item.SuDung == true);
+            return db.NiemChis.Any(item => item.KyHieu == KyHieu && Convert.ToInt32(item.STT) >= FromID && Convert.ToInt32(item.STT) <= ToID && item.SuDung == true);
         }
 
         public bool checkGiao(string KyHieu, int FromID, int ToID)
         {
-            return db.NiemChis.Any(item => item.KyHieu == KyHieu && item.STT >= FromID && item.STT <= ToID && item.MaNV != null);
+            return db.NiemChis.Any(item => item.KyHieu == KyHieu && Convert.ToInt32(item.STT) >= FromID && Convert.ToInt32(item.STT) <= ToID && item.MaNV != null);
         }
 
         public bool checkGiao_MaNV(string ID, int MaNV)
