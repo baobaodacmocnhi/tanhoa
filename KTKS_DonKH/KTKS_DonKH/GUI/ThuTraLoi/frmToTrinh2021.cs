@@ -762,7 +762,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     if (_cttt.DinhMucHN != null)
                         dr["DinhMucHN"] = _cttt.DinhMucHN.Value;
 
-                    dr["VeViec"] = _cttt.VeViec;
+                    dr["VeViec"] = _cttt.VeViec.Substring(0, 1).ToLower() + _cttt.VeViec.Substring(1);
                     dr["KinhTrinh"] = _cttt.KinhTrinh;
                     dr["ThongQua"] = _cttt.ThongQua;
                     dr["NoiDung"] = _cttt.NoiDung;
