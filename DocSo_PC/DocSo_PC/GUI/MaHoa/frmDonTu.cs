@@ -879,6 +879,30 @@ namespace DocSo_PC.GUI.MaHoa
             }
         }
 
+        private void btnIn_CV_Click(object sender, EventArgs e)
+        {
+            dsBaoCao dsBaoCao = new dsBaoCao();
+            DataTable dt = _cDonTu.getDS_ChuyenPhongDoi(dateTu_CV.Value, dateDen_CV.Value);
+            foreach (DataRow item in dt.Rows)
+            {
+                DataRow dr = dsBaoCao.Tables["BaoCao"].NewRow();
+                dr["ThoiGian"] = "Từ ngày " + dateTu_CV.Value.ToString("dd/MM/yyyy") + " đến ngày " + dateDen_CV.Value.ToString("dd/MM/yyyy");
+                dr["TenPhong"] = CNguoiDung.TenPhong.ToUpper();
+                dr["MaDon"] = item["MaDon"].ToString();
+                dr["NgayChuyen"] = item["NgayChuyen"].ToString();
+                if (item["DanhBo"].ToString().Length == 11)
+                    dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
+                dr["DiaChi"] = item["DiaChi"].ToString();
+                dr["NoiNhan"] = item["NoiNhan"].ToString();
+                dr["NoiDung"] = item["NoiDung"].ToString();
+                dsBaoCao.Tables["BaoCao"].Rows.Add(dr);
+            }
+            rptDSCongVan rpt = new rptDSCongVan();
+            rpt.SetDataSource(dsBaoCao);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.ShowDialog();
+        }
+
 
 
 

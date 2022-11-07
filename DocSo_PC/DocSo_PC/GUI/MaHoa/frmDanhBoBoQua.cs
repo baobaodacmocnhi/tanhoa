@@ -26,6 +26,7 @@ namespace DocSo_PC.GUI.MaHoa
         private void frmDanhBoBoQua_Load(object sender, EventArgs e)
         {
             dgvDanhSach.AutoGenerateColumns = false;
+            dgvDanhSach.DataSource = _cDBBQ.getDS();
         }
 
         public void Clear()

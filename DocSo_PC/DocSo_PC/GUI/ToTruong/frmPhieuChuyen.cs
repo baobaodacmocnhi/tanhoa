@@ -494,6 +494,9 @@ namespace DocSo_PC.GUI.ToTruong
                                 case "Đứt Chì Góc":
                                     ttkh.DutChi_Goc = false;
                                     break;
+                                case "Đứt Chì Thân":
+                                    ttkh.DutChi_Than = false;
+                                    break;
                                 case "Ngập Nước":
                                     ttkh.NgapNuoc = false;
                                     break;

@@ -338,6 +338,13 @@ namespace DocSo_PC.DAL.MaHoa
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
+        public DataTable getDS_ChuyenPhongDoi(DateTime FromNgayChuyen, DateTime ToNgayChuyen)
+        {
+            return _cDAL.ExecuteQuery_DataTable("select MaDon=dt.ID,ls.NgayChuyen,dt.DanhBo,dt.DiaChi,ls.NoiNhan,ls.NoiDung from MaHoa_DonTu dt,MaHoa_DonTu_LichSu ls,MaHoa_NoiChuyen nc"
+                    + " where dt.ID=ls.IDMaDon and ls.ID_NoiNhan=nc.ID and nc.PhongDoi=1"
+                    + " and ls.NgayChuyen>='" + FromNgayChuyen.ToString("yyyyMMdd HH:mm") + ":00' and ls.NgayChuyen<='" + ToNgayChuyen.ToString("yyyyMMdd HH:mm") + ":00'");
+        }
+
         #endregion
 
 
