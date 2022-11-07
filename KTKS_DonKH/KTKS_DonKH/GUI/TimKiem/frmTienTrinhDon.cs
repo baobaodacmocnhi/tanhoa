@@ -176,6 +176,10 @@ namespace KTKS_DonKH.GUI.TimKiem
                             frm.ShowDialog();
                         }
             }
+            if (gridViewDon.RowCount > 0 && e.Control && e.KeyCode == Keys.H && ((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["Phong"].ToString() == "QLDHN")
+            {
+                System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/QLDHN/viewFile?TableName=MaHoa_DonTu_Hinh&ID=" + ((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["MaDon"].ToString());
+            }
         }
 
         private void gridViewDon_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
