@@ -168,7 +168,7 @@
             this.gridControl.Name = "gridControl";
             this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.gridControl.Size = new System.Drawing.Size(1320, 545);
+            this.gridControl.Size = new System.Drawing.Size(1342, 540);
             this.gridControl.TabIndex = 44;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewDon,
@@ -196,7 +196,7 @@
             this.gridColumn8,
             this.gridColumn9});
             this.gridViewDon.GridControl = this.gridControl;
-            this.gridViewDon.IndicatorWidth = 41;
+            this.gridViewDon.IndicatorWidth = 61;
             this.gridViewDon.Name = "gridViewDon";
             this.gridViewDon.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewDon.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
@@ -605,7 +605,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1342, 630);
+            this.ClientSize = new System.Drawing.Size(1377, 630);
             this.Controls.Add(this.cmbPhuong);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.cmbQuan);
