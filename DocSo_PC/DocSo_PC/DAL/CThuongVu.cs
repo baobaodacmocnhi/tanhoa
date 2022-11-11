@@ -43,15 +43,14 @@ namespace DocSo_PC.DAL
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
-        //public object getHinh_KTXM(int IDCT)
-        //{
-        //    return _cDAL.ExecuteQuery_ReturnOneValue("select Hinh from KTXM_ChiTiet_Hinh where IDKTXM_ChiTiet=" + IDCT);
-        //}
-
-        //public object getHinh_ToTrinh(int IDCT)
-        //{
-        //    return _cDAL.ExecuteQuery_ReturnOneValue("select Hinh from ToTrinh_ChiTiet_Hinh where IDToTrinh_ChiTiet=" + IDCT);
-        //}
+        public DataTable getDS_KTXM(int MaDon, int STT)
+        {
+            return _cDAL.ExecuteQuery_DataTable("select LoaiVB=N'Kiểm Tra Xác Minh',NoiChuyen=N'P. Thương Vụ',MLT=(select LOTRINH from CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG where DanhBo=ctktxm.DanhBo),DanhBo,HoTen,DiaChi"
+            + " ,NoiDung=case when ((select COUNT(*) from DonTu_ChiTiet where MaDon=ktxm.MaDonMoi)=1) then CONVERT(varchar(10),ktxm.MaDonMoi) else CONVERT(varchar(10),ktxm.MaDonMoi)+'.'+CONVERT(varchar(10),ctktxm.STT) end+' - BBKT - '+convert(varchar(10),ctktxm.NgayKTXM,103)+' - CS: '+ctktxm.ChiSo+' '+ctktxm.TinhTrangChiSo+'. V/v '+ctktxm.NoiDungKiemTra+' - '+(select HoTen from Users where MaU=ctktxm.CreateBy)"
+            + " ,MaDon=case when ((select COUNT(*) from DonTu_ChiTiet where MaDon=ktxm.MaDonMoi)=1) then CONVERT(varchar(10),ktxm.MaDonMoi) else CONVERT(varchar(10),ktxm.MaDonMoi)+'.'+CONVERT(varchar(10),ctktxm.STT) end"
+            + " ,TableName='KTXM_ChiTiet',IDCT=CAST(ctktxm.MaCTKTXM as int)"
+            + " from KTXM ktxm,KTXM_ChiTiet ctktxm where ktxm.MaKTXM=ctktxm.MaKTXM and ktxm.MaDonMoi=" + MaDon + " and ctktxm.STT=" + STT);
+        }
 
         public byte[] getHinh_KTXM(int IDCT)
         {
@@ -71,7 +70,7 @@ namespace DocSo_PC.DAL
 
         public DataTable getGiaNuoc(string Nam)
         {
-            return _cDAL.ExecuteQuery_DataTable("select top 1 * from GiaNuoc2 where Name<=" + Nam +" order by Name desc");
+            return _cDAL.ExecuteQuery_DataTable("select top 1 * from GiaNuoc2 where Name<=" + Nam + " order by Name desc");
         }
 
         public string getChucVu_Duyet()
@@ -93,5 +92,31 @@ namespace DocSo_PC.DAL
         {
             return _cDAL.ExecuteQuery_ReturnOneValue("select HoTen from BanGiamDoc where KyTenDuyet=1").ToString();
         }
+
+        public LinQ.DonTu get(int MaDon)
+        {
+            return _db.DonTus.SingleOrDefault(item => item.MaDon == MaDon);
+        }
+
+        public DonTu_ChiTiet get_ChiTiet(int MaDon, int STT)
+        {
+            return _db.DonTu_ChiTiets.SingleOrDefault(item => item.MaDon == MaDon && item.STT == STT);
+        }
+
+        public void getTableHinh(string TableName, out string TableNameHinh, out string IDName)
+        {
+            DataTable dt = _cDAL.ExecuteQuery_DataTable("select * from TableHinh where TableName='" + TableName + "'");
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                TableNameHinh = dt.Rows[0]["TableNameHinh"].ToString();
+                IDName = dt.Rows[0]["IDName"].ToString();
+            }
+            else
+            {
+                TableNameHinh = "";
+                IDName = "";
+            }
+        }
+
     }
 }

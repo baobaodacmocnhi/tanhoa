@@ -399,7 +399,7 @@ namespace DocSo_PC
         {
             if (CNguoiDung.CheckQuyen("mnuCongVanDen", "Xem"))
             {
-                frmCongVanDen frm = new frmCongVanDen();
+                frmCongVanDenNhap frm = new frmCongVanDenNhap();
                 OpenForm(frm);
             }
             else
