@@ -251,7 +251,7 @@
             this.dgvDongNuoc.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvDongNuoc.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvDongNuoc.Size = new System.Drawing.Size(845, 563);
+            this.dgvDongNuoc.Size = new System.Drawing.Size(845, 530);
             this.dgvDongNuoc.TabIndex = 46;
             this.dgvDongNuoc.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDongNuoc_CellFormatting);
             this.dgvDongNuoc.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDongNuoc_RowPostPaint);
@@ -393,7 +393,7 @@
             this.dgvPhiMoNuocDoi.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvPhiMoNuocDoi.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvPhiMoNuocDoi.Size = new System.Drawing.Size(592, 596);
+            this.dgvPhiMoNuocDoi.Size = new System.Drawing.Size(592, 530);
             this.dgvPhiMoNuocDoi.TabIndex = 46;
             this.dgvPhiMoNuocDoi.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPhiMoNuocDoi_CellEndEdit);
             this.dgvPhiMoNuocDoi.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvPhiMoNuocDoi_CellFormatting);
@@ -475,7 +475,7 @@
             this.dgvPhiMoNuoc.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
             dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvPhiMoNuoc.RowsDefaultCellStyle = dataGridViewCellStyle12;
-            this.dgvPhiMoNuoc.Size = new System.Drawing.Size(643, 596);
+            this.dgvPhiMoNuoc.Size = new System.Drawing.Size(643, 530);
             this.dgvPhiMoNuoc.TabIndex = 45;
             this.dgvPhiMoNuoc.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvPhiMoNuoc_CellFormatting);
             this.dgvPhiMoNuoc.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvPhiMoNuoc_RowPostPaint);
