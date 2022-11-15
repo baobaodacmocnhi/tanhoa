@@ -28,6 +28,7 @@ namespace DocSo_PC.GUI.ToTruong
         CDonTu _cDonTu = new CDonTu();
         CThuTien _cThuTien = new CThuTien();
         CKTXM _cKTXM = new CKTXM();
+        CThuongVu _cThuongVu = new CThuongVu();
         bool _flagLoadFirst = false;
 
         public frmXuLySoLieu()
@@ -700,6 +701,7 @@ namespace DocSo_PC.GUI.ToTruong
                         _docso.Thue = null;
                         _docso.BVMT = null;
                         _docso.TongTien = null;
+                        _docso.StaCapNhat = null;
                         _docso.NVCapNhat = CNguoiDung.HoTen;
                         _docso.NgayCapNhat = DateTime.Now;
                         _cDocSo.SubmitChanges();
@@ -918,6 +920,20 @@ namespace DocSo_PC.GUI.ToTruong
                     _cKTXM.LoadImageView(hinh);
                 else
                     MessageBox.Show("Lỗi File", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvCongVanDen_MouseClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                string TableNameHinh, IDName;
+                _cThuongVu.getTableHinh(dgvCongVanDen.CurrentRow.Cells["TableName"].Value.ToString(), out TableNameHinh, out IDName);
+                System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/ThuongVu/viewFile?TableName=" + TableNameHinh + "&IDFileName=" + IDName + "&IDFileContent=" + dgvCongVanDen.CurrentRow.Cells["IDCT"].Value.ToString());
             }
             catch (Exception ex)
             {

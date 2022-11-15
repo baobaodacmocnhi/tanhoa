@@ -119,8 +119,6 @@ namespace DocSo_PC.GUI.MaHoa
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 {
-                    if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                    {
                         if (_danhbo != null)
                         {
                             _danhbo.DanhBo = txtDanhBo.Text.Trim().Replace(" ", "").Replace("-", "");
@@ -130,7 +128,6 @@ namespace DocSo_PC.GUI.MaHoa
                             Clear();
 
                         }
-                    }
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

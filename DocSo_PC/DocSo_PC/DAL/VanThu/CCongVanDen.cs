@@ -80,5 +80,11 @@ namespace DocSo_PC.DAL.VanThu
         {
             return _cDAL.LINQToDataTable(_db.CongVanDens.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date));
         }
+
+        public DataTable getDS(string DanhBo)
+        {
+            return _cDAL.LINQToDataTable(_db.CongVanDens.Where(item => item.DanhBo==DanhBo).OrderByDescending(item=>item.CreateDate));
+        }
+
     }
 }
