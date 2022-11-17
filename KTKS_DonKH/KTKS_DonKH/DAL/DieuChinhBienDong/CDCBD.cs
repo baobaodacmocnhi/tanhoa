@@ -492,6 +492,19 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
+        public bool checkExist_BienDong(string DanhBo, int SoNgay)
+        {
+            try
+            {
+                return db.DCBD_ChiTietBienDongs.Any(itemCTDCBD => itemCTDCBD.DanhBo == DanhBo && itemCTDCBD.CreateDate.Value.Date.AddDays(SoNgay) >= DateTime.Now.Date);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
         public bool checkExist_BienDong(string Loai, decimal MaDon, string DanhBo)
         {
             switch (Loai)

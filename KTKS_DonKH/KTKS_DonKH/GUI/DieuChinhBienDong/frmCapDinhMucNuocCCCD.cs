@@ -99,7 +99,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         if (lstKhongChoNhap.Any(x => x == _hoadon.GB.ToString()))
                         {
                             MessageBox.Show("Giá Biểu không cho nhập", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            return;
+                        }
+                        if (_cDCBD.checkExist_BienDong(_hoadon.DANHBA, 30))
+                        {
+                            MessageBox.Show("Có điều chỉnh trong 30 ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                     else
