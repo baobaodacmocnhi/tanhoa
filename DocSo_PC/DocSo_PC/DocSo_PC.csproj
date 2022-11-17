@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>212</ApplicationRevision>
+    <ApplicationRevision>213</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -215,6 +215,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DAL\CDocSo12.cs" />
+    <Compile Include="DAL\CGanMoi.cs" />
     <Compile Include="DAL\CThuongVu.cs" />
     <Compile Include="DAL\MaHoa\CDanhBoBoQua.cs" />
     <Compile Include="DAL\MaHoa\CDCBD.cs" />
@@ -483,6 +484,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dbDocSo.dbml</DependentUpon>
     </Compile>
+    <Compile Include="LinQ\dbGanMoi.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbGanMoi.dbml</DependentUpon>
+    </Compile>
     <Compile Include="LinQ\dbThuongVu.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -674,6 +680,11 @@
       <LastGenOutput>dbDocSo.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
+    <None Include="LinQ\dbGanMoi.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>dbGanMoi.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="LinQ\dbThuongVu.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>dbThuongVu.designer.cs</LastGenOutput>
@@ -693,6 +704,9 @@
     </EmbeddedResource>
     <None Include="LinQ\dbThuongVu.dbml.layout">
       <DependentUpon>dbThuongVu.dbml</DependentUpon>
+    </None>
+    <None Include="LinQ\dbGanMoi.dbml.layout">
+      <DependentUpon>dbGanMoi.dbml</DependentUpon>
     </None>
     <EmbeddedResource Include="Report\XuLyDocSo\rptTieuThu.rdlc" />
     <None Include="LinQ\dbDHN.dbml">

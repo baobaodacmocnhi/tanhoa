@@ -18,6 +18,7 @@ namespace DocSo_PC.GUI.VanThu
         string _mnu = "mnuCongVanDen";
         CCongVanDen _cCVD = new CCongVanDen();
         CThuongVu _cThuongVu = new CThuongVu();
+        CGanMoi _cGanMoi = new CGanMoi();
 
         public frmCongVanDenNhap()
         {
@@ -42,26 +43,59 @@ namespace DocSo_PC.GUI.VanThu
             if (e.KeyChar == 13 && txtMaDon.Text.Trim() != "")
             {
                 DonTu_ChiTiet dontu_ChiTiet = null;
-                if (txtMaDon.Text.Trim().Contains(".") == true)
+                switch (cmbLoaiVanBan.SelectedItem.ToString())
                 {
-                    string[] MaDons = txtMaDon.Text.Trim().Split('.');
-                    dontu_ChiTiet = _cThuongVu.get_ChiTiet(int.Parse(MaDons[0]), int.Parse(MaDons[1]));
-                }
-                else
-                {
-                    LinQ.DonTu dt = _cThuongVu.get(int.Parse(txtMaDon.Text.Trim()));
-                    if (dt != null)
-                        dontu_ChiTiet = dt.DonTu_ChiTiets.SingleOrDefault();
-                }
-                if (dontu_ChiTiet != null)
-                    switch (cmbLoaiVanBan.SelectedItem.ToString())
-                    {
-                        case "Biên Bản Kiểm Tra":
+                    case "Biên Bản Kiểm Tra":
+                        if (txtMaDon.Text.Trim().Contains(".") == true)
+                        {
+                            string[] MaDons = txtMaDon.Text.Trim().Split('.');
+                            dontu_ChiTiet = _cThuongVu.get_ChiTiet(int.Parse(MaDons[0]), int.Parse(MaDons[1]));
+                        }
+                        else
+                        {
+                            LinQ.DonTu dt = _cThuongVu.get(int.Parse(txtMaDon.Text.Trim()));
+                            if (dt != null)
+                                dontu_ChiTiet = dt.DonTu_ChiTiets.SingleOrDefault();
+                        }
+                        if (dontu_ChiTiet != null)
                             dgvDanhSach.DataSource = _cThuongVu.getDS_KTXM(dontu_ChiTiet.MaDon.Value, dontu_ChiTiet.STT.Value);
-                            break;
-                        default:
-                            break;
-                    }
+                        break;
+                    case "TB Cắt Tạm/Cắt Hủy":
+                        if (txtMaDon.Text.Trim().Contains(".") == true)
+                        {
+                            string[] MaDons = txtMaDon.Text.Trim().Split('.');
+                            dontu_ChiTiet = _cThuongVu.get_ChiTiet(int.Parse(MaDons[0]), int.Parse(MaDons[1]));
+                        }
+                        else
+                        {
+                            LinQ.DonTu dt = _cThuongVu.get(int.Parse(txtMaDon.Text.Trim()));
+                            if (dt != null)
+                                dontu_ChiTiet = dt.DonTu_ChiTiets.SingleOrDefault();
+                        }
+                        if (dontu_ChiTiet != null)
+                            dgvDanhSach.DataSource = _cThuongVu.getDS_CHDB(dontu_ChiTiet.MaDon.Value, dontu_ChiTiet.STT.Value);
+                        break;
+                    case "Tờ Trình":
+                        if (txtMaDon.Text.Trim().Contains(".") == true)
+                        {
+                            string[] MaDons = txtMaDon.Text.Trim().Split('.');
+                            dontu_ChiTiet = _cThuongVu.get_ChiTiet(int.Parse(MaDons[0]), int.Parse(MaDons[1]));
+                        }
+                        else
+                        {
+                            LinQ.DonTu dt = _cThuongVu.get(int.Parse(txtMaDon.Text.Trim()));
+                            if (dt != null)
+                                dontu_ChiTiet = dt.DonTu_ChiTiets.SingleOrDefault();
+                        }
+                        if (dontu_ChiTiet != null)
+                            dgvDanhSach.DataSource = _cThuongVu.getDS_ToTrinh(dontu_ChiTiet.MaDon.Value, dontu_ChiTiet.STT.Value);
+                        break;
+                    case "Biên Bản Nghiệm Thu":
+                        dgvDanhSach.DataSource = _cGanMoi.getDS_BBNT(txtMaDon.Text.Trim().Replace(" ", "").Replace("-", ""));
+                        break;
+                    default:
+                        break;
+                }
             }
         }
 
@@ -130,10 +164,7 @@ namespace DocSo_PC.GUI.VanThu
                     System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/ThuongVu/viewFile?TableName=" + TableNameHinh + "&IDFileName=" + IDName + "&IDFileContent=" + dgvDanhSach.CurrentRow.Cells["IDCT"].Value.ToString());
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            catch { }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)

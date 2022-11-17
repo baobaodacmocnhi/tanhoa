@@ -573,10 +573,7 @@ namespace DocSo_PC.GUI.MaHoa
                     _cDonTu.LoadImageView(_cDonTu.imageToByteArray(_cDonTu.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("DonTu", dontu.ID.ToString(), dontu.MaHoa_DonTu_Hinhs.SingleOrDefault().Name + dontu.MaHoa_DonTu_Hinhs.SingleOrDefault().Loai))));
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            catch { }
         }
 
         private void dgvDCBD_CellEndEdit(object sender, DataGridViewCellEventArgs e)

@@ -43,5 +43,12 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=113.161.88.180,1933;Initial Catalog=KTKS_DonKH;Persist Security Info=True;User ID=sa;Password=db9@tanhoa</Value>
     </Setting>
+    <Setting Name="TANHOA_WATERConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=113.161.88.180,1933;Initial Catalog=TANHOA_WATER;Persist Security Info=True;User ID=sa;Password=db9@tanhoa&lt;/ConnectionString&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=113.161.88.180,1933;Initial Catalog=TANHOA_WATER;Persist Security Info=True;User ID=sa;Password=db9@tanhoa</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

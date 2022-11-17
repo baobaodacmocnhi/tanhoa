@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 16.375" name="dbGanMoi">
+  <DataContextMoniker Name="/dbGanMoiDataContext" />
+  <nestedChildShapes>
+    <classShape Id="b0d00b05-d1af-4dc8-904a-659dde5fc0de" absoluteBounds="1.25, 0.75, 2, 15.424298502604165">
+      <DataClassMoniker Name="/dbGanMoiDataContext/KH_HOSOKHACHHANG" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e3a34bbb-71ab-40c3-a1f9-ad3419ca3014" absoluteBounds="1.2650000000000001, 1.21, 1.9700000000000002, 14.864298502604166" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
