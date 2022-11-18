@@ -496,7 +496,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             try
             {
-                return db.DCBD_ChiTietBienDongs.Any(itemCTDCBD => itemCTDCBD.DanhBo == DanhBo && itemCTDCBD.CreateDate.Value.Date.AddDays(SoNgay) >= DateTime.Now.Date);
+                return db.DCBD_ChiTietBienDongs.Any(itemCTDCBD => itemCTDCBD.DanhBo == DanhBo && itemCTDCBD.CreateDate.Value.AddDays(SoNgay).Date >= DateTime.Now.Date);
             }
             catch (Exception ex)
             {
