@@ -469,7 +469,7 @@ namespace DocSo_PC.DAL.Doi
             + "          (values"
             + "              (N'1. Kỳ',Ky+'/'+str(Nam,4,0)),"
             + "              (N'2. Ngày đọc',convert(varchar(10),DenNgay,103)),"
-            + "              ('3. Code',CodeMoi),"
+            + "              (N'3. Code',CodeMoi),"
             + "              (N'4. Chỉ số',convert(varchar(10),CSMoi)),"
             + "              (N'5. Tiêu thụ',convert(varchar(10),TieuThuMoi)))"
             + "          cs (Col,Val)"

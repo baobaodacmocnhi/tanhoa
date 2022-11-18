@@ -160,7 +160,8 @@ namespace DocSo_PC.GUI.ToTruong
                             if (item.Name.Contains("Ky") == true && dgvLichSu[item.Index, dgvLichSu.Rows.Count - 1].Value.ToString() != "")
                                 dgvLichSu[item.Index, dgvLichSu.Rows.Count - 3].Style.BackColor = Color.Orange;
                         }
-                        dgvLichSu.Rows.RemoveAt(dgvLichSu.Rows.Count - 1);
+                        if (dgvLichSu.Rows.Count > 5)
+                            dgvLichSu.Rows.RemoveAt(dgvLichSu.Rows.Count - 1);
                         if (chkLoadHinh.Checked == true)
                             btnXemHinh.PerformClick();
                         //cmbCodeMoi.Focus();

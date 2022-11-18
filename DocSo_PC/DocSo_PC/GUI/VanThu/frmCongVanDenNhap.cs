@@ -43,52 +43,36 @@ namespace DocSo_PC.GUI.VanThu
             if (e.KeyChar == 13 && txtMaDon.Text.Trim() != "")
             {
                 DonTu_ChiTiet dontu_ChiTiet = null;
+                if (txtMaDon.Text.Trim().Contains(".") == true)
+                {
+                    string[] MaDons = txtMaDon.Text.Trim().Split('.');
+                    dontu_ChiTiet = _cThuongVu.get_ChiTiet(decimal.Parse(MaDons[0]), decimal.Parse(MaDons[1]));
+                }
+                else
+                {
+                    LinQ.DonTu dt = _cThuongVu.get(decimal.Parse(txtMaDon.Text.Trim()));
+                    if (dt != null)
+                        dontu_ChiTiet = dt.DonTu_ChiTiets.SingleOrDefault();
+                }
                 switch (cmbLoaiVanBan.SelectedItem.ToString())
                 {
                     case "Biên Bản Kiểm Tra":
-                        if (txtMaDon.Text.Trim().Contains(".") == true)
-                        {
-                            string[] MaDons = txtMaDon.Text.Trim().Split('.');
-                            dontu_ChiTiet = _cThuongVu.get_ChiTiet(int.Parse(MaDons[0]), int.Parse(MaDons[1]));
-                        }
-                        else
-                        {
-                            LinQ.DonTu dt = _cThuongVu.get(int.Parse(txtMaDon.Text.Trim()));
-                            if (dt != null)
-                                dontu_ChiTiet = dt.DonTu_ChiTiets.SingleOrDefault();
-                        }
                         if (dontu_ChiTiet != null)
                             dgvDanhSach.DataSource = _cThuongVu.getDS_KTXM(dontu_ChiTiet.MaDon.Value, dontu_ChiTiet.STT.Value);
+                        else
+                            dgvDanhSach.DataSource = _cThuongVu.getDS_KTXM(txtMaDon.Text.Trim().Replace(" ", "").Replace("-", ""));
                         break;
                     case "TB Cắt Tạm/Cắt Hủy":
-                        if (txtMaDon.Text.Trim().Contains(".") == true)
-                        {
-                            string[] MaDons = txtMaDon.Text.Trim().Split('.');
-                            dontu_ChiTiet = _cThuongVu.get_ChiTiet(int.Parse(MaDons[0]), int.Parse(MaDons[1]));
-                        }
-                        else
-                        {
-                            LinQ.DonTu dt = _cThuongVu.get(int.Parse(txtMaDon.Text.Trim()));
-                            if (dt != null)
-                                dontu_ChiTiet = dt.DonTu_ChiTiets.SingleOrDefault();
-                        }
                         if (dontu_ChiTiet != null)
                             dgvDanhSach.DataSource = _cThuongVu.getDS_CHDB(dontu_ChiTiet.MaDon.Value, dontu_ChiTiet.STT.Value);
+                        else
+                            dgvDanhSach.DataSource = _cThuongVu.getDS_CHDB(txtMaDon.Text.Trim().Replace(" ", "").Replace("-", ""));
                         break;
                     case "Tờ Trình":
-                        if (txtMaDon.Text.Trim().Contains(".") == true)
-                        {
-                            string[] MaDons = txtMaDon.Text.Trim().Split('.');
-                            dontu_ChiTiet = _cThuongVu.get_ChiTiet(int.Parse(MaDons[0]), int.Parse(MaDons[1]));
-                        }
-                        else
-                        {
-                            LinQ.DonTu dt = _cThuongVu.get(int.Parse(txtMaDon.Text.Trim()));
-                            if (dt != null)
-                                dontu_ChiTiet = dt.DonTu_ChiTiets.SingleOrDefault();
-                        }
                         if (dontu_ChiTiet != null)
                             dgvDanhSach.DataSource = _cThuongVu.getDS_ToTrinh(dontu_ChiTiet.MaDon.Value, dontu_ChiTiet.STT.Value);
+                        else
+                            dgvDanhSach.DataSource = _cThuongVu.getDS_ToTrinh(txtMaDon.Text.Trim().Replace(" ", "").Replace("-", ""));
                         break;
                     case "Biên Bản Nghiệm Thu":
                         dgvDanhSach.DataSource = _cGanMoi.getDS_BBNT(txtMaDon.Text.Trim().Replace(" ", "").Replace("-", ""));
@@ -114,10 +98,34 @@ namespace DocSo_PC.GUI.VanThu
 
         private void dgvDanhSach_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+
+        }
+
+        private void dgvDanhSach_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dgvDanhSach.Columns[e.ColumnIndex].Name == "XemHinh")
+                {
+                    string TableNameHinh, IDName;
+                    _cThuongVu.getTableHinh(dgvDanhSach.CurrentRow.Cells["TableName"].Value.ToString(), out TableNameHinh, out IDName);
+                    System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/ThuongVu/viewFile?TableName=" + TableNameHinh + "&IDFileName=" + IDName + "&IDFileContent=" + dgvDanhSach.CurrentRow.Cells["IDCT"].Value.ToString());
+                }
+            }
+            catch { }
+        }
+
+        private void dgvDanhSach_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
             try
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Them"))
                 {
+                    if (dgvDanhSach.CurrentRow.Cells["NoiDung"].Value == null || string.IsNullOrEmpty(dgvDanhSach.CurrentRow.Cells["NoiDung"].Value.ToString().Trim()))
+                    {
+                        MessageBox.Show("Nội Dung rỗng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     CongVanDen en = new CongVanDen();
                     en.LoaiVB = dgvDanhSach.CurrentRow.Cells["LoaiVB"].Value.ToString();
                     en.NoiChuyen = dgvDanhSach.CurrentRow.Cells["NoiChuyen"].Value.ToString();
@@ -153,20 +161,6 @@ namespace DocSo_PC.GUI.VanThu
             }
         }
 
-        private void dgvDanhSach_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                if (dgvDanhSach.Columns[e.ColumnIndex].Name == "XemHinh")
-                {
-                    string TableNameHinh, IDName;
-                    _cThuongVu.getTableHinh(dgvDanhSach.CurrentRow.Cells["TableName"].Value.ToString(), out TableNameHinh, out IDName);
-                    System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/ThuongVu/viewFile?TableName=" + TableNameHinh + "&IDFileName=" + IDName + "&IDFileContent=" + dgvDanhSach.CurrentRow.Cells["IDCT"].Value.ToString());
-                }
-            }
-            catch { }
-        }
-
         private void btnXoa_Click(object sender, EventArgs e)
         {
             try
@@ -188,6 +182,8 @@ namespace DocSo_PC.GUI.VanThu
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
 
 
 
