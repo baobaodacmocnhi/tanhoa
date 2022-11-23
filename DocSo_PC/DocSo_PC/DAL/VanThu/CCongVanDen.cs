@@ -78,13 +78,12 @@ namespace DocSo_PC.DAL.VanThu
 
         public DataTable getDS(DateTime FromCreateDate, DateTime ToCreateDate)
         {
-
-            return _cDAL.ExecuteQuery_DataTable("select *,'To'=(select TenTo from [To] where TuMay<=SUBSTRING(MLT,3,2) and DenMay>=SUBSTRING(MLT,3,2))  from CongVanDen where cast(createdate as date)>='" + ToCreateDate.ToString("yyyyMMdd") + "' and cast(createdate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'");
+            return _cDAL.ExecuteQuery_DataTable("select *,'To'=(select TenTo from [To] where TuMay<=SUBSTRING(MLT,3,2) and DenMay>=SUBSTRING(MLT,3,2)) from CongVanDen where cast(createdate as date)>='" + ToCreateDate.ToString("yyyyMMdd") + "' and cast(createdate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' order by createdate desc");
         }
 
         public DataTable getDS(string DanhBo)
         {
-            return _cDAL.LINQToDataTable(_db.CongVanDens.Where(item => item.DanhBo == DanhBo).OrderByDescending(item => item.CreateDate));
+            return _cDAL.ExecuteQuery_DataTable("select *,'To'=(select TenTo from [To] where TuMay<=SUBSTRING(MLT,3,2) and DenMay>=SUBSTRING(MLT,3,2)) from CongVanDen where DanhBo='" + DanhBo + "' order by createdate desc");
         }
 
     }

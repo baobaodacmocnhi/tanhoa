@@ -44,12 +44,6 @@
         <elementListCompartment Id="48db8b97-4baa-43ed-9e51-54f1d4e6136a" absoluteBounds="0.765, 2.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="9425e2d3-0640-4b71-b647-76b12c4adbb6" absoluteBounds="6.75, 21.5, 2, 4.6554182942708309">
-      <DataClassMoniker Name="/dbDocSoDataContext/CongVanDen" />
-      <nestedChildShapes>
-        <elementListCompartment Id="70549ae3-660a-45dd-8739-f010a5bebce5" absoluteBounds="6.765, 21.96, 1.9700000000000002, 4.095418294270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="ac298ac1-ec28-4abe-a8ee-4cd22e9a1864" absoluteBounds="20.75, 2.5, 2, 1.7708968098958327">
       <DataClassMoniker Name="/dbDocSoDataContext/DanhBoKPBVMT" />
       <nestedChildShapes>
@@ -362,7 +356,7 @@
         <elementListCompartment Id="af56b79e-a443-4d45-8af1-a9d712497709" absoluteBounds="29.765, 26.96, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(13.65625 : 15.4151025390625); (13.65625 : 19.6098046875); (14.5 : 19.6098046875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(13.65625 : 15.4151025390625); (13.65625 : 19.6098046875); (14.5 : 19.6098046875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbDocSoDataContext/Lich_DocSo/Lich_DocSo_Lich_DocSo_ChiTiet" />
       <nodes>
         <classShapeMoniker Id="b44a8ec9-9deb-48e9-8ef5-b810844de006" />
@@ -376,28 +370,28 @@
         <classShapeMoniker Id="29f1fd72-eec0-4e13-93c7-4da2b5f70942" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(10.75 : 18.1162019856771); (11.5 : 18.1162019856771)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(10.75 : 18.1162019856771); (11.5 : 18.1162019856771)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbDocSoDataContext/Lich_Dot/Lich_Dot_Lich_ThuTien_ChiTiet" />
       <nodes>
         <classShapeMoniker Id="eec9e87b-8d6b-4c3b-b2e5-c4172015b0e0" />
         <classShapeMoniker Id="ad4a9a6f-e241-4862-93b8-c12b148a2bd2" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(10.75 : 15.4151025390625); (11.125 : 15.7901025390625); (11.125 : 17.4018489928385); (11.5 : 17.4018489928385)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(10.75 : 15.4151025390625); (11.125 : 15.7901025390625); (11.125 : 17.4018489928385); (11.5 : 17.4018489928385)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbDocSoDataContext/Lich_ThuTien/Lich_ThuTien_Lich_ThuTien_ChiTiet" />
       <nodes>
         <classShapeMoniker Id="11ee6884-2ca6-4201-bd5d-759d7249d4ab" />
         <classShapeMoniker Id="ad4a9a6f-e241-4862-93b8-c12b148a2bd2" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 28.7315991210938); (6.25 : 28.7315991210938)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 28.7315991210938); (6.25 : 28.7315991210938)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbDocSoDataContext/MaHoa_DCBD/MaHoa_DCBD_MaHoa_DCBD_Hinh" />
       <nodes>
         <classShapeMoniker Id="4f4f3488-9f36-42ba-ae34-e8658fe3ce05" />
         <classShapeMoniker Id="2bda65ca-7241-47d9-b171-8e8c40890698" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 27.0200105794271); (3.5 : 27.0200105794271)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 27.0200105794271); (3.5 : 27.0200105794271)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbDocSoDataContext/MaHoa_DonTu/MaHoa_DonTu_MaHoa_DCBD" />
       <nodes>
         <classShapeMoniker Id="f443ca0b-bf95-49d1-b45f-5709dbff8e57" />
@@ -411,82 +405,88 @@
         <classShapeMoniker Id="9942d242-9568-46af-8eb5-774fc108bfeb" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.2812525 : 24.5); (2.2812525 : 9.82770914713542); (3.5 : 9.82770914713542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.2812525 : 24.5); (2.2812525 : 9.82770914713542); (3.5 : 9.82770914713542)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbDocSoDataContext/MaHoa_DonTu/MaHoa_DonTu_MaHoa_DonTu_LichSu" />
       <nodes>
         <classShapeMoniker Id="f443ca0b-bf95-49d1-b45f-5709dbff8e57" />
         <classShapeMoniker Id="3ea4fa17-4677-42c9-a561-126d5cbe7436" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.75 : 29.5400211588542); (1.75 : 42.6833406575521); (3.5 : 42.6833406575521)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(1.75 : 29.5400211588542); (1.75 : 42.6833406575521); (3.5 : 42.6833406575521)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbDocSoDataContext/MaHoa_DonTu/MaHoa_DonTu_MaHoa_KTXM" />
       <nodes>
         <classShapeMoniker Id="f443ca0b-bf95-49d1-b45f-5709dbff8e57" />
         <classShapeMoniker Id="66f59a8e-8b84-4c2f-824a-ffcbe0f9f905" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 42.6065991210938); (6.25 : 42.6065991210938)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 42.6065991210938); (6.25 : 42.6065991210938)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbDocSoDataContext/MaHoa_KTXM/MaHoa_KTXM_MaHoa_KTXM_Hinh" />
       <nodes>
         <classShapeMoniker Id="66f59a8e-8b84-4c2f-824a-ffcbe0f9f905" />
         <classShapeMoniker Id="d0e653db-3b3c-4e34-a5ef-412cd716aa35" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.2187475 : 24.5); (1.2187475 : 17.2507234700521); (1.66666666666667 : 17.2507234700521 : JumpStart); (1.83333333333333 : 17.2507234700521 : JumpEnd); (2.19791916666667 : 17.2507234700521 : JumpStart); (2.36458583333333 : 17.2507234700521 : JumpEnd); (3.5 : 17.2507234700521)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(1.2187475 : 24.5); (1.2187475 : 17.2507234700521); (1.66666666666667 : 17.2507234700521 : JumpStart); (1.83333333333333 : 17.2507234700521 : JumpEnd); (2.19791916666667 : 17.2507234700521 : JumpStart); (2.36458583333333 : 17.2507234700521 : JumpEnd); (3.5 : 17.2507234700521)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbDocSoDataContext/MaHoa_DonTu/MaHoa_DonTu_MaHoa_ToTrinh" />
       <nodes>
         <classShapeMoniker Id="f443ca0b-bf95-49d1-b45f-5709dbff8e57" />
         <classShapeMoniker Id="666318f5-2f3e-4d35-b5f9-22ca8fc01163" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 17.2315991210938); (6.25 : 17.2315991210938)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 17.2315991210938); (6.25 : 17.2315991210938)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbDocSoDataContext/MaHoa_ToTrinh/MaHoa_ToTrinh_MaHoa_ToTrinh_Hinh" />
       <nodes>
         <classShapeMoniker Id="666318f5-2f3e-4d35-b5f9-22ca8fc01163" />
         <classShapeMoniker Id="50cd60f3-a1c6-4138-b418-ff3d36c47839" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(9.78125 : 8.125); (9.78125 : 7.05850341796875); (11.5104166666667 : 7.05850341796875 : JumpStart); (11.6770833333333 : 7.05850341796875 : JumpEnd); (14.5 : 7.05850341796875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(9.78125 : 8.125); (9.78125 : 7.05850341796875); (11.5104166666667 : 7.05850341796875 : JumpStart); (11.6770833333333 : 7.05850341796875 : JumpEnd); (14.5 : 7.05850341796875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbDocSoDataContext/Nhom/Nhom_NguoiDung" />
       <nodes>
         <classShapeMoniker Id="49525e2e-17bf-42e4-8b0a-d24fd565ae18" />
         <classShapeMoniker Id="feab29ca-9a77-4ed4-afb8-2c230b12e201" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(16.5 : 1.59375); (17.46875 : 1.59375); (17.46875 : 7.5)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(16.5 : 1.59375); (17.46875 : 1.59375); (17.46875 : 7.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbDocSoDataContext/Menu/Menu_PhanQuyenNguoiDung" />
       <nodes>
         <classShapeMoniker Id="74b83f9e-64a1-4dd5-92f5-31e96c746246" />
         <classShapeMoniker Id="8454e36c-384d-4b27-bcf5-f46f2106a98e" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(16.5 : 9.05850341796875); (17.25 : 9.05850341796875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(16.5 : 9.05850341796875); (17.25 : 9.05850341796875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbDocSoDataContext/NguoiDung/NguoiDung_PhanQuyenNguoiDung" />
       <nodes>
         <classShapeMoniker Id="feab29ca-9a77-4ed4-afb8-2c230b12e201" />
         <classShapeMoniker Id="8454e36c-384d-4b27-bcf5-f46f2106a98e" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(14.5 : 2.11620198567708); (11.59375 : 2.11620198567708); (11.59375 : 7.5)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(14.5 : 2.11620198567708); (11.59375 : 2.11620198567708); (11.59375 : 7.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbDocSoDataContext/Menu/Menu_PhanQuyenNhom" />
       <nodes>
         <classShapeMoniker Id="74b83f9e-64a1-4dd5-92f5-31e96c746246" />
         <classShapeMoniker Id="52a1623e-a642-401e-bb7b-7f211fe3bc43" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(10.75 : 9.10659912109375); (11.5 : 9.10659912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(10.75 : 9.10659912109375); (11.5 : 9.10659912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbDocSoDataContext/Nhom/Nhom_PhanQuyenNhom" />
       <nodes>
         <classShapeMoniker Id="49525e2e-17bf-42e4-8b0a-d24fd565ae18" />
         <classShapeMoniker Id="52a1623e-a642-401e-bb7b-7f211fe3bc43" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(13.75 : 5.87100341796875); (14.5 : 5.87100341796875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(13.75 : 5.87100341796875); (14.5 : 5.87100341796875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbDocSoDataContext/To/To_NguoiDung" />
       <nodes>
         <classShapeMoniker Id="c2e6e991-b1e2-47ee-85c2-f51d488292a0" />
         <classShapeMoniker Id="feab29ca-9a77-4ed4-afb8-2c230b12e201" />
       </nodes>
     </associationConnector>
+    <classShape Id="2414491a-0b6b-42ba-93ca-b1230559de93" absoluteBounds="7.375, 20.75, 2, 4.8477197265625">
+      <DataClassMoniker Name="/dbDocSoDataContext/CongVanDen" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f1e0fc34-be16-4606-83a0-4c0898b6176e" absoluteBounds="7.39, 21.21, 1.9700000000000002, 4.2877197265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>
