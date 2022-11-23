@@ -86,7 +86,7 @@ namespace DocSo_PC.GUI.VanThu
         private void btnXem_Click(object sender, EventArgs e)
         {
             if (txtMaDon.Text.Trim() != "")
-                dgvDanhSach.DataSource = _cCVD.getDS(dateTu.Value, dateDen.Value);
+                dgvDanhSach.DataSource = _cCVD.getDS(txtMaDon.Text.Trim().Replace(" ", "").Replace("-", ""));
             else
                 dgvDanhSach.DataSource = _cCVD.getDS(dateTu.Value, dateDen.Value);
         }
