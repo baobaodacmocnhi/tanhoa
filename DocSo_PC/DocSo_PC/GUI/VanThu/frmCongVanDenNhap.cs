@@ -109,51 +109,61 @@ namespace DocSo_PC.GUI.VanThu
                     _cThuongVu.getTableHinh(dgvDanhSach.CurrentRow.Cells["TableName"].Value.ToString(), out TableNameHinh, out IDName);
                     System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/ThuongVu/viewFile?TableName=" + TableNameHinh + "&IDFileName=" + IDName + "&IDFileContent=" + dgvDanhSach.CurrentRow.Cells["IDCT"].Value.ToString());
                 }
-                if (dgvDanhSach.Columns[e.ColumnIndex].Name == "Them")
-                    try
+                else
+                    if (dgvDanhSach.Columns[e.ColumnIndex].Name == "Them")
                     {
-                        if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+                        try
                         {
-                            if (dgvDanhSach.CurrentRow.Cells["NoiDung"].Value == null || string.IsNullOrEmpty(dgvDanhSach.CurrentRow.Cells["NoiDung"].Value.ToString().Trim()))
+                            if (CNguoiDung.CheckQuyen(_mnu, "Them"))
                             {
-                                MessageBox.Show("Nội Dung rỗng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
+                                if (dgvDanhSach.CurrentRow.Cells["NoiDung"].Value == null || string.IsNullOrEmpty(dgvDanhSach.CurrentRow.Cells["NoiDung"].Value.ToString().Trim()))
+                                {
+                                    MessageBox.Show("Nội Dung rỗng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                                CongVanDen en = new CongVanDen();
+                                en.LoaiVB = dgvDanhSach.CurrentRow.Cells["LoaiVB"].Value.ToString();
+                                en.NoiChuyen = dgvDanhSach.CurrentRow.Cells["NoiChuyen"].Value.ToString();
+                                //en.NgayChuyen = DateTime.Parse(dgvDanhSach.CurrentRow.Cells["NgayChuyen"].Value.ToString());
+                                en.MLT = dgvDanhSach.CurrentRow.Cells["MLT"].Value.ToString();
+                                en.DanhBo = dgvDanhSach.CurrentRow.Cells["DanhBo"].Value.ToString();
+                                en.HoTen = dgvDanhSach.CurrentRow.Cells["HoTen"].Value.ToString();
+                                en.DiaChi = dgvDanhSach.CurrentRow.Cells["DiaChi"].Value.ToString();
+                                en.NoiDung = dgvDanhSach.CurrentRow.Cells["NoiDung"].Value.ToString();
+                                en.MaDon = dgvDanhSach.CurrentRow.Cells["MaDon"].Value.ToString();
+                                en.TableName = dgvDanhSach.CurrentRow.Cells["TableName"].Value.ToString();
+                                en.IDCT = int.Parse(dgvDanhSach.CurrentRow.Cells["IDCT"].Value.ToString());
+                                if (dgvDanhSach.CurrentRow.Cells["ToMaHoa"].Value != null && dgvDanhSach.CurrentRow.Cells["ToMaHoa"].Value.ToString() != "")
+                                    en.ToMaHoa = bool.Parse(dgvDanhSach.CurrentRow.Cells["ToMaHoa"].Value.ToString());
+                                if (_cCVD.checkExists(en.TableName, en.IDCT.Value) == true)
+                                {
+                                    MessageBox.Show("Đã nhập rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                                if (_cCVD.Them(en) == true)
+                                {
+                                    //CThuongVu._cDAL.ExecuteNonQuery("update CongVanDi set Nhan_QLDHN=1,Nhan_QLDHN_Ngay=getdate() where ID=" + dgvDanhSach.CurrentRow.Cells["ID"].Value.ToString());
+                                    string sql = "insert into TB_GHICHU(DANHBO,DONVI,NOIDUNG,CREATEDATE,CREATEBY)values('" + en.DanhBo + "',N'QLDHN',N'" + en.NoiDung + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture) + "',N'" + CNguoiDung.HoTen + "')";
+                                    CDHN._cDAL.ExecuteNonQuery(sql);
+                                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    Clear();
+                                }
                             }
-                            CongVanDen en = new CongVanDen();
-                            en.LoaiVB = dgvDanhSach.CurrentRow.Cells["LoaiVB"].Value.ToString();
-                            en.NoiChuyen = dgvDanhSach.CurrentRow.Cells["NoiChuyen"].Value.ToString();
-                            //en.NgayChuyen = DateTime.Parse(dgvDanhSach.CurrentRow.Cells["NgayChuyen"].Value.ToString());
-                            en.MLT = dgvDanhSach.CurrentRow.Cells["MLT"].Value.ToString();
-                            en.DanhBo = dgvDanhSach.CurrentRow.Cells["DanhBo"].Value.ToString();
-                            en.HoTen = dgvDanhSach.CurrentRow.Cells["HoTen"].Value.ToString();
-                            en.DiaChi = dgvDanhSach.CurrentRow.Cells["DiaChi"].Value.ToString();
-                            en.NoiDung = dgvDanhSach.CurrentRow.Cells["NoiDung"].Value.ToString();
-                            en.MaDon = dgvDanhSach.CurrentRow.Cells["MaDon"].Value.ToString();
-                            en.TableName = dgvDanhSach.CurrentRow.Cells["TableName"].Value.ToString();
-                            en.IDCT = int.Parse(dgvDanhSach.CurrentRow.Cells["IDCT"].Value.ToString());
-                            if (dgvDanhSach.CurrentRow.Cells["ToMaHoa"].Value != null && dgvDanhSach.CurrentRow.Cells["ToMaHoa"].Value.ToString() != "")
-                                en.ToMaHoa = bool.Parse(dgvDanhSach.CurrentRow.Cells["ToMaHoa"].Value.ToString());
-                            if (_cCVD.checkExists(en.TableName, en.IDCT.Value) == true)
-                            {
-                                MessageBox.Show("Đã nhập rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
-                            if (_cCVD.Them(en) == true)
-                            {
-                                //CThuongVu._cDAL.ExecuteNonQuery("update CongVanDi set Nhan_QLDHN=1,Nhan_QLDHN_Ngay=getdate() where ID=" + dgvDanhSach.CurrentRow.Cells["ID"].Value.ToString());
-                                string sql = "insert into TB_GHICHU(DANHBO,DONVI,NOIDUNG,CREATEDATE,CREATEBY)values('" + en.DanhBo + "',N'QLDHN',N'" + en.NoiDung + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture) + "',N'" + CNguoiDung.HoTen + "')";
-                                CDHN._cDAL.ExecuteNonQuery(sql);
-                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                Clear();
-                            }
+                            else
+                                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                        else
-                            MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    else
+                        if (dgvDanhSach.Columns[e.ColumnIndex].Name == "ToMaHoa" && dgvDanhSach.CurrentRow.Cells["ID"].Value != null && dgvDanhSach.CurrentRow.Cells["ID"].Value.ToString()!="")
+                        {
+                            CongVanDen en = _cCVD.get(int.Parse(dgvDanhSach.CurrentRow.Cells["ID"].Value.ToString()));
+                            en.ToMaHoa = bool.Parse(dgvDanhSach.CurrentRow.Cells["ToMaHoa"].Value.ToString());
+                            _cCVD.Sua(en);
+                        }
             }
             catch { }
         }
