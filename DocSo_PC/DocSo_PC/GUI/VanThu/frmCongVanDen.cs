@@ -18,6 +18,9 @@ namespace DocSo_PC.GUI.VanThu
         string _mnu = "mnuCongVanDen";
         CCongVanDen _cCVD = new CCongVanDen();
         CThuongVu _cThuongVu = new CThuongVu();
+        CGanMoi _cGanMoi = new CGanMoi();
+        CDHN _cDHN = new CDHN();
+        TB_DULIEUKHACHHANG _ttkh = null;
 
         public frmCongVanDen()
         {
@@ -26,149 +29,164 @@ namespace DocSo_PC.GUI.VanThu
 
         private void frmCongVanDen_Load(object sender, EventArgs e)
         {
-            dgvDanhSachChuaNhan.AutoGenerateColumns = false;
-            dgvDanhSachDaNhan.AutoGenerateColumns = false;
+            dgvDanhSach.AutoGenerateColumns = false;
+            cmbLoaiVanBan.SelectedIndex = 0;
         }
 
-        private void dgvDanhSachChuaNhan_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        public void Clear()
         {
-            if (dgvDanhSachChuaNhan.Columns[e.ColumnIndex].Name == "MLT" && e.Value != null)
-            {
-                e.Value = e.Value.ToString().Insert(4, " ").Insert(2, " ");
-            }
-            if (dgvDanhSachChuaNhan.Columns[e.ColumnIndex].Name == "DanhBo" && e.Value != null)
-            {
-                e.Value = e.Value.ToString().Insert(7, " ").Insert(4, " ");
-            }
+            txtMaDon.Text = "";
+            txtMaDon.Focus();
+            cmbLoaiVanBan_Nhap.SelectedIndex = -1;
+            cmbNoiChuyen.SelectedIndex = -1;
+            txtDanhBo.Text = "";
+            txtHoTen.Text = "";
+            txtDiaChi.Text = "";
+            txtNoiDung.Text = "";
+            dgvDanhSach.DataSource = null;
+            _ttkh = null;
         }
 
-        private void dgvDanhSachChuaNhan_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        private void txtMaDon_KeyPress(object sender, KeyPressEventArgs e)
         {
-            using (SolidBrush b = new SolidBrush(dgvDanhSachChuaNhan.RowHeadersDefaultCellStyle.ForeColor))
+            if (e.KeyChar == 13 && txtMaDon.Text.Trim() != "")
             {
-                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
-            }
-        }
-
-        private void dgvDanhSachChuaNhan_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            try
-            {
-                //object image = null;
-                //switch (dgvDanhSachChuaNhan.CurrentRow.Cells["TableName"].Value.ToString())
-                //{
-                //    case "KTXM_ChiTiet":
-                //        image = _cThuongVu.getHinh_KTXM(int.Parse(dgvDanhSachChuaNhan.CurrentRow.Cells["IDCT"].Value.ToString()));
-                //        break;
-                //    case "ToTrinh_ChiTiet":
-                //        image = _cThuongVu.getHinh_ToTrinh(int.Parse(dgvDanhSachChuaNhan.CurrentRow.Cells["IDCT"].Value.ToString()));
-                //        break;
-                //}
-                //if (image != null)
-                //    _cCVD.LoadImageView((byte[])image);
-                //else
-                //    MessageBox.Show("Không có File", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                object image = null;
-                switch (dgvDanhSachChuaNhan.CurrentRow.Cells["TableName"].Value.ToString())
+                DonTu_ChiTiet dontu_ChiTiet = null;
+                if (txtMaDon.Text.Trim().Replace(" ", "").Replace("-", "").Contains(".") == true)
                 {
-                    case "KTXM_ChiTiet":
-                        image = _cThuongVu.getHinh_KTXM(int.Parse(dgvDanhSachChuaNhan.CurrentRow.Cells["IDCT"].Value.ToString()));
-                        break;
-                    case "ToTrinh_ChiTiet":
-                        image = _cThuongVu.getHinh_ToTrinh(int.Parse(dgvDanhSachChuaNhan.CurrentRow.Cells["IDCT"].Value.ToString()));
-                        break;
-                }
-                if (image != null)
-                {
-                    if (CNguoiDung.CheckQuyen(_mnu, "Them"))
-                    {
-                        CongVanDen en = new CongVanDen();
-                        en.LoaiVB = dgvDanhSachChuaNhan.CurrentRow.Cells["LoaiVB"].Value.ToString();
-                        en.NoiChuyen = dgvDanhSachChuaNhan.CurrentRow.Cells["NoiChuyen"].Value.ToString();
-                        en.NgayChuyen = DateTime.Parse(dgvDanhSachChuaNhan.CurrentRow.Cells["NgayChuyen"].Value.ToString());
-                        en.MLT = dgvDanhSachChuaNhan.CurrentRow.Cells["MLT"].Value.ToString();
-                        en.DanhBo = dgvDanhSachChuaNhan.CurrentRow.Cells["DanhBo"].Value.ToString();
-                        en.HoTen = dgvDanhSachChuaNhan.CurrentRow.Cells["HoTen"].Value.ToString();
-                        en.DiaChi = dgvDanhSachChuaNhan.CurrentRow.Cells["DiaChi"].Value.ToString();
-                        en.NoiDung = dgvDanhSachChuaNhan.CurrentRow.Cells["NoiDung"].Value.ToString();
-                        en.MaDon = dgvDanhSachChuaNhan.CurrentRow.Cells["MaDon"].Value.ToString();
-                        en.TableName = dgvDanhSachChuaNhan.CurrentRow.Cells["TableName"].Value.ToString();
-                        en.IDCT = int.Parse(dgvDanhSachChuaNhan.CurrentRow.Cells["IDCT"].Value.ToString());
-                        if (_cCVD.checkExists(en.TableName, en.IDCT.Value) == false)
-                            if (_cCVD.Them(en) == true)
-                            {
-                                CThuongVu._cDAL.ExecuteNonQuery("update CongVanDi set Nhan_QLDHN=1,Nhan_QLDHN_Ngay=getdate() where ID=" + dgvDanhSachChuaNhan.CurrentRow.Cells["ID"].Value.ToString());
-                            }
-                        frmShowCongVan frm = new frmShowCongVan(en.TableName, en.IDCT.Value);
-                        frm.ShowDialog();
-                    }
-                    else
-                        MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    string[] MaDons = txtMaDon.Text.Trim().Replace(" ", "").Replace("-", "").Split('.');
+                    dontu_ChiTiet = _cThuongVu.get_ChiTiet(decimal.Parse(MaDons[0]), decimal.Parse(MaDons[1]));
                 }
                 else
-                    MessageBox.Show("Không có File", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                {
+                    LinQ.DonTu dt = _cThuongVu.get(decimal.Parse(txtMaDon.Text.Trim().Replace(" ", "").Replace("-", "")));
+                    if (dt != null)
+                        dontu_ChiTiet = dt.DonTu_ChiTiets.SingleOrDefault();
+                }
+                switch (cmbLoaiVanBan.SelectedItem.ToString())
+                {
+                    case "Biên Bản Kiểm Tra":
+                        if (dontu_ChiTiet != null)
+                            dgvDanhSach.DataSource = _cThuongVu.getDS_KTXM(dontu_ChiTiet.MaDon.Value, dontu_ChiTiet.STT.Value);
+                        else
+                            dgvDanhSach.DataSource = _cThuongVu.getDS_KTXM(txtMaDon.Text.Trim().Replace(" ", "").Replace("-", ""));
+                        break;
+                    case "TB Cắt Tạm/Cắt Hủy":
+                        if (dontu_ChiTiet != null)
+                            dgvDanhSach.DataSource = _cThuongVu.getDS_CHDB(dontu_ChiTiet.MaDon.Value, dontu_ChiTiet.STT.Value);
+                        else
+                            dgvDanhSach.DataSource = _cThuongVu.getDS_CHDB(txtMaDon.Text.Trim().Replace(" ", "").Replace("-", ""));
+                        break;
+                    case "Tờ Trình":
+                        if (dontu_ChiTiet != null)
+                            dgvDanhSach.DataSource = _cThuongVu.getDS_ToTrinh(dontu_ChiTiet.MaDon.Value, dontu_ChiTiet.STT.Value);
+                        else
+                            dgvDanhSach.DataSource = _cThuongVu.getDS_ToTrinh(txtMaDon.Text.Trim().Replace(" ", "").Replace("-", ""));
+                        break;
+                    case "Biên Bản Nghiệm Thu":
+                        dgvDanhSach.DataSource = _cGanMoi.getDS_BBNT(txtMaDon.Text.Trim().Replace(" ", "").Replace("-", ""));
+                        break;
+                    default:
+                        break;
+                }
             }
         }
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            if (tabControl.SelectedTab.Name == "tabChuaNhan")
-            {
-                DataTable dt = new DataTable();
-                if (radKTXM.Checked)
-                    dt = _cThuongVu.getDS_KTXM_ChuaNhan(dateTu.Value, dateDen.Value);
-                else
-                    dt = _cThuongVu.getDS_ToTrinh_ChuaNhan(dateTu.Value, dateDen.Value);
-                dgvDanhSachChuaNhan.DataSource = dt;
-            }
+            if (txtMaDon.Text.Trim() != "")
+                dgvDanhSach.DataSource = _cCVD.getDS(txtMaDon.Text.Trim().Replace(" ", "").Replace("-", ""));
             else
-                if (tabControl.SelectedTab.Name == "tabDaNhan")
-                    dgvDanhSachDaNhan.DataSource = _cCVD.getDS(dateTu.Value, dateDen.Value);
+                dgvDanhSach.DataSource = _cCVD.getDS(dateTu.Value, dateDen.Value);
         }
 
-        private void dgvDanhSachDaNhan_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        private void dgvDanhSach_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
-            if (dgvDanhSachDaNhan.Columns[e.ColumnIndex].Name == "MLT_DaNhan" && e.Value != null)
-            {
-                e.Value = e.Value.ToString().Insert(4, " ").Insert(2, " ");
-            }
-            if (dgvDanhSachDaNhan.Columns[e.ColumnIndex].Name == "DanhBo_DaNhan" && e.Value != null)
-            {
-                e.Value = e.Value.ToString().Insert(7, " ").Insert(4, " ");
-            }
-        }
-
-        private void dgvDanhSachDaNhan_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
-        {
-            using (SolidBrush b = new SolidBrush(dgvDanhSachDaNhan.RowHeadersDefaultCellStyle.ForeColor))
+            using (SolidBrush b = new SolidBrush(dgvDanhSach.RowHeadersDefaultCellStyle.ForeColor))
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
             }
         }
 
-        private void dgvDanhSachDaNhan_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            frmShowCongVan frm = new frmShowCongVan(dgvDanhSachDaNhan.CurrentRow.Cells["TableName_DaNhan"].Value.ToString(), int.Parse(dgvDanhSachDaNhan.CurrentRow.Cells["IDCT_DaNhan"].Value.ToString()));
-            frm.ShowDialog();
-        }
-
-        private void btnXoa_DaNhan_Click(object sender, EventArgs e)
+        private void dgvDanhSach_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
+                if (dgvDanhSach.Columns[e.ColumnIndex].Name == "XemHinh")
                 {
-                    if (MessageBox.Show("Bạn có chắc chắn", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                        foreach (DataGridViewRow item in dgvDanhSachDaNhan.SelectedRows)
+                    string TableNameHinh, IDName;
+                    _cThuongVu.getTableHinh(dgvDanhSach.CurrentRow.Cells["TableName"].Value.ToString(), out TableNameHinh, out IDName);
+                    System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/ThuongVu/viewFile?TableName=" + TableNameHinh + "&IDFileName=" + IDName + "&IDFileContent=" + dgvDanhSach.CurrentRow.Cells["IDCT"].Value.ToString());
+                }
+                else
+                    if (dgvDanhSach.Columns[e.ColumnIndex].Name == "Them")
+                    {
+                        try
                         {
-                            _cCVD.Xoa(_cCVD.get(int.Parse(item.Cells["ID_DaNhan"].Value.ToString())));
+                            if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+                            {
+                                if (dgvDanhSach.CurrentRow.Cells["NoiDung"].Value == null || string.IsNullOrEmpty(dgvDanhSach.CurrentRow.Cells["NoiDung"].Value.ToString().Trim()))
+                                {
+                                    MessageBox.Show("Nội Dung rỗng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                                CongVanDen en = new CongVanDen();
+                                en.LoaiVB = dgvDanhSach.CurrentRow.Cells["LoaiVB"].Value.ToString();
+                                en.NoiChuyen = dgvDanhSach.CurrentRow.Cells["NoiChuyen"].Value.ToString();
+                                //en.NgayChuyen = DateTime.Parse(dgvDanhSach.CurrentRow.Cells["NgayChuyen"].Value.ToString());
+                                en.MLT = dgvDanhSach.CurrentRow.Cells["MLT"].Value.ToString();
+                                en.DanhBo = dgvDanhSach.CurrentRow.Cells["DanhBo"].Value.ToString();
+                                en.HoTen = dgvDanhSach.CurrentRow.Cells["HoTen"].Value.ToString();
+                                en.DiaChi = dgvDanhSach.CurrentRow.Cells["DiaChi"].Value.ToString();
+                                en.NoiDung = dgvDanhSach.CurrentRow.Cells["NoiDung"].Value.ToString();
+                                en.MaDon = dgvDanhSach.CurrentRow.Cells["MaDon"].Value.ToString();
+                                en.TableName = dgvDanhSach.CurrentRow.Cells["TableName"].Value.ToString();
+                                en.IDCT = int.Parse(dgvDanhSach.CurrentRow.Cells["IDCT"].Value.ToString());
+                                if (dgvDanhSach.CurrentRow.Cells["ToMaHoa"].Value != null && dgvDanhSach.CurrentRow.Cells["ToMaHoa"].Value.ToString() != "")
+                                    en.ToMaHoa = bool.Parse(dgvDanhSach.CurrentRow.Cells["ToMaHoa"].Value.ToString());
+                                if (_cCVD.checkExists(en.TableName, en.IDCT.Value) == true)
+                                {
+                                    MessageBox.Show("Đã nhập rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                                if (_cCVD.Them(en) == true)
+                                {
+                                    //CThuongVu._cDAL.ExecuteNonQuery("update CongVanDi set Nhan_QLDHN=1,Nhan_QLDHN_Ngay=getdate() where ID=" + dgvDanhSach.CurrentRow.Cells["ID"].Value.ToString());
+                                    string sql = "insert into TB_GHICHU(DANHBO,DONVI,NOIDUNG,CREATEDATE,CREATEBY)values('" + en.DanhBo + "',N'QLDHN',N'" + en.NoiDung + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture) + "',N'" + CNguoiDung.HoTen + "')";
+                                    CDHN._cDAL.ExecuteNonQuery(sql);
+                                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    Clear();
+                                }
+                            }
+                            else
+                                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                    btnXem.PerformClick();
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+            }
+            catch { }
+        }
+
+        private void dgvDanhSach_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Xoa") && MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    CongVanDen en = _cCVD.get(int.Parse(dgvDanhSach.CurrentRow.Cells["ID"].Value.ToString()));
+                    if (en != null)
+                    {
+                        if (_cCVD.Xoa(en))
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -178,5 +196,92 @@ namespace DocSo_PC.GUI.VanThu
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void dgvDanhSach_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dgvDanhSach.Columns[e.ColumnIndex].Name == "ToMaHoa" && dgvDanhSach.CurrentRow.Cells["ID"].Value != null && dgvDanhSach.CurrentRow.Cells["ID"].Value.ToString() != "")
+                {
+                    CongVanDen en = _cCVD.get(int.Parse(dgvDanhSach.CurrentRow.Cells["ID"].Value.ToString()));
+                    en.ToMaHoa = bool.Parse(dgvDanhSach.CurrentRow.Cells["ToMaHoa"].Value.ToString());
+                    _cCVD.Sua(en);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && txtDanhBo.Text.Trim() != "")
+            {
+                _ttkh = _cDHN.get(txtDanhBo.Text.Trim().Replace(" ", "").Replace("-", ""));
+                if (_ttkh != null)
+                {
+                    txtDanhBo.Text = _ttkh.DANHBO;
+                    txtHoTen.Text = _ttkh.HOTEN;
+                    txtDiaChi.Text = _ttkh.SONHA + " " + _ttkh.TENDUONG;
+                }
+                else
+                    MessageBox.Show("Danh Bộ không tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+                {
+                    if (_ttkh != null)
+                    {
+                        if (string.IsNullOrEmpty(txtNoiDung.Text.Trim()))
+                        {
+                            MessageBox.Show("Nội Dung rỗng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        CongVanDen en = new CongVanDen();
+                        en.LoaiVB = cmbLoaiVanBan_Nhap.SelectedItem.ToString();
+                        en.NoiChuyen = cmbNoiChuyen.SelectedItem.ToString();
+                        //en.NgayChuyen = DateTime.Parse(dgvDanhSach.CurrentRow.Cells["NgayChuyen"].Value.ToString());
+                        en.MLT = _ttkh.LOTRINH;
+                        en.DanhBo = _ttkh.DANHBO;
+                        en.HoTen = _ttkh.HOTEN;
+                        en.DiaChi = _ttkh.SONHA + " " + _ttkh.TENDUONG;
+                        en.NoiDung = txtNoiDung.Text.Trim();
+                        if (_cCVD.checkExists(en.DanhBo, en.NoiDung) == true)
+                        {
+                            MessageBox.Show("Đã nhập rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        if (_cCVD.Them(en) == true)
+                        {
+                            //CThuongVu._cDAL.ExecuteNonQuery("update CongVanDi set Nhan_QLDHN=1,Nhan_QLDHN_Ngay=getdate() where ID=" + dgvDanhSach.CurrentRow.Cells["ID"].Value.ToString());
+                            string sql = "insert into TB_GHICHU(DANHBO,DONVI,NOIDUNG,CREATEDATE,CREATEBY)values('" + en.DanhBo + "',N'QLDHN',N'" + en.NoiDung + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture) + "',N'" + CNguoiDung.HoTen + "')";
+                            CDHN._cDAL.ExecuteNonQuery(sql);
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Clear();
+                        }
+                    }
+                    else
+                        MessageBox.Show("Danh Bộ không tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+
+
+
     }
 }

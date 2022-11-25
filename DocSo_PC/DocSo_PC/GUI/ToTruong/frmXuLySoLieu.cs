@@ -12,6 +12,7 @@ using DocSo_PC.LinQ;
 using DocSo_PC.DAL;
 using DocSo_PC.wrDHN;
 using DocSo_PC.DAL.MaHoa;
+using DocSo_PC.DAL.VanThu;
 
 namespace DocSo_PC.GUI.ToTruong
 {
@@ -29,6 +30,7 @@ namespace DocSo_PC.GUI.ToTruong
         CThuTien _cThuTien = new CThuTien();
         CKTXM _cKTXM = new CKTXM();
         CThuongVu _cThuongVu = new CThuongVu();
+        CCongVanDen _cCVD = new CCongVanDen();
         bool _flagLoadFirst = false;
 
         public frmXuLySoLieu()
@@ -44,6 +46,7 @@ namespace DocSo_PC.GUI.ToTruong
                 dgvThongBao.AutoGenerateColumns = false;
                 dgvBaoThay.AutoGenerateColumns = false;
                 dgvLichSu.AutoGenerateColumns = false;
+                dgvCongVanDen.AutoGenerateColumns = false;
 
                 cmbNam.DataSource = _cDocSo.getDS_Nam();
                 cmbNam.DisplayMember = "Nam";
@@ -405,6 +408,7 @@ namespace DocSo_PC.GUI.ToTruong
                                     ptbKy3.Image = Properties.Resources.no_image;
                             }
                     dgvHinh.DataSource = _cKTXM.getDS_Hinh(_docso.DanhBa, _docso.Nam.Value, int.Parse(_docso.Ky));
+                    dgvCongVanDen.DataSource = _cCVD.getDS_XuLySoLieu(_docso.DanhBa);
                 }
             }
             catch (Exception ex)
@@ -939,6 +943,22 @@ namespace DocSo_PC.GUI.ToTruong
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvHinh_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvHinh.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvCongVanDen_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvCongVanDen.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
             }
         }
 

@@ -66,6 +66,11 @@ namespace DocSo_PC.DAL.VanThu
             return _db.CongVanDens.Any(item => item.TableName == TableName && item.IDCT == IDCT);
         }
 
+        public bool checkExists(string DanhBo,string NoiDung)
+        {
+            return _db.CongVanDens.Any(item => item.DanhBo == DanhBo && item.NoiDung == NoiDung);
+        }
+
         public CongVanDen get(int ID)
         {
             return _db.CongVanDens.SingleOrDefault(item => item.ID == ID);
@@ -84,6 +89,11 @@ namespace DocSo_PC.DAL.VanThu
         public DataTable getDS(string DanhBo)
         {
             return _cDAL.ExecuteQuery_DataTable("select *,'To'=(select TenTo from [To] where TuMay<=SUBSTRING(MLT,3,2) and DenMay>=SUBSTRING(MLT,3,2)) from CongVanDen where DanhBo='" + DanhBo + "' order by createdate desc");
+        }
+
+        public DataTable getDS_XuLySoLieu(string DanhBo)
+        {
+            return _cDAL.ExecuteQuery_DataTable("select * from CongVanDen where DanhBo='" + DanhBo + "' and CAST(DATEADD(DAY,90,CreateDate) as date)>=CAST(GETDATE() as date) order by CreateDate desc");
         }
 
     }
