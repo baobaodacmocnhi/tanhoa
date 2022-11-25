@@ -1091,7 +1091,7 @@ namespace ThuTien.GUI.Quay
                     DataRow dr = ds.Tables["KQDongNuoc"].NewRow();
                     dr["NhanVien"] = _cNguoiDung.GetHoTenByMaND(kqdongnuoc.CreateBy.Value);
                     dr["STT"] = kqdongnuoc.MaKQDN;
-                    dr["DanhBo"] = kqdongnuoc.DanhBo;
+                    dr["DanhBo"] = kqdongnuoc.DanhBo.Insert(7, " ").Insert(4, " ");
                     dr["HoTen"] = kqdongnuoc.HoTen;
                     dr["DiaChi"] = kqdongnuoc.DiaChi + _cDHN.GetPhuongQuan(kqdongnuoc.DanhBo);
                     dr["Co"] = kqdongnuoc.Co;
