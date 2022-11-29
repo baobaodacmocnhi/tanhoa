@@ -94,10 +94,31 @@ namespace DocSo_PC.GUI.VanThu
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            if (txtMaDon.Text.Trim() != "")
-                dgvDanhSach.DataSource = _cCVD.getDS(txtMaDon.Text.Trim().Replace(" ", "").Replace("-", ""));
+            if (chkAuto.Checked)
+            {
+                //switch (cmbLoaiVanBan.SelectedItem.ToString())
+                //{
+                //    case "Biên Bản Kiểm Tra":
+                //        dgvDanhSach.DataSource = _cThuongVu.getDS_KTXM(dontu_ChiTiet.MaDon.Value, dontu_ChiTiet.STT.Value);
+                //        break;
+                //    case "TB Cắt Tạm/Cắt Hủy":
+                //        dgvDanhSach.DataSource = _cThuongVu.getDS_CHDB(txtMaDon.Text.Trim().Replace(" ", "").Replace("-", ""));
+                //        break;
+                //    case "Tờ Trình":
+                //        dgvDanhSach.DataSource = _cThuongVu.getDS_ToTrinh(txtMaDon.Text.Trim().Replace(" ", "").Replace("-", ""));
+                //        break;
+                //    default:
+                //        break;
+                //}
+                
+            }
             else
-                dgvDanhSach.DataSource = _cCVD.getDS(dateTu.Value, dateDen.Value);
+            {
+                if (txtMaDon.Text.Trim() != "")
+                    dgvDanhSach.DataSource = _cCVD.getDS(txtMaDon.Text.Trim().Replace(" ", "").Replace("-", ""));
+                else
+                    dgvDanhSach.DataSource = _cCVD.getDS(dateTu.Value, dateDen.Value);
+            }
         }
 
         private void dgvDanhSach_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -185,7 +206,11 @@ namespace DocSo_PC.GUI.VanThu
                     if (en != null)
                     {
                         if (_cCVD.Xoa(en))
+                        {
+                            string sql = "delete TB_GHICHU where DONVI=N'QLDHN' and NoiDung like N'" + dgvDanhSach.CurrentRow.Cells["NoiDung"].Value.ToString() + "'";
+                            CDHN._cDAL.ExecuteNonQuery(sql);
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
                 }
                 else
