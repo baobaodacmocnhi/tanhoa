@@ -105,6 +105,24 @@
             this.txtDanhBo_DS = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.dgvDanhSach2 = new System.Windows.Forms.DataGridView();
+            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Phuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Thung = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_DS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DinhMucCu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DinhMucMoi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DaXuLy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.DCBD = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DCBD_MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DCBD_STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnXem = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.dateDen = new System.Windows.Forms.DateTimePicker();
@@ -138,24 +156,6 @@
             this.dateDen_Online = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.dateTu_Online = new System.Windows.Forms.DateTimePicker();
-            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Phuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Thung = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID_DS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DinhMucCu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DinhMucMoi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DaXuLy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.DCBD = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DCBD_MaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DCBD_STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -866,6 +866,126 @@
             this.dgvDanhSach2.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvDanhSach2_CellMouseDoubleClick);
             this.dgvDanhSach2.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhSach2_RowPostPaint);
             // 
+            // CreateDate
+            // 
+            this.CreateDate.DataPropertyName = "CreateDate";
+            this.CreateDate.HeaderText = "Ngày Lập";
+            this.CreateDate.Name = "CreateDate";
+            // 
+            // DanhBo
+            // 
+            this.DanhBo.DataPropertyName = "DanhBo";
+            this.DanhBo.HeaderText = "Danh Bộ";
+            this.DanhBo.Name = "DanhBo";
+            this.DanhBo.Width = 80;
+            // 
+            // DienThoai
+            // 
+            this.DienThoai.DataPropertyName = "SDT";
+            this.DienThoai.HeaderText = "Điện Thoại";
+            this.DienThoai.Name = "DienThoai";
+            this.DienThoai.Width = 80;
+            // 
+            // DiaChi
+            // 
+            this.DiaChi.DataPropertyName = "DiaChi";
+            this.DiaChi.HeaderText = "Địa Chỉ";
+            this.DiaChi.Name = "DiaChi";
+            // 
+            // Quan
+            // 
+            this.Quan.DataPropertyName = "Quan";
+            this.Quan.HeaderText = "Quận";
+            this.Quan.Name = "Quan";
+            this.Quan.Width = 40;
+            // 
+            // Phuong
+            // 
+            this.Phuong.DataPropertyName = "Phuong";
+            this.Phuong.HeaderText = "Phường";
+            this.Phuong.Name = "Phuong";
+            this.Phuong.Width = 50;
+            // 
+            // Thung
+            // 
+            this.Thung.DataPropertyName = "Thung";
+            this.Thung.HeaderText = "Thùng";
+            this.Thung.Name = "Thung";
+            this.Thung.Width = 40;
+            // 
+            // STT
+            // 
+            this.STT.DataPropertyName = "STT";
+            this.STT.HeaderText = "STT";
+            this.STT.Name = "STT";
+            this.STT.Width = 40;
+            // 
+            // MaDon
+            // 
+            this.MaDon.DataPropertyName = "MaDon";
+            this.MaDon.HeaderText = "Mã Đơn";
+            this.MaDon.Name = "MaDon";
+            // 
+            // ID_DS
+            // 
+            this.ID_DS.DataPropertyName = "ID";
+            this.ID_DS.HeaderText = "ID";
+            this.ID_DS.Name = "ID_DS";
+            this.ID_DS.Visible = false;
+            // 
+            // CreateBy
+            // 
+            this.CreateBy.DataPropertyName = "CreateBy";
+            this.CreateBy.HeaderText = "Người Lập";
+            this.CreateBy.Name = "CreateBy";
+            this.CreateBy.Width = 80;
+            // 
+            // DinhMucCu
+            // 
+            this.DinhMucCu.DataPropertyName = "DinhMucCu";
+            this.DinhMucCu.HeaderText = "ĐM Cũ";
+            this.DinhMucCu.Name = "DinhMucCu";
+            this.DinhMucCu.Width = 40;
+            // 
+            // DinhMucMoi
+            // 
+            this.DinhMucMoi.DataPropertyName = "DinhMucMoi";
+            this.DinhMucMoi.HeaderText = "ĐM Mới";
+            this.DinhMucMoi.Name = "DinhMucMoi";
+            this.DinhMucMoi.Width = 40;
+            // 
+            // DaXuLy
+            // 
+            this.DaXuLy.DataPropertyName = "DaXuLy";
+            this.DaXuLy.HeaderText = "Đã Xủ Lý";
+            this.DaXuLy.Name = "DaXuLy";
+            this.DaXuLy.Width = 50;
+            // 
+            // DCBD
+            // 
+            this.DCBD.DataPropertyName = "DCBD";
+            this.DCBD.HeaderText = "ĐCBĐ";
+            this.DCBD.Name = "DCBD";
+            this.DCBD.Width = 50;
+            // 
+            // GhiChu
+            // 
+            this.GhiChu.DataPropertyName = "GhiChu";
+            this.GhiChu.HeaderText = "Ghi Chú";
+            this.GhiChu.Name = "GhiChu";
+            // 
+            // DCBD_MaDon
+            // 
+            this.DCBD_MaDon.DataPropertyName = "DCBD_MaDon";
+            this.DCBD_MaDon.HeaderText = "DCBD_MaDon";
+            this.DCBD_MaDon.Name = "DCBD_MaDon";
+            // 
+            // DCBD_STT
+            // 
+            this.DCBD_STT.DataPropertyName = "DCBD_STT";
+            this.DCBD_STT.HeaderText = "DCBD_STT";
+            this.DCBD_STT.Name = "DCBD_STT";
+            // 
             // btnXem
             // 
             this.btnXem.Location = new System.Drawing.Point(488, 4);
@@ -1211,126 +1331,6 @@
             this.dateTu_Online.Name = "dateTu_Online";
             this.dateTu_Online.Size = new System.Drawing.Size(95, 20);
             this.dateTu_Online.TabIndex = 21;
-            // 
-            // CreateDate
-            // 
-            this.CreateDate.DataPropertyName = "CreateDate";
-            this.CreateDate.HeaderText = "Ngày Lập";
-            this.CreateDate.Name = "CreateDate";
-            // 
-            // DanhBo
-            // 
-            this.DanhBo.DataPropertyName = "DanhBo";
-            this.DanhBo.HeaderText = "Danh Bộ";
-            this.DanhBo.Name = "DanhBo";
-            this.DanhBo.Width = 80;
-            // 
-            // DienThoai
-            // 
-            this.DienThoai.DataPropertyName = "SDT";
-            this.DienThoai.HeaderText = "Điện Thoại";
-            this.DienThoai.Name = "DienThoai";
-            this.DienThoai.Width = 80;
-            // 
-            // DiaChi
-            // 
-            this.DiaChi.DataPropertyName = "DiaChi";
-            this.DiaChi.HeaderText = "Địa Chỉ";
-            this.DiaChi.Name = "DiaChi";
-            // 
-            // Quan
-            // 
-            this.Quan.DataPropertyName = "Quan";
-            this.Quan.HeaderText = "Quận";
-            this.Quan.Name = "Quan";
-            this.Quan.Width = 40;
-            // 
-            // Phuong
-            // 
-            this.Phuong.DataPropertyName = "Phuong";
-            this.Phuong.HeaderText = "Phường";
-            this.Phuong.Name = "Phuong";
-            this.Phuong.Width = 50;
-            // 
-            // Thung
-            // 
-            this.Thung.DataPropertyName = "Thung";
-            this.Thung.HeaderText = "Thùng";
-            this.Thung.Name = "Thung";
-            this.Thung.Width = 40;
-            // 
-            // STT
-            // 
-            this.STT.DataPropertyName = "STT";
-            this.STT.HeaderText = "STT";
-            this.STT.Name = "STT";
-            this.STT.Width = 40;
-            // 
-            // MaDon
-            // 
-            this.MaDon.DataPropertyName = "MaDon";
-            this.MaDon.HeaderText = "Mã Đơn";
-            this.MaDon.Name = "MaDon";
-            // 
-            // ID_DS
-            // 
-            this.ID_DS.DataPropertyName = "ID";
-            this.ID_DS.HeaderText = "ID";
-            this.ID_DS.Name = "ID_DS";
-            this.ID_DS.Visible = false;
-            // 
-            // CreateBy
-            // 
-            this.CreateBy.DataPropertyName = "CreateBy";
-            this.CreateBy.HeaderText = "Người Lập";
-            this.CreateBy.Name = "CreateBy";
-            this.CreateBy.Width = 80;
-            // 
-            // DinhMucCu
-            // 
-            this.DinhMucCu.DataPropertyName = "DinhMucCu";
-            this.DinhMucCu.HeaderText = "ĐM Cũ";
-            this.DinhMucCu.Name = "DinhMucCu";
-            this.DinhMucCu.Width = 40;
-            // 
-            // DinhMucMoi
-            // 
-            this.DinhMucMoi.DataPropertyName = "DinhMucMoi";
-            this.DinhMucMoi.HeaderText = "ĐM Mới";
-            this.DinhMucMoi.Name = "DinhMucMoi";
-            this.DinhMucMoi.Width = 40;
-            // 
-            // DaXuLy
-            // 
-            this.DaXuLy.DataPropertyName = "DaXuLy";
-            this.DaXuLy.HeaderText = "Đã Xủ Lý";
-            this.DaXuLy.Name = "DaXuLy";
-            this.DaXuLy.Width = 50;
-            // 
-            // DCBD
-            // 
-            this.DCBD.DataPropertyName = "DCBD";
-            this.DCBD.HeaderText = "ĐCBĐ";
-            this.DCBD.Name = "DCBD";
-            this.DCBD.Width = 50;
-            // 
-            // GhiChu
-            // 
-            this.GhiChu.DataPropertyName = "GhiChu";
-            this.GhiChu.HeaderText = "Ghi Chú";
-            this.GhiChu.Name = "GhiChu";
-            // 
-            // DCBD_MaDon
-            // 
-            this.DCBD_MaDon.DataPropertyName = "DCBD_MaDon";
-            this.DCBD_MaDon.HeaderText = "DCBD_MaDon";
-            this.DCBD_MaDon.Name = "DCBD_MaDon";
-            // 
-            // DCBD_STT
-            // 
-            this.DCBD_STT.DataPropertyName = "DCBD_STT";
-            this.DCBD_STT.HeaderText = "DCBD_STT";
-            this.DCBD_STT.Name = "DCBD_STT";
             // 
             // frmCapDinhMucNuocCCCD
             // 

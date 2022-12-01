@@ -309,6 +309,9 @@ namespace KTKS_DonKH.LinQ
     partial void InsertPKH_CongVanDi(PKH_CongVanDi instance);
     partial void UpdatePKH_CongVanDi(PKH_CongVanDi instance);
     partial void DeletePKH_CongVanDi(PKH_CongVanDi instance);
+    partial void InsertTableHinh(TableHinh instance);
+    partial void UpdateTableHinh(TableHinh instance);
+    partial void DeleteTableHinh(TableHinh instance);
     partial void InsertTBKetQuaYCCatDM(TBKetQuaYCCatDM instance);
     partial void UpdateTBKetQuaYCCatDM(TBKetQuaYCCatDM instance);
     partial void DeleteTBKetQuaYCCatDM(TBKetQuaYCCatDM instance);
@@ -1179,6 +1182,14 @@ namespace KTKS_DonKH.LinQ
 			get
 			{
 				return this.GetTable<Quan>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TableHinh> TableHinhs
+		{
+			get
+			{
+				return this.GetTable<TableHinh>();
 			}
 		}
 		
@@ -12520,6 +12531,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _MaCT;
 		
+		private System.Nullable<System.DateTime> _NgaySinh;
+		
 		private string _HoTen;
 		
 		private string _DiaChi;
@@ -12558,6 +12571,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreated();
     partial void OnMaCTChanging(string value);
     partial void OnMaCTChanged();
+    partial void OnNgaySinhChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgaySinhChanged();
     partial void OnHoTenChanging(string value);
     partial void OnHoTenChanged();
     partial void OnDiaChiChanging(string value);
@@ -12611,6 +12626,26 @@ namespace KTKS_DonKH.LinQ
 					this._MaCT = value;
 					this.SendPropertyChanged("MaCT");
 					this.OnMaCTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgaySinh", DbType="Date")]
+		public System.Nullable<System.DateTime> NgaySinh
+		{
+			get
+			{
+				return this._NgaySinh;
+			}
+			set
+			{
+				if ((this._NgaySinh != value))
+				{
+					this.OnNgaySinhChanging(value);
+					this.SendPropertyChanging();
+					this._NgaySinh = value;
+					this.SendPropertyChanged("NgaySinh");
+					this.OnNgaySinhChanged();
 				}
 			}
 		}
@@ -43783,6 +43818,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _SoTien;
 		
+		private string _Name2;
+		
 		private System.Nullable<int> _CreateBy;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -43805,6 +43842,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnNameChanged();
     partial void OnSoTienChanging(System.Nullable<int> value);
     partial void OnSoTienChanged();
+    partial void OnName2Changing(string value);
+    partial void OnName2Changed();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -43897,6 +43936,26 @@ namespace KTKS_DonKH.LinQ
 					this._SoTien = value;
 					this.SendPropertyChanged("SoTien");
 					this.OnSoTienChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name2", DbType="NVarChar(200)")]
+		public string Name2
+		{
+			get
+			{
+				return this._Name2;
+			}
+			set
+			{
+				if ((this._Name2 != value))
+				{
+					this.OnName2Changing(value);
+					this.SendPropertyChanging();
+					this._Name2 = value;
+					this.SendPropertyChanged("Name2");
+					this.OnName2Changed();
 				}
 			}
 		}
@@ -51132,6 +51191,116 @@ namespace KTKS_DonKH.LinQ
 				{
 					this._Name2 = value;
 				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TableHinh")]
+	public partial class TableHinh : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _TableName;
+		
+		private string _TableNameHinh;
+		
+		private string _IDName;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnTableNameChanging(string value);
+    partial void OnTableNameChanged();
+    partial void OnTableNameHinhChanging(string value);
+    partial void OnTableNameHinhChanged();
+    partial void OnIDNameChanging(string value);
+    partial void OnIDNameChanged();
+    #endregion
+		
+		public TableHinh()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TableName", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string TableName
+		{
+			get
+			{
+				return this._TableName;
+			}
+			set
+			{
+				if ((this._TableName != value))
+				{
+					this.OnTableNameChanging(value);
+					this.SendPropertyChanging();
+					this._TableName = value;
+					this.SendPropertyChanged("TableName");
+					this.OnTableNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TableNameHinh", DbType="VarChar(50)")]
+		public string TableNameHinh
+		{
+			get
+			{
+				return this._TableNameHinh;
+			}
+			set
+			{
+				if ((this._TableNameHinh != value))
+				{
+					this.OnTableNameHinhChanging(value);
+					this.SendPropertyChanging();
+					this._TableNameHinh = value;
+					this.SendPropertyChanged("TableNameHinh");
+					this.OnTableNameHinhChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDName", DbType="VarChar(50)")]
+		public string IDName
+		{
+			get
+			{
+				return this._IDName;
+			}
+			set
+			{
+				if ((this._IDName != value))
+				{
+					this.OnIDNameChanging(value);
+					this.SendPropertyChanging();
+					this._IDName = value;
+					this.SendPropertyChanged("IDName");
+					this.OnIDNameChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

@@ -501,6 +501,7 @@
   <Table Name="dbo.ChungTu" Member="ChungTus">
     <Type Name="ChungTu">
       <Column Name="MaCT" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NgaySinh" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="HoTen" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
       <Column Name="DiaChi" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
       <Column Name="SoNKTong" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -1884,6 +1885,7 @@
       <Column Name="STT" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="SoTien" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name2" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -2235,6 +2237,13 @@
       <Column Name="ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Name2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TableHinh" Member="TableHinhs">
+    <Type Name="TableHinh">
+      <Column Name="TableName" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TableNameHinh" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IDName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.TBKetQuaYCCatDM" Member="TBKetQuaYCCatDMs">

@@ -58,6 +58,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 cmbLoaiCT.DataSource = _cLoaiChungTu.LoadDSLoaiChungTu();
                 cmbLoaiCT.DisplayMember = "TenLCT";
                 cmbLoaiCT.ValueMember = "MaLCT";
+                cmbLoaiCT.SelectedIndex = 14;
 
                 cmbChiNhanh_YCC1.DataSource = _cChiNhanh.LoadDSChiNhanh("Tân Hòa");
                 cmbChiNhanh_YCC1.DisplayMember = "TenCN";
@@ -100,6 +101,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             cmbLoaiCT.SelectedValue = ctchungtu.ChungTu.MaLCT;
                             txtMaCT.Text = ctchungtu.MaCT;
                             txtHoTen.Text = ctchungtu.ChungTu.HoTen;
+                            if (ctchungtu.ChungTu.NgaySinh.Value != null)
+                                txtNgaySinh.Text = ctchungtu.ChungTu.NgaySinh.Value.ToString("dd/MM/yyyy");
                             txtDiaChi.Text = ctchungtu.ChungTu.DiaChi;
                             txtSoNKTong.Text = ctchungtu.ChungTu.SoNKTong.ToString();
                             txtSoNKDangKy.Text = ctchungtu.SoNKDangKy.ToString();
@@ -112,7 +115,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 dateHetHan.Enabled = true;
                                 dateHetHan.Value = ctchungtu.NgayHetHan.Value;
                             }
-
                             txtGhiChu.Text = ctchungtu.GhiChu;
                             txtHoTenCat.Text = ctchungtu.HoTenCat;
 
@@ -328,6 +330,18 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             MessageBox.Show("Số đăng ký này trùng Hộ Khẩu & Hộ Khẩu Nghèo", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
+                        ///Kiểm tra Ngày Sinh
+                        string[] NgaySinhs = null;
+                        if (txtNgaySinh.Text.ToString().Contains("/"))
+                            NgaySinhs = txtNgaySinh.Text.ToString().Split('/');
+                        else
+                            if (txtNgaySinh.Text.ToString().Contains("-"))
+                                NgaySinhs = txtNgaySinh.Text.ToString().Split('-');
+                        //if (NgaySinhs == null || NgaySinhs.Count() != 3)
+                        //{
+                        //    MessageBox.Show("Thiếu Ngày Sinh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //    return;
+                        //}
                         using (var scope = new TransactionScope())
                         {
                             ///Kiểm tra Số Chứng Từ
@@ -335,6 +349,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             {
                                 ChungTu chungtu = new ChungTu();
                                 chungtu.MaCT = txtMaCT.Text.Trim();
+                                if (txtNgaySinh.Text.ToString() != "")
+                                    if (NgaySinhs != null && NgaySinhs.Count() == 3)
+                                        chungtu.NgaySinh = new DateTime(int.Parse(NgaySinhs[2]), int.Parse(NgaySinhs[1]), int.Parse(NgaySinhs[0]));
+                                    else
+                                        chungtu.NgaySinh = new DateTime(int.Parse(txtNgaySinh.Text.Trim()), 1, 1);
                                 chungtu.HoTen = txtHoTen.Text.Trim();
                                 chungtu.DiaChi = txtDiaChi.Text.Trim();
                                 chungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
@@ -349,7 +368,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 return;
                             }
                             ///
-                            
+
                             ChungTu_ChiTiet ctchungtu = new ChungTu_ChiTiet();
                             ctchungtu.DanhBo = txtDanhBo.Text.Trim();
                             ctchungtu.ThuongTru = chkThuongTru.Checked;
@@ -680,13 +699,30 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 try
                 {
                     if (txtMaCT.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "" && txtSoNKDangKy.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "0")
+                    {
+                        ///Kiểm tra Ngày Sinh
+                        string[] NgaySinhs = null;
+                        if (txtNgaySinh.Text.ToString().Contains("/"))
+                            NgaySinhs = txtNgaySinh.Text.ToString().Split('/');
+                        else
+                            if (txtNgaySinh.Text.ToString().Contains("-"))
+                                NgaySinhs = txtNgaySinh.Text.ToString().Split('-');
+                        //if (NgaySinhs == null || NgaySinhs.Count() != 3)
+                        //{
+                        //    MessageBox.Show("Thiếu Ngày Sinh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //    return;
+                        //}
                         using (var scope = new TransactionScope())
                         {
                             ChungTu _chungtu = _cChungTu.Get(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
                             ChungTu_ChiTiet _ctchungtu = _cChungTu.GetCT(txtDanhBo.Text.Trim(), txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
-                            
 
                             _chungtu.HoTen = txtHoTen.Text.Trim();
+                            if (txtNgaySinh.Text.Trim() != "")
+                                if (NgaySinhs != null || NgaySinhs.Count() == 3)
+                                    _chungtu.NgaySinh = new DateTime(int.Parse(NgaySinhs[2]), int.Parse(NgaySinhs[1]), int.Parse(NgaySinhs[0]));
+                                else
+                                    _chungtu.NgaySinh = new DateTime(int.Parse(txtNgaySinh.Text.Trim()), 1, 1);
                             _chungtu.DiaChi = txtDiaChi.Text.Trim();
                             _chungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
                             if (_chungtu.MaLCT != int.Parse(cmbLoaiCT.SelectedValue.ToString()))
@@ -1246,6 +1282,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 this.Close();
                             }
                         }
+                    }
                 }
                 catch (Exception ex)
                 {
