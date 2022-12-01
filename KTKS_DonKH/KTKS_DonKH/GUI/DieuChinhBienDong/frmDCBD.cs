@@ -1328,6 +1328,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     if (bool.Parse(dgvDSSoDangKy["Cat", e.RowIndex].Value.ToString()) != ctchungtu.Cat)
                     {
                         ctchungtu.Cat = bool.Parse(dgvDSSoDangKy["Cat", e.RowIndex].Value.ToString());
+                        if (ctchungtu.Cat)
+                            ctchungtu.Cat_Ngay = DateTime.Now;
+                        else
+                            ctchungtu.Cat_Ngay = null;
                         _cChungTu.SuaCT(ctchungtu);
                     }
                     if (bool.Parse(dgvDSSoDangKy["GiaHan_SCT", e.RowIndex].Value.ToString()) != ctchungtu.GiaHan)

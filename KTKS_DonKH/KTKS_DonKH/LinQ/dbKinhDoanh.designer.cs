@@ -13052,6 +13052,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _Cat;
 		
+		private System.Nullable<System.DateTime> _Cat_Ngay;
+		
 		private bool _GiaHan;
 		
 		private System.Nullable<int> _SoLuongDC_YCC;
@@ -13188,6 +13190,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnPhongChanged();
     partial void OnCatChanging(bool value);
     partial void OnCatChanged();
+    partial void OnCat_NgayChanging(System.Nullable<System.DateTime> value);
+    partial void OnCat_NgayChanged();
     partial void OnGiaHanChanging(bool value);
     partial void OnGiaHanChanged();
     partial void OnSoLuongDC_YCCChanging(System.Nullable<int> value);
@@ -13618,6 +13622,26 @@ namespace KTKS_DonKH.LinQ
 					this._Cat = value;
 					this.SendPropertyChanged("Cat");
 					this.OnCatChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Cat_Ngay", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Cat_Ngay
+		{
+			get
+			{
+				return this._Cat_Ngay;
+			}
+			set
+			{
+				if ((this._Cat_Ngay != value))
+				{
+					this.OnCat_NgayChanging(value);
+					this.SendPropertyChanging();
+					this._Cat_Ngay = value;
+					this.SendPropertyChanged("Cat_Ngay");
+					this.OnCat_NgayChanged();
 				}
 			}
 		}

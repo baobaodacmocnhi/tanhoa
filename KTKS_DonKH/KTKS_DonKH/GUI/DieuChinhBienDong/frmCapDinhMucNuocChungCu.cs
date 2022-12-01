@@ -221,6 +221,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             if (ctchungtu != null)
                             {
                                 ctchungtu.Cat = bool.Parse(dgvDanhSach["Cat", e.RowIndex].Value.ToString());
+                                if (ctchungtu.Cat)
+                                    ctchungtu.Cat_Ngay = DateTime.Now;
+                                else
+                                    ctchungtu.Cat_Ngay = null;
                                 if (_cChungTu.SuaCT(ctchungtu))
                                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
