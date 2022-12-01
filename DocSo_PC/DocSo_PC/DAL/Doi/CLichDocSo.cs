@@ -10,7 +10,7 @@ using DocSo_PC.DAL.QuanTri;
 
 namespace DocSo_PC.DAL
 {
-    class CLichDocSo:CDAL
+    class CLichDocSo : CDAL
     {
         //public static dbTrungTamKhachHangDataContext _db = new dbTrungTamKhachHangDataContext();
         //public static CConnection _cDAL = new CConnection(_db.Connection.ConnectionString);
@@ -133,7 +133,7 @@ namespace DocSo_PC.DAL
             if (dt != null && dt.Rows.Count > 0)
             {
                 if (dt.Rows[0]["Ky"].ToString() == "12")
-                    return "01/" + int.Parse(dt.Rows[0]["Nam"].ToString());
+                    return "01/" + (int.Parse(dt.Rows[0]["Nam"].ToString()) + 1);
                 else
                     return (int.Parse(dt.Rows[0]["Ky"].ToString()) + 1).ToString("00") + "/" + dt.Rows[0]["Nam"].ToString();
             }
