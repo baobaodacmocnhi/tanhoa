@@ -269,45 +269,55 @@ namespace ThuTien.GUI.ChuyenKhoan
             cl1.Value2 = "Danh Bộ";
             cl1.ColumnWidth = 10;
 
-            Microsoft.Office.Interop.Excel.Range cl2 = oSheet.get_Range("B1", "B1");
+            Microsoft.Office.Interop.Excel.Range cl7 = oSheet.get_Range("B1", "B1");
+            cl7.Value2 = "Khách Hàng";
+            cl7.ColumnWidth = 15;
+
+            Microsoft.Office.Interop.Excel.Range cl8 = oSheet.get_Range("C1", "C1");
+            cl8.Value2 = "Địa Chỉ";
+            cl8.ColumnWidth = 15;
+
+            Microsoft.Office.Interop.Excel.Range cl2 = oSheet.get_Range("D1", "D1");
             cl2.Value2 = "Số Tiền Vào TK";
             cl2.ColumnWidth = 10;
 
-            Microsoft.Office.Interop.Excel.Range cl3 = oSheet.get_Range("C1", "C1");
+            Microsoft.Office.Interop.Excel.Range cl3 = oSheet.get_Range("E1", "E1");
             cl3.Value2 = "Tiền Nước";
             cl3.ColumnWidth = 10;
 
-            Microsoft.Office.Interop.Excel.Range cl4 = oSheet.get_Range("D1", "D1");
+            Microsoft.Office.Interop.Excel.Range cl4 = oSheet.get_Range("F1", "F1");
             cl4.Value2 = "CP ĐMN";
             cl4.ColumnWidth = 10;
 
-            Microsoft.Office.Interop.Excel.Range cl5 = oSheet.get_Range("E1", "E1");
+            Microsoft.Office.Interop.Excel.Range cl5 = oSheet.get_Range("G1", "G1");
             cl5.Value2 = "Ngày Chuyển";
             cl5.ColumnWidth = 10;
 
-            Microsoft.Office.Interop.Excel.Range cl6 = oSheet.get_Range("F1", "F1");
+            Microsoft.Office.Interop.Excel.Range cl6 = oSheet.get_Range("H1", "H1");
             cl6.Value2 = "Số Phiếu";
             cl6.ColumnWidth = 10;
 
             // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
             // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
-            int countColumn = 6;
+            int countColumn = 8;
             object[,] arr = new object[dgvPhiMoNuoc.Rows.Count, countColumn];
 
             //Chuyển dữ liệu từ DataTable vào mảng đối tượng
             for (int i = 0; i < dgvPhiMoNuoc.Rows.Count; i++)
             {
                 arr[i, 0] = dgvPhiMoNuoc["DanhBo_PMN", i].Value.ToString();
+                arr[i, 1] = dgvPhiMoNuoc["HoTen_PMN", i].Value.ToString();
+                arr[i, 2] = dgvPhiMoNuoc["DiaChi_PMN", i].Value.ToString();
                 if (dgvPhiMoNuoc["NgayBK_PMN", i].Value != null && dgvPhiMoNuoc["NgayBK_PMN", i].Value.ToString() != "")
                 {
                     TT_BangKe bk = _cBangKe.get(dgvPhiMoNuoc["DanhBo_PMN", i].Value.ToString(), DateTime.Parse(dgvPhiMoNuoc["NgayBK_PMN", i].Value.ToString()));
                     if (bk != null && bk.SoPhieuThu != null && bk.SoPhieuThu != "")
-                        arr[i, 1] = _cBangKe.getTongSoTien(bk.SoPhieuThu);
-                    arr[i, 4] = dgvPhiMoNuoc["NgayBK_PMN", i].Value.ToString();
+                        arr[i, 3] = _cBangKe.getTongSoTien(bk.SoPhieuThu);
+                    arr[i, 6] = dgvPhiMoNuoc["NgayBK_PMN", i].Value.ToString();
                 }
-                arr[i, 2] = dgvPhiMoNuoc["TongCong_PMN", i].Value.ToString();
-                arr[i, 3] = dgvPhiMoNuoc["PhiMoNuoc", i].Value.ToString();
-                arr[i, 5] = dgvPhiMoNuoc["MaPMN", i].Value.ToString();
+                arr[i, 4] = dgvPhiMoNuoc["TongCong_PMN", i].Value.ToString();
+                arr[i, 5] = dgvPhiMoNuoc["PhiMoNuoc", i].Value.ToString();
+                arr[i, 7] = dgvPhiMoNuoc["MaPMN", i].Value.ToString();
             }
 
             //Thiết lập vùng điền dữ liệu
