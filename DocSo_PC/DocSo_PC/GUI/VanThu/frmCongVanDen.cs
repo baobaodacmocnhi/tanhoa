@@ -10,6 +10,7 @@ using DocSo_PC.DAL.VanThu;
 using DocSo_PC.DAL;
 using DocSo_PC.LinQ;
 using DocSo_PC.DAL.QuanTri;
+using System.Transactions;
 
 namespace DocSo_PC.GUI.VanThu
 {
