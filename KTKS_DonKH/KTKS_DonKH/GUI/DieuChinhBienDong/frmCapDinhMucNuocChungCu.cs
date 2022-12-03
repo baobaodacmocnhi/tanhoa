@@ -11,6 +11,9 @@ using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.DieuChinhBienDong;
 using KTKS_DonKH.DAL.QuanTri;
 using System.Transactions;
+using KTKS_DonKH.BaoCao;
+using KTKS_DonKH.BaoCao.DieuChinhBienDong;
+using KTKS_DonKH.GUI.BaoCao;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
@@ -87,6 +90,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     if (_hoadon != null)
                     {
                         txtDanhBo.Text = _hoadon.DANHBA;
+                        txtMLT.Text = _hoadon.MALOTRINH;
                         txtHoTenCC.Text = _hoadon.TENKH;
                         txtDiaChiCC.Text = _hoadon.SO + " " + _hoadon.DUONG;
                         txtGiaBieu.Text = _hoadon.GB.ToString();
@@ -324,13 +328,149 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (e.Control)
                 switch (e.KeyCode)
                 {
-                    case Keys.Add://lưu
+                    case Keys.D1://lưu
                         btnThem.PerformClick();
+                        break;
+                    case Keys.D4:
+                        frmTimKiemChungTu frm = new frmTimKiemChungTu();
+                        frm.ShowDialog();
                         break;
                     default:
                         break;
                 }
         }
+
+        private void dgvDanhSach_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.Button == MouseButtons.Right)
+            {
+                if (e.RowIndex >= 0)
+                {
+                    sửaToolStripMenuItem.Enabled = true;
+                    //xóaToolStripMenuItem.Enabled = true;
+                }
+                else
+                {
+                    sửaToolStripMenuItem.Enabled = false;
+                    //xóaToolStripMenuItem.Enabled = false;
+                }
+                ///Khi chuột phải Selected-Row sẽ được chuyển đến nơi click chuột
+                dgvDanhSach.CurrentCell = dgvDanhSach.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            }
+        }
+
+        private void dgvDanhSach_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right )
+            {
+                contextMenuStrip1.Show(dgvDanhSach, new Point(e.X, e.Y));
+            }
+        }
+
+        private void sửaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+            {
+                CDataTransfer dataT = new CDataTransfer();
+                dataT.Loai = "";
+                if (_hoadon != null)
+                {
+                    dataT.Quan = _hoadon.Quan;
+                    dataT.Phuong = _hoadon.Phuong;
+                }
+                dataT.DanhBo = txtDanhBo.Text.Trim();
+                dataT.MaCT = dgvDanhSach.CurrentRow.Cells["CCCD"].Value.ToString();
+                dataT.MaLCT = 15;
+
+                frmSoDK frm = new frmSoDK(dataT);
+                frm.Show();
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void txtLo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtPhong.Focus();
+        }
+
+        private void txtPhong_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtCCCD.Focus();
+        }
+
+        private void txtCCCD_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtHoTen.Focus();
+        }
+
+        private void txtHoTen_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtNgaySinh.Focus();
+        }
+
+        private void txtNgaySinh_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtDiaChi.Focus();
+        }
+
+        private void txtDiaChi_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtNgayHetHan.Focus();
+        }
+
+        private void txtNgayHetHan_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                btnThem.Focus();
+        }
+
+        private void btnIn_Click(object sender, EventArgs e)
+        {
+            if (_hoadon != null)
+            {
+                DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+                for (int i = 0; i < dgvDanhSach.Rows.Count; i++)
+                {
+                    DataRow dr = dsBaoCao.Tables["DSChungTu"].NewRow();
+
+                    dr["STT"] = dgvDanhSach["STT", i].Value.ToString();
+                    dr["DanhBo"] = txtDanhBo.Text.Trim().Insert(7, " ").Insert(4, " ");
+                    dr["HoTen"] = txtHoTen.Text.Trim();
+                    dr["DiaChi"] = txtDiaChi.Text.Trim();
+                    dr["HopDong"] = _hoadon.HOPDONG;
+                    dr["Dot"] = _hoadon.DOT.ToString();
+                    dr["GiaBieu"] = _hoadon.GB;
+                    dr["DinhMuc"] = _hoadon.DM;
+                    dr["LoTrinh"] = _hoadon.DOT + _hoadon.MAY + _hoadon.STT;
+                    //dr["TenLCT"] = dgvKhachHangChungCu["TenLCT", i].Value.ToString();
+                    dr["HoTenCT"] = dgvDanhSach["HoTen", i].Value.ToString();
+                    dr["MaCT"] = dgvDanhSach["MaCT", i].Value.ToString();
+                    dr["SoNKTong"] =1;
+                    dr["SoNKDangKy"] =1;
+                    //if (chkAnGhiChu.Checked == false)
+                    //    dr["GhiChu"] = dgvDanhSach["GhiChu", i].Value.ToString();
+                    dr["Lo"] = dgvDanhSach["Lo", i].Value.ToString();
+                    dr["Phong"] = dgvDanhSach["Phong", i].Value.ToString();
+
+                    dsBaoCao.Tables["DSChungTu"].Rows.Add(dr);
+                }
+                rptDSChungTuChungCu rpt = new rptDSChungTuChungCu();
+                rpt.SetDataSource(dsBaoCao);
+                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                frm.ShowDialog();
+            }
+        }
+
+
+
+       
 
 
 

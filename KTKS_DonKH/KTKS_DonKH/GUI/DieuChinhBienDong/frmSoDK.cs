@@ -101,7 +101,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             cmbLoaiCT.SelectedValue = ctchungtu.ChungTu.MaLCT;
                             txtMaCT.Text = ctchungtu.MaCT;
                             txtHoTen.Text = ctchungtu.ChungTu.HoTen;
-                            if (ctchungtu.ChungTu.NgaySinh.Value != null)
+                            if (ctchungtu.ChungTu.NgaySinh != null)
                                 txtNgaySinh.Text = ctchungtu.ChungTu.NgaySinh.Value.ToString("dd/MM/yyyy");
                             txtDiaChi.Text = ctchungtu.ChungTu.DiaChi;
                             txtSoNKTong.Text = ctchungtu.ChungTu.SoNKTong.ToString();

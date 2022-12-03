@@ -107,7 +107,7 @@ namespace KTKS_DonKH.GUI.TimKiem
                                 }
                         break;
                     case "Danh Bộ":
-                        dt = _cTimKiem.getTienTrinhByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace(" ", "")).Tables["DonTu"];
+                        dt = _cTimKiem.getTienTrinhByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace(" ", "").Replace("-", "")).Tables["DonTu"];
                         break;
                     case "Họ Tên":
                         dt = _cTimKiem.getTienTrinhByHoTen(txtNoiDungTimKiem.Text.Trim()).Tables["DonTu"];
@@ -120,6 +120,9 @@ namespace KTKS_DonKH.GUI.TimKiem
                         break;
                     case "Số Chứng Từ":
                         dt = _cTimKiem.getTienTrinhBySoChungTu(txtNoiDungTimKiem.Text.Trim()).Tables["DonTu"];
+                        break;
+                    case "Hồ Sơ ĐHN Thông Minh":
+                        MessageBox.Show(_cTimKiem.getHoSosDHN(txtNoiDungTimKiem.Text.Trim().Replace(" ", "").Replace("-", "")), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         break;
                 }
                 //TimeSpan diff = DateTime.Now - date;

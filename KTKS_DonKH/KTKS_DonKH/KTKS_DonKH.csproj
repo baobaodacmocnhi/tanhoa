@@ -201,6 +201,12 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="BaoCao\DieuChinhBienDong\rptDSChungTuChungCu.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptDSChungTuChungCu.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="BaoCao\DieuChinhBienDong\rptDSPhieuDCBD_15112019.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1816,6 +1822,10 @@
     <EmbeddedResource Include="BaoCao\DieuChinhBienDong\rptDKDM_CCCD.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptDKDM_CCCD.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\DieuChinhBienDong\rptDSChungTuChungCu.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptDSChungTuChungCu.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\DieuChinhBienDong\rptDSPhieuDCBD_15112019.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

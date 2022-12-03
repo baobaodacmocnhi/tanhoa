@@ -21,7 +21,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                where itemDon.MaDon == MaDon
                                select new
                                {
-                                   Phong="TV",
+                                   Phong = "TV",
                                    MaDon = itemDon.DonTu.DonTu_ChiTiets.Count == 1 ? itemDon.MaDon.Value.ToString() : itemDon.MaDon.Value.ToString() + "." + itemDon.STT.Value.ToString(),
                                    TenLD = itemDon.DonTu.SoCongVan_PhongBanDoi + ": " + itemDon.DonTu.SoCongVan,
                                    itemDon.CreateDate,
@@ -8699,5 +8699,15 @@ namespace KTKS_DonKH.DAL.TimKiem
 
             return ds;
         }
+
+        public string getHoSosDHN(string DanhBo)
+        {
+            DataTable dt = ExecuteQuery_DataTable("SELECT * FROM [sDHN].[dbo].[DHTM_NGHIEMTHU] where DanhBo='" + DanhBo + "'");
+            if (dt != null && dt.Rows.Count > 0)
+                return "Hồ sơ: Đợt nghiệm thu: " + dt.Rows[0]["DOTNT"] + " - STT: " + dt.Rows[0]["STT"];
+            else
+                return "Hồ sơ: không tìm thấy";
+        }
+
     }
 }

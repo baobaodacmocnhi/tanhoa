@@ -220,6 +220,8 @@
             this.btnIn = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btnInPhieuTieuThu = new System.Windows.Forms.Button();
             this.txtSoThanDHN = new System.Windows.Forms.TextBox();
@@ -258,8 +260,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewKTXM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -2134,7 +2134,8 @@
             "Họ Tên",
             "Địa Chỉ",
             "Niêm Chì",
-            "Số Chứng Từ"});
+            "Số Chứng Từ",
+            "Hồ Sơ ĐHN Thông Minh"});
             this.cmbTimTheo.Location = new System.Drawing.Point(196, 6);
             this.cmbTimTheo.Name = "cmbTimTheo";
             this.cmbTimTheo.Size = new System.Drawing.Size(100, 24);
@@ -2207,6 +2208,26 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Tiến Trình Đơn";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(786, 8);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(118, 16);
+            this.label8.TabIndex = 10;
+            this.label8.Text = "Ctrl+H: xem hình";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(643, 8);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(137, 16);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "Ctrl+F : xem chi tiết";
             // 
             // tabPage2
             // 
@@ -2572,26 +2593,6 @@
             this.label5.Size = new System.Drawing.Size(63, 16);
             this.label5.TabIndex = 12;
             this.label5.Text = "Danh Bộ:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(643, 8);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(137, 16);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "Ctrl+F : xem chi tiết";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(786, 8);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(118, 16);
-            this.label8.TabIndex = 10;
-            this.label8.Text = "Ctrl+H: xem hình";
             // 
             // frmTienTrinhDon
             // 
