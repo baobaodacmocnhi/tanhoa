@@ -47,11 +47,11 @@ namespace DocSo_PC.DAL
         {
             return _cDAL.ExecuteQuery_DataTable("select t1.*,'To'=(select TenTo from DocSoTH.dbo.[To] where TuMay<=SUBSTRING(t1.MLT,3,2) and DenMay>=SUBSTRING(t1.MLT,3,2)) from"
                 + " (select LoaiVB=N'Kiểm Tra Xác Minh',NoiChuyen=N'P. Thương Vụ',DanhBo,HoTen,DiaChi"
-                +" ,MLT=(select top 1 * from (select LOTRINH from CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG where DanhBo=ctktxm.DanhBo and LOTRINH is not null union select LOTRINH from CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG_HUYDB where DanhBo=ctktxm.DanhBo and LOTRINH is not null)t2)"
+                + " ,MLT=(select top 1 * from (select LOTRINH from CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG where DanhBo=ctktxm.DanhBo and LOTRINH is not null union select LOTRINH from CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG_HUYDB where DanhBo=ctktxm.DanhBo and LOTRINH is not null)t2)"
             + " ,NoiDung=case when ((select COUNT(*) from DonTu_ChiTiet where MaDon=ktxm.MaDonMoi)=1) then CONVERT(varchar(10),ktxm.MaDonMoi) else CONVERT(varchar(10),ktxm.MaDonMoi)+'.'+CONVERT(varchar(10),ctktxm.STT) end+' - BBKT - '+convert(varchar(10),ctktxm.NgayKTXM,103)+' - CS: '+ctktxm.ChiSo+' '+isnull(ctktxm.TinhTrangChiSo,'')+'. V/v '+ctktxm.NoiDungKiemTra+' - '+(select HoTen from Users where MaU=ctktxm.CreateBy)"
             + " ,MaDon=case when ((select COUNT(*) from DonTu_ChiTiet where MaDon=ktxm.MaDonMoi)=1) then CONVERT(varchar(10),ktxm.MaDonMoi) else CONVERT(varchar(10),ktxm.MaDonMoi)+'.'+CONVERT(varchar(10),ctktxm.STT) end"
             + " ,TableName='KTXM_ChiTiet',IDCT=CAST(ctktxm.MaCTKTXM as int),ToMaHoa='false'"
-            + " from KTXM ktxm,KTXM_ChiTiet ctktxm where ktxm.MaKTXM=ctktxm.MaKTXM and ktxm.MaDonMoi=" + MaDon + " and ctktxm.STT=" + STT+")t1");
+            + " from KTXM ktxm,KTXM_ChiTiet ctktxm where ktxm.MaKTXM=ctktxm.MaKTXM and ktxm.MaDonMoi=" + MaDon + " and ctktxm.STT=" + STT + ")t1");
         }
 
         public DataTable getDS_KTXM(string DanhBo)
@@ -70,17 +70,24 @@ namespace DocSo_PC.DAL
             return _cDAL.ExecuteQuery_DataTable("select t1.*,'To'=(select TenTo from DocSoTH.dbo.[To] where TuMay<=SUBSTRING(t1.MLT,3,2) and DenMay>=SUBSTRING(t1.MLT,3,2)) from"
             + " (select LoaiVB=N'TB Cắt Tạm',NoiChuyen=N'P. Thương Vụ',DanhBo,HoTen,DiaChi"
                 + " ,MLT=(select top 1 * from (select LOTRINH from CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG where DanhBo=ct.DanhBo and LOTRINH is not null union select LOTRINH from CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG_HUYDB where DanhBo=ct.DanhBo and LOTRINH is not null)t2)"
-             + " ,NoiDung=case when ((select COUNT(*) from DonTu_ChiTiet where MaDon=chdb.MaDonMoi)=1) then CONVERT(varchar(10),chdb.MaDonMoi) else CONVERT(varchar(10),chdb.MaDonMoi)+'.'+CONVERT(varchar(10),ct.STT) end+N' - TB Cắt Tạm - '+convert(varchar(10),ct.CreateDate,103)+N'. Lý do: '+ct.LyDo+' '+isnull(CONVERT(varchar(20),ct.SoTien),'')+' - '+CONVERT(varchar(10),ct.NgayThucHien,103)+' - '+(select HoTen from Users where MaU=ct.CreateBy)"
+             + " ,NoiDung=case when ((select COUNT(*) from DonTu_ChiTiet where MaDon=chdb.MaDonMoi)=1) then CONVERT(varchar(10),chdb.MaDonMoi) else CONVERT(varchar(10),chdb.MaDonMoi)+'.'+CONVERT(varchar(10),ct.STT) end+N' - TB Cắt Tạm - '+convert(varchar(10),ct.CreateDate,103)+N'. Lý do: '+ct.LyDo+' '+isnull(CONVERT(varchar(20),ct.SoTien),'')+' '+isnull(GhiChuLyDo,'')+' - '+COALESCE(convert(varchar(10),ct.NgayThucHien,103),'')+' - '+(select HoTen from Users where MaU=ct.CreateBy)"
              + " ,MaDon=case when ((select COUNT(*) from DonTu_ChiTiet where MaDon=chdb.MaDonMoi)=1) then CONVERT(varchar(10),chdb.MaDonMoi) else CONVERT(varchar(10),chdb.MaDonMoi)+'.'+CONVERT(varchar(10),ct.STT) end"
              + " ,TableName='CHDB_ChiTietCatTam',IDCT=CAST(ct.MaCTCTDB as int),ToMaHoa='false'"
              + " from CHDB chdb,CHDB_ChiTietCatTam ct where chdb.MaCHDB=ct.MaCHDB and chdb.MaDonMoi=" + MaDon + " and ct.STT=" + STT
              + " union"
              + " select LoaiVB=N'TB Cắt Hủy',NoiChuyen=N'P. Thương Vụ',DanhBo,HoTen,DiaChi"
                 + " ,MLT=(select top 1 * from (select LOTRINH from CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG where DanhBo=ct.DanhBo and LOTRINH is not null union select LOTRINH from CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG_HUYDB where DanhBo=ct.DanhBo and LOTRINH is not null)t2)"
-             + " ,NoiDung=case when ((select COUNT(*) from DonTu_ChiTiet where MaDon=chdb.MaDonMoi)=1) then CONVERT(varchar(10),chdb.MaDonMoi) else CONVERT(varchar(10),chdb.MaDonMoi)+'.'+CONVERT(varchar(10),ct.STT) end+N' - TB Cắt Hủy - '+convert(varchar(10),ct.CreateDate,103)+N'. Lý do: '+ct.LyDo+' '+isnull(CONVERT(varchar(20),ct.SoTien),'')+' - '+CONVERT(varchar(10),ct.NgayThucHien,103)+' - '+(select HoTen from Users where MaU=ct.CreateBy)"
+             + " ,NoiDung=case when ((select COUNT(*) from DonTu_ChiTiet where MaDon=chdb.MaDonMoi)=1) then CONVERT(varchar(10),chdb.MaDonMoi) else CONVERT(varchar(10),chdb.MaDonMoi)+'.'+CONVERT(varchar(10),ct.STT) end+N' - TB Cắt Hủy - '+convert(varchar(10),ct.CreateDate,103)+N'. Lý do: '+ct.LyDo+' '+isnull(CONVERT(varchar(20),ct.SoTien),'')+' '+isnull(GhiChuLyDo,'')+' - '+COALESCE(convert(varchar(10),ct.NgayThucHien,103),'')+' - '+(select HoTen from Users where MaU=ct.CreateBy)"
              + " ,MaDon=case when ((select COUNT(*) from DonTu_ChiTiet where MaDon=chdb.MaDonMoi)=1) then CONVERT(varchar(10),chdb.MaDonMoi) else CONVERT(varchar(10),chdb.MaDonMoi)+'.'+CONVERT(varchar(10),ct.STT) end"
              + " ,TableName='CHDB_ChiTietCatHuy',IDCT=CAST(ct.MaCTCHDB as int),ToMaHoa='false'"
-             + " from CHDB chdb,CHDB_ChiTietCatHuy ct where chdb.MaCHDB=ct.MaCHDB and chdb.MaDonMoi=" + MaDon + " and ct.STT=" + STT + ")t1");
+             + " from CHDB chdb,CHDB_ChiTietCatHuy ct where chdb.MaCHDB=ct.MaCHDB and chdb.MaDonMoi=" + MaDon + " and ct.STT=" + STT
+             + " union"
+             + " select LoaiVB=N'Phiếu Hủy',NoiChuyen=N'P. Thương Vụ',DanhBo,HoTen,DiaChi"
+             + "    ,MLT=(select top 1 * from (select LOTRINH from CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG where DanhBo=ct.DanhBo and LOTRINH is not null union select LOTRINH from CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG_HUYDB where DanhBo=ct.DanhBo and LOTRINH is not null)t2)"
+             + " ,NoiDung=case when ((select COUNT(*) from DonTu_ChiTiet where MaDon=chdb.MaDonMoi)=1) then CONVERT(varchar(10),chdb.MaDonMoi) else CONVERT(varchar(10),chdb.MaDonMoi)+'.'+CONVERT(varchar(10),ct.STT) end+N' - Phiếu Hủy - '+convert(varchar(10),ct.CreateDate,103)+N'. Lý do: '+ct.LyDo+' '+isnull(CONVERT(varchar(20),ct.SoTien),'')+' '+isnull(GhiChuLyDo,'')+' - '+(select HoTen from Users where MaU=ct.CreateBy)"
+             + " ,MaDon=case when ((select COUNT(*) from DonTu_ChiTiet where MaDon=chdb.MaDonMoi)=1) then CONVERT(varchar(10),chdb.MaDonMoi) else CONVERT(varchar(10),chdb.MaDonMoi)+'.'+CONVERT(varchar(10),ct.STT) end"
+             + " ,TableName='CHDB_Phieu',IDCT=CAST(ct.MaYCCHDB as int),ToMaHoa='false'"
+             + " from CHDB chdb,CHDB_Phieu ct where chdb.MaCHDB=ct.MaCHDB and chdb.MaDonMoi=" + MaDon + " and ct.STT=" + STT + ")t1");
         }
 
         public DataTable getDS_CHDB(string DanhBo)
@@ -88,17 +95,24 @@ namespace DocSo_PC.DAL
             return _cDAL.ExecuteQuery_DataTable("select t1.*,'To'=(select TenTo from DocSoTH.dbo.[To] where TuMay<=SUBSTRING(t1.MLT,3,2) and DenMay>=SUBSTRING(t1.MLT,3,2)) from"
             + " (select LoaiVB=N'TB Cắt Tạm',NoiChuyen=N'P. Thương Vụ',DanhBo,HoTen,DiaChi"
                 + " ,MLT=(select top 1 * from (select LOTRINH from CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG where DanhBo=ct.DanhBo and LOTRINH is not null union select LOTRINH from CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG_HUYDB where DanhBo=ct.DanhBo and LOTRINH is not null)t2)"
-             + " ,NoiDung=case when ((select COUNT(*) from DonTu_ChiTiet where MaDon=chdb.MaDonMoi)=1) then CONVERT(varchar(10),chdb.MaDonMoi) else CONVERT(varchar(10),chdb.MaDonMoi)+'.'+CONVERT(varchar(10),ct.STT) end+N' - TB Cắt Tạm - '+convert(varchar(10),ct.CreateDate,103)+N'. Lý do: '+ct.LyDo+' '+isnull(CONVERT(varchar(20),ct.SoTien),'')+' - '+CONVERT(varchar(10),ct.NgayThucHien,103)+' - '+(select HoTen from Users where MaU=ct.CreateBy)"
+             + " ,NoiDung=case when ((select COUNT(*) from DonTu_ChiTiet where MaDon=chdb.MaDonMoi)=1) then CONVERT(varchar(10),chdb.MaDonMoi) else CONVERT(varchar(10),chdb.MaDonMoi)+'.'+CONVERT(varchar(10),ct.STT) end+N' - TB Cắt Tạm - '+convert(varchar(10),ct.CreateDate,103)+N'. Lý do: '+ct.LyDo+' '+isnull(CONVERT(varchar(20),ct.SoTien),'')+' '+isnull(GhiChuLyDo,'')+' - '+COALESCE(convert(varchar(10),ct.NgayThucHien,103),'')+' - '+(select HoTen from Users where MaU=ct.CreateBy)"
              + " ,MaDon=case when ((select COUNT(*) from DonTu_ChiTiet where MaDon=chdb.MaDonMoi)=1) then CONVERT(varchar(10),chdb.MaDonMoi) else CONVERT(varchar(10),chdb.MaDonMoi)+'.'+CONVERT(varchar(10),ct.STT) end"
              + " ,TableName='CHDB_ChiTietCatTam',IDCT=CAST(ct.MaCTCTDB as int),ToMaHoa='false'"
              + " from CHDB chdb,CHDB_ChiTietCatTam ct where chdb.MaCHDB=ct.MaCHDB and ct.DanhBo='" + DanhBo + "'"
              + " union"
              + " select LoaiVB=N'TB Cắt Hủy',NoiChuyen=N'P. Thương Vụ',DanhBo,HoTen,DiaChi"
                 + " ,MLT=(select top 1 * from (select LOTRINH from CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG where DanhBo=ct.DanhBo and LOTRINH is not null union select LOTRINH from CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG_HUYDB where DanhBo=ct.DanhBo and LOTRINH is not null)t2)"
-             + " ,NoiDung=case when ((select COUNT(*) from DonTu_ChiTiet where MaDon=chdb.MaDonMoi)=1) then CONVERT(varchar(10),chdb.MaDonMoi) else CONVERT(varchar(10),chdb.MaDonMoi)+'.'+CONVERT(varchar(10),ct.STT) end+N' - TB Cắt Hủy - '+convert(varchar(10),ct.CreateDate,103)+N'. Lý do: '+ct.LyDo+' '+isnull(CONVERT(varchar(20),ct.SoTien),'')+' - '+CONVERT(varchar(10),ct.NgayThucHien,103)+' - '+(select HoTen from Users where MaU=ct.CreateBy)"
+             + " ,NoiDung=case when ((select COUNT(*) from DonTu_ChiTiet where MaDon=chdb.MaDonMoi)=1) then CONVERT(varchar(10),chdb.MaDonMoi) else CONVERT(varchar(10),chdb.MaDonMoi)+'.'+CONVERT(varchar(10),ct.STT) end+N' - TB Cắt Hủy - '+convert(varchar(10),ct.CreateDate,103)+N'. Lý do: '+ct.LyDo+' '+isnull(CONVERT(varchar(20),ct.SoTien),'')+' '+isnull(GhiChuLyDo,'')+' - '+COALESCE(convert(varchar(10),ct.NgayThucHien,103),'')+' - '+(select HoTen from Users where MaU=ct.CreateBy)"
              + " ,MaDon=case when ((select COUNT(*) from DonTu_ChiTiet where MaDon=chdb.MaDonMoi)=1) then CONVERT(varchar(10),chdb.MaDonMoi) else CONVERT(varchar(10),chdb.MaDonMoi)+'.'+CONVERT(varchar(10),ct.STT) end"
              + " ,TableName='CHDB_ChiTietCatHuy',IDCT=CAST(ct.MaCTCHDB as int),ToMaHoa='false'"
-             + " from CHDB chdb,CHDB_ChiTietCatHuy ct where chdb.MaCHDB=ct.MaCHDB and ct.DanhBo='" + DanhBo + "')t1");
+             + " from CHDB chdb,CHDB_ChiTietCatHuy ct where chdb.MaCHDB=ct.MaCHDB and ct.DanhBo='" + DanhBo + "'"
+             + " union"
+             + " select LoaiVB=N'Phiếu Hủy',NoiChuyen=N'P. Thương Vụ',DanhBo,HoTen,DiaChi"
+             + "    ,MLT=(select top 1 * from (select LOTRINH from CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG where DanhBo=ct.DanhBo and LOTRINH is not null union select LOTRINH from CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG_HUYDB where DanhBo=ct.DanhBo and LOTRINH is not null)t2)"
+             + " ,NoiDung=case when ((select COUNT(*) from DonTu_ChiTiet where MaDon=chdb.MaDonMoi)=1) then CONVERT(varchar(10),chdb.MaDonMoi) else CONVERT(varchar(10),chdb.MaDonMoi)+'.'+CONVERT(varchar(10),ct.STT) end+N' - Phiếu Hủy - '+convert(varchar(10),ct.CreateDate,103)+N'. Lý do: '+ct.LyDo+' '+isnull(CONVERT(varchar(20),ct.SoTien),'')+' '+isnull(GhiChuLyDo,'')+' - '+(select HoTen from Users where MaU=ct.CreateBy)"
+             + " ,MaDon=case when ((select COUNT(*) from DonTu_ChiTiet where MaDon=chdb.MaDonMoi)=1) then CONVERT(varchar(10),chdb.MaDonMoi) else CONVERT(varchar(10),chdb.MaDonMoi)+'.'+CONVERT(varchar(10),ct.STT) end"
+             + " ,TableName='CHDB_Phieu',IDCT=CAST(ct.MaYCCHDB as int),ToMaHoa='false'"
+             + " from CHDB chdb,CHDB_Phieu ct where chdb.MaCHDB=ct.MaCHDB and ct.DanhBo='13031133093')t1");
         }
 
         public DataTable getDS_ToTrinh(int MaDon, int STT)
