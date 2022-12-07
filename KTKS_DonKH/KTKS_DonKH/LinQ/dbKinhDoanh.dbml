@@ -1643,17 +1643,6 @@
       <Association Name="GianLan_ChiTiet_GianLan_ChiTiet_Hinh" Member="GianLan_ChiTiet" ThisKey="IDGianLan_ChiTiet" OtherKey="MaCTGL" Type="GianLan_ChiTiet" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.GiaNuoc" Member="GiaNuocs">
-    <Type Name="GiaNuoc">
-      <Column Name="MaGN" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="TenGN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="DonGia" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ModifyDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.GiaNuoc_Giam" Member="GiaNuoc_Giams">
     <Type Name="GiaNuoc_Giam">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />

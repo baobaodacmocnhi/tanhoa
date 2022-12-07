@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>57</ApplicationRevision>
+    <ApplicationRevision>58</ApplicationRevision>
     <ApplicationVersion>1.5.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -1357,12 +1357,6 @@
     <Compile Include="GUI\DieuChinhBienDong\frmChiNhanh.Designer.cs">
       <DependentUpon>frmChiNhanh.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\DieuChinhBienDong\frmGiaNuoc.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\DieuChinhBienDong\frmGiaNuoc.Designer.cs">
-      <DependentUpon>frmGiaNuoc.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\DieuChinhBienDong\frmLoaiChungTu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2487,9 +2481,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DieuChinhBienDong\frmChiNhanh.resx">
       <DependentUpon>frmChiNhanh.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\DieuChinhBienDong\frmGiaNuoc.resx">
-      <DependentUpon>frmGiaNuoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DieuChinhBienDong\frmLoaiChungTu.resx">
       <DependentUpon>frmLoaiChungTu.cs</DependentUpon>

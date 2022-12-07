@@ -668,13 +668,13 @@ namespace KTKS_DonKH
 
         private void mnuGiaNuoc_Click(object sender, EventArgs e)
         {
-            if (CTaiKhoan.CheckQuyen("mnuGiaNuoc", "Xem"))
-            {
-                frmGiaNuoc frm = new frmGiaNuoc();
-                OpenForm(frm);
-            }
-            else
-                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //if (CTaiKhoan.CheckQuyen("mnuGiaNuoc", "Xem"))
+            //{
+            //    frmGiaNuoc frm = new frmGiaNuoc();
+            //    OpenForm(frm);
+            //}
+            //else
+            //    MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void mnuBaoCaoDCBD_Click(object sender, EventArgs e)
