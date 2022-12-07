@@ -641,6 +641,7 @@ namespace ThuTien.GUI.TongHop
                                             {
                                                 dchd.UpdatedHDDT = true;
                                                 dchd.SoHoaDonMoi = item[1].ToString().Trim() + item[3].ToString().Trim();
+                                                //dchd.SoHoaDonMoi = "1K22TCT" + item[3].ToString().Trim();
                                                 if (_cDCHD.Sua(dchd) == true)
                                                 {
                                                     HOADON hd = _cHoaDon.Get(dchd.FK_HOADON);
