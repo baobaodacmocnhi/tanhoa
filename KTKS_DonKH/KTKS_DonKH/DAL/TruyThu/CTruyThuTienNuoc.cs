@@ -12,8 +12,6 @@ namespace KTKS_DonKH.DAL.TruyThu
 {
     class CTruyThuTienNuoc : CDAL
     {
-        //int SoTien1m3 = 19345;
-        int SoTien1m3 = 19000;
 
         #region TruyThuTienNuoc
 
@@ -125,7 +123,9 @@ namespace KTKS_DonKH.DAL.TruyThu
                 }
                 else
                     cttttn.IDCT = int.Parse("1" + DateTime.Now.ToString("yy"));
-                cttttn.SoTien1m3 = SoTien1m3;//lưu lại số tiền trong quá khứ do có thể thay đổi trong tương lai
+                KTKS_DonKH.DAL.DieuChinhBienDong.CGiaNuoc cGiaNuoc = new KTKS_DonKH.DAL.DieuChinhBienDong.CGiaNuoc();
+                GiaNuoc2 gn = cGiaNuoc.getGiaNuoc(DateTime.Now.Year);
+                cttttn.SoTien1m3 = gn.KDDV.Value + (gn.KDDV.Value * 5 / 100) + (gn.KDDV.Value * gn.PhiBVMT.Value / 100) + ((gn.KDDV.Value * gn.PhiBVMT.Value / 100) * gn.VAT.Value / 100);
                 cttttn.CreateDate = DateTime.Now;
                 cttttn.CreateBy = CTaiKhoan.MaUser;
                 db.TruyThuTienNuoc_ChiTiets.InsertOnSubmit(cttttn);
@@ -745,21 +745,21 @@ namespace KTKS_DonKH.DAL.TruyThu
             }
         }
 
-        public int CountTongm3(int IDCT)
-        {
-            try
-            {
-                if (db.TruyThuTienNuoc_HoaDons.Any(item => item.IDCT == IDCT))
-                    return (db.TruyThuTienNuoc_HoaDons.Where(item => item.IDCT == IDCT).Sum(item => item.TongCongMoi).Value - db.TruyThuTienNuoc_HoaDons.Where(item => item.IDCT == IDCT).Sum(item => item.TongCongCu).Value) / SoTien1m3;
-                else
-                    return 0;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return 0;
-            }
-        }
+        //public int CountTongm3(int IDCT)
+        //{
+        //    try
+        //    {
+        //        if (db.TruyThuTienNuoc_HoaDons.Any(item => item.IDCT == IDCT))
+        //            return (db.TruyThuTienNuoc_HoaDons.Where(item => item.IDCT == IDCT).Sum(item => item.TongCongMoi).Value - db.TruyThuTienNuoc_HoaDons.Where(item => item.IDCT == IDCT).Sum(item => item.TongCongCu).Value) / SoTien1m3;
+        //        else
+        //            return 0;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        return 0;
+        //    }
+        //}
 
         //MaDonMoi
 

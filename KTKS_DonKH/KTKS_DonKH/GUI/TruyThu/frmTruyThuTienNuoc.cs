@@ -48,7 +48,7 @@ namespace KTKS_DonKH.GUI.TruyThu
         TruyThuTienNuoc_ChiTiet _cttttn = null;
         int _IDCT = -1;
         bool _flagLoad = false;
-        long _TongCongCu = 0, _TongCongMoi = 0;
+        long _GiaBanCu = 0, _GiaBanMoi = 0;
 
         public frmTruyThuTienNuoc()
         {
@@ -1085,7 +1085,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                                 cttttn_hoadon.PhiBVMTCu = int.Parse(item.Cells["PhiBVMT_Cu"].Value.ToString());
                                 cttttn_hoadon.PhiBVMT_ThueCu = int.Parse(item.Cells["PhiBVMT_Thue_Cu"].Value.ToString());
                                 cttttn_hoadon.TongCongCu = int.Parse(item.Cells["TongCong_Cu"].Value.ToString());
-                                _TongCongCu += cttttn_hoadon.TongCongCu.Value;
+                                _GiaBanCu += cttttn_hoadon.GiaBanCu.Value;
                                 ///
                                 cttttn_hoadon.GiaBieuMoi = int.Parse(item.Cells["GiaBieu_Moi"].Value.ToString());
                                 if (item.Cells["DinhMucHN_Moi"].Value != null)
@@ -1097,13 +1097,13 @@ namespace KTKS_DonKH.GUI.TruyThu
                                 cttttn_hoadon.PhiBVMTMoi = int.Parse(item.Cells["PhiBVMT_Moi"].Value.ToString());
                                 cttttn_hoadon.PhiBVMT_ThueMoi = int.Parse(item.Cells["PhiBVMT_Thue_Moi"].Value.ToString());
                                 cttttn_hoadon.TongCongMoi = int.Parse(item.Cells["TongCong_Moi"].Value.ToString());
-                                _TongCongMoi += cttttn_hoadon.TongCongMoi.Value;
+                                _GiaBanMoi += cttttn_hoadon.GiaBanMoi.Value;
                                 cttttn_hoadon.TangGiam = item.Cells["TangGiam"].Value.ToString();
                                 cttttn_hoadon.SoTien1m3 = int.Parse(item.Cells["SoTien1m3"].Value.ToString());
                                 if (cttttn_hoadon.SoTien1m3 == 0)
                                     cttttn_hoadon.m3BinhQuan = 0;
                                 else
-                                    cttttn_hoadon.m3BinhQuan = (int)Math.Round((double)(cttttn_hoadon.TongCongMoi.Value - cttttn_hoadon.TongCongCu.Value) / (cttttn_hoadon.SoTien1m3), 0, MidpointRounding.AwayFromZero);
+                                    cttttn_hoadon.m3BinhQuan = (int)Math.Round((double)(cttttn_hoadon.GiaBanMoi.Value - cttttn_hoadon.GiaBanCu.Value) / (cttttn_hoadon.SoTien1m3), 0, MidpointRounding.AwayFromZero);
 
                                 _cTTTN.Them_HoaDon(cttttn_hoadon);
                                 //cttttn_hoadon.CreateBy = CTaiKhoan.MaUser;
@@ -1113,7 +1113,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                     _cTTTN.Refresh();
 
                     cttttn = _cTTTN.get_ChiTiet(cttttn.IDCT);
-                    cttttn.TongTien = _TongCongMoi - _TongCongCu;
+                    cttttn.TongTien = _GiaBanMoi - _GiaBanCu;
                     //cttttn.TongTien = cttttn.TruyThuTienNuoc_HoaDons.Sum(item => item.TongCongMoi.Value) - cttttn.TruyThuTienNuoc_HoaDons.Sum(item => item.TongCongCu.Value);
                     cttttn.Tongm3BinhQuan = (int)Math.Round((double)cttttn.TongTien / (cttttn.SoTien1m3));
                     //cttttn.Tongm3BinhQuan = cttttn.TruyThuTienNuoc_HoaDons.Sum(item => item.m3BinhQuan);
@@ -1202,7 +1202,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                                     if (item.Cells["PhiBVMT_Thue_Cu"].Value != null && item.Cells["PhiBVMT_Thue_Cu"].Value.ToString() != "")
                                         cttttn_hoadon.PhiBVMT_ThueCu = int.Parse(item.Cells["PhiBVMT_Thue_Cu"].Value.ToString());
                                     cttttn_hoadon.TongCongCu = int.Parse(item.Cells["TongCong_Cu"].Value.ToString());
-                                    _TongCongCu += cttttn_hoadon.TongCongCu.Value;
+                                    _GiaBanCu += cttttn_hoadon.GiaBanCu.Value;
                                     ///
                                     cttttn_hoadon.GiaBieuMoi = int.Parse(item.Cells["GiaBieu_Moi"].Value.ToString());
                                     cttttn_hoadon.DinhMucHNMoi = int.Parse(item.Cells["DinhMucHN_Moi"].Value.ToString());
@@ -1214,7 +1214,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                                     if (item.Cells["PhiBVMT_Thue_Moi"].Value != null && item.Cells["PhiBVMT_Thue_Moi"].Value.ToString() != "")
                                         cttttn_hoadon.PhiBVMT_ThueMoi = int.Parse(item.Cells["PhiBVMT_Thue_Moi"].Value.ToString());
                                     cttttn_hoadon.TongCongMoi = int.Parse(item.Cells["TongCong_Moi"].Value.ToString());
-                                    _TongCongMoi += cttttn_hoadon.TongCongMoi.Value;
+                                    _GiaBanMoi += cttttn_hoadon.GiaBanMoi.Value;
                                     cttttn_hoadon.TangGiam = item.Cells["TangGiam"].Value.ToString();
                                     cttttn_hoadon.SoTien1m3 = int.Parse(item.Cells["SoTien1m3"].Value.ToString());
                                     if (cttttn_hoadon.SoTien1m3 == 0)
@@ -1248,7 +1248,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                                     if (item.Cells["PhiBVMT_Thue_Cu"].Value != null && item.Cells["PhiBVMT_Thue_Cu"].Value.ToString() != "")
                                         cttttn_hoadon.PhiBVMT_ThueCu = int.Parse(item.Cells["PhiBVMT_Thue_Cu"].Value.ToString());
                                     cttttn_hoadon.TongCongCu = int.Parse(item.Cells["TongCong_Cu"].Value.ToString());
-                                    _TongCongCu += cttttn_hoadon.TongCongCu.Value;
+                                    _GiaBanCu += cttttn_hoadon.GiaBanCu.Value;
                                     ///
                                     cttttn_hoadon.GiaBieuMoi = int.Parse(item.Cells["GiaBieu_Moi"].Value.ToString());
                                     cttttn_hoadon.DinhMucHNMoi = int.Parse(item.Cells["DinhMucHN_Moi"].Value.ToString());
@@ -1260,7 +1260,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                                     if (item.Cells["PhiBVMT_Thue_Moi"].Value != null && item.Cells["PhiBVMT_Thue_Moi"].Value.ToString() != "")
                                         cttttn_hoadon.PhiBVMT_ThueMoi = int.Parse(item.Cells["PhiBVMT_Thue_Moi"].Value.ToString());
                                     cttttn_hoadon.TongCongMoi = int.Parse(item.Cells["TongCong_Moi"].Value.ToString());
-                                    _TongCongMoi += cttttn_hoadon.TongCongMoi.Value;
+                                    _GiaBanMoi += cttttn_hoadon.GiaBanMoi.Value;
                                     cttttn_hoadon.TangGiam = item.Cells["TangGiam"].Value.ToString();
                                     if (item.Cells["SoTien1m3"].Value == null || item.Cells["SoTien1m3"].Value.ToString() == "" || item.Cells["SoTien1m3"].Value.ToString() == "0")
                                     {
@@ -1308,7 +1308,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         _cTTTN.Refresh();
 
                         _cttttn = _cTTTN.get_ChiTiet(_cttttn.IDCT);
-                        _cttttn.TongTien = _TongCongMoi - _TongCongCu;
+                        _cttttn.TongTien = _GiaBanMoi - _GiaBanCu;
                         //_cttttn.TongTien = _cttttn.TruyThuTienNuoc_HoaDons.Sum(item => item.TongCongMoi.Value) - _cttttn.TruyThuTienNuoc_HoaDons.Sum(item => item.TongCongCu.Value);
                         _cttttn.Tongm3BinhQuan = (int)Math.Round((double)_cttttn.TongTien / (_cttttn.SoTien1m3));
                         //_cttttn.Tongm3BinhQuan = _cttttn.TruyThuTienNuoc_HoaDons.Sum(item => item.m3BinhQuan);
@@ -1621,7 +1621,11 @@ namespace KTKS_DonKH.GUI.TruyThu
 
                         dr["Ky"] = item.Ky;
                         dr["Nam"] = item.Nam;
-
+                        dr["TieuThuCu"] = item.TieuThuCu;
+                        dr["TieuThuMoi"] = item.TieuThuMoi;
+                        dr["DinhMucCu"] = item.TongCongCu;
+                        dr["DinhMucMoi"] = item.TongCongMoi;
+                        dr["m3BinhQuan"] = item.TruyThuTienNuoc_ChiTiet.Tongm3BinhQuan;
                         HOADON hd = _cThuTien.Get(_cttttn.DanhBo, item.Ky.Value, item.Nam.Value);
                         int TyleSH = 0, TyLeSX = 0, TyLeDV = 0, TyLeHCSN = 0;
                         int TienNuocNamCu_Truoc, TienNuocNamMoi_Truoc, TieuThu_DieuChinhGia_Truoc, PhiBVMTNamCu_Truoc, PhiBVMTNamMoi_Truoc, TienNuoc_Truoc, ThueGTGT_Truoc, TDVTN_Truoc, ThueTDVTN_Truoc;
@@ -1648,16 +1652,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                         {
                             dr["GiaBanCu"] = TienNuocNamCu_Sau - TienNuocNamCu_Truoc;
                             dr["GiaBanMoi"] = TienNuocNamMoi_Sau - TienNuocNamMoi_Truoc;
-                            if (chkLamTronLen.Checked)
-                            {
-                                dr["ThueGTGTCu"] = (int)Math.Round((double)(TienNuocNamCu_Sau - TienNuocNamCu_Truoc) * 5 / 100, 0, MidpointRounding.AwayFromZero);
-                                dr["ThueGTGTMoi"] = (int)Math.Round((double)(TienNuocNamMoi_Sau - TienNuocNamMoi_Truoc) * 5 / 100, 0, MidpointRounding.AwayFromZero);
-                            }
-                            else
-                            {
-                                dr["ThueGTGTCu"] = (int)Math.Round((double)(TienNuocNamCu_Sau - TienNuocNamCu_Truoc) * 5 / 100, 1, MidpointRounding.AwayFromZero);
-                                dr["ThueGTGTMoi"] = (int)Math.Round((double)(TienNuocNamMoi_Sau - TienNuocNamMoi_Truoc) * 5 / 100, 1, MidpointRounding.AwayFromZero);
-                            }
+                            dr["ThueGTGTCu"] = (int)Math.Round((double)(TienNuocNamCu_Sau - TienNuocNamCu_Truoc) * 5 / 100, 1, MidpointRounding.ToEven);
+                            dr["ThueGTGTMoi"] = (int)Math.Round((double)(TienNuocNamMoi_Sau - TienNuocNamMoi_Truoc) * 5 / 100, 1, MidpointRounding.ToEven);
                             if (item.Nam.Value < 2022)
                             {
                                 dr["PhiBVMTCu1"] = PhiBVMTNamCu_Sau - PhiBVMTNamCu_Truoc;
@@ -1677,10 +1673,10 @@ namespace KTKS_DonKH.GUI.TruyThu
                                     dr["PhiBVMTMoi1"] = 0;
                                     dr["PhiBVMT_ThueCu"] = 0;
                                     if ((PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) > 0)
-                                        if (chkLamTronLen.Checked)
-                                            dr["PhiBVMT_ThueMoi"] = (int)Math.Round((double)(PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) * ThueTDVTN_VAT / 100, 0, MidpointRounding.AwayFromZero);
-                                        else
-                                            dr["PhiBVMT_ThueMoi"] = (int)Math.Round((double)(PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) * ThueTDVTN_VAT / 100, 1, MidpointRounding.AwayFromZero);
+                                    {
+                                        dr["PhiBVMT_ThueMoi"] = (int)Math.Round((double)(PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) * ThueTDVTN_VAT / 100, 1, MidpointRounding.ToEven);
+                                        //dr["PhiBVMT_ThueMoi"] = (PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) * ThueTDVTN_VAT / 100;
+                                    }
                                     else
                                         dr["PhiBVMT_ThueMoi"] = 0;
                                 }
@@ -1692,17 +1688,11 @@ namespace KTKS_DonKH.GUI.TruyThu
                                     dr["PhiBVMTMoi"] = PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc;
 
                                     if ((PhiBVMTNamCu_Sau - PhiBVMTNamCu_Truoc) > 0)
-                                        if (chkLamTronLen.Checked)
-                                            dr["PhiBVMT_ThueCu"] = (int)Math.Round((double)(PhiBVMTNamCu_Sau - PhiBVMTNamCu_Truoc) * ThueTDVTN_VAT / 100, 0, MidpointRounding.AwayFromZero);
-                                        else
-                                            dr["PhiBVMT_ThueCu"] = (int)Math.Round((double)(PhiBVMTNamCu_Sau - PhiBVMTNamCu_Truoc) * ThueTDVTN_VAT / 100, 1, MidpointRounding.AwayFromZero);
+                                        dr["PhiBVMT_ThueCu"] = (int)Math.Round((double)(PhiBVMTNamCu_Sau - PhiBVMTNamCu_Truoc) * ThueTDVTN_VAT / 100, 1, MidpointRounding.ToEven);
                                     else
                                         dr["PhiBVMT_ThueCu"] = 0;
                                     if ((PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) > 0)
-                                        if (chkLamTronLen.Checked)
-                                            dr["PhiBVMT_ThueMoi"] = (int)Math.Round((double)(PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) * ThueTDVTN_VAT / 100, 0, MidpointRounding.AwayFromZero);
-                                        else
-                                            dr["PhiBVMT_ThueMoi"] = (int)Math.Round((double)(PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) * ThueTDVTN_VAT / 100, 1, MidpointRounding.AwayFromZero);
+                                        dr["PhiBVMT_ThueMoi"] = (int)Math.Round((double)(PhiBVMTNamMoi_Sau - PhiBVMTNamMoi_Truoc) * ThueTDVTN_VAT / 100, 1, MidpointRounding.ToEven);
                                     else
                                         dr["PhiBVMT_ThueMoi"] = 0;
                                 }
