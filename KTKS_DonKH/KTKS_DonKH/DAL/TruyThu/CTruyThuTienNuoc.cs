@@ -124,8 +124,9 @@ namespace KTKS_DonKH.DAL.TruyThu
                 else
                     cttttn.IDCT = int.Parse("1" + DateTime.Now.ToString("yy"));
                 KTKS_DonKH.DAL.DieuChinhBienDong.CGiaNuoc cGiaNuoc = new KTKS_DonKH.DAL.DieuChinhBienDong.CGiaNuoc();
-                GiaNuoc2 gn = cGiaNuoc.getGiaNuoc(DateTime.Now.Year);
-                cttttn.SoTien1m3 = gn.KDDV.Value + (gn.KDDV.Value * 5 / 100) + (gn.KDDV.Value * gn.PhiBVMT.Value / 100) + ((gn.KDDV.Value * gn.PhiBVMT.Value / 100) * gn.VAT.Value / 100);
+                //GiaNuoc2 gn = cGiaNuoc.getGiaNuoc(DateTime.Now.Year);
+                //cttttn.SoTien1m3 = gn.KDDV.Value + (gn.KDDV.Value * 5 / 100) + (gn.KDDV.Value * gn.PhiBVMT.Value / 100) + ((gn.KDDV.Value * gn.PhiBVMT.Value / 100) * gn.VAT.Value / 100);
+                cttttn.SoTien1m3 = cGiaNuoc.getGiaNuoc(DateTime.Now.Year).KDDV.Value;
                 cttttn.CreateDate = DateTime.Now;
                 cttttn.CreateBy = CTaiKhoan.MaUser;
                 db.TruyThuTienNuoc_ChiTiets.InsertOnSubmit(cttttn);

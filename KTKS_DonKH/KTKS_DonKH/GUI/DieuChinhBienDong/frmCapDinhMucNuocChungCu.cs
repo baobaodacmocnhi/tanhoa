@@ -144,8 +144,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
                 {
-                    if (_hoadon != null && txtCCCD.Text.Trim() != "")
+                    if (_hoadon != null && txtCCCD.Text.Trim() != "" )
                     {
+                        if (txtCCCD.Text.Trim().Length != 12)
+                        {
+                            MessageBox.Show("CCCD gồm 12 số", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            return;
+                        }
                         ///Kiểm tra Danh Bộ & Số Chứng Từ
                         if (_cChungTu.CheckExist_CT(txtCCCD.Text.Trim(), 15))
                         {
@@ -361,7 +366,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void dgvDanhSach_MouseClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right )
+            if (e.Button == MouseButtons.Right)
             {
                 contextMenuStrip1.Show(dgvDanhSach, new Point(e.X, e.Y));
             }
@@ -452,8 +457,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     //dr["TenLCT"] = dgvKhachHangChungCu["TenLCT", i].Value.ToString();
                     dr["HoTenCT"] = dgvDanhSach["HoTen", i].Value.ToString();
                     dr["MaCT"] = dgvDanhSach["CCCD", i].Value.ToString();
-                    dr["SoNKTong"] =1;
-                    dr["SoNKDangKy"] =1;
+                    dr["SoNKTong"] = 1;
+                    dr["SoNKDangKy"] = 1;
                     //if (chkAnGhiChu.Checked == false)
                     //    dr["GhiChu"] = dgvDanhSach["GhiChu", i].Value.ToString();
                     dr["Lo"] = dgvDanhSach["Lo", i].Value.ToString();
@@ -470,7 +475,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
 
 
-       
+
 
 
 

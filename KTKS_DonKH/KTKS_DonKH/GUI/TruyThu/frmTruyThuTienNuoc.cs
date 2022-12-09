@@ -1386,6 +1386,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                     dr["GiaBieu"] = _cttttn.GiaBieu;
                     dr["DinhMucHN"] = _cttttn.DinhMucHN;
                     dr["DinhMuc"] = _cttttn.DinhMuc;
+                    dr["m3BinhQuan"] = _cttttn.Tongm3BinhQuan;
 
                     dr["Ky"] = item.Ky;
                     dr["Nam"] = item.Nam;
@@ -1415,8 +1416,8 @@ namespace KTKS_DonKH.GUI.TruyThu
                     dr["TongCongMoi"] = item.TongCongMoi;
                     dr["TangGiam"] = item.TangGiam;
 
-                    dr["SoTien1m3"] = _cttttn.SoTien1m3;
-                    dr["m3BinhQuan"] = item.m3BinhQuan;
+                    //dr["SoTien1m3"] = _cttttn.SoTien1m3;
+                    //dr["m3BinhQuan"] = item.m3BinhQuan;
                     dr["NhanVien"] = CTaiKhoan.HoTen;
                     dr["NguoiKy"] = CTaiKhoan.NguoiKy;
 
@@ -1438,6 +1439,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         dr["GiaBieu"] = txtGiaBieu.Text.Trim();
                         dr["DinhMucHN"] = txtDinhMucHN.Text.Trim();
                         dr["DinhMuc"] = txtDinhMuc.Text.Trim();
+                        //dr["m3BinhQuan"] = txtSoTien1m3.Text.Trim();
 
                         dr["Ky"] = item.Cells["Ky"].Value.ToString();
                         dr["Nam"] = item.Cells["Nam"].Value.ToString();
