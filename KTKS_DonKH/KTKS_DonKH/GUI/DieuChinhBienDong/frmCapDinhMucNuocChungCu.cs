@@ -38,16 +38,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         public void Clear()
         {
-            txtCCCD.Text = "";
             txtHoTen.Text = "";
             txtNgaySinh.Text = "";
-            txtDiaChi.Text = "";
+            txtCCCD.Text = "";
             txtNgayHetHan.Text = "";
             chkCat.Checked = false;
             _ctchungtu = null;
 
             LoadTongNK();
-            txtCCCD.Focus();
+            txtHoTen.Focus();
         }
 
         /// <summary>
@@ -144,7 +143,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
                 {
-                    if (_hoadon != null && txtCCCD.Text.Trim() != "" )
+                    if (_hoadon != null && txtCCCD.Text.Trim() != "")
                     {
                         if (txtCCCD.Text.Trim().Length != 12)
                         {
@@ -165,10 +164,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             }
                         using (var scope = new TransactionScope())
                         {
+                            ChungTu chungtu;
                             ///Kiểm tra Số Chứng Từ
                             if (_cChungTu.CheckExist(txtCCCD.Text.Trim(), 15) == false)
                             {
-                                ChungTu chungtu = new ChungTu();
+                                chungtu = new ChungTu();
                                 chungtu.MaCT = txtCCCD.Text.Trim();
                                 string[] NgaySinhs = null;
                                 if (txtNgaySinh.Text.Trim().Contains("/"))
@@ -187,52 +187,55 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 chungtu.SoNKTong = 1;
                                 chungtu.MaLCT = 15;
                                 _cChungTu.Them(chungtu);
-                                //
-                                ChungTu_ChiTiet ctchungtu = new ChungTu_ChiTiet();
-                                ctchungtu.DanhBo = _hoadon.DANHBA;
-                                ctchungtu.MaLCT = 15;
-                                ctchungtu.MaCT = chungtu.MaCT;
-                                ctchungtu.SoNKDangKy = 1;
-                                if (txtNgayHetHan.Text.Trim() != "")
-                                {
-                                    string[] NgayHetHans = null;
-                                    if (txtNgayHetHan.Text.Trim().Contains("/"))
-                                        NgayHetHans = txtNgayHetHan.Text.Trim().Split('/');
-                                    else
-                                        if (txtNgayHetHan.Text.Trim().Contains("-"))
-                                            NgayHetHans = txtNgayHetHan.Text.Trim().Split('-');
-                                    if (NgayHetHans.Count() == 3)
-                                    {
-                                        ctchungtu.NgayHetHan = new DateTime(int.Parse(NgayHetHans[2]), int.Parse(NgayHetHans[1]), int.Parse(NgayHetHans[0]));
-                                    }
-                                }
-                                ctchungtu.Lo = txtLo.Text.Trim();
-                                ctchungtu.Phong = txtPhong.Text.Trim();
-                                if (_hoadon != null)
-                                {
-                                    ctchungtu.Phuong = _hoadon.Phuong;
-                                    ctchungtu.Quan = _hoadon.Quan;
-                                }
-                                _cChungTu.ThemCT(ctchungtu);
-                                ///Ghi thông tin Lịch Sử chung
-                                ChungTu_LichSu lichsuchungtu = new ChungTu_LichSu();
-                                lichsuchungtu.Phuong = ctchungtu.Phuong;
-                                lichsuchungtu.Quan = ctchungtu.Quan;
-                                lichsuchungtu.DanhBo = ctchungtu.DanhBo;
-                                lichsuchungtu.MaLCT = ctchungtu.MaLCT;
-                                lichsuchungtu.MaCT = ctchungtu.MaCT;
-                                lichsuchungtu.SoNKTong = chungtu.SoNKTong;
-                                lichsuchungtu.SoNKDangKy = ctchungtu.SoNKDangKy;
-                                lichsuchungtu.ThoiHan = ctchungtu.ThoiHan;
-                                lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;
-                                lichsuchungtu.GhiChu = ctchungtu.GhiChu;
-                                lichsuchungtu.Lo = ctchungtu.Lo;
-                                lichsuchungtu.Phong = ctchungtu.Phong;
-                                _cChungTu.ThemLichSuChungTu(lichsuchungtu);
-                                scope.Complete();
-                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                Clear();
                             }
+                            else
+                            {
+                                chungtu = _cChungTu.Get(txtCCCD.Text.Trim(), 15);
+                            }
+                            ChungTu_ChiTiet ctchungtu = new ChungTu_ChiTiet();
+                            ctchungtu.DanhBo = _hoadon.DANHBA;
+                            ctchungtu.MaLCT = 15;
+                            ctchungtu.MaCT = chungtu.MaCT;
+                            ctchungtu.SoNKDangKy = 1;
+                            if (txtNgayHetHan.Text.Trim() != "")
+                            {
+                                string[] NgayHetHans = null;
+                                if (txtNgayHetHan.Text.Trim().Contains("/"))
+                                    NgayHetHans = txtNgayHetHan.Text.Trim().Split('/');
+                                else
+                                    if (txtNgayHetHan.Text.Trim().Contains("-"))
+                                        NgayHetHans = txtNgayHetHan.Text.Trim().Split('-');
+                                if (NgayHetHans.Count() == 3)
+                                {
+                                    ctchungtu.NgayHetHan = new DateTime(int.Parse(NgayHetHans[2]), int.Parse(NgayHetHans[1]), int.Parse(NgayHetHans[0]));
+                                }
+                            }
+                            ctchungtu.Lo = txtLo.Text.Trim();
+                            ctchungtu.Phong = txtPhong.Text.Trim();
+                            if (_hoadon != null)
+                            {
+                                ctchungtu.Phuong = _hoadon.Phuong;
+                                ctchungtu.Quan = _hoadon.Quan;
+                            }
+                            _cChungTu.ThemCT(ctchungtu);
+                            ///Ghi thông tin Lịch Sử chung
+                            ChungTu_LichSu lichsuchungtu = new ChungTu_LichSu();
+                            lichsuchungtu.Phuong = ctchungtu.Phuong;
+                            lichsuchungtu.Quan = ctchungtu.Quan;
+                            lichsuchungtu.DanhBo = ctchungtu.DanhBo;
+                            lichsuchungtu.MaLCT = ctchungtu.MaLCT;
+                            lichsuchungtu.MaCT = ctchungtu.MaCT;
+                            lichsuchungtu.SoNKTong = chungtu.SoNKTong;
+                            lichsuchungtu.SoNKDangKy = ctchungtu.SoNKDangKy;
+                            lichsuchungtu.ThoiHan = ctchungtu.ThoiHan;
+                            lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;
+                            lichsuchungtu.GhiChu = ctchungtu.GhiChu;
+                            lichsuchungtu.Lo = ctchungtu.Lo;
+                            lichsuchungtu.Phong = ctchungtu.Phong;
+                            _cChungTu.ThemLichSuChungTu(lichsuchungtu);
+                            scope.Complete();
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Clear();
                         }
                     }
                 }
@@ -352,12 +355,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 if (e.RowIndex >= 0)
                 {
                     sửaToolStripMenuItem.Enabled = true;
-                    //xóaToolStripMenuItem.Enabled = true;
+                    xóaToolStripMenuItem.Enabled = true;
                 }
                 else
                 {
                     sửaToolStripMenuItem.Enabled = false;
-                    //xóaToolStripMenuItem.Enabled = false;
+                    xóaToolStripMenuItem.Enabled = false;
                 }
                 ///Khi chuột phải Selected-Row sẽ được chuyển đến nơi click chuột
                 dgvDanhSach.CurrentCell = dgvDanhSach.Rows[e.RowIndex].Cells[e.ColumnIndex];
@@ -394,6 +397,23 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void xóaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
+            {
+                if (_ctchungtu != null)
+                {
+                    if (_cChungTu.XoaCT(_ctchungtu))
+                    {
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Clear();
+                    }
+                }
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         private void txtLo_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
@@ -401,12 +421,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         }
 
         private void txtPhong_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == 13)
-                txtCCCD.Focus();
-        }
-
-        private void txtCCCD_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
                 txtHoTen.Focus();
@@ -425,6 +439,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         }
 
         private void txtDiaChi_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtCCCD.Focus();
+        }
+
+        private void txtCCCD_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
                 txtNgayHetHan.Focus();
@@ -472,6 +492,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 frm.ShowDialog();
             }
         }
+
+
 
 
 

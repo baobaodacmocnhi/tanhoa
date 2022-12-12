@@ -62,6 +62,7 @@
             this.lbTongDM = new System.Windows.Forms.Label();
             this.lbTongNK = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.chkCat = new System.Windows.Forms.CheckBox();
             this.btnSua = new System.Windows.Forms.Button();
@@ -83,7 +84,6 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.sửaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label13 = new System.Windows.Forms.Label();
             this.txtMLT = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -393,6 +393,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nhập CCCD";
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.ForeColor = System.Drawing.Color.Red;
+            this.label13.Location = new System.Drawing.Point(294, 22);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(115, 13);
+            this.label13.TabIndex = 44;
+            this.label13.Text = "Ctrl+4: Tìm Kiếm CCCD";
+            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -406,7 +416,7 @@
             // chkCat
             // 
             this.chkCat.AutoSize = true;
-            this.chkCat.Location = new System.Drawing.Point(377, 47);
+            this.chkCat.Location = new System.Drawing.Point(389, 47);
             this.chkCat.Name = "chkCat";
             this.chkCat.Size = new System.Drawing.Size(42, 17);
             this.chkCat.TabIndex = 42;
@@ -435,7 +445,7 @@
             // 
             // txtNgayHetHan
             // 
-            this.txtNgayHetHan.Location = new System.Drawing.Point(508, 71);
+            this.txtNgayHetHan.Location = new System.Drawing.Point(500, 71);
             this.txtNgayHetHan.Name = "txtNgayHetHan";
             this.txtNgayHetHan.Size = new System.Drawing.Size(100, 20);
             this.txtNgayHetHan.TabIndex = 39;
@@ -444,7 +454,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(427, 74);
+            this.label11.Location = new System.Drawing.Point(419, 74);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(75, 13);
             this.label11.TabIndex = 38;
@@ -452,7 +462,7 @@
             // 
             // txtDiaChi
             // 
-            this.txtDiaChi.Location = new System.Drawing.Point(221, 71);
+            this.txtDiaChi.Location = new System.Drawing.Point(65, 71);
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Size = new System.Drawing.Size(200, 20);
             this.txtDiaChi.TabIndex = 37;
@@ -461,7 +471,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(171, 74);
+            this.label10.Location = new System.Drawing.Point(15, 74);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(41, 13);
             this.label10.TabIndex = 36;
@@ -469,7 +479,7 @@
             // 
             // txtNgaySinh
             // 
-            this.txtNgaySinh.Location = new System.Drawing.Point(65, 71);
+            this.txtNgaySinh.Location = new System.Drawing.Point(283, 45);
             this.txtNgaySinh.Name = "txtNgaySinh";
             this.txtNgaySinh.Size = new System.Drawing.Size(100, 20);
             this.txtNgaySinh.TabIndex = 35;
@@ -478,7 +488,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(3, 74);
+            this.label8.Location = new System.Drawing.Point(221, 48);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(56, 13);
             this.label8.TabIndex = 34;
@@ -486,7 +496,7 @@
             // 
             // txtHoTen
             // 
-            this.txtHoTen.Location = new System.Drawing.Point(221, 45);
+            this.txtHoTen.Location = new System.Drawing.Point(65, 45);
             this.txtHoTen.Name = "txtHoTen";
             this.txtHoTen.Size = new System.Drawing.Size(150, 20);
             this.txtHoTen.TabIndex = 33;
@@ -495,7 +505,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(172, 48);
+            this.label7.Location = new System.Drawing.Point(16, 48);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(43, 13);
             this.label7.TabIndex = 32;
@@ -503,7 +513,7 @@
             // 
             // txtCCCD
             // 
-            this.txtCCCD.Location = new System.Drawing.Point(65, 45);
+            this.txtCCCD.Location = new System.Drawing.Point(313, 71);
             this.txtCCCD.Name = "txtCCCD";
             this.txtCCCD.Size = new System.Drawing.Size(100, 20);
             this.txtCCCD.TabIndex = 31;
@@ -513,7 +523,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(23, 48);
+            this.label6.Location = new System.Drawing.Point(271, 74);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(36, 13);
             this.label6.TabIndex = 30;
@@ -560,7 +570,7 @@
             this.sửaToolStripMenuItem,
             this.xóaToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(101, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 70);
             // 
             // sửaToolStripMenuItem
             // 
@@ -574,18 +584,9 @@
             // 
             this.xóaToolStripMenuItem.Enabled = false;
             this.xóaToolStripMenuItem.Name = "xóaToolStripMenuItem";
-            this.xóaToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.xóaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.xóaToolStripMenuItem.Text = "Xóa";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.ForeColor = System.Drawing.Color.Red;
-            this.label13.Location = new System.Drawing.Point(294, 22);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(115, 13);
-            this.label13.TabIndex = 44;
-            this.label13.Text = "Ctrl+4: Tìm Kiếm CCCD";
+            this.xóaToolStripMenuItem.Click += new System.EventHandler(this.xóaToolStripMenuItem_Click);
             // 
             // txtMLT
             // 
