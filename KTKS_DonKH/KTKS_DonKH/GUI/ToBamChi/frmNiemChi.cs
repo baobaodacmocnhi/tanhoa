@@ -123,41 +123,44 @@ namespace KTKS_DonKH.GUI.ToBamChi
 
         private void btnXoa_Nhap_Click(object sender, EventArgs e)
         {
-            if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
+            try
             {
-                try
+                if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
                 {
-                    if (_cNiemChi.checkGiao(DateTime.Parse(dgvNiemChi_Nhap.CurrentRow.Cells["CreateDate_Nhap"].Value.ToString())) == true)
+                    if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        MessageBox.Show("Niêm Chì đã Giao", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
+                        if (_cNiemChi.checkGiao(DateTime.Parse(dgvNiemChi_Nhap.CurrentRow.Cells["CreateDate_Nhap"].Value.ToString())) == true)
+                        {
+                            MessageBox.Show("Niêm Chì đã Giao", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        if (_cNiemChi.checkSuDung(DateTime.Parse(dgvNiemChi_Nhap.CurrentRow.Cells["CreateDate_Nhap"].Value.ToString())) == true)
+                        {
+                            MessageBox.Show("Niêm Chì đã Sử Dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        //List<NiemChi> lst = _cNiemChi.getDS(DateTime.Parse(dgvNiemChi_Nhap.CurrentRow.Cells["CreateDate"].Value.ToString()));
+                        //if (_cNiemChi.Xoa(lst) == true)
+                        //{
+                        //    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //    loadNhap();
+                        //}
+                        _cNiemChi.SqlBeginTransaction();
+                        string sql = "delete NiemChi where cast(CreateDate as date)='" + DateTime.Parse(dgvNiemChi_Nhap.CurrentRow.Cells["CreateDate_Nhap"].Value.ToString()).ToString("yyyyMMdd") + "'";
+                        _cNiemChi.ExecuteNonQuery_Transaction(sql);
+                        _cNiemChi.SqlCommitTransaction();
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        loadNhap();
                     }
-                    if (_cNiemChi.checkSuDung(DateTime.Parse(dgvNiemChi_Nhap.CurrentRow.Cells["CreateDate_Nhap"].Value.ToString())) == true)
-                    {
-                        MessageBox.Show("Niêm Chì đã Sử Dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    //List<NiemChi> lst = _cNiemChi.getDS(DateTime.Parse(dgvNiemChi_Nhap.CurrentRow.Cells["CreateDate"].Value.ToString()));
-                    //if (_cNiemChi.Xoa(lst) == true)
-                    //{
-                    //    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //    loadNhap();
-                    //}
-                    _cNiemChi.SqlBeginTransaction();
-                    string sql = "delete NiemChi where cast(CreateDate as date)='" + DateTime.Parse(dgvNiemChi_Nhap.CurrentRow.Cells["CreateDate_Nhap"].Value.ToString()).ToString("yyyyMMdd") + "'";
-                    _cNiemChi.ExecuteNonQuery_Transaction(sql);
-                    _cNiemChi.SqlCommitTransaction();
-                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    loadNhap();
                 }
-                catch (Exception ex)
-                {
-                    _cNiemChi.SqlRollbackTransaction();
-                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                else
+                    MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                _cNiemChi.SqlRollbackTransaction();
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void txtTuSo_Nhap_KeyPress(object sender, KeyPressEventArgs e)
@@ -249,30 +252,33 @@ namespace KTKS_DonKH.GUI.ToBamChi
 
         private void btnXoa_Giao_Click(object sender, EventArgs e)
         {
-            if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
+            try
             {
-                try
+                if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
                 {
-                    if (_cNiemChi.checkSuDung(dgvNiemChi_Giao.CurrentRow.Cells["KyHieu_Giao"].Value.ToString(), int.Parse(dgvNiemChi_Giao.CurrentRow.Cells["TuSo_Giao"].Value.ToString()), int.Parse(dgvNiemChi_Giao.CurrentRow.Cells["DenSo_Giao"].Value.ToString())) == true)
+                    if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        MessageBox.Show("Niêm Chì đã Sử Dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
+                        if (_cNiemChi.checkSuDung(dgvNiemChi_Giao.CurrentRow.Cells["KyHieu_Giao"].Value.ToString(), int.Parse(dgvNiemChi_Giao.CurrentRow.Cells["TuSo_Giao"].Value.ToString()), int.Parse(dgvNiemChi_Giao.CurrentRow.Cells["DenSo_Giao"].Value.ToString())) == true)
+                        {
+                            MessageBox.Show("Niêm Chì đã Sử Dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        _cNiemChi.SqlBeginTransaction();
+                        string sql = "update NiemChi set MaNV=NULL,DotChia=NULL,ModifyBy=" + CTaiKhoan.MaUser + ",ModifyDate=getDate() where KyHieu='" + txtKyHieu_Giao.Text.Trim().ToUpper() + "' and STT>=" + dgvNiemChi_Giao.CurrentRow.Cells["TuSo_Giao"].Value.ToString() + " and STT<=" + dgvNiemChi_Giao.CurrentRow.Cells["DenSo_Giao"].Value.ToString() + " and SuDung=0";
+                        _cNiemChi.ExecuteNonQuery_Transaction(sql);
+                        _cNiemChi.SqlCommitTransaction();
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        btnXem_Giao.PerformClick();
                     }
-                    _cNiemChi.SqlBeginTransaction();
-                    string sql = "update NiemChi set MaNV=NULL,DotChia=NULL,ModifyBy=" + CTaiKhoan.MaUser + ",ModifyDate=getDate() where KyHieu='" + txtKyHieu_Giao.Text.Trim().ToUpper() + "' and STT>=" + dgvNiemChi_Giao.CurrentRow.Cells["TuSo_Giao"].Value.ToString() + " and STT<=" + dgvNiemChi_Giao.CurrentRow.Cells["DenSo_Giao"].Value.ToString() + " and SuDung=0";
-                    _cNiemChi.ExecuteNonQuery_Transaction(sql);
-                    _cNiemChi.SqlCommitTransaction();
-                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    btnXem_Giao.PerformClick();
                 }
-                catch (Exception ex)
-                {
-                    _cNiemChi.SqlRollbackTransaction();
-                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                else
+                    MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                _cNiemChi.SqlRollbackTransaction();
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void txtTuSo_Giao_KeyPress(object sender, KeyPressEventArgs e)
@@ -428,7 +434,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
             {
                 try
                 {
-                    NiemChi en =  _cNiemChi.get(txtID_Chuyen.Text.Trim().ToUpper());
+                    NiemChi en = _cNiemChi.get(txtID_Chuyen.Text.Trim().ToUpper());
                     if (en != null)
                     {
                         if (en.MaNV == null)
