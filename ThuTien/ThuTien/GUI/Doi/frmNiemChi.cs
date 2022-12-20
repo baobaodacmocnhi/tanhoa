@@ -245,7 +245,7 @@ namespace ThuTien.GUI.Doi
                             return;
                         }
                         _cNiemChi.SqlBeginTransaction();
-                        string sql = "update TT_NiemChi set MaTo=" + cmbTo_Giao.SelectedValue.ToString() + ",MaNV=" + cmbNhanVien_Giao.SelectedValue.ToString() + ",ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=getDate() where KyHieu='" + txtKyHieu_Giao.Text.Trim().ToUpper() + "' and ID>=" + txtTuSo_Giao.Text.Trim() + " and ID<=" + txtDenSo_Giao.Text.Trim() + " and SuDung=0";
+                        string sql = "update TT_NiemChi set MaTo=" + cmbTo_Giao.SelectedValue.ToString() + ",MaNV=" + cmbNhanVien_Giao.SelectedValue.ToString() + ",ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=getDate() where KyHieu='" + txtKyHieu_Giao.Text.Trim().ToUpper() + "' and STT>=" + txtTuSo_Giao.Text.Trim() + " and STT<=" + txtDenSo_Giao.Text.Trim() + " and SuDung=0";
                         //string sql = "update TT_NiemChi set MaTo=" + cmbTo_Giao.SelectedValue.ToString() + ",MaNV=" + cmbNhanVien_Giao.SelectedValue.ToString() + ",ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=getDate() where ID>=" + txtTuSo_Giao.Text.Trim() + " and ID<=" + txtDenSo_Giao.Text.Trim();
                         _cNiemChi.ExecuteNonQuery_Transaction(sql);
                         _cNiemChi.SqlCommitTransaction();
@@ -285,7 +285,7 @@ namespace ThuTien.GUI.Doi
                         return;
                     }
                     _cNiemChi.SqlBeginTransaction();
-                    string sql = "update TT_NiemChi set MaTo=NULL,MaNV=NULL,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=getDate() where KyHieu='" + txtKyHieu_Giao.Text.Trim().ToUpper() + "' and ID>=" + dgvNiemChi_Giao.CurrentRow.Cells["TuSo_Giao"].Value.ToString() + " and ID<=" + dgvNiemChi_Giao.CurrentRow.Cells["DenSo_Giao"].Value.ToString() + " and SuDung=0";
+                    string sql = "update TT_NiemChi set MaTo=NULL,MaNV=NULL,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=getDate() where KyHieu='" + txtKyHieu_Giao.Text.Trim().ToUpper() + "' and STT>=" + dgvNiemChi_Giao.CurrentRow.Cells["TuSo_Giao"].Value.ToString() + " and STT<=" + dgvNiemChi_Giao.CurrentRow.Cells["DenSo_Giao"].Value.ToString() + " and SuDung=0";
                     //string sql = "update TT_NiemChi set MaTo=NULL,MaNV=NULL,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=getDate() where ID>=" + dgvNiemChi_Giao.CurrentRow.Cells["TuSo_Giao"].Value.ToString() + " and ID<=" + dgvNiemChi_Giao.CurrentRow.Cells["DenSo_Giao"].Value.ToString();
                     _cNiemChi.ExecuteNonQuery_Transaction(sql);
                     _cNiemChi.SqlCommitTransaction();
