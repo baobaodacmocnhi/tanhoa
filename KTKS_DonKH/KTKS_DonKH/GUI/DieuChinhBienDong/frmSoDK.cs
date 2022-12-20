@@ -302,6 +302,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     dgvDSDanhBo.DataSource = _cChungTu.getDS_ChiTiet(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
                 }
                 _flagLoadFirst = true;
+                if (_dataT.Loai == "ChungCu")
+                {
+                    btnThem.Enabled = false;
+                }
             }
             catch (Exception ex)
             {
@@ -694,7 +698,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+            if (CTaiKhoan.CheckQuyen(_mnu, "Sua") || _dataT.Loai == "ChungCu")
             {
                 try
                 {

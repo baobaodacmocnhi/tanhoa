@@ -480,7 +480,7 @@ namespace KTKS_DonKH.GUI.BamChi
                             bamchi.MaDonMoi = _dontu_ChiTiet.MaDon.Value;
                             _cBamChi.Them(bamchi);
                         }
-                        if (txtDanhBo.Text.Trim() != "" && _cBamChi.checkExist_ChiTiet(_dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value, txtDanhBo.Text.Trim(), dateBamChi.Value, cmbTrangThaiBC.SelectedValue.ToString()))
+                        if (txtDanhBo.Text.Trim() != "" && _cBamChi.checkExist_ChiTiet(_dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value, txtDanhBo.Text.Trim(), dateBamChi.Value, cmbTrangThaiBC.SelectedValue.ToString(), cmbMauSac.Text))
                         {
                             MessageBox.Show("Danh Bộ này đã được Lập Bấm Chì", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;

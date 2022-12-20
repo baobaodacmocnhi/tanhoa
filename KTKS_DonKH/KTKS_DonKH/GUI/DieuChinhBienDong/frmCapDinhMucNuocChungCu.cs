@@ -162,7 +162,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 MessageBox.Show("Số đăng ký này đã đăng ký với Danh Bộ này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
-                        using (var scope = new TransactionScope())
+                        //using (var scope = new TransactionScope())
                         {
                             ChungTu chungtu;
                             ///Kiểm tra Số Chứng Từ
@@ -233,7 +233,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             lichsuchungtu.Lo = ctchungtu.Lo;
                             lichsuchungtu.Phong = ctchungtu.Phong;
                             _cChungTu.ThemLichSuChungTu(lichsuchungtu);
-                            scope.Complete();
+                            //scope.Complete();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Clear();
                         }
@@ -380,7 +380,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
             {
                 CDataTransfer dataT = new CDataTransfer();
-                dataT.Loai = "";
+                dataT.Loai = "ChungCu";
                 if (_hoadon != null)
                 {
                     dataT.Quan = _hoadon.Quan;

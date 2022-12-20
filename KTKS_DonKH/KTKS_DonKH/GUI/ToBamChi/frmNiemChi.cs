@@ -230,7 +230,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
                             return;
                         }
                         _cNiemChi.SqlBeginTransaction();
-                        string sql = "update NiemChi set MaNV=" + cmbNhanVien_Giao.SelectedValue.ToString() + ",DotChia=" + cmbDotChia.SelectedItem.ToString() + ",ModifyBy=" + CTaiKhoan.MaUser + ",ModifyDate=getDate() where KyHieu='" + txtKyHieu_Giao.Text.Trim().ToUpper() + "' and ID>=" + txtTuSo_Giao.Text.Trim() + " and ID<=" + txtDenSo_Giao.Text.Trim() + " and SuDung=0";
+                        string sql = "update NiemChi set MaNV=" + cmbNhanVien_Giao.SelectedValue.ToString() + ",DotChia=" + cmbDotChia.SelectedItem.ToString() + ",ModifyBy=" + CTaiKhoan.MaUser + ",ModifyDate=getDate() where KyHieu='" + txtKyHieu_Giao.Text.Trim().ToUpper() + "' and STT>=" + txtTuSo_Giao.Text.Trim() + " and STT<=" + txtDenSo_Giao.Text.Trim() + " and SuDung=0";
                         _cNiemChi.ExecuteNonQuery_Transaction(sql);
                         _cNiemChi.SqlCommitTransaction();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -259,7 +259,7 @@ namespace KTKS_DonKH.GUI.ToBamChi
                         return;
                     }
                     _cNiemChi.SqlBeginTransaction();
-                    string sql = "update NiemChi set MaNV=NULL,DotChia=NULL,ModifyBy=" + CTaiKhoan.MaUser + ",ModifyDate=getDate() where KyHieu='" + txtKyHieu_Giao.Text.Trim().ToUpper() + "' and ID>=" + dgvNiemChi_Giao.CurrentRow.Cells["TuSo_Giao"].Value.ToString() + " and ID<=" + dgvNiemChi_Giao.CurrentRow.Cells["DenSo_Giao"].Value.ToString() + " and SuDung=0";
+                    string sql = "update NiemChi set MaNV=NULL,DotChia=NULL,ModifyBy=" + CTaiKhoan.MaUser + ",ModifyDate=getDate() where KyHieu='" + txtKyHieu_Giao.Text.Trim().ToUpper() + "' and STT>=" + dgvNiemChi_Giao.CurrentRow.Cells["TuSo_Giao"].Value.ToString() + " and STT<=" + dgvNiemChi_Giao.CurrentRow.Cells["DenSo_Giao"].Value.ToString() + " and SuDung=0";
                     _cNiemChi.ExecuteNonQuery_Transaction(sql);
                     _cNiemChi.SqlCommitTransaction();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

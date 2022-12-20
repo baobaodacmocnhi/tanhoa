@@ -179,6 +179,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             itemCT.MaLCT,
                             itemLCT.TenLCT,
                             itemCTCT.MaCT,
+                            itemCT.NgaySinh,
                             itemCT.HoTen,
                             itemCT.DiaChi,
                             itemCT.SoNKTong,

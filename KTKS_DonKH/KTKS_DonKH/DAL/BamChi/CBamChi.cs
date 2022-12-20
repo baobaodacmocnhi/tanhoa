@@ -802,9 +802,9 @@ namespace KTKS_DonKH.DAL.BamChi
             return db.BamChis.Any(item => item.MaDonMoi == MaDon);
         }
 
-        public bool checkExist_ChiTiet(int MaDon, int STT, string DanhBo, DateTime NgayBC, string TrangThaiBamChi)
+        public bool checkExist_ChiTiet(int MaDon, int STT, string DanhBo, DateTime NgayBC, string TrangThaiBamChi, string MauChi)
         {
-            return db.BamChi_ChiTiets.Any(item => item.BamChi.MaDonMoi == MaDon && item.STT == STT && item.DanhBo == DanhBo && item.NgayBC.Value.Date == NgayBC.Date && item.TrangThaiBC == TrangThaiBamChi);
+            return db.BamChi_ChiTiets.Any(item => item.BamChi.MaDonMoi == MaDon && item.STT == STT && item.DanhBo == DanhBo && item.NgayBC.Value.Date == NgayBC.Date && item.TrangThaiBC == TrangThaiBamChi && item.MauSac == MauChi);
         }
 
         public LinQ.BamChi get(int MaDon)
