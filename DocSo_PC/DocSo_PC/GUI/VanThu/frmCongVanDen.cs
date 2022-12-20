@@ -188,6 +188,18 @@ namespace DocSo_PC.GUI.VanThu
                             MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
+                    else
+                        if (dgvDanhSach.Columns[e.ColumnIndex].Name == "CapNhat")
+                        {
+                            if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+                            {
+                                string sql = "insert into TB_GHICHU(DANHBO,DONVI,NOIDUNG,CREATEDATE,CREATEBY)values('" + dgvDanhSach.CurrentRow.Cells["DanhBo"].Value.ToString() + "',N'QLDHN',N'" + dgvDanhSach.CurrentRow.Cells["NoiDung"].Value.ToString() + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture) + "',N'" + CNguoiDung.HoTen + "')";
+                                CDHN._cDAL.ExecuteNonQuery(sql);
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
             }
             catch { }
         }
