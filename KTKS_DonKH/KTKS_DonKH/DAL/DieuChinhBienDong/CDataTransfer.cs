@@ -12,6 +12,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         private int _MaDonMoi;
         private int _STT;
         private string _DanhBo;
+        private string _HoTenDB;
+        private string _DiaChiDB;
         private string _HoTen;
         private string _DiaChi;
         private string _MaCT;
@@ -43,6 +45,16 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             get { return _DanhBo; }
             set { _DanhBo = value; }
+        }
+        public string HoTenDB
+        {
+            get { return _HoTenDB; }
+            set { _HoTenDB = value; }
+        }
+        public string DiaChiDB
+        {
+            get { return _DiaChiDB; }
+            set { _DiaChiDB = value; }
         }
         public string HoTen
         {
@@ -82,6 +94,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             _MaDonMoi = -1;
             _STT = -1;
             _DanhBo = "";
+            _HoTenDB = "";
+            _DiaChiDB = "";
             _HoTen = "";
             _DiaChi = "";
             _MaCT = "";

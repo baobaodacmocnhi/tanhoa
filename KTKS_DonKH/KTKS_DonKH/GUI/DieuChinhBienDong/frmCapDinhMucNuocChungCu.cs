@@ -41,7 +41,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtHoTen.Text = "";
             txtNgaySinh.Text = "";
             txtCCCD.Text = "";
-            txtNgayHetHan.Text = "";
+            txtGhiChu.Text = "";
             chkCat.Checked = false;
             _ctchungtu = null;
 
@@ -74,8 +74,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (en.ChungTu.NgaySinh != null)
                 txtNgaySinh.Text = en.ChungTu.NgaySinh.Value.ToString("dd/MM/yyyy");
             txtDiaChi.Text = en.ChungTu.DiaChi;
-            if (en.NgayHetHan != null)
-                txtNgayHetHan.Text = en.NgayHetHan.Value.ToString("dd/MM/yyyy");
+            //if (en.NgayHetHan != null)
+            //    txtNgayHetHan.Text = en.NgayHetHan.Value.ToString("dd/MM/yyyy");
+            txtGhiChu.Text = en.GhiChu;
             chkCat.Checked = en.Cat;
         }
 
@@ -197,19 +198,20 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             ctchungtu.MaLCT = 15;
                             ctchungtu.MaCT = chungtu.MaCT;
                             ctchungtu.SoNKDangKy = 1;
-                            if (txtNgayHetHan.Text.Trim() != "")
-                            {
-                                string[] NgayHetHans = null;
-                                if (txtNgayHetHan.Text.Trim().Contains("/"))
-                                    NgayHetHans = txtNgayHetHan.Text.Trim().Split('/');
-                                else
-                                    if (txtNgayHetHan.Text.Trim().Contains("-"))
-                                        NgayHetHans = txtNgayHetHan.Text.Trim().Split('-');
-                                if (NgayHetHans.Count() == 3)
-                                {
-                                    ctchungtu.NgayHetHan = new DateTime(int.Parse(NgayHetHans[2]), int.Parse(NgayHetHans[1]), int.Parse(NgayHetHans[0]));
-                                }
-                            }
+                            //if (txtNgayHetHan.Text.Trim() != "")
+                            //{
+                            //    string[] NgayHetHans = null;
+                            //    if (txtNgayHetHan.Text.Trim().Contains("/"))
+                            //        NgayHetHans = txtNgayHetHan.Text.Trim().Split('/');
+                            //    else
+                            //        if (txtNgayHetHan.Text.Trim().Contains("-"))
+                            //            NgayHetHans = txtNgayHetHan.Text.Trim().Split('-');
+                            //    if (NgayHetHans.Count() == 3)
+                            //    {
+                            //        ctchungtu.NgayHetHan = new DateTime(int.Parse(NgayHetHans[2]), int.Parse(NgayHetHans[1]), int.Parse(NgayHetHans[0]));
+                            //    }
+                            //}
+                            ctchungtu.GhiChu = txtGhiChu.Text.Trim();
                             ctchungtu.Lo = txtLo.Text.Trim();
                             ctchungtu.Phong = txtPhong.Text.Trim();
                             if (_hoadon != null)
@@ -269,19 +271,20 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             _ctchungtu.ChungTu.NgaySinh = new DateTime(int.Parse(txtNgaySinh.Text.Trim()), 1, 1);
                         _ctchungtu.ChungTu.HoTen = txtHoTen.Text.Trim();
                         _ctchungtu.ChungTu.DiaChi = txtDiaChi.Text.Trim();
-                        if (txtNgayHetHan.Text.Trim() != "")
-                        {
-                            string[] NgayHetHans = null;
-                            if (txtNgayHetHan.Text.Trim().Contains("/"))
-                                NgayHetHans = txtNgayHetHan.Text.Trim().Split('/');
-                            else
-                                if (txtNgayHetHan.Text.Trim().Contains("-"))
-                                    NgayHetHans = txtNgayHetHan.Text.Trim().Split('-');
-                            if (NgayHetHans.Count() == 3)
-                            {
-                                _ctchungtu.NgayHetHan = new DateTime(int.Parse(NgayHetHans[2]), int.Parse(NgayHetHans[1]), int.Parse(NgayHetHans[0]));
-                            }
-                        }
+                        //if (txtNgayHetHan.Text.Trim() != "")
+                        //{
+                        //    string[] NgayHetHans = null;
+                        //    if (txtGhiChu.Text.Trim().Contains("/"))
+                        //        NgayHetHans = txtGhiChu.Text.Trim().Split('/');
+                        //    else
+                        //        if (txtGhiChu.Text.Trim().Contains("-"))
+                        //            NgayHetHans = txtGhiChu.Text.Trim().Split('-');
+                        //    if (NgayHetHans.Count() == 3)
+                        //    {
+                        //        _ctchungtu.NgayHetHan = new DateTime(int.Parse(NgayHetHans[2]), int.Parse(NgayHetHans[1]), int.Parse(NgayHetHans[0]));
+                        //    }
+                        //}
+                        _ctchungtu.GhiChu = txtGhiChu.Text.Trim();
                         _ctchungtu.Lo = txtLo.Text.Trim();
                         _ctchungtu.Phong = txtPhong.Text.Trim();
                         _ctchungtu.Cat = chkCat.Checked;
@@ -447,7 +450,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void txtCCCD_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
-                txtNgayHetHan.Focus();
+                txtGhiChu.Focus();
         }
 
         private void txtNgayHetHan_KeyPress(object sender, KeyPressEventArgs e)

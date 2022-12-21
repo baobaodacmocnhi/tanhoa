@@ -80,6 +80,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 cmbChiNhanh_YCC5.DisplayMember = "TenCN";
                 cmbChiNhanh_YCC5.ValueMember = "MaCN";
 
+                txtHoTenDB.Text = _dataT.HoTenDB;
+                txtDiaChiDB.Text = _dataT.DiaChiDB;
                 //hiện thị từ DCBD, bình thường trước giờ
                 if (_LSCT == null)
                 {
@@ -893,8 +895,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         ///
                                         lichsuchungtu1.NhanNK_MaCN = _cChiNhanh.GetIDByTenCN("Tân Hòa");
                                         lichsuchungtu1.NhanNK_DanhBo = txtDanhBo.Text.Trim();
-                                        lichsuchungtu1.NhanNK_HoTen = txtHoTen.Text.Trim();
-                                        lichsuchungtu1.NhanNK_DiaChi = txtDiaChi.Text.Trim();
+                                        lichsuchungtu1.NhanNK_HoTen = txtHoTenDB.Text.Trim();
+                                        lichsuchungtu1.NhanNK_DiaChi = txtDiaChiDB.Text.Trim();
                                         lichsuchungtu1.NhanNK_GhiChu = txtGhiChu.Text.Trim();
                                         ///
                                         lichsuchungtu1.YeuCauCat = true;
@@ -976,8 +978,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         ///
                                         lichsuchungtu1.NhanNK_MaCN = _cChiNhanh.GetIDByTenCN("Tân Hòa");
                                         lichsuchungtu1.NhanNK_DanhBo = txtDanhBo.Text.Trim();
-                                        lichsuchungtu1.NhanNK_HoTen = txtHoTen.Text.Trim();
-                                        lichsuchungtu1.NhanNK_DiaChi = txtDiaChi.Text.Trim();
+                                        lichsuchungtu1.NhanNK_HoTen = txtHoTenDB.Text.Trim();
+                                        lichsuchungtu1.NhanNK_DiaChi = txtDiaChiDB.Text.Trim();
                                         lichsuchungtu1.NhanNK_GhiChu = txtGhiChu.Text.Trim();
                                         ///
                                         lichsuchungtu1.YeuCauCat = true;
@@ -1059,8 +1061,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         ///
                                         lichsuchungtu1.NhanNK_MaCN = _cChiNhanh.GetIDByTenCN("Tân Hòa");
                                         lichsuchungtu1.NhanNK_DanhBo = txtDanhBo.Text.Trim();
-                                        lichsuchungtu1.NhanNK_HoTen = txtHoTen.Text.Trim();
-                                        lichsuchungtu1.NhanNK_DiaChi = txtDiaChi.Text.Trim();
+                                        lichsuchungtu1.NhanNK_HoTen = txtHoTenDB.Text.Trim();
+                                        lichsuchungtu1.NhanNK_DiaChi = txtDiaChiDB.Text.Trim();
                                         lichsuchungtu1.NhanNK_GhiChu = txtGhiChu.Text.Trim();
                                         ///
                                         lichsuchungtu1.YeuCauCat = true;
@@ -1142,8 +1144,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         ///
                                         lichsuchungtu1.NhanNK_MaCN = _cChiNhanh.GetIDByTenCN("Tân Hòa");
                                         lichsuchungtu1.NhanNK_DanhBo = txtDanhBo.Text.Trim();
-                                        lichsuchungtu1.NhanNK_HoTen = txtHoTen.Text.Trim();
-                                        lichsuchungtu1.NhanNK_DiaChi = txtDiaChi.Text.Trim();
+                                        lichsuchungtu1.NhanNK_HoTen = txtHoTenDB.Text.Trim();
+                                        lichsuchungtu1.NhanNK_DiaChi = txtDiaChiDB.Text.Trim();
                                         lichsuchungtu1.NhanNK_GhiChu = txtGhiChu.Text.Trim();
                                         ///
                                         lichsuchungtu1.YeuCauCat = true;
@@ -1225,8 +1227,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         ///
                                         lichsuchungtu1.NhanNK_MaCN = _cChiNhanh.GetIDByTenCN("Tân Hòa");
                                         lichsuchungtu1.NhanNK_DanhBo = txtDanhBo.Text.Trim();
-                                        lichsuchungtu1.NhanNK_HoTen = txtHoTen.Text.Trim();
-                                        lichsuchungtu1.NhanNK_DiaChi = txtDiaChi.Text.Trim();
+                                        lichsuchungtu1.NhanNK_HoTen = txtHoTenDB.Text.Trim();
+                                        lichsuchungtu1.NhanNK_DiaChi = txtDiaChiDB.Text.Trim();
                                         lichsuchungtu1.NhanNK_GhiChu = txtGhiChu.Text.Trim();
                                         ///
                                         lichsuchungtu1.YeuCauCat = true;
@@ -1387,9 +1389,19 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void chkCatChuyen_CheckedChanged(object sender, EventArgs e)
         {
             if (chkYCCat1.Checked)
+            {
                 groupBox1.Enabled = true;
+                txtHoTen_Cat_YCC1.Text = _dataT.HoTen;
+                txtDiaChiKH_Cat_YCC1.Text = _dataT.DiaChi;
+                txtSoNKCat_YCC1.Text = "1";
+            }
             else
+            {
                 groupBox1.Enabled = false;
+                txtHoTen_Cat_YCC1.Text = "";
+                txtDiaChiKH_Cat_YCC1.Text = "";
+                txtSoNKCat_YCC1.Text = "";
+            }
         }
 
         private void txtSoNKCat_KeyPress(object sender, KeyPressEventArgs e)

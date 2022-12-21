@@ -1758,16 +1758,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         }
             dataT.DanhBo = txtDanhBo.Text.Trim();
             if (txtHoTen_BD.Text.Trim() == "")
-                dataT.HoTen = txtHoTen.Text.Trim();
+                dataT.HoTenDB = dataT.HoTen = txtHoTen.Text.Trim();
             else
-                dataT.HoTen = txtHoTen_BD.Text.Trim();
+                dataT.HoTenDB = dataT.HoTen = txtHoTen_BD.Text.Trim();
             if (txtDiaChi_BD.Text.Trim() == "")
                 if (txtDiaChi.Text.Trim().Contains(","))
-                    dataT.DiaChi = txtDiaChi.Text.Trim().Substring(0, txtDiaChi.Text.Trim().IndexOf(","));
+                    dataT.DiaChiDB = dataT.DiaChi = txtDiaChi.Text.Trim().Substring(0, txtDiaChi.Text.Trim().IndexOf(","));
                 else
-                    dataT.DiaChi = txtDiaChi.Text.Trim();
+                    dataT.DiaChiDB = dataT.DiaChi = txtDiaChi.Text.Trim();
             else
-                dataT.DiaChi = txtDiaChi_BD.Text.Trim();
+                dataT.DiaChiDB = dataT.DiaChi = txtDiaChi_BD.Text.Trim();
             if (_hoadon != null)
             {
                 dataT.Quan = _hoadon.Quan;
@@ -1810,9 +1810,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         }
             dataT.DanhBo = txtDanhBo.Text.Trim();
             if (txtHoTen_BD.Text.Trim() == "")
-                dataT.HoTen = txtHoTen.Text.Trim();
+                dataT.HoTenDB = dataT.HoTen = txtHoTen.Text.Trim();
             else
-                dataT.HoTen = txtHoTen_BD.Text.Trim();
+                dataT.HoTenDB = dataT.HoTen = txtHoTen_BD.Text.Trim();
+            if (txtDiaChi_BD.Text.Trim() == "")
+                if (txtDiaChi.Text.Trim().Contains(","))
+                    dataT.DiaChiDB = dataT.DiaChi = txtDiaChi.Text.Trim().Substring(0, txtDiaChi.Text.Trim().IndexOf(","));
+                else
+                    dataT.DiaChiDB = dataT.DiaChi = txtDiaChi.Text.Trim();
+            else
+                dataT.DiaChiDB = dataT.DiaChi = txtDiaChi_BD.Text.Trim();
             if (_hoadon != null)
             {
                 dataT.Quan = _hoadon.Quan;
@@ -1858,16 +1865,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         }
             dataT.DanhBo = txtDanhBo.Text.Trim();
             if (txtHoTen_BD.Text.Trim() == "")
-                dataT.HoTen = txtHoTen.Text.Trim();
+                dataT.HoTenDB = dataT.HoTen = txtHoTen.Text.Trim();
             else
-                dataT.HoTen = txtHoTen_BD.Text.Trim();
+                dataT.HoTenDB = dataT.HoTen = txtHoTen_BD.Text.Trim();
             if (txtDiaChi_BD.Text.Trim() == "")
                 if (txtDiaChi.Text.Trim().Contains(","))
-                    dataT.DiaChi = txtDiaChi.Text.Trim().Substring(0, txtDiaChi.Text.Trim().IndexOf(","));
+                    dataT.DiaChiDB = dataT.DiaChi = txtDiaChi.Text.Trim().Substring(0, txtDiaChi.Text.Trim().IndexOf(","));
                 else
-                    dataT.DiaChi = txtDiaChi.Text.Trim();
+                    dataT.DiaChiDB = dataT.DiaChi = txtDiaChi.Text.Trim();
             else
-                dataT.DiaChi = txtDiaChi_BD.Text.Trim();
+                dataT.DiaChiDB = dataT.DiaChi = txtDiaChi_BD.Text.Trim();
             if (_hoadon != null)
             {
                 dataT.Quan = _hoadon.Quan;
@@ -1910,11 +1917,17 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             dataT.MaDon = _dontbc.MaDon;
                         }
             dataT.DanhBo = txtDanhBo.Text.Trim();
-
             if (txtHoTen_BD.Text.Trim() == "")
-                dataT.HoTen = txtHoTen.Text.Trim();
+                dataT.HoTenDB = dataT.HoTen = txtHoTen.Text.Trim();
             else
-                dataT.HoTen = txtHoTen_BD.Text.Trim();
+                dataT.HoTenDB = dataT.HoTen = txtHoTen_BD.Text.Trim();
+            if (txtDiaChi_BD.Text.Trim() == "")
+                if (txtDiaChi.Text.Trim().Contains(","))
+                    dataT.DiaChiDB = dataT.DiaChi = txtDiaChi.Text.Trim().Substring(0, txtDiaChi.Text.Trim().IndexOf(","));
+                else
+                    dataT.DiaChiDB = dataT.DiaChi = txtDiaChi.Text.Trim();
+            else
+                dataT.DiaChiDB = dataT.DiaChi = txtDiaChi_BD.Text.Trim();
             if (_hoadon != null)
             {
                 dataT.Quan = _hoadon.Quan;
