@@ -195,6 +195,27 @@ namespace ThuTien.DAL.Doi
             }
         }
 
+        public bool ThemTest(HoaDonTest hoadon)
+        {
+            try
+            {
+                if (_db.HoaDonTests.Count() == 0)
+                    hoadon.ID_HOADON = 1;
+                else
+                hoadon.ID_HOADON = _db.HoaDonTests.Max(item => item.ID_HOADON) + 1;
+                hoadon.CreateBy = CNguoiDung.MaND;
+                hoadon.CreateDate = DateTime.Now;
+                _db.HoaDonTests.InsertOnSubmit(hoadon);
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
         public bool ThemChia(List<HOADON> lstHD)
         {
             try
