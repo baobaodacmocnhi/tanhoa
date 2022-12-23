@@ -292,7 +292,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                             }
                         }
                         var transactionOptions = new TransactionOptions();
-                        transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                        transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted;
                         using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                         {
                             TT_BangKe bangke = _cBangKe.get(int.Parse(dgvBangKe["MaBK", e.RowIndex].Value.ToString()));
