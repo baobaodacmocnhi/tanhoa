@@ -477,23 +477,6 @@
       <Association Name="Lich_DocSo_Lich_DocSo_ChiTiet" Member="Lich_DocSo_ChiTiets" ThisKey="ID" OtherKey="IDDocSo" Type="Lich_DocSo_ChiTiet" />
     </Type>
   </Table>
-  <Table Name="dbo.Lich_DocSo_ChiTiet" Member="Lich_DocSo_ChiTiets">
-    <Type Name="Lich_DocSo_ChiTiet">
-      <Column Name="IDDocSo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="IDDot" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="NgayDoc" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="NgayKiemSoat_From" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="NgayKiemSoat_To" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="NgayChuyenListing" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="NgayThuTien" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Association Name="Lich_DocSo_Lich_DocSo_ChiTiet" Member="Lich_DocSo" ThisKey="IDDocSo" OtherKey="ID" Type="Lich_DocSo" IsForeignKey="true" />
-      <Association Name="Lich_Dot_Lich_DocSo_ChiTiet" Member="Lich_Dot" ThisKey="IDDot" OtherKey="ID" Type="Lich_Dot" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Lich_Dot" Member="Lich_Dots">
     <Type Name="Lich_Dot">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -510,8 +493,8 @@
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Association Name="Lich_Dot_Lich_DocSo_ChiTiet" Member="Lich_DocSo_ChiTiets" ThisKey="ID" OtherKey="IDDot" Type="Lich_DocSo_ChiTiet" />
       <Association Name="Lich_Dot_Lich_ThuTien_ChiTiet" Member="Lich_ThuTien_ChiTiets" ThisKey="ID" OtherKey="IDDot" Type="Lich_ThuTien_ChiTiet" />
+      <Association Name="Lich_Dot_Lich_DocSo_ChiTiet" Member="Lich_DocSo_ChiTiets" ThisKey="ID" OtherKey="IDDot" Type="Lich_DocSo_ChiTiet" />
     </Type>
   </Table>
   <Table Name="dbo.Lich_ThuTien" Member="Lich_ThuTiens">
@@ -1221,6 +1204,24 @@
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Lich_DocSo_ChiTiet" Member="Lich_DocSo_ChiTiets">
+    <Type Name="Lich_DocSo_ChiTiet">
+      <Column Name="IDDocSo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDDot" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NgayDoc" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="NgayKiemSoat_From" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="NgayKiemSoat_To" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="NgayChuyenListing" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="NgayThuTien" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TongSoNgay" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Lich_DocSo_Lich_DocSo_ChiTiet" Member="Lich_DocSo" ThisKey="IDDocSo" OtherKey="ID" Type="Lich_DocSo" IsForeignKey="true" />
+      <Association Name="Lich_Dot_Lich_DocSo_ChiTiet" Member="Lich_Dot" ThisKey="IDDot" OtherKey="ID" Type="Lich_Dot" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

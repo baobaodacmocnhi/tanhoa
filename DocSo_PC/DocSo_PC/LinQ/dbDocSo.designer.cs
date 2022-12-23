@@ -87,9 +87,6 @@ namespace DocSo_PC.LinQ
     partial void InsertLich_DocSo(Lich_DocSo instance);
     partial void UpdateLich_DocSo(Lich_DocSo instance);
     partial void DeleteLich_DocSo(Lich_DocSo instance);
-    partial void InsertLich_DocSo_ChiTiet(Lich_DocSo_ChiTiet instance);
-    partial void UpdateLich_DocSo_ChiTiet(Lich_DocSo_ChiTiet instance);
-    partial void DeleteLich_DocSo_ChiTiet(Lich_DocSo_ChiTiet instance);
     partial void InsertLich_Dot(Lich_Dot instance);
     partial void UpdateLich_Dot(Lich_Dot instance);
     partial void DeleteLich_Dot(Lich_Dot instance);
@@ -174,6 +171,9 @@ namespace DocSo_PC.LinQ
     partial void InsertCongVanDen(CongVanDen instance);
     partial void UpdateCongVanDen(CongVanDen instance);
     partial void DeleteCongVanDen(CongVanDen instance);
+    partial void InsertLich_DocSo_ChiTiet(Lich_DocSo_ChiTiet instance);
+    partial void UpdateLich_DocSo_ChiTiet(Lich_DocSo_ChiTiet instance);
+    partial void DeleteLich_DocSo_ChiTiet(Lich_DocSo_ChiTiet instance);
     #endregion
 		
 		public dbDocSoDataContext() : 
@@ -379,14 +379,6 @@ namespace DocSo_PC.LinQ
 			get
 			{
 				return this.GetTable<Lich_DocSo>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Lich_DocSo_ChiTiet> Lich_DocSo_ChiTiets
-		{
-			get
-			{
-				return this.GetTable<Lich_DocSo_ChiTiet>();
 			}
 		}
 		
@@ -683,6 +675,14 @@ namespace DocSo_PC.LinQ
 			get
 			{
 				return this.GetTable<CongVanDen>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Lich_DocSo_ChiTiet> Lich_DocSo_ChiTiets
+		{
+			get
+			{
+				return this.GetTable<Lich_DocSo_ChiTiet>();
 			}
 		}
 	}
@@ -10728,390 +10728,6 @@ namespace DocSo_PC.LinQ
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Lich_DocSo_ChiTiet")]
-	public partial class Lich_DocSo_ChiTiet : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _IDDocSo;
-		
-		private int _IDDot;
-		
-		private System.Nullable<System.DateTime> _NgayDoc;
-		
-		private System.Nullable<System.DateTime> _NgayKiemSoat_From;
-		
-		private System.Nullable<System.DateTime> _NgayKiemSoat_To;
-		
-		private System.Nullable<System.DateTime> _NgayChuyenListing;
-		
-		private System.Nullable<System.DateTime> _NgayThuTien;
-		
-		private System.Nullable<int> _CreateBy;
-		
-		private System.Nullable<System.DateTime> _CreateDate;
-		
-		private System.Nullable<int> _ModifyBy;
-		
-		private System.Nullable<System.DateTime> _ModifyDate;
-		
-		private EntityRef<Lich_DocSo> _Lich_DocSo;
-		
-		private EntityRef<Lich_Dot> _Lich_Dot;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDDocSoChanging(int value);
-    partial void OnIDDocSoChanged();
-    partial void OnIDDotChanging(int value);
-    partial void OnIDDotChanged();
-    partial void OnNgayDocChanging(System.Nullable<System.DateTime> value);
-    partial void OnNgayDocChanged();
-    partial void OnNgayKiemSoat_FromChanging(System.Nullable<System.DateTime> value);
-    partial void OnNgayKiemSoat_FromChanged();
-    partial void OnNgayKiemSoat_ToChanging(System.Nullable<System.DateTime> value);
-    partial void OnNgayKiemSoat_ToChanged();
-    partial void OnNgayChuyenListingChanging(System.Nullable<System.DateTime> value);
-    partial void OnNgayChuyenListingChanged();
-    partial void OnNgayThuTienChanging(System.Nullable<System.DateTime> value);
-    partial void OnNgayThuTienChanged();
-    partial void OnCreateByChanging(System.Nullable<int> value);
-    partial void OnCreateByChanged();
-    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnCreateDateChanged();
-    partial void OnModifyByChanging(System.Nullable<int> value);
-    partial void OnModifyByChanged();
-    partial void OnModifyDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnModifyDateChanged();
-    #endregion
-		
-		public Lich_DocSo_ChiTiet()
-		{
-			this._Lich_DocSo = default(EntityRef<Lich_DocSo>);
-			this._Lich_Dot = default(EntityRef<Lich_Dot>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDDocSo", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int IDDocSo
-		{
-			get
-			{
-				return this._IDDocSo;
-			}
-			set
-			{
-				if ((this._IDDocSo != value))
-				{
-					if (this._Lich_DocSo.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnIDDocSoChanging(value);
-					this.SendPropertyChanging();
-					this._IDDocSo = value;
-					this.SendPropertyChanged("IDDocSo");
-					this.OnIDDocSoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDDot", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int IDDot
-		{
-			get
-			{
-				return this._IDDot;
-			}
-			set
-			{
-				if ((this._IDDot != value))
-				{
-					if (this._Lich_Dot.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnIDDotChanging(value);
-					this.SendPropertyChanging();
-					this._IDDot = value;
-					this.SendPropertyChanged("IDDot");
-					this.OnIDDotChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayDoc", DbType="Date")]
-		public System.Nullable<System.DateTime> NgayDoc
-		{
-			get
-			{
-				return this._NgayDoc;
-			}
-			set
-			{
-				if ((this._NgayDoc != value))
-				{
-					this.OnNgayDocChanging(value);
-					this.SendPropertyChanging();
-					this._NgayDoc = value;
-					this.SendPropertyChanged("NgayDoc");
-					this.OnNgayDocChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayKiemSoat_From", DbType="Date")]
-		public System.Nullable<System.DateTime> NgayKiemSoat_From
-		{
-			get
-			{
-				return this._NgayKiemSoat_From;
-			}
-			set
-			{
-				if ((this._NgayKiemSoat_From != value))
-				{
-					this.OnNgayKiemSoat_FromChanging(value);
-					this.SendPropertyChanging();
-					this._NgayKiemSoat_From = value;
-					this.SendPropertyChanged("NgayKiemSoat_From");
-					this.OnNgayKiemSoat_FromChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayKiemSoat_To", DbType="Date")]
-		public System.Nullable<System.DateTime> NgayKiemSoat_To
-		{
-			get
-			{
-				return this._NgayKiemSoat_To;
-			}
-			set
-			{
-				if ((this._NgayKiemSoat_To != value))
-				{
-					this.OnNgayKiemSoat_ToChanging(value);
-					this.SendPropertyChanging();
-					this._NgayKiemSoat_To = value;
-					this.SendPropertyChanged("NgayKiemSoat_To");
-					this.OnNgayKiemSoat_ToChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayChuyenListing", DbType="Date")]
-		public System.Nullable<System.DateTime> NgayChuyenListing
-		{
-			get
-			{
-				return this._NgayChuyenListing;
-			}
-			set
-			{
-				if ((this._NgayChuyenListing != value))
-				{
-					this.OnNgayChuyenListingChanging(value);
-					this.SendPropertyChanging();
-					this._NgayChuyenListing = value;
-					this.SendPropertyChanged("NgayChuyenListing");
-					this.OnNgayChuyenListingChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayThuTien", DbType="Date")]
-		public System.Nullable<System.DateTime> NgayThuTien
-		{
-			get
-			{
-				return this._NgayThuTien;
-			}
-			set
-			{
-				if ((this._NgayThuTien != value))
-				{
-					this.OnNgayThuTienChanging(value);
-					this.SendPropertyChanging();
-					this._NgayThuTien = value;
-					this.SendPropertyChanged("NgayThuTien");
-					this.OnNgayThuTienChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
-		public System.Nullable<int> CreateBy
-		{
-			get
-			{
-				return this._CreateBy;
-			}
-			set
-			{
-				if ((this._CreateBy != value))
-				{
-					this.OnCreateByChanging(value);
-					this.SendPropertyChanging();
-					this._CreateBy = value;
-					this.SendPropertyChanged("CreateBy");
-					this.OnCreateByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> CreateDate
-		{
-			get
-			{
-				return this._CreateDate;
-			}
-			set
-			{
-				if ((this._CreateDate != value))
-				{
-					this.OnCreateDateChanging(value);
-					this.SendPropertyChanging();
-					this._CreateDate = value;
-					this.SendPropertyChanged("CreateDate");
-					this.OnCreateDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyBy", DbType="Int")]
-		public System.Nullable<int> ModifyBy
-		{
-			get
-			{
-				return this._ModifyBy;
-			}
-			set
-			{
-				if ((this._ModifyBy != value))
-				{
-					this.OnModifyByChanging(value);
-					this.SendPropertyChanging();
-					this._ModifyBy = value;
-					this.SendPropertyChanged("ModifyBy");
-					this.OnModifyByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ModifyDate
-		{
-			get
-			{
-				return this._ModifyDate;
-			}
-			set
-			{
-				if ((this._ModifyDate != value))
-				{
-					this.OnModifyDateChanging(value);
-					this.SendPropertyChanging();
-					this._ModifyDate = value;
-					this.SendPropertyChanged("ModifyDate");
-					this.OnModifyDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lich_DocSo_Lich_DocSo_ChiTiet", Storage="_Lich_DocSo", ThisKey="IDDocSo", OtherKey="ID", IsForeignKey=true)]
-		public Lich_DocSo Lich_DocSo
-		{
-			get
-			{
-				return this._Lich_DocSo.Entity;
-			}
-			set
-			{
-				Lich_DocSo previousValue = this._Lich_DocSo.Entity;
-				if (((previousValue != value) 
-							|| (this._Lich_DocSo.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Lich_DocSo.Entity = null;
-						previousValue.Lich_DocSo_ChiTiets.Remove(this);
-					}
-					this._Lich_DocSo.Entity = value;
-					if ((value != null))
-					{
-						value.Lich_DocSo_ChiTiets.Add(this);
-						this._IDDocSo = value.ID;
-					}
-					else
-					{
-						this._IDDocSo = default(int);
-					}
-					this.SendPropertyChanged("Lich_DocSo");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lich_Dot_Lich_DocSo_ChiTiet", Storage="_Lich_Dot", ThisKey="IDDot", OtherKey="ID", IsForeignKey=true)]
-		public Lich_Dot Lich_Dot
-		{
-			get
-			{
-				return this._Lich_Dot.Entity;
-			}
-			set
-			{
-				Lich_Dot previousValue = this._Lich_Dot.Entity;
-				if (((previousValue != value) 
-							|| (this._Lich_Dot.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Lich_Dot.Entity = null;
-						previousValue.Lich_DocSo_ChiTiets.Remove(this);
-					}
-					this._Lich_Dot.Entity = value;
-					if ((value != null))
-					{
-						value.Lich_DocSo_ChiTiets.Add(this);
-						this._IDDot = value.ID;
-					}
-					else
-					{
-						this._IDDot = default(int);
-					}
-					this.SendPropertyChanged("Lich_Dot");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Lich_Dot")]
 	public partial class Lich_Dot : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -11146,9 +10762,9 @@ namespace DocSo_PC.LinQ
 		
 		private System.Nullable<System.DateTime> _ModifyDate;
 		
-		private EntitySet<Lich_DocSo_ChiTiet> _Lich_DocSo_ChiTiets;
-		
 		private EntitySet<Lich_ThuTien_ChiTiet> _Lich_ThuTien_ChiTiets;
+		
+		private EntitySet<Lich_DocSo_ChiTiet> _Lich_DocSo_ChiTiets;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -11186,8 +10802,8 @@ namespace DocSo_PC.LinQ
 		
 		public Lich_Dot()
 		{
-			this._Lich_DocSo_ChiTiets = new EntitySet<Lich_DocSo_ChiTiet>(new Action<Lich_DocSo_ChiTiet>(this.attach_Lich_DocSo_ChiTiets), new Action<Lich_DocSo_ChiTiet>(this.detach_Lich_DocSo_ChiTiets));
 			this._Lich_ThuTien_ChiTiets = new EntitySet<Lich_ThuTien_ChiTiet>(new Action<Lich_ThuTien_ChiTiet>(this.attach_Lich_ThuTien_ChiTiets), new Action<Lich_ThuTien_ChiTiet>(this.detach_Lich_ThuTien_ChiTiets));
+			this._Lich_DocSo_ChiTiets = new EntitySet<Lich_DocSo_ChiTiet>(new Action<Lich_DocSo_ChiTiet>(this.attach_Lich_DocSo_ChiTiets), new Action<Lich_DocSo_ChiTiet>(this.detach_Lich_DocSo_ChiTiets));
 			OnCreated();
 		}
 		
@@ -11471,19 +11087,6 @@ namespace DocSo_PC.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lich_Dot_Lich_DocSo_ChiTiet", Storage="_Lich_DocSo_ChiTiets", ThisKey="ID", OtherKey="IDDot")]
-		public EntitySet<Lich_DocSo_ChiTiet> Lich_DocSo_ChiTiets
-		{
-			get
-			{
-				return this._Lich_DocSo_ChiTiets;
-			}
-			set
-			{
-				this._Lich_DocSo_ChiTiets.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lich_Dot_Lich_ThuTien_ChiTiet", Storage="_Lich_ThuTien_ChiTiets", ThisKey="ID", OtherKey="IDDot")]
 		public EntitySet<Lich_ThuTien_ChiTiet> Lich_ThuTien_ChiTiets
 		{
@@ -11494,6 +11097,19 @@ namespace DocSo_PC.LinQ
 			set
 			{
 				this._Lich_ThuTien_ChiTiets.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lich_Dot_Lich_DocSo_ChiTiet", Storage="_Lich_DocSo_ChiTiets", ThisKey="ID", OtherKey="IDDot")]
+		public EntitySet<Lich_DocSo_ChiTiet> Lich_DocSo_ChiTiets
+		{
+			get
+			{
+				return this._Lich_DocSo_ChiTiets;
+			}
+			set
+			{
+				this._Lich_DocSo_ChiTiets.Assign(value);
 			}
 		}
 		
@@ -11517,18 +11133,6 @@ namespace DocSo_PC.LinQ
 			}
 		}
 		
-		private void attach_Lich_DocSo_ChiTiets(Lich_DocSo_ChiTiet entity)
-		{
-			this.SendPropertyChanging();
-			entity.Lich_Dot = this;
-		}
-		
-		private void detach_Lich_DocSo_ChiTiets(Lich_DocSo_ChiTiet entity)
-		{
-			this.SendPropertyChanging();
-			entity.Lich_Dot = null;
-		}
-		
 		private void attach_Lich_ThuTien_ChiTiets(Lich_ThuTien_ChiTiet entity)
 		{
 			this.SendPropertyChanging();
@@ -11536,6 +11140,18 @@ namespace DocSo_PC.LinQ
 		}
 		
 		private void detach_Lich_ThuTien_ChiTiets(Lich_ThuTien_ChiTiet entity)
+		{
+			this.SendPropertyChanging();
+			entity.Lich_Dot = null;
+		}
+		
+		private void attach_Lich_DocSo_ChiTiets(Lich_DocSo_ChiTiet entity)
+		{
+			this.SendPropertyChanging();
+			entity.Lich_Dot = this;
+		}
+		
+		private void detach_Lich_DocSo_ChiTiets(Lich_DocSo_ChiTiet entity)
 		{
 			this.SendPropertyChanging();
 			entity.Lich_Dot = null;
@@ -25856,6 +25472,414 @@ namespace DocSo_PC.LinQ
 					this._ModifyDate = value;
 					this.SendPropertyChanged("ModifyDate");
 					this.OnModifyDateChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Lich_DocSo_ChiTiet")]
+	public partial class Lich_DocSo_ChiTiet : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _IDDocSo;
+		
+		private int _IDDot;
+		
+		private System.Nullable<System.DateTime> _NgayDoc;
+		
+		private System.Nullable<System.DateTime> _NgayKiemSoat_From;
+		
+		private System.Nullable<System.DateTime> _NgayKiemSoat_To;
+		
+		private System.Nullable<System.DateTime> _NgayChuyenListing;
+		
+		private System.Nullable<System.DateTime> _NgayThuTien;
+		
+		private System.Nullable<int> _CreateBy;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private System.Nullable<int> _ModifyBy;
+		
+		private System.Nullable<System.DateTime> _ModifyDate;
+		
+		private System.Nullable<int> _TongSoNgay;
+		
+		private EntityRef<Lich_DocSo> _Lich_DocSo;
+		
+		private EntityRef<Lich_Dot> _Lich_Dot;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDDocSoChanging(int value);
+    partial void OnIDDocSoChanged();
+    partial void OnIDDotChanging(int value);
+    partial void OnIDDotChanged();
+    partial void OnNgayDocChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayDocChanged();
+    partial void OnNgayKiemSoat_FromChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayKiemSoat_FromChanged();
+    partial void OnNgayKiemSoat_ToChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayKiemSoat_ToChanged();
+    partial void OnNgayChuyenListingChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayChuyenListingChanged();
+    partial void OnNgayThuTienChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayThuTienChanged();
+    partial void OnCreateByChanging(System.Nullable<int> value);
+    partial void OnCreateByChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    partial void OnModifyByChanging(System.Nullable<int> value);
+    partial void OnModifyByChanged();
+    partial void OnModifyDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnModifyDateChanged();
+    partial void OnTongSoNgayChanging(System.Nullable<int> value);
+    partial void OnTongSoNgayChanged();
+    #endregion
+		
+		public Lich_DocSo_ChiTiet()
+		{
+			this._Lich_DocSo = default(EntityRef<Lich_DocSo>);
+			this._Lich_Dot = default(EntityRef<Lich_Dot>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDDocSo", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int IDDocSo
+		{
+			get
+			{
+				return this._IDDocSo;
+			}
+			set
+			{
+				if ((this._IDDocSo != value))
+				{
+					if (this._Lich_DocSo.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDDocSoChanging(value);
+					this.SendPropertyChanging();
+					this._IDDocSo = value;
+					this.SendPropertyChanged("IDDocSo");
+					this.OnIDDocSoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDDot", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int IDDot
+		{
+			get
+			{
+				return this._IDDot;
+			}
+			set
+			{
+				if ((this._IDDot != value))
+				{
+					if (this._Lich_Dot.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDDotChanging(value);
+					this.SendPropertyChanging();
+					this._IDDot = value;
+					this.SendPropertyChanged("IDDot");
+					this.OnIDDotChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayDoc", DbType="Date")]
+		public System.Nullable<System.DateTime> NgayDoc
+		{
+			get
+			{
+				return this._NgayDoc;
+			}
+			set
+			{
+				if ((this._NgayDoc != value))
+				{
+					this.OnNgayDocChanging(value);
+					this.SendPropertyChanging();
+					this._NgayDoc = value;
+					this.SendPropertyChanged("NgayDoc");
+					this.OnNgayDocChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayKiemSoat_From", DbType="Date")]
+		public System.Nullable<System.DateTime> NgayKiemSoat_From
+		{
+			get
+			{
+				return this._NgayKiemSoat_From;
+			}
+			set
+			{
+				if ((this._NgayKiemSoat_From != value))
+				{
+					this.OnNgayKiemSoat_FromChanging(value);
+					this.SendPropertyChanging();
+					this._NgayKiemSoat_From = value;
+					this.SendPropertyChanged("NgayKiemSoat_From");
+					this.OnNgayKiemSoat_FromChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayKiemSoat_To", DbType="Date")]
+		public System.Nullable<System.DateTime> NgayKiemSoat_To
+		{
+			get
+			{
+				return this._NgayKiemSoat_To;
+			}
+			set
+			{
+				if ((this._NgayKiemSoat_To != value))
+				{
+					this.OnNgayKiemSoat_ToChanging(value);
+					this.SendPropertyChanging();
+					this._NgayKiemSoat_To = value;
+					this.SendPropertyChanged("NgayKiemSoat_To");
+					this.OnNgayKiemSoat_ToChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayChuyenListing", DbType="Date")]
+		public System.Nullable<System.DateTime> NgayChuyenListing
+		{
+			get
+			{
+				return this._NgayChuyenListing;
+			}
+			set
+			{
+				if ((this._NgayChuyenListing != value))
+				{
+					this.OnNgayChuyenListingChanging(value);
+					this.SendPropertyChanging();
+					this._NgayChuyenListing = value;
+					this.SendPropertyChanged("NgayChuyenListing");
+					this.OnNgayChuyenListingChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayThuTien", DbType="Date")]
+		public System.Nullable<System.DateTime> NgayThuTien
+		{
+			get
+			{
+				return this._NgayThuTien;
+			}
+			set
+			{
+				if ((this._NgayThuTien != value))
+				{
+					this.OnNgayThuTienChanging(value);
+					this.SendPropertyChanging();
+					this._NgayThuTien = value;
+					this.SendPropertyChanged("NgayThuTien");
+					this.OnNgayThuTienChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
+		public System.Nullable<int> CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyBy", DbType="Int")]
+		public System.Nullable<int> ModifyBy
+		{
+			get
+			{
+				return this._ModifyBy;
+			}
+			set
+			{
+				if ((this._ModifyBy != value))
+				{
+					this.OnModifyByChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyBy = value;
+					this.SendPropertyChanged("ModifyBy");
+					this.OnModifyByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ModifyDate
+		{
+			get
+			{
+				return this._ModifyDate;
+			}
+			set
+			{
+				if ((this._ModifyDate != value))
+				{
+					this.OnModifyDateChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyDate = value;
+					this.SendPropertyChanged("ModifyDate");
+					this.OnModifyDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TongSoNgay", DbType="Int")]
+		public System.Nullable<int> TongSoNgay
+		{
+			get
+			{
+				return this._TongSoNgay;
+			}
+			set
+			{
+				if ((this._TongSoNgay != value))
+				{
+					this.OnTongSoNgayChanging(value);
+					this.SendPropertyChanging();
+					this._TongSoNgay = value;
+					this.SendPropertyChanged("TongSoNgay");
+					this.OnTongSoNgayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lich_DocSo_Lich_DocSo_ChiTiet", Storage="_Lich_DocSo", ThisKey="IDDocSo", OtherKey="ID", IsForeignKey=true)]
+		public Lich_DocSo Lich_DocSo
+		{
+			get
+			{
+				return this._Lich_DocSo.Entity;
+			}
+			set
+			{
+				Lich_DocSo previousValue = this._Lich_DocSo.Entity;
+				if (((previousValue != value) 
+							|| (this._Lich_DocSo.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Lich_DocSo.Entity = null;
+						previousValue.Lich_DocSo_ChiTiets.Remove(this);
+					}
+					this._Lich_DocSo.Entity = value;
+					if ((value != null))
+					{
+						value.Lich_DocSo_ChiTiets.Add(this);
+						this._IDDocSo = value.ID;
+					}
+					else
+					{
+						this._IDDocSo = default(int);
+					}
+					this.SendPropertyChanged("Lich_DocSo");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lich_Dot_Lich_DocSo_ChiTiet", Storage="_Lich_Dot", ThisKey="IDDot", OtherKey="ID", IsForeignKey=true)]
+		public Lich_Dot Lich_Dot
+		{
+			get
+			{
+				return this._Lich_Dot.Entity;
+			}
+			set
+			{
+				Lich_Dot previousValue = this._Lich_Dot.Entity;
+				if (((previousValue != value) 
+							|| (this._Lich_Dot.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Lich_Dot.Entity = null;
+						previousValue.Lich_DocSo_ChiTiets.Remove(this);
+					}
+					this._Lich_Dot.Entity = value;
+					if ((value != null))
+					{
+						value.Lich_DocSo_ChiTiets.Add(this);
+						this._IDDot = value.ID;
+					}
+					else
+					{
+						this._IDDot = default(int);
+					}
+					this.SendPropertyChanged("Lich_Dot");
 				}
 			}
 		}

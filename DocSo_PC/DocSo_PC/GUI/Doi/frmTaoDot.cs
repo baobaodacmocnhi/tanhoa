@@ -109,7 +109,9 @@ namespace DocSo_PC.GUI.Doi
                         if (!string.IsNullOrWhiteSpace(contents[15]))
                             en.GB = short.Parse(contents[15]);
                         if (!string.IsNullOrWhiteSpace(contents[16]))
+                        {
                             en.DM = int.Parse(contents[16]);
+                        }
                         else
                             en.DM = 0;
                         if (!string.IsNullOrWhiteSpace(contents[17]))
@@ -135,7 +137,9 @@ namespace DocSo_PC.GUI.Doi
                         if (!string.IsNullOrWhiteSpace(contents[27]))
                             en.TieuThu = int.Parse(contents[27]);
                         if (!string.IsNullOrWhiteSpace(contents[28]))
+                        {
                             en.DMHN = int.Parse(contents[28]);
+                        }
                         else
                             en.DMHN = 0;
                         en.BienDongID = en.Nam.ToString() + en.Ky + en.DanhBa;
@@ -221,9 +225,21 @@ namespace DocSo_PC.GUI.Doi
                                         en.DM = item.DM.Value.ToString();
                                     else
                                         en.DM = "0";
+                                    if (item.DMHN != null)
+                                        en.DMHN = item.DMHN.Value;
+                                    else
+                                        en.DMHN = 0;
                                     en.Nam = item.Nam;
                                     en.Ky = item.Ky;
                                     en.Dot = item.Dot;
+                                    if (en.Nam == 2022 && en.Ky == "01")
+                                    {
+                                        int TongSoNgay = _cLichDocSo.getTongSoNgay(int.Parse(dgvDanhSach["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvDanhSach["Nam", e.RowIndex].Value.ToString()), int.Parse(dgvDanhSach["Dot", e.RowIndex].Value.ToString()));
+                                        double motngay = Math.Round(double.Parse(en.DM.ToString()) / 30, 2, MidpointRounding.AwayFromZero);
+                                        double motngayHN = Math.Round(double.Parse(en.DMHN.ToString()) / 30, 2, MidpointRounding.AwayFromZero);
+                                        en.DM = ((int)Math.Round(motngay * TongSoNgay)).ToString();
+                                        en.DMHN = (int)Math.Round(motngayHN * TongSoNgay);
+                                    }
                                     en.May = en.PhanMay = item.May;
                                     en.TBTT = 0;
                                     en.TamTinh = 0;
