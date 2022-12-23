@@ -133,7 +133,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             if (ctchungtu.YeuCauCat2)
                             {
                                 panel_YCCat2.Visible = true;
-                                this.Size = new Size(1370, 356);
+                                this.Size = new Size(1323, 557);
                                 this.Location = new Point(10, 70);
                                 ///
                                 chkYCCat2.Checked = true;
@@ -147,7 +147,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             if (ctchungtu.YeuCauCat3)
                             {
                                 panel_YCCat3.Visible = true;
-                                this.Size = new Size(1370, 477);
+                                this.Size = new Size(1323, 557);
                                 ///
                                 chkYCCat3.Checked = true;
                                 cmbChiNhanh_YCC3.SelectedValue = ctchungtu.CatNK_MaCN3;
@@ -160,7 +160,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             if (ctchungtu.YeuCauCat4)
                             {
                                 panel_YCCat4.Visible = true;
-                                this.Size = new Size(1370, 477);
+                                this.Size = new Size(1323, 557);
                                 ///
                                 chkYCCat4.Checked = true;
                                 cmbChiNhanh_YCC4.SelectedValue = ctchungtu.CatNK_MaCN4;
@@ -173,7 +173,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             if (ctchungtu.YeuCauCat5)
                             {
                                 panel_YCCat5.Visible = true;
-                                this.Size = new Size(1370, 515);
+                                this.Size = new Size(1323, 557);
                                 ///
                                 chkYCCat5.Checked = true;
                                 cmbChiNhanh_YCC5.SelectedValue = ctchungtu.CatNK_MaCN5;
@@ -203,6 +203,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     if (_cChungTu.CheckExist_CT(_LSCT.DanhBo, _LSCT.MaCT, _LSCT.MaLCT.Value))
                     {
+                        txtHoTenDB.Text = _LSCT.NhanNK_HoTen;
+                        txtDiaChiDB.Text = _LSCT.NhanNK_DiaChi;
                         _hd = _cThuTien.GetMoiNhat(_LSCT.DanhBo);
                         ChungTu_ChiTiet ctchungtu = _cChungTu.GetCT(_LSCT.DanhBo, _LSCT.MaCT, _LSCT.MaLCT.Value);
                         if (ctchungtu.YeuCauCat2)
@@ -215,7 +217,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                         cmbLoaiCT.SelectedValue = ctchungtu.ChungTu.MaLCT;
                         txtMaCT.Text = ctchungtu.MaCT;
-                        //txtHoTen.Text = _dataT.HoTen;
+                        txtHoTen.Text = ctchungtu.ChungTu.HoTen;
+                        if (ctchungtu.ChungTu.NgaySinh != null)
+                            txtNgaySinh.Text = ctchungtu.ChungTu.NgaySinh.Value.ToString("dd/MM/yyyy");
                         txtDiaChi.Text = ctchungtu.ChungTu.DiaChi;
                         txtSoNKTong.Text = ctchungtu.ChungTu.SoNKTong.ToString();
                         txtSoNKDangKy.Text = ctchungtu.SoNKDangKy.ToString();
@@ -245,7 +249,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         if (ctchungtu.YeuCauCat2)
                         {
                             panel_YCCat2.Visible = true;
-                            this.Size = new Size(1370, 356);
+                            this.Size = new Size(1323, 557);
                             this.Location = new Point(10, 70);
                             ///
                             chkYCCat2.Checked = true;
@@ -259,7 +263,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         if (ctchungtu.YeuCauCat3)
                         {
                             panel_YCCat3.Visible = true;
-                            this.Size = new Size(1370, 477);
+                            this.Size = new Size(1323, 557);
                             ///
                             chkYCCat3.Checked = true;
                             cmbChiNhanh_YCC3.SelectedValue = ctchungtu.CatNK_MaCN3;
@@ -272,7 +276,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         if (ctchungtu.YeuCauCat4)
                         {
                             panel_YCCat4.Visible = true;
-                            this.Size = new Size(1370, 477);
+                            this.Size = new Size(1323, 557);
                             ///
                             chkYCCat4.Checked = true;
                             cmbChiNhanh_YCC4.SelectedValue = ctchungtu.CatNK_MaCN4;
@@ -285,7 +289,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         if (ctchungtu.YeuCauCat5)
                         {
                             panel_YCCat5.Visible = true;
-                            this.Size = new Size(1370, 515);
+                            this.Size = new Size(1323, 557);
                             ///
                             chkYCCat5.Checked = true;
                             cmbChiNhanh_YCC5.SelectedValue = ctchungtu.CatNK_MaCN5;
@@ -1529,26 +1533,26 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (!panel_YCCat2.Visible)
             {
                 panel_YCCat2.Visible = true;
-                this.Size = new Size(1323, 540);
+                this.Size = new Size(1323, 557);
                 this.Location = new Point(10, 70);
             }
             else
                 if (!panel_YCCat3.Visible)
                 {
                     panel_YCCat3.Visible = true;
-                    this.Size = new Size(1323, 540);
+                    this.Size = new Size(1323, 557);
                 }
                 else
                     if (!panel_YCCat4.Visible)
                     {
                         panel_YCCat4.Visible = true;
-                        this.Size = new Size(1323, 540);
+                        this.Size = new Size(1323, 557);
                     }
                     else
                         if (!panel_YCCat5.Visible)
                         {
                             panel_YCCat5.Visible = true;
-                            this.Size = new Size(1323, 788);
+                            this.Size = new Size(1323, 557);
                         }
                         else
                         {
@@ -1556,7 +1560,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             panel_YCCat3.Visible = false;
                             panel_YCCat4.Visible = false;
                             panel_YCCat5.Visible = false;
-                            this.Size = new Size(893, 540);
+                            this.Size = new Size(910, 557);
                             this.Location = new Point(70, 70);
                         }
 

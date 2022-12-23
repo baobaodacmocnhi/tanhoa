@@ -468,7 +468,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     DataRow dr = dsBaoCao.Tables["DSChungTu"].NewRow();
 
-                    //dr["STT"] = dgvDanhSach["STT", i].Value.ToString();
+                    dr["STT"] = i + 1;
                     dr["DanhBo"] = txtDanhBo.Text.Trim().Insert(7, " ").Insert(4, " ");
                     dr["HoTen"] = txtHoTen.Text.Trim();
                     dr["DiaChi"] = txtDiaChi.Text.Trim();
@@ -483,7 +483,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     dr["SoNKTong"] = 1;
                     dr["SoNKDangKy"] = 1;
                     //if (chkAnGhiChu.Checked == false)
-                    //    dr["GhiChu"] = dgvDanhSach["GhiChu", i].Value.ToString();
+                    dr["GhiChu"] = dgvDanhSach["GhiChu", i].Value.ToString();
                     dr["Lo"] = dgvDanhSach["Lo", i].Value.ToString();
                     dr["Phong"] = dgvDanhSach["Phong", i].Value.ToString();
 
