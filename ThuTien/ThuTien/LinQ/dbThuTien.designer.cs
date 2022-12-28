@@ -818,14 +818,6 @@ namespace ThuTien.LinQ
 			}
 		}
 		
-		public System.Data.Linq.Table<TT_DeviceConfig> TT_DeviceConfigs
-		{
-			get
-			{
-				return this.GetTable<TT_DeviceConfig>();
-			}
-		}
-		
 		public System.Data.Linq.Table<TT_HoaDonCu> TT_HoaDonCus
 		{
 			get
@@ -927,6 +919,14 @@ namespace ThuTien.LinQ
 			get
 			{
 				return this.GetTable<HoaDonTest>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TT_DeviceConfig> TT_DeviceConfigs
+		{
+			get
+			{
+				return this.GetTable<TT_DeviceConfig>();
 			}
 		}
 		
@@ -21744,69 +21744,6 @@ namespace ThuTien.LinQ
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TT_DeviceConfig")]
-	public partial class TT_DeviceConfig
-	{
-		
-		private string _Version;
-		
-		private string _SoHoaDon;
-		
-		private bool _checkUpdatedHDDT;
-		
-		public TT_DeviceConfig()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Version", DbType="VarChar(50)")]
-		public string Version
-		{
-			get
-			{
-				return this._Version;
-			}
-			set
-			{
-				if ((this._Version != value))
-				{
-					this._Version = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoHoaDon", DbType="VarChar(10)")]
-		public string SoHoaDon
-		{
-			get
-			{
-				return this._SoHoaDon;
-			}
-			set
-			{
-				if ((this._SoHoaDon != value))
-				{
-					this._SoHoaDon = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_checkUpdatedHDDT", DbType="Bit NOT NULL")]
-		public bool checkUpdatedHDDT
-		{
-			get
-			{
-				return this._checkUpdatedHDDT;
-			}
-			set
-			{
-				if ((this._checkUpdatedHDDT != value))
-				{
-					this._checkUpdatedHDDT = value;
-				}
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TT_HoaDonCu")]
 	public partial class TT_HoaDonCu : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -36656,6 +36593,87 @@ namespace ThuTien.LinQ
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TT_DeviceConfig")]
+	public partial class TT_DeviceConfig
+	{
+		
+		private string _Version;
+		
+		private bool _checkUpdatedHDDT;
+		
+		private bool _ThuTien_HanhThu;
+		
+		private bool _ThuTien_DongNuoc;
+		
+		public TT_DeviceConfig()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Version", DbType="VarChar(50)")]
+		public string Version
+		{
+			get
+			{
+				return this._Version;
+			}
+			set
+			{
+				if ((this._Version != value))
+				{
+					this._Version = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_checkUpdatedHDDT", DbType="Bit NOT NULL")]
+		public bool checkUpdatedHDDT
+		{
+			get
+			{
+				return this._checkUpdatedHDDT;
+			}
+			set
+			{
+				if ((this._checkUpdatedHDDT != value))
+				{
+					this._checkUpdatedHDDT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThuTien_HanhThu", DbType="Bit NOT NULL")]
+		public bool ThuTien_HanhThu
+		{
+			get
+			{
+				return this._ThuTien_HanhThu;
+			}
+			set
+			{
+				if ((this._ThuTien_HanhThu != value))
+				{
+					this._ThuTien_HanhThu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThuTien_DongNuoc", DbType="Bit NOT NULL")]
+		public bool ThuTien_DongNuoc
+		{
+			get
+			{
+				return this._ThuTien_DongNuoc;
+			}
+			set
+			{
+				if ((this._ThuTien_DongNuoc != value))
+				{
+					this._ThuTien_DongNuoc = value;
+				}
 			}
 		}
 	}
