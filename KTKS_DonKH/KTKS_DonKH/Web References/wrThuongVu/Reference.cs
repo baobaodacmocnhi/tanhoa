@@ -43,6 +43,12 @@ namespace KTKS_DonKH.wrThuongVu {
         
         private System.Threading.SendOrPostCallback checkExists_CCCDOperationCompleted;
         
+        private System.Threading.SendOrPostCallback them_CCCDOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback sua_CCCDOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback xoa_CCCDOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -101,6 +107,15 @@ namespace KTKS_DonKH.wrThuongVu {
         
         /// <remarks/>
         public event checkExists_CCCDCompletedEventHandler checkExists_CCCDCompleted;
+        
+        /// <remarks/>
+        public event them_CCCDCompletedEventHandler them_CCCDCompleted;
+        
+        /// <remarks/>
+        public event sua_CCCDCompletedEventHandler sua_CCCDCompleted;
+        
+        /// <remarks/>
+        public event xoa_CCCDCompletedEventHandler xoa_CCCDCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/get_Hinh", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -297,34 +312,129 @@ namespace KTKS_DonKH.wrThuongVu {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/checkExists_CCCD", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public int checkExists_CCCD(string DanhBo, string CCCD, string CMND) {
+        public int checkExists_CCCD(string DanhBo, string CCCD, out string result) {
             object[] results = this.Invoke("checkExists_CCCD", new object[] {
                         DanhBo,
-                        CCCD,
-                        CMND});
+                        CCCD});
+            result = ((string)(results[1]));
             return ((int)(results[0]));
         }
         
         /// <remarks/>
-        public void checkExists_CCCDAsync(string DanhBo, string CCCD, string CMND) {
-            this.checkExists_CCCDAsync(DanhBo, CCCD, CMND, null);
+        public void checkExists_CCCDAsync(string DanhBo, string CCCD) {
+            this.checkExists_CCCDAsync(DanhBo, CCCD, null);
         }
         
         /// <remarks/>
-        public void checkExists_CCCDAsync(string DanhBo, string CCCD, string CMND, object userState) {
+        public void checkExists_CCCDAsync(string DanhBo, string CCCD, object userState) {
             if ((this.checkExists_CCCDOperationCompleted == null)) {
                 this.checkExists_CCCDOperationCompleted = new System.Threading.SendOrPostCallback(this.OncheckExists_CCCDOperationCompleted);
             }
             this.InvokeAsync("checkExists_CCCD", new object[] {
                         DanhBo,
-                        CCCD,
-                        CMND}, this.checkExists_CCCDOperationCompleted, userState);
+                        CCCD}, this.checkExists_CCCDOperationCompleted, userState);
         }
         
         private void OncheckExists_CCCDOperationCompleted(object arg) {
             if ((this.checkExists_CCCDCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.checkExists_CCCDCompleted(this, new checkExists_CCCDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/them_CCCD", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int them_CCCD(string DanhBo, string CCCD, out string result) {
+            object[] results = this.Invoke("them_CCCD", new object[] {
+                        DanhBo,
+                        CCCD});
+            result = ((string)(results[1]));
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void them_CCCDAsync(string DanhBo, string CCCD) {
+            this.them_CCCDAsync(DanhBo, CCCD, null);
+        }
+        
+        /// <remarks/>
+        public void them_CCCDAsync(string DanhBo, string CCCD, object userState) {
+            if ((this.them_CCCDOperationCompleted == null)) {
+                this.them_CCCDOperationCompleted = new System.Threading.SendOrPostCallback(this.Onthem_CCCDOperationCompleted);
+            }
+            this.InvokeAsync("them_CCCD", new object[] {
+                        DanhBo,
+                        CCCD}, this.them_CCCDOperationCompleted, userState);
+        }
+        
+        private void Onthem_CCCDOperationCompleted(object arg) {
+            if ((this.them_CCCDCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.them_CCCDCompleted(this, new them_CCCDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/sua_CCCD", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int sua_CCCD(string DanhBo, string CCCD, out string result) {
+            object[] results = this.Invoke("sua_CCCD", new object[] {
+                        DanhBo,
+                        CCCD});
+            result = ((string)(results[1]));
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void sua_CCCDAsync(string DanhBo, string CCCD) {
+            this.sua_CCCDAsync(DanhBo, CCCD, null);
+        }
+        
+        /// <remarks/>
+        public void sua_CCCDAsync(string DanhBo, string CCCD, object userState) {
+            if ((this.sua_CCCDOperationCompleted == null)) {
+                this.sua_CCCDOperationCompleted = new System.Threading.SendOrPostCallback(this.Onsua_CCCDOperationCompleted);
+            }
+            this.InvokeAsync("sua_CCCD", new object[] {
+                        DanhBo,
+                        CCCD}, this.sua_CCCDOperationCompleted, userState);
+        }
+        
+        private void Onsua_CCCDOperationCompleted(object arg) {
+            if ((this.sua_CCCDCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.sua_CCCDCompleted(this, new sua_CCCDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/xoa_CCCD", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int xoa_CCCD(string DanhBo, string CCCD, out string result) {
+            object[] results = this.Invoke("xoa_CCCD", new object[] {
+                        DanhBo,
+                        CCCD});
+            result = ((string)(results[1]));
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void xoa_CCCDAsync(string DanhBo, string CCCD) {
+            this.xoa_CCCDAsync(DanhBo, CCCD, null);
+        }
+        
+        /// <remarks/>
+        public void xoa_CCCDAsync(string DanhBo, string CCCD, object userState) {
+            if ((this.xoa_CCCDOperationCompleted == null)) {
+                this.xoa_CCCDOperationCompleted = new System.Threading.SendOrPostCallback(this.Onxoa_CCCDOperationCompleted);
+            }
+            this.InvokeAsync("xoa_CCCD", new object[] {
+                        DanhBo,
+                        CCCD}, this.xoa_CCCDOperationCompleted, userState);
+        }
+        
+        private void Onxoa_CCCDOperationCompleted(object arg) {
+            if ((this.xoa_CCCDCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.xoa_CCCDCompleted(this, new xoa_CCCDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -525,6 +635,116 @@ namespace KTKS_DonKH.wrThuongVu {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((int)(this.results[0]));
+            }
+        }
+        
+        /// <remarks/>
+        public string result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[1]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void them_CCCDCompletedEventHandler(object sender, them_CCCDCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class them_CCCDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal them_CCCDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+        
+        /// <remarks/>
+        public string result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[1]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void sua_CCCDCompletedEventHandler(object sender, sua_CCCDCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class sua_CCCDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal sua_CCCDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+        
+        /// <remarks/>
+        public string result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[1]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void xoa_CCCDCompletedEventHandler(object sender, xoa_CCCDCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class xoa_CCCDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal xoa_CCCDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+        
+        /// <remarks/>
+        public string result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[1]));
             }
         }
     }

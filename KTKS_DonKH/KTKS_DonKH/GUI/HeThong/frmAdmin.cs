@@ -137,23 +137,26 @@ namespace KTKS_DonKH.GUI.HeThong
 
         private void button1_Click(object sender, EventArgs e)
         {
-            try
+
+            wsThuongVu ws = new wsThuongVu();
+            DataTable dt = _cMenu.ExecuteQuery_DataTable("select * from ChungTu_ChiTiet where len(MaCT)=12 and malct=15 and mact not in(select CCCD from CCCD_Temp)");
+            foreach (DataRow item in dt.Rows)
             {
-                wsThuongVu ws = new wsThuongVu();
-                DataTable dt = _cMenu.ExecuteQuery_DataTable(textBox1.Text.Trim());
-                foreach (DataRow item in dt.Rows)
+                try
                 {
-                    DataTable dtt = _cMenu.ExecuteQuery_DataTable("select Hinh from " + item["TableName"].ToString() + " where ID=" + item["ID"].ToString());
-                    if (ws.ghi_Hinh(item["TableName"].ToString(), item["IDCT"].ToString(), item["Name"].ToString() + ".jpg", (byte[])dtt.Rows[0]["Hinh"]) == true)
-                        _cMenu.ExecuteNonQuery("update " + item["TableName"].ToString() + " set Loai=1 where ID=" + item["ID"].ToString());
+                    string result = "";
+                    ws.them_CCCD(item["DanhBo"].ToString(), item["MaCT"].ToString(), out result);
+                    _cMenu.ExecuteNonQuery("insert into CCCD_Temp(CCCD,Result,ModifyDate)values('" + item["MaCT"].ToString() + "',N'" + result + "',getdate())");
+
                 }
-                MessageBox.Show("Thành Công");
+                catch (Exception ex)
+                {
+                    //MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-           
+
+
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -161,7 +164,7 @@ namespace KTKS_DonKH.GUI.HeThong
             try
             {
                 wsThuongVu ws = new wsThuongVu();
-                DataTable dt = _cMenu.ExecuteQuery_DataTable(textBox1.Text.Trim());
+                DataTable dt = _cMenu.ExecuteQuery_DataTable(txtDanhBo.Text.Trim());
                 foreach (DataRow item in dt.Rows)
                 {
                     DataTable dtt = _cMenu.ExecuteQuery_DataTable("select Hinh from " + item["TableName"].ToString() + " where ID=" + item["ID"].ToString());
@@ -180,7 +183,7 @@ namespace KTKS_DonKH.GUI.HeThong
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
     }
 }

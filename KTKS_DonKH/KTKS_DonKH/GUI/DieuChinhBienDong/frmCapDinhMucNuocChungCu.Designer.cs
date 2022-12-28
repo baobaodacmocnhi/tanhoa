@@ -92,6 +92,7 @@
             this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cat = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Cat_Ngay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaLCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSDanhBo)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -154,7 +155,8 @@
             this.DiaChi,
             this.GhiChu,
             this.Cat,
-            this.Cat_Ngay});
+            this.Cat_Ngay,
+            this.MaLCT});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -664,6 +666,13 @@
             this.Cat_Ngay.HeaderText = "Cắt Ngày";
             this.Cat_Ngay.Name = "Cat_Ngay";
             // 
+            // MaLCT
+            // 
+            this.MaLCT.DataPropertyName = "MaLCT";
+            this.MaLCT.HeaderText = "MaLCT";
+            this.MaLCT.Name = "MaLCT";
+            this.MaLCT.Visible = false;
+            // 
             // frmCapDinhMucNuocChungCu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -766,5 +775,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Cat;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cat_Ngay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaLCT;
     }
 }

@@ -53,6 +53,8 @@ namespace KTKS_DonKH.wrDHN {
         
         private System.Threading.SendOrPostCallback getDS_ViTriDHNOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getDS_NoiDung_KinhDoanhOperationCompleted;
+        
         private System.Threading.SendOrPostCallback getDS_GiaNuocOperationCompleted;
         
         private System.Threading.SendOrPostCallback getDS_KhongTinhPBVMTOperationCompleted;
@@ -202,6 +204,9 @@ namespace KTKS_DonKH.wrDHN {
         
         /// <remarks/>
         public event getDS_ViTriDHNCompletedEventHandler getDS_ViTriDHNCompleted;
+        
+        /// <remarks/>
+        public event getDS_NoiDung_KinhDoanhCompletedEventHandler getDS_NoiDung_KinhDoanhCompleted;
         
         /// <remarks/>
         public event getDS_GiaNuocCompletedEventHandler getDS_GiaNuocCompleted;
@@ -664,6 +669,33 @@ namespace KTKS_DonKH.wrDHN {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getDS_NoiDung_KinhDoanh", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getDS_NoiDung_KinhDoanh() {
+            object[] results = this.Invoke("getDS_NoiDung_KinhDoanh", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getDS_NoiDung_KinhDoanhAsync() {
+            this.getDS_NoiDung_KinhDoanhAsync(null);
+        }
+        
+        /// <remarks/>
+        public void getDS_NoiDung_KinhDoanhAsync(object userState) {
+            if ((this.getDS_NoiDung_KinhDoanhOperationCompleted == null)) {
+                this.getDS_NoiDung_KinhDoanhOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetDS_NoiDung_KinhDoanhOperationCompleted);
+            }
+            this.InvokeAsync("getDS_NoiDung_KinhDoanh", new object[0], this.getDS_NoiDung_KinhDoanhOperationCompleted, userState);
+        }
+        
+        private void OngetDS_NoiDung_KinhDoanhOperationCompleted(object arg) {
+            if ((this.getDS_NoiDung_KinhDoanhCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getDS_NoiDung_KinhDoanhCompleted(this, new getDS_NoiDung_KinhDoanhCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getDS_GiaNuoc", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string getDS_GiaNuoc() {
             object[] results = this.Invoke("getDS_GiaNuoc", new object[0]);
@@ -971,8 +1003,11 @@ namespace KTKS_DonKH.wrDHN {
                     string BeHBV, 
                     string BeNapMatNapHBV, 
                     string GayTayVan, 
+                    string TroNgaiThay, 
+                    string DauChungMayBom, 
                     string MauSacChiGoc, 
                     string GhiChu, 
+                    string KinhDoanh, 
                     string MaNV) {
             object[] results = this.Invoke("update_GhiChu", new object[] {
                         DanhBo,
@@ -993,8 +1028,11 @@ namespace KTKS_DonKH.wrDHN {
                         BeHBV,
                         BeNapMatNapHBV,
                         GayTayVan,
+                        TroNgaiThay,
+                        DauChungMayBom,
                         MauSacChiGoc,
                         GhiChu,
+                        KinhDoanh,
                         MaNV});
             return ((string)(results[0]));
         }
@@ -1019,10 +1057,13 @@ namespace KTKS_DonKH.wrDHN {
                     string BeHBV, 
                     string BeNapMatNapHBV, 
                     string GayTayVan, 
+                    string TroNgaiThay, 
+                    string DauChungMayBom, 
                     string MauSacChiGoc, 
                     string GhiChu, 
+                    string KinhDoanh, 
                     string MaNV) {
-            this.update_GhiChuAsync(DanhBo, SoNha, TenDuong, ViTri, ViTriNgoai, ViTriHop, Gieng, KhoaTu, AmSau, XayDung, DutChiGoc, DutChiThan, NgapNuoc, KetTuong, LapKhoaGoc, BeHBV, BeNapMatNapHBV, GayTayVan, MauSacChiGoc, GhiChu, MaNV, null);
+            this.update_GhiChuAsync(DanhBo, SoNha, TenDuong, ViTri, ViTriNgoai, ViTriHop, Gieng, KhoaTu, AmSau, XayDung, DutChiGoc, DutChiThan, NgapNuoc, KetTuong, LapKhoaGoc, BeHBV, BeNapMatNapHBV, GayTayVan, TroNgaiThay, DauChungMayBom, MauSacChiGoc, GhiChu, KinhDoanh, MaNV, null);
         }
         
         /// <remarks/>
@@ -1045,8 +1086,11 @@ namespace KTKS_DonKH.wrDHN {
                     string BeHBV, 
                     string BeNapMatNapHBV, 
                     string GayTayVan, 
+                    string TroNgaiThay, 
+                    string DauChungMayBom, 
                     string MauSacChiGoc, 
                     string GhiChu, 
+                    string KinhDoanh, 
                     string MaNV, 
                     object userState) {
             if ((this.update_GhiChuOperationCompleted == null)) {
@@ -1071,8 +1115,11 @@ namespace KTKS_DonKH.wrDHN {
                         BeHBV,
                         BeNapMatNapHBV,
                         GayTayVan,
+                        TroNgaiThay,
+                        DauChungMayBom,
                         MauSacChiGoc,
                         GhiChu,
+                        KinhDoanh,
                         MaNV}, this.update_GhiChuOperationCompleted, userState);
         }
         
@@ -2348,6 +2395,32 @@ namespace KTKS_DonKH.wrDHN {
         private object[] results;
         
         internal getDS_ViTriDHNCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void getDS_NoiDung_KinhDoanhCompletedEventHandler(object sender, getDS_NoiDung_KinhDoanhCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getDS_NoiDung_KinhDoanhCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getDS_NoiDung_KinhDoanhCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
