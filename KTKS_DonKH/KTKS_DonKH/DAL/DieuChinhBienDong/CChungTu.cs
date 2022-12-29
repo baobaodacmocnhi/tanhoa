@@ -28,9 +28,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
@@ -45,9 +44,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
             catch (Exception ex)
             {
-                db = new dbKinhDoanhDataContext();
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
@@ -73,13 +71,21 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 ctchungtu.CreateBy = CTaiKhoan.MaUser;
                 db.ChungTu_ChiTiets.InsertOnSubmit(ctchungtu);
                 db.SubmitChanges();
+                //try
+                //{
+                //    string result = "";
+                //    KTKS_DonKH.wrThuongVu.wsThuongVu ws = new KTKS_DonKH.wrThuongVu.wsThuongVu();
+                //    ws.them_CCCD(ctchungtu.DanhBo, ctchungtu.MaCT, out result);
+                //    ExecuteNonQuery("insert into CCCD_Temp(CCCD,Result,CreateBy,ModifyDate)values('" + ctchungtu.MaCT + "',N'" + result + "'," + CTaiKhoan.MaUser + ",getdate())");
+                //}
+                //catch { };
+
                 return true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
@@ -94,9 +100,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
@@ -110,9 +115,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                db = new dbKinhDoanhDataContext();
-                return false;
+                Refresh();
+                throw ex;
             }
         }
 
@@ -3295,7 +3299,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             try
             {
                 var query = from itemCTChungTu in db.ChungTu_ChiTiets
-                            where  itemCTChungTu.NgayHetHan != null
+                            where itemCTChungTu.NgayHetHan != null
                             && itemCTChungTu.CreateDate.Value.Date >= TuNgay.Date && itemCTChungTu.CreateDate.Value.Date <= DenNgay.Date
                             && itemCTChungTu.Cat == false
                             orderby itemCTChungTu.NgayHetHan ascending

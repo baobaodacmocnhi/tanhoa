@@ -139,7 +139,7 @@ namespace KTKS_DonKH.GUI.HeThong
         {
 
             wsThuongVu ws = new wsThuongVu();
-            DataTable dt = _cMenu.ExecuteQuery_DataTable("select * from ChungTu_ChiTiet where len(MaCT)=12 and malct=15 and mact not in(select CCCD from CCCD_Temp)");
+            DataTable dt = _cMenu.ExecuteQuery_DataTable("select * from ChungTu_ChiTiet where len(MaCT)=12 and malct=15 and Cat=0 and mact not in(select CCCD from CCCD_Temp)");
             foreach (DataRow item in dt.Rows)
             {
                 try

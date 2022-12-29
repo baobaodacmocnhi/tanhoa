@@ -4791,6 +4791,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _Result;
 		
+		private System.Nullable<int> _CreateBy;
+		
 		private System.DateTime _CreateDate;
 		
 		private System.Nullable<System.DateTime> _ModifyDate;
@@ -4803,6 +4805,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCCCDChanged();
     partial void OnResultChanging(string value);
     partial void OnResultChanged();
+    partial void OnCreateByChanging(System.Nullable<int> value);
+    partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.DateTime value);
     partial void OnCreateDateChanged();
     partial void OnModifyDateChanging(System.Nullable<System.DateTime> value);
@@ -4850,6 +4854,26 @@ namespace KTKS_DonKH.LinQ
 					this._Result = value;
 					this.SendPropertyChanged("Result");
 					this.OnResultChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
+		public System.Nullable<int> CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
 				}
 			}
 		}
