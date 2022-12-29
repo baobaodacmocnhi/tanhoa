@@ -211,7 +211,7 @@ namespace DocSo_PC.GUI.Doi
                             foreach (BienDong item in lst)
                             {
                                 progressBar.Value = i++;
-                                if (_cDocSo.checkExists_DocSo(item.BienDongID) == false)
+                                //if (_cDocSo.checkExists_DocSo(item.BienDongID) == false)
                                 {
                                     DocSo en = new DocSo();
                                     en.DocSoID = item.BienDongID;
@@ -232,7 +232,7 @@ namespace DocSo_PC.GUI.Doi
                                     en.Nam = item.Nam;
                                     en.Ky = item.Ky;
                                     en.Dot = item.Dot;
-                                    if (en.Nam == 2022 && en.Ky == "01")
+                                    if (en.Nam == 2023 && en.Ky == "01")
                                     {
                                         int TongSoNgay = _cLichDocSo.getTongSoNgay(int.Parse(dgvDanhSach["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvDanhSach["Nam", e.RowIndex].Value.ToString()), int.Parse(dgvDanhSach["Dot", e.RowIndex].Value.ToString()));
                                         double motngay = Math.Round(double.Parse(en.DM.ToString()) / 30, 2, MidpointRounding.AwayFromZero);

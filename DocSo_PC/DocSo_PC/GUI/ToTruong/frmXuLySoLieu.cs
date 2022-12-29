@@ -258,7 +258,7 @@ namespace DocSo_PC.GUI.ToTruong
                     && int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) > 0)
                     item.DefaultCellStyle.BackColor = Color.DeepPink;
                 //có BBKT, tờ trình, code 8 không có hoàn công thay (bồi thường, tái lập,...)
-                if (bool.Parse(item.Cells["BaoThayBT"].Value.ToString()) == true)
+                if (item.Cells["BaoThayBT"].Value != null && bool.Parse(item.Cells["BaoThayBT"].Value.ToString()) == true)
                     item.DefaultCellStyle.BackColor = Color.Orange;
                 //code 4 có hoàn công thay (báo thay định kỳ), sai code
                 if (item.Cells["CodeMoi"].Value != null && item.Cells["CodeMoi"].Value.ToString() != "" && bool.Parse(item.Cells["BaoThayDK"].Value.ToString()) == true
@@ -512,7 +512,9 @@ namespace DocSo_PC.GUI.ToTruong
             {
                 if (txtCSM.Text.Trim() != "" && e.KeyChar == 13)
                 {
-                    txtTieuThu.Text = _cDocSo.tinhCodeTieuThu(_docso.DocSoID, cmbCodeMoi.SelectedValue.ToString(), int.Parse(txtCSM.Text.Trim())).ToString();
+                    int TTienNuoc = 0, TThueGTGT = 0, TTDVTN = 0, TThueTDVTN = 0,TTieuThu = 0;
+                    _wsDHN.tinhCodeTieuThu_CSM(_docso.DocSoID, cmbCodeMoi.SelectedValue.ToString(), int.Parse(txtCSM.Text.Trim()), out TTieuThu, out TTienNuoc, out TThueGTGT, out TTDVTN, out TThueTDVTN);
+                    txtTieuThu.Text = TTieuThu.ToString();
                     txtTieuThu.Focus();
                 }
             }
