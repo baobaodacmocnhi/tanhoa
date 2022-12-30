@@ -390,6 +390,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     dataT.Phuong = _hoadon.Phuong;
                 }
                 dataT.DanhBo = txtDanhBo.Text.Trim();
+                dataT.HoTenDB = txtHoTenCC.Text.Trim();
+                dataT.DiaChiDB = txtDiaChiCC.Text.Trim();
                 dataT.MaCT = dgvDanhSach.CurrentRow.Cells["CCCD"].Value.ToString();
                 dataT.MaLCT = 15;
 
