@@ -311,17 +311,17 @@ namespace ThuTien.GUI.TongHop
 
                                 if (_dchd.SoPhieu != _ctdchd.MaCTDCHD)
                                 {
-                                    _dchd.GIABAN_BD = hd.GIABAN;
-                                    _dchd.THUE_BD = hd.THUE;
-                                    _dchd.PHI_BD = hd.PHI;
-                                    _dchd.PHI_Thue_BD = hd.ThueGTGT_TDVTN;
-                                    _dchd.TONGCONG_BD = hd.TONGCONG;
+                                    //_dchd.GIABAN_BD = hd.GIABAN;
+                                    //_dchd.THUE_BD = hd.THUE;
+                                    //_dchd.PHI_BD = hd.PHI;
+                                    //_dchd.PHI_Thue_BD = hd.ThueGTGT_TDVTN;
+                                    //_dchd.TONGCONG_BD = hd.TONGCONG;
+                                    _dchd.GIABAN_BD = _ctdchd.TienNuoc_Start;
+                                    _dchd.THUE_BD = _ctdchd.ThueGTGT_Start;
+                                    _dchd.PHI_BD = _ctdchd.PhiBVMT_Start;
+                                    _dchd.PHI_Thue_BD = _ctdchd.PhiBVMT_Thue_Start;
+                                    _dchd.TONGCONG_BD = _ctdchd.TongCong_Start;
                                 }
-                                //_dchd.GIABAN_BD = _ctdchd.TienNuoc_Start;
-                                //_dchd.THUE_BD = _ctdchd.ThueGTGT_Start;
-                                //_dchd.PHI_BD = _ctdchd.PhiBVMT_Start;
-                                //_dchd.PHI_Thue_BD = _ctdchd.PhiBVMT_Thue_Start;
-                                //_dchd.TONGCONG_BD = _ctdchd.TongCong_Start;
 
                                 _dchd.SoPhieu = _ctdchd.MaCTDCHD;
                                 _dchd.TangGiam = _ctdchd.TangGiam;
@@ -380,18 +380,23 @@ namespace ThuTien.GUI.TongHop
                             ///hóa đơn điện tử k áp dụng
                             else
                             {
+                                _dchd.GIABAN_BD = decimal.Parse(txtTienNuoc_Start.Text.Trim().Replace(".", ""));
                                 _dchd.GIABAN_DC = decimal.Parse(txtTienNuoc_BD.Text.Trim().Replace(".", ""));
                                 _dchd.GIABAN_END = decimal.Parse(txtTienNuoc_End.Text.Trim().Replace(".", ""));
 
+                                _dchd.THUE_BD = decimal.Parse(txtThueGTGT_Start.Text.Trim().Replace(".", ""));
                                 _dchd.THUE_DC = decimal.Parse(txtThueGTGT_BD.Text.Trim().Replace(".", ""));
                                 _dchd.THUE_END = decimal.Parse(txtThueGTGT_End.Text.Trim().Replace(".", ""));
 
+                                _dchd.PHI_BD = decimal.Parse(txtPhiBVMT_Start.Text.Trim().Replace(".", ""));
                                 _dchd.PHI_DC = decimal.Parse(txtPhiBVMT_BD.Text.Trim().Replace(".", ""));
                                 _dchd.PHI_END = decimal.Parse(txtPhiBVMT_End.Text.Trim().Replace(".", ""));
 
+                                _dchd.PHI_Thue_BD = decimal.Parse(txtPhiBVMT_Thue_Start.Text.Trim().Replace(".", ""));
                                 _dchd.PHI_Thue_DC = decimal.Parse(txtPhiBVMT_Thue_BD.Text.Trim().Replace(".", ""));
                                 _dchd.PHI_Thue_END = decimal.Parse(txtPhiBVMT_Thue_End.Text.Trim().Replace(".", ""));
 
+                                _dchd.TONGCONG_BD = decimal.Parse(txtTongCong_Start.Text.Trim().Replace(".", ""));
                                 _dchd.TONGCONG_DC = decimal.Parse(txtTongCong_BD.Text.Trim().Replace(".", ""));
                                 _dchd.TONGCONG_END = decimal.Parse(txtTongCong_End.Text.Trim().Replace(".", ""));
 
