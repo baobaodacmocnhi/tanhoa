@@ -1366,14 +1366,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     {
                         if (_danhbo != null)
                         {
-                            if (_danhbo.DaXuLy && !_danhbo.DCBD && _danhbo.GhiChu == "CCCD đã đăng ký danh bộ khác")
+                            _danhbo.DCBD_MaDon = null;
+                            _danhbo.DCBD_STT = null;
+                            _danhbo.DCBD_SoPhieu = null;
+                            _danhbo.DCBD = false;
+                            _danhbo.DangXuLy = false;
+                            _danhbo.DaXuLy = false;
+                            if (_cDKDM.Sua(_danhbo))
                             {
-                                _danhbo.DaXuLy = false;
-                                if (_cDKDM.Sua(_danhbo))
-                                {
-                                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    Clear();
-                                }
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                Clear();
                             }
                         }
                     }
