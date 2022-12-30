@@ -138,13 +138,13 @@ namespace GIAYKHEN
                                             if (cmbNhom.SelectedIndex == 0)
                                             {
                                                 sql = "select * FROM A_GIAYKHEN WHERE TAPTHE=0 and DanVanKheo=1";
-                                                rp = new DanVanKheo_CANHAN_A3_2020();
+                                                rp = new DanVanKheo_CANHAN_NOIDUNG_A3_2022();
                                             }
                                             else
                                                 if (cmbNhom.SelectedIndex == 1)
                                                 {
                                                     sql = "select * FROM A_GIAYKHEN WHERE TAPTHE=1 and DanVanKheo=1";
-                                                    rp = new DanVanKheo_TAPTHE_A3_2020();
+                                                    rp = new DanVanKheo_TAPTHE_A3_2022B();
                                                 }
                                         }
 
@@ -181,7 +181,7 @@ namespace GIAYKHEN
         {
             cmbGiayKhen.SelectedIndex = 0;
             cmbNhom.SelectedIndex = 0;
-            txtNgay.Value = new DateTime(2022, 05, 18);
+            txtNgay.Value = new DateTime(2022, 12, 26);
         }
 
         private void txtQuyetDinhCaNhan_TextChanged(object sender, EventArgs e)

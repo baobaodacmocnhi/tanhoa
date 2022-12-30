@@ -33,6 +33,9 @@ namespace GIAYKHEN
     partial void InsertA_GIAYKHEN(A_GIAYKHEN instance);
     partial void UpdateA_GIAYKHEN(A_GIAYKHEN instance);
     partial void DeleteA_GIAYKHEN(A_GIAYKHEN instance);
+    partial void InsertQuaySo(QuaySo instance);
+    partial void UpdateQuaySo(QuaySo instance);
+    partial void DeleteQuaySo(QuaySo instance);
     #endregion
 		
 		public GKDataContext() : 
@@ -70,6 +73,14 @@ namespace GIAYKHEN
 			get
 			{
 				return this.GetTable<A_GIAYKHEN>();
+			}
+		}
+		
+		public System.Data.Linq.Table<QuaySo> QuaySos
+		{
+			get
+			{
+				return this.GetTable<QuaySo>();
 			}
 		}
 	}
@@ -447,6 +458,140 @@ namespace GIAYKHEN
 					this._DanVanKheo = value;
 					this.SendPropertyChanged("DanVanKheo");
 					this.OnDanVanKheoChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.QuaySo")]
+	public partial class QuaySo : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _STT;
+		
+		private string _DonVi;
+		
+		private string _HoTen;
+		
+		private bool _Quay;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnSTTChanging(int value);
+    partial void OnSTTChanged();
+    partial void OnDonViChanging(string value);
+    partial void OnDonViChanged();
+    partial void OnHoTenChanging(string value);
+    partial void OnHoTenChanged();
+    partial void OnQuayChanging(bool value);
+    partial void OnQuayChanged();
+    #endregion
+		
+		public QuaySo()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STT", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int STT
+		{
+			get
+			{
+				return this._STT;
+			}
+			set
+			{
+				if ((this._STT != value))
+				{
+					this.OnSTTChanging(value);
+					this.SendPropertyChanging();
+					this._STT = value;
+					this.SendPropertyChanged("STT");
+					this.OnSTTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DonVi", DbType="NVarChar(200)")]
+		public string DonVi
+		{
+			get
+			{
+				return this._DonVi;
+			}
+			set
+			{
+				if ((this._DonVi != value))
+				{
+					this.OnDonViChanging(value);
+					this.SendPropertyChanging();
+					this._DonVi = value;
+					this.SendPropertyChanged("DonVi");
+					this.OnDonViChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoTen", DbType="NVarChar(100)")]
+		public string HoTen
+		{
+			get
+			{
+				return this._HoTen;
+			}
+			set
+			{
+				if ((this._HoTen != value))
+				{
+					this.OnHoTenChanging(value);
+					this.SendPropertyChanging();
+					this._HoTen = value;
+					this.SendPropertyChanged("HoTen");
+					this.OnHoTenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quay", DbType="Bit NOT NULL")]
+		public bool Quay
+		{
+			get
+			{
+				return this._Quay;
+			}
+			set
+			{
+				if ((this._Quay != value))
+				{
+					this.OnQuayChanging(value);
+					this.SendPropertyChanging();
+					this._Quay = value;
+					this.SendPropertyChanged("Quay");
+					this.OnQuayChanged();
 				}
 			}
 		}
