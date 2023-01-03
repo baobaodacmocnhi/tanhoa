@@ -1395,8 +1395,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (chkYCCat1.Checked)
             {
                 groupBox1.Enabled = true;
-                txtHoTen_Cat_YCC1.Text = _dataT.HoTen;
-                txtDiaChiKH_Cat_YCC1.Text = _dataT.DiaChi;
+                txtHoTen_Cat_YCC1.Text = txtHoTen.Text.Trim();
+                txtDiaChiKH_Cat_YCC1.Text = "";
                 txtSoNKCat_YCC1.Text = "1";
             }
             else

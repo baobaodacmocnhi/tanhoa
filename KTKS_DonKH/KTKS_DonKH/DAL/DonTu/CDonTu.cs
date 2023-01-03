@@ -607,6 +607,17 @@ namespace KTKS_DonKH.DAL.DonTu
             {
                 db.DonTu_ChiTiets.DeleteOnSubmit(en);
                 db.SubmitChanges();
+                if (db.DonTu_ChiTiets.Count(o => o.MaDon == en.MaDon) > 1)
+                {
+                    int STT = 1;
+                    foreach (DonTu_ChiTiet item in db.DonTu_ChiTiets.Where(o => o.MaDon == en.MaDon).ToList())
+                    {
+                        item.STT = STT++;
+                        item.ModifyBy = CTaiKhoan.MaUser;
+                        item.ModifyDate = DateTime.Now;
+                        db.SubmitChanges();
+                    }
+                }
                 return true;
             }
             catch (Exception ex)
