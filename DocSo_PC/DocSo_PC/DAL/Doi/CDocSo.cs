@@ -466,7 +466,7 @@ namespace DocSo_PC.DAL.Doi
         {
             DataTable dt;
             string sql = "select Col,Ky11,Ky10,Ky9,Ky8,Ky7,Ky6,Ky5,Ky4,Ky3,Ky2,Ky1,Ky0 from"
-            + "      (select 'Ky'+convert(varchar(5),(2021*12+12)-Nam*12-Ky+" + Ky + ") as KyN,Col,Val"
+            + "      (select 'Ky'+convert(varchar(5),(" + (int.Parse(Nam) - 1).ToString() + "*12+12)-Nam*12-Ky+" + Ky + ") as KyN,Col,Val"
             + "      from DocSo cross apply"
             + "          (values"
             + "              (N'1. Kỳ',Ky+'/'+str(Nam,4,0)),"
@@ -479,7 +479,7 @@ namespace DocSo_PC.DAL.Doi
             + "  pivot (max(Val) for KyN in (Ky11,Ky10,Ky9,Ky8,Ky7,Ky6,Ky5,Ky4,Ky3,Ky2,Ky1,Ky0)) pvt";
             dt = _cDAL.ExecuteQuery_DataTable(sql);
             sql = "select Col,Ky11,Ky10,Ky9,Ky8,Ky7,Ky6,Ky5,Ky4,Ky3,Ky2,Ky1,Ky0 from"
-            + "      (select 'Ky'+convert(varchar(5),(2021*12+12)-Nam*12-Ky+" + Ky + ") as KyN,Col,Val"
+            + "      (select 'Ky'+convert(varchar(5),(" + (int.Parse(Nam) - 1).ToString() + "*12+12)-Nam*12-Ky+" + Ky + ") as KyN,Col,Val"
             + "      from HOADON_TA.dbo.HOADON cross apply"
             + "          (values"
             + "              (N'6. Tiêu Thụ HĐ',convert(varchar(10),TIEUTHU)),"

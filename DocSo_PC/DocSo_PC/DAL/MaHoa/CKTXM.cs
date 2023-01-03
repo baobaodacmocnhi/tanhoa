@@ -19,15 +19,15 @@ namespace DocSo_PC.DAL.MaHoa
         {
             try
             {
-                if (_db.MaHoa_KTXMs.Any(item => item.ID.ToString().Substring(0, 4) == DateTime.Now.ToString("yyMM")) == true)
+                if (_db.MaHoa_KTXMs.Any(item => item.ID.ToString().Substring(0, 4) == DateTime.Now.ToString("yy")) == true)
                 {
-                    object stt = _cDAL.ExecuteQuery_ReturnOneValue("select MAX(SUBSTRING(CAST(ID as varchar(8)),5,4))+1 from MaHoa_KTXM where ID like '" + DateTime.Now.ToString("yyMM") + "%'");
+                    object stt = _cDAL.ExecuteQuery_ReturnOneValue("select MAX(SUBSTRING(CAST(ID as varchar(8)),3,5))+1 from MaHoa_KTXM where ID like '" + DateTime.Now.ToString("yy") + "%'");
                     if (stt != null)
-                        ctktxm.ID = int.Parse(DateTime.Now.ToString("yyMM") + ((int)stt).ToString("0000"));
+                        ctktxm.ID = int.Parse(DateTime.Now.ToString("yy") + ((int)stt).ToString("00000"));
                 }
                 else
                 {
-                    ctktxm.ID = int.Parse(DateTime.Now.ToString("yyMM") + 1.ToString("0000"));
+                    ctktxm.ID = int.Parse(DateTime.Now.ToString("yy") + 1.ToString("00000"));
                 }
                 ctktxm.CreateDate = DateTime.Now;
                 ctktxm.CreateBy = CNguoiDung.MaND;
