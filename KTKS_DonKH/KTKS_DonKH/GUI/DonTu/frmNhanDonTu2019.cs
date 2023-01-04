@@ -183,6 +183,7 @@ namespace KTKS_DonKH.GUI.DonTu
                         dgvDanhBo["ID", dgvDanhBo.RowCount - 2].Value = item.ID;
                         dgvDanhBo["STT", dgvDanhBo.RowCount - 2].Value = item.STT;
                         dgvDanhBo["DanhBo", dgvDanhBo.RowCount - 2].Value = item.DanhBo;
+                        dgvDanhBo["QLDHN_MaDon", dgvDanhBo.RowCount - 2].Value = item.QLDHN_MaDon;
                         dgvDanhBo["HopDong", dgvDanhBo.RowCount - 2].Value = item.HopDong;
                         dgvDanhBo["HoTen", dgvDanhBo.RowCount - 2].Value = item.HoTen;
                         dgvDanhBo["DiaChi", dgvDanhBo.RowCount - 2].Value = item.DiaChi;
@@ -564,6 +565,8 @@ namespace KTKS_DonKH.GUI.DonTu
 
                                 if (item.Cells["DanhBo"].Value != null && item.Cells["DanhBo"].Value.ToString() != "")
                                     entityCT.DanhBo = item.Cells["DanhBo"].Value.ToString();
+                                if (item.Cells["QLDHN_MaDon"].Value != null && item.Cells["QLDHN_MaDon"].Value.ToString() != "")
+                                    entityCT.QLDHN_MaDon = int.Parse(item.Cells["QLDHN_MaDon"].Value.ToString());
                                 if (item.Cells["MLT"].Value != null && item.Cells["MLT"].Value.ToString() != "")
                                     entityCT.MLT = item.Cells["MLT"].Value.ToString();
                                 if (item.Cells["HopDong"].Value != null && item.Cells["HopDong"].Value.ToString() != "")
@@ -1223,6 +1226,10 @@ namespace KTKS_DonKH.GUI.DonTu
                     DonTu_ChiTiet en = _cDonTu.get_ChiTiet(int.Parse(dgvDanhBo["ID", e.RowIndex].Value.ToString()));
                     if (dgvDanhBo["DanhBo", e.RowIndex].Value != null && dgvDanhBo["DanhBo", e.RowIndex].Value.ToString() != "")
                         en.DanhBo = dgvDanhBo["DanhBo", e.RowIndex].Value.ToString();
+                    if (dgvDanhBo["QLDHN_MaDon", e.RowIndex].Value != null && dgvDanhBo["QLDHN_MaDon", e.RowIndex].Value.ToString() != "")
+                        en.QLDHN_MaDon = int.Parse(dgvDanhBo["QLDHN_MaDon", e.RowIndex].Value.ToString());
+                    else
+                        en.QLDHN_MaDon = null;
                     if (dgvDanhBo["MLT", e.RowIndex].Value != null && dgvDanhBo["MLT", e.RowIndex].Value.ToString() != "")
                         en.MLT = dgvDanhBo["MLT", e.RowIndex].Value.ToString();
                     if (dgvDanhBo["HopDong", e.RowIndex].Value != null && dgvDanhBo["HopDong", e.RowIndex].Value.ToString() != "")
@@ -1257,6 +1264,10 @@ namespace KTKS_DonKH.GUI.DonTu
                     DonTu_ChiTiet en = new DonTu_ChiTiet();
                     if (dgvDanhBo["DanhBo", e.RowIndex].Value != null && dgvDanhBo["DanhBo", e.RowIndex].Value.ToString() != "")
                         en.DanhBo = dgvDanhBo["DanhBo", e.RowIndex].Value.ToString();
+                    if (dgvDanhBo["QLDHN_MaDon", e.RowIndex].Value != null && dgvDanhBo["QLDHN_MaDon", e.RowIndex].Value.ToString() != "")
+                        en.QLDHN_MaDon = int.Parse(dgvDanhBo["QLDHN_MaDon", e.RowIndex].Value.ToString());
+                    else
+                        en.QLDHN_MaDon = null;
                     if (dgvDanhBo["MLT", e.RowIndex].Value != null && dgvDanhBo["MLT", e.RowIndex].Value.ToString() != "")
                         en.MLT = dgvDanhBo["MLT", e.RowIndex].Value.ToString();
                     if (dgvDanhBo["HopDong", e.RowIndex].Value != null && dgvDanhBo["HopDong", e.RowIndex].Value.ToString() != "")

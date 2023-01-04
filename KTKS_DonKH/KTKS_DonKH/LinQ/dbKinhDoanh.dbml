@@ -1464,6 +1464,7 @@
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="QLDHN_MaDon" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="DonTu_DonTu_ChiTiet" Member="DonTu" ThisKey="MaDon" OtherKey="MaDon" Type="DonTu" IsForeignKey="true" />
     </Type>
   </Table>
@@ -1665,28 +1666,6 @@
   </Table>
   <Table Name="dbo.GiaNuoc2" Member="GiaNuoc2s">
     <Type Name="GiaNuoc2">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SHN" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SHTM" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SHVM1" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SHVM2" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SX" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="HCSN" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="KDDV" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="NgayTangGia" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="PhiBVMT" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="VAT" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="VAT2_Ky" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
-      <Column Name="VAT2" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.GiaNuocTest" Member="GiaNuocTests">
-    <Type Name="GiaNuocTest">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Name" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="SHN" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -2292,6 +2271,11 @@
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Temp" Member="Temps">
+    <Type Name="Temp">
+      <Column Name="MaDon" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.ThongTinKhachHang" Member="ThongTinKhachHangs">
