@@ -22,6 +22,7 @@ namespace DocSo_PC.GUI.VanThu
         CGanMoi _cGanMoi = new CGanMoi();
         CDHN _cDHN = new CDHN();
         TB_DULIEUKHACHHANG _ttkh = null;
+        TB_DULIEUKHACHHANG_HUYDB _ttkhHuy = null;
 
         public frmCongVanDen()
         {
@@ -111,7 +112,7 @@ namespace DocSo_PC.GUI.VanThu
                 //    default:
                 //        break;
                 //}
-                
+
             }
             else
             {
@@ -257,6 +258,8 @@ namespace DocSo_PC.GUI.VanThu
             if (e.KeyChar == 13 && txtDanhBo.Text.Trim() != "")
             {
                 _ttkh = _cDHN.get(txtDanhBo.Text.Trim().Replace(" ", "").Replace("-", ""));
+                if (_ttkh == null)
+                    _ttkhHuy = _cDHN.get_Huy(txtDanhBo.Text.Trim().Replace(" ", "").Replace("-", ""));
                 if (_ttkh != null)
                 {
                     txtDanhBo.Text = _ttkh.DANHBO;
@@ -264,7 +267,14 @@ namespace DocSo_PC.GUI.VanThu
                     txtDiaChi.Text = _ttkh.SONHA + " " + _ttkh.TENDUONG;
                 }
                 else
-                    MessageBox.Show("Danh Bộ không tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (_ttkhHuy != null)
+                    {
+                        txtDanhBo.Text = _ttkhHuy.DANHBO;
+                        txtHoTen.Text = _ttkhHuy.HOTEN;
+                        txtDiaChi.Text = _ttkhHuy.SONHA + " " + _ttkhHuy.TENDUONG;
+                    }
+                    else
+                        MessageBox.Show("Danh Bộ không tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -274,7 +284,7 @@ namespace DocSo_PC.GUI.VanThu
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Them"))
                 {
-                    if (_ttkh != null)
+                    if (_ttkh != null || _ttkhHuy != null)
                     {
                         if (string.IsNullOrEmpty(txtNoiDung.Text.Trim()))
                         {
@@ -285,10 +295,21 @@ namespace DocSo_PC.GUI.VanThu
                         en.LoaiVB = cmbLoaiVanBan_Nhap.SelectedItem.ToString();
                         en.NoiChuyen = cmbNoiChuyen.SelectedItem.ToString();
                         //en.NgayChuyen = DateTime.Parse(dgvDanhSach.CurrentRow.Cells["NgayChuyen"].Value.ToString());
-                        en.MLT = _ttkh.LOTRINH;
-                        en.DanhBo = _ttkh.DANHBO;
-                        en.HoTen = _ttkh.HOTEN;
-                        en.DiaChi = _ttkh.SONHA + " " + _ttkh.TENDUONG;
+                        if (_ttkh != null)
+                        {
+                            en.MLT = _ttkh.LOTRINH;
+                            en.DanhBo = _ttkh.DANHBO;
+                            en.HoTen = _ttkh.HOTEN;
+                            en.DiaChi = _ttkh.SONHA + " " + _ttkh.TENDUONG;
+                        }
+                        else
+                            if (_ttkhHuy != null)
+                            {
+                                en.MLT = _ttkhHuy.LOTRINH;
+                                en.DanhBo = _ttkhHuy.DANHBO;
+                                en.HoTen = _ttkhHuy.HOTEN;
+                                en.DiaChi = _ttkhHuy.SONHA + " " + _ttkhHuy.TENDUONG;
+                            }
                         en.NoiDung = txtNoiDung.Text.Trim();
                         if (_cCVD.checkExists(en.DanhBo, en.NoiDung) == true)
                         {

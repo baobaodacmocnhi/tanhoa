@@ -19,7 +19,7 @@ namespace DocSo_PC.DAL.MaHoa
         {
             try
             {
-                if (_db.MaHoa_KTXMs.Any(item => item.ID.ToString().Substring(0, 4) == DateTime.Now.ToString("yy")) == true)
+                if (_db.MaHoa_KTXMs.Any(item => item.ID.ToString().Substring(0, 2) == DateTime.Now.ToString("yy")) == true)
                 {
                     object stt = _cDAL.ExecuteQuery_ReturnOneValue("select MAX(SUBSTRING(CAST(ID as varchar(8)),3,5))+1 from MaHoa_KTXM where ID like '" + DateTime.Now.ToString("yy") + "%'");
                     if (stt != null)

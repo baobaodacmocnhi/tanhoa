@@ -8,23 +8,23 @@
         <elementListCompartment Id="5d7adf49-4f6f-45c8-9454-8977b604038f" absoluteBounds="1.5150000000000001, 1.96, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="cb5464fd-e227-4194-9ad5-b985bc60c1e8" absoluteBounds="4.5, 1, 2, 6.5784326171875">
-      <DataClassMoniker Name="/dbThuongVuDataContext/DonTu_ChiTiet" />
-      <nestedChildShapes>
-        <elementListCompartment Id="39824fa1-3181-406a-9415-dd369b2084e1" absoluteBounds="4.515, 1.46, 1.9700000000000002, 6.0184326171875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="2c2b6e7c-2ce7-4132-846d-9d5176bb8299" absoluteBounds="8.75, 1.625, 2, 11.7705712890625">
       <DataClassMoniker Name="/dbThuongVuDataContext/DonTu" />
       <nestedChildShapes>
         <elementListCompartment Id="eb09c777-e146-45fa-a0a4-62ad886407d1" absoluteBounds="8.765, 2.085, 1.9700000000000002, 11.2105712890625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(8.75 : 4.60171630859375); (6.5 : 4.60171630859375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <classShape Id="7d48bee0-ab3c-41d7-a941-2175c4843924" absoluteBounds="4.75, 2.125, 2, 6.7707340494791657">
+      <DataClassMoniker Name="/dbThuongVuDataContext/DonTu_ChiTiet" />
+      <nestedChildShapes>
+        <elementListCompartment Id="867ab653-153a-4700-8490-d1d896081838" absoluteBounds="4.765, 2.585, 1.9700000000000002, 6.2107340494791661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.75 : 5.51036702473958); (6.75 : 5.51036702473958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/dbThuongVuDataContext/DonTu/DonTu_DonTu_ChiTiet" />
       <nodes>
         <classShapeMoniker Id="2c2b6e7c-2ce7-4132-846d-9d5176bb8299" />
-        <classShapeMoniker Id="cb5464fd-e227-4194-9ad5-b985bc60c1e8" />
+        <classShapeMoniker Id="7d48bee0-ab3c-41d7-a941-2175c4843924" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

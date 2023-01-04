@@ -27,19 +27,19 @@ namespace DocSo_PC.DAL.MaHoa
                         entity.ID = int.Parse(DateTime.Now.ToString("yy") + 1.ToString("00000"));
                     }
                 }
-                else
-                {
-                    if (_db.MaHoa_DonTus.Any(item => item.ID.ToString().Substring(0, 4) == DateTime.Now.ToString("yyMM")) == true)
-                    {
-                        object stt = _cDAL.ExecuteQuery_ReturnOneValue("select MAX(SUBSTRING(CAST(ID as varchar(8)),5,4))+1 from MaHoa_DonTu where ID like '" + DateTime.Now.ToString("yyMM") + "%'");
-                        if (stt != null)
-                            entity.ID = int.Parse(DateTime.Now.ToString("yyMM") + ((int)stt).ToString("0000"));
-                    }
-                    else
-                    {
-                        entity.ID = int.Parse(DateTime.Now.ToString("yyMM") + 1.ToString("0000"));
-                    }
-                }
+                //else
+                //{
+                //    if (_db.MaHoa_DonTus.Any(item => item.ID.ToString().Substring(0, 4) == DateTime.Now.ToString("yyMM")) == true)
+                //    {
+                //        object stt = _cDAL.ExecuteQuery_ReturnOneValue("select MAX(SUBSTRING(CAST(ID as varchar(8)),5,4))+1 from MaHoa_DonTu where ID like '" + DateTime.Now.ToString("yyMM") + "%'");
+                //        if (stt != null)
+                //            entity.ID = int.Parse(DateTime.Now.ToString("yyMM") + ((int)stt).ToString("0000"));
+                //    }
+                //    else
+                //    {
+                //        entity.ID = int.Parse(DateTime.Now.ToString("yyMM") + 1.ToString("0000"));
+                //    }
+                //}
                 entity.CreateBy = CNguoiDung.MaND;
                 entity.CreateDate = DateTime.Now;
                 _db.MaHoa_DonTus.InsertOnSubmit(entity);
