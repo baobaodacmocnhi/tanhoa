@@ -164,6 +164,7 @@ namespace KeToan.GUI.HoaDonDienTu
                     DateTime dateNgayLap = DateTime.Parse(item.Cells["CreateDate"].Value.ToString());
                     dr["NgayLap"] = "Ngày " + String.Format("{0:D2}", dateNgayLap.Day) + " tháng " + String.Format("{0:D2}", dateNgayLap.Month) + " năm " + dateNgayLap.Year;
                     dr["NguoiKy"] = CUser.Name;
+                    dr["Nam"] = DateTime.Now.ToString("yy");
                     ds.Tables["HoaDonDienTu"].Rows.Add(dr);
                 }
             rptBienLaiThuTienA5 rpt = new rptBienLaiThuTienA5();
