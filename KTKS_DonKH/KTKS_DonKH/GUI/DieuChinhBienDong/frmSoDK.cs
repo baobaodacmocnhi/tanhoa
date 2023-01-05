@@ -481,8 +481,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     ///
                                     lichsuchungtu1.NhanNK_MaCN = _cChiNhanh.GetIDByTenCN("Tân Hòa");
                                     lichsuchungtu1.NhanNK_DanhBo = txtDanhBo.Text.Trim();
-                                    lichsuchungtu1.NhanNK_HoTen = txtHoTen.Text.Trim();
-                                    lichsuchungtu1.NhanNK_DiaChi = txtDiaChi.Text.Trim();
+                                    lichsuchungtu1.NhanNK_HoTen = txtHoTenDB.Text.Trim();
+                                    lichsuchungtu1.NhanNK_DiaChi = txtDiaChiDB.Text.Trim();
                                     lichsuchungtu1.NhanNK_GhiChu = txtGhiChu.Text.Trim();
                                     ///
                                     lichsuchungtu1.YeuCauCat = true;
@@ -523,8 +523,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     ///
                                     lichsuchungtu1.NhanNK_MaCN = _cChiNhanh.GetIDByTenCN("Tân Hòa");
                                     lichsuchungtu1.NhanNK_DanhBo = txtDanhBo.Text.Trim();
-                                    lichsuchungtu1.NhanNK_HoTen = txtHoTen.Text.Trim();
-                                    lichsuchungtu1.NhanNK_DiaChi = txtDiaChi.Text.Trim();
+                                    lichsuchungtu1.NhanNK_HoTen = txtHoTenDB.Text.Trim();
+                                    lichsuchungtu1.NhanNK_DiaChi = txtDiaChiDB.Text.Trim();
                                     lichsuchungtu1.NhanNK_GhiChu = txtGhiChu.Text.Trim();
                                     ///
                                     lichsuchungtu1.YeuCauCat = true;
@@ -565,8 +565,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     ///
                                     lichsuchungtu1.NhanNK_MaCN = _cChiNhanh.GetIDByTenCN("Tân Hòa");
                                     lichsuchungtu1.NhanNK_DanhBo = txtDanhBo.Text.Trim();
-                                    lichsuchungtu1.NhanNK_HoTen = txtHoTen.Text.Trim();
-                                    lichsuchungtu1.NhanNK_DiaChi = txtDiaChi.Text.Trim();
+                                    lichsuchungtu1.NhanNK_HoTen = txtHoTenDB.Text.Trim();
+                                    lichsuchungtu1.NhanNK_DiaChi = txtDiaChiDB.Text.Trim();
                                     lichsuchungtu1.NhanNK_GhiChu = txtGhiChu.Text.Trim();
                                     ///
                                     lichsuchungtu1.YeuCauCat = true;
@@ -607,8 +607,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     ///
                                     lichsuchungtu1.NhanNK_MaCN = _cChiNhanh.GetIDByTenCN("Tân Hòa");
                                     lichsuchungtu1.NhanNK_DanhBo = txtDanhBo.Text.Trim();
-                                    lichsuchungtu1.NhanNK_HoTen = txtHoTen.Text.Trim();
-                                    lichsuchungtu1.NhanNK_DiaChi = txtDiaChi.Text.Trim();
+                                    lichsuchungtu1.NhanNK_HoTen = txtHoTenDB.Text.Trim();
+                                    lichsuchungtu1.NhanNK_DiaChi = txtDiaChiDB.Text.Trim();
                                     lichsuchungtu1.NhanNK_GhiChu = txtGhiChu.Text.Trim();
                                     ///
                                     lichsuchungtu1.YeuCauCat = true;
@@ -649,8 +649,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     ///
                                     lichsuchungtu1.NhanNK_MaCN = _cChiNhanh.GetIDByTenCN("Tân Hòa");
                                     lichsuchungtu1.NhanNK_DanhBo = txtDanhBo.Text.Trim();
-                                    lichsuchungtu1.NhanNK_HoTen = txtHoTen.Text.Trim();
-                                    lichsuchungtu1.NhanNK_DiaChi = txtDiaChi.Text.Trim();
+                                    lichsuchungtu1.NhanNK_HoTen = txtHoTenDB.Text.Trim();
+                                    lichsuchungtu1.NhanNK_DiaChi = txtDiaChiDB.Text.Trim();
                                     lichsuchungtu1.NhanNK_GhiChu = txtGhiChu.Text.Trim();
                                     ///
                                     lichsuchungtu1.YeuCauCat = true;
