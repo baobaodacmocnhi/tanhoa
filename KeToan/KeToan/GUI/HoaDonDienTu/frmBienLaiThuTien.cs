@@ -157,7 +157,7 @@ namespace KeToan.GUI.HoaDonDienTu
                     dr["SoTienChu"] = _cHDDT.ConvertMoneyToWord(item.Cells["SoTien"].Value.ToString());
                     if (item.Cells["SoHoaDon"].Value.ToString() != "")
                     {
-                        str = String.Format("{0:D7}", int.Parse(item.Cells["SoHoaDon"].Value.ToString()));
+                        //str = String.Format("{0:D7}", int.Parse(item.Cells["SoHoaDon"].Value.ToString()));
                         dr["SoHoaDon"] = str;
                     }
                     dr["MaTaiHoaDon"] = item.Cells["MaTaiHoaDon"].Value.ToString();
