@@ -250,6 +250,7 @@ namespace DocSo_PC.GUI.Doi
                             enCT.NgayChuyenListing = DateTime.Parse(item.Cells["NgayChuyenListing"].Value.ToString());
                         if (item.Cells["NgayThuTien"].Value != null)
                             enCT.NgayThuTien = DateTime.Parse(item.Cells["NgayThuTien"].Value.ToString());
+                        enCT.CheckNgayDoc = bool.Parse(item.Cells["CheckNgayDoc"].Value.ToString());
                         enCT.ModifyBy = CNguoiDung.MaND;
                         enCT.ModifyDate = DateTime.Now;
                         _cLDS.SubmitChanges();

@@ -56,6 +56,7 @@
             this.NgayKiemSoat_To = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayChuyenListing = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayThuTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CheckNgayDoc = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKy)).BeginInit();
@@ -269,7 +270,8 @@
             this.NgayKiemSoat_From,
             this.NgayKiemSoat_To,
             this.NgayChuyenListing,
-            this.NgayThuTien});
+            this.NgayThuTien,
+            this.CheckNgayDoc});
             this.dgvDot.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDot.Location = new System.Drawing.Point(3, 16);
             this.dgvDot.Name = "dgvDot";
@@ -324,6 +326,12 @@
             this.NgayThuTien.HeaderText = "Ngày Thu Tiền";
             this.NgayThuTien.Name = "NgayThuTien";
             // 
+            // CheckNgayDoc
+            // 
+            this.CheckNgayDoc.DataPropertyName = "CheckNgayDoc";
+            this.CheckNgayDoc.HeaderText = "Kiểm Tra Ngày Đọc";
+            this.CheckNgayDoc.Name = "CheckNgayDoc";
+            // 
             // frmLichDocSo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -375,5 +383,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayKiemSoat_To;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayChuyenListing;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayThuTien;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn CheckNgayDoc;
     }
 }

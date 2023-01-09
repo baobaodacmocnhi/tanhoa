@@ -25527,6 +25527,8 @@ namespace DocSo_PC.LinQ
 		
 		private System.Nullable<int> _TongSoNgay;
 		
+		private bool _CheckNgayDoc;
+		
 		private EntityRef<Lich_DocSo> _Lich_DocSo;
 		
 		private EntityRef<Lich_Dot> _Lich_Dot;
@@ -25559,6 +25561,8 @@ namespace DocSo_PC.LinQ
     partial void OnModifyDateChanged();
     partial void OnTongSoNgayChanging(System.Nullable<int> value);
     partial void OnTongSoNgayChanged();
+    partial void OnCheckNgayDocChanging(bool value);
+    partial void OnCheckNgayDocChanged();
     #endregion
 		
 		public Lich_DocSo_ChiTiet()
@@ -25812,6 +25816,26 @@ namespace DocSo_PC.LinQ
 					this._TongSoNgay = value;
 					this.SendPropertyChanged("TongSoNgay");
 					this.OnTongSoNgayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckNgayDoc", DbType="Bit NOT NULL")]
+		public bool CheckNgayDoc
+		{
+			get
+			{
+				return this._CheckNgayDoc;
+			}
+			set
+			{
+				if ((this._CheckNgayDoc != value))
+				{
+					this.OnCheckNgayDocChanging(value);
+					this.SendPropertyChanging();
+					this._CheckNgayDoc = value;
+					this.SendPropertyChanged("CheckNgayDoc");
+					this.OnCheckNgayDocChanged();
 				}
 			}
 		}
