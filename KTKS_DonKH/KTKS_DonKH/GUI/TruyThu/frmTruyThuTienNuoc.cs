@@ -1649,7 +1649,6 @@ namespace KTKS_DonKH.GUI.TruyThu
                         int TienNuocNamCu_Sau, TienNuocNamMoi_Sau, TieuThu_DieuChinhGia_Sau, PhiBVMTNamCu_Sau, PhiBVMTNamMoi_Sau, TienNuoc_Sau, ThueGTGT_Sau, TDVTN_Sau, ThueTDVTN_Sau;
                         string ChiTietNamCu_Sau, ChiTietNamMoi_Sau, ChiTietPhiBVMTNamCu_Sau, ChiTietPhiBVMTNamMoi_Sau;
                         _cGiaNuoc.TinhTienNuoc(false, false, false, 0, _cttttn.DanhBo, item.Ky.Value, item.Nam.Value, DateTime.Parse(item.TuNgay), DateTime.Parse(item.DenNgay), item.GiaBieuMoi.Value, TyleSH, TyLeSX, TyLeDV, TyLeHCSN, item.DinhMucMoi.Value, item.DinhMucHNMoi.Value, item.TieuThuMoi.Value, out  TienNuocNamCu_Sau, out ChiTietNamCu_Sau, out  TienNuocNamMoi_Sau, out  ChiTietNamMoi_Sau, out  TieuThu_DieuChinhGia_Sau, out PhiBVMTNamCu_Sau, out ChiTietPhiBVMTNamCu_Sau, out PhiBVMTNamMoi_Sau, out ChiTietPhiBVMTNamMoi_Sau, out TienNuoc_Sau, out ThueGTGT_Sau, out TDVTN_Sau, out ThueTDVTN_Sau, out ThueTDVTN_VAT);
-
                         if (TienNuocNamMoi_Truoc > 0 || TienNuocNamMoi_Sau > 0)
                         {
                             dr["GiaBanCu"] = TienNuocNamCu_Sau - TienNuocNamCu_Truoc;
@@ -1704,6 +1703,15 @@ namespace KTKS_DonKH.GUI.TruyThu
                         }
                         else
                         {
+                            if (item.Nam.Value == 2022 && (item.Ky.Value == 1 || item.Ky.Value == 2) && DateTime.Parse(item.TuNgay).Year != DateTime.Parse(item.DenNgay).Year)
+                            {
+                                dr["GiaBanMoi"] = 0;
+                                dr["ThueGTGTMoi"] = 0;
+                                dr["PhiBVMTMoi1"] = 0;
+                                dr["PhiBVMTMoi"] = 0;
+                                dr["PhiBVMT_ThueMoi"] = 0;
+                                dr["TongCongMoi"] = 0;
+                            }
                             dr["GiaBanCu"] = item.GiaBanMoi - item.GiaBanCu;
                             dr["ThueGTGTCu"] = item.ThueGTGTMoi - item.ThueGTGTCu;
                             if (item.Nam.Value < 2022 || (item.Nam.Value == 2022 && (item.Ky.Value == 1 || item.Ky.Value == 2) && TienNuocNamCu_Sau > 0 && TienNuocNamMoi_Sau > 0))
