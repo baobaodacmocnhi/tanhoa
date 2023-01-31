@@ -640,7 +640,7 @@ namespace ThuTien.GUI.TongHop
                                             if (item[3].ToString().All(char.IsDigit) == true)
                                             {
                                                 dchd.UpdatedHDDT = true;
-                                                dchd.SoHoaDonMoi = item[1].ToString().Trim() + item[3].ToString().Trim();
+                                                dchd.SoHoaDonMoi = item[1].ToString().Trim().Substring(0, 2) + DateTime.Now.ToString("yy") + item[1].ToString().Trim().Substring(4, 3) + item[3].ToString().Trim();
                                                 //dchd.SoHoaDonMoi = "1K22TCT" + item[3].ToString().Trim();
                                                 if (_cDCHD.Sua(dchd) == true)
                                                 {
