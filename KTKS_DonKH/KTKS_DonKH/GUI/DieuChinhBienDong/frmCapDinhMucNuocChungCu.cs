@@ -24,6 +24,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CThuTien _cThuTien = new CThuTien();
         HOADON _hoadon = null;
         ChungTu_ChiTiet _ctchungtu = null;
+        int _TongNK = 0;
 
         public frmCapDinhMucNuocChungCu()
         {
@@ -61,6 +62,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     TongNK++;
                 }
+            _TongNK = TongNK;
             lbTongNK.Text = "Tổng NK: " + TongNK;
             lbTongDM.Text = "Tổng ĐM: " + TongNK * 4;
         }
@@ -148,13 +150,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     {
                         if (txtCCCD.Text.Trim().Length != 12)
                         {
-                            MessageBox.Show("CCCD gồm 12 số", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("CCCD gồm 12 số", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         ///Kiểm tra Danh Bộ & Số Chứng Từ
                         if (_cChungTu.CheckExist_CT(txtCCCD.Text.Trim(), 15))
                         {
-                            MessageBox.Show("Số đăng ký này đã có đăng ký trước", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Số đăng ký này đã có đăng ký trước", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         else
@@ -473,8 +475,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
                     dr["STT"] = i + 1;
                     dr["DanhBo"] = txtDanhBo.Text.Trim().Insert(7, " ").Insert(4, " ");
-                    dr["HoTen"] = txtHoTen.Text.Trim();
-                    dr["DiaChi"] = txtDiaChi.Text.Trim();
+                    dr["HoTen"] = txtHoTenCC.Text.Trim();
+                    dr["DiaChi"] = txtDiaChiCC.Text.Trim();
                     dr["HopDong"] = _hoadon.HOPDONG;
                     dr["Dot"] = _hoadon.DOT.ToString();
                     dr["GiaBieu"] = _hoadon.GB;
@@ -483,7 +485,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     //dr["TenLCT"] = dgvKhachHangChungCu["TenLCT", i].Value.ToString();
                     dr["HoTenCT"] = dgvDanhSach["HoTen", i].Value.ToString();
                     dr["MaCT"] = dgvDanhSach["CCCD", i].Value.ToString();
-                    dr["SoNKTong"] = 1;
+                    dr["SoNKTong"] = _TongNK;
                     dr["SoNKDangKy"] = 1;
                     //if (chkAnGhiChu.Checked == false)
                     dr["GhiChu"] = dgvDanhSach["GhiChu", i].Value.ToString();
