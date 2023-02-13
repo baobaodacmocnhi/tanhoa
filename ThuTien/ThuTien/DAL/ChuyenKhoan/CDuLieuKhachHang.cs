@@ -9,7 +9,7 @@ using System.Globalization;
 
 namespace ThuTien.DAL.ChuyenKhoan
 {
-    class CDuLieuKhachHang:CDAL
+    class CDuLieuKhachHang : CDAL
     {
         public bool Them(TT_DuLieuKhachHang_DanhBo dlkh)
         {
@@ -106,7 +106,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         + " from TT_DuLieuKhachHang_DanhBo dlkhDB,HOADON hd"
                         + " left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
                         + " left join TT_To tto on nd.MaTo=tto.MaTo"
-                        + " where dlkhDB.DanhBo=hd.DANHBA and NGAYGIAITRACH is null and DOT="+Dot+" and SOHOADON not in (select SoHoaDon from TT_DuLieuKhachHang_SoHoaDon)"
+                        + " where dlkhDB.DanhBo=hd.DANHBA and NGAYGIAITRACH is null and DOT=" + Dot + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
                         + " order by MALOTRINH asc";
             return ExecuteQuery_DataTable(sql);
         }
@@ -126,7 +126,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         + " from TT_DuLieuKhachHang_DanhBo dlkhDB,HOADON hd"
                         + " left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
                         + " left join TT_To tto on nd.MaTo=tto.MaTo"
-                        + " where dlkhDB.DanhBo=hd.DANHBA and NGAYGIAITRACH is null and DOT>=" + TuDot + " and DOT<="+DenDot+" and SOHOADON not in (select SoHoaDon from TT_DuLieuKhachHang_SoHoaDon)"
+                        + " where dlkhDB.DanhBo=hd.DANHBA and NGAYGIAITRACH is null and DOT>=" + TuDot + " and DOT<=" + DenDot + " and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
                         + " order by MALOTRINH asc";
             return ExecuteQuery_DataTable(sql);
         }
@@ -138,7 +138,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         + " from TT_DuLieuKhachHang_DanhBo dlkhDB,HOADON hd"
                         + " left join TT_NguoiDung nd on hd.MaNV_HanhThu = nd.MaND"
                         + " left join TT_To tto on nd.MaTo=tto.MaTo"
-                        + " where dlkhDB.DanhBo=hd.DANHBA and NGAYGIAITRACH is null and SOHOADON not in (select SoHoaDon from TT_DuLieuKhachHang_SoHoaDon)"
+                        + " where dlkhDB.DanhBo=hd.DANHBA and NGAYGIAITRACH is null and ID_HOADON not in (select MaHD from TT_DuLieuKhachHang_SoHoaDon)"
                         + " order by MALOTRINH asc";
             return ExecuteQuery_DataTable(sql);
         }
@@ -269,7 +269,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                             itemHD.DOT,
                             DanhBo = itemHD.DANHBA,
                             HoTen = itemHD.TENKH,
-                            GiaBieu=itemHD.GB,
+                            GiaBieu = itemHD.GB,
                             itemHD.TIEUTHU,
                             itemHD.GIABAN,
                             ThueGTGT = itemHD.THUE,
@@ -305,7 +305,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         join itemHD in _db.HOADONs on itemDLKH.MaHD equals itemHD.ID_HOADON
                         where Convert.ToInt32(itemHD.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
                                 && Convert.ToInt32(itemHD.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
-                        && itemDLKH.CreateDate.Value.Date >= CreateDate1.Date && itemDLKH.CreateDate.Value.Date <= CreateDate2.Date && itemHD.NGAYGIAITRACH!=null
+                        && itemDLKH.CreateDate.Value.Date >= CreateDate1.Date && itemDLKH.CreateDate.Value.Date <= CreateDate2.Date && itemHD.NGAYGIAITRACH != null
                         group itemHD by itemDLKH.CreateDate.Value.Date into itemGroup
                         select new
                         {
