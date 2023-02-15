@@ -2796,6 +2796,64 @@ namespace ThuTien.DAL.TongHop
 + " and CAST(NGAY_DC as date)>='20220701' order by CAST(NGAYGIAITRACH as date)");
         }
 
+        public DataTable getNam_HDDC_Cho_DangNgan_va_HD0()
+        {
+            var query = from itemDC in _db.DIEUCHINH_HDs
+                        join itemHDDC in _db.TT_HDDC_DangNgans on itemDC.FK_HOADON equals itemHDDC.MaHD
+                        join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
+                        join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        from itemtableND in tableND.DefaultIfEmpty()
+                        where (itemDC.TONGCONG_END != 0 || (itemDC.TONGCONG_END == 0 && itemHD.NGAYGIAITRACH == null)) && itemDC.SoPhieu != null && itemDC.UpdatedHDDT == false && (itemHD.NAM > 2022 || (itemHD.NAM == 2022 && itemHD.KY >= 5))
+                        select new
+                        {
+                            NgayDC = itemDC.NGAY_DC,
+                            itemDC.NgayChan,
+                            MaDCHD = itemDC.ID_DIEUCHINH_HD,
+                            MaHD = itemDC.FK_HOADON,
+                            itemHD.SOHOADON,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            DanhBo = itemHD.DANHBA,
+                            HoTen = itemHD.TENKH,
+                            GiaBan_End = itemDC.GIABAN_END,
+                            ThueGTGT_End = itemDC.THUE_END,
+                            PhiBVMT_End = itemDC.PHI_END,
+                            PhiBVMT_Thue_End = itemDC.PHI_Thue_END,
+                            TongCong_End = itemDC.TONGCONG_END,
+                            itemDC.TangGiam,
+                            GiaBan_BD = itemDC.GIABAN_DC,
+                            ThueGTGT_BD = itemDC.THUE_DC,
+                            PhiBVMT_BD = itemDC.PHI_DC,
+                            PhiBVMT_Thue_BD = itemDC.PHI_Thue_DC,
+                            TongCong_BD = itemDC.TONGCONG_DC,
+                            TieuThu_BD = itemDC.TIEUTHU_DC - itemDC.TIEUTHU_BD,
+                            To = itemtableND.TT_To.TenTo,
+                            HanhThu = itemtableND.HoTen,
+                            itemDC.ChuanThu1,
+                            itemHD.NGAYGIAITRACH,
+                            itemDC.UpdatedHDDT,
+                            itemHD.DOT,
+                            Ky2 = itemHD.KY,
+                            itemHD.NAM,
+                            itemHD.SOPHATHANH,
+                            HoTenMoi = itemDC.HoTen_End,
+                            DiaChiMoi = itemDC.DiaChi_End,
+                            MSTMoi = itemDC.MST_End,
+                            GiaBieuCu = itemDC.GiaBieu,
+                            DinhMucCu = itemDC.DinhMuc,
+                            TieuThuCu = itemDC.TIEUTHU_BD,
+                            GiaBieuMoi = itemDC.GB_DC,
+                            DinhMucMoi = itemDC.DM_DC,
+                            TieuThuMoi = itemDC.TIEUTHU_DC,
+                            GiaBan_Start = itemDC.GIABAN_BD,
+                            ThueGTGT_Start = itemDC.THUE_BD,
+                            PhiBVMT_Start = itemDC.PHI_BD,
+                            PhiBVMT_Thue_Start = itemDC.PHI_Thue_BD,
+                            TongCong_Start = itemDC.TONGCONG_BD,
+                            itemHDDC.ChuyenKhoan,
+                            itemDC.SoPhieu,
+                        };
+            return LINQToDataTable(query);
+        }
 
     }
 
