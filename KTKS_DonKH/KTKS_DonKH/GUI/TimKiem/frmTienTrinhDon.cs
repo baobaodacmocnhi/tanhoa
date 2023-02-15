@@ -624,7 +624,7 @@ namespace KTKS_DonKH.GUI.TimKiem
         {
             if (e.Control && e.KeyCode == Keys.F && _CTRow != null && _CTRow.Row["Phong"].ToString() == "TV")
             {
-                frmToTrinh frm = new frmToTrinh(int.Parse(_CTRow.Row["IDCT"].ToString()));
+                frmToTrinh2021 frm = new frmToTrinh2021(int.Parse(_CTRow.Row["IDCT"].ToString()));
                 if (frm.ShowDialog() == DialogResult.Cancel)
                 {
                     _CTRow = null;
