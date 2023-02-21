@@ -176,7 +176,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         join itemCT in db.ChungTus on new { itemCTCT.MaCT, itemCTCT.MaLCT } equals new { itemCT.MaCT, itemCT.MaLCT }
                         join itemLCT in db.LoaiChungTus on itemCT.MaLCT equals itemLCT.MaLCT
                         where itemCTCT.DanhBo == DanhBo
-                        orderby itemCTCT.CreateDate descending
+                        orderby itemCTCT.CreateDate ascending
                         select new
                         {
                             itemCTCT.DanhBo,
