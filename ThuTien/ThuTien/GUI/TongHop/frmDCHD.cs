@@ -435,7 +435,7 @@ namespace ThuTien.GUI.TongHop
                 }
                 foreach (DataRow item in dtNam.Rows)
                 {
-                    DataRow[] drNam = dtNam.Select("Nam=" + item["Nam"].ToString() + "");
+                    DataRow[] drNam = dt.Select("Nam=" + item["Nam"].ToString() + "");
                     ExportExcelTangGiam(drNam);
                 }
             }
