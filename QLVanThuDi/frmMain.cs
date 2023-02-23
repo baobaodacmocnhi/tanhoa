@@ -1129,8 +1129,7 @@ namespace QLVanThu
                 // Lấy về vùng điền dữ liệu
                 Microsoft.Office.Interop.Excel.Range range = oSheet.get_Range(c1, c2);
 
-                //Điền dữ liệu vào vùng đã thiết lập
-                range.Value2 = arr;
+                
 
                 // Kẻ viền
                 range.Borders.LineStyle = Microsoft.Office.Interop.Excel.Constants.xlSolid;
@@ -1161,7 +1160,7 @@ namespace QLVanThu
                 oSheet.get_Range(c3b, c4b).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
                 oSheet.get_Range(c3b, c4b).Font.Name = "Times New Roman";
                 oSheet.get_Range(c3b, c4b).Font.Size = 12;
-                c4b.NumberFormat = "dd/mm/yyyy";
+                oSheet.get_Range(c3b, c4b).NumberFormat = "@";
                 // Căn trái cột Số Ký Hiệu A
                 Microsoft.Office.Interop.Excel.Range c1c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 3];
                 Microsoft.Office.Interop.Excel.Range c3c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 3];
@@ -1170,6 +1169,7 @@ namespace QLVanThu
                 oSheet.get_Range(c3c, c4c).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
                 oSheet.get_Range(c3c, c4c).Font.Name = "Times New Roman";
                 oSheet.get_Range(c3c, c4c).Font.Size = 12;
+                oSheet.get_Range(c3c, c4c).NumberFormat = "@";
                 // Căn trái cột Số Ký Hiệu B
                 Microsoft.Office.Interop.Excel.Range c1d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 4];
                 Microsoft.Office.Interop.Excel.Range c3d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 4];
@@ -1178,6 +1178,7 @@ namespace QLVanThu
                 oSheet.get_Range(c3d, c4d).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
                 oSheet.get_Range(c3d, c4d).Font.Name = "Times New Roman";
                 oSheet.get_Range(c3d, c4d).Font.Size = 12;
+                oSheet.get_Range(c3d, c4d).NumberFormat = "@";
                 // Căn giữa cột Đơn Vị Thảo
                 Microsoft.Office.Interop.Excel.Range c1e = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 5];
                 Microsoft.Office.Interop.Excel.Range c3e = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 5];
@@ -1212,6 +1213,9 @@ namespace QLVanThu
                 head8.Font.Name = "Times New Roman";
                 head8.Font.Size = "18";
                 head8.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+                //Điền dữ liệu vào vùng đã thiết lập
+                range.Value2 = arr;
             }
             catch (Exception)
             {
