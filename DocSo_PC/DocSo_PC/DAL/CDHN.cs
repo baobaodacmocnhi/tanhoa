@@ -375,5 +375,20 @@ namespace DocSo_PC.DAL
             return _cDAL.ExecuteQuery_DataTable("select MLT=LOTRINH,DanhBo,HoTen,DiaChi=SONHA+' '+TENDUONG,Hieu=HIEUDH,Co=CODH,SoThan=SOTHANDH,Phuong=(select TENPHUONG from PHUONG where MAQUAN=Quan and MAPHUONG=PHUONG),Quan=(select TENQUAN from QUAN where MAQUAN=Quan and MAQUAN=QUAN) from TB_DULIEUKHACHHANG where Gieng=1");
         }
 
+        public DataTable getDS_DiaChiSaiLech(string Dot, string May)
+        {
+            string sql = "select * from"
++ " (select MLT=LOTRINH,DanhBo,HoTen,DiaChiDHN=SONHA+' '+TENDUONG,GiaBieu,DiaChiHD=(select top 1 SO+' '+DUONG from HOADON_TA.dbo.HOADON"
++ " where DANHBA=TB_DULIEUKHACHHANG.DANHBO order by ID_HOADON desc)"
++ " from TB_DULIEUKHACHHANG where SUBSTRING(LOTRINH,1,2)=" + Dot;
+            if (May == "Tất Cả")
+                May = "";
+            else
+                May = " and SUBSTRING(LOTRINH,3,2)=" + May;
+            sql += May;
+            sql += ")t1 where DiaChiDHN!=DiaChiHD order by MLT";
+            return _cDAL.ExecuteQuery_DataTable(sql);
+        }
+
     }
 }
