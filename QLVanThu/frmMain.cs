@@ -912,8 +912,7 @@ namespace QLVanThuDen
                 // Lấy về vùng điền dữ liệu
                 Microsoft.Office.Interop.Excel.Range range = oSheet.get_Range(c1, c2);
 
-                //Điền dữ liệu vào vùng đã thiết lập
-                range.Value2 = arr;
+                
 
                 // Kẻ viền
                 range.Borders.LineStyle = Microsoft.Office.Interop.Excel.Constants.xlSolid;
@@ -944,7 +943,7 @@ namespace QLVanThuDen
                 oSheet.get_Range(c3b, c4b).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
                 oSheet.get_Range(c3b, c4b).Font.Name = "Times New Roman";
                 oSheet.get_Range(c3b, c4b).Font.Size = 12;
-                c4b.NumberFormat = "dd/mm/yyyy";
+                oSheet.get_Range(c3b, c4b).NumberFormat = "@";
                 // Căn giữ Số Đến
                 Microsoft.Office.Interop.Excel.Range c1c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 3];
                 Microsoft.Office.Interop.Excel.Range c3c = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 3];
@@ -953,6 +952,7 @@ namespace QLVanThuDen
                 oSheet.get_Range(c3c, c4c).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
                 oSheet.get_Range(c3c, c4c).Font.Name = "Times New Roman";
                 oSheet.get_Range(c3c, c4c).Font.Size = 12;
+                oSheet.get_Range(c3c, c4c).NumberFormat = "@";
                 // Căn trái Nơi Gửi
                 Microsoft.Office.Interop.Excel.Range c1d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 4];
                 Microsoft.Office.Interop.Excel.Range c3d = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 4];
@@ -1005,6 +1005,9 @@ namespace QLVanThuDen
                 //head8.Font.Name = "Times New Roman";
                 //head8.Font.Size = "18";
                 //head8.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+                //Điền dữ liệu vào vùng đã thiết lập
+                range.Value2 = arr;
             }
             catch (Exception)
             {
