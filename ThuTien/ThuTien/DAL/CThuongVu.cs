@@ -2919,7 +2919,7 @@ namespace ThuTien.DAL
 
         public DataTable getTong_HoaDon(string DanhBo, int Nam, int Ky)
         {
-            string sql = "select TieuThu=sum(TieuThu_BD)-sum(TieuThu),GiaBan=sum(TienNuoc_BD),ThueGTGT=sum(ThueGTGT_BD),PhiBVMT=sum(PhiBVMT_BD),PhiBVMT_Thue=sum(PhiBVMT_Thue_BD)"
+            string sql = "select TieuThu=sum(TieuThu_BD)-sum(TieuThu),GiaBan=sum(TienNuoc_BD),ThueGTGT=sum(ThueGTGT_BD),PhiBVMT=sum(PhiBVMT_BD),PhiBVMT_Thue=sum(PhiBVMT_Thue_BD),TongCong=sum(TongCong_BD)"
                 + " from DCBD_ChiTietHoaDon where DanhBo = '" + DanhBo + "' and Nam = " + Nam + " and Ky = " + Ky + " and PhieuDuocKy=1"
                 + " group by DanhBo,Nam,Ky";
                 return ExecuteQuery_DataTable(sql);

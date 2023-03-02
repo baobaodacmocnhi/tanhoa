@@ -15,6 +15,7 @@ using ThuTien.BaoCao.TongHop;
 using ThuTien.GUI.BaoCao;
 using ThuTien.DAL.Quay;
 using System.Globalization;
+using ThuTien.DAL;
 
 namespace ThuTien.GUI.TongHop
 {
@@ -301,17 +302,24 @@ namespace ThuTien.GUI.TongHop
                             dr["NgayYCCHDB"] = cnkd.NgayYCCHDB.Value.ToString("dd/MM/yyyy");
                         if (cnkd.LyDo != null)
                             dr["LyDo"] = cnkd.LyDo;
-                        dr["Ky"] = itemC["Ky"];
+                        dr["Ky"] = itemC["KyHD"];
                         dr["SoPhatHanh"] = itemC["SoPhatHanh"];
                         dr["TieuThu"] = itemC["TieuThu"];
                         if (_cDCHD.CheckExist_ChuanThu(int.Parse(itemC["MaHD"].ToString())))
                         {
-                            DIEUCHINH_HD dchd = _cDCHD.Get(int.Parse(itemC["MaHD"].ToString()));
-                            dr["GiaBan"] = dchd.GIABAN_BD;
-                            dr["ThueGTGT"] = dchd.THUE_BD;
-                            dr["PhiBVMT"] = dchd.PHI_BD;
-                            dr["PhiBVMT_Thue"] = dchd.PHI_Thue_BD == null ? 0 : dchd.PHI_Thue_BD;
-                            dr["TongCong"] = dchd.TONGCONG_BD;
+                            CThuongVu _cKinhDoanh = new CThuongVu();
+                            DataTable dtDC = _cKinhDoanh.getTong_HoaDon(cnkd.DanhBo, int.Parse(itemC["Nam"].ToString()), int.Parse(itemC["Ky"].ToString()));
+                            dr["GiaBan"] = int.Parse(itemC["GiaBan"].ToString()) - int.Parse(dtDC.Rows[0]["GiaBan"].ToString());
+                            dr["ThueGTGT"] = int.Parse(itemC["ThueGTGT"].ToString()) - int.Parse(dtDC.Rows[0]["ThueGTGT"].ToString());
+                            dr["PhiBVMT"] = int.Parse(itemC["PhiBVMT"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT"].ToString());
+                            dr["PhiBVMT_Thue"] = int.Parse(itemC["PhiBVMT_Thue"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT_Thue"].ToString());
+                            dr["TongCong"] = int.Parse(itemC["TongCong"].ToString()) - int.Parse(dtDC.Rows[0]["TongCong"].ToString());
+                            //DIEUCHINH_HD dchd = _cDCHD.Get(int.Parse(itemC["MaHD"].ToString()));
+                            //dr["GiaBan"] = dchd.GIABAN_BD;
+                            //dr["ThueGTGT"] = dchd.THUE_BD;
+                            //dr["PhiBVMT"] = dchd.PHI_BD;
+                            //dr["PhiBVMT_Thue"] = dchd.PHI_Thue_BD == null ? 0 : dchd.PHI_Thue_BD;
+                            //dr["TongCong"] = dchd.TONGCONG_BD;
                         }
                         else
                         {
