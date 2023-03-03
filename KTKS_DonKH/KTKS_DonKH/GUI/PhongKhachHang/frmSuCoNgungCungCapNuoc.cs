@@ -70,13 +70,15 @@ namespace KTKS_DonKH.GUI.PhongKhachHang
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     DataTable dtExcel = _cDonTu.ExcelToDataTable(dialog.FileName);
+                    string str = "";
                     foreach (DataRow item in dtExcel.Rows)
                     {
-                        if (txtDanhBo.Text.Trim() == "")
-                            txtDanhBo.Text += item[1].ToString().Trim();
+                        if (str == "")
+                            str += item[0].ToString().Trim();
                         else
-                            txtDanhBo.Text += "," + item[1].ToString().Trim();
+                            str += "," + item[0].ToString().Trim();
                     }
+                    txtDanhBo.Text = str;
                 }
             }
             catch (Exception ex)
@@ -96,13 +98,15 @@ namespace KTKS_DonKH.GUI.PhongKhachHang
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     DataTable dtExcel = _cDonTu.ExcelToDataTable(dialog.FileName);
+                    string str = "";
                     foreach (DataRow item in dtExcel.Rows)
                     {
-                        if (txtDMA.Text.Trim() == "")
-                            txtDMA.Text += item[1].ToString().Trim();
+                        if (str == "")
+                            str += item[0].ToString().Trim();
                         else
-                            txtDMA.Text += "," + item[1].ToString().Trim();
+                            str += "," + item[0].ToString().Trim();
                     }
+                    txtDMA.Text = str;
                 }
             }
             catch (Exception ex)

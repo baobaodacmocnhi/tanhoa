@@ -205,6 +205,111 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             return LINQToDataTable(query);
         }
 
+        public DataTable getDS_ChiTiet_TimKiem_CCCD(string CCCD)
+        {
+            var query = from itemCTCT in db.ChungTu_ChiTiets
+                        join itemCT in db.ChungTus on new { itemCTCT.MaCT, itemCTCT.MaLCT } equals new { itemCT.MaCT, itemCT.MaLCT }
+                        join itemLCT in db.LoaiChungTus on itemCT.MaLCT equals itemLCT.MaLCT
+                        where itemCTCT.MaCT == CCCD
+                        orderby itemCTCT.CreateDate ascending
+                        select new
+                        {
+                            itemCTCT.DanhBo,
+                            itemCT.MaLCT,
+                            itemLCT.TenLCT,
+                            itemCTCT.MaCT,
+                            itemCT.NgaySinh,
+                            itemCT.HoTen,
+                            itemCT.DiaChi,
+                            itemCT.SoNKTong,
+                            itemCT.SoNKCat,
+                            itemCT.SoNKNhan,
+                            itemCT.SoNKConLai,
+                            itemCTCT.SoNKDangKy,
+                            itemCTCT.NgayHetHan,
+                            itemCTCT.ThoiHan,
+                            itemCTCT.DienThoai,
+                            itemCTCT.Cat,
+                            itemCTCT.GhiChu,
+                            itemCTCT.GiaHan,
+                            itemCTCT.Lo,
+                            itemCTCT.Phong,
+                            itemCTCT.CreateDate,
+                        };
+
+            return LINQToDataTable(query);
+        }
+
+        public DataTable getDS_ChiTiet_TimKiem_CCCD(string DanhBo, string CCCD)
+        {
+            var query = from itemCTCT in db.ChungTu_ChiTiets
+                        join itemCT in db.ChungTus on new { itemCTCT.MaCT, itemCTCT.MaLCT } equals new { itemCT.MaCT, itemCT.MaLCT }
+                        join itemLCT in db.LoaiChungTus on itemCT.MaLCT equals itemLCT.MaLCT
+                        where itemCTCT.DanhBo == DanhBo && itemCTCT.MaCT == CCCD
+                        orderby itemCTCT.CreateDate ascending
+                        select new
+                        {
+                            itemCTCT.DanhBo,
+                            itemCT.MaLCT,
+                            itemLCT.TenLCT,
+                            itemCTCT.MaCT,
+                            itemCT.NgaySinh,
+                            itemCT.HoTen,
+                            itemCT.DiaChi,
+                            itemCT.SoNKTong,
+                            itemCT.SoNKCat,
+                            itemCT.SoNKNhan,
+                            itemCT.SoNKConLai,
+                            itemCTCT.SoNKDangKy,
+                            itemCTCT.NgayHetHan,
+                            itemCTCT.ThoiHan,
+                            itemCTCT.DienThoai,
+                            itemCTCT.Cat,
+                            itemCTCT.GhiChu,
+                            itemCTCT.GiaHan,
+                            itemCTCT.Lo,
+                            itemCTCT.Phong,
+                            itemCTCT.CreateDate,
+                        };
+
+            return LINQToDataTable(query);
+        }
+
+        public DataTable getDS_ChiTiet_TimKiem_HoTen(string HoTen)
+        {
+            var query = from itemCTCT in db.ChungTu_ChiTiets
+                        join itemCT in db.ChungTus on new { itemCTCT.MaCT, itemCTCT.MaLCT } equals new { itemCT.MaCT, itemCT.MaLCT }
+                        join itemLCT in db.LoaiChungTus on itemCT.MaLCT equals itemLCT.MaLCT
+                        where itemCTCT.ChungTu.HoTen == HoTen
+                        orderby itemCTCT.CreateDate ascending
+                        select new
+                        {
+                            itemCTCT.DanhBo,
+                            itemCT.MaLCT,
+                            itemLCT.TenLCT,
+                            itemCTCT.MaCT,
+                            itemCT.NgaySinh,
+                            itemCT.HoTen,
+                            itemCT.DiaChi,
+                            itemCT.SoNKTong,
+                            itemCT.SoNKCat,
+                            itemCT.SoNKNhan,
+                            itemCT.SoNKConLai,
+                            itemCTCT.SoNKDangKy,
+                            itemCTCT.NgayHetHan,
+                            itemCTCT.ThoiHan,
+                            itemCTCT.DienThoai,
+                            itemCTCT.Cat,
+                            itemCTCT.GhiChu,
+                            itemCTCT.GiaHan,
+                            itemCTCT.Lo,
+                            itemCTCT.Phong,
+                            itemCTCT.CreateDate,
+                        };
+
+            return LINQToDataTable(query);
+        }
+
         public DataTable getDS_ChiTiet(string MaCT)
         {
             var query = from itemCTCT in db.ChungTu_ChiTiets
@@ -212,6 +317,181 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         select new
                         {
                             itemCTCT.DanhBo,
+                        };
+
+            return LINQToDataTable(query);
+        }
+
+        public DataTable getDS_ChiTiet_TimKiem_Lo(string Lo)
+        {
+            var query = from itemCTCT in db.ChungTu_ChiTiets
+                        join itemCT in db.ChungTus on new { itemCTCT.MaCT, itemCTCT.MaLCT } equals new { itemCT.MaCT, itemCT.MaLCT }
+                        join itemLCT in db.LoaiChungTus on itemCT.MaLCT equals itemLCT.MaLCT
+                        where itemCTCT.Lo == Lo
+                        orderby itemCTCT.CreateDate ascending
+                        select new
+                        {
+                            itemCTCT.DanhBo,
+                            itemCT.MaLCT,
+                            itemLCT.TenLCT,
+                            itemCTCT.MaCT,
+                            itemCT.NgaySinh,
+                            itemCT.HoTen,
+                            itemCT.DiaChi,
+                            itemCT.SoNKTong,
+                            itemCT.SoNKCat,
+                            itemCT.SoNKNhan,
+                            itemCT.SoNKConLai,
+                            itemCTCT.SoNKDangKy,
+                            itemCTCT.NgayHetHan,
+                            itemCTCT.ThoiHan,
+                            itemCTCT.DienThoai,
+                            itemCTCT.Cat,
+                            itemCTCT.GhiChu,
+                            itemCTCT.GiaHan,
+                            itemCTCT.Lo,
+                            itemCTCT.Phong,
+                            itemCTCT.CreateDate,
+                        };
+
+            return LINQToDataTable(query);
+        }
+
+        public DataTable getDS_ChiTiet_TimKiem_Lo(string DanhBo, string Lo)
+        {
+            var query = from itemCTCT in db.ChungTu_ChiTiets
+                        join itemCT in db.ChungTus on new { itemCTCT.MaCT, itemCTCT.MaLCT } equals new { itemCT.MaCT, itemCT.MaLCT }
+                        join itemLCT in db.LoaiChungTus on itemCT.MaLCT equals itemLCT.MaLCT
+                        where itemCTCT.DanhBo == DanhBo && itemCTCT.Lo == Lo
+                        orderby itemCTCT.CreateDate ascending
+                        select new
+                        {
+                            itemCTCT.DanhBo,
+                            itemCT.MaLCT,
+                            itemLCT.TenLCT,
+                            itemCTCT.MaCT,
+                            itemCT.NgaySinh,
+                            itemCT.HoTen,
+                            itemCT.DiaChi,
+                            itemCT.SoNKTong,
+                            itemCT.SoNKCat,
+                            itemCT.SoNKNhan,
+                            itemCT.SoNKConLai,
+                            itemCTCT.SoNKDangKy,
+                            itemCTCT.NgayHetHan,
+                            itemCTCT.ThoiHan,
+                            itemCTCT.DienThoai,
+                            itemCTCT.Cat,
+                            itemCTCT.GhiChu,
+                            itemCTCT.GiaHan,
+                            itemCTCT.Lo,
+                            itemCTCT.Phong,
+                            itemCTCT.CreateDate,
+                        };
+
+            return LINQToDataTable(query);
+        }
+
+        public DataTable getDS_ChiTiet_TimKiem_Phong(string Phong)
+        {
+            var query = from itemCTCT in db.ChungTu_ChiTiets
+                        join itemCT in db.ChungTus on new { itemCTCT.MaCT, itemCTCT.MaLCT } equals new { itemCT.MaCT, itemCT.MaLCT }
+                        join itemLCT in db.LoaiChungTus on itemCT.MaLCT equals itemLCT.MaLCT
+                        where itemCTCT.Phong == Phong
+                        orderby itemCTCT.CreateDate ascending
+                        select new
+                        {
+                            itemCTCT.DanhBo,
+                            itemCT.MaLCT,
+                            itemLCT.TenLCT,
+                            itemCTCT.MaCT,
+                            itemCT.NgaySinh,
+                            itemCT.HoTen,
+                            itemCT.DiaChi,
+                            itemCT.SoNKTong,
+                            itemCT.SoNKCat,
+                            itemCT.SoNKNhan,
+                            itemCT.SoNKConLai,
+                            itemCTCT.SoNKDangKy,
+                            itemCTCT.NgayHetHan,
+                            itemCTCT.ThoiHan,
+                            itemCTCT.DienThoai,
+                            itemCTCT.Cat,
+                            itemCTCT.GhiChu,
+                            itemCTCT.GiaHan,
+                            itemCTCT.Lo,
+                            itemCTCT.Phong,
+                            itemCTCT.CreateDate,
+                        };
+
+            return LINQToDataTable(query);
+        }
+
+        public DataTable getDS_ChiTiet_TimKiem_Phong(string DanhBo, string Phong)
+        {
+            var query = from itemCTCT in db.ChungTu_ChiTiets
+                        join itemCT in db.ChungTus on new { itemCTCT.MaCT, itemCTCT.MaLCT } equals new { itemCT.MaCT, itemCT.MaLCT }
+                        join itemLCT in db.LoaiChungTus on itemCT.MaLCT equals itemLCT.MaLCT
+                        where itemCTCT.DanhBo == DanhBo && itemCTCT.Phong == Phong
+                        orderby itemCTCT.CreateDate ascending
+                        select new
+                        {
+                            itemCTCT.DanhBo,
+                            itemCT.MaLCT,
+                            itemLCT.TenLCT,
+                            itemCTCT.MaCT,
+                            itemCT.NgaySinh,
+                            itemCT.HoTen,
+                            itemCT.DiaChi,
+                            itemCT.SoNKTong,
+                            itemCT.SoNKCat,
+                            itemCT.SoNKNhan,
+                            itemCT.SoNKConLai,
+                            itemCTCT.SoNKDangKy,
+                            itemCTCT.NgayHetHan,
+                            itemCTCT.ThoiHan,
+                            itemCTCT.DienThoai,
+                            itemCTCT.Cat,
+                            itemCTCT.GhiChu,
+                            itemCTCT.GiaHan,
+                            itemCTCT.Lo,
+                            itemCTCT.Phong,
+                            itemCTCT.CreateDate,
+                        };
+
+            return LINQToDataTable(query);
+        }
+
+        public DataTable getDS_ChiTiet_TimKiem_Ngay(string DanhBo, string Lo, DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            var query = from itemCTCT in db.ChungTu_ChiTiets
+                        join itemCT in db.ChungTus on new { itemCTCT.MaCT, itemCTCT.MaLCT } equals new { itemCT.MaCT, itemCT.MaLCT }
+                        join itemLCT in db.LoaiChungTus on itemCT.MaLCT equals itemLCT.MaLCT
+                        where itemCTCT.DanhBo == DanhBo && itemCTCT.Lo == Lo && itemCTCT.CreateDate.Value.Date >= FromCreateDate.Date && itemCTCT.CreateDate.Value.Date <= ToCreateDate.Date
+                        orderby itemCTCT.CreateDate ascending
+                        select new
+                        {
+                            itemCTCT.DanhBo,
+                            itemCT.MaLCT,
+                            itemLCT.TenLCT,
+                            itemCTCT.MaCT,
+                            itemCT.NgaySinh,
+                            itemCT.HoTen,
+                            itemCT.DiaChi,
+                            itemCT.SoNKTong,
+                            itemCT.SoNKCat,
+                            itemCT.SoNKNhan,
+                            itemCT.SoNKConLai,
+                            itemCTCT.SoNKDangKy,
+                            itemCTCT.NgayHetHan,
+                            itemCTCT.ThoiHan,
+                            itemCTCT.DienThoai,
+                            itemCTCT.Cat,
+                            itemCTCT.GhiChu,
+                            itemCTCT.GiaHan,
+                            itemCTCT.Lo,
+                            itemCTCT.Phong,
+                            itemCTCT.CreateDate,
                         };
 
             return LINQToDataTable(query);

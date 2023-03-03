@@ -535,6 +535,56 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
+        private void cmbTimTheo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbTimTheo.SelectedItem.ToString())
+            {
+                case "Ngày":
+                    panel1.Visible = false;
+                    panel2.Visible = true;
+                    break;
+                default:
+                    panel1.Visible = true;
+                    panel2.Visible = false;
+                    break;
+            }
+            dgvDanhSach.DataSource = null;
+        }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            switch (cmbTimTheo.SelectedItem.ToString())
+            {
+                case "CCCD":
+                    if (string.IsNullOrEmpty(txtDanhBo.Text.Trim()))
+                        dgvDanhSach.DataSource = _cChungTu.getDS_ChiTiet_TimKiem_CCCD(txtNoiDungTimKiem.Text.Trim());
+                    else
+                        dgvDanhSach.DataSource = _cChungTu.getDS_ChiTiet_TimKiem_CCCD(txtDanhBo.Text.Trim(), txtNoiDungTimKiem.Text.Trim());
+                    break;
+                case "Họ Tên":
+                    dgvDanhSach.DataSource = _cChungTu.getDS_ChiTiet_TimKiem_HoTen(txtNoiDungTimKiem.Text.Trim());
+                    break;
+                case "Lô":
+                    if (string.IsNullOrEmpty(txtDanhBo.Text.Trim()))
+                        dgvDanhSach.DataSource = _cChungTu.getDS_ChiTiet_TimKiem_Lo(txtNoiDungTimKiem.Text.Trim());
+                    else
+                        dgvDanhSach.DataSource = _cChungTu.getDS_ChiTiet_TimKiem_Lo(txtDanhBo.Text.Trim(), txtNoiDungTimKiem.Text.Trim());
+                    break;
+                case "Phòng":
+                    if (string.IsNullOrEmpty(txtDanhBo.Text.Trim()))
+                        dgvDanhSach.DataSource = _cChungTu.getDS_ChiTiet_TimKiem_Phong(txtNoiDungTimKiem.Text.Trim());
+                    else
+                        dgvDanhSach.DataSource = _cChungTu.getDS_ChiTiet_TimKiem_Phong(txtDanhBo.Text.Trim(), txtNoiDungTimKiem.Text.Trim());
+                    break;
+                case "Ngày":
+                    dgvDanhSach.DataSource = _cChungTu.getDS_ChiTiet_TimKiem_Ngay(txtDanhBo.Text.Trim(), txtLo.Text.Trim(), dateTu_TimKiem.Value, dateDen_TimKiem.Value);
+                    break;
+                default:
+
+                    break;
+            }
+        }
+
         
 
 
