@@ -312,7 +312,10 @@ namespace ThuTien.GUI.TongHop
                             dr["GiaBan"] = int.Parse(itemC["GiaBan"].ToString()) - int.Parse(dtDC.Rows[0]["GiaBan"].ToString());
                             dr["ThueGTGT"] = int.Parse(itemC["ThueGTGT"].ToString()) - int.Parse(dtDC.Rows[0]["ThueGTGT"].ToString());
                             dr["PhiBVMT"] = int.Parse(itemC["PhiBVMT"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT"].ToString());
-                            dr["PhiBVMT_Thue"] = int.Parse(itemC["PhiBVMT_Thue"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT_Thue"].ToString());
+                            if (dtDC.Rows[0]["PhiBVMT_Thue"].ToString() != "")
+                                dr["PhiBVMT_Thue"] = int.Parse(itemC["PhiBVMT_Thue"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT_Thue"].ToString());
+                            else
+                                dr["PhiBVMT_Thue"] = int.Parse(itemC["PhiBVMT_Thue"].ToString()) - 0;
                             dr["TongCong"] = int.Parse(itemC["TongCong"].ToString()) - int.Parse(dtDC.Rows[0]["TongCong"].ToString());
                             //DIEUCHINH_HD dchd = _cDCHD.Get(int.Parse(itemC["MaHD"].ToString()));
                             //dr["GiaBan"] = dchd.GIABAN_BD;
