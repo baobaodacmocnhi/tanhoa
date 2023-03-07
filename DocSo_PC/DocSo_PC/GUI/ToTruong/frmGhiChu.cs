@@ -22,6 +22,7 @@ namespace DocSo_PC.GUI.ToTruong
         CTo _cTo = new CTo();
         CMayDS _cMayDS = new CMayDS();
         CDHN _cDHN = new CDHN();
+        CDonTu _cDonTu = new CDonTu();
         bool _flagLoadFirst = false;
         TB_DULIEUKHACHHANG _enDLKH = null;
         bool _flagThemDienThoai = false;
@@ -37,6 +38,7 @@ namespace DocSo_PC.GUI.ToTruong
             dgvDanhSach.AutoGenerateColumns = false;
             dgvDienThoai.AutoGenerateColumns = false;
             dgvThongKe.AutoGenerateColumns = false;
+            dgvPhieuChuyen.AutoGenerateColumns = false;
             if (CNguoiDung.Admin)
                 btnChonFile.Visible = true;
             if (CNguoiDung.Doi)
@@ -163,6 +165,20 @@ namespace DocSo_PC.GUI.ToTruong
                 chkDauChungMayBom.Checked = en.DauChungMayBom;
                 if (en.DauChungMayBom == true)
                     dateDauChungMayBom.Value = en.DauChungMayBom_Ngay.Value;
+                DataTable dt=new DataTable();
+                dt.Merge(_cDonTu.getDS_AmSau(en.DANHBO));
+                dt.Merge(_cDonTu.getDS_XayDung(en.DANHBO));
+                dt.Merge(_cDonTu.getDS_DutChiGoc(en.DANHBO));
+                dt.Merge(_cDonTu.getDS_DutChiThan(en.DANHBO));
+                dt.Merge(_cDonTu.getDS_NgapNuoc(en.DANHBO));
+                dt.Merge(_cDonTu.getDS_KetTuong(en.DANHBO));
+                dt.Merge(_cDonTu.getDS_LapKhoaGoc(en.DANHBO));
+                dt.Merge(_cDonTu.getDS_BeHBV(en.DANHBO));
+                dt.Merge(_cDonTu.getDS_BeNapMatNapHBV(en.DANHBO));
+                dt.Merge(_cDonTu.getDS_GayTayVan(en.DANHBO));
+                dt.Merge(_cDonTu.getDS_TroNgaiThay(en.DANHBO));
+                dt.Merge(_cDonTu.getDS_DauChungMayBom(en.DANHBO));
+                dgvPhieuChuyen.DataSource = dt;
             }
         }
 
@@ -288,54 +304,54 @@ namespace DocSo_PC.GUI.ToTruong
                         _enDLKH.ViTriDHN_Ngoai = chkViTriDHN_Ngoai.Checked;
                         _enDLKH.ViTriDHN_Hop = chkViTriDHN_Hop.Checked;
                         _enDLKH.Gieng = chkGieng.Checked;
-                        if (_enDLKH.AmSau && _enDLKH.AmSau != chkAmSau.Checked)
-                        {
-                            _enDLKH.AmSau = chkAmSau.Checked;
-                        }
-                        if (_enDLKH.XayDung && _enDLKH.XayDung != chkXayDung.Checked)
-                        {
-                            _enDLKH.XayDung = chkXayDung.Checked;
-                        }
-                        if (_enDLKH.DutChi_Goc && _enDLKH.DutChi_Goc != chkDutChiGoc.Checked)
-                        {
-                            _enDLKH.DutChi_Goc = chkDutChiGoc.Checked;
-                        }
-                        if (_enDLKH.DutChi_Than && _enDLKH.DutChi_Than != chkDutChiThan.Checked)
-                        {
-                            _enDLKH.DutChi_Than = chkDutChiThan.Checked;
-                        }
-                        if (_enDLKH.NgapNuoc && _enDLKH.NgapNuoc != chkNgapNuoc.Checked)
-                        {
-                            _enDLKH.NgapNuoc = chkNgapNuoc.Checked;
-                        }
-                        if (_enDLKH.KetTuong && _enDLKH.KetTuong != chkKetTuong.Checked)
-                        {
-                            _enDLKH.KetTuong = chkKetTuong.Checked;
-                        }
-                        if (_enDLKH.LapKhoaGoc && _enDLKH.LapKhoaGoc != chkLapKhoaGoc.Checked)
-                        {
-                            _enDLKH.LapKhoaGoc = chkLapKhoaGoc.Checked;
-                        }
-                        if (_enDLKH.BeHBV && _enDLKH.BeHBV != chkBeHBV.Checked)
-                        {
-                            _enDLKH.BeHBV = chkBeHBV.Checked;
-                        }
-                        if (_enDLKH.BeNapMatNapHBV && _enDLKH.BeNapMatNapHBV != chkBeNapMatNapHBV.Checked)
-                        {
-                            _enDLKH.BeNapMatNapHBV = chkBeNapMatNapHBV.Checked;
-                        }
-                        if (_enDLKH.GayTayVan && _enDLKH.GayTayVan != chkGayTayVan.Checked)
-                        {
-                            _enDLKH.GayTayVan = chkGayTayVan.Checked;
-                        }
-                        if (_enDLKH.TroNgaiThay && _enDLKH.TroNgaiThay != chkTroNgaiThay.Checked)
-                        {
-                            _enDLKH.TroNgaiThay = chkTroNgaiThay.Checked;
-                        }
-                        if (_enDLKH.DauChungMayBom && _enDLKH.DauChungMayBom != chkDauChungMayBom.Checked)
-                        {
-                            _enDLKH.DauChungMayBom = chkDauChungMayBom.Checked;
-                        }
+                        //if (_enDLKH.AmSau && _enDLKH.AmSau != chkAmSau.Checked)
+                        //{
+                        //    _enDLKH.AmSau = chkAmSau.Checked;
+                        //}
+                        //if (_enDLKH.XayDung && _enDLKH.XayDung != chkXayDung.Checked)
+                        //{
+                        //    _enDLKH.XayDung = chkXayDung.Checked;
+                        //}
+                        //if (_enDLKH.DutChi_Goc && _enDLKH.DutChi_Goc != chkDutChiGoc.Checked)
+                        //{
+                        //    _enDLKH.DutChi_Goc = chkDutChiGoc.Checked;
+                        //}
+                        //if (_enDLKH.DutChi_Than && _enDLKH.DutChi_Than != chkDutChiThan.Checked)
+                        //{
+                        //    _enDLKH.DutChi_Than = chkDutChiThan.Checked;
+                        //}
+                        //if (_enDLKH.NgapNuoc && _enDLKH.NgapNuoc != chkNgapNuoc.Checked)
+                        //{
+                        //    _enDLKH.NgapNuoc = chkNgapNuoc.Checked;
+                        //}
+                        //if (_enDLKH.KetTuong && _enDLKH.KetTuong != chkKetTuong.Checked)
+                        //{
+                        //    _enDLKH.KetTuong = chkKetTuong.Checked;
+                        //}
+                        //if (_enDLKH.LapKhoaGoc && _enDLKH.LapKhoaGoc != chkLapKhoaGoc.Checked)
+                        //{
+                        //    _enDLKH.LapKhoaGoc = chkLapKhoaGoc.Checked;
+                        //}
+                        //if (_enDLKH.BeHBV && _enDLKH.BeHBV != chkBeHBV.Checked)
+                        //{
+                        //    _enDLKH.BeHBV = chkBeHBV.Checked;
+                        //}
+                        //if (_enDLKH.BeNapMatNapHBV && _enDLKH.BeNapMatNapHBV != chkBeNapMatNapHBV.Checked)
+                        //{
+                        //    _enDLKH.BeNapMatNapHBV = chkBeNapMatNapHBV.Checked;
+                        //}
+                        //if (_enDLKH.GayTayVan && _enDLKH.GayTayVan != chkGayTayVan.Checked)
+                        //{
+                        //    _enDLKH.GayTayVan = chkGayTayVan.Checked;
+                        //}
+                        //if (_enDLKH.TroNgaiThay && _enDLKH.TroNgaiThay != chkTroNgaiThay.Checked)
+                        //{
+                        //    _enDLKH.TroNgaiThay = chkTroNgaiThay.Checked;
+                        //}
+                        //if (_enDLKH.DauChungMayBom && _enDLKH.DauChungMayBom != chkDauChungMayBom.Checked)
+                        //{
+                        //    _enDLKH.DauChungMayBom = chkDauChungMayBom.Checked;
+                        //}
                         _enDLKH.MauSacChiGoc = cmbMauSacChiGoc.SelectedItem.ToString();
                         _enDLKH.MODIFYBY = CNguoiDung.MaND.ToString();
                         _enDLKH.MODIFYDATE = DateTime.Now;
@@ -800,6 +816,20 @@ namespace DocSo_PC.GUI.ToTruong
         {
             if (_enDLKH != null)
                 _cDocSo.LoadImageView(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("DauChungMayBom", "", _enDLKH.DANHBO + ".jpg"))));
+        }
+
+        private void dgvPhieuChuyen_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dgvPhieuChuyen.Columns[e.ColumnIndex].Name == "XemHinh")
+                {
+                    _cTo.LoadImageView(_cTo.imageToByteArray(_cTo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa(dgvPhieuChuyen["Folder", e.RowIndex].Value.ToString(), "", dgvPhieuChuyen["DanhBo_PC", e.RowIndex].Value.ToString() + ".jpg"))));
+                }
+            }
+            catch
+            {
+            }
         }
 
 

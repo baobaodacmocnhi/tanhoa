@@ -41,6 +41,7 @@ namespace DocSo_PC.DAL
                     Lich_DocSo_ChiTiet enCT = new Lich_DocSo_ChiTiet();
                     enCT.IDDocSo = entity.ID;
                     enCT.IDDot = item.ID;
+                    enCT.CheckNgayDoc = true;
                     enCT.CreateBy = CNguoiDung.MaND;
                     enCT.CreateDate = DateTime.Now;
                     entity.Lich_DocSo_ChiTiets.Add(enCT);

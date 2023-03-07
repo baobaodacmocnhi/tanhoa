@@ -25,6 +25,7 @@ namespace DocSo_PC.GUI.ToTruong
         CDocSo _cDocSo = new CDocSo();
         CThuTien _cThuTien = new CThuTien();
         CDonTu _cDonTu = new CDonTu();
+
         wrDHN.wsDHN _wsDHN = new wrDHN.wsDHN();
 
         public frmPhieuChuyen()
@@ -69,156 +70,156 @@ namespace DocSo_PC.GUI.ToTruong
                     if (CNguoiDung.Doi)
                     {
                         if (cmbTo.SelectedIndex == 0)
-                            dgvDanhSach.DataSource = _cDHN.getDS_AmSau(dateTuNgay.Value, dateDenNgay.Value);
+                            dgvDanhSach.DataSource = _cDonTu.getDS_AmSau(dateTuNgay.Value, dateDenNgay.Value);
                         else
-                            dgvDanhSach.DataSource = _cDHN.getDS_AmSau(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
+                            dgvDanhSach.DataSource = _cDonTu.getDS_AmSau(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
                     }
                     else
                     {
-                        dgvDanhSach.DataSource = _cDHN.getDS_AmSau(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
+                        dgvDanhSach.DataSource = _cDonTu.getDS_AmSau(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
                     }
                     break;
                 case "Xây Dựng":
                     if (CNguoiDung.Doi)
                     {
                         if (cmbTo.SelectedIndex == 0)
-                            dgvDanhSach.DataSource = _cDHN.getDS_XayDung(dateTuNgay.Value, dateDenNgay.Value);
+                            dgvDanhSach.DataSource = _cDonTu.getDS_XayDung(dateTuNgay.Value, dateDenNgay.Value);
                         else
-                            dgvDanhSach.DataSource = _cDHN.getDS_XayDung(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
+                            dgvDanhSach.DataSource = _cDonTu.getDS_XayDung(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
                     }
                     else
                     {
-                        dgvDanhSach.DataSource = _cDHN.getDS_XayDung(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
+                        dgvDanhSach.DataSource = _cDonTu.getDS_XayDung(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
                     }
                     break;
                 case "Đứt Chì Góc":
                     if (CNguoiDung.Doi)
                     {
                         if (cmbTo.SelectedIndex == 0)
-                            dgvDanhSach.DataSource = _cDHN.getDS_DutChiGoc(dateTuNgay.Value, dateDenNgay.Value);
+                            dgvDanhSach.DataSource = _cDonTu.getDS_DutChiGoc(dateTuNgay.Value, dateDenNgay.Value);
                         else
-                            dgvDanhSach.DataSource = _cDHN.getDS_DutChiGoc(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
+                            dgvDanhSach.DataSource = _cDonTu.getDS_DutChiGoc(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
                     }
                     else
                     {
-                        dgvDanhSach.DataSource = _cDHN.getDS_DutChiGoc(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
+                        dgvDanhSach.DataSource = _cDonTu.getDS_DutChiGoc(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
                     }
                     break;
                 case "Đứt Chì Thân":
                     if (CNguoiDung.Doi)
                     {
                         if (cmbTo.SelectedIndex == 0)
-                            dgvDanhSach.DataSource = _cDHN.getDS_DutChiThan(dateTuNgay.Value, dateDenNgay.Value);
+                            dgvDanhSach.DataSource = _cDonTu.getDS_DutChiThan(dateTuNgay.Value, dateDenNgay.Value);
                         else
-                            dgvDanhSach.DataSource = _cDHN.getDS_DutChiThan(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
+                            dgvDanhSach.DataSource = _cDonTu.getDS_DutChiThan(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
                     }
                     else
                     {
-                        dgvDanhSach.DataSource = _cDHN.getDS_DutChiThan(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
+                        dgvDanhSach.DataSource = _cDonTu.getDS_DutChiThan(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
                     }
                     break;
                 case "Ngập Nước":
                     if (CNguoiDung.Doi)
                     {
                         if (cmbTo.SelectedIndex == 0)
-                            dgvDanhSach.DataSource = _cDHN.getDS_NgapNuoc(dateTuNgay.Value, dateDenNgay.Value);
+                            dgvDanhSach.DataSource = _cDonTu.getDS_NgapNuoc(dateTuNgay.Value, dateDenNgay.Value);
                         else
-                            dgvDanhSach.DataSource = _cDHN.getDS_NgapNuoc(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
+                            dgvDanhSach.DataSource = _cDonTu.getDS_NgapNuoc(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
                     }
                     else
                     {
-                        dgvDanhSach.DataSource = _cDHN.getDS_NgapNuoc(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
+                        dgvDanhSach.DataSource = _cDonTu.getDS_NgapNuoc(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
                     }
                     break;
                 case "Kẹt Tường":
                     if (CNguoiDung.Doi)
                     {
                         if (cmbTo.SelectedIndex == 0)
-                            dgvDanhSach.DataSource = _cDHN.getDS_KetTuong(dateTuNgay.Value, dateDenNgay.Value);
+                            dgvDanhSach.DataSource = _cDonTu.getDS_KetTuong(dateTuNgay.Value, dateDenNgay.Value);
                         else
-                            dgvDanhSach.DataSource = _cDHN.getDS_KetTuong(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
+                            dgvDanhSach.DataSource = _cDonTu.getDS_KetTuong(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
                     }
                     else
                     {
-                        dgvDanhSach.DataSource = _cDHN.getDS_KetTuong(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
+                        dgvDanhSach.DataSource = _cDonTu.getDS_KetTuong(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
                     }
                     break;
                 case "Lấp Khóa Góc":
                     if (CNguoiDung.Doi)
                     {
                         if (cmbTo.SelectedIndex == 0)
-                            dgvDanhSach.DataSource = _cDHN.getDS_LapKhoaGoc(dateTuNgay.Value, dateDenNgay.Value);
+                            dgvDanhSach.DataSource = _cDonTu.getDS_LapKhoaGoc(dateTuNgay.Value, dateDenNgay.Value);
                         else
-                            dgvDanhSach.DataSource = _cDHN.getDS_LapKhoaGoc(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
+                            dgvDanhSach.DataSource = _cDonTu.getDS_LapKhoaGoc(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
                     }
                     else
                     {
-                        dgvDanhSach.DataSource = _cDHN.getDS_LapKhoaGoc(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
+                        dgvDanhSach.DataSource = _cDonTu.getDS_LapKhoaGoc(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
                     }
                     break;
                 case "Bể HBV":
                     if (CNguoiDung.Doi)
                     {
                         if (cmbTo.SelectedIndex == 0)
-                            dgvDanhSach.DataSource = _cDHN.getDS_BeHBV(dateTuNgay.Value, dateDenNgay.Value);
+                            dgvDanhSach.DataSource = _cDonTu.getDS_BeHBV(dateTuNgay.Value, dateDenNgay.Value);
                         else
-                            dgvDanhSach.DataSource = _cDHN.getDS_BeHBV(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
+                            dgvDanhSach.DataSource = _cDonTu.getDS_BeHBV(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
                     }
                     else
                     {
-                        dgvDanhSach.DataSource = _cDHN.getDS_BeHBV(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
+                        dgvDanhSach.DataSource = _cDonTu.getDS_BeHBV(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
                     }
                     break;
                 case "Bể Nấp, Mất Nấp HBV":
                     if (CNguoiDung.Doi)
                     {
                         if (cmbTo.SelectedIndex == 0)
-                            dgvDanhSach.DataSource = _cDHN.getDS_BeNapMatNapHBV(dateTuNgay.Value, dateDenNgay.Value);
+                            dgvDanhSach.DataSource = _cDonTu.getDS_BeNapMatNapHBV(dateTuNgay.Value, dateDenNgay.Value);
                         else
-                            dgvDanhSach.DataSource = _cDHN.getDS_BeNapMatNapHBV(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
+                            dgvDanhSach.DataSource = _cDonTu.getDS_BeNapMatNapHBV(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
                     }
                     else
                     {
-                        dgvDanhSach.DataSource = _cDHN.getDS_BeNapMatNapHBV(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
+                        dgvDanhSach.DataSource = _cDonTu.getDS_BeNapMatNapHBV(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
                     }
                     break;
                 case "Gãy Tay Van":
                     if (CNguoiDung.Doi)
                     {
                         if (cmbTo.SelectedIndex == 0)
-                            dgvDanhSach.DataSource = _cDHN.getDS_GayTayVan(dateTuNgay.Value, dateDenNgay.Value);
+                            dgvDanhSach.DataSource = _cDonTu.getDS_GayTayVan(dateTuNgay.Value, dateDenNgay.Value);
                         else
-                            dgvDanhSach.DataSource = _cDHN.getDS_GayTayVan(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
+                            dgvDanhSach.DataSource = _cDonTu.getDS_GayTayVan(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
                     }
                     else
                     {
-                        dgvDanhSach.DataSource = _cDHN.getDS_GayTayVan(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
+                        dgvDanhSach.DataSource = _cDonTu.getDS_GayTayVan(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
                     }
                     break;
                 case "Trở Ngại Thay":
                     if (CNguoiDung.Doi)
                     {
                         if (cmbTo.SelectedIndex == 0)
-                            dgvDanhSach.DataSource = _cDHN.getDS_TroNgaiThay(dateTuNgay.Value, dateDenNgay.Value);
+                            dgvDanhSach.DataSource = _cDonTu.getDS_TroNgaiThay(dateTuNgay.Value, dateDenNgay.Value);
                         else
-                            dgvDanhSach.DataSource = _cDHN.getDS_TroNgaiThay(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
+                            dgvDanhSach.DataSource = _cDonTu.getDS_TroNgaiThay(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
                     }
                     else
                     {
-                        dgvDanhSach.DataSource = _cDHN.getDS_TroNgaiThay(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
+                        dgvDanhSach.DataSource = _cDonTu.getDS_TroNgaiThay(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
                     }
                     break;
                 case "Đấu Chung Máy Bơm":
                     if (CNguoiDung.Doi)
                     {
                         if (cmbTo.SelectedIndex == 0)
-                            dgvDanhSach.DataSource = _cDHN.getDS_DauChungMayBom(dateTuNgay.Value, dateDenNgay.Value);
+                            dgvDanhSach.DataSource = _cDonTu.getDS_DauChungMayBom(dateTuNgay.Value, dateDenNgay.Value);
                         else
-                            dgvDanhSach.DataSource = _cDHN.getDS_DauChungMayBom(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
+                            dgvDanhSach.DataSource = _cDonTu.getDS_DauChungMayBom(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
                     }
                     else
                     {
-                        dgvDanhSach.DataSource = _cDHN.getDS_DauChungMayBom(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
+                        dgvDanhSach.DataSource = _cDonTu.getDS_DauChungMayBom(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value);
                     }
                     break;
                 default:
@@ -227,52 +228,52 @@ namespace DocSo_PC.GUI.ToTruong
                     {
                         if (cmbTo.SelectedIndex == 0)
                         {
-                            dt.Merge(_cDHN.getDS_AmSau(dateTuNgay.Value, dateDenNgay.Value));
-                            dt.Merge(_cDHN.getDS_XayDung(dateTuNgay.Value, dateDenNgay.Value));
-                            dt.Merge(_cDHN.getDS_DutChiGoc(dateTuNgay.Value, dateDenNgay.Value));
-                            dt.Merge(_cDHN.getDS_DutChiThan(dateTuNgay.Value, dateDenNgay.Value));
-                            dt.Merge(_cDHN.getDS_DutChiGocThan(dateTuNgay.Value, dateDenNgay.Value));
-                            dt.Merge(_cDHN.getDS_NgapNuoc(dateTuNgay.Value, dateDenNgay.Value));
-                            dt.Merge(_cDHN.getDS_KetTuong(dateTuNgay.Value, dateDenNgay.Value));
-                            dt.Merge(_cDHN.getDS_LapKhoaGoc(dateTuNgay.Value, dateDenNgay.Value));
-                            dt.Merge(_cDHN.getDS_BeHBV(dateTuNgay.Value, dateDenNgay.Value));
-                            dt.Merge(_cDHN.getDS_BeNapMatNapHBV(dateTuNgay.Value, dateDenNgay.Value));
-                            dt.Merge(_cDHN.getDS_GayTayVan(dateTuNgay.Value, dateDenNgay.Value));
-                            dt.Merge(_cDHN.getDS_TroNgaiThay(dateTuNgay.Value, dateDenNgay.Value));
-                            dt.Merge(_cDHN.getDS_DauChungMayBom(dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDonTu.getDS_AmSau(dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDonTu.getDS_XayDung(dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDonTu.getDS_DutChiGoc(dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDonTu.getDS_DutChiThan(dateTuNgay.Value, dateDenNgay.Value));
+                            //dt.Merge(_cDHN.getDS_DutChiGocThan(dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDonTu.getDS_NgapNuoc(dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDonTu.getDS_KetTuong(dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDonTu.getDS_LapKhoaGoc(dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDonTu.getDS_BeHBV(dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDonTu.getDS_BeNapMatNapHBV(dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDonTu.getDS_GayTayVan(dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDonTu.getDS_TroNgaiThay(dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDonTu.getDS_DauChungMayBom(dateTuNgay.Value, dateDenNgay.Value));
                         }
                         else
                         {
-                            dt.Merge(_cDHN.getDS_AmSau(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
-                            dt.Merge(_cDHN.getDS_XayDung(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
-                            dt.Merge(_cDHN.getDS_DutChiGoc(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
-                            dt.Merge(_cDHN.getDS_DutChiThan(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
-                            dt.Merge(_cDHN.getDS_DutChiGocThan(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
-                            dt.Merge(_cDHN.getDS_NgapNuoc(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
-                            dt.Merge(_cDHN.getDS_KetTuong(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
-                            dt.Merge(_cDHN.getDS_LapKhoaGoc(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
-                            dt.Merge(_cDHN.getDS_BeHBV(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
-                            dt.Merge(_cDHN.getDS_BeNapMatNapHBV(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
-                            dt.Merge(_cDHN.getDS_GayTayVan(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
-                            dt.Merge(_cDHN.getDS_TroNgaiThay(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
-                            dt.Merge(_cDHN.getDS_DauChungMayBom(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDonTu.getDS_AmSau(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDonTu.getDS_XayDung(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDonTu.getDS_DutChiGoc(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDonTu.getDS_DutChiThan(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
+                            //dt.Merge(_cDHN.getDS_DutChiGocThan(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDonTu.getDS_NgapNuoc(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDonTu.getDS_KetTuong(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDonTu.getDS_LapKhoaGoc(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDonTu.getDS_BeHBV(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDonTu.getDS_BeNapMatNapHBV(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDonTu.getDS_GayTayVan(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDonTu.getDS_TroNgaiThay(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
+                            dt.Merge(_cDonTu.getDS_DauChungMayBom(int.Parse(cmbTo.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value));
                         }
                     }
                     else
                     {
-                        dt.Merge(_cDHN.getDS_AmSau(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
-                        dt.Merge(_cDHN.getDS_XayDung(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
-                        dt.Merge(_cDHN.getDS_DutChiGoc(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
-                        dt.Merge(_cDHN.getDS_DutChiThan(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
-                        dt.Merge(_cDHN.getDS_DutChiGocThan(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
-                        dt.Merge(_cDHN.getDS_NgapNuoc(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
-                        dt.Merge(_cDHN.getDS_KetTuong(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
-                        dt.Merge(_cDHN.getDS_LapKhoaGoc(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
-                        dt.Merge(_cDHN.getDS_BeHBV(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
-                        dt.Merge(_cDHN.getDS_BeNapMatNapHBV(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
-                        dt.Merge(_cDHN.getDS_GayTayVan(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
-                        dt.Merge(_cDHN.getDS_TroNgaiThay(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
-                        dt.Merge(_cDHN.getDS_DauChungMayBom(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
+                        dt.Merge(_cDonTu.getDS_AmSau(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
+                        dt.Merge(_cDonTu.getDS_XayDung(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
+                        dt.Merge(_cDonTu.getDS_DutChiGoc(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
+                        dt.Merge(_cDonTu.getDS_DutChiThan(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
+                        //dt.Merge(_cDonTu.getDS_DutChiGocThan(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
+                        dt.Merge(_cDonTu.getDS_NgapNuoc(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
+                        dt.Merge(_cDonTu.getDS_KetTuong(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
+                        dt.Merge(_cDonTu.getDS_LapKhoaGoc(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
+                        dt.Merge(_cDonTu.getDS_BeHBV(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
+                        dt.Merge(_cDonTu.getDS_BeNapMatNapHBV(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
+                        dt.Merge(_cDonTu.getDS_GayTayVan(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
+                        dt.Merge(_cDonTu.getDS_TroNgaiThay(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
+                        dt.Merge(_cDonTu.getDS_DauChungMayBom(CNguoiDung.MaTo, dateTuNgay.Value, dateDenNgay.Value));
                     }
                     dgvDanhSach.DataSource = dt;
                     break;
@@ -365,6 +366,11 @@ namespace DocSo_PC.GUI.ToTruong
                     DocSo docso = _cDocSo.get_DocSo_MoiNhat(ttkh.DANHBO);
                     dr["ChiSo"] = docso.CSMoi;
                     dr["TieuThu"] = docso.TieuThuMoi;
+                    if (item.Cells["ID"].Value != null && item.Cells["ID"].Value.ToString() != "")
+                        dr["NoiDung"] = "Mã: " + item.Cells["ID"].Value.ToString();
+                    else
+                        dr["NoiDung"] = "Mã: Lỗi, kiểm tra lại";
+                    dr["GhiChu"] = item.Cells["GhiChu"].Value.ToString();
                     dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper();
                     dr["NguoiKy"] = CNguoiDung.NguoiKy.ToUpper();
                     dsBaoCao.Tables["BaoCao"].Rows.Add(dr);
@@ -460,6 +466,19 @@ namespace DocSo_PC.GUI.ToTruong
                                     break;
                             }
                             _cDHN.SubmitChanges();
+                            string ID = "";
+                            object checkExists = CDocSo._cDAL.ExecuteQuery_ReturnOneValue("select top 1 ID from MaHoa_PhieuChuyen_LichSu where ID like '" + DateTime.Now.ToString("yy") + "%'");
+                            if (checkExists != null)
+                            {
+                                object stt = CDocSo._cDAL.ExecuteQuery_ReturnOneValue("select MAX(SUBSTRING(CAST(ID as varchar(8)),3,5))+1 from MaHoa_PhieuChuyen_LichSu where ID like '" + DateTime.Now.ToString("yy") + "%'");
+                                if (stt != null)
+                                    ID = DateTime.Now.ToString("yy") + ((int)stt).ToString("00000");
+                            }
+                            else
+                            {
+                                ID = DateTime.Now.ToString("yy") + 1.ToString("00000");
+                            }
+                            CDocSo._cDAL.ExecuteNonQuery("insert into MaHoa_PhieuChuyen_LichSu(ID,DanhBo,NoiDung,GhiChu,CreateBy,CreateDate)values(" + ID + ",'" + DanhBo + "',N'" + NoiDung + "',N'Thêm'," + CNguoiDung.MaND + ",getdate())");
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
@@ -487,44 +506,57 @@ namespace DocSo_PC.GUI.ToTruong
                             {
                                 case "Âm Sâu":
                                     ttkh.AmSau = false;
+                                    ttkh.AmSau_Ngay = null;
                                     break;
                                 case "Xây Dựng":
                                     ttkh.XayDung = false;
+                                    ttkh.XayDung_Ngay = null;
                                     break;
                                 case "Đứt Chì Góc":
                                     ttkh.DutChi_Goc = false;
+                                    ttkh.DutChi_Goc_Ngay = null;
                                     break;
                                 case "Đứt Chì Thân":
                                     ttkh.DutChi_Than = false;
+                                    ttkh.DutChi_Than_Ngay = null;
                                     break;
                                 case "Ngập Nước":
                                     ttkh.NgapNuoc = false;
+                                    ttkh.NgapNuoc_Ngay = null;
                                     break;
                                 case "Kẹt Tường":
                                     ttkh.KetTuong = false;
+                                    ttkh.KetTuong_Ngay = null;
                                     break;
                                 case "Lấp Khóa Góc":
                                     ttkh.LapKhoaGoc = false;
+                                    ttkh.LapKhoaGoc_Ngay = null;
                                     break;
-                                case "Bể Hộp Bảo Vệ":
+                                case "Bể HBV":
                                     ttkh.BeHBV = false;
+                                    ttkh.BeHBV_Ngay = null;
                                     break;
-                                case "Bể Nấp, Mất Nấp Hộp Bảo Vệ":
+                                case "Bể Nấp, Mất Nấp HBV":
                                     ttkh.BeNapMatNapHBV = false;
+                                    ttkh.BeNapMatNapHBV_Ngay = null;
                                     break;
                                 case "Gãy Tay Van":
                                     ttkh.GayTayVan = false;
+                                    ttkh.GayTayVan_Ngay = null;
                                     break;
                                 case "Trở Ngại Thay":
                                     ttkh.TroNgaiThay = false;
+                                    ttkh.TroNgaiThay_Ngay = null;
                                     break;
                                 case "Đấu Chung Máy Bơm":
                                     ttkh.DauChungMayBom = false;
+                                    ttkh.DauChungMayBom_Ngay = null;
                                     break;
                                 default:
                                     break;
                             }
                             _cDHN.SubmitChanges();
+                            CDocSo._cDAL.ExecuteNonQuery("delete MaHoa_PhieuChuyen_LichSu where ID=" + dgvDanhSach.CurrentRow.Cells["ID"].Value.ToString());
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
