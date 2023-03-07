@@ -15,6 +15,7 @@ using ThuTien.GUI.BaoCao;
 using ThuTien.DAL.TongHop;
 using CrystalDecisions.CrystalReports.Engine;
 using ThuTien.DAL.Quay;
+using ThuTien.DAL;
 
 namespace ThuTien.GUI.TongHop
 {
@@ -291,10 +292,17 @@ namespace ThuTien.GUI.TongHop
                 DataTable dtCNKD_DCHD = _cCNKD.GetTongHopDangNganDCHD(dateGiaiTrachTongHopDangNgan.Value);
                 if (dtCNKD_DCHD.Rows.Count > 0 && dtCNKD.Rows.Count > 0)
                 {
-                    dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
-                    dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString()); if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "") dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
-                    dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
+                    CThuongVu _cKinhDoanh = new CThuongVu();
+                    foreach (DataRow item in dtCNKD_DCHD.Rows)
+                    {
+                        DataTable dtDC = _cKinhDoanh.getTong_HoaDon(item["DanhBo"].ToString(), int.Parse(item["Nam"].ToString()), int.Parse(item["Ky"].ToString()));
+                        dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtDC.Rows[0]["GiaBan"].ToString());
+                        dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtDC.Rows[0]["ThueGTGT"].ToString());
+                        dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT"].ToString());
+                        if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtDC.Rows[0]["PhiBVMT_Thue"].ToString() != "")
+                            dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT_Thue"].ToString());
+                        dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtDC.Rows[0]["TongCong"].ToString());
+                    }
                 }
 
                 foreach (DataRow item in dt.Rows)
@@ -403,10 +411,17 @@ namespace ThuTien.GUI.TongHop
                 DataTable dtCNKD_DCHD = _cCNKD.GetTongHopDangNganDCHD_PhanKyLon(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value);
                 if (dtCNKD_DCHD.Rows.Count > 0 && dtCNKD.Rows.Count > 0)
                 {
-                    dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
-                    dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString()); if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "") dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
-                    dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
+                    CThuongVu _cKinhDoanh = new CThuongVu();
+                    foreach (DataRow item in dtCNKD_DCHD.Rows)
+                    {
+                        DataTable dtDC = _cKinhDoanh.getTong_HoaDon(item["DanhBo"].ToString(), int.Parse(item["Nam"].ToString()), int.Parse(item["Ky"].ToString()));
+                        dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtDC.Rows[0]["GiaBan"].ToString());
+                        dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtDC.Rows[0]["ThueGTGT"].ToString());
+                        dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT"].ToString());
+                        if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtDC.Rows[0]["PhiBVMT_Thue"].ToString() != "")
+                            dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT_Thue"].ToString());
+                        dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtDC.Rows[0]["TongCong"].ToString());
+                    }
                 }
 
                 foreach (DataRow item in dt.Rows)
@@ -506,10 +521,17 @@ namespace ThuTien.GUI.TongHop
                 dtCNKD_DCHD = _cCNKD.GetTongHopDangNganDCHD_PhanKyNho(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value);
                 if (dtCNKD_DCHD.Rows.Count > 0 && dtCNKD.Rows.Count > 0)
                 {
-                    dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
-                    dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString()); if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "") dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
-                    dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
+                    CThuongVu _cKinhDoanh = new CThuongVu();
+                    foreach (DataRow item in dtCNKD_DCHD.Rows)
+                    {
+                        DataTable dtDC = _cKinhDoanh.getTong_HoaDon(item["DanhBo"].ToString(), int.Parse(item["Nam"].ToString()), int.Parse(item["Ky"].ToString()));
+                        dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtDC.Rows[0]["GiaBan"].ToString());
+                        dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtDC.Rows[0]["ThueGTGT"].ToString());
+                        dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT"].ToString());
+                        if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtDC.Rows[0]["PhiBVMT_Thue"].ToString() != "")
+                            dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT_Thue"].ToString());
+                        dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtDC.Rows[0]["TongCong"].ToString());
+                    }
                 }
 
                 foreach (DataRow item in dt.Rows)
@@ -630,10 +652,17 @@ namespace ThuTien.GUI.TongHop
                 DataTable dtCNKD_DCHD = _cCNKD.GetTongHopDangNganDCHD("TG", dateGiaiTrachTongHopDangNgan.Value);
                 if (dtCNKD_DCHD.Rows.Count > 0 && dtCNKD.Rows.Count > 0)
                 {
-                    dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
-                    dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString()); if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "") dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
-                    dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
+                    CThuongVu _cKinhDoanh = new CThuongVu();
+                    foreach (DataRow item in dtCNKD_DCHD.Rows)
+                    {
+                        DataTable dtDC = _cKinhDoanh.getTong_HoaDon(item["DanhBo"].ToString(), int.Parse(item["Nam"].ToString()), int.Parse(item["Ky"].ToString()));
+                        dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtDC.Rows[0]["GiaBan"].ToString());
+                        dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtDC.Rows[0]["ThueGTGT"].ToString());
+                        dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT"].ToString());
+                        if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtDC.Rows[0]["PhiBVMT_Thue"].ToString() != "")
+                            dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT_Thue"].ToString());
+                        dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtDC.Rows[0]["TongCong"].ToString());
+                    }
                 }
 
                 foreach (DataRow item in dt.Rows)
@@ -752,10 +781,17 @@ namespace ThuTien.GUI.TongHop
                 DataTable dtCNKD_DCHD = _cCNKD.GetTongHopDangNganDCHD_PhanKyLon("TG", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value);
                 if (dtCNKD_DCHD.Rows.Count > 0 && dtCNKD.Rows.Count > 0)
                 {
-                    dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
-                    dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString()); if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "") dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
-                    dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
+                    CThuongVu _cKinhDoanh = new CThuongVu();
+                    foreach (DataRow item in dtCNKD_DCHD.Rows)
+                    {
+                        DataTable dtDC = _cKinhDoanh.getTong_HoaDon(item["DanhBo"].ToString(), int.Parse(item["Nam"].ToString()), int.Parse(item["Ky"].ToString()));
+                        dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtDC.Rows[0]["GiaBan"].ToString());
+                        dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtDC.Rows[0]["ThueGTGT"].ToString());
+                        dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT"].ToString());
+                        if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtDC.Rows[0]["PhiBVMT_Thue"].ToString() != "")
+                            dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT_Thue"].ToString());
+                        dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtDC.Rows[0]["TongCong"].ToString());
+                    }
                 }
 
                 foreach (DataRow item in dt.Rows)
@@ -868,10 +904,17 @@ namespace ThuTien.GUI.TongHop
                 dtCNKD_DCHD = _cCNKD.GetTongHopDangNganDCHD_PhanKyNho("TG", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value);
                 if (dtCNKD_DCHD.Rows.Count > 0 && dtCNKD.Rows.Count > 0)
                 {
-                    dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
-                    dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString()); if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "") dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
-                    dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
+                    CThuongVu _cKinhDoanh = new CThuongVu();
+                    foreach (DataRow item in dtCNKD_DCHD.Rows)
+                    {
+                        DataTable dtDC = _cKinhDoanh.getTong_HoaDon(item["DanhBo"].ToString(), int.Parse(item["Nam"].ToString()), int.Parse(item["Ky"].ToString()));
+                        dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtDC.Rows[0]["GiaBan"].ToString());
+                        dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtDC.Rows[0]["ThueGTGT"].ToString());
+                        dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT"].ToString());
+                        if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtDC.Rows[0]["PhiBVMT_Thue"].ToString() != "")
+                            dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT_Thue"].ToString());
+                        dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtDC.Rows[0]["TongCong"].ToString());
+                    }
                 }
 
                 foreach (DataRow item in dt.Rows)
@@ -989,10 +1032,17 @@ namespace ThuTien.GUI.TongHop
                 DataTable dtCNKD_DCHD = _cCNKD.GetTongHopDangNganDCHD("CQ", dateGiaiTrachTongHopDangNgan.Value);
                 if (dtCNKD_DCHD.Rows.Count > 0 && dtCNKD.Rows.Count > 0)
                 {
-                    dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
-                    dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString()); if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "") dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
-                    dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
+                    CThuongVu _cKinhDoanh = new CThuongVu();
+                    foreach (DataRow item in dtCNKD_DCHD.Rows)
+                    {
+                        DataTable dtDC = _cKinhDoanh.getTong_HoaDon(item["DanhBo"].ToString(), int.Parse(item["Nam"].ToString()), int.Parse(item["Ky"].ToString()));
+                        dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtDC.Rows[0]["GiaBan"].ToString());
+                        dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtDC.Rows[0]["ThueGTGT"].ToString());
+                        dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT"].ToString());
+                        if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtDC.Rows[0]["PhiBVMT_Thue"].ToString() != "")
+                            dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT_Thue"].ToString());
+                        dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtDC.Rows[0]["TongCong"].ToString());
+                    }
                 }
 
                 foreach (DataRow item in dt.Rows)
@@ -1102,10 +1152,17 @@ namespace ThuTien.GUI.TongHop
                 DataTable dtCNKD_DCHD = _cCNKD.GetTongHopDangNganDCHD_PhanKyLon("CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value);
                 if (dtCNKD_DCHD.Rows.Count > 0 && dtCNKD.Rows.Count > 0)
                 {
-                    dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
-                    dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString()); if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "") dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
-                    dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
+                    CThuongVu _cKinhDoanh = new CThuongVu();
+                    foreach (DataRow item in dtCNKD_DCHD.Rows)
+                    {
+                        DataTable dtDC = _cKinhDoanh.getTong_HoaDon(item["DanhBo"].ToString(), int.Parse(item["Nam"].ToString()), int.Parse(item["Ky"].ToString()));
+                        dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtDC.Rows[0]["GiaBan"].ToString());
+                        dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtDC.Rows[0]["ThueGTGT"].ToString());
+                        dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT"].ToString());
+                        if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtDC.Rows[0]["PhiBVMT_Thue"].ToString() != "")
+                            dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT_Thue"].ToString());
+                        dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtDC.Rows[0]["TongCong"].ToString());
+                    }
                 }
 
                 foreach (DataRow item in dt.Rows)
@@ -1208,10 +1265,17 @@ namespace ThuTien.GUI.TongHop
                 dtCNKD_DCHD = _cCNKD.GetTongHopDangNganDCHD_PhanKyNho("CQ", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value);
                 if (dtCNKD_DCHD.Rows.Count > 0 && dtCNKD.Rows.Count > 0)
                 {
-                    dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
-                    dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString()); if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "") dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
-                    dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
+                    CThuongVu _cKinhDoanh = new CThuongVu();
+                    foreach (DataRow item in dtCNKD_DCHD.Rows)
+                    {
+                        DataTable dtDC = _cKinhDoanh.getTong_HoaDon(item["DanhBo"].ToString(), int.Parse(item["Nam"].ToString()), int.Parse(item["Ky"].ToString()));
+                        dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtDC.Rows[0]["GiaBan"].ToString());
+                        dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtDC.Rows[0]["ThueGTGT"].ToString());
+                        dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT"].ToString());
+                        if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtDC.Rows[0]["PhiBVMT_Thue"].ToString() != "")
+                            dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT_Thue"].ToString());
+                        dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtDC.Rows[0]["TongCong"].ToString());
+                    }
                 }
 
                 foreach (DataRow item in dt.Rows)
@@ -1342,12 +1406,17 @@ namespace ThuTien.GUI.TongHop
                 DataTable dtCNKD_DCHD = _cCNKD.GetTongHopDangNganDCHD("", dateGiaiTrachTongHopDangNgan.Value);
                 if (dtCNKD_DCHD.Rows.Count > 0 && dtCNKD.Rows.Count > 0)
                 {
-                    dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
-                    dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString());
-                    if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "")
-                        dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
-                    dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
+                    CThuongVu _cKinhDoanh = new CThuongVu();
+                    foreach (DataRow item in dtCNKD_DCHD.Rows)
+                    {
+                        DataTable dtDC = _cKinhDoanh.getTong_HoaDon(item["DanhBo"].ToString(), int.Parse(item["Nam"].ToString()), int.Parse(item["Ky"].ToString()));
+                        dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtDC.Rows[0]["GiaBan"].ToString());
+                        dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtDC.Rows[0]["ThueGTGT"].ToString());
+                        dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT"].ToString());
+                        if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtDC.Rows[0]["PhiBVMT_Thue"].ToString() != "")
+                            dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT_Thue"].ToString());
+                        dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtDC.Rows[0]["TongCong"].ToString());
+                    }
                 }
 
                 foreach (DataRow item in dt.Rows)
@@ -1466,10 +1535,17 @@ namespace ThuTien.GUI.TongHop
                 DataTable dtCNKD_DCHD = _cCNKD.GetTongHopDangNganDCHD_PhanKyLon("", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value);
                 if (dtCNKD_DCHD.Rows.Count > 0 && dtCNKD.Rows.Count > 0)
                 {
-                    dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
-                    dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString()); if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "") dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
-                    dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
+                    CThuongVu _cKinhDoanh = new CThuongVu();
+                    foreach (DataRow item in dtCNKD_DCHD.Rows)
+                    {
+                        DataTable dtDC = _cKinhDoanh.getTong_HoaDon(item["DanhBo"].ToString(), int.Parse(item["Nam"].ToString()), int.Parse(item["Ky"].ToString()));
+                        dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtDC.Rows[0]["GiaBan"].ToString());
+                        dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtDC.Rows[0]["ThueGTGT"].ToString());
+                        dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT"].ToString());
+                        if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtDC.Rows[0]["PhiBVMT_Thue"].ToString() != "")
+                            dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT_Thue"].ToString());
+                        dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtDC.Rows[0]["TongCong"].ToString());
+                    }
                 }
 
                 foreach (DataRow item in dt.Rows)
@@ -1578,10 +1654,17 @@ namespace ThuTien.GUI.TongHop
                 dtCNKD_DCHD = _cCNKD.GetTongHopDangNganDCHD_PhanKyNho_Giay("", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value);
                 if (dtCNKD_DCHD.Rows.Count > 0 && dtCNKD.Rows.Count > 0)
                 {
-                    dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
-                    dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString()); if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "") dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
-                    dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
+                    CThuongVu _cKinhDoanh = new CThuongVu();
+                    foreach (DataRow item in dtCNKD_DCHD.Rows)
+                    {
+                        DataTable dtDC = _cKinhDoanh.getTong_HoaDon(item["DanhBo"].ToString(), int.Parse(item["Nam"].ToString()), int.Parse(item["Ky"].ToString()));
+                        dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtDC.Rows[0]["GiaBan"].ToString());
+                        dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtDC.Rows[0]["ThueGTGT"].ToString());
+                        dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT"].ToString());
+                        if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtDC.Rows[0]["PhiBVMT_Thue"].ToString() != "")
+                            dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT_Thue"].ToString());
+                        dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtDC.Rows[0]["TongCong"].ToString());
+                    }
                 }
 
                 foreach (DataRow item in dt.Rows)
@@ -1687,10 +1770,17 @@ namespace ThuTien.GUI.TongHop
                 dtCNKD_DCHD = _cCNKD.GetTongHopDangNganDCHD_PhanKyNho_DienTu("", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value);
                 if (dtCNKD_DCHD.Rows.Count > 0 && dtCNKD.Rows.Count > 0)
                 {
-                    dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
-                    dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString()); if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "") dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
-                    dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
+                    CThuongVu _cKinhDoanh = new CThuongVu();
+                    foreach (DataRow item in dtCNKD_DCHD.Rows)
+                    {
+                        DataTable dtDC = _cKinhDoanh.getTong_HoaDon(item["DanhBo"].ToString(), int.Parse(item["Nam"].ToString()), int.Parse(item["Ky"].ToString()));
+                        dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtDC.Rows[0]["GiaBan"].ToString());
+                        dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtDC.Rows[0]["ThueGTGT"].ToString());
+                        dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT"].ToString());
+                        if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtDC.Rows[0]["PhiBVMT_Thue"].ToString() != "")
+                            dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT_Thue"].ToString());
+                        dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtDC.Rows[0]["TongCong"].ToString());
+                    }
                 }
 
                 foreach (DataRow item in dt.Rows)
@@ -2384,10 +2474,17 @@ namespace ThuTien.GUI.TongHop
                 DataTable dtCNKD_DCHD = _cCNKD.GetTongHopDangNganDCHD("", dateGiaiTrachTongHopDangNgan.Value, dateToGiaiTrachTongHopDangNgan.Value);
                 if (dtCNKD_DCHD.Rows.Count > 0 && dtCNKD.Rows.Count > 0)
                 {
-                    dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
-                    dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString()); if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "") dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
-                    dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
+                    CThuongVu _cKinhDoanh = new CThuongVu();
+                    foreach (DataRow item in dtCNKD_DCHD.Rows)
+                    {
+                        DataTable dtDC = _cKinhDoanh.getTong_HoaDon(item["DanhBo"].ToString(), int.Parse(item["Nam"].ToString()), int.Parse(item["Ky"].ToString()));
+                        dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtDC.Rows[0]["GiaBan"].ToString());
+                        dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtDC.Rows[0]["ThueGTGT"].ToString());
+                        dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT"].ToString());
+                        if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtDC.Rows[0]["PhiBVMT_Thue"].ToString() != "")
+                            dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT_Thue"].ToString());
+                        dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtDC.Rows[0]["TongCong"].ToString());
+                    }
                 }
 
                 foreach (DataRow item in dt.Rows)
@@ -2502,10 +2599,17 @@ namespace ThuTien.GUI.TongHop
                 DataTable dtCNKD_DCHD = _cCNKD.GetTongHopDangNganDCHD_PhanKyLon("", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value, dateToGiaiTrachTongHopDangNgan.Value);
                 if (dtCNKD_DCHD.Rows.Count > 0 && dtCNKD.Rows.Count > 0)
                 {
-                    dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
-                    dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString()); if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "") dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
-                    dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
+                    CThuongVu _cKinhDoanh = new CThuongVu();
+                    foreach (DataRow item in dtCNKD_DCHD.Rows)
+                    {
+                        DataTable dtDC = _cKinhDoanh.getTong_HoaDon(item["DanhBo"].ToString(), int.Parse(item["Nam"].ToString()), int.Parse(item["Ky"].ToString()));
+                        dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtDC.Rows[0]["GiaBan"].ToString());
+                        dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtDC.Rows[0]["ThueGTGT"].ToString());
+                        dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT"].ToString());
+                        if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtDC.Rows[0]["PhiBVMT_Thue"].ToString() != "")
+                            dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT_Thue"].ToString());
+                        dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtDC.Rows[0]["TongCong"].ToString());
+                    }
                 }
 
                 foreach (DataRow item in dt.Rows)
@@ -2615,10 +2719,17 @@ namespace ThuTien.GUI.TongHop
                 dtCNKD_DCHD = _cCNKD.GetTongHopDangNganDCHD_PhanKyNho_Giay("", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value, dateToGiaiTrachTongHopDangNgan.Value);
                 if (dtCNKD_DCHD.Rows.Count > 0 && dtCNKD.Rows.Count > 0)
                 {
-                    dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
-                    dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString()); if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "") dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
-                    dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
+                    CThuongVu _cKinhDoanh = new CThuongVu();
+                    foreach (DataRow item in dtCNKD_DCHD.Rows)
+                    {
+                        DataTable dtDC = _cKinhDoanh.getTong_HoaDon(item["DanhBo"].ToString(), int.Parse(item["Nam"].ToString()), int.Parse(item["Ky"].ToString()));
+                        dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtDC.Rows[0]["GiaBan"].ToString());
+                        dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtDC.Rows[0]["ThueGTGT"].ToString());
+                        dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT"].ToString());
+                        if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtDC.Rows[0]["PhiBVMT_Thue"].ToString() != "")
+                            dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT_Thue"].ToString());
+                        dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtDC.Rows[0]["TongCong"].ToString());
+                    }
                 }
 
                 foreach (DataRow item in dt.Rows)
@@ -2725,10 +2836,17 @@ namespace ThuTien.GUI.TongHop
                 dtCNKD_DCHD = _cCNKD.GetTongHopDangNganDCHD_PhanKyNho_DienTu("", int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value, dateToGiaiTrachTongHopDangNgan.Value);
                 if (dtCNKD_DCHD.Rows.Count > 0 && dtCNKD.Rows.Count > 0)
                 {
-                    dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
-                    dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString()); if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "") dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
-                    dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
+                    CThuongVu _cKinhDoanh = new CThuongVu();
+                    foreach (DataRow item in dtCNKD_DCHD.Rows)
+                    {
+                        DataTable dtDC = _cKinhDoanh.getTong_HoaDon(item["DanhBo"].ToString(), int.Parse(item["Nam"].ToString()), int.Parse(item["Ky"].ToString()));
+                        dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtDC.Rows[0]["GiaBan"].ToString());
+                        dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtDC.Rows[0]["ThueGTGT"].ToString());
+                        dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT"].ToString());
+                        if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtDC.Rows[0]["PhiBVMT_Thue"].ToString() != "")
+                            dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT_Thue"].ToString());
+                        dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtDC.Rows[0]["TongCong"].ToString());
+                    }
                 }
 
                 foreach (DataRow item in dt.Rows)
@@ -2866,10 +2984,17 @@ namespace ThuTien.GUI.TongHop
             DataTable dtCNKD_DCHD = _cCNKD.GetTongHopDangNganDCHD_Giay(dateGiaiTrachTongHopDangNgan.Value, dateToGiaiTrachTongHopDangNgan.Value);
             if (dtCNKD_DCHD.Rows.Count > 0 && dtCNKD.Rows.Count > 0)
             {
-                dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
-                dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString()); if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "") dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
-                dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
+                CThuongVu _cKinhDoanh = new CThuongVu();
+                foreach (DataRow item in dtCNKD_DCHD.Rows)
+                {
+                    DataTable dtDC = _cKinhDoanh.getTong_HoaDon(item["DanhBo"].ToString(), int.Parse(item["Nam"].ToString()), int.Parse(item["Ky"].ToString()));
+                    dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtDC.Rows[0]["GiaBan"].ToString());
+                    dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtDC.Rows[0]["ThueGTGT"].ToString());
+                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT"].ToString());
+                    if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtDC.Rows[0]["PhiBVMT_Thue"].ToString() != "")
+                        dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT_Thue"].ToString());
+                    dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtDC.Rows[0]["TongCong"].ToString());
+                }
             }
 
             foreach (DataRow item in dt.Rows)
@@ -2978,10 +3103,17 @@ namespace ThuTien.GUI.TongHop
             dtCNKD_DCHD = _cCNKD.GetTongHopDangNganDCHD_DienTu(dateGiaiTrachTongHopDangNgan.Value, dateToGiaiTrachTongHopDangNgan.Value);
             if (dtCNKD_DCHD.Rows.Count > 0 && dtCNKD.Rows.Count > 0)
             {
-                dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongGiaBan"].ToString());
-                dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongThueGTGT"].ToString());
-                dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT"].ToString()); if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "") dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongPhiBVMT_Thue"].ToString());
-                dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtCNKD_DCHD.Rows[0]["TongCong"].ToString());
+                CThuongVu _cKinhDoanh = new CThuongVu();
+                foreach (DataRow item in dtCNKD_DCHD.Rows)
+                {
+                    DataTable dtDC = _cKinhDoanh.getTong_HoaDon(item["DanhBo"].ToString(), int.Parse(item["Nam"].ToString()), int.Parse(item["Ky"].ToString()));
+                    dtCNKD.Rows[0]["TongGiaBan"] = int.Parse(dtCNKD.Rows[0]["TongGiaBan"].ToString()) - int.Parse(dtDC.Rows[0]["GiaBan"].ToString());
+                    dtCNKD.Rows[0]["TongThueGTGT"] = int.Parse(dtCNKD.Rows[0]["TongThueGTGT"].ToString()) - int.Parse(dtDC.Rows[0]["ThueGTGT"].ToString());
+                    dtCNKD.Rows[0]["TongPhiBVMT"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT"].ToString());
+                    if (dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString() != "" && dtDC.Rows[0]["PhiBVMT_Thue"].ToString() != "")
+                        dtCNKD.Rows[0]["TongPhiBVMT_Thue"] = int.Parse(dtCNKD.Rows[0]["TongPhiBVMT_Thue"].ToString()) - int.Parse(dtDC.Rows[0]["PhiBVMT_Thue"].ToString());
+                    dtCNKD.Rows[0]["TongCong"] = int.Parse(dtCNKD.Rows[0]["TongCong"].ToString()) - int.Parse(dtDC.Rows[0]["TongCong"].ToString());
+                }
             }
 
             foreach (DataRow item in dt.Rows)
