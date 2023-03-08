@@ -228,20 +228,20 @@ namespace ThuTien.GUI.Doi
 
         private void btnThem_Giao_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+            try
             {
-                try
+                if (CNguoiDung.CheckQuyen(_mnu, "Them"))
                 {
                     if (int.Parse(txtTuSo_Giao.Text.Trim()) <= int.Parse(txtDenSo_Giao.Text.Trim()))
                     {
                         if (_cNiemChi.checkSuDung(txtKyHieu_Giao.Text.Trim().ToUpper(), int.Parse(txtTuSo_Giao.Text.Trim()), int.Parse(txtDenSo_Giao.Text.Trim())) == true)
                         {
-                            MessageBox.Show("Niêm Chì đã Sử Dụng, Không Xóa được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Niêm Chì đã Sử Dụng, Không Thêm được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         if (_cNiemChi.checkGiao(txtKyHieu_Giao.Text.Trim().ToUpper(), int.Parse(txtTuSo_Giao.Text.Trim()), int.Parse(txtDenSo_Giao.Text.Trim())) == true)
                         {
-                            MessageBox.Show("Niêm Chì đã Giao, Không Xóa được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Niêm Chì đã Giao, Không Thêm được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         _cNiemChi.SqlBeginTransaction();
@@ -252,53 +252,73 @@ namespace ThuTien.GUI.Doi
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         btnXem_Giao.PerformClick();
                     }
+
                 }
-                catch (Exception ex)
-                {
-                    _cNiemChi.SqlRollbackTransaction();
-                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                _cNiemChi.SqlRollbackTransaction();
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnSua_Giao_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+            try
             {
-
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                {
+                    if (MessageBox.Show("Bạn có chắc chắn?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        _cNiemChi.SqlBeginTransaction();
+                        string sql = "update TT_NiemChi set MaTo=" + cmbTo_Giao.SelectedValue.ToString() + ",MaNV=" + cmbNhanVien_Giao.SelectedValue.ToString() + ",ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=getDate() where KyHieu='" + txtKyHieu_Giao.Text.Trim().ToUpper() + "' and STT>=" + txtTuSo_Giao.Text.Trim() + " and STT<=" + txtDenSo_Giao.Text.Trim() + " and SuDung=0";
+                        //string sql = "update TT_NiemChi set MaTo=" + cmbTo_Giao.SelectedValue.ToString() + ",MaNV=" + cmbNhanVien_Giao.SelectedValue.ToString() + ",ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=getDate() where ID>=" + txtTuSo_Giao.Text.Trim() + " and ID<=" + txtDenSo_Giao.Text.Trim();
+                        _cNiemChi.ExecuteNonQuery_Transaction(sql);
+                        _cNiemChi.SqlCommitTransaction();
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        btnXem_Giao.PerformClick();
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnXoa_Giao_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
+            try
             {
-                try
+                if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
                 {
-                    if (_cNiemChi.checkSuDung(dgvNiemChi_Giao.CurrentRow.Cells["KyHieu_Giao"].Value.ToString(), int.Parse(dgvNiemChi_Giao.CurrentRow.Cells["TuSo_Giao"].Value.ToString()), int.Parse(dgvNiemChi_Giao.CurrentRow.Cells["DenSo_Giao"].Value.ToString())) == true)
+                    if (MessageBox.Show("Bạn có chắc chắn?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        MessageBox.Show("Niêm Chì đã Sử Dụng, Không Xóa được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
+                        if (_cNiemChi.checkSuDung(dgvNiemChi_Giao.CurrentRow.Cells["KyHieu_Giao"].Value.ToString(), int.Parse(dgvNiemChi_Giao.CurrentRow.Cells["TuSo_Giao"].Value.ToString()), int.Parse(dgvNiemChi_Giao.CurrentRow.Cells["DenSo_Giao"].Value.ToString())) == true)
+                        {
+                            MessageBox.Show("Niêm Chì đã Sử Dụng, Không Xóa được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        _cNiemChi.SqlBeginTransaction();
+                        string sql = "update TT_NiemChi set MaTo=NULL,MaNV=NULL,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=getDate() where KyHieu='" + txtKyHieu_Giao.Text.Trim().ToUpper() + "' and STT>=" + dgvNiemChi_Giao.CurrentRow.Cells["TuSo_Giao"].Value.ToString() + " and STT<=" + dgvNiemChi_Giao.CurrentRow.Cells["DenSo_Giao"].Value.ToString() + " and SuDung=0";
+                        //string sql = "update TT_NiemChi set MaTo=NULL,MaNV=NULL,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=getDate() where ID>=" + dgvNiemChi_Giao.CurrentRow.Cells["TuSo_Giao"].Value.ToString() + " and ID<=" + dgvNiemChi_Giao.CurrentRow.Cells["DenSo_Giao"].Value.ToString();
+                        _cNiemChi.ExecuteNonQuery_Transaction(sql);
+                        _cNiemChi.SqlCommitTransaction();
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        btnXem_Giao.PerformClick();
                     }
-                    _cNiemChi.SqlBeginTransaction();
-                    string sql = "update TT_NiemChi set MaTo=NULL,MaNV=NULL,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=getDate() where KyHieu='" + txtKyHieu_Giao.Text.Trim().ToUpper() + "' and STT>=" + dgvNiemChi_Giao.CurrentRow.Cells["TuSo_Giao"].Value.ToString() + " and STT<=" + dgvNiemChi_Giao.CurrentRow.Cells["DenSo_Giao"].Value.ToString() + " and SuDung=0";
-                    //string sql = "update TT_NiemChi set MaTo=NULL,MaNV=NULL,ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=getDate() where ID>=" + dgvNiemChi_Giao.CurrentRow.Cells["TuSo_Giao"].Value.ToString() + " and ID<=" + dgvNiemChi_Giao.CurrentRow.Cells["DenSo_Giao"].Value.ToString();
-                    _cNiemChi.ExecuteNonQuery_Transaction(sql);
-                    _cNiemChi.SqlCommitTransaction();
-                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    btnXem_Giao.PerformClick();
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                else
+                    MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void dgvNiemChi_Giao_CellContentClick(object sender, DataGridViewCellEventArgs e)

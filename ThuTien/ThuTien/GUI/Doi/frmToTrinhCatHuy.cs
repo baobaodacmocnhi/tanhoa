@@ -21,7 +21,7 @@ namespace ThuTien.GUI.Doi
     {
         string _mnu = "mnuToTrinhCatHuy";
         CHoaDon _cHoaDon = new CHoaDon();
-        CDHN _cCapNuocTanHoa = new CDHN();
+        CDHN _cDHN = new CDHN();
         CToTrinhCatHuy _cToTrinhCatHuy = new CToTrinhCatHuy();
         CLenhHuy _cLenhHuy = new CLenhHuy();
 
@@ -112,7 +112,13 @@ namespace ThuTien.GUI.Doi
                         //dgvCTToTrinh["Ky", dgvCTToTrinh.Rows.Count - 1].Value = Ky;
                         //dgvCTToTrinh["TongCong", dgvCTToTrinh.Rows.Count - 1].Value = TongCongSo;
                         //dgvCTToTrinh["TieuThu", dgvCTToTrinh.Rows.Count - 1].Value = TieuThu;
-                        dgvCTToTrinh["CoDHN", dgvCTToTrinh.Rows.Count - 1].Value = _cCapNuocTanHoa.GetCoDHN(hoadon.DANHBA);
+                        TB_DULIEUKHACHHANG ttkh = _cDHN.GetTTKH(hoadon.DANHBA);
+                        if (ttkh != null)
+                        {
+                            dgvCTToTrinh["CoDHN", dgvCTToTrinh.Rows.Count - 1].Value = ttkh.CODH;
+                            dgvCTToTrinh["Hieu", dgvCTToTrinh.Rows.Count - 1].Value = ttkh.HIEUDH;
+                            dgvCTToTrinh["SoThan", dgvCTToTrinh.Rows.Count - 1].Value = ttkh.SOTHANDH;
+                        }
                     }
                     else
                     {
@@ -127,7 +133,13 @@ namespace ThuTien.GUI.Doi
                         //dr["Ky"] = Ky;
                         //dr["TongCong"] = TongCongSo;
                         //dr["TieuThu"] = TieuThu;
-                        dr["CoDHN"] = _cCapNuocTanHoa.GetCoDHN(hoadon.DANHBA);
+                        TB_DULIEUKHACHHANG ttkh = _cDHN.GetTTKH(hoadon.DANHBA);
+                        if (ttkh != null)
+                        {
+                            dr["CoDHN"] = ttkh.CODH;
+                            dr["Hieu"] = ttkh.HIEUDH;
+                            dr["SoThan"] = ttkh.SOTHANDH;
+                        }
 
                         dtTemp.Rows.Add(dr);
                         dtTemp.AcceptChanges();
@@ -171,6 +183,8 @@ namespace ThuTien.GUI.Doi
                                 cttotrinh.DanhBo = item.Cells["DanhBo"].Value.ToString();
                                 cttotrinh.MLT = item.Cells["MLT"].Value.ToString();
                                 cttotrinh.CoDHN = int.Parse(item.Cells["CoDHN"].Value.ToString());
+                                cttotrinh.Hieu = item.Cells["Hieu"].Value.ToString();
+                                cttotrinh.SoThan = item.Cells["SoThan"].Value.ToString();
                                 cttotrinh.HoTen = item.Cells["HoTen"].Value.ToString();
                                 cttotrinh.DiaChi = item.Cells["DiaChi"].Value.ToString();
                                 //cttotrinh.Ky = item.Cells["Ky"].Value.ToString();
@@ -272,6 +286,8 @@ namespace ThuTien.GUI.Doi
                     dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
                     dr["MLT"] = item.Cells["MLT"].Value.ToString().Insert(4, " ").Insert(2, " ");
                     dr["CoDHN"] = item.Cells["CoDHN"].Value;
+                    dr["Hieu"] = item.Cells["Hieu"].Value;
+                    dr["SoThan"] = item.Cells["SoThan"].Value;
                     dr["HoTen"] = item.Cells["HoTen"].Value;
                     HOADON hd = _cHoaDon.GetMoiNhat(item.Cells["DanhBo"].Value.ToString());
                     if (hd != null)

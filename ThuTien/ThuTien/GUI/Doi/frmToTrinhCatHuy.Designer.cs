@@ -57,6 +57,8 @@
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MLT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CoDHN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Hieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoThan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ky = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -216,6 +218,8 @@
             this.DanhBo,
             this.MLT,
             this.CoDHN,
+            this.Hieu,
+            this.SoThan,
             this.HoTen,
             this.DiaChi,
             this.Ky,
@@ -341,6 +345,20 @@
             this.CoDHN.Name = "CoDHN";
             this.CoDHN.Visible = false;
             // 
+            // Hieu
+            // 
+            this.Hieu.DataPropertyName = "Hieu";
+            this.Hieu.HeaderText = "Hieu";
+            this.Hieu.Name = "Hieu";
+            this.Hieu.Visible = false;
+            // 
+            // SoThan
+            // 
+            this.SoThan.DataPropertyName = "SoThan";
+            this.SoThan.HeaderText = "SoThan";
+            this.SoThan.Name = "SoThan";
+            this.SoThan.Visible = false;
+            // 
             // HoTen
             // 
             this.HoTen.DataPropertyName = "HoTen";
@@ -464,6 +482,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn MLT;
         private System.Windows.Forms.DataGridViewTextBoxColumn CoDHN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Hieu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoThan;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky;

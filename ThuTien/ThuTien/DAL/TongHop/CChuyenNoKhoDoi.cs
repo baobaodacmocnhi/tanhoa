@@ -824,9 +824,9 @@ namespace ThuTien.DAL.TongHop
 
         public DataTable GetTongHopDangNganDCHD_Giay(DateTime CreateDate)
         {
-            string sql = "select COUNT(a.SoHoaDon) as TongHD,SUM(GIABAN_DC) as TongGiaBan,SUM(THUE_DC) as TongThueGTGT,SUM(PHI_DC) as TongPhiBVMT,SUM(PHI_Thue_DC) as TongPhiBVMT_Thue,SUM(TONGCONG_DC) as TongCong from TT_CTChuyenNoKhoDoi a,HOADON b,DIEUCHINH_HD dchd"
+            string sql = "select DanhBo=b.DanhBa,b.Nam,b.Ky from TT_CTChuyenNoKhoDoi a,HOADON b,DIEUCHINH_HD dchd"
                         + " where a.MaHD=b.ID_HOADON and a.MaHD=dchd.FK_HOADON and (b.NAM<2020 or(b.NAM=2020 and b.KY<7)) and CAST(a.CreateDate as date)='" + CreateDate.ToString("yyyyMMdd") + "'"
-                        + " group by CONVERT(varchar(10),a.CreateDate,103)";
+                        + " ";
             return ExecuteQuery_DataTable(sql);
         }
 
@@ -840,9 +840,9 @@ namespace ThuTien.DAL.TongHop
 
         public DataTable GetTongHopDangNganDCHD_DienTu(DateTime CreateDate)
         {
-            string sql = "select COUNT(a.SoHoaDon) as TongHD,SUM(GIABAN_DC) as TongGiaBan,SUM(THUE_DC) as TongThueGTGT,SUM(PHI_DC) as TongPhiBVMT,SUM(PHI_Thue_DC) as TongPhiBVMT_Thue,SUM(TONGCONG_DC) as TongCong from TT_CTChuyenNoKhoDoi a,HOADON b,DIEUCHINH_HD dchd"
+            string sql = "select DanhBo=b.DanhBa,b.Nam,b.Ky from TT_CTChuyenNoKhoDoi a,HOADON b,DIEUCHINH_HD dchd"
                         + " where a.MaHD=b.ID_HOADON and a.MaHD=dchd.FK_HOADON and (b.NAM>2020 or(b.NAM=2020 and b.KY>=7)) and CAST(a.CreateDate as date)='" + CreateDate.ToString("yyyyMMdd") + "'"
-                        + " group by CONVERT(varchar(10),a.CreateDate,103)";
+                        + " ";
             return ExecuteQuery_DataTable(sql);
         }
 

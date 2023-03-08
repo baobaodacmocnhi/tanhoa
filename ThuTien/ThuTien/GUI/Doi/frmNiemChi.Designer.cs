@@ -678,7 +678,6 @@
             this.btnSua_Giao.TabIndex = 57;
             this.btnSua_Giao.Text = "Sửa";
             this.btnSua_Giao.UseVisualStyleBackColor = true;
-            this.btnSua_Giao.Visible = false;
             this.btnSua_Giao.Click += new System.EventHandler(this.btnSua_Giao_Click);
             // 
             // btnThem_Giao
