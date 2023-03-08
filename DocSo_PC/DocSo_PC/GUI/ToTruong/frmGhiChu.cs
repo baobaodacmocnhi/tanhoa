@@ -22,7 +22,7 @@ namespace DocSo_PC.GUI.ToTruong
         CTo _cTo = new CTo();
         CMayDS _cMayDS = new CMayDS();
         CDHN _cDHN = new CDHN();
-        CDonTu _cDonTu = new CDonTu();
+        CPhieuChuyen _cPhieuChuyen = new CPhieuChuyen();
         bool _flagLoadFirst = false;
         TB_DULIEUKHACHHANG _enDLKH = null;
         bool _flagThemDienThoai = false;
@@ -165,20 +165,7 @@ namespace DocSo_PC.GUI.ToTruong
                 chkDauChungMayBom.Checked = en.DauChungMayBom;
                 if (en.DauChungMayBom == true)
                     dateDauChungMayBom.Value = en.DauChungMayBom_Ngay.Value;
-                DataTable dt=new DataTable();
-                dt.Merge(_cDonTu.getDS_AmSau(en.DANHBO));
-                dt.Merge(_cDonTu.getDS_XayDung(en.DANHBO));
-                dt.Merge(_cDonTu.getDS_DutChiGoc(en.DANHBO));
-                dt.Merge(_cDonTu.getDS_DutChiThan(en.DANHBO));
-                dt.Merge(_cDonTu.getDS_NgapNuoc(en.DANHBO));
-                dt.Merge(_cDonTu.getDS_KetTuong(en.DANHBO));
-                dt.Merge(_cDonTu.getDS_LapKhoaGoc(en.DANHBO));
-                dt.Merge(_cDonTu.getDS_BeHBV(en.DANHBO));
-                dt.Merge(_cDonTu.getDS_BeNapMatNapHBV(en.DANHBO));
-                dt.Merge(_cDonTu.getDS_GayTayVan(en.DANHBO));
-                dt.Merge(_cDonTu.getDS_TroNgaiThay(en.DANHBO));
-                dt.Merge(_cDonTu.getDS_DauChungMayBom(en.DANHBO));
-                dgvPhieuChuyen.DataSource = dt;
+                dgvPhieuChuyen.DataSource = _cPhieuChuyen.getDS(en.DANHBO);
             }
         }
 
@@ -829,6 +816,31 @@ namespace DocSo_PC.GUI.ToTruong
             }
             catch
             {
+            }
+        }
+
+        private void dgvPhieuChuyen_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                {
+                    if (dgvPhieuChuyen.Columns[e.ColumnIndex].Name == "TinhTrang")
+                    {
+                        if (CPhieuChuyen._cDAL.ExecuteNonQuery("update MaHoa_PhieuChuyen_LichSu set TinhTrang=N'" + dgvPhieuChuyen["TinhTrang", e.RowIndex].Value.ToString() + "' where ID=" + dgvPhieuChuyen["ID", e.RowIndex].Value.ToString()))
+                        {
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                            MessageBox.Show("Thất bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -37,12 +37,12 @@ namespace DocSo_PC.GUI.VanThu
                     object image = null;
                     switch (_enCVD.TableName)
                     {
-                        case "KTXM_ChiTiet":
-                            image = _cThuongVu.getHinh_KTXM(_enCVD.IDCT.Value);
-                            break;
-                        case "ToTrinh_ChiTiet":
-                            image = _cThuongVu.getHinh_ToTrinh(_enCVD.IDCT.Value);
-                            break;
+                        //case "KTXM_ChiTiet":
+                        //    image = _cThuongVu.getHinh_KTXM(_enCVD.IDCT.Value);
+                        //    break;
+                        //case "ToTrinh_ChiTiet":
+                        //    image = _cThuongVu.getHinh_ToTrinh(_enCVD.IDCT.Value);
+                        //    break;
                     }
                     if (image != null)
                         //pictureBox.Image = _cCVD.byteArrayToImage((byte[])image);
@@ -50,8 +50,8 @@ namespace DocSo_PC.GUI.VanThu
                     else
                         MessageBox.Show("Không có File", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     chkTinhTieuThu.Checked = _enCVD.TinhTieuThu;
-                    chkBaoThay.Checked = _enCVD.BaoThay;
-                    chkBaoThayThu.Checked = _enCVD.BaoThayThu;
+                    //chkBaoThay.Checked = _enCVD.BaoThay;
+                    //chkBaoThayThu.Checked = _enCVD.BaoThayThu;
                 }
             }
             catch (Exception ex)
@@ -69,8 +69,8 @@ namespace DocSo_PC.GUI.VanThu
                     if (_enCVD != null)
                     {
                         _enCVD.TinhTieuThu = chkTinhTieuThu.Checked;
-                        _enCVD.BaoThay = chkBaoThay.Checked;
-                        _enCVD.BaoThayThu = chkBaoThayThu.Checked;
+                        //_enCVD.BaoThay = chkBaoThay.Checked;
+                        //_enCVD.BaoThayThu = chkBaoThayThu.Checked;
                         if (_cCVD.Sua(_enCVD) == true)
                             this.Close();
                     }

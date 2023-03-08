@@ -91,6 +91,16 @@ namespace DocSo_PC.DAL.VanThu
             return _cDAL.ExecuteQuery_DataTable("select *,'To'=(select TenTo from [To] where TuMay<=SUBSTRING(MLT,3,2) and DenMay>=SUBSTRING(MLT,3,2)) from CongVanDen where DanhBo='" + DanhBo + "' order by createdate desc");
         }
 
+        public DataTable getDS_ChuaDuyet()
+        {
+            return _cDAL.ExecuteQuery_DataTable("select *,'To'=(select TenTo from [To] where TuMay<=SUBSTRING(MLT,3,2) and DenMay>=SUBSTRING(MLT,3,2)) from CongVanDen where Duyet_Ngay is null order by createdate desc");
+        }
+
+        public DataTable getDS_DaDuyet()
+        {
+            return _cDAL.ExecuteQuery_DataTable("select *,'To'=(select TenTo from [To] where TuMay<=SUBSTRING(MLT,3,2) and DenMay>=SUBSTRING(MLT,3,2)) from CongVanDen where Duyet_Ngay is not null order by createdate desc");
+        }
+
         public DataTable getDS_XuLySoLieu(string DanhBo)
         {
             return _cDAL.ExecuteQuery_DataTable("select * from CongVanDen where DanhBo='" + DanhBo + "' and CAST(DATEADD(DAY,90,CreateDate) as date)>=CAST(GETDATE() as date) order by CreateDate desc");

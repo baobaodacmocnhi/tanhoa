@@ -144,6 +144,7 @@
             this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Folder = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TinhTrang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDienThoai)).BeginInit();
@@ -1194,7 +1195,7 @@
             dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvPhieuChuyen.DefaultCellStyle = dataGridViewCellStyle14;
-            this.dgvPhieuChuyen.Location = new System.Drawing.Point(793, 227);
+            this.dgvPhieuChuyen.Location = new System.Drawing.Point(791, 241);
             this.dgvPhieuChuyen.Name = "dgvPhieuChuyen";
             dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
@@ -1206,9 +1207,10 @@
             this.dgvPhieuChuyen.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvPhieuChuyen.RowsDefaultCellStyle = dataGridViewCellStyle16;
-            this.dgvPhieuChuyen.Size = new System.Drawing.Size(508, 123);
+            this.dgvPhieuChuyen.Size = new System.Drawing.Size(508, 109);
             this.dgvPhieuChuyen.TabIndex = 132;
             this.dgvPhieuChuyen.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPhieuChuyen_CellClick);
+            this.dgvPhieuChuyen.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPhieuChuyen_CellEndEdit);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -1256,11 +1258,22 @@
             this.TinhTrang.HeaderText = "Tình Trạng";
             this.TinhTrang.Name = "TinhTrang";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.Color.Red;
+            this.label10.Location = new System.Drawing.Point(1138, 225);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(161, 13);
+            this.label10.TabIndex = 133;
+            this.label10.Text = "Cập nhật trực tiếp TÌNH TRẠNG";
+            // 
             // frmGhiChu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1339, 655);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.dgvPhieuChuyen);
             this.Controls.Add(this.btnHinhDauChungMayBom);
             this.Controls.Add(this.dateDauChungMayBom);
@@ -1446,5 +1459,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
         private System.Windows.Forms.DataGridViewTextBoxColumn Folder;
         private System.Windows.Forms.DataGridViewTextBoxColumn TinhTrang;
+        private System.Windows.Forms.Label label10;
     }
 }

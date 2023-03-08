@@ -137,19 +137,13 @@ namespace DocSo_PC.DAL
               + " from ToTrinh tt,ToTrinh_ChiTiet ct where tt.ID=ct.ID and ct.DanhBo='" + DanhBo + "')t1");
         }
 
-        public byte[] getHinh_KTXM(int IDCT)
+        public object getHinh(string TableName,int IDCT)
         {
-            object filename = _cDAL.ExecuteQuery_ReturnOneValue("select [Name]+'.'+Loai from KTXM_ChiTiet_Hinh where IDKTXM_ChiTiet=" + IDCT);
+            string TableNameHinh, IDName;
+            getTableHinh(TableName, out TableNameHinh, out IDName);
+            object filename = _cDAL.ExecuteQuery_ReturnOneValue("select [Name]+Loai from " + TableNameHinh + " where " + IDName + "=" + IDCT);
             if (filename != null)
-                return _wsThuongVu.get_Hinh("KTXM_ChiTiet_Hinh", IDCT.ToString(), filename.ToString());
-            else return null;
-        }
-
-        public byte[] getHinh_ToTrinh(int IDCT)
-        {
-            object filename = _cDAL.ExecuteQuery_ReturnOneValue("select [Name]+'.'+Loai from ToTrinh_ChiTiet_Hinh where IDToTrinh_ChiTiet=" + IDCT);
-            if (filename != null)
-                return _wsThuongVu.get_Hinh("ToTrinh_ChiTiet_Hinh", IDCT.ToString(), filename.ToString());
+                return _wsThuongVu.get_Hinh(TableNameHinh, IDCT.ToString(), filename.ToString());
             else return null;
         }
 

@@ -72,10 +72,10 @@ namespace DocSo_PC.GUI.VanThu
                 switch (dgvDanhSachChuaNhan.CurrentRow.Cells["TableName"].Value.ToString())
                 {
                     case "KTXM_ChiTiet":
-                        image = _cThuongVu.getHinh_KTXM(int.Parse(dgvDanhSachChuaNhan.CurrentRow.Cells["IDCT"].Value.ToString()));
+                        image = _cThuongVu.getHinh(dgvDanhSachChuaNhan.CurrentRow.Cells["TableName"].Value.ToString(),int.Parse(dgvDanhSachChuaNhan.CurrentRow.Cells["IDCT"].Value.ToString()));
                         break;
                     case "ToTrinh_ChiTiet":
-                        image = _cThuongVu.getHinh_ToTrinh(int.Parse(dgvDanhSachChuaNhan.CurrentRow.Cells["IDCT"].Value.ToString()));
+                        image = _cThuongVu.getHinh(dgvDanhSachChuaNhan.CurrentRow.Cells["TableName"].Value.ToString(),int.Parse(dgvDanhSachChuaNhan.CurrentRow.Cells["IDCT"].Value.ToString()));
                         break;
                 }
                 if (image != null)

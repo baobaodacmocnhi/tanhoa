@@ -23,6 +23,7 @@ namespace DocSo_PC.GUI.VanThu
         CDHN _cDHN = new CDHN();
         TB_DULIEUKHACHHANG _ttkh = null;
         TB_DULIEUKHACHHANG_HUYDB _ttkhHuy = null;
+        CongVanDen _enCVD = null;
 
         public frmCongVanDen()
         {
@@ -32,6 +33,7 @@ namespace DocSo_PC.GUI.VanThu
         private void frmCongVanDen_Load(object sender, EventArgs e)
         {
             dgvDanhSach.AutoGenerateColumns = false;
+            dgvDuyet.AutoGenerateColumns = false;
             cmbLoaiVanBan.SelectedIndex = 0;
         }
 
@@ -330,6 +332,61 @@ namespace DocSo_PC.GUI.VanThu
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void radChuaDuyet_CheckedChanged(object sender, EventArgs e)
+        {
+            dgvDuyet.DataSource = _cCVD.getDS_ChuaDuyet();
+        }
+
+        private void radDaDuyet_CheckedChanged(object sender, EventArgs e)
+        {
+            dgvDuyet.DataSource = _cCVD.getDS_DaDuyet();
+        }
+
+        private void dgvDuyet_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                _enCVD = _cCVD.get(int.Parse(dgvDuyet["ID_Duyet", e.RowIndex].Value.ToString()));
+                object file = null;
+                file = _cThuongVu.getHinh(dgvDuyet["TableName_Duyet", e.RowIndex].Value.ToString(), int.Parse(dgvDuyet["IDCT_Duyet", e.RowIndex].Value.ToString()));
+                if (file != null)
+                    pictureBox.Image = _cCVD.byteArrayToImage((byte[])file);
+                else
+                    MessageBox.Show("Không có File", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnCapNhat_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                {
+                    if (_enCVD != null)
+                    {
+                        _enCVD.Xem = chkXem.Checked;
+                        _enCVD.CapNhat = chkCapNhat.Checked;
+                        _enCVD.TinhTieuThu = chkTinhTieuThu.Checked;
+                        _enCVD.TheoDoi = chkTheoDoi.Checked;
+                        _enCVD.KiemTraLaiHienTruong = chkKiemTraLaiHienTruong.Checked;
+                        _enCVD.Duyet_Ngay = DateTime.Now;
+                        _cCVD.SubmitChanges();
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
