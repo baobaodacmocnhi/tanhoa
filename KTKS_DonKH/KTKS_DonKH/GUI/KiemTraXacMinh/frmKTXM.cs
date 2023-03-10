@@ -19,6 +19,7 @@ using System.Transactions;
 using KTKS_DonKH.BaoCao;
 using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.wrThuongVu;
+using KTKS_DonKH.GUI.DonTu;
 
 namespace KTKS_DonKH.GUI.KiemTraXacMinh
 {
@@ -1092,19 +1093,12 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
         private void btnChonFile_Click(object sender, EventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png";
+            dialog.Filter = "Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png|PDF files (*.pdf) | *.pdf";
             dialog.Multiselect = false;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
-                    //ListViewItem item = new ListViewItem();
-                    //item.ImageKey = "file";
-                    //item.Text = DateTime.Now.ToString("dd.MM.yyyy HH.mm.ss");
-                    //item.SubItems.Add(Convert.ToBase64String(bytes));
-                    //lstVFile.Items.Add(item);
-
-                    //byte[] bytes = System.IO.File.ReadAllBytes(dialog.FileName);
                     byte[] bytes = _cKTXM.scanImage(dialog.FileName);
                     if (_ctktxm == null)
                     {
@@ -1126,12 +1120,10 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             KTXM_ChiTiet_Hinh en = new KTXM_ChiTiet_Hinh();
                             en.IDKTXM_ChiTiet = _ctktxm.MaCTKTXM;
                             en.Name = DateTime.Now.ToString("dd.MM.yyyy HH.mm.ss");
-                            //en.Hinh = bytes;
                             en.Loai = System.IO.Path.GetExtension(dialog.FileName);
                             if (_wsThuongVu.ghi_Hinh("KTXM_ChiTiet_Hinh", en.IDKTXM_ChiTiet.Value.ToString(), en.Name + en.Loai, bytes) == true)
                                 if (_cKTXM.Them_Hinh(en) == true)
                                 {
-                                    _cKTXM.Refresh();
                                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     var index = dgvHinh.Rows.Add();
                                     dgvHinh.Rows[index].Cells["Name_Hinh"].Value = en.Name;
@@ -1168,10 +1160,18 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         private void dgvHinh_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (dgvHinh.CurrentRow.Cells["Bytes_Hinh"].Value != null && dgvHinh.CurrentRow.Cells["Bytes_Hinh"].Value.ToString() != "")
-                _cKTXM.LoadImageView(Convert.FromBase64String(dgvHinh.CurrentRow.Cells["Bytes_Hinh"].Value.ToString()));
+            if (dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString().ToLower().Contains("pdf"))
+            {
+                _cKTXM.LoadFileView("KTXM_ChiTiet_Hinh", _ctktxm.MaCTKTXM.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
+            }
             else
-                _cKTXM.LoadImageView(_wsThuongVu.get_Hinh("KTXM_ChiTiet_Hinh", _ctktxm.MaCTKTXM.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString()));
+            {
+                byte[] hinh = _wsThuongVu.get_Hinh("KTXM_ChiTiet_Hinh", _ctktxm.MaCTKTXM.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
+                if (hinh != null)
+                    _cKTXM.LoadImageView(hinh);
+                else
+                    MessageBox.Show("File không tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void xoaFile_dgvHinh_Click(object sender, EventArgs e)
@@ -1216,22 +1216,36 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
             DataTable dt = _cDonTu.getDS_KTXM_Ton(CTaiKhoan.MaUser);
             foreach (DataRow item in dt.Rows)
-                {
-                    DataRow dr = dsBaoCao.Tables["DanhSach"].NewRow();
+            {
+                DataRow dr = dsBaoCao.Tables["DanhSach"].NewRow();
 
-                    dr["LoaiBaoCao"] = "TỒN KIỂM TRA";
-                    dr["MaDon"] = item["MaDonChiTiet"];
-                    dr["DanhBo"] = item["DanhBo"];
-                    dr["HoTen"] = item["HoTen"];
-                    dr["DiaChi"] = item["DiaChi"];
-                    dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
+                dr["LoaiBaoCao"] = "TỒN KIỂM TRA";
+                dr["MaDon"] = item["MaDonChiTiet"];
+                dr["DanhBo"] = item["DanhBo"];
+                dr["HoTen"] = item["HoTen"];
+                dr["DiaChi"] = item["DiaChi"];
+                dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
 
-                    dsBaoCao.Tables["DanhSach"].Rows.Add(dr);
-                }
+                dsBaoCao.Tables["DanhSach"].Rows.Add(dr);
+            }
             rptDanhSach_Doc rpt = new rptDanhSach_Doc();
             rpt.SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.Show();
+        }
+
+        private void frmKTXM_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (_dontu_ChiTiet != null && e.Control && e.KeyCode == Keys.T)
+            {
+                if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+                {
+                    frmCapNhatDonTu_Thumbnail frm = new frmCapNhatDonTu_Thumbnail(_dontu_ChiTiet, "KTXM_ChiTiet", (int)_ctktxm.MaCTKTXM);
+                    frm.ShowDialog();
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 

@@ -1,6 +1,6 @@
 ﻿namespace KTKS_DonKH.GUI.ThuTraLoi
 {
-    partial class frmDSTTTL
+    partial class frmDSTTTL_Old
     {
         /// <summary>
         /// Required designer variable.

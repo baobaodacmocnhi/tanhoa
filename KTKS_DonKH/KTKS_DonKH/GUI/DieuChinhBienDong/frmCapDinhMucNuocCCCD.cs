@@ -1266,7 +1266,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void btnChonFile_Click(object sender, EventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "PDF files (*.pdf) | *.pdf|Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png";
+            dialog.Filter = "Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png|PDF files (*.pdf) | *.pdf";
             dialog.Multiselect = false;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
@@ -1284,7 +1284,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             if (_wsThuongVu.ghi_Hinh("DCBD_DKDM_DanhBo_Hinh", _danhbo.ID.ToString(), en.Name + en.Loai, bytes) == true)
                                 if (_cDKDM.Them_Hinh(en) == true)
                                 {
-                                    _cDKDM.Refresh();
                                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     var index = dgvHinh.Rows.Add();
                                     dgvHinh.Rows[index].Cells["Name_Hinh"].Value = en.Name;
@@ -1307,7 +1306,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             try
             {
-                if (dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString().Contains("pdf"))
+                if (dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString().ToLower().Contains("pdf"))
                 {
                     _cDKDM.LoadFileView("DCBD_DKDM_DanhBo_Hinh", _danhbo.ID.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
                 }
@@ -1317,9 +1316,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     if (hinh != null)
                         _cDKDM.LoadImageView(hinh);
                     else
-                        MessageBox.Show("Lỗi File", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("File không tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
             }
             catch (Exception ex)
             {

@@ -1506,6 +1506,7 @@
             this.txtNgaySinh.Name = "txtNgaySinh";
             this.txtNgaySinh.Size = new System.Drawing.Size(100, 22);
             this.txtNgaySinh.TabIndex = 43;
+            this.txtNgaySinh.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNgaySinh_KeyPress);
             // 
             // label69
             // 

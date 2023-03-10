@@ -887,7 +887,7 @@ namespace KTKS_DonKH
         {
             if (CTaiKhoan.CheckQuyen("mnuDSTTTL", "Xem"))
             {
-                frmDSTTTL frm = new frmDSTTTL();
+                frmDSTTTL_Old frm = new frmDSTTTL_Old();
                 OpenForm(frm);
             }
             else

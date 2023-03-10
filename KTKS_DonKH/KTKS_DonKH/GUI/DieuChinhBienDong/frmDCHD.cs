@@ -1883,8 +1883,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 btnThem.PerformClick();
             if (_dontu_ChiTiet != null && e.Control && e.KeyCode == Keys.T)
             {
-                frmCapNhatDonTu_Thumbnail frm = new frmCapNhatDonTu_Thumbnail(_dontu_ChiTiet);
-                frm.ShowDialog();
+                if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+                {
+                    frmCapNhatDonTu_Thumbnail frm = new frmCapNhatDonTu_Thumbnail(_dontu_ChiTiet, "DCBD_ChiTietHoaDon", (int)_ctdchd.MaCTDCHD);
+                    frm.ShowDialog();
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -2557,19 +2562,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void btnChonFile_Click(object sender, EventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png";
+            dialog.Filter = "Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png|PDF files (*.pdf) | *.pdf";
             dialog.Multiselect = false;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
-                    //ListViewItem item = new ListViewItem();
-                    //item.ImageKey = "file";
-                    //item.Text = DateTime.Now.ToString("dd.MM.yyyy HH.mm.ss");
-                    //item.SubItems.Add(Convert.ToBase64String(bytes));
-                    //lstVFile.Items.Add(item);
-
-                    //byte[] bytes = System.IO.File.ReadAllBytes(dialog.FileName);
                     byte[] bytes = _cDCBD.scanImage(dialog.FileName);
                     if (_ctdchd == null)
                     {
@@ -2585,12 +2583,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             DCBD_ChiTietHoaDon_Hinh en = new DCBD_ChiTietHoaDon_Hinh();
                             en.IDDCBD_ChiTietHoaDon = _ctdchd.MaCTDCHD;
                             en.Name = DateTime.Now.ToString("dd.MM.yyyy HH.mm.ss");
-                            //en.Hinh = bytes;
                             en.Loai = System.IO.Path.GetExtension(dialog.FileName);
                             if (_wsThuongVu.ghi_Hinh("DCBD_ChiTietHoaDon_Hinh", en.IDDCBD_ChiTietHoaDon.Value.ToString(), en.Name + en.Loai, bytes) == true)
                                 if (_cDCBD.Them_Hinh(en) == true)
                                 {
-                                    _cDCBD.Refresh();
                                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     var index = dgvHinh.Rows.Add();
                                     dgvHinh.Rows[index].Cells["Name_Hinh"].Value = en.Name;
@@ -2627,10 +2623,18 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void dgvHinh_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (dgvHinh.CurrentRow.Cells["Bytes_Hinh"].Value != null && dgvHinh.CurrentRow.Cells["Bytes_Hinh"].Value.ToString() != "")
-                _cDCBD.LoadImageView(Convert.FromBase64String(dgvHinh.CurrentRow.Cells["Bytes_Hinh"].Value.ToString()));
+            if (dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString().ToLower().Contains("pdf"))
+            {
+                _cDCBD.LoadFileView("DCBD_ChiTietHoaDon_Hinh", _ctdchd.MaCTDCHD.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
+            }
             else
-                _cDCBD.LoadImageView(_wsThuongVu.get_Hinh("DCBD_ChiTietHoaDon_Hinh", _ctdchd.MaCTDCHD.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString()));
+            {
+                byte[] hinh = _wsThuongVu.get_Hinh("DCBD_ChiTietHoaDon_Hinh", _ctdchd.MaCTDCHD.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
+                if (hinh != null)
+                    _cDCBD.LoadImageView(hinh);
+                else
+                    MessageBox.Show("File không tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void xoaFile_dgvHinh_Click(object sender, EventArgs e)

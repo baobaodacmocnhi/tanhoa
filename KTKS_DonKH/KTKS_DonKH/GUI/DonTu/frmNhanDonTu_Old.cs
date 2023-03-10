@@ -19,7 +19,7 @@ using KTKS_DonKH.DAL.ThuMoi;
 
 namespace KTKS_DonKH.GUI.DonTu
 {
-    public partial class frmNhanDonTu : Form
+    public partial class frmNhanDonTu_Old : Form
     {
         string _mnu = "mnuNhanDonTu";
         CDonTu _cDonTu = new CDonTu();
@@ -38,12 +38,12 @@ namespace KTKS_DonKH.GUI.DonTu
         int _MaDon = -1;
         bool _flagdgvDanhBo_inserRow = false;
 
-        public frmNhanDonTu()
+        public frmNhanDonTu_Old()
         {
             InitializeComponent();
         }
 
-        public frmNhanDonTu(int MaDon)
+        public frmNhanDonTu_Old(int MaDon)
         {
             InitializeComponent();
             _MaDon = MaDon;

@@ -1363,6 +1363,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void txtHoTen_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
+                txtNgaySinh.Focus();
+        }
+
+        private void txtNgaySinh_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
                 txtDiaChi.Focus();
         }
 
@@ -1615,6 +1621,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 txtThoiHan.Text = "6";
             }
         }
+
+        
 
     }
 }

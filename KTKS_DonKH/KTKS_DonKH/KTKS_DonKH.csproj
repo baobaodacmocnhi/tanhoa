@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>93</ApplicationRevision>
+    <ApplicationRevision>97</ApplicationRevision>
     <ApplicationVersion>1.5.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -1213,11 +1213,11 @@
     <Compile Include="GUI\DonTu\frmCapNhatDonTu_Thumbnail.Designer.cs">
       <DependentUpon>frmCapNhatDonTu_Thumbnail.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\DonTu\frmCapNhatDonTu.cs">
+    <Compile Include="GUI\DonTu\frmCapNhatDonTu_Old.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\DonTu\frmCapNhatDonTu.Designer.cs">
-      <DependentUpon>frmCapNhatDonTu.cs</DependentUpon>
+    <Compile Include="GUI\DonTu\frmCapNhatDonTu_Old.Designer.cs">
+      <DependentUpon>frmCapNhatDonTu_Old.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\DonTu\frmDSDonTu.cs">
       <SubType>Form</SubType>
@@ -1225,11 +1225,11 @@
     <Compile Include="GUI\DonTu\frmDSDonTu.Designer.cs">
       <DependentUpon>frmDSDonTu.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\DonTu\frmNhanDonTu.cs">
+    <Compile Include="GUI\DonTu\frmNhanDonTu_Old.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\DonTu\frmNhanDonTu.Designer.cs">
-      <DependentUpon>frmNhanDonTu.cs</DependentUpon>
+    <Compile Include="GUI\DonTu\frmNhanDonTu_Old.Designer.cs">
+      <DependentUpon>frmNhanDonTu_Old.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\DonTu\frmNhomDon.cs">
       <SubType>Form</SubType>
@@ -1303,11 +1303,11 @@
     <Compile Include="GUI\ThuTraLoi\frmToTrinhVeViec.Designer.cs">
       <DependentUpon>frmToTrinhVeViec.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ThuTraLoi\frmToTrinh.cs">
+    <Compile Include="GUI\ThuTraLoi\frmToTrinh_Old.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\ThuTraLoi\frmToTrinh.Designer.cs">
-      <DependentUpon>frmToTrinh.cs</DependentUpon>
+    <Compile Include="GUI\ThuTraLoi\frmToTrinh_Old.Designer.cs">
+      <DependentUpon>frmToTrinh_Old.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ThuMoi\frmDSThuMoi.cs">
       <SubType>Form</SubType>
@@ -1597,11 +1597,11 @@
     <Compile Include="GUI\QuanTri\frmNhom.Designer.cs">
       <DependentUpon>frmNhom.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ThuTraLoi\frmDSTTTL.cs">
+    <Compile Include="GUI\ThuTraLoi\frmDSTTTL_Old.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\ThuTraLoi\frmDSTTTL.Designer.cs">
-      <DependentUpon>frmDSTTTL.cs</DependentUpon>
+    <Compile Include="GUI\ThuTraLoi\frmDSTTTL_Old.Designer.cs">
+      <DependentUpon>frmDSTTTL_Old.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ThuTraLoi\frmTTTL.cs">
       <SubType>Form</SubType>
@@ -2410,14 +2410,14 @@
     <EmbeddedResource Include="GUI\DonTu\frmCapNhatDonTu_Thumbnail.resx">
       <DependentUpon>frmCapNhatDonTu_Thumbnail.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\DonTu\frmCapNhatDonTu.resx">
-      <DependentUpon>frmCapNhatDonTu.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\DonTu\frmCapNhatDonTu_Old.resx">
+      <DependentUpon>frmCapNhatDonTu_Old.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DonTu\frmDSDonTu.resx">
       <DependentUpon>frmDSDonTu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\DonTu\frmNhanDonTu.resx">
-      <DependentUpon>frmNhanDonTu.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\DonTu\frmNhanDonTu_Old.resx">
+      <DependentUpon>frmNhanDonTu_Old.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DonTu\frmNhomDon.resx">
       <DependentUpon>frmNhomDon.cs</DependentUpon>
@@ -2455,8 +2455,8 @@
     <EmbeddedResource Include="GUI\ThuTraLoi\frmToTrinhVeViec.resx">
       <DependentUpon>frmToTrinhVeViec.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ThuTraLoi\frmToTrinh.resx">
-      <DependentUpon>frmToTrinh.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\ThuTraLoi\frmToTrinh_Old.resx">
+      <DependentUpon>frmToTrinh_Old.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ThuMoi\frmDSThuMoi.resx">
       <DependentUpon>frmDSThuMoi.cs</DependentUpon>
@@ -2602,8 +2602,8 @@
     <EmbeddedResource Include="GUI\QuanTri\frmNhom.resx">
       <DependentUpon>frmNhom.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ThuTraLoi\frmDSTTTL.resx">
-      <DependentUpon>frmDSTTTL.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\ThuTraLoi\frmDSTTTL_Old.resx">
+      <DependentUpon>frmDSTTTL_Old.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ThuTraLoi\frmTTTL.resx">
       <DependentUpon>frmTTTL.cs</DependentUpon>

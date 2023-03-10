@@ -23,7 +23,7 @@ using CrystalDecisions.CrystalReports.Engine;
 
 namespace KTKS_DonKH.GUI.ThuTraLoi
 {
-    public partial class frmToTrinh : Form
+    public partial class frmToTrinh_Old : Form
     {
         string _mnu = "mnuToTrinh";
         CDonTu _cDonTu = new CDonTu();
@@ -44,12 +44,12 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
         ToTrinh_ChiTiet _cttt = null;
         int _IDCT = -1;
 
-        public frmToTrinh()
+        public frmToTrinh_Old()
         {
             InitializeComponent();
         }
 
-        public frmToTrinh(int IDCT)
+        public frmToTrinh_Old(int IDCT)
         {
             _IDCT = IDCT;
             InitializeComponent();

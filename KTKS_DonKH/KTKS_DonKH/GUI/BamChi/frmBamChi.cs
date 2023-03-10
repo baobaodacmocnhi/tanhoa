@@ -16,6 +16,7 @@ using KTKS_DonKH.DAL.ToBamChi;
 using KTKS_DonKH.DAL.DonTu;
 using System.Transactions;
 using KTKS_DonKH.wrThuongVu;
+using KTKS_DonKH.GUI.DonTu;
 
 namespace KTKS_DonKH.GUI.BamChi
 {
@@ -1010,19 +1011,12 @@ namespace KTKS_DonKH.GUI.BamChi
         private void btnChonFile_Click(object sender, EventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png";
+            dialog.Filter = "Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png|PDF files (*.pdf) | *.pdf";
             dialog.Multiselect = false;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
-                    //ListViewItem item = new ListViewItem();
-                    //item.ImageKey = "file";
-                    //item.Text = DateTime.Now.ToString("dd.MM.yyyy HH.mm.ss");
-                    //item.SubItems.Add(Convert.ToBase64String(bytes));
-                    //lstVFile.Items.Add(item);
-
-                    //byte[] bytes = System.IO.File.ReadAllBytes(dialog.FileName);
                     byte[] bytes = _cBamChi.scanImage(dialog.FileName);
                     if (_ctbamchi == null)
                     {
@@ -1044,7 +1038,6 @@ namespace KTKS_DonKH.GUI.BamChi
                             BamChi_ChiTiet_Hinh en = new BamChi_ChiTiet_Hinh();
                             en.IDBamChi_ChiTiet = _ctbamchi.MaCTBC;
                             en.Name = DateTime.Now.ToString("dd.MM.yyyy HH.mm.ss");
-                            //en.Hinh = bytes;
                             en.Loai = System.IO.Path.GetExtension(dialog.FileName);
                             if (_wsThuongVu.ghi_Hinh("BamChi_ChiTiet_Hinh", en.IDBamChi_ChiTiet.Value.ToString(), en.Name + en.Loai, bytes) == true)
                                 if (_cBamChi.Them_Hinh(en) == true)
@@ -1085,10 +1078,18 @@ namespace KTKS_DonKH.GUI.BamChi
 
         private void dgvHinh_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (dgvHinh.CurrentRow.Cells["Bytes_Hinh"].Value != null && dgvHinh.CurrentRow.Cells["Bytes_Hinh"].Value.ToString() != "")
-                _cBamChi.LoadImageView(Convert.FromBase64String(dgvHinh.CurrentRow.Cells["Bytes_Hinh"].Value.ToString()));
+            if (dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString().ToLower().Contains("pdf"))
+            {
+                _cBamChi.LoadFileView("BamChi_ChiTiet_Hinh", _ctbamchi.MaCTBC.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
+            }
             else
-                _cBamChi.LoadImageView(_wsThuongVu.get_Hinh("BamChi_ChiTiet_Hinh", _ctbamchi.MaCTBC.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString()));
+            {
+                byte[] hinh = _wsThuongVu.get_Hinh("BamChi_ChiTiet_Hinh", _ctbamchi.MaCTBC.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
+                if (hinh != null)
+                    _cBamChi.LoadImageView(hinh);
+                else
+                    MessageBox.Show("File không tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void xoaFile_dgvHinh_Click(object sender, EventArgs e)
@@ -1125,6 +1126,20 @@ namespace KTKS_DonKH.GUI.BamChi
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void frmBamChi_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (_dontu_ChiTiet != null && e.Control && e.KeyCode == Keys.T)
+            {
+                if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+                {
+                    frmCapNhatDonTu_Thumbnail frm = new frmCapNhatDonTu_Thumbnail(_dontu_ChiTiet, "BamChi_ChiTiet", (int)_ctbamchi.MaCTBC);
+                    frm.ShowDialog();
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

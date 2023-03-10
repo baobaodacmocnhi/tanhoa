@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using KTKS_DonKH.DAL.DonTu;
 using KTKS_DonKH.LinQ;
+using KTKS_DonKH.DAL.QuanTri;
 
 namespace KTKS_DonKH.GUI.DonTu
 {
@@ -16,6 +17,9 @@ namespace KTKS_DonKH.GUI.DonTu
         CNoiChuyen _cNoiChuyen = new CNoiChuyen();
         CDonTu _cDonTu = new CDonTu();
         DonTu_ChiTiet _dontu_ChiTiet = null;
+        string _TableName = null;
+        int _ID = -1;
+        int _selectedIndex = -1;
 
         public frmCapNhatDonTu_Thumbnail()
         {
@@ -28,15 +32,54 @@ namespace KTKS_DonKH.GUI.DonTu
             _dontu_ChiTiet = dontu_ChiTiet;
         }
 
+        public frmCapNhatDonTu_Thumbnail(DonTu_ChiTiet dontu_ChiTiet, string TableName, int ID)
+        {
+            InitializeComponent();
+            _dontu_ChiTiet = dontu_ChiTiet;
+            _TableName = TableName;
+            _ID = ID;
+            switch (TableName)
+            {
+                case "KTXM_ChiTiet":
+                    _selectedIndex = 5;
+                    break;
+                case "DCBD_ChiTietBienDong":
+                case "DCBD_ChiTietHoaDon":
+                    _selectedIndex = 6;
+                    break;
+                case "CHDB_ChiTietCatTam":
+                case "CHDB_ChiTietCatHuy":
+                case "CHDB_Phieu":
+                    _selectedIndex = 7;
+                    break;
+                case "TruyThuTienNuoc_ChiTiet":
+                case "GianLan_ChiTiet":
+                    _selectedIndex = 8;
+                    break;
+                case "ThuTraLoi_ChiTiet":
+                    _selectedIndex = 9;
+                    break;
+                case "ThuMoi_ChiTiet":
+                    _selectedIndex = 10;
+                    break;
+                case "ToTrinh_ChiTiet":
+                    _selectedIndex = 11;
+                    break;
+                case "VanBan_ChiTiet":
+                    _selectedIndex = 38;
+                    break;
+            }
+        }
+
         private void frmCapNhanDonTu_Thumbnail_Load(object sender, EventArgs e)
         {
-            this.Location = new Point(200,120);
+            this.Location = new Point(200, 120);
             dgvLichSuDonTu.AutoGenerateColumns = false;
 
             cmbNoiChuyen.DataSource = _cNoiChuyen.GetDS("DonTuChuyen");
             cmbNoiChuyen.ValueMember = "ID";
             cmbNoiChuyen.DisplayMember = "Name";
-            cmbNoiChuyen.SelectedIndex = -1;
+            cmbNoiChuyen.SelectedValue = _selectedIndex;
 
             chkcmbNoiNhan.Properties.DataSource = _cNoiChuyen.GetDS("DonTuNhan");
             chkcmbNoiNhan.Properties.ValueMember = "ID";
@@ -67,7 +110,6 @@ namespace KTKS_DonKH.GUI.DonTu
                                 //đi KTXM
                                 if (chkcmbNoiNhan.Properties.Items[i].Value.ToString() == "5")
                                 {
-
                                     //for (int j = 0; j < chkcmbNoiNhanKTXM.Properties.Items.Count; j++)
                                     //    if (chkcmbNoiNhanKTXM.Properties.Items[j].CheckState == CheckState.Checked)
                                     //    {
@@ -96,6 +138,11 @@ namespace KTKS_DonKH.GUI.DonTu
                                     entity.NoiDung = txtNoiDung_LichSu.Text.Trim();
                                     entity.MaDon = _dontu_ChiTiet.MaDon;
                                     entity.STT = _dontu_ChiTiet.STT;
+                                    if (_TableName != null)
+                                    {
+                                        entity.TableName = _TableName;
+                                        entity.IDCT = _ID;
+                                    }
                                     _cDonTu.Them_LichSu(entity);
                                 }
                                 flag = true;
@@ -121,6 +168,11 @@ namespace KTKS_DonKH.GUI.DonTu
                                     entity.NoiDung = txtNoiDung_LichSu.Text.Trim();
                                     entity.MaDon = _dontu_ChiTiet.MaDon;
                                     entity.STT = _dontu_ChiTiet.STT;
+                                    if (_TableName != null)
+                                    {
+                                        entity.TableName = _TableName;
+                                        entity.IDCT = _ID;
+                                    }
                                     _cDonTu.Them_LichSu(entity);
                                 }
                                 else
@@ -137,6 +189,11 @@ namespace KTKS_DonKH.GUI.DonTu
                                 entity.NoiDung = txtNoiDung_LichSu.Text.Trim();
                                 entity.MaDon = _dontu_ChiTiet.MaDon;
                                 entity.STT = _dontu_ChiTiet.STT;
+                                if (_TableName != null)
+                                {
+                                    entity.TableName = _TableName;
+                                    entity.IDCT = _ID;
+                                }
                                 _cDonTu.Them_LichSu(entity);
                             }
                         }

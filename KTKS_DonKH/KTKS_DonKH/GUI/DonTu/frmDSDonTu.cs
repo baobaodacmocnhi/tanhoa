@@ -218,7 +218,7 @@ namespace KTKS_DonKH.GUI.DonTu
         {
             if (dgvDSDonTu.Rows.Count > 0 && e.Control && e.KeyCode == Keys.F)
             {
-                frmNhanDonTu frm = new frmNhanDonTu(int.Parse(dgvDSDonTu["MaDon", dgvDSDonTu.CurrentRow.Index].Value.ToString()));
+                frmNhanDonTu_Old frm = new frmNhanDonTu_Old(int.Parse(dgvDSDonTu["MaDon", dgvDSDonTu.CurrentRow.Index].Value.ToString()));
                 frm.ShowDialog();
             }
         }
