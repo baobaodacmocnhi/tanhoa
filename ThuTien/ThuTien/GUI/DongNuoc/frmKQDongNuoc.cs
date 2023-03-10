@@ -938,7 +938,8 @@ namespace ThuTien.GUI.DongNuoc
                                     if (!lst.Any(itemlst => itemlst.SoPhieuDN == decimal.Parse(item.Cells["SoPhieuDN"].Value.ToString())))
                                         lst = lst.Concat(_cDongNuoc.GetDSKQDongNuocBySoPhieuDN(decimal.Parse(item.Cells["SoPhieuDN"].Value.ToString()))).ToList();
                             }
-
+                        if (sql != "")
+                            _cDHN.ExecuteNonQuery(sql);
                         lst = lst.Concat(_cDongNuoc.GetDSKQDongNuocBySoPhieuDN(SoPhieuDN)).ToList();
                         foreach (TT_KQDongNuoc item in lst)
                         {
@@ -992,14 +993,15 @@ namespace ThuTien.GUI.DongNuoc
                                         kqdongnuoc.SoPhieuMN = SoPhieuMN;
                                         kqdongnuoc.NgaySoPhieuMN = DateTime.Now;
                                         _cDongNuoc.SuaKQ(kqdongnuoc);
-                                        string NoiDung = "Số: " + kqdongnuoc.SoPhieuMN + ", Mở Nước, ngày " + kqdongnuoc.NgayDN.Value.ToString("dd/MM/yyyy") + ", CS: " + kqdongnuoc.ChiSoDN + ", " + kqdongnuoc.LyDo;
+                                        string NoiDung = "Số: " + kqdongnuoc.SoPhieuMN + ", Mở Nước, ngày " + kqdongnuoc.NgayMN.Value.ToString("dd/MM/yyyy") + ", CS: " + kqdongnuoc.ChiSoMN;
                                         sql += " insert into TB_GHICHU(DANHBO,DONVI,NOIDUNG,CREATEDATE,CREATEBY)values('" + kqdongnuoc.DanhBo + "',N'DTT',N'" + NoiDung + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture) + "',N'" + CNguoiDung.HoTen + "')";
                                     }
                                     else
                                         if (!lst.Any(itemlst => itemlst.SoPhieuMN == decimal.Parse(item.Cells["SoPhieuMN"].Value.ToString())))
                                             lst = lst.Concat(_cDongNuoc.GetDSKQDongNuocBySoPhieuMN(decimal.Parse(item.Cells["SoPhieuMN"].Value.ToString()))).ToList();
                                 }
-
+                            if (sql != "")
+                                _cDHN.ExecuteNonQuery(sql);
                             lst = lst.Concat(_cDongNuoc.GetDSKQDongNuocBySoPhieuMN(SoPhieuMN)).ToList();
 
                             bool flagButChi = false;
@@ -1049,8 +1051,7 @@ namespace ThuTien.GUI.DongNuoc
                                 dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                             }
                         }
-                    if (sql != "")
-                        _cDHN.ExecuteNonQuery(sql);
+
                     rptPhieuBaoDongMoNuoc rpt = new rptPhieuBaoDongMoNuoc();
                     rpt.SetDataSource(dsBaoCao);
                     frmBaoCao frm = new frmBaoCao(rpt);
@@ -1303,7 +1304,7 @@ namespace ThuTien.GUI.DongNuoc
                     foreach (TT_CTDongNuoc item in _dongnuoc.TT_CTDongNuocs)
                     {
                         HOADON hd = _cHoaDon.Get(item.MaHD);
-                        if (hd != null&&hd.TBDongNuoc_Ngay==null)
+                        if (hd != null && hd.TBDongNuoc_Ngay == null)
                         {
                             hd.TBDongNuoc_Ngay = item.CreateDate;
                             _cHoaDon.Sua(hd);
