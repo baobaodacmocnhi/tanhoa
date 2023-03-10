@@ -16,7 +16,7 @@ namespace DocSo_PC.DAL.MaHoa
 
         public List<MaHoa_PhieuChuyen_LichSu> getDS(int SoPhieu)
         {
-            return _db.MaHoa_PhieuChuyen_LichSus.Where(o => o.SoPhieu == SoPhieu).ToList();
+            return _db.MaHoa_PhieuChuyen_LichSus.Where(o => o.SoPhieu == SoPhieu ).ToList();
         }
 
         public DataTable getDS(string DanhBo)
