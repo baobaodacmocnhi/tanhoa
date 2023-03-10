@@ -137,6 +137,7 @@
             this.dateDauChungMayBom = new System.Windows.Forms.DateTimePicker();
             this.chkDauChungMayBom = new System.Windows.Forms.CheckBox();
             this.dgvPhieuChuyen = new System.Windows.Forms.DataGridView();
+            this.label10 = new System.Windows.Forms.Label();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo_PC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -144,7 +145,7 @@
             this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Folder = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TinhTrang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label10 = new System.Windows.Forms.Label();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDienThoai)).BeginInit();
@@ -1186,7 +1187,8 @@
             this.XemHinh,
             this.GhiChu,
             this.Folder,
-            this.TinhTrang});
+            this.TinhTrang,
+            this.ID});
             dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1211,6 +1213,16 @@
             this.dgvPhieuChuyen.TabIndex = 132;
             this.dgvPhieuChuyen.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPhieuChuyen_CellClick);
             this.dgvPhieuChuyen.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPhieuChuyen_CellEndEdit);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.Color.Red;
+            this.label10.Location = new System.Drawing.Point(1138, 225);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(161, 13);
+            this.label10.TabIndex = 133;
+            this.label10.Text = "Cập nhật trực tiếp TÌNH TRẠNG";
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -1258,15 +1270,12 @@
             this.TinhTrang.HeaderText = "Tình Trạng";
             this.TinhTrang.Name = "TinhTrang";
             // 
-            // label10
+            // ID
             // 
-            this.label10.AutoSize = true;
-            this.label10.ForeColor = System.Drawing.Color.Red;
-            this.label10.Location = new System.Drawing.Point(1138, 225);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(161, 13);
-            this.label10.TabIndex = 133;
-            this.label10.Text = "Cập nhật trực tiếp TÌNH TRẠNG";
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
             // 
             // frmGhiChu
             // 
@@ -1452,6 +1461,7 @@
         private System.Windows.Forms.DateTimePicker dateDauChungMayBom;
         private System.Windows.Forms.CheckBox chkDauChungMayBom;
         private System.Windows.Forms.DataGridView dgvPhieuChuyen;
+        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo_PC;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
@@ -1459,6 +1469,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
         private System.Windows.Forms.DataGridViewTextBoxColumn Folder;
         private System.Windows.Forms.DataGridViewTextBoxColumn TinhTrang;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
     }
 }

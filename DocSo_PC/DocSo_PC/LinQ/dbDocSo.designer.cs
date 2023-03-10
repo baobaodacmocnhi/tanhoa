@@ -20436,6 +20436,12 @@ namespace DocSo_PC.LinQ
 		
 		private System.Nullable<System.DateTime> _SoPhieu_Ngay;
 		
+		private string _KinhGui;
+		
+		private string _VeViec;
+		
+		private string _NoiNhan;
+		
 		private System.Nullable<int> _CreateBy;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -20462,6 +20468,12 @@ namespace DocSo_PC.LinQ
     partial void OnSoPhieuChanged();
     partial void OnSoPhieu_NgayChanging(System.Nullable<System.DateTime> value);
     partial void OnSoPhieu_NgayChanged();
+    partial void OnKinhGuiChanging(string value);
+    partial void OnKinhGuiChanged();
+    partial void OnVeViecChanging(string value);
+    partial void OnVeViecChanged();
+    partial void OnNoiNhanChanging(string value);
+    partial void OnNoiNhanChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -20613,6 +20625,66 @@ namespace DocSo_PC.LinQ
 					this._SoPhieu_Ngay = value;
 					this.SendPropertyChanged("SoPhieu_Ngay");
 					this.OnSoPhieu_NgayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KinhGui", DbType="NVarChar(200)")]
+		public string KinhGui
+		{
+			get
+			{
+				return this._KinhGui;
+			}
+			set
+			{
+				if ((this._KinhGui != value))
+				{
+					this.OnKinhGuiChanging(value);
+					this.SendPropertyChanging();
+					this._KinhGui = value;
+					this.SendPropertyChanged("KinhGui");
+					this.OnKinhGuiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VeViec", DbType="NVarChar(200)")]
+		public string VeViec
+		{
+			get
+			{
+				return this._VeViec;
+			}
+			set
+			{
+				if ((this._VeViec != value))
+				{
+					this.OnVeViecChanging(value);
+					this.SendPropertyChanging();
+					this._VeViec = value;
+					this.SendPropertyChanged("VeViec");
+					this.OnVeViecChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NoiNhan", DbType="NVarChar(200)")]
+		public string NoiNhan
+		{
+			get
+			{
+				return this._NoiNhan;
+			}
+			set
+			{
+				if ((this._NoiNhan != value))
+				{
+					this.OnNoiNhanChanging(value);
+					this.SendPropertyChanging();
+					this._NoiNhan = value;
+					this.SendPropertyChanged("NoiNhan");
+					this.OnNoiNhanChanged();
 				}
 			}
 		}

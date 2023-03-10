@@ -323,7 +323,7 @@ namespace DocSo_PC.GUI.ToTruong
                 {
                     if (string.IsNullOrEmpty(item.Cells["SoPhieu"].Value.ToString()))
                     {
-                        MaHoa_PhieuChuyen_LichSu pc = _cPhieuChuyen.get(int.Parse(item.Cells["SoPhieu"].Value.ToString()));
+                        MaHoa_PhieuChuyen_LichSu pc = _cPhieuChuyen.get(int.Parse(item.Cells["ID"].Value.ToString()));
                         pc.SoPhieu = int.Parse(SoPhieu);
                         pc.SoPhieu_Ngay = DateTime.Now;
                         _cPhieuChuyen.SubmitChanges();
@@ -344,13 +344,13 @@ namespace DocSo_PC.GUI.ToTruong
                     if (CNguoiDung.Doi)
                     {
                         if (cmbTo.SelectedIndex == 0)
-                            dr["SoPhieu"] = "Số:_____/DS";
+                            dr["SoPhieu"] = "Số:" + item.SoPhieu + "/PC-QLĐHN";
                         else
-                            dr["SoPhieu"] = "Số:_____/DS-" + _cTo.get(int.Parse(cmbTo.SelectedValue.ToString())).KyHieu;
+                            dr["SoPhieu"] = "Số:" + item.SoPhieu + "/PC-" + _cTo.get(int.Parse(cmbTo.SelectedValue.ToString())).KyHieu + "-QLĐHN";
                     }
                     else
                     {
-                        dr["SoPhieu"] = "Số:_____/DS-" + _cTo.get(CNguoiDung.MaTo).KyHieu;
+                        dr["SoPhieu"] = "Số:" + item.SoPhieu + "/PC-" + _cTo.get(CNguoiDung.MaTo).KyHieu + "-QLĐHN";
                     }
                     dr["TieuDe"] = "DANH SÁCH ĐỒNG HỒ NƯỚC " + item.NoiDung.ToUpper();
                     switch (item.NoiDung)
