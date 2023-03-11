@@ -160,7 +160,7 @@ namespace DocSo_PC.DAL.sDHN
                 else
                     return null;
             }
-            catch (Exception ex)
+            catch 
             {
                 return null;
             }
@@ -203,7 +203,7 @@ namespace DocSo_PC.DAL.sDHN
                 else
                     return null;
             }
-            catch (Exception ex)
+            catch
             {
                 return null;
             }
@@ -596,7 +596,7 @@ namespace DocSo_PC.DAL.sDHN
                 else
                     return null;
             }
-            catch (Exception ex)
+            catch 
             {
                 return null;
             }
@@ -1134,7 +1134,7 @@ namespace DocSo_PC.DAL.sDHN
                 else
                     return null;
             }
-            catch (Exception ex)
+            catch
             {
                 return null;
             }
@@ -1611,7 +1611,7 @@ namespace DocSo_PC.DAL.sDHN
                 else
                     return null;
             }
-            catch (Exception ex)
+            catch
             {
                 return null;
             }

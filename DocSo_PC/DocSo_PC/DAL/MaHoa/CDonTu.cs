@@ -14,7 +14,6 @@ namespace DocSo_PC.DAL.MaHoa
         {
             try
             {
-                if (DateTime.Now.Year == 2023)
                 {
                     if (_db.MaHoa_DonTus.Any(item => item.ID.ToString().Substring(0, 2) == DateTime.Now.ToString("yy")) == true)
                     {
@@ -409,7 +408,7 @@ namespace DocSo_PC.DAL.MaHoa
 
         #endregion
 
-        
+
 
     }
 }

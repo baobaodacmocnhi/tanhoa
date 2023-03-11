@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -80,6 +80,9 @@
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.radGDDuyet = new System.Windows.Forms.RadioButton();
+            this.radGD = new System.Windows.Forms.RadioButton();
+            this.radPGD = new System.Windows.Forms.RadioButton();
             this.panel_NoiDung = new System.Windows.Forms.Panel();
             this.txtDenSo = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -119,9 +122,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.txtVeViec_VV = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.radPGD = new System.Windows.Forms.RadioButton();
-            this.radGD = new System.Windows.Forms.RadioButton();
-            this.radGDDuyet = new System.Windows.Forms.RadioButton();
+            this.btnImportHinh = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -150,6 +151,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnImportHinh);
             this.tabPage1.Controls.Add(this.txtID);
             this.tabPage1.Controls.Add(this.label9);
             this.tabPage1.Controls.Add(this.label20);
@@ -207,14 +209,14 @@
             // dgvHinh
             // 
             this.dgvHinh.AllowUserToAddRows = false;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHinh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHinh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvHinh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHinh.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID_Hinh,
@@ -572,6 +574,38 @@
             this.tabPage2.Text = "Danh Sách";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // radGDDuyet
+            // 
+            this.radGDDuyet.AutoSize = true;
+            this.radGDDuyet.Location = new System.Drawing.Point(634, 6);
+            this.radGDDuyet.Name = "radGDDuyet";
+            this.radGDDuyet.Size = new System.Drawing.Size(72, 17);
+            this.radGDDuyet.TabIndex = 160;
+            this.radGDDuyet.Text = "GĐ Duyệt";
+            this.radGDDuyet.UseVisualStyleBackColor = true;
+            // 
+            // radGD
+            // 
+            this.radGD.AutoSize = true;
+            this.radGD.Location = new System.Drawing.Point(587, 6);
+            this.radGD.Name = "radGD";
+            this.radGD.Size = new System.Drawing.Size(41, 17);
+            this.radGD.TabIndex = 159;
+            this.radGD.Text = "GĐ";
+            this.radGD.UseVisualStyleBackColor = true;
+            // 
+            // radPGD
+            // 
+            this.radPGD.AutoSize = true;
+            this.radPGD.Checked = true;
+            this.radPGD.Location = new System.Drawing.Point(533, 6);
+            this.radPGD.Name = "radPGD";
+            this.radPGD.Size = new System.Drawing.Size(48, 17);
+            this.radPGD.TabIndex = 158;
+            this.radPGD.TabStop = true;
+            this.radPGD.Text = "PGĐ";
+            this.radPGD.UseVisualStyleBackColor = true;
+            // 
             // panel_NoiDung
             // 
             this.panel_NoiDung.Controls.Add(this.txtDenSo);
@@ -701,14 +735,14 @@
             // 
             this.dgvToTrinh.AllowUserToAddRows = false;
             this.dgvToTrinh.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvToTrinh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvToTrinh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dgvToTrinh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvToTrinh.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Chon_DS,
@@ -720,26 +754,26 @@
             this.DiaChi_DS,
             this.NoiDung_DS,
             this.CreateBy_DS});
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvToTrinh.DefaultCellStyle = dataGridViewCellStyle11;
-            this.dgvToTrinh.Location = new System.Drawing.Point(3, 61);
-            this.dgvToTrinh.Name = "dgvToTrinh";
             dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvToTrinh.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvToTrinh.RowsDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvToTrinh.DefaultCellStyle = dataGridViewCellStyle12;
+            this.dgvToTrinh.Location = new System.Drawing.Point(3, 61);
+            this.dgvToTrinh.Name = "dgvToTrinh";
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvToTrinh.RowHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvToTrinh.RowsDefaultCellStyle = dataGridViewCellStyle14;
             this.dgvToTrinh.Size = new System.Drawing.Size(1000, 400);
             this.dgvToTrinh.TabIndex = 77;
             this.dgvToTrinh.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvToTrinh_CellEndEdit);
@@ -986,37 +1020,15 @@
             this.label17.TabIndex = 20;
             this.label17.Text = "Về Việc:";
             // 
-            // radPGD
+            // btnImportHinh
             // 
-            this.radPGD.AutoSize = true;
-            this.radPGD.Checked = true;
-            this.radPGD.Location = new System.Drawing.Point(533, 6);
-            this.radPGD.Name = "radPGD";
-            this.radPGD.Size = new System.Drawing.Size(48, 17);
-            this.radPGD.TabIndex = 158;
-            this.radPGD.TabStop = true;
-            this.radPGD.Text = "PGĐ";
-            this.radPGD.UseVisualStyleBackColor = true;
-            // 
-            // radGD
-            // 
-            this.radGD.AutoSize = true;
-            this.radGD.Location = new System.Drawing.Point(587, 6);
-            this.radGD.Name = "radGD";
-            this.radGD.Size = new System.Drawing.Size(41, 17);
-            this.radGD.TabIndex = 159;
-            this.radGD.Text = "GĐ";
-            this.radGD.UseVisualStyleBackColor = true;
-            // 
-            // radGDDuyet
-            // 
-            this.radGDDuyet.AutoSize = true;
-            this.radGDDuyet.Location = new System.Drawing.Point(634, 6);
-            this.radGDDuyet.Name = "radGDDuyet";
-            this.radGDDuyet.Size = new System.Drawing.Size(72, 17);
-            this.radGDDuyet.TabIndex = 160;
-            this.radGDDuyet.Text = "GĐ Duyệt";
-            this.radGDDuyet.UseVisualStyleBackColor = true;
+            this.btnImportHinh.Location = new System.Drawing.Point(915, 31);
+            this.btnImportHinh.Name = "btnImportHinh";
+            this.btnImportHinh.Size = new System.Drawing.Size(81, 40);
+            this.btnImportHinh.TabIndex = 150;
+            this.btnImportHinh.Text = "Import Hình Theo Mã Đơn";
+            this.btnImportHinh.UseVisualStyleBackColor = true;
+            this.btnImportHinh.Click += new System.EventHandler(this.btnImportHinh_Click);
             // 
             // frmToTrinh
             // 
@@ -1137,5 +1149,6 @@
         private System.Windows.Forms.RadioButton radGDDuyet;
         private System.Windows.Forms.RadioButton radGD;
         private System.Windows.Forms.RadioButton radPGD;
+        private System.Windows.Forms.Button btnImportHinh;
     }
 }

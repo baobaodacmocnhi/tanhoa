@@ -125,6 +125,7 @@
             this.dateDenNgay = new System.Windows.Forms.DateTimePicker();
             this.label22 = new System.Windows.Forms.Label();
             this.dateTuNgay = new System.Windows.Forms.DateTimePicker();
+            this.btnImportHinh = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -149,6 +150,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnImportHinh);
             this.tabPage1.Controls.Add(this.label20);
             this.tabPage1.Controls.Add(this.chkBanChinh);
             this.tabPage1.Controls.Add(this.btnThem);
@@ -1097,6 +1099,16 @@
             this.dateTuNgay.Size = new System.Drawing.Size(95, 20);
             this.dateTuNgay.TabIndex = 58;
             // 
+            // btnImportHinh
+            // 
+            this.btnImportHinh.Location = new System.Drawing.Point(952, 33);
+            this.btnImportHinh.Name = "btnImportHinh";
+            this.btnImportHinh.Size = new System.Drawing.Size(81, 40);
+            this.btnImportHinh.TabIndex = 146;
+            this.btnImportHinh.Text = "Import Hình Theo Mã Đơn";
+            this.btnImportHinh.UseVisualStyleBackColor = true;
+            this.btnImportHinh.Click += new System.EventHandler(this.btnImportHinh_Click);
+            // 
             // frmKTXM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1216,6 +1228,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Name_Hinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bytes_Hinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn Loai_Hinh;
+        private System.Windows.Forms.Button btnImportHinh;
 
 
     }

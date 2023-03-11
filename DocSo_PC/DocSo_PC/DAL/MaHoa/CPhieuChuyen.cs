@@ -4,11 +4,72 @@ using System.Linq;
 using System.Text;
 using DocSo_PC.LinQ;
 using System.Data;
+using DocSo_PC.DAL.QuanTri;
 
 namespace DocSo_PC.DAL.MaHoa
 {
-    class CPhieuChuyen:CDAL
+    class CPhieuChuyen : CDAL
     {
+        public bool them(MaHoa_PhieuChuyen_LichSu en)
+        {
+            try
+            {
+                if (_db.MaHoa_PhieuChuyen_LichSus.Any(item => item.ID.ToString().Substring(0, 2) == DateTime.Now.ToString("yy")) == true)
+                {
+                    object stt = _cDAL.ExecuteQuery_ReturnOneValue("select MAX(SUBSTRING(CAST(ID as varchar(8)),3,5))+1 from MaHoa_PhieuChuyen_LichSu where ID like '" + DateTime.Now.ToString("yy") + "%'");
+                    if (stt != null)
+                        en.ID = int.Parse(DateTime.Now.ToString("yy") + ((int)stt).ToString("00000"));
+                }
+                else
+                {
+                    en.ID = int.Parse(DateTime.Now.ToString("yy") + 1.ToString("00000"));
+                }
+                en.CreateBy = CNguoiDung.MaND;
+                en.CreateDate = DateTime.Now;
+                _db.MaHoa_PhieuChuyen_LichSus.InsertOnSubmit(en);
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public bool sua(MaHoa_PhieuChuyen_LichSu en)
+        {
+            try
+            {
+                en.ModifyBy = CNguoiDung.MaND;
+                en.ModifyDate = DateTime.Now;
+                _db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public int getSoPhieuNext()
+        {
+            object checkExists = _cDAL.ExecuteQuery_ReturnOneValue("select top 1 SoPhieu from MaHoa_PhieuChuyen_LichSu where SoPhieu like '" + DateTime.Now.ToString("yy") + "%'");
+            if (checkExists != null)
+            {
+                object stt = _cDAL.ExecuteQuery_ReturnOneValue("select MAX(SUBSTRING(CAST(SoPhieu as varchar(8)),3,5))+1 from MaHoa_PhieuChuyen_LichSu where SoPhieu like '" + DateTime.Now.ToString("yy") + "%'");
+                if (stt != null)
+                    return int.Parse(DateTime.Now.ToString("yy") + ((int)stt).ToString("00000"));
+                else
+                    return -1;
+            }
+            else
+            {
+                return int.Parse(DateTime.Now.ToString("yy") + 1.ToString("00000"));
+            }
+        }
+
         public MaHoa_PhieuChuyen_LichSu get(int ID)
         {
             return _db.MaHoa_PhieuChuyen_LichSus.SingleOrDefault(o => o.ID == ID);
@@ -16,25 +77,32 @@ namespace DocSo_PC.DAL.MaHoa
 
         public List<MaHoa_PhieuChuyen_LichSu> getDS(int SoPhieu)
         {
-            return _db.MaHoa_PhieuChuyen_LichSus.Where(o => o.SoPhieu == SoPhieu ).ToList();
+            return _db.MaHoa_PhieuChuyen_LichSus.Where(o => o.SoPhieu == SoPhieu).ToList();
+        }
+
+        public DataTable getGroup_NoiDung()
+        {
+            return _cDAL.ExecuteQuery_DataTable("select NoiDung from MaHoa_PhieuChuyen_LichSu group by NoiDung order by NoiDung asc");
+        }
+
+        public DataTable getDS(string MaTo, string NoiDung, DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            if (MaTo == "0")
+                MaTo = "";
+            else
+                MaTo = "and SUBSTRING(LOTRINH,3,2)>=(select TuMay from DocSoTH.dbo.[To] where MaTo=" + MaTo + ") and SUBSTRING(LOTRINH,3,2)<=(select DenMay from DocSoTH.dbo.[To] where MaTo=" + MaTo + ")";
+            if (NoiDung == "Tất Cả")
+                NoiDung = "";
+            else
+                NoiDung = "and NoiDung=N'" + NoiDung + "'";
+            return _cDAL.ExecuteQuery_DataTable("select MLT=LOTRINH,a.DANHBO,HOTEN,DiaChi=SONHA+' '+TENDUONG,a.NoiDung,a.CreateDate,Folder=(select Folder from MaHoa_PhieuChuyen where [Name]=a.NoiDung),a.ID,a.GhiChu,a.TinhTrang,a.SoPhieu"
+                + " from MaHoa_PhieuChuyen_LichSu a,CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG b where a.DanhBo=b.DanhBo and CAST(a.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(a.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' " + MaTo + " " + NoiDung);
         }
 
         public DataTable getDS(string DanhBo)
         {
-            DataTable dt = new DataTable();
-            dt.Merge(getDS_AmSau(DanhBo));
-            dt.Merge(getDS_XayDung(DanhBo));
-            dt.Merge(getDS_DutChiGoc(DanhBo));
-            dt.Merge(getDS_DutChiThan(DanhBo));
-            dt.Merge(getDS_NgapNuoc(DanhBo));
-            dt.Merge(getDS_KetTuong(DanhBo));
-            dt.Merge(getDS_LapKhoaGoc(DanhBo));
-            dt.Merge(getDS_BeHBV(DanhBo));
-            dt.Merge(getDS_BeNapMatNapHBV(DanhBo));
-            dt.Merge(getDS_GayTayVan(DanhBo));
-            dt.Merge(getDS_TroNgaiThay(DanhBo));
-            dt.Merge(getDS_DauChungMayBom(DanhBo));
-            return dt;
+            return _cDAL.ExecuteQuery_DataTable("select MLT=LOTRINH,a.DANHBO,HOTEN,DiaChi=SONHA+' '+TENDUONG,a.NoiDung,a.CreateDate,Folder=(select Folder from MaHoa_PhieuChuyen where [Name]=a.NoiDung),a.ID,a.GhiChu,a.TinhTrang,a.SoPhieu"
+                + " from MaHoa_PhieuChuyen_LichSu a,CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG b where a.DanhBo=b.DanhBo and a.DanhBo='" + DanhBo + "'");
         }
 
         public DataTable getDS_AmSau(string DanhBo)

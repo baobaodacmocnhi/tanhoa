@@ -66,7 +66,7 @@ namespace DocSo_PC.DAL.VanThu
             return _db.CongVanDens.Any(item => item.TableName == TableName && item.IDCT == IDCT);
         }
 
-        public bool checkExists(string DanhBo,string NoiDung)
+        public bool checkExists(string DanhBo, string NoiDung)
         {
             return _db.CongVanDens.Any(item => item.DanhBo == DanhBo && item.NoiDung == NoiDung);
         }
@@ -91,19 +91,34 @@ namespace DocSo_PC.DAL.VanThu
             return _cDAL.ExecuteQuery_DataTable("select *,'To'=(select TenTo from [To] where TuMay<=SUBSTRING(MLT,3,2) and DenMay>=SUBSTRING(MLT,3,2)) from CongVanDen where DanhBo='" + DanhBo + "' order by createdate desc");
         }
 
-        public DataTable getDS_ChuaDuyet()
+        public DataTable getDS_ChuaDuyet(string LoaiVB)
         {
-            return _cDAL.ExecuteQuery_DataTable("select *,'To'=(select TenTo from [To] where TuMay<=SUBSTRING(MLT,3,2) and DenMay>=SUBSTRING(MLT,3,2)) from CongVanDen where Duyet_Ngay is null order by createdate desc");
+            if (LoaiVB == "Tất Cả")
+                LoaiVB = "";
+            else
+                LoaiVB = "and LoaiVB=N'" + LoaiVB + "'";
+            return _cDAL.ExecuteQuery_DataTable("select *,'To'=(select TenTo from [To] where TuMay<=SUBSTRING(MLT,3,2) and DenMay>=SUBSTRING(MLT,3,2))"
+                + " from CongVanDen where Duyet_Ngay is null " + LoaiVB + " order by createdate desc");
         }
 
-        public DataTable getDS_DaDuyet()
+        public DataTable getDS_DaDuyet(string LoaiVB, DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            return _cDAL.ExecuteQuery_DataTable("select *,'To'=(select TenTo from [To] where TuMay<=SUBSTRING(MLT,3,2) and DenMay>=SUBSTRING(MLT,3,2)) from CongVanDen where Duyet_Ngay is not null order by createdate desc");
+            if (LoaiVB == "Tất Cả")
+                LoaiVB = "";
+            else
+                LoaiVB = "and LoaiVB=N'" + LoaiVB + "'";
+            return _cDAL.ExecuteQuery_DataTable("select *,'To'=(select TenTo from [To] where TuMay<=SUBSTRING(MLT,3,2) and DenMay>=SUBSTRING(MLT,3,2))"
+                + " from CongVanDen where cast(Duyet_Ngay as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and cast(Duyet_Ngay as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' " + LoaiVB + " order by createdate desc");
         }
 
         public DataTable getDS_XuLySoLieu(string DanhBo)
         {
             return _cDAL.ExecuteQuery_DataTable("select * from CongVanDen where DanhBo='" + DanhBo + "' and CAST(DATEADD(DAY,90,CreateDate) as date)>=CAST(GETDATE() as date) order by CreateDate desc");
+        }
+
+        public DataTable getGroup_NoiDung()
+        {
+            return _cDAL.ExecuteQuery_DataTable("select LoaiVB from CongVanDen group by LoaiVB order by LoaiVB asc");
         }
 
     }

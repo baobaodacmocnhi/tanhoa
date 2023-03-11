@@ -607,7 +607,7 @@ namespace DocSo_PC.GUI.MaHoa
         private void btnChonFile_Click(object sender, EventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png";
+            dialog.Filter = "Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png|PDF files (*.pdf) | *.pdf";
             dialog.Multiselect = false;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
@@ -625,7 +625,7 @@ namespace DocSo_PC.GUI.MaHoa
                             if (_wsDHN.ghi_Hinh_MaHoa("DCBD", _dcbd.ID.ToString(), en.Name + en.Loai, bytes) == true)
                                 if (_cDCBD.Them_Hinh(en) == true)
                                 {
-                                    _cDCBD.Refresh();
+                                    //_cDCBD.Refresh();
                                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     var index = dgvHinh.Rows.Add();
                                     dgvHinh.Rows[index].Cells["Name_Hinh"].Value = en.Name;
@@ -791,6 +791,44 @@ namespace DocSo_PC.GUI.MaHoa
                                 }
                             }
                         MessageBox.Show("Cập Nhật Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnImportHinh_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                {
+                    using (FolderBrowserDialog dlg = new FolderBrowserDialog())
+                    {
+                        dlg.Description = "Chọn Thư Mục Chứa File";
+                        if (dlg.ShowDialog() == DialogResult.OK)
+                        {
+                            foreach (string file in System.IO.Directory.GetFiles(dlg.SelectedPath))
+                                if (file.ToLower().Contains(".jpg") || file.ToLower().Contains(".jpeg") || file.ToLower().Contains(".png") || file.ToLower().Contains(".pdf"))
+                                {
+                                    byte[] bytes = _cDCBD.scanVanBan(file);
+                                    MaHoa_DCBD_Hinh en = new MaHoa_DCBD_Hinh();
+                                    MaHoa_DCBD dcbd = _cDCBD.get_MaDon(int.Parse(System.IO.Path.GetFileNameWithoutExtension(file)));
+                                    en.IDParent = dcbd.ID;
+                                    en.Name = DateTime.Now.ToString("dd.MM.yyyy HH.mm.ss");
+                                    en.Loai = System.IO.Path.GetExtension(file);
+                                    if (_wsDHN.ghi_Hinh_MaHoa("DCBD", dcbd.ID.ToString(), en.Name + en.Loai, bytes) == true)
+                                        if (_cDCBD.Them_Hinh(en) == true)
+                                        {
+
+                                        }
+                                }
+                        }
                     }
                 }
                 else

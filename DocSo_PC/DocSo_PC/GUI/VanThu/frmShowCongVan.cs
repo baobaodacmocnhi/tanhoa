@@ -35,15 +35,15 @@ namespace DocSo_PC.GUI.VanThu
                 if (_enCVD != null)
                 {
                     object image = null;
-                    switch (_enCVD.TableName)
-                    {
-                        //case "KTXM_ChiTiet":
-                        //    image = _cThuongVu.getHinh_KTXM(_enCVD.IDCT.Value);
-                        //    break;
-                        //case "ToTrinh_ChiTiet":
-                        //    image = _cThuongVu.getHinh_ToTrinh(_enCVD.IDCT.Value);
-                        //    break;
-                    }
+                    //switch (_enCVD.TableName)
+                    //{
+                    //    //case "KTXM_ChiTiet":
+                    //    //    image = _cThuongVu.getHinh_KTXM(_enCVD.IDCT.Value);
+                    //    //    break;
+                    //    //case "ToTrinh_ChiTiet":
+                    //    //    image = _cThuongVu.getHinh_ToTrinh(_enCVD.IDCT.Value);
+                    //    //    break;
+                    //}
                     if (image != null)
                         //pictureBox.Image = _cCVD.byteArrayToImage((byte[])image);
                         image1 = _cCVD.byteArrayToImage((byte[])image);

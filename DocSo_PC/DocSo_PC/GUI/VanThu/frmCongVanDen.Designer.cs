@@ -84,6 +84,14 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.dateTu_Duyet = new System.Windows.Forms.DateTimePicker();
+            this.label14 = new System.Windows.Forms.Label();
+            this.dateDen_Duyet = new System.Windows.Forms.DateTimePicker();
+            this.label13 = new System.Windows.Forms.Label();
+            this.btnXem_Duyet = new System.Windows.Forms.Button();
+            this.cmbLoaiVanBan_Duyet = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.chkKiemTraLaiHienTruong = new System.Windows.Forms.CheckBox();
             this.chkTheoDoi = new System.Windows.Forms.CheckBox();
             this.chkTinhTieuThu = new System.Windows.Forms.CheckBox();
@@ -92,8 +100,6 @@
             this.chkXem = new System.Windows.Forms.CheckBox();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.dgvDuyet = new System.Windows.Forms.DataGridView();
-            this.radDaDuyet = new System.Windows.Forms.RadioButton();
-            this.radChuaDuyet = new System.Windows.Forms.RadioButton();
             this.Duyet_Ngay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -109,11 +115,14 @@
             this.IDCT_Duyet = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID_Duyet = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.radDaDuyet = new System.Windows.Forms.RadioButton();
+            this.radChuaDuyet = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDuyet)).BeginInit();
             this.SuspendLayout();
@@ -598,6 +607,10 @@
             // tabPage2
             // 
             this.tabPage2.AutoScroll = true;
+            this.tabPage2.Controls.Add(this.panel1);
+            this.tabPage2.Controls.Add(this.btnXem_Duyet);
+            this.tabPage2.Controls.Add(this.cmbLoaiVanBan_Duyet);
+            this.tabPage2.Controls.Add(this.label12);
             this.tabPage2.Controls.Add(this.chkKiemTraLaiHienTruong);
             this.tabPage2.Controls.Add(this.chkTheoDoi);
             this.tabPage2.Controls.Add(this.chkTinhTieuThu);
@@ -613,13 +626,93 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(1354, 741);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Duyệt";
+            this.tabPage2.Text = "Bút Phê";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.dateTu_Duyet);
+            this.panel1.Controls.Add(this.label14);
+            this.panel1.Controls.Add(this.dateDen_Duyet);
+            this.panel1.Controls.Add(this.label13);
+            this.panel1.Enabled = false;
+            this.panel1.Location = new System.Drawing.Point(132, 33);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(166, 54);
+            this.panel1.TabIndex = 73;
+            // 
+            // dateTu_Duyet
+            // 
+            this.dateTu_Duyet.CustomFormat = "dd/MM/yyyy";
+            this.dateTu_Duyet.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTu_Duyet.Location = new System.Drawing.Point(64, 4);
+            this.dateTu_Duyet.Name = "dateTu_Duyet";
+            this.dateTu_Duyet.Size = new System.Drawing.Size(97, 20);
+            this.dateTu_Duyet.TabIndex = 69;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(10, 8);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(48, 13);
+            this.label14.TabIndex = 68;
+            this.label14.Text = "Từ Ngày";
+            // 
+            // dateDen_Duyet
+            // 
+            this.dateDen_Duyet.CustomFormat = "dd/MM/yyyy";
+            this.dateDen_Duyet.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateDen_Duyet.Location = new System.Drawing.Point(64, 30);
+            this.dateDen_Duyet.Name = "dateDen_Duyet";
+            this.dateDen_Duyet.Size = new System.Drawing.Size(97, 20);
+            this.dateDen_Duyet.TabIndex = 71;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(3, 34);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(55, 13);
+            this.label13.TabIndex = 70;
+            this.label13.Text = "Đến Ngày";
+            // 
+            // btnXem_Duyet
+            // 
+            this.btnXem_Duyet.Location = new System.Drawing.Point(304, 6);
+            this.btnXem_Duyet.Name = "btnXem_Duyet";
+            this.btnXem_Duyet.Size = new System.Drawing.Size(75, 23);
+            this.btnXem_Duyet.TabIndex = 72;
+            this.btnXem_Duyet.Text = "Xem";
+            this.btnXem_Duyet.UseVisualStyleBackColor = true;
+            this.btnXem_Duyet.Click += new System.EventHandler(this.btnXem_Duyet_Click);
+            // 
+            // cmbLoaiVanBan_Duyet
+            // 
+            this.cmbLoaiVanBan_Duyet.FormattingEnabled = true;
+            this.cmbLoaiVanBan_Duyet.Items.AddRange(new object[] {
+            "Biên Bản Kiểm Tra",
+            "TB Cắt Tạm/Cắt Hủy",
+            "Tờ Trình",
+            "Biên Bản Nghiệm Thu"});
+            this.cmbLoaiVanBan_Duyet.Location = new System.Drawing.Point(168, 6);
+            this.cmbLoaiVanBan_Duyet.Name = "cmbLoaiVanBan_Duyet";
+            this.cmbLoaiVanBan_Duyet.Size = new System.Drawing.Size(130, 21);
+            this.cmbLoaiVanBan_Duyet.TabIndex = 67;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(91, 9);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(71, 13);
+            this.label12.TabIndex = 66;
+            this.label12.Text = "Loại Văn Bản";
             // 
             // chkKiemTraLaiHienTruong
             // 
             this.chkKiemTraLaiHienTruong.AutoSize = true;
-            this.chkKiemTraLaiHienTruong.Location = new System.Drawing.Point(558, 426);
+            this.chkKiemTraLaiHienTruong.Location = new System.Drawing.Point(528, 489);
             this.chkKiemTraLaiHienTruong.Name = "chkKiemTraLaiHienTruong";
             this.chkKiemTraLaiHienTruong.Size = new System.Drawing.Size(147, 17);
             this.chkKiemTraLaiHienTruong.TabIndex = 65;
@@ -629,7 +722,7 @@
             // chkTheoDoi
             // 
             this.chkTheoDoi.AutoSize = true;
-            this.chkTheoDoi.Location = new System.Drawing.Point(558, 403);
+            this.chkTheoDoi.Location = new System.Drawing.Point(528, 466);
             this.chkTheoDoi.Name = "chkTheoDoi";
             this.chkTheoDoi.Size = new System.Drawing.Size(70, 17);
             this.chkTheoDoi.TabIndex = 64;
@@ -639,7 +732,7 @@
             // chkTinhTieuThu
             // 
             this.chkTinhTieuThu.AutoSize = true;
-            this.chkTinhTieuThu.Location = new System.Drawing.Point(558, 380);
+            this.chkTinhTieuThu.Location = new System.Drawing.Point(528, 443);
             this.chkTinhTieuThu.Name = "chkTinhTieuThu";
             this.chkTinhTieuThu.Size = new System.Drawing.Size(95, 17);
             this.chkTinhTieuThu.TabIndex = 63;
@@ -649,7 +742,7 @@
             // chkCapNhat
             // 
             this.chkCapNhat.AutoSize = true;
-            this.chkCapNhat.Location = new System.Drawing.Point(558, 357);
+            this.chkCapNhat.Location = new System.Drawing.Point(528, 420);
             this.chkCapNhat.Name = "chkCapNhat";
             this.chkCapNhat.Size = new System.Drawing.Size(71, 17);
             this.chkCapNhat.TabIndex = 62;
@@ -658,7 +751,7 @@
             // 
             // btnCapNhat
             // 
-            this.btnCapNhat.Location = new System.Drawing.Point(553, 459);
+            this.btnCapNhat.Location = new System.Drawing.Point(523, 522);
             this.btnCapNhat.Name = "btnCapNhat";
             this.btnCapNhat.Size = new System.Drawing.Size(75, 23);
             this.btnCapNhat.TabIndex = 61;
@@ -669,7 +762,7 @@
             // chkXem
             // 
             this.chkXem.AutoSize = true;
-            this.chkXem.Location = new System.Drawing.Point(558, 334);
+            this.chkXem.Location = new System.Drawing.Point(528, 397);
             this.chkXem.Name = "chkXem";
             this.chkXem.Size = new System.Drawing.Size(47, 17);
             this.chkXem.TabIndex = 60;
@@ -678,7 +771,7 @@
             // 
             // pictureBox
             // 
-            this.pictureBox.Location = new System.Drawing.Point(715, 6);
+            this.pictureBox.Location = new System.Drawing.Point(686, 3);
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.Size = new System.Drawing.Size(600, 600);
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -722,7 +815,7 @@
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvDuyet.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvDuyet.Location = new System.Drawing.Point(0, 29);
+            this.dgvDuyet.Location = new System.Drawing.Point(3, 91);
             this.dgvDuyet.Name = "dgvDuyet";
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
@@ -734,31 +827,10 @@
             this.dgvDuyet.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvDuyet.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvDuyet.Size = new System.Drawing.Size(709, 299);
+            this.dgvDuyet.Size = new System.Drawing.Size(680, 300);
             this.dgvDuyet.TabIndex = 58;
             this.dgvDuyet.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDuyet_CellClick);
-            // 
-            // radDaDuyet
-            // 
-            this.radDaDuyet.AutoSize = true;
-            this.radDaDuyet.Location = new System.Drawing.Point(95, 6);
-            this.radDaDuyet.Name = "radDaDuyet";
-            this.radDaDuyet.Size = new System.Drawing.Size(70, 17);
-            this.radDaDuyet.TabIndex = 1;
-            this.radDaDuyet.Text = "Đã Duyệt";
-            this.radDaDuyet.UseVisualStyleBackColor = true;
-            this.radDaDuyet.CheckedChanged += new System.EventHandler(this.radDaDuyet_CheckedChanged);
-            // 
-            // radChuaDuyet
-            // 
-            this.radChuaDuyet.AutoSize = true;
-            this.radChuaDuyet.Location = new System.Drawing.Point(8, 6);
-            this.radChuaDuyet.Name = "radChuaDuyet";
-            this.radChuaDuyet.Size = new System.Drawing.Size(81, 17);
-            this.radChuaDuyet.TabIndex = 0;
-            this.radChuaDuyet.Text = "Chưa Duyệt";
-            this.radChuaDuyet.UseVisualStyleBackColor = true;
-            this.radChuaDuyet.CheckedChanged += new System.EventHandler(this.radChuaDuyet_CheckedChanged);
+            this.dgvDuyet.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDuyet_RowPostPaint);
             // 
             // Duyet_Ngay
             // 
@@ -862,6 +934,30 @@
             this.ID_Duyet.Name = "ID_Duyet";
             this.ID_Duyet.Visible = false;
             // 
+            // radDaDuyet
+            // 
+            this.radDaDuyet.AutoSize = true;
+            this.radDaDuyet.Location = new System.Drawing.Point(8, 29);
+            this.radDaDuyet.Name = "radDaDuyet";
+            this.radDaDuyet.Size = new System.Drawing.Size(70, 17);
+            this.radDaDuyet.TabIndex = 1;
+            this.radDaDuyet.Text = "Đã Duyệt";
+            this.radDaDuyet.UseVisualStyleBackColor = true;
+            this.radDaDuyet.CheckedChanged += new System.EventHandler(this.radDaDuyet_CheckedChanged);
+            // 
+            // radChuaDuyet
+            // 
+            this.radChuaDuyet.AutoSize = true;
+            this.radChuaDuyet.Checked = true;
+            this.radChuaDuyet.Location = new System.Drawing.Point(8, 6);
+            this.radChuaDuyet.Name = "radChuaDuyet";
+            this.radChuaDuyet.Size = new System.Drawing.Size(81, 17);
+            this.radChuaDuyet.TabIndex = 0;
+            this.radChuaDuyet.TabStop = true;
+            this.radChuaDuyet.Text = "Chưa Duyệt";
+            this.radChuaDuyet.UseVisualStyleBackColor = true;
+            this.radChuaDuyet.CheckedChanged += new System.EventHandler(this.radChuaDuyet_CheckedChanged);
+            // 
             // frmCongVanDen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -879,6 +975,8 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDuyet)).EndInit();
             this.ResumeLayout(false);
@@ -960,5 +1058,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn IDCT_Duyet;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_Duyet;
+        private System.Windows.Forms.ComboBox cmbLoaiVanBan_Duyet;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DateTimePicker dateTu_Duyet;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.DateTimePicker dateDen_Duyet;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button btnXem_Duyet;
     }
 }

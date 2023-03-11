@@ -357,7 +357,7 @@ namespace DocSo_PC.GUI.MaHoa
         private void btnChonFile_Click(object sender, EventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png";
+            dialog.Filter = "Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png|PDF files (*.pdf) | *.pdf";
             dialog.Multiselect = false;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
@@ -375,7 +375,7 @@ namespace DocSo_PC.GUI.MaHoa
                             if (_wsDHN.ghi_Hinh_MaHoa("DonTu", _dontu.ID.ToString(), en.Name + en.Loai, bytes) == true)
                                 if (_cDonTu.Them_Hinh(en) == true)
                                 {
-                                    _cDonTu.Refresh();
+                                    //_cDonTu.Refresh();
                                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     var index = dgvHinh.Rows.Add();
                                     dgvHinh.Rows[index].Cells["Name_Hinh"].Value = en.Name;

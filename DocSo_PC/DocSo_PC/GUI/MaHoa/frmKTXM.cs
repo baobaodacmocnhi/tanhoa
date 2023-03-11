@@ -12,6 +12,7 @@ using DocSo_PC.DAL;
 using DocSo_PC.DAL.QuanTri;
 using System.Transactions;
 using DocSo_PC.DAL.Doi;
+using System.IO;
 
 namespace DocSo_PC.GUI.MaHoa
 {
@@ -616,12 +617,12 @@ namespace DocSo_PC.GUI.MaHoa
 
         private void btnChonFile_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png";
-            dialog.Multiselect = false;
-            if (dialog.ShowDialog() == DialogResult.OK)
+            try
             {
-                try
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Filter = "Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png|PDF files (*.pdf) | *.pdf";
+                dialog.Multiselect = false;
+                if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     byte[] bytes = _cKTXM.scanVanBan(dialog.FileName);
                     if (_ctktxm == null)
@@ -648,7 +649,7 @@ namespace DocSo_PC.GUI.MaHoa
                             if (_wsDHN.ghi_Hinh_MaHoa("KTXM", _ctktxm.ID.ToString(), en.Name + en.Loai, bytes) == true)
                                 if (_cKTXM.Them_Hinh(en) == true)
                                 {
-                                    _cKTXM.Refresh();
+                                    //_cKTXM.Refresh();
                                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     var index = dgvHinh.Rows.Add();
                                     dgvHinh.Rows[index].Cells["Name_Hinh"].Value = en.Name;
@@ -660,10 +661,10 @@ namespace DocSo_PC.GUI.MaHoa
                             MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -742,6 +743,50 @@ namespace DocSo_PC.GUI.MaHoa
             else
             {
                 dgvDanhSach.DataSource = _cKTXM.getDS(CNguoiDung.MaND, dateTuNgay.Value, dateDenNgay.Value);
+            }
+        }
+
+        private void btnImportHinh_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                {
+                    if (CNguoiDung.Admin == false && CNguoiDung.ToTruong == false && CNguoiDung.ThuKy == false)
+                        if (_ctktxm.CreateBy != CNguoiDung.MaND)
+                        {
+                            MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    using (FolderBrowserDialog dlg = new FolderBrowserDialog())
+                    {
+                        dlg.Description = "Chọn Thư Mục Chứa File";
+                        if (dlg.ShowDialog() == DialogResult.OK)
+                        {
+                            foreach (string file in Directory.GetFiles(dlg.SelectedPath))
+                                if (file.ToLower().Contains(".jpg") || file.ToLower().Contains(".jpeg") || file.ToLower().Contains(".png") || file.ToLower().Contains(".pdf"))
+                                {
+                                    byte[] bytes = _cKTXM.scanVanBan(file);
+                                    MaHoa_KTXM_Hinh en = new MaHoa_KTXM_Hinh();
+                                    MaHoa_KTXM ctktxm = _cKTXM.get_MaDon(int.Parse(System.IO.Path.GetFileNameWithoutExtension(file)));
+                                    en.IDParent = ctktxm.ID;
+                                    en.Name = DateTime.Now.ToString("dd.MM.yyyy HH.mm.ss");
+                                    en.Loai = System.IO.Path.GetExtension(file);
+                                    if (_wsDHN.ghi_Hinh_MaHoa("KTXM", ctktxm.ID.ToString(), en.Name + en.Loai, bytes) == true)
+                                        if (_cKTXM.Them_Hinh(en) == true)
+                                    {
+
+                                    }
+                                }
+                        }
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

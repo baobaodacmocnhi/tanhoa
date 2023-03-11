@@ -35,6 +35,12 @@ namespace DocSo_PC.GUI.VanThu
             dgvDanhSach.AutoGenerateColumns = false;
             dgvDuyet.AutoGenerateColumns = false;
             cmbLoaiVanBan.SelectedIndex = 0;
+            DataTable dt = _cCVD.getGroup_NoiDung();
+            DataRow dr = dt.NewRow();
+            dr["LoaiVB"] = "Tất Cả";
+            dt.Rows.InsertAt(dr, 0);
+            cmbLoaiVanBan_Duyet.DataSource = dt;
+            cmbLoaiVanBan_Duyet.SelectedIndex = 0;
         }
 
         public void Clear()
@@ -341,12 +347,14 @@ namespace DocSo_PC.GUI.VanThu
 
         private void radChuaDuyet_CheckedChanged(object sender, EventArgs e)
         {
-            dgvDuyet.DataSource = _cCVD.getDS_ChuaDuyet();
+            if (radChuaDuyet.Checked)
+                panel1.Enabled = false;
         }
 
         private void radDaDuyet_CheckedChanged(object sender, EventArgs e)
         {
-            dgvDuyet.DataSource = _cCVD.getDS_DaDuyet();
+            if (radDaDuyet.Checked)
+                panel1.Enabled = true;
         }
 
         private void dgvDuyet_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -391,6 +399,30 @@ namespace DocSo_PC.GUI.VanThu
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnXem_Duyet_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (radChuaDuyet.Checked)
+                    dgvDuyet.DataSource = _cCVD.getDS_ChuaDuyet(cmbLoaiVanBan_Duyet.SelectedValue.ToString());
+                else
+                    if (radDaDuyet.Checked)
+                        dgvDuyet.DataSource = _cCVD.getDS_DaDuyet(cmbLoaiVanBan_Duyet.SelectedValue.ToString(), dateTu_Duyet.Value, dateDen_Duyet.Value);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvDuyet_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvDuyet.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
         }
 

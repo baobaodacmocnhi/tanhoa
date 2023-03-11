@@ -76,6 +76,11 @@ namespace DocSo_PC.DAL.MaHoa
             return _db.MaHoa_ToTrinhs.SingleOrDefault(item => item.ID == ID);
         }
 
+        public MaHoa_ToTrinh get_MaDon(int MaDon)
+        {
+            return _db.MaHoa_ToTrinhs.SingleOrDefault(item => item.IDMaDon == MaDon);
+        }
+
         public DataTable getDS(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             var query = from item in _db.MaHoa_ToTrinhs

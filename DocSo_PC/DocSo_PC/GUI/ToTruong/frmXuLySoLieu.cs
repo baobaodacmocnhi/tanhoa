@@ -460,8 +460,7 @@ namespace DocSo_PC.GUI.ToTruong
                             if (MessageBox.Show("Danh Bộ này không có số liệu Thay\nBạn có muốn tiếp tục cập nhật?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
                                 return;
                         }
-                        int TTienNuoc = 0, TThueGTGT = 0, TTDVTN = 0, TThueTDVTN = 0, TTieuThu = 0;
-                        //if (wsDHN.tinhCodeTieuThu_CSM(_docso.DocSoID, cmbCodeMoi.SelectedValue.ToString(), int.Parse(txtCSM.Text.Trim()), out TieuThu, out GiaBan, out ThueGTGT, out PhiBVMT, out TongCong) == true)
+                        int TTienNuoc = 0, TThueGTGT = 0, TTDVTN = 0, TThueTDVTN = 0;
                         if (_wsDHN.tinhCodeTieuThu_TieuThu(_docso.DocSoID, cmbCodeMoi.SelectedValue.ToString(), int.Parse(txtTieuThu.Text.Trim()), out TTienNuoc, out TThueGTGT, out TTDVTN, out TThueTDVTN) == true)
                         {
                             _docso.GhiChuDS = tbxGCDS.Text.Trim();
