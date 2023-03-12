@@ -398,7 +398,7 @@ namespace DocSo_PC.GUI.MaHoa
                 if (_totrinh != null)
                     if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                     {
-                        if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        if (MessageBox.Show("Bạn có chắc chắn???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
                             if (e.Row.Cells["ID_Hinh"].Value != null)
                                 if (_wsDHN.xoa_Hinh_MaHoa("ToTrinh", _totrinh.ID.ToString(), e.Row.Cells["Name_Hinh"].Value.ToString() + e.Row.Cells["Loai_Hinh"].Value.ToString()) == true)
@@ -619,7 +619,7 @@ namespace DocSo_PC.GUI.MaHoa
         {
             if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
             {
-                if (_veviec != null && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                if (_veviec != null && MessageBox.Show("Bạn có chắc chắn???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
                     if (_cToTrinh.Xoa(_veviec))
                     {
@@ -686,26 +686,33 @@ namespace DocSo_PC.GUI.MaHoa
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 {
-                    using (FolderBrowserDialog dlg = new FolderBrowserDialog())
+                    if (MessageBox.Show("Bạn có chắc chắn???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        dlg.Description = "Chọn Thư Mục Chứa File";
-                        if (dlg.ShowDialog() == DialogResult.OK)
+                        int count = 0;
+                        string message = "";
+                        using (FolderBrowserDialog dlg = new FolderBrowserDialog())
                         {
-                            foreach (string file in System.IO.Directory.GetFiles(dlg.SelectedPath))
-                                if (file.ToLower().Contains(".jpg") || file.ToLower().Contains(".jpeg") || file.ToLower().Contains(".png") || file.ToLower().Contains(".pdf"))
-                                {
-                                    byte[] bytes = _cToTrinh.scanVanBan(file);
-                                    MaHoa_ToTrinh_Hinh en = new MaHoa_ToTrinh_Hinh();
-                                    MaHoa_ToTrinh tt = _cToTrinh.get_MaDon(int.Parse(System.IO.Path.GetFileNameWithoutExtension(file)));
-                                    en.IDParent = tt.ID;
-                                    en.Name = DateTime.Now.ToString("dd.MM.yyyy HH.mm.ss");
-                                    en.Loai = System.IO.Path.GetExtension(file);
-                                    if (_wsDHN.ghi_Hinh_MaHoa("ToTrinh", tt.ID.ToString(), en.Name + en.Loai, bytes) == true)
-                                        if (_cToTrinh.Them_Hinh(en) == true)
-                                        {
-
-                                        }
-                                }
+                            dlg.Description = "Chọn Thư Mục Chứa File";
+                            if (dlg.ShowDialog() == DialogResult.OK)
+                            {
+                                foreach (string file in System.IO.Directory.GetFiles(dlg.SelectedPath))
+                                    if (file.ToLower().Contains(".jpg") || file.ToLower().Contains(".jpeg") || file.ToLower().Contains(".png") || file.ToLower().Contains(".pdf"))
+                                    {
+                                        byte[] bytes = _cToTrinh.scanVanBan(file);
+                                        MaHoa_ToTrinh_Hinh en = new MaHoa_ToTrinh_Hinh();
+                                        MaHoa_ToTrinh tt = _cToTrinh.get_MaDon(int.Parse(System.IO.Path.GetFileNameWithoutExtension(file)));
+                                        en.IDParent = tt.ID;
+                                        en.Name = DateTime.Now.ToString("dd.MM.yyyy HH.mm.ss");
+                                        en.Loai = System.IO.Path.GetExtension(file);
+                                        if (_wsDHN.ghi_Hinh_MaHoa("ToTrinh", tt.ID.ToString(), en.Name + en.Loai, bytes) == true)
+                                            if (_cToTrinh.Them_Hinh(en) == true)
+                                            {
+                                                count++;
+                                                message += tt.IDMaDon + "\n";
+                                            }
+                                    }
+                                MessageBox.Show("Đã xử lý " + count + " mã đơn\n" + message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
                         }
                     }
                 }

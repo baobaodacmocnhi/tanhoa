@@ -694,7 +694,7 @@ namespace DocSo_PC.GUI.MaHoa
                 else
                     if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                     {
-                        if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        if (MessageBox.Show("Bạn có chắc chắn???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
                             if (CNguoiDung.Admin == false && CNguoiDung.ToTruong == false && CNguoiDung.ThuKy == false)
                                 if (_ctktxm.CreateBy != CNguoiDung.MaND)
@@ -758,26 +758,33 @@ namespace DocSo_PC.GUI.MaHoa
                             MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                    using (FolderBrowserDialog dlg = new FolderBrowserDialog())
+                    if (MessageBox.Show("Bạn có chắc chắn???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        dlg.Description = "Chọn Thư Mục Chứa File";
-                        if (dlg.ShowDialog() == DialogResult.OK)
+                        int count = 0;
+                        string message = "";
+                        using (FolderBrowserDialog dlg = new FolderBrowserDialog())
                         {
-                            foreach (string file in Directory.GetFiles(dlg.SelectedPath))
-                                if (file.ToLower().Contains(".jpg") || file.ToLower().Contains(".jpeg") || file.ToLower().Contains(".png") || file.ToLower().Contains(".pdf"))
-                                {
-                                    byte[] bytes = _cKTXM.scanVanBan(file);
-                                    MaHoa_KTXM_Hinh en = new MaHoa_KTXM_Hinh();
-                                    MaHoa_KTXM ctktxm = _cKTXM.get_MaDon(int.Parse(System.IO.Path.GetFileNameWithoutExtension(file)));
-                                    en.IDParent = ctktxm.ID;
-                                    en.Name = DateTime.Now.ToString("dd.MM.yyyy HH.mm.ss");
-                                    en.Loai = System.IO.Path.GetExtension(file);
-                                    if (_wsDHN.ghi_Hinh_MaHoa("KTXM", ctktxm.ID.ToString(), en.Name + en.Loai, bytes) == true)
-                                        if (_cKTXM.Them_Hinh(en) == true)
+                            dlg.Description = "Chọn Thư Mục Chứa File";
+                            if (dlg.ShowDialog() == DialogResult.OK)
+                            {
+                                foreach (string file in Directory.GetFiles(dlg.SelectedPath))
+                                    if (file.ToLower().Contains(".jpg") || file.ToLower().Contains(".jpeg") || file.ToLower().Contains(".png") || file.ToLower().Contains(".pdf"))
                                     {
-
+                                        byte[] bytes = _cKTXM.scanVanBan(file);
+                                        MaHoa_KTXM_Hinh en = new MaHoa_KTXM_Hinh();
+                                        MaHoa_KTXM ktxm = _cKTXM.get_MaDon(int.Parse(System.IO.Path.GetFileNameWithoutExtension(file)));
+                                        en.IDParent = ktxm.ID;
+                                        en.Name = DateTime.Now.ToString("dd.MM.yyyy HH.mm.ss");
+                                        en.Loai = System.IO.Path.GetExtension(file);
+                                        if (_wsDHN.ghi_Hinh_MaHoa("KTXM", ktxm.ID.ToString(), en.Name + en.Loai, bytes) == true)
+                                            if (_cKTXM.Them_Hinh(en) == true)
+                                            {
+                                                count++;
+                                                message += ktxm.IDMaDon + "\n";
+                                            }
                                     }
-                                }
+                                MessageBox.Show("Đã xử lý " + count + " mã đơn\n" + message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
                         }
                     }
                 }

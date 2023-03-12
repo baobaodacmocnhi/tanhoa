@@ -47,6 +47,7 @@ namespace DocSo_PC.GUI.ToTruong
                 dgvBaoThay.AutoGenerateColumns = false;
                 dgvLichSu.AutoGenerateColumns = false;
                 dgvCongVanDen.AutoGenerateColumns = false;
+                dgvButPhe.AutoGenerateColumns = false;
 
                 cmbNam.DataSource = _cDocSo.getDS_Nam();
                 cmbNam.DisplayMember = "Nam";
@@ -208,6 +209,7 @@ namespace DocSo_PC.GUI.ToTruong
                     else
                     {
                         dt = _cDocSo.getDS_XuLy(cmbTo.SelectedValue.ToString(), cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString(), cmbMay.SelectedValue.ToString(), cmbCode.SelectedValue.ToString(), ref dtTong);
+                        dgvButPhe.DataSource = _cCVD.count_ButPhe_XuLySoLieu(cmbTo.SelectedValue.ToString(), cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString());
                     }
                 }
                 else
@@ -228,6 +230,7 @@ namespace DocSo_PC.GUI.ToTruong
                     else
                     {
                         dt = _cDocSo.getDS_XuLy(CNguoiDung.MaTo.ToString(), cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString(), cmbMay.SelectedValue.ToString(), cmbCode.SelectedValue.ToString(), ref dtTong);
+                        dgvButPhe.DataSource = _cCVD.count_ButPhe_XuLySoLieu(CNguoiDung.MaTo.ToString(), cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString());
                     }
                 }
             }
@@ -408,7 +411,7 @@ namespace DocSo_PC.GUI.ToTruong
                                     ptbKy3.Image = Properties.Resources.no_image;
                             }
                     dgvHinh.DataSource = _cKTXM.getDS_Hinh(_docso.DanhBa, _docso.Nam.Value, int.Parse(_docso.Ky));
-                    dgvCongVanDen.DataSource = _cCVD.getDS_XuLySoLieu(_docso.DanhBa);
+                    dgvCongVanDen.DataSource = _cCVD.getDS_DanhBo_XuLySoLieu(_docso.DanhBa);
                 }
             }
             catch (Exception ex)
@@ -917,7 +920,37 @@ namespace DocSo_PC.GUI.ToTruong
             }
         }
 
-        private void dgvHinh_MouseClick(object sender, MouseEventArgs e)
+        private void dgvHinh_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvHinh.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvCongVanDen_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvCongVanDen.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvCongVanDen_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                string TableNameHinh, IDName;
+                _cThuongVu.getTableHinh(dgvCongVanDen.CurrentRow.Cells["TableName"].Value.ToString(), out TableNameHinh, out IDName);
+                System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/ThuongVu/viewFile?TableName=" + TableNameHinh + "&IDFileName=" + IDName + "&IDFileContent=" + dgvCongVanDen.CurrentRow.Cells["IDCT"].Value.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvHinh_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             try
             {
@@ -933,33 +966,15 @@ namespace DocSo_PC.GUI.ToTruong
             }
         }
 
-        private void dgvCongVanDen_MouseClick(object sender, MouseEventArgs e)
+        private void dgvButPhe_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                string TableNameHinh, IDName;
-                _cThuongVu.getTableHinh(dgvCongVanDen.CurrentRow.Cells["TableName"].Value.ToString(), out TableNameHinh, out IDName);
-                System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/ThuongVu/viewFile?TableName=" + TableNameHinh + "&IDFileName=" + IDName + "&IDFileContent=" + dgvCongVanDen.CurrentRow.Cells["IDCT"].Value.ToString());
+                dgvCongVanDen.DataSource = _cCVD.getDS_ButPhe_XuLySoLieu(dgvButPhe.CurrentRow.Cells["Loai"].Value.ToString());
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void dgvHinh_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
-        {
-            using (SolidBrush b = new SolidBrush(dgvHinh.RowHeadersDefaultCellStyle.ForeColor))
-            {
-                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
-            }
-        }
-
-        private void dgvCongVanDen_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
-        {
-            using (SolidBrush b = new SolidBrush(dgvCongVanDen.RowHeadersDefaultCellStyle.ForeColor))
-            {
-                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
             }
         }
 

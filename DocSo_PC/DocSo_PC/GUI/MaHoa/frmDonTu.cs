@@ -236,7 +236,7 @@ namespace DocSo_PC.GUI.MaHoa
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
                 {
-                    if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    if (MessageBox.Show("Bạn có chắc chắn???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         if (_dontu != null)
                         {
                             string flagID = _dontu.ID.ToString();
@@ -410,7 +410,7 @@ namespace DocSo_PC.GUI.MaHoa
                 if (_dontu != null)
                     if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                     {
-                        if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        if (MessageBox.Show("Bạn có chắc chắn???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
                             if (e.Row.Cells["ID_Hinh"].Value != null)
                                 if (_wsDHN.xoa_Hinh_MaHoa("DonTu", _dontu.ID.ToString(), e.Row.Cells["Name_Hinh"].Value.ToString() + e.Row.Cells["Loai_Hinh"].Value.ToString()) == true)
