@@ -1088,6 +1088,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         frmTimKiemChungTu frm = new frmTimKiemChungTu();
                         frm.ShowDialog();
                         break;
+                    case Keys.D5://mở form cccd
+                        frmCCCD frm1 = new frmCCCD(txtDanhBo.Text.Trim());
+                        if (frm1.ShowDialog() == DialogResult.OK)
+                            dgvDSSoDangKy.DataSource = _cChungTu.getDS_ChiTiet_DanhBo(txtDanhBo.Text.Trim());
+                        break;
                     case Keys.T://mở form cập nhật tiến trình
                         if (_dontu_ChiTiet != null)
                         {

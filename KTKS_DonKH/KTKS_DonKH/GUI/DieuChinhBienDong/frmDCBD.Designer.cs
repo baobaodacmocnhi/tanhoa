@@ -198,6 +198,7 @@
             this.txtGhiChu = new System.Windows.Forms.TextBox();
             this.label39 = new System.Windows.Forms.Label();
             this.chkNhaTro = new System.Windows.Forms.CheckBox();
+            this.label40 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox_DSSoDangKy.SuspendLayout();
@@ -1481,7 +1482,7 @@
             // 
             this.label28.AutoSize = true;
             this.label28.ForeColor = System.Drawing.Color.Red;
-            this.label28.Location = new System.Drawing.Point(229, 27);
+            this.label28.Location = new System.Drawing.Point(341, 29);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(109, 16);
             this.label28.TabIndex = 20;
@@ -1667,7 +1668,7 @@
             // 
             this.label34.AutoSize = true;
             this.label34.ForeColor = System.Drawing.Color.Red;
-            this.label34.Location = new System.Drawing.Point(422, 29);
+            this.label34.Location = new System.Drawing.Point(507, 29);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(168, 16);
             this.label34.TabIndex = 123;
@@ -1760,6 +1761,16 @@
             this.chkNhaTro.Text = "Nhà Trọ";
             this.chkNhaTro.UseVisualStyleBackColor = true;
             // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.ForeColor = System.Drawing.Color.Red;
+            this.label40.Location = new System.Drawing.Point(229, 27);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(106, 16);
+            this.label40.TabIndex = 132;
+            this.label40.Text = "Ctrl+5: DS CCCD";
+            // 
             // frmDCBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1767,6 +1778,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1437, 659);
+            this.Controls.Add(this.label40);
             this.Controls.Add(this.chkNhaTro);
             this.Controls.Add(this.txtGhiChu);
             this.Controls.Add(this.label39);
@@ -2007,6 +2019,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Bytes_Hinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn Loai_Hinh;
         private System.Windows.Forms.CheckBox chkNhaTro;
+        private System.Windows.Forms.Label label40;
         
     }
 }
