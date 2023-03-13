@@ -325,68 +325,68 @@ namespace DocSo_PC.GUI.ToTruong
                 int SoPhieu2 = _cPhieuChuyen.getSoPhieuNextNext();
                 bool flagNgoai = false, flagTrong = false;
                 foreach (DataGridViewRow item in dgvDanhSach.Rows)
-                    if (string.IsNullOrEmpty(item.Cells["SoPhieu"].Value.ToString()) && item.Cells["TinhTrang"].Value.ToString() == "Tồn" && item.Cells["TinhTrang"].Value.ToString() != "Xóa")
-                    {
-                        if (bool.Parse(item.Cells["ViTriDHN_Ngoai"].Value.ToString()))
-                            flagNgoai = true;
-                        else
-                            flagTrong = true;
-                    }
-                foreach (DataGridViewRow item in dgvDanhSach.Rows)
-                {
-                    if (string.IsNullOrEmpty(item.Cells["SoPhieu"].Value.ToString()))
-                    {
-                        if (item.Cells["TinhTrang"].Value.ToString() == "Tồn" && item.Cells["TinhTrang"].Value.ToString() != "Xóa")
+                    if (item.Cells["Chon"].Value != null && bool.Parse(item.Cells["Chon"].Value.ToString()))
+                        if (string.IsNullOrEmpty(item.Cells["SoPhieu"].Value.ToString()) && item.Cells["TinhTrang"].Value.ToString() == "Tồn" && item.Cells["TinhTrang"].Value.ToString() != "Xóa")
                         {
-                            MaHoa_PhieuChuyen_LichSu pc = _cPhieuChuyen.get(int.Parse(item.Cells["ID"].Value.ToString()));
-                            pc.SoPhieu = SoPhieu;
-                            pc.SoPhieu_Ngay = DateTime.Now;
-                            if (pc.VeViec == null || pc.VeViec == "")
-                            {
-                                pc.VeViec = "ĐỒNG HỒ NƯỚC " + pc.NoiDung.ToUpper();
-                                switch (pc.NoiDung)
-                                {
-                                    case "Âm Sâu":
-                                        if (bool.Parse(item.Cells["ViTriDHN_Ngoai"].Value.ToString()))
-                                        {
-                                            pc.KinhGui = "Phòng KHĐT";
-                                            pc.VeViec = "ĐỒNG HỒ NƯỚC " + pc.NoiDung.ToUpper() + " NGOÀI BẤT ĐỘNG SẢN";
-                                            if (flagNgoai && flagTrong)
-                                                pc.SoPhieu = SoPhieu;
-                                            else
-                                                pc.SoPhieu = SoPhieu;
-                                        }
-                                        else
-                                        {
-                                            pc.KinhGui = "Phòng Thương Vụ";
-                                            pc.VeViec = "ĐỒNG HỒ NƯỚC " + pc.NoiDung.ToUpper() + " TRONG BẤT ĐỘNG SẢN";
-                                            if (flagNgoai && flagTrong)
-                                                pc.SoPhieu = SoPhieu2;
-                                            else
-                                                pc.SoPhieu = SoPhieu;
-                                        }
-                                        break;
-                                    case "Kẹt Tường":
-                                        pc.KinhGui = "Phòng Thương Vụ, Đội TCTB";
-                                        break;
-                                    case "Ngập Nước":
-                                        pc.KinhGui = "Đội TCTB";
-                                        break;
-                                    case "Lấp Khóa Góc":
-                                        pc.KinhGui = "Phòng Thương Vụ";
-                                        break;
-                                }
-                            }
+                            if (bool.Parse(item.Cells["ViTriDHN_Ngoai"].Value.ToString()))
+                                flagNgoai = true;
                             else
-                                pc.VeViec = "ĐỒNG HỒ NƯỚC " + pc.VeViec.ToUpper();
-                            pc.NoiNhan = "Như trên\nLưu";
-                            _cPhieuChuyen.sua(pc);
+                                flagTrong = true;
                         }
-                    }
-                    else
-                        if (!lst.Any(itemlst => itemlst.SoPhieu == int.Parse(item.Cells["SoPhieu"].Value.ToString())))
-                            lst = lst.Concat(_cPhieuChuyen.getDS(int.Parse(item.Cells["SoPhieu"].Value.ToString()))).ToList();
-                }
+                foreach (DataGridViewRow item in dgvDanhSach.Rows)
+                    if (item.Cells["Chon"].Value != null && bool.Parse(item.Cells["Chon"].Value.ToString()))
+                        if (string.IsNullOrEmpty(item.Cells["SoPhieu"].Value.ToString()))
+                        {
+                            if (item.Cells["TinhTrang"].Value.ToString() == "Tồn" && item.Cells["TinhTrang"].Value.ToString() != "Xóa")
+                            {
+                                MaHoa_PhieuChuyen_LichSu pc = _cPhieuChuyen.get(int.Parse(item.Cells["ID"].Value.ToString()));
+                                pc.SoPhieu = SoPhieu;
+                                pc.SoPhieu_Ngay = DateTime.Now;
+                                if (pc.VeViec == null || pc.VeViec == "")
+                                {
+                                    pc.VeViec = "ĐỒNG HỒ NƯỚC " + pc.NoiDung.ToUpper();
+                                    switch (pc.NoiDung)
+                                    {
+                                        case "Âm Sâu":
+                                            if (bool.Parse(item.Cells["ViTriDHN_Ngoai"].Value.ToString()))
+                                            {
+                                                pc.KinhGui = "Phòng KHĐT";
+                                                pc.VeViec = "ĐỒNG HỒ NƯỚC " + pc.NoiDung.ToUpper() + " NGOÀI BẤT ĐỘNG SẢN";
+                                                if (flagNgoai && flagTrong)
+                                                    pc.SoPhieu = SoPhieu;
+                                                else
+                                                    pc.SoPhieu = SoPhieu;
+                                            }
+                                            else
+                                            {
+                                                pc.KinhGui = "Phòng Thương Vụ";
+                                                pc.VeViec = "ĐỒNG HỒ NƯỚC " + pc.NoiDung.ToUpper() + " TRONG BẤT ĐỘNG SẢN";
+                                                if (flagNgoai && flagTrong)
+                                                    pc.SoPhieu = SoPhieu2;
+                                                else
+                                                    pc.SoPhieu = SoPhieu;
+                                            }
+                                            break;
+                                        case "Kẹt Tường":
+                                            pc.KinhGui = "Phòng Thương Vụ, Đội TCTB";
+                                            break;
+                                        case "Ngập Nước":
+                                            pc.KinhGui = "Đội TCTB";
+                                            break;
+                                        case "Lấp Khóa Góc":
+                                            pc.KinhGui = "Phòng Thương Vụ";
+                                            break;
+                                    }
+                                }
+                                else
+                                    pc.VeViec = "ĐỒNG HỒ NƯỚC " + pc.VeViec.ToUpper();
+                                pc.NoiNhan = "Như trên\nLưu";
+                                _cPhieuChuyen.sua(pc);
+                            }
+                        }
+                        else
+                            if (!lst.Any(itemlst => itemlst.SoPhieu == int.Parse(item.Cells["SoPhieu"].Value.ToString())))
+                                lst = lst.Concat(_cPhieuChuyen.getDS(int.Parse(item.Cells["SoPhieu"].Value.ToString()))).ToList();
 
                 lst = lst.Concat(_cPhieuChuyen.getDS(SoPhieu)).ToList();
                 foreach (MaHoa_PhieuChuyen_LichSu item in lst)
@@ -676,13 +676,14 @@ namespace DocSo_PC.GUI.ToTruong
                     if (MessageBox.Show("Bạn có chắc chắn?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
                         foreach (DataGridViewRow item in dgvDanhSach.Rows)
-                            if (!string.IsNullOrEmpty(item.Cells["SoPhieu"].Value.ToString()))
-                            {
-                                MaHoa_PhieuChuyen_LichSu pc = _cPhieuChuyen.get(int.Parse(item.Cells["ID"].Value.ToString()));
-                                pc.SoPhieu = null;
-                                pc.SoPhieu_Ngay = null;
-                                _cPhieuChuyen.SubmitChanges();
-                            }
+                            if (item.Cells["Chon"].Value != null && bool.Parse(item.Cells["Chon"].Value.ToString()))
+                                if (!string.IsNullOrEmpty(item.Cells["SoPhieu"].Value.ToString()))
+                                {
+                                    MaHoa_PhieuChuyen_LichSu pc = _cPhieuChuyen.get(int.Parse(item.Cells["ID"].Value.ToString()));
+                                    pc.SoPhieu = null;
+                                    pc.SoPhieu_Ngay = null;
+                                    _cPhieuChuyen.SubmitChanges();
+                                }
                     }
                 }
                 else
@@ -718,6 +719,18 @@ namespace DocSo_PC.GUI.ToTruong
                     }
                 }
             }
+        }
+
+        private void chkAll_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow item in dgvDanhSach.Rows)
+            {
+                if (chkAll.Checked)
+                    item.Cells["Chon"].Value = true;
+                else
+                    item.Cells["Chon"].Value = false;
+            }
+
         }
 
 
