@@ -75,7 +75,7 @@ namespace KTKS_DonKH.GUI.QuanTri
         {
             if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
             {
-                if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                if (MessageBox.Show("Bạn có chắc chắn???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     if (_to != null)
                     {
                         _to.An = true;

@@ -96,7 +96,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
         {
             if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
             {
-                if (selectedindex != -1 && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                if (selectedindex != -1 && MessageBox.Show("Bạn có chắc chắn???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
                         ToTrinh_VeViec vv = _cVeViecToTrinh.Get(int.Parse(dgvDSVeViecTTTL["ID", selectedindex].Value.ToString()));
 

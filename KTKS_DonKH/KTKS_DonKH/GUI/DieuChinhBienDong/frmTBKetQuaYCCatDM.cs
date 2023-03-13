@@ -191,7 +191,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void btnXoa_Click(object sender, EventArgs e)
         {
             if (_selectedindex != -1)
-                if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                if (MessageBox.Show("Bạn có chắc chắn???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
                     TBKetQuaYCCatDM tb = _cTB.GetTBKetQuaYCCatDMByID(decimal.Parse(dgvDSTBKetQuaYCCatDM["SoPhieu", _selectedindex].Value.ToString()));
                     if (_cTB.XoaTBKetQuaYCCatDM(tb))

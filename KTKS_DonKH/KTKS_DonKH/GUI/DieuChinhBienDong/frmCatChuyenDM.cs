@@ -366,7 +366,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
             {
                 MessageBox.Show("Xin liên hệ BaoBao", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //if (_lichsuchungtu != null && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                //if (_lichsuchungtu != null && MessageBox.Show("Bạn có chắc chắn???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 //    if (_cChungTu.XoaLichSuChungTu(_lichsuchungtu))
                 //    {
                 //        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

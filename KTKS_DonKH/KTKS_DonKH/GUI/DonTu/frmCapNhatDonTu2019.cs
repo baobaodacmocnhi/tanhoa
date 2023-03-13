@@ -808,7 +808,7 @@ namespace KTKS_DonKH.GUI.DonTu
             {
                 if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
                 {
-                    if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    if (MessageBox.Show("Bạn có chắc chắn???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
                         using (TransactionScope scope = new TransactionScope())
                         {
@@ -910,11 +910,6 @@ namespace KTKS_DonKH.GUI.DonTu
             {
 
             }
-        }
-
-        private void dgvLichSuDonTu_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void dgvDanhBo_CellClick(object sender, DataGridViewCellEventArgs e)

@@ -83,7 +83,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
             {
-                if (_selectedindex != -1 && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                if (_selectedindex != -1 && MessageBox.Show("Bạn có chắc chắn???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
                     CHDB_NoiDungXuLy nd = _cNoiDungXuLyCHDB.Get(int.Parse(dgvNoiDung["ID", _selectedindex].Value.ToString()));
 

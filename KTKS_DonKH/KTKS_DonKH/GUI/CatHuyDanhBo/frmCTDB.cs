@@ -693,7 +693,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         {
             if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
             {
-                if (_ctctdb != null && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                if (_ctctdb != null && MessageBox.Show("Bạn có chắc chắn???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
                     if (_ctctdb.DaLapPhieu == true)
                     {
@@ -1067,7 +1067,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 try
                 {
-                    if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    if (MessageBox.Show("Bạn có chắc chắn???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
                         if (_cCHDB.XoaGhiChu(_cCHDB.GetGhiChuByID(decimal.Parse(dgvGhiChu.CurrentRow.Cells["ID"].Value.ToString()))))
                         {
@@ -1463,7 +1463,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 else
                     if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
                     {
-                        if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        if (MessageBox.Show("Bạn có chắc chắn???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
                             if (dgvHinh.CurrentRow.Cells["ID_Hinh"].Value != null)
                                 if (_wsThuongVu.xoa_Hinh("CHDB_ChiTietCatTam_Hinh", _ctctdb.MaCTCTDB.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString()) == true)

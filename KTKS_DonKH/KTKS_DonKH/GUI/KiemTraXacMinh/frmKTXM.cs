@@ -1046,7 +1046,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 else
                     if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
                     {
-                        if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        if (MessageBox.Show("Bạn có chắc chắn???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
                             if (CTaiKhoan.Admin == false && CTaiKhoan.ToTruong == false && CTaiKhoan.ThuKy == false)
                                 if (_ctktxm.CreateBy != CTaiKhoan.MaUser)
@@ -1188,7 +1188,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 else
                     if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
                     {
-                        if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        if (MessageBox.Show("Bạn có chắc chắn???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
                             if (CTaiKhoan.Admin == false && CTaiKhoan.ToTruong == false && CTaiKhoan.ThuKy == false)
                                 if (_ctktxm.CreateBy != CTaiKhoan.MaUser)

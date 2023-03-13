@@ -1265,7 +1265,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 try
                 {
-                    if (_ctdchd != null && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    if (_ctdchd != null && MessageBox.Show("Bạn có chắc chắn???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
                         string flagID = _ctdchd.MaCTDCHD.ToString();
                         var transactionOptions = new TransactionOptions();
@@ -2651,7 +2651,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 else
                     if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
                     {
-                        if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        if (MessageBox.Show("Bạn có chắc chắn???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
                             if (dgvHinh.CurrentRow.Cells["ID_Hinh"].Value != null)
                                 if (_wsThuongVu.xoa_Hinh("DCBD_ChiTietHoaDon_Hinh", _ctdchd.MaCTDCHD.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString()) == true)

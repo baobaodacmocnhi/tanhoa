@@ -131,7 +131,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
             {
                 if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
                 {
-                    if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK &&_cInBienBan.xoa(_cInBienBan.get(int.Parse(dgvDanhSach.CurrentRow.Cells["ID"].Value.ToString()))))
+                    if (MessageBox.Show("Bạn có chắc chắn???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK &&_cInBienBan.xoa(_cInBienBan.get(int.Parse(dgvDanhSach.CurrentRow.Cells["ID"].Value.ToString()))))
                     {
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear();

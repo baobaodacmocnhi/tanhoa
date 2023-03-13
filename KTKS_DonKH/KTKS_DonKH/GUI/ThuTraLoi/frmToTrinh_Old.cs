@@ -519,7 +519,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             {
                 if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
                 {
-                    if (_cttt != null && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    if (_cttt != null && MessageBox.Show("Bạn có chắc chắn???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
                         var transactionOptions = new TransactionOptions();
                         transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
@@ -876,7 +876,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 else
                     if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
                     {
-                        if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        if (MessageBox.Show("Bạn có chắc chắn???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
                             if (dgvHinh.CurrentRow.Cells["ID_Hinh"].Value != null)
                                 if (_cTT.Xoa_Hinh(_cTT.get_Hinh(int.Parse(dgvHinh.CurrentRow.Cells["ID_Hinh"].Value.ToString()))))
@@ -997,7 +997,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             {
                 if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
                 {
-                    if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    if (MessageBox.Show("Bạn có chắc chắn???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
                         foreach (DataGridViewRow item in dgvToTrinh.Rows)
                             if (item.Cells["In"].Value != null && bool.Parse(item.Cells["In"].Value.ToString()) == true && !string.IsNullOrEmpty(item.Cells["SoPhieuTong"].Value.ToString()))

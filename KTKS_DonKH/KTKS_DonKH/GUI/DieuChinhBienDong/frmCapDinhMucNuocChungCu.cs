@@ -415,7 +415,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
             {
                 _ctchungtu = _cChungTu.GetCT(txtDanhBo.Text.Trim(), dgvDanhSach.CurrentRow.Cells["CCCD"].Value.ToString(), int.Parse(dgvDanhSach.CurrentRow.Cells["MaLCT"].Value.ToString()));
-                if (_ctchungtu != null && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                if (_ctchungtu != null && MessageBox.Show("Bạn có chắc chắn???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
                     if (_cChungTu.XoaCT(_ctchungtu))
                     {

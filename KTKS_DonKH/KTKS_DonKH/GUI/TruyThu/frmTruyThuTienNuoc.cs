@@ -96,7 +96,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                 txtDinhMuc.Text = hoadon.DM.ToString();
             if (hoadon.DinhMucHN != null)
                 txtDinhMucHN.Text = hoadon.DinhMucHN.Value.ToString();
-            //if (MessageBox.Show("Bạn có muốn chạy tự động nhập Kỳ", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            //if (MessageBox.Show("Bạn có muốn chạy tự động nhập Kỳ", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             //{
             //    DataTable dt = _cThuTien.getDSAll(hoadon.DANHBA);
             //    foreach (DataRow item in dt.Rows)
@@ -1332,7 +1332,7 @@ namespace KTKS_DonKH.GUI.TruyThu
             {
                 if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
                 {
-                    if (_cttttn != null && MessageBox.Show("Bạn có chắc chắn xóa Toàn Bộ Truy Thu?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    if (_cttttn != null && MessageBox.Show("Bạn có chắc chắn xóa Toàn Bộ Truy Thu?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
                         string flagID = _cttttn.IDCT.ToString();
                         var transactionOptions = new TransactionOptions();
@@ -1821,7 +1821,7 @@ namespace KTKS_DonKH.GUI.TruyThu
             {
                 try
                 {
-                    if (_cttttn != null && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    if (_cttttn != null && MessageBox.Show("Bạn có chắc chắn???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
                         TruyThuTienNuoc_ThanhToan entity = _cTTTN.get_ThanhToan(int.Parse(dgvThanhToanTruyThuTienNuoc.SelectedRows[0].Cells["ID_ThanhToan"].Value.ToString()));
 
@@ -1977,7 +1977,7 @@ namespace KTKS_DonKH.GUI.TruyThu
             {
                 try
                 {
-                    if (_cttttn != null && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    if (_cttttn != null && MessageBox.Show("Bạn có chắc chắn???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
                         TruyThuTienNuoc_ThuMoi entity = _cTTTN.get_ThuMoi(int.Parse(dgvThuMoi.SelectedRows[0].Cells["ID_ThuMoi"].Value.ToString()));
                         var transactionOptions = new TransactionOptions();
@@ -2252,7 +2252,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                 else
                     if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
                     {
-                        if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        if (MessageBox.Show("Bạn có chắc chắn???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
                             if (dgvHinh.CurrentRow.Cells["ID_Hinh"].Value != null)
                                 if (_wsThuongVu.xoa_Hinh("TruyThuTienNuoc_ChiTiet_Hinh", _cttttn.IDCT.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString()) == true)

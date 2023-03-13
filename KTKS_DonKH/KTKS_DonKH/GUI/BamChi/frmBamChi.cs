@@ -1106,7 +1106,7 @@ namespace KTKS_DonKH.GUI.BamChi
                 else
                     if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
                     {
-                        if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        if (MessageBox.Show("Bạn có chắc chắn???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
                             if (CTaiKhoan.ToTruong == false && CTaiKhoan.ThuKy == false)
                                 if (_ctbamchi.CreateBy != CTaiKhoan.MaUser)

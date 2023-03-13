@@ -46,7 +46,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     dialog.Multiselect = false;
 
                     if (dialog.ShowDialog() == DialogResult.OK)
-                        if (MessageBox.Show("Bạn có chắc chắn Thêm?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        if (MessageBox.Show("Bạn có chắc chắn Thêm?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
                             DataTable dtExcel = _cDCBD.ExcelToDataTable(dialog.FileName);
 

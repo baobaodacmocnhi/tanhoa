@@ -466,7 +466,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 if (_danhbo != null && e.Row.Cells["ID"].Value != null && e.Row.Cells["ID"].Value.ToString() != "")
                 {
-                    if (CTaiKhoan.CheckQuyen(_mnu, "Xoa") && MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    if (CTaiKhoan.CheckQuyen(_mnu, "Xoa") && MessageBox.Show("Bạn có chắc chắn???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
                         if (_danhbo.DaXuLy)
                         {
@@ -1332,7 +1332,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 if (_danhbo != null)
                     if (CTaiKhoan.CheckQuyen(_mnu, "Xoa") && CTaiKhoan.MaUser == 33)
                     {
-                        if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        if (MessageBox.Show("Bạn có chắc chắn???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
                             if (e.Row.Cells["ID_Hinh"].Value != null)
                                 if (_wsThuongVu.xoa_Hinh("DCBD_DKDM_DanhBo_Hinh", _danhbo.ID.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString()) == true)

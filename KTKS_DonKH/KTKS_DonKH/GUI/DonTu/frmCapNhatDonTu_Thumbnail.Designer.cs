@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txtMaDon = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.chkcmbNoiNhan = new DevExpress.XtraEditors.CheckedComboBoxEdit();
@@ -48,23 +49,27 @@
             this.KTXM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chkHoanThanh = new System.Windows.Forms.CheckBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.chkcmbNoiNhan.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuDonTu)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtMaDon
             // 
-            this.txtMaDon.Location = new System.Drawing.Point(269, 0);
+            this.txtMaDon.Location = new System.Drawing.Point(269, 4);
             this.txtMaDon.Name = "txtMaDon";
-            this.txtMaDon.Size = new System.Drawing.Size(100, 26);
+            this.txtMaDon.Size = new System.Drawing.Size(100, 22);
             this.txtMaDon.TabIndex = 15;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(208, 3);
+            this.label14.Location = new System.Drawing.Point(208, 7);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(72, 20);
+            this.label14.Size = new System.Drawing.Size(57, 16);
             this.label14.TabIndex = 14;
             this.label14.Text = "Mã Đơn:";
             // 
@@ -80,7 +85,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.chkcmbNoiNhan.Properties.PopupFormSize = new System.Drawing.Size(230, 250);
             this.chkcmbNoiNhan.Properties.SelectAllItemVisible = false;
-            this.chkcmbNoiNhan.Size = new System.Drawing.Size(200, 26);
+            this.chkcmbNoiNhan.Size = new System.Drawing.Size(200, 22);
             this.chkcmbNoiNhan.TabIndex = 92;
             // 
             // btnCapNhat
@@ -97,7 +102,7 @@
             // 
             this.txtNoiDung_LichSu.Location = new System.Drawing.Point(561, 56);
             this.txtNoiDung_LichSu.Name = "txtNoiDung_LichSu";
-            this.txtNoiDung_LichSu.Size = new System.Drawing.Size(150, 26);
+            this.txtNoiDung_LichSu.Size = new System.Drawing.Size(150, 22);
             this.txtNoiDung_LichSu.TabIndex = 90;
             // 
             // label34
@@ -105,7 +110,7 @@
             this.label34.AutoSize = true;
             this.label34.Location = new System.Drawing.Point(557, 37);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(84, 20);
+            this.label34.Size = new System.Drawing.Size(67, 16);
             this.label34.TabIndex = 89;
             this.label34.Text = "Nội Dung:";
             // 
@@ -114,7 +119,7 @@
             this.label33.AutoSize = true;
             this.label33.Location = new System.Drawing.Point(354, 37);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(83, 20);
+            this.label33.Size = new System.Drawing.Size(67, 16);
             this.label33.TabIndex = 88;
             this.label33.Text = "Nơi Nhận:";
             // 
@@ -124,7 +129,7 @@
             this.cmbNoiChuyen.Location = new System.Drawing.Point(149, 56);
             this.cmbNoiChuyen.MaxDropDownItems = 10;
             this.cmbNoiChuyen.Name = "cmbNoiChuyen";
-            this.cmbNoiChuyen.Size = new System.Drawing.Size(200, 28);
+            this.cmbNoiChuyen.Size = new System.Drawing.Size(200, 24);
             this.cmbNoiChuyen.TabIndex = 87;
             // 
             // label32
@@ -132,7 +137,7 @@
             this.label32.AutoSize = true;
             this.label32.Location = new System.Drawing.Point(149, 37);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(100, 20);
+            this.label32.Size = new System.Drawing.Size(80, 16);
             this.label32.TabIndex = 86;
             this.label32.Text = "Nơi Chuyển:";
             // 
@@ -142,7 +147,7 @@
             this.dateChuyen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateChuyen.Location = new System.Drawing.Point(3, 56);
             this.dateChuyen.Name = "dateChuyen";
-            this.dateChuyen.Size = new System.Drawing.Size(140, 26);
+            this.dateChuyen.Size = new System.Drawing.Size(140, 22);
             this.dateChuyen.TabIndex = 85;
             // 
             // label30
@@ -150,7 +155,7 @@
             this.label30.AutoSize = true;
             this.label30.Location = new System.Drawing.Point(0, 37);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(113, 20);
+            this.label30.Size = new System.Drawing.Size(92, 16);
             this.label30.TabIndex = 84;
             this.label30.Text = "Ngày Chuyển:";
             // 
@@ -167,11 +172,13 @@
             this.NoiDung,
             this.KTXM,
             this.CreateBy});
-            this.dgvLichSuDonTu.Location = new System.Drawing.Point(0, 86);
+            this.dgvLichSuDonTu.Location = new System.Drawing.Point(3, 102);
             this.dgvLichSuDonTu.Name = "dgvLichSuDonTu";
             this.dgvLichSuDonTu.ReadOnly = true;
             this.dgvLichSuDonTu.Size = new System.Drawing.Size(1070, 180);
             this.dgvLichSuDonTu.TabIndex = 93;
+            this.dgvLichSuDonTu.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvLichSuDonTu_CellMouseClick);
+            this.dgvLichSuDonTu.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvLichSuDonTu_MouseClick);
             // 
             // ID
             // 
@@ -234,18 +241,44 @@
             this.chkHoanThanh.AutoSize = true;
             this.chkHoanThanh.Location = new System.Drawing.Point(560, 14);
             this.chkHoanThanh.Name = "chkHoanThanh";
-            this.chkHoanThanh.Size = new System.Drawing.Size(122, 24);
+            this.chkHoanThanh.Size = new System.Drawing.Size(101, 20);
             this.chkHoanThanh.TabIndex = 94;
             this.chkHoanThanh.Text = "Hoàn Thành";
             this.chkHoanThanh.UseVisualStyleBackColor = true;
             // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.ForeColor = System.Drawing.Color.Red;
+            this.label28.Location = new System.Drawing.Point(0, 83);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(242, 16);
+            this.label28.TabIndex = 95;
+            this.label28.Text = "Chuột Phải để XÓA Lịch Sử Chuyển Đơn";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.xóaToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 48);
+            // 
+            // xóaToolStripMenuItem
+            // 
+            this.xóaToolStripMenuItem.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xóaToolStripMenuItem.Name = "xóaToolStripMenuItem";
+            this.xóaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.xóaToolStripMenuItem.Text = "Xóa";
+            this.xóaToolStripMenuItem.Click += new System.EventHandler(this.xóaToolStripMenuItem_Click);
+            // 
             // frmCapNhatDonTu_Thumbnail
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1070, 268);
+            this.ClientSize = new System.Drawing.Size(1076, 284);
+            this.Controls.Add(this.label28);
             this.Controls.Add(this.chkHoanThanh);
             this.Controls.Add(this.dgvLichSuDonTu);
             this.Controls.Add(this.chkcmbNoiNhan);
@@ -267,6 +300,7 @@
             this.Load += new System.EventHandler(this.frmCapNhanDonTu_Thumbnail_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chkcmbNoiNhan.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuDonTu)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -294,5 +328,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn KTXM;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
         private System.Windows.Forms.CheckBox chkHoanThanh;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem xóaToolStripMenuItem;
     }
 }
