@@ -2169,7 +2169,11 @@ namespace KTKS_DonKH.GUI.TruyThu
             {
                 try
                 {
-                    byte[] bytes = _cTTTN.scanImage(dialog.FileName);
+                    byte[] bytes;
+                    if (dialog.FileName.ToLower().Contains("pdf"))
+                        bytes = _cTTTN.scanFile(dialog.FileName);
+                    else
+                        bytes = _cTTTN.scanImage(dialog.FileName);
                     if (_cttttn == null)
                     {
                         var index = dgvHinh.Rows.Add();
@@ -2188,6 +2192,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                             if (_wsThuongVu.ghi_Hinh("TruyThuTienNuoc_ChiTiet_Hinh", en.IDTruyThuTienNuoc_ChiTiet.Value.ToString(), en.Name + en.Loai, bytes) == true)
                                 if (_cTTTN.Them_Hinh(en) == true)
                                 {
+                                    _cTTTN.Refresh();
                                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     var index = dgvHinh.Rows.Add();
                                     dgvHinh.Rows[index].Cells["Name_Hinh"].Value = en.Name;

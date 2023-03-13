@@ -1973,7 +1973,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 try
                 {
-                    byte[] bytes = _cDCBD.scanImage(dialog.FileName);
+                    byte[] bytes;
+                    if (dialog.FileName.ToLower().Contains("pdf"))
+                        bytes = _cDCBD.scanFile(dialog.FileName);
+                    else
+                        bytes = _cDCBD.scanImage(dialog.FileName);
                     if (_ctdcbd == null)
                     {
                         var index = dgvHinh.Rows.Add();
@@ -1992,6 +1996,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             if (_wsThuongVu.ghi_Hinh("DCBD_ChiTietBienDong_Hinh", en.IDDCBD_ChiTietBienDong.Value.ToString(), en.Name + en.Loai, bytes) == true)
                                 if (_cDCBD.Them_Hinh(en) == true)
                                 {
+                                    _cDCBD.Refresh();
                                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     var index = dgvHinh.Rows.Add();
                                     dgvHinh.Rows[index].Cells["Name_Hinh"].Value = en.Name;

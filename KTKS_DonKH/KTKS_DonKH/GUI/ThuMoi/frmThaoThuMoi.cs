@@ -739,7 +739,11 @@ namespace KTKS_DonKH.GUI.ThuMoi
             {
                 try
                 {
-                    byte[] bytes = _cThuMoi.scanImage(dialog.FileName);
+                    byte[] bytes;
+                    if (dialog.FileName.ToLower().Contains("pdf"))
+                        bytes = _cThuMoi.scanFile(dialog.FileName);
+                    else
+                        bytes = _cThuMoi.scanImage(dialog.FileName);
                     if (_thumoi == null)
                     {
                         var index = dgvHinh.Rows.Add();
@@ -758,6 +762,7 @@ namespace KTKS_DonKH.GUI.ThuMoi
                             if (_wsThuongVu.ghi_Hinh("ThuMoi_ChiTiet_Hinh", en.IDThuMoi_ChiTiet.Value.ToString(), en.Name + en.Loai, bytes) == true)
                                 if (_cThuMoi.Them_Hinh(en) == true)
                                 {
+                                    _cThuMoi.Refresh();
                                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     var index = dgvHinh.Rows.Add();
                                     dgvHinh.Rows[index].Cells["Name_Hinh"].Value = en.Name;

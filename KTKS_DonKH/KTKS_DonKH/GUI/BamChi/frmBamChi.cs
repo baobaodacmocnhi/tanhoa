@@ -1017,7 +1017,11 @@ namespace KTKS_DonKH.GUI.BamChi
             {
                 try
                 {
-                    byte[] bytes = _cBamChi.scanImage(dialog.FileName);
+                    byte[] bytes;
+                    if (dialog.FileName.ToLower().Contains("pdf"))
+                        bytes = _cBamChi.scanFile(dialog.FileName);
+                    else
+                        bytes = _cBamChi.scanImage(dialog.FileName);
                     if (_ctbamchi == null)
                     {
                         var index = dgvHinh.Rows.Add();
@@ -1042,6 +1046,7 @@ namespace KTKS_DonKH.GUI.BamChi
                             if (_wsThuongVu.ghi_Hinh("BamChi_ChiTiet_Hinh", en.IDBamChi_ChiTiet.Value.ToString(), en.Name + en.Loai, bytes) == true)
                                 if (_cBamChi.Them_Hinh(en) == true)
                                 {
+                                    _cBamChi.Refresh();
                                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     var index = dgvHinh.Rows.Add();
                                     dgvHinh.Rows[index].Cells["Name_Hinh"].Value = en.Name;

@@ -827,7 +827,11 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             {
                 try
                 {
-                    byte[] bytes = _cTTTL.scanImage(dialog.FileName);
+                    byte[] bytes;
+                    if (dialog.FileName.ToLower().Contains("pdf"))
+                        bytes = _cTTTL.scanFile(dialog.FileName);
+                    else
+                        bytes = _cTTTL.scanImage(dialog.FileName);
                     if (_cttttl == null)
                     {
                         var index = dgvHinh.Rows.Add();
@@ -846,6 +850,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                             if (_wsThuongVu.ghi_Hinh("ThuTraLoi_ChiTiet_Hinh", en.IDTTTL_ChiTiet.Value.ToString(), en.Name + en.Loai, bytes) == true)
                                 if (_cTTTL.Them_Hinh(en) == true)
                                 {
+                                    _cTTTL.Refresh();
                                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     var index = dgvHinh.Rows.Add();
                                     dgvHinh.Rows[index].Cells["Name_Hinh"].Value = en.Name;

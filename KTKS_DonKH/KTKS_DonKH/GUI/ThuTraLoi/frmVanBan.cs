@@ -614,7 +614,11 @@ namespace KTKS_DonKH.GUI.VanBan
             {
                 try
                 {
-                    byte[] bytes = System.IO.File.ReadAllBytes(dialog.FileName);
+                    byte[] bytes;
+                    if (dialog.FileName.ToLower().Contains("pdf"))
+                        bytes = _cVanBan.scanFile(dialog.FileName);
+                    else
+                        bytes = _cVanBan.scanImage(dialog.FileName);
                     if (_enCT == null)
                     {
                         var index = dgvHinh.Rows.Add();
@@ -633,6 +637,7 @@ namespace KTKS_DonKH.GUI.VanBan
                             if (_wsThuongVu.ghi_Hinh("VanBan_ChiTiet_Hinh", en.IDVanBan_ChiTiet.Value.ToString(), en.Name + en.Loai, bytes) == true)
                                 if (_cVanBan.Them_Hinh(en) == true)
                                 {
+                                    _cVanBan.Refresh();
                                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     var index = dgvHinh.Rows.Add();
                                     dgvHinh.Rows[index].Cells["Name_Hinh"].Value = en.Name;

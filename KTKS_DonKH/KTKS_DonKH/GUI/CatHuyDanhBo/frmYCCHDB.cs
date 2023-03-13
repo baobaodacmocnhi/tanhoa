@@ -723,7 +723,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             {
                 try
                 {
-                    byte[] bytes = _cCHDB.scanImage(dialog.FileName);
+                    byte[] bytes;
+                    if (dialog.FileName.ToLower().Contains("pdf"))
+                        bytes = _cCHDB.scanFile(dialog.FileName);
+                    else
+                        bytes = _cCHDB.scanImage(dialog.FileName);
                     if (_ycchdb == null)
                     {
                         var index = dgvHinh.Rows.Add();
@@ -742,6 +746,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             if (_wsThuongVu.ghi_Hinh("CHDB_Phieu_Hinh", en.IDCHDB_Phieu.Value.ToString(), en.Name + en.Loai, bytes) == true)
                                 if (_cCHDB.Them_Hinh(en) == true)
                                 {
+                                    _cCHDB.Refresh();
                                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     var index = dgvHinh.Rows.Add();
                                     dgvHinh.Rows[index].Cells["Name_Hinh"].Value = en.Name;
