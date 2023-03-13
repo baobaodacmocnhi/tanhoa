@@ -20436,6 +20436,8 @@ namespace DocSo_PC.LinQ
 		
 		private System.Nullable<System.DateTime> _SoPhieu_Ngay;
 		
+		private string _VanBan;
+		
 		private string _KinhGui;
 		
 		private string _VeViec;
@@ -20468,6 +20470,8 @@ namespace DocSo_PC.LinQ
     partial void OnSoPhieuChanged();
     partial void OnSoPhieu_NgayChanging(System.Nullable<System.DateTime> value);
     partial void OnSoPhieu_NgayChanged();
+    partial void OnVanBanChanging(string value);
+    partial void OnVanBanChanged();
     partial void OnKinhGuiChanging(string value);
     partial void OnKinhGuiChanged();
     partial void OnVeViecChanging(string value);
@@ -20625,6 +20629,26 @@ namespace DocSo_PC.LinQ
 					this._SoPhieu_Ngay = value;
 					this.SendPropertyChanged("SoPhieu_Ngay");
 					this.OnSoPhieu_NgayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VanBan", DbType="NVarChar(200)")]
+		public string VanBan
+		{
+			get
+			{
+				return this._VanBan;
+			}
+			set
+			{
+				if ((this._VanBan != value))
+				{
+					this.OnVanBanChanging(value);
+					this.SendPropertyChanging();
+					this._VanBan = value;
+					this.SendPropertyChanged("VanBan");
+					this.OnVanBanChanged();
 				}
 			}
 		}

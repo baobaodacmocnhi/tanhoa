@@ -322,15 +322,64 @@ namespace DocSo_PC.GUI.ToTruong
                 dsBaoCao dsBaoCao = new dsBaoCao();
                 List<MaHoa_PhieuChuyen_LichSu> lst = new List<MaHoa_PhieuChuyen_LichSu>();
                 int SoPhieu = _cPhieuChuyen.getSoPhieuNext();
+                int SoPhieu2 = _cPhieuChuyen.getSoPhieuNextNext();
+                bool flagNgoai = false, flagTrong = false;
+                foreach (DataGridViewRow item in dgvDanhSach.Rows)
+                    if (string.IsNullOrEmpty(item.Cells["SoPhieu"].Value.ToString()) && item.Cells["TinhTrang"].Value.ToString() == "Tồn" && item.Cells["TinhTrang"].Value.ToString() != "Xóa")
+                    {
+                        if (bool.Parse(item.Cells["ViTriDHN_Ngoai"].Value.ToString()))
+                            flagNgoai = true;
+                        else
+                            flagTrong = true;
+                    }
                 foreach (DataGridViewRow item in dgvDanhSach.Rows)
                 {
                     if (string.IsNullOrEmpty(item.Cells["SoPhieu"].Value.ToString()))
                     {
-                        if (item.Cells["TinhTrang"].Value.ToString() == "Tồn")
+                        if (item.Cells["TinhTrang"].Value.ToString() == "Tồn" && item.Cells["TinhTrang"].Value.ToString() != "Xóa")
                         {
                             MaHoa_PhieuChuyen_LichSu pc = _cPhieuChuyen.get(int.Parse(item.Cells["ID"].Value.ToString()));
                             pc.SoPhieu = SoPhieu;
                             pc.SoPhieu_Ngay = DateTime.Now;
+                            if (pc.VeViec == null || pc.VeViec == "")
+                            {
+                                pc.VeViec = "ĐỒNG HỒ NƯỚC " + pc.NoiDung.ToUpper();
+                                switch (pc.NoiDung)
+                                {
+                                    case "Âm Sâu":
+                                        if (bool.Parse(item.Cells["ViTriDHN_Ngoai"].Value.ToString()))
+                                        {
+                                            pc.KinhGui = "Phòng KHĐT";
+                                            pc.VeViec = "ĐỒNG HỒ NƯỚC " + pc.NoiDung.ToUpper() + " NGOÀI BẤT ĐỘNG SẢN";
+                                            if (flagNgoai && flagTrong)
+                                                pc.SoPhieu = SoPhieu;
+                                            else
+                                                pc.SoPhieu = SoPhieu;
+                                        }
+                                        else
+                                        {
+                                            pc.KinhGui = "Phòng Thương Vụ";
+                                            pc.VeViec = "ĐỒNG HỒ NƯỚC " + pc.NoiDung.ToUpper() + " TRONG BẤT ĐỘNG SẢN";
+                                            if (flagNgoai && flagTrong)
+                                                pc.SoPhieu = SoPhieu2;
+                                            else
+                                                pc.SoPhieu = SoPhieu;
+                                        }
+                                        break;
+                                    case "Kẹt Tường":
+                                        pc.KinhGui = "Phòng Thương Vụ, Đội TCTB";
+                                        break;
+                                    case "Ngập Nước":
+                                        pc.KinhGui = "Đội TCTB";
+                                        break;
+                                    case "Lấp Khóa Góc":
+                                        pc.KinhGui = "Phòng Thương Vụ";
+                                        break;
+                                }
+                            }
+                            else
+                                pc.VeViec = "ĐỒNG HỒ NƯỚC " + pc.VeViec.ToUpper();
+                            pc.NoiNhan = "Như trên\nLưu";
                             _cPhieuChuyen.sua(pc);
                         }
                     }
@@ -341,77 +390,100 @@ namespace DocSo_PC.GUI.ToTruong
 
                 lst = lst.Concat(_cPhieuChuyen.getDS(SoPhieu)).ToList();
                 foreach (MaHoa_PhieuChuyen_LichSu item in lst)
-                {
-                    TB_DULIEUKHACHHANG ttkh = _cDHN.get(item.DanhBo);
-                    if (ttkh != null)
+                    if (item.TinhTrang != "Xóa")
                     {
-                        DataRow dr = dsBaoCao.Tables["BaoCao"].NewRow();
-                        dr["TenPhong"] = CNguoiDung.TenPhong;
-                        if (CNguoiDung.Doi)
+                        TB_DULIEUKHACHHANG ttkh = _cDHN.get(item.DanhBo);
+                        if (ttkh != null)
                         {
-                            if (cmbTo.SelectedIndex == 0)
-                                dr["SoPhieu"] = "Số:" + item.SoPhieu + "/PC-QLĐHN";
+                            //DataRow dr = dsBaoCao.Tables["BaoCao"].NewRow();
+                            //dr["TenPhong"] = CNguoiDung.TenPhong;
+                            //if (CNguoiDung.Doi)
+                            //{
+                            //    if (cmbTo.SelectedIndex == 0)
+                            //        dr["SoPhieu"] = "Số:" + item.SoPhieu + "/PC-QLĐHN";
+                            //    else
+                            //        dr["SoPhieu"] = "Số:" + item.SoPhieu + "/PC-" + _cTo.get(int.Parse(cmbTo.SelectedValue.ToString())).KyHieu + "-QLĐHN";
+                            //}
+                            //else
+                            //{
+                            //    dr["SoPhieu"] = "Số:" + item.SoPhieu + "/PC-" + _cTo.get(CNguoiDung.MaTo).KyHieu + "-QLĐHN";
+                            //}
+                            //dr["TieuDe"] = "DANH SÁCH ĐỒNG HỒ NƯỚC " + item.NoiDung.ToUpper();
+                            //switch (item.NoiDung)
+                            //{
+                            //    case "Âm Sâu":
+                            //        if (ttkh.ViTriDHN_Ngoai)
+                            //        {
+                            //            dr["TieuDe"] = "DANH SÁCH ĐỒNG HỒ NƯỚC " + item.NoiDung.ToUpper() + " NGOÀI BẤT ĐỘNG SẢN";
+                            //            dr["NoiNhan"] = "P. KHĐT\nLưu";
+                            //        }
+                            //        else
+                            //        {
+                            //            dr["TieuDe"] = "DANH SÁCH ĐỒNG HỒ NƯỚC " + item.NoiDung.ToUpper() + " TRONG BẤT ĐỘNG SẢN";
+                            //            dr["NoiNhan"] = "P. Thương Vụ\nLưu";
+                            //        }
+                            //        break;
+                            //    case "Kẹt Tường":
+                            //        dr["NoiNhan"] = "P. Thương Vụ\nĐ. TCTB\nLưu";
+                            //        break;
+                            //    case "Ngập Nước":
+                            //        dr["NoiNhan"] = "Đ. TCTB\nLưu";
+                            //        break;
+                            //    case "Lấp Khóa Góc":
+                            //        dr["NoiNhan"] = "P. Thương Vụ\nLưu";
+                            //        break;
+                            //    default:
+                            //        dr["NoiNhan"] = "P. Thương Vụ: thực hiện\nLưu";
+                            //        break;
+                            //}
+                            //dr["ThoiGian"] = "Từ ngày " + dateTuNgay.Value.ToString("dd/MM/yyyy") + " đến ngày " + dateDenNgay.Value.ToString("dd/MM/yyyy");
+                            //dr["DanhBo"] = ttkh.DANHBO.Insert(7, " ").Insert(4, " ");
+                            //dr["MLT"] = ttkh.LOTRINH;
+                            //dr["HoTen"] = ttkh.HOTEN;
+                            //dr["DiaChi"] = ttkh.SONHA + " " + ttkh.TENDUONG + _cDHN.getPhuongQuan(ttkh.QUAN, ttkh.PHUONG);
+                            //HOADON hd = _cThuTien.GetMoiNhat(ttkh.DANHBO);
+                            //if (hd != null)
+                            //    dr["HopDong"] = hd.SO + " " + hd.DUONG + _cDHN.getPhuongQuan(hd.Quan, hd.Phuong);
+                            //dr["Hieu"] = ttkh.HIEUDH;
+                            //dr["Co"] = ttkh.CODH;
+                            //dr["SoThan"] = ttkh.SOTHANDH;
+                            //dr["ViTri"] = ttkh.VITRIDHN;
+                            //DocSo docso = _cDocSo.get_DocSo_MoiNhat(ttkh.DANHBO);
+                            //dr["ChiSo"] = docso.CSMoi;
+                            //dr["TieuThu"] = docso.TieuThuMoi;
+                            //if (item.ID.ToString() != "")
+                            //    dr["NoiDung"] = "Mã: " + item.ID.ToString();
+                            //else
+                            //    dr["NoiDung"] = "Mã: Lỗi, kiểm tra lại";
+                            //dr["GhiChu"] = item.GhiChu;
+                            //dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper();
+                            //dr["NguoiKy"] = CNguoiDung.NguoiKy.ToUpper();
+                            //dsBaoCao.Tables["BaoCao"].Rows.Add(dr);
+                            DataRow dr = dsBaoCao.Tables["BaoCao"].NewRow();
+                            dr["TenPhong"] = CNguoiDung.TenPhong;
+                            dr["SoPhieu"] = "Số:" + item.SoPhieu + "/PC-ĐỘI-QLĐHN";
+                            dr["KinhTrinh"] = item.KinhGui;
+                            dr["VeViec"] = item.VeViec;
+                            dr["NoiNhan"] = item.NoiNhan;
+                            dr["DanhBo"] = ttkh.DANHBO.Insert(7, " ").Insert(4, " ");
+                            dr["MLT"] = ttkh.LOTRINH;
+                            dr["HoTen"] = ttkh.HOTEN;
+                            dr["DiaChi"] = ttkh.SONHA + " " + ttkh.TENDUONG + _cDHN.getPhuongQuan(ttkh.QUAN, ttkh.PHUONG);
+                            HOADON hd = _cThuTien.GetMoiNhat(ttkh.DANHBO);
+                            if (hd != null)
+                                dr["HopDong"] = hd.SO + " " + hd.DUONG + _cDHN.getPhuongQuan(hd.Quan, hd.Phuong);
+                            if (item.ID.ToString() != "")
+                                dr["MaDon"] = "Mã: " + item.ID.ToString();
                             else
-                                dr["SoPhieu"] = "Số:" + item.SoPhieu + "/PC-" + _cTo.get(int.Parse(cmbTo.SelectedValue.ToString())).KyHieu + "-QLĐHN";
+                                dr["MaDon"] = "Mã: Lỗi, kiểm tra lại";
+                            dr["NoiDung"] = item.VanBan;
+                            dr["GhiChu"] = item.GhiChu;
+                            dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper();
+                            dr["NguoiKy"] = CNguoiDung.NguoiKy.ToUpper();
+                            dsBaoCao.Tables["BaoCao"].Rows.Add(dr);
                         }
-                        else
-                        {
-                            dr["SoPhieu"] = "Số:" + item.SoPhieu + "/PC-" + _cTo.get(CNguoiDung.MaTo).KyHieu + "-QLĐHN";
-                        }
-                        dr["TieuDe"] = "DANH SÁCH ĐỒNG HỒ NƯỚC " + item.NoiDung.ToUpper();
-                        switch (item.NoiDung)
-                        {
-                            case "Âm Sâu":
-                                if (ttkh.ViTriDHN_Ngoai)
-                                {
-                                    dr["TieuDe"] = "DANH SÁCH ĐỒNG HỒ NƯỚC " + item.NoiDung.ToUpper() + " NGOÀI BẤT ĐỘNG SẢN";
-                                    dr["NoiNhan"] = "P. KHĐT\nLưu";
-                                }
-                                else
-                                {
-                                    dr["TieuDe"] = "DANH SÁCH ĐỒNG HỒ NƯỚC " + item.NoiDung.ToUpper() + " TRONG BẤT ĐỘNG SẢN";
-                                    dr["NoiNhan"] = "P. Thương Vụ\nLưu";
-                                }
-                                break;
-                            case "Kẹt Tường":
-                                dr["NoiNhan"] = "P. Thương Vụ\nĐ. TCTB\nLưu";
-                                break;
-                            case "Ngập Nước":
-                                dr["NoiNhan"] = "Đ. TCTB\nLưu";
-                                break;
-                            case "Lấp Khóa Góc":
-                                dr["NoiNhan"] = "P. Thương Vụ\nLưu";
-                                break;
-                            default:
-                                dr["NoiNhan"] = "P. Thương Vụ: thực hiện\nLưu";
-                                break;
-                        }
-                        dr["ThoiGian"] = "Từ ngày " + dateTuNgay.Value.ToString("dd/MM/yyyy") + " đến ngày " + dateDenNgay.Value.ToString("dd/MM/yyyy");
-                        dr["DanhBo"] = ttkh.DANHBO.Insert(7, " ").Insert(4, " ");
-                        dr["MLT"] = ttkh.LOTRINH;
-                        dr["HoTen"] = ttkh.HOTEN;
-                        dr["DiaChi"] = ttkh.SONHA + " " + ttkh.TENDUONG + _cDHN.getPhuongQuan(ttkh.QUAN, ttkh.PHUONG);
-                        HOADON hd = _cThuTien.GetMoiNhat(ttkh.DANHBO);
-                        if (hd != null)
-                            dr["HopDong"] = hd.SO + " " + hd.DUONG + _cDHN.getPhuongQuan(hd.Quan, hd.Phuong);
-                        dr["Hieu"] = ttkh.HIEUDH;
-                        dr["Co"] = ttkh.CODH;
-                        dr["SoThan"] = ttkh.SOTHANDH;
-                        dr["ViTri"] = ttkh.VITRIDHN;
-                        DocSo docso = _cDocSo.get_DocSo_MoiNhat(ttkh.DANHBO);
-                        dr["ChiSo"] = docso.CSMoi;
-                        dr["TieuThu"] = docso.TieuThuMoi;
-                        if (item.ID.ToString() != "")
-                            dr["NoiDung"] = "Mã: " + item.ID.ToString();
-                        else
-                            dr["NoiDung"] = "Mã: Lỗi, kiểm tra lại";
-                        dr["GhiChu"] = item.GhiChu;
-                        dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper();
-                        dr["NguoiKy"] = CNguoiDung.NguoiKy.ToUpper();
-                        dsBaoCao.Tables["BaoCao"].Rows.Add(dr);
                     }
-                }
-                rptDSPhieuChuyen rpt = new rptDSPhieuChuyen();
+                rptPhieuChuyen rpt = new rptPhieuChuyen();
                 rpt.SetDataSource(dsBaoCao);
                 frmShowBaoCao frm = new frmShowBaoCao(rpt);
                 frm.Show();
@@ -454,6 +526,8 @@ namespace DocSo_PC.GUI.ToTruong
                             en.DanhBo = item.Cells["DanhBo_Nhap"].Value.ToString();
                             en.NoiDung = txtNoiDung.Text.Trim();
                             en.TinhTrang = "Tồn";
+                            if (item.Cells["VanBan_Nhap"].Value != null && item.Cells["VanBan_Nhap"].Value.ToString() != "")
+                                en.VanBan = item.Cells["VanBan_Nhap"].Value.ToString();
                             if (item.Cells["GhiChu_Nhap"].Value != null && item.Cells["GhiChu_Nhap"].Value.ToString() != "")
                                 en.GhiChu = item.Cells["GhiChu_Nhap"].Value.ToString();
                             _cPhieuChuyen.them(en);

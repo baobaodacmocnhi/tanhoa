@@ -350,39 +350,27 @@ namespace DocSo_PC.DAL.Doi
                     Code = " and (CodeMoi is null or CodeMoi='')";
                 else
                     Code = " and CodeMoi like '" + Code + "'";
-            string sql = "select ds.*,BaoThayDK=case when baothay.DanhBo is not null then 'true' else 'false' end"
-                        + " ,BaoThayBT=case when thwater.DanhBo is not null then 'true' else 'false' end"
-                        + " ,CSGo=case when baothay.DanhBo is not null then CAST(baothay.CSGo as varchar(10)) else case when thwater.DanhBo is not null then thwater.CSGo else '' end end"
-                        + " ,CSGan=case when baothay.DanhBo is not null then baothay.CSGan else case when thwater.DanhBo is not null then thwater.CSGan else '' end end"
-                        + " from DocSo ds left join (SELECT top 1 DanhBo=REPLACE(DANHBO,'-',''),CSGo=TCTB_CSGo,CSGan=ChiSo FROM TANHOA_WATER.dbo.V_HOANGCONGTCTB WHERE DATEADD(DAY,30,NGAYTHICONG)>=GETDATE() and DHN_NGAYKIEMDINH is not null order by NGAYTHICONG desc) thwater on ds.DanhBa=thwater.DanhBo"
-                        + " left join (select top 1 DanhBo=DanhBa,CSGo,CSGan from BaoThay b inner join ThamSo t on b.LoaiBT=t.Code where t.CodeType = 'BT' and DATEADD(DAY,30,NgayThay)>=GETDATE() order by NgayCapNhat desc) baothay on ds.DanhBa=baothay.DanhBo"
+            string sql = "WITH tctb"
+                        + " AS"
+                        + " ("
+                        + "     select * from"
+                        + " 	(SELECT DanhBo=REPLACE(DANHBO,'-',''),CSGo=TCTB_CSGo,CSGan=ChiSo,ROW_NUMBER() OVER (PARTITION BY REPLACE(DANHBO,'-','') ORDER BY NGAYTHICONG DESC) AS rn"
+                        + " 	FROM TANHOA_WATER.dbo.V_HOANGCONGTCTB WHERE DATEADD(DAY,30,NGAYTHICONG)>=GETDATE() and DHN_NGAYKIEMDINH is not null)t1 where t1.rn=1"
+                        + " ), qldhn"
+                        + " AS"
+                        + " ("
+                        + "     select * from"
+                        + " 	(select DanhBo=DanhBa,CSGo,CSGan,ROW_NUMBER() OVER (PARTITION BY DanhBa ORDER BY NgayCapNhat DESC) AS rn"
+                        + " 	from BaoThay b inner join ThamSo t on b.LoaiBT=t.Code where t.CodeType = 'BT' and DATEADD(DAY,30,NgayThay)>=GETDATE())t1 where t1.rn=1"
+                        + " )"
+                        + " select ds.*,BaoThayDK=case when qldhn.DanhBo is not null then 'true' else 'false' end"
+                        + " ,BaoThayBT=case when tctb.DanhBo is not null then 'true' else 'false' end"
+                        + " ,CSGo=case when qldhn.DanhBo is not null then CAST(qldhn.CSGo as varchar(10)) else case when tctb.DanhBo is not null then tctb.CSGo else '' end end"
+                        + " ,CSGan=case when qldhn.DanhBo is not null then qldhn.CSGan else case when tctb.DanhBo is not null then tctb.CSGan else '' end end"
+                        + " from DocSo ds left join tctb on ds.DanhBa=tctb.DanhBo"
+                        + " left join qldhn on ds.DanhBa=qldhn.DanhBo"
                         + " where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + MaTo + Code
                         + " order by MLT2 asc";
-            return _cDAL.ExecuteQuery_DataTable(sql);
-        }
-
-        //xử lý
-        public DataTable getDS_XuLy_DanhBo(string Nam, string Ky, string DanhBo)
-        {
-            string sql = "select ds.*,BaoThayDK=case when baothay.DanhBo is not null then 'true' else 'false' end"
-                        + " ,BaoThayBT=case when thwater.DanhBo is not null then 'true' else 'false' end,GCKH=GhiChuKH"
-                        + " ,CSGo=case when baothay.DanhBo is not null then CAST(baothay.CSGo as varchar(10)) else case when thwater.DanhBo is not null then thwater.CSGo else '' end end"
-                        + " ,CSGan=case when baothay.DanhBo is not null then baothay.CSGan else case when thwater.DanhBo is not null then thwater.CSGan else '' end end"
-                        + " from DocSo  ds left join (SELECT top 1 DanhBo=REPLACE(DANHBO,'-',''),CSGo=TCTB_CSGo,CSGan=ChiSo FROM TANHOA_WATER.dbo.V_HOANGCONGTCTB WHERE DATEADD(DAY,30,NGAYTHICONG)>=GETDATE() and DHN_NGAYKIEMDINH is not null order by NGAYTHICONG desc) thwater on ds.DanhBa=thwater.DanhBo"
-                        + " left join (select top 1 DanhBo=DanhBa,CSGo,CSGan from BaoThay b inner join ThamSo t on b.LoaiBT=t.Code where t.CodeType = 'BT' and DATEADD(DAY,30,NgayThay)>=GETDATE() order by NgayCapNhat desc) baothay on ds.DanhBa=baothay.DanhBo"
-                        + " where Nam=" + Nam + " and Ky=" + Ky + " and DanhBa=" + DanhBo;
-            return _cDAL.ExecuteQuery_DataTable(sql);
-        }
-
-        public DataTable getDS_XuLy_DanhBo(string MaTo, string Nam, string Ky, string DanhBo)
-        {
-            string sql = "select ds.*,BaoThayDK=case when baothay.DanhBo is not null then 'true' else 'false' end"
-                        + " ,BaoThayBT=case when thwater.DanhBo is not null then 'true' else 'false' end,GCKH=GhiChuKH"
-                        + " ,CSGo=case when baothay.DanhBo is not null then CAST(baothay.CSGo as varchar(10)) else case when thwater.DanhBo is not null then thwater.CSGo else '' end end"
-                        + " ,CSGan=case when baothay.DanhBo is not null then baothay.CSGan else case when thwater.DanhBo is not null then thwater.CSGan else '' end end"
-                        + " from DocSo ds left join (SELECT top 1 DanhBo=REPLACE(DANHBO,'-',''),CSGo=TCTB_CSGo,CSGan=ChiSo FROM TANHOA_WATER.dbo.V_HOANGCONGTCTB WHERE DATEADD(DAY,30,NGAYTHICONG)>=GETDATE() and DHN_NGAYKIEMDINH is not null order by NGAYTHICONG desc) thwater on ds.DanhBa=thwater.DanhBo"
-                        + " left join (select top 1 DanhBo=DanhBa,CSGo,CSGan from BaoThay b inner join ThamSo t on b.LoaiBT=t.Code where t.CodeType = 'BT' and DATEADD(DAY,30,NgayThay)>=GETDATE() order by NgayCapNhat desc) baothay on ds.DanhBa=baothay.DanhBo"
-                        + " where Nam=" + Nam + " and Ky=" + Ky + " and DanhBa=" + DanhBo + " and (select TuMay from [To] where MaTo=" + MaTo + ")<=May and May<=(select DenMay from [To] where MaTo=" + MaTo + ")";
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
@@ -409,13 +397,26 @@ namespace DocSo_PC.DAL.Doi
                             Code = " and (CodeMoi is null or CodeMoi='')";
                         else
                             Code = " and CodeMoi like '" + Code + "'";
-            string sql = "select ds.*"
-                        + " ,BaoThayDK=case when baothay.DanhBo is not null then 'true' else 'false' end"
-                        + " ,BaoThayBT=case when thwater.DanhBo is not null then 'true' else 'false' end,GCKH=GhiChuKH"
-                        + " ,CSGo=case when baothay.DanhBo is not null then CAST(baothay.CSGo as varchar(10)) else case when thwater.DanhBo is not null then thwater.CSGo else '' end end"
-                        + " ,CSGan=case when baothay.DanhBo is not null then baothay.CSGan else case when thwater.DanhBo is not null then thwater.CSGan else '' end end"
-                        + " from DocSo ds left join (SELECT top 1 DanhBo=REPLACE(DANHBO,'-',''),CSGo=TCTB_CSGo,CSGan=ChiSo FROM TANHOA_WATER.dbo.V_HOANGCONGTCTB WHERE DATEADD(DAY,30,NGAYTHICONG)>=GETDATE() and DHN_NGAYKIEMDINH is not null order by NGAYTHICONG desc) thwater on ds.DanhBa=thwater.DanhBo"
-                        + " left join (select top 1 DanhBo=DanhBa,CSGo,CSGan from BaoThay b inner join ThamSo t on b.LoaiBT=t.Code where t.CodeType = 'BT' and DATEADD(DAY,30,NgayThay)>=GETDATE() order by NgayCapNhat desc) baothay on ds.DanhBa=baothay.DanhBo"
+            string sql = "WITH tctb"
+                        + " AS"
+                        + " ("
+                        + "     select * from"
+                        + " 	(SELECT DanhBo=REPLACE(DANHBO,'-',''),CSGo=TCTB_CSGo,CSGan=ChiSo,ROW_NUMBER() OVER (PARTITION BY REPLACE(DANHBO,'-','') ORDER BY NGAYTHICONG DESC) AS rn"
+                        + " 	FROM TANHOA_WATER.dbo.V_HOANGCONGTCTB WHERE DATEADD(DAY,30,NGAYTHICONG)>=GETDATE() and DHN_NGAYKIEMDINH is not null)t1 where t1.rn=1"
+                        + " ), qldhn"
+                        + " AS"
+                        + " ("
+                        + "     select * from"
+                        + " 	(select DanhBo=DanhBa,CSGo,CSGan,ROW_NUMBER() OVER (PARTITION BY DanhBa ORDER BY NgayCapNhat DESC) AS rn"
+                        + " 	from BaoThay b inner join ThamSo t on b.LoaiBT=t.Code where t.CodeType = 'BT' and DATEADD(DAY,30,NgayThay)>=GETDATE())t1 where t1.rn=1"
+                        + " )"
+                        + " select ds.*"
+                        + " ,BaoThayDK=case when qldhn.DanhBo is not null then 'true' else 'false' end"
+                        + " ,BaoThayBT=case when tctb.DanhBo is not null then 'true' else 'false' end,GCKH=GhiChuKH"
+                        + " ,CSGo=case when qldhn.DanhBo is not null then CAST(qldhn.CSGo as varchar(10)) else case when tctb.DanhBo is not null then tctb.CSGo else '' end end"
+                        + " ,CSGan=case when qldhn.DanhBo is not null then qldhn.CSGan else case when tctb.DanhBo is not null then tctb.CSGan else '' end end"
+                        + " from DocSo ds left join tctb on ds.DanhBa=tctb.DanhBo"
+                        + " left join qldhn on ds.DanhBa=qldhn.DanhBo"
                         + " where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + MaTo + May + Code
                         + " order by MLT2 asc";
             string sql2 = "select TongSL=COUNT(DocSoID)"
@@ -427,6 +428,33 @@ namespace DocSo_PC.DAL.Doi
             dtTong = _cDAL.ExecuteQuery_DataTable(sql2);
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
+
+        //xử lý
+        public DataTable getDS_XuLy_DanhBo(string Nam, string Ky, string DanhBo)
+        {
+            string sql = "select ds.*,BaoThayDK=case when baothay.DanhBo is not null then 'true' else 'false' end"
+                        + " ,BaoThayBT=case when thwater.DanhBo is not null then 'true' else 'false' end,GCKH=GhiChuKH"
+                        + " ,CSGo=case when baothay.DanhBo is not null then CAST(baothay.CSGo as varchar(10)) else case when thwater.DanhBo is not null then thwater.CSGo else '' end end"
+                        + " ,CSGan=case when baothay.DanhBo is not null then baothay.CSGan else case when thwater.DanhBo is not null then thwater.CSGan else '' end end"
+                        + " from DocSo  ds left join (SELECT top 1 DanhBo=REPLACE(DANHBO,'-',''),CSGo=TCTB_CSGo,CSGan=ChiSo FROM TANHOA_WATER.dbo.V_HOANGCONGTCTB WHERE DATEADD(DAY,30,NGAYTHICONG)>=GETDATE() and DHN_NGAYKIEMDINH is not null and REPLACE(DANHBO,'-','')='" + DanhBo + "' order by NGAYTHICONG desc) thwater on ds.DanhBa=thwater.DanhBo"
+                        + " left join (select top 1 DanhBo=DanhBa,CSGo,CSGan from BaoThay b inner join ThamSo t on b.LoaiBT=t.Code where t.CodeType = 'BT' and DATEADD(DAY,30,NgayThay)>=GETDATE() and DanhBa='" + DanhBo + "' order by NgayCapNhat desc) baothay on ds.DanhBa=baothay.DanhBo"
+                        + " where Nam=" + Nam + " and Ky=" + Ky + " and DanhBa='" + DanhBo + "'";
+            return _cDAL.ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable getDS_XuLy_DanhBo(string MaTo, string Nam, string Ky, string DanhBo)
+        {
+            string sql = "select ds.*,BaoThayDK=case when baothay.DanhBo is not null then 'true' else 'false' end"
+                        + " ,BaoThayBT=case when thwater.DanhBo is not null then 'true' else 'false' end,GCKH=GhiChuKH"
+                        + " ,CSGo=case when baothay.DanhBo is not null then CAST(baothay.CSGo as varchar(10)) else case when thwater.DanhBo is not null then thwater.CSGo else '' end end"
+                        + " ,CSGan=case when baothay.DanhBo is not null then baothay.CSGan else case when thwater.DanhBo is not null then thwater.CSGan else '' end end"
+                        + " from DocSo ds left join (SELECT top 1 DanhBo=REPLACE(DANHBO,'-',''),CSGo=TCTB_CSGo,CSGan=ChiSo FROM TANHOA_WATER.dbo.V_HOANGCONGTCTB WHERE DATEADD(DAY,30,NGAYTHICONG)>=GETDATE() and DHN_NGAYKIEMDINH is not null and REPLACE(DANHBO,'-','')='" + DanhBo + "'a order by NGAYTHICONG desc) thwater on ds.DanhBa=thwater.DanhBo"
+                        + " left join (select top 1 DanhBo=DanhBa,CSGo,CSGan from BaoThay b inner join ThamSo t on b.LoaiBT=t.Code where t.CodeType = 'BT' and DATEADD(DAY,30,NgayThay)>=GETDATE() and DanHBa='" + DanhBo + "' order by NgayCapNhat desc) baothay on ds.DanhBa=baothay.DanhBo"
+                        + " where Nam=" + Nam + " and Ky=" + Ky + " and DanhBa='" + DanhBo + "' and (select TuMay from [To] where MaTo=" + MaTo + ")<=May and May<=(select DenMay from [To] where MaTo=" + MaTo + ")";
+            return _cDAL.ExecuteQuery_DataTable(sql);
+        }
+
+        
 
         public DataTable getThongBao(string DanhBo)
         {

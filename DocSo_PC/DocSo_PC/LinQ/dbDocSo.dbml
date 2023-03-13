@@ -943,6 +943,7 @@
       <Column Name="TinhTrang" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="SoPhieu" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="SoPhieu_Ngay" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="VanBan" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="KinhGui" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="VeViec" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="NoiNhan" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
