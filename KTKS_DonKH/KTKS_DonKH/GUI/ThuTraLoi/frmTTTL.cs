@@ -140,7 +140,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         }
             txtMaCTTTTL.Text = cttttl.MaCTTTTL.ToString().Insert(cttttl.MaCTTTTL.ToString().Length - 2, "-");
             txtTCHC.Text = cttttl.TCHC;
-
+            chkDuocKy.Checked = cttttl.ThuDuocKy;
             txtDanhBo.Text = cttttl.DanhBo;
             txtHopDong.Text = cttttl.HopDong;
             txtLoTrinh.Text = cttttl.LoTrinh;
@@ -489,7 +489,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                     MessageBox.Show("Chưa nhập Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
                                 }
-
+                    cttttl.ThuDuocKy = chkDuocKy.Checked;
                     cttttl.DanhBo = txtDanhBo.Text.Trim();
                     cttttl.HopDong = txtHopDong.Text.Trim();
                     cttttl.LoTrinh = txtLoTrinh.Text.Trim();
@@ -523,7 +523,6 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     else
                         cttttl.ChucVu = "KT. GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
                     cttttl.NguoiKy = bangiamdoc.HoTen.ToUpper();
-                    cttttl.ThuDuocKy = true;
 
                     using (TransactionScope scope = new TransactionScope())
                         if (_cTTTL.ThemCT(cttttl))
@@ -566,6 +565,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 {
                     if (_cttttl != null)
                     {
+                        _cttttl.ThuDuocKy = chkDuocKy.Checked;
                         _cttttl.TCHC = txtTCHC.Text.Trim();
                         _cttttl.DanhBo = txtDanhBo.Text.Trim();
                         _cttttl.HopDong = txtHopDong.Text.Trim();

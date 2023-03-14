@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtMaDonCu = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -94,15 +94,16 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label32 = new System.Windows.Forms.Label();
             this.dgvHinh = new System.Windows.Forms.DataGridView();
-            this.btnChonFile = new System.Windows.Forms.Button();
-            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.xoaFile_dgvHinh = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnInhotline = new System.Windows.Forms.Button();
             this.ID_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Image_Hinh = new System.Windows.Forms.DataGridViewImageColumn();
             this.Name_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bytes_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Loai_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnChonFile = new System.Windows.Forms.Button();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.xoaFile_dgvHinh = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnInhotline = new System.Windows.Forms.Button();
+            this.chkDuocKy = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuTTTL)).BeginInit();
@@ -498,6 +499,7 @@
             this.dateGhiChu.Name = "dateGhiChu";
             this.dateGhiChu.Size = new System.Drawing.Size(100, 22);
             this.dateGhiChu.TabIndex = 17;
+            this.dateGhiChu.Visible = false;
             // 
             // label13
             // 
@@ -507,6 +509,7 @@
             this.label13.Size = new System.Drawing.Size(93, 16);
             this.label13.TabIndex = 18;
             this.label13.Text = "Ngày Ghi Chú:";
+            this.label13.Visible = false;
             // 
             // txtGhiChu
             // 
@@ -514,6 +517,7 @@
             this.txtGhiChu.Name = "txtGhiChu";
             this.txtGhiChu.Size = new System.Drawing.Size(220, 22);
             this.txtGhiChu.TabIndex = 20;
+            this.txtGhiChu.Visible = false;
             // 
             // label14
             // 
@@ -523,6 +527,7 @@
             this.label14.Size = new System.Drawing.Size(57, 16);
             this.label14.TabIndex = 19;
             this.label14.Text = "Ghi Chú:";
+            this.label14.Visible = false;
             // 
             // dgvGhiChu
             // 
@@ -537,6 +542,7 @@
             this.dgvGhiChu.Name = "dgvGhiChu";
             this.dgvGhiChu.Size = new System.Drawing.Size(364, 117);
             this.dgvGhiChu.TabIndex = 21;
+            this.dgvGhiChu.Visible = false;
             this.dgvGhiChu.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvGhiChu_CellMouseClick);
             this.dgvGhiChu.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvGhiChu_MouseClick);
             // 
@@ -568,6 +574,7 @@
             this.btnCapNhatGhiChu.TabIndex = 22;
             this.btnCapNhatGhiChu.Text = "Cập Nhật";
             this.btnCapNhatGhiChu.UseVisualStyleBackColor = true;
+            this.btnCapNhatGhiChu.Visible = false;
             this.btnCapNhatGhiChu.Click += new System.EventHandler(this.btnCapNhatGhiChu_Click);
             // 
             // label28
@@ -579,6 +586,7 @@
             this.label28.Size = new System.Drawing.Size(170, 16);
             this.label28.TabIndex = 57;
             this.label28.Text = "Chuột Phải để XÓA Ghi Chú";
+            this.label28.Visible = false;
             // 
             // xóaToolStripMenuItem
             // 
@@ -694,14 +702,14 @@
             // 
             this.dgvHinh.AllowUserToAddRows = false;
             this.dgvHinh.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHinh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHinh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvHinh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHinh.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID_Hinh,
@@ -716,41 +724,6 @@
             this.dgvHinh.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvHinh_CellMouseClick);
             this.dgvHinh.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvHinh_MouseClick);
             this.dgvHinh.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvHinh_MouseDoubleClick);
-            // 
-            // btnChonFile
-            // 
-            this.btnChonFile.Location = new System.Drawing.Point(40, 17);
-            this.btnChonFile.Name = "btnChonFile";
-            this.btnChonFile.Size = new System.Drawing.Size(75, 25);
-            this.btnChonFile.TabIndex = 8;
-            this.btnChonFile.Text = "Chọn File";
-            this.btnChonFile.UseVisualStyleBackColor = true;
-            this.btnChonFile.Click += new System.EventHandler(this.btnChonFile_Click);
-            // 
-            // contextMenuStrip2
-            // 
-            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.xoaFile_dgvHinh});
-            this.contextMenuStrip2.Name = "contextMenuStrip1";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(101, 26);
-            // 
-            // xoaFile_dgvHinh
-            // 
-            this.xoaFile_dgvHinh.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xoaFile_dgvHinh.Name = "xoaFile_dgvHinh";
-            this.xoaFile_dgvHinh.Size = new System.Drawing.Size(100, 22);
-            this.xoaFile_dgvHinh.Text = "Xóa";
-            this.xoaFile_dgvHinh.Click += new System.EventHandler(this.xoaFile_dgvHinh_Click);
-            // 
-            // btnInhotline
-            // 
-            this.btnInhotline.Location = new System.Drawing.Point(859, 329);
-            this.btnInhotline.Name = "btnInhotline";
-            this.btnInhotline.Size = new System.Drawing.Size(105, 25);
-            this.btnInhotline.TabIndex = 139;
-            this.btnInhotline.Text = "In Thư (hotline)";
-            this.btnInhotline.UseVisualStyleBackColor = true;
-            this.btnInhotline.Click += new System.EventHandler(this.btnInhotline_Click);
             // 
             // ID_Hinh
             // 
@@ -789,6 +762,51 @@
             this.Loai_Hinh.Name = "Loai_Hinh";
             this.Loai_Hinh.Visible = false;
             // 
+            // btnChonFile
+            // 
+            this.btnChonFile.Location = new System.Drawing.Point(40, 17);
+            this.btnChonFile.Name = "btnChonFile";
+            this.btnChonFile.Size = new System.Drawing.Size(75, 25);
+            this.btnChonFile.TabIndex = 8;
+            this.btnChonFile.Text = "Chọn File";
+            this.btnChonFile.UseVisualStyleBackColor = true;
+            this.btnChonFile.Click += new System.EventHandler(this.btnChonFile_Click);
+            // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.xoaFile_dgvHinh});
+            this.contextMenuStrip2.Name = "contextMenuStrip1";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(101, 26);
+            // 
+            // xoaFile_dgvHinh
+            // 
+            this.xoaFile_dgvHinh.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xoaFile_dgvHinh.Name = "xoaFile_dgvHinh";
+            this.xoaFile_dgvHinh.Size = new System.Drawing.Size(100, 22);
+            this.xoaFile_dgvHinh.Text = "Xóa";
+            this.xoaFile_dgvHinh.Click += new System.EventHandler(this.xoaFile_dgvHinh_Click);
+            // 
+            // btnInhotline
+            // 
+            this.btnInhotline.Location = new System.Drawing.Point(859, 329);
+            this.btnInhotline.Name = "btnInhotline";
+            this.btnInhotline.Size = new System.Drawing.Size(105, 25);
+            this.btnInhotline.TabIndex = 139;
+            this.btnInhotline.Text = "In Thư (hotline)";
+            this.btnInhotline.UseVisualStyleBackColor = true;
+            this.btnInhotline.Click += new System.EventHandler(this.btnInhotline_Click);
+            // 
+            // chkDuocKy
+            // 
+            this.chkDuocKy.AutoSize = true;
+            this.chkDuocKy.Location = new System.Drawing.Point(761, 4);
+            this.chkDuocKy.Name = "chkDuocKy";
+            this.chkDuocKy.Size = new System.Drawing.Size(76, 20);
+            this.chkDuocKy.TabIndex = 140;
+            this.chkDuocKy.Text = "Được Ký";
+            this.chkDuocKy.UseVisualStyleBackColor = true;
+            // 
             // frmTTTL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -796,6 +814,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1230, 593);
+            this.Controls.Add(this.chkDuocKy);
             this.Controls.Add(this.btnInhotline);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.label34);
@@ -919,5 +938,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Name_Hinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bytes_Hinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn Loai_Hinh;
+        private System.Windows.Forms.CheckBox chkDuocKy;
     }
 }

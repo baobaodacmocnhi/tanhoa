@@ -22,14 +22,14 @@ using KTKS_DonKH.DAL.QuanTri;
 
 namespace KTKS_DonKH.GUI.ThuTraLoi
 {
-    public partial class frmDSTTTL_Old : Form
+    public partial class frmDSTTTL : Form
     {
         string _mnu = "mnuDSTTTL";
         CTTTL _cTTTL = new CTTTL();
         CDonKH _cDonKH = new CDonKH();
         CKTXM _cKTXM = new CKTXM();
 
-        public frmDSTTTL_Old()
+        public frmDSTTTL()
         {
             InitializeComponent();
         }

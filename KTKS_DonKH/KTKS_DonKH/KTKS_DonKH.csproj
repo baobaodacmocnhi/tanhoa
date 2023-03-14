@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>98</ApplicationRevision>
+    <ApplicationRevision>99</ApplicationRevision>
     <ApplicationVersion>1.5.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -1291,6 +1291,12 @@
     <Compile Include="GUI\ThuMoi\frmInBienBan.Designer.cs">
       <DependentUpon>frmInBienBan.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ThuTraLoi\frmBaoCaoTTTL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ThuTraLoi\frmBaoCaoTTTL.Designer.cs">
+      <DependentUpon>frmBaoCaoTTTL.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ThuTraLoi\frmToTrinh2021.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1603,11 +1609,11 @@
     <Compile Include="GUI\QuanTri\frmNhom.Designer.cs">
       <DependentUpon>frmNhom.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ThuTraLoi\frmDSTTTL_Old.cs">
+    <Compile Include="GUI\ThuTraLoi\frmDSTTTL.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\ThuTraLoi\frmDSTTTL_Old.Designer.cs">
-      <DependentUpon>frmDSTTTL_Old.cs</DependentUpon>
+    <Compile Include="GUI\ThuTraLoi\frmDSTTTL.Designer.cs">
+      <DependentUpon>frmDSTTTL.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ThuTraLoi\frmTTTL.cs">
       <SubType>Form</SubType>
@@ -2455,6 +2461,9 @@
     <EmbeddedResource Include="GUI\ThuMoi\frmInBienBan.resx">
       <DependentUpon>frmInBienBan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThuTraLoi\frmBaoCaoTTTL.resx">
+      <DependentUpon>frmBaoCaoTTTL.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ThuTraLoi\frmToTrinh2021.resx">
       <DependentUpon>frmToTrinh2021.cs</DependentUpon>
     </EmbeddedResource>
@@ -2611,8 +2620,8 @@
     <EmbeddedResource Include="GUI\QuanTri\frmNhom.resx">
       <DependentUpon>frmNhom.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ThuTraLoi\frmDSTTTL_Old.resx">
-      <DependentUpon>frmDSTTTL_Old.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\ThuTraLoi\frmDSTTTL.resx">
+      <DependentUpon>frmDSTTTL.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ThuTraLoi\frmTTTL.resx">
       <DependentUpon>frmTTTL.cs</DependentUpon>

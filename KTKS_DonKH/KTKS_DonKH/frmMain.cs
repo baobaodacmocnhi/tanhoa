@@ -887,7 +887,7 @@ namespace KTKS_DonKH
         {
             if (CTaiKhoan.CheckQuyen("mnuDSTTTL", "Xem"))
             {
-                frmDSTTTL_Old frm = new frmDSTTTL_Old();
+                frmDSTTTL frm = new frmDSTTTL();
                 OpenForm(frm);
             }
             else
@@ -932,6 +932,17 @@ namespace KTKS_DonKH
             if (CTaiKhoan.CheckQuyen("mnuVanBan", "Xem"))
             {
                 frmVanBan frm = new frmVanBan();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void mnuBaoCaoTTTL_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuBaoCaoTTTL", "Xem"))
+            {
+                frmBaoCaoTTTL frm = new frmBaoCaoTTTL();
                 OpenForm(frm);
             }
             else
@@ -1127,7 +1138,6 @@ namespace KTKS_DonKH
 
         #endregion
 
-
         #region Phòng Khách Hàng
 
         private void mnuTraHopDong_Click(object sender, EventArgs e)
@@ -1186,6 +1196,8 @@ namespace KTKS_DonKH
             else
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        
 
        
 

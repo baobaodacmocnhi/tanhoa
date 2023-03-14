@@ -124,7 +124,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                 _dontbc = _cDonTBC.Get(en.ToTrinh.MaDonTBC.Value);
                                 txtMaDonCu.Text = "TBC" + en.ToTrinh.MaDonTBC.Value.ToString().Insert(en.ToTrinh.MaDonTBC.Value.ToString().Length - 2, "-");
                             }
-
+                chkDuocKy.Checked = en.ThuDuocKy;
                 txtDanhBo.Text = en.DanhBo;
                 txtMLT.Text = en.LoTrinh;
                 txtHoTen.Text = en.HoTen;
@@ -454,6 +454,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                         MessageBox.Show("Chưa nhập Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                         return;
                                     }
+                        cttt.ThuDuocKy = chkDuocKy.Checked;
                         cttt.DanhBo = txtDanhBo.Text.Trim();
                         cttt.LoTrinh = txtMLT.Text.Trim();
                         cttt.HoTen = txtHoTen.Text.Trim();
@@ -491,7 +492,6 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     cttt.KinhTrinh = txtKinhTrinh.Text.Trim();
                     cttt.NoiDung = txtNoiDung.Text;
                     cttt.NoiNhan = txtNoiNhan.Text.Trim();
-                    cttt.ThuDuocKy = true;
 
                     using (TransactionScope scope = new TransactionScope())
                         if (_cTT.Them_ChiTiet(cttt))
@@ -595,6 +595,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     {
                         if (tabControl.SelectedTab.Name == "tabTTKH")
                         {
+                            _cttt.ThuDuocKy = chkDuocKy.Checked;
                             _cttt.DanhBo = txtDanhBo.Text.Trim();
                             _cttt.LoTrinh = txtMLT.Text.Trim();
                             _cttt.HoTen = txtHoTen.Text.Trim();

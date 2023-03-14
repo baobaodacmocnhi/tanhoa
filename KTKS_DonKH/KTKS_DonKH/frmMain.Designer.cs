@@ -97,6 +97,7 @@
             this.mnuDieuChinhChiSoLo = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDieuChinhHangLoat = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCapDinhMucNuocCCCD = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCapDinhMucNuocChungCuCCCD = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCatHuy = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCTDB = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCHDB = new System.Windows.Forms.ToolStripMenuItem();
@@ -137,7 +138,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.StripStatus_HoTen = new System.Windows.Forms.ToolStripStatusLabel();
-            this.mnuCapDinhMucNuocChungCuCCCD = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuBaoCaoTTTL = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -702,6 +703,13 @@
             this.mnuCapDinhMucNuocCCCD.Text = "Cấp Định Mức Nước (CCCD)";
             this.mnuCapDinhMucNuocCCCD.Click += new System.EventHandler(this.mnuCapDinhMucNuocCCCD_Click);
             // 
+            // mnuCapDinhMucNuocChungCuCCCD
+            // 
+            this.mnuCapDinhMucNuocChungCuCCCD.Name = "mnuCapDinhMucNuocChungCuCCCD";
+            this.mnuCapDinhMucNuocChungCuCCCD.Size = new System.Drawing.Size(301, 22);
+            this.mnuCapDinhMucNuocChungCuCCCD.Text = "Cấp Định Mức Nước Chung Cư (CCCD)";
+            this.mnuCapDinhMucNuocChungCuCCCD.Click += new System.EventHandler(this.mnuCapDinhMucNuocChungCuCCCD_Click);
+            // 
             // mnuCatHuy
             // 
             this.mnuCatHuy.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -782,7 +790,8 @@
             this.mnuToTrinh,
             this.mnuDSToTrinh,
             this.mnuVeViecToTrinh,
-            this.mnuVanBan});
+            this.mnuVanBan,
+            this.mnuBaoCaoTTTL});
             this.mnuThuTraLoi.Name = "mnuThuTraLoi";
             this.mnuThuTraLoi.Size = new System.Drawing.Size(88, 20);
             this.mnuThuTraLoi.Text = "Thư Trả Lời";
@@ -1017,12 +1026,12 @@
             this.StripStatus_HoTen.Size = new System.Drawing.Size(205, 17);
             this.StripStatus_HoTen.Text = "                                                 Xin Chào:";
             // 
-            // mnuCapDinhMucNuocChungCuCCCD
+            // mnuBaoCaoTTTL
             // 
-            this.mnuCapDinhMucNuocChungCuCCCD.Name = "mnuCapDinhMucNuocChungCuCCCD";
-            this.mnuCapDinhMucNuocChungCuCCCD.Size = new System.Drawing.Size(301, 22);
-            this.mnuCapDinhMucNuocChungCuCCCD.Text = "Cấp Định Mức Nước Chung Cư (CCCD)";
-            this.mnuCapDinhMucNuocChungCuCCCD.Click += new System.EventHandler(this.mnuCapDinhMucNuocChungCuCCCD_Click);
+            this.mnuBaoCaoTTTL.Name = "mnuBaoCaoTTTL";
+            this.mnuBaoCaoTTTL.Size = new System.Drawing.Size(245, 22);
+            this.mnuBaoCaoTTTL.Text = "Báo Cáo";
+            this.mnuBaoCaoTTTL.Click += new System.EventHandler(this.mnuBaoCaoTTTL_Click);
             // 
             // frmMain
             // 
@@ -1162,5 +1171,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuSuCoNgungCungCapNuoc;
         private System.Windows.Forms.ToolStripMenuItem mnuCapNhatDienThoai;
         private System.Windows.Forms.ToolStripMenuItem mnuCapDinhMucNuocChungCuCCCD;
+        private System.Windows.Forms.ToolStripMenuItem mnuBaoCaoTTTL;
     }
 }
