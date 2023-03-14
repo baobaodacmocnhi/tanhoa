@@ -140,19 +140,26 @@ namespace DocSo_PC.GUI.HeThong
             try
             {
                 wrDHN.wsDHN wsDHN = new wrDHN.wsDHN();
-                DataTable dt = CMenu._cDAL.ExecuteQuery_DataTable(txtQuery.Text.Trim());
-                foreach (DataRow item in dt.Rows)
-                {
-                    DataTable dtTemp = CMenu._cDAL.ExecuteQuery_DataTable("select Hinh from Temp_HinhDHN where ID='" + item["ID"].ToString() + "'");
-                    if (wsDHN.ghi_Hinh(item["ID"].ToString(), dtTemp.Rows[0]["Hinh"].ToString()) == true)
-                        CMenu._cDAL.ExecuteNonQuery("delete Temp_HinhDHN where ID='" + item["ID"].ToString() + "'");
-                }
+                //DataTable dt = CMenu._cDAL.ExecuteQuery_DataTable(txtQuery.Text.Trim());
+                //foreach (DataRow item in dt.Rows)
+                //{
+                //    DataTable dtTemp = CMenu._cDAL.ExecuteQuery_DataTable("select Hinh from Temp_HinhDHN where ID='" + item["ID"].ToString() + "'");
+                //    if (wsDHN.ghi_Hinh(item["ID"].ToString(), dtTemp.Rows[0]["Hinh"].ToString()) == true)
+                //        CMenu._cDAL.ExecuteNonQuery("delete Temp_HinhDHN where ID='" + item["ID"].ToString() + "'");
+                //}
+
+                //DataTable dt = CMenu._cDAL.ExecuteQuery_DataTable("select DanhBo from Temp_DanhBo");
+                //foreach (DataRow item in dt.Rows)
+                //{
+                //    byte[] hinh = wsDHN.get_Hinh("202303" + item["DanhBo"].ToString());
+                //    System.IO.File.WriteAllBytes(@"C:\Users\BaoBao\Desktop\DHN Nghiem Thu TD\" + item["DanhBo"].ToString()+".jpg", hinh);
+                //}
             }
             catch
             {
-                
+
             }
-            
+
         }
     }
 }

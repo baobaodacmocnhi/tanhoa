@@ -373,7 +373,10 @@ namespace DocSo_PC.GUI.ToTruong
                                         case "Ngập Nước":
                                             pc.KinhGui = "Đội TCTB";
                                             break;
-                                        case "Lấp Khóa Góc":
+                                        //case "Lấp Khóa Góc":
+                                        //    pc.KinhGui = "Phòng Thương Vụ";
+                                        //    break;
+                                        default:
                                             pc.KinhGui = "Phòng Thương Vụ";
                                             break;
                                     }
@@ -523,6 +526,8 @@ namespace DocSo_PC.GUI.ToTruong
                             //}
                             //CDocSo._cDAL.ExecuteNonQuery("insert into MaHoa_PhieuChuyen_LichSu(ID,DanhBo,NoiDung,GhiChu,TinhTrang,CreateBy,CreateDate)values(" + ID + ",'" + item.Cells["DanhBo_Nhap"] + "',N'" + txtNoiDung.Text.Trim() + "',N'" + GhiChu + "',N'Tồn'," + CNguoiDung.MaND + ",getdate())");
                             MaHoa_PhieuChuyen_LichSu en = new MaHoa_PhieuChuyen_LichSu();
+                            en.KinhGui = txtKinhGui.Text.Trim();
+                            en.VeViec = txtVeViec.Text.Trim();
                             en.DanhBo = item.Cells["DanhBo_Nhap"].Value.ToString();
                             en.NoiDung = txtNoiDung.Text.Trim();
                             en.TinhTrang = "Tồn";
