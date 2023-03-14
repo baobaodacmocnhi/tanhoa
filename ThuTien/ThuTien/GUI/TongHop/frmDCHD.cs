@@ -845,8 +845,11 @@ namespace ThuTien.GUI.TongHop
                                             if (item[3].ToString().All(char.IsDigit) == true)
                                             {
                                                 dchd.UpdatedHDDT = true;
-                                                dchd.SoHoaDonMoi = item[1].ToString().Trim().Substring(0, 2) + DateTime.Now.ToString("yy") + item[1].ToString().Trim().Substring(4, 3) + item[3].ToString().Trim();
-                                                //dchd.SoHoaDonMoi = "1K22TCT" + item[3].ToString().Trim();
+                                                if (item[1].ToString().Contains("CT/"))
+                                                    dchd.SoHoaDonMoi = "1K" + DateTime.Now.ToString("yy") + "TCT" + item[3].ToString().Trim();
+                                                else
+                                                    dchd.SoHoaDonMoi = item[1].ToString().Trim().Substring(0, 2) + DateTime.Now.ToString("yy") + item[1].ToString().Trim().Substring(4, 3) + item[3].ToString().Trim();
+
                                                 if (_cDCHD.Sua(dchd) == true)
                                                 {
                                                     HOADON hd = _cHoaDon.Get(dchd.FK_HOADON);
@@ -1100,9 +1103,9 @@ namespace ThuTien.GUI.TongHop
             {
                 DataTable dtBinhThuong2021 = new DataTable();
                 DataTable dtBinhThuong2022 = new DataTable();
-                //DataTable dt = _cDCHD.getDS_HDDC_Cho_DangNgan_ThayThe_Admin();
-                DataTable dt = _cDCHD.getDS_HDDC_Cho_DangNgan_ThayThe();
-                dt.Merge(_cDCHD.getDS_HDDC_Cho_DangNgan_HD0_ThayThe());
+                DataTable dt = _cDCHD.getDS_HDDC_Cho_DangNgan_ThayThe_Admin();
+                //DataTable dt = _cDCHD.getDS_HDDC_Cho_DangNgan_ThayThe();
+                //dt.Merge(_cDCHD.getDS_HDDC_Cho_DangNgan_HD0_ThayThe());
                 for (int i = 0; i < dt.Rows.Count; i++)
                     if (int.Parse(dt.Rows[i]["Nam"].ToString()) < 2022 || (int.Parse(dt.Rows[i]["Nam"].ToString()) == 2022 && int.Parse(dt.Rows[i]["Ky2"].ToString()) < 5))
                     {

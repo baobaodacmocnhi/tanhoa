@@ -2550,7 +2550,7 @@ namespace ThuTien.DAL.TongHop
                         join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
-                        where itemHDDC.CreateBy == 0 && (itemHD.NAM < 2022 || (itemHD.NAM == 2022 && itemHD.KY < 5))
+                        where itemHDDC.CreateBy == 6 && (itemHD.NAM < 2022 || (itemHD.NAM == 2022 && itemHD.KY < 5))
                         select new
                         {
                             NgayDC = itemDC.NGAY_DC,
