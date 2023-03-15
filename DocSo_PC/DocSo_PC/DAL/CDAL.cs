@@ -141,11 +141,24 @@ namespace DocSo_PC.DAL
             return (byte[])converter.ConvertTo(image, typeof(byte[]));
         }
 
-        public byte[] scanVanBan(string path)
+        public byte[] scanImage(string path)
         {
             Image image = Image.FromFile(path);
             Bitmap resizedImage = resizeImage(image, 0.5m);
             return ImageToByte(resizedImage);
+        }
+
+        public byte[] scanVanBan(string path)
+        {
+            if (path.ToLower().Contains(".pdf"))
+                return scanFilePDF(path);
+            else
+                return scanImage(path);
+        }
+
+        public byte[] scanFilePDF(string path)
+        {
+            return File.ReadAllBytes(path);
         }
 
         #region ConvertMoneyToWord

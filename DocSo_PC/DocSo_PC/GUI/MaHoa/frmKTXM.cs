@@ -649,7 +649,7 @@ namespace DocSo_PC.GUI.MaHoa
                             if (_wsDHN.ghi_Hinh_MaHoa("KTXM", _ctktxm.ID.ToString(), en.Name + en.Loai, bytes) == true)
                                 if (_cKTXM.Them_Hinh(en) == true)
                                 {
-                                    //_cKTXM.Refresh();
+                                    _cKTXM.Refresh();
                                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     var index = dgvHinh.Rows.Add();
                                     dgvHinh.Rows[index].Cells["Name_Hinh"].Value = en.Name;
@@ -783,6 +783,7 @@ namespace DocSo_PC.GUI.MaHoa
                                                 message += ktxm.IDMaDon + "\n";
                                             }
                                     }
+                                _cKTXM.Refresh();
                                 MessageBox.Show("Đã xử lý " + count + " mã đơn\n" + message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                         }

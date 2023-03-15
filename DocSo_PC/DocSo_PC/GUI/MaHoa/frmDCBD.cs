@@ -625,7 +625,7 @@ namespace DocSo_PC.GUI.MaHoa
                             if (_wsDHN.ghi_Hinh_MaHoa("DCBD", _dcbd.ID.ToString(), en.Name + en.Loai, bytes) == true)
                                 if (_cDCBD.Them_Hinh(en) == true)
                                 {
-                                    //_cDCBD.Refresh();
+                                    _cDCBD.Refresh();
                                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     var index = dgvHinh.Rows.Add();
                                     dgvHinh.Rows[index].Cells["Name_Hinh"].Value = en.Name;
@@ -833,6 +833,7 @@ namespace DocSo_PC.GUI.MaHoa
                                                 message += dcbd.IDMaDon + "\n";
                                             }
                                     }
+                                _cDCBD.Refresh();
                                 MessageBox.Show("Đã xử lý " + count + " mã đơn\n" + message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                         }
