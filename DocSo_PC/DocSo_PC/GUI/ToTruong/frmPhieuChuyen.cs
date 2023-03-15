@@ -739,7 +739,18 @@ namespace DocSo_PC.GUI.ToTruong
 
         private void btnPasteFromXuLy_Click(object sender, EventArgs e)
         {
-
+            string[] DanhBos = CNguoiDung.DanhBos.Split(',');
+            foreach (string item in DanhBos)
+            {
+                TB_DULIEUKHACHHANG ttkh = _cDHN.get(item);
+                if (ttkh != null)
+                {
+                    var index = dgvDanhBo.Rows.Add();
+                    dgvDanhBo.Rows[index].Cells["DanhBo_Nhap"].Value = ttkh.DANHBO;
+                    dgvDanhBo.Rows[index].Cells["HoTen_Nhap"].Value = ttkh.HOTEN;
+                    dgvDanhBo.Rows[index].Cells["DiaChi_Nhap"].Value = ttkh.SONHA + " " + ttkh.TENDUONG;
+                }
+            }
         }
 
 
