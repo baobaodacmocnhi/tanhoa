@@ -514,7 +514,7 @@ namespace DocSo_PC.GUI.ToTruong
             {
                 if (txtCSM.Text.Trim() != "" && e.KeyChar == 13)
                 {
-                    int TTienNuoc = 0, TThueGTGT = 0, TTDVTN = 0, TThueTDVTN = 0,TTieuThu = 0;
+                    int TTienNuoc = 0, TThueGTGT = 0, TTDVTN = 0, TThueTDVTN = 0, TTieuThu = 0;
                     _wsDHN.tinhCodeTieuThu_CSM(_docso.DocSoID, cmbCodeMoi.SelectedValue.ToString(), int.Parse(txtCSM.Text.Trim()), out TTieuThu, out TTienNuoc, out TThueGTGT, out TTDVTN, out TThueTDVTN);
                     txtTieuThu.Text = TTieuThu.ToString();
                     txtTieuThu.Focus();
@@ -971,6 +971,28 @@ namespace DocSo_PC.GUI.ToTruong
             try
             {
                 dgvCongVanDen.DataSource = _cCVD.getDS_ButPhe_XuLySoLieu(dgvButPhe.CurrentRow.Cells["Loai"].Value.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnCopyToPhieuChuyen_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (MessageBox.Show("Bạn có chắc chắn???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    foreach (DataGridViewRow item in dgvDanhSach.SelectedRows)
+                    {
+                        if (CNguoiDung.DanhBos == "")
+                            CNguoiDung.DanhBos = item.Cells["DanhBo"].Value.ToString();
+                        else
+                            CNguoiDung.DanhBos += "," + item.Cells["DanhBo"].Value.ToString();
+                    }
+                    MessageBox.Show("Đã Copy", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             catch (Exception ex)
             {

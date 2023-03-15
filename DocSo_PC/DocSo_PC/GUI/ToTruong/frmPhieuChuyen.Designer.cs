@@ -67,6 +67,7 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnPasteFromXuLy = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvDanhBo = new System.Windows.Forms.DataGridView();
             this.DanhBo_Nhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,8 +75,6 @@
             this.DiaChi_Nhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VanBan_Nhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GhiChu_Nhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtNoiDung = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.txtVeViec = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.txtKinhGui = new System.Windows.Forms.TextBox();
@@ -375,7 +374,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(69, 157);
+            this.btnThem.Location = new System.Drawing.Point(194, 184);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 23);
             this.btnThem.TabIndex = 77;
@@ -405,9 +404,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnPasteFromXuLy);
             this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Controls.Add(this.txtNoiDung);
-            this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.txtVeViec);
             this.groupBox1.Controls.Add(this.btnThem);
             this.groupBox1.Controls.Add(this.label12);
@@ -419,6 +417,16 @@
             this.groupBox1.TabIndex = 135;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nhập Thủ Công";
+            // 
+            // btnPasteFromXuLy
+            // 
+            this.btnPasteFromXuLy.Location = new System.Drawing.Point(194, 91);
+            this.btnPasteFromXuLy.Name = "btnPasteFromXuLy";
+            this.btnPasteFromXuLy.Size = new System.Drawing.Size(75, 36);
+            this.btnPasteFromXuLy.TabIndex = 78;
+            this.btnPasteFromXuLy.Text = "Paste From Xử Lý";
+            this.btnPasteFromXuLy.UseVisualStyleBackColor = true;
+            this.btnPasteFromXuLy.Click += new System.EventHandler(this.btnPasteFromXuLy_Click);
             // 
             // groupBox2
             // 
@@ -501,23 +509,6 @@
             this.GhiChu_Nhap.DataPropertyName = "GhiChu";
             this.GhiChu_Nhap.HeaderText = "Ghi Chú";
             this.GhiChu_Nhap.Name = "GhiChu_Nhap";
-            // 
-            // txtNoiDung
-            // 
-            this.txtNoiDung.Location = new System.Drawing.Point(69, 91);
-            this.txtNoiDung.Multiline = true;
-            this.txtNoiDung.Name = "txtNoiDung";
-            this.txtNoiDung.Size = new System.Drawing.Size(150, 60);
-            this.txtNoiDung.TabIndex = 7;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(11, 94);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(52, 13);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "Nơi Nhận";
             // 
             // txtVeViec
             // 
@@ -638,8 +629,6 @@
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtNoiDung;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtVeViec;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtKinhGui;
@@ -668,5 +657,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SoPhieu;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ViTriDHN_Ngoai;
         private System.Windows.Forms.CheckBox chkAll;
+        private System.Windows.Forms.Button btnPasteFromXuLy;
     }
 }

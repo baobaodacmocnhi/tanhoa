@@ -142,6 +142,13 @@ namespace DocSo_PC.DAL.QuanTri
             set { CNguoiDung._TenPhong = value; }
         }
 
+        static string _DanhBos = "";
+        public static string DanhBos
+        {
+            get { return CNguoiDung._DanhBos; }
+            set { CNguoiDung._DanhBos = value; }
+        }
+
         static bool _updateChuyenListing;
         public static bool updateChuyenListing
         {

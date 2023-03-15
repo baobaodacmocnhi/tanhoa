@@ -103,7 +103,8 @@ namespace DocSo_PC.DAL
             if (May == "Tất Cả")
                 May = "";
             string sql = "select MLT=LOTRINH,DanhBo,HOTEN,DiaChi=SONHA+' '+TENDUONG,ViTri=VITRIDHN,ViTriDHN_Ngoai,ViTriDHN_Hop"
-                        + " ,DienThoai=( select"
+                + ",Hieu=HieuDH,Co=CoDH,SoThan=SoThanDH,NgayKiemDinh,NgayThay"        
+                + " ,DienThoai=( select"
                         + "   distinct"
                         + "    stuff(("
                         + "        select ',' + u.DienThoai+' '+u.HoTen"
@@ -112,9 +113,9 @@ namespace DocSo_PC.DAL
                         + "        for xml path('')"
                         + "    ),1,1,'')"
                         + ")"
-                        + " ,DTKH=(select top 1 DienThoai from SDT_DHN where DanhBo=TB_DULIEUKHACHHANG.DanhBo and GhiChu=N'P. KH' order by CreateDate desc)"
-                        + " ,DTDHN=(select top 1 DienThoai from SDT_DHN where DanhBo=TB_DULIEUKHACHHANG.DanhBo and GhiChu=N'Đ. QLĐHN' order by CreateDate desc)"
-                        + " ,DTTV=(select top 1 DienThoai from SDT_DHN where DanhBo=TB_DULIEUKHACHHANG.DanhBo and GhiChu=N'P. TV' order by CreateDate desc)"
+                        //+ " ,DTKH=(select top 1 DienThoai from SDT_DHN where DanhBo=TB_DULIEUKHACHHANG.DanhBo and GhiChu=N'P. KH' order by CreateDate desc)"
+                        //+ " ,DTDHN=(select top 1 DienThoai from SDT_DHN where DanhBo=TB_DULIEUKHACHHANG.DanhBo and GhiChu=N'Đ. QLĐHN' order by CreateDate desc)"
+                        //+ " ,DTTV=(select top 1 DienThoai from SDT_DHN where DanhBo=TB_DULIEUKHACHHANG.DanhBo and GhiChu=N'P. TV' order by CreateDate desc)"
                         + " from TB_DULIEUKHACHHANG where SUBSTRING(LOTRINH,0,3) like '%" + Dot + "%' and SUBSTRING(LOTRINH,3,2) like '%" + May + "%' order by LOTRINH";
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
@@ -122,6 +123,7 @@ namespace DocSo_PC.DAL
         public DataTable getDS_GhiChu_DanhBo(string DanhBo)
         {
             string sql = "select MLT=LOTRINH,DanhBo,HOTEN,DiaChi=SONHA+' '+TENDUONG,ViTri=VITRIDHN,ViTriDHN_Ngoai,ViTriDHN_Hop"
+                        + ",Hieu=HieuDH,Co=CoDH,SoThan=SoThanDH,NgayKiemDinh,NgayThay"
                         + " ,DienThoai=( select"
                         + "   distinct"
                         + "    stuff(("
@@ -131,9 +133,9 @@ namespace DocSo_PC.DAL
                         + "        for xml path('')"
                         + "    ),1,1,'')"
                         + ")"
-                        + " ,DTKH=(select top 1 DienThoai from SDT_DHN where DanhBo=TB_DULIEUKHACHHANG.DanhBo and GhiChu=N'P. KH' order by CreateDate desc)"
-                        + " ,DTDHN=(select top 1 DienThoai from SDT_DHN where DanhBo=TB_DULIEUKHACHHANG.DanhBo and GhiChu=N'Đ. QLĐHN' order by CreateDate desc)"
-                        + " ,DTTV=(select top 1 DienThoai from SDT_DHN where DanhBo=TB_DULIEUKHACHHANG.DanhBo and GhiChu=N'P. TV' order by CreateDate desc)"
+                        //+ " ,DTKH=(select top 1 DienThoai from SDT_DHN where DanhBo=TB_DULIEUKHACHHANG.DanhBo and GhiChu=N'P. KH' order by CreateDate desc)"
+                        //+ " ,DTDHN=(select top 1 DienThoai from SDT_DHN where DanhBo=TB_DULIEUKHACHHANG.DanhBo and GhiChu=N'Đ. QLĐHN' order by CreateDate desc)"
+                        //+ " ,DTTV=(select top 1 DienThoai from SDT_DHN where DanhBo=TB_DULIEUKHACHHANG.DanhBo and GhiChu=N'P. TV' order by CreateDate desc)"
                         + " from TB_DULIEUKHACHHANG where DanhBo='" + DanhBo + "' order by LOTRINH";
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
@@ -141,7 +143,8 @@ namespace DocSo_PC.DAL
         public DataTable getDS_GhiChu_DanhBo(string MaTo, string DanhBo)
         {
             string sql = "select MLT=LOTRINH,DanhBo,HOTEN,DiaChi=SONHA+' '+TENDUONG,ViTri=VITRIDHN,ViTriDHN_Ngoai,ViTriDHN_Hop"
-                        + " ,DienThoai=( select"
+                + ",Hieu=HieuDH,Co=CoDH,SoThan=SoThanDH,NgayKiemDinh,NgayThay"      
+                + " ,DienThoai=( select"
                         + "   distinct"
                         + "    stuff(("
                         + "        select ',' + u.DienThoai+' '+u.HoTen"
@@ -150,9 +153,9 @@ namespace DocSo_PC.DAL
                         + "        for xml path('')"
                         + "    ),1,1,'')"
                         + ")"
-                        + " ,DTKH=(select top 1 DienThoai from SDT_DHN where DanhBo=TB_DULIEUKHACHHANG.DanhBo and GhiChu=N'P. KH' order by CreateDate desc)"
-                        + " ,DTDHN=(select top 1 DienThoai from SDT_DHN where DanhBo=TB_DULIEUKHACHHANG.DanhBo and GhiChu=N'Đ. QLĐHN' order by CreateDate desc)"
-                        + " ,DTTV=(select top 1 DienThoai from SDT_DHN where DanhBo=TB_DULIEUKHACHHANG.DanhBo and GhiChu=N'P. TV' order by CreateDate desc)"
+                        //+ " ,DTKH=(select top 1 DienThoai from SDT_DHN where DanhBo=TB_DULIEUKHACHHANG.DanhBo and GhiChu=N'P. KH' order by CreateDate desc)"
+                        //+ " ,DTDHN=(select top 1 DienThoai from SDT_DHN where DanhBo=TB_DULIEUKHACHHANG.DanhBo and GhiChu=N'Đ. QLĐHN' order by CreateDate desc)"
+                        //+ " ,DTTV=(select top 1 DienThoai from SDT_DHN where DanhBo=TB_DULIEUKHACHHANG.DanhBo and GhiChu=N'P. TV' order by CreateDate desc)"
                         + " from TB_DULIEUKHACHHANG where DanhBo='" + DanhBo + "' and SUBSTRING(LOTRINH,3,2)>=(select TuMay from DocSoTH.dbo.[To] where MaTo=" + MaTo + ") and SUBSTRING(LOTRINH,3,2)<=(select DenMay from DocSoTH.dbo.[To] where MaTo=" + MaTo + ") order by LOTRINH";
             return _cDAL.ExecuteQuery_DataTable(sql);
         }

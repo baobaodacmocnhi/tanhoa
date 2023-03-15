@@ -228,6 +228,7 @@
             this.ButPhe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Loai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnCopyToPhieuChuyen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -1707,7 +1708,7 @@
             // 
             this.btnChuyenDonToMaHoa.Location = new System.Drawing.Point(727, 234);
             this.btnChuyenDonToMaHoa.Name = "btnChuyenDonToMaHoa";
-            this.btnChuyenDonToMaHoa.Size = new System.Drawing.Size(95, 36);
+            this.btnChuyenDonToMaHoa.Size = new System.Drawing.Size(75, 36);
             this.btnChuyenDonToMaHoa.TabIndex = 102;
             this.btnChuyenDonToMaHoa.Text = "Chuyển Đơn Tổ Mã Hóa";
             this.btnChuyenDonToMaHoa.UseVisualStyleBackColor = true;
@@ -2016,12 +2017,23 @@
             this.Loai.Name = "Loai";
             this.Loai.Visible = false;
             // 
+            // btnCopyToPhieuChuyen
+            // 
+            this.btnCopyToPhieuChuyen.Location = new System.Drawing.Point(909, 271);
+            this.btnCopyToPhieuChuyen.Name = "btnCopyToPhieuChuyen";
+            this.btnCopyToPhieuChuyen.Size = new System.Drawing.Size(85, 36);
+            this.btnCopyToPhieuChuyen.TabIndex = 119;
+            this.btnCopyToPhieuChuyen.Text = "Copy To Phiếu Chuyển";
+            this.btnCopyToPhieuChuyen.UseVisualStyleBackColor = true;
+            this.btnCopyToPhieuChuyen.Click += new System.EventHandler(this.btnCopyToPhieuChuyen_Click);
+            // 
             // frmXuLySoLieu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1362, 637);
+            this.Controls.Add(this.btnCopyToPhieuChuyen);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.label41);
             this.Controls.Add(this.label40);
@@ -2301,5 +2313,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ButPhe;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoLuong;
         private System.Windows.Forms.DataGridViewTextBoxColumn Loai;
+        private System.Windows.Forms.Button btnCopyToPhieuChuyen;
     }
 }
