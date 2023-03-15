@@ -362,6 +362,50 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
             return LINQToDataTable(query);
         }
 
+        public DataTable getDS_ChiTiet_VeViec(string VeViec, DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            var query = from item in db.ToTrinh_ChiTiets
+                        where FromCreateDate.Date <= item.CreateDate.Value.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.VeViec.Contains(VeViec)
+                        select new
+                        {
+                            MaDon = item.ToTrinh.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.ToTrinh.MaDonMoi).Count() == 1 ? item.ToTrinh.MaDonMoi.Value.ToString() : item.ToTrinh.MaDonMoi + "." + item.STT
+                                    : item.ToTrinh.MaDon != null ? "TKH" + item.ToTrinh.MaDon
+                                    : item.ToTrinh.MaDonTXL != null ? "TXL" + item.ToTrinh.MaDonTXL
+                                    : item.ToTrinh.MaDonTBC != null ? "TBC" + item.ToTrinh.MaDonTBC : null,
+                            item.IDCT,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.VeViec,
+                            item.NoiDung,
+                            item.SoPhieuTong,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable getDS_ChiTiet_VeViec( DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            var query = from item in db.ToTrinh_ChiTiets
+                        where FromCreateDate.Date <= item.CreateDate.Value.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
+                        select new
+                        {
+                            MaDon = item.ToTrinh.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.ToTrinh.MaDonMoi).Count() == 1 ? item.ToTrinh.MaDonMoi.Value.ToString() : item.ToTrinh.MaDonMoi + "." + item.STT
+                                    : item.ToTrinh.MaDon != null ? "TKH" + item.ToTrinh.MaDon
+                                    : item.ToTrinh.MaDonTXL != null ? "TXL" + item.ToTrinh.MaDonTXL
+                                    : item.ToTrinh.MaDonTBC != null ? "TBC" + item.ToTrinh.MaDonTBC : null,
+                            item.IDCT,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.VeViec,
+                            item.NoiDung,
+                            item.SoPhieuTong,
+                        };
+            return LINQToDataTable(query);
+        }
+
         public DataTable getDS_ChiTiet(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             var query = from item in db.ToTrinh_ChiTiets
@@ -430,6 +474,11 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
         public List<ToTrinh_ChiTiet> getDS_ChiTiet_SoPhieuTong(int SoPhieuTong)
         {
             return db.ToTrinh_ChiTiets.Where(item => item.SoPhieuTong == SoPhieuTong).ToList();
+        }
+
+        public DataTable getGroup_VeViec(DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            return ExecuteQuery_DataTable("select VeViec from ToTrinh_ChiTiet where cast(createdate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and cast(createdate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' group by VeViec");
         }
 
         #endregion

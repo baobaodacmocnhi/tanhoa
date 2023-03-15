@@ -206,7 +206,9 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                                     MaDon = "TKH" + item.ThuTraLoi.MaDon,
                                     item.MaCTTTTL,
                                     item.CreateDate,
-                                    item.DanhBo,item.HoTen,item.DiaChi,
+                                    item.DanhBo,
+                                    item.HoTen,
+                                    item.DiaChi,
                                     item.VeViec,
                                     item.NoiDung,
                                     item.NoiNhan,
@@ -221,7 +223,9 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                                 MaDon = "TXL" + item.ThuTraLoi.MaDonTBC,
                                 item.MaCTTTTL,
                                 item.CreateDate,
-                                item.DanhBo,item.HoTen,item.DiaChi,
+                                item.DanhBo,
+                                item.HoTen,
+                                item.DiaChi,
                                 item.VeViec,
                                 item.NoiDung,
                                 item.NoiNhan,
@@ -236,7 +240,9 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                                 MaDon = "TBC" + item.ThuTraLoi.MaDonTBC,
                                 item.MaCTTTTL,
                                 item.CreateDate,
-                                item.DanhBo,item.HoTen,item.DiaChi,
+                                item.DanhBo,
+                                item.HoTen,
+                                item.DiaChi,
                                 item.VeViec,
                                 item.NoiDung,
                                 item.NoiNhan,
@@ -248,10 +254,12 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                             where item.ThuTraLoi.MaDonMoi == MaDon
                             select new
                             {
-                                MaDon =  item.ThuTraLoi.MaDonMoi.Value.ToString(),
+                                MaDon = item.ThuTraLoi.MaDonMoi.Value.ToString(),
                                 item.MaCTTTTL,
                                 item.CreateDate,
-                                item.DanhBo,item.HoTen,item.DiaChi,
+                                item.DanhBo,
+                                item.HoTen,
+                                item.DiaChi,
                                 item.VeViec,
                                 item.NoiDung,
                                 item.NoiNhan,
@@ -274,7 +282,9 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                             item.MaCTTTTL,
                             ID = item.MaCTTTTL,
                             item.CreateDate,
-                            item.DanhBo,item.HoTen,item.DiaChi,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
                             item.VeViec,
                             item.NoiDung,
                             item.NoiNhan,
@@ -298,7 +308,9 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                                 : item.ThuTraLoi.MaDonTBC != null ? "TBC" + item.ThuTraLoi.MaDonTBC : null,
                             item.MaCTTTTL,
                             item.CreateDate,
-                            item.DanhBo,item.HoTen,item.DiaChi,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
                             item.VeViec,
                             item.NoiDung,
                             item.NoiNhan,
@@ -319,7 +331,9 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                                 : item.ThuTraLoi.MaDonTBC != null ? "TBC" + item.ThuTraLoi.MaDonTBC : null,
                             item.MaCTTTTL,
                             item.CreateDate,
-                            item.DanhBo,item.HoTen,item.DiaChi,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
                             item.VeViec,
                             item.NoiDung,
                             item.NoiNhan,
@@ -341,7 +355,9 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
                             item.MaCTTTTL,
                             ID = item.MaCTTTTL,
                             item.CreateDate,
-                            item.DanhBo,item.HoTen,item.DiaChi,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
                             item.VeViec,
                             item.NoiDung,
                             item.NoiNhan,
@@ -368,23 +384,70 @@ namespace KTKS_DonKH.DAL.ThuTraLoi
             return LINQToDataTable(query);
         }
 
+        public DataTable getDS_ChiTiet_VeViec(string VeViec, DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            var query = from item in db.ThuTraLoi_ChiTiets
+                        where FromCreateDate.Date <= item.CreateDate.Value.Date && item.CreateDate.Value.Date <= ToCreateDate.Date && item.VeViec.Contains(VeViec)
+                        select new
+                        {
+                            MaDon = item.ThuTraLoi.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.ThuTraLoi.MaDonMoi).Count() == 1 ? item.ThuTraLoi.MaDonMoi.Value.ToString() : item.ThuTraLoi.MaDonMoi + "." + item.STT
+                                    : item.ThuTraLoi.MaDon != null ? "TKH" + item.ThuTraLoi.MaDon
+                                    : item.ThuTraLoi.MaDonTXL != null ? "TXL" + item.ThuTraLoi.MaDonTXL
+                                    : item.ThuTraLoi.MaDonTBC != null ? "TBC" + item.ThuTraLoi.MaDonTBC : null,
+                            item.MaCTTTTL,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.VeViec,
+                            item.NoiDung,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable getDS_ChiTiet_VeViec( DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            var query = from item in db.ThuTraLoi_ChiTiets
+                        where FromCreateDate.Date <= item.CreateDate.Value.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
+                        select new
+                        {
+                            MaDon = item.ThuTraLoi.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.ThuTraLoi.MaDonMoi).Count() == 1 ? item.ThuTraLoi.MaDonMoi.Value.ToString() : item.ThuTraLoi.MaDonMoi + "." + item.STT
+                                    : item.ThuTraLoi.MaDon != null ? "TKH" + item.ThuTraLoi.MaDon
+                                    : item.ThuTraLoi.MaDonTXL != null ? "TXL" + item.ThuTraLoi.MaDonTXL
+                                    : item.ThuTraLoi.MaDonTBC != null ? "TBC" + item.ThuTraLoi.MaDonTBC : null,
+                            item.MaCTTTTL,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.VeViec,
+                            item.NoiDung,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable getGroup_VeViec(DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            return ExecuteQuery_DataTable("select VeViec from ThuTraLoi_ChiTiet where cast(createdate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and cast(createdate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' group by VeViec");
+        }
+
         #endregion
 
         //MaDonMoi
 
         public bool checkExist(int MaDon)
         {
-                    return db.ThuTraLois.Any(item => item.MaDonMoi == MaDon);
+            return db.ThuTraLois.Any(item => item.MaDonMoi == MaDon);
         }
 
         public bool checkExist_ChiTiet(int MaDon, string DanhBo, DateTime CreateDate)
         {
-                    return db.ThuTraLoi_ChiTiets.Any(item => item.ThuTraLoi.MaDonMoi == MaDon && item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date);
+            return db.ThuTraLoi_ChiTiets.Any(item => item.ThuTraLoi.MaDonMoi == MaDon && item.DanhBo == DanhBo && item.CreateDate.Value.Date == CreateDate.Date);
         }
 
         public LinQ.ThuTraLoi get(int MaDon)
         {
-                    return db.ThuTraLois.SingleOrDefault(item => item.MaDonMoi == MaDon);
+            return db.ThuTraLois.SingleOrDefault(item => item.MaDonMoi == MaDon);
         }
 
         #region Hình

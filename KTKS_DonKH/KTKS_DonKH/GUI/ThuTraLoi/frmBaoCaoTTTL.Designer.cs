@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnBaoCao_ToTrinh = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.cmbNoiDung_ToTrinh = new System.Windows.Forms.ComboBox();
             this.panel_KhoangThoiGian = new System.Windows.Forms.Panel();
@@ -36,7 +37,6 @@
             this.dateDen_ToTrinh = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnBaoCao_ToTrinh = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnBaoCao_TTTL = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -60,10 +60,20 @@
             this.groupBox1.Controls.Add(this.panel_KhoangThoiGian);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(467, 89);
+            this.groupBox1.Size = new System.Drawing.Size(565, 89);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tờ Trình";
+            // 
+            // btnBaoCao_ToTrinh
+            // 
+            this.btnBaoCao_ToTrinh.Location = new System.Drawing.Point(257, 56);
+            this.btnBaoCao_ToTrinh.Name = "btnBaoCao_ToTrinh";
+            this.btnBaoCao_ToTrinh.Size = new System.Drawing.Size(75, 25);
+            this.btnBaoCao_ToTrinh.TabIndex = 27;
+            this.btnBaoCao_ToTrinh.Text = "Báo Cáo";
+            this.btnBaoCao_ToTrinh.UseVisualStyleBackColor = true;
+            this.btnBaoCao_ToTrinh.Click += new System.EventHandler(this.btnBaoCao_ToTrinh_Click);
             // 
             // label5
             // 
@@ -85,7 +95,7 @@
             "Ngày"});
             this.cmbNoiDung_ToTrinh.Location = new System.Drawing.Point(257, 26);
             this.cmbNoiDung_ToTrinh.Name = "cmbNoiDung_ToTrinh";
-            this.cmbNoiDung_ToTrinh.Size = new System.Drawing.Size(200, 24);
+            this.cmbNoiDung_ToTrinh.Size = new System.Drawing.Size(300, 24);
             this.cmbNoiDung_ToTrinh.TabIndex = 26;
             // 
             // panel_KhoangThoiGian
@@ -116,6 +126,7 @@
             this.dateDen_ToTrinh.Name = "dateDen_ToTrinh";
             this.dateDen_ToTrinh.Size = new System.Drawing.Size(90, 22);
             this.dateDen_ToTrinh.TabIndex = 14;
+            this.dateDen_ToTrinh.ValueChanged += new System.EventHandler(this.dateDen_ToTrinh_ValueChanged);
             // 
             // label3
             // 
@@ -135,15 +146,6 @@
             this.label4.TabIndex = 16;
             this.label4.Text = "Đến Ngày:";
             // 
-            // btnBaoCao_ToTrinh
-            // 
-            this.btnBaoCao_ToTrinh.Location = new System.Drawing.Point(257, 56);
-            this.btnBaoCao_ToTrinh.Name = "btnBaoCao_ToTrinh";
-            this.btnBaoCao_ToTrinh.Size = new System.Drawing.Size(75, 25);
-            this.btnBaoCao_ToTrinh.TabIndex = 27;
-            this.btnBaoCao_ToTrinh.Text = "Báo Cáo";
-            this.btnBaoCao_ToTrinh.UseVisualStyleBackColor = true;
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btnBaoCao_TTTL);
@@ -152,7 +154,7 @@
             this.groupBox2.Controls.Add(this.panel1);
             this.groupBox2.Location = new System.Drawing.Point(12, 107);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(467, 89);
+            this.groupBox2.Size = new System.Drawing.Size(565, 89);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thư Trả Lời";
@@ -165,6 +167,7 @@
             this.btnBaoCao_TTTL.TabIndex = 27;
             this.btnBaoCao_TTTL.Text = "Báo Cáo";
             this.btnBaoCao_TTTL.UseVisualStyleBackColor = true;
+            this.btnBaoCao_TTTL.Click += new System.EventHandler(this.btnBaoCao_TTTL_Click);
             // 
             // label1
             // 
@@ -186,7 +189,7 @@
             "Ngày"});
             this.cmbNoiDung_TTTL.Location = new System.Drawing.Point(257, 26);
             this.cmbNoiDung_TTTL.Name = "cmbNoiDung_TTTL";
-            this.cmbNoiDung_TTTL.Size = new System.Drawing.Size(200, 24);
+            this.cmbNoiDung_TTTL.Size = new System.Drawing.Size(300, 24);
             this.cmbNoiDung_TTTL.TabIndex = 26;
             // 
             // panel1
@@ -217,6 +220,7 @@
             this.dateDen_TTTL.Name = "dateDen_TTTL";
             this.dateDen_TTTL.Size = new System.Drawing.Size(90, 22);
             this.dateDen_TTTL.TabIndex = 14;
+            this.dateDen_TTTL.ValueChanged += new System.EventHandler(this.dateDen_TTTL_ValueChanged);
             // 
             // label2
             // 

@@ -52,9 +52,12 @@
             this.label28 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.chkcmbNoiNhanKTXM = new DevExpress.XtraEditors.CheckedComboBoxEdit();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chkcmbNoiNhan.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuDonTu)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkcmbNoiNhanKTXM.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // txtMaDon
@@ -87,10 +90,11 @@
             this.chkcmbNoiNhan.Properties.SelectAllItemVisible = false;
             this.chkcmbNoiNhan.Size = new System.Drawing.Size(200, 22);
             this.chkcmbNoiNhan.TabIndex = 92;
+            this.chkcmbNoiNhan.EditValueChanged += new System.EventHandler(this.chkcmbNoiNhan_EditValueChanged);
             // 
             // btnCapNhat
             // 
-            this.btnCapNhat.Location = new System.Drawing.Point(717, 53);
+            this.btnCapNhat.Location = new System.Drawing.Point(873, 53);
             this.btnCapNhat.Name = "btnCapNhat";
             this.btnCapNhat.Size = new System.Drawing.Size(75, 25);
             this.btnCapNhat.TabIndex = 91;
@@ -100,7 +104,7 @@
             // 
             // txtNoiDung_LichSu
             // 
-            this.txtNoiDung_LichSu.Location = new System.Drawing.Point(561, 56);
+            this.txtNoiDung_LichSu.Location = new System.Drawing.Point(717, 56);
             this.txtNoiDung_LichSu.Name = "txtNoiDung_LichSu";
             this.txtNoiDung_LichSu.Size = new System.Drawing.Size(150, 22);
             this.txtNoiDung_LichSu.TabIndex = 90;
@@ -108,7 +112,7 @@
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(557, 37);
+            this.label34.Location = new System.Drawing.Point(713, 37);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(67, 16);
             this.label34.TabIndex = 89;
@@ -177,6 +181,7 @@
             this.dgvLichSuDonTu.ReadOnly = true;
             this.dgvLichSuDonTu.Size = new System.Drawing.Size(1070, 180);
             this.dgvLichSuDonTu.TabIndex = 93;
+            this.dgvLichSuDonTu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLichSuDonTu_CellClick);
             this.dgvLichSuDonTu.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvLichSuDonTu_CellMouseClick);
             this.dgvLichSuDonTu.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvLichSuDonTu_MouseClick);
             // 
@@ -239,7 +244,7 @@
             // chkHoanThanh
             // 
             this.chkHoanThanh.AutoSize = true;
-            this.chkHoanThanh.Location = new System.Drawing.Point(560, 14);
+            this.chkHoanThanh.Location = new System.Drawing.Point(972, 56);
             this.chkHoanThanh.Name = "chkHoanThanh";
             this.chkHoanThanh.Size = new System.Drawing.Size(101, 20);
             this.chkHoanThanh.TabIndex = 94;
@@ -261,15 +266,39 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.xóaToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(101, 26);
             // 
             // xóaToolStripMenuItem
             // 
             this.xóaToolStripMenuItem.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xóaToolStripMenuItem.Name = "xóaToolStripMenuItem";
-            this.xóaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.xóaToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.xóaToolStripMenuItem.Text = "Xóa";
             this.xóaToolStripMenuItem.Click += new System.EventHandler(this.xóaToolStripMenuItem_Click);
+            // 
+            // chkcmbNoiNhanKTXM
+            // 
+            this.chkcmbNoiNhanKTXM.Location = new System.Drawing.Point(561, 56);
+            this.chkcmbNoiNhanKTXM.Name = "chkcmbNoiNhanKTXM";
+            this.chkcmbNoiNhanKTXM.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.chkcmbNoiNhanKTXM.Properties.Appearance.Options.UseFont = true;
+            this.chkcmbNoiNhanKTXM.Properties.AppearanceDropDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkcmbNoiNhanKTXM.Properties.AppearanceDropDown.Options.UseFont = true;
+            this.chkcmbNoiNhanKTXM.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.chkcmbNoiNhanKTXM.Properties.PopupFormSize = new System.Drawing.Size(150, 250);
+            this.chkcmbNoiNhanKTXM.Properties.SelectAllItemVisible = false;
+            this.chkcmbNoiNhanKTXM.Size = new System.Drawing.Size(150, 22);
+            this.chkcmbNoiNhanKTXM.TabIndex = 97;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(560, 37);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(127, 16);
+            this.label1.TabIndex = 96;
+            this.label1.Text = "Nhân Viên Kiểm Tra";
             // 
             // frmCapNhatDonTu_Thumbnail
             // 
@@ -278,6 +307,8 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1076, 284);
+            this.Controls.Add(this.chkcmbNoiNhanKTXM);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.chkHoanThanh);
             this.Controls.Add(this.dgvLichSuDonTu);
@@ -301,6 +332,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkcmbNoiNhan.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuDonTu)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chkcmbNoiNhanKTXM.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -331,5 +363,7 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem xóaToolStripMenuItem;
+        private DevExpress.XtraEditors.CheckedComboBoxEdit chkcmbNoiNhanKTXM;
+        private System.Windows.Forms.Label label1;
     }
 }

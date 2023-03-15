@@ -491,7 +491,6 @@ namespace KTKS_DonKH.GUI.DonTu
                                             //đi KTXM
                                             if (chkcmbNoiNhan.Properties.Items[i].Value.ToString() == "5")
                                             {
-
                                                 for (int j = 0; j < chkcmbNoiNhanKTXM.Properties.Items.Count; j++)
                                                     if (chkcmbNoiNhanKTXM.Properties.Items[j].CheckState == CheckState.Checked)
                                                     {
@@ -891,7 +890,6 @@ namespace KTKS_DonKH.GUI.DonTu
                 if (chkcmbNoiNhan.Properties.Items[i].CheckState == CheckState.Checked && chkcmbNoiNhan.Properties.Items[i].Value.ToString() == "5")
                 {
                     DataTable dt = new DataTable();
-
                     dt = _cTaiKhoan.getDS_KTXM(CTaiKhoan.KyHieuMaTo);
                     chkcmbNoiNhanKTXM.Properties.DataSource = dt;
                     chkcmbNoiNhanKTXM.Properties.ValueMember = "MaU";
@@ -906,7 +904,7 @@ namespace KTKS_DonKH.GUI.DonTu
                 _dontu_LichSu = _cDonTu.get_LichSu(int.Parse(dgvLichSuDonTu.CurrentRow.Cells["ID"].Value.ToString()));
                 FillLichSu(_dontu_LichSu);
             }
-            catch (Exception)
+            catch 
             {
 
             }

@@ -39,6 +39,7 @@ namespace KTKS_DonKH.GUI.CongVan
         CTTTL _cTTTL = new CTTTL();
         CThuTien _cThuTien = new CThuTien();
         CDHN _cDocSo = new CDHN();
+        CNoiChuyen _cNoiChuyen = new CNoiChuyen();
 
         public frmCongVanDi()
         {
@@ -60,6 +61,9 @@ namespace KTKS_DonKH.GUI.CongVan
             }
             txtNoiDung.AutoCompleteCustomSource = auto1;
 
+            cmbNoiChuyen.DataSource = _cNoiChuyen.GetDS("DonTuChuyen");
+            cmbNoiChuyen.ValueMember = "ID";
+            cmbNoiChuyen.DisplayMember = "Name";
         }
 
         public string GetTenTable()
@@ -774,6 +778,33 @@ namespace KTKS_DonKH.GUI.CongVan
 
             //Điền dữ liệu vào vùng đã thiết lập
             range.Value2 = arr;
+        }
+
+        private void btnIn_Moi_Click(object sender, EventArgs e)
+        {
+            DataSetBaoCao dsBaoCao = new DataSetBaoCao();
+            DataTable dt = _cDonTu.getDS_LichSu_CVD(dateTu_Moi.Value, dateDen_Moi.Value, cmbNoiChuyen_Moi.SelectedValue.ToString());
+            foreach (DataRow item in dt.Rows)
+            {
+                DataRow dr = dsBaoCao.Tables["CongVan"].NewRow();
+                dr["TuNgay"] = dateTu_Moi.Value.ToString("dd/MM/yyyy");
+                dr["DenNgay"] = dateDen_Moi.Value.ToString("dd/MM/yyyy");
+                dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
+                dr["LoaiVanBan"] = item.Cells["LoaiVanBan"].Value.ToString();
+                //if (item.Cells["Ma"].Value.ToString().Length > 2)
+                dr["Ma"] = item.Cells["Ma"].Value.ToString();
+                dr["CreateDate"] = item["NgayChuyen"].ToString();
+                if (item.Cells["DanhBo"].Value.ToString().Length == 11)
+                    dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(7, " ").Insert(4, " ");
+                dr["DiaChi"] = item.Cells["DiaChi"].Value.ToString();
+                dr["NoiChuyen"] = item["NoiNhan"].ToString();
+                dr["NoiDung"] = item.Cells["NoiDung"].Value.ToString();
+                dsBaoCao.Tables["CongVan"].Rows.Add(dr);
+            }
+            rptDSCongVan rpt = new rptDSCongVan();
+            rpt.SetDataSource(dsBaoCao);
+            frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.ShowDialog();
         }
 
 
