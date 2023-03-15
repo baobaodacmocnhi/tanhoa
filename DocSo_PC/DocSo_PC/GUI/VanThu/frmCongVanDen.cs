@@ -106,21 +106,7 @@ namespace DocSo_PC.GUI.VanThu
         {
             if (chkAuto.Checked)
             {
-                //switch (cmbLoaiVanBan.SelectedItem.ToString())
-                //{
-                //    case "Biên Bản Kiểm Tra":
-                //        dgvDanhSach.DataSource = _cThuongVu.getDS_KTXM(dontu_ChiTiet.MaDon.Value, dontu_ChiTiet.STT.Value);
-                //        break;
-                //    case "TB Cắt Tạm/Cắt Hủy":
-                //        dgvDanhSach.DataSource = _cThuongVu.getDS_CHDB(txtMaDon.Text.Trim().Replace(" ", "").Replace("-", ""));
-                //        break;
-                //    case "Tờ Trình":
-                //        dgvDanhSach.DataSource = _cThuongVu.getDS_ToTrinh(txtMaDon.Text.Trim().Replace(" ", "").Replace("-", ""));
-                //        break;
-                //    default:
-                //        break;
-                //}
-
+                dgvDanhSach.DataSource = _cCVD.getDS(dateTu.Value, dateDen.Value);
             }
             else
             {

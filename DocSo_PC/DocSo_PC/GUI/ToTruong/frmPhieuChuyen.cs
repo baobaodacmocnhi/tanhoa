@@ -689,6 +689,8 @@ namespace DocSo_PC.GUI.ToTruong
                                     pc.SoPhieu_Ngay = null;
                                     _cPhieuChuyen.SubmitChanges();
                                 }
+                        btnXem.PerformClick();
+                        MessageBox.Show("Đã xử lý", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 else

@@ -562,7 +562,7 @@
             // chkAuto
             // 
             this.chkAuto.AutoSize = true;
-            this.chkAuto.Location = new System.Drawing.Point(249, 10);
+            this.chkAuto.Location = new System.Drawing.Point(527, 36);
             this.chkAuto.Name = "chkAuto";
             this.chkAuto.Size = new System.Drawing.Size(118, 17);
             this.chkAuto.TabIndex = 67;

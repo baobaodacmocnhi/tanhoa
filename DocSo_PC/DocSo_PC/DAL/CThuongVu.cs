@@ -137,6 +137,11 @@ namespace DocSo_PC.DAL
               + " from ToTrinh tt,ToTrinh_ChiTiet ct where tt.ID=ct.ID and ct.DanhBo='" + DanhBo + "')t1");
         }
 
+        public DataTable getDS_CongVanDi_QLDHN(DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            return _cDAL.ExecuteQuery_DataTable("");
+        }
+
         public object getHinh(string TableName,int IDCT)
         {
             string TableNameHinh, IDName;

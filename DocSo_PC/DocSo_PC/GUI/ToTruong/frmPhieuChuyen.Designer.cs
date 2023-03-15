@@ -554,7 +554,7 @@
             // 
             // btnXoaPhieu
             // 
-            this.btnXoaPhieu.Location = new System.Drawing.Point(634, 4);
+            this.btnXoaPhieu.Location = new System.Drawing.Point(634, 3);
             this.btnXoaPhieu.Name = "btnXoaPhieu";
             this.btnXoaPhieu.Size = new System.Drawing.Size(75, 23);
             this.btnXoaPhieu.TabIndex = 136;
