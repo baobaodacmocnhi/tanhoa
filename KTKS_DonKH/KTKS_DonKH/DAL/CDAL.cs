@@ -285,12 +285,12 @@ namespace KTKS_DonKH.DAL
             return dtReturn;
         }
 
-        string pathHinhTV = @"\\rackstation\HinhDHN\ThuongVu";
-        public void LoadFileView(string Folder, string ID, string FileName)
+        public void viewPDF(byte[] pData)
         {
             try
             {
-                System.Diagnostics.Process.Start(pathHinhTV + @"\" + Folder + @"\" + ID + @"\" + FileName);
+                File.WriteAllBytes(@"D:\temp.pdf", pData);
+                System.Diagnostics.Process.Start(@"D:\temp.pdf");
             }
             catch (Exception ex)
             {
@@ -298,7 +298,7 @@ namespace KTKS_DonKH.DAL
             }
         }
 
-        public void LoadImageView(byte[] pData)
+        public void viewImage(byte[] pData)
         {
             try
             {

@@ -137,7 +137,6 @@ namespace KTKS_DonKH.GUI.HeThong
 
         private void button1_Click(object sender, EventArgs e)
         {
-
             wsThuongVu ws = new wsThuongVu();
             DataTable dt = _cMenu.ExecuteQuery_DataTable("select * from ChungTu_ChiTiet where len(MaCT)=12 and malct=15 and Cat=0 and mact not in(select CCCD from CCCD_Temp)");
             foreach (DataRow item in dt.Rows)
@@ -147,16 +146,12 @@ namespace KTKS_DonKH.GUI.HeThong
                     string result = "";
                     ws.them_CCCD(item["DanhBo"].ToString(), item["MaCT"].ToString(), out result);
                     _cMenu.ExecuteNonQuery("insert into CCCD_Temp(CCCD,Result,ModifyDate)values('" + item["MaCT"].ToString() + "',N'" + result + "',getdate())");
-
                 }
                 catch (Exception ex)
                 {
                     //MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
-
-
         }
 
         private void button2_Click(object sender, EventArgs e)

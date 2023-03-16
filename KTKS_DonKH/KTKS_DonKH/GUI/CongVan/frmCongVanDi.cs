@@ -22,6 +22,9 @@ using KTKS_DonKH.DAL;
 using KTKS_DonKH.DAL.ToBamChi;
 using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.DAL.DonTu;
+using KTKS_DonKH.DAL.TruyThu;
+using KTKS_DonKH.DAL.VanBan;
+using KTKS_DonKH.DAL.ThuMoi;
 
 namespace KTKS_DonKH.GUI.CongVan
 {
@@ -37,6 +40,11 @@ namespace KTKS_DonKH.GUI.CongVan
         CDCBD _cDCBD = new CDCBD();
         CCHDB _cCHDB = new CCHDB();
         CTTTL _cTTTL = new CTTTL();
+        CGianLan _cGL = new CGianLan();
+        CTruyThuTienNuoc _cTTTN = new CTruyThuTienNuoc();
+        CVanBan _cVanBan = new CVanBan();
+        CThuMoi _cThuMoi = new CThuMoi();
+        CToTrinh _cToTrinh = new CToTrinh();
         CThuTien _cThuTien = new CThuTien();
         CDHN _cDocSo = new CDHN();
         CNoiChuyen _cNoiChuyen = new CNoiChuyen();
@@ -64,6 +72,10 @@ namespace KTKS_DonKH.GUI.CongVan
             cmbNoiChuyen.DataSource = _cNoiChuyen.GetDS("DonTuChuyen");
             cmbNoiChuyen.ValueMember = "ID";
             cmbNoiChuyen.DisplayMember = "Name";
+
+            cmbNoiChuyen_Moi.DataSource = _cNoiChuyen.GetDS("DonTuChuyen");
+            cmbNoiChuyen_Moi.ValueMember = "ID";
+            cmbNoiChuyen_Moi.DisplayMember = "Name";
         }
 
         public string GetTenTable()
@@ -790,15 +802,143 @@ namespace KTKS_DonKH.GUI.CongVan
                 dr["TuNgay"] = dateTu_Moi.Value.ToString("dd/MM/yyyy");
                 dr["DenNgay"] = dateDen_Moi.Value.ToString("dd/MM/yyyy");
                 dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
-                dr["LoaiVanBan"] = item.Cells["LoaiVanBan"].Value.ToString();
-                //if (item.Cells["Ma"].Value.ToString().Length > 2)
-                dr["Ma"] = item.Cells["Ma"].Value.ToString();
+                switch (item["TableName"].ToString())
+                {
+                    case "BamChi_ChiTiet":
+                        dr["LoaiVanBan"] = _cBamChi.ExecuteQuery_ReturnOneValue("select [Name] from TableHinh where TableName='" + item["TableName"].ToString() + "'").ToString();
+                        BamChi_ChiTiet enBC = _cBamChi.GetCT(decimal.Parse(item["IDCT"].ToString()));
+                        if (enBC != null)
+                        {
+                            dr["DanhBo"] = enBC.DanhBo.Insert(7, " ").Insert(4, " ");
+                            dr["DiaChi"] = enBC.DiaChi;
+                            dr["NoiDung"] = enBC.TrangThaiBC;
+                        }
+                        break;
+                    case "CHDB_ChiTietCatHuy":
+                        dr["LoaiVanBan"] = _cBamChi.ExecuteQuery_ReturnOneValue("select [Name] from TableHinh where TableName='" + item["TableName"].ToString() + "'").ToString();
+                        CHDB_ChiTietCatHuy enCH = _cCHDB.GetCTCHDB(decimal.Parse(item["IDCT"].ToString()));
+                        if (enCH != null)
+                        {
+                            dr["DanhBo"] = enCH.DanhBo.Insert(7, " ").Insert(4, " ");
+                            dr["DiaChi"] = enCH.DiaChi;
+                            dr["NoiDung"] = enCH.LyDo;
+                        }
+                        break;
+                    case "CHDB_ChiTietCatTam":
+                        dr["LoaiVanBan"] = _cBamChi.ExecuteQuery_ReturnOneValue("select [Name] from TableHinh where TableName='" + item["TableName"].ToString() + "'").ToString();
+                        CHDB_ChiTietCatTam enCT = _cCHDB.GetCTCTDB(decimal.Parse(item["IDCT"].ToString()));
+                        if (enCT != null)
+                        {
+                            dr["DanhBo"] = enCT.DanhBo.Insert(7, " ").Insert(4, " ");
+                            dr["DiaChi"] = enCT.DiaChi;
+                            dr["NoiDung"] = enCT.LyDo;
+                        }
+                        break;
+                    case "CHDB_Phieu":
+                        dr["LoaiVanBan"] = _cBamChi.ExecuteQuery_ReturnOneValue("select [Name] from TableHinh where TableName='" + item["TableName"].ToString() + "'").ToString();
+                        CHDB_Phieu enP = _cCHDB.GetPhieuHuy(decimal.Parse(item["IDCT"].ToString()));
+                        if (enP != null)
+                        {
+                            dr["DanhBo"] = enP.DanhBo.Insert(7, " ").Insert(4, " ");
+                            dr["DiaChi"] = enP.DiaChi;
+                            dr["NoiDung"] = enP.LyDo;
+                        }
+                        break;
+                    case "DCBD_ChiTietBienDong":
+                        dr["LoaiVanBan"] = _cBamChi.ExecuteQuery_ReturnOneValue("select [Name] from TableHinh where TableName='" + item["TableName"].ToString() + "'").ToString();
+                        DCBD_ChiTietBienDong enBD = _cDCBD.getBienDong(decimal.Parse(item["IDCT"].ToString()));
+                        if (enBD != null)
+                        {
+                            dr["DanhBo"] = enBD.DanhBo.Insert(7, " ").Insert(4, " ");
+                            dr["DiaChi"] = enBD.DiaChi;
+                            dr["NoiDung"] = enBD.ThongTin;
+                        }
+                        break;
+                    case "DCBD_ChiTietHoaDon":
+                        dr["LoaiVanBan"] = _cBamChi.ExecuteQuery_ReturnOneValue("select [Name] from TableHinh where TableName='" + item["TableName"].ToString() + "'").ToString();
+                        DCBD_ChiTietHoaDon enHD = _cDCBD.getHoaDon(decimal.Parse(item["IDCT"].ToString()));
+                        if (enHD != null)
+                        {
+                            dr["DanhBo"] = enHD.DanhBo.Insert(7, " ").Insert(4, " ");
+                            dr["DiaChi"] = enHD.DiaChi;
+                            dr["NoiDung"] = enHD.KyHD;
+                        }
+                        break;
+                    case "GianLan_ChiTiet":
+                        dr["LoaiVanBan"] = _cBamChi.ExecuteQuery_ReturnOneValue("select [Name] from TableHinh where TableName='" + item["TableName"].ToString() + "'").ToString();
+                        GianLan_ChiTiet enGL = _cGL.get_ChiTiet(int.Parse(item["IDCT"].ToString()));
+                        if (enGL != null)
+                        {
+                            dr["DanhBo"] = enGL.DanhBo.Insert(7, " ").Insert(4, " ");
+                            dr["DiaChi"] = enGL.DiaChi;
+                            dr["NoiDung"] = enGL.NoiDungViPham;
+                        }
+                        break;
+                    case "KTXM_ChiTiet":
+                        dr["LoaiVanBan"] = _cBamChi.ExecuteQuery_ReturnOneValue("select [Name] from TableHinh where TableName='" + item["TableName"].ToString() + "'").ToString();
+                        KTXM_ChiTiet enKTXM = _cKTXM.GetCT(decimal.Parse(item["IDCT"].ToString()));
+                        if (enKTXM != null)
+                        {
+                            dr["DanhBo"] = enKTXM.DanhBo.Insert(7, " ").Insert(4, " ");
+                            dr["DiaChi"] = enKTXM.DiaChi;
+                            dr["NoiDung"] = enKTXM.HienTrangKiemTra;
+                        }
+                        break;
+                    case "ThuMoi_ChiTiet":
+                        dr["LoaiVanBan"] = _cBamChi.ExecuteQuery_ReturnOneValue("select [Name] from TableHinh where TableName='" + item["TableName"].ToString() + "'").ToString();
+                        ThuMoi_ChiTiet enTM = _cThuMoi.get_ChiTiet(int.Parse(item["IDCT"].ToString()));
+                        if (enTM != null)
+                        {
+                            dr["DanhBo"] = enTM.DanhBo.Insert(7, " ").Insert(4, " ");
+                            dr["DiaChi"] = enTM.DiaChi;
+                            dr["NoiDung"] = enTM.VeViec;
+                        }
+                        break;
+                    case "ThuTraLoi_ChiTiet":
+                        dr["LoaiVanBan"] = _cBamChi.ExecuteQuery_ReturnOneValue("select [Name] from TableHinh where TableName='" + item["TableName"].ToString() + "'").ToString();
+                        ThuTraLoi_ChiTiet enTTL = _cTTTL.GetCT(decimal.Parse(item["IDCT"].ToString()));
+                        if (enTTL != null)
+                        {
+                            dr["DanhBo"] = enTTL.DanhBo.Insert(7, " ").Insert(4, " ");
+                            dr["DiaChi"] = enTTL.DiaChi;
+                            dr["NoiDung"] = enTTL.VeViec;
+                        }
+                        break;
+                    case "ToTrinh_ChiTiet":
+                        dr["LoaiVanBan"] = _cBamChi.ExecuteQuery_ReturnOneValue("select [Name] from TableHinh where TableName='" + item["TableName"].ToString() + "'").ToString();
+                        ToTrinh_ChiTiet enTT = _cToTrinh.get_ChiTiet(int.Parse(item["IDCT"].ToString()));
+                        if (enTT != null)
+                        {
+                            dr["DanhBo"] = enTT.DanhBo.Insert(7, " ").Insert(4, " ");
+                            dr["DiaChi"] = enTT.DiaChi;
+                            dr["NoiDung"] = enTT.VeViec;
+                        }
+                        break;
+                    case "TruyThuTienNuoc_ChiTiet":
+                        dr["LoaiVanBan"] = _cBamChi.ExecuteQuery_ReturnOneValue("select [Name] from TableHinh where TableName='" + item["TableName"].ToString() + "'").ToString();
+                        TruyThuTienNuoc_ChiTiet enTTTN = _cTTTN.get_ChiTiet(decimal.Parse(item["IDCT"].ToString()));
+                        if (enTTTN != null)
+                        {
+                            dr["DanhBo"] = enTTTN.DanhBo.Insert(7, " ").Insert(4, " ");
+                            dr["DiaChi"] = enTTTN.DiaChi;
+                            dr["NoiDung"] = enTTTN.NoiDung;
+                        }
+                        break;
+                    case "VanBan_ChiTiet":
+                        dr["LoaiVanBan"] = _cBamChi.ExecuteQuery_ReturnOneValue("select [Name] from TableHinh where TableName='" + item["TableName"].ToString() + "'").ToString();
+                        VanBan_ChiTiet enVB = _cVanBan.get_ChiTiet(int.Parse(item["IDCT"].ToString()));
+                        if (enVB != null)
+                        {
+                            dr["DanhBo"] = enVB.DanhBo.Insert(7, " ").Insert(4, " ");
+                            dr["DiaChi"] = enVB.DiaChi;
+                            dr["NoiDung"] = enVB.VeViec;
+                        }
+                        break;
+                }
+                dr["Ma"] = item["IDCT"].ToString();
                 dr["CreateDate"] = item["NgayChuyen"].ToString();
-                if (item.Cells["DanhBo"].Value.ToString().Length == 11)
-                    dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(7, " ").Insert(4, " ");
-                dr["DiaChi"] = item.Cells["DiaChi"].Value.ToString();
                 dr["NoiChuyen"] = item["NoiNhan"].ToString();
-                dr["NoiDung"] = item.Cells["NoiDung"].Value.ToString();
+
                 dsBaoCao.Tables["CongVan"].Rows.Add(dr);
             }
             rptDSCongVan rpt = new rptDSCongVan();

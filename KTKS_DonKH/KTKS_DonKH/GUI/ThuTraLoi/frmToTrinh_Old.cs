@@ -864,7 +864,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
 
         private void dgvHinh_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            _cTT.LoadImageView(Convert.FromBase64String(dgvHinh.CurrentRow.Cells["Bytes_Hinh"].Value.ToString()));
+            _cTT.viewImage(Convert.FromBase64String(dgvHinh.CurrentRow.Cells["Bytes_Hinh"].Value.ToString()));
         }
 
         private void xoaFile_dgvHinh_Click(object sender, EventArgs e)

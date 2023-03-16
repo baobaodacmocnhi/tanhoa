@@ -1045,18 +1045,14 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
 
         private void dgvHinh_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString().ToLower().Contains("pdf"))
-            {
-                _cTT.LoadFileView("ToTrinh_ChiTiet_Hinh", _cttt.IDCT.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
-            }
-            else
-            {
-                byte[] hinh = _wsThuongVu.get_Hinh("ToTrinh_ChiTiet_Hinh", _cttt.IDCT.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
-                if (hinh != null)
-                    _cTT.LoadImageView(hinh);
+            byte[] file = _wsThuongVu.get_Hinh("ToTrinh_ChiTiet_Hinh", _cttt.IDCT.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
+            if (file != null)
+                if (dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString().ToLower().Contains("pdf"))
+                    _cTT.viewPDF(file);
                 else
-                    MessageBox.Show("File không tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                    _cTT.viewImage(file);
+            else
+                MessageBox.Show("File không tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void xoaFile_dgvHinh_Click(object sender, EventArgs e)

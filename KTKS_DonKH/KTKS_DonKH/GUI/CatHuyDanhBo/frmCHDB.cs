@@ -1558,18 +1558,14 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
 
         private void dgvHinh_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString().ToLower().Contains("pdf"))
-            {
-                _cCHDB.LoadFileView("CHDB_ChiTietCatHuy_Hinh", _ctchdb.MaCTCHDB.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
-            }
-            else
-            {
-                byte[] hinh = _wsThuongVu.get_Hinh("CHDB_ChiTietCatHuy_Hinh", _ctchdb.MaCTCHDB.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
-                if (hinh != null)
-                    _cCHDB.LoadImageView(hinh);
+            byte[] file = _wsThuongVu.get_Hinh("CHDB_ChiTietCatHuy_Hinh", _ctchdb.MaCTCHDB.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
+            if (file != null)
+                if (dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString().ToLower().Contains("pdf"))
+                    _cCHDB.viewPDF(file);
                 else
-                    MessageBox.Show("File không tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                    _cCHDB.viewImage(file);
+            else
+                MessageBox.Show("File không tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void xoaFile_dgvHinh_Click(object sender, EventArgs e)

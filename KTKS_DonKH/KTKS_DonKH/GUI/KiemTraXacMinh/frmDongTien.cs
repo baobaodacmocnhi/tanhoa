@@ -357,7 +357,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
 
         private void dgvHinh_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            _cKTXM.LoadImageView(Convert.FromBase64String(dgvHinh.CurrentRow.Cells["Bytes_Hinh"].Value.ToString()));
+            _cKTXM.viewImage(Convert.FromBase64String(dgvHinh.CurrentRow.Cells["Bytes_Hinh"].Value.ToString()));
         }
     }
 }

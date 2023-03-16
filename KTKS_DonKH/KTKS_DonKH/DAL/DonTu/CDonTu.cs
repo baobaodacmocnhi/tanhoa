@@ -2610,7 +2610,7 @@ namespace KTKS_DonKH.DAL.DonTu
 
         public DataTable getDS_LichSu_CVD(DateTime FromNgayChuyen, DateTime ToNgayChuyen, string ID_NoiChuyen)
         {
-            return ExecuteQuery_DataTable("select * from DonTu_LichSu where CAST(NgayChuyen as date)>='" + FromNgayChuyen.ToString("yyyyMMdd") + "' and CAST(NgayChuyen as date)<='" + ToNgayChuyen.ToString("yyyyMMdd") + "' and ID_NoiChuyen=" + ID_NoiChuyen);
+            return ExecuteQuery_DataTable("select * from DonTu_LichSu where CAST(NgayChuyen as date)>='" + FromNgayChuyen.ToString("yyyyMMdd") + "' and CAST(NgayChuyen as date)<='" + ToNgayChuyen.ToString("yyyyMMdd") + "' and ID_NoiNhan is not null and ID_NoiChuyen=" + ID_NoiChuyen);
         }
 
     }
