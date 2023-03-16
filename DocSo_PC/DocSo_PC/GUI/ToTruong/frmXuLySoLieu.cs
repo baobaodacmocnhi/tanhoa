@@ -423,25 +423,25 @@ namespace DocSo_PC.GUI.ToTruong
         private void ptbKy0_MouseClick(object sender, MouseEventArgs e)
         {
             if (ptbKy0.Image != null)
-                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(ptbKy0.Image));
+                _cDocSo.viewImage(_cDocSo.imageToByteArray(ptbKy0.Image));
         }
 
         private void ptbKy1_MouseClick(object sender, MouseEventArgs e)
         {
             if (ptbKy1.Image != null)
-                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(ptbKy1.Image));
+                _cDocSo.viewImage(_cDocSo.imageToByteArray(ptbKy1.Image));
         }
 
         private void ptbKy2_MouseClick(object sender, MouseEventArgs e)
         {
             if (ptbKy2.Image != null)
-                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(ptbKy2.Image));
+                _cDocSo.viewImage(_cDocSo.imageToByteArray(ptbKy2.Image));
         }
 
         private void ptbKy3_MouseClick(object sender, MouseEventArgs e)
         {
             if (ptbKy3.Image != null)
-                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(ptbKy3.Image));
+                _cDocSo.viewImage(_cDocSo.imageToByteArray(ptbKy3.Image));
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -956,7 +956,7 @@ namespace DocSo_PC.GUI.ToTruong
             {
                 byte[] hinh = _wsDHN.get_Hinh_MaHoa("KTXM", dgvHinh.CurrentRow.Cells["ID_Hinh"].Value.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
                 if (hinh != null)
-                    _cKTXM.LoadImageView(hinh);
+                    _cKTXM.viewImage(hinh);
                 else
                     MessageBox.Show("Lỗi File", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

@@ -570,7 +570,7 @@ namespace DocSo_PC.GUI.MaHoa
                 if (dgvDCBD.Columns[e.ColumnIndex].Name == "XemHinh")
                 {
                     MaHoa_DonTu dontu = _cDonTu.get(int.Parse(dgvDCBD.Rows[e.RowIndex].Cells["IDMaDon_DS"].Value.ToString()));
-                    _cDonTu.LoadImageView(_cDonTu.imageToByteArray(_cDonTu.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("DonTu", dontu.ID.ToString(), dontu.MaHoa_DonTu_Hinhs.SingleOrDefault().Name + dontu.MaHoa_DonTu_Hinhs.SingleOrDefault().Loai))));
+                    _cDonTu.viewImage(_cDonTu.imageToByteArray(_cDonTu.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("DonTu", dontu.ID.ToString(), dontu.MaHoa_DonTu_Hinhs.SingleOrDefault().Name + dontu.MaHoa_DonTu_Hinhs.SingleOrDefault().Loai))));
                 }
             }
             catch { }
@@ -646,9 +646,12 @@ namespace DocSo_PC.GUI.MaHoa
 
         private void dgvHinh_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            byte[] hinh = _wsDHN.get_Hinh_MaHoa("DCBD", _dcbd.ID.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
-            if (hinh != null)
-                _cDCBD.LoadImageView(hinh);
+            byte[] file = _wsDHN.get_Hinh_MaHoa("DCBD", _dcbd.ID.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
+            if (file != null)
+                if (dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString().Contains("pdf"))
+                    _cDCBD.viewPDF(file);
+                else
+                    _cDCBD.viewImage(file);
             else
                 MessageBox.Show("Lỗi File", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }

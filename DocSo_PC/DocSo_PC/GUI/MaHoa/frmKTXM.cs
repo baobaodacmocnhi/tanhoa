@@ -670,19 +670,14 @@ namespace DocSo_PC.GUI.MaHoa
 
         private void dgvHinh_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (dgvHinh.CurrentRow.Cells["ID_Hinh"].Value != null && dgvHinh.CurrentRow.Cells["ID_Hinh"].Value.ToString() != "")
-            {
-                byte[] hinh = _wsDHN.get_Hinh_MaHoa("KTXM", _ctktxm.ID.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
-                if (hinh != null)
-                    _cKTXM.LoadImageView(hinh);
+            byte[] file = _wsDHN.get_Hinh_MaHoa("KTXM", _ctktxm.ID.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
+            if (file != null)
+                if (dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString().Contains("pdf"))
+                    _cKTXM.viewPDF(file);
                 else
-                    MessageBox.Show("Lỗi File", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                    _cKTXM.viewImage(file);
             else
-                if (dgvHinh.CurrentRow.Cells["Bytes_Hinh"].Value != null && dgvHinh.CurrentRow.Cells["Bytes_Hinh"].Value.ToString() != "")
-                    _cKTXM.LoadImageView(Convert.FromBase64String(dgvHinh.CurrentRow.Cells["Bytes_Hinh"].Value.ToString()));
-                else
-                    MessageBox.Show("Lỗi File", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi File", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void dgvHinh_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)

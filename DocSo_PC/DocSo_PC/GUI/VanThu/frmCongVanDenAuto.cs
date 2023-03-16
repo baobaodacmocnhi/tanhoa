@@ -68,17 +68,9 @@ namespace DocSo_PC.GUI.VanThu
                 //    _cCVD.LoadImageView((byte[])image);
                 //else
                 //    MessageBox.Show("Không có File", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                object image = null;
-                switch (dgvDanhSachChuaNhan.CurrentRow.Cells["TableName"].Value.ToString())
-                {
-                    case "KTXM_ChiTiet":
-                        image = _cThuongVu.getHinh(dgvDanhSachChuaNhan.CurrentRow.Cells["TableName"].Value.ToString(),int.Parse(dgvDanhSachChuaNhan.CurrentRow.Cells["IDCT"].Value.ToString()));
-                        break;
-                    case "ToTrinh_ChiTiet":
-                        image = _cThuongVu.getHinh(dgvDanhSachChuaNhan.CurrentRow.Cells["TableName"].Value.ToString(),int.Parse(dgvDanhSachChuaNhan.CurrentRow.Cells["IDCT"].Value.ToString()));
-                        break;
-                }
-                if (image != null)
+                string type = "";
+                object file = _cThuongVu.getFile(dgvDanhSachChuaNhan.CurrentRow.Cells["TableName"].Value.ToString(), int.Parse(dgvDanhSachChuaNhan.CurrentRow.Cells["IDCT"].Value.ToString()), out type);
+                if (file != null)
                 {
                     if (CNguoiDung.CheckQuyen(_mnu, "Them"))
                     {

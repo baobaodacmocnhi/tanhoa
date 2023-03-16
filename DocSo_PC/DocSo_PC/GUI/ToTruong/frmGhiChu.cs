@@ -39,6 +39,7 @@ namespace DocSo_PC.GUI.ToTruong
             dgvDienThoai.AutoGenerateColumns = false;
             dgvThongKe.AutoGenerateColumns = false;
             dgvPhieuChuyen.AutoGenerateColumns = false;
+            dgvGhiChu.AutoGenerateColumns = false;
             if (CNguoiDung.Admin)
                 btnChonFile.Visible = true;
             if (CNguoiDung.Doi)
@@ -166,6 +167,7 @@ namespace DocSo_PC.GUI.ToTruong
                 if (en.DauChungMayBom == true)
                     dateDauChungMayBom.Value = en.DauChungMayBom_Ngay.Value;
                 dgvPhieuChuyen.DataSource = _cPhieuChuyen.getDS(en.DANHBO);
+                dgvGhiChu.DataSource = _cDHN.getDS_GhiChu(en.DANHBO);
             }
         }
 
@@ -180,7 +182,11 @@ namespace DocSo_PC.GUI.ToTruong
             if (CNguoiDung.Doi == true)
             {
                 if (txtDanhBo.Text.Trim().Replace(" ", "").Replace("-", "") != "")
-                    dgvDanhSach.DataSource = _cDHN.getDS_GhiChu_DanhBo(txtDanhBo.Text.Trim().Replace(" ", "").Replace("-", ""));
+                {
+                    dgvDanhSach.DataSource = _cDHN.getDS_DienThoai_DanhBo(txtDanhBo.Text.Trim().Replace(" ", "").Replace("-", ""));
+                    _enDLKH = _cDHN.get(dgvDanhSach.Rows[0].Cells["DanhBo"].Value.ToString());
+                    loadthongtin(_enDLKH);
+                }
                 else
                     if (cmbMay.SelectedIndex == 0)
                     {
@@ -192,14 +198,14 @@ namespace DocSo_PC.GUI.ToTruong
                             {
                                 string displayValue = row["May"].ToString();
                                 if (displayValue != "Tất Cả")
-                                    dt.Merge(_cDHN.getDS_GhiChu(cmbDot.SelectedItem.ToString(), displayValue));
+                                    dt.Merge(_cDHN.getDS_DienThoai(cmbDot.SelectedItem.ToString(), displayValue));
                             }
                         }
                         dgvDanhSach.DataSource = dt;
                     }
                     else
                     {
-                        dgvDanhSach.DataSource = _cDHN.getDS_GhiChu(cmbDot.SelectedItem.ToString(), cmbMay.SelectedValue.ToString());
+                        dgvDanhSach.DataSource = _cDHN.getDS_DienThoai(cmbDot.SelectedItem.ToString(), cmbMay.SelectedValue.ToString());
                     }
                 if (cmbDot.SelectedIndex == 0)
                 {
@@ -215,7 +221,7 @@ namespace DocSo_PC.GUI.ToTruong
             else
             {
                 if (txtDanhBo.Text.Trim().Replace(" ", "").Replace("-", "") != "")
-                    dgvDanhSach.DataSource = _cDHN.getDS_GhiChu_DanhBo(CNguoiDung.MaTo.ToString(), txtDanhBo.Text.Trim().Replace(" ", "").Replace("-", ""));
+                    dgvDanhSach.DataSource = _cDHN.getDS_DienThoai_DanhBo(CNguoiDung.MaTo.ToString(), txtDanhBo.Text.Trim().Replace(" ", "").Replace("-", ""));
                 else
                     if (cmbMay.SelectedIndex == 0)
                     {
@@ -227,14 +233,14 @@ namespace DocSo_PC.GUI.ToTruong
                             {
                                 string displayValue = row["May"].ToString();
                                 if (displayValue != "Tất Cả")
-                                    dt.Merge(_cDHN.getDS_GhiChu(cmbDot.SelectedItem.ToString(), displayValue));
+                                    dt.Merge(_cDHN.getDS_DienThoai(cmbDot.SelectedItem.ToString(), displayValue));
                             }
                         }
                         dgvDanhSach.DataSource = dt;
                     }
                     else
                     {
-                        dgvDanhSach.DataSource = _cDHN.getDS_GhiChu(cmbDot.SelectedItem.ToString(), cmbMay.SelectedValue.ToString());
+                        dgvDanhSach.DataSource = _cDHN.getDS_DienThoai(cmbDot.SelectedItem.ToString(), cmbMay.SelectedValue.ToString());
                     }
                 if (cmbDot.SelectedIndex == 0)
                 {
@@ -618,25 +624,25 @@ namespace DocSo_PC.GUI.ToTruong
         private void btnHinhAmSau_Click(object sender, EventArgs e)
         {
             if (_enDLKH != null)
-                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("AmSau", "", _enDLKH.DANHBO + ".jpg"))));
+                _cDocSo.viewImage(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("AmSau", "", _enDLKH.DANHBO + ".jpg"))));
         }
 
         private void btnHinhXayDung_Click(object sender, EventArgs e)
         {
             if (_enDLKH != null)
-                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("XayDung", "", _enDLKH.DANHBO + ".jpg"))));
+                _cDocSo.viewImage(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("XayDung", "", _enDLKH.DANHBO + ".jpg"))));
         }
 
         private void btnHinhDutChiGoc_Click(object sender, EventArgs e)
         {
             if (_enDLKH != null)
-                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("DutChi", "", _enDLKH.DANHBO + ".jpg"))));
+                _cDocSo.viewImage(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("DutChi", "", _enDLKH.DANHBO + ".jpg"))));
         }
 
         private void btnHinhDutChiThan_Click(object sender, EventArgs e)
         {
             if (_enDLKH != null)
-                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("DutChi", "", _enDLKH.DANHBO + ".jpg"))));
+                _cDocSo.viewImage(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("DutChi", "", _enDLKH.DANHBO + ".jpg"))));
         }
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
@@ -718,31 +724,31 @@ namespace DocSo_PC.GUI.ToTruong
         private void btnHinhNgapNuoc_Click(object sender, EventArgs e)
         {
             if (_enDLKH != null)
-                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("NgapNuoc", "", _enDLKH.DANHBO + ".jpg"))));
+                _cDocSo.viewImage(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("NgapNuoc", "", _enDLKH.DANHBO + ".jpg"))));
         }
 
         private void btnHinhKetTuong_Click(object sender, EventArgs e)
         {
             if (_enDLKH != null)
-                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("KetTuong", "", _enDLKH.DANHBO + ".jpg"))));
+                _cDocSo.viewImage(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("KetTuong", "", _enDLKH.DANHBO + ".jpg"))));
         }
 
         private void btnHinhLapKhoaGoc_Click(object sender, EventArgs e)
         {
             if (_enDLKH != null)
-                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("LapKhoaGoc", "", _enDLKH.DANHBO + ".jpg"))));
+                _cDocSo.viewImage(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("LapKhoaGoc", "", _enDLKH.DANHBO + ".jpg"))));
         }
 
         private void btnHinhBeHBV_Click(object sender, EventArgs e)
         {
             if (_enDLKH != null)
-                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("BeHBV", "", _enDLKH.DANHBO + ".jpg"))));
+                _cDocSo.viewImage(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("BeHBV", "", _enDLKH.DANHBO + ".jpg"))));
         }
 
         private void btnHinhBeNapMatNapHBV_Click(object sender, EventArgs e)
         {
             if (_enDLKH != null)
-                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("BeNapMatNapHBV", "", _enDLKH.DANHBO + ".jpg"))));
+                _cDocSo.viewImage(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("BeNapMatNapHBV", "", _enDLKH.DANHBO + ".jpg"))));
         }
 
         private void chkGayTayVan_CheckedChanged(object sender, EventArgs e)
@@ -762,7 +768,7 @@ namespace DocSo_PC.GUI.ToTruong
         private void btnHinhGayTayVan_Click(object sender, EventArgs e)
         {
             if (_enDLKH != null)
-                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("GayTayVan", "", _enDLKH.DANHBO + ".jpg"))));
+                _cDocSo.viewImage(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("GayTayVan", "", _enDLKH.DANHBO + ".jpg"))));
         }
 
         private void chkTroNgaiThay_CheckedChanged(object sender, EventArgs e)
@@ -782,7 +788,7 @@ namespace DocSo_PC.GUI.ToTruong
         private void btnHinhTroNgaiThay_Click(object sender, EventArgs e)
         {
             if (_enDLKH != null)
-                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("TroNgaiThay", "", _enDLKH.DANHBO + ".jpg"))));
+                _cDocSo.viewImage(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("TroNgaiThay", "", _enDLKH.DANHBO + ".jpg"))));
         }
 
         private void chkDauChungMayBom_CheckedChanged(object sender, EventArgs e)
@@ -802,7 +808,7 @@ namespace DocSo_PC.GUI.ToTruong
         private void btnHinhDauChungMayBom_Click(object sender, EventArgs e)
         {
             if (_enDLKH != null)
-                _cDocSo.LoadImageView(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("DauChungMayBom", "", _enDLKH.DANHBO + ".jpg"))));
+                _cDocSo.viewImage(_cDocSo.imageToByteArray(_cDocSo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa("DauChungMayBom", "", _enDLKH.DANHBO + ".jpg"))));
         }
 
         private void dgvPhieuChuyen_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -811,7 +817,7 @@ namespace DocSo_PC.GUI.ToTruong
             {
                 if (dgvPhieuChuyen.Columns[e.ColumnIndex].Name == "XemHinh")
                 {
-                    _cTo.LoadImageView(_cTo.imageToByteArray(_cTo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa(dgvPhieuChuyen["Folder", e.RowIndex].Value.ToString(), "", dgvPhieuChuyen["DanhBo_PC", e.RowIndex].Value.ToString() + ".jpg"))));
+                    _cTo.viewImage(_cTo.imageToByteArray(_cTo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa(dgvPhieuChuyen["Folder", e.RowIndex].Value.ToString(), "", dgvPhieuChuyen["DanhBo_PC", e.RowIndex].Value.ToString() + ".jpg"))));
                 }
             }
             catch

@@ -106,7 +106,7 @@ namespace DocSo_PC.GUI.VanThu
         {
             if (chkAuto.Checked)
             {
-                dgvDanhSach.DataSource = _cCVD.getDS(dateTu.Value, dateDen.Value);
+                dgvDanhSach.DataSource = _cThuongVu.getDS_CVD(dateTu.Value, dateDen.Value);
             }
             else
             {
@@ -131,9 +131,20 @@ namespace DocSo_PC.GUI.VanThu
             {
                 if (dgvDanhSach.Columns[e.ColumnIndex].Name == "XemHinh")
                 {
-                    string TableNameHinh, IDName;
-                    _cThuongVu.getTableHinh(dgvDanhSach.CurrentRow.Cells["TableName"].Value.ToString(), out TableNameHinh, out IDName);
-                    System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/ThuongVu/viewFile?TableName=" + TableNameHinh + "&IDFileName=" + IDName + "&IDFileContent=" + dgvDanhSach.CurrentRow.Cells["IDCT"].Value.ToString());
+                    string type = "";
+                    object file = _cThuongVu.getFile(dgvDanhSach.CurrentRow.Cells["TableName"].Value.ToString(), int.Parse(dgvDanhSach.CurrentRow.Cells["IDCT"].Value.ToString()), out type);
+                    if (file != null)
+                    {
+                        if (type == "pdf")
+                            _cCVD.viewPDF((byte[])file);
+                        else
+                            _cCVD.viewImage((byte[])file);
+                    }
+                    else
+                        MessageBox.Show("Không có File", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //string TableNameHinh, IDName;
+                    //_cThuongVu.getTableHinh(dgvDanhSach.CurrentRow.Cells["TableName"].Value.ToString(), out TableNameHinh, out IDName);
+                    //System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/ThuongVu/viewFile?TableName=" + TableNameHinh + "&IDFileName=" + IDName + "&IDFileContent=" + dgvDanhSach.CurrentRow.Cells["IDCT"].Value.ToString());
                 }
                 else
                     if (dgvDanhSach.Columns[e.ColumnIndex].Name == "Them")
@@ -347,11 +358,16 @@ namespace DocSo_PC.GUI.VanThu
         {
             try
             {
+                string type = "";
                 _enCVD = _cCVD.get(int.Parse(dgvDuyet["ID_Duyet", e.RowIndex].Value.ToString()));
-                object file = null;
-                file = _cThuongVu.getHinh(dgvDuyet["TableName_Duyet", e.RowIndex].Value.ToString(), int.Parse(dgvDuyet["IDCT_Duyet", e.RowIndex].Value.ToString()));
+                object file = _cThuongVu.getFile(dgvDuyet["TableName_Duyet", e.RowIndex].Value.ToString(), int.Parse(dgvDuyet["IDCT_Duyet", e.RowIndex].Value.ToString()), out type);
                 if (file != null)
-                    pictureBox.Image = _cCVD.byteArrayToImage((byte[])file);
+                {
+                    if (type == "pdf")
+                        _cCVD.viewPDF((byte[])file);
+                    else
+                        pictureBox.Image = _cCVD.byteArrayToImage((byte[])file);
+                }
                 else
                     MessageBox.Show("Không có File", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

@@ -56,7 +56,20 @@ namespace DocSo_PC.DAL
             return returnImage;
         }
 
-        public void LoadImageView(byte[] pData)
+        public void viewPDF(byte[] pData)
+        {
+            try
+            {
+                File.WriteAllBytes(@"D:\temp.pdf", pData);
+                System.Diagnostics.Process.Start(@"D:\temp.pdf");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void viewImage(byte[] pData)
         {
             try
             {

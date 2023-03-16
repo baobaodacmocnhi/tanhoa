@@ -384,9 +384,12 @@ namespace DocSo_PC.GUI.MaHoa
 
         private void dgvHinh_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            byte[] hinh = _wsDHN.get_Hinh_MaHoa("ToTrinh", _totrinh.ID.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
-            if (hinh != null)
-                _cToTrinh.LoadImageView(hinh);
+            byte[] file = _wsDHN.get_Hinh_MaHoa("ToTrinh", _totrinh.ID.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
+            if (file != null)
+                if (dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString().Contains("pdf"))
+                    _cToTrinh.viewPDF(file);
+                else
+                    _cToTrinh.viewImage(file);
             else
                 MessageBox.Show("Lỗi File", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }

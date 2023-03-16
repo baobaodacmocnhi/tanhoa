@@ -307,7 +307,7 @@ namespace DocSo_PC.GUI.ToTruong
             {
                 if (dgvDanhSach.Columns[e.ColumnIndex].Name == "XemHinh")
                 {
-                    _cTo.LoadImageView(_cTo.imageToByteArray(_cTo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa(dgvDanhSach["Folder", e.RowIndex].Value.ToString(), "", dgvDanhSach["DanhBo", e.RowIndex].Value.ToString() + ".jpg"))));
+                    _cTo.viewImage(_cTo.imageToByteArray(_cTo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa(dgvDanhSach["Folder", e.RowIndex].Value.ToString(), "", dgvDanhSach["DanhBo", e.RowIndex].Value.ToString() + ".jpg"))));
                 }
             }
             catch
@@ -534,7 +534,15 @@ namespace DocSo_PC.GUI.ToTruong
                                     en.GhiChu = item.Cells["GhiChu_Nhap"].Value.ToString();
                                 _cPhieuChuyen.them(en);
                             }
-                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        dgvDanhBo.Rows.Clear();
+                        DataTable dt = _cPhieuChuyen.getGroup_NoiDung();
+                        DataRow dr = dt.NewRow();
+                        dr["NoiDung"] = "Tất Cả";
+                        dt.Rows.InsertAt(dr, dt.Rows.Count);
+                        cmbLoai.DataSource = dt;
+                        cmbLoai.DisplayMember = "NoiDung";
+                        cmbLoai.ValueMember = "NoiDung";
+                        MessageBox.Show("Thành công\nVui lòng load lại Danh Sách và bấm nút In Phiếu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 else
@@ -642,7 +650,6 @@ namespace DocSo_PC.GUI.ToTruong
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
 
         private void dgvDanhSach_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {

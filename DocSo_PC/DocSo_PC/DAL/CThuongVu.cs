@@ -142,14 +142,23 @@ namespace DocSo_PC.DAL
             return _cDAL.ExecuteQuery_DataTable("");
         }
 
-        public object getHinh(string TableName,int IDCT)
+        public object getFile(string TableName, int IDCT, out string type)
         {
             string TableNameHinh, IDName;
             getTableHinh(TableName, out TableNameHinh, out IDName);
             object filename = _cDAL.ExecuteQuery_ReturnOneValue("select [Name]+Loai from " + TableNameHinh + " where " + IDName + "=" + IDCT);
+            type = "";
             if (filename != null)
-                return _wsThuongVu.get_Hinh(TableNameHinh, IDCT.ToString(), filename.ToString());
-            else return null;
+            {
+                object file = _wsThuongVu.get_Hinh(TableNameHinh, IDCT.ToString(), filename.ToString());
+                if (filename.ToString().ToLower().Contains(".pdf"))
+                {
+                    type = "pdf";
+                }
+                return file;
+            }
+            else
+                return null;
         }
 
         public DataTable getGiaNuoc(string Nam)
@@ -200,6 +209,66 @@ namespace DocSo_PC.DAL
                 TableNameHinh = "";
                 IDName = "";
             }
+        }
+
+        public DataTable getDS_CVD(DateTime FromNgayChuyen, DateTime ToNgayChuyen)
+        {
+            return _cDAL.ExecuteQuery_DataTable("select t2.*,'To'=(select TenTo from DocSoTH.dbo.[To] where TuMay<=SUBSTRING(t2.MLT,3,2) and DenMay>=SUBSTRING(t2.MLT,3,2)) from "
+                +" (select t1.*,MLT=(select LOTRINH from CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG where DanhBo=t1.DanhBo) from "
+                +"( select LoaiVB=(select [Name] from TableHinh where TableHinh.TableName=DonTu_LichSu.TableName),NoiChuyen=N'P. Thương Vụ',NoiNhan,NgayChuyen,TableName,IDCT,MaDon,ToMaHoa='false'"
++" ,DanhBo=case when TableName='BamChi_ChiTiet' then (select DanhBo from BamChi_ChiTiet where MaCTBC=IDCT) "
++" 		 when TableName='CHDB_ChiTietCatHuy' then (select DanhBo from CHDB_ChiTietCatHuy where MaCTCHDB=IDCT) "
++" 		 when TableName='CHDB_ChiTietCatTam' then (select DanhBo from CHDB_ChiTietCatTam where MaCTCTDB=IDCT) "
++" 		 when TableName='CHDB_Phieu' then (select DanhBo from CHDB_Phieu where MaYCCHDB=IDCT) "
++" 		 when TableName='DCBD_ChiTietBienDong' then (select DanhBo from DCBD_ChiTietBienDong where MaCTDCBD=IDCT) "
++" 		 when TableName='DCBD_ChiTietHoaDon' then (select DanhBo from DCBD_ChiTietHoaDon where MaCTDCHD=IDCT) "
++" 		 when TableName='GianLan_ChiTiet' then (select DanhBo from GianLan_ChiTiet where MaGL=IDCT) "
++" 		 when TableName='KTXM_ChiTiet' then (select DanhBo from KTXM_ChiTiet where MaCTKTXM=IDCT) "
++" 		 when TableName='ThuMoi_ChiTiet' then (select DanhBo from ThuMoi_ChiTiet where ThuMoi_ChiTiet.IDCT=IDCT) "
++" 		 when TableName='ThuTraLoi_ChiTiet' then (select DanhBo from ThuTraLoi_ChiTiet where MaCTTTTL=IDCT) "
++" 		 when TableName='ToTrinh_ChiTiet' then (select DanhBo from ToTrinh_ChiTiet where ToTrinh_ChiTiet.IDCT=IDCT) "
++" 		 when TableName='TruyThuTienNuoc_ChiTiet' then (select DanhBo from TruyThuTienNuoc_ChiTiet where TruyThuTienNuoc_ChiTiet.IDCT=IDCT) "
++" 		 when TableName='VanBan_ChiTiet' then (select DanhBo from VanBan_ChiTiet where VanBan_ChiTiet.IDCT=IDCT) end"
++" ,HoTen=case when TableName='BamChi_ChiTiet' then (select HoTen from BamChi_ChiTiet where MaCTBC=IDCT) "
++" 		 when TableName='CHDB_ChiTietCatHuy' then (select HoTen from CHDB_ChiTietCatHuy where MaCTCHDB=IDCT) "
++" 		 when TableName='CHDB_ChiTietCatTam' then (select HoTen from CHDB_ChiTietCatTam where MaCTCTDB=IDCT) "
++" 		 when TableName='CHDB_Phieu' then (select HoTen from CHDB_Phieu where MaYCCHDB=IDCT) "
++" 		 when TableName='DCBD_ChiTietBienDong' then (select HoTen from DCBD_ChiTietBienDong where MaCTDCBD=IDCT) "
++" 		 when TableName='DCBD_ChiTietHoaDon' then (select HoTen from DCBD_ChiTietHoaDon where MaCTDCHD=IDCT) "
++" 		 when TableName='GianLan_ChiTiet' then (select HoTen from GianLan_ChiTiet where MaGL=IDCT) "
++" 		 when TableName='KTXM_ChiTiet' then (select HoTen from KTXM_ChiTiet where MaCTKTXM=IDCT) "
++" 		 when TableName='ThuMoi_ChiTiet' then (select HoTen from ThuMoi_ChiTiet where ThuMoi_ChiTiet.IDCT=IDCT) "
++" 		 when TableName='ThuTraLoi_ChiTiet' then (select HoTen from ThuTraLoi_ChiTiet where MaCTTTTL=IDCT) "
++" 		 when TableName='ToTrinh_ChiTiet' then (select HoTen from ToTrinh_ChiTiet where ToTrinh_ChiTiet.IDCT=IDCT) "
++" 		 when TableName='TruyThuTienNuoc_ChiTiet' then (select HoTen from TruyThuTienNuoc_ChiTiet where TruyThuTienNuoc_ChiTiet.IDCT=IDCT) "
++" 		 when TableName='VanBan_ChiTiet' then (select HoTen from VanBan_ChiTiet where VanBan_ChiTiet.IDCT=IDCT) end"
++" ,DiaChi=case when TableName='BamChi_ChiTiet' then (select DiaChi from BamChi_ChiTiet where MaCTBC=IDCT) "
++" 		 when TableName='CHDB_ChiTietCatHuy' then (select DiaChi from CHDB_ChiTietCatHuy where MaCTCHDB=IDCT) "
++" 		 when TableName='CHDB_ChiTietCatTam' then (select DiaChi from CHDB_ChiTietCatTam where MaCTCTDB=IDCT) "
++" 		 when TableName='CHDB_Phieu' then (select DiaChi from CHDB_Phieu where MaYCCHDB=IDCT) "
++" 		 when TableName='DCBD_ChiTietBienDong' then (select DiaChi from DCBD_ChiTietBienDong where MaCTDCBD=IDCT) "
++" 		 when TableName='DCBD_ChiTietHoaDon' then (select DiaChi from DCBD_ChiTietHoaDon where MaCTDCHD=IDCT) "
++" 		 when TableName='GianLan_ChiTiet' then (select DiaChi from GianLan_ChiTiet where MaGL=IDCT) "
++" 		 when TableName='KTXM_ChiTiet' then (select DiaChi from KTXM_ChiTiet where MaCTKTXM=IDCT) "
++" 		 when TableName='ThuMoi_ChiTiet' then (select DiaChi from ThuMoi_ChiTiet where ThuMoi_ChiTiet.IDCT=IDCT) "
++" 		 when TableName='ThuTraLoi_ChiTiet' then (select DiaChi from ThuTraLoi_ChiTiet where MaCTTTTL=IDCT) "
++" 		 when TableName='ToTrinh_ChiTiet' then (select DiaChi from ToTrinh_ChiTiet where ToTrinh_ChiTiet.IDCT=IDCT) "
++" 		 when TableName='TruyThuTienNuoc_ChiTiet' then (select DiaChi from TruyThuTienNuoc_ChiTiet where TruyThuTienNuoc_ChiTiet.IDCT=IDCT) "
++" 		 when TableName='VanBan_ChiTiet' then (select DiaChi from VanBan_ChiTiet where VanBan_ChiTiet.IDCT=IDCT) end"
++" ,NoiDung=case when TableName='BamChi_ChiTiet' then (select (select [Name] from TableHinh where TableHinh.TableName=DonTu_LichSu.TableName)+' - '+convert(varchar(10),CreateDate,103)+'. V/v '+TrangThaiBC+' - '+(select HoTen from Users where MaU=BamChi_ChiTiet.CreateBy) from BamChi_ChiTiet where MaCTBC=IDCT) "
++" 		 when TableName='CHDB_ChiTietCatHuy' then (select (select [Name] from TableHinh where TableHinh.TableName=DonTu_LichSu.TableName)+' - '+convert(varchar(10),CreateDate,103)+N'. Lý do: '+LyDo+' '+isnull(CONVERT(varchar(20),SoTien),'')+' '+isnull(GhiChuLyDo,'')+' - '+COALESCE(convert(varchar(10),NgayThucHien,103),'')+' - '+(select HoTen from Users where MaU=CHDB_ChiTietCatHuy.CreateBy) from CHDB_ChiTietCatHuy where MaCTCHDB=IDCT) "
++" 		 when TableName='CHDB_ChiTietCatTam' then (select (select [Name] from TableHinh where TableHinh.TableName=DonTu_LichSu.TableName)+' - '+convert(varchar(10),CreateDate,103)+N'. Lý do: '+LyDo+' '+isnull(CONVERT(varchar(20),SoTien),'')+' '+isnull(GhiChuLyDo,'')+' - '+COALESCE(convert(varchar(10),NgayThucHien,103),'')+' - '+(select HoTen from Users where MaU=CHDB_ChiTietCatTam.CreateBy) from CHDB_ChiTietCatTam where MaCTCTDB=IDCT) "
++" 		 when TableName='CHDB_Phieu' then (select (select [Name] from TableHinh where TableHinh.TableName=DonTu_LichSu.TableName)+' - '+convert(varchar(10),CreateDate,103)+N'. Lý do: '+LyDo+' '+isnull(CONVERT(varchar(20),SoTien),'')+' '+isnull(GhiChuLyDo,'')+' - '+(select HoTen from Users where MaU=CreateBy) from CHDB_Phieu where MaYCCHDB=IDCT) "
++" 		 when TableName='DCBD_ChiTietBienDong' then (select (select [Name] from TableHinh where TableHinh.TableName=DonTu_LichSu.TableName)+' - '+convert(varchar(10),CreateDate,103)+'. V/v '+ThongTin+' - '+(select HoTen from Users where MaU=DCBD_ChiTietBienDong.CreateBy) from DCBD_ChiTietBienDong where MaCTDCBD=IDCT) "
++" 		 when TableName='DCBD_ChiTietHoaDon' then (select (select [Name] from TableHinh where TableHinh.TableName=DonTu_LichSu.TableName)+' - '+convert(varchar(10),CreateDate,103)+'. V/v '+KyHD+' - '+(select HoTen from Users where MaU=DCBD_ChiTietHoaDon.CreateBy) from DCBD_ChiTietHoaDon where MaCTDCHD=IDCT) "
++" 		 when TableName='GianLan_ChiTiet' then (select (select [Name] from TableHinh where TableHinh.TableName=DonTu_LichSu.TableName)+' - '+convert(varchar(10),CreateDate,103)+'. V/v '+NoiDungViPham+' - '+(select HoTen from Users where MaU=GianLan_ChiTiet.CreateBy) from GianLan_ChiTiet where MaGL=IDCT) "
++" 		 when TableName='KTXM_ChiTiet' then (select (select [Name] from TableHinh where TableHinh.TableName=DonTu_LichSu.TableName)+' - '+convert(varchar(10),NgayKTXM,103)+' - CS: '+ChiSo+' '+isnull(TinhTrangChiSo,'')+'. V/v '+NoiDungKiemTra+' - '+(select HoTen from Users where MaU=KTXM_ChiTiet.CreateBy) from KTXM_ChiTiet where MaCTKTXM=IDCT) "
++" 		 when TableName='ThuMoi_ChiTiet' then (select (select [Name] from TableHinh where TableHinh.TableName=DonTu_LichSu.TableName)+' - '+convert(varchar(10),CreateDate,103)+'. V/v '+VeViec+' - '+(select HoTen from Users where MaU=ThuMoi_ChiTiet.CreateBy) from ThuMoi_ChiTiet where ThuMoi_ChiTiet.IDCT=IDCT) "
++" 		 when TableName='ThuTraLoi_ChiTiet' then (select (select [Name] from TableHinh where TableHinh.TableName=DonTu_LichSu.TableName)+' - '+convert(varchar(10),CreateDate,103)+'. V/v '+VeViec+' - '+(select HoTen from Users where MaU=ThuTraLoi_ChiTiet.CreateBy) from ThuTraLoi_ChiTiet where MaCTTTTL=IDCT) "
++" 		 when TableName='ToTrinh_ChiTiet' then (select (select [Name] from TableHinh where TableHinh.TableName=DonTu_LichSu.TableName)+' - '+convert(varchar(10),CreateDate,103)+'. V/v '+VeViec+' - '+(select HoTen from Users where MaU=ToTrinh_ChiTiet.CreateBy) from ToTrinh_ChiTiet where ToTrinh_ChiTiet.IDCT=IDCT) "
++" 		 when TableName='TruyThuTienNuoc_ChiTiet' then (select (select [Name] from TableHinh where TableHinh.TableName=DonTu_LichSu.TableName)+' - '+convert(varchar(10),CreateDate,103)+'. V/v '+NoiDung+' - '+(select HoTen from Users where MaU=TruyThuTienNuoc_ChiTiet.CreateBy) from TruyThuTienNuoc_ChiTiet where TruyThuTienNuoc_ChiTiet.IDCT=IDCT) "
++" 		 when TableName='VanBan_ChiTiet' then (select (select [Name] from TableHinh where TableHinh.TableName=DonTu_LichSu.TableName)+' - '+convert(varchar(10),CreateDate,103)+'. V/v '+VeViec+' - '+(select HoTen from Users where MaU=VanBan_ChiTiet.CreateBy) from VanBan_ChiTiet where VanBan_ChiTiet.IDCT=IDCT) end"
++" from DonTu_LichSu where CAST(NgayChuyen as date)>='20230316' and CAST(NgayChuyen as date)<='20230316' and ID_NoiNhan=22 and TableName is not null)t1)t2");
         }
 
     }
