@@ -577,20 +577,6 @@ namespace KTKS_DonKH.GUI.VanBan
             }
         }
 
-        private void frmVanBan_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (_dontu_ChiTiet != null && e.Control && e.KeyCode == Keys.T)
-            {
-                if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
-                {
-                    frmCapNhatDonTu_Thumbnail frm = new frmCapNhatDonTu_Thumbnail(_dontu_ChiTiet, "VanBan_ChiTiet", _enCT.IDCT);
-                    frm.ShowDialog();
-                }
-                else
-                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void dgvDSThu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -712,6 +698,20 @@ namespace KTKS_DonKH.GUI.VanBan
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void frmVanBan_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (_dontu_ChiTiet != null && e.Control && e.KeyCode == Keys.T)
+            {
+                if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+                {
+                    frmCapNhatDonTu_Thumbnail frm = new frmCapNhatDonTu_Thumbnail(_dontu_ChiTiet, "VanBan_ChiTiet", _enCT.IDCT);
+                    frm.ShowDialog();
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

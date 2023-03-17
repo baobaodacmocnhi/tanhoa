@@ -803,20 +803,6 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             }
         }
 
-        private void frmTTTL_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (_dontu_ChiTiet != null && e.Control && e.KeyCode == Keys.T)
-            {
-                if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
-                {
-                    frmCapNhatDonTu_Thumbnail frm = new frmCapNhatDonTu_Thumbnail(_dontu_ChiTiet, "ThuTraLoi_ChiTiet", (int)_cttttl.MaCTTTTL);
-                    frm.ShowDialog();
-                }
-                else
-                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         //add file
         private void btnChonFile_Click(object sender, EventArgs e)
         {
@@ -978,6 +964,20 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 rpt.SetDataSource(dsBaoCao);
                 frmShowBaoCao frm = new frmShowBaoCao(rpt);
                 frm.Show();
+            }
+        }
+
+        private void frmTTTL_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (_dontu_ChiTiet != null && e.Control && e.KeyCode == Keys.T)
+            {
+                if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+                {
+                    frmCapNhatDonTu_Thumbnail frm = new frmCapNhatDonTu_Thumbnail(_dontu_ChiTiet, "ThuTraLoi_ChiTiet", (int)_cttttl.MaCTTTTL);
+                    frm.ShowDialog();
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

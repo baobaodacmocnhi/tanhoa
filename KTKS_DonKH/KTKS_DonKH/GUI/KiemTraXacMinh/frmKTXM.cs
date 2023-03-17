@@ -1235,7 +1235,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
             frm.Show();
         }
 
-        private void frmKTXM_KeyUp(object sender, KeyEventArgs e)
+        private void frmKTXM_KeyDown(object sender, KeyEventArgs e)
         {
             if (_dontu_ChiTiet != null && e.Control && e.KeyCode == Keys.T)
             {

@@ -57,6 +57,7 @@
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtVeViec = new System.Windows.Forms.TextBox();
             this.cmbVeViec = new System.Windows.Forms.ComboBox();
             this.txtNoiNhan = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -105,7 +106,6 @@
             this.label17 = new System.Windows.Forms.Label();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.xoaFile_dgvHinh = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtVeViec = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -345,6 +345,13 @@
             this.groupBox2.TabIndex = 131;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Nội Văn Bản";
+            // 
+            // txtVeViec
+            // 
+            this.txtVeViec.Location = new System.Drawing.Point(364, 19);
+            this.txtVeViec.Name = "txtVeViec";
+            this.txtVeViec.Size = new System.Drawing.Size(388, 22);
+            this.txtVeViec.TabIndex = 16;
             // 
             // cmbVeViec
             // 
@@ -828,13 +835,6 @@
             this.xoaFile_dgvHinh.Text = "Xóa";
             this.xoaFile_dgvHinh.Click += new System.EventHandler(this.xoaFile_dgvHinh_Click);
             // 
-            // txtVeViec
-            // 
-            this.txtVeViec.Location = new System.Drawing.Point(364, 19);
-            this.txtVeViec.Name = "txtVeViec";
-            this.txtVeViec.Size = new System.Drawing.Size(388, 22);
-            this.txtVeViec.TabIndex = 16;
-            // 
             // frmVanBan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -862,7 +862,7 @@
             this.Name = "frmVanBan";
             this.Text = "Văn Bản";
             this.Load += new System.EventHandler(this.frmVanBan_Load);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmVanBan_KeyUp);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmVanBan_KeyDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

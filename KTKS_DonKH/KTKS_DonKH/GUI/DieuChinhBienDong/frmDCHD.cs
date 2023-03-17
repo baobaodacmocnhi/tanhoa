@@ -1877,22 +1877,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         #endregion
 
-        private void frmDCHD_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.Control && e.KeyCode == Keys.Add)
-                btnThem.PerformClick();
-            if (_dontu_ChiTiet != null && e.Control && e.KeyCode == Keys.T)
-            {
-                if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
-                {
-                    frmCapNhatDonTu_Thumbnail frm = new frmCapNhatDonTu_Thumbnail(_dontu_ChiTiet, "DCBD_ChiTietHoaDon", (int)_ctdchd.MaCTDCHD);
-                    frm.ShowDialog();
-                }
-                else
-                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void txtGiaBieu_Cu_TextChanged(object sender, EventArgs e)
         {
             if (txtGiaBieu_Cu.Text.Trim() != "")
@@ -2719,6 +2703,22 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (txtTieuThuV2_DieuChinhGia3.Text.Trim() != "")
                 TinhTienNuoc();
+        }
+
+        private void frmDCHD_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.Add)
+                btnThem.PerformClick();
+            if (_dontu_ChiTiet != null && e.Control && e.KeyCode == Keys.T)
+            {
+                if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+                {
+                    frmCapNhatDonTu_Thumbnail frm = new frmCapNhatDonTu_Thumbnail(_dontu_ChiTiet, "DCBD_ChiTietHoaDon", (int)_ctdchd.MaCTDCHD);
+                    frm.ShowDialog();
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 

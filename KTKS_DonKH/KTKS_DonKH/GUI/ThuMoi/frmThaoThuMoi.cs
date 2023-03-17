@@ -715,20 +715,6 @@ namespace KTKS_DonKH.GUI.ThuMoi
             }
         }
 
-        private void frmThaoThuMoi_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (_dontu_ChiTiet != null && e.Control && e.KeyCode == Keys.T)
-            {
-                if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
-                {
-                    frmCapNhatDonTu_Thumbnail frm = new frmCapNhatDonTu_Thumbnail(_dontu_ChiTiet, "ThuMoi_ChiTiet", _thumoi.IDCT);
-                    frm.ShowDialog();
-                }
-                else
-                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         //add file
         private void btnChonFile_Click(object sender, EventArgs e)
         {
@@ -843,6 +829,20 @@ namespace KTKS_DonKH.GUI.ThuMoi
         private void dateDen_ValueChanged(object sender, EventArgs e)
         {
             txtVaoLuc.Text = "9 giờ 00 từ ngày " + dateTu.Value.ToString("dd/MM/yyyy") + " đến ngày " + dateDen.Value.ToString("dd/MM/yyyy");
+        }
+
+        private void frmThaoThuMoi_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (_dontu_ChiTiet != null && e.Control && e.KeyCode == Keys.T)
+            {
+                if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+                {
+                    frmCapNhatDonTu_Thumbnail frm = new frmCapNhatDonTu_Thumbnail(_dontu_ChiTiet, "ThuMoi_ChiTiet", _thumoi.IDCT);
+                    frm.ShowDialog();
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
     }

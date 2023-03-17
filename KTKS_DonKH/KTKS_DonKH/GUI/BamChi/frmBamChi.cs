@@ -1130,7 +1130,7 @@ namespace KTKS_DonKH.GUI.BamChi
             }
         }
 
-        private void frmBamChi_KeyUp(object sender, KeyEventArgs e)
+        private void frmBamChi_KeyDown(object sender, KeyEventArgs e)
         {
             if (_dontu_ChiTiet != null && e.Control && e.KeyCode == Keys.T)
             {

@@ -841,7 +841,7 @@
             this.Name = "frmToTrinh2021";
             this.Text = "Tờ Trình";
             this.Load += new System.EventHandler(this.frmToTrinh_Load);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmToTrinh_KeyUp);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmToTrinh2021_KeyDown);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox4.ResumeLayout(false);

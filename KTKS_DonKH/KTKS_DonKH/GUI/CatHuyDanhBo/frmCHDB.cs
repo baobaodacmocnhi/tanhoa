@@ -1472,22 +1472,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             }
         }
 
-        private void frmCHDB_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.Control && e.KeyCode == Keys.Add)
-                btnThem.PerformClick();
-            if (_dontu_ChiTiet != null && e.Control && e.KeyCode == Keys.T)
-            {
-                if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
-                {
-                    frmCapNhatDonTu_Thumbnail frm = new frmCapNhatDonTu_Thumbnail(_dontu_ChiTiet, "CHDB_ChiTietCatHuy", (int)_ctchdb.MaCTCHDB);
-                    frm.ShowDialog();
-                }
-                else
-                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         //add file
         private void btnChonFile_Click(object sender, EventArgs e)
         {
@@ -1648,6 +1632,22 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 rpt.Subreports[0].SetDataSource(dsBaoCao);
                 frmShowBaoCao frm = new frmShowBaoCao(rpt);
                 frm.ShowDialog();
+            }
+        }
+
+        private void frmCHDB_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.Add)
+                btnThem.PerformClick();
+            if (_dontu_ChiTiet != null && e.Control && e.KeyCode == Keys.T)
+            {
+                if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+                {
+                    frmCapNhatDonTu_Thumbnail frm = new frmCapNhatDonTu_Thumbnail(_dontu_ChiTiet, "CHDB_ChiTietCatHuy", (int)_ctchdb.MaCTCHDB);
+                    frm.ShowDialog();
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

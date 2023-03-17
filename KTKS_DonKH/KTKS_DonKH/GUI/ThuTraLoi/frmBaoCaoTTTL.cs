@@ -61,8 +61,6 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
 
             foreach (DataRow item in dt.Rows)
             {
-                //DataRow[] checkExists = dsBaoCao.Tables["DanhSach"].Select("MaDon = '" + item["MaDon"] + "'");
-                //if (checkExists.Length == 0)
                 {
                     DataRow dr = dsBaoCao.Tables["DanhSach"].NewRow();
 
@@ -79,7 +77,6 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     dsBaoCao.Tables["DanhSach"].Rows.Add(dr);
                 }
             }
-
             rptDanhSach_Doc_GroupNhomDon rpt = new rptDanhSach_Doc_GroupNhomDon();
             rpt.SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
@@ -89,7 +86,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
         private void btnBaoCao_TTTL_Click(object sender, EventArgs e)
         {
             DataTable dt = new DataTable();
-            if (cmbNoiDung_ToTrinh.SelectedValue.ToString() == "Tất Cả")
+            if (cmbNoiDung_TTTL.SelectedValue.ToString() == "Tất Cả")
                 dt = _cTTTL.getDS_ChiTiet_VeViec(dateTu_TTTL.Value, dateDen_TTTL.Value);
             else
                 dt = _cTTTL.getDS_ChiTiet_VeViec(cmbNoiDung_TTTL.SelectedValue.ToString(), dateTu_TTTL.Value, dateDen_TTTL.Value);
@@ -97,13 +94,11 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
 
             foreach (DataRow item in dt.Rows)
             {
-                //DataRow[] checkExists = dsBaoCao.Tables["DanhSach"].Select("MaDon = '" + item["MaDon"] + "'");
-                //if (checkExists.Length == 0)
                 {
                     DataRow dr = dsBaoCao.Tables["DanhSach"].NewRow();
 
-                    dr["TuNgay"] = dateTu_ToTrinh.Value.ToString("dd/MM/yyyy");
-                    dr["DenNgay"] = dateDen_ToTrinh.Value.ToString("dd/MM/yyyy");
+                    dr["TuNgay"] = dateTu_TTTL.Value.ToString("dd/MM/yyyy");
+                    dr["DenNgay"] = dateDen_TTTL.Value.ToString("dd/MM/yyyy");
                     dr["LoaiBaoCao"] = "THƯ TRẢ LỜI";
                     dr["MaDon"] = item["MaDon"];
                     dr["DanhBo"] = item["DanhBo"];
@@ -115,7 +110,6 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     dsBaoCao.Tables["DanhSach"].Rows.Add(dr);
                 }
             }
-
             rptDanhSach_Doc_GroupNhomDon rpt = new rptDanhSach_Doc_GroupNhomDon();
             rpt.SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
