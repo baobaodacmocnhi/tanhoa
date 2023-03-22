@@ -747,12 +747,6 @@ namespace DocSo_PC.GUI.MaHoa
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 {
-                    if (CNguoiDung.Admin == false && CNguoiDung.ToTruong == false && CNguoiDung.ThuKy == false)
-                        if (_ctktxm.CreateBy != CNguoiDung.MaND)
-                        {
-                            MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
                     if (MessageBox.Show("Bạn có chắc chắn???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
                         int count = 0;
