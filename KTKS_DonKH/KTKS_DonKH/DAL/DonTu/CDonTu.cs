@@ -2608,9 +2608,9 @@ namespace KTKS_DonKH.DAL.DonTu
                                        + " from DonTu dt,DonTu_ChiTiet dtct,DonTu_LichSu dtls where dtct.TinhTrang like N'Tồn (Kiểm Tra)' and ID_KTXM=" + MaNV_KTXM + " and dt.MaDon=dtct.MaDon and dtct.MaDon=dtls.MaDon and dtct.STT=dtls.STT");
         }
 
-        public DataTable getDS_LichSu_CVD(DateTime FromNgayChuyen, DateTime ToNgayChuyen, string ID_NoiChuyen)
+        public DataTable getDS_LichSu_CVD(DateTime FromNgayChuyen, DateTime ToNgayChuyen, string ID_NoiChuyen, string ID_NoiNhan)
         {
-            return ExecuteQuery_DataTable("select * from DonTu_LichSu where CAST(NgayChuyen as date)>='" + FromNgayChuyen.ToString("yyyyMMdd") + "' and CAST(NgayChuyen as date)<='" + ToNgayChuyen.ToString("yyyyMMdd") + "' and ID_NoiNhan is not null and ID_NoiChuyen=" + ID_NoiChuyen);
+            return ExecuteQuery_DataTable("select * from DonTu_LichSu where NgayChuyen >='" + FromNgayChuyen.ToString("yyyy-MM-dd HH:mm") + "' and NgayChuyen <='" + ToNgayChuyen.ToString("yyyy-MM-dd HH:mm") + "' and ID_NoiNhan is not null and ID_NoiChuyen=" + ID_NoiChuyen + " and ID_NoiNhan=" + ID_NoiNhan+" order by NgayChuyen asc");
         }
 
     }

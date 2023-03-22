@@ -86,15 +86,15 @@
             this.chkKTXM = new System.Windows.Forms.CheckBox();
             this.chkToTrinh = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnIn_Moi = new System.Windows.Forms.Button();
+            this.cmbNoiNhan_Moi = new System.Windows.Forms.ComboBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.cmbNoiChuyen_Moi = new System.Windows.Forms.ComboBox();
+            this.label32 = new System.Windows.Forms.Label();
             this.dateTu_Moi = new System.Windows.Forms.DateTimePicker();
             this.dateDen_Moi = new System.Windows.Forms.DateTimePicker();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.cmbNoiChuyen_Moi = new System.Windows.Forms.ComboBox();
-            this.label32 = new System.Windows.Forms.Label();
-            this.cmbNoiNhan_Moi = new System.Windows.Forms.ComboBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.btnIn_Moi = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSCongVan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkcmbNoiNhan.Properties)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -734,13 +734,59 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Công Văn Đi Mới 2023";
             // 
+            // btnIn_Moi
+            // 
+            this.btnIn_Moi.Location = new System.Drawing.Point(281, 122);
+            this.btnIn_Moi.Name = "btnIn_Moi";
+            this.btnIn_Moi.Size = new System.Drawing.Size(75, 25);
+            this.btnIn_Moi.TabIndex = 92;
+            this.btnIn_Moi.Text = "In DS";
+            this.btnIn_Moi.UseVisualStyleBackColor = true;
+            this.btnIn_Moi.Click += new System.EventHandler(this.btnIn_Moi_Click);
+            // 
+            // cmbNoiNhan_Moi
+            // 
+            this.cmbNoiNhan_Moi.FormattingEnabled = true;
+            this.cmbNoiNhan_Moi.Location = new System.Drawing.Point(156, 92);
+            this.cmbNoiNhan_Moi.MaxDropDownItems = 10;
+            this.cmbNoiNhan_Moi.Name = "cmbNoiNhan_Moi";
+            this.cmbNoiNhan_Moi.Size = new System.Drawing.Size(200, 24);
+            this.cmbNoiNhan_Moi.TabIndex = 91;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(156, 73);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(64, 16);
+            this.label22.TabIndex = 90;
+            this.label22.Text = "Nơi Nhận";
+            // 
+            // cmbNoiChuyen_Moi
+            // 
+            this.cmbNoiChuyen_Moi.FormattingEnabled = true;
+            this.cmbNoiChuyen_Moi.Location = new System.Drawing.Point(156, 40);
+            this.cmbNoiChuyen_Moi.MaxDropDownItems = 10;
+            this.cmbNoiChuyen_Moi.Name = "cmbNoiChuyen_Moi";
+            this.cmbNoiChuyen_Moi.Size = new System.Drawing.Size(200, 24);
+            this.cmbNoiChuyen_Moi.TabIndex = 89;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(156, 21);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(77, 16);
+            this.label32.TabIndex = 88;
+            this.label32.Text = "Nơi Chuyển";
+            // 
             // dateTu_Moi
             // 
             this.dateTu_Moi.CustomFormat = "dd/MM/yyyy HH:mm";
             this.dateTu_Moi.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTu_Moi.Location = new System.Drawing.Point(14, 41);
             this.dateTu_Moi.Name = "dateTu_Moi";
-            this.dateTu_Moi.Size = new System.Drawing.Size(120, 22);
+            this.dateTu_Moi.Size = new System.Drawing.Size(136, 22);
             this.dateTu_Moi.TabIndex = 22;
             // 
             // dateDen_Moi
@@ -749,7 +795,7 @@
             this.dateDen_Moi.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateDen_Moi.Location = new System.Drawing.Point(14, 93);
             this.dateDen_Moi.Name = "dateDen_Moi";
-            this.dateDen_Moi.Size = new System.Drawing.Size(120, 22);
+            this.dateDen_Moi.Size = new System.Drawing.Size(136, 22);
             this.dateDen_Moi.TabIndex = 24;
             // 
             // label20
@@ -769,54 +815,6 @@
             this.label21.Size = new System.Drawing.Size(68, 16);
             this.label21.TabIndex = 23;
             this.label21.Text = "Đến Ngày";
-            // 
-            // cmbNoiChuyen_Moi
-            // 
-            this.cmbNoiChuyen_Moi.FormattingEnabled = true;
-            this.cmbNoiChuyen_Moi.Location = new System.Drawing.Point(140, 40);
-            this.cmbNoiChuyen_Moi.MaxDropDownItems = 10;
-            this.cmbNoiChuyen_Moi.Name = "cmbNoiChuyen_Moi";
-            this.cmbNoiChuyen_Moi.Size = new System.Drawing.Size(200, 24);
-            this.cmbNoiChuyen_Moi.TabIndex = 89;
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(140, 21);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(77, 16);
-            this.label32.TabIndex = 88;
-            this.label32.Text = "Nơi Chuyển";
-            // 
-            // cmbNoiNhan_Moi
-            // 
-            this.cmbNoiNhan_Moi.Enabled = false;
-            this.cmbNoiNhan_Moi.FormattingEnabled = true;
-            this.cmbNoiNhan_Moi.Location = new System.Drawing.Point(140, 92);
-            this.cmbNoiNhan_Moi.MaxDropDownItems = 10;
-            this.cmbNoiNhan_Moi.Name = "cmbNoiNhan_Moi";
-            this.cmbNoiNhan_Moi.Size = new System.Drawing.Size(200, 24);
-            this.cmbNoiNhan_Moi.TabIndex = 91;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Enabled = false;
-            this.label22.Location = new System.Drawing.Point(140, 73);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(64, 16);
-            this.label22.TabIndex = 90;
-            this.label22.Text = "Nơi Nhận";
-            // 
-            // btnIn_Moi
-            // 
-            this.btnIn_Moi.Location = new System.Drawing.Point(265, 122);
-            this.btnIn_Moi.Name = "btnIn_Moi";
-            this.btnIn_Moi.Size = new System.Drawing.Size(75, 25);
-            this.btnIn_Moi.TabIndex = 92;
-            this.btnIn_Moi.Text = "In DS";
-            this.btnIn_Moi.UseVisualStyleBackColor = true;
-            this.btnIn_Moi.Click += new System.EventHandler(this.btnIn_Moi_Click);
             // 
             // frmCongVanDi
             // 

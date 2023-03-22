@@ -76,6 +76,10 @@ namespace KTKS_DonKH.GUI.CongVan
             cmbNoiChuyen_Moi.DataSource = _cNoiChuyen.GetDS("DonTuChuyen");
             cmbNoiChuyen_Moi.ValueMember = "ID";
             cmbNoiChuyen_Moi.DisplayMember = "Name";
+
+            cmbNoiNhan_Moi.DataSource = _cNoiChuyen.GetDS("DonTuNhan");
+            cmbNoiNhan_Moi.ValueMember = "ID";
+            cmbNoiNhan_Moi.DisplayMember = "Name";
         }
 
         public string GetTenTable()
@@ -795,7 +799,7 @@ namespace KTKS_DonKH.GUI.CongVan
         private void btnIn_Moi_Click(object sender, EventArgs e)
         {
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-            DataTable dt = _cDonTu.getDS_LichSu_CVD(dateTu_Moi.Value, dateDen_Moi.Value, cmbNoiChuyen_Moi.SelectedValue.ToString());
+            DataTable dt = _cDonTu.getDS_LichSu_CVD(dateTu_Moi.Value, dateDen_Moi.Value, cmbNoiChuyen_Moi.SelectedValue.ToString(), cmbNoiNhan_Moi.SelectedValue.ToString());
             foreach (DataRow item in dt.Rows)
             {
                 DataRow dr = dsBaoCao.Tables["CongVan"].NewRow();
