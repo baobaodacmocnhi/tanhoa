@@ -131,7 +131,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(472, 3);
+            this.btnXem.Location = new System.Drawing.Point(559, 3);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 66;
@@ -317,7 +317,7 @@
             // 
             // btnIn
             // 
-            this.btnIn.Location = new System.Drawing.Point(553, 3);
+            this.btnIn.Location = new System.Drawing.Point(640, 3);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(75, 23);
             this.btnIn.TabIndex = 68;
@@ -352,7 +352,7 @@
             "Nhập Thủ Công"});
             this.cmbLoai.Location = new System.Drawing.Point(344, 5);
             this.cmbLoai.Name = "cmbLoai";
-            this.cmbLoai.Size = new System.Drawing.Size(122, 21);
+            this.cmbLoai.Size = new System.Drawing.Size(209, 21);
             this.cmbLoai.TabIndex = 70;
             // 
             // label2
@@ -545,7 +545,7 @@
             // 
             // btnXoaPhieu
             // 
-            this.btnXoaPhieu.Location = new System.Drawing.Point(634, 3);
+            this.btnXoaPhieu.Location = new System.Drawing.Point(721, 3);
             this.btnXoaPhieu.Name = "btnXoaPhieu";
             this.btnXoaPhieu.Size = new System.Drawing.Size(75, 23);
             this.btnXoaPhieu.TabIndex = 136;
@@ -598,7 +598,7 @@
             this.Controls.Add(this.lbTo);
             this.Controls.Add(this.cmbTo);
             this.Name = "frmPhieuChuyen";
-            this.Text = "Phiếu Chuyển";
+            this.Text = "S";
             this.Load += new System.EventHandler(this.frmPhieuChuyen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).EndInit();
             this.groupBox1.ResumeLayout(false);

@@ -499,7 +499,7 @@ namespace DocSo_PC.GUI.ToTruong
                 rpt.SetDataSource(dsBaoCao);
                 frmShowBaoCao frm = new frmShowBaoCao(rpt);
                 frm.Show();
-                btnXem.PerformClick();
+                //btnXem.PerformClick();
             }
         }
 
