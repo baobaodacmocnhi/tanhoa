@@ -48,6 +48,7 @@ namespace KTKS_DonKH.GUI.CongVan
         CThuTien _cThuTien = new CThuTien();
         CDHN _cDocSo = new CDHN();
         CNoiChuyen _cNoiChuyen = new CNoiChuyen();
+        CTo _cTo = new CTo();
 
         public frmCongVanDi()
         {
@@ -80,6 +81,18 @@ namespace KTKS_DonKH.GUI.CongVan
             cmbNoiNhan_Moi.DataSource = _cNoiChuyen.GetDS("DonTuNhan");
             cmbNoiNhan_Moi.ValueMember = "ID";
             cmbNoiNhan_Moi.DisplayMember = "Name";
+
+            if (CTaiKhoan.Admin || CTaiKhoan.TruongPhong || CTaiKhoan.KyHieuMaTo == "ToGD")
+            {
+                cmbTo.DataSource = _cTo.getDS_KTXM();
+                cmbTo.ValueMember = "KyHieu";
+                cmbTo.DisplayMember = "TenTo";
+                panelTo.Visible = true;
+            }
+            else
+            {
+                panelTo.Visible = false;
+            }
         }
 
         public string GetTenTable()
@@ -799,12 +812,21 @@ namespace KTKS_DonKH.GUI.CongVan
         private void btnIn_Moi_Click(object sender, EventArgs e)
         {
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-            DataTable dt = _cDonTu.getDS_LichSu_CVD(dateTu_Moi.Value, dateDen_Moi.Value, cmbNoiChuyen_Moi.SelectedValue.ToString(), cmbNoiNhan_Moi.SelectedValue.ToString());
+            DataTable dt = new DataTable();
+            if (CTaiKhoan.Admin || CTaiKhoan.TruongPhong || CTaiKhoan.KyHieuMaTo == "ToGD")
+            {
+                dt = _cDonTu.getDS_LichSu_CVD(cmbTo.SelectedValue.ToString(),dateTu_Moi.Value, dateDen_Moi.Value, cmbNoiChuyen_Moi.SelectedValue.ToString(), cmbNoiNhan_Moi.SelectedValue.ToString());
+            }
+            else
+            {
+                dt = _cDonTu.getDS_LichSu_CVD(CTaiKhoan.KyHieuMaTo,dateTu_Moi.Value, dateDen_Moi.Value, cmbNoiChuyen_Moi.SelectedValue.ToString(), cmbNoiNhan_Moi.SelectedValue.ToString());
+            }
+             
             foreach (DataRow item in dt.Rows)
             {
                 DataRow dr = dsBaoCao.Tables["CongVan"].NewRow();
-                dr["TuNgay"] = dateTu_Moi.Value.ToString("dd/MM/yyyy");
-                dr["DenNgay"] = dateDen_Moi.Value.ToString("dd/MM/yyyy");
+                dr["TuNgay"] = dateTu_Moi.Value.ToString("dd/MM/yyyy HH:mm");
+                dr["DenNgay"] = dateDen_Moi.Value.ToString("dd/MM/yyyy HH:mm");
                 dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
                 switch (item["TableName"].ToString())
                 {

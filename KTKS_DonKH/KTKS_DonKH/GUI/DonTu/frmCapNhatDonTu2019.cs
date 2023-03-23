@@ -409,7 +409,7 @@ namespace KTKS_DonKH.GUI.DonTu
                                 if (chkcmbNoiNhan.Properties.Items[i].CheckState == CheckState.Checked)
                                 {
                                     //đi KTXM
-                                    if (chkcmbNoiNhan.Properties.Items[i].Value.ToString() == "5")
+                                    if (chkcmbNoiNhan.Properties.Items[i].Value.ToString() == "5" || chkcmbNoiNhan.Properties.Items[i].Value.ToString() == "39")
                                     {
 
                                         for (int j = 0; j < chkcmbNoiNhanKTXM.Properties.Items.Count; j++)
@@ -489,7 +489,7 @@ namespace KTKS_DonKH.GUI.DonTu
                                         if (chkcmbNoiNhan.Properties.Items[i].CheckState == CheckState.Checked)
                                         {
                                             //đi KTXM
-                                            if (chkcmbNoiNhan.Properties.Items[i].Value.ToString() == "5")
+                                            if (chkcmbNoiNhan.Properties.Items[i].Value.ToString() == "5" || chkcmbNoiNhan.Properties.Items[i].Value.ToString() == "39")
                                             {
                                                 for (int j = 0; j < chkcmbNoiNhanKTXM.Properties.Items.Count; j++)
                                                     if (chkcmbNoiNhanKTXM.Properties.Items[j].CheckState == CheckState.Checked)
@@ -585,7 +585,7 @@ namespace KTKS_DonKH.GUI.DonTu
                                                 if (chkcmbNoiNhan.Properties.Items[i].CheckState == CheckState.Checked)
                                                 {
                                                     //đi KTXM
-                                                    if (chkcmbNoiNhan.Properties.Items[i].Value.ToString() == "5")
+                                                    if (chkcmbNoiNhan.Properties.Items[i].Value.ToString() == "5" || chkcmbNoiNhan.Properties.Items[i].Value.ToString() == "39")
                                                     {
 
                                                         for (int j = 0; j < chkcmbNoiNhanKTXM.Properties.Items.Count; j++)
@@ -679,7 +679,7 @@ namespace KTKS_DonKH.GUI.DonTu
                                                     if (chkcmbNoiNhan.Properties.Items[i].CheckState == CheckState.Checked)
                                                     {
                                                         //đi KTXM
-                                                        if (chkcmbNoiNhan.Properties.Items[i].Value.ToString() == "5")
+                                                        if (chkcmbNoiNhan.Properties.Items[i].Value.ToString() == "5" || chkcmbNoiNhan.Properties.Items[i].Value.ToString() == "39")
                                                         {
 
                                                             for (int j = 0; j < chkcmbNoiNhanKTXM.Properties.Items.Count; j++)
@@ -887,7 +887,7 @@ namespace KTKS_DonKH.GUI.DonTu
         private void chkcmbNoiNhan_EditValueChanged(object sender, EventArgs e)
         {
             for (int i = 0; i < chkcmbNoiNhan.Properties.Items.Count; i++)
-                if (chkcmbNoiNhan.Properties.Items[i].CheckState == CheckState.Checked && chkcmbNoiNhan.Properties.Items[i].Value.ToString() == "5")
+                if (chkcmbNoiNhan.Properties.Items[i].CheckState == CheckState.Checked && (chkcmbNoiNhan.Properties.Items[i].Value.ToString() == "5" || chkcmbNoiNhan.Properties.Items[i].Value.ToString() == "39"))
                 {
                     DataTable dt = new DataTable();
                     dt = _cTaiKhoan.getDS_KTXM(CTaiKhoan.KyHieuMaTo);
