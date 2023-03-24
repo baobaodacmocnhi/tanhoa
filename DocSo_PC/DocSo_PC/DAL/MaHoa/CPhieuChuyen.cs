@@ -124,8 +124,11 @@ namespace DocSo_PC.DAL.MaHoa
 
         public DataTable getBaoCao(DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            string sql = "select MLT=LOTRINH,a.DANHBO,HOTEN,DiaChi=SONHA+' '+TENDUONG,NoiDung=N'Âm Sâu',CREATEDATE=AmSau_Ngay,Folder='AmSau',a.ID,a.GhiChu,a.TinhTrang,a.SoPhieu,b.ViTriDHN_Ngoai"
-                + " from MaHoa_PhieuChuyen_LichSu a,CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG b where a.DanhBo=b.DanhBo and NoiDung=N'Âm Sâu' and CAST(a.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(a.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'";
+            string sql = "select Loai=N'Bảng Kê',SoLuong=COUNT(distinct SoPhieu) from MaHoa_PhieuChuyen_LichSu where CAST(SoPhieu_Ngay as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(SoPhieu_Ngay as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and TinhTrang not like N'Xóa'"
++ " union"
++ " select Loai=N'Địa Chỉ',SoLuong=COUNT(ID) from MaHoa_PhieuChuyen_LichSu where CAST(SoPhieu_Ngay as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(SoPhieu_Ngay as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and TinhTrang not like N'Xóa'"
++ " union"
++ " select Loai=N'Tồn',SoLuong=COUNT(ID) from MaHoa_PhieuChuyen_LichSu where CAST(SoPhieu_Ngay as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(SoPhieu_Ngay as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and TinhTrang like N'Tồn'";
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 

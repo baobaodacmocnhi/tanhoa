@@ -448,7 +448,7 @@ namespace DocSo_PC.DAL.Doi
                         + " ,BaoThayBT=case when thwater.DanhBo is not null then 'true' else 'false' end,GCKH=GhiChuKH"
                         + " ,CSGo=case when baothay.DanhBo is not null then CAST(baothay.CSGo as varchar(10)) else case when thwater.DanhBo is not null then thwater.CSGo else '' end end"
                         + " ,CSGan=case when baothay.DanhBo is not null then baothay.CSGan else case when thwater.DanhBo is not null then thwater.CSGan else '' end end"
-                        + " from DocSo ds left join (SELECT top 1 DanhBo=REPLACE(DANHBO,'-',''),CSGo=TCTB_CSGo,CSGan=ChiSo FROM TANHOA_WATER.dbo.V_HOANGCONGTCTB WHERE DATEADD(DAY,30,NGAYTHICONG)>=GETDATE() and DHN_NGAYKIEMDINH is not null and REPLACE(DANHBO,'-','')='" + DanhBo + "'a order by NGAYTHICONG desc) thwater on ds.DanhBa=thwater.DanhBo"
+                        + " from DocSo ds left join (SELECT top 1 DanhBo=REPLACE(DANHBO,'-',''),CSGo=TCTB_CSGo,CSGan=ChiSo FROM TANHOA_WATER.dbo.V_HOANGCONGTCTB WHERE DATEADD(DAY,30,NGAYTHICONG)>=GETDATE() and DHN_NGAYKIEMDINH is not null and REPLACE(DANHBO,'-','')='" + DanhBo + "' order by NGAYTHICONG desc) thwater on ds.DanhBa=thwater.DanhBo"
                         + " left join (select top 1 DanhBo=DanhBa,CSGo,CSGan from BaoThay b inner join ThamSo t on b.LoaiBT=t.Code where t.CodeType = 'BT' and DATEADD(DAY,30,NgayThay)>=GETDATE() and DanHBa='" + DanhBo + "' order by NgayCapNhat desc) baothay on ds.DanhBa=baothay.DanhBo"
                         + " where Nam=" + Nam + " and Ky=" + Ky + " and DanhBa='" + DanhBo + "' and (select TuMay from [To] where MaTo=" + MaTo + ")<=May and May<=(select DenMay from [To] where MaTo=" + MaTo + ")";
             return _cDAL.ExecuteQuery_DataTable(sql);

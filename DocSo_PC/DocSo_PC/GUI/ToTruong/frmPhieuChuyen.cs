@@ -77,7 +77,10 @@ namespace DocSo_PC.GUI.ToTruong
                 dgvDanhSach.DataSource = _cPhieuChuyen.getDS(txtDanhBo.Text.Trim().Replace("-", "").Replace(" ", ""));
             }
             else
-                dgvDanhSach.DataSource = _cPhieuChuyen.getDS(cmbTo.SelectedValue.ToString(), cmbLoai.SelectedValue.ToString(), dateTuNgay.Value, dateDenNgay.Value);
+                if (CNguoiDung.Doi)
+                    dgvDanhSach.DataSource = _cPhieuChuyen.getDS(cmbTo.SelectedValue.ToString(), cmbLoai.SelectedValue.ToString(), dateTuNgay.Value, dateDenNgay.Value);
+                else
+                    dgvDanhSach.DataSource = _cPhieuChuyen.getDS(CNguoiDung.MaTo.ToString(), cmbLoai.SelectedValue.ToString(), dateTuNgay.Value, dateDenNgay.Value);
             //switch (cmbLoai.SelectedValue.ToString())
             //{
             //    case "Âm Sâu":
@@ -763,7 +766,7 @@ namespace DocSo_PC.GUI.ToTruong
 
         private void btnBaoCao_Click(object sender, EventArgs e)
         {
-
+            dgvBaoCao.DataSource = _cPhieuChuyen.getBaoCao(dateTu_BaoCao.Value, dateDen_BaoCao.Value);
         }
 
 
