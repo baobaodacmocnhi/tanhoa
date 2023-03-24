@@ -1512,6 +1512,55 @@ namespace KTKS_DonKH.GUI.DonTu
             }
         }
 
+        private void btnImportQLDHN_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                tabControl.SelectTab("tabCongVan");
+                DataTable dtExcel = _cDocSo.getPhieuChuyen(txtPhieuChuyen.Text.Trim());
+                foreach (DataRow item in dtExcel.Rows)
+                {
+                    bool exists = false;
+                    for (int i = 0; i < dgvDanhBo.Rows.Count; i++)
+                        if (dgvDanhBo["DanhBo", i].Value != null && dgvDanhBo["DanhBo", i].Value.ToString() != "" && dgvDanhBo["DanhBo", i].Value.ToString() == item[0].ToString().Replace(" ", ""))
+                        {
+                            exists = true;
+                        }
+                    if (exists == false)
+                    {
+                        HOADON hoadon = _cThuTien.GetMoiNhat(item["DanhBo"].ToString().Replace(" ", ""));
+                        if (hoadon != null)
+                        {
+                            dgvDanhBo.Rows.Insert(dgvDanhBo.RowCount - 1, 1);
+                            dgvDanhBo["DanhBo", dgvDanhBo.RowCount - 2].Value = hoadon.DANHBA;
+                            dgvDanhBo["HopDong", dgvDanhBo.RowCount - 2].Value = hoadon.HOPDONG;
+                            dgvDanhBo["HoTen", dgvDanhBo.RowCount - 2].Value = hoadon.TENKH;
+                            dgvDanhBo["DiaChi", dgvDanhBo.RowCount - 2].Value = hoadon.SO + " " + hoadon.DUONG + _cDHN.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
+                            dgvDanhBo["GiaBieu", dgvDanhBo.RowCount - 2].Value = hoadon.GB;
+                            dgvDanhBo["DinhMuc", dgvDanhBo.RowCount - 2].Value = hoadon.DM;
+                            dgvDanhBo["DinhMucHN", dgvDanhBo.RowCount - 2].Value = hoadon.DinhMucHN;
+                            dgvDanhBo["Dot", dgvDanhBo.RowCount - 2].Value = hoadon.DOT;
+                            dgvDanhBo["Ky", dgvDanhBo.RowCount - 2].Value = hoadon.KY;
+                            dgvDanhBo["Nam", dgvDanhBo.RowCount - 2].Value = hoadon.NAM;
+                            dgvDanhBo["MLT", dgvDanhBo.RowCount - 2].Value = hoadon.MALOTRINH;
+                            dgvDanhBo["Quan", dgvDanhBo.RowCount - 2].Value = hoadon.Quan;
+                            dgvDanhBo["Phuong", dgvDanhBo.RowCount - 2].Value = hoadon.Phuong;
+                            dgvDanhBo["QLDHN_MaDon", dgvDanhBo.RowCount - 2].Value = item["ID"].ToString();
+                        }
+                        //else
+                        //{
+                        //    dgvDanhBo.Rows.Insert(dgvDanhBo.RowCount - 1, 1);
+                        //    dgvDanhBo["DanhBo", dgvDanhBo.RowCount - 2].Value = item[0].ToString().Replace(" ", "");
+                        //}
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
 
     }

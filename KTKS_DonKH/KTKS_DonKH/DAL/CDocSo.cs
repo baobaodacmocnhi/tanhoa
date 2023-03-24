@@ -203,5 +203,10 @@ namespace KTKS_DonKH.DAL
                 return "";
         }
 
+        public DataTable getPhieuChuyen(string SoPhieu)
+        {
+            return ExecuteQuery_DataTable("select ID,DanhBo from MaHoa_PhieuChuyen_LichSu where SoPhieu=" + SoPhieu);
+        }
+
     }
 }
