@@ -36,6 +36,7 @@ namespace DocSo_PC.GUI.ToTruong
         private void frmPhieuChuyen_Load(object sender, EventArgs e)
         {
             dgvDanhSach.AutoGenerateColumns = false;
+            dgvBaoCao.AutoGenerateColumns = false;
             if (CNguoiDung.Doi)
             {
                 cmbTo.Visible = true;
@@ -758,6 +759,11 @@ namespace DocSo_PC.GUI.ToTruong
                     dgvDanhBo.Rows[index].Cells["DiaChi_Nhap"].Value = ttkh.SONHA + " " + ttkh.TENDUONG;
                 }
             }
+        }
+
+        private void btnBaoCao_Click(object sender, EventArgs e)
+        {
+
         }
 
 
