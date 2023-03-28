@@ -2272,6 +2272,8 @@ namespace KTKS_DonKH.BaoCao {
             
             private global::System.Data.DataColumn columnNgayHetHan;
             
+            private global::System.Data.DataColumn columnQRCode;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public BienNhanDonKHDataTable() {
@@ -2715,6 +2717,14 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn QRCodeColumn {
+                get {
+                    return this.columnQRCode;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2801,7 +2811,8 @@ namespace KTKS_DonKH.BaoCao {
                         string NgayGiaiQuyet, 
                         string TenPhong, 
                         string PathLogo, 
-                        string NgayHetHan) {
+                        string NgayHetHan, 
+                        string QRCode) {
                 BienNhanDonKHRow rowBienNhanDonKHRow = ((BienNhanDonKHRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         MaDon,
@@ -2854,7 +2865,8 @@ namespace KTKS_DonKH.BaoCao {
                         NgayGiaiQuyet,
                         TenPhong,
                         PathLogo,
-                        NgayHetHan};
+                        NgayHetHan,
+                        QRCode};
                 rowBienNhanDonKHRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowBienNhanDonKHRow);
                 return rowBienNhanDonKHRow;
@@ -2928,6 +2940,7 @@ namespace KTKS_DonKH.BaoCao {
                 this.columnTenPhong = base.Columns["TenPhong"];
                 this.columnPathLogo = base.Columns["PathLogo"];
                 this.columnNgayHetHan = base.Columns["NgayHetHan"];
+                this.columnQRCode = base.Columns["QRCode"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3035,6 +3048,8 @@ namespace KTKS_DonKH.BaoCao {
                 base.Columns.Add(this.columnPathLogo);
                 this.columnNgayHetHan = new global::System.Data.DataColumn("NgayHetHan", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNgayHetHan);
+                this.columnQRCode = new global::System.Data.DataColumn("QRCode", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQRCode);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -21990,6 +22005,22 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string QRCode {
+                get {
+                    try {
+                        return ((string)(this[this.tableBienNhanDonKH.QRCodeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'QRCode\' in table \'BienNhanDonKH\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBienNhanDonKH.QRCodeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsMaDonNull() {
                 return this.IsNull(this.tableBienNhanDonKH.MaDonColumn);
             }
@@ -22598,6 +22629,18 @@ namespace KTKS_DonKH.BaoCao {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetNgayHetHanNull() {
                 this[this.tableBienNhanDonKH.NgayHetHanColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsQRCodeNull() {
+                return this.IsNull(this.tableBienNhanDonKH.QRCodeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetQRCodeNull() {
+                this[this.tableBienNhanDonKH.QRCodeColumn] = global::System.Convert.DBNull;
             }
         }
         

@@ -961,7 +961,7 @@ namespace KTKS_DonKH.GUI.CongVan
                         }
                         break;
                 }
-                dr["Ma"] = item["IDCT"].ToString();
+                dr["Ma"] = item["MaDon"].ToString();
                 dr["CreateDate"] = item["NgayChuyen"].ToString();
                 dr["NoiChuyen"] = item["NoiNhan"].ToString();
 

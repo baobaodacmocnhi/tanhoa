@@ -1174,6 +1174,14 @@ namespace KTKS_DonKH.GUI.DonTu
                     dr["NgayHetHan"] = "";
                 dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
                 dr["HoTenNV"] = CTaiKhoan.HoTen;
+                QRCoder.QRCodeGenerator qrGenerator = new QRCoder.QRCodeGenerator();
+                QRCoder.QRCodeData qrCodeData = qrGenerator.CreateQrCode("https://service.cskhtanhoa.com.vn/khachhang/tientrinhdon?id=" + entity.MaDon, QRCoder.QRCodeGenerator.ECCLevel.H);
+                QRCoder.QRCode qrCode = new QRCoder.QRCode(qrCodeData);
+                Bitmap qrCodeImage;
+                qrCodeImage = qrCode.GetGraphic(20, Color.Black, Color.White, false);
+                qrCodeImage = _cDonTu.resizeImage(qrCodeImage, 170, 170);
+                System.IO.File.WriteAllBytes(@"D:\qrcode.jpg", _cDonTu.ImageToByte(qrCodeImage));
+                dr["QRCode"] = @"D:\qrcode.jpg";
                 dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(dr);
                 rptBienNhanDonTu rpt = new rptBienNhanDonTu();
                 rpt.SetDataSource(dsBaoCao);

@@ -823,7 +823,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             DataRow dr = dsBaoCao1.Tables["ThaoThuTraLoi"].NewRow();
 
                             CHDB_ChiTietCatTam ctctdb = _cCHDB.GetCTCTDB(decimal.Parse(dgvDSCTCHDB["MaTB", i].Value.ToString()));
-                            dr["SoPhieu"] = "CT " + ctctdb.MaCTCTDB.ToString().Insert(ctctdb.MaCTCTDB.ToString().Length - 2, "-") + " ; Đơn: " + ctctdb.CHDB.MaDonMoi;
+                            dr["SoPhieu"] = "CT " + ctctdb.MaCTCTDB.ToString().Insert(ctctdb.MaCTCTDB.ToString().Length - 2, "-");
+                            if (ctctdb.CHDB.DonTu.DonTu_ChiTiets.Count == 1)
+                                dr["SoPhieu"] += " ; Đơn: " + ctctdb.CHDB.MaDonMoi.Value.ToString();
+                            else
+                                dr["SoPhieu"] += " ; Đơn: " + ctctdb.CHDB.MaDonMoi.Value.ToString() + "." + ctctdb.STT.Value.ToString();
                             dr["HoTen"] = ctctdb.HoTen;
                             dr["DiaChi"] = ctctdb.DiaChi;
                             dr["DanhBo"] = ctctdb.DanhBo.Insert(7, " ").Insert(4, " ");
@@ -835,7 +839,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             DataRow dr = dsBaoCao2.Tables["ThaoThuTraLoi"].NewRow();
 
                             CHDB_ChiTietCatTam ctctdb = _cCHDB.GetCTCTDB(decimal.Parse(dgvDSCTCHDB["MaTB", i].Value.ToString()));
-                            dr["SoPhieu"] = "CT " + ctctdb.MaCTCTDB.ToString().Insert(ctctdb.MaCTCTDB.ToString().Length - 2, "-") + " ; Đơn: " + ctctdb.CHDB.MaDonMoi;
+                            dr["SoPhieu"] = "CT " + ctctdb.MaCTCTDB.ToString().Insert(ctctdb.MaCTCTDB.ToString().Length - 2, "-");
+                            if (ctctdb.CHDB.DonTu.DonTu_ChiTiets.Count == 1)
+                                dr["SoPhieu"] += " ; Đơn: " + ctctdb.CHDB.MaDonMoi.Value.ToString();
+                            else
+                                dr["SoPhieu"] += " ; Đơn: " + ctctdb.CHDB.MaDonMoi.Value.ToString() + "." + ctctdb.STT.Value.ToString();
                             dr["HoTen"] = ctctdb.HoTen;
                             dr["DiaChi"] = ctctdb.DiaChi;
                             dr["DanhBo"] = ctctdb.DanhBo.Insert(7, " ").Insert(4, " ");
@@ -860,7 +868,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             DataRow dr = dsBaoCao1.Tables["ThaoThuTraLoi"].NewRow();
 
                             CHDB_ChiTietCatHuy ctchdb = _cCHDB.GetCTCHDB(decimal.Parse(dgvDSCTCHDB["MaTB", i].Value.ToString()));
-                            dr["SoPhieu"] = "CH " + ctchdb.MaCTCHDB.ToString().Insert(ctchdb.MaCTCHDB.ToString().Length - 2, "-") + " ; Đơn: " + ctchdb.CHDB.MaDonMoi;
+                            dr["SoPhieu"] = "CH " + ctchdb.MaCTCHDB.ToString().Insert(ctchdb.MaCTCHDB.ToString().Length - 2, "-");
+                            if (ctchdb.CHDB.DonTu.DonTu_ChiTiets.Count == 1)
+                                dr["SoPhieu"] += " ; Đơn: " + ctchdb.CHDB.MaDonMoi.Value.ToString();
+                            else
+                                dr["SoPhieu"] += " ; Đơn: " + ctchdb.CHDB.MaDonMoi.Value.ToString() + "." + ctchdb.STT.Value.ToString();
                             dr["HoTen"] = ctchdb.HoTen;
                             dr["DiaChi"] = ctchdb.DiaChi;
                             dr["DanhBo"] = ctchdb.DanhBo.Insert(7, " ").Insert(4, " ");
@@ -872,7 +884,11 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             DataRow dr = dsBaoCao2.Tables["ThaoThuTraLoi"].NewRow();
 
                             CHDB_ChiTietCatHuy ctchdb = _cCHDB.GetCTCHDB(decimal.Parse(dgvDSCTCHDB["MaTB", i].Value.ToString()));
-                            dr["SoPhieu"] = "CH " + ctchdb.MaCTCHDB.ToString().Insert(ctchdb.MaCTCHDB.ToString().Length - 2, "-") + " ; Đơn: " + ctchdb.CHDB.MaDonMoi;
+                            dr["SoPhieu"] = "CH " + ctchdb.MaCTCHDB.ToString().Insert(ctchdb.MaCTCHDB.ToString().Length - 2, "-") ;
+                            if (ctchdb.CHDB.DonTu.DonTu_ChiTiets.Count == 1)
+                                dr["SoPhieu"] += " ; Đơn: " + ctchdb.CHDB.MaDonMoi.Value.ToString();
+                            else
+                                dr["SoPhieu"] += " ; Đơn: " + ctchdb.CHDB.MaDonMoi.Value.ToString() + "." + ctchdb.STT.Value.ToString();
                             dr["HoTen"] = ctchdb.HoTen;
                             dr["DiaChi"] = ctchdb.DiaChi;
                             dr["DanhBo"] = ctchdb.DanhBo.Insert(7, " ").Insert(4, " ");

@@ -104,7 +104,7 @@ namespace KTKS_DonKH.GUI.DonTu
             {
                 if (_dontu_LichSu != null)
                 {
-                    if (CTaiKhoan.Admin != true && CTaiKhoan.TruongPhong != true)
+                    if (CTaiKhoan.Admin != true && CTaiKhoan.TruongPhong != true && CTaiKhoan.ThuKy != true)
                         if (CTaiKhoan.MaUser != _dontu_LichSu.CreateBy)
                         {
                             MessageBox.Show("Bạn không phải người tạo nên không sửa được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -159,7 +159,6 @@ namespace KTKS_DonKH.GUI.DonTu
                             _cDonTu.SubmitChanges();
                         }
                     }
-                    dgvLichSuDonTu.DataSource = _cDonTu.getDS_LichSu(_dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
                 }
                 else
                     if (_dontu_ChiTiet != null)
@@ -266,9 +265,8 @@ namespace KTKS_DonKH.GUI.DonTu
                             MessageBox.Show("Chưa chọn Nơi Chuyển", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.Close();
                     }
+                dgvLichSuDonTu.DataSource = _cDonTu.getDS_LichSu(_dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
             }
             catch (Exception ex)
             {
