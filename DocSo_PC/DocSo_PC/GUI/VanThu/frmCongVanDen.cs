@@ -40,6 +40,8 @@ namespace DocSo_PC.GUI.VanThu
             dr["LoaiVB"] = "Tất Cả";
             dt.Rows.InsertAt(dr, 0);
             cmbLoaiVanBan_Duyet.DataSource = dt;
+            cmbLoaiVanBan_Duyet.DisplayMember = "LoaiVB";
+            cmbLoaiVanBan_Duyet.ValueMember = "LoaiVB";
             cmbLoaiVanBan_Duyet.SelectedIndex = 0;
         }
 
@@ -131,6 +133,11 @@ namespace DocSo_PC.GUI.VanThu
             {
                 if (dgvDanhSach.Columns[e.ColumnIndex].Name == "XemHinh")
                 {
+                    if (dgvDanhSach.CurrentRow.Cells["TableName"].Value.ToString() == "")
+                    {
+                        MessageBox.Show("Không có File", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     string type = "";
                     object file = _cThuongVu.getFile(dgvDanhSach.CurrentRow.Cells["TableName"].Value.ToString(), int.Parse(dgvDanhSach.CurrentRow.Cells["IDCT"].Value.ToString()), out type);
                     if (file != null)
@@ -358,6 +365,11 @@ namespace DocSo_PC.GUI.VanThu
         {
             try
             {
+                if (dgvDuyet["TableName_Duyet", e.RowIndex].Value.ToString() == "")
+                {
+                    MessageBox.Show("Không có File", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 string type = "";
                 _enCVD = _cCVD.get(int.Parse(dgvDuyet["ID_Duyet", e.RowIndex].Value.ToString()));
                 object file = _cThuongVu.getFile(dgvDuyet["TableName_Duyet", e.RowIndex].Value.ToString(), int.Parse(dgvDuyet["IDCT_Duyet", e.RowIndex].Value.ToString()), out type);
