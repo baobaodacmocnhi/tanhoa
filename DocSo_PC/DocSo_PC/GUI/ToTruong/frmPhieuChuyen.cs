@@ -313,6 +313,7 @@ namespace DocSo_PC.GUI.ToTruong
                 {
                     _cTo.viewImage(_cTo.imageToByteArray(_cTo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa(dgvDanhSach["Folder", e.RowIndex].Value.ToString(), "", dgvDanhSach["DanhBo", e.RowIndex].Value.ToString() + ".jpg"))));
                 }
+                if()
             }
             catch
             {
