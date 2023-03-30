@@ -1180,8 +1180,9 @@ namespace KTKS_DonKH.GUI.DonTu
                 Bitmap qrCodeImage;
                 qrCodeImage = qrCode.GetGraphic(20, Color.Black, Color.White, false);
                 qrCodeImage = _cDonTu.resizeImage(qrCodeImage, 170, 170);
-                System.IO.File.WriteAllBytes(@"D:\qrcode.jpg", _cDonTu.ImageToByte(qrCodeImage));
-                dr["QRCode"] = @"D:\qrcode.jpg";
+                //System.IO.File.WriteAllBytes(@"D:\qrcode.jpg", _cDonTu.ImageToByte(qrCodeImage));
+                //dr["QRCode"] = @"D:\qrcode.jpg";
+                dr["QRCode"] = _cDonTu.ImageToByte(qrCodeImage);
                 dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(dr);
                 rptBienNhanDonTu rpt = new rptBienNhanDonTu();
                 rpt.SetDataSource(dsBaoCao);

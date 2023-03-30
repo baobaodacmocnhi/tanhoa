@@ -2812,7 +2812,7 @@ namespace KTKS_DonKH.BaoCao {
                         string TenPhong, 
                         string PathLogo, 
                         string NgayHetHan, 
-                        string QRCode) {
+                        byte[] QRCode) {
                 BienNhanDonKHRow rowBienNhanDonKHRow = ((BienNhanDonKHRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         MaDon,
@@ -3048,7 +3048,7 @@ namespace KTKS_DonKH.BaoCao {
                 base.Columns.Add(this.columnPathLogo);
                 this.columnNgayHetHan = new global::System.Data.DataColumn("NgayHetHan", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNgayHetHan);
-                this.columnQRCode = new global::System.Data.DataColumn("QRCode", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnQRCode = new global::System.Data.DataColumn("QRCode", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnQRCode);
             }
             
@@ -22005,10 +22005,10 @@ namespace KTKS_DonKH.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string QRCode {
+            public byte[] QRCode {
                 get {
                     try {
-                        return ((string)(this[this.tableBienNhanDonKH.QRCodeColumn]));
+                        return ((byte[])(this[this.tableBienNhanDonKH.QRCodeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'QRCode\' in table \'BienNhanDonKH\' is DBNull.", e);
