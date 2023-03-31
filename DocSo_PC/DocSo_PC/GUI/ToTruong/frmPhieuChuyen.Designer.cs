@@ -94,7 +94,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.dateDen_BaoCao = new System.Windows.Forms.DateTimePicker();
-            this.txtVeViec = new System.Windows.Forms.TextBox();
+            this.cmbVeViec = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -419,9 +419,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cmbVeViec);
             this.groupBox1.Controls.Add(this.btnPasteFromXuLy);
             this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Controls.Add(this.txtVeViec);
             this.groupBox1.Controls.Add(this.btnThem);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.txtKinhGui);
@@ -692,12 +692,26 @@
             this.dateDen_BaoCao.Size = new System.Drawing.Size(95, 20);
             this.dateDen_BaoCao.TabIndex = 69;
             // 
-            // txtVeViec
+            // cmbVeViec
             // 
-            this.txtVeViec.Location = new System.Drawing.Point(272, 19);
-            this.txtVeViec.Name = "txtVeViec";
-            this.txtVeViec.Size = new System.Drawing.Size(390, 20);
-            this.txtVeViec.TabIndex = 5;
+            this.cmbVeViec.FormattingEnabled = true;
+            this.cmbVeViec.Items.AddRange(new object[] {
+            "Tất Cả",
+            "Âm Sâu",
+            "Xây Dựng",
+            "Đứt Chì Góc",
+            "Đứt Chì Thân",
+            "Ngập Nước",
+            "Kẹt Tường",
+            "Lấp Khóa Góc",
+            "Bể HBV",
+            "Bể Nấp, Mất Nấp HBV",
+            "Gãy Tay Van",
+            "Nhập Thủ Công"});
+            this.cmbVeViec.Location = new System.Drawing.Point(272, 19);
+            this.cmbVeViec.Name = "cmbVeViec";
+            this.cmbVeViec.Size = new System.Drawing.Size(209, 21);
+            this.cmbVeViec.TabIndex = 79;
             // 
             // frmPhieuChuyen
             // 
@@ -796,6 +810,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Loai;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoLuong;
         private System.Windows.Forms.Button btnBaoCao;
-        private System.Windows.Forms.TextBox txtVeViec;
+        private System.Windows.Forms.ComboBox cmbVeViec;
     }
 }

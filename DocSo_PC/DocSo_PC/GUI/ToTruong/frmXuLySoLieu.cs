@@ -31,6 +31,7 @@ namespace DocSo_PC.GUI.ToTruong
         CKTXM _cKTXM = new CKTXM();
         CThuongVu _cThuongVu = new CThuongVu();
         CCongVanDen _cCVD = new CCongVanDen();
+        CPhieuChuyen _cPhieuChuyen = new CPhieuChuyen();
         bool _flagLoadFirst = false;
 
         public frmXuLySoLieu()
@@ -81,7 +82,7 @@ namespace DocSo_PC.GUI.ToTruong
                 loadCodeMoi();
                 if (CNguoiDung.Admin)
                     btnReset.Visible = true;
-                DataTable dt = _cDonTu.getDS_PhieuChuyenAll();
+                DataTable dt = _cPhieuChuyen.getDS_All();
                 cmbNoiDung.DataSource = dt;
                 cmbNoiDung.ValueMember = "Name";
                 cmbNoiDung.DisplayMember = "Name";

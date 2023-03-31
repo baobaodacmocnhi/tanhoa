@@ -97,6 +97,31 @@ namespace DocSo_PC.DAL.MaHoa
             return _db.MaHoa_PhieuChuyen_LichSus.Where(o => o.SoPhieu == SoPhieu).ToList();
         }
 
+        public DataTable getDS_App()
+        {
+            return _cDAL.LINQToDataTable(_db.MaHoa_PhieuChuyens.Where(item => item.App == true).ToList());
+        }
+
+        public DataTable getDS_App_KhongLapDon()
+        {
+            return _cDAL.LINQToDataTable(_db.MaHoa_PhieuChuyens.Where(item => item.App == true && item.KhongLapDon == true).ToList());
+        }
+
+        public DataTable getDS_PC()
+        {
+            return _cDAL.LINQToDataTable(_db.MaHoa_PhieuChuyens.Where(item => item.PC == true).ToList());
+        }
+
+        public DataTable getDS_All()
+        {
+            return _cDAL.LINQToDataTable(_db.MaHoa_PhieuChuyens.ToList());
+        }
+
+        public DataTable getDS_PhieuChuyen()
+        {
+            return _cDAL.LINQToDataTable(_db.MaHoa_PhieuChuyens.Where(item => (item.App == false && item.KhongLapDon == false) || (item.App == true && item.KhongLapDon == true)).OrderBy(item => item.Name).ToList());
+        }
+
         public DataTable getGroup_NoiDung()
         {
             return _cDAL.ExecuteQuery_DataTable("select NoiDung from MaHoa_PhieuChuyen_LichSu group by NoiDung order by NoiDung asc");

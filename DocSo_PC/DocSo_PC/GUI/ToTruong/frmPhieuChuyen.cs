@@ -61,13 +61,16 @@ namespace DocSo_PC.GUI.ToTruong
             //cmbLoai.DisplayMember = "Name";
             //cmbLoai.ValueMember = "Name";
             //cmbLoai.SelectedIndex = 0;
-            DataTable dt = _cPhieuChuyen.getGroup_NoiDung();
+            DataTable dt = _cPhieuChuyen.getDS_PhieuChuyen();
             DataRow dr = dt.NewRow();
-            dr["NoiDung"] = "Tất Cả";
+            dr["Name"] = "Tất Cả";
             dt.Rows.InsertAt(dr, dt.Rows.Count);
             cmbLoai.DataSource = dt;
-            cmbLoai.DisplayMember = "NoiDung";
-            cmbLoai.ValueMember = "NoiDung";
+            cmbLoai.DisplayMember = "Name";
+            cmbLoai.ValueMember = "Name";
+            cmbVeViec.DataSource = dt;
+            cmbVeViec.DisplayMember = "Name";
+            cmbVeViec.ValueMember = "Name";
         }
 
         private void btnXem_Click(object sender, EventArgs e)
@@ -313,7 +316,7 @@ namespace DocSo_PC.GUI.ToTruong
                 {
                     _cTo.viewImage(_cTo.imageToByteArray(_cTo.byteArrayToImage(_wsDHN.get_Hinh_MaHoa(dgvDanhSach["Folder", e.RowIndex].Value.ToString(), "", dgvDanhSach["DanhBo", e.RowIndex].Value.ToString() + ".jpg"))));
                 }
-                if()
+                
             }
             catch
             {
@@ -529,7 +532,7 @@ namespace DocSo_PC.GUI.ToTruong
                             {
                                 MaHoa_PhieuChuyen_LichSu en = new MaHoa_PhieuChuyen_LichSu();
                                 en.KinhGui = txtKinhGui.Text.Trim();
-                                en.NoiDung = txtVeViec.Text.Trim();
+                                en.NoiDung = cmbVeViec.SelectedValue.ToString();
                                 en.VeViec = en.NoiDung.ToUpper();
                                 en.DanhBo = item.Cells["DanhBo_Nhap"].Value.ToString();
                                 en.TinhTrang = "Tồn";

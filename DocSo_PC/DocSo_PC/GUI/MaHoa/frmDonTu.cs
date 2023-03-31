@@ -29,6 +29,7 @@ namespace DocSo_PC.GUI.MaHoa
         CToTrinh _cToTrinh = new CToTrinh();
         CDCBD _cDCBD = new CDCBD();
         CTo _cTo = new CTo();
+        CPhieuChuyen _cPhieuChuyen = new CPhieuChuyen();
         wrDHN.wsDHN _wsDHN = new wrDHN.wsDHN();
         wrThuongVu.wsThuongVu _wsThuongVu = new wrThuongVu.wsThuongVu();
         CDanhBoBoQua _cDBBQ = new CDanhBoBoQua();
@@ -63,7 +64,7 @@ namespace DocSo_PC.GUI.MaHoa
                 cmbKTXM_DSChuyenKTXM.DataSource = dt;
                 cmbKTXM_DSChuyenKTXM.ValueMember = "MaND";
                 cmbKTXM_DSChuyenKTXM.DisplayMember = "HoTen";
-                dt = _cDonTu.getDS_PhieuChuyenAll();
+                dt = _cPhieuChuyen.getDS_All();
                 cmbNoiDung.DataSource = dt;
                 cmbNoiDung.ValueMember = "Name";
                 cmbNoiDung.DisplayMember = "Name";
