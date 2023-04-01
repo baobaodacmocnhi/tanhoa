@@ -697,6 +697,11 @@ namespace ThuTien.DAL.Doi
             //return ExecuteQuery_DataTable("select * from ViewGetNamHD");
         }
 
+        public DataTable GetAllNam()
+        {
+            return LINQToDataTable(_db.ViewGetAllNamHDs.OrderByDescending(item => item.NAM));
+        }
+
         /// <summary>
         /// Lấy Sum thông tin hóa đơn
         /// </summary>

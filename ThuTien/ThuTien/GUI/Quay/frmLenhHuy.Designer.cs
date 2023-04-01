@@ -432,6 +432,7 @@
             this.radTon.TabStop = true;
             this.radTon.Text = "Tồn";
             this.radTon.UseVisualStyleBackColor = true;
+            this.radTon.CheckedChanged += new System.EventHandler(this.radTon_CheckedChanged);
             // 
             // radDangNgan
             // 
@@ -442,6 +443,7 @@
             this.radDangNgan.TabIndex = 75;
             this.radDangNgan.Text = "Đăng Ngân";
             this.radDangNgan.UseVisualStyleBackColor = true;
+            this.radDangNgan.CheckedChanged += new System.EventHandler(this.radDangNgan_CheckedChanged);
             // 
             // cmbNam
             // 

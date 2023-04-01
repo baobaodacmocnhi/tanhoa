@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="HOADON_TA" Class="dbThuTienDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=server9;Initial Catalog=HOADON_TA;Persist Security Info=True;User ID=sa" SettingsObjectName="ThuTien.Properties.Settings" SettingsPropertyName="HOADON_TAConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=113.161.88.180,1933;Initial Catalog=HOADON_TA;Persist Security Info=True;User ID=sa" SettingsObjectName="ThuTien.Properties.Settings" SettingsPropertyName="HOADON_TAConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.TT_LichSuGiaoHD" Member="TT_LichSuGiaoHDs">
     <Type Name="TT_LichSuGiaoHD">
       <Column Name="MaHD" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -1676,6 +1676,12 @@
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="TT_ToTrinhCatHuy_TT_CTToTrinhCatHuy" Member="TT_ToTrinhCatHuy" ThisKey="MaTT" OtherKey="MaTT" Type="TT_ToTrinhCatHuy" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ViewGetAllNamHD" Member="ViewGetAllNamHDs">
+    <Type Name="ViewGetAllNamHD">
+      <Column Name="NAM" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.TimKiem" Method="TimKiem" IsComposable="true">

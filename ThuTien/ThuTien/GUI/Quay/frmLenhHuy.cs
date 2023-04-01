@@ -549,5 +549,33 @@ namespace ThuTien.GUI.Quay
             //Điền dữ liệu vào vùng đã thiết lập
             range.Value2 = arr;
         }
+
+        private void radTon_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radTon.Checked)
+            {
+                DataTable dtNam = _cHoaDon.GetNam();
+                DataRow dr = dtNam.NewRow();
+                dr["ID"] = "Tất Cả";
+                dtNam.Rows.InsertAt(dr, 0);
+                cmbNam.DataSource = dtNam;
+                cmbNam.DisplayMember = "ID";
+                cmbNam.ValueMember = "Nam";
+            }
+        }
+
+        private void radDangNgan_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radDangNgan.Checked)
+            {
+                DataTable dtNam = _cHoaDon.GetAllNam();
+                DataRow dr = dtNam.NewRow();
+                dr["ID"] = "Tất Cả";
+                dtNam.Rows.InsertAt(dr, 0);
+                cmbNam.DataSource = dtNam;
+                cmbNam.DisplayMember = "ID";
+                cmbNam.ValueMember = "Nam";
+            }
+        }
     }
 }

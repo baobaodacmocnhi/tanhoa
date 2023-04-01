@@ -930,6 +930,14 @@ namespace ThuTien.LinQ
 			}
 		}
 		
+		public System.Data.Linq.Table<ViewGetAllNamHD> ViewGetAllNamHDs
+		{
+			get
+			{
+				return this.GetTable<ViewGetAllNamHD>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TimKiem", IsComposable=true)]
 		public IQueryable<TimKiemResult> TimKiem([global::System.Data.Linq.Mapping.ParameterAttribute(Name="DanhBo", DbType="VarChar(11)")] string danhBo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="MLT", DbType="VarChar(11)")] string mLT)
 		{
@@ -36722,6 +36730,51 @@ namespace ThuTien.LinQ
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ViewGetAllNamHD")]
+	public partial class ViewGetAllNamHD
+	{
+		
+		private int _NAM;
+		
+		private string _ID;
+		
+		public ViewGetAllNamHD()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAM", DbType="Int NOT NULL")]
+		public int NAM
+		{
+			get
+			{
+				return this._NAM;
+			}
+			set
+			{
+				if ((this._NAM != value))
+				{
+					this._NAM = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="VarChar(4)")]
+		public string ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
 			}
 		}
 	}
