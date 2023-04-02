@@ -77,13 +77,19 @@ namespace DocSo_PC.GUI.VanThu
                 }
                 switch (cmbLoaiVanBan.SelectedItem.ToString())
                 {
-                    case "Biên Bản Kiểm Tra":
+                    case "BB Kiểm Tra":
                         if (dontu_ChiTiet != null)
                             dgvDanhSach.DataSource = _cThuongVu.getDS_KTXM(dontu_ChiTiet.MaDon.Value, dontu_ChiTiet.STT.Value);
                         else
                             dgvDanhSach.DataSource = _cThuongVu.getDS_KTXM(txtMaDon.Text.Trim().Replace(" ", "").Replace("-", ""));
                         break;
-                    case "TB Cắt Tạm/Cắt Hủy":
+                    case "TB Cắt Tạm":
+                        if (dontu_ChiTiet != null)
+                            dgvDanhSach.DataSource = _cThuongVu.getDS_CHDB(dontu_ChiTiet.MaDon.Value, dontu_ChiTiet.STT.Value);
+                        else
+                            dgvDanhSach.DataSource = _cThuongVu.getDS_CHDB(txtMaDon.Text.Trim().Replace(" ", "").Replace("-", ""));
+                        break;
+                    case "TB Cắt Hủy":
                         if (dontu_ChiTiet != null)
                             dgvDanhSach.DataSource = _cThuongVu.getDS_CHDB(dontu_ChiTiet.MaDon.Value, dontu_ChiTiet.STT.Value);
                         else

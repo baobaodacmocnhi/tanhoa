@@ -84,6 +84,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dateTu_Duyet = new System.Windows.Forms.DateTimePicker();
             this.label14 = new System.Windows.Forms.Label();
@@ -98,7 +100,6 @@
             this.chkCapNhat = new System.Windows.Forms.CheckBox();
             this.btnCapNhat = new System.Windows.Forms.Button();
             this.chkXem = new System.Windows.Forms.CheckBox();
-            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.dgvDuyet = new System.Windows.Forms.DataGridView();
             this.Duyet_Ngay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -117,16 +118,15 @@
             this.ID_Duyet = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.radDaDuyet = new System.Windows.Forms.RadioButton();
             this.radChuaDuyet = new System.Windows.Forms.RadioButton();
-            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDuyet)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDuyet)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -206,7 +206,7 @@
             this.dgvDanhSach.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvDanhSach.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvDanhSach.Size = new System.Drawing.Size(1360, 299);
+            this.dgvDanhSach.Size = new System.Drawing.Size(1351, 299);
             this.dgvDanhSach.TabIndex = 57;
             this.dgvDanhSach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellClick);
             this.dgvDanhSach.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellEndEdit);
@@ -346,7 +346,7 @@
             // 
             this.cmbLoaiVanBan.FormattingEnabled = true;
             this.cmbLoaiVanBan.Items.AddRange(new object[] {
-            "Biên Bản Kiểm Tra",
+            "BB Kiểm Tra",
             "TB Cắt Tạm/Cắt Hủy",
             "Tờ Trình",
             "Biên Bản Nghiệm Thu"});
@@ -458,8 +458,10 @@
             // 
             this.cmbLoaiVanBan_Nhap.FormattingEnabled = true;
             this.cmbLoaiVanBan_Nhap.Items.AddRange(new object[] {
-            "Biên Bản Kiểm Tra",
-            "TB Cắt Tạm/Cắt Hủy",
+            "BB Kiểm Tra",
+            "TB Cắt Tạm",
+            "TB Cắt Hủy",
+            "Phiếu Hủy",
             "Tờ Trình",
             "Biên Bản Nghiệm Thu"});
             this.cmbLoaiVanBan_Nhap.Location = new System.Drawing.Point(82, 20);
@@ -631,6 +633,25 @@
             this.tabPage2.Text = "Bút Phê";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // panel2
+            // 
+            this.panel2.AutoScroll = true;
+            this.panel2.Controls.Add(this.pictureBox);
+            this.panel2.Location = new System.Drawing.Point(689, 6);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(610, 610);
+            this.panel2.TabIndex = 74;
+            // 
+            // pictureBox
+            // 
+            this.pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(610, 610);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox.TabIndex = 59;
+            this.pictureBox.TabStop = false;
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.dateTu_Duyet);
@@ -770,16 +791,6 @@
             this.chkXem.TabIndex = 60;
             this.chkXem.Text = "Xem";
             this.chkXem.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox
-            // 
-            this.pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(610, 610);
-            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox.TabIndex = 59;
-            this.pictureBox.TabStop = false;
             // 
             // dgvDuyet
             // 
@@ -961,15 +972,6 @@
             this.radChuaDuyet.UseVisualStyleBackColor = true;
             this.radChuaDuyet.CheckedChanged += new System.EventHandler(this.radChuaDuyet_CheckedChanged);
             // 
-            // panel2
-            // 
-            this.panel2.AutoScroll = true;
-            this.panel2.Controls.Add(this.pictureBox);
-            this.panel2.Location = new System.Drawing.Point(689, 6);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(610, 610);
-            this.panel2.TabIndex = 74;
-            // 
             // frmCongVanDen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -987,12 +989,12 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDuyet)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDuyet)).EndInit();
             this.ResumeLayout(false);
 
         }

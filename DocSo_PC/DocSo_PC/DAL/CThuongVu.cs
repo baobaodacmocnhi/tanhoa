@@ -46,7 +46,7 @@ namespace DocSo_PC.DAL
         public DataTable getDS_KTXM(int MaDon, int STT)
         {
             return _cDAL.ExecuteQuery_DataTable("select t1.*,'To'=(select TenTo from DocSoTH.dbo.[To] where TuMay<=SUBSTRING(t1.MLT,3,2) and DenMay>=SUBSTRING(t1.MLT,3,2)) from"
-                + " (select LoaiVB=N'Kiểm Tra Xác Minh',NoiChuyen=N'P. Thương Vụ',DanhBo,HoTen,DiaChi"
+                + " (select LoaiVB=N'BB Kiểm Tra',NoiChuyen=N'P. Thương Vụ',DanhBo,HoTen,DiaChi"
                 + " ,MLT=(select top 1 * from (select LOTRINH from CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG where DanhBo=ctktxm.DanhBo and LOTRINH is not null union select LOTRINH from CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG_HUYDB where DanhBo=ctktxm.DanhBo and LOTRINH is not null)t2)"
             + " ,NoiDung=case when ((select COUNT(*) from DonTu_ChiTiet where MaDon=ktxm.MaDonMoi)=1) then CONVERT(varchar(10),ktxm.MaDonMoi) else CONVERT(varchar(10),ktxm.MaDonMoi)+'.'+CONVERT(varchar(10),ctktxm.STT) end+' - BBKT - '+convert(varchar(10),ctktxm.NgayKTXM,103)+' - CS: '+ctktxm.ChiSo+' '+isnull(ctktxm.TinhTrangChiSo,'')+'. V/v '+ctktxm.NoiDungKiemTra+' - '+(select HoTen from Users where MaU=ctktxm.CreateBy)"
             + " ,MaDon=case when ((select COUNT(*) from DonTu_ChiTiet where MaDon=ktxm.MaDonMoi)=1) then CONVERT(varchar(10),ktxm.MaDonMoi) else CONVERT(varchar(10),ktxm.MaDonMoi)+'.'+CONVERT(varchar(10),ctktxm.STT) end"
@@ -57,7 +57,7 @@ namespace DocSo_PC.DAL
         public DataTable getDS_KTXM(string DanhBo)
         {
             return _cDAL.ExecuteQuery_DataTable("select t1.*,'To'=(select TenTo from DocSoTH.dbo.[To] where TuMay<=SUBSTRING(t1.MLT,3,2) and DenMay>=SUBSTRING(t1.MLT,3,2)) from"
-                + " (select LoaiVB=N'Kiểm Tra Xác Minh',NoiChuyen=N'P. Thương Vụ',DanhBo,HoTen,DiaChi"
+                + " (select LoaiVB=N'BB Kiểm Tra',NoiChuyen=N'P. Thương Vụ',DanhBo,HoTen,DiaChi"
                 + " ,MLT=(select top 1 * from (select LOTRINH from CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG where DanhBo=ctktxm.DanhBo and LOTRINH is not null union select LOTRINH from CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG_HUYDB where DanhBo=ctktxm.DanhBo and LOTRINH is not null)t2)"
             + " ,NoiDung=case when ((select COUNT(*) from DonTu_ChiTiet where MaDon=ktxm.MaDonMoi)=1) then CONVERT(varchar(10),ktxm.MaDonMoi) else CONVERT(varchar(10),ktxm.MaDonMoi)+'.'+CONVERT(varchar(10),ctktxm.STT) end+' - BBKT - '+convert(varchar(10),ctktxm.NgayKTXM,103)+' - CS: '+ctktxm.ChiSo+' '+isnull(ctktxm.TinhTrangChiSo,'')+'. V/v '+ctktxm.NoiDungKiemTra+' - '+(select HoTen from Users where MaU=ctktxm.CreateBy)"
             + " ,MaDon=case when ((select COUNT(*) from DonTu_ChiTiet where MaDon=ktxm.MaDonMoi)=1) then CONVERT(varchar(10),ktxm.MaDonMoi) else CONVERT(varchar(10),ktxm.MaDonMoi)+'.'+CONVERT(varchar(10),ctktxm.STT) end"
