@@ -1527,6 +1527,10 @@ namespace KTKS_DonKH.GUI.DonTu
             {
                 tabControl.SelectTab("tabCongVan");
                 DataTable dtExcel = _cDocSo.getPhieuChuyen(txtPhieuChuyen.Text.Trim());
+                if (dtExcel.Rows.Count == 0)
+                {
+                    MessageBox.Show("Không có dữ liệu, Vui lòng liên hệ Đ. QLĐHN", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 foreach (DataRow item in dtExcel.Rows)
                 {
                     bool exists = false;

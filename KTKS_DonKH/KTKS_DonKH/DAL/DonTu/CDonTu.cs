@@ -2611,7 +2611,7 @@ namespace KTKS_DonKH.DAL.DonTu
         public DataTable getDS_LichSu_CVD(string KyHieuTo, DateTime FromNgayChuyen, DateTime ToNgayChuyen, string ID_NoiChuyen, string ID_NoiNhan)
         {
             string sql = "select MaDon=case when ((select COUNT(*) from DonTu_ChiTiet where MaDon=DonTu_LichSu.MaDon)=1) then CONVERT(varchar(10),DonTu_LichSu.MaDon) else CONVERT(varchar(10),DonTu_LichSu.MaDon)+'.'+CONVERT(varchar(10),DonTu_LichSu.STT) end"
-            + ",TableName,IDCT,NgayChuyen,NoiNhan from DonTu_LichSu where NgayChuyen >='" + FromNgayChuyen.ToString("yyyy-MM-dd HH:mm") + "' and NgayChuyen <='" + ToNgayChuyen.ToString("yyyy-MM-dd HH:mm") + "' and ID_NoiNhan is not null and ID_NoiChuyen=" + ID_NoiChuyen + " and ID_NoiNhan=" + ID_NoiNhan;
+            + ",TableName,IDCT,NgayChuyen=CONVERT(char(10),NgayChuyen,103)+' '+CONVERT(char(5),NgayChuyen,108),NoiNhan from DonTu_LichSu where NgayChuyen >='" + FromNgayChuyen.ToString("yyyy-MM-dd HH:mm") + "' and NgayChuyen <='" + ToNgayChuyen.ToString("yyyy-MM-dd HH:mm") + "' and ID_NoiNhan is not null and ID_NoiChuyen=" + ID_NoiChuyen + " and ID_NoiNhan=" + ID_NoiNhan;
             sql += " and '" + KyHieuTo + "'=(select KyHieu from [To] where MaTo=(select MaTo from Users where MaU=DonTu_LichSu.CreateBy))";
             sql += " order by NgayChuyen asc";
             return ExecuteQuery_DataTable(sql);
