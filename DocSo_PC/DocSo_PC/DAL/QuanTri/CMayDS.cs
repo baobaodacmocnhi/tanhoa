@@ -68,12 +68,12 @@ namespace DocSo_PC.DAL.QuanTri
         public DataTable getDS()
         {
             var query = from itemM in _db.MayDs
-                        join itemT in _db.Tos on Convert.ToInt32(itemM.ToID) equals itemT.MaTo
+                        join itemT in _db.Tos on Convert.ToInt32(itemM.MaTo) equals itemT.MaTo
                         select new
                         {
                             itemM.May,
-                            itemM.NhanVienID,
-                            itemM.DienThoai,
+                            //itemM.NhanVienID,
+                            //itemM.DienThoai,
                             To = itemT.TenTo
                         };
             return _cDAL.LINQToDataTable(query.ToList());
@@ -82,7 +82,7 @@ namespace DocSo_PC.DAL.QuanTri
         public DataTable getDS(string MaTo)
         {
             var query = from itemM in _db.MayDs
-                        where itemM.ToID == MaTo
+                        where itemM.MaTo == int.Parse(MaTo)
                         select new
                         {
                             itemM.May,

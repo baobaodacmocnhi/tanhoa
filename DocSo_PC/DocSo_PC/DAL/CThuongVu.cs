@@ -149,7 +149,7 @@ namespace DocSo_PC.DAL
             type = "";
             if (TableNameHinh != "")
             {
-                object filename = _cDAL.ExecuteQuery_ReturnOneValue("select [Name]+Loai from " + TableNameHinh + " where " + IDName + "=" + IDCT);
+                object filename = _cDAL.ExecuteQuery_ReturnOneValue("select [Name]+Loai from " + TableNameHinh + " where " + IDName + "=" + IDCT+" order by CreateDate desc");
                 if (filename != null)
                 {
                     object file = _wsThuongVu.get_Hinh(TableNameHinh, IDCT.ToString(), filename.ToString());
@@ -213,9 +213,11 @@ namespace DocSo_PC.DAL
             }
         }
 
-        public DataTable getDS_CVD(DateTime FromNgayChuyen, DateTime ToNgayChuyen)
+        public DataTable getDS_CVD(string KyHieuTo, DateTime FromNgayChuyen, DateTime ToNgayChuyen)
         {
-            return _cDAL.ExecuteQuery_DataTable("select t2.*,'To'=(select TenTo from DocSoTH.dbo.[To] where TuMay<=SUBSTRING(t2.MLT,3,2) and DenMay>=SUBSTRING(t2.MLT,3,2)) from "
+            if (KyHieuTo != "")
+                KyHieuTo = " and '" + KyHieuTo + "'=(select KyHieu from [To] where MaTo=(select MaTo from Users where MaU=ls.CreateBy))";
+            string sql = "select t2.*,'To'=(select TenTo from DocSoTH.dbo.[To] where TuMay<=SUBSTRING(t2.MLT,3,2) and DenMay>=SUBSTRING(t2.MLT,3,2)) from "
                 + " (select t1.*,MLT=(select LOTRINH from CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG where DanhBo=t1.DanhBo) from "
                 + "( select LoaiVB=(select [Name] from TableHinh where TableHinh.TableName=ls.TableName),NoiChuyen=N'P. Thương Vụ',NoiNhan,NgayChuyen,TableName,ls.IDCT,ToMaHoa='false'"
                 + " ,MaDon=case when ((select COUNT(*) from DonTu_ChiTiet where MaDon=ls.MaDon)=1) then CONVERT(varchar(10),ls.MaDon) else CONVERT(varchar(10),ls.MaDon)+'.'+CONVERT(varchar(10),ls.STT) end"
@@ -271,7 +273,9 @@ namespace DocSo_PC.DAL
 + " 		 when TableName='ToTrinh_ChiTiet' then (select (select [Name] from TableHinh where TableHinh.TableName=ls.TableName)+' - '+convert(varchar(10),CreateDate,103)+'. V/v '+VeViec+' - '+(select HoTen from Users where MaU=ToTrinh_ChiTiet.CreateBy) from ToTrinh_ChiTiet where ToTrinh_ChiTiet.IDCT=ls.IDCT)"
 + " 		 when TableName='TruyThuTienNuoc_ChiTiet' then (select (select [Name] from TableHinh where TableHinh.TableName=ls.TableName)+' - '+convert(varchar(10),CreateDate,103)+'. V/v '+NoiDung+' - '+(select HoTen from Users where MaU=TruyThuTienNuoc_ChiTiet.CreateBy) from TruyThuTienNuoc_ChiTiet where TruyThuTienNuoc_ChiTiet.IDCT=ls.IDCT)"
 + " 		 when TableName='VanBan_ChiTiet' then (select (select [Name] from TableHinh where TableHinh.TableName=ls.TableName)+' - '+convert(varchar(10),CreateDate,103)+'. V/v '+VeViec+' - '+(select HoTen from Users where MaU=VanBan_ChiTiet.CreateBy) from VanBan_ChiTiet where VanBan_ChiTiet.IDCT=ls.IDCT) end"
-+ " from DonTu_LichSu ls where CAST(NgayChuyen as date)>='" + FromNgayChuyen.ToString("yyyyMMdd") + "' and CAST(NgayChuyen as date)<='" + ToNgayChuyen.ToString("yyyyMMdd") + "' and ID_NoiNhan=22 and TableName is not null)t1)t2 order by NgayChuyen asc");
++ " from DonTu_LichSu ls where ls.NgayChuyen>='" + FromNgayChuyen.ToString("yyyy-MM-dd HH:mm") + "' and ls.NgayChuyen<='" + ToNgayChuyen.ToString("yyyy-MM-dd HH:mm") + "' and ls.ID_NoiNhan=22 and ls.TableName is not null "+KyHieuTo+")t1)t2 order by NgayChuyen asc";
+
+            return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
     }

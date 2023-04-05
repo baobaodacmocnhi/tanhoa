@@ -114,7 +114,16 @@ namespace DocSo_PC.GUI.VanThu
         {
             if (chkAuto.Checked)
             {
-                dgvDanhSach.DataSource = _cThuongVu.getDS_CVD(dateTu.Value, dateDen.Value);
+                string MaTo = "";
+                if (cmbTo.SelectedItem.ToString() == "Tân Bình")
+                    MaTo = "ToTB";
+                else
+                    if (cmbTo.SelectedItem.ToString() == "Tân Phú")
+                        MaTo = "ToTP";
+                    else
+                        if (cmbTo.SelectedItem.ToString() == "Bấm Chì")
+                            MaTo = "ToBC";
+                dgvDanhSach.DataSource = _cThuongVu.getDS_CVD(MaTo,dateTu.Value, dateDen.Value);
             }
             else
             {

@@ -42,10 +42,10 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.dgvDanhSach = new System.Windows.Forms.DataGridView();
-            this.May = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NhanVienID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.To = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NhanVienID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.May = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,6 +71,7 @@
             this.txtNhanVien.Name = "txtNhanVien";
             this.txtNhanVien.Size = new System.Drawing.Size(150, 20);
             this.txtNhanVien.TabIndex = 3;
+            this.txtNhanVien.Visible = false;
             // 
             // label2
             // 
@@ -80,6 +81,7 @@
             this.label2.Size = new System.Drawing.Size(57, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Nhân Viên";
+            this.label2.Visible = false;
             // 
             // txtDienThoai
             // 
@@ -87,6 +89,7 @@
             this.txtDienThoai.Name = "txtDienThoai";
             this.txtDienThoai.Size = new System.Drawing.Size(150, 20);
             this.txtDienThoai.TabIndex = 5;
+            this.txtDienThoai.Visible = false;
             // 
             // label3
             // 
@@ -96,6 +99,7 @@
             this.label3.Size = new System.Drawing.Size(59, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "Điện Thoại";
+            this.label3.Visible = false;
             // 
             // label4
             // 
@@ -184,19 +188,11 @@
             this.dgvDanhSach.TabIndex = 32;
             this.dgvDanhSach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellClick);
             // 
-            // May
+            // To
             // 
-            this.May.DataPropertyName = "May";
-            this.May.HeaderText = "Máy";
-            this.May.Name = "May";
-            this.May.Width = 50;
-            // 
-            // NhanVienID
-            // 
-            this.NhanVienID.DataPropertyName = "NhanVienID";
-            this.NhanVienID.HeaderText = "Nhân Viên";
-            this.NhanVienID.Name = "NhanVienID";
-            this.NhanVienID.Width = 150;
+            this.To.DataPropertyName = "To";
+            this.To.HeaderText = "Tổ";
+            this.To.Name = "To";
             // 
             // DienThoai
             // 
@@ -205,11 +201,19 @@
             this.DienThoai.Name = "DienThoai";
             this.DienThoai.Width = 200;
             // 
-            // To
+            // NhanVienID
             // 
-            this.To.DataPropertyName = "To";
-            this.To.HeaderText = "Tổ";
-            this.To.Name = "To";
+            this.NhanVienID.DataPropertyName = "NhanVienID";
+            this.NhanVienID.HeaderText = "Nhân Viên";
+            this.NhanVienID.Name = "NhanVienID";
+            this.NhanVienID.Width = 150;
+            // 
+            // May
+            // 
+            this.May.DataPropertyName = "May";
+            this.May.HeaderText = "Máy";
+            this.May.Name = "May";
+            this.May.Width = 50;
             // 
             // frmNhanVienDocSo
             // 
@@ -229,7 +233,7 @@
             this.Controls.Add(this.txtMay);
             this.Controls.Add(this.label1);
             this.Name = "frmNhanVienDocSo";
-            this.Text = "Nhân Viên Đọc Số";
+            this.Text = "Máy Đọc Số";
             this.Load += new System.EventHandler(this.frmNhanVienDocSo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).EndInit();
             this.ResumeLayout(false);

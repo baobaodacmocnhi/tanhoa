@@ -48,9 +48,9 @@ namespace DocSo_PC.GUI.QuanTri
             try
             {
                 txtMay.Text = _may.May;
-                txtNhanVien.Text = _may.NhanVienID;
-                txtDienThoai.Text = _may.DienThoai;
-                cmbTo.SelectedValue = int.Parse(_may.ToID);
+                //txtNhanVien.Text = _may.NhanVienID;
+                //txtDienThoai.Text = _may.DienThoai;
+                //cmbTo.SelectedValue = int.Parse(_may.MaTo);
             }
             catch (Exception ex)
             {
@@ -80,9 +80,9 @@ namespace DocSo_PC.GUI.QuanTri
                     {
                         MayD en = new MayD();
                         en.May = int.Parse(txtMay.Text.Trim()).ToString("00");
-                        en.NhanVienID = txtNhanVien.Text.Trim();
-                        en.DienThoai = txtDienThoai.Text.Trim();
-                        en.ToID = cmbTo.SelectedValue.ToString();
+                        //en.NhanVienID = txtNhanVien.Text.Trim();
+                        //en.DienThoai = txtDienThoai.Text.Trim();
+                        en.MaTo = int.Parse(cmbTo.SelectedValue.ToString());
                         if (_cMayDS.them(en) == true)
                         {
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -132,9 +132,9 @@ namespace DocSo_PC.GUI.QuanTri
                     if (MessageBox.Show("Bạn có chắc chắn???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         if (_may != null)
                         {
-                            _may.NhanVienID = txtNhanVien.Text.Trim();
-                            _may.DienThoai = txtDienThoai.Text.Trim();
-                            _may.ToID = cmbTo.SelectedValue.ToString();
+                            //_may.NhanVienID = txtNhanVien.Text.Trim();
+                            //_may.DienThoai = txtDienThoai.Text.Trim();
+                            _may.MaTo = int.Parse( cmbTo.SelectedValue.ToString());
                             if (_cMayDS.sua(_may) == true)
                             {
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
