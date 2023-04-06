@@ -202,7 +202,7 @@ namespace ThuTien.DAL.Doi
                 if (_db.HoaDonTests.Count() == 0)
                     hoadon.ID_HOADON = 1;
                 else
-                hoadon.ID_HOADON = _db.HoaDonTests.Max(item => item.ID_HOADON) + 1;
+                    hoadon.ID_HOADON = _db.HoaDonTests.Max(item => item.ID_HOADON) + 1;
                 hoadon.CreateBy = CNguoiDung.MaND;
                 hoadon.CreateDate = DateTime.Now;
                 _db.HoaDonTests.InsertOnSubmit(hoadon);
@@ -10731,6 +10731,32 @@ namespace ThuTien.DAL.Doi
                                 };
                     return LINQToDataTable(query);
                 }
+                else
+                    if (Loai == "")
+                    {
+                        var query = from itemHD in _db.HOADONs
+                                    join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                                    from itemtableND in tableND.DefaultIfEmpty()
+                                    where itemHD.NAM == Nam && itemHD.MaNV_HanhThu == MaNV && itemHD.TONGCONG >= SoTien
+                                    orderby itemHD.MALOTRINH ascending
+                                    select new
+                                    {
+                                        itemHD.NGAYGIAITRACH,
+                                        itemHD.SOHOADON,
+                                        Ky = itemHD.KY + "/" + itemHD.NAM,
+                                        MLT = itemHD.MALOTRINH,
+                                        DanhBo = itemHD.DANHBA,
+                                        HoTen = itemHD.TENKH,
+                                        DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                                        itemHD.TIEUTHU,
+                                        //itemHD.GIABAN,
+                                        //ThueGTGT = itemHD.THUE,
+                                        //PhiBVMT = itemHD.PHI,PhiBVMT_Thue = itemHD.ThueGTGT_TDVTN != null ? itemHD.ThueGTGT_TDVTN : 0,
+                                        itemHD.TONGCONG,
+                                        HanhThu = itemtableND.HoTen,
+                                    };
+                        return LINQToDataTable(query);
+                    }
             return null;
         }
 
@@ -10787,6 +10813,32 @@ namespace ThuTien.DAL.Doi
                                 };
                     return LINQToDataTable(query);
                 }
+                else
+                    if (Loai == "")
+                    {
+                        var query = from itemHD in _db.HOADONs
+                                    join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                                    from itemtableND in tableND.DefaultIfEmpty()
+                                    where itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.MaNV_HanhThu == MaNV && itemHD.TONGCONG >= SoTien 
+                                    orderby itemHD.MALOTRINH ascending
+                                    select new
+                                    {
+                                        itemHD.NGAYGIAITRACH,
+                                        itemHD.SOHOADON,
+                                        Ky = itemHD.KY + "/" + itemHD.NAM,
+                                        MLT = itemHD.MALOTRINH,
+                                        DanhBo = itemHD.DANHBA,
+                                        HoTen = itemHD.TENKH,
+                                        DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                                        itemHD.TIEUTHU,
+                                        //itemHD.GIABAN,
+                                        //ThueGTGT = itemHD.THUE,
+                                        //PhiBVMT = itemHD.PHI,PhiBVMT_Thue = itemHD.ThueGTGT_TDVTN != null ? itemHD.ThueGTGT_TDVTN : 0,
+                                        itemHD.TONGCONG,
+                                        HanhThu = itemtableND.HoTen,
+                                    };
+                        return LINQToDataTable(query);
+                    }
             return null;
         }
 
@@ -10853,6 +10905,32 @@ namespace ThuTien.DAL.Doi
                                 };
                     return LINQToDataTable(query);
                 }
+                else
+                    if (Loai == "")
+                    {
+                        var query = from itemHD in _db.HOADONs
+                                    join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                                    from itemtableND in tableND.DefaultIfEmpty()
+                                    where itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT == Dot && itemHD.MaNV_HanhThu == MaNV && itemHD.TONGCONG >= SoTien 
+                                    orderby itemHD.MALOTRINH ascending
+                                    select new
+                                    {
+                                        itemHD.NGAYGIAITRACH,
+                                        itemHD.SOHOADON,
+                                        Ky = itemHD.KY + "/" + itemHD.NAM,
+                                        MLT = itemHD.MALOTRINH,
+                                        DanhBo = itemHD.DANHBA,
+                                        HoTen = itemHD.TENKH,
+                                        DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                                        itemHD.TIEUTHU,
+                                        //itemHD.GIABAN,
+                                        //ThueGTGT = itemHD.THUE,
+                                        //PhiBVMT = itemHD.PHI,PhiBVMT_Thue = itemHD.ThueGTGT_TDVTN != null ? itemHD.ThueGTGT_TDVTN : 0,
+                                        itemHD.TONGCONG,
+                                        HanhThu = itemtableND.HoTen,
+                                    };
+                        return LINQToDataTable(query);
+                    }
             return null;
         }
 
@@ -10913,6 +10991,34 @@ namespace ThuTien.DAL.Doi
                                 };
                     return LINQToDataTable(query);
                 }
+                else
+                    if (Loai == "")
+                    {
+                        var query = from item in _db.HOADONs
+                                    join itemND in _db.TT_NguoiDungs on item.MaNV_HanhThu equals itemND.MaND into tableND
+                                    from itemtableND in tableND.DefaultIfEmpty()
+                                    where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                        && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                                        && item.NGAYGIAITRACH == null && item.TONGCONG >= SoTien
+                                    select new
+                                    {
+                                        item.NGAYGIAITRACH,
+                                        item.SOHOADON,
+                                        Ky = item.KY + "/" + item.NAM,
+                                        DanhBo = item.DANHBA,
+                                        HoTen = item.TENKH,
+                                        DiaChi = item.SO + " " + item.DUONG,
+                                        MLT = item.MALOTRINH,
+                                        item.TIEUTHU,
+                                        //item.GIABAN,
+                                        //ThueGTGT = item.THUE,
+                                        //PhiBVMT = item.PHI,
+                                        item.TONGCONG,
+                                        To = itemtableND.TT_To.TenTo,
+                                        HanhThu = itemtableND.HoTen,
+                                    };
+                        return LINQToDataTable(query);
+                    }
             return null;
         }
 
@@ -10973,6 +11079,34 @@ namespace ThuTien.DAL.Doi
                                 };
                     return LINQToDataTable(query);
                 }
+                else
+                    if (Loai == "")
+                    {
+                        var query = from item in _db.HOADONs
+                                    join itemND in _db.TT_NguoiDungs on item.MaNV_HanhThu equals itemND.MaND into tableND
+                                    from itemtableND in tableND.DefaultIfEmpty()
+                                    where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                        && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                                        && item.NAM == Nam && item.TONGCONG >= SoTien 
+                                    select new
+                                    {
+                                        item.NGAYGIAITRACH,
+                                        item.SOHOADON,
+                                        Ky = item.KY + "/" + item.NAM,
+                                        DanhBo = item.DANHBA,
+                                        HoTen = item.TENKH,
+                                        DiaChi = item.SO + " " + item.DUONG,
+                                        MLT = item.MALOTRINH,
+                                        item.TIEUTHU,
+                                        //item.GIABAN,
+                                        //ThueGTGT = item.THUE,
+                                        //PhiBVMT = item.PHI,
+                                        item.TONGCONG,
+                                        To = itemtableND.TT_To.TenTo,
+                                        HanhThu = itemtableND.HoTen,
+                                    };
+                        return LINQToDataTable(query);
+                    }
             return null;
         }
 
@@ -11033,6 +11167,34 @@ namespace ThuTien.DAL.Doi
                                 };
                     return LINQToDataTable(query);
                 }
+                else
+                    if (Loai == "")
+                    {
+                        var query = from item in _db.HOADONs
+                                    join itemND in _db.TT_NguoiDungs on item.MaNV_HanhThu equals itemND.MaND into tableND
+                                    from itemtableND in tableND.DefaultIfEmpty()
+                                    where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                        && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                                        && item.NAM == Nam && item.KY == Ky && item.TONGCONG >= SoTien 
+                                    select new
+                                    {
+                                        item.NGAYGIAITRACH,
+                                        item.SOHOADON,
+                                        Ky = item.KY + "/" + item.NAM,
+                                        DanhBo = item.DANHBA,
+                                        HoTen = item.TENKH,
+                                        DiaChi = item.SO + " " + item.DUONG,
+                                        MLT = item.MALOTRINH,
+                                        item.TIEUTHU,
+                                        //item.GIABAN,
+                                        //ThueGTGT = item.THUE,
+                                        //PhiBVMT = item.PHI,
+                                        item.TONGCONG,
+                                        To = itemtableND.TT_To.TenTo,
+                                        HanhThu = itemtableND.HoTen,
+                                    };
+                        return LINQToDataTable(query);
+                    }
             return null;
         }
 
@@ -11092,6 +11254,33 @@ namespace ThuTien.DAL.Doi
                                 };
                     return LINQToDataTable(query);
                 }
+                else
+                    if (Loai == "")
+                    {
+                        var query = from item in _db.HOADONs
+                                    join itemND in _db.TT_NguoiDungs on item.MaNV_HanhThu equals itemND.MaND into tableND
+                                    from itemtableND in tableND.DefaultIfEmpty()
+                                    where Convert.ToInt32(item.MAY) >= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).TuCuonGCS
+                                        && Convert.ToInt32(item.MAY) <= _db.TT_Tos.SingleOrDefault(itemTo => itemTo.MaTo == MaTo).DenCuonGCS
+                                        && item.NAM == Nam && item.KY == Ky && item.DOT == Dot && item.TONGCONG >= SoTien
+                                    select new
+                                    {
+                                        item.NGAYGIAITRACH,
+                                        item.SOHOADON,
+                                        Ky = item.KY + "/" + item.NAM,
+                                        DanhBo = item.DANHBA,
+                                        HoTen = item.TENKH,
+                                        MLT = item.MALOTRINH,
+                                        item.TIEUTHU,
+                                        item.GIABAN,
+                                        ThueGTGT = item.THUE,
+                                        PhiBVMT = item.PHI,
+                                        item.TONGCONG,
+                                        To = itemtableND.TT_To.TenTo,
+                                        HanhThu = itemtableND.HoTen,
+                                    };
+                        return LINQToDataTable(query);
+                    }
             return null;
         }
 
