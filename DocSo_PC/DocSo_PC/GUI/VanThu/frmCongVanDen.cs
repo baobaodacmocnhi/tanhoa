@@ -43,6 +43,7 @@ namespace DocSo_PC.GUI.VanThu
             cmbLoaiVanBan_Duyet.DisplayMember = "LoaiVB";
             cmbLoaiVanBan_Duyet.ValueMember = "LoaiVB";
             cmbLoaiVanBan_Duyet.SelectedIndex = 0;
+            cmbTo.SelectedIndex = 0;
         }
 
         public void Clear()

@@ -902,6 +902,14 @@ namespace DocSo_PC.GUI.ToTruong
             }
         }
 
+        private void txtSoPhieu_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && txtSoPhieu.Text.Trim() != "")
+            {
+                dgvDanhSach.DataSource = _cPhieuChuyen.getDS_SoPhieu(txtSoPhieu.Text.Trim());
+            }
+        }
+
 
     }
 }

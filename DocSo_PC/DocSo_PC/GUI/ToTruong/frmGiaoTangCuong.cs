@@ -60,7 +60,8 @@ namespace DocSo_PC.GUI.ToTruong
             cmbMay.ValueMember = "May";
             cmbMay.SelectedIndex = -1;
             //
-            cmbMayTangCuong.DataSource = dt;
+            DataTable dt2 = _cMayDS.getDS(MaTo);
+            cmbMayTangCuong.DataSource = dt2;
             cmbMayTangCuong.DisplayMember = "May";
             cmbMayTangCuong.ValueMember = "May";
             cmbMayTangCuong.SelectedIndex = -1;

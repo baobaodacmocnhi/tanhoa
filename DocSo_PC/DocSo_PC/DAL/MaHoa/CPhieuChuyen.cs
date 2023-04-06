@@ -147,6 +147,12 @@ namespace DocSo_PC.DAL.MaHoa
                 + " from MaHoa_PhieuChuyen_LichSu a,CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG b where a.DanhBo=b.DanhBo and a.DanhBo='" + DanhBo + "'");
         }
 
+        public DataTable getDS_SoPhieu(string SoPhieu)
+        {
+            return _cDAL.ExecuteQuery_DataTable("select MLT=LOTRINH,a.DANHBO,HOTEN,DiaChi=SONHA+' '+TENDUONG,a.NoiDung,a.CreateDate,Folder=(select Folder from MaHoa_PhieuChuyen where [Name]=a.NoiDung),a.ID,a.GhiChu,a.TinhTrang,a.SoPhieu,b.ViTriDHN_Ngoai"
+                + " from MaHoa_PhieuChuyen_LichSu a,CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG b where a.DanhBo=b.DanhBo and a.SoPhieu=" + SoPhieu + "");
+        }
+
         public DataTable getBaoCao(DateTime FromCreateDate, DateTime ToCreateDate)
         {
             string sql = "select Loai=N'Bảng Kê',SoLuong=COUNT(distinct SoPhieu) from MaHoa_PhieuChuyen_LichSu where CAST(SoPhieu_Ngay as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(SoPhieu_Ngay as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and TinhTrang not like N'Xóa'"
