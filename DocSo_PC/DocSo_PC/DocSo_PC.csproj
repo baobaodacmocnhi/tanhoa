@@ -113,6 +113,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaoCao\rptImage.cs">
+      <DependentUpon>rptImage.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="BaoCao\dsBaoCao.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -457,29 +463,11 @@
     <Compile Include="GUI\TraCuuThongTin\frmTimKiemDhn.Designer.cs">
       <DependentUpon>frmTimKiemDhn.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\VanThu\frmCongVanDenAuto.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\VanThu\frmCongVanDenAuto.Designer.cs">
-      <DependentUpon>frmCongVanDenAuto.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\VanThu\frmCongVanDen.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\VanThu\frmCongVanDen.Designer.cs">
       <DependentUpon>frmCongVanDen.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\VanThu\frmShowCongVan.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\VanThu\frmShowCongVan.Designer.cs">
-      <DependentUpon>frmShowCongVan.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\XuLyDocSo\frmChonDot.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\XuLyDocSo\frmChonDot.Designer.cs">
-      <DependentUpon>frmChonDot.cs</DependentUpon>
     </Compile>
     <Compile Include="LinQ\dbDHN.designer.cs">
       <AutoGen>True</AutoGen>
@@ -523,6 +511,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BaoCao\rptImage.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptImage.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\MaHoa\rptDSCongVan.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptDSCongVan.cs</LastGenOutput>
@@ -701,17 +693,11 @@
       <LastGenOutput>dbThuongVu.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <EmbeddedResource Include="GUI\VanThu\frmCongVanDenAuto.resx">
-      <DependentUpon>frmCongVanDenAuto.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="LinQ\dbDocSo.dbml.layout">
       <DependentUpon>dbDocSo.dbml</DependentUpon>
     </None>
     <EmbeddedResource Include="GUI\VanThu\frmCongVanDen.resx">
       <DependentUpon>frmCongVanDen.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\VanThu\frmShowCongVan.resx">
-      <DependentUpon>frmShowCongVan.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="LinQ\dbThuongVu.dbml.layout">
       <DependentUpon>dbThuongVu.dbml</DependentUpon>
@@ -754,9 +740,6 @@
       <LastGenOutput>dbThuTien.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <EmbeddedResource Include="GUI\XuLyDocSo\frmChonDot.resx">
-      <DependentUpon>frmChonDot.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

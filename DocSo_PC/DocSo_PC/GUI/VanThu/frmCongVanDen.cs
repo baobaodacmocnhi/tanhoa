@@ -11,6 +11,8 @@ using DocSo_PC.DAL;
 using DocSo_PC.LinQ;
 using DocSo_PC.DAL.QuanTri;
 using System.Transactions;
+using DocSo_PC.BaoCao;
+using DocSo_PC.GUI.BaoCao;
 
 namespace DocSo_PC.GUI.VanThu
 {
@@ -56,7 +58,6 @@ namespace DocSo_PC.GUI.VanThu
             txtHoTen.Text = "";
             txtDiaChi.Text = "";
             txtNoiDung.Text = "";
-            dgvDanhSach.DataSource = null;
             _ttkh = null;
         }
 
@@ -124,7 +125,7 @@ namespace DocSo_PC.GUI.VanThu
                     else
                         if (cmbTo.SelectedItem.ToString() == "Bấm Chì")
                             MaTo = "ToBC";
-                dgvDanhSach.DataSource = _cThuongVu.getDS_CVD(MaTo,dateTu.Value, dateDen.Value);
+                dgvDanhSach.DataSource = _cThuongVu.getDS_CVD(MaTo, dateTu.Value, dateDen.Value);
             }
             else
             {
@@ -154,17 +155,15 @@ namespace DocSo_PC.GUI.VanThu
                         MessageBox.Show("Không có File", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    string type = "";
-                    object file = _cThuongVu.getFile(dgvDanhSach.CurrentRow.Cells["TableName"].Value.ToString(), int.Parse(dgvDanhSach.CurrentRow.Cells["IDCT"].Value.ToString()), out type);
-                    if (file != null)
-                    {
-                        if (type == "pdf")
-                            _cCVD.viewPDF((byte[])file);
-                        else
-                            _cCVD.viewImage((byte[])file);
-                    }
-                    else
-                        MessageBox.Show("Không có File", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    DataTable dt = _cThuongVu.getFile(dgvDanhSach.CurrentRow.Cells["TableName"].Value.ToString(), int.Parse(dgvDanhSach.CurrentRow.Cells["IDCT"].Value.ToString()));
+                    if (dt != null && dt.Rows.Count > 0)
+                        foreach (DataRow item in dt.Rows)
+                        {
+                            if (item["Type"].ToString().ToLower().Contains("pdf"))
+                                _cCVD.viewPDF((byte[])item["File"]);
+                            else
+                                _cCVD.viewImage((byte[])item["File"]);
+                        }
                     //string TableNameHinh, IDName;
                     //_cThuongVu.getTableHinh(dgvDanhSach.CurrentRow.Cells["TableName"].Value.ToString(), out TableNameHinh, out IDName);
                     //System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/ThuongVu/viewFile?TableName=" + TableNameHinh + "&IDFileName=" + IDName + "&IDFileContent=" + dgvDanhSach.CurrentRow.Cells["IDCT"].Value.ToString());
@@ -365,6 +364,52 @@ namespace DocSo_PC.GUI.VanThu
             }
         }
 
+        private void btnIn_ToTrinh_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //dsBaoCao dsBaoCao = new dsBaoCao();
+                //foreach (DataGridViewRow item in dgvDanhSach.Rows)
+                //    if (item.Cells["LoaiVB"].Value.ToString() == "Tờ Trình")
+                //    {
+                //        DataRow dr = dsBaoCao.Tables["BaoCao"].NewRow();
+                        
+                //        dr["Image"]
+                //        dsBaoCao.Tables["BaoCao"].Rows.Add(dr);
+                //    }
+                //rptImage rpt = new rptImage();
+                //rpt.SetDataSource(dsBaoCao);
+                //frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                //frm.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //tab Bút Phê
+
+        int _index = 0;
+        DataTable _dtDuyet = null;
+        public void Clear_ButPhe()
+        {
+            _enCVD = null;
+            chkXem.Checked = false;
+            chkCapNhat.Checked = false;
+            chkTinhTieuThu.Checked = false;
+            chkTheoDoi.Checked = false;
+            chkKiemTraLaiHienTruong.Checked = false;
+            chkBaoThay.Checked = false;
+            chkDeBiet.Checked = false;
+            chkKhac.Checked = false;
+            txtKhac_GhiChu.Text = "";
+            _index = 0;
+            _dtDuyet = null;
+            btnTruoc.Visible = false;
+            btnSau.Visible = false;
+        }
+
         private void radChuaDuyet_CheckedChanged(object sender, EventArgs e)
         {
             if (radChuaDuyet.Checked)
@@ -386,18 +431,37 @@ namespace DocSo_PC.GUI.VanThu
                     MessageBox.Show("Không có File", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                string type = "";
+                Clear_ButPhe();
                 _enCVD = _cCVD.get(int.Parse(dgvDuyet["ID_Duyet", e.RowIndex].Value.ToString()));
-                object file = _cThuongVu.getFile(dgvDuyet["TableName_Duyet", e.RowIndex].Value.ToString(), int.Parse(dgvDuyet["IDCT_Duyet", e.RowIndex].Value.ToString()), out type);
-                if (file != null)
+                if (_enCVD != null)
                 {
-                    if (type == "pdf")
-                        _cCVD.viewPDF((byte[])file);
-                    else
-                        pictureBox.Image = _cCVD.byteArrayToImage((byte[])file);
+                    chkXem.Checked = _enCVD.Xem;
+                    chkCapNhat.Checked = _enCVD.CapNhat;
+                    chkTinhTieuThu.Checked = _enCVD.TinhTieuThu;
+                    chkTheoDoi.Checked = _enCVD.TheoDoi;
+                    chkKiemTraLaiHienTruong.Checked = _enCVD.KiemTraLaiHienTruong;
+                    chkBaoThay.Checked = _enCVD.BaoThay;
+                    chkDeBiet.Checked = _enCVD.DeBiet;
+                    chkKhac.Checked = _enCVD.Khac;
+                    txtKhac_GhiChu.Text = _enCVD.Khac_GhiChu;
                 }
-                else
-                    MessageBox.Show("Không có File", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _dtDuyet = _cThuongVu.getFile(dgvDuyet["TableName_Duyet", e.RowIndex].Value.ToString(), int.Parse(dgvDuyet["IDCT_Duyet", e.RowIndex].Value.ToString()));
+                if (_dtDuyet != null && _dtDuyet.Rows.Count > 0)
+                {
+                    int index = -1;
+                    for (int i = 0; i < _dtDuyet.Rows.Count; i++)
+                        if (_dtDuyet.Rows[i]["Type"].ToString().ToLower().Contains("pdf"))
+                            _cCVD.viewPDF((byte[])_dtDuyet.Rows[i]["File"]);
+                        else
+                            if (index == -1)
+                                index = i;
+                    if (index > -1 && _dtDuyet.Rows.Count > 1)
+                    {
+                        btnTruoc.Visible = true;
+                        btnSau.Visible = true;
+                        pictureBox.Image = _cCVD.byteArrayToImage((byte[])_dtDuyet.Rows[index]["File"]);
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -418,9 +482,22 @@ namespace DocSo_PC.GUI.VanThu
                         _enCVD.TinhTieuThu = chkTinhTieuThu.Checked;
                         _enCVD.TheoDoi = chkTheoDoi.Checked;
                         _enCVD.KiemTraLaiHienTruong = chkKiemTraLaiHienTruong.Checked;
+                        _enCVD.BaoThay = chkBaoThay.Checked;
+                        _enCVD.DeBiet = chkDeBiet.Checked;
+                        if (chkKhac.Checked)
+                        {
+                            _enCVD.Khac = true;
+                            _enCVD.Khac_GhiChu = txtKhac_GhiChu.Text.Trim();
+                        }
+                        else
+                        {
+                            _enCVD.Khac = false;
+                            _enCVD.Khac_GhiChu = null;
+                        }
                         _enCVD.Duyet_Ngay = DateTime.Now;
                         _cCVD.SubmitChanges();
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Clear_ButPhe();
                     }
                 }
                 else
@@ -456,9 +533,41 @@ namespace DocSo_PC.GUI.VanThu
             }
         }
 
+        private void chkKhac_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkKhac.Checked)
+                txtKhac_GhiChu.ReadOnly = false;
+            else
+                txtKhac_GhiChu.ReadOnly = true;
+        }
 
+        private void btnTruoc_Click(object sender, EventArgs e)
+        {
+            if (_dtDuyet != null && _dtDuyet.Rows.Count > 0)
+            {
+                while (_index > 0)
+                {
+                    _index--;
+                    if (!_dtDuyet.Rows[_index]["Type"].ToString().ToLower().Contains("pdf"))
+                        break;
+                }
+                pictureBox.Image = _cCVD.byteArrayToImage((byte[])_dtDuyet.Rows[_index]["File"]);
+            }
+        }
 
-
+        private void btnSau_Click(object sender, EventArgs e)
+        {
+            if (_dtDuyet != null && _dtDuyet.Rows.Count > 0)
+            {
+                while (_index < _dtDuyet.Rows.Count - 1)
+                {
+                    _index++;
+                    if (!_dtDuyet.Rows[_index]["Type"].ToString().ToLower().Contains("pdf"))
+                        break;
+                }
+                pictureBox.Image = _cCVD.byteArrayToImage((byte[])_dtDuyet.Rows[_index]["File"]);
+            }
+        }
 
 
     }

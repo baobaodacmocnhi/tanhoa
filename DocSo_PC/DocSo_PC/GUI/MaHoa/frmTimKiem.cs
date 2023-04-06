@@ -55,7 +55,7 @@ namespace DocSo_PC.GUI.MaHoa
             {
                 if (cmbDot.SelectedIndex >= 0)
                 {
-                    dgvDanhSach.DataSource = _cDHN.getDS_DiaChiSaiLech(cmbDot.SelectedItem.ToString(),cmbMay.SelectedValue.ToString());
+                    dgvDanhSach.DataSource = _cDHN.getDS_DiaChiSaiLech(chkAll.Checked, cmbDot.SelectedItem.ToString(), cmbMay.SelectedValue.ToString());
                 }
                 else
                     MessageBox.Show("Chưa chọn Đợt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

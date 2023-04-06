@@ -142,23 +142,38 @@ namespace DocSo_PC.DAL
             return _cDAL.ExecuteQuery_DataTable("");
         }
 
-        public object getFile(string TableName, int IDCT, out string type)
+        public DataTable getFile(string TableName, int IDCT)
         {
             string TableNameHinh, IDName;
             getTableHinh(TableName, out TableNameHinh, out IDName);
-            type = "";
             if (TableNameHinh != "")
             {
-                object filename = _cDAL.ExecuteQuery_ReturnOneValue("select [Name]+Loai from " + TableNameHinh + " where " + IDName + "=" + IDCT+" order by CreateDate desc");
-                if (filename != null)
+                DataTable dt = _cDAL.ExecuteQuery_DataTable("select FileName=[Name]+Loai,Type=Loai from " + TableNameHinh + " where " + IDName + "=" + IDCT + " order by CreateDate asc");
+                if (dt != null && dt.Rows.Count > 0)
                 {
-                    object file = _wsThuongVu.get_Hinh(TableNameHinh, IDCT.ToString(), filename.ToString());
-                    if (filename.ToString().ToLower().Contains(".pdf"))
-                    {
-                        type = "pdf";
-                    }
-                    return file;
+                    DataTable dtResult = new DataTable();
+                    dtResult.Columns.Add("File", typeof(object));
+                    dtResult.Columns.Add("Type", typeof(string));
+                    foreach (DataRow item in dt.Rows)
+                        if (item["FileName"].ToString() != "")
+                        {
+                            DataRow dr = dtResult.NewRow();
+                            dr["File"] = _wsThuongVu.get_Hinh(TableNameHinh, IDCT.ToString(), item["FileName"].ToString());
+                            dr["Type"] = item["Type"].ToString();
+                            dtResult.Rows.Add(dr);
+                        }
+                    return dtResult;
                 }
+                //object filename = _cDAL.ExecuteQuery_ReturnOneValue("select [Name]+Loai from " + TableNameHinh + " where " + IDName + "=" + IDCT + " order by CreateDate asc");
+                //if (filename != null)
+                //{
+                //    object file = _wsThuongVu.get_Hinh(TableNameHinh, IDCT.ToString(), filename.ToString());
+                //    if (filename.ToString().ToLower().Contains(".pdf"))
+                //    {
+                //        type = "pdf";
+                //    }
+                //    return file;
+                //}
             }
             return null;
         }
@@ -273,7 +288,7 @@ namespace DocSo_PC.DAL
 + " 		 when TableName='ToTrinh_ChiTiet' then (select (select [Name] from TableHinh where TableHinh.TableName=ls.TableName)+' - '+convert(varchar(10),CreateDate,103)+'. V/v '+VeViec+' - '+(select HoTen from Users where MaU=ToTrinh_ChiTiet.CreateBy) from ToTrinh_ChiTiet where ToTrinh_ChiTiet.IDCT=ls.IDCT)"
 + " 		 when TableName='TruyThuTienNuoc_ChiTiet' then (select (select [Name] from TableHinh where TableHinh.TableName=ls.TableName)+' - '+convert(varchar(10),CreateDate,103)+'. V/v '+NoiDung+' - '+(select HoTen from Users where MaU=TruyThuTienNuoc_ChiTiet.CreateBy) from TruyThuTienNuoc_ChiTiet where TruyThuTienNuoc_ChiTiet.IDCT=ls.IDCT)"
 + " 		 when TableName='VanBan_ChiTiet' then (select (select [Name] from TableHinh where TableHinh.TableName=ls.TableName)+' - '+convert(varchar(10),CreateDate,103)+'. V/v '+VeViec+' - '+(select HoTen from Users where MaU=VanBan_ChiTiet.CreateBy) from VanBan_ChiTiet where VanBan_ChiTiet.IDCT=ls.IDCT) end"
-+ " from DonTu_LichSu ls where ls.NgayChuyen>='" + FromNgayChuyen.ToString("yyyy-MM-dd HH:mm") + "' and ls.NgayChuyen<='" + ToNgayChuyen.ToString("yyyy-MM-dd HH:mm") + "' and ls.ID_NoiNhan=22 and ls.TableName is not null "+KyHieuTo+")t1)t2 order by NgayChuyen asc";
++ " from DonTu_LichSu ls where ls.NgayChuyen>='" + FromNgayChuyen.ToString("yyyy-MM-dd HH:mm") + "' and ls.NgayChuyen<='" + ToNgayChuyen.ToString("yyyy-MM-dd HH:mm") + "' and ls.ID_NoiNhan=22 and ls.TableName is not null " + KyHieuTo + ")t1)t2 order by NgayChuyen asc";
 
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
