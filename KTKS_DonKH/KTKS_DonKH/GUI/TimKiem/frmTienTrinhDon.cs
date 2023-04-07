@@ -179,7 +179,7 @@ namespace KTKS_DonKH.GUI.TimKiem
                             frm.ShowDialog();
                         }
             }
-            if (gridViewDon.RowCount > 0 && e.Control && e.KeyCode == Keys.H && ((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["Phong"].ToString() == "QLDHN")
+            if (gridViewDon.RowCount > 0 && e.Control && e.KeyCode == Keys.H && ((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["Phong"].ToString() == "QLĐHN")
             {
                 System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/QLDHN/viewFile?TableName=MaHoa_DonTu_Hinh&ID=" + ((DataRowView)gridViewDon.GetRow(gridViewDon.GetSelectedRows()[0])).Row["MaDon"].ToString());
             }
@@ -231,7 +231,7 @@ namespace KTKS_DonKH.GUI.TimKiem
             {
                 System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/ThuongVu/viewFile?TableName=KTXM_ChiTiet_Hinh&IDFileName=IDKTXM_ChiTiet&IDFileContent=" + _CTRow.Row["MaCTKTXM"].ToString());
             }
-            if (e.Control && e.KeyCode == Keys.H && _CTRow != null && _CTRow.Row["Phong"].ToString() == "QLDHN")
+            if (e.Control && e.KeyCode == Keys.H && _CTRow != null && _CTRow.Row["Phong"].ToString() == "QLĐHN")
             {
                 System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/QLDHN/viewFile?TableName=MaHoa_KTXM_Hinh&ID=" + _CTRow.Row["MaCTKTXM"].ToString());
             }
@@ -364,9 +364,9 @@ namespace KTKS_DonKH.GUI.TimKiem
             {
                 System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/ThuongVu/viewFile?TableName=DCBD_ChiTietHoaDon_Hinh&IDFileName=IDDCBD_ChiTietHoaDon&IDFileContent=" + _CTRow.Row["MaDC"].ToString());
             }
-            if (e.Control && e.KeyCode == Keys.H && _CTRow != null && _CTRow.Row["DieuChinh"].ToString() == "Biến Động" && _CTRow.Row["Phong"].ToString() == "QLDHN")
+            if (e.Control && e.KeyCode == Keys.H && _CTRow != null && _CTRow.Row["DieuChinh"].ToString() == "Biến Động" && _CTRow.Row["Phong"].ToString() == "QLĐHN")
             {
-                System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/ThuongVu/viewFile?TableName=MaHoa_DCBD_Hinh&ID=" + _CTRow.Row["MaDC"].ToString());
+                System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/QLDHN/viewFile?TableName=MaHoa_DCBD_Hinh&ID=" + _CTRow.Row["MaDC"].ToString());
             }
         }
 
@@ -634,9 +634,9 @@ namespace KTKS_DonKH.GUI.TimKiem
             {
                 System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/ThuongVu/viewFile?TableName=ToTrinh_ChiTiet_Hinh&IDFileName=IDToTrinh_ChiTiet&IDFileContent=" + _CTRow.Row["IDCT"].ToString());
             }
-            if (e.Control && e.KeyCode == Keys.H && _CTRow != null && _CTRow.Row["Phong"].ToString() == "QLDHN")
+            if (e.Control && e.KeyCode == Keys.H && _CTRow != null && _CTRow.Row["Phong"].ToString() == "QLĐHN")
             {
-                System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/ThuongVu/viewFile?TableName=MaHoa_ToTrinh_Hinh&ID=" + _CTRow.Row["IDCT"].ToString());
+                System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/QLDHN/viewFile?TableName=MaHoa_ToTrinh_Hinh&ID=" + _CTRow.Row["IDCT"].ToString());
             }
         }
 
