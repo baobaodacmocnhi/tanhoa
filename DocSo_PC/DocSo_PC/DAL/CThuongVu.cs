@@ -148,7 +148,7 @@ namespace DocSo_PC.DAL
             getTableHinh(TableName, out TableNameHinh, out IDName);
             if (TableNameHinh != "")
             {
-                DataTable dt = _cDAL.ExecuteQuery_DataTable("select FileName=[Name]+Loai,Type=Loai from " + TableNameHinh + " where " + IDName + "=" + IDCT + " order by CreateDate asc");
+                DataTable dt = _cDAL.ExecuteQuery_DataTable("select FileName=[Name]+Loai,Type=Loai from " + TableNameHinh + " where " + IDName + "=" + IDCT + " order by CreateDate desc");
                 if (dt != null && dt.Rows.Count > 0)
                 {
                     DataTable dtResult = new DataTable();
@@ -164,16 +164,6 @@ namespace DocSo_PC.DAL
                         }
                     return dtResult;
                 }
-                //object filename = _cDAL.ExecuteQuery_ReturnOneValue("select [Name]+Loai from " + TableNameHinh + " where " + IDName + "=" + IDCT + " order by CreateDate asc");
-                //if (filename != null)
-                //{
-                //    object file = _wsThuongVu.get_Hinh(TableNameHinh, IDCT.ToString(), filename.ToString());
-                //    if (filename.ToString().ToLower().Contains(".pdf"))
-                //    {
-                //        type = "pdf";
-                //    }
-                //    return file;
-                //}
             }
             return null;
         }

@@ -123,7 +123,7 @@ namespace DocSo_PC.DAL.VanThu
 
         public DataTable getDS_ButPhe_XuLySoLieu(string ButPhe)
         {
-            return _cDAL.ExecuteQuery_DataTable("select * from CongVanDen where " + ButPhe + "=1 order by MLT asc");
+            return _cDAL.ExecuteQuery_DataTable("select * from CongVanDen where " + ButPhe + "=1 and CAST(DATEADD(DAY,90,CreateDate) as date)>=CAST(GETDATE() as date) order by CreateDate desc");
         }
 
         public DataTable count_ButPhe_XuLySoLieu(string MaTo, string Nam, string Ky, string Dot)
@@ -133,15 +133,21 @@ namespace DocSo_PC.DAL.VanThu
             else
                 MaTo = "and SUBSTRING(MLT1,3,2)>=(select TuMay from [To] where MaTo=" + MaTo + ") and SUBSTRING(MLT1,3,2)<=(select DenMay from [To] where MaTo=" + MaTo + ")";
             return _cDAL.ExecuteQuery_DataTable("declare @Nam int=" + Nam + ",@Ky char(2)='" + Ky + "',@Dot char(2)='" + Dot + "'"
-                    + " select ButPhe=N'Xem',Loai='Xem',SoLuong=count(*) from CongVanDen where Xem=1 and DanhBo in (select DanhBa from DocSo where Nam=@Nam and Ky=@Ky and Dot=@Dot " + MaTo + ") having COUNT(*)>0"
+                    + " select ButPhe=N'Xem',Loai='Xem',SoLuong=count(*) from CongVanDen where Xem=1 and CAST(DATEADD(DAY,90,CreateDate) as date)>=CAST(GETDATE() as date) and DanhBo in (select DanhBa from DocSo where Nam=@Nam and Ky=@Ky and Dot=@Dot " + MaTo + ") having COUNT(*)>0"
                     + " union all"
-                    + " select ButPhe=N'Cập Nhật',Loai='CapNhat',SoLuong=count(*) from CongVanDen where CapNhat=1 and DanhBo in (select DanhBa from DocSo where Nam=@Nam and Ky=@Ky and Dot=@Dot " + MaTo + ") having COUNT(*)>0"
+                    + " select ButPhe=N'Cập Nhật',Loai='CapNhat',SoLuong=count(*) from CongVanDen where CapNhat=1 and CAST(DATEADD(DAY,90,CreateDate) as date)>=CAST(GETDATE() as date) and DanhBo in (select DanhBa from DocSo where Nam=@Nam and Ky=@Ky and Dot=@Dot " + MaTo + ") having COUNT(*)>0"
                     + " union all"
-                    + " select ButPhe=N'Tính Tiêu Thụ',Loai='TinhTieuThu',SoLuong=count(*) from CongVanDen where TinhTieuThu=1 and DanhBo in (select DanhBa from DocSo where Nam=@Nam and Ky=@Ky and Dot=@Dot " + MaTo + ") having COUNT(*)>0"
+                    + " select ButPhe=N'Tính Tiêu Thụ',Loai='TinhTieuThu',SoLuong=count(*) from CongVanDen where TinhTieuThu=1 and CAST(DATEADD(DAY,90,CreateDate) as date)>=CAST(GETDATE() as date) and DanhBo in (select DanhBa from DocSo where Nam=@Nam and Ky=@Ky and Dot=@Dot " + MaTo + ") having COUNT(*)>0"
                     + " union all"
-                    + " select ButPhe=N'Theo Dõi',Loai='TheoDoi',SoLuong=count(*) from CongVanDen where TheoDoi=1 and DanhBo in (select DanhBa from DocSo where Nam=@Nam and Ky=@Ky and Dot=@Dot " + MaTo + ") having COUNT(*)>0"
+                    + " select ButPhe=N'Theo Dõi',Loai='TheoDoi',SoLuong=count(*) from CongVanDen where TheoDoi=1 and CAST(DATEADD(DAY,90,CreateDate) as date)>=CAST(GETDATE() as date) and DanhBo in (select DanhBa from DocSo where Nam=@Nam and Ky=@Ky and Dot=@Dot " + MaTo + ") having COUNT(*)>0"
                     + " union all"
-                    + " select ButPhe=N'Kiểm Tra Lại Hiện Trường',Loai='KiemTraLaiHienTruong',SoLuong=count(*) from CongVanDen where KiemTraLaiHienTruong=1 and DanhBo in (select DanhBa from DocSo where Nam=@Nam and Ky=@Ky and Dot=@Dot " + MaTo + ") having COUNT(*)>0");
+                    + " select ButPhe=N'Báo Thay',Loai='BaoThay',SoLuong=count(*) from CongVanDen where BaoThay=1 and CAST(DATEADD(DAY,90,CreateDate) as date)>=CAST(GETDATE() as date) and DanhBo in (select DanhBa from DocSo where Nam=@Nam and Ky=@Ky and Dot=@Dot " + MaTo + ") having COUNT(*)>0"
+                    + " union all"
+                    + " select ButPhe=N'Để Biết',Loai='DeBiet',SoLuong=count(*) from CongVanDen where DeBiet=1 and CAST(DATEADD(DAY,90,CreateDate) as date)>=CAST(GETDATE() as date) and DanhBo in (select DanhBa from DocSo where Nam=@Nam and Ky=@Ky and Dot=@Dot " + MaTo + ") having COUNT(*)>0"
+                    + " union all"
+                    + " select ButPhe=N'Kiểm Tra Lại Hiện Trường',Loai='KiemTraLaiHienTruong',SoLuong=count(*) from CongVanDen where KiemTraLaiHienTruong=1 and CAST(DATEADD(DAY,90,CreateDate) as date)>=CAST(GETDATE() as date) and DanhBo in (select DanhBa from DocSo where Nam=@Nam and Ky=@Ky and Dot=@Dot " + MaTo + ") having COUNT(*)>0"
+                    + " union all"
+                    + " select ButPhe=N'Khác',Loai='Khac',SoLuong=count(*) from CongVanDen where Khac=1 and CAST(DATEADD(DAY,90,CreateDate) as date)>=CAST(GETDATE() as date) and DanhBo in (select DanhBa from DocSo where Nam=@Nam and Ky=@Ky and Dot=@Dot " + MaTo + ") having COUNT(*)>0");
         }
 
     }

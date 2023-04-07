@@ -364,30 +364,6 @@ namespace DocSo_PC.GUI.VanThu
             }
         }
 
-        private void btnIn_ToTrinh_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                //dsBaoCao dsBaoCao = new dsBaoCao();
-                //foreach (DataGridViewRow item in dgvDanhSach.Rows)
-                //    if (item.Cells["LoaiVB"].Value.ToString() == "Tờ Trình")
-                //    {
-                //        DataRow dr = dsBaoCao.Tables["BaoCao"].NewRow();
-                        
-                //        dr["Image"]
-                //        dsBaoCao.Tables["BaoCao"].Rows.Add(dr);
-                //    }
-                //rptImage rpt = new rptImage();
-                //rpt.SetDataSource(dsBaoCao);
-                //frmShowBaoCao frm = new frmShowBaoCao(rpt);
-                //frm.Show();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         //tab Bút Phê
 
         int _index = 0;

@@ -110,6 +110,8 @@
             this.btnCapNhat = new System.Windows.Forms.Button();
             this.chkXem = new System.Windows.Forms.CheckBox();
             this.dgvDuyet = new System.Windows.Forms.DataGridView();
+            this.radDaDuyet = new System.Windows.Forms.RadioButton();
+            this.radChuaDuyet = new System.Windows.Forms.RadioButton();
             this.Duyet_Ngay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -125,9 +127,6 @@
             this.IDCT_Duyet = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID_Duyet = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.radDaDuyet = new System.Windows.Forms.RadioButton();
-            this.radChuaDuyet = new System.Windows.Forms.RadioButton();
-            this.btnIn_ToTrinh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -604,7 +603,6 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.btnIn_ToTrinh);
             this.tabPage1.Controls.Add(this.label15);
             this.tabPage1.Controls.Add(this.cmbTo);
             this.tabPage1.Controls.Add(this.cmbLoaiVanBan);
@@ -684,7 +682,7 @@
             // 
             // btnSau
             // 
-            this.btnSau.Location = new System.Drawing.Point(716, 609);
+            this.btnSau.Location = new System.Drawing.Point(644, 563);
             this.btnSau.Name = "btnSau";
             this.btnSau.Size = new System.Drawing.Size(75, 23);
             this.btnSau.TabIndex = 81;
@@ -695,7 +693,7 @@
             // 
             // btnTruoc
             // 
-            this.btnTruoc.Location = new System.Drawing.Point(635, 609);
+            this.btnTruoc.Location = new System.Drawing.Point(563, 563);
             this.btnTruoc.Name = "btnTruoc";
             this.btnTruoc.Size = new System.Drawing.Size(75, 23);
             this.btnTruoc.TabIndex = 80;
@@ -706,7 +704,7 @@
             // 
             // txtKhac_GhiChu
             // 
-            this.txtKhac_GhiChu.Location = new System.Drawing.Point(412, 464);
+            this.txtKhac_GhiChu.Location = new System.Drawing.Point(265, 464);
             this.txtKhac_GhiChu.Name = "txtKhac_GhiChu";
             this.txtKhac_GhiChu.ReadOnly = true;
             this.txtKhac_GhiChu.Size = new System.Drawing.Size(200, 20);
@@ -715,7 +713,7 @@
             // chkKhac
             // 
             this.chkKhac.AutoSize = true;
-            this.chkKhac.Location = new System.Drawing.Point(355, 466);
+            this.chkKhac.Location = new System.Drawing.Point(208, 466);
             this.chkKhac.Name = "chkKhac";
             this.chkKhac.Size = new System.Drawing.Size(51, 17);
             this.chkKhac.TabIndex = 77;
@@ -726,7 +724,7 @@
             // chkDeBiet
             // 
             this.chkDeBiet.AutoSize = true;
-            this.chkDeBiet.Location = new System.Drawing.Point(485, 397);
+            this.chkDeBiet.Location = new System.Drawing.Point(338, 397);
             this.chkDeBiet.Name = "chkDeBiet";
             this.chkDeBiet.Size = new System.Drawing.Size(61, 17);
             this.chkDeBiet.TabIndex = 76;
@@ -736,7 +734,7 @@
             // chkBaoThay
             // 
             this.chkBaoThay.AutoSize = true;
-            this.chkBaoThay.Location = new System.Drawing.Point(277, 397);
+            this.chkBaoThay.Location = new System.Drawing.Point(130, 397);
             this.chkBaoThay.Name = "chkBaoThay";
             this.chkBaoThay.Size = new System.Drawing.Size(72, 17);
             this.chkBaoThay.TabIndex = 75;
@@ -747,16 +745,16 @@
             // 
             this.panel2.AutoScroll = true;
             this.panel2.Controls.Add(this.pictureBox);
-            this.panel2.Location = new System.Drawing.Point(635, 6);
+            this.panel2.Location = new System.Drawing.Point(487, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(696, 597);
+            this.panel2.Size = new System.Drawing.Size(864, 557);
             this.panel2.TabIndex = 74;
             // 
             // pictureBox
             // 
             this.pictureBox.Location = new System.Drawing.Point(3, 3);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(690, 590);
+            this.pictureBox.Size = new System.Drawing.Size(856, 551);
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox.TabIndex = 59;
             this.pictureBox.TabStop = false;
@@ -844,7 +842,7 @@
             // chkKiemTraLaiHienTruong
             // 
             this.chkKiemTraLaiHienTruong.AutoSize = true;
-            this.chkKiemTraLaiHienTruong.Location = new System.Drawing.Point(355, 443);
+            this.chkKiemTraLaiHienTruong.Location = new System.Drawing.Point(208, 443);
             this.chkKiemTraLaiHienTruong.Name = "chkKiemTraLaiHienTruong";
             this.chkKiemTraLaiHienTruong.Size = new System.Drawing.Size(147, 17);
             this.chkKiemTraLaiHienTruong.TabIndex = 65;
@@ -854,7 +852,7 @@
             // chkTheoDoi
             // 
             this.chkTheoDoi.AutoSize = true;
-            this.chkTheoDoi.Location = new System.Drawing.Point(552, 397);
+            this.chkTheoDoi.Location = new System.Drawing.Point(405, 397);
             this.chkTheoDoi.Name = "chkTheoDoi";
             this.chkTheoDoi.Size = new System.Drawing.Size(70, 17);
             this.chkTheoDoi.TabIndex = 64;
@@ -864,7 +862,7 @@
             // chkTinhTieuThu
             // 
             this.chkTinhTieuThu.AutoSize = true;
-            this.chkTinhTieuThu.Location = new System.Drawing.Point(355, 420);
+            this.chkTinhTieuThu.Location = new System.Drawing.Point(208, 420);
             this.chkTinhTieuThu.Name = "chkTinhTieuThu";
             this.chkTinhTieuThu.Size = new System.Drawing.Size(95, 17);
             this.chkTinhTieuThu.TabIndex = 63;
@@ -874,7 +872,7 @@
             // chkCapNhat
             // 
             this.chkCapNhat.AutoSize = true;
-            this.chkCapNhat.Location = new System.Drawing.Point(355, 397);
+            this.chkCapNhat.Location = new System.Drawing.Point(208, 397);
             this.chkCapNhat.Name = "chkCapNhat";
             this.chkCapNhat.Size = new System.Drawing.Size(71, 17);
             this.chkCapNhat.TabIndex = 62;
@@ -883,7 +881,7 @@
             // 
             // btnCapNhat
             // 
-            this.btnCapNhat.Location = new System.Drawing.Point(355, 490);
+            this.btnCapNhat.Location = new System.Drawing.Point(208, 490);
             this.btnCapNhat.Name = "btnCapNhat";
             this.btnCapNhat.Size = new System.Drawing.Size(75, 23);
             this.btnCapNhat.TabIndex = 61;
@@ -894,7 +892,7 @@
             // chkXem
             // 
             this.chkXem.AutoSize = true;
-            this.chkXem.Location = new System.Drawing.Point(432, 397);
+            this.chkXem.Location = new System.Drawing.Point(285, 397);
             this.chkXem.Name = "chkXem";
             this.chkXem.Size = new System.Drawing.Size(47, 17);
             this.chkXem.TabIndex = 60;
@@ -950,10 +948,34 @@
             this.dgvDuyet.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvDuyet.RowsDefaultCellStyle = dataGridViewCellStyle16;
-            this.dgvDuyet.Size = new System.Drawing.Size(626, 300);
+            this.dgvDuyet.Size = new System.Drawing.Size(478, 300);
             this.dgvDuyet.TabIndex = 58;
             this.dgvDuyet.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDuyet_CellClick);
             this.dgvDuyet.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDuyet_RowPostPaint);
+            // 
+            // radDaDuyet
+            // 
+            this.radDaDuyet.AutoSize = true;
+            this.radDaDuyet.Location = new System.Drawing.Point(8, 29);
+            this.radDaDuyet.Name = "radDaDuyet";
+            this.radDaDuyet.Size = new System.Drawing.Size(70, 17);
+            this.radDaDuyet.TabIndex = 1;
+            this.radDaDuyet.Text = "Đã Duyệt";
+            this.radDaDuyet.UseVisualStyleBackColor = true;
+            this.radDaDuyet.CheckedChanged += new System.EventHandler(this.radDaDuyet_CheckedChanged);
+            // 
+            // radChuaDuyet
+            // 
+            this.radChuaDuyet.AutoSize = true;
+            this.radChuaDuyet.Checked = true;
+            this.radChuaDuyet.Location = new System.Drawing.Point(8, 6);
+            this.radChuaDuyet.Name = "radChuaDuyet";
+            this.radChuaDuyet.Size = new System.Drawing.Size(81, 17);
+            this.radChuaDuyet.TabIndex = 0;
+            this.radChuaDuyet.TabStop = true;
+            this.radChuaDuyet.Text = "Chưa Duyệt";
+            this.radChuaDuyet.UseVisualStyleBackColor = true;
+            this.radChuaDuyet.CheckedChanged += new System.EventHandler(this.radChuaDuyet_CheckedChanged);
             // 
             // Duyet_Ngay
             // 
@@ -979,6 +1001,7 @@
             this.LoaiVB_Duyet.DataPropertyName = "LoaiVB";
             this.LoaiVB_Duyet.HeaderText = "Loại VB";
             this.LoaiVB_Duyet.Name = "LoaiVB_Duyet";
+            this.LoaiVB_Duyet.Width = 80;
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -1057,40 +1080,6 @@
             this.ID_Duyet.Name = "ID_Duyet";
             this.ID_Duyet.Visible = false;
             // 
-            // radDaDuyet
-            // 
-            this.radDaDuyet.AutoSize = true;
-            this.radDaDuyet.Location = new System.Drawing.Point(8, 29);
-            this.radDaDuyet.Name = "radDaDuyet";
-            this.radDaDuyet.Size = new System.Drawing.Size(70, 17);
-            this.radDaDuyet.TabIndex = 1;
-            this.radDaDuyet.Text = "Đã Duyệt";
-            this.radDaDuyet.UseVisualStyleBackColor = true;
-            this.radDaDuyet.CheckedChanged += new System.EventHandler(this.radDaDuyet_CheckedChanged);
-            // 
-            // radChuaDuyet
-            // 
-            this.radChuaDuyet.AutoSize = true;
-            this.radChuaDuyet.Checked = true;
-            this.radChuaDuyet.Location = new System.Drawing.Point(8, 6);
-            this.radChuaDuyet.Name = "radChuaDuyet";
-            this.radChuaDuyet.Size = new System.Drawing.Size(81, 17);
-            this.radChuaDuyet.TabIndex = 0;
-            this.radChuaDuyet.TabStop = true;
-            this.radChuaDuyet.Text = "Chưa Duyệt";
-            this.radChuaDuyet.UseVisualStyleBackColor = true;
-            this.radChuaDuyet.CheckedChanged += new System.EventHandler(this.radChuaDuyet_CheckedChanged);
-            // 
-            // btnIn_ToTrinh
-            // 
-            this.btnIn_ToTrinh.Location = new System.Drawing.Point(723, 7);
-            this.btnIn_ToTrinh.Name = "btnIn_ToTrinh";
-            this.btnIn_ToTrinh.Size = new System.Drawing.Size(75, 23);
-            this.btnIn_ToTrinh.TabIndex = 70;
-            this.btnIn_ToTrinh.Text = "In Tờ Trình";
-            this.btnIn_ToTrinh.UseVisualStyleBackColor = true;
-            this.btnIn_ToTrinh.Click += new System.EventHandler(this.btnIn_ToTrinh_Click);
-            // 
             // frmCongVanDen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1161,21 +1150,6 @@
         private System.Windows.Forms.Button btnCapNhat;
         private System.Windows.Forms.CheckBox chkXem;
         private System.Windows.Forms.PictureBox pictureBox;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Duyet_Ngay;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LoaiVB_Duyet;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TableName_Duyet;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDCT_Duyet;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID_Duyet;
         private System.Windows.Forms.ComboBox cmbLoaiVanBan_Duyet;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Panel panel1;
@@ -1211,6 +1185,20 @@
         private System.Windows.Forms.CheckBox chkBaoThay;
         private System.Windows.Forms.Button btnSau;
         private System.Windows.Forms.Button btnTruoc;
-        private System.Windows.Forms.Button btnIn_ToTrinh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Duyet_Ngay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LoaiVB_Duyet;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TableName_Duyet;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDCT_Duyet;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_Duyet;
     }
 }
