@@ -77,6 +77,8 @@
             this.cmbTo = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnXuatExcel = new System.Windows.Forms.Button();
+            this.chkLayChinhXacSoTien = new System.Windows.Forms.CheckBox();
+            this.chkTon = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDCoQuan)).BeginInit();
             this.tabCoQuan.SuspendLayout();
             this.tabControl.SuspendLayout();
@@ -238,7 +240,7 @@
             this.tabCoQuan.Location = new System.Drawing.Point(4, 22);
             this.tabCoQuan.Name = "tabCoQuan";
             this.tabCoQuan.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCoQuan.Size = new System.Drawing.Size(1236, 574);
+            this.tabCoQuan.Size = new System.Drawing.Size(1236, 546);
             this.tabCoQuan.TabIndex = 1;
             this.tabCoQuan.Text = "Cơ Quan";
             this.tabCoQuan.UseVisualStyleBackColor = true;
@@ -248,13 +250,13 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(474, 15);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 13);
+            this.label5.Size = new System.Drawing.Size(59, 13);
             this.label5.TabIndex = 52;
-            this.label5.Text = "Số Tiền:";
+            this.label5.Text = "Số Tiền >=";
             // 
             // txtSoTien
             // 
-            this.txtSoTien.Location = new System.Drawing.Point(527, 12);
+            this.txtSoTien.Location = new System.Drawing.Point(539, 12);
             this.txtSoTien.Name = "txtSoTien";
             this.txtSoTien.Size = new System.Drawing.Size(100, 20);
             this.txtSoTien.TabIndex = 53;
@@ -266,10 +268,10 @@
             // 
             this.tabControl.Controls.Add(this.tabTuGia);
             this.tabControl.Controls.Add(this.tabCoQuan);
-            this.tabControl.Location = new System.Drawing.Point(12, 39);
+            this.tabControl.Location = new System.Drawing.Point(12, 61);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1244, 600);
+            this.tabControl.Size = new System.Drawing.Size(1244, 572);
             this.tabControl.TabIndex = 51;
             // 
             // tabTuGia
@@ -278,7 +280,7 @@
             this.tabTuGia.Location = new System.Drawing.Point(4, 22);
             this.tabTuGia.Name = "tabTuGia";
             this.tabTuGia.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTuGia.Size = new System.Drawing.Size(1236, 574);
+            this.tabTuGia.Size = new System.Drawing.Size(1236, 546);
             this.tabTuGia.TabIndex = 0;
             this.tabTuGia.Text = "Tư Gia";
             this.tabTuGia.UseVisualStyleBackColor = true;
@@ -472,7 +474,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(633, 10);
+            this.btnXem.Location = new System.Drawing.Point(645, 10);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 47;
@@ -547,7 +549,7 @@
             // 
             // btnXuatExcel
             // 
-            this.btnXuatExcel.Location = new System.Drawing.Point(714, 10);
+            this.btnXuatExcel.Location = new System.Drawing.Point(726, 10);
             this.btnXuatExcel.Name = "btnXuatExcel";
             this.btnXuatExcel.Size = new System.Drawing.Size(75, 23);
             this.btnXuatExcel.TabIndex = 56;
@@ -555,12 +557,36 @@
             this.btnXuatExcel.UseVisualStyleBackColor = true;
             this.btnXuatExcel.Click += new System.EventHandler(this.btnXuatExcel_Click);
             // 
+            // chkLayChinhXacSoTien
+            // 
+            this.chkLayChinhXacSoTien.AutoSize = true;
+            this.chkLayChinhXacSoTien.Location = new System.Drawing.Point(539, 38);
+            this.chkLayChinhXacSoTien.Name = "chkLayChinhXacSoTien";
+            this.chkLayChinhXacSoTien.Size = new System.Drawing.Size(137, 17);
+            this.chkLayChinhXacSoTien.TabIndex = 57;
+            this.chkLayChinhXacSoTien.Text = "Lấy Chính Xác Số Tiền";
+            this.chkLayChinhXacSoTien.UseVisualStyleBackColor = true;
+            // 
+            // chkTon
+            // 
+            this.chkTon.AutoSize = true;
+            this.chkTon.Checked = true;
+            this.chkTon.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkTon.Location = new System.Drawing.Point(488, 38);
+            this.chkTon.Name = "chkTon";
+            this.chkTon.Size = new System.Drawing.Size(45, 17);
+            this.chkTon.TabIndex = 58;
+            this.chkTon.Text = "Tồn";
+            this.chkTon.UseVisualStyleBackColor = true;
+            // 
             // frmHDTienLonDoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1279, 660);
+            this.Controls.Add(this.chkTon);
+            this.Controls.Add(this.chkLayChinhXacSoTien);
             this.Controls.Add(this.btnXuatExcel);
             this.Controls.Add(this.cmbTo);
             this.Controls.Add(this.label4);
@@ -634,5 +660,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn To_TG;
         private System.Windows.Forms.DataGridViewTextBoxColumn HanhThu_TG;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayDN_TG;
+        private System.Windows.Forms.CheckBox chkLayChinhXacSoTien;
+        private System.Windows.Forms.CheckBox chkTon;
     }
 }

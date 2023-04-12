@@ -49,9 +49,6 @@ namespace ThuTien.GUI.Doi
             cmbTo.DataSource = _lstTo;
             cmbTo.DisplayMember = "TenTo";
             cmbTo.ValueMember = "MaTo";
-
-            tabTuGia.Text = "Hóa Đơn";
-            tabControl.TabPages.Remove(tabCoQuan);
         }
 
         private void btnXem_Click(object sender, EventArgs e)
@@ -66,7 +63,7 @@ namespace ThuTien.GUI.Doi
                     {
                         foreach (TT_To item in _lstTo)
                         {
-                            dt.Merge(_cHoaDon.GetDSByTienLon_Doi("", item.MaTo, int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
+                            dt.Merge(_cHoaDon.GetDSByTienLon_Doi("TG", chkLayChinhXacSoTien.Checked, chkTon.Checked, item.MaTo, int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
                         }
                     }
                     else
@@ -77,7 +74,7 @@ namespace ThuTien.GUI.Doi
                             {
                                 foreach (TT_To item in _lstTo)
                                 {
-                                    dt.Merge(_cHoaDon.GetDSByTienLon_Doi("", item.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
+                                    dt.Merge(_cHoaDon.GetDSByTienLon_Doi("TG", chkLayChinhXacSoTien.Checked, chkTon.Checked, item.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
                                 }
                             }
                             ///chọn 1 kỳ cụ thể
@@ -88,7 +85,7 @@ namespace ThuTien.GUI.Doi
                                     {
                                         foreach (TT_To item in _lstTo)
                                         {
-                                            dt.Merge(_cHoaDon.GetDSByTienLon_Doi("", item.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
+                                            dt.Merge(_cHoaDon.GetDSByTienLon_Doi("TG", chkLayChinhXacSoTien.Checked, chkTon.Checked, item.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
                                         }
                                     }
                                     ///chọn 1 đợt cụ thể
@@ -97,7 +94,7 @@ namespace ThuTien.GUI.Doi
                                         {
                                             foreach (TT_To item in _lstTo)
                                             {
-                                                dt.Merge(_cHoaDon.GetDSByTienLon_Doi("", item.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
+                                                dt.Merge(_cHoaDon.GetDSByTienLon_Doi("TG", chkLayChinhXacSoTien.Checked, chkTon.Checked, item.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
                                             }
                                         }
                 }
@@ -107,7 +104,7 @@ namespace ThuTien.GUI.Doi
                         ///chọn tất cả các năm
                         if (cmbNam.SelectedIndex == 0)
                         {
-                            dt=_cHoaDon.GetDSByTienLon_Doi("", int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+                            dt = _cHoaDon.GetDSByTienLon_Doi("TG", chkLayChinhXacSoTien.Checked, chkTon.Checked, int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
                         }
                         else
                             ///chọn 1 năm cụ thể
@@ -115,7 +112,7 @@ namespace ThuTien.GUI.Doi
                                 ///chọn tất cả các kỳ
                                 if (cmbKy.SelectedIndex == 0)
                                 {
-                                    dt = _cHoaDon.GetDSByTienLon_Doi("", int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+                                    dt = _cHoaDon.GetDSByTienLon_Doi("TG", chkLayChinhXacSoTien.Checked, chkTon.Checked, int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
                                 }
                                 ///chọn 1 kỳ cụ thể
                                 else
@@ -123,18 +120,18 @@ namespace ThuTien.GUI.Doi
                                         ///chọn tất cả các đợt
                                         if (cmbDot.SelectedIndex == 0)
                                         {
-                                            dt = _cHoaDon.GetDSByTienLon_Doi("", int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+                                            dt = _cHoaDon.GetDSByTienLon_Doi("TG", chkLayChinhXacSoTien.Checked, chkTon.Checked, int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
                                         }
                                         ///chọn 1 đợt cụ thể
                                         else
                                             if (cmbDot.SelectedIndex > 0)
                                             {
-                                                dt = _cHoaDon.GetDSByTienLon_Doi("", int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+                                                dt = _cHoaDon.GetDSByTienLon_Doi("TG", chkLayChinhXacSoTien.Checked, chkTon.Checked, int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
                                             }
                     }
 
                 dgvHDTuGia.DataSource = dt;
-                dgvHDTuGia.Sort(dgvHDTuGia.Columns["NgayGiaiTrach_TG"], ListSortDirection.Ascending);
+                //dgvHDTuGia.Sort(dgvHDTuGia.Columns["NgayGiaiTrach_TG"], ListSortDirection.Ascending);
                 foreach (DataGridViewRow item in dgvHDTuGia.Rows)
                 {
                     if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon_TG"].Value.ToString()))
@@ -154,7 +151,7 @@ namespace ThuTien.GUI.Doi
                         {
                             foreach (TT_To item in _lstTo)
                             {
-                                dt.Merge(_cHoaDon.GetDSByTienLon_Doi("CQ", item.MaTo, int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
+                                dt.Merge(_cHoaDon.GetDSByTienLon_Doi("CQ", chkLayChinhXacSoTien.Checked, chkTon.Checked, item.MaTo, int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
                             }
                         }
                         else
@@ -165,7 +162,7 @@ namespace ThuTien.GUI.Doi
                                 {
                                     foreach (TT_To item in _lstTo)
                                     {
-                                        dt.Merge(_cHoaDon.GetDSByTienLon_Doi("CQ", item.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
+                                        dt.Merge(_cHoaDon.GetDSByTienLon_Doi("CQ", chkLayChinhXacSoTien.Checked, chkTon.Checked, item.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
                                     }
                                 }
                                 ///chọn 1 kỳ cụ thể
@@ -176,7 +173,7 @@ namespace ThuTien.GUI.Doi
                                         {
                                             foreach (TT_To item in _lstTo)
                                             {
-                                                dt.Merge(_cHoaDon.GetDSByTienLon_Doi("CQ", item.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
+                                                dt.Merge(_cHoaDon.GetDSByTienLon_Doi("CQ", chkLayChinhXacSoTien.Checked, chkTon.Checked, item.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
                                             }
                                         }
                                         ///chọn 1 đợt cụ thể
@@ -185,7 +182,7 @@ namespace ThuTien.GUI.Doi
                                             {
                                                 foreach (TT_To item in _lstTo)
                                                 {
-                                                    dt.Merge(_cHoaDon.GetDSByTienLon_Doi("CQ", item.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
+                                                    dt.Merge(_cHoaDon.GetDSByTienLon_Doi("CQ", chkLayChinhXacSoTien.Checked, chkTon.Checked, item.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
                                                 }
                                             }
                     }
@@ -195,7 +192,7 @@ namespace ThuTien.GUI.Doi
                             ///chọn tất cả các năm
                             if (cmbNam.SelectedIndex == 0)
                             {
-                                dt = _cHoaDon.GetDSByTienLon_Doi("CQ", int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+                                dt = _cHoaDon.GetDSByTienLon_Doi("CQ", chkLayChinhXacSoTien.Checked, chkTon.Checked, int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
                             }
                             else
                                 ///chọn 1 năm cụ thể
@@ -203,7 +200,7 @@ namespace ThuTien.GUI.Doi
                                     ///chọn tất cả các kỳ
                                     if (cmbKy.SelectedIndex == 0)
                                     {
-                                        dt = _cHoaDon.GetDSByTienLon_Doi("CQ", int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+                                        dt = _cHoaDon.GetDSByTienLon_Doi("CQ", chkLayChinhXacSoTien.Checked, chkTon.Checked, int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
                                     }
                                     ///chọn 1 kỳ cụ thể
                                     else
@@ -211,13 +208,13 @@ namespace ThuTien.GUI.Doi
                                             ///chọn tất cả các đợt
                                             if (cmbDot.SelectedIndex == 0)
                                             {
-                                                dt = _cHoaDon.GetDSByTienLon_Doi("CQ", int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+                                                dt = _cHoaDon.GetDSByTienLon_Doi("CQ", chkLayChinhXacSoTien.Checked, chkTon.Checked, int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
                                             }
                                             ///chọn 1 đợt cụ thể
                                             else
                                                 if (cmbDot.SelectedIndex > 0)
                                                 {
-                                                    dt = _cHoaDon.GetDSByTienLon_Doi("CQ", int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+                                                    dt = _cHoaDon.GetDSByTienLon_Doi("CQ", chkLayChinhXacSoTien.Checked, chkTon.Checked, int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
                                                 }
                         }
                             

@@ -76,6 +76,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtSoTien = new System.Windows.Forms.TextBox();
             this.btnInDSTon = new System.Windows.Forms.Button();
+            this.chkLayChinhXacSoTien = new System.Windows.Forms.CheckBox();
+            this.chkTon = new System.Windows.Forms.CheckBox();
             this.tabControl.SuspendLayout();
             this.tabTuGia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDTuGia)).BeginInit();
@@ -211,10 +213,10 @@
             // 
             this.tabControl.Controls.Add(this.tabTuGia);
             this.tabControl.Controls.Add(this.tabCoQuan);
-            this.tabControl.Location = new System.Drawing.Point(12, 58);
+            this.tabControl.Location = new System.Drawing.Point(12, 61);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1310, 600);
+            this.tabControl.Size = new System.Drawing.Size(1310, 579);
             this.tabControl.TabIndex = 38;
             // 
             // tabTuGia
@@ -223,7 +225,7 @@
             this.tabTuGia.Location = new System.Drawing.Point(4, 22);
             this.tabTuGia.Name = "tabTuGia";
             this.tabTuGia.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTuGia.Size = new System.Drawing.Size(1302, 574);
+            this.tabTuGia.Size = new System.Drawing.Size(1302, 553);
             this.tabTuGia.TabIndex = 0;
             this.tabTuGia.Text = "Tư Gia";
             this.tabTuGia.UseVisualStyleBackColor = true;
@@ -376,7 +378,7 @@
             this.tabCoQuan.Location = new System.Drawing.Point(4, 22);
             this.tabCoQuan.Name = "tabCoQuan";
             this.tabCoQuan.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCoQuan.Size = new System.Drawing.Size(1302, 574);
+            this.tabCoQuan.Size = new System.Drawing.Size(1302, 553);
             this.tabCoQuan.TabIndex = 1;
             this.tabCoQuan.Text = "Cơ Quan";
             this.tabCoQuan.UseVisualStyleBackColor = true;
@@ -552,12 +554,36 @@
             this.btnInDSTon.UseVisualStyleBackColor = true;
             this.btnInDSTon.Click += new System.EventHandler(this.btnInDSTon_Click);
             // 
+            // chkLayChinhXacSoTien
+            // 
+            this.chkLayChinhXacSoTien.AutoSize = true;
+            this.chkLayChinhXacSoTien.Location = new System.Drawing.Point(562, 38);
+            this.chkLayChinhXacSoTien.Name = "chkLayChinhXacSoTien";
+            this.chkLayChinhXacSoTien.Size = new System.Drawing.Size(137, 17);
+            this.chkLayChinhXacSoTien.TabIndex = 58;
+            this.chkLayChinhXacSoTien.Text = "Lấy Chính Xác Số Tiền";
+            this.chkLayChinhXacSoTien.UseVisualStyleBackColor = true;
+            // 
+            // chkTon
+            // 
+            this.chkTon.AutoSize = true;
+            this.chkTon.Checked = true;
+            this.chkTon.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkTon.Location = new System.Drawing.Point(511, 38);
+            this.chkTon.Name = "chkTon";
+            this.chkTon.Size = new System.Drawing.Size(45, 17);
+            this.chkTon.TabIndex = 59;
+            this.chkTon.Text = "Tồn";
+            this.chkTon.UseVisualStyleBackColor = true;
+            // 
             // frmHDTienLonTo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1334, 660);
+            this.Controls.Add(this.chkTon);
+            this.Controls.Add(this.chkLayChinhXacSoTien);
             this.Controls.Add(this.btnInDSTon);
             this.Controls.Add(this.txtSoTien);
             this.Controls.Add(this.label5);
@@ -631,5 +657,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PhiBVMT_CQ;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_CQ;
         private System.Windows.Forms.DataGridViewTextBoxColumn HanhThu_CQ;
+        private System.Windows.Forms.CheckBox chkLayChinhXacSoTien;
+        private System.Windows.Forms.CheckBox chkTon;
     }
 }

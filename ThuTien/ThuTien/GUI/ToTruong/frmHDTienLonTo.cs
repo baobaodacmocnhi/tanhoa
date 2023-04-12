@@ -67,13 +67,13 @@ namespace ThuTien.GUI.ToTruong
                         DataTable dt = new DataTable();
                         foreach (TT_NguoiDung item in _lstND)
                         {
-                            dt.Merge(_cHoaDon.GetDSByTienLon_To("TG", item.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
+                            dt.Merge(_cHoaDon.GetDSByTienLon_To("TG",chkLayChinhXacSoTien.Checked,chkTon.Checked, item.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
                         }
                         dgvHDTuGia.DataSource = dt;
                     }
                     else
                         if (cmbNhanVien.SelectedIndex > 0)
-                            dgvHDTuGia.DataSource = _cHoaDon.GetDSByTienLon_To("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+                            dgvHDTuGia.DataSource = _cHoaDon.GetDSByTienLon_To("TG", chkLayChinhXacSoTien.Checked, chkTon.Checked, int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
                 }
                 ///chọn 1 kỳ cụ thể
                 else
@@ -86,13 +86,13 @@ namespace ThuTien.GUI.ToTruong
                                 DataTable dt = new DataTable();
                                 foreach (TT_NguoiDung item in _lstND)
                                 {
-                                    dt.Merge(_cHoaDon.GetDSByTienLon_To("TG", item.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
+                                    dt.Merge(_cHoaDon.GetDSByTienLon_To("TG", chkLayChinhXacSoTien.Checked, chkTon.Checked, item.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
                                 }
                                 dgvHDTuGia.DataSource = dt;
                             }
                             else
                                 if (cmbNhanVien.SelectedIndex > 0)
-                                    dgvHDTuGia.DataSource = _cHoaDon.GetDSByTienLon_To("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+                                    dgvHDTuGia.DataSource = _cHoaDon.GetDSByTienLon_To("TG", chkLayChinhXacSoTien.Checked, chkTon.Checked, int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
                         }
                         ///chọn 1 đợt cụ thể
                         else
@@ -103,15 +103,15 @@ namespace ThuTien.GUI.ToTruong
                                     DataTable dt = new DataTable();
                                     foreach (TT_NguoiDung item in _lstND)
                                     {
-                                        dt.Merge(_cHoaDon.GetDSByTienLon_To("TG", item.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
+                                        dt.Merge(_cHoaDon.GetDSByTienLon_To("TG", chkLayChinhXacSoTien.Checked, chkTon.Checked, item.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
                                     }
                                     dgvHDTuGia.DataSource = dt;
                                 }
                                 else
                                     if (cmbNhanVien.SelectedIndex > 0)
-                                        dgvHDTuGia.DataSource = _cHoaDon.GetDSByTienLon_To("TG", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+                                        dgvHDTuGia.DataSource = _cHoaDon.GetDSByTienLon_To("TG", chkLayChinhXacSoTien.Checked, chkTon.Checked, int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
                             }
-                dgvHDTuGia.Sort(dgvHDTuGia.Columns["NgayGiaiTrach_TG"], ListSortDirection.Ascending);
+                //dgvHDTuGia.Sort(dgvHDTuGia.Columns["NgayGiaiTrach_TG"], ListSortDirection.Ascending);
                 foreach (DataGridViewRow item in dgvHDTuGia.Rows)
                 {
                     if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon_TG"].Value.ToString()))
@@ -131,13 +131,13 @@ namespace ThuTien.GUI.ToTruong
                             DataTable dt = new DataTable();
                             foreach (TT_NguoiDung item in _lstND)
                             {
-                                dt.Merge(_cHoaDon.GetDSByTienLon_To("CQ", item.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
+                                dt.Merge(_cHoaDon.GetDSByTienLon_To("CQ", chkLayChinhXacSoTien.Checked, chkTon.Checked, item.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
                             }
                             dgvHDCoQuan.DataSource = dt;
                         }
                         else
                             if (cmbNhanVien.SelectedIndex > 0)
-                                dgvHDCoQuan.DataSource = _cHoaDon.GetDSByTienLon_To("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+                                dgvHDCoQuan.DataSource = _cHoaDon.GetDSByTienLon_To("CQ", chkLayChinhXacSoTien.Checked, chkTon.Checked, int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
                     }
                     ///chọn 1 kỳ cụ thể
                     else
@@ -150,13 +150,13 @@ namespace ThuTien.GUI.ToTruong
                                     DataTable dt = new DataTable();
                                     foreach (TT_NguoiDung item in _lstND)
                                     {
-                                        dt.Merge(_cHoaDon.GetDSByTienLon_To("CQ", item.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
+                                        dt.Merge(_cHoaDon.GetDSByTienLon_To("CQ", chkLayChinhXacSoTien.Checked, chkTon.Checked, item.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
                                     }
                                     dgvHDCoQuan.DataSource = dt;
                                 }
                                 else
                                     if (cmbNhanVien.SelectedIndex > 0)
-                                        dgvHDCoQuan.DataSource = _cHoaDon.GetDSByTienLon_To("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+                                        dgvHDCoQuan.DataSource = _cHoaDon.GetDSByTienLon_To("CQ", chkLayChinhXacSoTien.Checked, chkTon.Checked, int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
                             }
                             ///chọn 1 đợt cụ thể
                             else
@@ -167,13 +167,13 @@ namespace ThuTien.GUI.ToTruong
                                         DataTable dt = new DataTable();
                                         foreach (TT_NguoiDung item in _lstND)
                                         {
-                                            dt.Merge(_cHoaDon.GetDSByTienLon_To("CQ", item.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
+                                            dt.Merge(_cHoaDon.GetDSByTienLon_To("CQ", chkLayChinhXacSoTien.Checked, chkTon.Checked, item.MaND, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", ""))));
                                         }
                                         dgvHDCoQuan.DataSource = dt;
                                     }
                                     else
                                         if (cmbNhanVien.SelectedIndex > 0)
-                                            dgvHDCoQuan.DataSource = _cHoaDon.GetDSByTienLon_To("CQ", int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+                                            dgvHDCoQuan.DataSource = _cHoaDon.GetDSByTienLon_To("CQ", chkLayChinhXacSoTien.Checked, chkTon.Checked, int.Parse(cmbNhanVien.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
                                 }
                     dgvHDCoQuan.Sort(dgvHDCoQuan.Columns["NgayGiaiTrach_CQ"], ListSortDirection.Ascending);
                     foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
