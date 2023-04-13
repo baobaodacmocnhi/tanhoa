@@ -134,10 +134,9 @@ namespace ThuTien.GUI.Doi
                 //dgvHDTuGia.Sort(dgvHDTuGia.Columns["NgayGiaiTrach_TG"], ListSortDirection.Ascending);
                 foreach (DataGridViewRow item in dgvHDTuGia.Rows)
                 {
-                    if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon_TG"].Value.ToString()))
+                    if (bool.Parse(item.Cells["DongNuoc_TG"].Value.ToString()))
                         item.DefaultCellStyle.BackColor = Color.Yellow;
-                    item.Cells["NgayDN_TG"].Value = _cDongNuoc.GetNgayDongNuoc(item.Cells["SoHoaDon_TG"].Value.ToString());
-                    if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon_TG"].Value.ToString()))
+                    if (bool.Parse(item.Cells["LenhHuy_TG"].Value.ToString()))
                         item.DefaultCellStyle.BackColor = Color.Red;
                 }
             }
@@ -217,15 +216,14 @@ namespace ThuTien.GUI.Doi
                                                     dt = _cHoaDon.GetDSByTienLon_Doi("CQ", chkLayChinhXacSoTien.Checked, chkTon.Checked, int.Parse(cmbTo.SelectedValue.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
                                                 }
                         }
-                            
+
                     dgvHDCoQuan.DataSource = dt;
-                    dgvHDCoQuan.Sort(dgvHDCoQuan.Columns["NgayGiaiTrach_CQ"], ListSortDirection.Ascending);
+                    //dgvHDCoQuan.Sort(dgvHDCoQuan.Columns["NgayGiaiTrach_CQ"], ListSortDirection.Ascending);
                     foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
                     {
-                        if (_cDongNuoc.CheckExist_CTDongNuoc(item.Cells["SoHoaDon_CQ"].Value.ToString()))
+                        if (bool.Parse(item.Cells["DongNuoc_TG"].Value.ToString()))
                             item.DefaultCellStyle.BackColor = Color.Yellow;
-                        item.Cells["NgayDN_CQ"].Value = _cDongNuoc.GetNgayDongNuoc(item.Cells["SoHoaDon_CQ"].Value.ToString());
-                        if (_cLenhHuy.CheckExist(item.Cells["SoHoaDon_CQ"].Value.ToString()))
+                        if (bool.Parse(item.Cells["LenhHuy_TG"].Value.ToString()))
                             item.DefaultCellStyle.BackColor = Color.Red;
                     }
                 }

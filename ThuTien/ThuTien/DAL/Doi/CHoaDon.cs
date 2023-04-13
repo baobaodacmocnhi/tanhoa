@@ -10680,7 +10680,12 @@ namespace ThuTien.DAL.Doi
 
         public DataTable GetDSByTienLon_To(string Loai, bool ChinhXacSoTien, bool Ton, int MaNV, int Nam, int SoTien)
         {
-            string sql = "select NGAYGIAITRACH,SOHOADON,Ky=convert(char(2),KY)+'/'+convert(char(4),NAM),MALOTRINH,DanhBo=DANHBA,HoTen=TENKH,DiaChi=SO+' '+DUONG,TIEUTHU,TONGCONG from HOADON where NAM=" + Nam + " and MaNV_HanhThu=" + MaNV;
+            string sql = "select NGAYGIAITRACH,SOHOADON,Ky=convert(char(2),KY)+'/'+convert(char(4),NAM),MLT=MALOTRINH,DanhBo=DANHBA,HoTen=TENKH,DiaChi=SO+' '+DUONG,TIEUTHU,TONGCONG"
+                + " ,DongNuoc=case when exists(select MaHD from TT_DongNuoc a,TT_CTDongNuoc b where a.MaDN=b.MaDN and b.MaHD=ID_HOADON and a.Huy=0) then 'true' else 'false' end"
+                + " ,NgayDN=(select top 1 NgayDN from TT_DongNuoc a,TT_CTDongNuoc b,TT_KQDongNuoc c where a.MaDN=b.MaDN and a.MaDN=c.MaDN and b.MaHD=ID_HOADON and a.Huy=0)"
+                + " ,LenhHuy=case when exists(select MaHD from TT_LenhHuy where MaHD=ID_HOADON) then 'true' else 'false' end"
+                + " ,HanhThu=(select HoTen from TT_NguoiDung where MaND=MaNV_HanhThu),'To'=(select TenTo from TT_To where MaTo=(select MaTo from TT_NguoiDung where MaND=MaNV_HanhThu))"
+                + " from HOADON where NAM=" + Nam + " and MaNV_HanhThu=" + MaNV;
             if (Ton)
                 sql += " and MaNV_DangNgan is null";
             if (ChinhXacSoTien)
@@ -10698,7 +10703,12 @@ namespace ThuTien.DAL.Doi
 
         public DataTable GetDSByTienLon_To(string Loai, bool ChinhXacSoTien, bool Ton, int MaNV, int Nam, int Ky, int SoTien)
         {
-            string sql = "select NGAYGIAITRACH,SOHOADON,Ky=convert(char(2),KY)+'/'+convert(char(4),NAM),MALOTRINH,DanhBo=DANHBA,HoTen=TENKH,DiaChi=SO+' '+DUONG,TIEUTHU,TONGCONG from HOADON where NAM=" + Nam + " and KY=" + Ky + " and MaNV_HanhThu=" + MaNV;
+            string sql = "select NGAYGIAITRACH,SOHOADON,Ky=convert(char(2),KY)+'/'+convert(char(4),NAM),MLT=MALOTRINH,DanhBo=DANHBA,HoTen=TENKH,DiaChi=SO+' '+DUONG,TIEUTHU,TONGCONG"
+                + " ,DongNuoc=case when exists(select MaHD from TT_DongNuoc a,TT_CTDongNuoc b where a.MaDN=b.MaDN and b.MaHD=ID_HOADON and a.Huy=0) then 'true' else 'false' end"
+                + " ,NgayDN=(select top 1 NgayDN from TT_DongNuoc a,TT_CTDongNuoc b,TT_KQDongNuoc c where a.MaDN=b.MaDN and a.MaDN=c.MaDN and b.MaHD=ID_HOADON and a.Huy=0)"
+                + " ,LenhHuy=case when exists(select MaHD from TT_LenhHuy where MaHD=ID_HOADON) then 'true' else 'false' end"
+                + " ,HanhThu=(select HoTen from TT_NguoiDung where MaND=MaNV_HanhThu),'To'=(select TenTo from TT_To where MaTo=(select MaTo from TT_NguoiDung where MaND=MaNV_HanhThu))"
+                + " from HOADON where NAM=" + Nam + " and KY=" + Ky + " and MaNV_HanhThu=" + MaNV;
             if (Ton)
                 sql += " and MaNV_DangNgan is null";
             if (ChinhXacSoTien)
@@ -10726,7 +10736,12 @@ namespace ThuTien.DAL.Doi
         /// <returns></returns>
         public DataTable GetDSByTienLon_To(string Loai, bool ChinhXacSoTien, bool Ton, int MaNV, int Nam, int Ky, int Dot, int SoTien)
         {
-            string sql = "select NGAYGIAITRACH,SOHOADON,Ky=convert(char(2),KY)+'/'+convert(char(4),NAM),MALOTRINH,DanhBo=DANHBA,HoTen=TENKH,DiaChi=SO+' '+DUONG,TIEUTHU,TONGCONG from HOADON where NAM=" + Nam + " and KY=" + Ky + " and DOT=" + Dot + " and MaNV_HanhThu=" + MaNV;
+            string sql = "select NGAYGIAITRACH,SOHOADON,Ky=convert(char(2),KY)+'/'+convert(char(4),NAM),MLT=MALOTRINH,DanhBo=DANHBA,HoTen=TENKH,DiaChi=SO+' '+DUONG,TIEUTHU,TONGCONG"
+                + " ,DongNuoc=case when exists(select MaHD from TT_DongNuoc a,TT_CTDongNuoc b where a.MaDN=b.MaDN and b.MaHD=ID_HOADON and a.Huy=0) then 'true' else 'false' end"
+                + " ,NgayDN=(select top 1 NgayDN from TT_DongNuoc a,TT_CTDongNuoc b,TT_KQDongNuoc c where a.MaDN=b.MaDN and a.MaDN=c.MaDN and b.MaHD=ID_HOADON and a.Huy=0)"
+                + " ,LenhHuy=case when exists(select MaHD from TT_LenhHuy where MaHD=ID_HOADON) then 'true' else 'false' end"
+                + " ,HanhThu=(select HoTen from TT_NguoiDung where MaND=MaNV_HanhThu),'To'=(select TenTo from TT_To where MaTo=(select MaTo from TT_NguoiDung where MaND=MaNV_HanhThu))"
+                + " from HOADON where NAM=" + Nam + " and KY=" + Ky + " and DOT=" + Dot + " and MaNV_HanhThu=" + MaNV;
             if (Ton)
                 sql += " and MaNV_DangNgan is null";
             if (ChinhXacSoTien)
@@ -10744,8 +10759,12 @@ namespace ThuTien.DAL.Doi
 
         public DataTable GetDSByTienLon_Doi(string Loai, bool ChinhXacSoTien, bool Ton, int MaTo, int SoTien)
         {
-            string sql = "select NGAYGIAITRACH,SOHOADON,Ky=convert(char(2),KY)+'/'+convert(char(4),NAM),MALOTRINH,DanhBo=DANHBA,HoTen=TENKH,DiaChi=SO+' '+DUONG,TIEUTHU,TONGCONG from HOADON where"
-                + " MAY>=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ") and MAY<=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")";
+            string sql = "select NGAYGIAITRACH,SOHOADON,Ky=convert(char(2),KY)+'/'+convert(char(4),NAM),MLT=MALOTRINH,DanhBo=DANHBA,HoTen=TENKH,DiaChi=SO+' '+DUONG,TIEUTHU,TONGCONG"
+                + " ,DongNuoc=case when exists(select MaHD from TT_DongNuoc a,TT_CTDongNuoc b where a.MaDN=b.MaDN and b.MaHD=ID_HOADON and a.Huy=0) then 'true' else 'false' end"
+                + " ,NgayDN=(select top 1 NgayDN from TT_DongNuoc a,TT_CTDongNuoc b,TT_KQDongNuoc c where a.MaDN=b.MaDN and a.MaDN=c.MaDN and b.MaHD=ID_HOADON and a.Huy=0)"
+                + " ,LenhHuy=case when exists(select MaHD from TT_LenhHuy where MaHD=ID_HOADON) then 'true' else 'false' end"
+                + " ,HanhThu=(select HoTen from TT_NguoiDung where MaND=MaNV_HanhThu),'To'=(select TenTo from TT_To where MaTo=(select MaTo from TT_NguoiDung where MaND=MaNV_HanhThu))"
+                + " from HOADON where MAY>=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ") and MAY<=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")";
             if (Ton)
                 sql += " and MaNV_DangNgan is null";
             if (ChinhXacSoTien)
@@ -10763,8 +10782,12 @@ namespace ThuTien.DAL.Doi
 
         public DataTable GetDSByTienLon_Doi(string Loai, bool ChinhXacSoTien, bool Ton, int MaTo, int Nam, int SoTien)
         {
-            string sql = "select NGAYGIAITRACH,SOHOADON,Ky=convert(char(2),KY)+'/'+convert(char(4),NAM),MALOTRINH,DanhBo=DANHBA,HoTen=TENKH,DiaChi=SO+' '+DUONG,TIEUTHU,TONGCONG from HOADON where NAM=" + Nam
-                            + " and MAY>=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ") and MAY<=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")";
+            string sql = "select NGAYGIAITRACH,SOHOADON,Ky=convert(char(2),KY)+'/'+convert(char(4),NAM),MLT=MALOTRINH,DanhBo=DANHBA,HoTen=TENKH,DiaChi=SO+' '+DUONG,TIEUTHU,TONGCONG"
+                + " ,DongNuoc=case when exists(select MaHD from TT_DongNuoc a,TT_CTDongNuoc b where a.MaDN=b.MaDN and b.MaHD=ID_HOADON and a.Huy=0) then 'true' else 'false' end"
+                + " ,NgayDN=(select top 1 NgayDN from TT_DongNuoc a,TT_CTDongNuoc b,TT_KQDongNuoc c where a.MaDN=b.MaDN and a.MaDN=c.MaDN and b.MaHD=ID_HOADON and a.Huy=0)"
+                + " ,LenhHuy=case when exists(select MaHD from TT_LenhHuy where MaHD=ID_HOADON) then 'true' else 'false' end"
+                + " ,HanhThu=(select HoTen from TT_NguoiDung where MaND=MaNV_HanhThu),'To'=(select TenTo from TT_To where MaTo=(select MaTo from TT_NguoiDung where MaND=MaNV_HanhThu))"
+                + " from HOADON where NAM=" + Nam + " and MAY>=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ") and MAY<=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")";
             if (Ton)
                 sql += " and MaNV_DangNgan is null";
             if (ChinhXacSoTien)
@@ -10782,8 +10805,12 @@ namespace ThuTien.DAL.Doi
 
         public DataTable GetDSByTienLon_Doi(string Loai, bool ChinhXacSoTien, bool Ton, int MaTo, int Nam, int Ky, int SoTien)
         {
-            string sql = "select NGAYGIAITRACH,SOHOADON,Ky=convert(char(2),KY)+'/'+convert(char(4),NAM),MALOTRINH,DanhBo=DANHBA,HoTen=TENKH,DiaChi=SO+' '+DUONG,TIEUTHU,TONGCONG from HOADON where NAM=" + Nam + " and KY=" + Ky
-                                        + " and MAY>=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ") and MAY<=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")";
+            string sql = "select NGAYGIAITRACH,SOHOADON,Ky=convert(char(2),KY)+'/'+convert(char(4),NAM),MLT=MALOTRINH,DanhBo=DANHBA,HoTen=TENKH,DiaChi=SO+' '+DUONG,TIEUTHU,TONGCONG"
+                + " ,DongNuoc=case when exists(select MaHD from TT_DongNuoc a,TT_CTDongNuoc b where a.MaDN=b.MaDN and b.MaHD=ID_HOADON and a.Huy=0) then 'true' else 'false' end"
+                + " ,NgayDN=(select top 1 NgayDN from TT_DongNuoc a,TT_CTDongNuoc b,TT_KQDongNuoc c where a.MaDN=b.MaDN and a.MaDN=c.MaDN and b.MaHD=ID_HOADON and a.Huy=0)"
+                + " ,LenhHuy=case when exists(select MaHD from TT_LenhHuy where MaHD=ID_HOADON) then 'true' else 'false' end"
+                + " ,HanhThu=(select HoTen from TT_NguoiDung where MaND=MaNV_HanhThu),'To'=(select TenTo from TT_To where MaTo=(select MaTo from TT_NguoiDung where MaND=MaNV_HanhThu))"
+                + " from HOADON where NAM=" + Nam + " and KY=" + Ky + " and MAY>=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ") and MAY<=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")";
             if (Ton)
                 sql += " and MaNV_DangNgan is null";
             if (ChinhXacSoTien)
@@ -10801,8 +10828,12 @@ namespace ThuTien.DAL.Doi
 
         public DataTable GetDSByTienLon_Doi(string Loai, bool ChinhXacSoTien, bool Ton, int MaTo, int Nam, int Ky, int Dot, int SoTien)
         {
-            string sql = "select NGAYGIAITRACH,SOHOADON,Ky=convert(char(2),KY)+'/'+convert(char(4),NAM),MALOTRINH,DanhBo=DANHBA,HoTen=TENKH,DiaChi=SO+' '+DUONG,TIEUTHU,TONGCONG from HOADON where NAM=" + Nam + " and KY=" + Ky + " and DOT=" + Dot
-                                        + " and MAY>=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ") and MAY<=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")";
+            string sql = "select NGAYGIAITRACH,SOHOADON,Ky=convert(char(2),KY)+'/'+convert(char(4),NAM),MLT=MALOTRINH,DanhBo=DANHBA,HoTen=TENKH,DiaChi=SO+' '+DUONG,TIEUTHU,TONGCONG"
+                + " ,DongNuoc=case when exists(select MaHD from TT_DongNuoc a,TT_CTDongNuoc b where a.MaDN=b.MaDN and b.MaHD=ID_HOADON and a.Huy=0) then 'true' else 'false' end"
+                + " ,NgayDN=(select top 1 NgayDN from TT_DongNuoc a,TT_CTDongNuoc b,TT_KQDongNuoc c where a.MaDN=b.MaDN and a.MaDN=c.MaDN and b.MaHD=ID_HOADON and a.Huy=0)"
+                + " ,LenhHuy=case when exists(select MaHD from TT_LenhHuy where MaHD=ID_HOADON) then 'true' else 'false' end"
+                + " ,HanhThu=(select HoTen from TT_NguoiDung where MaND=MaNV_HanhThu),'To'=(select TenTo from TT_To where MaTo=(select MaTo from TT_NguoiDung where MaND=MaNV_HanhThu))"
+                + " from HOADON where NAM=" + Nam + " and KY=" + Ky + " and DOT=" + Dot + " and MAY>=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ") and MAY<=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")";
             if (Ton)
                 sql += " and MaNV_DangNgan is null";
             if (ChinhXacSoTien)
