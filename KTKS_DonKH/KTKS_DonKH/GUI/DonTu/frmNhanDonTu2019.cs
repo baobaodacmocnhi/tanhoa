@@ -261,12 +261,12 @@ namespace KTKS_DonKH.GUI.DonTu
                 }
 
                 chkCT_HK_KT3.Checked = entity.CT_HK_KT3;
-                chkCT_STT_GXNTT.Checked = entity.CT_STT_GXNTT;
+                //chkCT_STT_GXNTT.Checked = entity.CT_STT_GXNTT;
                 chkCT_GDKKD.Checked = entity.CT_GDKKD;
                 chkCT_GiayUyQuyen.Checked = entity.CT_HoNgheo;
 
                 chkCT_GC_SDSN.Checked = entity.CT_GC_SDSN;
-                chkCT_GXN2SN.Checked = entity.CT_GXN2SN;
+                //chkCT_GXN2SN.Checked = entity.CT_GXN2SN;
                 chkCT_GCNDTDHN.Checked = entity.CT_GCNDTDHN;
 
                 dgvLichSuNhanDon.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo(entity.DanhBo);
@@ -345,12 +345,12 @@ namespace KTKS_DonKH.GUI.DonTu
             txtCT_Khac_GhiChu.Text = "";
 
             chkCT_HK_KT3.Checked = false;
-            chkCT_STT_GXNTT.Checked = false;
+            //chkCT_STT_GXNTT.Checked = false;
             chkCT_GDKKD.Checked = false;
             chkCT_GiayUyQuyen.Checked = false;
 
             chkCT_GC_SDSN.Checked = false;
-            chkCT_GXN2SN.Checked = false;
+            //chkCT_GXN2SN.Checked = false;
             chkCT_GCNDTDHN.Checked = false;
 
             _dontu = null;
@@ -686,8 +686,8 @@ namespace KTKS_DonKH.GUI.DonTu
 
                     if (chkCT_HK_KT3.Checked)
                         entity.CT_HK_KT3 = true;
-                    if (chkCT_STT_GXNTT.Checked)
-                        entity.CT_STT_GXNTT = true;
+                    //if (chkCT_STT_GXNTT.Checked)
+                    //    entity.CT_STT_GXNTT = true;
                     if (chkCT_GDKKD.Checked)
                         entity.CT_GDKKD = true;
                     if (chkCT_GiayUyQuyen.Checked)
@@ -695,8 +695,8 @@ namespace KTKS_DonKH.GUI.DonTu
 
                     if (chkCT_GC_SDSN.Checked)
                         entity.CT_GC_SDSN = true;
-                    if (chkCT_GXN2SN.Checked)
-                        entity.CT_GXN2SN = true;
+                    //if (chkCT_GXN2SN.Checked)
+                    //    entity.CT_GXN2SN = true;
                     if (chkCT_GCNDTDHN.Checked)
                         entity.CT_GCNDTDHN = true;
 
@@ -898,10 +898,10 @@ namespace KTKS_DonKH.GUI.DonTu
                         else
                             _dontu.CT_HK_KT3 = false;
 
-                        if (chkCT_STT_GXNTT.Checked)
-                            _dontu.CT_STT_GXNTT = true;
-                        else
-                            _dontu.CT_STT_GXNTT = false;
+                        //if (chkCT_STT_GXNTT.Checked)
+                        //    _dontu.CT_STT_GXNTT = true;
+                        //else
+                        //    _dontu.CT_STT_GXNTT = false;
 
                         if (chkCT_GDKKD.Checked)
                             _dontu.CT_GDKKD = true;
@@ -919,10 +919,10 @@ namespace KTKS_DonKH.GUI.DonTu
                         else
                             _dontu.CT_GC_SDSN = false;
 
-                        if (chkCT_GXN2SN.Checked)
-                            _dontu.CT_GXN2SN = true;
-                        else
-                            _dontu.CT_GXN2SN = false;
+                        //if (chkCT_GXN2SN.Checked)
+                        //    _dontu.CT_GXN2SN = true;
+                        //else
+                        //    _dontu.CT_GXN2SN = false;
 
                         if (chkCT_GCNDTDHN.Checked)
                             _dontu.CT_GCNDTDHN = true;
