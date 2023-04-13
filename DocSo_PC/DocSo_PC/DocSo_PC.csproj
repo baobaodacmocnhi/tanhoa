@@ -94,6 +94,10 @@
     <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="Spire.Pdf, Version=9.4.0.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\Spire.Pdf.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
@@ -113,8 +117,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaoCao\rptImage.cs">
-      <DependentUpon>rptImage.rpt</DependentUpon>
+    <Compile Include="BaoCao\rptImageA4.cs">
+      <DependentUpon>rptImageA4.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -511,9 +515,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="BaoCao\rptImage.rpt">
+    <EmbeddedResource Include="BaoCao\rptImageA4.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptImage.cs</LastGenOutput>
+      <LastGenOutput>rptImageA4.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\MaHoa\rptDSCongVan.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -805,6 +809,7 @@
   <ItemGroup>
     <None Include="Web References\wrThuongVu\wsthuongvu.disco" />
     <None Include="Resources\file 24x24.png" />
+    <Content Include="Library\Spire.Pdf.dll" />
     <Content Include="Resources\logocongty.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

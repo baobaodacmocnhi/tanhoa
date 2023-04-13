@@ -13,6 +13,9 @@ using DocSo_PC.DAL.QuanTri;
 using System.Transactions;
 using DocSo_PC.BaoCao;
 using DocSo_PC.GUI.BaoCao;
+using Spire.Pdf;
+using System.IO;
+using System.Drawing.Printing;
 
 namespace DocSo_PC.GUI.VanThu
 {
@@ -543,6 +546,56 @@ namespace DocSo_PC.GUI.VanThu
                 }
                 pictureBox.Image = _cCVD.byteArrayToImage((byte[])_dtDuyet.Rows[_index]["File"]);
             }
+        }
+
+        Image _image = null;
+        private void btnIn_ToTrinh_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                PrintDialog printDialog = new PrintDialog();
+                if (printDialog.ShowDialog() == DialogResult.OK)
+                {
+                    foreach (DataGridViewRow item in dgvDanhSach.Rows)
+                        if (item.Cells["LoaiVB"].Value.ToString() == "Tờ Trình")
+                        {
+                            DataTable dt = _cThuongVu.getFile(item.Cells["TableName"].Value.ToString(), int.Parse(item.Cells["IDCT"].Value.ToString()));
+                            if (dt != null && dt.Rows.Count > 0)
+                                foreach (DataRow itemC in dt.Rows)
+                                {
+                                    if (itemC["Type"].ToString().ToLower().Contains("pdf"))
+                                    {
+                                        File.WriteAllBytes(@"D:\temp.pdf", (byte[])itemC["File"]);
+                                        PdfDocument pdf = new PdfDocument();
+                                        pdf.LoadFromFile(@"D:\temp.pdf");
+                                        pdf.PrintSettings.PrinterName = printDialog.PrinterSettings.PrinterName;
+                                        pdf.Print();
+                                    }
+                                    else
+                                    {
+                                        _image = _cCVD.byteArrayToImage((byte[])itemC["File"]);
+                                        dsBaoCao dsBaoCao = new dsBaoCao();
+
+                                        PrintDocument doc = new PrintDocument();
+                                        doc.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("A4", 827, 1170);
+                                        doc.PrinterSettings=printDialog.PrinterSettings;
+                                        doc.PrintPage += new PrintPageEventHandler(doc_PrintPage);
+                                        doc.Print();
+                                    }
+                                }
+                        }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        void doc_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            if (_image != null)
+                e.Graphics.DrawImage(_image, 0, 0);
         }
 
 
