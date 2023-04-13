@@ -553,6 +553,7 @@ namespace DocSo_PC.GUI.VanThu
         {
             try
             {
+                dsBaoCao dsBaoCao = new dsBaoCao();
                 PrintDialog printDialog = new PrintDialog();
                 if (printDialog.ShowDialog() == DialogResult.OK)
                 {
@@ -574,16 +575,22 @@ namespace DocSo_PC.GUI.VanThu
                                     else
                                     {
                                         _image = _cCVD.byteArrayToImage((byte[])itemC["File"]);
-                                        dsBaoCao dsBaoCao = new dsBaoCao();
-
-                                        PrintDocument doc = new PrintDocument();
-                                        doc.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("A4", 827, 1170);
-                                        doc.PrinterSettings=printDialog.PrinterSettings;
-                                        doc.PrintPage += new PrintPageEventHandler(doc_PrintPage);
-                                        doc.Print();
+                                        
+                                        DataRow dr = dsBaoCao.Tables["BaoCao"].NewRow();
+                                        dr["Image"] = (byte[])itemC["File"];
+                                        dsBaoCao.Tables["BaoCao"].Rows.Add(dr);
+                                        //PrintDocument doc = new PrintDocument();
+                                        //doc.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("A4", 827, 1170);
+                                        //doc.PrinterSettings=printDialog.PrinterSettings;
+                                        //doc.PrintPage += new PrintPageEventHandler(doc_PrintPage);
+                                        //doc.Print();
                                     }
                                 }
                         }
+                    rptImageA4 rpt = new rptImageA4();
+                    rpt.SetDataSource(dsBaoCao);
+                    frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                    frm.Show();
                 }
             }
             catch (Exception ex)
