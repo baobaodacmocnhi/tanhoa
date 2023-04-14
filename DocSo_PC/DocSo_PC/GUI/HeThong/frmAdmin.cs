@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using DocSo_PC.DAL.QuanTri;
 using DocSo_PC.LinQ;
+using System.Net;
+using System.IO;
 
 namespace DocSo_PC.GUI.HeThong
 {
@@ -151,8 +153,8 @@ namespace DocSo_PC.GUI.HeThong
                 //DataTable dt = CMenu._cDAL.ExecuteQuery_DataTable("select DanhBo from Temp_DanhBo");
                 //foreach (DataRow item in dt.Rows)
                 //{
-                //    byte[] hinh = wsDHN.get_Hinh("202303" + item["DanhBo"].ToString());
-                //    System.IO.File.WriteAllBytes(@"C:\Users\BaoBao\Desktop\DHN Nghiem Thu TD\" + item["DanhBo"].ToString()+".jpg", hinh);
+                //    byte[] hinh = wsDHN.get_Hinh("202304" + item["DanhBo"].ToString());
+                //    System.IO.File.WriteAllBytes(@"C:\Users\Admin\Desktop\HoaSen4.2023\" + item["DanhBo"].ToString() + ".jpg", hinh);
                 //}
             }
             catch
@@ -160,6 +162,42 @@ namespace DocSo_PC.GUI.HeThong
 
             }
 
+        }
+
+        private void btnUpdatesDHNTCT_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                 OpenFileDialog dialog = new OpenFileDialog();
+                    dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
+                    dialog.Multiselect = false;
+
+                    if (dialog.ShowDialog() == DialogResult.OK)
+                    {
+                        DataTable dtExcel = _cMenu.ExcelToDataTable(dialog.FileName);
+                        foreach (DataRow item in dtExcel.Rows)
+                            if (item[1].ToString().Replace(" ", "").Length == 11)
+                            {
+                                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://localhost:23993/api/DocSo/suaDHN_TCT?DanhBo=" + item[1].ToString().Replace(" ", "") + "&checksum=tanho@2022");
+                                request.Method = "GET";
+                                request.ContentType = "application/json; charset=utf-8";
+
+                                HttpWebResponse respuesta = (HttpWebResponse)request.GetResponse();
+                                if (respuesta.StatusCode == HttpStatusCode.Accepted || respuesta.StatusCode == HttpStatusCode.OK || respuesta.StatusCode == HttpStatusCode.Created)
+                                {
+                                    StreamReader read = new StreamReader(respuesta.GetResponseStream());
+                                    string result = read.ReadToEnd();
+                                    read.Close();
+                                    respuesta.Close();
+                                }
+                            }
+                    }
+                
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

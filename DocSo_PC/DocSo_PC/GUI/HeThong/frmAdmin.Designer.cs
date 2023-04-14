@@ -34,6 +34,7 @@
             this.txtQuery = new System.Windows.Forms.TextBox();
             this.dgvResult = new System.Windows.Forms.DataGridView();
             this.btnChuyenHinhDHN = new System.Windows.Forms.Button();
+            this.btnUpdatesDHNTCT = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResult)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,11 +96,22 @@
             this.btnChuyenHinhDHN.UseVisualStyleBackColor = true;
             this.btnChuyenHinhDHN.Click += new System.EventHandler(this.btnChuyenHinhDHN_Click);
             // 
+            // btnUpdatesDHNTCT
+            // 
+            this.btnUpdatesDHNTCT.Location = new System.Drawing.Point(468, 84);
+            this.btnUpdatesDHNTCT.Name = "btnUpdatesDHNTCT";
+            this.btnUpdatesDHNTCT.Size = new System.Drawing.Size(107, 23);
+            this.btnUpdatesDHNTCT.TabIndex = 12;
+            this.btnUpdatesDHNTCT.Text = "update sĐHN TCT";
+            this.btnUpdatesDHNTCT.UseVisualStyleBackColor = true;
+            this.btnUpdatesDHNTCT.Click += new System.EventHandler(this.btnUpdatesDHNTCT_Click);
+            // 
             // frmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1004, 524);
+            this.Controls.Add(this.btnUpdatesDHNTCT);
             this.Controls.Add(this.btnChuyenHinhDHN);
             this.Controls.Add(this.dgvResult);
             this.Controls.Add(this.txtQuery);
@@ -123,5 +135,6 @@
         private System.Windows.Forms.TextBox txtQuery;
         private System.Windows.Forms.DataGridView dgvResult;
         private System.Windows.Forms.Button btnChuyenHinhDHN;
+        private System.Windows.Forms.Button btnUpdatesDHNTCT;
     }
 }
