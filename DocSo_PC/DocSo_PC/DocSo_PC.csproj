@@ -517,7 +517,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="BaoCao\rptImageA41.rdlc">
+    <EmbeddedResource Include="BaoCao\rptImageA4.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\MaHoa\rptDSCongVan.rpt">
