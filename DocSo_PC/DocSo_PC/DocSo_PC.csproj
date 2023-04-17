@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>284</ApplicationRevision>
+    <ApplicationRevision>285</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -94,6 +94,8 @@
     <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Spire.Pdf, Version=9.4.0.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\Spire.Pdf.dll</HintPath>
@@ -117,12 +119,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaoCao\rptImageA4.cs">
-      <DependentUpon>rptImageA4.rpt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="BaoCao\dsBaoCao.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -244,6 +240,12 @@
     <Compile Include="DAL\ToTruong\CDocSoTruoc.cs" />
     <Compile Include="DAL\VanThu\CCongVanDen.cs" />
     <Compile Include="DAL\VanThu\ImageUtil.cs" />
+    <Compile Include="GUI\BaoCao\frmShowBaoCao2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\BaoCao\frmShowBaoCao2.designer.cs">
+      <DependentUpon>frmShowBaoCao2.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\BaoCao\frmShowBaoCao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -515,9 +517,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="BaoCao\rptImageA4.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptImageA4.cs</LastGenOutput>
+    <EmbeddedResource Include="BaoCao\rptImageA41.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao\MaHoa\rptDSCongVan.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -586,6 +587,9 @@
     <EmbeddedResource Include="BaoCao\rptThongKe.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptThongKe.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\BaoCao\frmShowBaoCao2.resx">
+      <DependentUpon>frmShowBaoCao2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\BaoCao\frmShowBaoCao.resx">
       <DependentUpon>frmShowBaoCao.cs</DependentUpon>
@@ -756,6 +760,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
+    <None Include="Properties\DataSources\DocSo_PC.BaoCao.dsBaoCao+BaoCaoDataTable.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

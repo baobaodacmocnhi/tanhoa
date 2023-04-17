@@ -548,7 +548,6 @@ namespace DocSo_PC.GUI.VanThu
             }
         }
 
-        Image _image = null;
         private void btnIn_ToTrinh_Click(object sender, EventArgs e)
         {
             try
@@ -574,23 +573,17 @@ namespace DocSo_PC.GUI.VanThu
                                     }
                                     else
                                     {
-                                        _image = _cCVD.byteArrayToImage((byte[])itemC["File"]);
-                                        
                                         DataRow dr = dsBaoCao.Tables["BaoCao"].NewRow();
                                         dr["Image"] = (byte[])itemC["File"];
                                         dsBaoCao.Tables["BaoCao"].Rows.Add(dr);
-                                        //PrintDocument doc = new PrintDocument();
-                                        //doc.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("A4", 827, 1170);
-                                        //doc.PrinterSettings=printDialog.PrinterSettings;
-                                        //doc.PrintPage += new PrintPageEventHandler(doc_PrintPage);
-                                        //doc.Print();
                                     }
                                 }
                         }
-                    rptImageA4 rpt = new rptImageA4();
-                    rpt.SetDataSource(dsBaoCao);
-                    frmShowBaoCao frm = new frmShowBaoCao(rpt);
-                    frm.Show();
+                    if (dsBaoCao.Tables["BaoCao"].Rows.Count > 0)
+                    {
+                        frmShowBaoCao2 frm = new frmShowBaoCao2(dsBaoCao.Tables["BaoCao"]);
+                        frm.Show();
+                    }
                 }
             }
             catch (Exception ex)
@@ -598,13 +591,6 @@ namespace DocSo_PC.GUI.VanThu
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        void doc_PrintPage(object sender, PrintPageEventArgs e)
-        {
-            if (_image != null)
-                e.Graphics.DrawImage(_image, 0, 0);
-        }
-
 
     }
 }
