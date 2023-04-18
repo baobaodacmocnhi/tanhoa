@@ -557,7 +557,7 @@ namespace DocSo_PC.GUI.VanThu
                 if (printDialog.ShowDialog() == DialogResult.OK)
                 {
                     foreach (DataGridViewRow item in dgvDanhSach.Rows)
-                        if (item.Cells["LoaiVB"].Value.ToString() == "Tờ Trình")
+                        if (item.Cells["LoaiVB"].Value.ToString() == "Tờ Trình" || item.Cells["LoaiVB"].Value.ToString() == "Phiếu Hủy")
                         {
                             DataTable dt = _cThuongVu.getFile(item.Cells["TableName"].Value.ToString(), int.Parse(item.Cells["IDCT"].Value.ToString()));
                             if (dt != null && dt.Rows.Count > 0)

@@ -278,7 +278,7 @@ namespace DocSo_PC.DAL
 + " 		 when TableName='ToTrinh_ChiTiet' then (select (select [Name] from TableHinh where TableHinh.TableName=ls.TableName)+' - '+convert(varchar(10),CreateDate,103)+'. V/v '+VeViec+' - '+(select HoTen from Users where MaU=ToTrinh_ChiTiet.CreateBy) from ToTrinh_ChiTiet where ToTrinh_ChiTiet.IDCT=ls.IDCT)"
 + " 		 when TableName='TruyThuTienNuoc_ChiTiet' then (select (select [Name] from TableHinh where TableHinh.TableName=ls.TableName)+' - '+convert(varchar(10),CreateDate,103)+'. V/v '+NoiDung+' - '+(select HoTen from Users where MaU=TruyThuTienNuoc_ChiTiet.CreateBy) from TruyThuTienNuoc_ChiTiet where TruyThuTienNuoc_ChiTiet.IDCT=ls.IDCT)"
 + " 		 when TableName='VanBan_ChiTiet' then (select (select [Name] from TableHinh where TableHinh.TableName=ls.TableName)+' - '+convert(varchar(10),CreateDate,103)+'. V/v '+VeViec+' - '+(select HoTen from Users where MaU=VanBan_ChiTiet.CreateBy) from VanBan_ChiTiet where VanBan_ChiTiet.IDCT=ls.IDCT) end"
-+ " from DonTu_LichSu ls where ls.NgayChuyen>='" + FromNgayChuyen.ToString("yyyy-MM-dd HH:mm") + "' and ls.NgayChuyen<='" + ToNgayChuyen.ToString("yyyy-MM-dd HH:mm") + "' and ls.ID_NoiNhan=22 and ls.TableName is not null " + KyHieuTo + ")t1)t2 order by NgayChuyen asc";
++ " from DonTu_LichSu ls where ls.CVD_Ngay>='" + FromNgayChuyen.ToString("yyyy-MM-dd HH:mm") + "' and ls.CVD_Ngay<='" + ToNgayChuyen.ToString("yyyy-MM-dd HH:mm") + "' and ls.ID_NoiNhan=22 and ls.TableName is not null " + KyHieuTo + ")t1)t2 order by NgayChuyen asc";
 
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
