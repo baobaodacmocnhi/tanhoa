@@ -309,7 +309,7 @@ namespace ThuTien.GUI.TongHop
                                 _dchd.NGAY_VB = dateLap.Value;
                                 _dchd.NGAY_DC = DateTime.Now;
 
-                                if (_dchd.SoPhieu != _ctdchd.MaCTDCHD)
+                                //if (_dchd.SoPhieu != _ctdchd.MaCTDCHD)
                                 {
                                     //_dchd.GIABAN_BD = hd.GIABAN;
                                     //_dchd.THUE_BD = hd.THUE;
