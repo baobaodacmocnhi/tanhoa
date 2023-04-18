@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbLoaiVanBan = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -86,6 +86,10 @@
             this.chkKTXM = new System.Windows.Forms.CheckBox();
             this.chkToTrinh = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnXem_Moi = new System.Windows.Forms.Button();
+            this.panelTo = new System.Windows.Forms.Panel();
+            this.cmbTo = new System.Windows.Forms.ComboBox();
+            this.label23 = new System.Windows.Forms.Label();
             this.btnIn_Moi = new System.Windows.Forms.Button();
             this.cmbNoiNhan_Moi = new System.Windows.Forms.ComboBox();
             this.label22 = new System.Windows.Forms.Label();
@@ -95,9 +99,6 @@
             this.dateDen_Moi = new System.Windows.Forms.DateTimePicker();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.panelTo = new System.Windows.Forms.Panel();
-            this.cmbTo = new System.Windows.Forms.ComboBox();
-            this.label23 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSCongVan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkcmbNoiNhan.Properties)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -303,14 +304,14 @@
             // 
             this.dgvDSCongVan.AllowUserToAddRows = false;
             this.dgvDSCongVan.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDSCongVan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDSCongVan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDSCongVan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSCongVan.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
@@ -722,6 +723,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnXem_Moi);
             this.groupBox1.Controls.Add(this.panelTo);
             this.groupBox1.Controls.Add(this.btnIn_Moi);
             this.groupBox1.Controls.Add(this.cmbNoiNhan_Moi);
@@ -739,9 +741,45 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Công Văn Đi Mới 2023";
             // 
+            // btnXem_Moi
+            // 
+            this.btnXem_Moi.Location = new System.Drawing.Point(357, 91);
+            this.btnXem_Moi.Name = "btnXem_Moi";
+            this.btnXem_Moi.Size = new System.Drawing.Size(75, 25);
+            this.btnXem_Moi.TabIndex = 94;
+            this.btnXem_Moi.Text = "Xem";
+            this.btnXem_Moi.UseVisualStyleBackColor = true;
+            this.btnXem_Moi.Click += new System.EventHandler(this.btnXem_Moi_Click);
+            // 
+            // panelTo
+            // 
+            this.panelTo.Controls.Add(this.cmbTo);
+            this.panelTo.Controls.Add(this.label23);
+            this.panelTo.Location = new System.Drawing.Point(139, 121);
+            this.panelTo.Name = "panelTo";
+            this.panelTo.Size = new System.Drawing.Size(212, 56);
+            this.panelTo.TabIndex = 93;
+            // 
+            // cmbTo
+            // 
+            this.cmbTo.FormattingEnabled = true;
+            this.cmbTo.Location = new System.Drawing.Point(3, 25);
+            this.cmbTo.Name = "cmbTo";
+            this.cmbTo.Size = new System.Drawing.Size(206, 24);
+            this.cmbTo.TabIndex = 1;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(3, 6);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(28, 16);
+            this.label23.TabIndex = 0;
+            this.label23.Text = "Tổ:";
+            // 
             // btnIn_Moi
             // 
-            this.btnIn_Moi.Location = new System.Drawing.Point(357, 92);
+            this.btnIn_Moi.Location = new System.Drawing.Point(357, 122);
             this.btnIn_Moi.Name = "btnIn_Moi";
             this.btnIn_Moi.Size = new System.Drawing.Size(75, 25);
             this.btnIn_Moi.TabIndex = 92;
@@ -820,32 +858,6 @@
             this.label21.Size = new System.Drawing.Size(68, 16);
             this.label21.TabIndex = 23;
             this.label21.Text = "Đến Ngày";
-            // 
-            // panelTo
-            // 
-            this.panelTo.Controls.Add(this.cmbTo);
-            this.panelTo.Controls.Add(this.label23);
-            this.panelTo.Location = new System.Drawing.Point(139, 121);
-            this.panelTo.Name = "panelTo";
-            this.panelTo.Size = new System.Drawing.Size(212, 56);
-            this.panelTo.TabIndex = 93;
-            // 
-            // cmbTo
-            // 
-            this.cmbTo.FormattingEnabled = true;
-            this.cmbTo.Location = new System.Drawing.Point(3, 25);
-            this.cmbTo.Name = "cmbTo";
-            this.cmbTo.Size = new System.Drawing.Size(206, 24);
-            this.cmbTo.TabIndex = 1;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(3, 6);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(28, 16);
-            this.label23.TabIndex = 0;
-            this.label23.Text = "Tổ:";
             // 
             // frmCongVanDi
             // 
@@ -988,5 +1000,6 @@
         private System.Windows.Forms.Panel panelTo;
         private System.Windows.Forms.ComboBox cmbTo;
         private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Button btnXem_Moi;
     }
 }

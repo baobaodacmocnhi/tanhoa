@@ -34635,6 +34635,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
+		private System.Nullable<System.DateTime> _CVD_Ngay;
+		
 		private EntityRef<DonTu> _DonTu;
 		
     #region Extensibility Method Definitions
@@ -34681,6 +34683,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
+    partial void OnCVD_NgayChanging(System.Nullable<System.DateTime> value);
+    partial void OnCVD_NgayChanged();
     #endregion
 		
 		public DonTu_LichSu()
@@ -35089,6 +35093,26 @@ namespace KTKS_DonKH.LinQ
 					this._CreateDate = value;
 					this.SendPropertyChanged("CreateDate");
 					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CVD_Ngay", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CVD_Ngay
+		{
+			get
+			{
+				return this._CVD_Ngay;
+			}
+			set
+			{
+				if ((this._CVD_Ngay != value))
+				{
+					this.OnCVD_NgayChanging(value);
+					this.SendPropertyChanging();
+					this._CVD_Ngay = value;
+					this.SendPropertyChanged("CVD_Ngay");
+					this.OnCVD_NgayChanged();
 				}
 			}
 		}
@@ -51212,6 +51236,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
+		private string _Name;
+		
 		private string _TableName;
 		
 		private string _TableNameHinh;
@@ -51222,6 +51248,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
     partial void OnTableNameChanging(string value);
     partial void OnTableNameChanged();
     partial void OnTableNameHinhChanging(string value);
@@ -51233,6 +51261,26 @@ namespace KTKS_DonKH.LinQ
 		public TableHinh()
 		{
 			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TableName", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]

@@ -815,18 +815,22 @@ namespace KTKS_DonKH.GUI.CongVan
             DataTable dt = new DataTable();
             if (CTaiKhoan.Admin || CTaiKhoan.TruongPhong || CTaiKhoan.KyHieuMaTo == "ToGD")
             {
-                dt = _cDonTu.getDS_LichSu_CVD(cmbTo.SelectedValue.ToString(),dateTu_Moi.Value, dateDen_Moi.Value, cmbNoiChuyen_Moi.SelectedValue.ToString(), cmbNoiNhan_Moi.SelectedValue.ToString());
+                dt = _cDonTu.getDS_LichSu_CVD(cmbTo.SelectedValue.ToString(), dateTu_Moi.Value, dateDen_Moi.Value, cmbNoiChuyen_Moi.SelectedValue.ToString(), cmbNoiNhan_Moi.SelectedValue.ToString());
             }
             else
             {
-                dt = _cDonTu.getDS_LichSu_CVD(CTaiKhoan.KyHieuMaTo,dateTu_Moi.Value, dateDen_Moi.Value, cmbNoiChuyen_Moi.SelectedValue.ToString(), cmbNoiNhan_Moi.SelectedValue.ToString());
+                dt = _cDonTu.getDS_LichSu_CVD(CTaiKhoan.KyHieuMaTo, dateTu_Moi.Value, dateDen_Moi.Value, cmbNoiChuyen_Moi.SelectedValue.ToString(), cmbNoiNhan_Moi.SelectedValue.ToString());
             }
-             
+            string ID = "";
             foreach (DataRow item in dt.Rows)
             {
+                if (ID == "")
+                    ID += item["ID"].ToString();
+                else
+                    ID += "," + item["ID"].ToString();
                 DataRow dr = dsBaoCao.Tables["CongVan"].NewRow();
-                dr["TuNgay"] = dateTu_Moi.Value.ToString("dd/MM/yyyy HH:mm");
-                dr["DenNgay"] = dateDen_Moi.Value.ToString("dd/MM/yyyy HH:mm");
+                dr["TuNgay"] = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
+                dr["DenNgay"] = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
                 dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
                 switch (item["TableName"].ToString())
                 {
@@ -967,10 +971,25 @@ namespace KTKS_DonKH.GUI.CongVan
 
                 dsBaoCao.Tables["CongVan"].Rows.Add(dr);
             }
+            _cDonTu.ExecuteNonQuery("update DonTu_LichSu set CVD_Ngay=getdate() where ID in (" + ID + ") and CVD_Ngay is null");
             rptDSCongVan rpt = new rptDSCongVan();
             rpt.SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
             frm.ShowDialog();
+        }
+
+        private void btnXem_Moi_Click(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            if (CTaiKhoan.Admin || CTaiKhoan.TruongPhong || CTaiKhoan.KyHieuMaTo == "ToGD")
+            {
+                dt = _cDonTu.getDS_LichSu_CVD(cmbTo.SelectedValue.ToString(), dateTu_Moi.Value, dateDen_Moi.Value, cmbNoiChuyen_Moi.SelectedValue.ToString(), cmbNoiNhan_Moi.SelectedValue.ToString());
+            }
+            else
+            {
+                dt = _cDonTu.getDS_LichSu_CVD(CTaiKhoan.KyHieuMaTo, dateTu_Moi.Value, dateDen_Moi.Value, cmbNoiChuyen_Moi.SelectedValue.ToString(), cmbNoiNhan_Moi.SelectedValue.ToString());
+            }
+            dgvDSCongVan.DataSource = dt;
         }
 
 
