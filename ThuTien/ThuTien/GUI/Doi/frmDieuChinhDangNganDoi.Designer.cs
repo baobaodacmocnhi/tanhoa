@@ -73,6 +73,7 @@
             this.txtTongHD_TG = new System.Windows.Forms.TextBox();
             this.txtTongGiaBan_TG = new System.Windows.Forms.TextBox();
             this.tabTuGia = new System.Windows.Forms.TabPage();
+            this.txtTongPhiBVMT_Thue_TG = new System.Windows.Forms.TextBox();
             this.txtTongThueGTGT_TG = new System.Windows.Forms.TextBox();
             this.txtTongPhiBVMT_TG = new System.Windows.Forms.TextBox();
             this.txtTongCong_TG = new System.Windows.Forms.TextBox();
@@ -125,7 +126,6 @@
             this.PhiBVMT_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PhiBVMT_Thue_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongCong_TG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtTongPhiBVMT_Thue_TG = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDCoQuan)).BeginInit();
             this.tabTienDu.SuspendLayout();
             this.tabTuGia.SuspendLayout();
@@ -495,6 +495,15 @@
             this.tabTuGia.TabIndex = 0;
             this.tabTuGia.Text = "Tư Gia";
             this.tabTuGia.UseVisualStyleBackColor = true;
+            // 
+            // txtTongPhiBVMT_Thue_TG
+            // 
+            this.txtTongPhiBVMT_Thue_TG.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTongPhiBVMT_Thue_TG.Location = new System.Drawing.Point(662, 546);
+            this.txtTongPhiBVMT_Thue_TG.Name = "txtTongPhiBVMT_Thue_TG";
+            this.txtTongPhiBVMT_Thue_TG.Size = new System.Drawing.Size(100, 20);
+            this.txtTongPhiBVMT_Thue_TG.TabIndex = 6;
+            this.txtTongPhiBVMT_Thue_TG.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtTongThueGTGT_TG
             // 
@@ -988,7 +997,7 @@
             // PhiBVMT_TG
             // 
             this.PhiBVMT_TG.DataPropertyName = "PhiBVMT";
-            this.PhiBVMT_TG.HeaderText = "Phí BVMT";
+            this.PhiBVMT_TG.HeaderText = "TDVTN";
             this.PhiBVMT_TG.Name = "PhiBVMT_TG";
             this.PhiBVMT_TG.ReadOnly = true;
             this.PhiBVMT_TG.Width = 80;
@@ -1008,15 +1017,6 @@
             this.TongCong_TG.Name = "TongCong_TG";
             this.TongCong_TG.ReadOnly = true;
             this.TongCong_TG.Width = 90;
-            // 
-            // txtTongPhiBVMT_Thue_TG
-            // 
-            this.txtTongPhiBVMT_Thue_TG.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongPhiBVMT_Thue_TG.Location = new System.Drawing.Point(662, 546);
-            this.txtTongPhiBVMT_Thue_TG.Name = "txtTongPhiBVMT_Thue_TG";
-            this.txtTongPhiBVMT_Thue_TG.Size = new System.Drawing.Size(100, 20);
-            this.txtTongPhiBVMT_Thue_TG.TabIndex = 6;
-            this.txtTongPhiBVMT_Thue_TG.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // frmDieuChinhDangNganDoi
             // 
@@ -1142,6 +1142,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn To;
         private System.Windows.Forms.DataGridViewTextBoxColumn HanhThu;
         private System.Windows.Forms.Button btnChuyenNgayGiaiTrach;
+        private System.Windows.Forms.TextBox txtTongPhiBVMT_Thue_TG;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaHD_TG;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayGiaiTrach_TG;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoHoaDon_TG;
@@ -1155,6 +1156,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PhiBVMT_TG;
         private System.Windows.Forms.DataGridViewTextBoxColumn PhiBVMT_Thue_TG;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_TG;
-        private System.Windows.Forms.TextBox txtTongPhiBVMT_Thue_TG;
     }
 }
