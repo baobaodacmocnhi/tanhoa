@@ -828,9 +828,21 @@ namespace KTKS_DonKH.GUI.CongVan
                     ID += item["ID"].ToString();
                 else
                     ID += "," + item["ID"].ToString();
+            }
+            _cDonTu.ExecuteNonQuery("update DonTu_LichSu set CVD_Ngay=getdate() where ID in (" + ID + ") and CVD_Ngay is null");
+            if (CTaiKhoan.Admin || CTaiKhoan.TruongPhong || CTaiKhoan.KyHieuMaTo == "ToGD")
+            {
+                dt = _cDonTu.getDS_LichSu_CVD(cmbTo.SelectedValue.ToString(), dateTu_Moi.Value, dateDen_Moi.Value, cmbNoiChuyen_Moi.SelectedValue.ToString(), cmbNoiNhan_Moi.SelectedValue.ToString());
+            }
+            else
+            {
+                dt = _cDonTu.getDS_LichSu_CVD(CTaiKhoan.KyHieuMaTo, dateTu_Moi.Value, dateDen_Moi.Value, cmbNoiChuyen_Moi.SelectedValue.ToString(), cmbNoiNhan_Moi.SelectedValue.ToString());
+            }
+            foreach (DataRow item in dt.Rows)
+            {
                 DataRow dr = dsBaoCao.Tables["CongVan"].NewRow();
-                dr["TuNgay"] = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
-                dr["DenNgay"] = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
+                dr["TuNgay"] = item["CVD_Ngay"].ToString();
+                dr["DenNgay"] = item["CVD_Ngay"].ToString();
                 dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
                 switch (item["TableName"].ToString())
                 {
@@ -966,12 +978,11 @@ namespace KTKS_DonKH.GUI.CongVan
                         break;
                 }
                 dr["Ma"] = item["MaDon"].ToString();
-                dr["CreateDate"] = item["NgayChuyen"].ToString();
+                dr["CreateDate"] = item["CVD_Ngay"].ToString();
                 dr["NoiChuyen"] = item["NoiNhan"].ToString();
 
                 dsBaoCao.Tables["CongVan"].Rows.Add(dr);
             }
-            _cDonTu.ExecuteNonQuery("update DonTu_LichSu set CVD_Ngay=getdate() where ID in (" + ID + ") and CVD_Ngay is null");
             rptDSCongVan rpt = new rptDSCongVan();
             rpt.SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
