@@ -72,7 +72,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                             //foreach (DataRow item in dtExcel.Rows)
                             //    if (item[1].ToString().Replace(" ", "").Length == 11)
                             //    {
-                            //        _cDHN.ExecuteNonQuery("update TB_DULIEUKHACHHANG set sothanDH='" + item[3].ToString().Replace(" ", "") + "' where danhbo='" + item[1].ToString().Replace(" ", "") + "'");
+                            //        _cDHN.ExecuteNonQuery("update TB_DULIEUKHACHHANG set CHIGOC='" + item[3].ToString().Replace(" ", "") + "',MauSacChiGoc=N'Vàng' where danhbo='" + item[1].ToString().Replace(" ", "") + "'");
                             //    }
                             foreach (DataRow item in dtExcel.Rows)
                                 if ((string.IsNullOrEmpty(item[0].ToString()) || item[0].ToString().Replace(" ", "").Length == 11) && !string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()))

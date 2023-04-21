@@ -289,6 +289,7 @@ namespace ThuTien.GUI.Doi
                     dr["Hieu"] = item.Cells["Hieu"].Value;
                     dr["SoThan"] = item.Cells["SoThan"].Value;
                     dr["HoTen"] = item.Cells["HoTen"].Value;
+                    dr["DiaChi"] = item.Cells["DiaChi"].Value;
                     HOADON hd = _cHoaDon.GetMoiNhat(item.Cells["DanhBo"].Value.ToString());
                     if (hd != null)
                     {
@@ -337,6 +338,8 @@ namespace ThuTien.GUI.Doi
                     dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
                     dr["MLT"] = item.Cells["MLT"].Value.ToString().Insert(4, " ").Insert(2, " ");
                     dr["CoDHN"] = item.Cells["CoDHN"].Value;
+                    dr["Hieu"] = item.Cells["Hieu"].Value;
+                    dr["SoThan"] = item.Cells["SoThan"].Value;
                     dr["HoTen"] = item.Cells["HoTen"].Value;
                     dr["DiaChi"] = item.Cells["DiaChi"].Value;
                     HOADON hd = _cHoaDon.GetMoiNhat(item.Cells["DanhBo"].Value.ToString());
