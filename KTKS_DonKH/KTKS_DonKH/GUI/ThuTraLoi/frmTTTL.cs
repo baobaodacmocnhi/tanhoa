@@ -190,6 +190,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
 
         public void Clear()
         {
+            chkDuocKy.Checked = false;
             txtMaDonCu.Text = "";
             txtMaCTTTTL.Text = "";
             txtTCHC.Text = "";
