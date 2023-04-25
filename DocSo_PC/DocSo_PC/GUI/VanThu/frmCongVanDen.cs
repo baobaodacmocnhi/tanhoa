@@ -439,7 +439,7 @@ namespace DocSo_PC.GUI.VanThu
                     chkKhac.Checked = _enCVD.Khac;
                     txtKhac_GhiChu.Text = _enCVD.Khac_GhiChu;
                     chkDaXuLy.Checked = _enCVD.DaXuLy;
-                    if (_enCVD.DaXuLy_Ngay.Value != null)
+                    if (_enCVD.DaXuLy_Ngay != null)
                         txtDaXuLy_Ngay.Text = _enCVD.DaXuLy_Ngay.Value.ToString();
                 }
                 _dtDuyet = _cThuongVu.getFile(dgvDuyet["TableName_Duyet", e.RowIndex].Value.ToString(), int.Parse(dgvDuyet["IDCT_Duyet", e.RowIndex].Value.ToString()));
