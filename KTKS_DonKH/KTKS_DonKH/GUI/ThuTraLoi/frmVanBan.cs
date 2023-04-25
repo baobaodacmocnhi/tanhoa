@@ -395,7 +395,7 @@ namespace KTKS_DonKH.GUI.VanBan
                         transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
                         using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                         {
-                            DonTu_LichSu dtls = _cDonTu.get_LichSu("VanBan_ChiTiet", (int)_enCT.IDCT);
+                            DonTu_LichSu dtls = _cDonTu.get_LichSu("VanBan_ChiTiet", (int)_enCT.IDCT, _enCT.CreateBy.Value);
                             if (dtls != null)
                             {
                                 _cDonTu.Xoa_LichSu(dtls, true);

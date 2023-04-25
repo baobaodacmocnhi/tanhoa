@@ -805,7 +805,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                         transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
                         using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                         {
-                            DonTu_LichSu dtls = _cDonTu.get_LichSu("CHDB_ChiTietCatHuy", (int)_ctchdb.MaCTCHDB);
+                            DonTu_LichSu dtls = _cDonTu.get_LichSu("CHDB_ChiTietCatHuy", (int)_ctchdb.MaCTCHDB,_ctchdb.CreateBy.Value);
                             if (dtls != null)
                             {
                                 _cDonTu.Xoa_LichSu(dtls, true);

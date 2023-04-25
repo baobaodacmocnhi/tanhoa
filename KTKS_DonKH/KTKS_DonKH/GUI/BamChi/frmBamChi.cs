@@ -724,7 +724,7 @@ namespace KTKS_DonKH.GUI.BamChi
                         //cập nhật lại thời gian bên lịch sử chuyển đơn
                         if (_ctbamchi.NgayBC.Value.Date != dateBamChi.Value.Date)
                         {
-                            DonTu_LichSu dtls = _cDonTu.get_LichSu("BamChi_ChiTiet", (int)_ctbamchi.MaCTBC);
+                            DonTu_LichSu dtls = _cDonTu.get_LichSu("BamChi_ChiTiet", (int)_ctbamchi.MaCTBC,_ctbamchi.CreateBy.Value);
                             if (dtls != null)
                             {
                                 dtls.NgayChuyen = dateBamChi.Value;
@@ -845,7 +845,7 @@ namespace KTKS_DonKH.GUI.BamChi
                         transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
                         using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                         {
-                            DonTu_LichSu dtls = _cDonTu.get_LichSu("BamChi_ChiTiet", (int)_ctbamchi.MaCTBC);
+                            DonTu_LichSu dtls = _cDonTu.get_LichSu("BamChi_ChiTiet", (int)_ctbamchi.MaCTBC,_ctbamchi.CreateBy.Value);
                             if (dtls != null)
                             {
                                 _cDonTu.Xoa_LichSu(dtls, true);

@@ -1339,7 +1339,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
                         using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                         {
-                            DonTu_LichSu dtls = _cDonTu.get_LichSu("TruyThuTienNuoc_ChiTiet", (int)_cttttn.IDCT);
+                            DonTu_LichSu dtls = _cDonTu.get_LichSu("TruyThuTienNuoc_ChiTiet", (int)_cttttn.IDCT,_cttttn.CreateBy.Value);
                             if (dtls != null)
                             {
                                 _cDonTu.Xoa_LichSu(dtls, true);
@@ -1984,7 +1984,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
                         using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                         {
-                            DonTu_LichSu dtls = _cDonTu.get_LichSu("TruyThuTienNuoc_ThuMoi", (int)entity.IDCT);
+                            DonTu_LichSu dtls = _cDonTu.get_LichSu("TruyThuTienNuoc_ThuMoi", (int)entity.IDCT,entity.CreateBy.Value);
                             if (dtls != null)
                             {
                                 _cDonTu.Xoa_LichSu(dtls, true);

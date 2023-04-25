@@ -266,7 +266,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 };
                 DataTable dtTTTL = new DataTable();
                 dtTTTL = LINQToDataTable(queryTTTL);
-                dtTTTL.TableName = "ThuTraLoi";
+                dtTTTL.TableName = "TTTL";
                 ds.Tables.Add(dtTTTL);
 
                 ///Table GianLan
@@ -435,7 +435,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                     ds.Relations.Add("Chi Tiết Phiếu Hủy Danh Bộ", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["PhieuCHDB"].Columns["MaDon"]);
 
                 if (dtDon.Rows.Count > 0 && dtTTTL.Rows.Count > 0)
-                    ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["ThuTraLoi"].Columns["MaDon"]);
+                    ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["TTTL"].Columns["MaDon"]);
 
                 if (dtDon.Rows.Count > 0 && dtGianLan.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Gian Lận", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["GianLan"].Columns["MaDon"]);
@@ -719,7 +719,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 };
                 DataTable dtTTTL = new DataTable();
                 dtTTTL = LINQToDataTable(queryTTTL);
-                dtTTTL.TableName = "ThuTraLoi";
+                dtTTTL.TableName = "TTTL";
                 ds.Tables.Add(dtTTTL);
 
                 ///Table GianLan
@@ -889,7 +889,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                     ds.Relations.Add("Chi Tiết Phiếu Hủy Danh Bộ", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["PhieuCHDB"].Columns["MaDon"]);
 
                 if (dtDon.Rows.Count > 0 && dtTTTL.Rows.Count > 0)
-                    ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["ThuTraLoi"].Columns["MaDon"]);
+                    ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["TTTL"].Columns["MaDon"]);
 
                 if (dtDon.Rows.Count > 0 && dtGianLan.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Gian Lận", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["GianLan"].Columns["MaDon"]);
@@ -1152,7 +1152,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 };
                 DataTable dtTTTL = new DataTable();
                 dtTTTL = LINQToDataTable(queryTTTL);
-                dtTTTL.TableName = "ThuTraLoi";
+                dtTTTL.TableName = "TTTL";
                 ds.Tables.Add(dtTTTL);
 
                 ///Table GianLan
@@ -1256,7 +1256,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                     ds.Relations.Add("Chi Tiết Phiếu Hủy Danh Bộ", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["PhieuCHDB"].Columns["MaDon"]);
 
                 if (dtDon.Rows.Count > 0 && dtTTTL.Rows.Count > 0)
-                    ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["ThuTraLoi"].Columns["MaDon"]);
+                    ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["TTTL"].Columns["MaDon"]);
 
                 if (dtDon.Rows.Count > 0 && dtGianLan.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Gian Lận", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["GianLan"].Columns["MaDon"]);
@@ -1513,7 +1513,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 };
                 DataTable dtTTTL = new DataTable();
                 dtTTTL = LINQToDataTable(queryTTTL);
-                dtTTTL.TableName = "ThuTraLoi";
+                dtTTTL.TableName = "TTTL";
                 ds.Tables.Add(dtTTTL);
 
                 ///Table GianLan
@@ -1617,7 +1617,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                     ds.Relations.Add("Chi Tiết Phiếu Hủy Danh Bộ", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["PhieuCHDB"].Columns["MaDon"]);
 
                 if (dtDon.Rows.Count > 0 && dtTTTL.Rows.Count > 0)
-                    ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["ThuTraLoi"].Columns["MaDon"]);
+                    ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["TTTL"].Columns["MaDon"]);
 
                 if (dtDon.Rows.Count > 0 && dtGianLan.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Gian Lận", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["GianLan"].Columns["MaDon"]);
@@ -1874,7 +1874,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                                 };
                 DataTable dtTTTL = new DataTable();
                 dtTTTL = LINQToDataTable(queryTTTL);
-                dtTTTL.TableName = "ThuTraLoi";
+                dtTTTL.TableName = "TTTL";
                 ds.Tables.Add(dtTTTL);
 
                 ///Table GianLan
@@ -1978,7 +1978,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                     ds.Relations.Add("Chi Tiết Phiếu Hủy Danh Bộ", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["PhieuCHDB"].Columns["MaDon"]);
 
                 if (dtDon.Rows.Count > 0 && dtTTTL.Rows.Count > 0)
-                    ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["ThuTraLoi"].Columns["MaDon"]);
+                    ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["TTTL"].Columns["MaDon"]);
 
                 if (dtDon.Rows.Count > 0 && dtGianLan.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết Gian Lận", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["GianLan"].Columns["MaDon"]);
@@ -8335,7 +8335,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                         case "PhieuCHDB":
                             ds.Relations.Add("Chi Tiết Phiếu Hủy Danh Bộ", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
                             break;
-                        case "ThuTraLoi":
+                        case "TTTL":
                             ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
                             break;
                         case "GianLan":
@@ -8416,7 +8416,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                         case "PhieuCHDB":
                             ds.Relations.Add("Chi Tiết Phiếu Hủy Danh Bộ", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
                             break;
-                        case "ThuTraLoi":
+                        case "TTTL":
                             ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
                             break;
                         case "GianLan":
@@ -8497,7 +8497,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                         case "PhieuCHDB":
                             ds.Relations.Add("Chi Tiết Phiếu Hủy Danh Bộ", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
                             break;
-                        case "ThuTraLoi":
+                        case "TTTL":
                             ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
                             break;
                         case "GianLan":
@@ -8585,7 +8585,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                         case "PhieuCHDB":
                             ds.Relations.Add("Chi Tiết Phiếu Hủy Danh Bộ", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
                             break;
-                        case "ThuTraLoi":
+                        case "TTTL":
                             ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
                             break;
                         case "GianLan":
@@ -8673,7 +8673,7 @@ namespace KTKS_DonKH.DAL.TimKiem
                         case "PhieuCHDB":
                             ds.Relations.Add("Chi Tiết Phiếu Hủy Danh Bộ", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
                             break;
-                        case "ThuTraLoi":
+                        case "TTTL":
                             ds.Relations.Add("Chi Tiết Thảo Thư Trả Lời", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables[i].Columns["MaDon"]);
                             break;
                         case "GianLan":

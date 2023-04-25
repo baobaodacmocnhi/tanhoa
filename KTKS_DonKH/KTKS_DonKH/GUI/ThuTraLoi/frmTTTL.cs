@@ -639,7 +639,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
                         using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                         {
-                            DonTu_LichSu dtls = _cDonTu.get_LichSu("TTTL_ChiTiet", (int)_cttttl.MaCTTTTL);
+                            DonTu_LichSu dtls = _cDonTu.get_LichSu("TTTL_ChiTiet", (int)_cttttl.MaCTTTTL,_cttttl.CreateBy.Value);
                             if (dtls != null)
                             {
                                 _cDonTu.Xoa_LichSu(dtls, true);

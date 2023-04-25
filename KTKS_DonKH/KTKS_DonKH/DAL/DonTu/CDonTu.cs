@@ -1159,9 +1159,9 @@ namespace KTKS_DonKH.DAL.DonTu
             return db.DonTu_LichSus.SingleOrDefault(item => item.ID == ID);
         }
 
-        public DonTu_LichSu get_LichSu(string TableName, int IDCT)
+        public DonTu_LichSu get_LichSu(string TableName, int IDCT, int CreateBy)
         {
-            return db.DonTu_LichSus.SingleOrDefault(item => item.TableName == TableName && item.IDCT == IDCT);
+            return db.DonTu_LichSus.SingleOrDefault(item => item.TableName == TableName && item.IDCT == IDCT && item.CreateBy == CreateBy);
         }
 
         public DataTable getDS_LichSu(int MaDon)

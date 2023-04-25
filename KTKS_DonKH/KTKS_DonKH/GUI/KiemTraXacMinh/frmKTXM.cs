@@ -718,7 +718,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         //cập nhật lại thời gian bên lịch sử chuyển đơn
                         if (_ctktxm.NgayKTXM.Value.Date != dateKTXM.Value.Date)
                         {
-                            DonTu_LichSu dtls = _cDonTu.get_LichSu("KTXM_ChiTiet", (int)_ctktxm.MaCTKTXM);
+                            DonTu_LichSu dtls = _cDonTu.get_LichSu("KTXM_ChiTiet", (int)_ctktxm.MaCTKTXM,_ctktxm.CreateBy.Value);
                             if (dtls != null)
                             {
                                 dtls.NgayChuyen = dateKTXM.Value;
@@ -800,7 +800,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
                         using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                         {
-                            DonTu_LichSu dtls = _cDonTu.get_LichSu("KTXM_ChiTiet", (int)_ctktxm.MaCTKTXM);
+                            DonTu_LichSu dtls = _cDonTu.get_LichSu("KTXM_ChiTiet", (int)_ctktxm.MaCTKTXM, _ctktxm.CreateBy.Value);
                             if (dtls != null)
                             {
                                 _cDonTu.Xoa_LichSu(dtls, true);

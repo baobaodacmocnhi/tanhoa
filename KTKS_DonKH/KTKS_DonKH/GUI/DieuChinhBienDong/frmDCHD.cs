@@ -1272,7 +1272,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
                         using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                         {
-                            DonTu_LichSu dtls = _cDonTu.get_LichSu("DCBD_ChiTietHoaDon", (int)_ctdchd.MaCTDCHD);
+                            DonTu_LichSu dtls = _cDonTu.get_LichSu("DCBD_ChiTietHoaDon", (int)_ctdchd.MaCTDCHD,_ctdchd.CreateBy.Value);
                             if (dtls != null)
                             {
                                 _cDonTu.Xoa_LichSu(dtls, true);

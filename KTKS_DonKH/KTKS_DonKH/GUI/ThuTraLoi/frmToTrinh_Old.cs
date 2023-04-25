@@ -525,7 +525,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
                         using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                         {
-                            DonTu_LichSu dtls = _cDonTu.get_LichSu("ToTrinh_ChiTiet", (int)_cttt.IDCT);
+                            DonTu_LichSu dtls = _cDonTu.get_LichSu("ToTrinh_ChiTiet", (int)_cttt.IDCT,_cttt.CreateBy.Value);
                             if (dtls != null)
                             {
                                 _cDonTu.Xoa_LichSu(dtls,true);
