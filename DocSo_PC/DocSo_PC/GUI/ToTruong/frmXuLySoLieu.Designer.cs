@@ -218,17 +218,18 @@
             this.label40 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
             this.dgvCongVanDen = new System.Windows.Forms.DataGridView();
-            this.DanhBo_CVD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TableName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.dgvButPhe = new System.Windows.Forms.DataGridView();
             this.ButPhe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Loai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnCopyToPhieuChuyen = new System.Windows.Forms.Button();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DanhBo_CVD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TableName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -1917,6 +1918,7 @@
             this.dgvCongVanDen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
             this.dgvCongVanDen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCongVanDen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
             this.DanhBo_CVD,
             this.CreateDate,
             this.NoiDung,
@@ -1928,40 +1930,6 @@
             this.dgvCongVanDen.TabIndex = 116;
             this.dgvCongVanDen.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvCongVanDen_RowPostPaint);
             this.dgvCongVanDen.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvCongVanDen_MouseDoubleClick);
-            // 
-            // DanhBo_CVD
-            // 
-            this.DanhBo_CVD.DataPropertyName = "DanhBo";
-            this.DanhBo_CVD.HeaderText = "Danh Bộ";
-            this.DanhBo_CVD.Name = "DanhBo_CVD";
-            this.DanhBo_CVD.Width = 80;
-            // 
-            // CreateDate
-            // 
-            this.CreateDate.DataPropertyName = "CreateDate";
-            this.CreateDate.HeaderText = "Ngày Nhận";
-            this.CreateDate.Name = "CreateDate";
-            // 
-            // NoiDung
-            // 
-            this.NoiDung.DataPropertyName = "NoiDung";
-            this.NoiDung.HeaderText = "Nội Dung";
-            this.NoiDung.Name = "NoiDung";
-            this.NoiDung.Width = 200;
-            // 
-            // TableName
-            // 
-            this.TableName.DataPropertyName = "TableName";
-            this.TableName.HeaderText = "TableName";
-            this.TableName.Name = "TableName";
-            this.TableName.Visible = false;
-            // 
-            // IDCT
-            // 
-            this.IDCT.DataPropertyName = "IDCT";
-            this.IDCT.HeaderText = "IDCT";
-            this.IDCT.Name = "IDCT";
-            this.IDCT.Visible = false;
             // 
             // groupBox5
             // 
@@ -2026,6 +1994,47 @@
             this.btnCopyToPhieuChuyen.Text = "Copy To Phiếu Chuyển";
             this.btnCopyToPhieuChuyen.UseVisualStyleBackColor = true;
             this.btnCopyToPhieuChuyen.Click += new System.EventHandler(this.btnCopyToPhieuChuyen_Click);
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            // 
+            // DanhBo_CVD
+            // 
+            this.DanhBo_CVD.DataPropertyName = "DanhBo";
+            this.DanhBo_CVD.HeaderText = "Danh Bộ";
+            this.DanhBo_CVD.Name = "DanhBo_CVD";
+            this.DanhBo_CVD.Width = 80;
+            // 
+            // CreateDate
+            // 
+            this.CreateDate.DataPropertyName = "CreateDate";
+            this.CreateDate.HeaderText = "Ngày Nhận";
+            this.CreateDate.Name = "CreateDate";
+            // 
+            // NoiDung
+            // 
+            this.NoiDung.DataPropertyName = "NoiDung";
+            this.NoiDung.HeaderText = "Nội Dung";
+            this.NoiDung.Name = "NoiDung";
+            this.NoiDung.Width = 200;
+            // 
+            // TableName
+            // 
+            this.TableName.DataPropertyName = "TableName";
+            this.TableName.HeaderText = "TableName";
+            this.TableName.Name = "TableName";
+            this.TableName.Visible = false;
+            // 
+            // IDCT
+            // 
+            this.IDCT.DataPropertyName = "IDCT";
+            this.IDCT.HeaderText = "IDCT";
+            this.IDCT.Name = "IDCT";
+            this.IDCT.Visible = false;
             // 
             // frmXuLySoLieu
             // 
@@ -2305,14 +2314,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Col39;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.DataGridView dgvButPhe;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ButPhe;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoLuong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Loai;
+        private System.Windows.Forms.Button btnCopyToPhieuChuyen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo_CVD;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
         private System.Windows.Forms.DataGridViewTextBoxColumn TableName;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDCT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ButPhe;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SoLuong;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Loai;
-        private System.Windows.Forms.Button btnCopyToPhieuChuyen;
     }
 }

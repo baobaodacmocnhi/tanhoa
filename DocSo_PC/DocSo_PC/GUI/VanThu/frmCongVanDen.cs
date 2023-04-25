@@ -270,12 +270,24 @@ namespace DocSo_PC.GUI.VanThu
         {
             try
             {
-                if (dgvDanhSach.Columns[e.ColumnIndex].Name == "ToMaHoa" && dgvDanhSach.CurrentRow.Cells["ID"].Value != null && dgvDanhSach.CurrentRow.Cells["ID"].Value.ToString() != "")
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 {
-                    CongVanDen en = _cCVD.get(int.Parse(dgvDanhSach.CurrentRow.Cells["ID"].Value.ToString()));
-                    en.ToMaHoa = bool.Parse(dgvDanhSach.CurrentRow.Cells["ToMaHoa"].Value.ToString());
-                    _cCVD.Sua(en);
+                    if (dgvDanhSach.Columns[e.ColumnIndex].Name == "ToMaHoa" && dgvDanhSach.CurrentRow.Cells["ID"].Value != null && dgvDanhSach.CurrentRow.Cells["ID"].Value.ToString() != "")
+                    {
+                        CongVanDen en = _cCVD.get(int.Parse(dgvDanhSach.CurrentRow.Cells["ID"].Value.ToString()));
+                        en.ToMaHoa = bool.Parse(dgvDanhSach.CurrentRow.Cells["ToMaHoa"].Value.ToString());
+                        _cCVD.Sua(en);
+                    }
+                    else
+                        if (dgvDanhSach.Columns[e.ColumnIndex].Name == "NoiDung" && dgvDanhSach.CurrentRow.Cells["ID"].Value != null && dgvDanhSach.CurrentRow.Cells["ID"].Value.ToString() != "")
+                        {
+                            CongVanDen en = _cCVD.get(int.Parse(dgvDanhSach.CurrentRow.Cells["ID"].Value.ToString()));
+                            en.NoiDung = dgvDanhSach.CurrentRow.Cells["NoiDung"].Value.ToString();
+                            _cCVD.Sua(en);
+                        }
                 }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
@@ -383,10 +395,13 @@ namespace DocSo_PC.GUI.VanThu
             chkDeBiet.Checked = false;
             chkKhac.Checked = false;
             txtKhac_GhiChu.Text = "";
+            chkDaXuLy.Checked = false;
+            txtDaXuLy_Ngay.Text = "";
             _index = 0;
             _dtDuyet = null;
             btnTruoc.Visible = false;
             btnSau.Visible = false;
+            pictureBox.Image = null;
         }
 
         private void radChuaDuyet_CheckedChanged(object sender, EventArgs e)
@@ -423,6 +438,9 @@ namespace DocSo_PC.GUI.VanThu
                     chkDeBiet.Checked = _enCVD.DeBiet;
                     chkKhac.Checked = _enCVD.Khac;
                     txtKhac_GhiChu.Text = _enCVD.Khac_GhiChu;
+                    chkDaXuLy.Checked = _enCVD.DaXuLy;
+                    if (_enCVD.DaXuLy_Ngay.Value != null)
+                        txtDaXuLy_Ngay.Text = _enCVD.DaXuLy_Ngay.Value.ToString();
                 }
                 _dtDuyet = _cThuongVu.getFile(dgvDuyet["TableName_Duyet", e.RowIndex].Value.ToString(), int.Parse(dgvDuyet["IDCT_Duyet", e.RowIndex].Value.ToString()));
                 if (_dtDuyet != null && _dtDuyet.Rows.Count > 0)
@@ -434,11 +452,14 @@ namespace DocSo_PC.GUI.VanThu
                         else
                             if (index == -1)
                                 index = i;
-                    if (index > -1 && _dtDuyet.Rows.Count > 1)
+                    if (index > -1)
                     {
-                        btnTruoc.Visible = true;
-                        btnSau.Visible = true;
                         pictureBox.Image = _cCVD.byteArrayToImage((byte[])_dtDuyet.Rows[index]["File"]);
+                        if (_dtDuyet.Rows.Count > 1)
+                        {
+                            btnTruoc.Visible = true;
+                            btnSau.Visible = true;
+                        }
                     }
                 }
             }
@@ -475,6 +496,38 @@ namespace DocSo_PC.GUI.VanThu
                         }
                         _enCVD.Duyet_Ngay = DateTime.Now;
                         _cCVD.SubmitChanges();
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Clear_ButPhe();
+                    }
+                    else
+                    {
+                        foreach (DataGridViewRow item in dgvDuyet.Rows)
+                            if (item.Cells["Chon"].Value != null && item.Cells["Chon"].Value.ToString() != "" && bool.Parse(item.Cells["Chon"].Value.ToString()))
+                            {
+                                CongVanDen enCVD = _cCVD.get(int.Parse(item.Cells["ID_Duyet"].Value.ToString()));
+                                if (enCVD != null)
+                                {
+                                    enCVD.Xem = chkXem.Checked;
+                                    enCVD.CapNhat = chkCapNhat.Checked;
+                                    enCVD.TinhTieuThu = chkTinhTieuThu.Checked;
+                                    enCVD.TheoDoi = chkTheoDoi.Checked;
+                                    enCVD.KiemTraLaiHienTruong = chkKiemTraLaiHienTruong.Checked;
+                                    enCVD.BaoThay = chkBaoThay.Checked;
+                                    enCVD.DeBiet = chkDeBiet.Checked;
+                                    if (chkKhac.Checked)
+                                    {
+                                        enCVD.Khac = true;
+                                        enCVD.Khac_GhiChu = txtKhac_GhiChu.Text.Trim();
+                                    }
+                                    else
+                                    {
+                                        enCVD.Khac = false;
+                                        enCVD.Khac_GhiChu = null;
+                                    }
+                                    enCVD.Duyet_Ngay = DateTime.Now;
+                                    _cCVD.SubmitChanges();
+                                }
+                            }
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear_ButPhe();
                     }
@@ -585,6 +638,93 @@ namespace DocSo_PC.GUI.VanThu
                         frm.Show();
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void chkDaXuLy_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkKhac.Checked)
+                txtDaXuLy_Ngay.ReadOnly = false;
+            else
+                txtDaXuLy_Ngay.ReadOnly = true;
+        }
+
+        private void chkAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkAll.Checked)
+                foreach (DataGridViewRow item in dgvDuyet.Rows)
+                {
+                    item.Cells["Chon"].Value = true;
+                }
+            else
+                foreach (DataGridViewRow item in dgvDuyet.Rows)
+                {
+                    item.Cells["Chon"].Value = false;
+                }
+        }
+
+        private void btnIn_ButPhe_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_enCVD != null)
+                {
+                    dsBaoCao dsBaoCao = new dsBaoCao();
+                    PrintDialog printDialog = new PrintDialog();
+                    if (printDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        DataTable dt = _cThuongVu.getFile(_enCVD.TableName, _enCVD.IDCT.Value);
+                        if (dt != null && dt.Rows.Count > 0)
+                            foreach (DataRow itemC in dt.Rows)
+                            {
+                                if (itemC["Type"].ToString().ToLower().Contains("pdf"))
+                                {
+                                    File.WriteAllBytes(@"D:\temp.pdf", (byte[])itemC["File"]);
+                                    PdfDocument pdf = new PdfDocument();
+                                    pdf.LoadFromFile(@"D:\temp.pdf");
+                                    pdf.PrintSettings.PrinterName = printDialog.PrinterSettings.PrinterName;
+                                    pdf.Print();
+                                }
+                                else
+                                {
+                                    DataRow dr = dsBaoCao.Tables["BaoCao"].NewRow();
+                                    dr["Image"] = (byte[])itemC["File"];
+                                    dsBaoCao.Tables["BaoCao"].Rows.Add(dr);
+                                }
+                            }
+                        if (dsBaoCao.Tables["BaoCao"].Rows.Count > 0)
+                        {
+                            frmShowBaoCao2 frm = new frmShowBaoCao2(dsBaoCao.Tables["BaoCao"]);
+                            frm.Show();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvDuyet_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                {
+                    if (dgvDuyet.Columns[e.ColumnIndex].Name == "ToMaHoa_Duyet" && dgvDuyet.CurrentRow.Cells["ID_Duyet"].Value != null && dgvDuyet.CurrentRow.Cells["ID_Duyet"].Value.ToString() != "")
+                    {
+                        CongVanDen en = _cCVD.get(int.Parse(dgvDuyet.CurrentRow.Cells["ID_Duyet"].Value.ToString()));
+                        en.ToMaHoa = bool.Parse(dgvDuyet.CurrentRow.Cells["ToMaHoa_Duyet"].Value.ToString());
+                        _cCVD.Sua(en);
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {

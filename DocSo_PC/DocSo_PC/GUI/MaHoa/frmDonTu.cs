@@ -15,6 +15,8 @@ using DocSo_PC.BaoCao;
 using DocSo_PC.BaoCao.MaHoa;
 using DocSo_PC.GUI.BaoCao;
 using DocSo_PC.DAL.Doi;
+using DocSo_PC.DAL.VanThu;
+using DocSo_PC.GUI.VanThu;
 
 namespace DocSo_PC.GUI.MaHoa
 {
@@ -33,6 +35,7 @@ namespace DocSo_PC.GUI.MaHoa
         wrDHN.wsDHN _wsDHN = new wrDHN.wsDHN();
         wrThuongVu.wsThuongVu _wsThuongVu = new wrThuongVu.wsThuongVu();
         CDanhBoBoQua _cDBBQ = new CDanhBoBoQua();
+        CCongVanDen _cCVD = new CCongVanDen();
 
         MaHoa_DonTu _dontu = null;
         BienDong _biendong = null;
@@ -95,6 +98,8 @@ namespace DocSo_PC.GUI.MaHoa
                 cmbNam.ValueMember = "Nam";
                 cmbKy.SelectedItem = CNguoiDung.Ky;
                 cmbDot.SelectedItem = CNguoiDung.Dot;
+
+                lbCVD.Text = _cCVD.thongBaoMaHoa();
             }
             catch (Exception ex)
             {
@@ -902,6 +907,12 @@ namespace DocSo_PC.GUI.MaHoa
             rptDSCongVan rpt = new rptDSCongVan();
             rpt.SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);
+            frm.ShowDialog();
+        }
+
+        private void lbCVD_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            frmCongVanDenButPhe frm = new frmCongVanDenButPhe("ToMaHoa");
             frm.ShowDialog();
         }
 

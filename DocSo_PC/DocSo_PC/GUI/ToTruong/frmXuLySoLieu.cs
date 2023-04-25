@@ -13,6 +13,7 @@ using DocSo_PC.DAL;
 using DocSo_PC.wrDHN;
 using DocSo_PC.DAL.MaHoa;
 using DocSo_PC.DAL.VanThu;
+using DocSo_PC.GUI.VanThu;
 
 namespace DocSo_PC.GUI.ToTruong
 {
@@ -170,6 +171,7 @@ namespace DocSo_PC.GUI.ToTruong
                         if (chkLoadHinh.Checked == true)
                             btnXemHinh.PerformClick();
                         //cmbCodeMoi.Focus();
+                        dgvCongVanDen.DataSource = _cCVD.getDS_DanhBo_XuLySoLieu(_docso.DanhBa);
                     }
                 }
             }
@@ -941,9 +943,11 @@ namespace DocSo_PC.GUI.ToTruong
         {
             try
             {
-                string TableNameHinh, IDName;
-                _cThuongVu.getTableHinh(dgvCongVanDen.CurrentRow.Cells["TableName"].Value.ToString(), out TableNameHinh, out IDName);
-                System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/ThuongVu/viewFile?TableName=" + TableNameHinh + "&IDFileName=" + IDName + "&IDFileContent=" + dgvCongVanDen.CurrentRow.Cells["IDCT"].Value.ToString());
+                frmCongVanDenButPhe frm = new frmCongVanDenButPhe(int.Parse(dgvCongVanDen.CurrentRow.Cells["ID"].Value.ToString()));
+                frm.ShowDialog();
+                //string TableNameHinh, IDName;
+                //_cThuongVu.getTableHinh(dgvCongVanDen.CurrentRow.Cells["TableName"].Value.ToString(), out TableNameHinh, out IDName);
+                //System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/ThuongVu/viewFile?TableName=" + TableNameHinh + "&IDFileName=" + IDName + "&IDFileContent=" + dgvCongVanDen.CurrentRow.Cells["IDCT"].Value.ToString());
             }
             catch (Exception ex)
             {

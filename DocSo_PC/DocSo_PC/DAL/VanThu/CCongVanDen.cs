@@ -150,5 +150,26 @@ namespace DocSo_PC.DAL.VanThu
                     + " select ButPhe=N'Khác',Loai='Khac',SoLuong=count(*) from CongVanDen where Khac=1 and CAST(DATEADD(DAY,90,CreateDate) as date)>=CAST(GETDATE() as date) and DanhBo in (select DanhBa from DocSo where Nam=@Nam and Ky=@Ky and Dot=@Dot " + MaTo + ") having COUNT(*)>0");
         }
 
+        public string thongBaoMaHoa()
+        {
+            int count = int.Parse(_cDAL.ExecuteQuery_ReturnOneValue("select count(*) from CongVanDen where Duyet_Ngay is not null and ToMaHoa=1 and DaXuLy=0").ToString());
+            if (count > 0)
+                return "Có " + count + " CVĐ cần xử lý";
+            else
+                return "";
+        }
+
+        public DataTable getDS_ToMaHoa()
+        {
+            return _cDAL.ExecuteQuery_DataTable("select *,'To'=(select TenTo from [To] where TuMay<=SUBSTRING(MLT,3,2) and DenMay>=SUBSTRING(MLT,3,2))"
+                + " from CongVanDen where Duyet_Ngay is not null and ToMaHoa=1 and DaXuLy=0 order by createdate desc");
+        }
+
+        public DataTable get_ID(string ID)
+        {
+            return _cDAL.ExecuteQuery_DataTable("select *,'To'=(select TenTo from [To] where TuMay<=SUBSTRING(MLT,3,2) and DenMay>=SUBSTRING(MLT,3,2))"
+                + " from CongVanDen where DaXuLy=0 and ID=" + ID + " order by createdate desc");
+        }
+
     }
 }

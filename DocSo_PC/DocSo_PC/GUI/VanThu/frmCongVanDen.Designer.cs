@@ -84,9 +84,17 @@
             this.chkAuto = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnIn_ToTrinh = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.cmbTo = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label18 = new System.Windows.Forms.Label();
+            this.chkAll = new System.Windows.Forms.CheckBox();
+            this.txtDaXuLy_Ngay = new System.Windows.Forms.TextBox();
+            this.chkDaXuLy = new System.Windows.Forms.CheckBox();
+            this.txtDanhBo_ButPhe = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.btnIn_ButPhe = new System.Windows.Forms.Button();
             this.btnSau = new System.Windows.Forms.Button();
             this.btnTruoc = new System.Windows.Forms.Button();
             this.txtKhac_GhiChu = new System.Windows.Forms.TextBox();
@@ -110,9 +118,12 @@
             this.btnCapNhat = new System.Windows.Forms.Button();
             this.chkXem = new System.Windows.Forms.CheckBox();
             this.dgvDuyet = new System.Windows.Forms.DataGridView();
+            this.radDaDuyet = new System.Windows.Forms.RadioButton();
+            this.radChuaDuyet = new System.Windows.Forms.RadioButton();
+            this.Chon = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Duyet_Ngay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ToMaHoa_Duyet = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.LoaiVB_Duyet = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -125,9 +136,6 @@
             this.IDCT_Duyet = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID_Duyet = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.radDaDuyet = new System.Windows.Forms.RadioButton();
-            this.radChuaDuyet = new System.Windows.Forms.RadioButton();
-            this.btnIn_ToTrinh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -629,6 +637,16 @@
             this.tabPage1.Text = "Nhập Liệu";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // btnIn_ToTrinh
+            // 
+            this.btnIn_ToTrinh.Location = new System.Drawing.Point(723, 7);
+            this.btnIn_ToTrinh.Name = "btnIn_ToTrinh";
+            this.btnIn_ToTrinh.Size = new System.Drawing.Size(75, 23);
+            this.btnIn_ToTrinh.TabIndex = 70;
+            this.btnIn_ToTrinh.Text = "In Tờ Trình";
+            this.btnIn_ToTrinh.UseVisualStyleBackColor = true;
+            this.btnIn_ToTrinh.Click += new System.EventHandler(this.btnIn_ToTrinh_Click);
+            // 
             // label15
             // 
             this.label15.AutoSize = true;
@@ -654,6 +672,13 @@
             // tabPage2
             // 
             this.tabPage2.AutoScroll = true;
+            this.tabPage2.Controls.Add(this.label18);
+            this.tabPage2.Controls.Add(this.chkAll);
+            this.tabPage2.Controls.Add(this.txtDaXuLy_Ngay);
+            this.tabPage2.Controls.Add(this.chkDaXuLy);
+            this.tabPage2.Controls.Add(this.txtDanhBo_ButPhe);
+            this.tabPage2.Controls.Add(this.label17);
+            this.tabPage2.Controls.Add(this.btnIn_ButPhe);
             this.tabPage2.Controls.Add(this.btnSau);
             this.tabPage2.Controls.Add(this.btnTruoc);
             this.tabPage2.Controls.Add(this.txtKhac_GhiChu);
@@ -681,6 +706,72 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Bút Phê";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(277, 516);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(204, 13);
+            this.label18.TabIndex = 104;
+            this.label18.Text = "Tổ Trưởng sẽ check khi xử lý xong";
+            // 
+            // chkAll
+            // 
+            this.chkAll.AutoSize = true;
+            this.chkAll.Location = new System.Drawing.Point(42, 68);
+            this.chkAll.Name = "chkAll";
+            this.chkAll.Size = new System.Drawing.Size(58, 17);
+            this.chkAll.TabIndex = 103;
+            this.chkAll.Text = "Tất Cả";
+            this.chkAll.UseVisualStyleBackColor = true;
+            this.chkAll.CheckedChanged += new System.EventHandler(this.chkAll_CheckedChanged);
+            // 
+            // txtDaXuLy_Ngay
+            // 
+            this.txtDaXuLy_Ngay.Location = new System.Drawing.Point(365, 490);
+            this.txtDaXuLy_Ngay.Name = "txtDaXuLy_Ngay";
+            this.txtDaXuLy_Ngay.ReadOnly = true;
+            this.txtDaXuLy_Ngay.Size = new System.Drawing.Size(100, 20);
+            this.txtDaXuLy_Ngay.TabIndex = 102;
+            // 
+            // chkDaXuLy
+            // 
+            this.chkDaXuLy.AutoSize = true;
+            this.chkDaXuLy.Location = new System.Drawing.Point(289, 494);
+            this.chkDaXuLy.Name = "chkDaXuLy";
+            this.chkDaXuLy.Size = new System.Drawing.Size(70, 17);
+            this.chkDaXuLy.TabIndex = 101;
+            this.chkDaXuLy.Text = "Đã Xử Lý";
+            this.chkDaXuLy.UseVisualStyleBackColor = true;
+            this.chkDaXuLy.CheckedChanged += new System.EventHandler(this.chkDaXuLy_CheckedChanged);
+            // 
+            // txtDanhBo_ButPhe
+            // 
+            this.txtDanhBo_ButPhe.Location = new System.Drawing.Point(361, 35);
+            this.txtDanhBo_ButPhe.Name = "txtDanhBo_ButPhe";
+            this.txtDanhBo_ButPhe.Size = new System.Drawing.Size(100, 20);
+            this.txtDanhBo_ButPhe.TabIndex = 100;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(306, 38);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(49, 13);
+            this.label17.TabIndex = 99;
+            this.label17.Text = "Danh Bộ";
+            // 
+            // btnIn_ButPhe
+            // 
+            this.btnIn_ButPhe.Location = new System.Drawing.Point(482, 563);
+            this.btnIn_ButPhe.Name = "btnIn_ButPhe";
+            this.btnIn_ButPhe.Size = new System.Drawing.Size(75, 23);
+            this.btnIn_ButPhe.TabIndex = 98;
+            this.btnIn_ButPhe.Text = "In";
+            this.btnIn_ButPhe.UseVisualStyleBackColor = true;
+            this.btnIn_ButPhe.Click += new System.EventHandler(this.btnIn_ButPhe_Click);
             // 
             // btnSau
             // 
@@ -915,9 +1006,10 @@
             this.dgvDuyet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvDuyet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDuyet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Chon,
             this.Duyet_Ngay,
             this.dataGridViewTextBoxColumn1,
-            this.dataGridViewCheckBoxColumn1,
+            this.ToMaHoa_Duyet,
             this.LoaiVB_Duyet,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
@@ -953,7 +1045,38 @@
             this.dgvDuyet.Size = new System.Drawing.Size(478, 300);
             this.dgvDuyet.TabIndex = 58;
             this.dgvDuyet.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDuyet_CellClick);
+            this.dgvDuyet.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDuyet_CellEndEdit);
             this.dgvDuyet.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDuyet_RowPostPaint);
+            // 
+            // radDaDuyet
+            // 
+            this.radDaDuyet.AutoSize = true;
+            this.radDaDuyet.Location = new System.Drawing.Point(8, 29);
+            this.radDaDuyet.Name = "radDaDuyet";
+            this.radDaDuyet.Size = new System.Drawing.Size(70, 17);
+            this.radDaDuyet.TabIndex = 1;
+            this.radDaDuyet.Text = "Đã Duyệt";
+            this.radDaDuyet.UseVisualStyleBackColor = true;
+            this.radDaDuyet.CheckedChanged += new System.EventHandler(this.radDaDuyet_CheckedChanged);
+            // 
+            // radChuaDuyet
+            // 
+            this.radChuaDuyet.AutoSize = true;
+            this.radChuaDuyet.Checked = true;
+            this.radChuaDuyet.Location = new System.Drawing.Point(8, 6);
+            this.radChuaDuyet.Name = "radChuaDuyet";
+            this.radChuaDuyet.Size = new System.Drawing.Size(81, 17);
+            this.radChuaDuyet.TabIndex = 0;
+            this.radChuaDuyet.TabStop = true;
+            this.radChuaDuyet.Text = "Chưa Duyệt";
+            this.radChuaDuyet.UseVisualStyleBackColor = true;
+            this.radChuaDuyet.CheckedChanged += new System.EventHandler(this.radChuaDuyet_CheckedChanged);
+            // 
+            // Chon
+            // 
+            this.Chon.HeaderText = "Chọn";
+            this.Chon.Name = "Chon";
+            this.Chon.Width = 40;
             // 
             // Duyet_Ngay
             // 
@@ -967,12 +1090,12 @@
             this.dataGridViewTextBoxColumn1.HeaderText = "Ngày Nhận";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
-            // dataGridViewCheckBoxColumn1
+            // ToMaHoa_Duyet
             // 
-            this.dataGridViewCheckBoxColumn1.DataPropertyName = "ToMaHoa";
-            this.dataGridViewCheckBoxColumn1.HeaderText = "Tổ Mã Hóa";
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            this.dataGridViewCheckBoxColumn1.Width = 50;
+            this.ToMaHoa_Duyet.DataPropertyName = "ToMaHoa";
+            this.ToMaHoa_Duyet.HeaderText = "Tổ Mã Hóa";
+            this.ToMaHoa_Duyet.Name = "ToMaHoa_Duyet";
+            this.ToMaHoa_Duyet.Width = 50;
             // 
             // LoaiVB_Duyet
             // 
@@ -1057,40 +1180,6 @@
             this.ID_Duyet.HeaderText = "ID";
             this.ID_Duyet.Name = "ID_Duyet";
             this.ID_Duyet.Visible = false;
-            // 
-            // radDaDuyet
-            // 
-            this.radDaDuyet.AutoSize = true;
-            this.radDaDuyet.Location = new System.Drawing.Point(8, 29);
-            this.radDaDuyet.Name = "radDaDuyet";
-            this.radDaDuyet.Size = new System.Drawing.Size(70, 17);
-            this.radDaDuyet.TabIndex = 1;
-            this.radDaDuyet.Text = "Đã Duyệt";
-            this.radDaDuyet.UseVisualStyleBackColor = true;
-            this.radDaDuyet.CheckedChanged += new System.EventHandler(this.radDaDuyet_CheckedChanged);
-            // 
-            // radChuaDuyet
-            // 
-            this.radChuaDuyet.AutoSize = true;
-            this.radChuaDuyet.Checked = true;
-            this.radChuaDuyet.Location = new System.Drawing.Point(8, 6);
-            this.radChuaDuyet.Name = "radChuaDuyet";
-            this.radChuaDuyet.Size = new System.Drawing.Size(81, 17);
-            this.radChuaDuyet.TabIndex = 0;
-            this.radChuaDuyet.TabStop = true;
-            this.radChuaDuyet.Text = "Chưa Duyệt";
-            this.radChuaDuyet.UseVisualStyleBackColor = true;
-            this.radChuaDuyet.CheckedChanged += new System.EventHandler(this.radChuaDuyet_CheckedChanged);
-            // 
-            // btnIn_ToTrinh
-            // 
-            this.btnIn_ToTrinh.Location = new System.Drawing.Point(723, 7);
-            this.btnIn_ToTrinh.Name = "btnIn_ToTrinh";
-            this.btnIn_ToTrinh.Size = new System.Drawing.Size(75, 23);
-            this.btnIn_ToTrinh.TabIndex = 70;
-            this.btnIn_ToTrinh.Text = "In Tờ Trình";
-            this.btnIn_ToTrinh.UseVisualStyleBackColor = true;
-            this.btnIn_ToTrinh.Click += new System.EventHandler(this.btnIn_ToTrinh_Click);
             // 
             // frmCongVanDen
             // 
@@ -1197,9 +1286,18 @@
         private System.Windows.Forms.CheckBox chkBaoThay;
         private System.Windows.Forms.Button btnSau;
         private System.Windows.Forms.Button btnTruoc;
+        private System.Windows.Forms.Button btnIn_ToTrinh;
+        private System.Windows.Forms.Button btnIn_ButPhe;
+        private System.Windows.Forms.TextBox txtDanhBo_ButPhe;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.CheckBox chkDaXuLy;
+        private System.Windows.Forms.TextBox txtDaXuLy_Ngay;
+        private System.Windows.Forms.CheckBox chkAll;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Chon;
         private System.Windows.Forms.DataGridViewTextBoxColumn Duyet_Ngay;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ToMaHoa_Duyet;
         private System.Windows.Forms.DataGridViewTextBoxColumn LoaiVB_Duyet;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
@@ -1212,6 +1310,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn IDCT_Duyet;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_Duyet;
-        private System.Windows.Forms.Button btnIn_ToTrinh;
     }
 }

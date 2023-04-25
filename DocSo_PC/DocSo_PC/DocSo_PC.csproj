@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>290</ApplicationRevision>
+    <ApplicationRevision>293</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -475,6 +475,12 @@
     <Compile Include="GUI\VanThu\frmCongVanDen.Designer.cs">
       <DependentUpon>frmCongVanDen.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\VanThu\frmCongVanDenButPhe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\VanThu\frmCongVanDenButPhe.Designer.cs">
+      <DependentUpon>frmCongVanDenButPhe.cs</DependentUpon>
+    </Compile>
     <Compile Include="LinQ\dbDHN.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -713,6 +719,9 @@
     <None Include="LinQ\dbGanMoi.dbml.layout">
       <DependentUpon>dbGanMoi.dbml</DependentUpon>
     </None>
+    <EmbeddedResource Include="GUI\VanThu\frmCongVanDenButPhe.resx">
+      <DependentUpon>frmCongVanDenButPhe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\XuLyDocSo\rptTieuThu.rdlc" />
     <None Include="LinQ\dbDHN.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
