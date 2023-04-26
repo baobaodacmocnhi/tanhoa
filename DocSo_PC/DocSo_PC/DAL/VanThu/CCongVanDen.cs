@@ -168,7 +168,7 @@ namespace DocSo_PC.DAL.VanThu
         public DataTable get_ID(string ID)
         {
             return _cDAL.ExecuteQuery_DataTable("select *,'To'=(select TenTo from [To] where TuMay<=SUBSTRING(MLT,3,2) and DenMay>=SUBSTRING(MLT,3,2))"
-                + " from CongVanDen where DaXuLy=0 and ID=" + ID + " order by createdate desc");
+                + " from CongVanDen where ID=" + ID + " order by createdate desc");
         }
 
     }
