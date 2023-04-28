@@ -59,17 +59,23 @@
       <DependentUpon>CDThamDu.cs</DependentUpon>
     </Compile>
     <Compile Include="CExcel.cs" />
-    <Compile Include="CDThamDu2.cs">
+    <Compile Include="CDThamDu2020.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CDThamDu2.designer.cs">
-      <DependentUpon>CDThamDu2.cs</DependentUpon>
+    <Compile Include="CDThamDu2020.designer.cs">
+      <DependentUpon>CDThamDu2020.cs</DependentUpon>
     </Compile>
     <Compile Include="CDThamDu2022.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CDThamDu2022.designer.cs">
       <DependentUpon>CDThamDu2022.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CDThamDu2023.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CDThamDu2023.designer.cs">
+      <DependentUpon>CDThamDu2023.cs</DependentUpon>
     </Compile>
     <Compile Include="dbDH_CODONG.designer.cs">
       <AutoGen>True</AutoGen>
@@ -102,11 +108,14 @@
       <DependentUpon>rptDSCoDong.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <EmbeddedResource Include="CDThamDu2.resx">
-      <DependentUpon>CDThamDu2.cs</DependentUpon>
+    <EmbeddedResource Include="CDThamDu2020.resx">
+      <DependentUpon>CDThamDu2020.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CDThamDu2022.resx">
       <DependentUpon>CDThamDu2022.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CDThamDu2023.resx">
+      <DependentUpon>CDThamDu2023.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmShowReport.resx">
       <DependentUpon>frmShowReport.cs</DependentUpon>
@@ -204,10 +213,10 @@
     <None Include="Resources\0e43acdbe1de1c8045cf1.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\492b85f9d4a115ff4cb0.jpg" />
+    <None Include="Resources\2022.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\2022.jpg" />
+    <None Include="Resources\2023.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

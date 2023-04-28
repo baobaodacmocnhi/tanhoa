@@ -45,8 +45,8 @@ namespace DHCD_KiemPhieu.View
             }
             else if (DropDownList1.SelectedIndex == 2)
             {
-                title.Text = "..: KIỂM PHIẾU BẦU ĐẠI BIỂU BAN THANH TRA NHÂN DÂN NHIỆM KỲ NĂM 2021 - 2023 :..";
-                lbKetqua.Text = "KẾT QUẢ BẦU ĐẠI BIỂU BAN THANH TRA NHÂN DÂN NHIỆM KỲ NĂM 2021 - 2023";
+                title.Text = "..: KIỂM PHIẾU BẦU ĐẠI BIỂU BAN THANH TRA NHÂN DÂN NHIỆM KỲ NĂM 2023 - 2025 :..";
+                lbKetqua.Text = "KẾT QUẢ BẦU ĐẠI BIỂU BAN THANH TRA NHÂN DÂN NHIỆM KỲ NĂM 2023 - 2025";
             }
         }
 

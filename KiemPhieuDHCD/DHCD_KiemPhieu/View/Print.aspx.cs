@@ -149,7 +149,7 @@ namespace DHCD_KiemPhieu.View
                 {
                     //string s = this.Server.MapPath(tb.Rows[index]["ImgPath"].ToString());
                     //string s = this.Server.MapPath("./mavach/mavach (" + tb.Rows[index]["STT"].ToString() + ").jpg");
-                    string s = this.Server.MapPath("./qrcode/" + int.Parse(tb.Rows[index]["STT"].ToString()).ToString("000") + ".jpg");
+                    string s = this.Server.MapPath("./qrcode2023/" + int.Parse(tb.Rows[index]["STT"].ToString()) + ".png");
                     if (File.Exists(s))
                     {
                         LoadImage(tb.Rows[index], "Image", s);

@@ -103,6 +103,16 @@ namespace BauCu.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _2023 {
+            get {
+                object obj = ResourceManager.GetObject("_2023", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _2b238e6804d9e687bfc8 {
             get {
                 object obj = ResourceManager.GetObject("_2b238e6804d9e687bfc8", resourceCulture);

@@ -34,9 +34,9 @@
                    LOẠI PHIẾU IN :</td>
                 <td class="style10" style="border-right:2px #99cc99 solid; background-color:Lavender; border-bottom: 1px solid;">
                                             <asp:DropDownList ID="DropDownList1" runat="server">
-                                                <asp:ListItem>THẺ ĐỒNG Ý</asp:ListItem>
-                                                <asp:ListItem>THẺ KHÔNG ĐỒNG Ý</asp:ListItem>
-                                                <asp:ListItem>THẺ TRẮNG</asp:ListItem>
+                                                <asp:ListItem>THẺ TÁN THÀNH</asp:ListItem>
+                                                <asp:ListItem>THẺ KHÔNG TÁN THÀNH</asp:ListItem>
+                                                <asp:ListItem>THẺ KHÔNG Ý KIẾN</asp:ListItem>
                                             </asp:DropDownList>
                </td>
                 <td class="style10" style="border-right:2px #99cc99 solid; background-color:Lavender; border-bottom: 1px solid;">

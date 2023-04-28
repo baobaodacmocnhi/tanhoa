@@ -668,18 +668,21 @@ namespace BauCu
                         for (int i =0; i < dtExcel.Rows.Count; i++)
                         {
                             DSCODONG en = new DSCODONG();
-                            if (db.DSCODONGs.Count() == 0)
-                            {
-                                en.STT = 1;
-                                en.STTCD = 1;
-                                en.MACD = "THW " + 1.ToString("000");
-                            }
-                            else
-                            {
-                                en.STT = db.DSCODONGs.Max(itemA => itemA.STT) + 1;
-                                en.STTCD = en.STT;
-                                en.MACD = "THW " + en.STT.ToString("000");
-                            }
+                            //if (db.DSCODONGs.Count() == 0)
+                            //{
+                            //    en.STT = 1;
+                            //    en.STTCD = 1;
+                            //    en.MACD = "THW " + 1.ToString("000");
+                            //}
+                            //else
+                            //{
+                            //    en.STT = db.DSCODONGs.Max(itemA => itemA.STT) + 1;
+                            //    en.STTCD = en.STT;
+                            //    en.MACD = "THW " + en.STT.ToString("000");
+                            //}
+                            en.STT = int.Parse(dtExcel.Rows[i][0].ToString());
+                            en.STTCD = en.STT;
+                            en.MACD = "THW " + en.STT.ToString("000");
                             en.TENCD = ToFirstUpper(dtExcel.Rows[i][1].ToString());
                             en.CMND = dtExcel.Rows[i][2].ToString();
                             if (dtExcel.Rows[i][3].ToString() != "")
@@ -690,7 +693,7 @@ namespace BauCu
                             }
                             en.CDGD = 0;
                             en.PHONGTOA = 0;
-                            en.TONGCD = int.Parse(dtExcel.Rows[i][5].ToString());
+                            en.TONGCD = int.Parse(dtExcel.Rows[i][4].ToString());
                             db.DSCODONGs.InsertOnSubmit(en);
                             db.SubmitChanges();
                         }
