@@ -38,8 +38,6 @@
             this.cmbNam = new System.Windows.Forms.ComboBox();
             this.btnXem = new System.Windows.Forms.Button();
             this.dgvDanhSach = new System.Windows.Forms.DataGridView();
-            this.progressBar = new System.Windows.Forms.ProgressBar();
-            this.button1 = new System.Windows.Forms.Button();
             this.Dot = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongTieuThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,6 +49,9 @@
             this.BillID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ky = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnFileThayDHN = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.SuspendLayout();
             // 
@@ -163,23 +164,6 @@
             this.dgvDanhSach.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDanhSach_CellFormatting);
             this.dgvDanhSach.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellValueChanged);
             // 
-            // progressBar
-            // 
-            this.progressBar.Location = new System.Drawing.Point(413, 10);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(203, 23);
-            this.progressBar.TabIndex = 58;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(744, 39);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 59;
-            this.button1.Text = "Xem Code";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // Dot
             // 
             this.Dot.DataPropertyName = "Dot";
@@ -256,11 +240,40 @@
             this.Ky.Name = "Ky";
             this.Ky.Visible = false;
             // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(413, 10);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(203, 23);
+            this.progressBar.TabIndex = 58;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(744, 39);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 59;
+            this.button1.Text = "Xem Code";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnFileThayDHN
+            // 
+            this.btnFileThayDHN.Location = new System.Drawing.Point(744, 68);
+            this.btnFileThayDHN.Name = "btnFileThayDHN";
+            this.btnFileThayDHN.Size = new System.Drawing.Size(75, 50);
+            this.btnFileThayDHN.TabIndex = 60;
+            this.btnFileThayDHN.Text = "Xuất File Thay ĐHN gửi TCT";
+            this.btnFileThayDHN.UseVisualStyleBackColor = true;
+            this.btnFileThayDHN.Click += new System.EventHandler(this.btnFileThayDHN_Click);
+            // 
             // frmChuyenBilling
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(842, 551);
+            this.Controls.Add(this.btnFileThayDHN);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.dgvDanhSach);
@@ -299,5 +312,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn BillID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nam;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky;
+        private System.Windows.Forms.Button btnFileThayDHN;
     }
 }
