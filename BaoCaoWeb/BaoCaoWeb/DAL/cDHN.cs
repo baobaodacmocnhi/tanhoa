@@ -19,7 +19,7 @@ namespace BaoCaoWeb.DAL
         {
             try
             {
-                _connectionString = @"Data Source=hp_g7\kd;Initial Catalog=CAPNUOCTANHOA;Persist Security Info=True;User ID=sa;Password=db8@tanhoa";
+                _connectionString = @"Data Source=server9;Initial Catalog=CAPNUOCTANHOA;Persist Security Info=True;User ID=sa;Password=db9@tanhoa";
                 //_connectionString = ThuTien.Properties.Settings.Default.KTKS_DonKHConnectionString;
                 connection = new SqlConnection(_connectionString);
             }
