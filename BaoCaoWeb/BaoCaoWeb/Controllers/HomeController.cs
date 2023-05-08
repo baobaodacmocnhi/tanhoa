@@ -20,12 +20,27 @@ namespace BaoCaoWeb.Controllers
             enTT.NamPresent = DateTime.Now.Year;
             enTT.NamPrevious = DateTime.Now.Year - 1;
             enTT.KhachHang = decimal.Parse(_cDHN.ExecuteQuery_ReturnOneValue("select count(DanhBo) from TB_DULIEUKHACHHANG").ToString());
-            enTT.SanLuong = decimal.Parse(_cDocSo.ExecuteQuery_ReturnOneValue("select SUM(TieuThuMoi) from DocSo where Nam=" + enTT.NamPresent).ToString());
-            enTT.DoanhThu = decimal.Parse(_cThuTien.ExecuteQuery_ReturnOneValue("select SUM(TONGCONG) from HOADON where YEAR(NGAYGIAITRACH)=" + enTT.NamPresent + " and MaNV_DangNgan is not null").ToString());
-            enTT.lstSanLuong = getlstSanLuong();
-            enTT.lstDoanhThu = getlstDoanhThu();
-            enTT.lstGiaBanBinhQuan = getlstGiaBanBinhQuan();
-            enTT.ThatThoatNuoc = (double)_cTTKH.ExecuteQuery_ReturnOneValue("select TyLeThatThoatNuoc2 from BC_SoLieu where Nam=2022");
+            DataTable dt = _cDHN.ExecuteQuery_DataTable("declare @Nam int=" + enTT.NamPresent
++ " select SUM(TieuThuMoi), (select SanLuong from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Nước tiêu thụ (m3)' from DocSoTH.dbo.DocSo where Nam = @Nam"
++ " union all"
++ " select SUM(GIABAN), (select DoanhThu from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Doanh thu tiền nước (đồng)' from HOADON_TA.dbo.HOADON where Nam = @Nam"
++ " union all"
++ " select SUM(GiaBanBinhQuan) / COUNT(*), (select GiaBanBinhQuan from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Giá bán bình quân (đồng)' from HOADON_TA.dbo.TT_GiaBanBinhQuan where Nam = @Nam"
++ " union all"
++ " select COUNT(*), (select GanMoi from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Gắn mới ĐHN (cái)' from CAPNUOCTANHOA.dbo.TB_GANMOI where YEAR(CREATEDATE) = @Nam"
++ " union all"
++ " select COUNT(*), (select ThayDHNNho from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Thay ĐHN cỡ nhỏ (cái)' from CAPNUOCTANHOA.dbo.TB_THAYDHN where YEAR(HCT_CREATEDATE) = @Nam and DHN_CODH<= 25"
++ " union all"
++ " select COUNT(*), (select ThayDHNLon from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Thay ĐHN cỡ lớn (cái)' from CAPNUOCTANHOA.dbo.TB_THAYDHN where YEAR(HCT_CREATEDATE) = @Nam and DHN_CODH> 25");
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                Chart en = new Chart();
+                en.Ky = i + 1;
+                en.NamPresent = decimal.Parse(dt.Rows[i][0].ToString());
+                en.NamPrevious = decimal.Parse(dt.Rows[i][1].ToString());
+                en.NoiDung = dt.Rows[i][2].ToString();
+                enTT.lstSanLuong.Add(en);
+            }
             return View(enTT);
         }
 

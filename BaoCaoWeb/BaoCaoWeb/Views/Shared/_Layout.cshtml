@@ -15,9 +15,9 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="~/Template/SBAdmin2/css/sb-admin-2.css" rel="stylesheet">       
+    <link href="~/Template/SBAdmin2/css/sb-admin-2.css" rel="stylesheet">
     <link href="~/Template/SBAdmin2/css/bootstrap-glyphicons.min.css" rel="stylesheet" />
-    
+
 </head>
 <body id="page-top">
 
@@ -25,23 +25,19 @@
     <div id="wrapper">
 
         <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column" >
+        <div id="content-wrapper" class="d-flex flex-column">
             <!-- Main Content -->
             <div id="content" style="background-color:paleturquoise">
 
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-                    <img src="~/Images/logocongty.png" width="50" height="50" style="margin-right:20px;"/><a style="align-content:center;font-size:23px;font-weight:bold;color:blue"> Dashboard - Cấp Nước Tân Hòa</a>
+                    <img src="~/Images/logocongty.png" width="50" height="50" style="margin-right:20px;" /><a style="align-content:center;font-size:23px;font-weight:bold;color:blue"> Dashboard - Cấp Nước Tân Hòa</a>
                 </nav>
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
-                    <div class="row">
-                        @RenderBody()
-                    </div>
-
+                    @RenderBody()
                 </div>
                 <!-- /.container-fluid -->
 
@@ -51,7 +47,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Công ty Cổ phần Cấp nước Tân Hòa 2020</span>
+                        <span>Copyright &copy; @DateTime.Now.Year Công ty Cổ phần Cấp nước Tân Hòa</span>
                     </div>
                 </div>
             </footer>

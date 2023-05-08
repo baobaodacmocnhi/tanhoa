@@ -48,24 +48,15 @@ namespace BaoCaoWeb.Models
         public decimal NamPresent { get; set; }
         public decimal NamPrevious { get; set; }
         public decimal ChenhLech { get; set; }
+        public string NoiDung { get; set; }
         public Chart()
         {
             Ky = 0;
             NamPresent = NamPrevious = ChenhLech = 0;
+            NoiDung = "";
         }
     }
 
-    public class AnyChart
-    {
-        public int Ky { get; set; }
-        public decimal NamPresent { get; set; }
-        public decimal NamPrevious { get; set; }
-        public decimal ChenhLech { get; set; }
-        public AnyChart()
-        {
-            Ky = 0;
-            NamPresent = NamPrevious = ChenhLech = 0;
-        }
-    }
+
 
 }

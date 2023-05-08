@@ -23,350 +23,67 @@
 <script src="~/Scripts/anychart/jschartGiaBanBinhQuan.js"></script>
 <script>
     $(document).ready(function () {
-        getSanLuong();
-        getDoanhThu();
-        getGiaBanBinhQuan();
+
     });
 
 </script>
 
-
-<div class="col-xl-3 col-md-6 mb-4">
-    <div class="card border-left-info shadow h-100">
-        <div class="card-body">
-            <div class="row no-gutters align-items-center">
-                <div class="col mr-2">
-                    <div class="font-weight-bold text-info mb-1">
-                        Số lượng khách hàng
+<div class="row">
+    <div class="col-auto mb-4">
+        <div class="card border-left-info shadow h-100">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="font-weight-bold text-info mb-1">
+                            Số lượng khách hàng
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.KhachHang.ToString("N0").Replace(",", ".")</div>
                     </div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.KhachHang.ToString("N0").Replace(",", ".")</div>
-                </div>
-                <div class="col-auto">
-                    <i class="fas fa-user fa-2x text-info"></i>
+                    <div class="col-auto">
+                        <i class="fas fa-user fa-2x text-info"></i>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
-<div class="col-xl-3 col-md-6 mb-4">
-    <div class="card border-left-primary shadow h-100">
-        <div class="card-body">
-            <div class="row no-gutters align-items-center">
-                <div class="col mr-2">
-                    <div class="font-weight-bold text-primary mb-1">
-                        Tổng sản lượng năm @Model.NamPresent (m<sup>3</sup>)
-                    </div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.SanLuong.ToString("N0").Replace(",", ".")</div>
-                </div>
-                <div class="col-auto">
-                    <span class="glyphicon glyphicon-tint fa-2x text-primary"></span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="col-xl-3 col-md-6 mb-4">
-    <div class="card border-left-warning shadow h-100">
-        <div class="card-body">
-            <div class="row no-gutters align-items-center">
-                <div class="col mr-2">
-                    <div class="font-weight-bold text-warning mb-1">
-                        Tổng doanh thu năm @Model.NamPresent (vnđ)
-                    </div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.DoanhThu.ToString("N0").Replace(",", ".")</div>
-                </div>
-                <div class="col-auto">
-                    <i class="fas fa-dollar-sign fa-2x text-warning"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="col-xl-3 col-md-6 mb-4">
-    <div class="card border-left-danger shadow h-100">
-        <div class="card-body">
-            <div class="row no-gutters align-items-center">
-                <div class="col mr-2">
-                    <div class="font-weight-bold text-danger mb-1">
-                        Tổng thất thoát nước năm @Model.NamPresent (%)
-                    </div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.ThatThoatNuoc.ToString().Replace(".",",")</div>
-                </div>
-                <div class="col-auto">
-                    <i class="glyphicon glyphicon-sort-by-attributes-alt fa-2x text-danger"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 <!-- Content Row -->
 
 <div class="row">
 
-    <!-- Area Chart -->
-    <div class="col-xl-8 col-lg-7">
-        <div class="card shadow mb-4">
-            <!-- Card Header - Dropdown -->
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">BIỂU ĐỒ THỐNG KÊ SẢN LƯỢNG</h6>
-
-            </div>
-            <!-- Card Body -->
-            <div class="card-body">
-                <div id="chartSanLuong" class="chartdiv"></div>
-                @*<div class="chart-area">
-                        <div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-                        <canvas id="myAreaChart" width="504" height="160" class="chartjs-render-monitor" style="display: block; width: 504px; height: 160px;"></canvas>
-                    </div>*@
-            </div>
-        </div>
-    </div>
-
     <!-- Pie Chart -->
-    <div class="col-xl-4 col-lg-5">
+    <div class="col-auto">
         <div class="card shadow mb-4">
             <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">THỐNG KÊ SẢN LƯỢNG (m<sup>3</sup>)</h6>
+                <h6 class="m-0 font-weight-bold text-primary">THỰC HIỆN CÁC CHỈ TIÊU TỔNG CÔNG TY GIAO ĐẾN NGÀY @DateTime.Now.ToString("dd/MM/yyyy")</h6>
 
             </div>
             <!-- Card Body -->
             <div class="card-body">
                 <div class="table-responsive">
-                    <table id="tblSanLuong" class="table table-bordered text-dark h6">
+                    <table id="tblSanLuong" class="table table-bordered text-dark h6 text-center">
                         <thead>
                             <tr>
-                                <th>Kỳ</th>
-                                <th>Năm @Model.NamPrevious</th>
-                                <th>Năm @Model.NamPresent</th>
-                                <th>+/-</th>
+                                <th>STT</th>
+                                <th>Nội dung/Chỉ tiêu</th>
+                                <th>Thực hiện</th>
+                                <th>Tỷ lệ</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Model.lstSanLuong)
                             {
                                 <tr>
-                                    <td>@item.Ky</td>
-                                    <td><a href="">@item.NamPrevious.ToString("N0").Replace(",", ".")</a></td>
-                                    <td><a href="">@item.NamPresent.ToString("N0").Replace(",", ".")</a></td>
-                                    @if (@item.ChenhLech < 0)
-                                    {
-                                        <td>@item.ChenhLech.ToString("N0").Replace(",", ".")<i class="fa fa-caret-down" style="padding-left:5px;color:red"></i></td>
-                                    }
-                                    else
-                                if (@item.ChenhLech > 0)
-                                    {
-                                        <td>@item.ChenhLech.ToString("N0").Replace(",", ".")<i class="fa fa-caret-up" style="padding-left:5px;color:lawngreen"></i></td>
-                                    }
-                                    else
-                                    {
-                                        <td></td>
-                                    }
+                                    <td class="align-middle">@item.Ky</td>
+                                    <td>@item.NoiDung <div class="font-weight-bold text-danger mt-1">@item.NamPrevious.ToString("N0").Replace(",", ".")</div> </td>
+                                    <td class="align-middle"><div class="font-weight-bold text-primary">@item.NamPresent.ToString("N0").Replace(",", ".")</div></td>
+                                    <td class="align-middle"></td>
                                 </tr>
                             }
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Tổng cộng</th>
-                                <th>@Model.lstSanLuong.Sum(item => item.NamPrevious).ToString("N0").Replace(",", ".")</th>
-                                <th>@Model.lstSanLuong.Sum(item => item.NamPresent).ToString("N0").Replace(",", ".")</th>
-                                @if (@Model.lstSanLuong.Sum(item => item.ChenhLech) < 0)
-                                {
-                                    <th>@Model.lstSanLuong.Sum(item => item.ChenhLech).ToString("N0").Replace(",", ".")<i class="fa fa-caret-down" style="padding-left:5px;color:red"></i></th>
-                                }
-                                else
-                                if (@Model.lstSanLuong.Sum(item => item.ChenhLech) > 0)
-                                {
-                                    <th>@Model.lstSanLuong.Sum(item => item.ChenhLech).ToString("N0").Replace(",", ".")<i class="fa fa-caret-up" style="padding-left:5px;color:lawngreen"></i></th>
-                                }
-                                else
-                                {
-                                    <th></th>
-                                }
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
 
-
-    <!-- Area Chart -->
-    <div class="col-xl-8 col-lg-7">
-        <div class="card shadow mb-4">
-            <!-- Card Header - Dropdown -->
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">BIỂU ĐỒ THỐNG KÊ DOANH THU</h6>
-
-            </div>
-            <!-- Card Body -->
-            <div class="card-body">
-                <div id="chartDoanhThu" class="chartdiv"></div>
-
-            </div>
-        </div>
-    </div>
-
-    <!-- Pie Chart -->
-    <div class="col-xl-4 col-lg-5">
-        <div class="card shadow mb-4">
-            <!-- Card Header - Dropdown -->
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">THỐNG KÊ DOANH THU (VNĐ)</h6>
-
-            </div>
-            <!-- Card Body -->
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table id="tblDoanhThu" class="table table-bordered text-dark h6" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>Kỳ</th>
-                                <th>Năm @Model.NamPrevious</th>
-                                <th>Năm @Model.NamPresent</th>
-                                <th>+/-</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model.lstDoanhThu)
-                            {
-                                <tr>
-                                    <td>@item.Ky</td>
-                                    <td><a href="">@item.NamPrevious.ToString("N0").Replace(",", ".")</a></td>
-                                    <td><a href="">@item.NamPresent.ToString("N0").Replace(",", ".")</a></td>
-                                    @if (@item.ChenhLech < 0)
-                                    {
-                                        <td>@item.ChenhLech.ToString("N0").Replace(",", ".")<i class="fa fa-caret-down" style="padding-left:5px;color:red"></i></td>
-                                    }
-                                    else
-                                if (@item.ChenhLech > 0)
-                                    {
-                                        <td>@item.ChenhLech.ToString("N0").Replace(",", ".")<i class="fa fa-caret-up" style="padding-left:5px;color:lawngreen"></i></td>
-                                    }
-                                    else
-                                    {
-                                        <td></td>
-                                    }
-                                </tr>
-                            }
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Tổng cộng</th>
-                                <th>@Model.lstDoanhThu.Sum(item => item.NamPrevious).ToString("N0").Replace(",", ".")</th>
-                                <th>@Model.lstDoanhThu.Sum(item => item.NamPresent).ToString("N0").Replace(",", ".")</th>
-                                @if (@Model.lstDoanhThu.Sum(item => item.ChenhLech) < 0)
-                                {
-                                    <th>@Model.lstDoanhThu.Sum(item => item.ChenhLech).ToString("N0").Replace(",", ".")<i class="fa fa-caret-down" style="padding-left:5px;color:red"></i></th>
-                                }
-                                else
-                                if (@Model.lstDoanhThu.Sum(item => item.ChenhLech) > 0)
-                                {
-                                    <th>@Model.lstDoanhThu.Sum(item => item.ChenhLech).ToString("N0").Replace(",", ".")<i class="fa fa-caret-up" style="padding-left:5px;color:lawngreen"></i></th>
-                                }
-                                else
-                                {
-                                    <th></th>
-                                }
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Area Chart -->
-    <div class="col-xl-8 col-lg-7">
-        <div class="card shadow mb-4">
-            <!-- Card Header - Dropdown -->
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">BIỂU ĐỒ THỐNG KÊ GIÁ BÁN BÌNH QUÂN</h6>
-
-            </div>
-            <!-- Card Body -->
-            <div class="card-body">
-                <div id="chartGiaBanBinhQuan" class="chartdiv"></div>
-
-            </div>
-        </div>
-    </div>
-
-    <!-- Pie Chart -->
-    <div class="col-xl-4 col-lg-5">
-        <div class="card shadow mb-4">
-            <!-- Card Header - Dropdown --
-
-            >
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">THỐNG KÊ GIÁ BÁN BÌNH QUÂN (VNĐ)</h6>
-
-            </div>
-            <!-- Card Body -->
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table id="tblGiaBanBinhQuan" class="table table-bordered text-dark h6">
-                        <thead>
-                            <tr>
-                                <th>Kỳ</th>
-                                <th>Năm @Model.NamPrevious</th>
-                                <th>Năm @Model.NamPresent</th>
-                                <th>+/-</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model.lstGiaBanBinhQuan)
-                            {
-                                <tr>
-                                    <td>@item.Ky</td>
-                                    <td><a href="">@item.NamPrevious.ToString("N0").Replace(",", ".")</a></td>
-                                    <td><a href="">@item.NamPresent.ToString("N0").Replace(",", ".")</a></td>
-                                    @if (@item.ChenhLech < 0)
-                                    {
-                                        <td>@item.ChenhLech.ToString("N0").Replace(",", ".")<i class="fa fa-caret-down" style="padding-left:5px;color:red"></i></td>
-                                    }
-                                    else
-                                if (@item.ChenhLech > 0)
-                                    {
-                                        <td>@item.ChenhLech.ToString("N0").Replace(",", ".")<i class="fa fa-caret-up" style="padding-left:5px;color:lawngreen"></i></td>
-                                    }
-                                    else
-                                    {
-                                        <td></td>
-                                    }
-                                </tr>
-                            }
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Tổng cộng</th>
-                                <th>@Model.lstGiaBanBinhQuan.Sum(item => item.NamPrevious).ToString("N0").Replace(",", ".")</th>
-                                <th>@Model.lstGiaBanBinhQuan.Sum(item => item.NamPresent).ToString("N0").Replace(",", ".")</th>
-                                @if (@Model.lstGiaBanBinhQuan.Sum(item => item.ChenhLech) < 0)
-                                {
-                                    <th>@Model.lstGiaBanBinhQuan.Sum(item => item.ChenhLech).ToString("N0").Replace(",", ".")<i class="fa fa-caret-down" style="padding-left:5px;color:red"></i></th>
-                                }
-                                else
-                                if (@Model.lstGiaBanBinhQuan.Sum(item => item.ChenhLech) > 0)
-                                {
-                                    <th>@Model.lstGiaBanBinhQuan.Sum(item => item.ChenhLech).ToString("N0").Replace(",", ".")<i class="fa fa-caret-up" style="padding-left:5px;color:lawngreen"></i></th>
-                                }
-                                else
-                                {
-                                    <th></th>
-                                }
-                            </tr>
-                        </tfoot>
                     </table>
                 </div>
             </div>

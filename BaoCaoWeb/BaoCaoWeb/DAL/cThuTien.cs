@@ -19,13 +19,11 @@ namespace BaoCaoWeb.DAL
         {
             try
             {
-                _connectionString = "Data Source=server9;Initial Catalog=HOADON_TA;Persist Security Info=True;User ID=sa;Password=db9@tanhoa";
-                //_connectionString = ThuTien.Properties.Settings.Default.KTKS_DonKHConnectionString;
+                _connectionString = CGlobalVariable.ThuTienWFH;
                 connection = new SqlConnection(_connectionString);
             }
             catch (Exception)
             {
-                //MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }

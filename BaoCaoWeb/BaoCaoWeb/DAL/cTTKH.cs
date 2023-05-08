@@ -19,8 +19,7 @@ namespace BaoCaoWeb.DAL
         {
             try
             {
-                //_connectionString = "Data Source=113.161.88.180,1133;Initial Catalog=TRUNGTAMKHACHHANG;Persist Security Info=True;User ID=sa;Password=db9@tanhoa";
-                _connectionString = "Data Source=server9;Initial Catalog=TRUNGTAMKHACHHANG;Persist Security Info=True;User ID=sa;Password=db9@tanhoa";
+                _connectionString = CGlobalVariable.TrungTamKhachHangWFH;
                 connection = new SqlConnection(_connectionString);
             }
             catch (Exception)
