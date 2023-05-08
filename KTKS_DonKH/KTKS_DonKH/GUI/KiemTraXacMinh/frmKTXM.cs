@@ -613,6 +613,15 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             ctktxm.GhiChuNoiDungBaoThay = txtGhiChuNoiDungBaoThay.Text.Trim();
                     }
                     ctktxm.SoTienDongTien = txtTongSoTien.Text.Trim();
+                    if (ctktxm.DienThoai.Replace(".", "").Replace(" ", "").Length == 11
+                        && !_cDHN.checkExists_DienThoai(ctktxm.DanhBo, ctktxm.DienThoai.Replace(".", "").Replace(" ", "")))
+                    {
+                        SDT_DHN enSDT = new SDT_DHN();
+                        enSDT.DanhBo = ctktxm.DanhBo;
+                        enSDT.DienThoai = ctktxm.DienThoai.Replace(".", "").Replace(" ", "");
+                        enSDT.GhiChu = "P. TV";
+                        _cDHN.them_DienThoai(enSDT);
+                    }
                     using (TransactionScope scope = new TransactionScope())
                         if (_cKTXM.ThemCT(ctktxm) == true)
                         {

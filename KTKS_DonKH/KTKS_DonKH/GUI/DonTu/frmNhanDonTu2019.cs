@@ -533,6 +533,16 @@ namespace KTKS_DonKH.GUI.DonTu
                         entityCT.TinhTrang = "Tồn";
 
                         entity.DonTu_ChiTiets.Add(entityCT);
+                        //add điện thoại qua trung tam
+                        if (entityCT.DienThoai.Replace(".", "").Replace(" ", "").Length == 11
+                        && !_cDHN.checkExists_DienThoai(entityCT.DanhBo, entityCT.DienThoai.Replace(".", "").Replace(" ", "")))
+                        {
+                            SDT_DHN enSDT = new SDT_DHN();
+                            enSDT.DanhBo = entityCT.DanhBo;
+                            enSDT.DienThoai = entityCT.DienThoai.Replace(".", "").Replace(" ", "");
+                            enSDT.GhiChu = "P. TV";
+                            _cDHN.them_DienThoai(enSDT);
+                        }
                     }
                     else if (tabControl.SelectedTab.Name == "tabCongVan")
                     {
