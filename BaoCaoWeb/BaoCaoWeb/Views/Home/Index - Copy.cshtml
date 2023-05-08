@@ -39,7 +39,7 @@
                     <div class="font-weight-bold text-info mb-1">
                         Số lượng khách hàng
                     </div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.TongKhachHang.ToString("N0").Replace(",", ".")</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.KhachHang.ToString("N0").Replace(",", ".")</div>
                 </div>
                 <div class="col-auto">
                     <i class="fas fa-user fa-2x text-info"></i>
@@ -56,9 +56,9 @@
             <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                     <div class="font-weight-bold text-primary mb-1">
-                        Tổng sản lượng năm 2021 (m<sup>3</sup>)
+                        Tổng sản lượng năm @Model.NamPresent (m<sup>3</sup>)
                     </div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.TongSanLuong.ToString("N0").Replace(",", ".")</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.SanLuong.ToString("N0").Replace(",", ".")</div>
                 </div>
                 <div class="col-auto">
                     <span class="glyphicon glyphicon-tint fa-2x text-primary"></span>
@@ -75,9 +75,9 @@
             <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                     <div class="font-weight-bold text-warning mb-1">
-                        Tổng doanh thu năm 2021 (vnđ)
+                        Tổng doanh thu năm @Model.NamPresent (vnđ)
                     </div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.TongDoanhThu.ToString("N0").Replace(",", ".")</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.DoanhThu.ToString("N0").Replace(",", ".")</div>
                 </div>
                 <div class="col-auto">
                     <i class="fas fa-dollar-sign fa-2x text-warning"></i>
@@ -94,9 +94,9 @@
             <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                     <div class="font-weight-bold text-danger mb-1">
-                        Tổng thất thoát nước năm 2021 (%)
+                        Tổng thất thoát nước năm @Model.NamPresent (%)
                     </div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.TongThatThoatNuoc.ToString().Replace(".",",")</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.ThatThoatNuoc.ToString().Replace(".",",")</div>
                 </div>
                 <div class="col-auto">
                     <i class="glyphicon glyphicon-sort-by-attributes-alt fa-2x text-danger"></i>

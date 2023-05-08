@@ -29,6 +29,21 @@ namespace BaoCaoWeb.Controllers
             return View(enTT);
         }
 
+        //public ActionResult Index()
+        //{
+        //    ThongTin enTT = new ThongTin();
+        //    enTT.NamPresent = DateTime.Now.Year;
+        //    enTT.NamPrevious = DateTime.Now.Year - 1;
+        //    enTT.KhachHang = decimal.Parse(_cDHN.ExecuteQuery_ReturnOneValue("select count(DanhBo) from TB_DULIEUKHACHHANG").ToString());
+        //    enTT.SanLuong = decimal.Parse(_cDocSo.ExecuteQuery_ReturnOneValue("select SUM(TieuThuMoi) from DocSo where Nam=" + enTT.NamPresent).ToString());
+        //    enTT.DoanhThu = decimal.Parse(_cThuTien.ExecuteQuery_ReturnOneValue("select SUM(TONGCONG) from HOADON where YEAR(NGAYGIAITRACH)=" + enTT.NamPresent + " and MaNV_DangNgan is not null").ToString());
+        //    enTT.lstSanLuong = getlstSanLuong();
+        //    enTT.lstDoanhThu = getlstDoanhThu();
+        //    enTT.lstGiaBanBinhQuan = getlstGiaBanBinhQuan();
+        //    enTT.ThatThoatNuoc = (double)_cTTKH.ExecuteQuery_ReturnOneValue("select TyLeThatThoatNuoc2 from BC_SoLieu where Nam=2022");
+        //    return View(enTT);
+        //}
+
         public ActionResult IndexChiTieu()
         {
             ThongTin enTT = new ThongTin();
