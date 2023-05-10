@@ -49,14 +49,29 @@ namespace BaoCaoWeb.Models
         public decimal NamPrevious { get; set; }
         public decimal ChenhLech { get; set; }
         public string NoiDung { get; set; }
+        public double KeHoach { get; set; }
+        public double ThucHien { get; set; }
+        public double TyLe { get; set; }
         public Chart()
         {
             Ky = 0;
             NamPresent = NamPrevious = ChenhLech = 0;
             NoiDung = "";
+            KeHoach = ThucHien = TyLe = 0.0f;
         }
     }
 
-
+    public class NoiDung
+    {
+        public string NoiDung1 { get; set; }
+        public string NoiDung2 { get; set; }
+        public string NoiDung3 { get; set; }
+        public string NoiDung4 { get; set; }
+        public string NoiDung5 { get; set; }
+        public NoiDung()
+        {
+            NoiDung1 = NoiDung2 = NoiDung3 = NoiDung4 = NoiDung5 = "";
+        }
+    }
 
 }

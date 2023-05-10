@@ -14,6 +14,7 @@ namespace BaoCaoWeb.Controllers
         cDocSo _cDocSo = new cDocSo();
         cThuTien _cThuTien = new cThuTien();
         cTTKH _cTTKH = new cTTKH();
+        cDMA _cDMA = new cDMA();
         public ActionResult Index()
         {
             ThongTin enTT = new ThongTin();
@@ -21,27 +22,59 @@ namespace BaoCaoWeb.Controllers
             enTT.NamPrevious = DateTime.Now.Year - 1;
             enTT.KhachHang = decimal.Parse(_cDHN.ExecuteQuery_ReturnOneValue("select count(DanhBo) from TB_DULIEUKHACHHANG").ToString());
             DataTable dt = _cDHN.ExecuteQuery_DataTable("declare @Nam int=" + enTT.NamPresent
-+ " select SUM(TieuThuMoi), (select SanLuong from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Nước tiêu thụ (m3)' from DocSoTH.dbo.DocSo where Nam = @Nam"
-+ " union all"
-+ " select SUM(GIABAN), (select DoanhThu from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Doanh thu tiền nước (đồng)' from HOADON_TA.dbo.HOADON where Nam = @Nam"
-+ " union all"
-+ " select SUM(GiaBanBinhQuan) / COUNT(*), (select GiaBanBinhQuan from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Giá bán bình quân (đồng)' from HOADON_TA.dbo.TT_GiaBanBinhQuan where Nam = @Nam"
-+ " union all"
-+ " select COUNT(*), (select GanMoi from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Gắn mới ĐHN (cái)' from CAPNUOCTANHOA.dbo.TB_GANMOI where YEAR(CREATEDATE) = @Nam"
-+ " union all"
-+ " select COUNT(*), (select ThayDHNNho from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Thay ĐHN cỡ nhỏ (cái)' from CAPNUOCTANHOA.dbo.TB_THAYDHN where YEAR(HCT_CREATEDATE) = @Nam and DHN_CODH<= 25"
-+ " union all"
-+ " select COUNT(*), (select ThayDHNLon from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Thay ĐHN cỡ lớn (cái)' from CAPNUOCTANHOA.dbo.TB_THAYDHN where YEAR(HCT_CREATEDATE) = @Nam and DHN_CODH> 25");
+                    + " select SUM(TieuThuMoi), (select SanLuong from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Nước tiêu thụ (m3)' from DocSoTH.dbo.DocSo where Nam = @Nam"
+                    + " union all"
+                    + " select SUM(GIABAN), (select DoanhThu from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Doanh thu tiền nước (đồng)' from HOADON_TA.dbo.HOADON where Nam = @Nam"
+                    + " union all"
+                    + " select SUM(GiaBanBinhQuan) / COUNT(*), (select GiaBanBinhQuan from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Giá bán bình quân (đồng)' from HOADON_TA.dbo.TT_GiaBanBinhQuan where Nam = @Nam"
+                    + " union all"
+                    + " select COUNT(*), (select GanMoi from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Gắn mới ĐHN (cái)' from CAPNUOCTANHOA.dbo.TB_GANMOI where YEAR(CREATEDATE) = @Nam"
+                    + " union all"
+                    + " select COUNT(*), (select ThayDHNNho from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Thay ĐHN cỡ nhỏ (cái)' from CAPNUOCTANHOA.dbo.TB_THAYDHN where YEAR(HCT_CREATEDATE) = @Nam and DHN_CODH<= 25"
+                    + " union all"
+                    + " select COUNT(*), (select ThayDHNLon from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Thay ĐHN cỡ lớn (cái)' from CAPNUOCTANHOA.dbo.TB_THAYDHN where YEAR(HCT_CREATEDATE) = @Nam and DHN_CODH> 25"
+                    + " union all"
+                    + " select 0, (select TyLeThatThoatNuoc from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Tỷ lệ thất thoát thất thu (%)'");
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 Chart en = new Chart();
                 en.Ky = i + 1;
-                en.NamPresent = decimal.Parse(dt.Rows[i][0].ToString());
-                en.NamPrevious = decimal.Parse(dt.Rows[i][1].ToString());
+                en.ThucHien = double.Parse(dt.Rows[i][0].ToString());
+                en.KeHoach = double.Parse(dt.Rows[i][1].ToString());
                 en.NoiDung = dt.Rows[i][2].ToString();
+                en.TyLe = Math.Round(en.ThucHien / en.KeHoach * 100, 2);
                 enTT.lstSanLuong.Add(en);
             }
+            dt = _cDMA.ExecuteQuery_DataTable("SELECT sum(LN_ThatThoat)/sum(SL_DHT)*100 FROM[tanhoa].[dbo].[g_ThatThoatMangLuoi] where nam = " + enTT.NamPresent);
+            enTT.lstSanLuong[enTT.lstSanLuong.Count - 1].ThucHien = Math.Round(double.Parse(dt.Rows[0][0].ToString()), 2);
+            enTT.lstSanLuong[enTT.lstSanLuong.Count - 1].TyLe = Math.Round(enTT.lstSanLuong[enTT.lstSanLuong.Count - 1].KeHoach / enTT.lstSanLuong[enTT.lstSanLuong.Count - 1].ThucHien * 100, 2);
             return View(enTT);
+        }
+
+        public JsonResult getThuHo(string SoNgay)
+        {
+            List<NoiDung> lstChart = new List<NoiDung>();
+            DataTable dt = _cThuTien.ExecuteQuery_DataTable("select * from"
+                    + " (select dvt.TenDichVu, SoLuong = COUNT(ID_HOADON), TongCong = SUM(TONGCONG) from HOADON hd left join TT_DichVuThu dvt on hd.ID_HOADON = dvt.MaHD"
+                    + " where CAST(NGAYGIAITRACH as date)>=CAST(DATEADD(day, " + (-1*int.Parse(SoNgay))+ ", getdate()) as date) and CAST(NGAYGIAITRACH as date) <= CAST(getdate() as date) and MaNV_DangNgan is not null"
+                    + " group by dvt.TenDichVu)t1"
+                    + " order by SoLuong desc");
+            decimal SLHoaDon = 0;
+            foreach (DataRow item in dt.Rows)
+            {
+                SLHoaDon += decimal.Parse(item["SoLuong"].ToString());
+            }
+            foreach (DataRow item in dt.Rows)
+            {
+                NoiDung enSL = new NoiDung();
+                enSL.NoiDung1 = item["TenDichVu"].ToString();
+                enSL.NoiDung2 = decimal.Parse(item["SoLuong"].ToString()).ToString("N0").Replace(",", ".");
+                enSL.NoiDung3 = decimal.Parse(item["TongCong"].ToString()).ToString("N0").Replace(",", ".");
+                enSL.NoiDung4 = Math.Round(double.Parse(item["SoLuong"].ToString()) / (double)SLHoaDon * 100, 2).ToString().Replace(".", ",");
+                lstChart.Add(enSL);
+            }
+            //return list as Json
+            return Json(lstChart, JsonRequestBehavior.AllowGet);
         }
 
         //public ActionResult Index()
