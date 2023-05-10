@@ -157,6 +157,7 @@ namespace ThuTien.DAL.Doi
                         {
                             CreateDate = itemGroup.Key,
                             KyHieu = itemGroup.FirstOrDefault().KyHieu,
+                            MauSac = itemGroup.FirstOrDefault().MauSac,
                             TuSo = itemGroup.Min(groupItem => groupItem.STT),
                             DenSo = itemGroup.Max(groupItem => groupItem.STT),
                             SLNhap = itemGroup.Count(),
@@ -180,6 +181,7 @@ namespace ThuTien.DAL.Doi
                             NhanVien = _db.TT_NguoiDungs.SingleOrDefault(itemT => itemT.MaND == itemGroup.Key.MaNV).HoTen,
                             CreateDate = itemGroup.Key,
                             KyHieu = itemGroup.FirstOrDefault().KyHieu,
+                            MauSac = itemGroup.FirstOrDefault().MauSac,
                             TuSo = itemGroup.Min(groupItem => groupItem.STT),
                             DenSo = itemGroup.Max(groupItem => groupItem.STT),
                             SLNhap = itemGroup.Count(),

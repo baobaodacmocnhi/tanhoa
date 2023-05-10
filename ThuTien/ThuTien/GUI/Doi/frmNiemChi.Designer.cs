@@ -47,14 +47,6 @@
             this.btnSua_Nhap = new System.Windows.Forms.Button();
             this.btnThem_Nhap = new System.Windows.Forms.Button();
             this.dgvNiemChi_Nhap = new System.Windows.Forms.DataGridView();
-            this.CreateDate_Nhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.KyHieu_Nhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TuSo_Nhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DenSo_Nhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SLNhap_Nhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SLSuDung_Nhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SLHuHong_Nhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SLTon_Nhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtSoLuong_Nhap = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtDenSo_Nhap = new System.Windows.Forms.TextBox();
@@ -73,17 +65,6 @@
             this.txtSLSuDung_Giao = new System.Windows.Forms.TextBox();
             this.txtSLNhap_Giao = new System.Windows.Forms.TextBox();
             this.dgvNiemChi_Giao = new System.Windows.Forms.DataGridView();
-            this.MaTo_Giao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenTo_Giao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaNV_Giao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NhanVien_Giao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.KyHieu_Giao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TuSo_Giao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DenSo_Giao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SLNhap_Giao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SLSuDung_Giao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SLHuHong_Giao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SLTon_Giao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnXem_Giao = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.dateLap_Giao = new System.Windows.Forms.DateTimePicker();
@@ -114,6 +95,27 @@
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID_HuHong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QuyetToan_HuHong = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.CreateDate_Nhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KyHieu_Nhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MauSac = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TuSo_Nhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DenSo_Nhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SLNhap_Nhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SLSuDung_Nhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SLHuHong_Nhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SLTon_Nhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaTo_Giao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenTo_Giao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaNV_Giao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NhanVien_Giao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KyHieu_Giao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MauSac_Giao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TuSo_Giao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DenSo_Giao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SLNhap_Giao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SLSuDung_Giao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SLHuHong_Giao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SLTon_Giao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNiemChi_Nhap)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -261,6 +263,7 @@
             this.dgvNiemChi_Nhap.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CreateDate_Nhap,
             this.KyHieu_Nhap,
+            this.MauSac,
             this.TuSo_Nhap,
             this.DenSo_Nhap,
             this.SLNhap_Nhap,
@@ -287,62 +290,6 @@
             this.dgvNiemChi_Nhap.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvNiemChi_Nhap.Size = new System.Drawing.Size(482, 500);
             this.dgvNiemChi_Nhap.TabIndex = 6;
-            // 
-            // CreateDate_Nhap
-            // 
-            this.CreateDate_Nhap.DataPropertyName = "CreateDate";
-            this.CreateDate_Nhap.HeaderText = "Ngày Nhập";
-            this.CreateDate_Nhap.Name = "CreateDate_Nhap";
-            this.CreateDate_Nhap.Width = 80;
-            // 
-            // KyHieu_Nhap
-            // 
-            this.KyHieu_Nhap.DataPropertyName = "KyHieu";
-            this.KyHieu_Nhap.HeaderText = "Ký Hiệu";
-            this.KyHieu_Nhap.Name = "KyHieu_Nhap";
-            this.KyHieu_Nhap.Width = 50;
-            // 
-            // TuSo_Nhap
-            // 
-            this.TuSo_Nhap.DataPropertyName = "TuSo";
-            this.TuSo_Nhap.HeaderText = "Từ Số";
-            this.TuSo_Nhap.Name = "TuSo_Nhap";
-            this.TuSo_Nhap.Width = 70;
-            // 
-            // DenSo_Nhap
-            // 
-            this.DenSo_Nhap.DataPropertyName = "DenSo";
-            this.DenSo_Nhap.HeaderText = "Đến Số";
-            this.DenSo_Nhap.Name = "DenSo_Nhap";
-            this.DenSo_Nhap.Width = 70;
-            // 
-            // SLNhap_Nhap
-            // 
-            this.SLNhap_Nhap.DataPropertyName = "SLNhap";
-            this.SLNhap_Nhap.HeaderText = "Nhập";
-            this.SLNhap_Nhap.Name = "SLNhap_Nhap";
-            this.SLNhap_Nhap.Width = 50;
-            // 
-            // SLSuDung_Nhap
-            // 
-            this.SLSuDung_Nhap.DataPropertyName = "SLSuDung";
-            this.SLSuDung_Nhap.HeaderText = "Sử Dụng";
-            this.SLSuDung_Nhap.Name = "SLSuDung_Nhap";
-            this.SLSuDung_Nhap.Width = 50;
-            // 
-            // SLHuHong_Nhap
-            // 
-            this.SLHuHong_Nhap.DataPropertyName = "SLHuHong";
-            this.SLHuHong_Nhap.HeaderText = "Hư Hỏng";
-            this.SLHuHong_Nhap.Name = "SLHuHong_Nhap";
-            this.SLHuHong_Nhap.Width = 50;
-            // 
-            // SLTon_Nhap
-            // 
-            this.SLTon_Nhap.DataPropertyName = "SLTon";
-            this.SLTon_Nhap.HeaderText = "Tồn";
-            this.SLTon_Nhap.Name = "SLTon_Nhap";
-            this.SLTon_Nhap.Width = 50;
             // 
             // txtSoLuong_Nhap
             // 
@@ -527,6 +474,7 @@
             this.MaNV_Giao,
             this.NhanVien_Giao,
             this.KyHieu_Giao,
+            this.MauSac_Giao,
             this.TuSo_Giao,
             this.DenSo_Giao,
             this.SLNhap_Giao,
@@ -554,83 +502,6 @@
             this.dgvNiemChi_Giao.Size = new System.Drawing.Size(530, 444);
             this.dgvNiemChi_Giao.TabIndex = 62;
             this.dgvNiemChi_Giao.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNiemChi_Giao_CellContentClick);
-            // 
-            // MaTo_Giao
-            // 
-            this.MaTo_Giao.DataPropertyName = "MaTo";
-            this.MaTo_Giao.HeaderText = "MaTo";
-            this.MaTo_Giao.Name = "MaTo_Giao";
-            this.MaTo_Giao.Visible = false;
-            // 
-            // TenTo_Giao
-            // 
-            this.TenTo_Giao.DataPropertyName = "TenTo";
-            this.TenTo_Giao.HeaderText = "Tổ";
-            this.TenTo_Giao.Name = "TenTo_Giao";
-            this.TenTo_Giao.Width = 50;
-            // 
-            // MaNV_Giao
-            // 
-            this.MaNV_Giao.DataPropertyName = "MaNV";
-            this.MaNV_Giao.HeaderText = "MaNV";
-            this.MaNV_Giao.Name = "MaNV_Giao";
-            this.MaNV_Giao.Visible = false;
-            // 
-            // NhanVien_Giao
-            // 
-            this.NhanVien_Giao.DataPropertyName = "NhanVien";
-            this.NhanVien_Giao.HeaderText = "Nhân Viên";
-            this.NhanVien_Giao.Name = "NhanVien_Giao";
-            this.NhanVien_Giao.Width = 80;
-            // 
-            // KyHieu_Giao
-            // 
-            this.KyHieu_Giao.DataPropertyName = "KyHieu";
-            this.KyHieu_Giao.HeaderText = "Ký Hiệu";
-            this.KyHieu_Giao.Name = "KyHieu_Giao";
-            this.KyHieu_Giao.Width = 50;
-            // 
-            // TuSo_Giao
-            // 
-            this.TuSo_Giao.DataPropertyName = "TuSo";
-            this.TuSo_Giao.HeaderText = "Từ Số";
-            this.TuSo_Giao.Name = "TuSo_Giao";
-            this.TuSo_Giao.Width = 70;
-            // 
-            // DenSo_Giao
-            // 
-            this.DenSo_Giao.DataPropertyName = "DenSo";
-            this.DenSo_Giao.HeaderText = "Đến Số";
-            this.DenSo_Giao.Name = "DenSo_Giao";
-            this.DenSo_Giao.Width = 70;
-            // 
-            // SLNhap_Giao
-            // 
-            this.SLNhap_Giao.DataPropertyName = "SLNhap";
-            this.SLNhap_Giao.HeaderText = "Nhập";
-            this.SLNhap_Giao.Name = "SLNhap_Giao";
-            this.SLNhap_Giao.Width = 50;
-            // 
-            // SLSuDung_Giao
-            // 
-            this.SLSuDung_Giao.DataPropertyName = "SLSuDung";
-            this.SLSuDung_Giao.HeaderText = "Sử Dụng";
-            this.SLSuDung_Giao.Name = "SLSuDung_Giao";
-            this.SLSuDung_Giao.Width = 50;
-            // 
-            // SLHuHong_Giao
-            // 
-            this.SLHuHong_Giao.DataPropertyName = "SLHuHong";
-            this.SLHuHong_Giao.HeaderText = "Hư Hỏng";
-            this.SLHuHong_Giao.Name = "SLHuHong_Giao";
-            this.SLHuHong_Giao.Width = 50;
-            // 
-            // SLTon_Giao
-            // 
-            this.SLTon_Giao.DataPropertyName = "SLTon";
-            this.SLTon_Giao.HeaderText = "Tồn";
-            this.SLTon_Giao.Name = "SLTon_Giao";
-            this.SLTon_Giao.Width = 50;
             // 
             // btnXem_Giao
             // 
@@ -913,6 +784,153 @@
             this.QuyetToan_HuHong.Name = "QuyetToan_HuHong";
             this.QuyetToan_HuHong.Width = 50;
             // 
+            // CreateDate_Nhap
+            // 
+            this.CreateDate_Nhap.DataPropertyName = "CreateDate";
+            this.CreateDate_Nhap.HeaderText = "Ngày Nhập";
+            this.CreateDate_Nhap.Name = "CreateDate_Nhap";
+            this.CreateDate_Nhap.Width = 80;
+            // 
+            // KyHieu_Nhap
+            // 
+            this.KyHieu_Nhap.DataPropertyName = "KyHieu";
+            this.KyHieu_Nhap.HeaderText = "Ký Hiệu";
+            this.KyHieu_Nhap.Name = "KyHieu_Nhap";
+            this.KyHieu_Nhap.Width = 50;
+            // 
+            // MauSac
+            // 
+            this.MauSac.DataPropertyName = "MauSac";
+            this.MauSac.HeaderText = "Màu";
+            this.MauSac.Name = "MauSac";
+            this.MauSac.Width = 50;
+            // 
+            // TuSo_Nhap
+            // 
+            this.TuSo_Nhap.DataPropertyName = "TuSo";
+            this.TuSo_Nhap.HeaderText = "Từ Số";
+            this.TuSo_Nhap.Name = "TuSo_Nhap";
+            this.TuSo_Nhap.Width = 70;
+            // 
+            // DenSo_Nhap
+            // 
+            this.DenSo_Nhap.DataPropertyName = "DenSo";
+            this.DenSo_Nhap.HeaderText = "Đến Số";
+            this.DenSo_Nhap.Name = "DenSo_Nhap";
+            this.DenSo_Nhap.Width = 70;
+            // 
+            // SLNhap_Nhap
+            // 
+            this.SLNhap_Nhap.DataPropertyName = "SLNhap";
+            this.SLNhap_Nhap.HeaderText = "Nhập";
+            this.SLNhap_Nhap.Name = "SLNhap_Nhap";
+            this.SLNhap_Nhap.Width = 50;
+            // 
+            // SLSuDung_Nhap
+            // 
+            this.SLSuDung_Nhap.DataPropertyName = "SLSuDung";
+            this.SLSuDung_Nhap.HeaderText = "Sử Dụng";
+            this.SLSuDung_Nhap.Name = "SLSuDung_Nhap";
+            this.SLSuDung_Nhap.Width = 50;
+            // 
+            // SLHuHong_Nhap
+            // 
+            this.SLHuHong_Nhap.DataPropertyName = "SLHuHong";
+            this.SLHuHong_Nhap.HeaderText = "Hư Hỏng";
+            this.SLHuHong_Nhap.Name = "SLHuHong_Nhap";
+            this.SLHuHong_Nhap.Width = 50;
+            // 
+            // SLTon_Nhap
+            // 
+            this.SLTon_Nhap.DataPropertyName = "SLTon";
+            this.SLTon_Nhap.HeaderText = "Tồn";
+            this.SLTon_Nhap.Name = "SLTon_Nhap";
+            this.SLTon_Nhap.Width = 50;
+            // 
+            // MaTo_Giao
+            // 
+            this.MaTo_Giao.DataPropertyName = "MaTo";
+            this.MaTo_Giao.HeaderText = "MaTo";
+            this.MaTo_Giao.Name = "MaTo_Giao";
+            this.MaTo_Giao.Visible = false;
+            // 
+            // TenTo_Giao
+            // 
+            this.TenTo_Giao.DataPropertyName = "TenTo";
+            this.TenTo_Giao.HeaderText = "Tổ";
+            this.TenTo_Giao.Name = "TenTo_Giao";
+            this.TenTo_Giao.Width = 50;
+            // 
+            // MaNV_Giao
+            // 
+            this.MaNV_Giao.DataPropertyName = "MaNV";
+            this.MaNV_Giao.HeaderText = "MaNV";
+            this.MaNV_Giao.Name = "MaNV_Giao";
+            this.MaNV_Giao.Visible = false;
+            // 
+            // NhanVien_Giao
+            // 
+            this.NhanVien_Giao.DataPropertyName = "NhanVien";
+            this.NhanVien_Giao.HeaderText = "Nhân Viên";
+            this.NhanVien_Giao.Name = "NhanVien_Giao";
+            this.NhanVien_Giao.Width = 80;
+            // 
+            // KyHieu_Giao
+            // 
+            this.KyHieu_Giao.DataPropertyName = "KyHieu";
+            this.KyHieu_Giao.HeaderText = "Ký Hiệu";
+            this.KyHieu_Giao.Name = "KyHieu_Giao";
+            this.KyHieu_Giao.Width = 50;
+            // 
+            // MauSac_Giao
+            // 
+            this.MauSac_Giao.DataPropertyName = "MauSac";
+            this.MauSac_Giao.HeaderText = "Màu";
+            this.MauSac_Giao.Name = "MauSac_Giao";
+            this.MauSac_Giao.Width = 50;
+            // 
+            // TuSo_Giao
+            // 
+            this.TuSo_Giao.DataPropertyName = "TuSo";
+            this.TuSo_Giao.HeaderText = "Từ Số";
+            this.TuSo_Giao.Name = "TuSo_Giao";
+            this.TuSo_Giao.Width = 70;
+            // 
+            // DenSo_Giao
+            // 
+            this.DenSo_Giao.DataPropertyName = "DenSo";
+            this.DenSo_Giao.HeaderText = "Đến Số";
+            this.DenSo_Giao.Name = "DenSo_Giao";
+            this.DenSo_Giao.Width = 70;
+            // 
+            // SLNhap_Giao
+            // 
+            this.SLNhap_Giao.DataPropertyName = "SLNhap";
+            this.SLNhap_Giao.HeaderText = "Nhập";
+            this.SLNhap_Giao.Name = "SLNhap_Giao";
+            this.SLNhap_Giao.Width = 50;
+            // 
+            // SLSuDung_Giao
+            // 
+            this.SLSuDung_Giao.DataPropertyName = "SLSuDung";
+            this.SLSuDung_Giao.HeaderText = "Sử Dụng";
+            this.SLSuDung_Giao.Name = "SLSuDung_Giao";
+            this.SLSuDung_Giao.Width = 50;
+            // 
+            // SLHuHong_Giao
+            // 
+            this.SLHuHong_Giao.DataPropertyName = "SLHuHong";
+            this.SLHuHong_Giao.HeaderText = "Hư Hỏng";
+            this.SLHuHong_Giao.Name = "SLHuHong_Giao";
+            this.SLHuHong_Giao.Width = 50;
+            // 
+            // SLTon_Giao
+            // 
+            this.SLTon_Giao.DataPropertyName = "SLTon";
+            this.SLTon_Giao.HeaderText = "Tồn";
+            this.SLTon_Giao.Name = "SLTon_Giao";
+            this.SLTon_Giao.Width = 50;
+            // 
             // frmNiemChi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1004,6 +1022,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate_Nhap;
         private System.Windows.Forms.DataGridViewTextBoxColumn KyHieu_Nhap;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MauSac;
         private System.Windows.Forms.DataGridViewTextBoxColumn TuSo_Nhap;
         private System.Windows.Forms.DataGridViewTextBoxColumn DenSo_Nhap;
         private System.Windows.Forms.DataGridViewTextBoxColumn SLNhap_Nhap;
@@ -1015,6 +1034,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MaNV_Giao;
         private System.Windows.Forms.DataGridViewTextBoxColumn NhanVien_Giao;
         private System.Windows.Forms.DataGridViewTextBoxColumn KyHieu_Giao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MauSac_Giao;
         private System.Windows.Forms.DataGridViewTextBoxColumn TuSo_Giao;
         private System.Windows.Forms.DataGridViewTextBoxColumn DenSo_Giao;
         private System.Windows.Forms.DataGridViewTextBoxColumn SLNhap_Giao;
