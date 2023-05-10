@@ -22,19 +22,19 @@ namespace BaoCaoWeb.Controllers
             enTT.NamPrevious = DateTime.Now.Year - 1;
             enTT.KhachHang = decimal.Parse(_cDHN.ExecuteQuery_ReturnOneValue("select count(DanhBo) from TB_DULIEUKHACHHANG").ToString());
             DataTable dt = _cDHN.ExecuteQuery_DataTable("declare @Nam int=" + enTT.NamPresent
-                    + " select SUM(TieuThuMoi), (select SanLuong from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Nước tiêu thụ (m3)' from DocSoTH.dbo.DocSo where Nam = @Nam"
+                    + " select SUM(TieuThuMoi), (select SanLuong from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Nước tiêu thụ (m3)','ChiTietSanLuong' from DocSoTH.dbo.DocSo where Nam = @Nam"
                     + " union all"
-                    + " select SUM(GIABAN), (select DoanhThu from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Doanh thu tiền nước (đồng)' from HOADON_TA.dbo.HOADON where Nam = @Nam"
+                    + " select SUM(GIABAN), (select DoanhThu from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Doanh thu tiền nước (đồng)','ChiTietDoanhThu' from HOADON_TA.dbo.HOADON where Nam = @Nam"
                     + " union all"
-                    + " select SUM(GiaBanBinhQuan) / COUNT(*), (select GiaBanBinhQuan from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Giá bán bình quân (đồng)' from HOADON_TA.dbo.TT_GiaBanBinhQuan where Nam = @Nam"
+                    + " select SUM(GiaBanBinhQuan) / COUNT(*), (select GiaBanBinhQuan from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Giá bán bình quân (đồng)','ChiTietGiaBanBinhQuan' from HOADON_TA.dbo.TT_GiaBanBinhQuan where Nam = @Nam"
                     + " union all"
-                    + " select COUNT(*), (select GanMoi from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Gắn mới ĐHN (cái)' from CAPNUOCTANHOA.dbo.TB_GANMOI where YEAR(CREATEDATE) = @Nam"
+                    + " select COUNT(*), (select GanMoi from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Gắn mới ĐHN (cái)','' from CAPNUOCTANHOA.dbo.TB_GANMOI where YEAR(CREATEDATE) = @Nam"
                     + " union all"
-                    + " select COUNT(*), (select ThayDHNNho from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Thay ĐHN cỡ nhỏ (cái)' from CAPNUOCTANHOA.dbo.TB_THAYDHN where YEAR(HCT_CREATEDATE) = @Nam and DHN_CODH<= 25"
+                    + " select COUNT(*), (select ThayDHNNho from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Thay ĐHN cỡ nhỏ (cái)','' from CAPNUOCTANHOA.dbo.TB_THAYDHN where YEAR(HCT_CREATEDATE) = @Nam and DHN_CODH<= 25"
                     + " union all"
-                    + " select COUNT(*), (select ThayDHNLon from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Thay ĐHN cỡ lớn (cái)' from CAPNUOCTANHOA.dbo.TB_THAYDHN where YEAR(HCT_CREATEDATE) = @Nam and DHN_CODH> 25"
+                    + " select COUNT(*), (select ThayDHNLon from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Thay ĐHN cỡ lớn (cái)','' from CAPNUOCTANHOA.dbo.TB_THAYDHN where YEAR(HCT_CREATEDATE) = @Nam and DHN_CODH> 25"
                     + " union all"
-                    + " select 0, (select TyLeThatThoatNuoc from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Tỷ lệ thất thoát thất thu (%)'");
+                    + " select 0, (select TyLeThatThoatNuoc from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Tỷ lệ thất thoát thất thu (%)','ChiTietThatThoatNuoc'");
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 Chart en = new Chart();
@@ -43,11 +43,12 @@ namespace BaoCaoWeb.Controllers
                 en.KeHoach = double.Parse(dt.Rows[i][1].ToString());
                 en.NoiDung = dt.Rows[i][2].ToString();
                 en.TyLe = Math.Round(en.ThucHien / en.KeHoach * 100, 2);
+                en.NoiDung2 = dt.Rows[i][3].ToString();
                 enTT.lstSanLuong.Add(en);
             }
-            dt = _cDMA.ExecuteQuery_DataTable("SELECT sum(LN_ThatThoat)/sum(SL_DHT)*100 FROM[tanhoa].[dbo].[g_ThatThoatMangLuoi] where nam = " + enTT.NamPresent);
-            enTT.lstSanLuong[enTT.lstSanLuong.Count - 1].ThucHien = Math.Round(double.Parse(dt.Rows[0][0].ToString()), 2);
-            enTT.lstSanLuong[enTT.lstSanLuong.Count - 1].TyLe = Math.Round(enTT.lstSanLuong[enTT.lstSanLuong.Count - 1].KeHoach / enTT.lstSanLuong[enTT.lstSanLuong.Count - 1].ThucHien * 100, 2);
+            //dt = _cDMA.ExecuteQuery_DataTable("SELECT sum(LN_ThatThoat)/sum(SL_DHT)*100 FROM[tanhoa].[dbo].[g_ThatThoatMangLuoi] where nam = " + enTT.NamPresent);
+            //enTT.lstSanLuong[enTT.lstSanLuong.Count - 1].ThucHien = Math.Round(double.Parse(dt.Rows[0][0].ToString()), 2);
+            //enTT.lstSanLuong[enTT.lstSanLuong.Count - 1].TyLe = Math.Round(enTT.lstSanLuong[enTT.lstSanLuong.Count - 1].KeHoach / enTT.lstSanLuong[enTT.lstSanLuong.Count - 1].ThucHien * 100, 2);
             return View(enTT);
         }
 
@@ -56,7 +57,7 @@ namespace BaoCaoWeb.Controllers
             List<NoiDung> lstChart = new List<NoiDung>();
             DataTable dt = _cThuTien.ExecuteQuery_DataTable("select * from"
                     + " (select dvt.TenDichVu, SoLuong = COUNT(ID_HOADON), TongCong = SUM(TONGCONG) from HOADON hd left join TT_DichVuThu dvt on hd.ID_HOADON = dvt.MaHD"
-                    + " where CAST(NGAYGIAITRACH as date)>=CAST(DATEADD(day, " + (-1*int.Parse(SoNgay))+ ", getdate()) as date) and CAST(NGAYGIAITRACH as date) <= CAST(getdate() as date) and MaNV_DangNgan is not null"
+                    + " where CAST(NGAYGIAITRACH as date)>=CAST(DATEADD(day, " + (-1 * int.Parse(SoNgay)) + ", getdate()) as date) and CAST(NGAYGIAITRACH as date) <= CAST(getdate() as date) and MaNV_DangNgan is not null"
                     + " group by dvt.TenDichVu)t1"
                     + " order by SoLuong desc");
             decimal SLHoaDon = 0;
@@ -73,9 +74,52 @@ namespace BaoCaoWeb.Controllers
                 enSL.NoiDung4 = Math.Round(double.Parse(item["SoLuong"].ToString()) / (double)SLHoaDon * 100, 2).ToString().Replace(".", ",");
                 lstChart.Add(enSL);
             }
-            //return list as Json
             return Json(lstChart, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult getNhanDon_anycharts(string SoNgay)
+        {
+            DataTable dt = _cThuTien.ExecuteQuery_DataTable("select MaDon, ID_NhomDon_PKH from KTKS_DonKH.dbo.DonTu"
+                    + " where CAST(CreateDate as date) >= CAST(DATEADD(day, " + (-1 * int.Parse(SoNgay)) + ", getdate()) as date) and CAST(CreateDate as date) <= CAST(getdate() as date)");
+            decimal DieuChinh = 0, KhieuNai = 0, SuCo = 0, QuanLy = 0, Khac = 0;
+            foreach (DataRow item in dt.Rows)
+            {
+                if (item["ID_NhomDon_PKH"].ToString() != "")
+                {
+                    string[] strs = item["ID_NhomDon_PKH"].ToString().Split(';');
+                    for (int i = 0; i < strs.Length; i++)
+                    {
+                        DataTable dtCount = _cThuTien.ExecuteQuery_DataTable("select top 1 DieuChinh,KhieuNai,SuCo,QuanLy from [KTKS_DonKH].[dbo].[NhomDon] where STTGroup=" + strs[i]);
+                        if (bool.Parse(dtCount.Rows[0]["DieuChinh"].ToString()))
+                            DieuChinh++;
+                        else
+                            if (bool.Parse(dtCount.Rows[0]["KhieuNai"].ToString()))
+                            KhieuNai++;
+                        else
+                            if (bool.Parse(dtCount.Rows[0]["SuCo"].ToString()))
+                            SuCo++;
+                        else
+                            if (bool.Parse(dtCount.Rows[0]["QuanLy"].ToString()))
+                            QuanLy++;
+                    }
+                }
+                else
+                    Khac++;
+            }
+            List<Array> lstChart = new List<Array>();
+            string[] a = new string[] { "Điều Chỉnh",  DieuChinh.ToString() };
+            lstChart.Add(a);
+            a = new string[] { "Khiếu Nại",  KhieuNai.ToString() };
+            lstChart.Add(a);
+            a = new string[] { "Sự Cố",  SuCo.ToString() };
+            lstChart.Add(a);
+            a = new string[] { "Quản Lý",  QuanLy.ToString() };
+            lstChart.Add(a);
+            a = new string[] { "Khác",  Khac.ToString() };
+            lstChart.Add(a);
+            return Json(lstChart, JsonRequestBehavior.AllowGet);
+        }
+
 
         //public ActionResult Index()
         //{
@@ -91,6 +135,21 @@ namespace BaoCaoWeb.Controllers
         //    enTT.ThatThoatNuoc = (double)_cTTKH.ExecuteQuery_ReturnOneValue("select TyLeThatThoatNuoc2 from BC_SoLieu where Nam=2022");
         //    return View(enTT);
         //}
+
+        public ActionResult ChiTietSanLuong()
+        {
+            return View();
+        }
+
+        public ActionResult ChiTietDoanhThu()
+        {
+            return View();
+        }
+
+        public ActionResult ChiTietGiaBanBinhQuan()
+        {
+            return View();
+        }
 
         public ActionResult IndexChiTieu()
         {

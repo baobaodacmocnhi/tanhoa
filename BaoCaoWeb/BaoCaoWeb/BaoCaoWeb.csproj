@@ -195,6 +195,7 @@
     <Content Include="Scripts\amcharts\jschartDoanhThu.js" />
     <Content Include="Scripts\amcharts\jschartGiaBanBinhQuan.js" />
     <Content Include="Scripts\amcharts\jschartSanLuong.js" />
+    <Content Include="Scripts\anychart\jschartNhanDon.js" />
     <Content Include="Scripts\anychart\jschartGiaBanBinhQuan.js" />
     <Content Include="Scripts\anychart\jschartDoanhThu.js" />
     <Content Include="Scripts\anychart\jschartSanLuong.js" />
@@ -1984,6 +1985,9 @@
     <Content Include="Template\SBAdmin2\fontawesome\webfonts\fa-solid-900.woff2" />
     <Content Include="Views\Home\IndexChiTieu.cshtml" />
     <Content Include="Views\Home\Index - Copy.cshtml" />
+    <Content Include="Views\Home\ChiTietSanLuong.cshtml" />
+    <Content Include="Views\Home\ChiTietDoanhThu.cshtml" />
+    <Content Include="Views\Home\ChiTietGiaBanBinhQuan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

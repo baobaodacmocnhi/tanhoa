@@ -49,6 +49,7 @@ namespace BaoCaoWeb.Models
         public decimal NamPrevious { get; set; }
         public decimal ChenhLech { get; set; }
         public string NoiDung { get; set; }
+        public string NoiDung2 { get; set; }
         public double KeHoach { get; set; }
         public double ThucHien { get; set; }
         public double TyLe { get; set; }
@@ -56,7 +57,7 @@ namespace BaoCaoWeb.Models
         {
             Ky = 0;
             NamPresent = NamPrevious = ChenhLech = 0;
-            NoiDung = "";
+            NoiDung = NoiDung2 = "";
             KeHoach = ThucHien = TyLe = 0.0f;
         }
     }
