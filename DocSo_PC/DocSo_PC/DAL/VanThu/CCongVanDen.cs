@@ -103,6 +103,7 @@ namespace DocSo_PC.DAL.VanThu
             else
                 LoaiVB = "and LoaiVB=N'" + LoaiVB + "'";
             return _cDAL.ExecuteQuery_DataTable("select *,'To'=(select TenTo from [To] where TuMay<=SUBSTRING(MLT,3,2) and DenMay>=SUBSTRING(MLT,3,2))"
+                + " ,NgayKiemDinh=(select NgayKiemDinh from CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG where DanhBo=CongVanDen.DanhBo)"
                 + " from CongVanDen where Duyet_Ngay is null " + LoaiVB + " order by createdate desc");
         }
 
@@ -113,6 +114,7 @@ namespace DocSo_PC.DAL.VanThu
             else
                 LoaiVB = "and LoaiVB=N'" + LoaiVB + "'";
             return _cDAL.ExecuteQuery_DataTable("select *,'To'=(select TenTo from [To] where TuMay<=SUBSTRING(MLT,3,2) and DenMay>=SUBSTRING(MLT,3,2))"
+                + " ,NgayKiemDinh=(select NgayKiemDinh from CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG where DanhBo=CongVanDen.DanhBo)"
                 + " from CongVanDen where cast(Duyet_Ngay as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and cast(Duyet_Ngay as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' " + LoaiVB + " order by createdate desc");
         }
 
@@ -121,9 +123,13 @@ namespace DocSo_PC.DAL.VanThu
             return _cDAL.ExecuteQuery_DataTable("select * from CongVanDen where DanhBo='" + DanhBo + "' and CAST(DATEADD(DAY,90,CreateDate) as date)>=CAST(GETDATE() as date) order by CreateDate desc");
         }
 
-        public DataTable getDS_ButPhe_XuLySoLieu(string ButPhe)
+        public DataTable getDS_ButPhe_XuLySoLieu(string MaTo, string Nam, string Ky, string Dot, string ButPhe)
         {
-            return _cDAL.ExecuteQuery_DataTable("select * from CongVanDen where " + ButPhe + "=1 and CAST(DATEADD(DAY,90,CreateDate) as date)>=CAST(GETDATE() as date) order by CreateDate desc");
+            if (MaTo == "0")
+                MaTo = "";
+            else
+                MaTo = "and SUBSTRING(MLT1,3,2)>=(select TuMay from [To] where MaTo=" + MaTo + ") and SUBSTRING(MLT1,3,2)<=(select DenMay from [To] where MaTo=" + MaTo + ")";
+            return _cDAL.ExecuteQuery_DataTable("select * from CongVanDen where " + ButPhe + "=1 and CAST(DATEADD(DAY,90,CreateDate) as date)>=CAST(GETDATE() as date) and DanhBo in (select DanhBa from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " " + MaTo + ") order by CreateDate desc");
         }
 
         public DataTable count_ButPhe_XuLySoLieu(string MaTo, string Nam, string Ky, string Dot)

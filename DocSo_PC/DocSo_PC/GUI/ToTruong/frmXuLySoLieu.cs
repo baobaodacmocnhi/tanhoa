@@ -975,7 +975,10 @@ namespace DocSo_PC.GUI.ToTruong
         {
             try
             {
-                dgvCongVanDen.DataSource = _cCVD.getDS_ButPhe_XuLySoLieu(dgvButPhe.CurrentRow.Cells["Loai"].Value.ToString());
+                if (CNguoiDung.Doi == true || CNguoiDung.DoiXem)
+                    dgvCongVanDen.DataSource = _cCVD.getDS_ButPhe_XuLySoLieu(cmbTo.SelectedValue.ToString(), cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString(), dgvButPhe.CurrentRow.Cells["Loai"].Value.ToString());
+                else
+                    dgvCongVanDen.DataSource = _cCVD.getDS_ButPhe_XuLySoLieu(CNguoiDung.MaTo.ToString(), cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString(),dgvButPhe.CurrentRow.Cells["Loai"].Value.ToString());
             }
             catch (Exception ex)
             {

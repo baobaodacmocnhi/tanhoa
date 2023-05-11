@@ -218,18 +218,18 @@
             this.label40 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
             this.dgvCongVanDen = new System.Windows.Forms.DataGridView();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.dgvButPhe = new System.Windows.Forms.DataGridView();
-            this.ButPhe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Loai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnCopyToPhieuChuyen = new System.Windows.Forms.Button();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo_CVD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TableName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.dgvButPhe = new System.Windows.Forms.DataGridView();
+            this.ButPhe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Loai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnCopyToPhieuChuyen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -1931,70 +1931,6 @@
             this.dgvCongVanDen.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvCongVanDen_RowPostPaint);
             this.dgvCongVanDen.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvCongVanDen_MouseDoubleClick);
             // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.dgvButPhe);
-            this.groupBox5.Controls.Add(this.dgvCongVanDen);
-            this.groupBox5.Location = new System.Drawing.Point(1158, 157);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(188, 286);
-            this.groupBox5.TabIndex = 118;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Công Văn Đến";
-            // 
-            // dgvButPhe
-            // 
-            this.dgvButPhe.AllowUserToAddRows = false;
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvButPhe.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle23;
-            this.dgvButPhe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvButPhe.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ButPhe,
-            this.SoLuong,
-            this.Loai});
-            this.dgvButPhe.Location = new System.Drawing.Point(4, 175);
-            this.dgvButPhe.Name = "dgvButPhe";
-            this.dgvButPhe.Size = new System.Drawing.Size(182, 100);
-            this.dgvButPhe.TabIndex = 117;
-            this.dgvButPhe.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvButPhe_CellClick);
-            // 
-            // ButPhe
-            // 
-            this.ButPhe.DataPropertyName = "ButPhe";
-            this.ButPhe.HeaderText = "Bút Phê";
-            this.ButPhe.Name = "ButPhe";
-            this.ButPhe.Width = 70;
-            // 
-            // SoLuong
-            // 
-            this.SoLuong.DataPropertyName = "SoLuong";
-            this.SoLuong.HeaderText = "SL";
-            this.SoLuong.Name = "SoLuong";
-            this.SoLuong.Width = 50;
-            // 
-            // Loai
-            // 
-            this.Loai.DataPropertyName = "Loai";
-            this.Loai.HeaderText = "Loai";
-            this.Loai.Name = "Loai";
-            this.Loai.Visible = false;
-            // 
-            // btnCopyToPhieuChuyen
-            // 
-            this.btnCopyToPhieuChuyen.Location = new System.Drawing.Point(909, 271);
-            this.btnCopyToPhieuChuyen.Name = "btnCopyToPhieuChuyen";
-            this.btnCopyToPhieuChuyen.Size = new System.Drawing.Size(85, 36);
-            this.btnCopyToPhieuChuyen.TabIndex = 119;
-            this.btnCopyToPhieuChuyen.Text = "Copy To Phiếu Chuyển";
-            this.btnCopyToPhieuChuyen.UseVisualStyleBackColor = true;
-            this.btnCopyToPhieuChuyen.Click += new System.EventHandler(this.btnCopyToPhieuChuyen_Click);
-            // 
             // ID
             // 
             this.ID.DataPropertyName = "ID";
@@ -2035,6 +1971,70 @@
             this.IDCT.HeaderText = "IDCT";
             this.IDCT.Name = "IDCT";
             this.IDCT.Visible = false;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.dgvButPhe);
+            this.groupBox5.Controls.Add(this.dgvCongVanDen);
+            this.groupBox5.Location = new System.Drawing.Point(1158, 157);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(188, 295);
+            this.groupBox5.TabIndex = 118;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Công Văn Đến";
+            // 
+            // dgvButPhe
+            // 
+            this.dgvButPhe.AllowUserToAddRows = false;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvButPhe.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle23;
+            this.dgvButPhe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvButPhe.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ButPhe,
+            this.SoLuong,
+            this.Loai});
+            this.dgvButPhe.Location = new System.Drawing.Point(4, 175);
+            this.dgvButPhe.Name = "dgvButPhe";
+            this.dgvButPhe.Size = new System.Drawing.Size(182, 114);
+            this.dgvButPhe.TabIndex = 117;
+            this.dgvButPhe.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvButPhe_CellClick);
+            // 
+            // ButPhe
+            // 
+            this.ButPhe.DataPropertyName = "ButPhe";
+            this.ButPhe.HeaderText = "Bút Phê";
+            this.ButPhe.Name = "ButPhe";
+            this.ButPhe.Width = 70;
+            // 
+            // SoLuong
+            // 
+            this.SoLuong.DataPropertyName = "SoLuong";
+            this.SoLuong.HeaderText = "SL";
+            this.SoLuong.Name = "SoLuong";
+            this.SoLuong.Width = 50;
+            // 
+            // Loai
+            // 
+            this.Loai.DataPropertyName = "Loai";
+            this.Loai.HeaderText = "Loai";
+            this.Loai.Name = "Loai";
+            this.Loai.Visible = false;
+            // 
+            // btnCopyToPhieuChuyen
+            // 
+            this.btnCopyToPhieuChuyen.Location = new System.Drawing.Point(909, 271);
+            this.btnCopyToPhieuChuyen.Name = "btnCopyToPhieuChuyen";
+            this.btnCopyToPhieuChuyen.Size = new System.Drawing.Size(85, 36);
+            this.btnCopyToPhieuChuyen.TabIndex = 119;
+            this.btnCopyToPhieuChuyen.Text = "Copy To Phiếu Chuyển";
+            this.btnCopyToPhieuChuyen.UseVisualStyleBackColor = true;
+            this.btnCopyToPhieuChuyen.Click += new System.EventHandler(this.btnCopyToPhieuChuyen_Click);
             // 
             // frmXuLySoLieu
             // 

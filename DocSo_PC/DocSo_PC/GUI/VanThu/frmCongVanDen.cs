@@ -29,6 +29,7 @@ namespace DocSo_PC.GUI.VanThu
         TB_DULIEUKHACHHANG _ttkh = null;
         TB_DULIEUKHACHHANG_HUYDB _ttkhHuy = null;
         CongVanDen _enCVD = null;
+        bool _flagThemDienThoai = false;
 
         public frmCongVanDen()
         {
@@ -39,6 +40,7 @@ namespace DocSo_PC.GUI.VanThu
         {
             dgvDanhSach.AutoGenerateColumns = false;
             dgvDuyet.AutoGenerateColumns = false;
+            dgvDienThoai.AutoGenerateColumns = false;
             cmbLoaiVanBan.SelectedIndex = 0;
             DataTable dt = _cCVD.getGroup_NoiDung();
             DataRow dr = dt.NewRow();
@@ -441,6 +443,7 @@ namespace DocSo_PC.GUI.VanThu
                     chkDaXuLy.Checked = _enCVD.DaXuLy;
                     if (_enCVD.DaXuLy_Ngay != null)
                         txtDaXuLy_Ngay.Text = _enCVD.DaXuLy_Ngay.Value.ToString();
+                    dgvDienThoai.DataSource = _cDHN.getDS_DienThoai(_enCVD.DanhBo);
                 }
                 _dtDuyet = _cThuongVu.getFile(dgvDuyet["TableName_Duyet", e.RowIndex].Value.ToString(), int.Parse(dgvDuyet["IDCT_Duyet", e.RowIndex].Value.ToString()));
                 if (_dtDuyet != null && _dtDuyet.Rows.Count > 0)
@@ -725,6 +728,115 @@ namespace DocSo_PC.GUI.VanThu
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvDienThoai_UserAddedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            _flagThemDienThoai = true;
+        }
+
+        private void dgvDienThoai_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            try
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
+                {
+                    if (_enCVD != null)
+                    {
+                        SDT_DHN en = _cDHN.get_DienThoai(e.Row.Cells["DanhBo_DT"].Value.ToString(), e.Row.Cells["DienThoai_DT"].Value.ToString());
+                        if (en != null)
+                        {
+                            if (_cDHN.xoa_DienThoai(en) == true)
+                            {
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvDienThoai_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (_flagThemDienThoai == false && dgvDienThoai["DanhBo_DT", e.RowIndex].Value.ToString() != "" && (dgvDienThoai.Columns[e.ColumnIndex].Name == "HoTen_DT" || dgvDienThoai.Columns[e.ColumnIndex].Name == "SoChinh_DT"))
+                    if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                    {
+                        if (_enCVD != null)
+                        {
+                            SDT_DHN en = _cDHN.get_DienThoai(dgvDienThoai["DanhBo_DT", e.RowIndex].Value.ToString(), dgvDienThoai["DienThoai_DT", e.RowIndex].Value.ToString());
+                            if (en != null)
+                            {
+                                en.HoTen = dgvDienThoai["HoTen_DT", e.RowIndex].Value.ToString();
+                                if (dgvDienThoai["SoChinh_DT", e.RowIndex].Value != null && dgvDienThoai["SoChinh_DT", e.RowIndex].Value.ToString() != "")
+                                    en.SoChinh = bool.Parse(dgvDienThoai["SoChinh_DT", e.RowIndex].Value.ToString());
+                                else
+                                    en.SoChinh = false;
+                                en.GhiChu = dgvDienThoai["GhiChu_DT", e.RowIndex].Value.ToString();
+                                en.ModifyBy = CNguoiDung.MaND;
+                                en.ModifyDate = DateTime.Now;
+                                _cDHN.SubmitChanges();
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                    }
+                    else
+                        MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvDienThoai_RowValidated(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+                {
+                    if (_enCVD != null && _flagThemDienThoai == true)
+                    {
+                        if (dgvDienThoai["DienThoai_DT", e.RowIndex].Value.ToString().Length != 11 && dgvDienThoai["DienThoai_DT", e.RowIndex].Value.ToString().All(char.IsNumber) == false)
+                        {
+                            MessageBox.Show("Không đủ 10 số", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        if (_cDHN.checkExists_DienThoai(_enCVD.DanhBo, dgvDienThoai["DienThoai_DT", e.RowIndex].Value.ToString()) == true)
+                        {
+                            MessageBox.Show("Đã Tồn Tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        SDT_DHN en = new SDT_DHN();
+                        en.DanhBo = _enCVD.DanhBo;
+                        en.DienThoai = dgvDienThoai["DienThoai_DT", e.RowIndex].Value.ToString();
+                        en.HoTen = dgvDienThoai["HoTen_DT", e.RowIndex].Value.ToString();
+                        if (dgvDienThoai["SoChinh_DT", e.RowIndex].Value != null && dgvDienThoai["SoChinh_DT", e.RowIndex].Value.ToString() != "")
+                            en.SoChinh = bool.Parse(dgvDienThoai["SoChinh_DT", e.RowIndex].Value.ToString());
+                        else
+                            en.SoChinh = false;
+                        en.GhiChu = dgvDienThoai["GhiChu_DT", e.RowIndex].Value.ToString();
+                        if (_cDHN.them_DienThoai(en) == true)
+                        {
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        _flagThemDienThoai = false;
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
