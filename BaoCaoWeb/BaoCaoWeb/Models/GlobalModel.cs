@@ -50,6 +50,7 @@ namespace BaoCaoWeb.Models
         public decimal ChenhLech { get; set; }
         public string NoiDung { get; set; }
         public string NoiDung2 { get; set; }
+        public string NoiDung3 { get; set; }
         public double KeHoach { get; set; }
         public double ThucHien { get; set; }
         public double TyLe { get; set; }
@@ -57,7 +58,7 @@ namespace BaoCaoWeb.Models
         {
             Ky = 0;
             NamPresent = NamPrevious = ChenhLech = 0;
-            NoiDung = NoiDung2 = "";
+            NoiDung = NoiDung2= NoiDung3 = "";
             KeHoach = ThucHien = TyLe = 0.0f;
         }
     }
@@ -70,9 +71,14 @@ namespace BaoCaoWeb.Models
         public string NoiDung4 { get; set; }
         public string NoiDung5 { get; set; }
         public string NoiDung6 { get; set; }
+        public string NoiDung7 { get; set; }
+        public string NoiDung8 { get; set; }
+        public string NoiDung9 { get; set; }
+        public string NoiDung10 { get; set; }
+        public string NoiDung11 { get; set; }
         public NoiDung()
         {
-            NoiDung1 = NoiDung2 = NoiDung3 = NoiDung4 = NoiDung5 = NoiDung6 = "";
+            NoiDung1 = NoiDung2 = NoiDung3 = NoiDung4 = NoiDung5 = NoiDung6 = NoiDung7 = NoiDung8 = NoiDung9 = NoiDung10 = NoiDung11 = "";
         }
     }
 

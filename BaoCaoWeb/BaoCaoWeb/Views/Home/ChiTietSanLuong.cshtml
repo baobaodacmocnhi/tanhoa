@@ -1,1 +1,52 @@
-﻿
+﻿<div class="row">
+    <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary"></h6>
+            <div class="btn-group ml-2">
+                <button type="button" class="btn btn-info btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    Chọn ngày
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" onclick="getThongTin(1)">1</a></li>
+                    <li><a class="dropdown-item" onclick="getThongTin(7)">7</a></li>
+                    <li><a class="dropdown-item" onclick="getThongTin(14)">14</a></li>
+                    <li><a class="dropdown-item" onclick="getThongTin(30)">30</a></li>
+                    <li><a class="dropdown-item" onclick="getThongTin(60)">60</a></li>
+                    <li><a class="dropdown-item" onclick="getThongTin(90)">90</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- Card Body -->
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="tblSanLuong" class="table table-striped table-bordered text-dark h6 text-center">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th colspan="2">Kỳ này</th>
+                            <th colspan="2">Kỳ trước</th>
+                            <th colspan="2">Tăng/Giảm</th>
+                            <th colspan="2">Cùng kỳ năm trước</th>
+                            <th colspan="2">Tăng/Giảm</th>
+                        </tr>
+                        <tr>
+                            <th>Tổ</th>
+                            <th>ĐHN</th>
+                            <th>Sản lượng</th>
+                            <th>ĐHN</th>
+                            <th>Sản lượng</th>
+                            <th>ĐHN</th>
+                            <th>Sản lượng</th>
+                            <th>ĐHN</th>
+                            <th>Sản lượng</th>
+                            <th>ĐHN</th>
+                            <th>Sản lượng</th>
+                        </tr>
+                    </thead>
+                    <tbody id="vThuHo"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -43,7 +43,8 @@ namespace BaoCaoWeb.Controllers
                 en.KeHoach = double.Parse(dt.Rows[i][1].ToString());
                 en.NoiDung = dt.Rows[i][2].ToString();
                 en.TyLe = Math.Round(en.ThucHien / en.KeHoach * 100, 2);
-                en.NoiDung2 = dt.Rows[i][3].ToString();
+                if (dt.Rows[i][3].ToString() != "")
+                    en.NoiDung3 = dt.Rows[i][3].ToString();
                 enTT.lstSanLuong.Add(en);
             }
             //dt = _cDMA.ExecuteQuery_DataTable("SELECT sum(LN_ThatThoat)/sum(SL_DHT)*100 FROM[tanhoa].[dbo].[g_ThatThoatMangLuoi] where nam = " + enTT.NamPresent);
@@ -181,11 +182,101 @@ namespace BaoCaoWeb.Controllers
         //    return View(enTT);
         //}
 
+        #region ChiTietSanLuong
         public ActionResult ChiTietSanLuong()
         {
             return View();
         }
 
+        public JsonResult getSanLuong(string Nam, string Ky)
+        {
+            List<NoiDung> lstChart = new List<NoiDung>();
+            DataTable dt = _cThuTien.ExecuteQuery_DataTable("declare @Nam int = " + Nam + ";"
+                    + " declare @Ky int= " + Ky + ";"
+                    + " select t2.[To],SoLuong=SUM(t2.SoLuong),SanLuong=SUM(t2.SanLuong)"
+                    + " , SoLuongKyTruoc=SUM(t2.SoLuongKyTruoc),SanLuongKyTruoc=SUM(t2.SanLuongKyTruoc)"
+                    + " , SoLuongBD1=SUM(t2.SoLuong)-SUM(t2.SoLuongKyTruoc),SanLuongBD1=SUM(t2.SanLuong)-SUM(t2.SanLuongKyTruoc)"
+                    + " , SoLuongNamTruoc=SUM(t2.SoLuongNamTruoc),SanLuongNamTruoc=SUM(t2.SanLuongNamTruoc)"
+                    + " , SoLuongBD2=SUM(t2.SoLuong)-SUM(t2.SoLuongNamTruoc),SanLuongBD2=SUM(t2.SanLuong)-SUM(t2.SanLuongNamTruoc)"
+                    + " from"
+                    + " ("
+                    + " select 'To'=(select TenTo from[To] where MaTo= t1.MaTo),SoLuong=COUNT(DanhBo),SanLuong=SUM(TieuThu),SoLuongKyTruoc=0,SanLuongKyTruoc=0,SoLuongNamTruoc=0,SanLuongNamTruoc=0 from"
+                    + " ("
+                    + " select MaTo = 1, DanhBo= DanhBa, TieuThu= TieuThuMoi from DocSo where nam = @Nam and ky = @Ky and (select TuMay from[To] where MaTo= 1)<=May and May<=(select DenMay from[To] where MaTo=1)"
+                    + " union all"
+                    + " select MaTo = 2, DanhBo = DanhBa, TieuThu = TieuThuMoi from DocSo where nam = @Nam and ky = @Ky and(select TuMay from[To] where MaTo= 2)<=May and May<=(select DenMay from[To] where MaTo=2)"
+                    + " union all"
+                    + " select MaTo = 3, DanhBo = DanhBa, TieuThu = TieuThuMoi from DocSo where nam = @Nam and ky = @Ky and(select TuMay from[To] where MaTo= 3)<=May and May<=(select DenMay from[To] where MaTo=3)"
+                    + " union all"
+                    + " select MaTo = 4, DanhBo = DanhBa, TieuThu = TieuThuMoi from DocSo where nam = @Nam and ky = @Ky and(select TuMay from[To] where MaTo= 4)<=May and May<=(select DenMay from[To] where MaTo=4)"
+                    + " )t1 group by t1.MaTo"
+                    + " union"
+                    + " select 'To'=(select TenTo from[To] where MaTo= t1.MaTo),SoLuong=0,SanLuong=0,SoLuongKyTruoc=COUNT(DanhBo),SanLuongKyTruoc=SUM(TieuThu),SoLuongNamTruoc=0,SanLuongNamTruoc=0 from"
+                    + " ("
+                    + " select MaTo = 1, DanhBo= DanhBa, TieuThu= TieuThuMoi from DocSo where nam = @Nam and ky = @Ky - 1 and (select TuMay from[To] where MaTo= 1)<=May and May<=(select DenMay from[To] where MaTo=1)"
+                    + " union all"
+                    + " select MaTo = 2, DanhBo = DanhBa, TieuThu = TieuThuMoi from DocSo where nam = @Nam and ky = @Ky - 1 and(select TuMay from[To] where MaTo= 2)<=May and May<=(select DenMay from[To] where MaTo=2)"
+                    + " union all"
+                    + " select MaTo = 3, DanhBo = DanhBa, TieuThu = TieuThuMoi from DocSo where nam = @Nam and ky = @Ky - 1 and(select TuMay from[To] where MaTo= 3)<=May and May<=(select DenMay from[To] where MaTo=3)"
+                    + " union all"
+                    + " select MaTo = 4, DanhBo = DanhBa, TieuThu = TieuThuMoi from DocSo where nam = @Nam and ky = @Ky - 1 and(select TuMay from[To] where MaTo= 4)<=May and May<=(select DenMay from[To] where MaTo=4)"
+                    + " )t1 group by t1.MaTo"
+                    + " union"
+                    + " select 'To'=(select TenTo from[To] where MaTo= t1.MaTo),SoLuong=0,SanLuong=0,SoLuongKyTruoc=0,SanLuongKyTruoc=0,SoLuongNamTruoc=COUNT(DanhBo),SanLuongNamTruoc=SUM(TieuThu) from"
+                    + " ("
+                    + " select MaTo = 1, DanhBo= DanhBa, TieuThu= TieuThuMoi from DocSo where nam = @Nam - 1 and ky = @Ky and (select TuMay from[To] where MaTo= 1)<=May and May<=(select DenMay from[To] where MaTo=1)"
+                    + " union all"
+                    + " select MaTo = 2, DanhBo = DanhBa, TieuThu = TieuThuMoi from DocSo where nam = @Nam - 1 and ky = @Ky and(select TuMay from[To] where MaTo= 2)<=May and May<=(select DenMay from[To] where MaTo=2)"
+                    + " union all"
+                    + " select MaTo = 3, DanhBo = DanhBa, TieuThu = TieuThuMoi from DocSo where nam = @Nam - 1 and ky = @Ky and(select TuMay from[To] where MaTo= 3)<=May and May<=(select DenMay from[To] where MaTo=3)"
+                    + " union all"
+                    + " select MaTo = 4, DanhBo = DanhBa, TieuThu = TieuThuMoi from DocSo where nam = @Nam - 1 and ky = @Ky and(select TuMay from[To] where MaTo= 4)<=May and May<=(select DenMay from[To] where MaTo=4)"
+                    + " )t1 group by t1.MaTo"
+                    + " t2 group by t2.[To]");
+            decimal SoLuong = 0, SanLuong = 0, SoLuongKyTruoc = 0, SanLuongKyTruoc = 0, SoLuongBD1 = 0, SanLuongBD1 = 0, SoLuongNamTruoc = 0, SanLuongNamTruoc = 0, SoLuongBD2 = 0, SanLuongBD2 = 0;
+            foreach (DataRow item in dt.Rows)
+            {
+                NoiDung enSL = new NoiDung();
+                enSL.NoiDung1 = item["To"].ToString();
+                SoLuong += decimal.Parse(item["SoLuong"].ToString());
+                enSL.NoiDung2 = decimal.Parse(item["SoLuong"].ToString()).ToString("N0").Replace(",", ".");
+                SanLuong += decimal.Parse(item["SanLuong"].ToString());
+                enSL.NoiDung3 = decimal.Parse(item["SanLuong"].ToString()).ToString("N0").Replace(",", ".");
+                SoLuongKyTruoc += decimal.Parse(item["SoLuongKyTruoc"].ToString());
+                enSL.NoiDung4 = decimal.Parse(item["SoLuongKyTruoc"].ToString()).ToString("N0").Replace(",", ".");
+                SanLuongKyTruoc += decimal.Parse(item["SanLuongKyTruoc"].ToString());
+                enSL.NoiDung5 = decimal.Parse(item["SanLuongKyTruoc"].ToString()).ToString("N0").Replace(",", ".");
+                SoLuongBD1 += decimal.Parse(item["SoLuongBD1"].ToString());
+                enSL.NoiDung6 = decimal.Parse(item["SoLuongBD1"].ToString()).ToString("N0").Replace(",", ".");
+                SanLuongBD1 += decimal.Parse(item["SanLuongBD1"].ToString());
+                enSL.NoiDung7 = decimal.Parse(item["SanLuongBD1"].ToString()).ToString("N0").Replace(",", ".");
+                SoLuongNamTruoc += decimal.Parse(item["SoLuongNamTruoc"].ToString());
+                enSL.NoiDung8 = decimal.Parse(item["SoLuongNamTruoc"].ToString()).ToString("N0").Replace(",", ".");
+                SanLuongNamTruoc += decimal.Parse(item["SanLuongNamTruoc"].ToString());
+                enSL.NoiDung9 = decimal.Parse(item["SanLuongNamTruoc"].ToString()).ToString("N0").Replace(",", ".");
+                SoLuongBD2 += decimal.Parse(item["SoLuongBD2"].ToString());
+                enSL.NoiDung10 = decimal.Parse(item["SoLuongBD2"].ToString()).ToString("N0").Replace(",", ".");
+                SanLuongBD2 += decimal.Parse(item["SanLuongBD2"].ToString());
+                enSL.NoiDung11 = decimal.Parse(item["SanLuongBD2"].ToString()).ToString("N0").Replace(",", ".");
+                lstChart.Add(enSL);
+            }
+            //tongcong
+            NoiDung enTC = new NoiDung();
+            enTC.NoiDung2 = SoLuong.ToString("N0").Replace(",", ".");
+            enTC.NoiDung3 = SanLuong.ToString("N0").Replace(",", ".");
+            enTC.NoiDung4 = SoLuongKyTruoc.ToString("N0").Replace(",", ".");
+            enTC.NoiDung5 = SanLuongKyTruoc.ToString("N0").Replace(",", ".");
+            enTC.NoiDung6 = SoLuongBD1.ToString("N0").Replace(",", ".");
+            enTC.NoiDung7 = SanLuongBD1.ToString("N0").Replace(",", ".");
+            enTC.NoiDung8 = SoLuongNamTruoc.ToString("N0").Replace(",", ".");
+            enTC.NoiDung9 = SanLuongNamTruoc.ToString("N0").Replace(",", ".");
+            enTC.NoiDung10 = SoLuongBD2.ToString("N0").Replace(",", ".");
+            enTC.NoiDung11 = SanLuongBD2.ToString("N0").Replace(",", ".");
+            lstChart.Add(enTC);
+            return Json(lstChart, JsonRequestBehavior.AllowGet);
+        }
+
+        #endregion
         public ActionResult ChiTietDoanhThu()
         {
             return View();
