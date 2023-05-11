@@ -65,15 +65,23 @@ namespace BaoCaoWeb.Controllers
             {
                 SLHoaDon += decimal.Parse(item["SoLuong"].ToString());
             }
+            decimal SoLuong = 0, TongCong = 0;
             foreach (DataRow item in dt.Rows)
             {
                 NoiDung enSL = new NoiDung();
                 enSL.NoiDung1 = item["TenDichVu"].ToString();
+                SoLuong += decimal.Parse(item["SoLuong"].ToString());
                 enSL.NoiDung2 = decimal.Parse(item["SoLuong"].ToString()).ToString("N0").Replace(",", ".");
+                TongCong += decimal.Parse(item["TongCong"].ToString());
                 enSL.NoiDung3 = decimal.Parse(item["TongCong"].ToString()).ToString("N0").Replace(",", ".");
                 enSL.NoiDung4 = Math.Round(double.Parse(item["SoLuong"].ToString()) / (double)SLHoaDon * 100, 2).ToString().Replace(".", ",");
                 lstChart.Add(enSL);
             }
+            //tongcong
+            NoiDung enTC = new NoiDung();
+            enTC.NoiDung2 = SoLuong.ToString("N0").Replace(",", ".");
+            enTC.NoiDung3 = TongCong.ToString("N0").Replace(",", ".");
+            lstChart.Add(enTC);
             return Json(lstChart, JsonRequestBehavior.AllowGet);
         }
 
@@ -107,19 +115,56 @@ namespace BaoCaoWeb.Controllers
                     Khac++;
             }
             List<Array> lstChart = new List<Array>();
-            string[] a = new string[] { "Điều Chỉnh",  DieuChinh.ToString() };
+            string[] a = new string[] { "Điều Chỉnh", DieuChinh.ToString() };
             lstChart.Add(a);
-            a = new string[] { "Khiếu Nại",  KhieuNai.ToString() };
+            a = new string[] { "Khiếu Nại", KhieuNai.ToString() };
             lstChart.Add(a);
-            a = new string[] { "Sự Cố",  SuCo.ToString() };
+            a = new string[] { "Sự Cố", SuCo.ToString() };
             lstChart.Add(a);
-            a = new string[] { "Quản Lý",  QuanLy.ToString() };
+            a = new string[] { "Quản Lý", QuanLy.ToString() };
             lstChart.Add(a);
-            a = new string[] { "Khác",  Khac.ToString() };
+            a = new string[] { "Khác", Khac.ToString() };
             lstChart.Add(a);
             return Json(lstChart, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult getDiemBe(string SoNgay)
+        {
+            List<NoiDung> lstChart = new List<NoiDung>();
+            DataTable dt = _cDMA.ExecuteQuery_DataTable("SELECT Quan=TenQuan,LoaiBe=case when LoaiBe=1 then N'Bể Nổi' when LoaiBe=0 then N'Bể Ngầm' end"
+                    + " , Tong = count(ID)"
+                    + " , DaSua = count( case when TinhTrangSuaBe = 1 then 1 end)"
+                    + " , KhongBe = count(case when TinhTrangSuaBe = 2 then 1 end)"
+                    + " , ChuaSua = count(case when TinhTrangSuaBe is null then 1 end)"
+                    + "   FROM[tanhoa].[dbo].[w_BaoBe]"
+                    + "   where CAST(CreateDate as date) >= CAST(DATEADD(day, " + (-1 * int.Parse(SoNgay)) + ", getdate()) as date) and CAST(CreateDate as date) <= CAST(getdate() as date)"
+                    + "   group by TenQuan, LoaiBe"
+                    + "   order by TenQuan, LoaiBe");
+            decimal Tong = 0, DaSua = 0, KhongBe = 0, ChuaSua = 0;
+            foreach (DataRow item in dt.Rows)
+            {
+                NoiDung enSL = new NoiDung();
+                enSL.NoiDung1 = item["Quan"].ToString();
+                enSL.NoiDung2 = item["LoaiBe"].ToString();
+                Tong += decimal.Parse(item["Tong"].ToString());
+                enSL.NoiDung3 = decimal.Parse(item["Tong"].ToString()).ToString("N0").Replace(",", ".");
+                DaSua += decimal.Parse(item["DaSua"].ToString());
+                enSL.NoiDung4 = decimal.Parse(item["DaSua"].ToString()).ToString("N0").Replace(",", ".");
+                KhongBe += decimal.Parse(item["KhongBe"].ToString());
+                enSL.NoiDung5 = decimal.Parse(item["KhongBe"].ToString()).ToString("N0").Replace(",", ".");
+                ChuaSua += decimal.Parse(item["ChuaSua"].ToString());
+                enSL.NoiDung6 = decimal.Parse(item["ChuaSua"].ToString()).ToString("N0").Replace(",", ".");
+                lstChart.Add(enSL);
+            }
+            //tongcong
+            NoiDung enTC = new NoiDung();
+            enTC.NoiDung3 = Tong.ToString("N0").Replace(",", ".");
+            enTC.NoiDung4 = DaSua.ToString("N0").Replace(",", ".");
+            enTC.NoiDung5 = KhongBe.ToString("N0").Replace(",", ".");
+            enTC.NoiDung6 = ChuaSua.ToString("N0").Replace(",", ".");
+            lstChart.Add(enTC);
+            return Json(lstChart, JsonRequestBehavior.AllowGet);
+        }
 
         //public ActionResult Index()
         //{

@@ -69,9 +69,10 @@ namespace BaoCaoWeb.Models
         public string NoiDung3 { get; set; }
         public string NoiDung4 { get; set; }
         public string NoiDung5 { get; set; }
+        public string NoiDung6 { get; set; }
         public NoiDung()
         {
-            NoiDung1 = NoiDung2 = NoiDung3 = NoiDung4 = NoiDung5 = "";
+            NoiDung1 = NoiDung2 = NoiDung3 = NoiDung4 = NoiDung5 = NoiDung6 = "";
         }
     }
 
