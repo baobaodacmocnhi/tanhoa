@@ -42,7 +42,7 @@ namespace GIAYKHEN
                                     en.GioiTinh = false;
                                 else
                                     en.GioiTinh = true;
-                                en.CongDoan = true;
+                                en.HCM = true;
                                 if (en.CHUCVU == "" && en.PHONGBAN == "")
                                     en.TAPTHE = true;
                                 _db.A_GIAYKHENs.InsertOnSubmit(en);
@@ -165,20 +165,32 @@ namespace GIAYKHEN
                     {
                         DataTable dtExcel = ExcelToDataTable(dialog.FileName);
                         string PhongBan = "";
-                        for (int i = 0; i < dtExcel.Rows.Count; i++)
-                            if (!string.IsNullOrEmpty(dtExcel.Rows[i][0].ToString().Trim()) && IsNumeric(dtExcel.Rows[i][0].ToString().Trim()))
+                        for (int i = 2; i < dtExcel.Rows.Count; i++)
+                            if (!string.IsNullOrEmpty(dtExcel.Rows[i][0].ToString().Trim()))
                             {
                                 A_GIAYKHEN en = new A_GIAYKHEN();
                                 en.HOTEN = dtExcel.Rows[i][1].ToString().Trim();
-                                //en.CHUCVU = dtExcel.Rows[i][3].ToString().Trim().ToUpper();
-                                en.PHONGBAN = dtExcel.Rows[i][2].ToString().Trim().ToUpper();
-                                //if (dtExcel.Rows[i][4].ToString().Trim() == "Nữ")
-                                //    en.GioiTinh = false;
-                                //else
-                                //    en.GioiTinh = true;
-                                en.HCM = true;
+                                en.CHUCVU = dtExcel.Rows[i][3].ToString().Trim().ToUpper();
+                                en.PHONGBAN = dtExcel.Rows[i][4].ToString().Trim().ToUpper();
+                                if (dtExcel.Rows[i][2].ToString().Trim().ToUpper().Equals("NỮ"))
+                                    en.GioiTinh = false;
+                                else
+                                    en.GioiTinh = true;
+                                if (en.CHUCVU == "" && en.PHONGBAN == "")
+                                    en.TAPTHE = true;
                                 _db.A_GIAYKHENs.InsertOnSubmit(en);
                                 _db.SubmitChanges();
+
+                                //QuaySo en = new QuaySo();
+                                //if (_db.QuaySos.Count() == 0)
+                                //    en.STT = 1;
+                                //else
+                                //    en.STT = _db.QuaySos.Max(item => item.STT) + 1;
+                                //en.STT = int.Parse(dtExcel.Rows[i][0].ToString().Trim());
+                                //en.HoTen = dtExcel.Rows[i][2].ToString().Trim();
+                                //en.DonVi = dtExcel.Rows[i][9].ToString().Trim();
+                                //_db.QuaySos.InsertOnSubmit(en);
+                                //_db.SubmitChanges();
                             }
                             else
                             {
