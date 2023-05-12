@@ -188,11 +188,16 @@ namespace BaoCaoWeb.Controllers
             return View();
         }
 
-        public JsonResult getSanLuong(string Nam, string Ky)
+        public JsonResult getSanLuong(string Nam, string Ky, string Dot)
         {
+            if (Dot == "0")
+                Dot = "";
+            else
+                Dot = " and Dot=" + Dot;
             List<NoiDung> lstChart = new List<NoiDung>();
-            DataTable dt = _cThuTien.ExecuteQuery_DataTable("declare @Nam int = " + Nam + ";"
+            DataTable dt = _cDocSo.ExecuteQuery_DataTable("declare @Nam int = " + Nam + ";"
                     + " declare @Ky int= " + Ky + ";"
+                    + " if(@Ky=1) begin set @Nam=@Nam-1; set @Ky=12; end"
                     + " select t2.[To],SoLuong=SUM(t2.SoLuong),SanLuong=SUM(t2.SanLuong)"
                     + " , SoLuongKyTruoc=SUM(t2.SoLuongKyTruoc),SanLuongKyTruoc=SUM(t2.SanLuongKyTruoc)"
                     + " , SoLuongBD1=SUM(t2.SoLuong)-SUM(t2.SoLuongKyTruoc),SanLuongBD1=SUM(t2.SanLuong)-SUM(t2.SanLuongKyTruoc)"
@@ -202,37 +207,37 @@ namespace BaoCaoWeb.Controllers
                     + " ("
                     + " select 'To'=(select TenTo from[To] where MaTo= t1.MaTo),SoLuong=COUNT(DanhBo),SanLuong=SUM(TieuThu),SoLuongKyTruoc=0,SanLuongKyTruoc=0,SoLuongNamTruoc=0,SanLuongNamTruoc=0 from"
                     + " ("
-                    + " select MaTo = 1, DanhBo= DanhBa, TieuThu= TieuThuMoi from DocSo where nam = @Nam and ky = @Ky and (select TuMay from[To] where MaTo= 1)<=May and May<=(select DenMay from[To] where MaTo=1)"
+                    + " select MaTo = 1, DanhBo= DanhBa, TieuThu= TieuThuMoi from DocSo where nam = @Nam and ky = @Ky " + Dot + " and (select TuMay from[To] where MaTo= 1)<=May and May<=(select DenMay from[To] where MaTo=1)"
                     + " union all"
-                    + " select MaTo = 2, DanhBo = DanhBa, TieuThu = TieuThuMoi from DocSo where nam = @Nam and ky = @Ky and(select TuMay from[To] where MaTo= 2)<=May and May<=(select DenMay from[To] where MaTo=2)"
+                    + " select MaTo = 2, DanhBo = DanhBa, TieuThu = TieuThuMoi from DocSo where nam = @Nam and ky = @Ky " + Dot + " and(select TuMay from[To] where MaTo= 2)<=May and May<=(select DenMay from[To] where MaTo=2)"
                     + " union all"
-                    + " select MaTo = 3, DanhBo = DanhBa, TieuThu = TieuThuMoi from DocSo where nam = @Nam and ky = @Ky and(select TuMay from[To] where MaTo= 3)<=May and May<=(select DenMay from[To] where MaTo=3)"
+                    + " select MaTo = 3, DanhBo = DanhBa, TieuThu = TieuThuMoi from DocSo where nam = @Nam and ky = @Ky " + Dot + " and(select TuMay from[To] where MaTo= 3)<=May and May<=(select DenMay from[To] where MaTo=3)"
                     + " union all"
-                    + " select MaTo = 4, DanhBo = DanhBa, TieuThu = TieuThuMoi from DocSo where nam = @Nam and ky = @Ky and(select TuMay from[To] where MaTo= 4)<=May and May<=(select DenMay from[To] where MaTo=4)"
+                    + " select MaTo = 4, DanhBo = DanhBa, TieuThu = TieuThuMoi from DocSo where nam = @Nam and ky = @Ky " + Dot + " and(select TuMay from[To] where MaTo= 4)<=May and May<=(select DenMay from[To] where MaTo=4)"
                     + " )t1 group by t1.MaTo"
                     + " union"
                     + " select 'To'=(select TenTo from[To] where MaTo= t1.MaTo),SoLuong=0,SanLuong=0,SoLuongKyTruoc=COUNT(DanhBo),SanLuongKyTruoc=SUM(TieuThu),SoLuongNamTruoc=0,SanLuongNamTruoc=0 from"
                     + " ("
-                    + " select MaTo = 1, DanhBo= DanhBa, TieuThu= TieuThuMoi from DocSo where nam = @Nam and ky = @Ky - 1 and (select TuMay from[To] where MaTo= 1)<=May and May<=(select DenMay from[To] where MaTo=1)"
+                    + " select MaTo = 1, DanhBo= DanhBa, TieuThu= TieuThuMoi from DocSo where nam = @Nam and ky = @Ky - 1 " + Dot + " and (select TuMay from[To] where MaTo= 1)<=May and May<=(select DenMay from[To] where MaTo=1)"
                     + " union all"
-                    + " select MaTo = 2, DanhBo = DanhBa, TieuThu = TieuThuMoi from DocSo where nam = @Nam and ky = @Ky - 1 and(select TuMay from[To] where MaTo= 2)<=May and May<=(select DenMay from[To] where MaTo=2)"
+                    + " select MaTo = 2, DanhBo = DanhBa, TieuThu = TieuThuMoi from DocSo where nam = @Nam and ky = @Ky - 1 " + Dot + " and(select TuMay from[To] where MaTo= 2)<=May and May<=(select DenMay from[To] where MaTo=2)"
                     + " union all"
-                    + " select MaTo = 3, DanhBo = DanhBa, TieuThu = TieuThuMoi from DocSo where nam = @Nam and ky = @Ky - 1 and(select TuMay from[To] where MaTo= 3)<=May and May<=(select DenMay from[To] where MaTo=3)"
+                    + " select MaTo = 3, DanhBo = DanhBa, TieuThu = TieuThuMoi from DocSo where nam = @Nam and ky = @Ky - 1 " + Dot + " and(select TuMay from[To] where MaTo= 3)<=May and May<=(select DenMay from[To] where MaTo=3)"
                     + " union all"
-                    + " select MaTo = 4, DanhBo = DanhBa, TieuThu = TieuThuMoi from DocSo where nam = @Nam and ky = @Ky - 1 and(select TuMay from[To] where MaTo= 4)<=May and May<=(select DenMay from[To] where MaTo=4)"
+                    + " select MaTo = 4, DanhBo = DanhBa, TieuThu = TieuThuMoi from DocSo where nam = @Nam and ky = @Ky - 1 " + Dot + " and(select TuMay from[To] where MaTo= 4)<=May and May<=(select DenMay from[To] where MaTo=4)"
                     + " )t1 group by t1.MaTo"
                     + " union"
                     + " select 'To'=(select TenTo from[To] where MaTo= t1.MaTo),SoLuong=0,SanLuong=0,SoLuongKyTruoc=0,SanLuongKyTruoc=0,SoLuongNamTruoc=COUNT(DanhBo),SanLuongNamTruoc=SUM(TieuThu) from"
                     + " ("
-                    + " select MaTo = 1, DanhBo= DanhBa, TieuThu= TieuThuMoi from DocSo where nam = @Nam - 1 and ky = @Ky and (select TuMay from[To] where MaTo= 1)<=May and May<=(select DenMay from[To] where MaTo=1)"
+                    + " select MaTo = 1, DanhBo= DanhBa, TieuThu= TieuThuMoi from DocSo where nam = @Nam - 1 and ky = @Ky " + Dot + " and (select TuMay from[To] where MaTo= 1)<=May and May<=(select DenMay from[To] where MaTo=1)"
                     + " union all"
-                    + " select MaTo = 2, DanhBo = DanhBa, TieuThu = TieuThuMoi from DocSo where nam = @Nam - 1 and ky = @Ky and(select TuMay from[To] where MaTo= 2)<=May and May<=(select DenMay from[To] where MaTo=2)"
+                    + " select MaTo = 2, DanhBo = DanhBa, TieuThu = TieuThuMoi from DocSo where nam = @Nam - 1 and ky = @Ky " + Dot + " and(select TuMay from[To] where MaTo= 2)<=May and May<=(select DenMay from[To] where MaTo=2)"
                     + " union all"
-                    + " select MaTo = 3, DanhBo = DanhBa, TieuThu = TieuThuMoi from DocSo where nam = @Nam - 1 and ky = @Ky and(select TuMay from[To] where MaTo= 3)<=May and May<=(select DenMay from[To] where MaTo=3)"
+                    + " select MaTo = 3, DanhBo = DanhBa, TieuThu = TieuThuMoi from DocSo where nam = @Nam - 1 and ky = @Ky " + Dot + " and(select TuMay from[To] where MaTo= 3)<=May and May<=(select DenMay from[To] where MaTo=3)"
                     + " union all"
-                    + " select MaTo = 4, DanhBo = DanhBa, TieuThu = TieuThuMoi from DocSo where nam = @Nam - 1 and ky = @Ky and(select TuMay from[To] where MaTo= 4)<=May and May<=(select DenMay from[To] where MaTo=4)"
+                    + " select MaTo = 4, DanhBo = DanhBa, TieuThu = TieuThuMoi from DocSo where nam = @Nam - 1 and ky = @Ky " + Dot + " and(select TuMay from[To] where MaTo= 4)<=May and May<=(select DenMay from[To] where MaTo=4)"
                     + " )t1 group by t1.MaTo"
-                    + " t2 group by t2.[To]");
+                    + " )t2 group by t2.[To]");
             decimal SoLuong = 0, SanLuong = 0, SoLuongKyTruoc = 0, SanLuongKyTruoc = 0, SoLuongBD1 = 0, SanLuongBD1 = 0, SoLuongNamTruoc = 0, SanLuongNamTruoc = 0, SoLuongBD2 = 0, SanLuongBD2 = 0;
             foreach (DataRow item in dt.Rows)
             {

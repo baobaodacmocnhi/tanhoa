@@ -1,21 +1,123 @@
-﻿<div class="row">
+﻿<script>
+    $(document).ready(function () {
+        $("#Nam").val(2023);
+    });
+    function getSanLuong() {
+        $("#vSanLuong tr").remove();
+        $.ajax({
+            type: 'POST',
+            url: '/Home/getSanLuong/',
+            dataType: 'json',
+            data: { Nam: $("#Nam").val(), Ky: $("#Ky").val(), Dot: $("#Dot").val() },
+            success: function (data) {
+                var items = '';
+                $.each(data, function (i, item) {
+                    var rows = "<tr>"
+                        + "<td>" + item.NoiDung1 + "</td>"
+                        + "<td>" + item.NoiDung2 + "</td>"
+                        + "<td>" + item.NoiDung3 + "</td>"
+                        + "<td>" + item.NoiDung4 + "</td>"
+                        + "<td>" + item.NoiDung5 + "</td>";
+                    if (item.NoiDung6 < 0)
+                        rows += "<td style = 'color:red'>" + item.NoiDung6 + "</td>";
+                    else
+                        if (item.NoiDung6 == 0)
+                            rows += "<td style = 'color:orange'>" + item.NoiDung6 + "</td>";
+                        else
+                            if (item.NoiDung6 > 0)
+                                rows += "<td style = 'color:green'>" + item.NoiDung6 + "</td>";
+                    if (item.NoiDung7 < 0)
+                        rows += "<td style = 'color:red'>" + item.NoiDung7 + "</td>";
+                    else
+                        if (item.NoiDung7 == 0)
+                            rows += "<td style = 'color:orange'>" + item.NoiDung7 + "</td>";
+                        else
+                            if (item.NoiDung7 > 0)
+                                rows += "<td style = 'color:green'>" + item.NoiDung7 + "</td>";
+                    rows += "<td>" + item.NoiDung8 + "</td>";
+                    rows += "<td>" + item.NoiDung9 + "</td>";
+                    if (item.NoiDung10 < 0)
+                        rows += "<td style = 'color:red'>" + item.NoiDung10 + "</td>";
+                    else
+                        if (item.NoiDung10 == 0)
+                            rows += "<td style = 'color:orange'>" + item.NoiDung10 + "</td>";
+                        else
+                            if (item.NoiDung10 > 0)
+                                rows += "<td style = 'color:green'>" + item.NoiDung10 + "</td>";
+                    if (item.NoiDung11 < 0)
+                        rows += "<td style = 'color:red'>" + item.NoiDung11 + "</td>";
+                    else
+                        if (item.NoiDung11 == 0)
+                            rows += "<td style = 'color:orange'>" + item.NoiDung11 + "</td>";
+                        else
+                            if (item.NoiDung11 > 0)
+                                rows += "<td style = 'color:green'>" + item.NoiDung11 + "</td>";
+                    rows += "</tr>";
+                    $("#vSanLuong").append(rows);
+                });
+            },
+            error: function (ex) {
+                alert("Error: " + ex.statusText);
+            }
+        });
+    };
+</script>
+<div class="row">
     <div class="card shadow mb-4">
         <!-- Card Header - Dropdown -->
-        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary"></h6>
-            <div class="btn-group ml-2">
-                <button type="button" class="btn btn-info btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    Chọn ngày
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" onclick="getThongTin(1)">1</a></li>
-                    <li><a class="dropdown-item" onclick="getThongTin(7)">7</a></li>
-                    <li><a class="dropdown-item" onclick="getThongTin(14)">14</a></li>
-                    <li><a class="dropdown-item" onclick="getThongTin(30)">30</a></li>
-                    <li><a class="dropdown-item" onclick="getThongTin(60)">60</a></li>
-                    <li><a class="dropdown-item" onclick="getThongTin(90)">90</a></li>
-                </ul>
+        <div class="card-header">
+            <div class="row">
+                <div class="col-auto">
+                    <h6 class="m-0 font-weight-bold text-primary">Năm</h6>
+                    <input name="Nam" id="Nam" class="form-control" type="number" placeholder="Default input" aria-label="" maxlength="4" size="4">
+                </div>
+                <div class="col-auto">
+                    <h6 class="m-0 font-weight-bold text-primary">Kỳ</h6>
+                    <select name="Ky" id="Ky">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                </div>
+                <div class="col-auto">
+                    <h6 class="m-0 font-weight-bold text-primary">Đợt</h6>
+                    <select name="Dot" id="Dot">
+                        <option value="0">Tất cả</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                    </select>
+                </div>
+                <div class="col"><button type="button" class="btn btn-primary" onclick="getSanLuong()">Xem</button></div>
             </div>
+
+
         </div>
         <!-- Card Body -->
         <div class="card-body">
@@ -44,7 +146,7 @@
                             <th>Sản lượng</th>
                         </tr>
                     </thead>
-                    <tbody id="vThuHo"></tbody>
+                    <tbody id="vSanLuong"></tbody>
                 </table>
             </div>
         </div>
