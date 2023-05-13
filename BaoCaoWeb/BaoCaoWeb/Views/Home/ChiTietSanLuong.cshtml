@@ -1,12 +1,32 @@
-﻿<script>
+﻿@model BaoCaoWeb.Models.ThongTin
+<script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+<script src="https://cdn.anychart.com/releases/v8/js/anychart-ui.min.js"></script>
+<script src="https://cdn.anychart.com/releases/v8/js/anychart-exports.min.js"></script>
+<script src="https://cdn.anychart.com/releases/v8/js/anychart-cartesian-3d.min.js"></script>
+<link href="https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css" type="text/css" rel="stylesheet">
+<link href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css" type="text/css" rel="stylesheet">
+<script src="~/Scripts/anychart/jschartSanLuong.js"></script>
+<style>
+    .chartdiv {
+        width: auto;
+        height: 600px;
+    }
+
+    a {
+        color: inherit;
+    }
+</style>
+<script>
     $(document).ready(function () {
         $("#Nam").val(2023);
+        getSanLuongNam_chart(new Date().getFullYear() - 1, new Date().getFullYear());
+        getSanLuongChuanThu_chart(new Date().getFullYear());
     });
-    function getSanLuong() {
-        $("#vSanLuong tr").remove();
+    function getSanLuongDoi() {
+        $("#vSanLuongDoi tr").remove();
         $.ajax({
             type: 'POST',
-            url: '/Home/getSanLuong/',
+            url: '/Home/getSanLuongDoi/',
             dataType: 'json',
             data: { Nam: $("#Nam").val(), Ky: $("#Ky").val(), Dot: $("#Dot").val() },
             success: function (data) {
@@ -53,7 +73,7 @@
                             if (item.NoiDung11 > 0)
                                 rows += "<td style = 'color:green'>" + item.NoiDung11 + "</td>";
                     rows += "</tr>";
-                    $("#vSanLuong").append(rows);
+                    $("#vSanLuongDoi").append(rows);
                 });
             },
             error: function (ex) {
@@ -63,91 +83,282 @@
     };
 </script>
 <div class="row">
-    <div class="card shadow mb-4">
-        <!-- Card Header - Dropdown -->
-        <div class="card-header">
-            <div class="row">
-                <div class="col-auto">
-                    <h6 class="m-0 font-weight-bold text-primary">Năm</h6>
-                    <input name="Nam" id="Nam" class="form-control" type="number" placeholder="Default input" aria-label="" maxlength="4" size="4">
+    <div class="col">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-auto">
+                        <h6 class="m-0 font-weight-bold text-primary">Năm</h6>
+                        <input name="Nam" id="Nam" class="form-control" type="number" placeholder="Default input" aria-label="" maxlength="4" size="4">
+                    </div>
+                    <div class="col-auto">
+                        <h6 class="m-0 font-weight-bold text-primary">Kỳ</h6>
+                        <select name="Ky" id="Ky">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                    </div>
+                    <div class="col-auto">
+                        <h6 class="m-0 font-weight-bold text-primary">Đợt</h6>
+                        <select name="Dot" id="Dot">
+                            <option value="0">Tất cả</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                        </select>
+                    </div>
+                    <div class="col"><button type="button" class="btn btn-primary" onclick="getSanLuongDoi()">Xem</button></div>
                 </div>
-                <div class="col-auto">
-                    <h6 class="m-0 font-weight-bold text-primary">Kỳ</h6>
-                    <select name="Ky" id="Ky">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                    </select>
-                </div>
-                <div class="col-auto">
-                    <h6 class="m-0 font-weight-bold text-primary">Đợt</h6>
-                    <select name="Dot" id="Dot">
-                        <option value="0">Tất cả</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                        <option value="13">13</option>
-                        <option value="14">14</option>
-                        <option value="15">15</option>
-                        <option value="16">16</option>
-                        <option value="17">17</option>
-                        <option value="18">18</option>
-                        <option value="19">19</option>
-                        <option value="20">20</option>
-                    </select>
-                </div>
-                <div class="col"><button type="button" class="btn btn-primary" onclick="getSanLuong()">Xem</button></div>
+
             </div>
-
-
+            <!-- Card Body -->
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="tblSanLuong" class="table table-striped table-bordered text-dark h6 text-center">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th colspan="2">Kỳ này</th>
+                                <th colspan="2">Kỳ trước</th>
+                                <th colspan="2">Tăng/Giảm</th>
+                                <th colspan="2">Cùng kỳ năm trước</th>
+                                <th colspan="2">Tăng/Giảm</th>
+                            </tr>
+                            <tr>
+                                <th>Tổ</th>
+                                <th>ĐHN</th>
+                                <th>Sản lượng</th>
+                                <th>ĐHN</th>
+                                <th>Sản lượng</th>
+                                <th>ĐHN</th>
+                                <th>Sản lượng</th>
+                                <th>ĐHN</th>
+                                <th>Sản lượng</th>
+                                <th>ĐHN</th>
+                                <th>Sản lượng</th>
+                            </tr>
+                        </thead>
+                        <tbody id="vSanLuongDoi"></tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-        <!-- Card Body -->
-        <div class="card-body">
-            <div class="table-responsive">
-                <table id="tblSanLuong" class="table table-striped table-bordered text-dark h6 text-center">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th colspan="2">Kỳ này</th>
-                            <th colspan="2">Kỳ trước</th>
-                            <th colspan="2">Tăng/Giảm</th>
-                            <th colspan="2">Cùng kỳ năm trước</th>
-                            <th colspan="2">Tăng/Giảm</th>
-                        </tr>
-                        <tr>
-                            <th>Tổ</th>
-                            <th>ĐHN</th>
-                            <th>Sản lượng</th>
-                            <th>ĐHN</th>
-                            <th>Sản lượng</th>
-                            <th>ĐHN</th>
-                            <th>Sản lượng</th>
-                            <th>ĐHN</th>
-                            <th>Sản lượng</th>
-                            <th>ĐHN</th>
-                            <th>Sản lượng</th>
-                        </tr>
-                    </thead>
-                    <tbody id="vSanLuong"></tbody>
-                </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">THỐNG KÊ SẢN LƯỢNG (theo năm)</h6>
+
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="card shadow mb-4">
+                            <!-- Card Header - Dropdown -->
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary">BIỂU ĐỒ THỐNG KÊ SẢN LƯỢNG (m<sup>3</sup>)</h6>
+                            </div>
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <div id="chartSanLuongNam" class="chartdiv"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="card shadow mb-4">
+                            <!-- Card Header - Dropdown -->
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary">THỐNG KÊ SẢN LƯỢNG (m<sup>3</sup>)</h6>
+                            </div>
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table id="tblSanLuong" class="table table-bordered text-dark h6">
+                                        <thead>
+                                            <tr>
+                                                <th>Kỳ</th>
+                                                <th>Năm @Model.NamPrevious</th>
+                                                <th>Năm @Model.NamPresent</th>
+                                                <th>+/-</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model.lstSanLuongNam)
+                                            {
+                                                <tr>
+                                                    <td>@item.Ky</td>
+                                                    <td><a href="">@item.NamPrevious.ToString("N0").Replace(",", ".")</a></td>
+                                                    <td><a href="">@item.NamPresent.ToString("N0").Replace(",", ".")</a></td>
+                                                    @if (@item.ChenhLech < 0)
+                                                    {
+                                                        <td>@item.ChenhLech.ToString("N0").Replace(",", ".")<i class="fa fa-caret-down" style="padding-left:5px;color:red"></i></td>
+                                                    }
+                                                    else
+                                if (@item.ChenhLech > 0)
+                                                    {
+                                                        <td>@item.ChenhLech.ToString("N0").Replace(",", ".")<i class="fa fa-caret-up" style="padding-left:5px;color:lawngreen"></i></td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td></td>
+                                                    }
+                                                </tr>
+                                            }
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>Tổng cộng</th>
+                                                <th>@Model.lstSanLuongNam.Sum(item => item.NamPrevious).ToString("N0").Replace(",", ".")</th>
+                                                <th>@Model.lstSanLuongNam.Sum(item => item.NamPresent).ToString("N0").Replace(",", ".")</th>
+                                                @if (@Model.lstSanLuongNam.Sum(item => item.ChenhLech) < 0)
+                                                {
+                                                    <th>@Model.lstSanLuongNam.Sum(item => item.ChenhLech).ToString("N0").Replace(",", ".")<i class="fa fa-caret-down" style="padding-left:5px;color:red"></i></th>
+                                                }
+                                                else
+                                if (@Model.lstSanLuongNam.Sum(item => item.ChenhLech) > 0)
+                                                {
+                                                    <th>@Model.lstSanLuongNam.Sum(item => item.ChenhLech).ToString("N0").Replace(",", ".")<i class="fa fa-caret-up" style="padding-left:5px;color:lawngreen"></i></th>
+                                                }
+                                                else
+                                                {
+                                                    <th></th>
+                                                }
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">THỐNG KÊ SẢN LƯỢNG (theo chuẩn thu)</h6>
+
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="card shadow mb-4">
+                            <!-- Card Header - Dropdown -->
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary">BIỂU ĐỒ THỐNG KÊ SẢN LƯỢNG (m<sup>3</sup>)</h6>
+                            </div>
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <div id="chartSanLuongChuanThu" class="chartdiv"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="card shadow mb-4">
+                            <!-- Card Header - Dropdown -->
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary">THỐNG KÊ SẢN LƯỢNG (m<sup>3</sup>)</h6>
+                            </div>
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table id="tblSanLuong" class="table table-bordered text-dark h6">
+                                        <thead>
+                                            <tr>
+                                                <th>Kỳ</th>
+                                                <th>Năm @Model.NamPrevious</th>
+                                                <th>Năm @Model.NamPresent</th>
+                                                <th>+/-</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model.lstSanLuongChuanThu)
+                                            {
+                                                <tr>
+                                                    <td>@item.Ky</td>
+                                                    <td><a href="">@item.NamPrevious.ToString("N0").Replace(",", ".")</a></td>
+                                                    <td><a href="">@item.NamPresent.ToString("N0").Replace(",", ".")</a></td>
+                                                    @if (@item.ChenhLech < 0)
+                                                    {
+                                                        <td>@item.ChenhLech.ToString("N0").Replace(",", ".")<i class="fa fa-caret-down" style="padding-left:5px;color:red"></i></td>
+                                                    }
+                                                    else
+                                if (@item.ChenhLech > 0)
+                                                    {
+                                                        <td>@item.ChenhLech.ToString("N0").Replace(",", ".")<i class="fa fa-caret-up" style="padding-left:5px;color:lawngreen"></i></td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td></td>
+                                                    }
+                                                </tr>
+                                            }
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>Tổng cộng</th>
+                                                <th>@Model.lstSanLuongChuanThu.Sum(item => item.NamPrevious).ToString("N0").Replace(",", ".")</th>
+                                                <th>@Model.lstSanLuongChuanThu.Sum(item => item.NamPresent).ToString("N0").Replace(",", ".")</th>
+                                                @if (@Model.lstSanLuongChuanThu.Sum(item => item.ChenhLech) < 0)
+                                                {
+                                                    <th>@Model.lstSanLuongChuanThu.Sum(item => item.ChenhLech).ToString("N0").Replace(",", ".")<i class="fa fa-caret-down" style="padding-left:5px;color:red"></i></th>
+                                                }
+                                                else
+                                if (@Model.lstSanLuongChuanThu.Sum(item => item.ChenhLech) > 0)
+                                                {
+                                                    <th>@Model.lstSanLuongChuanThu.Sum(item => item.ChenhLech).ToString("N0").Replace(",", ".")<i class="fa fa-caret-up" style="padding-left:5px;color:lawngreen"></i></th>
+                                                }
+                                                else
+                                                {
+                                                    <th></th>
+                                                }
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

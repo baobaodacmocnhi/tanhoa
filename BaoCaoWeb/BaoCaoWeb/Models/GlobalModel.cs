@@ -28,7 +28,8 @@ namespace BaoCaoWeb.Models
         public double ThayDHNLonDat { get; set; }
         public int NamPresent { get; set; }
         public int NamPrevious { get; set; }
-        public List<Chart> lstSanLuong { get; set; }
+        public List<Chart> lstSanLuongNam { get; set; }
+        public List<Chart> lstSanLuongChuanThu { get; set; }
         public List<Chart> lstDoanhThu { get; set; }
         public List<Chart> lstGiaBanBinhQuan { get; set; }
         public List<Chart> lstThuHo { get; set; }
@@ -37,7 +38,7 @@ namespace BaoCaoWeb.Models
         {
             KhachHang = SanLuong = DoanhThu = SanLuongKH = DoanhThuKH = NamPresent = NamPrevious = 0;
             ThatThoatNuoc = ThatThoatNuocKH = ThatThoatNuocDat = SanLuongDat = DoanhThuDat = 0.0;
-            lstSanLuong = lstDoanhThu = lstGiaBanBinhQuan = lstThuHo = new List<Chart>();
+            lstSanLuongNam = lstSanLuongChuanThu = lstDoanhThu = lstGiaBanBinhQuan = lstThuHo = new List<Chart>();
             jsonSanLuong = null;
         }
     }
@@ -58,7 +59,7 @@ namespace BaoCaoWeb.Models
         {
             Ky = 0;
             NamPresent = NamPrevious = ChenhLech = 0;
-            NoiDung = NoiDung2= NoiDung3 = "";
+            NoiDung = NoiDung2 = NoiDung3 = "";
             KeHoach = ThucHien = TyLe = 0.0f;
         }
     }

@@ -45,7 +45,7 @@ namespace BaoCaoWeb.Controllers
                 en.TyLe = Math.Round(en.ThucHien / en.KeHoach * 100, 2);
                 if (dt.Rows[i][3].ToString() != "")
                     en.NoiDung3 = dt.Rows[i][3].ToString();
-                enTT.lstSanLuong.Add(en);
+                enTT.lstSanLuongNam.Add(en);
             }
             //dt = _cDMA.ExecuteQuery_DataTable("SELECT sum(LN_ThatThoat)/sum(SL_DHT)*100 FROM[tanhoa].[dbo].[g_ThatThoatMangLuoi] where nam = " + enTT.NamPresent);
             //enTT.lstSanLuong[enTT.lstSanLuong.Count - 1].ThucHien = Math.Round(double.Parse(dt.Rows[0][0].ToString()), 2);
@@ -185,10 +185,15 @@ namespace BaoCaoWeb.Controllers
         #region ChiTietSanLuong
         public ActionResult ChiTietSanLuong()
         {
-            return View();
+            ThongTin enTT = new ThongTin();
+            enTT.NamPresent = DateTime.Now.Year;
+            enTT.NamPrevious = enTT.NamPresent - 1;
+            enTT.lstSanLuongNam = getlstSanLuongNam(enTT.NamPrevious, enTT.NamPresent);
+            enTT.lstSanLuongChuanThu = getlstSanLuongChuanThu(enTT.NamPresent);
+            return View(enTT);
         }
 
-        public JsonResult getSanLuong(string Nam, string Ky, string Dot)
+        public JsonResult getSanLuongDoi(string Nam, string Ky, string Dot)
         {
             if (Dot == "0")
                 Dot = "";
@@ -281,7 +286,104 @@ namespace BaoCaoWeb.Controllers
             return Json(lstChart, JsonRequestBehavior.AllowGet);
         }
 
+        public List<Chart> getlstSanLuongNam(int NamPrevious, int NamPresent)
+        {
+            List<Chart> lstChart = new List<Chart>();
+            DataTable dt = _cDocSo.getSanLuongNam(NamPrevious, NamPresent);
+            for (int i = 1; i <= 12; i++)
+            {
+                Chart enSL = new Chart();
+                enSL.Ky = i;
+                enSL.NamPrevious = decimal.Parse(dt.Rows[i - 1]["SanLuongPrevious"].ToString());
+                if (dt.Rows[i - 1]["SanLuongPresent"].ToString() != "")
+                {
+                    enSL.NamPresent = decimal.Parse(dt.Rows[i - 1]["SanLuongPresent"].ToString());
+                    enSL.ChenhLech = decimal.Parse(dt.Rows[i - 1]["ChenhLech"].ToString());
+                }
+                else
+                {
+                    enSL.NamPresent = 0;
+                }
+                lstChart.Add(enSL);
+            }
+            return lstChart;
+        }
+
+        public JsonResult getSanLuongNam_amcharts(int NamPrevious, int NamPresent)
+        {
+            List<Chart> lstChart = new List<Chart>();
+            DataTable dt = _cDocSo.getSanLuongNam(NamPrevious, NamPresent);
+            for (int i = 1; i <= 12; i++)
+            {
+                Chart enSL = new Chart();
+                enSL.Ky = i;
+                enSL.NamPrevious = decimal.Parse(dt.Rows[i - 1]["SanLuongPrevious"].ToString());
+                if (dt.Rows[i - 1]["SanLuongPresent"].ToString() != "")
+                    enSL.NamPresent = decimal.Parse(dt.Rows[i - 1]["SanLuongPresent"].ToString());
+                else
+                    enSL.NamPresent = 0;
+                lstChart.Add(enSL);
+            }
+            return Json(lstChart, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult getSanLuongNam_anycharts(int NamPrevious, int NamPresent)
+        {
+            List<Array> lstChart = new List<Array>();
+            DataTable dt = _cDocSo.getSanLuongNam(NamPrevious, NamPresent);
+            for (int i = 1; i <= 12; i++)
+            {
+                string[] a = new string[] { i.ToString(), dt.Rows[i - 1]["SanLuongPrevious"].ToString(), dt.Rows[i - 1]["SanLuongPresent"].ToString() };
+
+                lstChart.Add(a);
+            }
+            return Json(lstChart, JsonRequestBehavior.AllowGet);
+        }
+
+        public List<Chart> getlstSanLuongChuanThu(int NamPresent)
+        {
+            List<Chart> lstChart = new List<Chart>();
+            DataTable dt = _cDocSo.getSanLuongChuanThu(NamPresent);
+            for (int i = 1; i <= 12; i++)
+            {
+                Chart enSL = new Chart();
+                enSL.Ky = i;
+                if (dt.Rows.Count >= i)
+                {
+                    enSL.NamPrevious = decimal.Parse(dt.Rows[i - 1]["SanLuongPrevious"].ToString());
+                    if (dt.Rows[i - 1]["SanLuongPresent"].ToString() != "")
+                    {
+                        enSL.NamPresent = decimal.Parse(dt.Rows[i - 1]["SanLuongPresent"].ToString());
+                        enSL.ChenhLech = decimal.Parse(dt.Rows[i - 1]["ChenhLech"].ToString());
+                    }
+                    else
+                    {
+                        enSL.NamPresent = 0;
+                    }
+                }
+                lstChart.Add(enSL);
+            }
+            return lstChart;
+        }
+
+        public JsonResult getSanLuongChuanThu_anycharts(int NamPresent)
+        {
+            List<Array> lstChart = new List<Array>();
+            DataTable dt = _cDocSo.getSanLuongChuanThu(NamPresent);
+            for (int i = 1; i <= 12; i++)
+            {
+                if (dt.Rows.Count >= i)
+                {
+                    string[] a = new string[] { i.ToString(), dt.Rows[i - 1]["SanLuongPrevious"].ToString(), dt.Rows[i - 1]["SanLuongPresent"].ToString() };
+
+                    lstChart.Add(a);
+                }
+            }
+            return Json(lstChart, JsonRequestBehavior.AllowGet);
+        }
+
         #endregion
+
         public ActionResult ChiTietDoanhThu()
         {
             return View();
@@ -325,66 +427,7 @@ namespace BaoCaoWeb.Controllers
             return View(enTT);
         }
 
-        public List<Chart> getlstSanLuong()
-        {
-            List<Chart> lstChart = new List<Chart>();
-            DataTable dt = _cDocSo.getSanLuong();
-            for (int i = 1; i <= 12; i++)
-            {
-                Chart enSL = new Chart();
-                enSL.Ky = i;
-                enSL.NamPrevious = decimal.Parse(dt.Rows[i - 1]["SanLuongPrevious"].ToString());
-                if (dt.Rows[i - 1]["SanLuongPresent"].ToString() != "")
-                {
-                    enSL.NamPresent = decimal.Parse(dt.Rows[i - 1]["SanLuongPresent"].ToString());
-                    enSL.ChenhLech = decimal.Parse(dt.Rows[i - 1]["ChenhLech"].ToString());
-                }
-                else
-                {
-                    enSL.NamPresent = 0;
-                }
-                lstChart.Add(enSL);
-            }
 
-            return lstChart;
-        }
-
-        [HttpGet]
-        public JsonResult getSanLuong_amcharts()
-        {
-            List<Chart> lstChart = new List<Chart>();
-            DataTable dt = _cDocSo.getSanLuong();
-            for (int i = 1; i <= 12; i++)
-            {
-                Chart enSL = new Chart();
-                enSL.Ky = i;
-                enSL.NamPrevious = decimal.Parse(dt.Rows[i - 1]["SanLuongPrevious"].ToString());
-                if (dt.Rows[i - 1]["SanLuongPresent"].ToString() != "")
-                    enSL.NamPresent = decimal.Parse(dt.Rows[i - 1]["SanLuongPresent"].ToString());
-                else
-                    enSL.NamPresent = 0;
-                lstChart.Add(enSL);
-            }
-
-            //return list as Json
-            return Json(lstChart, JsonRequestBehavior.AllowGet);
-        }
-
-        [HttpGet]
-        public JsonResult getSanLuong_anycharts()
-        {
-            List<Array> lstChart = new List<Array>();
-            DataTable dt = _cDocSo.getSanLuong();
-            for (int i = 1; i <= 12; i++)
-            {
-                string[] a = new string[] { i.ToString(), dt.Rows[i - 1]["SanLuongPrevious"].ToString(), dt.Rows[i - 1]["SanLuongPresent"].ToString() };
-
-                lstChart.Add(a);
-            }
-
-            //return list as Json
-            return Json(lstChart, JsonRequestBehavior.AllowGet);
-        }
 
         public List<Chart> getlstDoanhThu()
         {
