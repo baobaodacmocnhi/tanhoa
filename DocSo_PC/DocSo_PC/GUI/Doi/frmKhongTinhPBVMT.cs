@@ -14,7 +14,7 @@ namespace DocSo_PC.GUI.Doi
 {
     public partial class frmKhongTinhPBVMT : Form
     {
-        string _mnu = "";
+        string _mnu = "mnuKhongTinhPBVMT";
         CDanhBoKhongTinhPBVMT _cPBVMT = new CDanhBoKhongTinhPBVMT();
         DanhBoKPBVMT _en = null;
 

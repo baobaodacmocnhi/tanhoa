@@ -173,13 +173,13 @@ namespace DocSo_PC.GUI.Doi
             saveFileDialog.Filter = "Text files (*.dat)|*.dat";
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                DataTable dt = CDHN._cDAL.ExecuteQuery_DataTable("select DanhBo,NgayThay=CONVERT(varchar(10),NgayThay,103),NgayGan=CONVERT(varchar(10),NgayGanDH_DT,103) from TB_DULIEUKHACHHANG");
+                DataTable dt = CDHN._cDAL.ExecuteQuery_DataTable("select DanhBo,NgayThay=CONVERT(varchar(10),NgayThay,103) from TB_DULIEUKHACHHANG a,DocSoTH.dbo.DocSo b where a.DanhBo=b.DanhBa and b.Nam=" + cmbNam.SelectedValue.ToString() + " and b.Ky=" + cmbKy.SelectedItem.ToString() + " and b.CodeMoi like '%8%'");
 
                 using (StreamWriter writer = new StreamWriter(saveFileDialog.FileName))
                     foreach (DataRow item in dt.Rows)
                     {
                         writer.Write("\"" + item["DanhBo"] + "\"");
-                        writer.Write(",\"" + item["NgayGan"] + "\"");
+                        //writer.Write(",\"" + item["NgayGan"] + "\"");
                         writer.WriteLine(",\"" + item["NgayThay"] + "\"");
                     }
                 MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
