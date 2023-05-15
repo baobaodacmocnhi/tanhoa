@@ -10,6 +10,14 @@ using KTKS_DonKH.DAL.DonTu;
 using KTKS_DonKH.LinQ;
 using KTKS_DonKH.DAL.QuanTri;
 using System.Transactions;
+using KTKS_DonKH.DAL.KiemTraXacMinh;
+using KTKS_DonKH.DAL.BamChi;
+using KTKS_DonKH.DAL.DieuChinhBienDong;
+using KTKS_DonKH.DAL.CatHuyDanhBo;
+using KTKS_DonKH.DAL.ThuTraLoi;
+using KTKS_DonKH.DAL.TruyThu;
+using KTKS_DonKH.DAL.ThuMoi;
+using KTKS_DonKH.DAL.VanBan;
 
 namespace KTKS_DonKH.GUI.DonTu
 {
@@ -20,6 +28,16 @@ namespace KTKS_DonKH.GUI.DonTu
         DonTu_ChiTiet _dontu_ChiTiet = null;
         DonTu_LichSu _dontu_LichSu = null;
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
+        CKTXM _cKTXM = new CKTXM();
+        CBamChi _cBamChi = new CBamChi();
+        CDCBD _cDCBD = new CDCBD();
+        CCHDB _cCHDB = new CCHDB();
+        CToTrinh _cToTrinh = new CToTrinh();
+        CTTTL _cTTTL = new CTTTL();
+        CTruyThuTienNuoc _cTTTN = new CTruyThuTienNuoc();
+        CGianLan _cGL = new CGianLan();
+        CThuMoi _cThuMoi = new CThuMoi();
+        CVanBan _cVanBan = new CVanBan();
         string _TableName = null;
         int _ID = -1;
         int _selectedIndex = -1;
@@ -417,99 +435,193 @@ namespace KTKS_DonKH.GUI.DonTu
             {
                 foreach (ListViewItem item in lstMa.Items)
                 {
+                    int MaDon = 0, STT = 0, ID = 0;
                     switch (_TableName)
                     {
                         case "KTXM_ChiTiet":
-                            _selectedIndex = 5;
+
                             break;
                         case "DCBD_ChiTietBienDong":
+                            DCBD_ChiTietBienDong bd = _cDCBD.getBienDong(decimal.Parse(item.Text.Replace("-", "")));
+                            if (bd != null)
+                            {
+                                MaDon = bd.DCBD.MaDonMoi.Value;
+                                STT = bd.STT.Value;
+                                ID = (int)bd.MaCTDCBD;
+                            }
+                            break;
                         case "DCBD_ChiTietHoaDon":
-                            _selectedIndex = 6;
+                            DCBD_ChiTietHoaDon hd = _cDCBD.getHoaDon(decimal.Parse(item.Text.Replace("-", "")));
+                            if (hd != null)
+                            {
+                                MaDon = hd.DCBD.MaDonMoi.Value;
+                                STT = hd.STT.Value;
+                                ID = (int)hd.MaCTDCHD;
+                            }
                             break;
                         case "CHDB_ChiTietCatTam":
+                            CHDB_ChiTietCatTam ct = _cCHDB.GetCTCTDB(decimal.Parse(item.Text.Replace("-", "")));
+                            if (ct != null)
+                            {
+                                MaDon = ct.CHDB.MaDonMoi.Value;
+                                STT = ct.STT.Value;
+                                ID = (int)ct.MaCTCTDB;
+                            }
+                            break;
                         case "CHDB_ChiTietCatHuy":
+                            CHDB_ChiTietCatHuy ch = _cCHDB.GetCTCHDB(decimal.Parse(item.Text.Replace("-", "")));
+                            if (ch != null)
+                            {
+                                MaDon = ch.CHDB.MaDonMoi.Value;
+                                STT = ch.STT.Value;
+                                ID = (int)ch.MaCTCHDB;
+                            }
+                            break;
                         case "CHDB_Phieu":
-                            _selectedIndex = 7;
+                            CHDB_Phieu ph = _cCHDB.GetPhieuHuy(decimal.Parse(item.Text.Replace("-", "")));
+                            if (ph != null)
+                            {
+                                MaDon = ph.CHDB.MaDonMoi.Value;
+                                STT = ph.STT.Value;
+                                ID = (int)ph.MaYCCHDB;
+                            }
                             break;
                         case "TruyThuTienNuoc_ChiTiet":
+                            TruyThuTienNuoc_ChiTiet tttn = _cTTTN.get_ChiTiet(decimal.Parse(item.Text.Replace("-", "")));
+                            if (tttn != null)
+                            {
+                                MaDon = tttn.TruyThuTienNuoc.MaDonMoi.Value;
+                                STT = tttn.STT.Value;
+                                ID = (int)tttn.IDCT;
+                            }
+                            break;
                         case "GianLan_ChiTiet":
-                            _selectedIndex = 8;
+                            GianLan_ChiTiet gl = _cGL.get_ChiTiet(int.Parse(item.Text.Replace("-", "")));
+                            if (gl != null)
+                            {
+                                MaDon = gl.GianLan.MaDonMoi.Value;
+                                STT = gl.STT.Value;
+                                ID = (int)gl.MaCTGL;
+                            }
                             break;
                         case "ThuTraLoi_ChiTiet":
-                            _selectedIndex = 9;
+                            ThuTraLoi_ChiTiet tttl = _cTTTL.GetCT(decimal.Parse(item.Text.Replace("-", "")));
+                            if (tttl != null)
+                            {
+                                MaDon = tttl.ThuTraLoi.MaDonMoi.Value;
+                                STT = tttl.STT.Value;
+                                ID = (int)tttl.MaCTTTTL;
+                            }
                             break;
                         case "ThuMoi_ChiTiet":
-                            _selectedIndex = 10;
+                            ThuMoi_ChiTiet tm = _cThuMoi.get_ChiTiet(int.Parse(item.Text.Replace("-", "")));
+                            if (tm != null)
+                            {
+                                MaDon = tm.ThuMoi.MaDonMoi.Value;
+                                STT = tm.STT.Value;
+                                ID = (int)tm.IDCT;
+                            }
                             break;
                         case "ToTrinh_ChiTiet":
-                            _selectedIndex = 11;
+                            ToTrinh_ChiTiet tt = _cToTrinh.get_ChiTiet(int.Parse(item.Text.Replace("-", "")));
+                            if (tt != null)
+                            {
+                                MaDon = tt.ToTrinh.MaDonMoi.Value;
+                                STT = tt.STT.Value;
+                                ID = (int)tt.IDCT;
+                            }
                             break;
                         case "VanBan_ChiTiet":
-                            _selectedIndex = 38;
+                            VanBan_ChiTiet vb = _cVanBan.get_ChiTiet(int.Parse(item.Text.Replace("-", "")));
+                            if (vb != null)
+                            {
+                                MaDon = vb.VanBan.MaDon.Value;
+                                STT = vb.STT.Value;
+                                ID = (int)vb.IDCT;
+                            }
                             break;
                     }
-                }
-                if (_dontu_ChiTiet != null)
-                {
-                    
-                    bool flag = false;//ghi nhận có chọn checkcombobox
-                    if (cmbNoiChuyen.SelectedIndex > -1)
+                    if (MaDon > 0 && ID > 0 && STT > 0)
                     {
-                        for (int i = 0; i < chkcmbNoiNhan.Properties.Items.Count; i++)
-                            if (chkcmbNoiNhan.Properties.Items[i].CheckState == CheckState.Checked)
-                            {
-                                //đi KTXM
-                                if (chkcmbNoiNhan.Properties.Items[i].Value.ToString() == "5" || chkcmbNoiNhan.Properties.Items[i].Value.ToString() == "39")
+                        bool flag = false;//ghi nhận có chọn checkcombobox
+                        if (cmbNoiChuyen.SelectedIndex > -1)
+                        {
+                            for (int i = 0; i < chkcmbNoiNhan.Properties.Items.Count; i++)
+                                if (chkcmbNoiNhan.Properties.Items[i].CheckState == CheckState.Checked)
                                 {
-                                    for (int j = 0; j < chkcmbNoiNhanKTXM.Properties.Items.Count; j++)
-                                        if (chkcmbNoiNhanKTXM.Properties.Items[j].CheckState == CheckState.Checked)
+                                    //đi KTXM
+                                    if (chkcmbNoiNhan.Properties.Items[i].Value.ToString() == "5" || chkcmbNoiNhan.Properties.Items[i].Value.ToString() == "39")
+                                    {
+                                        for (int j = 0; j < chkcmbNoiNhanKTXM.Properties.Items.Count; j++)
+                                            if (chkcmbNoiNhanKTXM.Properties.Items[j].CheckState == CheckState.Checked)
+                                            {
+                                                DonTu_LichSu entity = new DonTu_LichSu();
+                                                entity.NgayChuyen = dateChuyen.Value;
+                                                entity.ID_NoiChuyen = int.Parse(cmbNoiChuyen.SelectedValue.ToString());
+                                                entity.NoiChuyen = cmbNoiChuyen.Text;
+                                                entity.ID_NoiNhan = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
+                                                entity.NoiNhan = chkcmbNoiNhan.Properties.Items[i].ToString();
+                                                entity.NoiDung = txtNoiDung_LichSu.Text.Trim();
+                                                entity.MaDon = MaDon;
+                                                entity.STT = STT;
+                                                entity.ID_KTXM = int.Parse(chkcmbNoiNhanKTXM.Properties.Items[j].Value.ToString());
+                                                entity.KTXM = chkcmbNoiNhanKTXM.Properties.Items[j].ToString();
+                                                _cDonTu.Them_LichSu(entity);
+                                            }
+                                    }
+                                    else
+                                    {
+                                        DonTu_LichSu entity = new DonTu_LichSu();
+                                        entity.NgayChuyen = dateChuyen.Value;
+                                        entity.ID_NoiChuyen = int.Parse(cmbNoiChuyen.SelectedValue.ToString());
+                                        entity.NoiChuyen = cmbNoiChuyen.Text;
+                                        entity.ID_NoiNhan = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
+                                        entity.NoiNhan = chkcmbNoiNhan.Properties.Items[i].ToString();
+                                        entity.NoiDung = txtNoiDung_LichSu.Text.Trim();
+                                        entity.MaDon = MaDon;
+                                        entity.STT = STT;
+                                        if (_TableName != null)
                                         {
-                                            DonTu_LichSu entity = new DonTu_LichSu();
-                                            entity.NgayChuyen = dateChuyen.Value;
-                                            entity.ID_NoiChuyen = int.Parse(cmbNoiChuyen.SelectedValue.ToString());
-                                            entity.NoiChuyen = cmbNoiChuyen.Text;
-                                            entity.ID_NoiNhan = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
-                                            entity.NoiNhan = chkcmbNoiNhan.Properties.Items[i].ToString();
-                                            entity.NoiDung = txtNoiDung_LichSu.Text.Trim();
-                                            entity.MaDon = _dontu_ChiTiet.MaDon;
-                                            entity.STT = _dontu_ChiTiet.STT;
-                                            entity.ID_KTXM = int.Parse(chkcmbNoiNhanKTXM.Properties.Items[j].Value.ToString());
-                                            entity.KTXM = chkcmbNoiNhanKTXM.Properties.Items[j].ToString();
-                                            _cDonTu.Them_LichSu(entity);
+                                            entity.TableName = _TableName;
+                                            entity.IDCT = ID;
                                         }
+                                        _cDonTu.Them_LichSu(entity);
+                                    }
+                                    flag = true;
+                                }
+                            if (flag == false)
+                            {
+                                if (chkHoanThanh.Checked == true)
+                                {
+                                    if (txtNoiDung_LichSu.Text.Trim() != "")
+                                    {
+                                        //cập nhật tình trạng
+                                        _dontu_ChiTiet.HoanThanh = chkHoanThanh.Checked;
+                                        _dontu_ChiTiet.HoanThanh_Ngay = DateTime.Now;
+                                        _dontu_ChiTiet.HoanThanh_GhiChu = txtNoiDung_LichSu.Text.Trim();
+                                        _cDonTu.SubmitChanges();
+                                        //
+                                        DonTu_LichSu entity = new DonTu_LichSu();
+                                        entity.NgayChuyen = dateChuyen.Value;
+                                        entity.ID_NoiChuyen = int.Parse(cmbNoiChuyen.SelectedValue.ToString());
+                                        entity.NoiChuyen = cmbNoiChuyen.Text;
+                                        //entity.ID_NoiNhan = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
+                                        //entity.NoiNhan = chkcmbNoiNhan.Properties.Items[i].ToString();
+                                        entity.NoiDung = txtNoiDung_LichSu.Text.Trim();
+                                        entity.MaDon = MaDon;
+                                        entity.STT = STT;
+                                        if (_TableName != null)
+                                        {
+                                            entity.TableName = _TableName;
+                                            entity.IDCT = ID;
+                                        }
+                                        _cDonTu.Them_LichSu(entity);
+                                    }
+                                    else
+                                        MessageBox.Show("Thiếu Nội Dung lý do Hoàn Thành", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
                                 else
                                 {
-                                    DonTu_LichSu entity = new DonTu_LichSu();
-                                    entity.NgayChuyen = dateChuyen.Value;
-                                    entity.ID_NoiChuyen = int.Parse(cmbNoiChuyen.SelectedValue.ToString());
-                                    entity.NoiChuyen = cmbNoiChuyen.Text;
-                                    entity.ID_NoiNhan = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
-                                    entity.NoiNhan = chkcmbNoiNhan.Properties.Items[i].ToString();
-                                    entity.NoiDung = txtNoiDung_LichSu.Text.Trim();
-                                    entity.MaDon = _dontu_ChiTiet.MaDon;
-                                    entity.STT = _dontu_ChiTiet.STT;
-                                    if (_TableName != null)
-                                    {
-                                        entity.TableName = _TableName;
-                                        entity.IDCT = _ID;
-                                    }
-                                    _cDonTu.Them_LichSu(entity);
-                                }
-                                flag = true;
-                            }
-                        if (flag == false)
-                        {
-                            if (chkHoanThanh.Checked == true)
-                            {
-                                if (txtNoiDung_LichSu.Text.Trim() != "")
-                                {
-                                    //cập nhật tình trạng
-                                    _dontu_ChiTiet.HoanThanh = chkHoanThanh.Checked;
-                                    _dontu_ChiTiet.HoanThanh_Ngay = DateTime.Now;
-                                    _dontu_ChiTiet.HoanThanh_GhiChu = txtNoiDung_LichSu.Text.Trim();
-                                    _cDonTu.SubmitChanges();
-                                    //
                                     DonTu_LichSu entity = new DonTu_LichSu();
                                     entity.NgayChuyen = dateChuyen.Value;
                                     entity.ID_NoiChuyen = int.Parse(cmbNoiChuyen.SelectedValue.ToString());
@@ -517,45 +629,26 @@ namespace KTKS_DonKH.GUI.DonTu
                                     //entity.ID_NoiNhan = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
                                     //entity.NoiNhan = chkcmbNoiNhan.Properties.Items[i].ToString();
                                     entity.NoiDung = txtNoiDung_LichSu.Text.Trim();
-                                    entity.MaDon = _dontu_ChiTiet.MaDon;
-                                    entity.STT = _dontu_ChiTiet.STT;
+                                    entity.MaDon = MaDon;
+                                    entity.STT = STT;
                                     if (_TableName != null)
                                     {
                                         entity.TableName = _TableName;
-                                        entity.IDCT = _ID;
+                                        entity.IDCT = ID;
                                     }
                                     _cDonTu.Them_LichSu(entity);
                                 }
-                                else
-                                    MessageBox.Show("Thiếu Nội Dung lý do Hoàn Thành", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                            else
-                            {
-                                DonTu_LichSu entity = new DonTu_LichSu();
-                                entity.NgayChuyen = dateChuyen.Value;
-                                entity.ID_NoiChuyen = int.Parse(cmbNoiChuyen.SelectedValue.ToString());
-                                entity.NoiChuyen = cmbNoiChuyen.Text;
-                                //entity.ID_NoiNhan = int.Parse(chkcmbNoiNhan.Properties.Items[i].Value.ToString());
-                                //entity.NoiNhan = chkcmbNoiNhan.Properties.Items[i].ToString();
-                                entity.NoiDung = txtNoiDung_LichSu.Text.Trim();
-                                entity.MaDon = _dontu_ChiTiet.MaDon;
-                                entity.STT = _dontu_ChiTiet.STT;
-                                if (_TableName != null)
-                                {
-                                    entity.TableName = _TableName;
-                                    entity.IDCT = _ID;
-                                }
-                                _cDonTu.Them_LichSu(entity);
                             }
                         }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Chưa chọn Nơi Chuyển", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
+                        else
+                        {
+                            MessageBox.Show("Chưa chọn Nơi Chuyển", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                     }
                 }
-                dgvLichSuDonTu.DataSource = _cDonTu.getDS_LichSu(_dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
+                lstMa.Items.Clear();
+                MessageBox.Show("Đã xử lý", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
