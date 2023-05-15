@@ -375,7 +375,6 @@ namespace BaoCaoWeb.Controllers
                 if (dt.Rows.Count >= i)
                 {
                     string[] a = new string[] { i.ToString(), dt.Rows[i - 1]["SanLuongPrevious"].ToString(), dt.Rows[i - 1]["SanLuongPresent"].ToString() };
-
                     lstChart.Add(a);
                 }
             }
@@ -384,15 +383,133 @@ namespace BaoCaoWeb.Controllers
 
         #endregion
 
+        #region ChiTietDoanhThu
         public ActionResult ChiTietDoanhThu()
         {
-            return View();
+            ThongTin enTT = new ThongTin();
+            enTT.NamPresent = DateTime.Now.Year;
+            enTT.NamPrevious = enTT.NamPresent - 1;
+            enTT.lstDoanhThu = getlstDoanhThu(enTT.NamPrevious, enTT.NamPresent);
+            return View(enTT);
         }
 
+        public List<Chart> getlstDoanhThu(int NamPrevious, int NamPresent)
+        {
+            List<Chart> lstChart = new List<Chart>();
+            DataTable dt = _cThuTien.getDoanhThu(NamPrevious, NamPresent);
+            for (int i = 1; i <= 12; i++)
+            {
+                Chart enSL = new Chart();
+                enSL.Ky = i;
+                enSL.NamPrevious = decimal.Parse(dt.Rows[i - 1]["DoanhThuPrevious"].ToString());
+                if (dt.Rows[i - 1]["DoanhThuPresent"].ToString() != "")
+                {
+                    enSL.NamPresent = decimal.Parse(dt.Rows[i - 1]["DoanhThuPresent"].ToString());
+                    enSL.ChenhLech = decimal.Parse(dt.Rows[i - 1]["ChenhLech"].ToString());
+                }
+                else
+                    enSL.NamPresent = 0;
+                lstChart.Add(enSL);
+            }
+            return lstChart;
+        }
+
+        public JsonResult getDoanhThu_amcharts(int NamPrevious, int NamPresent)
+        {
+            List<Chart> lstChart = new List<Chart>();
+            DataTable dt = _cThuTien.getDoanhThu(NamPrevious, NamPresent);
+            for (int i = 1; i <= 12; i++)
+            {
+                Chart enSL = new Chart();
+                enSL.Ky = i;
+                enSL.NamPrevious = decimal.Parse(dt.Rows[i - 1]["DoanhThuPrevious"].ToString());
+                if (dt.Rows[i - 1]["DoanhThuPresent"].ToString() != "")
+                    enSL.NamPresent = decimal.Parse(dt.Rows[i - 1]["DoanhThuPresent"].ToString());
+                else
+                    enSL.NamPresent = 0;
+                lstChart.Add(enSL);
+            }
+            return Json(lstChart, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult getDoanhThu_anycharts(int NamPrevious, int NamPresent)
+        {
+            List<Array> lstChart = new List<Array>();
+            DataTable dt = _cThuTien.getDoanhThu(NamPrevious, NamPresent);
+            for (int i = 1; i <= 12; i++)
+            {
+                string[] a = new string[] { i.ToString(), dt.Rows[i - 1]["DoanhThuPrevious"].ToString(), dt.Rows[i - 1]["DoanhThuPresent"].ToString() };
+                lstChart.Add(a);
+            }
+            return Json(lstChart, JsonRequestBehavior.AllowGet);
+        }
+
+        #endregion
+
+        #region ChiTietGiaBanBinhQuan
         public ActionResult ChiTietGiaBanBinhQuan()
         {
-            return View();
+            ThongTin enTT = new ThongTin();
+            enTT.NamPresent = DateTime.Now.Year;
+            enTT.NamPrevious = enTT.NamPresent - 1;
+            enTT.lstGiaBanBinhQuan = getlstGiaBanBinhQuan(enTT.NamPrevious, enTT.NamPresent);
+            return View(enTT);
         }
+
+        public List<Chart> getlstGiaBanBinhQuan(int NamPrevious, int NamPresent)
+        {
+            List<Chart> lstChart = new List<Chart>();
+            DataTable dt = _cThuTien.getGiaBanBinhQuan(NamPrevious, NamPresent);
+            for (int i = 1; i <= 12; i++)
+            {
+                Chart enSL = new Chart();
+                enSL.Ky = i;
+                enSL.NamPrevious = Math.Round(decimal.Parse(dt.Rows[i - 1]["DoanhThuPrevious"].ToString()));
+                if (dt.Rows[i - 1]["DoanhThuPresent"].ToString() != "")
+                {
+                    enSL.NamPresent = Math.Round(decimal.Parse(dt.Rows[i - 1]["DoanhThuPresent"].ToString()));
+                    enSL.ChenhLech = Math.Round(decimal.Parse(dt.Rows[i - 1]["ChenhLech"].ToString()));
+                }
+                else
+                    enSL.NamPresent = 0;
+                lstChart.Add(enSL);
+            }
+            return lstChart;
+        }
+
+        [HttpGet]
+        public JsonResult getGiaBanBinhQuan_amcharts(int NamPrevious, int NamPresent)
+        {
+            List<Chart> lstChart = new List<Chart>();
+            DataTable dt = _cThuTien.getGiaBanBinhQuan(NamPrevious, NamPresent);
+            for (int i = 1; i <= 12; i++)
+            {
+                Chart enSL = new Chart();
+                enSL.Ky = i;
+                enSL.NamPrevious = Math.Round(decimal.Parse(dt.Rows[i - 1]["DoanhThuPrevious"].ToString()));
+                if (dt.Rows[i - 1]["DoanhThuPresent"].ToString() != "")
+                    enSL.NamPresent = Math.Round(decimal.Parse(dt.Rows[i - 1]["DoanhThuPresent"].ToString()));
+                else
+                    enSL.NamPresent = 0;
+                lstChart.Add(enSL);
+            }
+            return Json(lstChart, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult getGiaBanBinhQuan_anycharts(int NamPrevious, int NamPresent)
+        {
+            List<Array> lstChart = new List<Array>();
+            DataTable dt = _cThuTien.getGiaBanBinhQuan(NamPrevious, NamPresent);
+            for (int i = 1; i <= 12; i++)
+            {
+                string[] a = new string[] { i.ToString(), dt.Rows[i - 1]["DoanhThuPrevious"].ToString(), dt.Rows[i - 1]["DoanhThuPresent"].ToString() };
+                lstChart.Add(a);
+            }
+            return Json(lstChart, JsonRequestBehavior.AllowGet);
+        }
+
+        #endregion
 
         public ActionResult IndexChiTieu()
         {
@@ -429,123 +546,6 @@ namespace BaoCaoWeb.Controllers
 
 
 
-        public List<Chart> getlstDoanhThu()
-        {
-            List<Chart> lstChart = new List<Chart>();
-            DataTable dt = _cThuTien.getDoanhThu();
-            for (int i = 1; i <= 12; i++)
-            {
-                Chart enSL = new Chart();
-                enSL.Ky = i;
-                enSL.NamPrevious = decimal.Parse(dt.Rows[i - 1]["DoanhThuPrevious"].ToString());
-                if (dt.Rows[i - 1]["DoanhThuPresent"].ToString() != "")
-                {
-                    enSL.NamPresent = decimal.Parse(dt.Rows[i - 1]["DoanhThuPresent"].ToString());
-                    enSL.ChenhLech = decimal.Parse(dt.Rows[i - 1]["ChenhLech"].ToString());
-                }
-                else
-                    enSL.NamPresent = 0;
-                lstChart.Add(enSL);
-            }
-
-            return lstChart;
-        }
-
-        [HttpGet]
-        public JsonResult getDoanhThu_amcharts()
-        {
-            List<Chart> lstChart = new List<Chart>();
-            DataTable dt = _cThuTien.getDoanhThu();
-            for (int i = 1; i <= 12; i++)
-            {
-                Chart enSL = new Chart();
-                enSL.Ky = i;
-                enSL.NamPrevious = decimal.Parse(dt.Rows[i - 1]["DoanhThuPrevious"].ToString());
-                if (dt.Rows[i - 1]["DoanhThuPresent"].ToString() != "")
-                    enSL.NamPresent = decimal.Parse(dt.Rows[i - 1]["DoanhThuPresent"].ToString());
-                else
-                    enSL.NamPresent = 0;
-                lstChart.Add(enSL);
-            }
-
-            //return list as Json
-            return Json(lstChart, JsonRequestBehavior.AllowGet);
-        }
-
-        [HttpGet]
-        public JsonResult getDoanhThu_anycharts()
-        {
-            List<Array> lstChart = new List<Array>();
-            DataTable dt = _cThuTien.getDoanhThu();
-            for (int i = 1; i <= 12; i++)
-            {
-                string[] a = new string[] { i.ToString(), dt.Rows[i - 1]["DoanhThuPrevious"].ToString(), dt.Rows[i - 1]["DoanhThuPresent"].ToString() };
-
-                lstChart.Add(a);
-            }
-
-            //return list as Json
-            return Json(lstChart, JsonRequestBehavior.AllowGet);
-        }
-
-        public List<Chart> getlstGiaBanBinhQuan()
-        {
-            List<Chart> lstChart = new List<Chart>();
-            DataTable dt = _cThuTien.getGiaBanBinhQuan();
-            for (int i = 1; i <= 12; i++)
-            {
-                Chart enSL = new Chart();
-                enSL.Ky = i;
-                enSL.NamPrevious = Math.Round(decimal.Parse(dt.Rows[i - 1]["DoanhThuPrevious"].ToString()));
-                if (dt.Rows[i - 1]["DoanhThuPresent"].ToString() != "")
-                {
-                    enSL.NamPresent = Math.Round(decimal.Parse(dt.Rows[i - 1]["DoanhThuPresent"].ToString()));
-                    enSL.ChenhLech = Math.Round(decimal.Parse(dt.Rows[i - 1]["ChenhLech"].ToString()));
-                }
-                else
-                    enSL.NamPresent = 0;
-                lstChart.Add(enSL);
-            }
-
-            return lstChart;
-        }
-
-        [HttpGet]
-        public JsonResult getGiaBanBinhQuan_amcharts()
-        {
-            List<Chart> lstChart = new List<Chart>();
-            DataTable dt = _cThuTien.getGiaBanBinhQuan();
-            for (int i = 1; i <= 12; i++)
-            {
-                Chart enSL = new Chart();
-                enSL.Ky = i;
-                enSL.NamPrevious = Math.Round(decimal.Parse(dt.Rows[i - 1]["DoanhThuPrevious"].ToString()));
-                if (dt.Rows[i - 1]["DoanhThuPresent"].ToString() != "")
-                    enSL.NamPresent = Math.Round(decimal.Parse(dt.Rows[i - 1]["DoanhThuPresent"].ToString()));
-                else
-                    enSL.NamPresent = 0;
-                lstChart.Add(enSL);
-            }
-
-            //return list as Json
-            return Json(lstChart, JsonRequestBehavior.AllowGet);
-        }
-
-        [HttpGet]
-        public JsonResult getGiaBanBinhQuan_anycharts()
-        {
-            List<Array> lstChart = new List<Array>();
-            DataTable dt = _cThuTien.getGiaBanBinhQuan();
-            for (int i = 1; i <= 12; i++)
-            {
-                string[] a = new string[] { i.ToString(), dt.Rows[i - 1]["DoanhThuPrevious"].ToString(), dt.Rows[i - 1]["DoanhThuPresent"].ToString() };
-
-                lstChart.Add(a);
-            }
-
-            //return list as Json
-            return Json(lstChart, JsonRequestBehavior.AllowGet);
-        }
 
         public ActionResult About()
         {

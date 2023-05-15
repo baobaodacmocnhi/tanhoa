@@ -27,10 +27,10 @@ var CharHelperSanLuongNam = {
             // get series
             var series = chart.getSeriesAt(0);
             series.fill("#1E90FF");
-            series.name(new Date().getFullYear() - 1);
+            series.name(NamPrevious);
             var series = chart.getSeriesAt(1);
             series.fill("#FFD700");
-            series.name(new Date().getFullYear());
+            series.name(NamPresent);
 
             // turn on chart animation
             chart.animation(true);

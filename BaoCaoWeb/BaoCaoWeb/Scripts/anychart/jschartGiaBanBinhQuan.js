@@ -1,37 +1,10 @@
-﻿function getGiaBanBinhQuan() {
-    CharHelperGiaBanBinhQuan.LoadChart();
+﻿function getGiaBanBinhQuan_chart(NamPrevious, NamPresent) {
+    CharHelperGiaBanBinhQuan.LoadChart(NamPrevious, NamPresent);
 }
 
-var ChartManagerGiaBanBinhQuan = {
-    GetChart: function () {
-        var objLeaveType = "";
-        var jsonParam = "";
-        var serviceUrl = "../Home/getGiaBanBinhQuan_anycharts";
-        ChartManagerGiaBanBinhQuan.GetJsonResult(serviceUrl, jsonParam, false, false, onSuccess, onFailed);
-        function onSuccess(jsonData) {
-            objLeaveType = jsonData;
-        }
-        function onFailed(error) {
-            alert(error.statusText);
-        }
-        return objLeaveType;
-    }, GetJsonResult(serviceUrl, jsonParam, isAsync, isCache, successCallback, errorCallback) {
-        $.ajax({
-            type: "GET",
-            async: isAsync,
-            cache: isCache,
-            url: serviceUrl,
-            data: jsonParam,
-            contentType: "application/json; chartset=utf-8",
-            success: successCallback,
-            error: errorCallback
-        });
-    }
-};
-
 var CharHelperGiaBanBinhQuan = {
-    LoadChart: function () {
-        var data = ChartManagerGiaBanBinhQuan.GetChart();
+    LoadChart: function (NamPrevious, NamPresent) {
+        var data = ChartManagerGiaBanBinhQuan.GetChart(NamPrevious, NamPresent);
 
         anychart.onDocumentReady(function () {
             // create data set on our data
@@ -54,10 +27,10 @@ var CharHelperGiaBanBinhQuan = {
             // get series
             var series = chart.getSeriesAt(0);
             series.fill("#1E90FF");
-            series.name(new Date().getFullYear() - 1);
+            series.name(NamPrevious);
             var series = chart.getSeriesAt(1);
             series.fill("#FFD700");
-            series.name(new Date().getFullYear());
+            series.name(NamPresent);
 
             // turn on chart animation
             chart.animation(true);
@@ -97,6 +70,33 @@ var CharHelperGiaBanBinhQuan = {
 
             // initiate chart drawing
             chart.draw();
+        });
+    }
+};
+
+var ChartManagerGiaBanBinhQuan = {
+    GetChart: function (NamPrevious, NamPresent) {
+        var objLeaveType = "";
+        var jsonParam = { NamPrevious: NamPrevious, NamPresent: NamPresent };
+        var serviceUrl = "../Home/getGiaBanBinhQuan_anycharts";
+        ChartManagerGiaBanBinhQuan.GetJsonResult(serviceUrl, jsonParam, false, false, onSuccess, onFailed);
+        function onSuccess(jsonData) {
+            objLeaveType = jsonData;
+        }
+        function onFailed(error) {
+            alert(error.statusText);
+        }
+        return objLeaveType;
+    }, GetJsonResult(serviceUrl, jsonParam, isAsync, isCache, successCallback, errorCallback) {
+        $.ajax({
+            type: "GET",
+            async: isAsync,
+            cache: isCache,
+            url: serviceUrl,
+            data: jsonParam,
+            contentType: "application/json; chartset=utf-8",
+            success: successCallback,
+            error: errorCallback
         });
     }
 };

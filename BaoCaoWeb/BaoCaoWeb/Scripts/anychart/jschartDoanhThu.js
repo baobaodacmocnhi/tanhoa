@@ -1,37 +1,10 @@
-﻿function getDoanhThu() {
-    CharHelperDoanhThu.LoadChart();
+﻿function getDoanhThu_chart(NamPrevious, NamPresent) {
+    CharHelperDoanhThu.LoadChart(NamPrevious, NamPresent);
 }
 
-var ChartManagerDoanhThu = {
-    GetChart: function () {
-        var objLeaveType = "";
-        var jsonParam = "";
-        var serviceUrl = "../Home/getDoanhThu_anycharts";
-        ChartManagerDoanhThu.GetJsonResult(serviceUrl, jsonParam, false, false, onSuccess, onFailed);
-        function onSuccess(jsonData) {
-            objLeaveType = jsonData;
-        }
-        function onFailed(error) {
-            alert(error.statusText);
-        }
-        return objLeaveType;
-    }, GetJsonResult(serviceUrl, jsonParam, isAsync, isCache, successCallback, errorCallback) {
-        $.ajax({
-            type: "GET",
-            async: isAsync,
-            cache: isCache,
-            url: serviceUrl,
-            data: jsonParam,
-            contentType: "application/json; chartset=utf-8",
-            success: successCallback,
-            error: errorCallback
-        });
-    }
-};
-
 var CharHelperDoanhThu = {
-    LoadChart: function () {
-        var data = ChartManagerDoanhThu.GetChart();
+    LoadChart: function (NamPrevious, NamPresent) {
+        var data = ChartManagerDoanhThu.GetChart(NamPrevious, NamPresent);
 
         anychart.onDocumentReady(function () {
             // create data set on our data
@@ -54,16 +27,16 @@ var CharHelperDoanhThu = {
             // get series
             var series = chart.getSeriesAt(0);
             series.fill("#1E90FF");
-            series.name(new Date().getFullYear() - 1);
+            series.name(NamPrevious);
             var series = chart.getSeriesAt(1);
             series.fill("#FFD700");
-            series.name(new Date().getFullYear());
+            series.name(NamPresent);
 
             // turn on chart animation
             chart.animation(true);
 
             // set axes settings
-            chart.yAxis().title('Doanh Thu (vnđ)');
+            chart.yAxis().title('Doanh Thu (đồng)');
             chart.yAxis().labels().format('{%Value}{groupsSeparator: }');
 
             // set labels settings
@@ -97,6 +70,33 @@ var CharHelperDoanhThu = {
 
             // initiate chart drawing
             chart.draw();
+        });
+    }
+};
+
+var ChartManagerDoanhThu = {
+    GetChart: function (NamPrevious, NamPresent) {
+        var objLeaveType = "";
+        var jsonParam = { NamPrevious: NamPrevious, NamPresent: NamPresent };
+        var serviceUrl = "../Home/getDoanhThu_anycharts";
+        ChartManagerDoanhThu.GetJsonResult(serviceUrl, jsonParam, false, false, onSuccess, onFailed);
+        function onSuccess(jsonData) {
+            objLeaveType = jsonData;
+        }
+        function onFailed(error) {
+            alert(error.statusText);
+        }
+        return objLeaveType;
+    }, GetJsonResult(serviceUrl, jsonParam, isAsync, isCache, successCallback, errorCallback) {
+        $.ajax({
+            type: "GET",
+            async: isAsync,
+            cache: isCache,
+            url: serviceUrl,
+            data: jsonParam,
+            contentType: "application/json; chartset=utf-8",
+            success: successCallback,
+            error: errorCallback
         });
     }
 };

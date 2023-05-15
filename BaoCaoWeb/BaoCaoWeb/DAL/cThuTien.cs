@@ -76,22 +76,22 @@ namespace BaoCaoWeb.DAL
             return dt;
         }
 
-        public DataTable getDoanhThu()
+        public DataTable getDoanhThu(int NamPrevious, int NamPresent)
         {
             string sql = "select t1.Ky,DoanhThuPrevious=t1.DoanhThu,DoanhThuPresent=t2.DoanhThu,ChenhLech=t2.DoanhThu-t1.DoanhThu from"
-                        + " (select Ky,DoanhThu=SUM(TongCong) from HOADON where Nam = " + (DateTime.Now.Year - 1) + " group by Ky)t1"
+                        + " (select Ky,DoanhThu=SUM(TongCong) from HOADON where Nam = " + NamPrevious + " group by Ky)t1"
                         + " left join"
-                        + " (select Ky,DoanhThu=SUM(TongCong) from HOADON where Nam = " + DateTime.Now.Year + " group by Ky)t2 on t1.Ky = t2.Ky"
+                        + " (select Ky,DoanhThu=SUM(TongCong) from HOADON where Nam = " + NamPresent + " group by Ky)t2 on t1.Ky = t2.Ky"
                         + " order by t1.Ky";
             return ExecuteQuery_DataTable(sql);
         }
 
-        public DataTable getGiaBanBinhQuan()
+        public DataTable getGiaBanBinhQuan(int NamPrevious, int NamPresent)
         {
             string sql = "select t1.Ky,DoanhThuPrevious=ROUND(t1.DoanhThu,0),DoanhThuPresent=ROUND(t2.DoanhThu,0),ChenhLech=ROUND(t2.DoanhThu-t1.DoanhThu,0) from"
-                        + " (select Ky,DoanhThu=SUM(GiaBanBinhQuan) from TT_GiaBanBinhQuan where Nam = " + (DateTime.Now.Year - 1) + " group by Ky)t1"
+                        + " (select Ky,DoanhThu=SUM(GiaBanBinhQuan) from TT_GiaBanBinhQuan where Nam = " + NamPrevious + " group by Ky)t1"
                         + " left join"
-                        + " (select Ky,DoanhThu=SUM(GiaBanBinhQuan) from TT_GiaBanBinhQuan where Nam = " + DateTime.Now.Year + " group by Ky)t2 on t1.Ky = t2.Ky"
+                        + " (select Ky,DoanhThu=SUM(GiaBanBinhQuan) from TT_GiaBanBinhQuan where Nam = " + NamPresent + " group by Ky)t2 on t1.Ky = t2.Ky"
                         + " order by t1.Ky";
             return ExecuteQuery_DataTable(sql);
         }

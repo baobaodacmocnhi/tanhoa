@@ -1,1 +1,104 @@
-﻿
+﻿@model BaoCaoWeb.Models.ThongTin
+<script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+<script src="https://cdn.anychart.com/releases/v8/js/anychart-ui.min.js"></script>
+<script src="https://cdn.anychart.com/releases/v8/js/anychart-exports.min.js"></script>
+<script src="https://cdn.anychart.com/releases/v8/js/anychart-cartesian-3d.min.js"></script>
+<link href="https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css" type="text/css" rel="stylesheet">
+<link href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css" type="text/css" rel="stylesheet">
+<script src="~/Scripts/anychart/jschartDoanhThu.js"></script>
+<style>
+    .chartdiv {
+        width: auto;
+        height: 600px;
+    }
+
+    a {
+        color: inherit;
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        getDoanhThu_chart(new Date().getFullYear() - 1, new Date().getFullYear());
+    });
+</script>
+
+<div class="row">
+    <div class="col-xl-8 col-lg-7">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">BIỂU ĐỒ THỐNG KÊ DOANH THU (đồng)</h6>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                <div id="chartDoanhThu" class="chartdiv"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-lg-5">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">THỐNG KÊ DOANH THU (đồng)</h6>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="tblDoanhThu" class="table table-bordered text-dark h6">
+                        <thead>
+                            <tr>
+                                <th>Kỳ</th>
+                                <th>Năm @Model.NamPrevious</th>
+                                <th>Năm @Model.NamPresent</th>
+                                <th>+/-</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.lstDoanhThu)
+                                            {
+                                            <tr>
+                                                <td>@item.Ky</td>
+                                                <td><a href="">@item.NamPrevious.ToString("N0").Replace(",", ".")</a></td>
+                                                <td><a href="">@item.NamPresent.ToString("N0").Replace(",", ".")</a></td>
+                                                @if (@item.ChenhLech < 0)
+                                                    {
+                                                    <td>@item.ChenhLech.ToString("N0").Replace(",", ".")<i class="fa fa-caret-down" style="padding-left:5px;color:red"></i></td>
+                                                    }
+                                                    else
+                                if (@item.ChenhLech > 0)
+                                                    {
+                                                    <td>@item.ChenhLech.ToString("N0").Replace(",", ".")<i class="fa fa-caret-up" style="padding-left:5px;color:lawngreen"></i></td>
+                                                    }
+                                                    else
+                                                    {
+                                                    <td></td>
+                                                    }
+                                            </tr>
+                                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Tổng cộng</th>
+                                <th>@Model.lstDoanhThu.Sum(item => item.NamPrevious).ToString("N0").Replace(",", ".")</th>
+                                <th>@Model.lstDoanhThu.Sum(item => item.NamPresent).ToString("N0").Replace(",", ".")</th>
+                                @if (@Model.lstDoanhThu.Sum(item => item.ChenhLech) < 0)
+                                                {
+                                                <th>@Model.lstDoanhThu.Sum(item => item.ChenhLech).ToString("N0").Replace(",", ".")<i class="fa fa-caret-down" style="padding-left:5px;color:red"></i></th>
+                                                }
+                                                else
+                                if (@Model.lstDoanhThu.Sum(item => item.ChenhLech) > 0)
+                                                {
+                                                <th>@Model.lstDoanhThu.Sum(item => item.ChenhLech).ToString("N0").Replace(",", ".")<i class="fa fa-caret-up" style="padding-left:5px;color:lawngreen"></i></th>
+                                                }
+                                                else
+                                                {
+                                                <th></th>
+                                                }
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
