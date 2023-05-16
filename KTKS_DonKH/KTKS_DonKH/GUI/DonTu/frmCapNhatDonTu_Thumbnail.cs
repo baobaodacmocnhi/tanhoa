@@ -425,6 +425,7 @@ namespace KTKS_DonKH.GUI.DonTu
                 {
                     lstMa.Items.Add(txtMa.Text.Trim().ToUpper());
                     lstMa.EnsureVisible(lstMa.Items.Count - 1);
+                    txtMa.Text = "";
                 }
             }
         }

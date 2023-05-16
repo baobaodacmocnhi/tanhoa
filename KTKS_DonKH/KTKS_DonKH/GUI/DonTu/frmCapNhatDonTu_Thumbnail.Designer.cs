@@ -55,11 +55,12 @@
             this.chkcmbNoiNhanKTXM = new DevExpress.XtraEditors.CheckedComboBoxEdit();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtMa = new System.Windows.Forms.TextBox();
+            this.btnCapNhat_Nhieu = new System.Windows.Forms.Button();
             this.lstMa = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnCapNhat_Nhieu = new System.Windows.Forms.Button();
+            this.txtMa = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chkcmbNoiNhan.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuDonTu)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -320,22 +321,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nhập Nhiều";
             // 
-            // label2
+            // btnCapNhat_Nhieu
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(5, 24);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(27, 16);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Mã";
-            // 
-            // txtMa
-            // 
-            this.txtMa.Location = new System.Drawing.Point(38, 21);
-            this.txtMa.Name = "txtMa";
-            this.txtMa.Size = new System.Drawing.Size(100, 22);
-            this.txtMa.TabIndex = 1;
-            this.txtMa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMa_KeyPress);
+            this.btnCapNhat_Nhieu.Location = new System.Drawing.Point(38, 228);
+            this.btnCapNhat_Nhieu.Name = "btnCapNhat_Nhieu";
+            this.btnCapNhat_Nhieu.Size = new System.Drawing.Size(75, 25);
+            this.btnCapNhat_Nhieu.TabIndex = 92;
+            this.btnCapNhat_Nhieu.Text = "Cập Nhật";
+            this.btnCapNhat_Nhieu.UseVisualStyleBackColor = true;
+            this.btnCapNhat_Nhieu.Click += new System.EventHandler(this.btnCapNhat_Nhieu_Click);
             // 
             // lstMa
             // 
@@ -353,15 +347,31 @@
             this.columnHeader1.Text = "Danh Sách";
             this.columnHeader1.Width = 80;
             // 
-            // btnCapNhat_Nhieu
+            // txtMa
             // 
-            this.btnCapNhat_Nhieu.Location = new System.Drawing.Point(38, 228);
-            this.btnCapNhat_Nhieu.Name = "btnCapNhat_Nhieu";
-            this.btnCapNhat_Nhieu.Size = new System.Drawing.Size(75, 25);
-            this.btnCapNhat_Nhieu.TabIndex = 92;
-            this.btnCapNhat_Nhieu.Text = "Cập Nhật";
-            this.btnCapNhat_Nhieu.UseVisualStyleBackColor = true;
-            this.btnCapNhat_Nhieu.Click += new System.EventHandler(this.btnCapNhat_Nhieu_Click);
+            this.txtMa.Location = new System.Drawing.Point(38, 21);
+            this.txtMa.Name = "txtMa";
+            this.txtMa.Size = new System.Drawing.Size(100, 22);
+            this.txtMa.TabIndex = 1;
+            this.txtMa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMa_KeyPress);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(5, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(27, 16);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Mã";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(1223, 31);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 16);
+            this.label3.TabIndex = 93;
+            this.label3.Text = "(enter)";
             // 
             // frmCapNhatDonTu_Thumbnail
             // 
@@ -369,7 +379,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1244, 284);
+            this.ClientSize = new System.Drawing.Size(1098, 284);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.chkcmbNoiNhanKTXM);
             this.Controls.Add(this.label1);
@@ -437,5 +448,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.TextBox txtMa;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
