@@ -319,6 +319,8 @@ namespace DocSo_PC.LinQ
 		
 		private System.Nullable<int> _TDVTN2022;
 		
+		private string _DiaChiHD;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -551,6 +553,8 @@ namespace DocSo_PC.LinQ
     partial void OnPBVMT2021Changed();
     partial void OnTDVTN2022Changing(System.Nullable<int> value);
     partial void OnTDVTN2022Changed();
+    partial void OnDiaChiHDChanging(string value);
+    partial void OnDiaChiHDChanged();
     #endregion
 		
 		public HOADON()
@@ -1178,7 +1182,7 @@ namespace DocSo_PC.LinQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SOHOADON", DbType="NVarChar(20) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SOHOADON", DbType="NVarChar(20)")]
 		public string SOHOADON
 		{
 			get
@@ -2838,6 +2842,26 @@ namespace DocSo_PC.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DiaChiHD", DbType="NVarChar(MAX)")]
+		public string DiaChiHD
+		{
+			get
+			{
+				return this._DiaChiHD;
+			}
+			set
+			{
+				if ((this._DiaChiHD != value))
+				{
+					this.OnDiaChiHDChanging(value);
+					this.SendPropertyChanging();
+					this._DiaChiHD = value;
+					this.SendPropertyChanged("DiaChiHD");
+					this.OnDiaChiHDChanged();
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -3093,6 +3117,8 @@ namespace DocSo_PC.LinQ
 		
 		private System.Nullable<int> _TDVTN2022;
 		
+		private string _DiaChiHD;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -3325,6 +3351,8 @@ namespace DocSo_PC.LinQ
     partial void OnPBVMT2021Changed();
     partial void OnTDVTN2022Changing(System.Nullable<int> value);
     partial void OnTDVTN2022Changed();
+    partial void OnDiaChiHDChanging(string value);
+    partial void OnDiaChiHDChanged();
     #endregion
 		
 		public TT_HoaDonCu()
@@ -5608,6 +5636,26 @@ namespace DocSo_PC.LinQ
 					this._TDVTN2022 = value;
 					this.SendPropertyChanged("TDVTN2022");
 					this.OnTDVTN2022Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DiaChiHD", DbType="NVarChar(MAX)")]
+		public string DiaChiHD
+		{
+			get
+			{
+				return this._DiaChiHD;
+			}
+			set
+			{
+				if ((this._DiaChiHD != value))
+				{
+					this.OnDiaChiHDChanging(value);
+					this.SendPropertyChanging();
+					this._DiaChiHD = value;
+					this.SendPropertyChanged("DiaChiHD");
+					this.OnDiaChiHDChanged();
 				}
 			}
 		}
