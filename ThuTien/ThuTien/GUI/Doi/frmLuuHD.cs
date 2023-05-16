@@ -206,6 +206,8 @@ namespace ThuTien.GUI.Doi
                             //    hoadon.NgayGanDHN = DateTime.ParseExact(contents[53], "yyyyMMdd", System.Globalization.CultureInfo.InvariantCulture);
                             //if (!string.IsNullOrWhiteSpace(contents[54]))
                             //    hoadon.SoHo = contents[54];
+                            if (!string.IsNullOrWhiteSpace(contents[60]))
+                                hoadon.DiaChiHD = contents[60];
                             if ((hoadon.NAM > 2019 || (hoadon.KY == 12 && hoadon.NAM == 2019)) && !string.IsNullOrWhiteSpace(contents[61]))
                                 hoadon.DinhMucHN = int.Parse(contents[61]);
                             //cột 62 là số tiền giảm trừ covid19
