@@ -79,9 +79,9 @@ namespace BaoCaoWeb.DAL
         public DataTable getDoanhThu(int NamPrevious, int NamPresent)
         {
             string sql = "select t1.Ky,DoanhThuPrevious=t1.DoanhThu,DoanhThuPresent=t2.DoanhThu,ChenhLech=t2.DoanhThu-t1.DoanhThu from"
-                        + " (select Ky,DoanhThu=SUM(TongCong) from HOADON where Nam = " + NamPrevious + " group by Ky)t1"
+                        + " (select Ky,DoanhThu=SUM(GiaBan) from HOADON where Nam = " + NamPrevious + " group by Ky)t1"
                         + " left join"
-                        + " (select Ky,DoanhThu=SUM(TongCong) from HOADON where Nam = " + NamPresent + " group by Ky)t2 on t1.Ky = t2.Ky"
+                        + " (select Ky,DoanhThu=SUM(GiaBan) from HOADON where Nam = " + NamPresent + " group by Ky)t2 on t1.Ky = t2.Ky"
                         + " order by t1.Ky";
             return ExecuteQuery_DataTable(sql);
         }

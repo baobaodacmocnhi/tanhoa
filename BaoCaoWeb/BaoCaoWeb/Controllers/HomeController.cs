@@ -47,9 +47,9 @@ namespace BaoCaoWeb.Controllers
                     en.NoiDung3 = dt.Rows[i][3].ToString();
                 enTT.lstSanLuongNam.Add(en);
             }
-            //dt = _cDMA.ExecuteQuery_DataTable("SELECT sum(LN_ThatThoat)/sum(SL_DHT)*100 FROM[tanhoa].[dbo].[g_ThatThoatMangLuoi] where nam = " + enTT.NamPresent);
-            //enTT.lstSanLuong[enTT.lstSanLuong.Count - 1].ThucHien = Math.Round(double.Parse(dt.Rows[0][0].ToString()), 2);
-            //enTT.lstSanLuong[enTT.lstSanLuong.Count - 1].TyLe = Math.Round(enTT.lstSanLuong[enTT.lstSanLuong.Count - 1].KeHoach / enTT.lstSanLuong[enTT.lstSanLuong.Count - 1].ThucHien * 100, 2);
+            dt = _cDMA.ExecuteQuery_DataTable("SELECT sum(LN_ThatThoat)/sum(SL_DHT)*100 FROM[tanhoa].[dbo].[g_ThatThoatMangLuoi] where nam = " + enTT.NamPresent);
+            enTT.lstSanLuongNam[enTT.lstSanLuongNam.Count - 1].ThucHien = Math.Round(double.Parse(dt.Rows[0][0].ToString()), 2);
+            enTT.lstSanLuongNam[enTT.lstSanLuongNam.Count - 1].TyLe = Math.Round(enTT.lstSanLuongNam[enTT.lstSanLuongNam.Count - 1].KeHoach / enTT.lstSanLuongNam[enTT.lstSanLuongNam.Count - 1].ThucHien * 100, 2);
             return View(enTT);
         }
 

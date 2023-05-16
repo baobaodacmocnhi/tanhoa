@@ -39,39 +39,39 @@
                         + "<td>" + item.NoiDung4 + "</td>"
                         + "<td>" + item.NoiDung5 + "</td>";
                     if (item.NoiDung6 < 0)
-                        rows += "<td style = 'color:red'>" + item.NoiDung6 + "</td>";
+                        rows += "<td>" + item.NoiDung6 + "<i class='fa fa-caret-down' style='padding-left:5px;color:red'></i></td>";
                     else
                         if (item.NoiDung6 == 0)
-                            rows += "<td style = 'color:orange'>" + item.NoiDung6 + "</td>";
+                            rows += "<td>" + item.NoiDung6 + "</td>";
                         else
                             if (item.NoiDung6 > 0)
-                                rows += "<td style = 'color:green'>" + item.NoiDung6 + "</td>";
+                                rows += "<td>" + item.NoiDung6 + "<i class='fa fa-caret-up' style='padding-left:5px;color:lawngreen'></td>";
                     if (item.NoiDung7 < 0)
-                        rows += "<td style = 'color:red'>" + item.NoiDung7 + "</td>";
+                        rows += "<td>" + item.NoiDung7 + "<i class='fa fa-caret-down' style='padding-left:5px;color:red'></td>";
                     else
                         if (item.NoiDung7 == 0)
-                            rows += "<td style = 'color:orange'>" + item.NoiDung7 + "</td>";
+                            rows += "<td>" + item.NoiDung7 + "</td>";
                         else
                             if (item.NoiDung7 > 0)
-                                rows += "<td style = 'color:green'>" + item.NoiDung7 + "</td>";
+                                rows += "<td>" + item.NoiDung7 + "<i class='fa fa-caret-up' style='padding-left:5px;color:lawngreen'></td>";
                     rows += "<td>" + item.NoiDung8 + "</td>";
                     rows += "<td>" + item.NoiDung9 + "</td>";
                     if (item.NoiDung10 < 0)
-                        rows += "<td style = 'color:red'>" + item.NoiDung10 + "</td>";
+                        rows += "<td>" + item.NoiDung10 + "<i class='fa fa-caret-down' style='padding-left:5px;color:red'></td>";
                     else
                         if (item.NoiDung10 == 0)
-                            rows += "<td style = 'color:orange'>" + item.NoiDung10 + "</td>";
+                            rows += "<td>" + item.NoiDung10 + "</td>";
                         else
                             if (item.NoiDung10 > 0)
-                                rows += "<td style = 'color:green'>" + item.NoiDung10 + "</td>";
+                                rows += "<td>" + item.NoiDung10 + "<i class='fa fa-caret-up' style='padding-left:5px;color:lawngreen'></td>";
                     if (item.NoiDung11 < 0)
-                        rows += "<td style = 'color:red'>" + item.NoiDung11 + "</td>";
+                        rows += "<td>" + item.NoiDung11 + "<i class='fa fa-caret-down' style='padding-left:5px;color:red'></td>";
                     else
                         if (item.NoiDung11 == 0)
-                            rows += "<td style = 'color:orange'>" + item.NoiDung11 + "</td>";
+                            rows += "<td>" + item.NoiDung11 + "</td>";
                         else
                             if (item.NoiDung11 > 0)
-                                rows += "<td style = 'color:green'>" + item.NoiDung11 + "</td>";
+                                rows += "<td>" + item.NoiDung11 + "<i class='fa fa-caret-up' style='padding-left:5px;color:lawngreen'></td>";
                     rows += "</tr>";
                     $("#vSanLuongDoi").append(rows);
                 });
@@ -228,7 +228,7 @@
                                                         <td>@item.ChenhLech.ToString("N0").Replace(",", ".")<i class="fa fa-caret-down" style="padding-left:5px;color:red"></i></td>
                                                     }
                                                     else
-                                if (@item.ChenhLech > 0)
+                                                    if (@item.ChenhLech > 0)
                                                     {
                                                         <td>@item.ChenhLech.ToString("N0").Replace(",", ".")<i class="fa fa-caret-up" style="padding-left:5px;color:lawngreen"></i></td>
                                                     }
@@ -249,7 +249,7 @@
                                                     <th>@Model.lstSanLuongNam.Sum(item => item.ChenhLech).ToString("N0").Replace(",", ".")<i class="fa fa-caret-down" style="padding-left:5px;color:red"></i></th>
                                                 }
                                                 else
-                                if (@Model.lstSanLuongNam.Sum(item => item.ChenhLech) > 0)
+                                                if (@Model.lstSanLuongNam.Sum(item => item.ChenhLech) > 0)
                                                 {
                                                     <th>@Model.lstSanLuongNam.Sum(item => item.ChenhLech).ToString("N0").Replace(",", ".")<i class="fa fa-caret-up" style="padding-left:5px;color:lawngreen"></i></th>
                                                 }
@@ -264,7 +264,7 @@
                             </div>
                         </div>
                     </div>
-                </div> 
+                </div>
             </div>
         </div>
     </div>
@@ -314,24 +314,24 @@
                                         <tbody>
                                             @foreach (var item in Model.lstSanLuongChuanThu)
                                             {
-                                                <tr>
-                                                    <td>@item.Ky</td>
-                                                    <td><a href="">@item.NamPrevious.ToString("N0").Replace(",", ".")</a></td>
-                                                    <td><a href="">@item.NamPresent.ToString("N0").Replace(",", ".")</a></td>
-                                                    @if (@item.ChenhLech < 0)
+                                            <tr>
+                                                <td>@item.Ky</td>
+                                                <td><a href="">@item.NamPrevious.ToString("N0").Replace(",", ".")</a></td>
+                                                <td><a href="">@item.NamPresent.ToString("N0").Replace(",", ".")</a></td>
+                                                @if (@item.ChenhLech < 0)
                                                     {
-                                                        <td>@item.ChenhLech.ToString("N0").Replace(",", ".")<i class="fa fa-caret-down" style="padding-left:5px;color:red"></i></td>
+                                                    <td>@item.ChenhLech.ToString("N0").Replace(",", ".")<i class="fa fa-caret-down" style="padding-left:5px;color:red"></i></td>
                                                     }
                                                     else
                                 if (@item.ChenhLech > 0)
                                                     {
-                                                        <td>@item.ChenhLech.ToString("N0").Replace(",", ".")<i class="fa fa-caret-up" style="padding-left:5px;color:lawngreen"></i></td>
+                                                    <td>@item.ChenhLech.ToString("N0").Replace(",", ".")<i class="fa fa-caret-up" style="padding-left:5px;color:lawngreen"></i></td>
                                                     }
                                                     else
                                                     {
-                                                        <td></td>
+                                                    <td></td>
                                                     }
-                                                </tr>
+                                            </tr>
                                             }
                                         </tbody>
                                         <tfoot>
@@ -341,16 +341,16 @@
                                                 <th>@Model.lstSanLuongChuanThu.Sum(item => item.NamPresent).ToString("N0").Replace(",", ".")</th>
                                                 @if (@Model.lstSanLuongChuanThu.Sum(item => item.ChenhLech) < 0)
                                                 {
-                                                    <th>@Model.lstSanLuongChuanThu.Sum(item => item.ChenhLech).ToString("N0").Replace(",", ".")<i class="fa fa-caret-down" style="padding-left:5px;color:red"></i></th>
+                                                <th>@Model.lstSanLuongChuanThu.Sum(item => item.ChenhLech).ToString("N0").Replace(",", ".")<i class="fa fa-caret-down" style="padding-left:5px;color:red"></i></th>
                                                 }
                                                 else
                                 if (@Model.lstSanLuongChuanThu.Sum(item => item.ChenhLech) > 0)
                                                 {
-                                                    <th>@Model.lstSanLuongChuanThu.Sum(item => item.ChenhLech).ToString("N0").Replace(",", ".")<i class="fa fa-caret-up" style="padding-left:5px;color:lawngreen"></i></th>
+                                                <th>@Model.lstSanLuongChuanThu.Sum(item => item.ChenhLech).ToString("N0").Replace(",", ".")<i class="fa fa-caret-up" style="padding-left:5px;color:lawngreen"></i></th>
                                                 }
                                                 else
                                                 {
-                                                    <th></th>
+                                                <th></th>
                                                 }
                                             </tr>
                                         </tfoot>
