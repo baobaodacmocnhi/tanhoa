@@ -317,7 +317,7 @@ namespace KTKS_DonKH.DAL.TruyThu
         public DataTable getDS_SoTien(int SoTien)
         {
             var query = from item in db.TruyThuTienNuoc_ChiTiets
-                        where item.TongTien == SoTien
+                        where item.TongTien >= SoTien - 50000 && item.TongTien <= SoTien + 50000
                         orderby item.CreateDate ascending
                         select new
                         {

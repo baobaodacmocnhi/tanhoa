@@ -613,7 +613,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             ctktxm.GhiChuNoiDungBaoThay = txtGhiChuNoiDungBaoThay.Text.Trim();
                     }
                     ctktxm.SoTienDongTien = txtTongSoTien.Text.Trim();
-                    if (ctktxm.DienThoai.Replace(".", "").Replace(" ", "").Length == 11
+                    if (ctktxm.DienThoai.Replace(".", "").Replace(" ", "").Length == 10
                         && !_cDHN.checkExists_DienThoai(ctktxm.DanhBo, ctktxm.DienThoai.Replace(".", "").Replace(" ", "")))
                     {
                         SDT_DHN enSDT = new SDT_DHN();

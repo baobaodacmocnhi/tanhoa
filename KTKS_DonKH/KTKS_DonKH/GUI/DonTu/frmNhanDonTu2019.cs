@@ -534,7 +534,7 @@ namespace KTKS_DonKH.GUI.DonTu
 
                         entity.DonTu_ChiTiets.Add(entityCT);
                         //add điện thoại qua trung tam
-                        if (entityCT.DienThoai.Replace(".", "").Replace(" ", "").Length == 11
+                        if (entityCT.DienThoai.Replace(".", "").Replace(" ", "").Length == 10
                         && !_cDHN.checkExists_DienThoai(entityCT.DanhBo, entityCT.DienThoai.Replace(".", "").Replace(" ", "")))
                         {
                             SDT_DHN enSDT = new SDT_DHN();
