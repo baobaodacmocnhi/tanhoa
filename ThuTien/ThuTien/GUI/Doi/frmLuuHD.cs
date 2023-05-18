@@ -280,7 +280,6 @@ namespace ThuTien.GUI.Doi
                                             ctdongnuoc.CreateDate = DateTime.Now;
                                             dongnuoc.TT_CTDongNuocs.Add(ctdongnuoc);
                                             _cDongNuoc.SuaDN(dongnuoc);
-
                                         }
                                         //thêm hóa đơn mới vào lệnh hủy
                                         if (_cLenhHuy.CheckExist_Ton(hoadon.DANHBA, NamTemp, KyTemp) == true)
@@ -545,7 +544,7 @@ namespace ThuTien.GUI.Doi
             hoadonCu.LNTTM = hoadonMoi.LNTTM;
             hoadonCu.PBVMT2021 = hoadonMoi.PBVMT2021;
             hoadonCu.TDVTN2022 = hoadonMoi.TDVTN2022;
-
+            hoadonCu.DiaChiHD = hoadonMoi.DiaChiHD;
         }
 
         private void btnSoSanhKyTruoc_Click(object sender, EventArgs e)
@@ -742,11 +741,14 @@ namespace ThuTien.GUI.Doi
                                 hoadon.NAM = int.Parse("20" + contents[19]);
                             if (!string.IsNullOrWhiteSpace(contents[46]))
                                 hoadon.SOHOADON = contents[46];
+                            //if (!string.IsNullOrWhiteSpace(contents[60]))
+                            //    hoadon.DiaChiHD = contents[60];
                             //Nếu có hóa đơn
                             if (_cHoaDon.CheckExist(hoadon.DANHBA, hoadon.NAM, hoadon.KY))
                             {
                                 HOADON hoadonCN = _cHoaDon.Get(hoadon.DANHBA, hoadon.NAM, hoadon.KY);
                                 hoadonCN.SOHOADON = hoadon.SOHOADON;
+                                //hoadonCN.DiaChiHD = hoadon.DiaChiHD;
                                 _cHoaDon.Sua(hoadonCN);
                             }
                         }
