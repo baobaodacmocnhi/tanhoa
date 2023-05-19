@@ -150,16 +150,18 @@ namespace DocSo_PC.GUI.HeThong
                 //        CMenu._cDAL.ExecuteNonQuery("delete Temp_HinhDHN where ID='" + item["ID"].ToString() + "'");
                 //}
 
-                //DataTable dt = CMenu._cDAL.ExecuteQuery_DataTable("select DanhBo from Temp_DanhBo");
-                //foreach (DataRow item in dt.Rows)
-                //{
-                //    byte[] hinh = wsDHN.get_Hinh("202304" + item["DanhBo"].ToString());
-                //    System.IO.File.WriteAllBytes(@"C:\Users\Admin\Desktop\HoaSen4.2023\" + item["DanhBo"].ToString() + ".jpg", hinh);
-                //}
+                DataTable dt = CMenu._cDAL.ExecuteQuery_DataTable("select DanhBo=DanhBa,CSMoi,GIOGHI from sDHN.dbo.DHTM_NGHIEMTHU_TD td,DocSo ds"
++ " where ds.DanhBa=td.DANHBO and Dot in (15,16) and nam=2023 and ky=5 and SUBSTRING(CodeMoi,1,1)='4'");
+                foreach (DataRow item in dt.Rows)
+                {
+                    byte[] hinh = wsDHN.get_Hinh("202305" + item["DanhBo"].ToString());
+                    if (hinh != null)
+                        System.IO.File.WriteAllBytes(@"C:\Users\BaoBao\Desktop\TanHoa.DocSo.19052023\" + item["DanhBo"].ToString() + ".jpg", hinh);
+                }
             }
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
         }
@@ -168,36 +170,80 @@ namespace DocSo_PC.GUI.HeThong
         {
             try
             {
-                 OpenFileDialog dialog = new OpenFileDialog();
-                    dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
-                    dialog.Multiselect = false;
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
+                dialog.Multiselect = false;
 
-                    if (dialog.ShowDialog() == DialogResult.OK)
-                    {
-                        DataTable dtExcel = _cMenu.ExcelToDataTable(dialog.FileName);
-                        foreach (DataRow item in dtExcel.Rows)
-                            if (item[1].ToString().Replace(" ", "").Length == 11)
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    DataTable dtExcel = _cMenu.ExcelToDataTable(dialog.FileName);
+                    foreach (DataRow item in dtExcel.Rows)
+                        if (item[1].ToString().Replace(" ", "").Length == 11)
+                        {
+                            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://localhost:23993/api/DocSo/suaDHN_TCT?DanhBo=" + item[1].ToString().Replace(" ", "") + "&checksum=tanho@2022");
+                            request.Method = "GET";
+                            request.ContentType = "application/json; charset=utf-8";
+
+                            HttpWebResponse respuesta = (HttpWebResponse)request.GetResponse();
+                            if (respuesta.StatusCode == HttpStatusCode.Accepted || respuesta.StatusCode == HttpStatusCode.OK || respuesta.StatusCode == HttpStatusCode.Created)
                             {
-                                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://localhost:23993/api/DocSo/suaDHN_TCT?DanhBo=" + item[1].ToString().Replace(" ", "") + "&checksum=tanho@2022");
-                                request.Method = "GET";
-                                request.ContentType = "application/json; charset=utf-8";
-
-                                HttpWebResponse respuesta = (HttpWebResponse)request.GetResponse();
-                                if (respuesta.StatusCode == HttpStatusCode.Accepted || respuesta.StatusCode == HttpStatusCode.OK || respuesta.StatusCode == HttpStatusCode.Created)
-                                {
-                                    StreamReader read = new StreamReader(respuesta.GetResponseStream());
-                                    string result = read.ReadToEnd();
-                                    read.Close();
-                                    respuesta.Close();
-                                }
+                                StreamReader read = new StreamReader(respuesta.GetResponseStream());
+                                string result = read.ReadToEnd();
+                                read.Close();
+                                respuesta.Close();
                             }
-                    }
-                
+                        }
+                }
+
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
+
+        private void btnExportsDHN_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Tạo các đối tượng Excel
+                Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
+                Microsoft.Office.Interop.Excel.Workbooks oBooks;
+                Microsoft.Office.Interop.Excel.Sheets oSheets;
+                Microsoft.Office.Interop.Excel.Workbook oBook;
+                Microsoft.Office.Interop.Excel.Worksheet oSheet;
+
+                //Tạo mới một Excel WorkBook 
+                oExcel.Visible = true;
+                oExcel.DisplayAlerts = false;
+                //khai báo số lượng sheet
+                oExcel.Application.SheetsInNewWorkbook = 1;
+                oBooks = oExcel.Workbooks;
+
+                oBook = (Microsoft.Office.Interop.Excel.Workbook)(oExcel.Workbooks.Add(Type.Missing));
+                oSheets = oBook.Worksheets;
+                oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
+
+                oSheet.Name = "Sheet1";
+
+                DataTable dt = CMenu._cDAL.ExecuteQuery_DataTable(txtQuery.Text.Trim());
+                for (int i = 0; i < dt.Columns.Count; i++)
+                {
+                    oSheet.Cells[1, i + 1] = dt.Columns[i].ColumnName;
+                }
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    for (int j = 0; j < dt.Columns.Count; j++)
+                    {
+                        oSheet.Cells[i + 2, j + 1] = dt.Rows[i][j].ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }

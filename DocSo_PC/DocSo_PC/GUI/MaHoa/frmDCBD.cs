@@ -143,6 +143,7 @@ namespace DocSo_PC.GUI.MaHoa
                                 ctdcbd.Phuong = dontu.Phuong;
                                 ctdcbd.Quan = dontu.Quan;
                                 ctdcbd.GiaBieu = int.Parse(item.Cells["GiaBieuCu"].Value.ToString());
+                                ctdcbd.ThongTin = "";
                                 if (item.Cells["DiaChi_BD"].Value != null && item.Cells["DiaChi_BD"].Value.ToString() != "")
                                 {
                                     ctdcbd.DiaChi_BD = item.Cells["DiaChi_BD"].Value.ToString();
@@ -849,6 +850,11 @@ namespace DocSo_PC.GUI.MaHoa
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+
         }
 
 

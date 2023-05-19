@@ -35,6 +35,7 @@
             this.dgvResult = new System.Windows.Forms.DataGridView();
             this.btnChuyenHinhDHN = new System.Windows.Forms.Button();
             this.btnUpdatesDHNTCT = new System.Windows.Forms.Button();
+            this.btnExportsDHN = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResult)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,7 +76,9 @@
             this.txtQuery.Name = "txtQuery";
             this.txtQuery.Size = new System.Drawing.Size(450, 100);
             this.txtQuery.TabIndex = 3;
-            this.txtQuery.Text = "select ID from Temp_HinhDHN order by CreateDate asc";
+            this.txtQuery.Text = "select DanhBa,CSMoi,GIOGHI from sDHN.dbo.DHTM_NGHIEMTHU_TD td,DocSo ds where ds.D" +
+                "anhBa=td.DANHBO and Dot in (15,16) and nam=2023 and ky=5 and SUBSTRING(CodeMoi,1" +
+                ",1)=\'4\'";
             this.txtQuery.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuery_KeyPress);
             // 
             // dgvResult
@@ -106,11 +109,22 @@
             this.btnUpdatesDHNTCT.UseVisualStyleBackColor = true;
             this.btnUpdatesDHNTCT.Click += new System.EventHandler(this.btnUpdatesDHNTCT_Click);
             // 
+            // btnExportsDHN
+            // 
+            this.btnExportsDHN.Location = new System.Drawing.Point(468, 113);
+            this.btnExportsDHN.Name = "btnExportsDHN";
+            this.btnExportsDHN.Size = new System.Drawing.Size(107, 23);
+            this.btnExportsDHN.TabIndex = 13;
+            this.btnExportsDHN.Text = "Export sĐHN";
+            this.btnExportsDHN.UseVisualStyleBackColor = true;
+            this.btnExportsDHN.Click += new System.EventHandler(this.btnExportsDHN_Click);
+            // 
             // frmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1004, 524);
+            this.Controls.Add(this.btnExportsDHN);
             this.Controls.Add(this.btnUpdatesDHNTCT);
             this.Controls.Add(this.btnChuyenHinhDHN);
             this.Controls.Add(this.dgvResult);
@@ -136,5 +150,6 @@
         private System.Windows.Forms.DataGridView dgvResult;
         private System.Windows.Forms.Button btnChuyenHinhDHN;
         private System.Windows.Forms.Button btnUpdatesDHNTCT;
+        private System.Windows.Forms.Button btnExportsDHN;
     }
 }

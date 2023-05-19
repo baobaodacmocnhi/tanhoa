@@ -109,5 +109,26 @@ namespace DocSo_PC.GUI.Doi
             {
             }
         }
+
+        private void dgvDanhSach_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvDanhSach.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && txtDanhBo.Text.Trim().Replace("-", "").Replace(" ", "").Length == 11)
+            {
+                foreach (DataGridViewRow item in dgvDanhSach.Rows)
+                    if (item.Cells["DanhBo"].Value.ToString() == txtDanhBo.Text.Trim().Replace("-", "").Replace(" ", ""))
+                    {
+                        dgvDanhSach.Focus();
+                        dgvDanhSach.CurrentCell = dgvDanhSach.Rows[item.Index].Cells[3];
+                    }
+            }
+        }
     }
 }
