@@ -117,4 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="txtQuery.Text" xml:space="preserve">
+    <value>select DanhBo=DanhBa,CSMoi,GIOGHI,KyHD=CONVERT(char(4),Nam)+''+CONVERT(char(2),Ky) from sDHN.dbo.DHTM_NGHIEMTHU_TD td,DocSo ds where ds.DanhBa=td.DANHBO and Dot in (15,16) and nam=2023 and ky=5 and SUBSTRING(CodeMoi,1,1)='4'</value>
+  </data>
 </root>

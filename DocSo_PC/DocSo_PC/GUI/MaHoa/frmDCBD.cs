@@ -143,6 +143,8 @@ namespace DocSo_PC.GUI.MaHoa
                                 ctdcbd.Phuong = dontu.Phuong;
                                 ctdcbd.Quan = dontu.Quan;
                                 ctdcbd.GiaBieu = int.Parse(item.Cells["GiaBieuCu"].Value.ToString());
+                                ctdcbd.DinhMuc = dontu.DinhMuc;
+                                ctdcbd.DinhMucHN = dontu.DinhMucHN;
                                 ctdcbd.ThongTin = "";
                                 if (item.Cells["DiaChi_BD"].Value != null && item.Cells["DiaChi_BD"].Value.ToString() != "")
                                 {
@@ -157,8 +159,6 @@ namespace DocSo_PC.GUI.MaHoa
                                     else
                                         ctdcbd.ThongTin += ", Giá Biểu";
                                 }
-                                ctdcbd.DinhMuc = dontu.DinhMuc;
-                                ctdcbd.DinhMucHN = dontu.DinhMucHN;
                                 ctdcbd.HieuLucKy = item.Cells["HieuLucKy"].Value.ToString();
                                 ctdcbd.CongDung = item.Cells["GhiChu"].Value.ToString();
                                 ctdcbd.PhieuDuocKy = true;
@@ -854,8 +854,83 @@ namespace DocSo_PC.GUI.MaHoa
 
         private void btnImport_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+                {
+                    if (txtMaDon.Text.Trim() == "")
+                    {
+                        MessageBox.Show("Thiếu Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    MaHoa_DonTu dontu = _cDonTu.get(int.Parse(txtMaDon.Text.Trim()));
+                    if (dontu != null)
+                    {
+                        OpenFileDialog dialog = new OpenFileDialog();
+                        dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
+                        dialog.Multiselect = false;
+                        if (dialog.ShowDialog() == DialogResult.OK)
+                        {
+                            string strHieuLucKy = _cLDS.getHieuLucKyToi();
+                            DataTable dtExcel = _cDCBD.ExcelToDataTable(dialog.FileName);
+                            foreach (DataRow item in dtExcel.Rows)
+                                if (item[0].ToString().Replace(" ", "").Replace("-", "").Length == 11)
+                                {
+                                    HOADON hoadon = _cThuTien.GetMoiNhat(item[0].ToString().Replace(" ", "").Replace("-", ""));
+                                    if (hoadon != null && (hoadon.DiaChiHD == null || hoadon.DiaChiHD == ""))
+                                    {
+                                        MaHoa_DCBD ctdcbd = new MaHoa_DCBD();
+                                        ctdcbd.DanhBo = item[0].ToString().Replace(" ", "").Replace("-", "");
+                                        if (_cDCBD.checkExist(dontu.ID, ctdcbd.DanhBo) == true)
+                                        {
+                                            if (MessageBox.Show("Danh Bộ " + ctdcbd.DanhBo + " đã được Lập Điều Chỉnh Biến Động\nVẫn muốn Lập tiếp???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+                                                return;
+                                        }
+                                        else
+                                            if (_cDCBD.checkExist(ctdcbd.DanhBo, 33) == true)
+                                            {
+                                                if (MessageBox.Show("Danh Bộ " + ctdcbd.DanhBo + " đã được Lập Điều Chỉnh Biến Động trong 33 ngày gần nhất\nVẫn muốn Lập tiếp???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+                                                    return;
+                                            }
+                                        ctdcbd.IDMaDon = dontu.ID;
+                                        ctdcbd.HoTen = hoadon.TENKH;
+                                        ctdcbd.DiaChi = hoadon.SO + " " + hoadon.DUONG;
+                                        ctdcbd.MaQuanPhuong = hoadon.Quan + " " + hoadon.Phuong;
+                                        ctdcbd.Ky = hoadon.KY;
+                                        ctdcbd.Nam = hoadon.NAM;
+                                        ctdcbd.Dot = hoadon.DOT;
+                                        ctdcbd.Phuong = hoadon.Phuong;
+                                        ctdcbd.Quan = hoadon.Quan;
+                                        ctdcbd.GiaBieu = hoadon.GB;
+                                        ctdcbd.DinhMuc = hoadon.DM;
+                                        ctdcbd.DinhMucHN = hoadon.DinhMucHN;
+                                        ctdcbd.ThongTin = "";
+                                        ctdcbd.DiaChi_BD = item[0].ToString();
+                                        ctdcbd.ThongTin = "Địa Chỉ";
+                                        ctdcbd.HieuLucKy = strHieuLucKy;
+                                        ctdcbd.PhieuDuocKy = true;
+                                        if (_cDCBD.Them(ctdcbd))
+                                        {
+                                        }
+                                    }
+                                }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Mã Đơn không tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
 
 
 

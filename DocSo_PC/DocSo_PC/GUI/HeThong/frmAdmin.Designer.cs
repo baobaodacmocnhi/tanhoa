@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdmin));
             this.btnCapNhatMenu = new System.Windows.Forms.Button();
             this.btnCapNhatPhanQuyenNhom = new System.Windows.Forms.Button();
             this.btnCapNhatPhanQuyenNguoiDung = new System.Windows.Forms.Button();
@@ -76,9 +77,7 @@
             this.txtQuery.Name = "txtQuery";
             this.txtQuery.Size = new System.Drawing.Size(450, 100);
             this.txtQuery.TabIndex = 3;
-            this.txtQuery.Text = "select DanhBa,CSMoi,GIOGHI from sDHN.dbo.DHTM_NGHIEMTHU_TD td,DocSo ds where ds.D" +
-                "anhBa=td.DANHBO and Dot in (15,16) and nam=2023 and ky=5 and SUBSTRING(CodeMoi,1" +
-                ",1)=\'4\'";
+            this.txtQuery.Text = resources.GetString("txtQuery.Text");
             this.txtQuery.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuery_KeyPress);
             // 
             // dgvResult

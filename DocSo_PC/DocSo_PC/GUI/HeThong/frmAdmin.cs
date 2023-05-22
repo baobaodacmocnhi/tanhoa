@@ -238,6 +238,23 @@ namespace DocSo_PC.GUI.HeThong
                         oSheet.Cells[i + 2, j + 1] = dt.Rows[i][j].ToString();
                     }
                 }
+
+                //xuất file hình
+                wrDHN.wsDHN wsDHN = new wrDHN.wsDHN();
+                using (FolderBrowserDialog dlg = new FolderBrowserDialog())
+                {
+                    dlg.Description = "Chọn Thư Mục Chứa File";
+                    if (dlg.ShowDialog() == DialogResult.OK)
+                    {
+                        MessageBox.Show(dlg.SelectedPath);
+                        foreach (DataRow item in dt.Rows)
+                        {
+                            byte[] hinh = wsDHN.get_Hinh(item["KyHD"].ToString() + item["DanhBo"].ToString());
+                            if (hinh != null)
+                                System.IO.File.WriteAllBytes(@"" + dlg.SelectedPath + @"\" + item["DanhBo"].ToString() + ".jpg", hinh);
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {
