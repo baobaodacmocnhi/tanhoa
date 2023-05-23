@@ -90,7 +90,7 @@ namespace KTKS_DonKH.GUI.TruyThu
                         dgvDSTruyThuTienNuoc.DataSource = _cTTTN.getDS(dateTu.Value, dateDen.Value);
                         break;
                     case "Số Tiền":
-                        dgvDSTruyThuTienNuoc.DataSource = _cTTTN.getDS_SoTien(int.Parse(txtNoiDungTimKiem.Text.Trim().Replace("-", "")));
+                        dgvDSTruyThuTienNuoc.DataSource = _cTTTN.getDS_SoTien(int.Parse(txtNoiDungTimKiem.Text.Trim().Replace(".", "")));
                         break;
                     default:
                         break;
