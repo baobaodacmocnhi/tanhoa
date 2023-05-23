@@ -872,27 +872,16 @@ namespace DocSo_PC.GUI.MaHoa
                         if (dialog.ShowDialog() == DialogResult.OK)
                         {
                             string strHieuLucKy = _cLDS.getHieuLucKyToi();
-                            DataTable dtExcel = _cDCBD.ExcelToDataTable(dialog.FileName);
+                            DataTable dtExcel = _cDCBD.ExcelToDataTable_OLDB(dialog.FileName);
                             foreach (DataRow item in dtExcel.Rows)
                                 if (item[1].ToString().Replace(" ", "").Replace("-", "").Length == 11
                                     && item[5].ToString().Trim() != item[6].ToString().Trim())
                                 {
-                                    HOADON hoadon = _cThuTien.GetMoiNhat(item[0].ToString().Replace(" ", "").Replace("-", ""));
+                                    HOADON hoadon = _cThuTien.GetMoiNhat(item[1].ToString().Replace(" ", "").Replace("-", ""));
                                     if (hoadon != null && (hoadon.DiaChiHD == null || hoadon.DiaChiHD == ""))
                                     {
                                         MaHoa_DCBD ctdcbd = new MaHoa_DCBD();
-                                        ctdcbd.DanhBo = item[0].ToString().Replace(" ", "").Replace("-", "");
-                                        if (_cDCBD.checkExist(dontu.ID, ctdcbd.DanhBo) == true)
-                                        {
-                                            if (MessageBox.Show("Danh Bộ " + ctdcbd.DanhBo + " đã được Lập Điều Chỉnh Biến Động\nVẫn muốn Lập tiếp???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
-                                                return;
-                                        }
-                                        else
-                                            if (_cDCBD.checkExist(ctdcbd.DanhBo, 33) == true)
-                                            {
-                                                if (MessageBox.Show("Danh Bộ " + ctdcbd.DanhBo + " đã được Lập Điều Chỉnh Biến Động trong 33 ngày gần nhất\nVẫn muốn Lập tiếp???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
-                                                    return;
-                                            }
+                                        ctdcbd.DanhBo = item[1].ToString().Replace(" ", "").Replace("-", "");
                                         ctdcbd.IDMaDon = dontu.ID;
                                         ctdcbd.HoTen = hoadon.TENKH;
                                         ctdcbd.DiaChi = hoadon.SO + " " + hoadon.DUONG;

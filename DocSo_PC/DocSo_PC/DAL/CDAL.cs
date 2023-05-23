@@ -11,6 +11,7 @@ using System.Drawing;
 using System.Diagnostics;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.Data.OleDb;
 
 namespace DocSo_PC.DAL
 {
@@ -342,12 +343,9 @@ namespace DocSo_PC.DAL
                 xlApp = new Microsoft.Office.Interop.Excel.Application();
                 xlWorkbook = xlApp.Workbooks.Open(path);
                 xlWorksheet = xlWorkbook.Worksheets[1];
-
                 int rows = xlWorksheet.UsedRange.Rows.Count;
                 int cols = xlWorksheet.UsedRange.Columns.Count;
-
                 int noofrow = 1;
-
                 for (int c = 1; c <= cols; c++)
                 {
                     //string colname = xlWorksheet.Cells[1, c].Text;
@@ -355,7 +353,6 @@ namespace DocSo_PC.DAL
                     dt.Columns.Add(c.ToString());
                     noofrow = 2;
                 }
-
                 for (int r = noofrow; r <= rows; r++)
                 {
                     DataRow dr = dt.NewRow();
@@ -363,10 +360,8 @@ namespace DocSo_PC.DAL
                     {
                         dr[c - 1] = xlWorksheet.Cells[r, c].Value;
                     }
-
                     dt.Rows.Add(dr);
                 }
-
             }
             catch (Exception ex)
             {
@@ -374,38 +369,63 @@ namespace DocSo_PC.DAL
             }
             finally
             {
-
                 //release com objects to fully kill excel process from running in the background
                 //if (xlRange != null)
                 //{
                 //    Marshal.ReleaseComObject(xlRange);
                 //}
-
                 if (xlWorksheet != null)
                 {
                     System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWorksheet);
                 }
-
                 //close and release
                 if (xlWorkbook != null)
                 {
                     xlWorkbook.Close();
                     System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWorkbook);
                 }
-
                 //quit and release
                 if (xlApp != null)
                 {
                     xlApp.Quit();
                     System.Runtime.InteropServices.Marshal.ReleaseComObject(xlApp);
                 }
-
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
             }
             return dt;
         }
 
-
+        public DataTable ExcelToDataTable_OLDB( string path)
+        {
+            try
+            {
+                using (OleDbConnection conn = new OleDbConnection())
+                {
+                    DataTable dt = new DataTable();
+                    string Import_FileName = path;
+                    string fileExtension = Path.GetExtension(Import_FileName);
+                    if (fileExtension == ".xls")
+                        conn.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + Import_FileName + ";" + "Extended Properties='Excel 8.0;HDR=YES;'";
+                    if (fileExtension == ".xlsx")
+                        conn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Import_FileName + ";" + "Extended Properties='Excel 12.0 Xml;HDR=YES;'";
+                    using (OleDbCommand comm = new OleDbCommand())
+                    {
+                        comm.CommandText = "Select * from [Sheet1$]";
+                        comm.Connection = conn;
+                        using (OleDbDataAdapter da = new OleDbDataAdapter())
+                        {
+                            da.SelectCommand = comm;
+                            da.Fill(dt);
+                            return dt;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
