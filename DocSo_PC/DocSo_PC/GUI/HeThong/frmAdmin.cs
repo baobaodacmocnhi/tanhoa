@@ -246,7 +246,6 @@ namespace DocSo_PC.GUI.HeThong
                     dlg.Description = "Chọn Thư Mục Chứa File";
                     if (dlg.ShowDialog() == DialogResult.OK)
                     {
-                        MessageBox.Show(dlg.SelectedPath);
                         foreach (DataRow item in dt.Rows)
                         {
                             byte[] hinh = wsDHN.get_Hinh(item["KyHD"].ToString() + item["DanhBo"].ToString());

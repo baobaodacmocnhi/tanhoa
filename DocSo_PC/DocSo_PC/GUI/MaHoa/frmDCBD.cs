@@ -874,7 +874,8 @@ namespace DocSo_PC.GUI.MaHoa
                             string strHieuLucKy = _cLDS.getHieuLucKyToi();
                             DataTable dtExcel = _cDCBD.ExcelToDataTable(dialog.FileName);
                             foreach (DataRow item in dtExcel.Rows)
-                                if (item[0].ToString().Replace(" ", "").Replace("-", "").Length == 11)
+                                if (item[1].ToString().Replace(" ", "").Replace("-", "").Length == 11
+                                    && item[5].ToString().Trim() != item[6].ToString().Trim())
                                 {
                                     HOADON hoadon = _cThuTien.GetMoiNhat(item[0].ToString().Replace(" ", "").Replace("-", ""));
                                     if (hoadon != null && (hoadon.DiaChiHD == null || hoadon.DiaChiHD == ""))
@@ -905,7 +906,7 @@ namespace DocSo_PC.GUI.MaHoa
                                         ctdcbd.DinhMuc = hoadon.DM;
                                         ctdcbd.DinhMucHN = hoadon.DinhMucHN;
                                         ctdcbd.ThongTin = "";
-                                        ctdcbd.DiaChi_BD = item[0].ToString();
+                                        ctdcbd.DiaChi_BD = item[6].ToString();
                                         ctdcbd.ThongTin = "Địa Chỉ";
                                         ctdcbd.HieuLucKy = strHieuLucKy;
                                         ctdcbd.PhieuDuocKy = true;
