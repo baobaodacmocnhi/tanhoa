@@ -352,7 +352,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/11/2023 09:57:56</publishTime>
     </File>
     <File Include="Scripts/anychart/jschartSanLuong.js">
-      <publishTime>05/16/2023 07:51:00</publishTime>
+      <publishTime>05/24/2023 13:42:22</publishTime>
     </File>
     <File Include="Scripts/bootstrap.bundle.js">
       <publishTime>06/22/2021 11:29:16</publishTime>
@@ -5641,7 +5641,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/16/2023 07:51:00</publishTime>
     </File>
     <File Include="Views/Home/ChiTietSanLuong.cshtml">
-      <publishTime>05/16/2023 09:32:32</publishTime>
+      <publishTime>05/24/2023 13:41:22</publishTime>
     </File>
     <File Include="Views/Home/Contact.cshtml">
       <publishTime>02/02/2021 15:08:06</publishTime>
@@ -5650,7 +5650,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/15/2023 08:07:17</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>05/16/2023 10:21:51</publishTime>
+      <publishTime>05/24/2023 13:31:52</publishTime>
     </File>
     <File Include="Views/Home/Index2.cshtml">
       <publishTime>04/01/2021 09:47:18</publishTime>
