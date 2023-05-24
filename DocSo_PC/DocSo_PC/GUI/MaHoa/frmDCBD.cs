@@ -15,6 +15,7 @@ using DocSo_PC.BaoCao.MaHoa;
 using DocSo_PC.GUI.BaoCao;
 using DocSo_PC.DAL;
 using DocSo_PC.DAL.Doi;
+using System.IO;
 
 namespace DocSo_PC.GUI.MaHoa
 {
@@ -241,6 +242,7 @@ namespace DocSo_PC.GUI.MaHoa
                 if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
                 {
                     if (MessageBox.Show("Bạn có chắc chắn???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
                         foreach (DataGridViewRow item in dgvDCBD.Rows)
                             if (item.Cells["Chon_DS"].Value != null && bool.Parse(item.Cells["Chon_DS"].Value.ToString()) == true)
                             {
@@ -257,11 +259,13 @@ namespace DocSo_PC.GUI.MaHoa
                                             _wsDHN.xoa_Folder_Hinh_MaHoa("DCBD", flagID);
                                             scope.Complete();
                                             scope.Dispose();
-                                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                                         }
                                     }
                                 }
                             }
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -878,7 +882,7 @@ namespace DocSo_PC.GUI.MaHoa
                                     && item[5].ToString().Trim() != item[6].ToString().Trim())
                                 {
                                     HOADON hoadon = _cThuTien.GetMoiNhat(item[1].ToString().Replace(" ", "").Replace("-", ""));
-                                    if (hoadon != null && (hoadon.DiaChiHD == null || hoadon.DiaChiHD == ""))
+                                    if (hoadon != null && (hoadon.GB == 10 || hoadon.GB == 11 || hoadon.GB == 15) && (hoadon.DiaChiHD == null || hoadon.DiaChiHD == ""))
                                     {
                                         MaHoa_DCBD ctdcbd = new MaHoa_DCBD();
                                         ctdcbd.DanhBo = item[1].ToString().Replace(" ", "").Replace("-", "");
@@ -904,6 +908,7 @@ namespace DocSo_PC.GUI.MaHoa
                                         }
                                     }
                                 }
+                            MessageBox.Show("Đã xử lý", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                     else
@@ -914,6 +919,48 @@ namespace DocSo_PC.GUI.MaHoa
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnFileGuiTCT_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.DefaultExt = "dat";
+                saveFileDialog.Filter = "Text files (*.dat)|*.dat";
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    using (StreamWriter writer = new StreamWriter(saveFileDialog.FileName))
+                    {
+                        foreach (DataGridViewRow item in dgvDCBD.Rows)
+                            if (item.Cells["Chon_DS"].Value != null && bool.Parse(item.Cells["Chon_DS"].Value.ToString()) == true)
+                            {
+                                MaHoa_DCBD en = _cDCBD.get(int.Parse(item.Cells["ID_DS"].Value.ToString()));
+                                if (en != null)
+                                {
+                                    writer.Write("\"" + en.DanhBo + "\"");
+                                    string[] strs = en.DiaChi.Split(' ');
+                                    if (strs[0].Length <= 50)
+                                    {
+                                        writer.Write(",\"" + strs[0] + "\"");
+                                        writer.WriteLine(",\"" + strs[1] + "\"");
+                                    }
+                                    else
+                                        if (strs[0].Length > 50)
+                                        {
+                                            writer.Write(",\"" + en.DiaChi_BD.Substring(0, en.DiaChi_BD.Length / 2) + "\"");
+                                            writer.WriteLine(",\"" + en.DiaChi_BD.Substring(en.DiaChi_BD.Length / 2, en.DiaChi_BD.Length / 2) + "\"");
+                                        }
+                                }
+                            }
+                    }
+                    MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             catch (Exception ex)
             {

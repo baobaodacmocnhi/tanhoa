@@ -92,6 +92,8 @@
             this.btnInPhieu = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.dgvDCBD = new System.Windows.Forms.DataGridView();
+            this.btnXem_DS = new System.Windows.Forms.Button();
+            this.btnFileGuiTCT = new System.Windows.Forms.Button();
             this.Chon_DS = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ChuyenDocSo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ID_DS = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -106,10 +108,9 @@
             this.GiaBieu_DS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GiaBieu_BD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HieuLucKy_DS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.XemHinh = new System.Windows.Forms.DataGridViewButtonColumn();
             this.CreateBy_DS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDMaDon_DS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.XemHinh = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.btnXem_DS = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -339,6 +340,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btnFileGuiTCT);
             this.tabPage2.Controls.Add(this.txtMaDon);
             this.tabPage2.Controls.Add(this.label6);
             this.tabPage2.Controls.Add(this.btnImport);
@@ -708,9 +710,9 @@
             this.GiaBieu_DS,
             this.GiaBieu_BD,
             this.HieuLucKy_DS,
+            this.XemHinh,
             this.CreateBy_DS,
-            this.IDMaDon_DS,
-            this.XemHinh});
+            this.IDMaDon_DS});
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -736,6 +738,26 @@
             this.dgvDCBD.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDCBD_CellClick);
             this.dgvDCBD.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDCBD_CellEndEdit);
             this.dgvDCBD.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDCBD_RowPostPaint);
+            // 
+            // btnXem_DS
+            // 
+            this.btnXem_DS.Location = new System.Drawing.Point(338, 4);
+            this.btnXem_DS.Name = "btnXem_DS";
+            this.btnXem_DS.Size = new System.Drawing.Size(75, 23);
+            this.btnXem_DS.TabIndex = 67;
+            this.btnXem_DS.Text = "Xem";
+            this.btnXem_DS.UseVisualStyleBackColor = true;
+            this.btnXem_DS.Click += new System.EventHandler(this.btnXem_DS_Click);
+            // 
+            // btnFileGuiTCT
+            // 
+            this.btnFileGuiTCT.Location = new System.Drawing.Point(1226, 5);
+            this.btnFileGuiTCT.Name = "btnFileGuiTCT";
+            this.btnFileGuiTCT.Size = new System.Drawing.Size(75, 34);
+            this.btnFileGuiTCT.TabIndex = 160;
+            this.btnFileGuiTCT.Text = "Xuất File gửi TCT";
+            this.btnFileGuiTCT.UseVisualStyleBackColor = true;
+            this.btnFileGuiTCT.Click += new System.EventHandler(this.btnFileGuiTCT_Click);
             // 
             // Chon_DS
             // 
@@ -782,8 +804,6 @@
             this.DiaChi_DS.DataPropertyName = "DiaChi";
             this.DiaChi_DS.HeaderText = "Địa Chỉ";
             this.DiaChi_DS.Name = "DiaChi_DS";
-            this.DiaChi_DS.Visible = false;
-            this.DiaChi_DS.Width = 150;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -833,6 +853,14 @@
             this.HieuLucKy_DS.Name = "HieuLucKy_DS";
             this.HieuLucKy_DS.Width = 50;
             // 
+            // XemHinh
+            // 
+            this.XemHinh.HeaderText = "Hình";
+            this.XemHinh.Name = "XemHinh";
+            this.XemHinh.Text = "Xem";
+            this.XemHinh.UseColumnTextForButtonValue = true;
+            this.XemHinh.Width = 50;
+            // 
             // CreateBy_DS
             // 
             this.CreateBy_DS.DataPropertyName = "CreateBy";
@@ -845,24 +873,6 @@
             this.IDMaDon_DS.HeaderText = "IDMaDon";
             this.IDMaDon_DS.Name = "IDMaDon_DS";
             this.IDMaDon_DS.Visible = false;
-            // 
-            // XemHinh
-            // 
-            this.XemHinh.HeaderText = "Hình";
-            this.XemHinh.Name = "XemHinh";
-            this.XemHinh.Text = "Xem";
-            this.XemHinh.UseColumnTextForButtonValue = true;
-            this.XemHinh.Width = 50;
-            // 
-            // btnXem_DS
-            // 
-            this.btnXem_DS.Location = new System.Drawing.Point(338, 4);
-            this.btnXem_DS.Name = "btnXem_DS";
-            this.btnXem_DS.Size = new System.Drawing.Size(75, 23);
-            this.btnXem_DS.TabIndex = 67;
-            this.btnXem_DS.Text = "Xem";
-            this.btnXem_DS.UseVisualStyleBackColor = true;
-            this.btnXem_DS.Click += new System.EventHandler(this.btnXem_DS_Click);
             // 
             // frmDCBD
             // 
@@ -944,6 +954,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn GiaBieuCu;
         private System.Windows.Forms.DataGridViewTextBoxColumn GiaBieuMoi;
         private System.Windows.Forms.DataGridViewTextBoxColumn HieuLucKy;
+        private System.Windows.Forms.Button btnImportHinh;
+        private System.Windows.Forms.TextBox txtMaDon;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnImport;
+        private System.Windows.Forms.Button btnFileGuiTCT;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Chon_DS;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ChuyenDocSo;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_DS;
@@ -958,12 +973,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn GiaBieu_DS;
         private System.Windows.Forms.DataGridViewTextBoxColumn GiaBieu_BD;
         private System.Windows.Forms.DataGridViewTextBoxColumn HieuLucKy_DS;
+        private System.Windows.Forms.DataGridViewButtonColumn XemHinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy_DS;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDMaDon_DS;
-        private System.Windows.Forms.DataGridViewButtonColumn XemHinh;
-        private System.Windows.Forms.Button btnImportHinh;
-        private System.Windows.Forms.TextBox txtMaDon;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button btnImport;
     }
 }
