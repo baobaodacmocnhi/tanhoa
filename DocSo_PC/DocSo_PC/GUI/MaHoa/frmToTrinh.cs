@@ -44,6 +44,7 @@ namespace DocSo_PC.GUI.MaHoa
         {
             dgvToTrinh.AutoGenerateColumns = false;
             dgvVeViec.AutoGenerateColumns = false;
+            dgvLichSu.AutoGenerateColumns = false;
             List<MaHoa_ToTrinh_VeViec> lst = _cToTrinh.getDS_VeViec();
             cmbVeViec.DataSource = lst;
             cmbVeViec.DisplayMember = "Name";
@@ -65,6 +66,7 @@ namespace DocSo_PC.GUI.MaHoa
                 txtDinhMucHN.Text = hoadon.DMHN.Value.ToString();
             else
                 txtDinhMucHN.Text = "";
+            dgvLichSu.DataSource = _cToTrinh.getDS_DanhBo(hoadon.DanhBa);
         }
 
         public void LoadTT(MaHoa_ToTrinh en)

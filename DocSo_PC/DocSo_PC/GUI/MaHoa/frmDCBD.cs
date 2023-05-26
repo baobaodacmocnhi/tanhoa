@@ -348,7 +348,8 @@ namespace DocSo_PC.GUI.MaHoa
                             dr["DiaChi"] = en.DiaChi;
                             dr["HoTenBD"] = en.HoTen_BD;
                             dr["DiaChiBD"] = en.DiaChi_BD;
-                            dr["MaQuanPhuong"] = en.MaQuanPhuong;
+                            if (en.DiaChi_BD != null && en.DiaChi_BD != "")
+                                dr["MaQuanPhuong"] = en.MaQuanPhuong;
                             dr["GiaBieu"] = en.GiaBieu;
                             dr["DinhMuc"] = en.DinhMuc;
                             dr["DinhMucHN"] = en.DinhMucHN;
@@ -879,7 +880,7 @@ namespace DocSo_PC.GUI.MaHoa
                             DataTable dtExcel = _cDCBD.ExcelToDataTable_OLDB(dialog.FileName);
                             foreach (DataRow item in dtExcel.Rows)
                                 if (item[1].ToString().Replace(" ", "").Replace("-", "").Length == 11
-                                    && item[5].ToString().Trim() != item[6].ToString().Trim())
+                                    && item[5].ToString().Trim() != item[6].ToString().Trim() && item[6].ToString().Trim() != "")
                                 {
                                     HOADON hoadon = _cThuTien.GetMoiNhat(item[1].ToString().Replace(" ", "").Replace("-", ""));
                                     if (hoadon != null && (hoadon.GB == 10 || hoadon.GB == 11 || hoadon.GB == 15) && (hoadon.DiaChiHD == null || hoadon.DiaChiHD == ""))
@@ -943,18 +944,23 @@ namespace DocSo_PC.GUI.MaHoa
                                 MaHoa_DCBD en = _cDCBD.get(int.Parse(item.Cells["ID_DS"].Value.ToString()));
                                 if (en != null)
                                 {
-                                    writer.Write("\"" + en.DanhBo + "\"");
-                                    string[] strs = en.DiaChi.Split(' ');
-                                    if (strs[0].Length <= 50)
+                                    if (en.DiaChi_BD.Length == 0)
                                     {
-                                        writer.Write(",\"" + strs[0] + "\"");
-                                        writer.WriteLine(",\"" + strs[1] + "\"");
+                                        MessageBox.Show(en.DanhBo + " thiếu Địa chỉ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
+                                    writer.Write("\"" + en.DanhBo + "\"");
+                                    if (en.DiaChi.Length <= 50)
+                                    {
+                                        writer.Write(",\"" + en.DiaChi_BD.Substring(0, en.DiaChi_BD.IndexOf(' ')) + "\"");
+                                        writer.WriteLine(",\"" + en.DiaChi_BD.Substring(en.DiaChi_BD.IndexOf(' ') + 1, en.DiaChi_BD.Length - (en.DiaChi_BD.IndexOf(' ') + 1)) + "\"");
                                     }
                                     else
-                                        if (strs[0].Length > 50)
+                                        if (en.DiaChi.Length > 50)
                                         {
-                                            writer.Write(",\"" + en.DiaChi_BD.Substring(0, en.DiaChi_BD.Length / 2) + "\"");
-                                            writer.WriteLine(",\"" + en.DiaChi_BD.Substring(en.DiaChi_BD.Length / 2, en.DiaChi_BD.Length / 2) + "\"");
+                                            writer.WriteLine("");
+                                            //writer.Write(",\"" + en.DiaChi_BD.Substring(0, en.DiaChi_BD.Length / 2) + "\"");
+                                            //writer.WriteLine(",\"" + en.DiaChi_BD.Substring(en.DiaChi_BD.Length / 2, en.DiaChi_BD.Length / 2) + "\"");
                                         }
                                 }
                             }

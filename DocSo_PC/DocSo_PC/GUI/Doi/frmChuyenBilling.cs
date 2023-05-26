@@ -173,7 +173,7 @@ namespace DocSo_PC.GUI.Doi
             saveFileDialog.Filter = "Text files (*.dat)|*.dat";
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                DataTable dt = CDHN._cDAL.ExecuteQuery_DataTable("select DanhBo,NgayThay=CONVERT(varchar(10),NgayThay,103) from TB_DULIEUKHACHHANG a,DocSoTH.dbo.DocSo b where a.DanhBo=b.DanhBa and b.Nam=" + cmbNam.SelectedValue.ToString() + " and b.Ky=" + cmbKy.SelectedItem.ToString() + " and b.CodeMoi like '%8%'");
+                DataTable dt = CDHN._cDAL.ExecuteQuery_DataTable("select DanhBo,NgayThay=CONVERT(varchar(10),NgayThay,103) from TB_DULIEUKHACHHANG a,DocSoTH.dbo.DocSo b where a.DanhBo=b.DanhBa and b.Nam=" + cmbNam.SelectedValue.ToString() + " and b.Ky=" + cmbKy.SelectedItem.ToString() + " and b.CodeMoi like '8%'");
 
                 using (StreamWriter writer = new StreamWriter(saveFileDialog.FileName))
                     foreach (DataRow item in dt.Rows)
