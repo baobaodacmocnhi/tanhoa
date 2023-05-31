@@ -16,6 +16,7 @@ namespace DocSo_PC.GUI.MaHoa
     {
         string _mnu = "mnuDanhBoBoQua";
         CDanhBoBoQua _cDBBQ = new CDanhBoBoQua();
+        CDonTu _cDonTu = new CDonTu();
         MaHoa_DanhBo_Except _danhbo = null;
 
         public frmDanhBoBoQua()
@@ -26,14 +27,17 @@ namespace DocSo_PC.GUI.MaHoa
         private void frmDanhBoBoQua_Load(object sender, EventArgs e)
         {
             dgvDanhSach.AutoGenerateColumns = false;
+            dgvLichSu.AutoGenerateColumns = false;
             dgvDanhSach.DataSource = _cDBBQ.getDS();
         }
 
         public void Clear()
         {
             txtDanhBo.Text = "";
+            txtNoiDung.Text = "";
             _danhbo = null;
             dgvDanhSach.DataSource = _cDBBQ.getDS();
+            dgvLichSu.DataSource = null;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -100,6 +104,7 @@ namespace DocSo_PC.GUI.MaHoa
                 {
                     txtDanhBo.Text = _danhbo.DanhBo;
                     txtNoiDung.Text = _danhbo.NoiDung;
+                    dgvLichSu.DataSource = _cDonTu.getDS_DanhBo(_danhbo.DanhBo);
                 }
             }
             catch { }
@@ -135,6 +140,19 @@ namespace DocSo_PC.GUI.MaHoa
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && txtDanhBo.Text.Trim().Replace("-", "").Replace(" ", "").Length == 11)
+            {
+                foreach (DataGridViewRow item in dgvDanhSach.Rows)
+                    if (item.Cells["DanhBo"].Value.ToString() == txtDanhBo.Text.Trim().Replace("-", "").Replace(" ", ""))
+                    {
+                        dgvDanhSach.Focus();
+                        dgvDanhSach.CurrentCell = dgvDanhSach.Rows[item.Index].Cells[3];
+                    }
             }
         }
     }

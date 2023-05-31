@@ -206,7 +206,11 @@ namespace DocSo_PC.GUI.VanThu
                                 }
                                 if (_cCVD.Them(en) == true)
                                 {
-                                    //CThuongVu._cDAL.ExecuteNonQuery("update CongVanDi set Nhan_QLDHN=1,Nhan_QLDHN_Ngay=getdate() where ID=" + dgvDanhSach.CurrentRow.Cells["ID"].Value.ToString());
+                                    if (en.LoaiVB == "Phiếu Hủy" && en.NoiChuyen == "P. Thương Vụ")
+                                    {
+                                        en.Duyet_Ngay = en.CreateDate;
+                                        _cCVD.SubmitChanges();
+                                    }
                                     string sql = "insert into TB_GHICHU(DANHBO,DONVI,NOIDUNG,CREATEDATE,CREATEBY)values('" + en.DanhBo + "',N'QLDHN',N'" + en.NoiDung + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture) + "',N'" + CNguoiDung.HoTen + "')";
                                     CDHN._cDAL.ExecuteNonQuery(sql);
                                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -548,11 +552,14 @@ namespace DocSo_PC.GUI.VanThu
         {
             try
             {
-                if (radChuaDuyet.Checked)
-                    dgvDuyet.DataSource = _cCVD.getDS_ChuaDuyet(cmbLoaiVanBan_Duyet.SelectedValue.ToString());
+                if (txtDanhBo_ButPhe.Text.Trim() != "")
+                    dgvDuyet.DataSource = _cCVD.getDS(txtDanhBo_ButPhe.Text.Trim().Replace(" ", "").Replace("-", ""));
                 else
-                    if (radDaDuyet.Checked)
-                        dgvDuyet.DataSource = _cCVD.getDS_DaDuyet(cmbLoaiVanBan_Duyet.SelectedValue.ToString(), dateTu_Duyet.Value, dateDen_Duyet.Value);
+                    if (radChuaDuyet.Checked)
+                        dgvDuyet.DataSource = _cCVD.getDS_ChuaDuyet(cmbLoaiVanBan_Duyet.SelectedValue.ToString());
+                    else
+                        if (radDaDuyet.Checked)
+                            dgvDuyet.DataSource = _cCVD.getDS_DaDuyet(cmbLoaiVanBan_Duyet.SelectedValue.ToString(), dateTu_Duyet.Value, dateDen_Duyet.Value);
             }
             catch (Exception ex)
             {
@@ -841,6 +848,14 @@ namespace DocSo_PC.GUI.VanThu
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtDanhBo_ButPhe_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && txtDanhBo_ButPhe.Text.Trim().Replace(" ", "").Replace("-", "").Length == 11)
+            {
+                btnXem_Duyet.PerformClick();
             }
         }
 

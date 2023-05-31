@@ -108,9 +108,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(174, 15);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 13);
+            this.label2.Size = new System.Drawing.Size(83, 13);
             this.label2.TabIndex = 5;
-            this.label2.Text = "(enter)";
+            this.label2.Text = "(enter Tìm Kiếm)";
             // 
             // frmKhongTinhPBVMT
             // 
