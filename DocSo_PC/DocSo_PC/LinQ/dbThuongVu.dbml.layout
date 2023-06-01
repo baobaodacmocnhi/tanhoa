@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 13.625" name="dbThuongVu">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 14, 13.625" name="dbThuongVu">
   <DataContextMoniker Name="/dbThuongVuDataContext" />
   <nestedChildShapes>
     <classShape Id="7b84f663-a37b-406c-aae6-874190505a61" absoluteBounds="1.5, 1.5, 2, 2.7324039713541666">
@@ -20,12 +20,18 @@
         <elementListCompartment Id="867ab653-153a-4700-8490-d1d896081838" absoluteBounds="4.765, 2.585, 1.9700000000000002, 6.2107340494791661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(8.75 : 5.51036702473958); (6.75 : 5.51036702473958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(8.75 : 5.51036702473958); (6.75 : 5.51036702473958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbThuongVuDataContext/DonTu/DonTu_DonTu_ChiTiet" />
       <nodes>
         <classShapeMoniker Id="2c2b6e7c-2ce7-4132-846d-9d5176bb8299" />
         <classShapeMoniker Id="7d48bee0-ab3c-41d7-a941-2175c4843924" />
       </nodes>
     </associationConnector>
+    <classShape Id="24df86dc-ba78-477a-9a50-bb1aec1ff58a" absoluteBounds="11.75, 1.875, 2, 9.2706526692708326">
+      <DataClassMoniker Name="/dbThuongVuDataContext/CHDB_Phieu" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1f22e806-62e5-4a69-b506-ecfced896a9a" absoluteBounds="11.765, 2.335, 1.9700000000000002, 8.7106526692708321" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

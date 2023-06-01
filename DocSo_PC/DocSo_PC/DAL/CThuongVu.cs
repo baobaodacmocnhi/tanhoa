@@ -283,5 +283,11 @@ namespace DocSo_PC.DAL
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
+        public CHDB_Phieu getPhieuHuy(int ID)
+        {
+            return _db.CHDB_Phieus.SingleOrDefault(o => o.MaYCCHDB == ID);
+        }
+
+
     }
 }
