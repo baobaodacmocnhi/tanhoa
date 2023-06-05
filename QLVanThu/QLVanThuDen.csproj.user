@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
-    <PublishUrlHistory>\\server9\BaoBao%24\QLVanThuDen\|C:\Users\BaoBao\Desktop\QLVanThuDen\</PublishUrlHistory>
+    <PublishUrlHistory>\\server5\TanHoa%24\QLVanThuDen\|\\server9\BaoBao%24\QLVanThuDen\|C:\Users\BaoBao\Desktop\QLVanThuDen\</PublishUrlHistory>
     <InstallUrlHistory>
     </InstallUrlHistory>
     <SupportUrlHistory>
