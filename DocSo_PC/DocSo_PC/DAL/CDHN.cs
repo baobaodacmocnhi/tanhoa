@@ -58,13 +58,27 @@ namespace DocSo_PC.DAL
             return _db.TB_DULIEUKHACHHANG_HUYDBs.SingleOrDefault(item => item.DANHBO == DanhBo);
         }
 
-        public string getPhuongQuan(string MaQuan, string MaPhuong)
+        public string getTenPhuongQuan(string MaQuan, string MaPhuong)
         {
             try
             {
                 string Phuong = " P." + _db.PHUONGs.Single(itemPhuong => itemPhuong.MAQUAN == int.Parse(MaQuan) && itemPhuong.MAPHUONG == MaPhuong).TENPHUONG;
                 string Quan = " Q." + _db.QUANs.Single(itemQuan => itemQuan.MAQUAN == int.Parse(MaQuan)).TENQUAN;
                 return Phuong + Quan;
+            }
+            catch (Exception)
+            {
+                return "";
+            }
+        }
+
+        public string getMaQuanPhuong(string TenQuan, string TenPhuong)
+        {
+            try
+            {
+                int MaQuan = _db.QUANs.Single(itemQuan => itemQuan.TENQUAN == TenQuan).MAQUAN;
+                string Phuong = _db.PHUONGs.Single(itemPhuong => itemPhuong.MAQUAN == MaQuan && itemPhuong.TENPHUONG == TenPhuong).MAPHUONG;
+                return MaQuan.ToString() + " " + Phuong;
             }
             catch (Exception)
             {

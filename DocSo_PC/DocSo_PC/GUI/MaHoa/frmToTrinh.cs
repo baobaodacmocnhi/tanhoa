@@ -56,7 +56,7 @@ namespace DocSo_PC.GUI.MaHoa
         {
             txtDanhBo.Text = hoadon.DanhBa;
             txtHoTen.Text = hoadon.TenKH;
-            txtDiaChi.Text = hoadon.So + " " + hoadon.Duong + _cDHN.getPhuongQuan(hoadon.Quan, hoadon.Phuong);
+            txtDiaChi.Text = hoadon.So + " " + hoadon.Duong + _cDHN.getTenPhuongQuan(hoadon.Quan, hoadon.Phuong);
             txtGiaBieu.Text = hoadon.GB.ToString();
             if (hoadon.DM != null)
                 txtDinhMuc.Text = hoadon.DM.Value.ToString();

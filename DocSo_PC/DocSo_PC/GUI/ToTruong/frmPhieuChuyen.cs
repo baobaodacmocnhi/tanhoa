@@ -444,10 +444,10 @@ namespace DocSo_PC.GUI.ToTruong
                             dr["DanhBo"] = ttkh.DANHBO.Insert(7, " ").Insert(4, " ");
                             dr["MLT"] = ttkh.LOTRINH;
                             dr["HoTen"] = ttkh.HOTEN;
-                            dr["DiaChi"] = ttkh.SONHA + " " + ttkh.TENDUONG + _cDHN.getPhuongQuan(ttkh.QUAN, ttkh.PHUONG);
+                            dr["DiaChi"] = ttkh.SONHA + " " + ttkh.TENDUONG + _cDHN.getTenPhuongQuan(ttkh.QUAN, ttkh.PHUONG);
                             HOADON hd = _cThuTien.GetMoiNhat(ttkh.DANHBO);
                             if (hd != null)
-                                dr["HopDong"] = hd.SO + " " + hd.DUONG + _cDHN.getPhuongQuan(hd.Quan, hd.Phuong);
+                                dr["HopDong"] = hd.SO + " " + hd.DUONG + _cDHN.getTenPhuongQuan(hd.Quan, hd.Phuong);
                             if (item.ID.ToString() != "")
                                 dr["MaDon"] = "Mã: " + item.ID.ToString();
                             else
@@ -590,10 +590,10 @@ namespace DocSo_PC.GUI.ToTruong
                                     dr["DanhBo"] = ttkh.DANHBO.Insert(7, " ").Insert(4, " ");
                                     dr["MLT"] = ttkh.LOTRINH;
                                     dr["HoTen"] = ttkh.HOTEN;
-                                    dr["DiaChi"] = ttkh.SONHA + " " + ttkh.TENDUONG + _cDHN.getPhuongQuan(ttkh.QUAN, ttkh.PHUONG);
+                                    dr["DiaChi"] = ttkh.SONHA + " " + ttkh.TENDUONG + _cDHN.getTenPhuongQuan(ttkh.QUAN, ttkh.PHUONG);
                                     HOADON hd = _cThuTien.GetMoiNhat(ttkh.DANHBO);
                                     if (hd != null)
-                                        dr["HopDong"] = hd.SO + " " + hd.DUONG + _cDHN.getPhuongQuan(hd.Quan, hd.Phuong);
+                                        dr["HopDong"] = hd.SO + " " + hd.DUONG + _cDHN.getTenPhuongQuan(hd.Quan, hd.Phuong);
                                     if (item.ID.ToString() != "")
                                         dr["MaDon"] = "Mã: " + item.ID.ToString();
                                     else

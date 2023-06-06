@@ -301,6 +301,7 @@ namespace DocSo_PC.GUI.MaHoa
                             dr["DiaChi"] = en.DiaChi;
                             dr["HoTenBD"] = en.HoTen_BD;
                             dr["DiaChiBD"] = en.DiaChi_BD;
+                            if (en.DiaChi_BD != null && en.DiaChi_BD != "")
                             dr["MaQuanPhuong"] = en.MaQuanPhuong;
                             dr["GiaBieu"] = en.GiaBieu;
                             dr["DinhMuc"] = en.DinhMuc;
@@ -393,7 +394,7 @@ namespace DocSo_PC.GUI.MaHoa
                                 dr["DanhBo"] = en.DanhBo.Insert(7, " ").Insert(4, " ");
                                 dr["HopDong"] = en.MaHoa_DonTu.MLT;
                                 dr["HoTen"] = en.HoTen;
-                                dr["DiaChi"] = en.DiaChi + _cDHN.getPhuongQuan(en.Quan, en.Phuong);
+                                dr["DiaChi"] = en.DiaChi + _cDHN.getTenPhuongQuan(en.Quan, en.Phuong);
                                 dr["ThongTin"] = en.CongDung;
                                 string[] HieuLucKys = en.HieuLucKy.Split('/');
                                 DataTable gn = _cThuongVu.getGiaNuoc(HieuLucKys[1]);
@@ -880,7 +881,8 @@ namespace DocSo_PC.GUI.MaHoa
                             DataTable dtExcel = _cDCBD.ExcelToDataTable_OLDB(dialog.FileName);
                             foreach (DataRow item in dtExcel.Rows)
                                 if (item[1].ToString().Replace(" ", "").Replace("-", "").Length == 11
-                                    && item[5].ToString().Trim() != item[6].ToString().Trim() && item[6].ToString().Trim() != "")
+                                    && item[5].ToString().Trim() != item[6].ToString().Trim() && item[6].ToString().Trim() != ""
+                                    && !bool.Parse(item[9].ToString().Trim()))
                                 {
                                     HOADON hoadon = _cThuTien.GetMoiNhat(item[1].ToString().Replace(" ", "").Replace("-", ""));
                                     if (hoadon != null && (hoadon.GB == 10 || hoadon.GB == 11 || hoadon.GB == 15) && (hoadon.DiaChiHD == null || hoadon.DiaChiHD == ""))
@@ -890,7 +892,7 @@ namespace DocSo_PC.GUI.MaHoa
                                         ctdcbd.IDMaDon = dontu.ID;
                                         ctdcbd.HoTen = hoadon.TENKH;
                                         ctdcbd.DiaChi = hoadon.SO + " " + hoadon.DUONG;
-                                        ctdcbd.MaQuanPhuong = hoadon.Quan + " " + hoadon.Phuong;
+                                        ctdcbd.MaQuanPhuong = _cDHN.getMaQuanPhuong(item[8].ToString().Trim(), item[7].ToString().Trim());
                                         ctdcbd.Ky = hoadon.KY;
                                         ctdcbd.Nam = hoadon.NAM;
                                         ctdcbd.Dot = hoadon.DOT;
