@@ -151,7 +151,7 @@ namespace DocSo_PC.GUI.MaHoa
                     if (item.Cells["DanhBo"].Value.ToString() == txtDanhBo.Text.Trim().Replace("-", "").Replace(" ", ""))
                     {
                         dgvDanhSach.Focus();
-                        dgvDanhSach.CurrentCell = dgvDanhSach.Rows[item.Index].Cells[3];
+                        dgvDanhSach.CurrentCell = dgvDanhSach.Rows[item.Index].Cells[0];
                     }
             }
         }
