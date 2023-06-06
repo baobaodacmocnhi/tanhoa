@@ -302,7 +302,7 @@ namespace DocSo_PC.GUI.MaHoa
                             dr["HoTenBD"] = en.HoTen_BD;
                             dr["DiaChiBD"] = en.DiaChi_BD;
                             if (en.DiaChi_BD != null && en.DiaChi_BD != "")
-                            dr["MaQuanPhuong"] = en.MaQuanPhuong;
+                                dr["MaQuanPhuong"] = en.MaQuanPhuong;
                             dr["GiaBieu"] = en.GiaBieu;
                             dr["DinhMuc"] = en.DinhMuc;
                             dr["DinhMucHN"] = en.DinhMucHN;
@@ -881,8 +881,7 @@ namespace DocSo_PC.GUI.MaHoa
                             DataTable dtExcel = _cDCBD.ExcelToDataTable_OLDB(dialog.FileName);
                             foreach (DataRow item in dtExcel.Rows)
                                 if (item[1].ToString().Replace(" ", "").Replace("-", "").Length == 11
-                                    && item[5].ToString().Trim() != item[6].ToString().Trim() && item[6].ToString().Trim() != ""
-                                    && !bool.Parse(item[9].ToString().Trim()))
+                                    && item[5].ToString().Trim() != item[6].ToString().Trim() && item[6].ToString().Trim() != "")
                                 {
                                     HOADON hoadon = _cThuTien.GetMoiNhat(item[1].ToString().Replace(" ", "").Replace("-", ""));
                                     if (hoadon != null && (hoadon.GB == 10 || hoadon.GB == 11 || hoadon.GB == 15) && (hoadon.DiaChiHD == null || hoadon.DiaChiHD == ""))
