@@ -107,6 +107,8 @@
             this.ChiSoThucTe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TieuThuThucTe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chkDuocKy = new System.Windows.Forms.CheckBox();
+            this.txtHieuHBV = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHinh)).BeginInit();
@@ -448,6 +450,8 @@
             // 
             // tabTTKH
             // 
+            this.tabTTKH.Controls.Add(this.txtHieuHBV);
+            this.tabTTKH.Controls.Add(this.label1);
             this.tabTTKH.Controls.Add(this.txtDinhMucHN);
             this.tabTTKH.Controls.Add(this.label25);
             this.tabTTKH.Controls.Add(this.txtDinhMuc);
@@ -814,6 +818,22 @@
             this.chkDuocKy.Text = "Được Ký";
             this.chkDuocKy.UseVisualStyleBackColor = true;
             // 
+            // txtHieuHBV
+            // 
+            this.txtHieuHBV.Location = new System.Drawing.Point(98, 90);
+            this.txtHieuHBV.Name = "txtHieuHBV";
+            this.txtHieuHBV.Size = new System.Drawing.Size(422, 22);
+            this.txtHieuHBV.TabIndex = 19;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 93);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(67, 16);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "Hiệu HBV";
+            // 
             // frmToTrinh2021
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -937,5 +957,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Bytes_Hinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn Loai_Hinh;
         private System.Windows.Forms.CheckBox chkDuocKy;
+        private System.Windows.Forms.TextBox txtHieuHBV;
+        private System.Windows.Forms.Label label1;
     }
 }

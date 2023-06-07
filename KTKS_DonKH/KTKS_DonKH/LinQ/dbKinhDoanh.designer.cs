@@ -4789,6 +4789,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _CCCD;
 		
+		private string _DanhBo;
+		
 		private string _Result;
 		
 		private System.Nullable<int> _CreateBy;
@@ -4803,6 +4805,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCreated();
     partial void OnCCCDChanging(string value);
     partial void OnCCCDChanged();
+    partial void OnDanhBoChanging(string value);
+    partial void OnDanhBoChanged();
     partial void OnResultChanging(string value);
     partial void OnResultChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -4834,6 +4838,26 @@ namespace KTKS_DonKH.LinQ
 					this._CCCD = value;
 					this.SendPropertyChanged("CCCD");
 					this.OnCCCDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DanhBo", DbType="Char(11)")]
+		public string DanhBo
+		{
+			get
+			{
+				return this._DanhBo;
+			}
+			set
+			{
+				if ((this._DanhBo != value))
+				{
+					this.OnDanhBoChanging(value);
+					this.SendPropertyChanging();
+					this._DanhBo = value;
+					this.SendPropertyChanged("DanhBo");
+					this.OnDanhBoChanged();
 				}
 			}
 		}
@@ -56946,6 +56970,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _SoThan;
 		
+		private string _HieuHBV;
+		
 		private string _VeViec;
 		
 		private string _KinhTrinh;
@@ -57044,6 +57070,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCoChanged();
     partial void OnSoThanChanging(string value);
     partial void OnSoThanChanged();
+    partial void OnHieuHBVChanging(string value);
+    partial void OnHieuHBVChanged();
     partial void OnVeViecChanging(string value);
     partial void OnVeViecChanged();
     partial void OnKinhTrinhChanging(string value);
@@ -57444,6 +57472,26 @@ namespace KTKS_DonKH.LinQ
 					this._SoThan = value;
 					this.SendPropertyChanged("SoThan");
 					this.OnSoThanChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HieuHBV", DbType="VarChar(50)")]
+		public string HieuHBV
+		{
+			get
+			{
+				return this._HieuHBV;
+			}
+			set
+			{
+				if ((this._HieuHBV != value))
+				{
+					this.OnHieuHBVChanging(value);
+					this.SendPropertyChanging();
+					this._HieuHBV = value;
+					this.SendPropertyChanged("HieuHBV");
+					this.OnHieuHBVChanged();
 				}
 			}
 		}

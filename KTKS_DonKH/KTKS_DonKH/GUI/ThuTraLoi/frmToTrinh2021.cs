@@ -135,6 +135,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     txtDinhMuc.Text = en.DinhMuc.Value.ToString();
                 if (en.DinhMucHN != null)
                     txtDinhMucHN.Text = en.DinhMucHN.Value.ToString();
+                txtHieuHBV.Text = en.HieuHBV;
             }
             else
             {
@@ -466,7 +467,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                             cttt.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
                         if (string.IsNullOrEmpty(txtDinhMucHN.Text.Trim()) == false)
                             cttt.DinhMucHN = int.Parse(txtDinhMucHN.Text.Trim());
-
+                        cttt.HieuHBV = txtHieuHBV.Text.Trim();
                         if (_hoadon != null)
                         {
                             cttt.Dot = _hoadon.DOT;
@@ -613,7 +614,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                 _cttt.DinhMucHN = int.Parse(txtDinhMucHN.Text.Trim());
                             else
                                 _cttt.DinhMucHN = null;
-
+                            _cttt.HieuHBV = txtHieuHBV.Text.Trim();
                             if (_hoadon != null)
                             {
                                 _cttt.Dot = _hoadon.DOT;
@@ -763,7 +764,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         dr["DinhMuc"] = _cttt.DinhMuc.Value;
                     if (_cttt.DinhMucHN != null)
                         dr["DinhMucHN"] = _cttt.DinhMucHN.Value;
-
+                    dr["HieuHBV"] = _cttt.HieuHBV;
                     dr["VeViec"] = _cttt.VeViec.Substring(0, 1).ToLower() + _cttt.VeViec.Substring(1);
                     dr["KinhTrinh"] = _cttt.KinhTrinh;
                     dr["ThongQua"] = _cttt.ThongQua;

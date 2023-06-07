@@ -159,6 +159,7 @@
   <Table Name="dbo.CCCD_Temp" Member="CCCD_Temps">
     <Type Name="CCCD_Temp">
       <Column Name="CCCD" Type="System.String" DbType="Char(12) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DanhBo" Type="System.String" DbType="Char(11)" CanBeNull="true" />
       <Column Name="Result" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
@@ -2517,6 +2518,7 @@
       <Column Name="Hieu" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Co" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="SoThan" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="HieuHBV" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="VeViec" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="KinhTrinh" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="ThongQua" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
