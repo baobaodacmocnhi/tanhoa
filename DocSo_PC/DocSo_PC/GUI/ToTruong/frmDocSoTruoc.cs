@@ -75,9 +75,9 @@ namespace DocSo_PC.GUI.ToTruong
                     }
                 else
                     dtMay = _cMayDS.getDS(MaTo);
-                //DataRow dr = dtMay.NewRow();
-                //dr["May"] = "Tất Cả";
-                //dtMay.Rows.InsertAt(dr, 0);
+                DataRow dr = dtMay.NewRow();
+                dr["May"] = "Tất Cả";
+                dtMay.Rows.InsertAt(dr, 0);
                 cmbMay.DataSource = dtMay;
                 cmbMay.DisplayMember = "May";
                 cmbMay.ValueMember = "May";
@@ -95,20 +95,42 @@ namespace DocSo_PC.GUI.ToTruong
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Them"))
                 {
-                    if (_cDST.checkExist(cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString(), cmbMay.SelectedValue.ToString()) == true)
+                    if (cmbMay.SelectedValue.ToString() == "Tất Cả")
                     {
-                        MessageBox.Show("Đã Tồn Tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    DocSoTruoc en = new DocSoTruoc();
-                    en.Nam = int.Parse(cmbNam.SelectedValue.ToString());
-                    en.Ky = cmbKy.SelectedItem.ToString();
-                    en.Dot = cmbDot.SelectedItem.ToString();
-                    en.May = cmbMay.SelectedValue.ToString();
-                    if (_cDST.them(en) == true)
-                    {
+                        for (int i = 1; i < cmbMay.Items.Count; i++)
+                        {
+                            if (_cDST.checkExist(cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString(), cmbMay.GetItemText(cmbMay.Items[i])) == false)
+                            {
+                                DocSoTruoc en = new DocSoTruoc();
+                                en.Nam = int.Parse(cmbNam.SelectedValue.ToString());
+                                en.Ky = cmbKy.SelectedItem.ToString();
+                                en.Dot = cmbDot.SelectedItem.ToString();
+                                en.May = cmbMay.GetItemText(cmbMay.Items[i]);
+                                if (_cDST.them(en) == true)
+                                {
+                                }
+                            }
+                        }
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         loaddgvDanhSach();
+                    }
+                    else
+                    {
+                        if (_cDST.checkExist(cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString(), cmbMay.SelectedValue.ToString()) == true)
+                        {
+                            MessageBox.Show("Đã Tồn Tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        DocSoTruoc en = new DocSoTruoc();
+                        en.Nam = int.Parse(cmbNam.SelectedValue.ToString());
+                        en.Ky = cmbKy.SelectedItem.ToString();
+                        en.Dot = cmbDot.SelectedItem.ToString();
+                        en.May = cmbMay.SelectedValue.ToString();
+                        if (_cDST.them(en) == true)
+                        {
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            loaddgvDanhSach();
+                        }
                     }
                 }
                 else
