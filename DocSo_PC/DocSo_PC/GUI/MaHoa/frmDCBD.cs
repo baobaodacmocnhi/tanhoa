@@ -587,13 +587,18 @@ namespace DocSo_PC.GUI.MaHoa
         {
             try
             {
-                if (dgvDCBD.Columns[e.ColumnIndex].Name == "GhiChu_DS" || dgvDCBD.Columns[e.ColumnIndex].Name == "GiaBieu_DS" || dgvDCBD.Columns[e.ColumnIndex].Name == "GiaBieu_BD" || dgvDCBD.Columns[e.ColumnIndex].Name == "HieuLucKy_DS")
-                    if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
-                    {
-                        if (_dcbd != null)
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                {
+                    if (_dcbd != null)
+                        if (dgvDCBD.Columns[e.ColumnIndex].Name == "GhiChu_DS" || dgvDCBD.Columns[e.ColumnIndex].Name == "GiaBieu_DS"
+                            || dgvDCBD.Columns[e.ColumnIndex].Name == "GiaBieu_BD" || dgvDCBD.Columns[e.ColumnIndex].Name == "HieuLucKy_DS"
+                            || dgvDCBD.Columns[e.ColumnIndex].Name == "DiaChi_BD")
                         {
                             _dcbd.GiaBieu = int.Parse(dgvDCBD["GiaBieu_DS", e.RowIndex].Value.ToString());
-                            _dcbd.GiaBieu_BD = int.Parse(dgvDCBD["GiaBieu_BD", e.RowIndex].Value.ToString());
+                            if (dgvDCBD["GiaBieu_BD", e.RowIndex].Value != null && dgvDCBD["GiaBieu_BD", e.RowIndex].Value.ToString() != "")
+                                _dcbd.GiaBieu_BD = int.Parse(dgvDCBD["GiaBieu_BD", e.RowIndex].Value.ToString());
+                            if (dgvDCBD["DiaChi_BD", e.RowIndex].Value != null && dgvDCBD["DiaChi_BD", e.RowIndex].Value.ToString() != "")
+                                _dcbd.DiaChi_BD = dgvDCBD["DiaChi_BD", e.RowIndex].Value.ToString();
                             _dcbd.HieuLucKy = dgvDCBD["HieuLucKy_DS", e.RowIndex].Value.ToString();
                             _dcbd.CongDung = dgvDCBD["GhiChu_DS", e.RowIndex].Value.ToString();
                             if (_cDCBD.Sua(_dcbd))
@@ -601,9 +606,9 @@ namespace DocSo_PC.GUI.MaHoa
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                         }
-                    }
-                    else
-                        MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
