@@ -59,6 +59,7 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btnThem = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnFileGuiTCT = new System.Windows.Forms.Button();
             this.txtMaDon = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnImport = new System.Windows.Forms.Button();
@@ -93,7 +94,6 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.dgvDCBD = new System.Windows.Forms.DataGridView();
             this.btnXem_DS = new System.Windows.Forms.Button();
-            this.btnFileGuiTCT = new System.Windows.Forms.Button();
             this.Chon_DS = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ChuyenDocSo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ID_DS = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -101,7 +101,7 @@
             this.DanhBo_DS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen_DS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiaChi_DS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiaChi_BD_DS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiDung_DS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GhiChu_DS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dot_DS = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -367,6 +367,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Danh Sách";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnFileGuiTCT
+            // 
+            this.btnFileGuiTCT.Location = new System.Drawing.Point(1226, 5);
+            this.btnFileGuiTCT.Name = "btnFileGuiTCT";
+            this.btnFileGuiTCT.Size = new System.Drawing.Size(75, 34);
+            this.btnFileGuiTCT.TabIndex = 160;
+            this.btnFileGuiTCT.Text = "Xuất File gửi TCT";
+            this.btnFileGuiTCT.UseVisualStyleBackColor = true;
+            this.btnFileGuiTCT.Click += new System.EventHandler(this.btnFileGuiTCT_Click);
             // 
             // txtMaDon
             // 
@@ -703,7 +713,7 @@
             this.DanhBo_DS,
             this.HoTen_DS,
             this.DiaChi_DS,
-            this.dataGridViewTextBoxColumn1,
+            this.DiaChi_BD_DS,
             this.NoiDung_DS,
             this.GhiChu_DS,
             this.Dot_DS,
@@ -748,16 +758,6 @@
             this.btnXem_DS.Text = "Xem";
             this.btnXem_DS.UseVisualStyleBackColor = true;
             this.btnXem_DS.Click += new System.EventHandler(this.btnXem_DS_Click);
-            // 
-            // btnFileGuiTCT
-            // 
-            this.btnFileGuiTCT.Location = new System.Drawing.Point(1226, 5);
-            this.btnFileGuiTCT.Name = "btnFileGuiTCT";
-            this.btnFileGuiTCT.Size = new System.Drawing.Size(75, 34);
-            this.btnFileGuiTCT.TabIndex = 160;
-            this.btnFileGuiTCT.Text = "Xuất File gửi TCT";
-            this.btnFileGuiTCT.UseVisualStyleBackColor = true;
-            this.btnFileGuiTCT.Click += new System.EventHandler(this.btnFileGuiTCT_Click);
             // 
             // Chon_DS
             // 
@@ -805,11 +805,11 @@
             this.DiaChi_DS.HeaderText = "Địa Chỉ";
             this.DiaChi_DS.Name = "DiaChi_DS";
             // 
-            // dataGridViewTextBoxColumn1
+            // DiaChi_BD_DS
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "DiaChi_BD";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Địa Chỉ Mới";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.DiaChi_BD_DS.DataPropertyName = "DiaChi_BD";
+            this.DiaChi_BD_DS.HeaderText = "Địa Chỉ Mới";
+            this.DiaChi_BD_DS.Name = "DiaChi_BD_DS";
             // 
             // NoiDung_DS
             // 
@@ -966,7 +966,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo_DS;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen_DS;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi_DS;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi_BD_DS;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung_DS;
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu_DS;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dot_DS;

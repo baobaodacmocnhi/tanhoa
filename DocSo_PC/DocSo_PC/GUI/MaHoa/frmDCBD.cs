@@ -592,13 +592,13 @@ namespace DocSo_PC.GUI.MaHoa
                     if (_dcbd != null)
                         if (dgvDCBD.Columns[e.ColumnIndex].Name == "GhiChu_DS" || dgvDCBD.Columns[e.ColumnIndex].Name == "GiaBieu_DS"
                             || dgvDCBD.Columns[e.ColumnIndex].Name == "GiaBieu_BD" || dgvDCBD.Columns[e.ColumnIndex].Name == "HieuLucKy_DS"
-                            || dgvDCBD.Columns[e.ColumnIndex].Name == "DiaChi_BD")
+                            || dgvDCBD.Columns[e.ColumnIndex].Name == "DiaChi_BD_DS")
                         {
                             _dcbd.GiaBieu = int.Parse(dgvDCBD["GiaBieu_DS", e.RowIndex].Value.ToString());
                             if (dgvDCBD["GiaBieu_BD", e.RowIndex].Value != null && dgvDCBD["GiaBieu_BD", e.RowIndex].Value.ToString() != "")
                                 _dcbd.GiaBieu_BD = int.Parse(dgvDCBD["GiaBieu_BD", e.RowIndex].Value.ToString());
-                            if (dgvDCBD["DiaChi_BD", e.RowIndex].Value != null && dgvDCBD["DiaChi_BD", e.RowIndex].Value.ToString() != "")
-                                _dcbd.DiaChi_BD = dgvDCBD["DiaChi_BD", e.RowIndex].Value.ToString();
+                            if (dgvDCBD["DiaChi_BD_DS", e.RowIndex].Value != null && dgvDCBD["DiaChi_BD_DS", e.RowIndex].Value.ToString() != "")
+                                _dcbd.DiaChi_BD = dgvDCBD["DiaChi_BD_DS", e.RowIndex].Value.ToString();
                             _dcbd.HieuLucKy = dgvDCBD["HieuLucKy_DS", e.RowIndex].Value.ToString();
                             _dcbd.CongDung = dgvDCBD["GhiChu_DS", e.RowIndex].Value.ToString();
                             if (_cDCBD.Sua(_dcbd))
