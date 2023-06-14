@@ -13,7 +13,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/22/2013 08:43:40</publishTime>
     </File>
     <File Include="bin/BaoCaoWeb.dll">
-      <publishTime>05/16/2023 09:33:49</publishTime>
+      <publishTime>06/14/2023 16:33:31</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 09:32:26</publishTime>
@@ -5650,13 +5650,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/15/2023 08:07:17</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>05/24/2023 13:31:52</publishTime>
+      <publishTime>06/14/2023 16:31:46</publishTime>
     </File>
     <File Include="Views/Home/Index2.cshtml">
       <publishTime>04/01/2021 09:47:18</publishTime>
     </File>
     <File Include="Views/Home/IndexChiTieu.cshtml">
       <publishTime>03/09/2022 07:40:08</publishTime>
+    </File>
+    <File Include="Views/Home/IndexNew.cshtml">
+      <publishTime>05/24/2023 13:31:52</publishTime>
+    </File>
+    <File Include="Views/Home/IndexOld.cshtml">
+      <publishTime>05/15/2023 08:07:17</publishTime>
     </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
       <publishTime>02/02/2021 15:08:13</publishTime>

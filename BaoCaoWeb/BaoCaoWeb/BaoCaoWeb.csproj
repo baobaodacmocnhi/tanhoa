@@ -1984,7 +1984,7 @@
     <Content Include="Template\SBAdmin2\fontawesome\webfonts\fa-solid-900.woff" />
     <Content Include="Template\SBAdmin2\fontawesome\webfonts\fa-solid-900.woff2" />
     <Content Include="Views\Home\IndexChiTieu.cshtml" />
-    <Content Include="Views\Home\Index - Copy.cshtml" />
+    <Content Include="Views\Home\IndexOld.cshtml" />
     <Content Include="Views\Home\ChiTietSanLuong.cshtml" />
     <Content Include="Views\Home\ChiTietDoanhThu.cshtml" />
     <Content Include="Views\Home\ChiTietGiaBanBinhQuan.cshtml" />
