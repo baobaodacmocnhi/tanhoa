@@ -64,6 +64,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             cmbVeViec.DataSource = _cVeViecToTrinh.GetDS();
             cmbVeViec.DisplayMember = "Name";
             cmbVeViec.SelectedIndex = -1;
+            txtKinhTrinh.Text = "Ban Giám đốc\r\nÔng Phó Giám đốc Kinh doanh";
 
             if (_IDCT != -1)
             {
@@ -135,7 +136,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     txtDinhMuc.Text = en.DinhMuc.Value.ToString();
                 if (en.DinhMucHN != null)
                     txtDinhMucHN.Text = en.DinhMucHN.Value.ToString();
-                txtHieuHBV.Text = en.HieuHBV;
+                cmbHieuHBV.SelectedText = en.HieuHBV;
             }
             else
             {
@@ -209,9 +210,10 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             txtGiaBieu.Text = "";
             txtDinhMuc.Text = "";
             txtDinhMucHN.Text = "";
+            cmbHieuHBV.SelectedIndex = -1;
             ///
             txtVeViec.Text = "";
-            txtKinhTrinh.Text = "Ban Giám Đốc";
+            txtKinhTrinh.Text = "Ban Giám đốc\r\nÔng Phó Giám đốc Kinh doanh";
             txtNoiDung.Text = "";
             txtNoiNhan.Text = "";
             ///
@@ -467,7 +469,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                             cttt.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
                         if (string.IsNullOrEmpty(txtDinhMucHN.Text.Trim()) == false)
                             cttt.DinhMucHN = int.Parse(txtDinhMucHN.Text.Trim());
-                        cttt.HieuHBV = txtHieuHBV.Text.Trim();
+                        cttt.HieuHBV = cmbHieuHBV.SelectedText;
                         if (_hoadon != null)
                         {
                             cttt.Dot = _hoadon.DOT;
@@ -614,7 +616,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                 _cttt.DinhMucHN = int.Parse(txtDinhMucHN.Text.Trim());
                             else
                                 _cttt.DinhMucHN = null;
-                            _cttt.HieuHBV = txtHieuHBV.Text.Trim();
+                            _cttt.HieuHBV = cmbHieuHBV.SelectedText;
                             if (_hoadon != null)
                             {
                                 _cttt.Dot = _hoadon.DOT;

@@ -39,6 +39,23 @@ namespace KTKS_DonKH.DAL
                 connection.Close();
         }
 
+        public object ExecuteQuery_ReturnOneValue(string sql)
+        {
+            try
+            {
+                Connect();
+                command = new SqlCommand(sql, connection);
+                object result = command.ExecuteScalar();
+                Disconnect();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Disconnect();
+                throw ex;
+            }
+        }
+
         public DataTable ExecuteQuery_DataTable(string sql)
         {
             this.Connect();
@@ -197,5 +214,27 @@ namespace KTKS_DonKH.DAL
             else
                 return "";
         }
+
+        public bool checkTaiLapChuaCoHoaDon(string DanhBo)
+        {
+            string sql = "declare @exists bit"
+                    + " select @exists= case when exists"
+                    + " (SELECT * FROM [TANHOA_WATER].[dbo].[KH_HOSOKHACHHANG] hskh,[TANHOA_WATER].[dbo].[DON_KHACHHANG] donkh"
+                    + "   where hskh.HOANCONG=1 and hskh.SHS=donkh.SHS and REPLACE(donkh.DANHBO,'-','')='" + DanhBo + "')"
+                    + "   then 1 else 0 end"
+                    + " if (@exists=1)"
+                    + " begin"
+                    + " select case when exists"
+                    + " (SELECT * FROM [TANHOA_WATER].[dbo].[KH_HOSOKHACHHANG] hskh,[TANHOA_WATER].[dbo].[DON_KHACHHANG] donkh,HOADON_TA.dbo.HOADON hd"
+                    + "   where hskh.HOANCONG=1 and hskh.SHS=donkh.SHS and REPLACE(donkh.DANHBO,'-','')='" + DanhBo + "'"
+                    + "   and CAST(hd.CreateDate as date)>CAST(hskh.NGAYHOANCONG as date) and REPLACE(donkh.DANHBO,'-','')=hd.DANHBA)"
+                    + "   then 'false' else 'true' end"
+                    + " end"
+                    + " else"
+                    + " select 'fasle'";
+            return bool.Parse(ExecuteQuery_ReturnOneValue(sql).ToString());
+        }
+
+
     }
 }

@@ -1000,6 +1000,8 @@ namespace KTKS_DonKH.GUI.DonTu
                     else
                         MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                if (_cGanMoi.checkTaiLapChuaCoHoaDon(txtDanhBo.Text.Trim().Replace(" ", "")))
+                    MessageBox.Show("Danh Bộ tái lập chưa có hóa đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

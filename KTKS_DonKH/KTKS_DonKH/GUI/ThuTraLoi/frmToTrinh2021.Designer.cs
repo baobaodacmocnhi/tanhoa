@@ -65,6 +65,7 @@
             this.xoaFile_dgvHinh = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabTTKH = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
             this.txtDinhMucHN = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.txtDinhMuc = new System.Windows.Forms.TextBox();
@@ -107,8 +108,7 @@
             this.ChiSoThucTe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TieuThuThucTe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chkDuocKy = new System.Windows.Forms.CheckBox();
-            this.txtHieuHBV = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.cmbHieuHBV = new System.Windows.Forms.ComboBox();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHinh)).BeginInit();
@@ -450,7 +450,7 @@
             // 
             // tabTTKH
             // 
-            this.tabTTKH.Controls.Add(this.txtHieuHBV);
+            this.tabTTKH.Controls.Add(this.cmbHieuHBV);
             this.tabTTKH.Controls.Add(this.label1);
             this.tabTTKH.Controls.Add(this.txtDinhMucHN);
             this.tabTTKH.Controls.Add(this.label25);
@@ -473,6 +473,15 @@
             this.tabTTKH.TabIndex = 0;
             this.tabTTKH.Text = "Thông Tin Khách Hàng";
             this.tabTTKH.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 93);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(67, 16);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "Hiệu HBV";
             // 
             // txtDinhMucHN
             // 
@@ -818,21 +827,18 @@
             this.chkDuocKy.Text = "Được Ký";
             this.chkDuocKy.UseVisualStyleBackColor = true;
             // 
-            // txtHieuHBV
+            // cmbHieuHBV
             // 
-            this.txtHieuHBV.Location = new System.Drawing.Point(98, 90);
-            this.txtHieuHBV.Name = "txtHieuHBV";
-            this.txtHieuHBV.Size = new System.Drawing.Size(422, 22);
-            this.txtHieuHBV.TabIndex = 19;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 93);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 16);
-            this.label1.TabIndex = 18;
-            this.label1.Text = "Hiệu HBV";
+            this.cmbHieuHBV.FormattingEnabled = true;
+            this.cmbHieuHBV.Items.AddRange(new object[] {
+            "Sawaco",
+            "Fish",
+            "Bugatti",
+            "Khác"});
+            this.cmbHieuHBV.Location = new System.Drawing.Point(98, 90);
+            this.cmbHieuHBV.Name = "cmbHieuHBV";
+            this.cmbHieuHBV.Size = new System.Drawing.Size(121, 24);
+            this.cmbHieuHBV.TabIndex = 20;
             // 
             // frmToTrinh2021
             // 
@@ -957,7 +963,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Bytes_Hinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn Loai_Hinh;
         private System.Windows.Forms.CheckBox chkDuocKy;
-        private System.Windows.Forms.TextBox txtHieuHBV;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cmbHieuHBV;
     }
 }
