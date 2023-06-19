@@ -237,7 +237,6 @@ namespace KTKS_DonKH.GUI.TimKiem
             }
         }
 
-
         #endregion
 
         #region gridViewBamChi
