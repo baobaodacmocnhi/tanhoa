@@ -49,10 +49,10 @@ namespace ThuTien.GUI.TongHop
             cmbNam.ValueMember = "Nam";
 
             loadHoaDon();
-            if (CNguoiDung.Admin)
-                btnExportExcelThayThe.Visible = true;
-            else
-                btnExportExcelThayThe.Visible = false;
+            //if (CNguoiDung.Admin)
+            //    btnExportExcelThayThe.Visible = true;
+            //else
+            //    btnExportExcelThayThe.Visible = false;
         }
 
         public void loadHoaDon()
@@ -1103,7 +1103,7 @@ namespace ThuTien.GUI.TongHop
             {
                 DataTable dtBinhThuong2021 = new DataTable();
                 DataTable dtBinhThuong2022 = new DataTable();
-                DataTable dt = _cDCHD.getDS_HDDC_Cho_DangNgan_ThayThe_Admin();
+                DataTable dt = _cDCHD.getDS_HDDC_Cho_DangNgan_ThayThe_Admin(CNguoiDung.MaND);
                 //DataTable dt = _cDCHD.getDS_HDDC_Cho_DangNgan_ThayThe();
                 //dt.Merge(_cDCHD.getDS_HDDC_Cho_DangNgan_HD0_ThayThe());
                 for (int i = 0; i < dt.Rows.Count; i++)

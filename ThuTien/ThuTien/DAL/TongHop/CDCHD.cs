@@ -2543,14 +2543,14 @@ namespace ThuTien.DAL.TongHop
             return LINQToDataTable(query);
         }
 
-        public DataTable getDS_HDDC_Cho_DangNgan_ThayThe_Admin()
+        public DataTable getDS_HDDC_Cho_DangNgan_ThayThe_Admin(int CreateBy)
         {
             var query = from itemDC in _db.DIEUCHINH_HDs
                         join itemHDDC in _db.TT_QuetTams on itemDC.FK_HOADON equals itemHDDC.MaHD
                         join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
-                        where itemHDDC.CreateBy == 0 && (itemHD.NAM < 2022 || (itemHD.NAM == 2022 && itemHD.KY < 5))
+                        where itemHDDC.CreateBy == CreateBy && (itemHD.NAM < 2022 || (itemHD.NAM == 2022 && itemHD.KY < 5))
                         select new
                         {
                             NgayDC = itemDC.NGAY_DC,
