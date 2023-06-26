@@ -259,7 +259,6 @@ namespace KTKS_DonKH.GUI.DonTu
                 {
                     txtCT_Khac_GhiChu.Text = "";
                 }
-
                 chkCT_HK_KT3.Checked = entity.CT_HK_KT3;
                 //chkCT_STT_GXNTT.Checked = entity.CT_STT_GXNTT;
                 chkCT_GDKKD.Checked = entity.CT_GDKKD;
@@ -472,11 +471,17 @@ namespace KTKS_DonKH.GUI.DonTu
                                 return;
                             }
                         }
-                        if (_cDonTu.checkExist_ChiTiet(txtDanhBo.Text.Trim().Replace(" ", ""), txtHoTen.Text.Trim(), txtDiaChi.Text.Trim(), DateTime.Now) == true)
+                        if (_cDonTu.checkExists_14ngay(txtDanhBo.Text.Trim().Replace(" ", "")) == true)
                         {
-                            if (MessageBox.Show("Danh Bộ " + txtDanhBo.Text.Trim().Replace(" ", "") + " đã nhận đơn trong ngày hôm nay rồi\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                            if (MessageBox.Show("Danh Bộ " + txtDanhBo.Text.Trim().Replace(" ", "") + " có Đơn trong 14 ngày gần nhất\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                                 return;
                         }
+                        else
+                            if (_cDonTu.checkExist_ChiTiet(txtDanhBo.Text.Trim().Replace(" ", ""), txtHoTen.Text.Trim(), txtDiaChi.Text.Trim(), DateTime.Now) == true)
+                            {
+                                if (MessageBox.Show("Danh Bộ " + txtDanhBo.Text.Trim().Replace(" ", "") + " đã nhận đơn trong ngày hôm nay rồi\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                                    return;
+                            }
 
                         //if (_cKTXM.checkKhongLienHe(txtDanhBo.Text.Trim().Replace(" ", "")) == true)
                         //{
@@ -556,11 +561,19 @@ namespace KTKS_DonKH.GUI.DonTu
                             if (item.Cells["DanhBo"].Value != null || item.Cells["HoTen"].Value != null || item.Cells["DiaChi"].Value != null)
                             {
                                 if (item.Cells["DanhBo"].Value != null)
-                                    if (_cDonTu.checkExist_ChiTiet(item.Cells["DanhBo"].Value.ToString(), item.Cells["HoTen"].Value.ToString(), item.Cells["DiaChi"].Value.ToString(), DateTime.Now) == true)
+                                {
+                                    if (_cDonTu.checkExists_14ngay(item.Cells["DanhBo"].Value.ToString()) == true)
                                     {
-                                        if (MessageBox.Show("Danh Bộ " + item.Cells["DanhBo"].Value.ToString() + " đã nhận đơn trong ngày hôm nay rồi\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                                        if (MessageBox.Show("Danh Bộ " + item.Cells["DanhBo"].Value.ToString() + " có Đơn trong 14 ngày gần nhất\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                                             return;
                                     }
+                                    else
+                                        if (_cDonTu.checkExist_ChiTiet(item.Cells["DanhBo"].Value.ToString(), item.Cells["HoTen"].Value.ToString(), item.Cells["DiaChi"].Value.ToString(), DateTime.Now) == true)
+                                        {
+                                            if (MessageBox.Show("Danh Bộ " + item.Cells["DanhBo"].Value.ToString() + " đã nhận đơn trong ngày hôm nay rồi\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                                                return;
+                                        }
+                                }
                             }
                         }
                         int ID = _cDonTu.getMaxID_ChiTiet();

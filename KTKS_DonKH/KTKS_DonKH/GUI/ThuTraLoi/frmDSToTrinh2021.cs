@@ -257,8 +257,11 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                     dr["DinhMuc"] = cttt.DinhMuc;
                                 if (cttt.DinhMuc != null)
                                     dr["DinhMucHN"] = cttt.DinhMucHN;
-
-                                dr["VeViec"] = cttt.VeViec;
+                                dr["HieuHBV"] = cttt.HieuHBV;
+                                dr["Hieu"] = cttt.Hieu;
+                                dr["Co"] = cttt.Co;
+                                dr["SoThan"] = cttt.SoThan;
+                                dr["VeViec"] = cttt.VeViec.Substring(0, 1).ToLower() + cttt.VeViec.Substring(1);
                                 dr["KinhTrinh"] = cttt.KinhTrinh;
                                 dr["ThongQua"] = cttt.ThongQua;
                                 dr["NoiDung"] = cttt.NoiDung;
@@ -266,13 +269,16 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                 dr["ChucVu"] = CTaiKhoan.ChucVu.ToUpper();
                                 dr["NguoiKy"] = CTaiKhoan.NguoiKy.ToUpper();
 
-                                //if (bgdTQ.ChucVu.ToUpper() == "GIÁM ĐỐC")
-                                //    dr["ChucVuThongQua"] = "GIÁM ĐỐC";
-                                //else
-                                //    dr["ChucVuThongQua"] = "TRÌNH DUYỆT\n" + bgdTQ.ChucVu.ToUpper();
-                                dr["ChucVuThongQua"] = "DUYỆT\n" + bgdTQ.ChucVu.ToUpper();
-                                dr["NguoiKyThongQua"] = bgdTQ.HoTen.ToUpper();
-
+                                if (_cttt.VeViec.Contains("Hạ cỡ") || _cttt.VeViec.Contains("hộp bảo vệ"))
+                                {
+                                    dr["ChucVuThongQua"] = "TRÌNH DUYỆT\n" + bgdTQ.ChucVu.ToUpper();
+                                    dr["NguoiKyThongQua"] = bgdTQ.HoTen.ToUpper();
+                                }
+                                else
+                                {
+                                    dr["ChucVuThongQua"] = "DUYỆT\n" + bgdTQ.ChucVu.ToUpper();
+                                    dr["NguoiKyThongQua"] = bgdTQ.HoTen.ToUpper();
+                                }
                                 dr["ChucVuDuyet"] = bgdDuyet.ChucVu.ToUpper();
                                 dr["NguoiKyDuyet"] = bgdDuyet.HoTen.ToUpper();
 
@@ -281,7 +287,10 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                 ReportDocument rpt;
                                 //if (cttt.KinhTrinh.ToLower().Contains("thông qua") == true)
                                 //{
-                                rpt = new rptToTrinh_ThongQuaPGD_2022();
+                                if (_cttt.VeViec.Contains("Hạ cỡ") || _cttt.VeViec.Contains("hộp bảo vệ"))
+                                    rpt = new rptToTrinh_ThongQuaPGD();
+                                else
+                                    rpt = new rptToTrinh_ThongQuaPGD_2022();
                                 //}
                                 //else
                                 //{

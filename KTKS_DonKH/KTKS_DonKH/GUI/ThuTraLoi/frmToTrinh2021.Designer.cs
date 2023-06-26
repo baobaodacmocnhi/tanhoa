@@ -65,6 +65,7 @@
             this.xoaFile_dgvHinh = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabTTKH = new System.Windows.Forms.TabPage();
+            this.cmbHieuHBV = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtDinhMucHN = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
@@ -108,7 +109,13 @@
             this.ChiSoThucTe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TieuThuThucTe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chkDuocKy = new System.Windows.Forms.CheckBox();
-            this.cmbHieuHBV = new System.Windows.Forms.ComboBox();
+            this.cmbKinhTrinh = new System.Windows.Forms.ComboBox();
+            this.txtHieu = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtCo = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtSoThan = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHinh)).BeginInit();
@@ -155,6 +162,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cmbKinhTrinh);
             this.groupBox2.Controls.Add(this.txtKinhTrinh);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.txtNoiNhan);
@@ -174,16 +182,16 @@
             // 
             // txtKinhTrinh
             // 
-            this.txtKinhTrinh.Location = new System.Drawing.Point(466, 21);
+            this.txtKinhTrinh.Location = new System.Drawing.Point(598, 17);
             this.txtKinhTrinh.Multiline = true;
             this.txtKinhTrinh.Name = "txtKinhTrinh";
-            this.txtKinhTrinh.Size = new System.Drawing.Size(287, 44);
+            this.txtKinhTrinh.Size = new System.Drawing.Size(155, 44);
             this.txtKinhTrinh.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(391, 24);
+            this.label2.Location = new System.Drawing.Point(391, 20);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 16);
             this.label2.TabIndex = 2;
@@ -450,6 +458,12 @@
             // 
             // tabTTKH
             // 
+            this.tabTTKH.Controls.Add(this.txtSoThan);
+            this.tabTTKH.Controls.Add(this.label17);
+            this.tabTTKH.Controls.Add(this.txtCo);
+            this.tabTTKH.Controls.Add(this.label16);
+            this.tabTTKH.Controls.Add(this.txtHieu);
+            this.tabTTKH.Controls.Add(this.label14);
             this.tabTTKH.Controls.Add(this.cmbHieuHBV);
             this.tabTTKH.Controls.Add(this.label1);
             this.tabTTKH.Controls.Add(this.txtDinhMucHN);
@@ -473,6 +487,19 @@
             this.tabTTKH.TabIndex = 0;
             this.tabTTKH.Text = "Thông Tin Khách Hàng";
             this.tabTTKH.UseVisualStyleBackColor = true;
+            // 
+            // cmbHieuHBV
+            // 
+            this.cmbHieuHBV.FormattingEnabled = true;
+            this.cmbHieuHBV.Items.AddRange(new object[] {
+            "Sawaco",
+            "Fish",
+            "Bugatti",
+            "Khác"});
+            this.cmbHieuHBV.Location = new System.Drawing.Point(98, 90);
+            this.cmbHieuHBV.Name = "cmbHieuHBV";
+            this.cmbHieuHBV.Size = new System.Drawing.Size(121, 24);
+            this.cmbHieuHBV.TabIndex = 20;
             // 
             // label1
             // 
@@ -827,18 +854,65 @@
             this.chkDuocKy.Text = "Được Ký";
             this.chkDuocKy.UseVisualStyleBackColor = true;
             // 
-            // cmbHieuHBV
+            // cmbKinhTrinh
             // 
-            this.cmbHieuHBV.FormattingEnabled = true;
-            this.cmbHieuHBV.Items.AddRange(new object[] {
-            "Sawaco",
-            "Fish",
-            "Bugatti",
-            "Khác"});
-            this.cmbHieuHBV.Location = new System.Drawing.Point(98, 90);
-            this.cmbHieuHBV.Name = "cmbHieuHBV";
-            this.cmbHieuHBV.Size = new System.Drawing.Size(121, 24);
-            this.cmbHieuHBV.TabIndex = 20;
+            this.cmbKinhTrinh.FormattingEnabled = true;
+            this.cmbKinhTrinh.Items.AddRange(new object[] {
+            "Ban Giám đốc",
+            "Ông Phó Giám đốc Kinh doanh"});
+            this.cmbKinhTrinh.Location = new System.Drawing.Point(466, 17);
+            this.cmbKinhTrinh.Name = "cmbKinhTrinh";
+            this.cmbKinhTrinh.Size = new System.Drawing.Size(126, 24);
+            this.cmbKinhTrinh.TabIndex = 142;
+            this.cmbKinhTrinh.SelectedIndexChanged += new System.EventHandler(this.cmbKinhTrinh_SelectedIndexChanged);
+            // 
+            // txtHieu
+            // 
+            this.txtHieu.Location = new System.Drawing.Point(267, 90);
+            this.txtHieu.Name = "txtHieu";
+            this.txtHieu.Size = new System.Drawing.Size(100, 22);
+            this.txtHieu.TabIndex = 22;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(225, 93);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(36, 16);
+            this.label14.TabIndex = 21;
+            this.label14.Text = "Hiệu";
+            // 
+            // txtCo
+            // 
+            this.txtCo.Location = new System.Drawing.Point(404, 90);
+            this.txtCo.Name = "txtCo";
+            this.txtCo.Size = new System.Drawing.Size(50, 22);
+            this.txtCo.TabIndex = 24;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(373, 93);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(25, 16);
+            this.label16.TabIndex = 23;
+            this.label16.Text = "Cỡ";
+            // 
+            // txtSoThan
+            // 
+            this.txtSoThan.Location = new System.Drawing.Point(526, 90);
+            this.txtSoThan.Name = "txtSoThan";
+            this.txtSoThan.Size = new System.Drawing.Size(100, 22);
+            this.txtSoThan.TabIndex = 26;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(460, 93);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(59, 16);
+            this.label17.TabIndex = 25;
+            this.label17.Text = "Số Thân";
             // 
             // frmToTrinh2021
             // 
@@ -965,5 +1039,12 @@
         private System.Windows.Forms.CheckBox chkDuocKy;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbHieuHBV;
+        private System.Windows.Forms.ComboBox cmbKinhTrinh;
+        private System.Windows.Forms.TextBox txtSoThan;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox txtCo;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtHieu;
+        private System.Windows.Forms.Label label14;
     }
 }

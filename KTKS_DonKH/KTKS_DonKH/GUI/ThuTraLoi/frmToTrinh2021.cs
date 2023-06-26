@@ -64,7 +64,6 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             cmbVeViec.DataSource = _cVeViecToTrinh.GetDS();
             cmbVeViec.DisplayMember = "Name";
             cmbVeViec.SelectedIndex = -1;
-            txtKinhTrinh.Text = "Ban Giám đốc\r\nÔng Phó Giám đốc Kinh doanh";
 
             if (_IDCT != -1)
             {
@@ -90,6 +89,11 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 txtDinhMucHN.Text = hoadon.DinhMucHN.Value.ToString();
             else
                 txtDinhMucHN.Text = "";
+            string a, b, c;
+            _cDHN.GetDHN(txtDanhBo.Text.Trim(), out a, out b, out c);
+            txtHieu.Text = a;
+            txtCo.Text = b;
+            txtSoThan.Text = c;
             if (_cDHN.CheckExist(hoadon.DANHBA) == false)
                 MessageBox.Show("Danh Bộ Hủy", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
@@ -136,7 +140,10 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     txtDinhMuc.Text = en.DinhMuc.Value.ToString();
                 if (en.DinhMucHN != null)
                     txtDinhMucHN.Text = en.DinhMucHN.Value.ToString();
-                cmbHieuHBV.SelectedText = en.HieuHBV;
+                cmbHieuHBV.Text = en.HieuHBV;
+                txtHieu.Text = en.Hieu;
+                txtCo.Text = en.Co;
+                txtSoThan.Text = en.SoThan;
             }
             else
             {
@@ -211,9 +218,13 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             txtDinhMuc.Text = "";
             txtDinhMucHN.Text = "";
             cmbHieuHBV.SelectedIndex = -1;
+            txtHieu.Text = "";
+            txtCo.Text = "";
+            txtSoThan.Text = "";
             ///
             txtVeViec.Text = "";
-            txtKinhTrinh.Text = "Ban Giám đốc\r\nÔng Phó Giám đốc Kinh doanh";
+            cmbKinhTrinh.SelectedIndex = -1;
+            txtKinhTrinh.Text = "";
             txtNoiDung.Text = "";
             txtNoiNhan.Text = "";
             ///
@@ -469,7 +480,10 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                             cttt.DinhMuc = int.Parse(txtDinhMuc.Text.Trim());
                         if (string.IsNullOrEmpty(txtDinhMucHN.Text.Trim()) == false)
                             cttt.DinhMucHN = int.Parse(txtDinhMucHN.Text.Trim());
-                        cttt.HieuHBV = cmbHieuHBV.SelectedText;
+                        cttt.HieuHBV = cmbHieuHBV.Text;
+                        cttt.Hieu = txtHieu.Text.Trim();
+                        cttt.Co = txtCo.Text.Trim();
+                        cttt.SoThan = txtSoThan.Text.Trim();
                         if (_hoadon != null)
                         {
                             cttt.Dot = _hoadon.DOT;
@@ -616,7 +630,10 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                 _cttt.DinhMucHN = int.Parse(txtDinhMucHN.Text.Trim());
                             else
                                 _cttt.DinhMucHN = null;
-                            _cttt.HieuHBV = cmbHieuHBV.SelectedText;
+                            _cttt.HieuHBV = cmbHieuHBV.Text;
+                            _cttt.Hieu = txtHieu.Text.Trim();
+                            _cttt.Co = txtCo.Text.Trim();
+                            _cttt.SoThan = txtSoThan.Text.Trim();
                             if (_hoadon != null)
                             {
                                 _cttt.Dot = _hoadon.DOT;
@@ -767,6 +784,9 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     if (_cttt.DinhMucHN != null)
                         dr["DinhMucHN"] = _cttt.DinhMucHN.Value;
                     dr["HieuHBV"] = _cttt.HieuHBV;
+                    dr["Hieu"] = _cttt.Hieu;
+                    dr["Co"] = _cttt.Co;
+                    dr["SoThan"] = _cttt.SoThan;
                     dr["VeViec"] = _cttt.VeViec.Substring(0, 1).ToLower() + _cttt.VeViec.Substring(1);
                     dr["KinhTrinh"] = _cttt.KinhTrinh;
                     dr["ThongQua"] = _cttt.ThongQua;
@@ -1256,6 +1276,12 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 else
                     MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void cmbKinhTrinh_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbKinhTrinh.SelectedIndex > -1)
+                txtKinhTrinh.Text = cmbKinhTrinh.SelectedItem.ToString();
         }
 
 
