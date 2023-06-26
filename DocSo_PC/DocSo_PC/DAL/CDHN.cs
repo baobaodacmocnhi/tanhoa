@@ -76,11 +76,11 @@ namespace DocSo_PC.DAL
         {
             try
             {
-                int MaQuan = _db.QUANs.Single(itemQuan => itemQuan.TENQUAN == TenQuan).MAQUAN;
-                string Phuong = _db.PHUONGs.Single(itemPhuong => itemPhuong.MAQUAN == MaQuan && itemPhuong.TENPHUONG == TenPhuong).MAPHUONG;
+                int MaQuan =  _db.QUANs.SingleOrDefault(itemQuan => itemQuan.TENQUAN.Contains(TenQuan)).MAQUAN;
+                string Phuong = _db.PHUONGs.SingleOrDefault(itemPhuong => itemPhuong.MAQUAN == MaQuan && itemPhuong.TENPHUONG.Contains(TenPhuong)).MAPHUONG;
                 return MaQuan.ToString() + " " + Phuong;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return "";
             }

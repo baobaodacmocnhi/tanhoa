@@ -884,19 +884,24 @@ namespace DocSo_PC.GUI.MaHoa
                         {
                             string strHieuLucKy = _cLDS.getHieuLucKyToi();
                             DataTable dtExcel = _cDCBD.ExcelToDataTable_OLDB(dialog.FileName);
+                            //List<MaHoa_DCBD> lst = CDAL._db.MaHoa_DCBDs.Where(o => o.CreateDate.Value.Date == new DateTime(2023, 06, 22).Date && o.ThongTin == "Địa Chỉ" && o.MaQuanPhuong == "").ToList();
                             foreach (DataRow item in dtExcel.Rows)
                                 if (item[1].ToString().Replace(" ", "").Replace("-", "").Length == 11
-                                    && item[5].ToString().Trim() != item[6].ToString().Trim() && item[6].ToString().Trim() != "")
+                                    && item[5].ToString().Trim() != item[6].ToString().Trim() && item[6].ToString().Trim() != "")//&& lst.Any(k => k.DanhBo == item[1].ToString().Replace(" ", "").Replace("-", "")))
                                 {
                                     HOADON hoadon = _cThuTien.GetMoiNhat(item[1].ToString().Replace(" ", "").Replace("-", ""));
                                     if (hoadon != null && (hoadon.GB == 10 || hoadon.GB == 11 || hoadon.GB == 15) && (hoadon.DiaChiHD == null || hoadon.DiaChiHD == ""))
                                     {
                                         MaHoa_DCBD ctdcbd = new MaHoa_DCBD();
+                                        //ctdcbd = CDAL._db.MaHoa_DCBDs.SingleOrDefault(o => o.DanhBo == item[1].ToString().Replace(" ", "").Replace("-", "") && o.IDMaDon == dontu.ID && o.CreateDate.Value.Date == new DateTime(2023, 06, 22).Date);
                                         ctdcbd.DanhBo = item[1].ToString().Replace(" ", "").Replace("-", "");
                                         ctdcbd.IDMaDon = dontu.ID;
                                         ctdcbd.HoTen = hoadon.TENKH;
                                         ctdcbd.DiaChi = hoadon.SO + " " + hoadon.DUONG;
-                                        ctdcbd.MaQuanPhuong = _cDHN.getMaQuanPhuong(item[8].ToString().Trim(), item[7].ToString().Trim());
+                                        if (item[7].ToString().Trim().All(char.IsDigit))
+                                            ctdcbd.MaQuanPhuong = _cDHN.getMaQuanPhuong(item[8].ToString().Trim(), ((int)(double.Parse(item[7].ToString().Trim()))).ToString());
+                                        else
+                                            ctdcbd.MaQuanPhuong = _cDHN.getMaQuanPhuong(item[8].ToString().Trim(), item[7].ToString().Trim());
                                         ctdcbd.Ky = hoadon.KY;
                                         ctdcbd.Nam = hoadon.NAM;
                                         ctdcbd.Dot = hoadon.DOT;
@@ -913,6 +918,7 @@ namespace DocSo_PC.GUI.MaHoa
                                         if (_cDCBD.Them(ctdcbd))
                                         {
                                         }
+                                        //CDAL._db.SubmitChanges();
                                     }
                                 }
                             MessageBox.Show("Đã xử lý", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
