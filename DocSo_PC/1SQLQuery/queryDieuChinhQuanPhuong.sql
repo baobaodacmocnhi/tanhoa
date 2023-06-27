@@ -1,0 +1,2 @@
+﻿select DanhBo,HoTen,DiaChi,DiaChi_BD,MaQuanPhuong,Quan,Phuong from MaHoa_DCBD where CAST(CreateDate as date)='20230622' and ThongTin=N'Địa Chỉ'
+and CAST(SUBSTRING(MaQuanPhuong,1,2) as int)=Quan and cast(SUBSTRING(MaQuanPhuong,4,2) as int)!=Phuong

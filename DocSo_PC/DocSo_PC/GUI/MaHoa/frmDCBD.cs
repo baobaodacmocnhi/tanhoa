@@ -962,6 +962,8 @@ namespace DocSo_PC.GUI.MaHoa
                                         return;
                                     }
                                     writer.Write("\"" + en.DanhBo + "\"");
+                                    writer.Write(",\"" + en.MaQuanPhuong.Substring(0, 2) + "\"");
+                                    writer.Write(",\"" + en.MaQuanPhuong.Substring(3, 2) + "\"");
                                     if (en.DiaChi.Length <= 50)
                                     {
                                         writer.Write(",\"" + en.DiaChi_BD.Substring(0, en.DiaChi_BD.IndexOf(' ')) + "\"");

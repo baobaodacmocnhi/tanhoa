@@ -426,7 +426,8 @@ namespace DocSo_PC.GUI.ToTruong
                                     en.SoChinh = bool.Parse(dgvDienThoai["SoChinh_DT", e.RowIndex].Value.ToString());
                                 else
                                     en.SoChinh = false;
-                                en.GhiChu = dgvDienThoai["GhiChu_DT", e.RowIndex].Value.ToString();
+                                //en.GhiChu = dgvDienThoai["GhiChu_DT", e.RowIndex].Value.ToString();
+                                en.GhiChu = "Đ. QLĐHN";
                                 en.ModifyBy = CNguoiDung.MaND;
                                 en.ModifyDate = DateTime.Now;
                                 _cDHN.SubmitChanges();
