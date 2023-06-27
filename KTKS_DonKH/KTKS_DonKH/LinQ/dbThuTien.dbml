@@ -225,6 +225,7 @@
       <Column Name="PBVMT2021" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TDVTN2022" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DiaChiHD" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CodeFu" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.TT_HoaDonCu" Member="TT_HoaDonCus">
@@ -344,6 +345,7 @@
       <Column Name="PBVMT2021" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TDVTN2022" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DiaChiHD" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CodeFu" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

@@ -2819,6 +2819,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _DiaChiHD;
 		
+		private string _CodeFu;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -3053,6 +3055,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnTDVTN2022Changed();
     partial void OnDiaChiHDChanging(string value);
     partial void OnDiaChiHDChanged();
+    partial void OnCodeFuChanging(string value);
+    partial void OnCodeFuChanged();
     #endregion
 		
 		public HOADON()
@@ -5360,6 +5364,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CodeFu", DbType="NVarChar(2)")]
+		public string CodeFu
+		{
+			get
+			{
+				return this._CodeFu;
+			}
+			set
+			{
+				if ((this._CodeFu != value))
+				{
+					this.OnCodeFuChanging(value);
+					this.SendPropertyChanging();
+					this._CodeFu = value;
+					this.SendPropertyChanged("CodeFu");
+					this.OnCodeFuChanged();
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -5617,6 +5641,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _DiaChiHD;
 		
+		private string _CodeFu;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -5851,6 +5877,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnTDVTN2022Changed();
     partial void OnDiaChiHDChanging(string value);
     partial void OnDiaChiHDChanged();
+    partial void OnCodeFuChanging(string value);
+    partial void OnCodeFuChanged();
     #endregion
 		
 		public TT_HoaDonCu()
@@ -8154,6 +8182,26 @@ namespace KTKS_DonKH.LinQ
 					this._DiaChiHD = value;
 					this.SendPropertyChanged("DiaChiHD");
 					this.OnDiaChiHDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CodeFu", DbType="NVarChar(2)")]
+		public string CodeFu
+		{
+			get
+			{
+				return this._CodeFu;
+			}
+			set
+			{
+				if ((this._CodeFu != value))
+				{
+					this.OnCodeFuChanging(value);
+					this.SendPropertyChanging();
+					this._CodeFu = value;
+					this.SendPropertyChanged("CodeFu");
+					this.OnCodeFuChanged();
 				}
 			}
 		}
