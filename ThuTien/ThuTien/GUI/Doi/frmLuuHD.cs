@@ -138,8 +138,8 @@ namespace ThuTien.GUI.Doi
                                 hoadon.NAM = Nam = int.Parse("20" + contents[19]);
                             if (!string.IsNullOrWhiteSpace(contents[20]))
                                 hoadon.CODE = contents[20];
-                            //if (!string.IsNullOrWhiteSpace(contents[21]))
-                            //    hoadon.CodeFu = contents[21];
+                            if (!string.IsNullOrWhiteSpace(contents[21]))
+                                hoadon.CodeFu = contents[21];
                             if (!string.IsNullOrWhiteSpace(contents[22]))
                                 hoadon.CSCU = int.Parse(contents[22]);
                             if (!string.IsNullOrWhiteSpace(contents[23]))
