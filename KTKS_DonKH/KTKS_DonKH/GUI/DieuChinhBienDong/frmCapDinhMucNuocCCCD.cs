@@ -1226,23 +1226,29 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
-                {
-                    DCBD_DKDM_DanhBo danhbo = _cDKDM.get(int.Parse(dgvDanhSach_Online["ID_Online", e.RowIndex].Value.ToString()));
-                    if (danhbo != null)
+                    if (dgvDanhSach_Online.Columns[e.ColumnIndex].Name == "actionHinh")
                     {
-                        dgvDanhSachCT_Online.Rows.Clear();
-                        foreach (DCBD_DKDM_CCCD item in danhbo.DCBD_DKDM_CCCDs.ToList())
+                        DCBD_DKDM_DanhBo en = _cDKDM.get(int.Parse(dgvDanhSach_Online["ID_Online", e.RowIndex].Value.ToString()));
+                       
+                    }
+                    else
+                    {
+                        DCBD_DKDM_DanhBo danhbo = _cDKDM.get(int.Parse(dgvDanhSach_Online["ID_Online", e.RowIndex].Value.ToString()));
+                        if (danhbo != null)
                         {
-                            var index = dgvDanhSachCT_Online.Rows.Add();
-                            dgvDanhSachCT_Online.Rows[index].Cells["IDCT_Online"].Value = item.ID;
-                            dgvDanhSachCT_Online.Rows[index].Cells["HoTenCT_Online"].Value = item.HoTen;
-                            dgvDanhSachCT_Online.Rows[index].Cells["NgaySinhCT_Online"].Value = item.NgaySinh.Value.ToString("dd/MM/yyyy");
-                            dgvDanhSachCT_Online.Rows[index].Cells["DCThuongTruCT_Online"].Value = item.DCThuongTru;
-                            dgvDanhSachCT_Online.Rows[index].Cells["DCTamTruCT_Online"].Value = item.DCTamTru;
-                            dgvDanhSachCT_Online.Rows[index].Cells["CCCDCT_Online"].Value = item.CCCD;
+                            dgvDanhSachCT_Online.Rows.Clear();
+                            foreach (DCBD_DKDM_CCCD item in danhbo.DCBD_DKDM_CCCDs.ToList())
+                            {
+                                var index = dgvDanhSachCT_Online.Rows.Add();
+                                dgvDanhSachCT_Online.Rows[index].Cells["IDCT_Online"].Value = item.ID;
+                                dgvDanhSachCT_Online.Rows[index].Cells["HoTenCT_Online"].Value = item.HoTen;
+                                dgvDanhSachCT_Online.Rows[index].Cells["NgaySinhCT_Online"].Value = item.NgaySinh.Value.ToString("dd/MM/yyyy");
+                                dgvDanhSachCT_Online.Rows[index].Cells["DCThuongTruCT_Online"].Value = item.DCThuongTru;
+                                dgvDanhSachCT_Online.Rows[index].Cells["DCTamTruCT_Online"].Value = item.DCTamTru;
+                                dgvDanhSachCT_Online.Rows[index].Cells["CCCDCT_Online"].Value = item.CCCD;
+                            }
                         }
                     }
-                }
             }
             catch (Exception ex)
             {
