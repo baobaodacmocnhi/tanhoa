@@ -1229,7 +1229,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     if (dgvDanhSach_Online.Columns[e.ColumnIndex].Name == "actionHinh")
                     {
                         DCBD_DKDM_DanhBo en = _cDKDM.get(int.Parse(dgvDanhSach_Online["ID_Online", e.RowIndex].Value.ToString()));
-                       
+                        System.Diagnostics.Process.Start("https://service.cskhtanhoa.com.vn/ThuongVu/viewImageCCCD?FolderCT=" + en.DanhBo+"."+en.CreateDate.ToString("yyyyMMdd"));
                     }
                     else
                     {
