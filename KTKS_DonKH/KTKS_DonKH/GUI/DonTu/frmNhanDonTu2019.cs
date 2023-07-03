@@ -150,6 +150,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     tabControl.SelectTab("tabTTKH");
                     if (entity.SoNK != null)
                     {
+                        chkCCDM.Checked = entity.CCDM;
                         txtSoNK.Text = entity.SoNK.Value.ToString();
                         txtHieuLucKy.Text = entity.HieuLucKy;
                     }
@@ -492,6 +493,7 @@ namespace KTKS_DonKH.GUI.DonTu
 
                         if (txtSoNK.Text.Trim() != "")
                         {
+                            entity.CCDM = chkCCDM.Checked;
                             entity.SoNK = int.Parse(txtSoNK.Text.Trim());
                             entity.HieuLucKy = txtHieuLucKy.Text.Trim();
                             if (cmbThoiHan.SelectedIndex >= 0)
@@ -766,6 +768,7 @@ namespace KTKS_DonKH.GUI.DonTu
                                 }
                             if (txtSoNK.Text.Trim() != "")
                             {
+                                _dontu.CCDM = chkCCDM.Checked;
                                 _dontu.SoNK = int.Parse(txtSoNK.Text.Trim());
                                 _dontu.HieuLucKy = txtHieuLucKy.Text.Trim();
                             }
@@ -1068,7 +1071,11 @@ namespace KTKS_DonKH.GUI.DonTu
                     }
                 }
                 dr["NoiDung"] = entity.Name_NhomDon_PKH;
-                dr["LyDoLoaiKhac"] = entity.VanDeKhac;
+                if (entity.CCDM)
+                {
+                    dr["LyDoLoaiKhac"] = "(CCDM) ";
+                }
+                dr["LyDoLoaiKhac"] += entity.VanDeKhac;
 
                 #region CheckBox
 

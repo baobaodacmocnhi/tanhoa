@@ -32014,6 +32014,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _VanDeKhac;
 		
+		private bool _CCDM;
+		
 		private System.Nullable<int> _SoNK;
 		
 		private string _HieuLucKy;
@@ -32160,6 +32162,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnVanPhongChanged();
     partial void OnVanDeKhacChanging(string value);
     partial void OnVanDeKhacChanged();
+    partial void OnCCDMChanging(bool value);
+    partial void OnCCDMChanged();
     partial void OnSoNKChanging(System.Nullable<int> value);
     partial void OnSoNKChanged();
     partial void OnHieuLucKyChanging(string value);
@@ -32435,6 +32439,26 @@ namespace KTKS_DonKH.LinQ
 					this._VanDeKhac = value;
 					this.SendPropertyChanged("VanDeKhac");
 					this.OnVanDeKhacChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CCDM", DbType="Bit NOT NULL")]
+		public bool CCDM
+		{
+			get
+			{
+				return this._CCDM;
+			}
+			set
+			{
+				if ((this._CCDM != value))
+				{
+					this.OnCCDMChanging(value);
+					this.SendPropertyChanging();
+					this._CCDM = value;
+					this.SendPropertyChanged("CCDM");
+					this.OnCCDMChanged();
 				}
 			}
 		}

@@ -1368,6 +1368,7 @@
       <Column Name="TongDB" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="VanPhong" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="VanDeKhac" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="CCDM" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="SoNK" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="HieuLucKy" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="ThoiHan" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
