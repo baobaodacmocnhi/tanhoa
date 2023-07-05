@@ -392,6 +392,7 @@ namespace ThuTien.DAL.DongNuoc
                                 TinhTrang = "",//Phải thêm để GridView lấy cột để edit lại sau
                                 TongCongLenh = itemDN.TT_CTDongNuocs.Sum(item => item.TongCong),
                                 MaKQDN = itemtableKQ == null ? "" : itemtableKQ.MaKQDN.ToString(),
+                                SoLuong = itemDN.TT_CTDongNuocs.Count(),
                             };
             DataTable dtDongNuoc = new DataTable();
             dtDongNuoc = LINQToDataTable(queryDN);

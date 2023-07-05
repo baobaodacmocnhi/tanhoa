@@ -104,6 +104,7 @@
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.btnXoaLenh = new System.Windows.Forms.Button();
+            this.SoLuong = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
@@ -233,6 +234,7 @@
             this.gridViewDN.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.In,
             this.MaDN,
+            this.SoLuong,
             this.DanhBo,
             this.HoTen,
             this.DiaChi,
@@ -287,7 +289,7 @@
             this.DanhBo.FieldName = "DanhBo";
             this.DanhBo.Name = "DanhBo";
             this.DanhBo.Visible = true;
-            this.DanhBo.VisibleIndex = 2;
+            this.DanhBo.VisibleIndex = 3;
             this.DanhBo.Width = 85;
             // 
             // HoTen
@@ -296,7 +298,7 @@
             this.HoTen.FieldName = "HoTen";
             this.HoTen.Name = "HoTen";
             this.HoTen.Visible = true;
-            this.HoTen.VisibleIndex = 3;
+            this.HoTen.VisibleIndex = 4;
             this.HoTen.Width = 130;
             // 
             // DiaChi
@@ -305,8 +307,8 @@
             this.DiaChi.FieldName = "DiaChi";
             this.DiaChi.Name = "DiaChi";
             this.DiaChi.Visible = true;
-            this.DiaChi.VisibleIndex = 4;
-            this.DiaChi.Width = 180;
+            this.DiaChi.VisibleIndex = 5;
+            this.DiaChi.Width = 140;
             // 
             // MLT
             // 
@@ -314,7 +316,7 @@
             this.MLT.FieldName = "MLT";
             this.MLT.Name = "MLT";
             this.MLT.Visible = true;
-            this.MLT.VisibleIndex = 5;
+            this.MLT.VisibleIndex = 6;
             this.MLT.Width = 70;
             // 
             // CreateDate
@@ -323,7 +325,7 @@
             this.CreateDate.FieldName = "CreateDate";
             this.CreateDate.Name = "CreateDate";
             this.CreateDate.Visible = true;
-            this.CreateDate.VisibleIndex = 6;
+            this.CreateDate.VisibleIndex = 7;
             this.CreateDate.Width = 70;
             // 
             // TongCongLenh
@@ -332,7 +334,7 @@
             this.TongCongLenh.FieldName = "TongCongLenh";
             this.TongCongLenh.Name = "TongCongLenh";
             this.TongCongLenh.Visible = true;
-            this.TongCongLenh.VisibleIndex = 11;
+            this.TongCongLenh.VisibleIndex = 12;
             // 
             // gridColumn1
             // 
@@ -340,7 +342,7 @@
             this.gridColumn1.FieldName = "NgayGiaiTrach";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 7;
+            this.gridColumn1.VisibleIndex = 8;
             this.gridColumn1.Width = 70;
             // 
             // HanhThu
@@ -349,7 +351,7 @@
             this.HanhThu.FieldName = "HanhThu";
             this.HanhThu.Name = "HanhThu";
             this.HanhThu.Visible = true;
-            this.HanhThu.VisibleIndex = 8;
+            this.HanhThu.VisibleIndex = 9;
             // 
             // HoTen_DongNuoc
             // 
@@ -357,7 +359,7 @@
             this.HoTen_DongNuoc.FieldName = "HoTen_DongNuoc";
             this.HoTen_DongNuoc.Name = "HoTen_DongNuoc";
             this.HoTen_DongNuoc.Visible = true;
-            this.HoTen_DongNuoc.VisibleIndex = 9;
+            this.HoTen_DongNuoc.VisibleIndex = 10;
             // 
             // TinhTrang
             // 
@@ -365,7 +367,7 @@
             this.TinhTrang.FieldName = "TinhTrang";
             this.TinhTrang.Name = "TinhTrang";
             this.TinhTrang.Visible = true;
-            this.TinhTrang.VisibleIndex = 10;
+            this.TinhTrang.VisibleIndex = 11;
             // 
             // CreateBy
             // 
@@ -799,6 +801,15 @@
             this.btnXoaLenh.UseVisualStyleBackColor = true;
             this.btnXoaLenh.Click += new System.EventHandler(this.btnXoaLenh_Click);
             // 
+            // SoLuong
+            // 
+            this.SoLuong.Caption = "HĐ";
+            this.SoLuong.FieldName = "SoLuong";
+            this.SoLuong.Name = "SoLuong";
+            this.SoLuong.Visible = true;
+            this.SoLuong.VisibleIndex = 2;
+            this.SoLuong.Width = 40;
+            // 
             // frmGiaoTBDongNuoc2020
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -931,5 +942,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private System.Windows.Forms.Button btnXoaLenh;
+        private DevExpress.XtraGrid.Columns.GridColumn SoLuong;
     }
 }
