@@ -775,6 +775,7 @@ namespace KTKS_DonKH.GUI.DonTu
                             else
                                 if (_dontu.SoNK != null)
                                 {
+                                    _dontu.CCDM = false;
                                     _dontu.SoNK = null;
                                     _dontu.HieuLucKy = null;
                                 }
@@ -1073,7 +1074,7 @@ namespace KTKS_DonKH.GUI.DonTu
                 dr["NoiDung"] = entity.Name_NhomDon_PKH;
                 if (entity.CCDM)
                 {
-                    dr["LyDoLoaiKhac"] = "(CCDM) ";
+                    dr["LyDoLoaiKhac"] = "(CCĐM) ";
                 }
                 dr["LyDoLoaiKhac"] += entity.VanDeKhac;
 
