@@ -865,6 +865,7 @@ namespace DocSo_PC.GUI.MaHoa
 
         private void btnImport_Click(object sender, EventArgs e)
         {
+            string error = "";
             try
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Them"))
@@ -887,8 +888,10 @@ namespace DocSo_PC.GUI.MaHoa
                             //List<MaHoa_DCBD> lst = CDAL._db.MaHoa_DCBDs.Where(o => o.CreateDate.Value.Date == new DateTime(2023, 06, 22).Date && o.ThongTin == "Địa Chỉ" && o.MaQuanPhuong == "").ToList();
                             foreach (DataRow item in dtExcel.Rows)
                                 if (item[1].ToString().Replace(" ", "").Replace("-", "").Length == 11
-                                    && item[5].ToString().Trim() != item[6].ToString().Trim() && item[6].ToString().Trim() != "")//&& lst.Any(k => k.DanhBo == item[1].ToString().Replace(" ", "").Replace("-", "")))
+                                    && item[5].ToString().Trim() != item[6].ToString().Trim() && item[6].ToString().Trim() != ""//&& lst.Any(k => k.DanhBo == item[1].ToString().Replace(" ", "").Replace("-", "")))
+                                && !_cDCBD.checkExist(dontu.ID, item[1].ToString().Replace(" ", "").Replace("-", "")))
                                 {
+                                    error = item[1].ToString().Replace(" ", "").Replace("-", "");
                                     HOADON hoadon = _cThuTien.GetMoiNhat(item[1].ToString().Replace(" ", "").Replace("-", ""));
                                     if (hoadon != null && (hoadon.GB == 10 || hoadon.GB == 11 || hoadon.GB == 15) && (hoadon.DiaChiHD == null || hoadon.DiaChiHD == ""))
                                     {
@@ -898,10 +901,13 @@ namespace DocSo_PC.GUI.MaHoa
                                         ctdcbd.IDMaDon = dontu.ID;
                                         ctdcbd.HoTen = hoadon.TENKH;
                                         ctdcbd.DiaChi = hoadon.SO + " " + hoadon.DUONG;
-                                        if (item[7].ToString().Trim().All(char.IsDigit))
-                                            ctdcbd.MaQuanPhuong = _cDHN.getMaQuanPhuong(item[8].ToString().Trim(), ((int)(double.Parse(item[7].ToString().Trim()))).ToString());
+                                        if (!string.IsNullOrEmpty(item[7].ToString().Trim()))
+                                            if (item[7].ToString().Trim().All(char.IsDigit))
+                                                ctdcbd.MaQuanPhuong = _cDHN.getMaQuanPhuong(item[8].ToString().Trim(), ((int)(double.Parse(item[7].ToString().Trim()))).ToString());
+                                            else
+                                                ctdcbd.MaQuanPhuong = _cDHN.getMaQuanPhuong(item[8].ToString().Trim(), item[7].ToString().Trim());
                                         else
-                                            ctdcbd.MaQuanPhuong = _cDHN.getMaQuanPhuong(item[8].ToString().Trim(), item[7].ToString().Trim());
+                                            ctdcbd.MaQuanPhuong = hoadon.Quan + " " + hoadon.Phuong;
                                         ctdcbd.Ky = hoadon.KY;
                                         ctdcbd.Nam = hoadon.NAM;
                                         ctdcbd.Dot = hoadon.DOT;
@@ -935,7 +941,7 @@ namespace DocSo_PC.GUI.MaHoa
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message + "\n" + error, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
