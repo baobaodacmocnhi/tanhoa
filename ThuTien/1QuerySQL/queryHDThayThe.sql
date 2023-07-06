@@ -1,3 +1,10 @@
-select DANHBA,SOHOADON,GIABAN,THUE,PHI,ThueGTGT_TDVTN,TONGCONG from HOADON where MaNV_DangNgan is not null and year(NGAYGIAITRACh)=2023 and month(NGAYGIAITRACh)=6
-and ID_HOADON in (select FK_HOADON from DIEUCHINH_HD) and (NAM<2022 or (nam=2022 and ky<=4))
-order by SOHOADON
+select DANHBA,hd.SOHOADON
+,(select top 1 dchd.TienNuoc_Start from KTKS_DonKH.dbo.DCBD_ChiTietHoaDon dchd where hd.NAM=dchd.Nam and hd.KY=dchd.Ky and hd.DANHBA=dchd.DanhBo)
+,(select top 1 dchd.ThueGTGT_Start from KTKS_DonKH.dbo.DCBD_ChiTietHoaDon dchd where hd.NAM=dchd.Nam and hd.KY=dchd.Ky and hd.DANHBA=dchd.DanhBo)
+,(select top 1 dchd.PhiBVMT_Start from KTKS_DonKH.dbo.DCBD_ChiTietHoaDon dchd where hd.NAM=dchd.Nam and hd.KY=dchd.Ky and hd.DANHBA=dchd.DanhBo)
+,(select top 1 dchd.PhiBVMT_Thue_Start from KTKS_DonKH.dbo.DCBD_ChiTietHoaDon dchd where hd.NAM=dchd.Nam and hd.KY=dchd.Ky and hd.DANHBA=dchd.DanhBo)
+,(select top 1 dchd.TongCong_Start from KTKS_DonKH.dbo.DCBD_ChiTietHoaDon dchd where hd.NAM=dchd.Nam and hd.KY=dchd.Ky and hd.DANHBA=dchd.DanhBo)
+
+,hd.ky,hd.nam from HOADON hd where MaNV_DangNgan is not null and year(NGAYGIAITRACh)=2023 and month(NGAYGIAITRACh)=6
+and ID_HOADON in (select FK_HOADON from DIEUCHINH_HD) and (hd.NAM<2022 or (hd.nam=2022 and hd.ky<=4))  
+order by hd.SOHOADON
