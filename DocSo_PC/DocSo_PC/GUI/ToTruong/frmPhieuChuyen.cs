@@ -445,6 +445,7 @@ namespace DocSo_PC.GUI.ToTruong
                             dr["MLT"] = ttkh.LOTRINH;
                             dr["HoTen"] = ttkh.HOTEN;
                             dr["DiaChi"] = ttkh.SONHA + " " + ttkh.TENDUONG + _cDHN.getTenPhuongQuan(ttkh.QUAN, ttkh.PHUONG);
+                            dr["Hieu"] = ttkh.HIEUDH;
                             HOADON hd = _cThuTien.GetMoiNhat(ttkh.DANHBO);
                             if (hd != null)
                                 dr["HopDong"] = hd.SO + " " + hd.DUONG + _cDHN.getTenPhuongQuan(hd.Quan, hd.Phuong);
@@ -591,6 +592,7 @@ namespace DocSo_PC.GUI.ToTruong
                                     dr["MLT"] = ttkh.LOTRINH;
                                     dr["HoTen"] = ttkh.HOTEN;
                                     dr["DiaChi"] = ttkh.SONHA + " " + ttkh.TENDUONG + _cDHN.getTenPhuongQuan(ttkh.QUAN, ttkh.PHUONG);
+                                    dr["Hieu"] = ttkh.HIEUDH;
                                     HOADON hd = _cThuTien.GetMoiNhat(ttkh.DANHBO);
                                     if (hd != null)
                                         dr["HopDong"] = hd.SO + " " + hd.DUONG + _cDHN.getTenPhuongQuan(hd.Quan, hd.Phuong);
