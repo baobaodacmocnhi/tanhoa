@@ -31,10 +31,10 @@
             this.btnThem = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.dgvHinh = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Hinh = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Bytes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
+            this.Bytes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Hinh = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHinh)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,12 +75,21 @@
             this.dgvHinh.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHinh_CellDoubleClick);
             this.dgvHinh.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvHinh_RowPostPaint);
             // 
-            // ID
+            // label1
             // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.Visible = false;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(174, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(133, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "(Double-click để xem hình)";
+            // 
+            // Bytes
+            // 
+            this.Bytes.DataPropertyName = "Bytes";
+            this.Bytes.HeaderText = "Bytes";
+            this.Bytes.Name = "Bytes";
+            this.Bytes.Visible = false;
             // 
             // Hinh
             // 
@@ -90,21 +99,12 @@
             this.Hinh.Name = "Hinh";
             this.Hinh.Width = 200;
             // 
-            // Bytes
+            // ID
             // 
-            this.Bytes.DataPropertyName = "Bytes";
-            this.Bytes.HeaderText = "Bytes";
-            this.Bytes.Name = "Bytes";
-            this.Bytes.Visible = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(174, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(133, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "(Double-click để xem hình)";
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
             // 
             // frmHinhDongMoNuoc
             // 
@@ -130,9 +130,9 @@
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.DataGridView dgvHinh;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewImageColumn Hinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bytes;
-        private System.Windows.Forms.Label label1;
     }
 }
