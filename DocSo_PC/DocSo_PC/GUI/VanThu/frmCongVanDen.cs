@@ -258,7 +258,8 @@ namespace DocSo_PC.GUI.VanThu
                                             {
                                                 danhbohuy.SOPHIEU = phieuhuy.MaYCCHDB.ToString();
                                                 danhbohuy.NGAYHUY = phieuhuy.CreateDate.Value;
-                                                danhbohuy.HIEULUCHUY = phieuhuy.HieuLucKy;
+                                                string[] strs = phieuhuy.HieuLucKy.Split('/');
+                                                danhbohuy.HIEULUCHUY = int.Parse(strs[0]).ToString("00") + "/" + strs[1];
                                                 danhbohuy.NGUYENNHAN = phieuhuy.LyDo + " " + phieuhuy.GhiChuLyDo;
                                                 danhbohuy.CREATEBY = CNguoiDung.HoTen;
                                                 danhbohuy.CREATEDATE = DateTime.Now;

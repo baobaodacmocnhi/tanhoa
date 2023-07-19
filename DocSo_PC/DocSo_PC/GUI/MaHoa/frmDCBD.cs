@@ -885,7 +885,7 @@ namespace DocSo_PC.GUI.MaHoa
                         {
                             string strHieuLucKy = _cLDS.getHieuLucKyToi();
                             DataTable dtExcel = _cDCBD.ExcelToDataTable_OLDB(dialog.FileName);
-                            //List<MaHoa_DCBD> lst = CDAL._db.MaHoa_DCBDs.Where(o => o.CreateDate.Value.Date == new DateTime(2023, 06, 22).Date && o.ThongTin == "Địa Chỉ" && o.MaQuanPhuong == "").ToList();
+                            //List<MaHoa_DCBD> lst = CDAL._db.MaHoa_DCBDs.Where(o => o.CreateDate.Value.Date == new DateTime(2023, 07, 07).Date && o.ThongTin == "Địa Chỉ" && o.MaQuanPhuong == "").ToList();
                             foreach (DataRow item in dtExcel.Rows)
                                 if (item[1].ToString().Replace(" ", "").Replace("-", "").Length == 11
                                     && item[5].ToString().Trim() != item[6].ToString().Trim() && item[6].ToString().Trim() != ""//&& lst.Any(k => k.DanhBo == item[1].ToString().Replace(" ", "").Replace("-", "")))
@@ -896,7 +896,7 @@ namespace DocSo_PC.GUI.MaHoa
                                     if (hoadon != null && (hoadon.GB == 10 || hoadon.GB == 11 || hoadon.GB == 15) && (hoadon.DiaChiHD == null || hoadon.DiaChiHD == ""))
                                     {
                                         MaHoa_DCBD ctdcbd = new MaHoa_DCBD();
-                                        //ctdcbd = CDAL._db.MaHoa_DCBDs.SingleOrDefault(o => o.DanhBo == item[1].ToString().Replace(" ", "").Replace("-", "") && o.IDMaDon == dontu.ID && o.CreateDate.Value.Date == new DateTime(2023, 06, 22).Date);
+                                        //ctdcbd = CDAL._db.MaHoa_DCBDs.SingleOrDefault(o => o.DanhBo == item[1].ToString().Replace(" ", "").Replace("-", "") && o.IDMaDon == dontu.ID && o.CreateDate.Value.Date == new DateTime(2023, 07, 07).Date);
                                         ctdcbd.DanhBo = item[1].ToString().Replace(" ", "").Replace("-", "");
                                         ctdcbd.IDMaDon = dontu.ID;
                                         ctdcbd.HoTen = hoadon.TENKH;
@@ -947,6 +947,7 @@ namespace DocSo_PC.GUI.MaHoa
 
         private void btnFileGuiTCT_Click(object sender, EventArgs e)
         {
+            string error = "";
             try
             {
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -962,6 +963,9 @@ namespace DocSo_PC.GUI.MaHoa
                                 MaHoa_DCBD en = _cDCBD.get(int.Parse(item.Cells["ID_DS"].Value.ToString()));
                                 if (en != null)
                                 {
+                                    //if (en.DanhBo == "13041898475")
+                                        error = en.DanhBo;
+
                                     if (en.DiaChi_BD.Length == 0)
                                     {
                                         MessageBox.Show(en.DanhBo + " thiếu Địa chỉ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -978,9 +982,9 @@ namespace DocSo_PC.GUI.MaHoa
                                     else
                                         if (en.DiaChi.Length > 50)
                                         {
-                                            writer.WriteLine("");
-                                            //writer.Write(",\"" + en.DiaChi_BD.Substring(0, en.DiaChi_BD.Length / 2) + "\"");
-                                            //writer.WriteLine(",\"" + en.DiaChi_BD.Substring(en.DiaChi_BD.Length / 2, en.DiaChi_BD.Length / 2) + "\"");
+                                            //writer.WriteLine("");
+                                            writer.Write(",\"" + en.DiaChi_BD.Substring(0, en.DiaChi_BD.Length / 2) + "\"");
+                                            writer.WriteLine(",\"" + en.DiaChi_BD.Substring(en.DiaChi_BD.Length / 2, en.DiaChi_BD.Length / 2) + "\"");
                                         }
                                 }
                             }
@@ -990,7 +994,7 @@ namespace DocSo_PC.GUI.MaHoa
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message + "\n" + error, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
