@@ -13239,6 +13239,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _HoTenCat;
 		
+		private System.Nullable<int> _STT;
+		
 		private string _Lo;
 		
 		private string _Phong;
@@ -13377,6 +13379,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnGhiChuChanged();
     partial void OnHoTenCatChanging(string value);
     partial void OnHoTenCatChanged();
+    partial void OnSTTChanging(System.Nullable<int> value);
+    partial void OnSTTChanged();
     partial void OnLoChanging(string value);
     partial void OnLoChanged();
     partial void OnPhongChanging(string value);
@@ -13755,6 +13759,26 @@ namespace KTKS_DonKH.LinQ
 					this._HoTenCat = value;
 					this.SendPropertyChanged("HoTenCat");
 					this.OnHoTenCatChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STT", DbType="Int")]
+		public System.Nullable<int> STT
+		{
+			get
+			{
+				return this._STT;
+			}
+			set
+			{
+				if ((this._STT != value))
+				{
+					this.OnSTTChanging(value);
+					this.SendPropertyChanging();
+					this._STT = value;
+					this.SendPropertyChanged("STT");
+					this.OnSTTChanged();
 				}
 			}
 		}

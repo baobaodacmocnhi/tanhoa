@@ -545,6 +545,7 @@
       <Column Name="NgayHetHanHN" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="HoTenCat" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="STT" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Lo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Phong" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Cat" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />

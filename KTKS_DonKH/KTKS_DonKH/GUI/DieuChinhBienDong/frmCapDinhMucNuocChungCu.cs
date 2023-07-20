@@ -72,6 +72,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         public void FillForm(ChungTu_ChiTiet en)
         {
+            if (en.STT != null)
+                txtSTT.Text = en.STT.Value.ToString();
             txtLo.Text = en.Lo;
             txtPhong.Text = en.Phong;
             txtCCCD.Text = en.MaCT;
@@ -232,6 +234,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             //    }
                             //}
                             ctchungtu.GhiChu = txtGhiChu.Text.Trim();
+                            if (txtSTT.Text.Trim() != "")
+                                ctchungtu.STT = int.Parse(txtSTT.Text.Trim());
                             ctchungtu.Lo = txtLo.Text.Trim();
                             ctchungtu.Phong = txtPhong.Text.Trim();
                             if (_hoadon != null)
@@ -305,6 +309,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         //    }
                         //}
                         _ctchungtu.GhiChu = txtGhiChu.Text.Trim();
+                        if (txtSTT.Text.Trim() != "")
+                            _ctchungtu.STT = int.Parse(txtSTT.Text.Trim());
                         _ctchungtu.Lo = txtLo.Text.Trim();
                         _ctchungtu.Phong = txtPhong.Text.Trim();
                         _ctchungtu.Cat = chkCat.Checked;
@@ -339,7 +345,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void txtCCCD_Leave(object sender, EventArgs e)
         {
-            
+
         }
 
         private void frmCapDinhMucNuocChungCu_KeyDown(object sender, KeyEventArgs e)
@@ -460,7 +466,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void txtCCCD_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13 )
+            if (e.KeyChar == 13)
             {
                 try
                 {
@@ -564,6 +570,18 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 case "Họ Tên":
                     dgvDanhSach.DataSource = _cChungTu.getDS_ChiTiet_TimKiem_HoTen(txtNoiDungTimKiem.Text.Trim());
                     break;
+                case "STT":
+                    if (string.IsNullOrEmpty(txtNoiDungTimKiem2.Text.Trim()))
+                        if (string.IsNullOrEmpty(txtDanhBo.Text.Trim()))
+                            dgvDanhSach.DataSource = _cChungTu.getDS_ChiTiet_TimKiem_STT(int.Parse(txtNoiDungTimKiem.Text.Trim()));
+                        else
+                            dgvDanhSach.DataSource = _cChungTu.getDS_ChiTiet_TimKiem_STT(txtDanhBo.Text.Trim(), int.Parse(txtNoiDungTimKiem.Text.Trim()));
+                    else
+                        if (string.IsNullOrEmpty(txtDanhBo.Text.Trim()))
+                            dgvDanhSach.DataSource = _cChungTu.getDS_ChiTiet_TimKiem_STT(int.Parse(txtNoiDungTimKiem.Text.Trim()), int.Parse(txtNoiDungTimKiem2.Text.Trim()));
+                        else
+                            dgvDanhSach.DataSource = _cChungTu.getDS_ChiTiet_TimKiem_STT(txtDanhBo.Text.Trim(), int.Parse(txtNoiDungTimKiem.Text.Trim()), int.Parse(txtNoiDungTimKiem2.Text.Trim()));
+                    break;
                 case "Lô":
                     if (string.IsNullOrEmpty(txtDanhBo.Text.Trim()))
                         dgvDanhSach.DataSource = _cChungTu.getDS_ChiTiet_TimKiem_Lo(txtNoiDungTimKiem.Text.Trim());
@@ -585,7 +603,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
-        
+        private void txtNoiDungTimKiem_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && txtNoiDungTimKiem.Text.Trim() != "")
+            {
+                btnTimKiem.PerformClick();
+            }
+        }
+
+
 
 
 
