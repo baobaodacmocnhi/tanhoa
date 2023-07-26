@@ -826,6 +826,10 @@ namespace KTKS_DonKH.GUI.DonTu
                                 MessageBox.Show("Tổng Danh Bộ không đúng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
+                            for (int i = 0; i < _dontu.DonTu_ChiTiets.Count; i++)
+                            {
+                                _dontu.DonTu_ChiTiets[i].STT = i + 1;
+                            }
                         }
                         //
                         _dontu.VanPhong = chkVanPhong.Checked;
