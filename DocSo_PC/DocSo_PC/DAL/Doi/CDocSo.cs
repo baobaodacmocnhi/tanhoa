@@ -130,6 +130,11 @@ namespace DocSo_PC.DAL.Doi
             return _cDAL.ExecuteQuery_DataTable("select Code from TTDHN order by stt asc");
         }
 
+        public DataTable getDS_Code2023()
+        {
+            return _cDAL.ExecuteQuery_DataTable("select Code from TTDHN2023 where [active]=1 order by stt asc");
+        }
+
         public DataTable getDS_Code(string Nam, string Ky, string Dot)
         {
             return _cDAL.ExecuteQuery_DataTable("select Code=CodeMoi from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " group by CodeMoi");
@@ -138,6 +143,11 @@ namespace DocSo_PC.DAL.Doi
         public string getTTDHNCode(string Code)
         {
             return _cDAL.ExecuteQuery_ReturnOneValue("select TTDHN from TTDHN where Code='" + Code + "'").ToString();
+        }
+
+        public string getTTDHNCode2023(string Code)
+        {
+            return _cDAL.ExecuteQuery_ReturnOneValue("select TTDHN from TTDHN2023 where [active]=1 and Code='" + Code + "'").ToString();
         }
 
         //table DocSo

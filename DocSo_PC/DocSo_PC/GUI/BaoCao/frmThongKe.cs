@@ -33,7 +33,7 @@ namespace DocSo_PC.GUI.BaoCao
             cmbKy.SelectedItem = CNguoiDung.Ky;
             cmbDot.SelectedItem = CNguoiDung.Dot;
 
-            DataTable dtCode = _cDocSo.getDS_Code();
+            DataTable dtCode = _cDocSo.getDS_Code2023();
             DataRow dr = dtCode.NewRow();
             dr["Code"] = "Tất Cả";
             dtCode.Rows.InsertAt( dr,0);

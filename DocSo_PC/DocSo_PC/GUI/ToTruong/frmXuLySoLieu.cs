@@ -57,7 +57,7 @@ namespace DocSo_PC.GUI.ToTruong
                 cmbKy.SelectedItem = CNguoiDung.Ky;
                 cmbDot.SelectedItem = CNguoiDung.Dot;
 
-                DataTable dtCode = _cDocSo.getDS_Code();
+                DataTable dtCode = _cDocSo.getDS_Code2023();
                 cmbCodeMoi.DataSource = dtCode;
                 cmbCodeMoi.DisplayMember = "Code";
                 cmbCodeMoi.ValueMember = "Code";
@@ -474,7 +474,7 @@ namespace DocSo_PC.GUI.ToTruong
                             _docso.GhiChuTV = tbxGCTV.Text.Trim();
 
                             _docso.CodeMoi = cmbCodeMoi.SelectedValue.ToString();
-                            _docso.TTDHNMoi = _cDocSo.getTTDHNCode(_docso.CodeMoi);
+                            _docso.TTDHNMoi = _cDocSo.getTTDHNCode2023(_docso.CodeMoi);
                             //_docso.CSCu = int.Parse(txtCSC.Text.Trim());
                             _docso.CSMoi = int.Parse(txtCSM.Text.Trim());
                             //_docso.TieuThuMoi = TieuThu;
