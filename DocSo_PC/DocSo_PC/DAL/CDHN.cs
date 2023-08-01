@@ -80,7 +80,7 @@ namespace DocSo_PC.DAL
                 string Phuong = _db.PHUONGs.SingleOrDefault(itemPhuong => itemPhuong.MAQUAN == MaQuan && itemPhuong.TENPHUONG == TenPhuong).MAPHUONG;
                 return MaQuan.ToString() + " " + Phuong;
             }
-            catch (Exception ex)
+            catch 
             {
                 return "";
             }

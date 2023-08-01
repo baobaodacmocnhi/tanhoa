@@ -479,7 +479,7 @@ namespace DocSo_PC.GUI.ToTruong
                             _docso.CSMoi = int.Parse(txtCSM.Text.Trim());
                             //_docso.TieuThuMoi = TieuThu;
                             _docso.TieuThuMoi = int.Parse(txtTieuThu.Text.Trim());
-                            if (_docso.CodeMoi.Substring(0, 1).Contains("F") == true || _docso.CodeMoi.Contains("61") == true)
+                            if (_docso.CodeMoi != "F5" && (_docso.CodeMoi.Substring(0, 1).Contains("F") == true || _docso.CodeMoi.Contains("61") == true || _docso.CodeMoi.Contains("K3") == true))
                                 _docso.CSMoi = _docso.CSCu + _docso.TieuThuMoi;
                             _docso.TienNuoc = TTienNuoc;
                             _docso.Thue = TThueGTGT;
@@ -978,7 +978,7 @@ namespace DocSo_PC.GUI.ToTruong
                 if (CNguoiDung.Doi == true || CNguoiDung.DoiXem)
                     dgvCongVanDen.DataSource = _cCVD.getDS_ButPhe_XuLySoLieu(cmbTo.SelectedValue.ToString(), cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString(), dgvButPhe.CurrentRow.Cells["Loai"].Value.ToString());
                 else
-                    dgvCongVanDen.DataSource = _cCVD.getDS_ButPhe_XuLySoLieu(CNguoiDung.MaTo.ToString(), cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString(),dgvButPhe.CurrentRow.Cells["Loai"].Value.ToString());
+                    dgvCongVanDen.DataSource = _cCVD.getDS_ButPhe_XuLySoLieu(CNguoiDung.MaTo.ToString(), cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString(), dgvButPhe.CurrentRow.Cells["Loai"].Value.ToString());
             }
             catch (Exception ex)
             {

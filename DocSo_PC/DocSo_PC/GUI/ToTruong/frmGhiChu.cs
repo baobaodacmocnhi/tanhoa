@@ -253,7 +253,7 @@ namespace DocSo_PC.GUI.ToTruong
                 else
                     dgvThongKe.DataSource = _cDHN.getThongKe_DienThoai(cmbDot.SelectedItem.ToString());
             }
-            int TongViTri = 0, TongDienThoai = 0, TongDTKH = 0, TongDTDHN = 0, TongDTTV = 0;
+            int TongViTri = 0, TongDienThoai = 0;//, TongDTKH = 0, TongDTDHN = 0, TongDTTV = 0;
             foreach (DataGridViewRow item in dgvDanhSach.Rows)
             {
                 if (item.Cells["ViTri"].Value.ToString() != "")
