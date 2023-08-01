@@ -95,6 +95,14 @@ namespace ThuTien.wrThuTien {
         
         private System.Threading.SendOrPostCallback GetDSHoaDonTon_DongNuocOperationCompleted;
         
+        private System.Threading.SendOrPostCallback get_Hinh_ThuTienOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback ghi_Hinh_ThuTienOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback xoa_Hinh_ThuTienOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback xoa_Folder_Hinh_ThuTienOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetDSTimKiemOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetDSTimKiemTTKHOperationCompleted;
@@ -289,6 +297,18 @@ namespace ThuTien.wrThuTien {
         
         /// <remarks/>
         public event GetDSHoaDonTon_DongNuocCompletedEventHandler GetDSHoaDonTon_DongNuocCompleted;
+        
+        /// <remarks/>
+        public event get_Hinh_ThuTienCompletedEventHandler get_Hinh_ThuTienCompleted;
+        
+        /// <remarks/>
+        public event ghi_Hinh_ThuTienCompletedEventHandler ghi_Hinh_ThuTienCompleted;
+        
+        /// <remarks/>
+        public event xoa_Hinh_ThuTienCompletedEventHandler xoa_Hinh_ThuTienCompleted;
+        
+        /// <remarks/>
+        public event xoa_Folder_Hinh_ThuTienCompletedEventHandler xoa_Folder_Hinh_ThuTienCompleted;
         
         /// <remarks/>
         public event GetDSTimKiemCompletedEventHandler GetDSTimKiemCompleted;
@@ -1576,6 +1596,139 @@ namespace ThuTien.wrThuTien {
             if ((this.GetDSHoaDonTon_DongNuocCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetDSHoaDonTon_DongNuocCompleted(this, new GetDSHoaDonTon_DongNuocCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/get_Hinh_ThuTien", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary")]
+        public byte[] get_Hinh_ThuTien(string FolderLoai, string FolderIDCT, string FileName) {
+            object[] results = this.Invoke("get_Hinh_ThuTien", new object[] {
+                        FolderLoai,
+                        FolderIDCT,
+                        FileName});
+            return ((byte[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void get_Hinh_ThuTienAsync(string FolderLoai, string FolderIDCT, string FileName) {
+            this.get_Hinh_ThuTienAsync(FolderLoai, FolderIDCT, FileName, null);
+        }
+        
+        /// <remarks/>
+        public void get_Hinh_ThuTienAsync(string FolderLoai, string FolderIDCT, string FileName, object userState) {
+            if ((this.get_Hinh_ThuTienOperationCompleted == null)) {
+                this.get_Hinh_ThuTienOperationCompleted = new System.Threading.SendOrPostCallback(this.Onget_Hinh_ThuTienOperationCompleted);
+            }
+            this.InvokeAsync("get_Hinh_ThuTien", new object[] {
+                        FolderLoai,
+                        FolderIDCT,
+                        FileName}, this.get_Hinh_ThuTienOperationCompleted, userState);
+        }
+        
+        private void Onget_Hinh_ThuTienOperationCompleted(object arg) {
+            if ((this.get_Hinh_ThuTienCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.get_Hinh_ThuTienCompleted(this, new get_Hinh_ThuTienCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ghi_Hinh_ThuTien", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool ghi_Hinh_ThuTien(string FolderLoai, string FolderIDCT, string FileName, [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary")] byte[] HinhDHN) {
+            object[] results = this.Invoke("ghi_Hinh_ThuTien", new object[] {
+                        FolderLoai,
+                        FolderIDCT,
+                        FileName,
+                        HinhDHN});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ghi_Hinh_ThuTienAsync(string FolderLoai, string FolderIDCT, string FileName, byte[] HinhDHN) {
+            this.ghi_Hinh_ThuTienAsync(FolderLoai, FolderIDCT, FileName, HinhDHN, null);
+        }
+        
+        /// <remarks/>
+        public void ghi_Hinh_ThuTienAsync(string FolderLoai, string FolderIDCT, string FileName, byte[] HinhDHN, object userState) {
+            if ((this.ghi_Hinh_ThuTienOperationCompleted == null)) {
+                this.ghi_Hinh_ThuTienOperationCompleted = new System.Threading.SendOrPostCallback(this.Onghi_Hinh_ThuTienOperationCompleted);
+            }
+            this.InvokeAsync("ghi_Hinh_ThuTien", new object[] {
+                        FolderLoai,
+                        FolderIDCT,
+                        FileName,
+                        HinhDHN}, this.ghi_Hinh_ThuTienOperationCompleted, userState);
+        }
+        
+        private void Onghi_Hinh_ThuTienOperationCompleted(object arg) {
+            if ((this.ghi_Hinh_ThuTienCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ghi_Hinh_ThuTienCompleted(this, new ghi_Hinh_ThuTienCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/xoa_Hinh_ThuTien", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool xoa_Hinh_ThuTien(string FolderLoai, string FolderIDCT, string FileName) {
+            object[] results = this.Invoke("xoa_Hinh_ThuTien", new object[] {
+                        FolderLoai,
+                        FolderIDCT,
+                        FileName});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void xoa_Hinh_ThuTienAsync(string FolderLoai, string FolderIDCT, string FileName) {
+            this.xoa_Hinh_ThuTienAsync(FolderLoai, FolderIDCT, FileName, null);
+        }
+        
+        /// <remarks/>
+        public void xoa_Hinh_ThuTienAsync(string FolderLoai, string FolderIDCT, string FileName, object userState) {
+            if ((this.xoa_Hinh_ThuTienOperationCompleted == null)) {
+                this.xoa_Hinh_ThuTienOperationCompleted = new System.Threading.SendOrPostCallback(this.Onxoa_Hinh_ThuTienOperationCompleted);
+            }
+            this.InvokeAsync("xoa_Hinh_ThuTien", new object[] {
+                        FolderLoai,
+                        FolderIDCT,
+                        FileName}, this.xoa_Hinh_ThuTienOperationCompleted, userState);
+        }
+        
+        private void Onxoa_Hinh_ThuTienOperationCompleted(object arg) {
+            if ((this.xoa_Hinh_ThuTienCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.xoa_Hinh_ThuTienCompleted(this, new xoa_Hinh_ThuTienCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/xoa_Folder_Hinh_ThuTien", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool xoa_Folder_Hinh_ThuTien(string FolderLoai, string FolderIDCT) {
+            object[] results = this.Invoke("xoa_Folder_Hinh_ThuTien", new object[] {
+                        FolderLoai,
+                        FolderIDCT});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void xoa_Folder_Hinh_ThuTienAsync(string FolderLoai, string FolderIDCT) {
+            this.xoa_Folder_Hinh_ThuTienAsync(FolderLoai, FolderIDCT, null);
+        }
+        
+        /// <remarks/>
+        public void xoa_Folder_Hinh_ThuTienAsync(string FolderLoai, string FolderIDCT, object userState) {
+            if ((this.xoa_Folder_Hinh_ThuTienOperationCompleted == null)) {
+                this.xoa_Folder_Hinh_ThuTienOperationCompleted = new System.Threading.SendOrPostCallback(this.Onxoa_Folder_Hinh_ThuTienOperationCompleted);
+            }
+            this.InvokeAsync("xoa_Folder_Hinh_ThuTien", new object[] {
+                        FolderLoai,
+                        FolderIDCT}, this.xoa_Folder_Hinh_ThuTienOperationCompleted, userState);
+        }
+        
+        private void Onxoa_Folder_Hinh_ThuTienOperationCompleted(object arg) {
+            if ((this.xoa_Folder_Hinh_ThuTienCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.xoa_Folder_Hinh_ThuTienCompleted(this, new xoa_Folder_Hinh_ThuTienCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -3542,6 +3695,110 @@ namespace ThuTien.wrThuTien {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void get_Hinh_ThuTienCompletedEventHandler(object sender, get_Hinh_ThuTienCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class get_Hinh_ThuTienCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal get_Hinh_ThuTienCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public byte[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((byte[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void ghi_Hinh_ThuTienCompletedEventHandler(object sender, ghi_Hinh_ThuTienCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ghi_Hinh_ThuTienCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ghi_Hinh_ThuTienCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void xoa_Hinh_ThuTienCompletedEventHandler(object sender, xoa_Hinh_ThuTienCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class xoa_Hinh_ThuTienCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal xoa_Hinh_ThuTienCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void xoa_Folder_Hinh_ThuTienCompletedEventHandler(object sender, xoa_Folder_Hinh_ThuTienCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class xoa_Folder_Hinh_ThuTienCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal xoa_Folder_Hinh_ThuTienCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
             }
         }
     }

@@ -26,6 +26,7 @@ namespace ThuTien.GUI.TongHop
         CChuyenNoKhoDoi _cCNKD = new CChuyenNoKhoDoi();
         CLenhHuy _cLenhHuy = new CLenhHuy();
         CDCHD _cDCHD = new CDCHD();
+        wrThuTien.wsThuTien _wsThuTien = new wrThuTien.wsThuTien();
 
         public frmChuyenNoKhoDoi()
         {
@@ -371,6 +372,43 @@ namespace ThuTien.GUI.TongHop
             if (e.KeyChar == 13 && txtDanhBo.Text.Trim() != "")
             {
                 dgvHoaDon_Chon.DataSource = _cHoaDon.GetDSTonByDanhBo(txtDanhBo.Text.Trim());
+            }
+        }
+
+        private void dgvHoaDon_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dgvHoaDon.Columns[e.ColumnIndex].Name == "File_Xem")
+                {
+                    byte[] file = _wsThuTien.get_Hinh_ThuTien("CNKD", dgvHoaDon.CurrentRow.Cells["MaCNKD"].Value.ToString(), dgvHoaDon.CurrentRow.Cells["DanhBo"].Value.ToString() + ".pdf");
+                    if (file != null)
+                        _cCNKD.viewPDF(file);
+                    else
+                        MessageBox.Show("Lỗi File", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                    if (dgvHoaDon.Columns[e.ColumnIndex].Name == "File_Them")
+                    {
+                        OpenFileDialog dialog = new OpenFileDialog();
+                        dialog.Filter = "PDF files (*.pdf) | *.pdf";
+                        dialog.Multiselect = false;
+                        if (dialog.ShowDialog() == DialogResult.OK)
+                        {
+                            byte[] bytes = _cCNKD.scanVanBan(dialog.FileName);
+                            if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                            {
+                                if (_wsThuTien.ghi_Hinh_ThuTien("CNKD", dgvHoaDon.CurrentRow.Cells["MaCNKD"].Value.ToString(), dgvHoaDon.CurrentRow.Cells["DanhBo"].Value.ToString() + ".pdf", bytes) == true)
+                                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

@@ -151,7 +151,7 @@ namespace ThuTien.GUI.DongNuoc
 
         private void dgvHinh_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            _cDongNuoc.LoadImageView(Convert.FromBase64String(dgvHinh.CurrentRow.Cells["Bytes"].Value.ToString()));
+            _cDongNuoc.viewImage(Convert.FromBase64String(dgvHinh.CurrentRow.Cells["Bytes"].Value.ToString()));
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
