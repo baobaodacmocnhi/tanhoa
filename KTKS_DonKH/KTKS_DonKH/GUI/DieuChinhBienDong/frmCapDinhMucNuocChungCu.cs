@@ -434,6 +434,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void txtSTT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtLo.Focus();
+        }
+
         private void txtLo_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
@@ -610,15 +616,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 btnTimKiem.PerformClick();
             }
         }
-
-
-
-
-
-
-
-
-
 
 
     }
