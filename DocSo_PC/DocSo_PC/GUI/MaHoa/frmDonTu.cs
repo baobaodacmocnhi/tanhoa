@@ -184,7 +184,8 @@ namespace DocSo_PC.GUI.MaHoa
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Them"))
                 {
-                    if (_cDonTu.checkExists(txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now) == true)
+
+                    if (txtDanhBo.Text.Trim().Replace(" ", "") != "" && _cDonTu.checkExists(txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now) == true)
                     {
                         MessageBox.Show("Đã lập Đơn trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -278,7 +279,7 @@ namespace DocSo_PC.GUI.MaHoa
                 {
                     if (_dontu != null)
                     {
-                        if (_cDonTu.checkExists(txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now) == true)
+                        if (txtDanhBo.Text.Trim().Replace(" ", "") != "" && _cDonTu.checkExists(txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now) == true)
                         {
                             MessageBox.Show("Đã lập Đơn trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
