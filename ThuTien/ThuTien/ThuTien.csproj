@@ -716,6 +716,7 @@
     <Compile Include="DAL\ToTruong\CKiemTraHienTruong.cs" />
     <Compile Include="DAL\ToTruong\CTongHopNo.cs" />
     <Compile Include="DAL\TransactionScopeBuilder.cs" />
+    <Compile Include="DAL\VanThu\CCongVanDen.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>

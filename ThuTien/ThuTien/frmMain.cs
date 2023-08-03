@@ -18,6 +18,7 @@ using ThuTien.GUI.TongHop;
 using ThuTien.GUI.DongNuoc;
 using ThuTien.GUI.TimKiem;
 using ThuTien.GUI.PhoGiamDoc;
+using ThuTien.GUI.VanThu;
 
 namespace ThuTien
 {
@@ -1170,6 +1171,21 @@ namespace ThuTien
 
         #endregion
 
+        #region Văn Thư
+
+        private void mnuCongVanDen_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuCongVanDen", "Xem"))
+            {
+                frmCongVanDen frm = new frmCongVanDen();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion
+
         #region Tìm Kiếm
 
         private void mnuTimKiemKhachHang_Click(object sender, EventArgs e)
@@ -1227,6 +1243,8 @@ namespace ThuTien
         {
             //CNguoiDung.DangXuat();
         }
+
+       
 
 
     }
