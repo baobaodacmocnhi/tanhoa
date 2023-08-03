@@ -299,11 +299,6 @@ namespace DocSo_PC.GUI.VanThu
             catch { }
         }
 
-        private void dgvDanhSach_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-
-        }
-
         private void btnXoa_Click(object sender, EventArgs e)
         {
             try
