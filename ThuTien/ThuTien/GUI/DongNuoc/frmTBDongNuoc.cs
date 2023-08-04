@@ -315,7 +315,7 @@ namespace ThuTien.GUI.DongNuoc
                         if (!string.IsNullOrEmpty(item["DanhBo"].ToString()))
                         {
                             dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                            TB_DULIEUKHACHHANG ttkh = _cDHN.GetTTKH(item["DanhBo"].ToString());
+                            TB_DULIEUKHACHHANG ttkh = _cDHN.get(item["DanhBo"].ToString());
                             if (ttkh != null)
                                 dr["DiaChiDHN"] = ttkh.SONHA + " " + ttkh.TENDUONG;
                         }
@@ -648,7 +648,7 @@ namespace ThuTien.GUI.DongNuoc
                     if (!string.IsNullOrEmpty(item["DanhBo"].ToString()))
                     {
                         dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                        TB_DULIEUKHACHHANG ttkh = _cDHN.GetTTKH(item["DanhBo"].ToString());
+                        TB_DULIEUKHACHHANG ttkh = _cDHN.get(item["DanhBo"].ToString());
                         if (ttkh != null)
                         {
                             dr["DiaChiDHN"] = ttkh.SONHA + " " + ttkh.TENDUONG;

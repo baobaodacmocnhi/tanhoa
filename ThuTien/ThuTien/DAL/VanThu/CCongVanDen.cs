@@ -83,12 +83,12 @@ namespace ThuTien.DAL.VanThu
 
         public DataTable getDS(DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            return ExecuteQuery_DataTable("select *,'To'=(select TenTo from [To] where TuMay<=SUBSTRING(MLT,3,2) and DenMay>=SUBSTRING(MLT,3,2)) from TT_CongVanDen where cast(createdate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and cast(createdate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' order by createdate desc");
+            return ExecuteQuery_DataTable("select *,'To'=(select top 1 TenTo from [TT_To] where TuCuonGCS<=SUBSTRING(MLT,3,2) and DenCuonGCS>=SUBSTRING(MLT,3,2)) from TT_CongVanDen where cast(createdate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and cast(createdate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' order by createdate desc");
         }
 
         public DataTable getDS(string DanhBo)
         {
-            return ExecuteQuery_DataTable("select *,'To'=(select TenTo from [To] where TuMay<=SUBSTRING(MLT,3,2) and DenMay>=SUBSTRING(MLT,3,2)) from TT_CongVanDen where DanhBo='" + DanhBo + "' order by createdate desc");
+            return ExecuteQuery_DataTable("select *,'To'=(select top 1 TenTo from [TT_To] where TuCuonGCS<=SUBSTRING(MLT,3,2) and DenCuonGCS>=SUBSTRING(MLT,3,2)) from TT_CongVanDen where DanhBo='" + DanhBo + "' order by createdate desc");
         }
 
         public DataTable getGroup_NoiDung()
@@ -102,7 +102,7 @@ namespace ThuTien.DAL.VanThu
                 LoaiVB = "";
             else
                 LoaiVB = "and LoaiVB=N'" + LoaiVB + "'";
-            return ExecuteQuery_DataTable("select *,'To'=(select TenTo from [To] where TuMay<=SUBSTRING(MLT,3,2) and DenMay>=SUBSTRING(MLT,3,2))"
+            return ExecuteQuery_DataTable("select *,'To'=(select top 1 TenTo from [TT_To] where TuCuonGCS<=SUBSTRING(MLT,3,2) and DenCuonGCS>=SUBSTRING(MLT,3,2))"
                 + " ,NgayKiemDinh=(select NgayKiemDinh from CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG where DanhBo=TT_CongVanDen.DanhBo)"
                 + " from TT_CongVanDen where Duyet_Ngay is null " + LoaiVB + " order by createdate desc");
         }
@@ -113,7 +113,7 @@ namespace ThuTien.DAL.VanThu
                 LoaiVB = "";
             else
                 LoaiVB = "and LoaiVB=N'" + LoaiVB + "'";
-            return ExecuteQuery_DataTable("select *,'To'=(select TenTo from [To] where TuMay<=SUBSTRING(MLT,3,2) and DenMay>=SUBSTRING(MLT,3,2))"
+            return ExecuteQuery_DataTable("select *,'To'=(select top 1 TenTo from [TT_To] where TuCuonGCS<=SUBSTRING(MLT,3,2) and DenCuonGCS>=SUBSTRING(MLT,3,2))"
                 + " ,NgayKiemDinh=(select NgayKiemDinh from CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG where DanhBo=TT_CongVanDen.DanhBo)"
                 + " from TT_CongVanDen where cast(Duyet_Ngay as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and cast(Duyet_Ngay as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' " + LoaiVB + " order by createdate desc");
         }
@@ -128,7 +128,7 @@ namespace ThuTien.DAL.VanThu
             if (MaTo == "0")
                 MaTo = "";
             else
-                MaTo = "and SUBSTRING(MLT1,3,2)>=(select TuMay from [To] where MaTo=" + MaTo + ") and SUBSTRING(MLT1,3,2)<=(select DenMay from [To] where MaTo=" + MaTo + ")";
+                MaTo = "and SUBSTRING(MLT1,3,2)>=(select TuCuonGCS from [TT_To] where MaTo=" + MaTo + ") and SUBSTRING(MLT1,3,2)<=(select DenCuonGCS from [TT_To] where MaTo=" + MaTo + ")";
             return ExecuteQuery_DataTable("select * from TT_CongVanDen where " + ButPhe + "=1 and CAST(DATEADD(DAY,90,CreateDate) as date)>=CAST(GETDATE() as date) and DanhBo in (select DanhBa from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " " + MaTo + ") order by CreateDate desc");
         }
 
@@ -137,7 +137,7 @@ namespace ThuTien.DAL.VanThu
             if (MaTo == "0")
                 MaTo = "";
             else
-                MaTo = "and SUBSTRING(MLT1,3,2)>=(select TuMay from [To] where MaTo=" + MaTo + ") and SUBSTRING(MLT1,3,2)<=(select DenMay from [To] where MaTo=" + MaTo + ")";
+                MaTo = "and SUBSTRING(MLT1,3,2)>=(select TuCuonGCS from [TT_To] where MaTo=" + MaTo + ") and SUBSTRING(MLT1,3,2)<=(select DenCuonGCS from [TT_To] where MaTo=" + MaTo + ")";
             return ExecuteQuery_DataTable("declare @Nam int=" + Nam + ",@Ky char(2)='" + Ky + "',@Dot char(2)='" + Dot + "'"
                     + " select ButPhe=N'Xem',Loai='Xem',SoLuong=count(*) from TT_CongVanDen where Xem=1 and CAST(DATEADD(DAY,90,CreateDate) as date)>=CAST(GETDATE() as date) and DanhBo in (select DanhBa from DocSo where Nam=@Nam and Ky=@Ky and Dot=@Dot " + MaTo + ") having COUNT(*)>0"
                     + " union all"
@@ -167,13 +167,13 @@ namespace ThuTien.DAL.VanThu
 
         public DataTable getDS_ToMaHoa()
         {
-            return ExecuteQuery_DataTable("select *,'To'=(select TenTo from [To] where TuMay<=SUBSTRING(MLT,3,2) and DenMay>=SUBSTRING(MLT,3,2))"
+            return ExecuteQuery_DataTable("select *,'To'=(select TenTo from [TT_To] where TuCuonGCS<=SUBSTRING(MLT,3,2) and DenCuonGCS>=SUBSTRING(MLT,3,2))"
                 + " from TT_CongVanDen where Duyet_Ngay is not null and ToMaHoa=1 and DaXuLy=0 order by createdate desc");
         }
 
         public DataTable get_ID(string ID)
         {
-            return ExecuteQuery_DataTable("select *,'To'=(select TenTo from [To] where TuMay<=SUBSTRING(MLT,3,2) and DenMay>=SUBSTRING(MLT,3,2))"
+            return ExecuteQuery_DataTable("select *,'To'=(select TenTo from [TT_To] where TuCuonGCS<=SUBSTRING(MLT,3,2) and DenCuonGCS>=SUBSTRING(MLT,3,2))"
                 + " from TT_CongVanDen where ID=" + ID + " order by createdate desc");
         }
     }

@@ -37,5 +37,8 @@
     <Setting Name="ThuTien_wsThuTien_wsThuTien" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://113.161.88.180:81/wsthutien.asmx</Value>
     </Setting>
+    <Setting Name="ThuTien_wrThuongVu_wsThuongVu" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://113.161.88.180:81/wsthuongvu.asmx</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

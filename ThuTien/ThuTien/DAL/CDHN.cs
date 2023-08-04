@@ -138,7 +138,7 @@ namespace ThuTien.DAL
             return _db.TB_DULIEUKHACHHANGs.Any(item => item.DANHBO == DanhBo);
         }
 
-        public TB_DULIEUKHACHHANG GetTTKH(string DanhBo)
+        public TB_DULIEUKHACHHANG get(string DanhBo)
         {
             return _db.TB_DULIEUKHACHHANGs.SingleOrDefault(item => item.DANHBO == DanhBo);
         }

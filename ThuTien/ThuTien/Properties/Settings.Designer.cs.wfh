@@ -76,5 +76,15 @@ namespace ThuTien.Properties {
                 return ((string)(this["ThuTien_wsThuTien_wsThuTien"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://113.161.88.180:81/wsthuongvu.asmx")]
+        public string ThuTien_wrThuongVu_wsThuongVu {
+            get {
+                return ((string)(this["ThuTien_wrThuongVu_wsThuongVu"]));
+            }
+        }
     }
 }

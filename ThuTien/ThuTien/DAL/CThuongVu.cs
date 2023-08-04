@@ -19,6 +19,7 @@ namespace ThuTien.DAL
         //protected SqlTransaction transaction;       // Đối tượng transaction
         dbKTKS_DonKHDataContext _dbKinhDoanh = new dbKTKS_DonKHDataContext();
         private const int _GiamTienNuoc = 10;
+        wrThuongVu.wsThuongVu _wsThuongVu = new wrThuongVu.wsThuongVu();
 
         public CThuongVu()
         {
@@ -2987,6 +2988,47 @@ namespace ThuTien.DAL
             return (string)ExecuteQuery_ReturnOneValue("select Name2 from Quan where ID=" + MaQuan);
         }
 
+        public void getTableHinh(string TableName, out string TableNameHinh, out string IDName)
+        {
+            DataTable dt = ExecuteQuery_DataTable("select * from TableHinh where TableName='" + TableName + "'");
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                TableNameHinh = dt.Rows[0]["TableNameHinh"].ToString();
+                IDName = dt.Rows[0]["IDName"].ToString();
+            }
+            else
+            {
+                TableNameHinh = "";
+                IDName = "";
+            }
+        }
+
+        public DataTable getFile(string TableName, int IDCT)
+        {
+            string TableNameHinh, IDName;
+            getTableHinh(TableName, out TableNameHinh, out IDName);
+            if (TableNameHinh != "")
+            {
+                DataTable dt = ExecuteQuery_DataTable("select FileName=[Name]+Loai,Type=Loai from " + TableNameHinh + " where " + IDName + "=" + IDCT + " order by CreateDate desc");
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    DataTable dtResult = new DataTable();
+                    dtResult.Columns.Add("File", typeof(object));
+                    dtResult.Columns.Add("Type", typeof(string));
+                    foreach (DataRow item in dt.Rows)
+                        if (item["FileName"].ToString() != "")
+                        {
+                            DataRow dr = dtResult.NewRow();
+                            dr["File"] = _wsThuongVu.get_Hinh(TableNameHinh, IDCT.ToString(), item["FileName"].ToString());
+                            dr["Type"] = item["Type"].ToString();
+                            dtResult.Rows.Add(dr);
+                        }
+                    return dtResult;
+                }
+            }
+            return null;
+        }
+
         public DataTable getDS_CVD(string KyHieuTo, DateTime FromNgayChuyen, DateTime ToNgayChuyen)
         {
             if (KyHieuTo != "")
@@ -3047,7 +3089,7 @@ namespace ThuTien.DAL
 + " 		 when TableName='ToTrinh_ChiTiet' then (select (select [Name] from TableHinh where TableHinh.TableName=ls.TableName)+N' - Số: '+convert(varchar(10),IDCT)+' - '+convert(varchar(10),CreateDate,103)+' - V/v '+VeViec+' - '+(select HoTen from Users where MaU=ToTrinh_ChiTiet.CreateBy) from ToTrinh_ChiTiet where ToTrinh_ChiTiet.IDCT=ls.IDCT)"
 + " 		 when TableName='TruyThuTienNuoc_ChiTiet' then (select (select [Name] from TableHinh where TableHinh.TableName=ls.TableName)+N' - Số: '+convert(varchar(10),IDCT)+' - '+convert(varchar(10),CreateDate,103)+' - V/v '+NoiDung+' - '+(select HoTen from Users where MaU=TruyThuTienNuoc_ChiTiet.CreateBy) from TruyThuTienNuoc_ChiTiet where TruyThuTienNuoc_ChiTiet.IDCT=ls.IDCT)"
 + " 		 when TableName='VanBan_ChiTiet' then (select (select [Name] from TableHinh where TableHinh.TableName=ls.TableName)+N' - Số: '+convert(varchar(10),IDCT)+' - '+convert(varchar(10),CreateDate,103)+' - V/v '+VeViec+' - '+(select HoTen from Users where MaU=VanBan_ChiTiet.CreateBy) from VanBan_ChiTiet where VanBan_ChiTiet.IDCT=ls.IDCT) end"
-+ " from DonTu_LichSu ls where ls.CVD_Ngay>='" + FromNgayChuyen.ToString("yyyy-MM-dd HH:mm") + "' and ls.CVD_Ngay<='" + ToNgayChuyen.ToString("yyyy-MM-dd HH:mm") + "' and ls.ID_NoiNhan=23 and ls.TableName is not null " + KyHieuTo + ")t1 where not exists (select * from DocSoTH.dbo.CongVanDen where DocSoTH.dbo.CongVanDen.TableName=t1.TableName and DocSoTH.dbo.CongVanDen.IDCT=t1.IDCT) )t2 order by NgayChuyen asc,ID asc";
++ " from DonTu_LichSu ls where ls.CVD_Ngay>='" + FromNgayChuyen.ToString("yyyy-MM-dd HH:mm") + "' and ls.CVD_Ngay<='" + ToNgayChuyen.ToString("yyyy-MM-dd HH:mm") + "' and ls.ID_NoiNhan=23 and ls.TableName is not null " + KyHieuTo + ")t1 where not exists (select * from HOADON_TA.dbo.TT_CongVanDen where HOADON_TA.dbo.TT_CongVanDen.TableName=t1.TableName and HOADON_TA.dbo.TT_CongVanDen.IDCT=t1.IDCT) )t2 order by NgayChuyen asc,ID asc";
 
             return ExecuteQuery_DataTable(sql);
         }

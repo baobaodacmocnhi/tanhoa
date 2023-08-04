@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="get_Hinh">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FolderLoai" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FolderIDCT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_HinhResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="get_HinhResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ghi_Hinh">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FolderLoai" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FolderIDCT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HinhDHN" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ghi_HinhResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ghi_HinhResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="xoa_Hinh">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FolderLoai" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FolderIDCT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="xoa_HinhResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="xoa_HinhResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="xoa_Folder_Hinh">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FolderLoai" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FolderIDCT" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="xoa_Folder_HinhResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="xoa_Folder_HinhResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_FileinFolder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FolderLoai" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FolderIDCT" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_FileinFolderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="get_FileinFolderResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="checkExists_DonTu">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DanhBo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NoiDung" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SoNgay" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="checkExists_DonTuResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="checkExists_DonTuResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAccess_token_CCCD">
+        <s:complexType />
+      </s:element>
+      <s:element name="getAccess_token_CCCDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAccess_token_CCCDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="checkExists_CCCD">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DanhBo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CCCD" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="checkExists_CCCDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="checkExists_CCCDResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="them_CCCD">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DanhBo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CCCD" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="them_CCCDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="them_CCCDResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="sua_CCCD">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DanhBo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CCCD" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="sua_CCCDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="sua_CCCDResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="xoa_CCCD">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DanhBo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CCCD" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="xoa_CCCDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="xoa_CCCDResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="get_HinhSoapIn">
+    <wsdl:part name="parameters" element="tns:get_Hinh" />
+  </wsdl:message>
+  <wsdl:message name="get_HinhSoapOut">
+    <wsdl:part name="parameters" element="tns:get_HinhResponse" />
+  </wsdl:message>
+  <wsdl:message name="ghi_HinhSoapIn">
+    <wsdl:part name="parameters" element="tns:ghi_Hinh" />
+  </wsdl:message>
+  <wsdl:message name="ghi_HinhSoapOut">
+    <wsdl:part name="parameters" element="tns:ghi_HinhResponse" />
+  </wsdl:message>
+  <wsdl:message name="xoa_HinhSoapIn">
+    <wsdl:part name="parameters" element="tns:xoa_Hinh" />
+  </wsdl:message>
+  <wsdl:message name="xoa_HinhSoapOut">
+    <wsdl:part name="parameters" element="tns:xoa_HinhResponse" />
+  </wsdl:message>
+  <wsdl:message name="xoa_Folder_HinhSoapIn">
+    <wsdl:part name="parameters" element="tns:xoa_Folder_Hinh" />
+  </wsdl:message>
+  <wsdl:message name="xoa_Folder_HinhSoapOut">
+    <wsdl:part name="parameters" element="tns:xoa_Folder_HinhResponse" />
+  </wsdl:message>
+  <wsdl:message name="get_FileinFolderSoapIn">
+    <wsdl:part name="parameters" element="tns:get_FileinFolder" />
+  </wsdl:message>
+  <wsdl:message name="get_FileinFolderSoapOut">
+    <wsdl:part name="parameters" element="tns:get_FileinFolderResponse" />
+  </wsdl:message>
+  <wsdl:message name="checkExists_DonTuSoapIn">
+    <wsdl:part name="parameters" element="tns:checkExists_DonTu" />
+  </wsdl:message>
+  <wsdl:message name="checkExists_DonTuSoapOut">
+    <wsdl:part name="parameters" element="tns:checkExists_DonTuResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAccess_token_CCCDSoapIn">
+    <wsdl:part name="parameters" element="tns:getAccess_token_CCCD" />
+  </wsdl:message>
+  <wsdl:message name="getAccess_token_CCCDSoapOut">
+    <wsdl:part name="parameters" element="tns:getAccess_token_CCCDResponse" />
+  </wsdl:message>
+  <wsdl:message name="checkExists_CCCDSoapIn">
+    <wsdl:part name="parameters" element="tns:checkExists_CCCD" />
+  </wsdl:message>
+  <wsdl:message name="checkExists_CCCDSoapOut">
+    <wsdl:part name="parameters" element="tns:checkExists_CCCDResponse" />
+  </wsdl:message>
+  <wsdl:message name="them_CCCDSoapIn">
+    <wsdl:part name="parameters" element="tns:them_CCCD" />
+  </wsdl:message>
+  <wsdl:message name="them_CCCDSoapOut">
+    <wsdl:part name="parameters" element="tns:them_CCCDResponse" />
+  </wsdl:message>
+  <wsdl:message name="sua_CCCDSoapIn">
+    <wsdl:part name="parameters" element="tns:sua_CCCD" />
+  </wsdl:message>
+  <wsdl:message name="sua_CCCDSoapOut">
+    <wsdl:part name="parameters" element="tns:sua_CCCDResponse" />
+  </wsdl:message>
+  <wsdl:message name="xoa_CCCDSoapIn">
+    <wsdl:part name="parameters" element="tns:xoa_CCCD" />
+  </wsdl:message>
+  <wsdl:message name="xoa_CCCDSoapOut">
+    <wsdl:part name="parameters" element="tns:xoa_CCCDResponse" />
+  </wsdl:message>
+  <wsdl:portType name="wsThuongVuSoap">
+    <wsdl:operation name="get_Hinh">
+      <wsdl:input message="tns:get_HinhSoapIn" />
+      <wsdl:output message="tns:get_HinhSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ghi_Hinh">
+      <wsdl:input message="tns:ghi_HinhSoapIn" />
+      <wsdl:output message="tns:ghi_HinhSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="xoa_Hinh">
+      <wsdl:input message="tns:xoa_HinhSoapIn" />
+      <wsdl:output message="tns:xoa_HinhSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="xoa_Folder_Hinh">
+      <wsdl:input message="tns:xoa_Folder_HinhSoapIn" />
+      <wsdl:output message="tns:xoa_Folder_HinhSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="get_FileinFolder">
+      <wsdl:input message="tns:get_FileinFolderSoapIn" />
+      <wsdl:output message="tns:get_FileinFolderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="checkExists_DonTu">
+      <wsdl:input message="tns:checkExists_DonTuSoapIn" />
+      <wsdl:output message="tns:checkExists_DonTuSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAccess_token_CCCD">
+      <wsdl:input message="tns:getAccess_token_CCCDSoapIn" />
+      <wsdl:output message="tns:getAccess_token_CCCDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="checkExists_CCCD">
+      <wsdl:input message="tns:checkExists_CCCDSoapIn" />
+      <wsdl:output message="tns:checkExists_CCCDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="them_CCCD">
+      <wsdl:input message="tns:them_CCCDSoapIn" />
+      <wsdl:output message="tns:them_CCCDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="sua_CCCD">
+      <wsdl:input message="tns:sua_CCCDSoapIn" />
+      <wsdl:output message="tns:sua_CCCDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="xoa_CCCD">
+      <wsdl:input message="tns:xoa_CCCDSoapIn" />
+      <wsdl:output message="tns:xoa_CCCDSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsThuongVuSoap" type="tns:wsThuongVuSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="get_Hinh">
+      <soap:operation soapAction="http://tempuri.org/get_Hinh" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ghi_Hinh">
+      <soap:operation soapAction="http://tempuri.org/ghi_Hinh" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="xoa_Hinh">
+      <soap:operation soapAction="http://tempuri.org/xoa_Hinh" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="xoa_Folder_Hinh">
+      <soap:operation soapAction="http://tempuri.org/xoa_Folder_Hinh" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_FileinFolder">
+      <soap:operation soapAction="http://tempuri.org/get_FileinFolder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkExists_DonTu">
+      <soap:operation soapAction="http://tempuri.org/checkExists_DonTu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccess_token_CCCD">
+      <soap:operation soapAction="http://tempuri.org/getAccess_token_CCCD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkExists_CCCD">
+      <soap:operation soapAction="http://tempuri.org/checkExists_CCCD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="them_CCCD">
+      <soap:operation soapAction="http://tempuri.org/them_CCCD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sua_CCCD">
+      <soap:operation soapAction="http://tempuri.org/sua_CCCD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="xoa_CCCD">
+      <soap:operation soapAction="http://tempuri.org/xoa_CCCD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsThuongVuSoap12" type="tns:wsThuongVuSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="get_Hinh">
+      <soap12:operation soapAction="http://tempuri.org/get_Hinh" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ghi_Hinh">
+      <soap12:operation soapAction="http://tempuri.org/ghi_Hinh" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="xoa_Hinh">
+      <soap12:operation soapAction="http://tempuri.org/xoa_Hinh" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="xoa_Folder_Hinh">
+      <soap12:operation soapAction="http://tempuri.org/xoa_Folder_Hinh" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_FileinFolder">
+      <soap12:operation soapAction="http://tempuri.org/get_FileinFolder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkExists_DonTu">
+      <soap12:operation soapAction="http://tempuri.org/checkExists_DonTu" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccess_token_CCCD">
+      <soap12:operation soapAction="http://tempuri.org/getAccess_token_CCCD" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkExists_CCCD">
+      <soap12:operation soapAction="http://tempuri.org/checkExists_CCCD" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="them_CCCD">
+      <soap12:operation soapAction="http://tempuri.org/them_CCCD" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sua_CCCD">
+      <soap12:operation soapAction="http://tempuri.org/sua_CCCD" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="xoa_CCCD">
+      <soap12:operation soapAction="http://tempuri.org/xoa_CCCD" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsThuongVu">
+    <wsdl:port name="wsThuongVuSoap" binding="tns:wsThuongVuSoap">
+      <soap:address location="http://server5:81/wsthuongvu.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsThuongVuSoap12" binding="tns:wsThuongVuSoap12">
+      <soap12:address location="http://server5:81/wsthuongvu.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

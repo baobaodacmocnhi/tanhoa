@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.1439</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>76</ApplicationRevision>
+    <ApplicationRevision>77</ApplicationRevision>
     <ApplicationVersion>1.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -1382,6 +1382,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="Web References\wrThuongVu\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <Compile Include="Web References\wrThuTien\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1738,6 +1743,11 @@
       <LastGenOutput>dbDocSo.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
+    <None Include="Web References\wrThuongVu\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\wrThuongVu\wsthuongvu.wsdl" />
     <None Include="Web References\wrThuTien\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -2450,6 +2460,17 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
+    <WebReferenceUrl Include="http://server5:81/wsthuongvu.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\wrThuongVu\</RelPath>
+      <UpdateFromURL>http://server5:81/wsthuongvu.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>ThuTien_wrThuongVu_wsThuongVu</CachedSettingsPropName>
+    </WebReferenceUrl>
     <WebReferenceUrl Include="http://server5:81/wsthutien.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\wrThuTien\</RelPath>
@@ -2477,6 +2498,7 @@
     <Content Include="Resources\logocongty.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Web References\wrThuongVu\wsthuongvu.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

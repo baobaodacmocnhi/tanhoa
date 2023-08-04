@@ -229,7 +229,7 @@ namespace ThuTien.GUI.DongNuoc
                         cmbTroNgai.SelectedItem = _dongnuoc.TroNgai;
                         txtGhiChuTroNgai.Text = _dongnuoc.GhiChuTroNgai;
 
-                        TB_DULIEUKHACHHANG ttkh = _cDHN.GetTTKH(_dongnuoc.DanhBo);
+                        TB_DULIEUKHACHHANG ttkh = _cDHN.get(_dongnuoc.DanhBo);
                         txtHieu.Text = ttkh.HIEUDH;
                         txtCo.Text = ttkh.CODH;
                         txtSoThan.Text = ttkh.SOTHANDH;

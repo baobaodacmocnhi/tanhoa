@@ -170,7 +170,7 @@ namespace ThuTien.GUI.TimKiem
         {
             //DataTable dtTieuThu = _cHoaDon.GetDSTieuThu(txtDanhBo.Text.Trim());
 
-            TB_DULIEUKHACHHANG ttkh = _cDocSo.GetTTKH(txtDanhBo.Text.Trim().Replace(" ", ""));
+            TB_DULIEUKHACHHANG ttkh = _cDocSo.get(txtDanhBo.Text.Trim().Replace(" ", ""));
 
             DataTable dtGhiChu = _cDocSo.GetGhiChu(txtDanhBo.Text.Trim().Replace(" ", ""));
 

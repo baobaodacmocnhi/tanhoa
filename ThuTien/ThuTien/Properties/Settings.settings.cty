@@ -37,5 +37,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=server9;Initial Catalog=DocSoTH;Persist Security Info=True;User ID=sa;Password=db9@tanhoa</Value>
     </Setting>
+    <Setting Name="ThuTien_wrThuongVu_wsThuongVu" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://server5:81/wsthuongvu.asmx</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

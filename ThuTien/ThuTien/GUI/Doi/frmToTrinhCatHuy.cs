@@ -112,7 +112,7 @@ namespace ThuTien.GUI.Doi
                         //dgvCTToTrinh["Ky", dgvCTToTrinh.Rows.Count - 1].Value = Ky;
                         //dgvCTToTrinh["TongCong", dgvCTToTrinh.Rows.Count - 1].Value = TongCongSo;
                         //dgvCTToTrinh["TieuThu", dgvCTToTrinh.Rows.Count - 1].Value = TieuThu;
-                        TB_DULIEUKHACHHANG ttkh = _cDHN.GetTTKH(hoadon.DANHBA);
+                        TB_DULIEUKHACHHANG ttkh = _cDHN.get(hoadon.DANHBA);
                         if (ttkh != null)
                         {
                             dgvCTToTrinh["CoDHN", dgvCTToTrinh.Rows.Count - 1].Value = ttkh.CODH;
@@ -133,7 +133,7 @@ namespace ThuTien.GUI.Doi
                         //dr["Ky"] = Ky;
                         //dr["TongCong"] = TongCongSo;
                         //dr["TieuThu"] = TieuThu;
-                        TB_DULIEUKHACHHANG ttkh = _cDHN.GetTTKH(hoadon.DANHBA);
+                        TB_DULIEUKHACHHANG ttkh = _cDHN.get(hoadon.DANHBA);
                         if (ttkh != null)
                         {
                             dr["CoDHN"] = ttkh.CODH;
