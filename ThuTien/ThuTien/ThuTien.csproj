@@ -1191,6 +1191,12 @@
     <Compile Include="GUI\TongHop\frmToTrinhDCHD.Designer.cs">
       <DependentUpon>frmToTrinhDCHD.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ToTruong\frmCongVanDenTo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ToTruong\frmCongVanDenTo.Designer.cs">
+      <DependentUpon>frmCongVanDenTo.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ToTruong\frmGhiChu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2014,6 +2020,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\TongHop\frmToTrinhDCHD.resx">
       <DependentUpon>frmToTrinhDCHD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ToTruong\frmCongVanDenTo.resx">
+      <DependentUpon>frmCongVanDenTo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToTruong\frmGhiChu.resx">
       <DependentUpon>frmGhiChu.cs</DependentUpon>
