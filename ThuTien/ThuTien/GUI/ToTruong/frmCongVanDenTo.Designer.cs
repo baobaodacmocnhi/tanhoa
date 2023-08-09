@@ -36,7 +36,6 @@
             this.cmbTo = new System.Windows.Forms.ComboBox();
             this.btnXem = new System.Windows.Forms.Button();
             this.dgvDanhSach = new System.Windows.Forms.DataGridView();
-            this.Them = new System.Windows.Forms.DataGridViewButtonColumn();
             this.NgayChuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LoaiVB = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,6 +53,8 @@
             this.XemHinh = new System.Windows.Forms.DataGridViewButtonColumn();
             this.DaXuLy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.DaXuLy_Ngay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.radChuaXuLy = new System.Windows.Forms.RadioButton();
+            this.radDaXuLy = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,7 +79,7 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(150, 10);
+            this.btnXem.Location = new System.Drawing.Point(311, 9);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 47;
@@ -100,7 +101,6 @@
             this.dgvDanhSach.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDanhSach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDanhSach.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Them,
             this.NgayChuyen,
             this.CreateDate,
             this.LoaiVB,
@@ -140,14 +140,9 @@
             this.dgvDanhSach.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvDanhSach.Size = new System.Drawing.Size(1351, 299);
             this.dgvDanhSach.TabIndex = 71;
-            // 
-            // Them
-            // 
-            this.Them.HeaderText = "Xử Lý";
-            this.Them.Name = "Them";
-            this.Them.Text = "Thêm";
-            this.Them.UseColumnTextForButtonValue = true;
-            this.Them.Width = 50;
+            this.dgvDanhSach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellClick);
+            this.dgvDanhSach.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellEndEdit);
+            this.dgvDanhSach.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhSach_RowPostPaint);
             // 
             // NgayChuyen
             // 
@@ -268,11 +263,35 @@
             this.DaXuLy_Ngay.HeaderText = "Ngày Xử Lý";
             this.DaXuLy_Ngay.Name = "DaXuLy_Ngay";
             // 
+            // radChuaXuLy
+            // 
+            this.radChuaXuLy.AutoSize = true;
+            this.radChuaXuLy.Checked = true;
+            this.radChuaXuLy.Location = new System.Drawing.Point(150, 12);
+            this.radChuaXuLy.Name = "radChuaXuLy";
+            this.radChuaXuLy.Size = new System.Drawing.Size(80, 17);
+            this.radChuaXuLy.TabIndex = 72;
+            this.radChuaXuLy.TabStop = true;
+            this.radChuaXuLy.Text = "Chưa Xử Lý";
+            this.radChuaXuLy.UseVisualStyleBackColor = true;
+            // 
+            // radDaXuLy
+            // 
+            this.radDaXuLy.AutoSize = true;
+            this.radDaXuLy.Location = new System.Drawing.Point(236, 12);
+            this.radDaXuLy.Name = "radDaXuLy";
+            this.radDaXuLy.Size = new System.Drawing.Size(69, 17);
+            this.radDaXuLy.TabIndex = 73;
+            this.radDaXuLy.Text = "Đã Xử Lý";
+            this.radDaXuLy.UseVisualStyleBackColor = true;
+            // 
             // frmCongVanDenTo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1385, 734);
+            this.Controls.Add(this.radDaXuLy);
+            this.Controls.Add(this.radChuaXuLy);
             this.Controls.Add(this.dgvDanhSach);
             this.Controls.Add(this.lbTo);
             this.Controls.Add(this.cmbTo);
@@ -292,7 +311,6 @@
         private System.Windows.Forms.ComboBox cmbTo;
         private System.Windows.Forms.Button btnXem;
         private System.Windows.Forms.DataGridView dgvDanhSach;
-        private System.Windows.Forms.DataGridViewButtonColumn Them;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayChuyen;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn LoaiVB;
@@ -310,5 +328,7 @@
         private System.Windows.Forms.DataGridViewButtonColumn XemHinh;
         private System.Windows.Forms.DataGridViewCheckBoxColumn DaXuLy;
         private System.Windows.Forms.DataGridViewTextBoxColumn DaXuLy_Ngay;
+        private System.Windows.Forms.RadioButton radChuaXuLy;
+        private System.Windows.Forms.RadioButton radDaXuLy;
     }
 }

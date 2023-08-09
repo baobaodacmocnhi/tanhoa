@@ -91,7 +91,7 @@ namespace ThuTien.DAL.VanThu
             return ExecuteQuery_DataTable("select *,'To'=(select top 1 TenTo from [TT_To] where TuCuonGCS<=SUBSTRING(MLT,3,2) and DenCuonGCS>=SUBSTRING(MLT,3,2)) from TT_CongVanDen where DanhBo='" + DanhBo + "' order by createdate desc");
         }
 
-        public DataTable getDS_Ton_To(string DaXuLy, string MaTo)
+        public DataTable getDS_XuLy_To(string DaXuLy, string MaTo)
         {
             if (bool.Parse(DaXuLy))
                 DaXuLy = "1";
@@ -101,14 +101,14 @@ namespace ThuTien.DAL.VanThu
                 + " and (select TuCuonGCS from [TT_To] where MaTo=" + MaTo + ")<=SUBSTRING(MLT,3,2) and (select DenCuonGCS from [TT_To] where MaTo=" + MaTo + ")>=SUBSTRING(MLT,3,2) order by createdate desc");
         }
 
-        public DataTable getDS_Ton_Doi(string DaXuLy)
+        public DataTable getDS_XuLy_Doi(string DaXuLy)
         {
             if (bool.Parse(DaXuLy))
                 DaXuLy = "1";
             else
                 DaXuLy = "0";
             return ExecuteQuery_DataTable("select *,'To'=(select top 1 TenTo from [TT_To] where TuCuonGCS<=SUBSTRING(MLT,3,2) and DenCuonGCS>=SUBSTRING(MLT,3,2)) from TT_CongVanDen where DaXuLy=" + DaXuLy 
-                + " and order by createdate desc");
+                + " order by createdate desc");
         }
 
         public DataTable getGroup_NoiDung()
