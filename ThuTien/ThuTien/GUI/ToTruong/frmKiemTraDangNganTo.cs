@@ -575,7 +575,7 @@ namespace ThuTien.GUI.ToTruong
                 if (dgvHDCoQuan.Columns[e.ColumnIndex].Name == "btnLocation_DangNgan")
                 {
                     if (dgvHDCoQuan.CurrentRow.Cells["DangNgan_DienThoai_Location"].Value.ToString() != "")
-                        System.Diagnostics.Process.Start("https://maps.google.com?q=" + dgvHDCoQuan.CurrentRow.Cells["DangNgan_DienThoai_Location"].Value.ToString());
+                        System.Diagnostics.Process.Start("https://www.google.com/maps/search/?api=1&query=" + dgvHDCoQuan.CurrentRow.Cells["DangNgan_DienThoai_Location"].Value.ToString());
                     else
                         MessageBox.Show("Không có Vị Trí", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -583,7 +583,7 @@ namespace ThuTien.GUI.ToTruong
                     if (dgvHDCoQuan.Columns[e.ColumnIndex].Name == "btnLocation_InPhieuBao")
                     {
                         if (dgvHDCoQuan.CurrentRow.Cells["InPhieuBao_Location"].Value.ToString() != "")
-                            System.Diagnostics.Process.Start("https://maps.google.com?q=" + dgvHDCoQuan.CurrentRow.Cells["InPhieuBao_Location"].Value.ToString());
+                            System.Diagnostics.Process.Start("https://www.google.com/maps/search/?api=1&query=" + dgvHDCoQuan.CurrentRow.Cells["InPhieuBao_Location"].Value.ToString());
                         else
                             MessageBox.Show("Không có Vị Trí", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -591,7 +591,7 @@ namespace ThuTien.GUI.ToTruong
                         if (dgvHDCoQuan.Columns[e.ColumnIndex].Name == "btnLocation_InPhieuBao2")
                         {
                             if (dgvHDCoQuan.CurrentRow.Cells["InPhieuBao2_Location"].Value.ToString() != "")
-                                System.Diagnostics.Process.Start("https://maps.google.com?q=" + dgvHDCoQuan.CurrentRow.Cells["InPhieuBao2_Location"].Value.ToString());
+                                System.Diagnostics.Process.Start("https://www.google.com/maps/search/?api=1&query=" + dgvHDCoQuan.CurrentRow.Cells["InPhieuBao2_Location"].Value.ToString());
                             else
                                 MessageBox.Show("Không có Vị Trí", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
@@ -599,7 +599,7 @@ namespace ThuTien.GUI.ToTruong
                             if (dgvHDCoQuan.Columns[e.ColumnIndex].Name == "btnLocation_TBDongNuoc")
                             {
                                 if (dgvHDCoQuan.CurrentRow.Cells["TBDongNuoc_Location"].Value.ToString() != "")
-                                    System.Diagnostics.Process.Start("https://maps.google.com?q=" + dgvHDCoQuan.CurrentRow.Cells["TBDongNuoc_Location"].Value.ToString());
+                                    System.Diagnostics.Process.Start("https://www.google.com/maps/search/?api=1&query=" + dgvHDCoQuan.CurrentRow.Cells["TBDongNuoc_Location"].Value.ToString());
                                 else
                                     MessageBox.Show("Không có Vị Trí", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
@@ -607,7 +607,7 @@ namespace ThuTien.GUI.ToTruong
                                 if (dgvHDCoQuan.Columns[e.ColumnIndex].Name == "btnLocation_XoaDangNgan")
                                 {
                                     if (dgvHDCoQuan.CurrentRow.Cells["XoaDangNgan_Location_DienThoai"].Value.ToString() != "")
-                                        System.Diagnostics.Process.Start("https://maps.google.com?q=" + dgvHDCoQuan.CurrentRow.Cells["XoaDangNgan_Location_DienThoai"].Value.ToString());
+                                        System.Diagnostics.Process.Start("https://www.google.com/maps/search/?api=1&query=" + dgvHDCoQuan.CurrentRow.Cells["XoaDangNgan_Location_DienThoai"].Value.ToString());
                                     else
                                         MessageBox.Show("Không có Vị Trí", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }

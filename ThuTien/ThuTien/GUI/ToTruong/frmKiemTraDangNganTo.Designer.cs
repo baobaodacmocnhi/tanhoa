@@ -100,30 +100,6 @@
             this.txtTongCong_CQ = new System.Windows.Forms.TextBox();
             this.txtTongHD_CQ = new System.Windows.Forms.TextBox();
             this.dgvHDCoQuan = new System.Windows.Forms.DataGridView();
-            this.MaHD_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MLT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiaChi_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoHoaDon_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ky = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongCong_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgayGiaiTrach = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DangNgan_DienThoai = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.InPhieuBao_Ngay = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InPhieuBao2_Ngay = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TBDongNuoc_Ngay = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.XoaDangNgan_Ngay_DienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnLocation_DangNgan = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.DangNgan_DienThoai_Location = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnLocation_InPhieuBao = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.InPhieuBao_Location = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnLocation_InPhieuBao2 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.InPhieuBao2_Location = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnLocation_TBDongNuoc = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.TBDongNuoc_Location = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnLocation_XoaDangNgan = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.XoaDangNgan_Location_DienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabCongViec = new System.Windows.Forms.TabPage();
             this.btnXem_CongViec = new System.Windows.Forms.Button();
             this.cmbNhanVien_CongViec = new System.Windows.Forms.ComboBox();
@@ -166,6 +142,30 @@
             this.btnInDSCoThuHo = new System.Windows.Forms.Button();
             this.btnInDSPhieuBao = new System.Windows.Forms.Button();
             this.btnDSTBDongNuoc = new System.Windows.Forms.Button();
+            this.MaHD_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MLT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiaChi_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoHoaDon_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ky = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongCong_CQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayGiaiTrach = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DangNgan_DienThoai = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.InPhieuBao_Ngay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InPhieuBao2_Ngay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TBDongNuoc_Ngay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.XoaDangNgan_Ngay_DienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnLocation_DangNgan = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.DangNgan_DienThoai_Location = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnLocation_InPhieuBao = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.InPhieuBao_Location = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnLocation_InPhieuBao2 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.InPhieuBao2_Location = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnLocation_TBDongNuoc = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.TBDongNuoc_Location = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnLocation_XoaDangNgan = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.XoaDangNgan_Location_DienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl.SuspendLayout();
             this.tabTuGia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDTuGia)).BeginInit();
@@ -777,197 +777,6 @@
             this.dgvHDCoQuan.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHDCoQuan_CellFormatting);
             this.dgvHDCoQuan.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvHDCoQuan_RowPostPaint);
             // 
-            // MaHD_CQ
-            // 
-            this.MaHD_CQ.DataPropertyName = "MaHD";
-            this.MaHD_CQ.HeaderText = "MaHD";
-            this.MaHD_CQ.Name = "MaHD_CQ";
-            this.MaHD_CQ.ReadOnly = true;
-            this.MaHD_CQ.Visible = false;
-            // 
-            // MLT
-            // 
-            this.MLT.DataPropertyName = "MLT";
-            this.MLT.HeaderText = "MLT";
-            this.MLT.Name = "MLT";
-            this.MLT.ReadOnly = true;
-            this.MLT.Width = 80;
-            // 
-            // DanhBo
-            // 
-            this.DanhBo.DataPropertyName = "DanhBo";
-            this.DanhBo.HeaderText = "Danh Bộ";
-            this.DanhBo.Name = "DanhBo";
-            this.DanhBo.ReadOnly = true;
-            // 
-            // HoTen_CQ
-            // 
-            this.HoTen_CQ.DataPropertyName = "HoTen";
-            this.HoTen_CQ.HeaderText = "Khách Hàng";
-            this.HoTen_CQ.Name = "HoTen_CQ";
-            this.HoTen_CQ.ReadOnly = true;
-            this.HoTen_CQ.Width = 150;
-            // 
-            // DiaChi_CQ
-            // 
-            this.DiaChi_CQ.DataPropertyName = "DiaChi";
-            this.DiaChi_CQ.HeaderText = "Địa Chỉ";
-            this.DiaChi_CQ.Name = "DiaChi_CQ";
-            this.DiaChi_CQ.ReadOnly = true;
-            this.DiaChi_CQ.Width = 200;
-            // 
-            // SoHoaDon_CQ
-            // 
-            this.SoHoaDon_CQ.DataPropertyName = "SoHoaDon";
-            this.SoHoaDon_CQ.HeaderText = "Số Hóa Đơn";
-            this.SoHoaDon_CQ.Name = "SoHoaDon_CQ";
-            this.SoHoaDon_CQ.ReadOnly = true;
-            // 
-            // Ky
-            // 
-            this.Ky.DataPropertyName = "Ky";
-            this.Ky.HeaderText = "Kỳ";
-            this.Ky.Name = "Ky";
-            this.Ky.ReadOnly = true;
-            this.Ky.Width = 50;
-            // 
-            // TongCong_CQ
-            // 
-            this.TongCong_CQ.DataPropertyName = "TongCong";
-            this.TongCong_CQ.HeaderText = "Tổng Cộng";
-            this.TongCong_CQ.Name = "TongCong_CQ";
-            this.TongCong_CQ.ReadOnly = true;
-            this.TongCong_CQ.Width = 80;
-            // 
-            // NgayGiaiTrach
-            // 
-            this.NgayGiaiTrach.DataPropertyName = "NgayGiaiTrach";
-            this.NgayGiaiTrach.HeaderText = "Ngày Giải Trách";
-            this.NgayGiaiTrach.Name = "NgayGiaiTrach";
-            this.NgayGiaiTrach.ReadOnly = true;
-            // 
-            // DangNgan_DienThoai
-            // 
-            this.DangNgan_DienThoai.DataPropertyName = "DangNgan_DienThoai";
-            this.DangNgan_DienThoai.HeaderText = "Điện Thoại";
-            this.DangNgan_DienThoai.Name = "DangNgan_DienThoai";
-            this.DangNgan_DienThoai.ReadOnly = true;
-            this.DangNgan_DienThoai.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.DangNgan_DienThoai.Width = 50;
-            // 
-            // InPhieuBao_Ngay
-            // 
-            this.InPhieuBao_Ngay.DataPropertyName = "InPhieuBao_Ngay";
-            this.InPhieuBao_Ngay.HeaderText = "Phiếu Báo";
-            this.InPhieuBao_Ngay.Name = "InPhieuBao_Ngay";
-            this.InPhieuBao_Ngay.ReadOnly = true;
-            this.InPhieuBao_Ngay.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // InPhieuBao2_Ngay
-            // 
-            this.InPhieuBao2_Ngay.DataPropertyName = "InPhieuBao2_Ngay";
-            this.InPhieuBao2_Ngay.HeaderText = "Phiếu Báo 2";
-            this.InPhieuBao2_Ngay.Name = "InPhieuBao2_Ngay";
-            this.InPhieuBao2_Ngay.ReadOnly = true;
-            // 
-            // TBDongNuoc_Ngay
-            // 
-            this.TBDongNuoc_Ngay.HeaderText = "TB Đóng Nước";
-            this.TBDongNuoc_Ngay.Name = "TBDongNuoc_Ngay";
-            this.TBDongNuoc_Ngay.ReadOnly = true;
-            // 
-            // XoaDangNgan_Ngay_DienThoai
-            // 
-            this.XoaDangNgan_Ngay_DienThoai.DataPropertyName = "XoaDangNgan_Ngay_DienThoai";
-            this.XoaDangNgan_Ngay_DienThoai.HeaderText = "Xóa Điện Thoại";
-            this.XoaDangNgan_Ngay_DienThoai.Name = "XoaDangNgan_Ngay_DienThoai";
-            this.XoaDangNgan_Ngay_DienThoai.ReadOnly = true;
-            // 
-            // btnLocation_DangNgan
-            // 
-            this.btnLocation_DangNgan.HeaderText = "Đăng Ngân";
-            this.btnLocation_DangNgan.Name = "btnLocation_DangNgan";
-            this.btnLocation_DangNgan.ReadOnly = true;
-            this.btnLocation_DangNgan.Text = "Vị Trí";
-            this.btnLocation_DangNgan.UseColumnTextForButtonValue = true;
-            this.btnLocation_DangNgan.Width = 60;
-            // 
-            // DangNgan_DienThoai_Location
-            // 
-            this.DangNgan_DienThoai_Location.DataPropertyName = "DangNgan_DienThoai_Location";
-            this.DangNgan_DienThoai_Location.HeaderText = "DangNgan_DienThoai_Location";
-            this.DangNgan_DienThoai_Location.Name = "DangNgan_DienThoai_Location";
-            this.DangNgan_DienThoai_Location.ReadOnly = true;
-            this.DangNgan_DienThoai_Location.Visible = false;
-            // 
-            // btnLocation_InPhieuBao
-            // 
-            this.btnLocation_InPhieuBao.HeaderText = "In Phiếu Báo";
-            this.btnLocation_InPhieuBao.Name = "btnLocation_InPhieuBao";
-            this.btnLocation_InPhieuBao.ReadOnly = true;
-            this.btnLocation_InPhieuBao.Text = "Vị Trí";
-            this.btnLocation_InPhieuBao.UseColumnTextForButtonValue = true;
-            this.btnLocation_InPhieuBao.Width = 60;
-            // 
-            // InPhieuBao_Location
-            // 
-            this.InPhieuBao_Location.DataPropertyName = "InPhieuBao_Location";
-            this.InPhieuBao_Location.HeaderText = "InPhieuBao_Location";
-            this.InPhieuBao_Location.Name = "InPhieuBao_Location";
-            this.InPhieuBao_Location.ReadOnly = true;
-            this.InPhieuBao_Location.Visible = false;
-            // 
-            // btnLocation_InPhieuBao2
-            // 
-            this.btnLocation_InPhieuBao2.HeaderText = "In Phiếu Báo 2";
-            this.btnLocation_InPhieuBao2.Name = "btnLocation_InPhieuBao2";
-            this.btnLocation_InPhieuBao2.ReadOnly = true;
-            this.btnLocation_InPhieuBao2.Text = "Vị Trí";
-            this.btnLocation_InPhieuBao2.UseColumnTextForButtonValue = true;
-            this.btnLocation_InPhieuBao2.Width = 60;
-            // 
-            // InPhieuBao2_Location
-            // 
-            this.InPhieuBao2_Location.DataPropertyName = "InPhieuBao2_Location";
-            this.InPhieuBao2_Location.HeaderText = "InPhieuBao2_Location";
-            this.InPhieuBao2_Location.Name = "InPhieuBao2_Location";
-            this.InPhieuBao2_Location.ReadOnly = true;
-            this.InPhieuBao2_Location.Visible = false;
-            // 
-            // btnLocation_TBDongNuoc
-            // 
-            this.btnLocation_TBDongNuoc.HeaderText = "TB Đóng Nước";
-            this.btnLocation_TBDongNuoc.Name = "btnLocation_TBDongNuoc";
-            this.btnLocation_TBDongNuoc.ReadOnly = true;
-            this.btnLocation_TBDongNuoc.Text = "Vị Trí";
-            this.btnLocation_TBDongNuoc.UseColumnTextForButtonValue = true;
-            this.btnLocation_TBDongNuoc.Width = 60;
-            // 
-            // TBDongNuoc_Location
-            // 
-            this.TBDongNuoc_Location.DataPropertyName = "TBDongNuoc_Location";
-            this.TBDongNuoc_Location.HeaderText = "TBDongNuoc_Location";
-            this.TBDongNuoc_Location.Name = "TBDongNuoc_Location";
-            this.TBDongNuoc_Location.ReadOnly = true;
-            this.TBDongNuoc_Location.Visible = false;
-            // 
-            // btnLocation_XoaDangNgan
-            // 
-            this.btnLocation_XoaDangNgan.HeaderText = "Xóa Đăng Ngân";
-            this.btnLocation_XoaDangNgan.Name = "btnLocation_XoaDangNgan";
-            this.btnLocation_XoaDangNgan.ReadOnly = true;
-            this.btnLocation_XoaDangNgan.Text = "Vị Trí";
-            this.btnLocation_XoaDangNgan.UseColumnTextForButtonValue = true;
-            this.btnLocation_XoaDangNgan.Width = 60;
-            // 
-            // XoaDangNgan_Location_DienThoai
-            // 
-            this.XoaDangNgan_Location_DienThoai.DataPropertyName = "XoaDangNgan_Location_DienThoai";
-            this.XoaDangNgan_Location_DienThoai.HeaderText = "XoaDangNgan_Location_DienThoai";
-            this.XoaDangNgan_Location_DienThoai.Name = "XoaDangNgan_Location_DienThoai";
-            this.XoaDangNgan_Location_DienThoai.ReadOnly = true;
-            this.XoaDangNgan_Location_DienThoai.Visible = false;
-            // 
             // tabCongViec
             // 
             this.tabCongViec.Controls.Add(this.btnXem_CongViec);
@@ -1448,6 +1257,198 @@
             this.btnDSTBDongNuoc.UseVisualStyleBackColor = true;
             this.btnDSTBDongNuoc.Click += new System.EventHandler(this.btnDSTBDongNuoc_Click);
             // 
+            // MaHD_CQ
+            // 
+            this.MaHD_CQ.DataPropertyName = "MaHD";
+            this.MaHD_CQ.HeaderText = "MaHD";
+            this.MaHD_CQ.Name = "MaHD_CQ";
+            this.MaHD_CQ.ReadOnly = true;
+            this.MaHD_CQ.Visible = false;
+            // 
+            // MLT
+            // 
+            this.MLT.DataPropertyName = "MLT";
+            this.MLT.HeaderText = "MLT";
+            this.MLT.Name = "MLT";
+            this.MLT.ReadOnly = true;
+            this.MLT.Width = 80;
+            // 
+            // DanhBo
+            // 
+            this.DanhBo.DataPropertyName = "DanhBo";
+            this.DanhBo.HeaderText = "Danh Bộ";
+            this.DanhBo.Name = "DanhBo";
+            this.DanhBo.ReadOnly = true;
+            // 
+            // HoTen_CQ
+            // 
+            this.HoTen_CQ.DataPropertyName = "HoTen";
+            this.HoTen_CQ.HeaderText = "Khách Hàng";
+            this.HoTen_CQ.Name = "HoTen_CQ";
+            this.HoTen_CQ.ReadOnly = true;
+            this.HoTen_CQ.Width = 150;
+            // 
+            // DiaChi_CQ
+            // 
+            this.DiaChi_CQ.DataPropertyName = "DiaChi";
+            this.DiaChi_CQ.HeaderText = "Địa Chỉ";
+            this.DiaChi_CQ.Name = "DiaChi_CQ";
+            this.DiaChi_CQ.ReadOnly = true;
+            this.DiaChi_CQ.Width = 200;
+            // 
+            // SoHoaDon_CQ
+            // 
+            this.SoHoaDon_CQ.DataPropertyName = "SoHoaDon";
+            this.SoHoaDon_CQ.HeaderText = "Số Hóa Đơn";
+            this.SoHoaDon_CQ.Name = "SoHoaDon_CQ";
+            this.SoHoaDon_CQ.ReadOnly = true;
+            // 
+            // Ky
+            // 
+            this.Ky.DataPropertyName = "Ky";
+            this.Ky.HeaderText = "Kỳ";
+            this.Ky.Name = "Ky";
+            this.Ky.ReadOnly = true;
+            this.Ky.Width = 50;
+            // 
+            // TongCong_CQ
+            // 
+            this.TongCong_CQ.DataPropertyName = "TongCong";
+            this.TongCong_CQ.HeaderText = "Tổng Cộng";
+            this.TongCong_CQ.Name = "TongCong_CQ";
+            this.TongCong_CQ.ReadOnly = true;
+            this.TongCong_CQ.Width = 80;
+            // 
+            // NgayGiaiTrach
+            // 
+            this.NgayGiaiTrach.DataPropertyName = "NgayGiaiTrach";
+            this.NgayGiaiTrach.HeaderText = "Ngày Giải Trách";
+            this.NgayGiaiTrach.Name = "NgayGiaiTrach";
+            this.NgayGiaiTrach.ReadOnly = true;
+            // 
+            // DangNgan_DienThoai
+            // 
+            this.DangNgan_DienThoai.DataPropertyName = "DangNgan_DienThoai";
+            this.DangNgan_DienThoai.HeaderText = "Điện Thoại";
+            this.DangNgan_DienThoai.Name = "DangNgan_DienThoai";
+            this.DangNgan_DienThoai.ReadOnly = true;
+            this.DangNgan_DienThoai.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.DangNgan_DienThoai.Width = 50;
+            // 
+            // InPhieuBao_Ngay
+            // 
+            this.InPhieuBao_Ngay.DataPropertyName = "InPhieuBao_Ngay";
+            this.InPhieuBao_Ngay.HeaderText = "Phiếu Báo";
+            this.InPhieuBao_Ngay.Name = "InPhieuBao_Ngay";
+            this.InPhieuBao_Ngay.ReadOnly = true;
+            this.InPhieuBao_Ngay.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // InPhieuBao2_Ngay
+            // 
+            this.InPhieuBao2_Ngay.DataPropertyName = "InPhieuBao2_Ngay";
+            this.InPhieuBao2_Ngay.HeaderText = "Phiếu Báo 2";
+            this.InPhieuBao2_Ngay.Name = "InPhieuBao2_Ngay";
+            this.InPhieuBao2_Ngay.ReadOnly = true;
+            // 
+            // TBDongNuoc_Ngay
+            // 
+            this.TBDongNuoc_Ngay.DataPropertyName = "TBDongNuoc_Ngay";
+            this.TBDongNuoc_Ngay.HeaderText = "TB Đóng Nước";
+            this.TBDongNuoc_Ngay.Name = "TBDongNuoc_Ngay";
+            this.TBDongNuoc_Ngay.ReadOnly = true;
+            // 
+            // XoaDangNgan_Ngay_DienThoai
+            // 
+            this.XoaDangNgan_Ngay_DienThoai.DataPropertyName = "XoaDangNgan_Ngay_DienThoai";
+            this.XoaDangNgan_Ngay_DienThoai.HeaderText = "Xóa Điện Thoại";
+            this.XoaDangNgan_Ngay_DienThoai.Name = "XoaDangNgan_Ngay_DienThoai";
+            this.XoaDangNgan_Ngay_DienThoai.ReadOnly = true;
+            // 
+            // btnLocation_DangNgan
+            // 
+            this.btnLocation_DangNgan.HeaderText = "Đăng Ngân";
+            this.btnLocation_DangNgan.Name = "btnLocation_DangNgan";
+            this.btnLocation_DangNgan.ReadOnly = true;
+            this.btnLocation_DangNgan.Text = "Vị Trí";
+            this.btnLocation_DangNgan.UseColumnTextForButtonValue = true;
+            this.btnLocation_DangNgan.Width = 60;
+            // 
+            // DangNgan_DienThoai_Location
+            // 
+            this.DangNgan_DienThoai_Location.DataPropertyName = "DangNgan_DienThoai_Location";
+            this.DangNgan_DienThoai_Location.HeaderText = "DangNgan_DienThoai_Location";
+            this.DangNgan_DienThoai_Location.Name = "DangNgan_DienThoai_Location";
+            this.DangNgan_DienThoai_Location.ReadOnly = true;
+            this.DangNgan_DienThoai_Location.Visible = false;
+            // 
+            // btnLocation_InPhieuBao
+            // 
+            this.btnLocation_InPhieuBao.HeaderText = "In Phiếu Báo";
+            this.btnLocation_InPhieuBao.Name = "btnLocation_InPhieuBao";
+            this.btnLocation_InPhieuBao.ReadOnly = true;
+            this.btnLocation_InPhieuBao.Text = "Vị Trí";
+            this.btnLocation_InPhieuBao.UseColumnTextForButtonValue = true;
+            this.btnLocation_InPhieuBao.Width = 60;
+            // 
+            // InPhieuBao_Location
+            // 
+            this.InPhieuBao_Location.DataPropertyName = "InPhieuBao_Location";
+            this.InPhieuBao_Location.HeaderText = "InPhieuBao_Location";
+            this.InPhieuBao_Location.Name = "InPhieuBao_Location";
+            this.InPhieuBao_Location.ReadOnly = true;
+            this.InPhieuBao_Location.Visible = false;
+            // 
+            // btnLocation_InPhieuBao2
+            // 
+            this.btnLocation_InPhieuBao2.HeaderText = "In Phiếu Báo 2";
+            this.btnLocation_InPhieuBao2.Name = "btnLocation_InPhieuBao2";
+            this.btnLocation_InPhieuBao2.ReadOnly = true;
+            this.btnLocation_InPhieuBao2.Text = "Vị Trí";
+            this.btnLocation_InPhieuBao2.UseColumnTextForButtonValue = true;
+            this.btnLocation_InPhieuBao2.Width = 60;
+            // 
+            // InPhieuBao2_Location
+            // 
+            this.InPhieuBao2_Location.DataPropertyName = "InPhieuBao2_Location";
+            this.InPhieuBao2_Location.HeaderText = "InPhieuBao2_Location";
+            this.InPhieuBao2_Location.Name = "InPhieuBao2_Location";
+            this.InPhieuBao2_Location.ReadOnly = true;
+            this.InPhieuBao2_Location.Visible = false;
+            // 
+            // btnLocation_TBDongNuoc
+            // 
+            this.btnLocation_TBDongNuoc.HeaderText = "TB Đóng Nước";
+            this.btnLocation_TBDongNuoc.Name = "btnLocation_TBDongNuoc";
+            this.btnLocation_TBDongNuoc.ReadOnly = true;
+            this.btnLocation_TBDongNuoc.Text = "Vị Trí";
+            this.btnLocation_TBDongNuoc.UseColumnTextForButtonValue = true;
+            this.btnLocation_TBDongNuoc.Width = 60;
+            // 
+            // TBDongNuoc_Location
+            // 
+            this.TBDongNuoc_Location.DataPropertyName = "TBDongNuoc_Location";
+            this.TBDongNuoc_Location.HeaderText = "TBDongNuoc_Location";
+            this.TBDongNuoc_Location.Name = "TBDongNuoc_Location";
+            this.TBDongNuoc_Location.ReadOnly = true;
+            this.TBDongNuoc_Location.Visible = false;
+            // 
+            // btnLocation_XoaDangNgan
+            // 
+            this.btnLocation_XoaDangNgan.HeaderText = "Xóa Đăng Ngân";
+            this.btnLocation_XoaDangNgan.Name = "btnLocation_XoaDangNgan";
+            this.btnLocation_XoaDangNgan.ReadOnly = true;
+            this.btnLocation_XoaDangNgan.Text = "Vị Trí";
+            this.btnLocation_XoaDangNgan.UseColumnTextForButtonValue = true;
+            this.btnLocation_XoaDangNgan.Width = 60;
+            // 
+            // XoaDangNgan_Location_DienThoai
+            // 
+            this.XoaDangNgan_Location_DienThoai.DataPropertyName = "XoaDangNgan_Location_DienThoai";
+            this.XoaDangNgan_Location_DienThoai.HeaderText = "XoaDangNgan_Location_DienThoai";
+            this.XoaDangNgan_Location_DienThoai.Name = "XoaDangNgan_Location_DienThoai";
+            this.XoaDangNgan_Location_DienThoai.ReadOnly = true;
+            this.XoaDangNgan_Location_DienThoai.Visible = false;
+            // 
             // frmKiemTraDangNganTo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1581,6 +1582,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Ky_A;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_A;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TabPage tabCongViec;
+        private System.Windows.Forms.DataGridView dgvCongViec;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Dot;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongCong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NhacNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ThuHo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ChuaDi;
+        private System.Windows.Forms.Button btnXem_CongViec;
+        private System.Windows.Forms.ComboBox cmbNhanVien_CongViec;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.CheckBox chkAll_TheoDoi;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaHD_CQ;
         private System.Windows.Forms.DataGridViewTextBoxColumn MLT;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
@@ -1605,16 +1617,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TBDongNuoc_Location;
         private System.Windows.Forms.DataGridViewButtonColumn btnLocation_XoaDangNgan;
         private System.Windows.Forms.DataGridViewTextBoxColumn XoaDangNgan_Location_DienThoai;
-        private System.Windows.Forms.TabPage tabCongViec;
-        private System.Windows.Forms.DataGridView dgvCongViec;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Dot;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TongCong;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NhacNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ThuHo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ChuaDi;
-        private System.Windows.Forms.Button btnXem_CongViec;
-        private System.Windows.Forms.ComboBox cmbNhanVien_CongViec;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.CheckBox chkAll_TheoDoi;
     }
 }
