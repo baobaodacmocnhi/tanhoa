@@ -532,7 +532,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     dr["HoTenCT"] = dgvDanhSach["HoTen", i].Value.ToString();
                     dr["MaCT"] = dgvDanhSach["CCCD", i].Value.ToString();
                     dr["SoNKTong"] = _TongNK;
-                    dr["SoNKDangKy"] = 1;
+                    if (bool.Parse(dgvDanhSach["Cat", i].Value.ToString()))
+                        dr["SoNKDangKy"] = 0;
+                    else
+                        dr["SoNKDangKy"] = 1;
                     //if (chkAnGhiChu.Checked == false)
                     dr["GhiChu"] = dgvDanhSach["GhiChu", i].Value.ToString();
                     dr["Lo"] = dgvDanhSach["Lo", i].Value.ToString();
