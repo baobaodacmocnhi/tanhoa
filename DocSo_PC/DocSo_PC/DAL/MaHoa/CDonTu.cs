@@ -149,6 +149,7 @@ namespace DocSo_PC.DAL.MaHoa
                         select new
                         {
                             item.ID,
+                            item.MLT,
                             item.DanhBo,
                             item.HoTen,
                             item.DiaChi,
