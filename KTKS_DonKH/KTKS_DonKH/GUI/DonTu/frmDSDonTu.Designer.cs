@@ -80,6 +80,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.cmbQuan = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDonChiTiet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDon)).BeginInit();
@@ -194,7 +195,8 @@
             this.gridColumn15,
             this.gridColumn7,
             this.gridColumn8,
-            this.gridColumn9});
+            this.gridColumn9,
+            this.gridColumn16});
             this.gridViewDon.GridControl = this.gridControl;
             this.gridViewDon.IndicatorWidth = 61;
             this.gridViewDon.Name = "gridViewDon";
@@ -599,6 +601,12 @@
             this.label6.TabIndex = 46;
             this.label6.Text = "Quận:";
             // 
+            // gridColumn16
+            // 
+            this.gridColumn16.Caption = "gridColumn16";
+            this.gridColumn16.FieldName = "NoiDungPKHB";
+            this.gridColumn16.Name = "gridColumn16";
+            // 
             // frmDSDonTu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -693,5 +701,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cmbQuan;
         private System.Windows.Forms.Label label6;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
     }
 }

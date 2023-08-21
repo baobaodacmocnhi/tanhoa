@@ -349,7 +349,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     dr["MaChiTiet"] = item["MaDon"].ToString();
                     //if (item["DanhBo"].ToString().Length == 11)
                     //    dr["DanhBo"] = item["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                    dr["DiaChi"] = item["NoiDungPKH"].ToString();
+                    dr["DiaChi"] = item["NoiDungPKHB"].ToString();
                     dr["CreateDate"] = item["CreateDate"].ToString();
                     dr["NoiDung"] = item["NoiDungPTV"].ToString();
                     //mượn đỡ 2 cột để xét tình trạng
@@ -377,7 +377,7 @@ namespace KTKS_DonKH.GUI.DonTu
                         dr["MaChiTiet"] = item["MaDon"].ToString() + "." + itemChild["STT"].ToString();
                         //if (itemChild["DanhBo"].ToString().Length == 11)
                         //    dr["DanhBo"] = itemChild["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-                        dr["DiaChi"] = item["NoiDungPKH"].ToString();
+                        dr["DiaChi"] = item["NoiDungPKHB"].ToString();
                         dr["CreateDate"] = item["CreateDate"].ToString();
                         dr["NoiDung"] = item["NoiDungPTV"].ToString();
                         //mượn đỡ 2 cột để xét tình trạng

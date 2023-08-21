@@ -393,6 +393,7 @@ namespace KTKS_DonKH.DAL.DonTu
                             + " ,DanhBo=case when (select COUNT(ID) from DonTu_ChiTiet where MaDon=DonTu.MaDon)=1 then (select DanhBo from DonTu_ChiTiet where MaDon=DonTu.MaDon) else '' end"
                             + " ,HoTen=case when (select COUNT(ID) from DonTu_ChiTiet where MaDon=DonTu.MaDon)=1 then (select HoTen from DonTu_ChiTiet where MaDon=DonTu.MaDon) else '' end"
                             + " ,DiaChi=case when (select COUNT(ID) from DonTu_ChiTiet where MaDon=DonTu.MaDon)=1 then (select DiaChi from DonTu_ChiTiet where MaDon=DonTu.MaDon) else N'Số: ' + SoCongVan + N' gồm ' + CAST(TongDB as varchar(3)) + N' địa chỉ' end"
+                            + " ,NoiDungPKHB=Name_NhomDon_PKH"
                             + " ,NoiDungPKH=case when VanDeKhac not like '' then case when Name_NhomDon_PKH not like '' then Name_NhomDon_PKH+'; '+VanDeKhac else VanDeKhac end else Name_NhomDon_PKH end"
                             + " ,NoiDungPTV=case when VanDeKhac not like '' then case when Name_NhomDon not like '' then Name_NhomDon+'; '+VanDeKhac else VanDeKhac end else Name_NhomDon end"
                             + " ,CreateBy=(select HoTen from Users where MaU=DonTu.CreateBy),TinhTrang"
