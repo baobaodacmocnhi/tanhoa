@@ -329,6 +329,17 @@ namespace KTKS_DonKH.GUI.DonTu
             txtDienThoai.Text = "";
             chkChanHoaDon.Checked = false;
             txtKyHDChan.Text = "";
+            txtHoTenMoi.Text = "";
+            txtCCCD.Text = "";
+            txtNgayCap.Text = "";
+            txtDCThuongTru.Text = "";
+            txtDCHienNay.Text = "";
+            txtDienThoaiMoi.Text = "";
+            txtFax.Text = "";
+            txtEmail.Text = "";
+            txtSTK.Text = "";
+            txtBank.Text = "";
+            txtMST.Text = "";
             if (dgvDanhBo.DataSource != null)
                 dgvDanhBo.DataSource = null;
             else
@@ -1609,6 +1620,11 @@ namespace KTKS_DonKH.GUI.DonTu
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void txtDienThoai_Leave(object sender, EventArgs e)
+        {
+            txtDienThoaiMoi = txtDienThoai;
         }
 
 
