@@ -468,9 +468,9 @@ namespace KTKS_DonKH.GUI.DonTu
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
+            try
             {
-                try
+                if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
                 {
                     LinQ.DonTu entity = new LinQ.DonTu();
                     if (tabControl.SelectedTab.Name == "tabTTKH")
@@ -546,10 +546,20 @@ namespace KTKS_DonKH.GUI.DonTu
                             entityCT.ChanHoaDon_Nam = int.Parse(Kys[0]);
                             entityCT.ChanHoaDon_Ngay = DateTime.Now;
                         }
+                        entityCT.HoTenMoi = txtHoTenMoi.Text.Trim();
+                        entityCT.CCCD = txtCCCD.Text.Trim();
+                        entityCT.NgayCap = txtNgayCap.Text.Trim();
+                        entityCT.DCThuongTru = txtDCThuongTru.Text.Trim();
+                        entityCT.DCHienNay = txtDCHienNay.Text.Trim();
+                        entityCT.DienThoai = txtDienThoaiMoi.Text.Trim();
+                        entityCT.Fax = txtFax.Text.Trim();
+                        entityCT.Email = txtEmail.Text.Trim();
+                        entityCT.STK = txtSTK.Text.Trim();
+                        entityCT.Bank = txtBank.Text.Trim();
+                        entityCT.MST = txtMST.Text.Trim();
                         entityCT.CreateBy = CTaiKhoan.MaUser;
                         entityCT.CreateDate = DateTime.Now;
                         entityCT.TinhTrang = "Tồn";
-
                         entity.DonTu_ChiTiets.Add(entityCT);
                         //add điện thoại qua trung tam
                         if (entityCT.DienThoai.Replace(".", "").Replace(" ", "").Length == 10
@@ -747,13 +757,13 @@ namespace KTKS_DonKH.GUI.DonTu
                         Clear();
                     }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -1625,6 +1635,40 @@ namespace KTKS_DonKH.GUI.DonTu
         private void txtDienThoai_Leave(object sender, EventArgs e)
         {
             txtDienThoaiMoi = txtDienThoai;
+        }
+
+        private void btnXemTruocEContract_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
+                {
+                    
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnTaoEContract_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
+                {
+
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 
