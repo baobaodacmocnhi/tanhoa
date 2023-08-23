@@ -32120,6 +32120,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private bool _CT_GiayUyQuyen;
 		
+		private bool _CT_CVXuatHD;
+		
 		private System.Nullable<int> _MaPhong;
 		
 		private string _TinhTrang;
@@ -32268,6 +32270,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCT_GiaiQuyet_Huy_DKCTChanged();
     partial void OnCT_GiayUyQuyenChanging(bool value);
     partial void OnCT_GiayUyQuyenChanged();
+    partial void OnCT_CVXuatHDChanging(bool value);
+    partial void OnCT_CVXuatHDChanged();
     partial void OnMaPhongChanging(System.Nullable<int> value);
     partial void OnMaPhongChanged();
     partial void OnTinhTrangChanging(string value);
@@ -33283,6 +33287,26 @@ namespace KTKS_DonKH.LinQ
 					this._CT_GiayUyQuyen = value;
 					this.SendPropertyChanged("CT_GiayUyQuyen");
 					this.OnCT_GiayUyQuyenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CT_CVXuatHD", DbType="Bit NOT NULL")]
+		public bool CT_CVXuatHD
+		{
+			get
+			{
+				return this._CT_CVXuatHD;
+			}
+			set
+			{
+				if ((this._CT_CVXuatHD != value))
+				{
+					this.OnCT_CVXuatHDChanging(value);
+					this.SendPropertyChanging();
+					this._CT_CVXuatHD = value;
+					this.SendPropertyChanged("CT_CVXuatHD");
+					this.OnCT_CVXuatHDChanged();
 				}
 			}
 		}

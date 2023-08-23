@@ -172,6 +172,18 @@ namespace KTKS_DonKH.GUI.DonTu
                         txtDinhMuc.Text = entity.DonTu_ChiTiets.SingleOrDefault().DinhMuc.Value.ToString();
                     if (entity.DonTu_ChiTiets.SingleOrDefault().DinhMucHN != null)
                         txtDinhMucHN.Text = entity.DonTu_ChiTiets.SingleOrDefault().DinhMucHN.Value.ToString();
+                    txtHoTenMoi.Text = entity.DonTu_ChiTiets.SingleOrDefault().HoTenMoi;
+                    txtCCCD.Text = entity.DonTu_ChiTiets.SingleOrDefault().CCCD;
+                    txtNgayCap.Text = entity.DonTu_ChiTiets.SingleOrDefault().NgayCap;
+                    txtDCThuongTru.Text = entity.DonTu_ChiTiets.SingleOrDefault().DCThuongTru;
+                    txtDCHienNay.Text = entity.DonTu_ChiTiets.SingleOrDefault().DCHienNay;
+                    txtDienThoaiMoi.Text = entity.DonTu_ChiTiets.SingleOrDefault().DienThoai;
+                    txtFax.Text = entity.DonTu_ChiTiets.SingleOrDefault().Fax;
+                    txtEmail.Text = entity.DonTu_ChiTiets.SingleOrDefault().Email;
+                    txtSTK.Text = entity.DonTu_ChiTiets.SingleOrDefault().STK;
+                    txtBank.Text = entity.DonTu_ChiTiets.SingleOrDefault().Bank;
+                    txtMST.Text = entity.DonTu_ChiTiets.SingleOrDefault().MST;
+                    txtDCLapDat.Text = entity.DonTu_ChiTiets.SingleOrDefault().DCLapDat;
                 }
                 else
                 {
@@ -252,6 +264,7 @@ namespace KTKS_DonKH.GUI.DonTu
                 chkCT_HDTN_CQN.Checked = entity.CT_HDTN_CQN;
                 chkCT_CQN.Checked = entity.CT_CQN;
                 chkCT_Khac.Checked = entity.CT_Khac;
+                chkCT_CVXuatHD.Checked = entity.CT_CVXuatHD;
                 if (entity.CT_Khac == true)
                 {
                     txtCT_Khac_GhiChu.Text = entity.CT_Khac_GhiChu;
@@ -557,6 +570,7 @@ namespace KTKS_DonKH.GUI.DonTu
                         entityCT.STK = txtSTK.Text.Trim();
                         entityCT.Bank = txtBank.Text.Trim();
                         entityCT.MST = txtMST.Text.Trim();
+                        entityCT.DCLapDat = txtDCLapDat.Text.Trim();
                         entityCT.CreateBy = CTaiKhoan.MaUser;
                         entityCT.CreateDate = DateTime.Now;
                         entityCT.TinhTrang = "Tồn";
@@ -745,7 +759,8 @@ namespace KTKS_DonKH.GUI.DonTu
                     //    entity.CT_GXN2SN = true;
                     if (chkCT_GCNDTDHN.Checked)
                         entity.CT_GCNDTDHN = true;
-
+                    if (chkCT_CVXuatHD.Checked)
+                        entity.CT_CVXuatHD = true;
                     entity.VanPhong = chkVanPhong.Checked;
                     entity.MaPhong = CTaiKhoan.MaPhong;
                     ///
@@ -828,6 +843,18 @@ namespace KTKS_DonKH.GUI.DonTu
                                 _dontu.DonTu_ChiTiets.SingleOrDefault().ChanHoaDon_Ky = int.Parse(Kys[0]);
                                 _dontu.DonTu_ChiTiets.SingleOrDefault().ChanHoaDon_Nam = int.Parse(Kys[0]);
                             }
+                            _dontu.DonTu_ChiTiets.SingleOrDefault().HoTenMoi = txtHoTenMoi.Text.Trim();
+                            _dontu.DonTu_ChiTiets.SingleOrDefault().CCCD = txtCCCD.Text.Trim();
+                            _dontu.DonTu_ChiTiets.SingleOrDefault().NgayCap = txtNgayCap.Text.Trim();
+                            _dontu.DonTu_ChiTiets.SingleOrDefault().DCThuongTru = txtDCThuongTru.Text.Trim();
+                            _dontu.DonTu_ChiTiets.SingleOrDefault().DCHienNay = txtDCHienNay.Text.Trim();
+                            _dontu.DonTu_ChiTiets.SingleOrDefault().DienThoai = txtDienThoaiMoi.Text.Trim();
+                            _dontu.DonTu_ChiTiets.SingleOrDefault().Fax = txtFax.Text.Trim();
+                            _dontu.DonTu_ChiTiets.SingleOrDefault().Email = txtEmail.Text.Trim();
+                            _dontu.DonTu_ChiTiets.SingleOrDefault().STK = txtSTK.Text.Trim();
+                            _dontu.DonTu_ChiTiets.SingleOrDefault().Bank = txtBank.Text.Trim();
+                            _dontu.DonTu_ChiTiets.SingleOrDefault().MST = txtMST.Text.Trim();
+                            _dontu.DonTu_ChiTiets.SingleOrDefault().DCLapDat = txtDCLapDat.Text.Trim();
                         }
                         if (tabControl.SelectedTab.Name == "tabTTKH")
                         {
@@ -980,6 +1007,10 @@ namespace KTKS_DonKH.GUI.DonTu
                             _dontu.CT_GCNDTDHN = true;
                         else
                             _dontu.CT_GCNDTDHN = false;
+                        if (chkCT_CVXuatHD.Checked)
+                            _dontu.CT_CVXuatHD = true;
+                        else
+                            _dontu.CT_CVXuatHD = false;
                         ///
                         if (_cDonTu.Sua(_dontu))
                         {
@@ -1216,6 +1247,15 @@ namespace KTKS_DonKH.GUI.DonTu
                 else
                 {
                     dr["CT_GCNDTDHN"] = false;
+                }
+
+                if (entity.CT_CVXuatHD)
+                {
+                    dr["CT_CVXuatHD"] = true;
+                }
+                else
+                {
+                    dr["CT_CVXuatHD"] = false;
                 }
                 #endregion
 
@@ -1643,7 +1683,11 @@ namespace KTKS_DonKH.GUI.DonTu
             {
                 if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
                 {
-                    
+                    wrEContract.wsEContract ws = new wrEContract.wsEContract();
+                    string error;
+                    if (_dontu != null)
+                        _hoadon = _cThuTien.GetMoiNhat(_dontu.DonTu_ChiTiets.SingleOrDefault().DanhBo);
+                    _cDonTu.viewPDF(ws.renderEContract(txtHopDong.Text.Trim(), txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now, txtHoTenMoi.Text.Trim(), txtCCCD.Text.Trim(), txtNgayCap.Text.Trim(), txtDCThuongTru.Text.Trim(), txtDCHienNay.Text.Trim(), txtDienThoaiMoi.Text.Trim(), txtFax.Text.Trim(), txtEmail.Text.Trim(), txtSTK.Text.Trim(), txtBank.Text.Trim(), txtMST.Text.Trim(), _hoadon.CoDH, txtDCLapDat.Text.Trim(), "", "tanho@2022", out error));
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1660,7 +1704,23 @@ namespace KTKS_DonKH.GUI.DonTu
             {
                 if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
                 {
+                    if (_dontu != null)
+                    {
+                        wrEContract.wsEContract ws = new wrEContract.wsEContract();
+                        bool CaNhan = true;
+                        if (txtMST.Text.Trim() != "")
+                            CaNhan = false;
 
+                        string result = ws.createEContract(txtHopDong.Text.Trim(), txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now, txtHoTenMoi.Text.Trim(), txtCCCD.Text.Trim(), txtNgayCap.Text.Trim(), txtDCThuongTru.Text.Trim(), txtDCHienNay.Text.Trim(), txtDienThoaiMoi.Text.Trim(), txtFax.Text.Trim(), txtEmail.Text.Trim(), txtSTK.Text.Trim(), txtBank.Text.Trim(), txtMST.Text.Trim(), _hoadon.CoDH, txtDCLapDat.Text.Trim(), "", false, CaNhan, _dontu.MaDon.ToString(), "", "tanho@2022");
+                        if (result == "")
+                        {
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                            MessageBox.Show("Thất bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                        MessageBox.Show("Chưa có mã đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

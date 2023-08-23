@@ -1752,6 +1752,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Compile Include="Web References\wrEContract\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <Compile Include="Web References\wrThuongVu\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -2724,6 +2729,11 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\wrDHN\wsDHN.wsdl" />
+    <None Include="Web References\wrEContract\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\wrEContract\wsEContract.wsdl" />
     <None Include="Web References\wrThuongVu\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -2771,6 +2781,7 @@
     <None Include="Resources\key 48x48.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Web References\wrEContract\wsEContract.disco" />
     <None Include="Web References\wrDHN\wsDHN.disco" />
     <None Include="Web References\wrThuongVu\wsthuongvu.disco" />
     <None Include="Resources\save 24x24.png" />
@@ -3222,6 +3233,17 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
+    <WebReferenceUrl Include="http://server5:81/wsEContract.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\wrEContract\</RelPath>
+      <UpdateFromURL>http://server5:81/wsEContract.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>KTKS_DonKH_wrEContract_wsEContract</CachedSettingsPropName>
+    </WebReferenceUrl>
     <WebReferenceUrl Include="http://server5:81/wsthuongvu.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\wrThuongVu\</RelPath>

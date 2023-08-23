@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="getAccess_token">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="checksum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAccess_tokenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAccess_tokenResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="renderEContract">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HopDong" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DanhBo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="HoTen" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CCCD" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NgayCap" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DCThuongTru" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DCHienNay" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DienThoai" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Fax" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TaiKhoan" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Bank" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MST" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CoDHN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DCLapDat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NgayHieuLuc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="checksum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="renderEContractResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="renderEContractResult" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="strResponse" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="createEContract">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HopDong" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DanhBo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="HoTen" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CCCD" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NgayCap" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DCThuongTru" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DCHienNay" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DienThoai" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Fax" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TaiKhoan" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Bank" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MST" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CoDHN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DCLapDat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NgayHieuLuc" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="GanMoi" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="CaNhan" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="MaDon" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SHS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="checksum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="createEContractResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="createEContractResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="sendEContract">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MaDon" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SHS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="checksum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="sendEContractResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sendEContractResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="getAccess_tokenSoapIn">
+    <wsdl:part name="parameters" element="tns:getAccess_token" />
+  </wsdl:message>
+  <wsdl:message name="getAccess_tokenSoapOut">
+    <wsdl:part name="parameters" element="tns:getAccess_tokenResponse" />
+  </wsdl:message>
+  <wsdl:message name="renderEContractSoapIn">
+    <wsdl:part name="parameters" element="tns:renderEContract" />
+  </wsdl:message>
+  <wsdl:message name="renderEContractSoapOut">
+    <wsdl:part name="parameters" element="tns:renderEContractResponse" />
+  </wsdl:message>
+  <wsdl:message name="createEContractSoapIn">
+    <wsdl:part name="parameters" element="tns:createEContract" />
+  </wsdl:message>
+  <wsdl:message name="createEContractSoapOut">
+    <wsdl:part name="parameters" element="tns:createEContractResponse" />
+  </wsdl:message>
+  <wsdl:message name="sendEContractSoapIn">
+    <wsdl:part name="parameters" element="tns:sendEContract" />
+  </wsdl:message>
+  <wsdl:message name="sendEContractSoapOut">
+    <wsdl:part name="parameters" element="tns:sendEContractResponse" />
+  </wsdl:message>
+  <wsdl:portType name="wsEContractSoap">
+    <wsdl:operation name="getAccess_token">
+      <wsdl:input message="tns:getAccess_tokenSoapIn" />
+      <wsdl:output message="tns:getAccess_tokenSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="renderEContract">
+      <wsdl:input message="tns:renderEContractSoapIn" />
+      <wsdl:output message="tns:renderEContractSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="createEContract">
+      <wsdl:input message="tns:createEContractSoapIn" />
+      <wsdl:output message="tns:createEContractSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="sendEContract">
+      <wsdl:input message="tns:sendEContractSoapIn" />
+      <wsdl:output message="tns:sendEContractSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsEContractSoap" type="tns:wsEContractSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getAccess_token">
+      <soap:operation soapAction="http://tempuri.org/getAccess_token" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="renderEContract">
+      <soap:operation soapAction="http://tempuri.org/renderEContract" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createEContract">
+      <soap:operation soapAction="http://tempuri.org/createEContract" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendEContract">
+      <soap:operation soapAction="http://tempuri.org/sendEContract" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsEContractSoap12" type="tns:wsEContractSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getAccess_token">
+      <soap12:operation soapAction="http://tempuri.org/getAccess_token" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="renderEContract">
+      <soap12:operation soapAction="http://tempuri.org/renderEContract" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createEContract">
+      <soap12:operation soapAction="http://tempuri.org/createEContract" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendEContract">
+      <soap12:operation soapAction="http://tempuri.org/sendEContract" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsEContract">
+    <wsdl:port name="wsEContractSoap" binding="tns:wsEContractSoap">
+      <soap:address location="http://server5:81/wsEContract.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsEContractSoap12" binding="tns:wsEContractSoap12">
+      <soap12:address location="http://server5:81/wsEContract.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
