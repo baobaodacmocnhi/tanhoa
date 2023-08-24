@@ -1710,14 +1710,15 @@ namespace KTKS_DonKH.GUI.DonTu
                         bool CaNhan = true;
                         if (txtMST.Text.Trim() != "")
                             CaNhan = false;
-
+                        if (_dontu != null)
+                            _hoadon = _cThuTien.GetMoiNhat(_dontu.DonTu_ChiTiets.SingleOrDefault().DanhBo);
                         string result = ws.createEContract(txtHopDong.Text.Trim(), txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now, txtHoTenMoi.Text.Trim(), txtCCCD.Text.Trim(), txtNgayCap.Text.Trim(), txtDCThuongTru.Text.Trim(), txtDCHienNay.Text.Trim(), txtDienThoaiMoi.Text.Trim(), txtFax.Text.Trim(), txtEmail.Text.Trim(), txtSTK.Text.Trim(), txtBank.Text.Trim(), txtMST.Text.Trim(), _hoadon.CoDH, txtDCLapDat.Text.Trim(), "", false, CaNhan, _dontu.MaDon.ToString(), "", "tanho@2022");
                         if (result == "")
                         {
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
-                            MessageBox.Show("Thất bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Thất bại " + result, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                         MessageBox.Show("Chưa có mã đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

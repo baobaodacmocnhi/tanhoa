@@ -106,5 +106,14 @@ namespace KTKS_DonKH.Properties {
                 return ((string)(this["KTKS_DonKH_wrDHN_wsDHN"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://113.161.88.180:81/wsEContract.asmx")]
+        public string KTKS_DonKH_wrEContract_wsEContract {
+            get {
+                return ((string)(this["KTKS_DonKH_wrEContract_wsEContract"]));
+            }
+        }
     }
 }
