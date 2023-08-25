@@ -80,7 +80,7 @@ namespace DocSo_PC.DAL
                 string Phuong = _db.PHUONGs.SingleOrDefault(itemPhuong => itemPhuong.MAQUAN == MaQuan && itemPhuong.TENPHUONG == TenPhuong).MAPHUONG;
                 return MaQuan.ToString() + " " + Phuong;
             }
-            catch 
+            catch
             {
                 return "";
             }
@@ -449,13 +449,24 @@ namespace DocSo_PC.DAL
         {
             string sql = "select * from"
                     + " (select MLT=LOTRINH,DanhBo,HoTen,DiaChiDHN=SONHA+' '+TENDUONG,GiaBieu,Phuong=p.TENPHUONG,Quan=q.TENQUAN"
+                    + " ,Hieu=HieuDH,Co=CoDH,SoThan=SoThanDH,NgayKiemDinh,NgayThay"
                     + " ,DiaChiHD=(select top 1 SO+' '+DUONG from HOADON_TA.dbo.HOADON where DANHBA=TB_DULIEUKHACHHANG.DANHBO order by ID_HOADON desc)"
-                    + " from TB_DULIEUKHACHHANG left join PHUONG p on (p.MAPHUONG=PHUONG and p.MAQUAN=QUAN) left join QUAN q on q.MAQUAN=QUAN where SUBSTRING(LOTRINH,1,2)=" + Dot;
+                    + " from TB_DULIEUKHACHHANG left join PHUONG p on (p.MAPHUONG=PHUONG and p.MAQUAN=QUAN) left join QUAN q on q.MAQUAN=QUAN";
+            if (Dot == "Tất Cả")
+                Dot = "";
+            else
+                Dot = " SUBSTRING(LOTRINH,1,2)=" + Dot;
             if (May == "Tất Cả")
                 May = "";
             else
-                May = " and SUBSTRING(LOTRINH,3,2)=" + May;
-            sql += May;
+                May = " SUBSTRING(LOTRINH,3,2)=" + May;
+            if (Dot != "")
+                sql += " where " + Dot;
+            if (May != "")
+                if (Dot != "")
+                    sql += " and " + May;
+                else
+                    sql += " where " + May;
             if (getAll)
                 sql += ")t1 order by MLT";
             else
