@@ -17,6 +17,7 @@ using KTKS_DonKH.DAL.TruyThu;
 using KTKS_DonKH.DAL.KiemTraXacMinh;
 using KTKS_DonKH.DAL.ThuMoi;
 using KTKS_DonKH.wrThuongVu;
+using KTKS_DonKH.wrEContract;
 
 namespace KTKS_DonKH.GUI.DonTu
 {
@@ -34,7 +35,9 @@ namespace KTKS_DonKH.GUI.DonTu
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
         CPhongBanDoi _cPBD = new CPhongBanDoi();
         CDocSo _cDocSo = new CDocSo();
+        CTTKH _cTTKH = new CTTKH();
         wsThuongVu _wsThuongVu = new wsThuongVu();
+        wsEContract _wsEContract = new wsEContract();
         LinQ.DonTu _dontu = null;
         HOADON _hoadon = null;
         int _MaDon = -1;
@@ -1683,11 +1686,14 @@ namespace KTKS_DonKH.GUI.DonTu
             {
                 if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
                 {
-                    wrEContract.wsEContract ws = new wrEContract.wsEContract();
                     string error;
                     if (_dontu != null)
                         _hoadon = _cThuTien.GetMoiNhat(_dontu.DonTu_ChiTiets.SingleOrDefault().DanhBo);
-                    _cDonTu.viewPDF(ws.renderEContract(txtHopDong.Text.Trim(), txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now, txtHoTenMoi.Text.Trim(), txtCCCD.Text.Trim(), txtNgayCap.Text.Trim(), txtDCThuongTru.Text.Trim(), txtDCHienNay.Text.Trim(), txtDienThoaiMoi.Text.Trim(), txtFax.Text.Trim(), txtEmail.Text.Trim(), txtSTK.Text.Trim(), txtBank.Text.Trim(), txtMST.Text.Trim(), _hoadon.CoDH, txtDCLapDat.Text.Trim(), "", "tanho@2022", out error));
+                    byte[] bytes = _wsEContract.renderEContract(txtHopDong.Text.Trim(), txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now, txtHoTenMoi.Text.Trim(), txtCCCD.Text.Trim(), txtNgayCap.Text.Trim(), txtDCThuongTru.Text.Trim(), txtDCHienNay.Text.Trim(), txtDienThoaiMoi.Text.Trim(), txtFax.Text.Trim(), txtEmail.Text.Trim(), txtSTK.Text.Trim(), txtBank.Text.Trim(), txtMST.Text.Trim(), _hoadon.CoDH, txtDCLapDat.Text.Trim(), "", "tanho@2022", out error);
+                    if (error == "")
+                        _cDonTu.viewPDF(bytes);
+                    else
+                        MessageBox.Show("Thất bại " + error, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1706,19 +1712,59 @@ namespace KTKS_DonKH.GUI.DonTu
                 {
                     if (_dontu != null)
                     {
-                        wrEContract.wsEContract ws = new wrEContract.wsEContract();
+                        DataTable dtHDDT = _cTTKH.ExecuteQuery_DataTable("select * from Zalo_EContract_ChiTiet where MaDon=" + _dontu.MaDon.ToString() + " order by CreateDate desc");
+                        if (dtHDDT != null && dtHDDT.Rows.Count > 1)
+                        {
+                            if (MessageBox.Show("Mã đơn đã tạo EContract, bạn có muốn tạo thêm không?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                            {
+                                return;
+                            }
+                        }
                         bool CaNhan = true;
                         if (txtMST.Text.Trim() != "")
                             CaNhan = false;
                         if (_dontu != null)
                             _hoadon = _cThuTien.GetMoiNhat(_dontu.DonTu_ChiTiets.SingleOrDefault().DanhBo);
-                        string result = ws.createEContract(txtHopDong.Text.Trim(), txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now, txtHoTenMoi.Text.Trim(), txtCCCD.Text.Trim(), txtNgayCap.Text.Trim(), txtDCThuongTru.Text.Trim(), txtDCHienNay.Text.Trim(), txtDienThoaiMoi.Text.Trim(), txtFax.Text.Trim(), txtEmail.Text.Trim(), txtSTK.Text.Trim(), txtBank.Text.Trim(), txtMST.Text.Trim(), _hoadon.CoDH, txtDCLapDat.Text.Trim(), "", false, CaNhan, _dontu.MaDon.ToString(), "", "tanho@2022");
-                        if (result == "")
+                        string error;
+                        bool result = _wsEContract.createEContract(txtHopDong.Text.Trim(), txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now, txtHoTenMoi.Text.Trim(), txtCCCD.Text.Trim(), txtNgayCap.Text.Trim(), txtDCThuongTru.Text.Trim(), txtDCHienNay.Text.Trim(), txtDienThoaiMoi.Text.Trim(), txtFax.Text.Trim(), txtEmail.Text.Trim(), txtSTK.Text.Trim(), txtBank.Text.Trim(), txtMST.Text.Trim(), _hoadon.CoDH, txtDCLapDat.Text.Trim(), "", false, CaNhan, _dontu.MaDon.ToString(), "", "tanho@2022", out error);
+                        if (result)
                         {
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
-                            MessageBox.Show("Thất bại " + result, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Thất bại " + error, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                        MessageBox.Show("Chưa có mã đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnGuiEContract_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
+                {
+                    if (_dontu != null)
+                    {
+
+                        if (_dontu != null)
+                            _hoadon = _cThuTien.GetMoiNhat(_dontu.DonTu_ChiTiets.SingleOrDefault().DanhBo);
+                        string error;
+                        bool result = _wsEContract.sendEContract(_dontu.MaDon.ToString(), "", "tanho@2022", out error);
+                        if (result)
+                        {
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                            MessageBox.Show("Thất bại " + error, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                         MessageBox.Show("Chưa có mã đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

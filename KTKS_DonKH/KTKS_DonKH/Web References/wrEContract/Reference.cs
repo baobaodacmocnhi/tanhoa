@@ -89,10 +89,10 @@ namespace KTKS_DonKH.wrEContract {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getAccess_token", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string getAccess_token(string checksum) {
+        public bool getAccess_token(string checksum) {
             object[] results = this.Invoke("getAccess_token", new object[] {
                         checksum});
-            return ((string)(results[0]));
+            return ((bool)(results[0]));
         }
         
         /// <remarks/>
@@ -239,7 +239,7 @@ namespace KTKS_DonKH.wrEContract {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/createEContract", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string createEContract(
+        public bool createEContract(
                     string HopDong, 
                     string DanhBo, 
                     System.DateTime CreateDate, 
@@ -261,7 +261,8 @@ namespace KTKS_DonKH.wrEContract {
                     bool CaNhan, 
                     string MaDon, 
                     string SHS, 
-                    string checksum) {
+                    string checksum, 
+                    out string strResponse) {
             object[] results = this.Invoke("createEContract", new object[] {
                         HopDong,
                         DanhBo,
@@ -285,7 +286,8 @@ namespace KTKS_DonKH.wrEContract {
                         MaDon,
                         SHS,
                         checksum});
-            return ((string)(results[0]));
+            strResponse = ((string)(results[1]));
+            return ((bool)(results[0]));
         }
         
         /// <remarks/>
@@ -377,12 +379,13 @@ namespace KTKS_DonKH.wrEContract {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/sendEContract", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string sendEContract(string MaDon, string SHS, string checksum) {
+        public bool sendEContract(string MaDon, string SHS, string checksum, out string strResponse) {
             object[] results = this.Invoke("sendEContract", new object[] {
                         MaDon,
                         SHS,
                         checksum});
-            return ((string)(results[0]));
+            strResponse = ((string)(results[1]));
+            return ((bool)(results[0]));
         }
         
         /// <remarks/>
@@ -445,10 +448,10 @@ namespace KTKS_DonKH.wrEContract {
         }
         
         /// <remarks/>
-        public string Result {
+        public bool Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
+                return ((bool)(this.results[0]));
             }
         }
     }
@@ -505,10 +508,18 @@ namespace KTKS_DonKH.wrEContract {
         }
         
         /// <remarks/>
-        public string Result {
+        public bool Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
+                return ((bool)(this.results[0]));
+            }
+        }
+        
+        /// <remarks/>
+        public string strResponse {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[1]));
             }
         }
     }
@@ -531,10 +542,18 @@ namespace KTKS_DonKH.wrEContract {
         }
         
         /// <remarks/>
-        public string Result {
+        public bool Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
+                return ((bool)(this.results[0]));
+            }
+        }
+        
+        /// <remarks/>
+        public string strResponse {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[1]));
             }
         }
     }
