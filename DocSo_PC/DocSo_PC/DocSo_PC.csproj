@@ -31,7 +31,7 @@
     <PublisherName>T.CNTT</PublisherName>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>326</ApplicationRevision>
+    <ApplicationRevision>329</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -231,6 +231,7 @@
     <Compile Include="DAL\MaHoa\CToTrinh.cs" />
     <Compile Include="DAL\QuanTri\CMayDS.cs" />
     <Compile Include="DAL\sDHN\CsDHN.cs" />
+    <Compile Include="DAL\ToTruong\CDHNDienTu.cs" />
     <Compile Include="DAL\ToTruong\CDocSoTruoc.cs" />
     <Compile Include="DAL\VanThu\CCongVanDen.cs" />
     <Compile Include="DAL\VanThu\ImageUtil.cs" />
@@ -408,6 +409,12 @@
     </Compile>
     <Compile Include="GUI\sDHN\frmDSsDHN.Designer.cs">
       <DependentUpon>frmDSsDHN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ToTruong\frmDHNDienTu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ToTruong\frmDHNDienTu.Designer.cs">
+      <DependentUpon>frmDHNDienTu.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ToTruong\frmXemLichSuXuLy.cs">
       <SubType>Form</SubType>
@@ -640,6 +647,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\sDHN\frmDSsDHN.resx">
       <DependentUpon>frmDSsDHN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ToTruong\frmDHNDienTu.resx">
+      <DependentUpon>frmDHNDienTu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ToTruong\frmXemLichSuXuLy.resx">
       <DependentUpon>frmXemLichSuXuLy.cs</DependentUpon>

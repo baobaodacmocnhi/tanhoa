@@ -321,6 +321,17 @@ namespace DocSo_PC
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuDHNDienTu_Click(object sender, EventArgs e)
+        {
+            if (CNguoiDung.CheckQuyen("mnuDHNDienTu", "Xem"))
+            {
+                frmDHNDienTu frm = new frmDHNDienTu();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion
 
         #region Mã Hóa
@@ -440,6 +451,10 @@ namespace DocSo_PC
             else
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        
+
+        
 
         
 
