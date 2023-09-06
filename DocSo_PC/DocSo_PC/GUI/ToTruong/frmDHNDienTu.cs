@@ -25,7 +25,7 @@ namespace DocSo_PC.GUI.ToTruong
         {
             dgvDanhSach.AutoGenerateColumns = false;
             cmbDanhBo.DataSource = _cDHNDienTu.getDS();
-            cmbDanhBo.ValueMember = "TableName";
+            cmbDanhBo.ValueMember = "DanhBo";
             cmbDanhBo.DisplayMember = "DanhBo";
         }
 

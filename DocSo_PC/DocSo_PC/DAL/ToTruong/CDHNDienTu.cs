@@ -13,9 +13,10 @@ namespace DocSo_PC.DAL.ToTruong
             return _cDAL.ExecuteQuery_DataTable("SELECT * FROM [sDHN].[dbo].[sDHN_PMAC]");
         }
 
-        public DataTable getDS_ChiSo(string TableName, DateTime FromDate, DateTime ToDate)
+        public DataTable getDS_ChiSo(string DanhBo, DateTime FromDate, DateTime ToDate)
         {
-            return _cDAL.ExecuteQuery_DataTable("select CreateDate=TimeStamp,ChiSo=Value FROM [SERVER14].[viwater].[dbo].[" + TableName + "] where CAST(TimeStamp as date)>='" + FromDate.ToString("yyyyMMdd") + "' and CAST(TimeStamp as date)<='" + ToDate.ToString("yyyyMMdd") + "'");
+            DataTable dt = _cDAL.ExecuteQuery_DataTable("SELECT * FROM [sDHN].[dbo].[sDHN_PMAC] where DanhBo='" + DanhBo + "'");
+            return _cDAL.ExecuteQuery_DataTable("select CreateDate=t1.TimeStamp,ChiSo=cast(t1.Value-(select t2.Value FROM [SERVER14].[viwater].[dbo].[" + dt.Rows[0]["TableNameNguoc"].ToString() + "] t2 where t2.TimeStamp=t1.TimeStamp) as decimal(10,0)) FROM [SERVER14].[viwater].[dbo].[" + dt.Rows[0]["TableName"].ToString() + "] t1 where CAST(TimeStamp as date)>='" + FromDate.ToString("yyyyMMdd") + "' and CAST(TimeStamp as date)<='" + ToDate.ToString("yyyyMMdd") + "'");
         }
 
     }
