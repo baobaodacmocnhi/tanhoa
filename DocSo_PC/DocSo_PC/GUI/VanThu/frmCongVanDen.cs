@@ -252,6 +252,7 @@ namespace DocSo_PC.GUI.VanThu
                                             danhbohuy.NGAYKIEMDINH = danhbo.NGAYKIEMDINH;
                                             danhbohuy.SODHN = danhbo.SODHN;
                                             danhbohuy.MSTHUE = danhbo.MSTHUE;
+                                            danhbohuy.MADMA = danhbo.MADMA;
                                             danhbohuy.CHISOKYTRUOC = danhbo.CHISOKYTRUOC;
                                             CHDB_Phieu phieuhuy = _cThuongVu.getPhieuHuy(en.IDCT.Value);
                                             if (phieuhuy != null)
