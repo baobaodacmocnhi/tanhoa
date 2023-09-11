@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbNoiChuyen_LichSuChuyenDon = new System.Windows.Forms.ComboBox();
+            this.label27 = new System.Windows.Forms.Label();
             this.chkNguoiLap = new System.Windows.Forms.CheckBox();
             this.cmbNoiNhan_LichSuChuyenDon = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -138,6 +140,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cmbNoiChuyen_LichSuChuyenDon);
+            this.groupBox1.Controls.Add(this.label27);
             this.groupBox1.Controls.Add(this.chkNguoiLap);
             this.groupBox1.Controls.Add(this.cmbNoiNhan_LichSuChuyenDon);
             this.groupBox1.Controls.Add(this.label9);
@@ -149,10 +153,31 @@
             this.groupBox1.Controls.Add(this.panel_KhoangThoiGian_LichSuChuyenDon);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(829, 89);
+            this.groupBox1.Size = new System.Drawing.Size(839, 89);
             this.groupBox1.TabIndex = 29;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lịch Sử Chuyển Đơn (ngày chuyển)";
+            // 
+            // cmbNoiChuyen_LichSuChuyenDon
+            // 
+            this.cmbNoiChuyen_LichSuChuyenDon.FormattingEnabled = true;
+            this.cmbNoiChuyen_LichSuChuyenDon.Items.AddRange(new object[] {
+            "",
+            "Số Công Văn",
+            "Ngày"});
+            this.cmbNoiChuyen_LichSuChuyenDon.Location = new System.Drawing.Point(561, 25);
+            this.cmbNoiChuyen_LichSuChuyenDon.Name = "cmbNoiChuyen_LichSuChuyenDon";
+            this.cmbNoiChuyen_LichSuChuyenDon.Size = new System.Drawing.Size(187, 24);
+            this.cmbNoiChuyen_LichSuChuyenDon.TabIndex = 44;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(478, 30);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(77, 16);
+            this.label27.TabIndex = 43;
+            this.label27.Text = "Nơi Chuyển";
             // 
             // chkNguoiLap
             // 
@@ -171,15 +196,15 @@
             "",
             "Số Công Văn",
             "Ngày"});
-            this.cmbNoiNhan_LichSuChuyenDon.Location = new System.Drawing.Point(539, 31);
+            this.cmbNoiNhan_LichSuChuyenDon.Location = new System.Drawing.Point(561, 55);
             this.cmbNoiNhan_LichSuChuyenDon.Name = "cmbNoiNhan_LichSuChuyenDon";
-            this.cmbNoiNhan_LichSuChuyenDon.Size = new System.Drawing.Size(200, 24);
+            this.cmbNoiNhan_LichSuChuyenDon.Size = new System.Drawing.Size(187, 24);
             this.cmbNoiNhan_LichSuChuyenDon.TabIndex = 41;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(469, 36);
+            this.label9.Location = new System.Drawing.Point(478, 60);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(64, 16);
             this.label9.TabIndex = 40;
@@ -204,6 +229,7 @@
             this.cmbTimTheo_LichSuChuyenDon.Name = "cmbTimTheo_LichSuChuyenDon";
             this.cmbTimTheo_LichSuChuyenDon.Size = new System.Drawing.Size(100, 24);
             this.cmbTimTheo_LichSuChuyenDon.TabIndex = 37;
+            this.cmbTimTheo_LichSuChuyenDon.Visible = false;
             this.cmbTimTheo_LichSuChuyenDon.SelectedIndexChanged += new System.EventHandler(this.cmbTimTheo_LichSuChuyenDon_SelectedIndexChanged);
             // 
             // label3
@@ -223,10 +249,11 @@
             this.label4.Size = new System.Drawing.Size(69, 16);
             this.label4.TabIndex = 36;
             this.label4.Text = "Tìm Theo:";
+            this.label4.Visible = false;
             // 
             // btnBaoCao_LichSuChuyenDon
             // 
-            this.btnBaoCao_LichSuChuyenDon.Location = new System.Drawing.Point(745, 30);
+            this.btnBaoCao_LichSuChuyenDon.Location = new System.Drawing.Point(754, 27);
             this.btnBaoCao_LichSuChuyenDon.Name = "btnBaoCao_LichSuChuyenDon";
             this.btnBaoCao_LichSuChuyenDon.Size = new System.Drawing.Size(75, 25);
             this.btnBaoCao_LichSuChuyenDon.TabIndex = 25;
@@ -242,9 +269,8 @@
             this.panel_KhoangThoiGian_LichSuChuyenDon.Controls.Add(this.label2);
             this.panel_KhoangThoiGian_LichSuChuyenDon.Location = new System.Drawing.Point(259, 21);
             this.panel_KhoangThoiGian_LichSuChuyenDon.Name = "panel_KhoangThoiGian_LichSuChuyenDon";
-            this.panel_KhoangThoiGian_LichSuChuyenDon.Size = new System.Drawing.Size(209, 60);
+            this.panel_KhoangThoiGian_LichSuChuyenDon.Size = new System.Drawing.Size(217, 60);
             this.panel_KhoangThoiGian_LichSuChuyenDon.TabIndex = 24;
-            this.panel_KhoangThoiGian_LichSuChuyenDon.Visible = false;
             // 
             // dateTu_LichSuChuyenDon
             // 
@@ -252,7 +278,7 @@
             this.dateTu_LichSuChuyenDon.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTu_LichSuChuyenDon.Location = new System.Drawing.Point(80, 5);
             this.dateTu_LichSuChuyenDon.Name = "dateTu_LichSuChuyenDon";
-            this.dateTu_LichSuChuyenDon.Size = new System.Drawing.Size(121, 22);
+            this.dateTu_LichSuChuyenDon.Size = new System.Drawing.Size(130, 22);
             this.dateTu_LichSuChuyenDon.TabIndex = 13;
             // 
             // dateDen_LichSuChuyenDon
@@ -261,7 +287,7 @@
             this.dateDen_LichSuChuyenDon.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateDen_LichSuChuyenDon.Location = new System.Drawing.Point(80, 33);
             this.dateDen_LichSuChuyenDon.Name = "dateDen_LichSuChuyenDon";
-            this.dateDen_LichSuChuyenDon.Size = new System.Drawing.Size(121, 22);
+            this.dateDen_LichSuChuyenDon.Size = new System.Drawing.Size(130, 22);
             this.dateDen_LichSuChuyenDon.TabIndex = 14;
             // 
             // label1
@@ -1170,5 +1196,7 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Button btnBaoCao_DonChuyenDe;
+        private System.Windows.Forms.ComboBox cmbNoiChuyen_LichSuChuyenDon;
+        private System.Windows.Forms.Label label27;
     }
 }

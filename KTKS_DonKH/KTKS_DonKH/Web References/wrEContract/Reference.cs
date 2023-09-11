@@ -37,6 +37,8 @@ namespace KTKS_DonKH.wrEContract {
         
         private System.Threading.SendOrPostCallback sendEContractOperationCompleted;
         
+        private System.Threading.SendOrPostCallback editEContractOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -86,6 +88,9 @@ namespace KTKS_DonKH.wrEContract {
         
         /// <remarks/>
         public event sendEContractCompletedEventHandler sendEContractCompleted;
+        
+        /// <remarks/>
+        public event editEContractCompletedEventHandler editEContractCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getAccess_token", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -412,6 +417,40 @@ namespace KTKS_DonKH.wrEContract {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/editEContract", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool editEContract(string MaDon, string SHS, string checksum, out string strResponse) {
+            object[] results = this.Invoke("editEContract", new object[] {
+                        MaDon,
+                        SHS,
+                        checksum});
+            strResponse = ((string)(results[1]));
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void editEContractAsync(string MaDon, string SHS, string checksum) {
+            this.editEContractAsync(MaDon, SHS, checksum, null);
+        }
+        
+        /// <remarks/>
+        public void editEContractAsync(string MaDon, string SHS, string checksum, object userState) {
+            if ((this.editEContractOperationCompleted == null)) {
+                this.editEContractOperationCompleted = new System.Threading.SendOrPostCallback(this.OneditEContractOperationCompleted);
+            }
+            this.InvokeAsync("editEContract", new object[] {
+                        MaDon,
+                        SHS,
+                        checksum}, this.editEContractOperationCompleted, userState);
+        }
+        
+        private void OneditEContractOperationCompleted(object arg) {
+            if ((this.editEContractCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.editEContractCompleted(this, new editEContractCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -537,6 +576,40 @@ namespace KTKS_DonKH.wrEContract {
         private object[] results;
         
         internal sendEContractCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+        
+        /// <remarks/>
+        public string strResponse {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[1]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void editEContractCompletedEventHandler(object sender, editEContractCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class editEContractCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal editEContractCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

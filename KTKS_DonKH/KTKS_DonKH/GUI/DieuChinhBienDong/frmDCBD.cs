@@ -778,7 +778,17 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         }
                         //else
                         //scope.Complete();
-                        MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        string error = "";
+                        bool flag = false;
+                        if (ctdcbd.ThongTin.Contains("Địa Chỉ"))
+                        {
+                            wrEContract.wsEContract ws = new wrEContract.wsEContract();
+                            flag = ws.editEContract(ctdcbd.DCBD.MaDonMoi.Value.ToString(), "", "tanho@2022", out error);
+                        }
+                        if (flag)
+                            MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else
+                            MessageBox.Show("Lỗi EContract " + error, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         Clear();
                     }
                 }
@@ -994,8 +1004,18 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             _cDCBD.xoa_NhaTro(_ctdcbd.DanhBo);
                         if (_cDCBD.SuaDCBD(_ctdcbd))
                         {
+                            string error = "";
+                            bool flag = false;
+                            if (_ctdcbd.ThongTin.Contains("Địa Chỉ"))
+                            {
+                                wrEContract.wsEContract ws = new wrEContract.wsEContract();
+                                flag = ws.editEContract(_ctdcbd.DCBD.MaDonMoi.Value.ToString(), "", "tanho@2022", out error);
+                            }
+                            if (flag)
+                                MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            else
+                                MessageBox.Show("Lỗi EContract " + error, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             Clear();
-                            MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             txtMaDonCu.Focus();
                         }
                     }
@@ -1027,7 +1047,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
                         using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                         {
-                            DonTu_LichSu dtls = _cDonTu.get_LichSu("DCBD_ChiTietBienDong", (int)_ctdcbd.MaCTDCBD,_ctdcbd.CreateBy.Value);
+                            DonTu_LichSu dtls = _cDonTu.get_LichSu("DCBD_ChiTietBienDong", (int)_ctdcbd.MaCTDCBD, _ctdcbd.CreateBy.Value);
                             if (dtls != null)
                             {
                                 _cDonTu.Xoa_LichSu(dtls, true);

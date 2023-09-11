@@ -1662,6 +1662,54 @@ namespace KTKS_DonKH.DAL.DonTu
             }
         }
 
+        public DataTable getDS_LichSu(DateTime FromCreateDate, DateTime ToCreateDate, string NoiChuyen, string NoiNhan)
+        {
+            var query = from item in db.DonTu_LichSus
+                        join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                        where item.NgayChuyen.Value >= FromCreateDate && item.NgayChuyen.Value <= ToCreateDate && item.ID_NoiChuyen == Convert.ToInt32(NoiChuyen) && item.ID_NoiNhan == Convert.ToInt32(NoiNhan)
+                        orderby item.NgayChuyen descending, item.ID descending
+                        select new
+                        {
+                            item.ID,
+                            item.NgayChuyen,
+                            item.NoiChuyen,
+                            item.NoiNhan,
+                            item.KTXM,
+                            item.NoiDung,
+                            CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                            MaDon = itemDon.MaDon,
+                            MaDonChiTiet = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
+                            itemDon.DanhBo,
+                            itemDon.DiaChi,
+                            NoiDungDon = itemDon.DonTu.Name_NhomDon != "" ? itemDon.DonTu.Name_NhomDon : itemDon.DonTu.VanDeKhac,
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable getDS_LichSu(int CreateBy, DateTime FromCreateDate, DateTime ToCreateDate, string NoiChuyen, string NoiNhan)
+        {
+            var query = from item in db.DonTu_LichSus
+                        join itemDon in db.DonTu_ChiTiets on new { item.MaDon, item.STT } equals new { itemDon.MaDon, itemDon.STT }
+                        where item.NgayChuyen.Value >= FromCreateDate && item.NgayChuyen.Value <= ToCreateDate && item.CreateBy == CreateBy && item.ID_NoiChuyen == Convert.ToInt32(NoiChuyen) && item.ID_NoiNhan == Convert.ToInt32(NoiNhan)
+                        orderby item.NgayChuyen descending, item.ID descending
+                        select new
+                        {
+                            item.ID,
+                            item.NgayChuyen,
+                            item.NoiChuyen,
+                            item.NoiNhan,
+                            item.KTXM,
+                            item.NoiDung,
+                            CreateBy = db.Users.SingleOrDefault(itemU => itemU.MaU == item.CreateBy).HoTen,
+                            MaDon = itemDon.MaDon,
+                            MaDonChiTiet = itemDon.DonTu.DonTu_ChiTiets.Count() == 1 ? itemDon.MaDon.ToString() : itemDon.MaDon + "." + itemDon.STT,
+                            itemDon.DanhBo,
+                            itemDon.DiaChi,
+                            NoiDungDon = itemDon.DonTu.Name_NhomDon != "" ? itemDon.DonTu.Name_NhomDon : itemDon.DonTu.VanDeKhac,
+                        };
+            return LINQToDataTable(query);
+        }
+
         public DataTable getDS_LichSu(string KyHieuTo, string SoCongVan, int ID_NoiNhan)
         {
             switch (KyHieuTo)
