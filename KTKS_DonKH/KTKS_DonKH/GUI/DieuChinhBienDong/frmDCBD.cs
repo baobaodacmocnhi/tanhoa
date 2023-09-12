@@ -784,11 +784,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         {
                             wrEContract.wsEContract ws = new wrEContract.wsEContract();
                             flag = ws.editEContract(ctdcbd.DCBD.MaDonMoi.Value.ToString(), "", "tanho@2022", out error);
+                            if (flag)
+                                MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            else
+                                MessageBox.Show("Lỗi EContract " + error, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                        if (flag)
-                            MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         else
-                            MessageBox.Show("Lỗi EContract " + error, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear();
                     }
                 }
@@ -1010,11 +1012,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             {
                                 wrEContract.wsEContract ws = new wrEContract.wsEContract();
                                 flag = ws.editEContract(_ctdcbd.DCBD.MaDonMoi.Value.ToString(), "", "tanho@2022", out error);
+                                if (flag)
+                                    MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                else
+                                    MessageBox.Show("Lỗi EContract " + error, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
-                            if (flag)
-                                MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             else
-                                MessageBox.Show("Lỗi EContract " + error, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Clear();
                             txtMaDonCu.Focus();
                         }

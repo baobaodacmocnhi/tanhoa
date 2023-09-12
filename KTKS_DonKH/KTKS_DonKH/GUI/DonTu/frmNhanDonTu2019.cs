@@ -1715,8 +1715,9 @@ namespace KTKS_DonKH.GUI.DonTu
                         DataTable dtHDDT = _cTTKH.ExecuteQuery_DataTable("select * from Zalo_EContract_ChiTiet where MaDon=" + _dontu.MaDon.ToString() + " order by CreateDate desc");
                         if (dtHDDT != null && dtHDDT.Rows.Count > 0)
                         {
-                            if (MessageBox.Show("Mã đơn đã tạo EContract, bạn có muốn tạo thêm không?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                            //if (MessageBox.Show("Mã đơn đã tạo EContract, bạn có muốn tạo thêm không?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                             {
+                                MessageBox.Show("Mã đơn đã tạo EContract", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
                         }
