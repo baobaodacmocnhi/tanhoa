@@ -95,7 +95,7 @@ namespace ThuTien.DAL.HanhThu
                 if (Loai == "CQ")
                 {
                     var query = from itemQT in _db.TT_QuetTams
-                                join itemHD in _db.HOADONs on itemQT.SoHoaDon equals itemHD.SOHOADON
+                                join itemHD in _db.HOADONs on itemQT.MaHD equals itemHD.ID_HOADON
                                 join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                                 from itemtableND in tableND.DefaultIfEmpty()
                                 where itemQT.CreateDate.Value.Date == CreatedDate.Date && itemQT.CreateBy == MaNV && itemHD.GB > 20
@@ -160,7 +160,7 @@ namespace ThuTien.DAL.HanhThu
                 if (Loai == "CQ")
                 {
                     var query = from itemQT in _db.TT_QuetTams
-                                join itemHD in _db.HOADONs on itemQT.SoHoaDon equals itemHD.SOHOADON
+                                join itemHD in _db.HOADONs on itemQT.MaHD equals itemHD.ID_HOADON
                                 join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                                 from itemtableND in tableND.DefaultIfEmpty()
                                 where itemQT.CreateBy == MaNV && itemHD.GB > 20
@@ -193,7 +193,7 @@ namespace ThuTien.DAL.HanhThu
                     if (Loai == "")
                     {
                         var query = from itemQT in _db.TT_QuetTams
-                                    join itemHD in _db.HOADONs on itemQT.SoHoaDon equals itemHD.SOHOADON
+                                    join itemHD in _db.HOADONs on itemQT.MaHD equals itemHD.ID_HOADON
                                     join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                                     from itemtableND in tableND.DefaultIfEmpty()
                                     where itemQT.CreateBy == MaNV

@@ -2789,11 +2789,11 @@ namespace ThuTien.DAL.TongHop
             //            };
             //return LINQToDataTable(query);
             return ExecuteQuery_DataTable("select Ky=CONVERT(varchar(2),Ky)+'/'+CONVERT(varchar(4),NAM),DanhBo=hd.DANHBA"
-+ " ,hd.TONGCONG,NGAYGIAITRACH,dc.SoPhieu,DangNgan_ChuyenKhoan,DangNgan_Quay"
-+ " from DIEUCHINH_HD dc,HOADON hd"
-+ " where dc.FK_HOADON=hd.ID_HOADON and MaNV_DangNgan is not null"
-+ " and CAST(NGAYGIAITRACH as date)>='" + FromNgayDangNgan.ToString("yyyyMMdd") + "' and CAST(NGAYGIAITRACH as date)<='" + ToNgayDangNgan.ToString("yyyyMMdd") + "'"
-+ " and CAST(NGAY_DC as date)>='20220701' order by CAST(NGAYGIAITRACH as date)");
+                                    + " ,hd.TONGCONG,NGAYGIAITRACH,dc.SoPhieu,DangNgan_ChuyenKhoan,DangNgan_Quay"
+                                    + " from DIEUCHINH_HD dc,HOADON hd"
+                                    + " where dc.FK_HOADON=hd.ID_HOADON and MaNV_DangNgan is not null"
+                                    + " and CAST(NGAYGIAITRACH as date)>='" + FromNgayDangNgan.ToString("yyyyMMdd") + "' and CAST(NGAYGIAITRACH as date)<='" + ToNgayDangNgan.ToString("yyyyMMdd") + "'"
+                                    + " and CAST(NGAY_DC as date)>='20220701' order by CAST(NGAYGIAITRACH as date)");
         }
 
         public DataTable getNam_HDDC_Cho_DangNgan_va_HD0()
