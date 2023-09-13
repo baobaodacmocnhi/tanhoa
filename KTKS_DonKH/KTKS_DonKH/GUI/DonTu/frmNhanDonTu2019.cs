@@ -562,6 +562,32 @@ namespace KTKS_DonKH.GUI.DonTu
                             entityCT.ChanHoaDon_Nam = int.Parse(Kys[0]);
                             entityCT.ChanHoaDon_Ngay = DateTime.Now;
                         }
+                        if (txtHoTenMoi.Text.Trim() != "")
+                        {
+                            //cá nhân
+                            if (txtMST.Text.Trim() == "")
+                            {
+                                if (txtCCCD.Text.Trim() == "")
+                                {
+                                    MessageBox.Show("Sai số cccd", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                                if (txtDienThoaiMoi.Text.Trim() == "" || txtDienThoaiMoi.Text.Trim().Length != 10)
+                                {
+                                    MessageBox.Show("Sai số điện thoại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+
+                            }//doanh nghiệp
+                            else
+                            {
+                                if (txtEmail.Text.Trim() == "" || !txtEmail.Text.Contains("@"))
+                                {
+                                    MessageBox.Show("Sai email", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                            }
+                        }
                         entityCT.HoTenMoi = txtHoTenMoi.Text.Trim();
                         entityCT.CCCD = txtCCCD.Text.Trim();
                         entityCT.NgayCap = txtNgayCap.Text.Trim();
@@ -687,7 +713,7 @@ namespace KTKS_DonKH.GUI.DonTu
                             else
                                 entity.ID_NhomDon_PKH += ";" + chkcmbDieuChinh.Properties.Items[i].Value.ToString();
                             if (chkcmbDieuChinh.Properties.Items[i].Value.ToString() == "9")
-                                entity.NgayHenGiaiQuyet = "Quý khách nhận lại Hợp Đồng vào ngày " + _cDonTu.GetToDate(DateTime.Now, 30).ToString("dd/MM/yyyy") + ". Quá thời hạn trên, Khách Hàng không liên hệ nhận Hợp Đồng; mọi Khiếu Nại về sau sẽ không được giải quyết. ";
+                                entity.NgayHenGiaiQuyet = "Quý khách nhận thông báo thời hạn hiệu lực Hợp đồng điện tử qua Zalo OA Tân Hòa dự kiến vào ngày " + _cDonTu.GetToDate(DateTime.Now, 30).ToString("dd/MM/yyyy") + ". ";
                         }
                     for (int i = 0; i < chkcmbKhieuNai.Properties.Items.Count; i++)
                         if (chkcmbKhieuNai.Properties.Items[i].CheckState == CheckState.Checked)

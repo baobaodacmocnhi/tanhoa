@@ -780,7 +780,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         //scope.Complete();
                         string error = "";
                         bool flag = false;
-                        if (ctdcbd.ThongTin.Contains("Địa Chỉ"))
+                        if (ctdcbd.ThongTin.Contains("Địa Chỉ") && _dontu_ChiTiet.CreateDate.Value.Date >= new DateTime(2023, 09, 11))
                         {
                             wrEContract.wsEContract ws = new wrEContract.wsEContract();
                             flag = ws.editEContract(ctdcbd.DCBD.MaDonMoi.Value.ToString(), "", "tanho@2022", out error);
@@ -1008,7 +1008,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         {
                             string error = "";
                             bool flag = false;
-                            if (_ctdcbd.ThongTin.Contains("Địa Chỉ"))
+                            if (_ctdcbd.ThongTin.Contains("Địa Chỉ") && _dontu_ChiTiet.CreateDate.Value.Date >= new DateTime(2023, 09, 11))
                             {
                                 wrEContract.wsEContract ws = new wrEContract.wsEContract();
                                 flag = ws.editEContract(_ctdcbd.DCBD.MaDonMoi.Value.ToString(), "", "tanho@2022", out error);
