@@ -78,11 +78,6 @@ namespace DocSo_PC.GUI.VanThu
         {
             try
             {
-                if (dgvDuyet["TableName_Duyet", e.RowIndex].Value.ToString() == "")
-                {
-                    MessageBox.Show("Không có File", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
                 Clear_ButPhe();
                 _enCVD = _cCVD.get(int.Parse(dgvDuyet["ID_Duyet", e.RowIndex].Value.ToString()));
                 if (_enCVD != null)
@@ -100,23 +95,31 @@ namespace DocSo_PC.GUI.VanThu
                     if (_enCVD.DaXuLy_Ngay != null)
                         txtDaXuLy_Ngay.Text = _enCVD.DaXuLy_Ngay.Value.ToString();
                 }
-                _dtDuyet = _cThuongVu.getFile(dgvDuyet["TableName_Duyet", e.RowIndex].Value.ToString(), int.Parse(dgvDuyet["IDCT_Duyet", e.RowIndex].Value.ToString()));
-                if (_dtDuyet != null && _dtDuyet.Rows.Count > 0)
+                if (dgvDuyet["TableName_Duyet", e.RowIndex].Value.ToString() == "")
                 {
-                    int index = -1;
-                    for (int i = 0; i < _dtDuyet.Rows.Count; i++)
-                        if (_dtDuyet.Rows[i]["Type"].ToString().ToLower().Contains("pdf"))
-                            _cCVD.viewPDF((byte[])_dtDuyet.Rows[i]["File"]);
-                        else
-                            if (index == -1)
-                                index = i;
-                    if (index > -1)
+                    MessageBox.Show("Không có File", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //return;
+                }
+                else
+                {
+                    _dtDuyet = _cThuongVu.getFile(dgvDuyet["TableName_Duyet", e.RowIndex].Value.ToString(), int.Parse(dgvDuyet["IDCT_Duyet", e.RowIndex].Value.ToString()));
+                    if (_dtDuyet != null && _dtDuyet.Rows.Count > 0)
                     {
-                        pictureBox.Image = _cCVD.byteArrayToImage((byte[])_dtDuyet.Rows[index]["File"]);
-                        if (_dtDuyet.Rows.Count > 1)
+                        int index = -1;
+                        for (int i = 0; i < _dtDuyet.Rows.Count; i++)
+                            if (_dtDuyet.Rows[i]["Type"].ToString().ToLower().Contains("pdf"))
+                                _cCVD.viewPDF((byte[])_dtDuyet.Rows[i]["File"]);
+                            else
+                                if (index == -1)
+                                    index = i;
+                        if (index > -1)
                         {
-                            btnTruoc.Visible = true;
-                            btnSau.Visible = true;
+                            pictureBox.Image = _cCVD.byteArrayToImage((byte[])_dtDuyet.Rows[index]["File"]);
+                            if (_dtDuyet.Rows.Count > 1)
+                            {
+                                btnTruoc.Visible = true;
+                                btnSau.Visible = true;
+                            }
                         }
                     }
                 }
