@@ -780,17 +780,17 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         //scope.Complete();
                         string error = "";
                         bool flag = false;
-                        if (ctdcbd.ThongTin.Contains("Địa Chỉ") && _dontu_ChiTiet.CreateDate.Value.Date >= new DateTime(2023, 09, 11))
+                        if (ctdcbd.ThongTin.Contains("Tên") && _dontu_ChiTiet.CreateDate.Value.Date >= new DateTime(2023, 09, 11))
                         {
                             wrEContract.wsEContract ws = new wrEContract.wsEContract();
                             flag = ws.editEContract(ctdcbd.DCBD.MaDonMoi.Value.ToString(), "", "tanho@2022", out error);
                             if (flag)
-                                MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             else
                                 MessageBox.Show("Lỗi EContract " + error, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         else
-                            MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear();
                     }
                 }
@@ -1008,17 +1008,17 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         {
                             string error = "";
                             bool flag = false;
-                            if (_ctdcbd.ThongTin.Contains("Địa Chỉ") && _dontu_ChiTiet.CreateDate.Value.Date >= new DateTime(2023, 09, 11))
+                            if (_ctdcbd.ThongTin.Contains("Tên") && _dontu_ChiTiet.CreateDate.Value.Date >= new DateTime(2023, 09, 11))
                             {
                                 wrEContract.wsEContract ws = new wrEContract.wsEContract();
                                 flag = ws.editEContract(_ctdcbd.DCBD.MaDonMoi.Value.ToString(), "", "tanho@2022", out error);
                                 if (flag)
-                                    MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 else
                                     MessageBox.Show("Lỗi EContract " + error, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                             else
-                                MessageBox.Show("Thêm Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Clear();
                             txtMaDonCu.Focus();
                         }
