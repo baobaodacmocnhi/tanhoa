@@ -933,7 +933,7 @@ namespace KTKS_DonKH.GUI.DonTu
                                 else
                                     _dontu.ID_NhomDon_PKH += ";" + chkcmbDieuChinh.Properties.Items[i].Value.ToString();
                                 if (chkcmbDieuChinh.Properties.Items[i].Value.ToString() == "9")
-                                    _dontu.NgayHenGiaiQuyet = "Quý khách nhận lại Hợp Đồng vào ngày " + _cDonTu.GetToDate(_dontu.CreateDate.Value, 30).ToString("dd/MM/yyyy") + ". Quá thời hạn trên, Khách Hàng không liên hệ nhận Hợp Đồng; mọi Khiếu Nại về sau sẽ không được giải quyết";
+                                    _dontu.NgayHenGiaiQuyet = "Quý khách nhận thông báo thời hạn hiệu lực Hợp đồng điện tử qua Zalo OA Tân Hòa dự kiến vào ngày " + _cDonTu.GetToDate(DateTime.Now, 30).ToString("dd/MM/yyyy") + ". ";
                             }
                         for (int i = 0; i < chkcmbKhieuNai.Properties.Items.Count; i++)
                             if (chkcmbKhieuNai.Properties.Items[i].CheckState == CheckState.Checked)
