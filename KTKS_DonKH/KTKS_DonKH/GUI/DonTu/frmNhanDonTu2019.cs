@@ -1781,9 +1781,6 @@ namespace KTKS_DonKH.GUI.DonTu
                 {
                     if (_dontu != null)
                     {
-
-                        if (_dontu != null)
-                            _hoadon = _cThuTien.GetMoiNhat(_dontu.DonTu_ChiTiets.SingleOrDefault().DanhBo);
                         string error;
                         bool result = _wsEContract.sendEContract(_dontu.MaDon.ToString(), "", "tanho@2022", out error);
                         if (result)
@@ -1798,6 +1795,39 @@ namespace KTKS_DonKH.GUI.DonTu
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnXoaEContract_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
+                {
+                    if (_dontu != null)
+                    {
+                        string error;
+                        bool result = _wsEContract.cancelEContract(_dontu.MaDon.ToString(), "", "tanho@2022", out error);
+                        if (result)
+                        {
+                            result = _wsEContract.deleteEContract(_dontu.MaDon.ToString(), "", "tanho@2022", out error);
+                            if (result)
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            else
+                                MessageBox.Show("Thất bại lượt Xóa" + error, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                            MessageBox.Show("Thất bại lượt Hủy " + error, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                        MessageBox.Show("Chưa có mã đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {

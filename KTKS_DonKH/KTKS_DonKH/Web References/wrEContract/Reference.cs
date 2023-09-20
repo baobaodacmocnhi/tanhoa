@@ -39,6 +39,10 @@ namespace KTKS_DonKH.wrEContract {
         
         private System.Threading.SendOrPostCallback editEContractOperationCompleted;
         
+        private System.Threading.SendOrPostCallback cancelEContractOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback deleteEContractOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -91,6 +95,12 @@ namespace KTKS_DonKH.wrEContract {
         
         /// <remarks/>
         public event editEContractCompletedEventHandler editEContractCompleted;
+        
+        /// <remarks/>
+        public event cancelEContractCompletedEventHandler cancelEContractCompleted;
+        
+        /// <remarks/>
+        public event deleteEContractCompletedEventHandler deleteEContractCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getAccess_token", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -451,6 +461,74 @@ namespace KTKS_DonKH.wrEContract {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/cancelEContract", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool cancelEContract(string MaDon, string SHS, string checksum, out string strResponse) {
+            object[] results = this.Invoke("cancelEContract", new object[] {
+                        MaDon,
+                        SHS,
+                        checksum});
+            strResponse = ((string)(results[1]));
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void cancelEContractAsync(string MaDon, string SHS, string checksum) {
+            this.cancelEContractAsync(MaDon, SHS, checksum, null);
+        }
+        
+        /// <remarks/>
+        public void cancelEContractAsync(string MaDon, string SHS, string checksum, object userState) {
+            if ((this.cancelEContractOperationCompleted == null)) {
+                this.cancelEContractOperationCompleted = new System.Threading.SendOrPostCallback(this.OncancelEContractOperationCompleted);
+            }
+            this.InvokeAsync("cancelEContract", new object[] {
+                        MaDon,
+                        SHS,
+                        checksum}, this.cancelEContractOperationCompleted, userState);
+        }
+        
+        private void OncancelEContractOperationCompleted(object arg) {
+            if ((this.cancelEContractCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.cancelEContractCompleted(this, new cancelEContractCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/deleteEContract", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool deleteEContract(string MaDon, string SHS, string checksum, out string strResponse) {
+            object[] results = this.Invoke("deleteEContract", new object[] {
+                        MaDon,
+                        SHS,
+                        checksum});
+            strResponse = ((string)(results[1]));
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void deleteEContractAsync(string MaDon, string SHS, string checksum) {
+            this.deleteEContractAsync(MaDon, SHS, checksum, null);
+        }
+        
+        /// <remarks/>
+        public void deleteEContractAsync(string MaDon, string SHS, string checksum, object userState) {
+            if ((this.deleteEContractOperationCompleted == null)) {
+                this.deleteEContractOperationCompleted = new System.Threading.SendOrPostCallback(this.OndeleteEContractOperationCompleted);
+            }
+            this.InvokeAsync("deleteEContract", new object[] {
+                        MaDon,
+                        SHS,
+                        checksum}, this.deleteEContractOperationCompleted, userState);
+        }
+        
+        private void OndeleteEContractOperationCompleted(object arg) {
+            if ((this.deleteEContractCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.deleteEContractCompleted(this, new deleteEContractCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -610,6 +688,74 @@ namespace KTKS_DonKH.wrEContract {
         private object[] results;
         
         internal editEContractCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+        
+        /// <remarks/>
+        public string strResponse {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[1]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void cancelEContractCompletedEventHandler(object sender, cancelEContractCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class cancelEContractCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal cancelEContractCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+        
+        /// <remarks/>
+        public string strResponse {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[1]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void deleteEContractCompletedEventHandler(object sender, deleteEContractCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class deleteEContractCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal deleteEContractCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

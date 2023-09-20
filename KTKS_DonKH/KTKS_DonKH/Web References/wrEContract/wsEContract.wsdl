@@ -118,6 +118,40 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="cancelEContract">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MaDon" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SHS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="checksum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="cancelEContractResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="cancelEContractResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strResponse" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteEContract">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MaDon" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SHS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="checksum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteEContractResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="deleteEContractResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strResponse" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="getAccess_tokenSoapIn">
@@ -150,6 +184,18 @@
   <wsdl:message name="editEContractSoapOut">
     <wsdl:part name="parameters" element="tns:editEContractResponse" />
   </wsdl:message>
+  <wsdl:message name="cancelEContractSoapIn">
+    <wsdl:part name="parameters" element="tns:cancelEContract" />
+  </wsdl:message>
+  <wsdl:message name="cancelEContractSoapOut">
+    <wsdl:part name="parameters" element="tns:cancelEContractResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteEContractSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteEContract" />
+  </wsdl:message>
+  <wsdl:message name="deleteEContractSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteEContractResponse" />
+  </wsdl:message>
   <wsdl:portType name="wsEContractSoap">
     <wsdl:operation name="getAccess_token">
       <wsdl:input message="tns:getAccess_tokenSoapIn" />
@@ -170,6 +216,14 @@
     <wsdl:operation name="editEContract">
       <wsdl:input message="tns:editEContractSoapIn" />
       <wsdl:output message="tns:editEContractSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="cancelEContract">
+      <wsdl:input message="tns:cancelEContractSoapIn" />
+      <wsdl:output message="tns:cancelEContractSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteEContract">
+      <wsdl:input message="tns:deleteEContractSoapIn" />
+      <wsdl:output message="tns:deleteEContractSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="wsEContractSoap" type="tns:wsEContractSoap">
@@ -219,6 +273,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="cancelEContract">
+      <soap:operation soapAction="http://tempuri.org/cancelEContract" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteEContract">
+      <soap:operation soapAction="http://tempuri.org/deleteEContract" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="wsEContractSoap12" type="tns:wsEContractSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -260,6 +332,24 @@
     </wsdl:operation>
     <wsdl:operation name="editEContract">
       <soap12:operation soapAction="http://tempuri.org/editEContract" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelEContract">
+      <soap12:operation soapAction="http://tempuri.org/cancelEContract" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteEContract">
+      <soap12:operation soapAction="http://tempuri.org/deleteEContract" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

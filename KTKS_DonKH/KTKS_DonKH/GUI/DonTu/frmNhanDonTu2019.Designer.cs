@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label33 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -186,6 +186,7 @@
             this.btnImportQLDHN = new System.Windows.Forms.Button();
             this.btnTaoEContract = new System.Windows.Forms.Button();
             this.btnGuiEContract = new System.Windows.Forms.Button();
+            this.btnXoaEContract = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabTTKH.SuspendLayout();
@@ -232,7 +233,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(682, 317);
+            this.btnXoa.Location = new System.Drawing.Point(682, 333);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 25);
             this.btnXoa.TabIndex = 23;
@@ -242,7 +243,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(682, 286);
+            this.btnSua.Location = new System.Drawing.Point(682, 302);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 25);
             this.btnSua.TabIndex = 22;
@@ -252,7 +253,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(682, 255);
+            this.btnThem.Location = new System.Drawing.Point(682, 271);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 25);
             this.btnThem.TabIndex = 21;
@@ -621,6 +622,7 @@
             // 
             // btnXemTruocEContract
             // 
+            this.btnXemTruocEContract.ForeColor = System.Drawing.Color.Blue;
             this.btnXemTruocEContract.Location = new System.Drawing.Point(537, 87);
             this.btnXemTruocEContract.Name = "btnXemTruocEContract";
             this.btnXemTruocEContract.Size = new System.Drawing.Size(89, 40);
@@ -1219,7 +1221,7 @@
             // 
             // btnIn
             // 
-            this.btnIn.Location = new System.Drawing.Point(682, 348);
+            this.btnIn.Location = new System.Drawing.Point(682, 364);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(95, 25);
             this.btnIn.TabIndex = 24;
@@ -1241,14 +1243,14 @@
             // 
             this.dgvLichSuNhanDon.AllowUserToAddRows = false;
             this.dgvLichSuNhanDon.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvLichSuNhanDon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLichSuNhanDon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dgvLichSuNhanDon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLichSuNhanDon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TinhTrang,
@@ -1274,8 +1276,8 @@
             // MaDon
             // 
             this.MaDon.DataPropertyName = "MaDon";
-            dataGridViewCellStyle2.NullValue = null;
-            this.MaDon.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.NullValue = null;
+            this.MaDon.DefaultCellStyle = dataGridViewCellStyle14;
             this.MaDon.HeaderText = "Mã Đơn";
             this.MaDon.Name = "MaDon";
             this.MaDon.ReadOnly = true;
@@ -1423,14 +1425,14 @@
             // 
             this.dgvDanhBoTimKiem.AllowUserToAddRows = false;
             this.dgvDanhBoTimKiem.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDanhBoTimKiem.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDanhBoTimKiem.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dgvDanhBoTimKiem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDanhBoTimKiem.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn7,
@@ -1468,7 +1470,7 @@
             // chkKhongInBienNhan
             // 
             this.chkKhongInBienNhan.AutoSize = true;
-            this.chkKhongInBienNhan.Location = new System.Drawing.Point(682, 379);
+            this.chkKhongInBienNhan.Location = new System.Drawing.Point(682, 395);
             this.chkKhongInBienNhan.Name = "chkKhongInBienNhan";
             this.chkKhongInBienNhan.Size = new System.Drawing.Size(78, 20);
             this.chkKhongInBienNhan.TabIndex = 27;
@@ -1523,7 +1525,7 @@
             // chkGiuSoCongVan
             // 
             this.chkGiuSoCongVan.AutoSize = true;
-            this.chkGiuSoCongVan.Location = new System.Drawing.Point(682, 405);
+            this.chkGiuSoCongVan.Location = new System.Drawing.Point(682, 421);
             this.chkGiuSoCongVan.Name = "chkGiuSoCongVan";
             this.chkGiuSoCongVan.Size = new System.Drawing.Size(129, 20);
             this.chkGiuSoCongVan.TabIndex = 78;
@@ -1532,7 +1534,7 @@
             // 
             // btnImportExcel
             // 
-            this.btnImportExcel.Location = new System.Drawing.Point(705, 506);
+            this.btnImportExcel.Location = new System.Drawing.Point(705, 522);
             this.btnImportExcel.Name = "btnImportExcel";
             this.btnImportExcel.Size = new System.Drawing.Size(95, 25);
             this.btnImportExcel.TabIndex = 79;
@@ -1649,7 +1651,7 @@
             // 
             // txtPhieuChuyen
             // 
-            this.txtPhieuChuyen.Location = new System.Drawing.Point(705, 447);
+            this.txtPhieuChuyen.Location = new System.Drawing.Point(705, 463);
             this.txtPhieuChuyen.Name = "txtPhieuChuyen";
             this.txtPhieuChuyen.Size = new System.Drawing.Size(100, 22);
             this.txtPhieuChuyen.TabIndex = 96;
@@ -1657,7 +1659,7 @@
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(700, 428);
+            this.label30.Location = new System.Drawing.Point(700, 444);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(110, 16);
             this.label30.TabIndex = 95;
@@ -1665,7 +1667,7 @@
             // 
             // btnImportQLDHN
             // 
-            this.btnImportQLDHN.Location = new System.Drawing.Point(705, 475);
+            this.btnImportQLDHN.Location = new System.Drawing.Point(705, 491);
             this.btnImportQLDHN.Name = "btnImportQLDHN";
             this.btnImportQLDHN.Size = new System.Drawing.Size(105, 25);
             this.btnImportQLDHN.TabIndex = 97;
@@ -1675,7 +1677,8 @@
             // 
             // btnTaoEContract
             // 
-            this.btnTaoEContract.Location = new System.Drawing.Point(741, 178);
+            this.btnTaoEContract.ForeColor = System.Drawing.Color.Blue;
+            this.btnTaoEContract.Location = new System.Drawing.Point(741, 217);
             this.btnTaoEContract.Name = "btnTaoEContract";
             this.btnTaoEContract.Size = new System.Drawing.Size(89, 40);
             this.btnTaoEContract.TabIndex = 99;
@@ -1685,13 +1688,25 @@
             // 
             // btnGuiEContract
             // 
-            this.btnGuiEContract.Location = new System.Drawing.Point(741, 132);
+            this.btnGuiEContract.ForeColor = System.Drawing.Color.Blue;
+            this.btnGuiEContract.Location = new System.Drawing.Point(741, 171);
             this.btnGuiEContract.Name = "btnGuiEContract";
             this.btnGuiEContract.Size = new System.Drawing.Size(89, 40);
             this.btnGuiEContract.TabIndex = 100;
             this.btnGuiEContract.Text = "Gửi EContract";
             this.btnGuiEContract.UseVisualStyleBackColor = true;
             this.btnGuiEContract.Click += new System.EventHandler(this.btnGuiEContract_Click);
+            // 
+            // btnXoaEContract
+            // 
+            this.btnXoaEContract.ForeColor = System.Drawing.Color.Blue;
+            this.btnXoaEContract.Location = new System.Drawing.Point(741, 106);
+            this.btnXoaEContract.Name = "btnXoaEContract";
+            this.btnXoaEContract.Size = new System.Drawing.Size(89, 40);
+            this.btnXoaEContract.TabIndex = 101;
+            this.btnXoaEContract.Text = "Xóa EContract";
+            this.btnXoaEContract.UseVisualStyleBackColor = true;
+            this.btnXoaEContract.Click += new System.EventHandler(this.btnXoaEContract_Click);
             // 
             // frmNhanDonTu2019
             // 
@@ -1700,6 +1715,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1326, 586);
+            this.Controls.Add(this.btnXoaEContract);
             this.Controls.Add(this.btnGuiEContract);
             this.Controls.Add(this.btnTaoEContract);
             this.Controls.Add(this.btnImportQLDHN);
@@ -1931,5 +1947,6 @@
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.CheckBox chkCT_CVXuatHD;
         private System.Windows.Forms.Button btnGuiEContract;
+        private System.Windows.Forms.Button btnXoaEContract;
     }
 }
