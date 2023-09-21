@@ -120,7 +120,7 @@ namespace DocSo_PC.DAL.VanThu
 
         public DataTable getDS_DanhBo_XuLySoLieu(string DanhBo)
         {
-            return _cDAL.ExecuteQuery_DataTable("select * from CongVanDen where DanhBo='" + DanhBo + "' and DaXuLy=0 order by CreateDate desc");
+            return _cDAL.ExecuteQuery_DataTable("select * from CongVanDen where DanhBo='" + DanhBo + "' order by CreateDate desc");
         }
 
         public DataTable getDS_ButPhe_XuLySoLieu(string MaTo, string Nam, string Ky, string Dot, string ButPhe)

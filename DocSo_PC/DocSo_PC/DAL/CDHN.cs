@@ -449,8 +449,9 @@ namespace DocSo_PC.DAL
         {
             string sql = "select * from"
                     + " (select MLT=LOTRINH,DanhBo,HoTen,DiaChiDHN=SONHA+' '+TENDUONG,GiaBieu,Phuong=p.TENPHUONG,Quan=q.TENQUAN"
-                    + " ,Hieu=HieuDH,Co=CoDH,SoThan=SoThanDH,NgayKiemDinh,NgayThay"
+                    + " ,Hieu=HieuDH,Co=CoDH,SoThan=SoThanDH,NgayKiemDinh,NgayThay,ViTriDHN_Ngoai,ViTriDHN_Hop,ViTriDHN"
                     + " ,DiaChiHD=(select top 1 SO+' '+DUONG from HOADON_TA.dbo.HOADON where DANHBA=TB_DULIEUKHACHHANG.DANHBO order by ID_HOADON desc)"
+                    + " ,TieuThu=(select top 1 TieuThuMoi from DocSoTH.dbo.DocSo where DanhBa=TB_DULIEUKHACHHANG.DANHBO order by DocSoID desc)"
                     + " from TB_DULIEUKHACHHANG left join PHUONG p on (p.MAPHUONG=PHUONG and p.MAQUAN=QUAN) left join QUAN q on q.MAQUAN=QUAN";
             if (Dot == "Tất Cả")
                 Dot = "";

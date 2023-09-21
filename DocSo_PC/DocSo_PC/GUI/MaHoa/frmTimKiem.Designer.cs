@@ -50,11 +50,15 @@
             this.DiaChiHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Phuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Co = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Hieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Co = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoThan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayThay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayKiemDinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ViTriDHN_Ngoai = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ViTriDHN_Hop = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ViTriDHN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TieuThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
@@ -120,11 +124,15 @@
             this.DiaChiHD,
             this.Phuong,
             this.Quan,
-            this.Co,
             this.Hieu,
+            this.Co,
             this.SoThan,
             this.NgayThay,
-            this.NgayKiemDinh});
+            this.NgayKiemDinh,
+            this.ViTriDHN_Ngoai,
+            this.ViTriDHN_Hop,
+            this.ViTriDHN,
+            this.TieuThu});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -220,7 +228,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1255, 595);
+            this.tabPage2.Size = new System.Drawing.Size(1384, 595);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Bảng Tiêu Thụ";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -244,14 +252,13 @@
             this.HoTen.DataPropertyName = "HoTen";
             this.HoTen.HeaderText = "Khách Hàng";
             this.HoTen.Name = "HoTen";
-            this.HoTen.Width = 150;
             // 
             // GiaBieu
             // 
             this.GiaBieu.DataPropertyName = "GiaBieu";
             this.GiaBieu.HeaderText = "Giá Biểu";
             this.GiaBieu.Name = "GiaBieu";
-            this.GiaBieu.Width = 50;
+            this.GiaBieu.Width = 40;
             // 
             // DiaChiDHN
             // 
@@ -281,37 +288,72 @@
             this.Quan.Name = "Quan";
             this.Quan.Width = 50;
             // 
-            // Co
-            // 
-            this.Co.DataPropertyName = "Co";
-            this.Co.HeaderText = "Cỡ";
-            this.Co.Name = "Co";
-            this.Co.Width = 50;
-            // 
             // Hieu
             // 
             this.Hieu.DataPropertyName = "Hieu";
             this.Hieu.HeaderText = "Hiệu";
             this.Hieu.Name = "Hieu";
-            this.Hieu.Width = 80;
+            this.Hieu.Width = 50;
+            // 
+            // Co
+            // 
+            this.Co.DataPropertyName = "Co";
+            this.Co.HeaderText = "Cỡ";
+            this.Co.Name = "Co";
+            this.Co.Width = 30;
             // 
             // SoThan
             // 
             this.SoThan.DataPropertyName = "SoThan";
             this.SoThan.HeaderText = "Số Thân";
             this.SoThan.Name = "SoThan";
+            this.SoThan.Width = 80;
             // 
             // NgayThay
             // 
             this.NgayThay.DataPropertyName = "NgayThay";
             this.NgayThay.HeaderText = "Ngày Thay";
             this.NgayThay.Name = "NgayThay";
+            this.NgayThay.Width = 80;
             // 
             // NgayKiemDinh
             // 
             this.NgayKiemDinh.DataPropertyName = "NgayKiemDinh";
             this.NgayKiemDinh.HeaderText = "Ngày Kiểm Định";
             this.NgayKiemDinh.Name = "NgayKiemDinh";
+            this.NgayKiemDinh.Width = 80;
+            // 
+            // ViTriDHN_Ngoai
+            // 
+            this.ViTriDHN_Ngoai.DataPropertyName = "ViTriDHN_Ngoai";
+            this.ViTriDHN_Ngoai.HeaderText = "Ngoài";
+            this.ViTriDHN_Ngoai.Name = "ViTriDHN_Ngoai";
+            this.ViTriDHN_Ngoai.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ViTriDHN_Ngoai.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ViTriDHN_Ngoai.Width = 40;
+            // 
+            // ViTriDHN_Hop
+            // 
+            this.ViTriDHN_Hop.DataPropertyName = "ViTriDHN_Hop";
+            this.ViTriDHN_Hop.HeaderText = "Hộp";
+            this.ViTriDHN_Hop.Name = "ViTriDHN_Hop";
+            this.ViTriDHN_Hop.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ViTriDHN_Hop.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ViTriDHN_Hop.Width = 30;
+            // 
+            // ViTriDHN
+            // 
+            this.ViTriDHN.DataPropertyName = "ViTriDHN";
+            this.ViTriDHN.HeaderText = "Vị Trí";
+            this.ViTriDHN.Name = "ViTriDHN";
+            this.ViTriDHN.Width = 50;
+            // 
+            // TieuThu
+            // 
+            this.TieuThu.DataPropertyName = "TieuThu";
+            this.TieuThu.HeaderText = "Tiêu Thụ";
+            this.TieuThu.Name = "TieuThu";
+            this.TieuThu.Width = 50;
             // 
             // frmTimKiem
             // 
@@ -350,10 +392,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChiHD;
         private System.Windows.Forms.DataGridViewTextBoxColumn Phuong;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quan;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Co;
         private System.Windows.Forms.DataGridViewTextBoxColumn Hieu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Co;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoThan;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayThay;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayKiemDinh;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ViTriDHN_Ngoai;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ViTriDHN_Hop;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ViTriDHN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TieuThu;
     }
 }
