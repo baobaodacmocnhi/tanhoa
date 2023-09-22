@@ -24,6 +24,7 @@
       <Column Name="Name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="IDVanBan_ChiTiet" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Huy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="Loai" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
@@ -81,6 +82,7 @@
       <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="IDBamChi_ChiTiet" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Huy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="Loai" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
@@ -263,6 +265,7 @@
       <Column Name="Name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="IDCHDB_ChiTietCatHuy" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Huy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="Loai" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
@@ -340,6 +343,7 @@
       <Column Name="Name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="IDCHDB_ChiTietCatTam" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Huy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="Loai" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
@@ -448,6 +452,7 @@
       <Column Name="Name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="IDCHDB_Phieu" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Huy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="Loai" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
@@ -811,6 +816,7 @@
       <Column Name="Name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="IDDCBD_ChiTietBienDong" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Huy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="Loai" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
@@ -922,6 +928,7 @@
       <Column Name="Name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="IDDCBD_ChiTietHoaDon" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Huy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="Loai" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
@@ -1197,6 +1204,7 @@
       <Column Name="Name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="IDDongNuoc_ChiTiet" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Huy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="Loai" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
@@ -1469,6 +1477,7 @@
       <Column Name="NgayCap" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Column Name="DCThuongTru" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
       <Column Name="DCHienNay" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="DienThoaiMoi" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Fax" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="STK" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
@@ -1664,6 +1673,7 @@
       <Column Name="Name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="IDGianLan_ChiTiet" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Huy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="Loai" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
@@ -1890,6 +1900,7 @@
       <Column Name="Name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="IDKTXM_ChiTiet" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Huy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="Loai" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
@@ -2366,6 +2377,7 @@
       <Column Name="Name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="IDThuMoi_ChiTiet" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Huy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="Loai" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
@@ -2449,6 +2461,7 @@
       <Column Name="Name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="IDTTTL_ChiTiet" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Huy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="Loai" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
@@ -2606,6 +2619,7 @@
       <Column Name="Name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="IDToTrinh_ChiTiet" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Huy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="Loai" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
@@ -2687,6 +2701,7 @@
       <Column Name="Name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="Hinh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="IDTruyThuTienNuoc_ChiTiet" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Huy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="Loai" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />

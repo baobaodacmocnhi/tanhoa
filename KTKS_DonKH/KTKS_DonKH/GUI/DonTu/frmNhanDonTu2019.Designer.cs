@@ -869,7 +869,6 @@
             this.txtDienThoai.Name = "txtDienThoai";
             this.txtDienThoai.Size = new System.Drawing.Size(80, 22);
             this.txtDienThoai.TabIndex = 5;
-            this.txtDienThoai.Leave += new System.EventHandler(this.txtDienThoai_Leave);
             // 
             // label11
             // 

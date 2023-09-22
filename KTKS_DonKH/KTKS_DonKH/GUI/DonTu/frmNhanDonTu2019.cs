@@ -180,7 +180,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     txtNgayCap.Text = entity.DonTu_ChiTiets.SingleOrDefault().NgayCap;
                     txtDCThuongTru.Text = entity.DonTu_ChiTiets.SingleOrDefault().DCThuongTru;
                     txtDCHienNay.Text = entity.DonTu_ChiTiets.SingleOrDefault().DCHienNay;
-                    txtDienThoaiMoi.Text = entity.DonTu_ChiTiets.SingleOrDefault().DienThoai;
+                    txtDienThoaiMoi.Text = entity.DonTu_ChiTiets.SingleOrDefault().DienThoaiMoi;
                     txtFax.Text = entity.DonTu_ChiTiets.SingleOrDefault().Fax;
                     txtEmail.Text = entity.DonTu_ChiTiets.SingleOrDefault().Email;
                     txtSTK.Text = entity.DonTu_ChiTiets.SingleOrDefault().STK;
@@ -593,7 +593,7 @@ namespace KTKS_DonKH.GUI.DonTu
                         entityCT.NgayCap = txtNgayCap.Text.Trim();
                         entityCT.DCThuongTru = txtDCThuongTru.Text.Trim();
                         entityCT.DCHienNay = txtDCHienNay.Text.Trim();
-                        entityCT.DienThoai = txtDienThoaiMoi.Text.Trim();
+                        entityCT.DienThoaiMoi = txtDienThoaiMoi.Text.Trim();
                         entityCT.Fax = txtFax.Text.Trim();
                         entityCT.Email = txtEmail.Text.Trim();
                         entityCT.STK = txtSTK.Text.Trim();
@@ -877,7 +877,7 @@ namespace KTKS_DonKH.GUI.DonTu
                             _dontu.DonTu_ChiTiets.SingleOrDefault().NgayCap = txtNgayCap.Text.Trim();
                             _dontu.DonTu_ChiTiets.SingleOrDefault().DCThuongTru = txtDCThuongTru.Text.Trim();
                             _dontu.DonTu_ChiTiets.SingleOrDefault().DCHienNay = txtDCHienNay.Text.Trim();
-                            _dontu.DonTu_ChiTiets.SingleOrDefault().DienThoai = txtDienThoaiMoi.Text.Trim();
+                            _dontu.DonTu_ChiTiets.SingleOrDefault().DienThoaiMoi = txtDienThoaiMoi.Text.Trim();
                             _dontu.DonTu_ChiTiets.SingleOrDefault().Fax = txtFax.Text.Trim();
                             _dontu.DonTu_ChiTiets.SingleOrDefault().Email = txtEmail.Text.Trim();
                             _dontu.DonTu_ChiTiets.SingleOrDefault().STK = txtSTK.Text.Trim();
@@ -1701,11 +1701,6 @@ namespace KTKS_DonKH.GUI.DonTu
             }
         }
 
-        private void txtDienThoai_Leave(object sender, EventArgs e)
-        {
-            txtDienThoaiMoi = txtDienThoai;
-        }
-
         private void btnXemTruocEContract_Click(object sender, EventArgs e)
         {
             try
@@ -1810,18 +1805,21 @@ namespace KTKS_DonKH.GUI.DonTu
                 {
                     if (_dontu != null)
                     {
-                        string error;
-                        bool result = _wsEContract.cancelEContract(_dontu.MaDon.ToString(), "", "tanho@2022", out error);
-                        if (result)
+                        if (MessageBox.Show("Bạn chắc chắn?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
-                            result = _wsEContract.deleteEContract(_dontu.MaDon.ToString(), "", "tanho@2022", out error);
+                            string error;
+                            bool result = _wsEContract.cancelEContract(_dontu.MaDon.ToString(), "", "tanho@2022", out error);
                             if (result)
-                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            {
+                                result = _wsEContract.deleteEContract(_dontu.MaDon.ToString(), "", "tanho@2022", out error);
+                                if (result)
+                                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                else
+                                    MessageBox.Show("Thất bại lượt Xóa" + error, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                             else
-                                MessageBox.Show("Thất bại lượt Xóa" + error, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Thất bại lượt Hủy " + error, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                        else
-                            MessageBox.Show("Thất bại lượt Hủy " + error, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                         MessageBox.Show("Chưa có mã đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

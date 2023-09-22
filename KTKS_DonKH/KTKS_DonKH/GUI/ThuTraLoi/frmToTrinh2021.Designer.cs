@@ -35,6 +35,7 @@
             this.txtMaDonCu = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cmbKinhTrinh = new System.Windows.Forms.ComboBox();
             this.txtKinhTrinh = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtNoiNhan = new System.Windows.Forms.TextBox();
@@ -55,16 +56,17 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label32 = new System.Windows.Forms.Label();
             this.dgvHinh = new System.Windows.Forms.DataGridView();
-            this.ID_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Image_Hinh = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Name_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Bytes_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Loai_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnChonFile = new System.Windows.Forms.Button();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.xoaFile_dgvHinh = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabTTKH = new System.Windows.Forms.TabPage();
+            this.txtSoThan = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtCo = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtHieu = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.cmbHieuHBV = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtDinhMucHN = new System.Windows.Forms.TextBox();
@@ -109,13 +111,12 @@
             this.ChiSoThucTe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TieuThuThucTe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chkDuocKy = new System.Windows.Forms.CheckBox();
-            this.cmbKinhTrinh = new System.Windows.Forms.ComboBox();
-            this.txtHieu = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.txtCo = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.txtSoThan = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
+            this.ID_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Image_Hinh = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Name_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Bytes_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Loai_Hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Huy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHinh)).BeginInit();
@@ -179,6 +180,18 @@
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Nội Dung Tờ Trình";
+            // 
+            // cmbKinhTrinh
+            // 
+            this.cmbKinhTrinh.FormattingEnabled = true;
+            this.cmbKinhTrinh.Items.AddRange(new object[] {
+            "Ban Giám đốc",
+            "Ông Phó Giám đốc Kinh doanh"});
+            this.cmbKinhTrinh.Location = new System.Drawing.Point(466, 17);
+            this.cmbKinhTrinh.Name = "cmbKinhTrinh";
+            this.cmbKinhTrinh.Size = new System.Drawing.Size(126, 24);
+            this.cmbKinhTrinh.TabIndex = 142;
+            this.cmbKinhTrinh.SelectedIndexChanged += new System.EventHandler(this.cmbKinhTrinh_SelectedIndexChanged);
             // 
             // txtKinhTrinh
             // 
@@ -375,51 +388,16 @@
             this.Image_Hinh,
             this.Name_Hinh,
             this.Bytes_Hinh,
-            this.Loai_Hinh});
+            this.Loai_Hinh,
+            this.Huy});
             this.dgvHinh.Location = new System.Drawing.Point(6, 43);
             this.dgvHinh.Name = "dgvHinh";
             this.dgvHinh.Size = new System.Drawing.Size(261, 86);
             this.dgvHinh.TabIndex = 2;
+            this.dgvHinh.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHinh_CellEndEdit);
             this.dgvHinh.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvHinh_CellMouseClick);
             this.dgvHinh.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvHinh_MouseClick);
             this.dgvHinh.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvHinh_MouseDoubleClick);
-            // 
-            // ID_Hinh
-            // 
-            this.ID_Hinh.DataPropertyName = "ID";
-            this.ID_Hinh.HeaderText = "ID";
-            this.ID_Hinh.Name = "ID_Hinh";
-            this.ID_Hinh.Visible = false;
-            // 
-            // Image_Hinh
-            // 
-            this.Image_Hinh.HeaderText = "Image";
-            this.Image_Hinh.Image = global::KTKS_DonKH.Properties.Resources.file_24x24;
-            this.Image_Hinh.Name = "Image_Hinh";
-            this.Image_Hinh.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Image_Hinh.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Image_Hinh.Width = 50;
-            // 
-            // Name_Hinh
-            // 
-            this.Name_Hinh.DataPropertyName = "Name";
-            this.Name_Hinh.HeaderText = "File";
-            this.Name_Hinh.Name = "Name_Hinh";
-            this.Name_Hinh.Width = 150;
-            // 
-            // Bytes_Hinh
-            // 
-            this.Bytes_Hinh.DataPropertyName = "Bytes";
-            this.Bytes_Hinh.HeaderText = "Bytes";
-            this.Bytes_Hinh.Name = "Bytes_Hinh";
-            this.Bytes_Hinh.Visible = false;
-            // 
-            // Loai_Hinh
-            // 
-            this.Loai_Hinh.DataPropertyName = "Loai";
-            this.Loai_Hinh.HeaderText = "Loai_Hinh";
-            this.Loai_Hinh.Name = "Loai_Hinh";
-            this.Loai_Hinh.Visible = false;
             // 
             // btnChonFile
             // 
@@ -487,6 +465,54 @@
             this.tabTTKH.TabIndex = 0;
             this.tabTTKH.Text = "Thông Tin Khách Hàng";
             this.tabTTKH.UseVisualStyleBackColor = true;
+            // 
+            // txtSoThan
+            // 
+            this.txtSoThan.Location = new System.Drawing.Point(526, 90);
+            this.txtSoThan.Name = "txtSoThan";
+            this.txtSoThan.Size = new System.Drawing.Size(100, 22);
+            this.txtSoThan.TabIndex = 26;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(460, 93);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(59, 16);
+            this.label17.TabIndex = 25;
+            this.label17.Text = "Số Thân";
+            // 
+            // txtCo
+            // 
+            this.txtCo.Location = new System.Drawing.Point(404, 90);
+            this.txtCo.Name = "txtCo";
+            this.txtCo.Size = new System.Drawing.Size(50, 22);
+            this.txtCo.TabIndex = 24;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(373, 93);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(25, 16);
+            this.label16.TabIndex = 23;
+            this.label16.Text = "Cỡ";
+            // 
+            // txtHieu
+            // 
+            this.txtHieu.Location = new System.Drawing.Point(267, 90);
+            this.txtHieu.Name = "txtHieu";
+            this.txtHieu.Size = new System.Drawing.Size(100, 22);
+            this.txtHieu.TabIndex = 22;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(225, 93);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(36, 16);
+            this.label14.TabIndex = 21;
+            this.label14.Text = "Hiệu";
             // 
             // cmbHieuHBV
             // 
@@ -854,65 +880,49 @@
             this.chkDuocKy.Text = "Được Ký";
             this.chkDuocKy.UseVisualStyleBackColor = true;
             // 
-            // cmbKinhTrinh
+            // ID_Hinh
             // 
-            this.cmbKinhTrinh.FormattingEnabled = true;
-            this.cmbKinhTrinh.Items.AddRange(new object[] {
-            "Ban Giám đốc",
-            "Ông Phó Giám đốc Kinh doanh"});
-            this.cmbKinhTrinh.Location = new System.Drawing.Point(466, 17);
-            this.cmbKinhTrinh.Name = "cmbKinhTrinh";
-            this.cmbKinhTrinh.Size = new System.Drawing.Size(126, 24);
-            this.cmbKinhTrinh.TabIndex = 142;
-            this.cmbKinhTrinh.SelectedIndexChanged += new System.EventHandler(this.cmbKinhTrinh_SelectedIndexChanged);
+            this.ID_Hinh.DataPropertyName = "ID";
+            this.ID_Hinh.HeaderText = "ID";
+            this.ID_Hinh.Name = "ID_Hinh";
+            this.ID_Hinh.Visible = false;
             // 
-            // txtHieu
+            // Image_Hinh
             // 
-            this.txtHieu.Location = new System.Drawing.Point(267, 90);
-            this.txtHieu.Name = "txtHieu";
-            this.txtHieu.Size = new System.Drawing.Size(100, 22);
-            this.txtHieu.TabIndex = 22;
+            this.Image_Hinh.HeaderText = "Image";
+            this.Image_Hinh.Image = global::KTKS_DonKH.Properties.Resources.file_24x24;
+            this.Image_Hinh.Name = "Image_Hinh";
+            this.Image_Hinh.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Image_Hinh.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Image_Hinh.Width = 50;
             // 
-            // label14
+            // Name_Hinh
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(225, 93);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(36, 16);
-            this.label14.TabIndex = 21;
-            this.label14.Text = "Hiệu";
+            this.Name_Hinh.DataPropertyName = "Name";
+            this.Name_Hinh.HeaderText = "File";
+            this.Name_Hinh.Name = "Name_Hinh";
+            this.Name_Hinh.Width = 130;
             // 
-            // txtCo
+            // Bytes_Hinh
             // 
-            this.txtCo.Location = new System.Drawing.Point(404, 90);
-            this.txtCo.Name = "txtCo";
-            this.txtCo.Size = new System.Drawing.Size(50, 22);
-            this.txtCo.TabIndex = 24;
+            this.Bytes_Hinh.DataPropertyName = "Bytes";
+            this.Bytes_Hinh.HeaderText = "Bytes";
+            this.Bytes_Hinh.Name = "Bytes_Hinh";
+            this.Bytes_Hinh.Visible = false;
             // 
-            // label16
+            // Loai_Hinh
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(373, 93);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(25, 16);
-            this.label16.TabIndex = 23;
-            this.label16.Text = "Cỡ";
+            this.Loai_Hinh.DataPropertyName = "Loai";
+            this.Loai_Hinh.HeaderText = "Loai_Hinh";
+            this.Loai_Hinh.Name = "Loai_Hinh";
+            this.Loai_Hinh.Visible = false;
             // 
-            // txtSoThan
+            // Huy
             // 
-            this.txtSoThan.Location = new System.Drawing.Point(526, 90);
-            this.txtSoThan.Name = "txtSoThan";
-            this.txtSoThan.Size = new System.Drawing.Size(100, 22);
-            this.txtSoThan.TabIndex = 26;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(460, 93);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(59, 16);
-            this.label17.TabIndex = 25;
-            this.label17.Text = "Số Thân";
+            this.Huy.DataPropertyName = "Huy";
+            this.Huy.HeaderText = "Hủy";
+            this.Huy.Name = "Huy";
+            this.Huy.Width = 30;
             // 
             // frmToTrinh2021
             // 
@@ -1031,11 +1041,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TieuThu;
         private System.Windows.Forms.DataGridViewTextBoxColumn ChiSoThucTe;
         private System.Windows.Forms.DataGridViewTextBoxColumn TieuThuThucTe;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID_Hinh;
-        private System.Windows.Forms.DataGridViewImageColumn Image_Hinh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name_Hinh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Bytes_Hinh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Loai_Hinh;
         private System.Windows.Forms.CheckBox chkDuocKy;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbHieuHBV;
@@ -1046,5 +1051,11 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtHieu;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_Hinh;
+        private System.Windows.Forms.DataGridViewImageColumn Image_Hinh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name_Hinh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Bytes_Hinh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Loai_Hinh;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Huy;
     }
 }

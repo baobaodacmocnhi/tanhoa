@@ -201,6 +201,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 if (item.Hinh != null)
                     dgvHinh.Rows[index].Cells["Bytes_Hinh"].Value = Convert.ToBase64String(item.Hinh.ToArray());
                 dgvHinh.Rows[index].Cells["Loai_Hinh"].Value = item.Loai;
+                dgvHinh.Rows[index].Cells["Huy"].Value = item.Huy;
             }
 
         }
@@ -1282,6 +1283,31 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
         {
             if (cmbKinhTrinh.SelectedIndex > -1)
                 txtKinhTrinh.Text = cmbKinhTrinh.SelectedItem.ToString();
+        }
+
+        private void dgvHinh_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (_cttt != null)
+                {
+                    if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+                    {
+                        if (dgvHinh.Columns[e.ColumnIndex].Name == "Huy")
+                        {
+                            ToTrinh_ChiTiet_Hinh en = _cTT.get_Hinh(int.Parse(dgvHinh.CurrentRow.Cells["ID_Hinh"].Value.ToString()));
+                            en.Huy = bool.Parse(dgvHinh.Rows[e.RowIndex].Cells["Huy"].Value.ToString());
+                            _cTT.SubmitChanges();
+                        }
+                    }
+                    else
+                        MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 

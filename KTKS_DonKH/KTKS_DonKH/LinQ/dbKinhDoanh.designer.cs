@@ -1881,6 +1881,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _IDVanBan_ChiTiet;
 		
+		private bool _Huy;
+		
 		private System.Nullable<int> _CreateBy;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -1901,6 +1903,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnHinhChanged();
     partial void OnIDVanBan_ChiTietChanging(System.Nullable<int> value);
     partial void OnIDVanBan_ChiTietChanged();
+    partial void OnHuyChanging(bool value);
+    partial void OnHuyChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -1995,6 +1999,26 @@ namespace KTKS_DonKH.LinQ
 					this._IDVanBan_ChiTiet = value;
 					this.SendPropertyChanged("IDVanBan_ChiTiet");
 					this.OnIDVanBan_ChiTietChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Huy", DbType="Bit NOT NULL")]
+		public bool Huy
+		{
+			get
+			{
+				return this._Huy;
+			}
+			set
+			{
+				if ((this._Huy != value))
+				{
+					this.OnHuyChanging(value);
+					this.SendPropertyChanging();
+					this._Huy = value;
+					this.SendPropertyChanged("Huy");
+					this.OnHuyChanged();
 				}
 			}
 		}
@@ -3171,6 +3195,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<decimal> _IDBamChi_ChiTiet;
 		
+		private bool _Huy;
+		
 		private System.Nullable<int> _CreateBy;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -3191,6 +3217,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnHinhChanged();
     partial void OnIDBamChi_ChiTietChanging(System.Nullable<decimal> value);
     partial void OnIDBamChi_ChiTietChanged();
+    partial void OnHuyChanging(bool value);
+    partial void OnHuyChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -3285,6 +3313,26 @@ namespace KTKS_DonKH.LinQ
 					this._IDBamChi_ChiTiet = value;
 					this.SendPropertyChanged("IDBamChi_ChiTiet");
 					this.OnIDBamChi_ChiTietChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Huy", DbType="Bit NOT NULL")]
+		public bool Huy
+		{
+			get
+			{
+				return this._Huy;
+			}
+			set
+			{
+				if ((this._Huy != value))
+				{
+					this.OnHuyChanging(value);
+					this.SendPropertyChanging();
+					this._Huy = value;
+					this.SendPropertyChanged("Huy");
+					this.OnHuyChanged();
 				}
 			}
 		}
@@ -7154,6 +7202,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<decimal> _IDCHDB_ChiTietCatHuy;
 		
+		private bool _Huy;
+		
 		private System.Nullable<int> _CreateBy;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -7174,6 +7224,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnHinhChanged();
     partial void OnIDCHDB_ChiTietCatHuyChanging(System.Nullable<decimal> value);
     partial void OnIDCHDB_ChiTietCatHuyChanged();
+    partial void OnHuyChanging(bool value);
+    partial void OnHuyChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -7268,6 +7320,26 @@ namespace KTKS_DonKH.LinQ
 					this._IDCHDB_ChiTietCatHuy = value;
 					this.SendPropertyChanged("IDCHDB_ChiTietCatHuy");
 					this.OnIDCHDB_ChiTietCatHuyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Huy", DbType="Bit NOT NULL")]
+		public bool Huy
+		{
+			get
+			{
+				return this._Huy;
+			}
+			set
+			{
+				if ((this._Huy != value))
+				{
+					this.OnHuyChanging(value);
+					this.SendPropertyChanging();
+					this._Huy = value;
+					this.SendPropertyChanged("Huy");
+					this.OnHuyChanged();
 				}
 			}
 		}
@@ -8932,6 +9004,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<decimal> _IDCHDB_ChiTietCatTam;
 		
+		private bool _Huy;
+		
 		private System.Nullable<int> _CreateBy;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -8952,6 +9026,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnHinhChanged();
     partial void OnIDCHDB_ChiTietCatTamChanging(System.Nullable<decimal> value);
     partial void OnIDCHDB_ChiTietCatTamChanged();
+    partial void OnHuyChanging(bool value);
+    partial void OnHuyChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -9046,6 +9122,26 @@ namespace KTKS_DonKH.LinQ
 					this._IDCHDB_ChiTietCatTam = value;
 					this.SendPropertyChanged("IDCHDB_ChiTietCatTam");
 					this.OnIDCHDB_ChiTietCatTamChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Huy", DbType="Bit NOT NULL")]
+		public bool Huy
+		{
+			get
+			{
+				return this._Huy;
+			}
+			set
+			{
+				if ((this._Huy != value))
+				{
+					this.OnHuyChanging(value);
+					this.SendPropertyChanging();
+					this._Huy = value;
+					this.SendPropertyChanged("Huy");
+					this.OnHuyChanged();
 				}
 			}
 		}
@@ -11340,6 +11436,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<decimal> _IDCHDB_Phieu;
 		
+		private bool _Huy;
+		
 		private System.Nullable<int> _CreateBy;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -11360,6 +11458,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnHinhChanged();
     partial void OnIDCHDB_PhieuChanging(System.Nullable<decimal> value);
     partial void OnIDCHDB_PhieuChanged();
+    partial void OnHuyChanging(bool value);
+    partial void OnHuyChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -11454,6 +11554,26 @@ namespace KTKS_DonKH.LinQ
 					this._IDCHDB_Phieu = value;
 					this.SendPropertyChanged("IDCHDB_Phieu");
 					this.OnIDCHDB_PhieuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Huy", DbType="Bit NOT NULL")]
+		public bool Huy
+		{
+			get
+			{
+				return this._Huy;
+			}
+			set
+			{
+				if ((this._Huy != value))
+				{
+					this.OnHuyChanging(value);
+					this.SendPropertyChanging();
+					this._Huy = value;
+					this.SendPropertyChanged("Huy");
+					this.OnHuyChanged();
 				}
 			}
 		}
@@ -19515,6 +19635,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<decimal> _IDDCBD_ChiTietBienDong;
 		
+		private bool _Huy;
+		
 		private System.Nullable<int> _CreateBy;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -19535,6 +19657,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnHinhChanged();
     partial void OnIDDCBD_ChiTietBienDongChanging(System.Nullable<decimal> value);
     partial void OnIDDCBD_ChiTietBienDongChanged();
+    partial void OnHuyChanging(bool value);
+    partial void OnHuyChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -19629,6 +19753,26 @@ namespace KTKS_DonKH.LinQ
 					this._IDDCBD_ChiTietBienDong = value;
 					this.SendPropertyChanged("IDDCBD_ChiTietBienDong");
 					this.OnIDDCBD_ChiTietBienDongChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Huy", DbType="Bit NOT NULL")]
+		public bool Huy
+		{
+			get
+			{
+				return this._Huy;
+			}
+			set
+			{
+				if ((this._Huy != value))
+				{
+					this.OnHuyChanging(value);
+					this.SendPropertyChanging();
+					this._Huy = value;
+					this.SendPropertyChanged("Huy");
+					this.OnHuyChanged();
 				}
 			}
 		}
@@ -22101,6 +22245,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<decimal> _IDDCBD_ChiTietHoaDon;
 		
+		private bool _Huy;
+		
 		private System.Nullable<int> _CreateBy;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -22121,6 +22267,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnHinhChanged();
     partial void OnIDDCBD_ChiTietHoaDonChanging(System.Nullable<decimal> value);
     partial void OnIDDCBD_ChiTietHoaDonChanged();
+    partial void OnHuyChanging(bool value);
+    partial void OnHuyChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -22215,6 +22363,26 @@ namespace KTKS_DonKH.LinQ
 					this._IDDCBD_ChiTietHoaDon = value;
 					this.SendPropertyChanged("IDDCBD_ChiTietHoaDon");
 					this.OnIDDCBD_ChiTietHoaDonChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Huy", DbType="Bit NOT NULL")]
+		public bool Huy
+		{
+			get
+			{
+				return this._Huy;
+			}
+			set
+			{
+				if ((this._Huy != value))
+				{
+					this.OnHuyChanging(value);
+					this.SendPropertyChanging();
+					this._Huy = value;
+					this.SendPropertyChanged("Huy");
+					this.OnHuyChanged();
 				}
 			}
 		}
@@ -28083,6 +28251,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<decimal> _IDDongNuoc_ChiTiet;
 		
+		private bool _Huy;
+		
 		private System.Nullable<int> _CreateBy;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -28103,6 +28273,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnHinhChanged();
     partial void OnIDDongNuoc_ChiTietChanging(System.Nullable<decimal> value);
     partial void OnIDDongNuoc_ChiTietChanged();
+    partial void OnHuyChanging(bool value);
+    partial void OnHuyChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -28197,6 +28369,26 @@ namespace KTKS_DonKH.LinQ
 					this._IDDongNuoc_ChiTiet = value;
 					this.SendPropertyChanged("IDDongNuoc_ChiTiet");
 					this.OnIDDongNuoc_ChiTietChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Huy", DbType="Bit NOT NULL")]
+		public bool Huy
+		{
+			get
+			{
+				return this._Huy;
+			}
+			set
+			{
+				if ((this._Huy != value))
+				{
+					this.OnHuyChanging(value);
+					this.SendPropertyChanging();
+					this._Huy = value;
+					this.SendPropertyChanged("Huy");
+					this.OnHuyChanged();
 				}
 			}
 		}
@@ -33930,6 +34122,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _DCHienNay;
 		
+		private string _DienThoaiMoi;
+		
 		private string _Fax;
 		
 		private string _Email;
@@ -34022,6 +34216,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnDCThuongTruChanged();
     partial void OnDCHienNayChanging(string value);
     partial void OnDCHienNayChanged();
+    partial void OnDienThoaiMoiChanging(string value);
+    partial void OnDienThoaiMoiChanged();
     partial void OnFaxChanging(string value);
     partial void OnFaxChanged();
     partial void OnEmailChanging(string value);
@@ -34674,6 +34870,26 @@ namespace KTKS_DonKH.LinQ
 					this._DCHienNay = value;
 					this.SendPropertyChanged("DCHienNay");
 					this.OnDCHienNayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DienThoaiMoi", DbType="VarChar(50)")]
+		public string DienThoaiMoi
+		{
+			get
+			{
+				return this._DienThoaiMoi;
+			}
+			set
+			{
+				if ((this._DienThoaiMoi != value))
+				{
+					this.OnDienThoaiMoiChanging(value);
+					this.SendPropertyChanging();
+					this._DienThoaiMoi = value;
+					this.SendPropertyChanged("DienThoaiMoi");
+					this.OnDienThoaiMoiChanged();
 				}
 			}
 		}
@@ -39114,6 +39330,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _IDGianLan_ChiTiet;
 		
+		private bool _Huy;
+		
 		private System.Nullable<int> _CreateBy;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -39134,6 +39352,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnHinhChanged();
     partial void OnIDGianLan_ChiTietChanging(System.Nullable<int> value);
     partial void OnIDGianLan_ChiTietChanged();
+    partial void OnHuyChanging(bool value);
+    partial void OnHuyChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -39228,6 +39448,26 @@ namespace KTKS_DonKH.LinQ
 					this._IDGianLan_ChiTiet = value;
 					this.SendPropertyChanged("IDGianLan_ChiTiet");
 					this.OnIDGianLan_ChiTietChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Huy", DbType="Bit NOT NULL")]
+		public bool Huy
+		{
+			get
+			{
+				return this._Huy;
+			}
+			set
+			{
+				if ((this._Huy != value))
+				{
+					this.OnHuyChanging(value);
+					this.SendPropertyChanging();
+					this._Huy = value;
+					this.SendPropertyChanged("Huy");
+					this.OnHuyChanged();
 				}
 			}
 		}
@@ -43990,6 +44230,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<decimal> _IDKTXM_ChiTiet;
 		
+		private bool _Huy;
+		
 		private System.Nullable<int> _CreateBy;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -44010,6 +44252,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnHinhChanged();
     partial void OnIDKTXM_ChiTietChanging(System.Nullable<decimal> value);
     partial void OnIDKTXM_ChiTietChanged();
+    partial void OnHuyChanging(bool value);
+    partial void OnHuyChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -44104,6 +44348,26 @@ namespace KTKS_DonKH.LinQ
 					this._IDKTXM_ChiTiet = value;
 					this.SendPropertyChanged("IDKTXM_ChiTiet");
 					this.OnIDKTXM_ChiTietChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Huy", DbType="Bit NOT NULL")]
+		public bool Huy
+		{
+			get
+			{
+				return this._Huy;
+			}
+			set
+			{
+				if ((this._Huy != value))
+				{
+					this.OnHuyChanging(value);
+					this.SendPropertyChanging();
+					this._Huy = value;
+					this.SendPropertyChanged("Huy");
+					this.OnHuyChanged();
 				}
 			}
 		}
@@ -53869,6 +54133,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _IDThuMoi_ChiTiet;
 		
+		private bool _Huy;
+		
 		private System.Nullable<int> _CreateBy;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -53889,6 +54155,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnHinhChanged();
     partial void OnIDThuMoi_ChiTietChanging(System.Nullable<int> value);
     partial void OnIDThuMoi_ChiTietChanged();
+    partial void OnHuyChanging(bool value);
+    partial void OnHuyChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -53983,6 +54251,26 @@ namespace KTKS_DonKH.LinQ
 					this._IDThuMoi_ChiTiet = value;
 					this.SendPropertyChanged("IDThuMoi_ChiTiet");
 					this.OnIDThuMoi_ChiTietChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Huy", DbType="Bit NOT NULL")]
+		public bool Huy
+		{
+			get
+			{
+				return this._Huy;
+			}
+			set
+			{
+				if ((this._Huy != value))
+				{
+					this.OnHuyChanging(value);
+					this.SendPropertyChanging();
+					this._Huy = value;
+					this.SendPropertyChanged("Huy");
+					this.OnHuyChanged();
 				}
 			}
 		}
@@ -55797,6 +56085,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<decimal> _IDTTTL_ChiTiet;
 		
+		private bool _Huy;
+		
 		private System.Nullable<int> _CreateBy;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -55817,6 +56107,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnHinhChanged();
     partial void OnIDTTTL_ChiTietChanging(System.Nullable<decimal> value);
     partial void OnIDTTTL_ChiTietChanged();
+    partial void OnHuyChanging(bool value);
+    partial void OnHuyChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -55911,6 +56203,26 @@ namespace KTKS_DonKH.LinQ
 					this._IDTTTL_ChiTiet = value;
 					this.SendPropertyChanged("IDTTTL_ChiTiet");
 					this.OnIDTTTL_ChiTietChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Huy", DbType="Bit NOT NULL")]
+		public bool Huy
+		{
+			get
+			{
+				return this._Huy;
+			}
+			set
+			{
+				if ((this._Huy != value))
+				{
+					this.OnHuyChanging(value);
+					this.SendPropertyChanging();
+					this._Huy = value;
+					this.SendPropertyChanged("Huy");
+					this.OnHuyChanged();
 				}
 			}
 		}
@@ -59294,6 +59606,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _IDToTrinh_ChiTiet;
 		
+		private bool _Huy;
+		
 		private System.Nullable<int> _CreateBy;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -59314,6 +59628,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnHinhChanged();
     partial void OnIDToTrinh_ChiTietChanging(System.Nullable<int> value);
     partial void OnIDToTrinh_ChiTietChanged();
+    partial void OnHuyChanging(bool value);
+    partial void OnHuyChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -59408,6 +59724,26 @@ namespace KTKS_DonKH.LinQ
 					this._IDToTrinh_ChiTiet = value;
 					this.SendPropertyChanged("IDToTrinh_ChiTiet");
 					this.OnIDToTrinh_ChiTietChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Huy", DbType="Bit NOT NULL")]
+		public bool Huy
+		{
+			get
+			{
+				return this._Huy;
+			}
+			set
+			{
+				if ((this._Huy != value))
+				{
+					this.OnHuyChanging(value);
+					this.SendPropertyChanging();
+					this._Huy = value;
+					this.SendPropertyChanged("Huy");
+					this.OnHuyChanged();
 				}
 			}
 		}
@@ -61141,6 +61477,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _IDTruyThuTienNuoc_ChiTiet;
 		
+		private bool _Huy;
+		
 		private System.Nullable<int> _CreateBy;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -61161,6 +61499,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnHinhChanged();
     partial void OnIDTruyThuTienNuoc_ChiTietChanging(System.Nullable<int> value);
     partial void OnIDTruyThuTienNuoc_ChiTietChanged();
+    partial void OnHuyChanging(bool value);
+    partial void OnHuyChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -61255,6 +61595,26 @@ namespace KTKS_DonKH.LinQ
 					this._IDTruyThuTienNuoc_ChiTiet = value;
 					this.SendPropertyChanged("IDTruyThuTienNuoc_ChiTiet");
 					this.OnIDTruyThuTienNuoc_ChiTietChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Huy", DbType="Bit NOT NULL")]
+		public bool Huy
+		{
+			get
+			{
+				return this._Huy;
+			}
+			set
+			{
+				if ((this._Huy != value))
+				{
+					this.OnHuyChanging(value);
+					this.SendPropertyChanging();
+					this._Huy = value;
+					this.SendPropertyChanged("Huy");
+					this.OnHuyChanged();
 				}
 			}
 		}
