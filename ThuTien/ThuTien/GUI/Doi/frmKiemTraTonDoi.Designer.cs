@@ -124,6 +124,7 @@
             this.cmbFromDot = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btnInDSTonHoNgheo = new System.Windows.Forms.Button();
+            this.btnXuatExcelGoiNhacNo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDCoQuan)).BeginInit();
             this.tabTuGia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDTuGia)).BeginInit();
@@ -1058,12 +1059,23 @@
             this.btnInDSTonHoNgheo.UseVisualStyleBackColor = true;
             this.btnInDSTonHoNgheo.Click += new System.EventHandler(this.btnInDSTonHoNgheo_Click);
             // 
+            // btnXuatExcelGoiNhacNo
+            // 
+            this.btnXuatExcelGoiNhacNo.Location = new System.Drawing.Point(953, 40);
+            this.btnXuatExcelGoiNhacNo.Name = "btnXuatExcelGoiNhacNo";
+            this.btnXuatExcelGoiNhacNo.Size = new System.Drawing.Size(81, 35);
+            this.btnXuatExcelGoiNhacNo.TabIndex = 105;
+            this.btnXuatExcelGoiNhacNo.Text = "Xuất Excel Gọi Nhắc Nợ";
+            this.btnXuatExcelGoiNhacNo.UseVisualStyleBackColor = true;
+            this.btnXuatExcelGoiNhacNo.Click += new System.EventHandler(this.btnXuatExcelGoiNhacNo_Click);
+            // 
             // frmKiemTraTonDoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1258, 629);
+            this.Controls.Add(this.btnXuatExcelGoiNhacNo);
             this.Controls.Add(this.btnInDSTonHoNgheo);
             this.Controls.Add(this.cmbToDot);
             this.Controls.Add(this.label10);
@@ -1197,5 +1209,6 @@
         private System.Windows.Forms.ComboBox cmbFromDot;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnInDSTonHoNgheo;
+        private System.Windows.Forms.Button btnXuatExcelGoiNhacNo;
     }
 }
