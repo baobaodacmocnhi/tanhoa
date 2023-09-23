@@ -176,113 +176,106 @@ namespace DocSo_PC.GUI.VanThu
                 else
                     if (dgvDanhSach.Columns[e.ColumnIndex].Name == "Them")
                     {
-                        try
+                        if (CNguoiDung.CheckQuyen(_mnu, "Them"))
                         {
-                            if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+                            if (dgvDanhSach.CurrentRow.Cells["NoiDung"].Value == null || string.IsNullOrEmpty(dgvDanhSach.CurrentRow.Cells["NoiDung"].Value.ToString().Trim()))
                             {
-                                if (dgvDanhSach.CurrentRow.Cells["NoiDung"].Value == null || string.IsNullOrEmpty(dgvDanhSach.CurrentRow.Cells["NoiDung"].Value.ToString().Trim()))
+                                MessageBox.Show("Nội Dung rỗng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                            CongVanDen en = new CongVanDen();
+                            en.LoaiVB = dgvDanhSach.CurrentRow.Cells["LoaiVB"].Value.ToString();
+                            en.NoiChuyen = dgvDanhSach.CurrentRow.Cells["NoiChuyen"].Value.ToString();
+                            //en.NgayChuyen = DateTime.Parse(dgvDanhSach.CurrentRow.Cells["NgayChuyen"].Value.ToString());
+                            en.MLT = dgvDanhSach.CurrentRow.Cells["MLT"].Value.ToString();
+                            en.DanhBo = dgvDanhSach.CurrentRow.Cells["DanhBo"].Value.ToString();
+                            en.HoTen = dgvDanhSach.CurrentRow.Cells["HoTen"].Value.ToString();
+                            en.DiaChi = dgvDanhSach.CurrentRow.Cells["DiaChi"].Value.ToString();
+                            en.NoiDung = dgvDanhSach.CurrentRow.Cells["NoiDung"].Value.ToString();
+                            en.MaDon = dgvDanhSach.CurrentRow.Cells["MaDon"].Value.ToString();
+                            en.TableName = dgvDanhSach.CurrentRow.Cells["TableName"].Value.ToString();
+                            en.IDCT = int.Parse(dgvDanhSach.CurrentRow.Cells["IDCT"].Value.ToString());
+                            if (dgvDanhSach.CurrentRow.Cells["ToMaHoa"].Value != null && dgvDanhSach.CurrentRow.Cells["ToMaHoa"].Value.ToString() != "")
+                                en.ToMaHoa = bool.Parse(dgvDanhSach.CurrentRow.Cells["ToMaHoa"].Value.ToString());
+                            if (_cCVD.checkExists(en.TableName, en.IDCT.Value) == true)
+                            {
+                                MessageBox.Show("Đã nhập rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                            if (_cCVD.Them(en) == true)
+                            {
+                                if (en.LoaiVB == "Phiếu Hủy" && en.NoiChuyen == "P. Thương Vụ")
                                 {
-                                    MessageBox.Show("Nội Dung rỗng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    return;
-                                }
-                                CongVanDen en = new CongVanDen();
-                                en.LoaiVB = dgvDanhSach.CurrentRow.Cells["LoaiVB"].Value.ToString();
-                                en.NoiChuyen = dgvDanhSach.CurrentRow.Cells["NoiChuyen"].Value.ToString();
-                                //en.NgayChuyen = DateTime.Parse(dgvDanhSach.CurrentRow.Cells["NgayChuyen"].Value.ToString());
-                                en.MLT = dgvDanhSach.CurrentRow.Cells["MLT"].Value.ToString();
-                                en.DanhBo = dgvDanhSach.CurrentRow.Cells["DanhBo"].Value.ToString();
-                                en.HoTen = dgvDanhSach.CurrentRow.Cells["HoTen"].Value.ToString();
-                                en.DiaChi = dgvDanhSach.CurrentRow.Cells["DiaChi"].Value.ToString();
-                                en.NoiDung = dgvDanhSach.CurrentRow.Cells["NoiDung"].Value.ToString();
-                                en.MaDon = dgvDanhSach.CurrentRow.Cells["MaDon"].Value.ToString();
-                                en.TableName = dgvDanhSach.CurrentRow.Cells["TableName"].Value.ToString();
-                                en.IDCT = int.Parse(dgvDanhSach.CurrentRow.Cells["IDCT"].Value.ToString());
-                                if (dgvDanhSach.CurrentRow.Cells["ToMaHoa"].Value != null && dgvDanhSach.CurrentRow.Cells["ToMaHoa"].Value.ToString() != "")
-                                    en.ToMaHoa = bool.Parse(dgvDanhSach.CurrentRow.Cells["ToMaHoa"].Value.ToString());
-                                if (_cCVD.checkExists(en.TableName, en.IDCT.Value) == true)
-                                {
-                                    MessageBox.Show("Đã nhập rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    return;
-                                }
-                                if (_cCVD.Them(en) == true)
-                                {
-                                    if (en.LoaiVB == "Phiếu Hủy" && en.NoiChuyen == "P. Thương Vụ")
-                                    {
-                                        en.Duyet_Ngay = en.CreateDate;
-                                        _cCVD.SubmitChanges();
+                                    en.Duyet_Ngay = en.CreateDate;
+                                    _cCVD.SubmitChanges();
 
-                                        TB_DULIEUKHACHHANG danhbo = _cDHN.get(en.DanhBo);
-                                        if (danhbo != null)
+                                    TB_DULIEUKHACHHANG danhbo = _cDHN.get(en.DanhBo);
+                                    if (danhbo != null)
+                                    {
+                                        TB_DULIEUKHACHHANG_HUYDB danhbohuy = new TB_DULIEUKHACHHANG_HUYDB();
+                                        danhbohuy.KHU = danhbo.KHU;
+                                        danhbohuy.DOT = danhbo.DOT;
+                                        danhbohuy.CUON_GCS = danhbo.CUON_GCS;
+                                        danhbohuy.CUON_STT = danhbo.CUON_STT;
+                                        danhbohuy.LOTRINH = danhbo.LOTRINH;
+                                        danhbohuy.DANHBO = danhbo.DANHBO;
+                                        danhbohuy.NGAYGANDH = danhbo.NGAYGANDH;
+                                        danhbohuy.HOPDONG = danhbo.HOPDONG;
+                                        danhbohuy.HOTEN = danhbo.HOTEN;
+                                        danhbohuy.SONHA = danhbo.SONHA;
+                                        danhbohuy.TENDUONG = danhbo.TENDUONG;
+                                        danhbohuy.PHUONG = danhbo.PHUONG;
+                                        danhbohuy.QUAN = danhbo.QUAN;
+                                        danhbohuy.CHUKY = danhbo.CHUKY;
+                                        danhbohuy.CODE = danhbo.CODE;
+                                        danhbohuy.CODEFU = danhbo.CODEFU;
+                                        danhbohuy.GIABIEU = danhbo.GIABIEU;
+                                        danhbohuy.DINHMUC = danhbo.DINHMUC;
+                                        danhbohuy.DINHMUCHN = danhbo.DINHMUCHN;
+                                        danhbohuy.SH = danhbo.SH;
+                                        danhbohuy.HCSN = danhbo.HCSN;
+                                        danhbohuy.SX = danhbo.SX;
+                                        danhbohuy.DV = danhbo.DV;
+                                        danhbohuy.CODH = danhbo.CODH;
+                                        danhbohuy.HIEUDH = danhbo.HIEUDH;
+                                        danhbohuy.SOTHANDH = danhbo.SOTHANDH;
+                                        danhbohuy.CAP = danhbo.CAP;
+                                        danhbohuy.CHITHAN = danhbo.CHITHAN;
+                                        danhbohuy.CHIGOC = danhbo.CHIGOC;
+                                        danhbohuy.VITRIDHN = danhbo.VITRIDHN;
+                                        danhbohuy.ViTriDHN_Ngoai = danhbo.ViTriDHN_Ngoai;
+                                        danhbohuy.ViTriDHN_Hop = danhbo.ViTriDHN_Hop;
+                                        danhbohuy.Gieng = danhbo.Gieng;
+                                        danhbohuy.NGAYTHAY = danhbo.NGAYTHAY;
+                                        danhbohuy.NGAYKIEMDINH = danhbo.NGAYKIEMDINH;
+                                        danhbohuy.SODHN = danhbo.SODHN;
+                                        danhbohuy.MSTHUE = danhbo.MSTHUE;
+                                        danhbohuy.MADMA = danhbo.MADMA;
+                                        danhbohuy.CHISOKYTRUOC = danhbo.CHISOKYTRUOC;
+                                        CHDB_Phieu phieuhuy = _cThuongVu.getPhieuHuy(en.IDCT.Value);
+                                        if (phieuhuy != null)
                                         {
-                                            TB_DULIEUKHACHHANG_HUYDB danhbohuy = new TB_DULIEUKHACHHANG_HUYDB();
-                                            danhbohuy.KHU = danhbo.KHU;
-                                            danhbohuy.DOT = danhbo.DOT;
-                                            danhbohuy.CUON_GCS = danhbo.CUON_GCS;
-                                            danhbohuy.CUON_STT = danhbo.CUON_STT;
-                                            danhbohuy.LOTRINH = danhbo.LOTRINH;
-                                            danhbohuy.DANHBO = danhbo.DANHBO;
-                                            danhbohuy.NGAYGANDH = danhbo.NGAYGANDH;
-                                            danhbohuy.HOPDONG = danhbo.HOPDONG;
-                                            danhbohuy.HOTEN = danhbo.HOTEN;
-                                            danhbohuy.SONHA = danhbo.SONHA;
-                                            danhbohuy.TENDUONG = danhbo.TENDUONG;
-                                            danhbohuy.PHUONG = danhbo.PHUONG;
-                                            danhbohuy.QUAN = danhbo.QUAN;
-                                            danhbohuy.CHUKY = danhbo.CHUKY;
-                                            danhbohuy.CODE = danhbo.CODE;
-                                            danhbohuy.CODEFU = danhbo.CODEFU;
-                                            danhbohuy.GIABIEU = danhbo.GIABIEU;
-                                            danhbohuy.DINHMUC = danhbo.DINHMUC;
-                                            danhbohuy.DINHMUCHN = danhbo.DINHMUCHN;
-                                            danhbohuy.SH = danhbo.SH;
-                                            danhbohuy.HCSN = danhbo.HCSN;
-                                            danhbohuy.SX = danhbo.SX;
-                                            danhbohuy.DV = danhbo.DV;
-                                            danhbohuy.CODH = danhbo.CODH;
-                                            danhbohuy.HIEUDH = danhbo.HIEUDH;
-                                            danhbohuy.SOTHANDH = danhbo.SOTHANDH;
-                                            danhbohuy.CAP = danhbo.CAP;
-                                            danhbohuy.CHITHAN = danhbo.CHITHAN;
-                                            danhbohuy.CHIGOC = danhbo.CHIGOC;
-                                            danhbohuy.VITRIDHN = danhbo.VITRIDHN;
-                                            danhbohuy.ViTriDHN_Ngoai = danhbo.ViTriDHN_Ngoai;
-                                            danhbohuy.ViTriDHN_Hop = danhbo.ViTriDHN_Hop;
-                                            danhbohuy.Gieng = danhbo.Gieng;
-                                            danhbohuy.NGAYTHAY = danhbo.NGAYTHAY;
-                                            danhbohuy.NGAYKIEMDINH = danhbo.NGAYKIEMDINH;
-                                            danhbohuy.SODHN = danhbo.SODHN;
-                                            danhbohuy.MSTHUE = danhbo.MSTHUE;
-                                            danhbohuy.MADMA = danhbo.MADMA;
-                                            danhbohuy.CHISOKYTRUOC = danhbo.CHISOKYTRUOC;
-                                            CHDB_Phieu phieuhuy = _cThuongVu.getPhieuHuy(en.IDCT.Value);
-                                            if (phieuhuy != null)
-                                            {
-                                                danhbohuy.SOPHIEU = phieuhuy.MaYCCHDB.ToString();
-                                                danhbohuy.NGAYHUY = phieuhuy.CreateDate.Value;
-                                                string[] strs = phieuhuy.HieuLucKy.Split('/');
-                                                danhbohuy.HIEULUCHUY = int.Parse(strs[0]).ToString("00") + "/" + strs[1];
-                                                danhbohuy.NGUYENNHAN = phieuhuy.LyDo + " " + phieuhuy.GhiChuLyDo;
-                                                danhbohuy.CREATEBY = CNguoiDung.HoTen;
-                                                danhbohuy.CREATEDATE = DateTime.Now;
-                                                CDHN._db.TB_DULIEUKHACHHANG_HUYDBs.InsertOnSubmit(danhbohuy);
-                                                CDHN._db.TB_DULIEUKHACHHANGs.DeleteOnSubmit(danhbo);
-                                                CDHN._db.SubmitChanges();
-                                            }
+                                            danhbohuy.SOPHIEU = phieuhuy.MaYCCHDB.ToString();
+                                            danhbohuy.NGAYHUY = phieuhuy.CreateDate.Value;
+                                            string[] strs = phieuhuy.HieuLucKy.Split('/');
+                                            danhbohuy.HIEULUCHUY = int.Parse(strs[0]).ToString("00") + "/" + strs[1];
+                                            danhbohuy.NGUYENNHAN = phieuhuy.LyDo + " " + phieuhuy.GhiChuLyDo;
+                                            danhbohuy.CREATEBY = CNguoiDung.HoTen;
+                                            danhbohuy.CREATEDATE = DateTime.Now;
+                                            CDHN._db.TB_DULIEUKHACHHANG_HUYDBs.InsertOnSubmit(danhbohuy);
+                                            CDHN._db.TB_DULIEUKHACHHANGs.DeleteOnSubmit(danhbo);
+                                            CDHN._db.SubmitChanges();
                                         }
                                     }
-                                    string sql = "insert into TB_GHICHU(DANHBO,DONVI,NOIDUNG,CREATEDATE,CREATEBY)values('" + en.DanhBo + "',N'QLDHN',N'" + en.NoiDung + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture) + "',N'" + CNguoiDung.HoTen + "')";
-                                    CDHN._cDAL.ExecuteNonQuery(sql);
-                                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    Clear();
                                 }
+                                string sql = "insert into TB_GHICHU(DANHBO,DONVI,NOIDUNG,CREATEDATE,CREATEBY)values('" + en.DanhBo + "',N'QLDHN',N'" + en.NoiDung + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture) + "',N'" + CNguoiDung.HoTen + "')";
+                                CDHN._cDAL.ExecuteNonQuery(sql);
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                Clear();
                             }
-                            else
-                                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        else
+                            MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                         if (dgvDanhSach.Columns[e.ColumnIndex].Name == "CapNhat")
@@ -297,7 +290,10 @@ namespace DocSo_PC.GUI.VanThu
                                 MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)

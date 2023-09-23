@@ -148,7 +148,7 @@ namespace DocSo_PC.DAL
             getTableHinh(TableName, out TableNameHinh, out IDName);
             if (TableNameHinh != "")
             {
-                DataTable dt = _cDAL.ExecuteQuery_DataTable("select FileName=[Name]+Loai,Type=Loai from " + TableNameHinh + " where " + IDName + "=" + IDCT + " order by CreateDate desc");
+                DataTable dt = _cDAL.ExecuteQuery_DataTable("select FileName=[Name]+Loai,Type=Loai from " + TableNameHinh + " where Huy=0 and " + IDName + "=" + IDCT + " order by CreateDate asc");
                 if (dt != null && dt.Rows.Count > 0)
                 {
                     DataTable dtResult = new DataTable();
