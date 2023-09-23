@@ -113,6 +113,13 @@ namespace KeToan.GUI.HoaDonDienTu
         private void btnXem_Click(object sender, EventArgs e)
         {
             dgvHoaDon.DataSource = _cHDDT.getDS(dateTu.Value, dateDen.Value);
+            decimal tongcong = 0;
+            foreach (DataGridViewRow item in dgvHoaDon.Rows)
+                if (item.Cells["SoTien"].Value != null && item.Cells["SoTien"].Value.ToString() != "")
+                {
+                    tongcong += decimal.Parse(item.Cells["SoTien"].Value.ToString());
+                }
+            txtTongCong.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", tongcong);
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
