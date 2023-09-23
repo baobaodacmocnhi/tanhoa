@@ -70,7 +70,7 @@ namespace ThuTien.GUI.VanThu
                     if (dgvDanhSach.CurrentRow.Cells["TableName"].Value.ToString() == "")
                     {
                         MessageBox.Show("Không có File", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
+                        //return;
                     }
                     DataTable dt = _cThuongVu.getFile(dgvDanhSach.CurrentRow.Cells["TableName"].Value.ToString(), int.Parse(dgvDanhSach.CurrentRow.Cells["IDCT"].Value.ToString()));
                     if (dt != null && dt.Rows.Count > 0)
@@ -88,47 +88,43 @@ namespace ThuTien.GUI.VanThu
                 else
                     if (dgvDanhSach.Columns[e.ColumnIndex].Name == "Them")
                     {
-                        try
+                        if (CNguoiDung.CheckQuyen(_mnu, "Them"))
                         {
-                            if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+                            if (dgvDanhSach.CurrentRow.Cells["NoiDung"].Value == null || string.IsNullOrEmpty(dgvDanhSach.CurrentRow.Cells["NoiDung"].Value.ToString().Trim()))
                             {
-                                if (dgvDanhSach.CurrentRow.Cells["NoiDung"].Value == null || string.IsNullOrEmpty(dgvDanhSach.CurrentRow.Cells["NoiDung"].Value.ToString().Trim()))
-                                {
-                                    MessageBox.Show("Nội Dung rỗng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    return;
-                                }
-                                TT_CongVanDen en = new TT_CongVanDen();
-                                en.LoaiVB = dgvDanhSach.CurrentRow.Cells["LoaiVB"].Value.ToString();
-                                en.NoiChuyen = dgvDanhSach.CurrentRow.Cells["NoiChuyen"].Value.ToString();
-                                //en.NgayChuyen = DateTime.Parse(dgvDanhSach.CurrentRow.Cells["NgayChuyen"].Value.ToString());
-                                en.MLT = dgvDanhSach.CurrentRow.Cells["MLT"].Value.ToString();
-                                en.DanhBo = dgvDanhSach.CurrentRow.Cells["DanhBo"].Value.ToString();
-                                en.HoTen = dgvDanhSach.CurrentRow.Cells["HoTen"].Value.ToString();
-                                en.DiaChi = dgvDanhSach.CurrentRow.Cells["DiaChi"].Value.ToString();
-                                en.NoiDung = dgvDanhSach.CurrentRow.Cells["NoiDung"].Value.ToString();
-                                en.MaDon = dgvDanhSach.CurrentRow.Cells["MaDon"].Value.ToString();
-                                en.TableName = dgvDanhSach.CurrentRow.Cells["TableName"].Value.ToString();
-                                en.IDCT = int.Parse(dgvDanhSach.CurrentRow.Cells["IDCT"].Value.ToString());
-                                if (_cCVD.checkExists(en.TableName, en.IDCT.Value) == true)
-                                {
-                                    MessageBox.Show("Đã nhập rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    return;
-                                }
-                                if (_cCVD.Them(en) == true)
-                                {
-                                    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
+                                MessageBox.Show("Nội Dung rỗng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
                             }
-                            else
-                                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            TT_CongVanDen en = new TT_CongVanDen();
+                            en.LoaiVB = dgvDanhSach.CurrentRow.Cells["LoaiVB"].Value.ToString();
+                            en.NoiChuyen = dgvDanhSach.CurrentRow.Cells["NoiChuyen"].Value.ToString();
+                            //en.NgayChuyen = DateTime.Parse(dgvDanhSach.CurrentRow.Cells["NgayChuyen"].Value.ToString());
+                            en.MLT = dgvDanhSach.CurrentRow.Cells["MLT"].Value.ToString();
+                            en.DanhBo = dgvDanhSach.CurrentRow.Cells["DanhBo"].Value.ToString();
+                            en.HoTen = dgvDanhSach.CurrentRow.Cells["HoTen"].Value.ToString();
+                            en.DiaChi = dgvDanhSach.CurrentRow.Cells["DiaChi"].Value.ToString();
+                            en.NoiDung = dgvDanhSach.CurrentRow.Cells["NoiDung"].Value.ToString();
+                            en.MaDon = dgvDanhSach.CurrentRow.Cells["MaDon"].Value.ToString();
+                            en.TableName = dgvDanhSach.CurrentRow.Cells["TableName"].Value.ToString();
+                            en.IDCT = int.Parse(dgvDanhSach.CurrentRow.Cells["IDCT"].Value.ToString());
+                            if (_cCVD.checkExists(en.TableName, en.IDCT.Value) == true)
+                            {
+                                MessageBox.Show("Đã nhập rồi", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                            if (_cCVD.Them(en) == true)
+                            {
+                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
                         }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        else
+                            MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void dgvDanhSach_CellEndEdit(object sender, DataGridViewCellEventArgs e)
