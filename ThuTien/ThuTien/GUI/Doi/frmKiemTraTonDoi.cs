@@ -2269,7 +2269,7 @@ namespace ThuTien.GUI.Doi
                 {
                     arr[i, 1] = dr["DienThoai"].ToString();
                     HOADON hd = _cHoaDon.GetMoiNhat(dr["DanhBo"].ToString());
-                    arr[i, 6] = hd.DANHBA;
+                    arr[i, 6] = hd.DANHBA.Insert(10, " ").Insert(9, " ").Insert(8, " ").Insert(7, " ").Insert(6, " ").Insert(5, " ").Insert(4, " ").Insert(3, " ").Insert(2, " ").Insert(1, " ");
                     arr[i, 4] = hd.TENKH;
                     arr[i, 5] = hd.SO + " " + hd.DUONG;
                     arr[i, 7] = dr["TongCong"].ToString();
