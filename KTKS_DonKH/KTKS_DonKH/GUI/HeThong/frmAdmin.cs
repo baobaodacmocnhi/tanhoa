@@ -137,7 +137,6 @@ namespace KTKS_DonKH.GUI.HeThong
 
         private void button1_Click(object sender, EventArgs e)
         {
-            wsThuongVu ws = new wsThuongVu();
             DataTable dt = _cMenu.ExecuteQuery_DataTable("select * from ChungTu_ChiTiet where len(MaCT)=12 and malct=15 and Cat=0 and mact not in(select CCCD from CCCD_Temp)");
             foreach (DataRow item in dt.Rows)
             {

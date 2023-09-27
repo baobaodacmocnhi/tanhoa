@@ -66,6 +66,26 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="get_FileinFolder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FolderLoai" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FolderIDCT" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_FileinFolderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="get_FileinFolderResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="checkExists_DonTu">
         <s:complexType>
           <s:sequence>
@@ -156,6 +176,96 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="get_Hinh_Root">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FolderRoot" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FolderLoai" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FolderIDCT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_Hinh_RootResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="get_Hinh_RootResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ghi_Hinh_Root">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FolderRoot" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FolderLoai" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FolderIDCT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HinhDHN" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ghi_Hinh_RootResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ghi_Hinh_RootResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="xoa_Hinh_Root">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FolderRoot" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FolderLoai" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FolderIDCT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="xoa_Hinh_RootResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="xoa_Hinh_RootResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="xoa_Folder_Hinh_Root">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FolderRoot" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FolderLoai" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FolderIDCT" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="xoa_Folder_Hinh_RootResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="xoa_Folder_Hinh_RootResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_FileinFolder_Root">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FolderRoot" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FolderLoai" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FolderIDCT" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_FileinFolder_RootResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="get_FileinFolder_RootResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="testAdmin">
+        <s:complexType />
+      </s:element>
+      <s:element name="testAdminResponse">
+        <s:complexType />
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="get_HinhSoapIn">
@@ -181,6 +291,12 @@
   </wsdl:message>
   <wsdl:message name="xoa_Folder_HinhSoapOut">
     <wsdl:part name="parameters" element="tns:xoa_Folder_HinhResponse" />
+  </wsdl:message>
+  <wsdl:message name="get_FileinFolderSoapIn">
+    <wsdl:part name="parameters" element="tns:get_FileinFolder" />
+  </wsdl:message>
+  <wsdl:message name="get_FileinFolderSoapOut">
+    <wsdl:part name="parameters" element="tns:get_FileinFolderResponse" />
   </wsdl:message>
   <wsdl:message name="checkExists_DonTuSoapIn">
     <wsdl:part name="parameters" element="tns:checkExists_DonTu" />
@@ -218,6 +334,42 @@
   <wsdl:message name="xoa_CCCDSoapOut">
     <wsdl:part name="parameters" element="tns:xoa_CCCDResponse" />
   </wsdl:message>
+  <wsdl:message name="get_Hinh_RootSoapIn">
+    <wsdl:part name="parameters" element="tns:get_Hinh_Root" />
+  </wsdl:message>
+  <wsdl:message name="get_Hinh_RootSoapOut">
+    <wsdl:part name="parameters" element="tns:get_Hinh_RootResponse" />
+  </wsdl:message>
+  <wsdl:message name="ghi_Hinh_RootSoapIn">
+    <wsdl:part name="parameters" element="tns:ghi_Hinh_Root" />
+  </wsdl:message>
+  <wsdl:message name="ghi_Hinh_RootSoapOut">
+    <wsdl:part name="parameters" element="tns:ghi_Hinh_RootResponse" />
+  </wsdl:message>
+  <wsdl:message name="xoa_Hinh_RootSoapIn">
+    <wsdl:part name="parameters" element="tns:xoa_Hinh_Root" />
+  </wsdl:message>
+  <wsdl:message name="xoa_Hinh_RootSoapOut">
+    <wsdl:part name="parameters" element="tns:xoa_Hinh_RootResponse" />
+  </wsdl:message>
+  <wsdl:message name="xoa_Folder_Hinh_RootSoapIn">
+    <wsdl:part name="parameters" element="tns:xoa_Folder_Hinh_Root" />
+  </wsdl:message>
+  <wsdl:message name="xoa_Folder_Hinh_RootSoapOut">
+    <wsdl:part name="parameters" element="tns:xoa_Folder_Hinh_RootResponse" />
+  </wsdl:message>
+  <wsdl:message name="get_FileinFolder_RootSoapIn">
+    <wsdl:part name="parameters" element="tns:get_FileinFolder_Root" />
+  </wsdl:message>
+  <wsdl:message name="get_FileinFolder_RootSoapOut">
+    <wsdl:part name="parameters" element="tns:get_FileinFolder_RootResponse" />
+  </wsdl:message>
+  <wsdl:message name="testAdminSoapIn">
+    <wsdl:part name="parameters" element="tns:testAdmin" />
+  </wsdl:message>
+  <wsdl:message name="testAdminSoapOut">
+    <wsdl:part name="parameters" element="tns:testAdminResponse" />
+  </wsdl:message>
   <wsdl:portType name="wsThuongVuSoap">
     <wsdl:operation name="get_Hinh">
       <wsdl:input message="tns:get_HinhSoapIn" />
@@ -234,6 +386,10 @@
     <wsdl:operation name="xoa_Folder_Hinh">
       <wsdl:input message="tns:xoa_Folder_HinhSoapIn" />
       <wsdl:output message="tns:xoa_Folder_HinhSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="get_FileinFolder">
+      <wsdl:input message="tns:get_FileinFolderSoapIn" />
+      <wsdl:output message="tns:get_FileinFolderSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="checkExists_DonTu">
       <wsdl:input message="tns:checkExists_DonTuSoapIn" />
@@ -258,6 +414,30 @@
     <wsdl:operation name="xoa_CCCD">
       <wsdl:input message="tns:xoa_CCCDSoapIn" />
       <wsdl:output message="tns:xoa_CCCDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="get_Hinh_Root">
+      <wsdl:input message="tns:get_Hinh_RootSoapIn" />
+      <wsdl:output message="tns:get_Hinh_RootSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ghi_Hinh_Root">
+      <wsdl:input message="tns:ghi_Hinh_RootSoapIn" />
+      <wsdl:output message="tns:ghi_Hinh_RootSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="xoa_Hinh_Root">
+      <wsdl:input message="tns:xoa_Hinh_RootSoapIn" />
+      <wsdl:output message="tns:xoa_Hinh_RootSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="xoa_Folder_Hinh_Root">
+      <wsdl:input message="tns:xoa_Folder_Hinh_RootSoapIn" />
+      <wsdl:output message="tns:xoa_Folder_Hinh_RootSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="get_FileinFolder_Root">
+      <wsdl:input message="tns:get_FileinFolder_RootSoapIn" />
+      <wsdl:output message="tns:get_FileinFolder_RootSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="testAdmin">
+      <wsdl:input message="tns:testAdminSoapIn" />
+      <wsdl:output message="tns:testAdminSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="wsThuongVuSoap" type="tns:wsThuongVuSoap">
@@ -291,6 +471,15 @@
     </wsdl:operation>
     <wsdl:operation name="xoa_Folder_Hinh">
       <soap:operation soapAction="http://tempuri.org/xoa_Folder_Hinh" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_FileinFolder">
+      <soap:operation soapAction="http://tempuri.org/get_FileinFolder" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -352,6 +541,60 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="get_Hinh_Root">
+      <soap:operation soapAction="http://tempuri.org/get_Hinh_Root" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ghi_Hinh_Root">
+      <soap:operation soapAction="http://tempuri.org/ghi_Hinh_Root" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="xoa_Hinh_Root">
+      <soap:operation soapAction="http://tempuri.org/xoa_Hinh_Root" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="xoa_Folder_Hinh_Root">
+      <soap:operation soapAction="http://tempuri.org/xoa_Folder_Hinh_Root" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_FileinFolder_Root">
+      <soap:operation soapAction="http://tempuri.org/get_FileinFolder_Root" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="testAdmin">
+      <soap:operation soapAction="http://tempuri.org/testAdmin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="wsThuongVuSoap12" type="tns:wsThuongVuSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -384,6 +627,15 @@
     </wsdl:operation>
     <wsdl:operation name="xoa_Folder_Hinh">
       <soap12:operation soapAction="http://tempuri.org/xoa_Folder_Hinh" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_FileinFolder">
+      <soap12:operation soapAction="http://tempuri.org/get_FileinFolder" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -438,6 +690,60 @@
     </wsdl:operation>
     <wsdl:operation name="xoa_CCCD">
       <soap12:operation soapAction="http://tempuri.org/xoa_CCCD" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_Hinh_Root">
+      <soap12:operation soapAction="http://tempuri.org/get_Hinh_Root" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ghi_Hinh_Root">
+      <soap12:operation soapAction="http://tempuri.org/ghi_Hinh_Root" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="xoa_Hinh_Root">
+      <soap12:operation soapAction="http://tempuri.org/xoa_Hinh_Root" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="xoa_Folder_Hinh_Root">
+      <soap12:operation soapAction="http://tempuri.org/xoa_Folder_Hinh_Root" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_FileinFolder_Root">
+      <soap12:operation soapAction="http://tempuri.org/get_FileinFolder_Root" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="testAdmin">
+      <soap12:operation soapAction="http://tempuri.org/testAdmin" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
