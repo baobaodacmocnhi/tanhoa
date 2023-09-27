@@ -226,7 +226,8 @@ namespace DocSo_PC.GUI.HeThong
 
                 oSheet.Name = "Sheet1";
 
-                DataTable dt = CMenu._cDAL.ExecuteQuery_DataTable(txtQuery.Text.Trim());
+                //DataTable dt = CMenu._cDAL.ExecuteQuery_DataTable(txtQuery.Text.Trim());
+                DataTable dt = CMenu._cDAL.ExecuteQuery_DataTable("select CodeMoi,DanhBo=DanhBa,CSMoi,GIOGHI,KyHD=CONVERT(char(4),Nam)+''+CONVERT(char(2),Ky) from sDHN.dbo.Lech td,DocSo ds where ds.DanhBa=td.DANHBO and nam=2023 and ky=9");
                 for (int i = 0; i < dt.Columns.Count; i++)
                 {
                     oSheet.Cells[1, i + 1] = dt.Columns[i].ColumnName;
