@@ -2248,13 +2248,12 @@ namespace ThuTien.GUI.Doi
             DataTable dt = new DataTable();
             if (cmbFromDot.SelectedIndex == 0)
             {
-                dt = _cHoaDon.GetDSTon_Autocall(2, int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+                dt = _cHoaDon.GetDSTon_Autocall(chkLocBoLenh.Checked, 2, int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
             }
             else if (cmbFromDot.SelectedIndex > 0)
-                for (int i = 0; i < _lstTo.Count; i++)
-                {
-                    dt = _cHoaDon.GetDSTon_Autocall(int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()), 2, int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
-                }
+            {
+                dt = _cHoaDon.GetDSTon_Autocall(chkLocBoLenh.Checked, 2, int.Parse(txtSoTien.Text.Trim().Replace(".", "")), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
+            }
 
             // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
             // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.

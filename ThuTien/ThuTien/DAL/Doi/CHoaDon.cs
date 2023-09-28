@@ -10243,23 +10243,29 @@ namespace ThuTien.DAL.Doi
             return null;
         }
 
-        public DataTable GetDSTon_Autocall(int SoKy, int SoTien)
+        public DataTable GetDSTon_Autocall(bool LocBoLenh, int SoKy, int SoTien)
         {
-            return ExecuteQuery_DataTable("select DanhBo=DANHBA,TongCong=SUM(TONGCONG)"
-                //+ " ,HoTen=(select top 1 TENKH from HOADON where DANHBA=t1.DANHBA order by CreateDate desc)"
-                //+ " ,DiaChi=(select top 1 case when SO is null then DUONG else case when DUONG is null then SO else SO+' '+DUONG end end from HOADON where DANHBA=t1.DANHBA order by CreateDate desc)"
-                //+ " ,ThoiGian=(select top 1 CONVERT(varchar(10),CreateDate,103) from HOADON where DANHBA=t1.DANHBA order by CreateDate desc)"
+            if (LocBoLenh)
+                return ExecuteQuery_DataTable("select DanhBo=DANHBA,TongCong=SUM(TONGCONG)"
+                    + " ,DienThoai=(select top 1 DienThoai from CAPNUOCTANHOA.dbo.SDT_DHN where DanhBo=t1.DANHBA order by CreateDate desc)"
+                    + " from HOADON t1 where MaNV_DangNgan is null and NGAYGIAITRACH is null and TBDongNuoc_Ngay is null group by DANHBA"
+                    + " having COUNT(*)>=" + SoKy + " and SUM(TONGCONG)>=" + SoTien);
+            else
+                return ExecuteQuery_DataTable("select DanhBo=DANHBA,TongCong=SUM(TONGCONG)"
                 + " ,DienThoai=(select top 1 DienThoai from CAPNUOCTANHOA.dbo.SDT_DHN where DanhBo=t1.DANHBA order by CreateDate desc)"
                 + " from HOADON t1 where MaNV_DangNgan is null and NGAYGIAITRACH is null group by DANHBA"
                 + " having COUNT(*)>=" + SoKy + " and SUM(TONGCONG)>=" + SoTien);
         }
 
-        public DataTable GetDSTon_Autocall(int FromDot, int ToDot, int SoKy, int SoTien)
+        public DataTable GetDSTon_Autocall(bool LocBoLenh, int SoKy, int SoTien, int FromDot, int ToDot)
         {
-            return ExecuteQuery_DataTable("select DanhBo=DANHBA,TongCong=SUM(TONGCONG)"
-                //+ " ,HoTen=(select top 1 TENKH from HOADON where DANHBA=t1.DANHBA order by CreateDate desc)"
-                //+ " ,DiaChi=(select top 1 case when SO is null then DUONG else case when DUONG is null then SO else SO+' '+DUONG end end from HOADON where DANHBA=t1.DANHBA order by CreateDate desc)"
-                //+ " ,ThoiGian=(select top 1 CONVERT(varchar(10),CreateDate,103) from HOADON where DANHBA=t1.DANHBA order by CreateDate desc)"
+            if (LocBoLenh)
+                return ExecuteQuery_DataTable("select DanhBo=DANHBA,TongCong=SUM(TONGCONG)"
+                    + " ,DienThoai=(select top 1 DienThoai from CAPNUOCTANHOA.dbo.SDT_DHN where DanhBo=t1.DANHBA order by CreateDate desc)"
+                    + " from HOADON t1 where MaNV_DangNgan is null and NGAYGIAITRACH is null and TBDongNuoc_Ngay is null and Dot>=" + FromDot + " and Dot<=" + ToDot + " group by DANHBA"
+                    + " having COUNT(*)>=" + SoKy + " and SUM(TONGCONG)>=" + SoTien);
+            else
+                return ExecuteQuery_DataTable("select DanhBo=DANHBA,TongCong=SUM(TONGCONG)"
                 + " ,DienThoai=(select top 1 DienThoai from CAPNUOCTANHOA.dbo.SDT_DHN where DanhBo=t1.DANHBA order by CreateDate desc)"
                 + " from HOADON t1 where MaNV_DangNgan is null and NGAYGIAITRACH is null and Dot>=" + FromDot + " and Dot<=" + ToDot + " group by DANHBA"
                 + " having COUNT(*)>=" + SoKy + " and SUM(TONGCONG)>=" + SoTien);
