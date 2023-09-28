@@ -455,8 +455,9 @@ namespace DocSo_PC.GUI.ToTruong
                                 dr["MaDon"] = "Mã: Lỗi, kiểm tra lại";
                             dr["NoiDung"] = item.VanBan;
                             dr["GhiChu"] = item.GhiChu;
+                            dr["TenPhong"] = CNguoiDung.TenPhong.ToUpper();
                             dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper();
-                            dr["NguoiKy"] = CNguoiDung.NguoiKy.ToUpper();
+                            dr["NguoiKy"] = CNguoiDung.NguoiKy;
                             dsBaoCao.Tables["BaoCao"].Rows.Add(dr);
                         }
                     }
