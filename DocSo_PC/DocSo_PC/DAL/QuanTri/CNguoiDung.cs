@@ -135,7 +135,7 @@ namespace DocSo_PC.DAL.QuanTri
             set { CNguoiDung._NguoiKy = value; }
         }
 
-        static string _TenPhong = "ĐỘI QUẢN LÝ ĐHN";
+        static string _TenPhong = "ĐỘI QUẢN LÝ ĐỒNG HỒ NƯỚC";
         public static string TenPhong
         {
             get { return CNguoiDung._TenPhong; }
