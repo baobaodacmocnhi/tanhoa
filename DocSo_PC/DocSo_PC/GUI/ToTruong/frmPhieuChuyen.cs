@@ -38,6 +38,10 @@ namespace DocSo_PC.GUI.ToTruong
         {
             dgvDanhSach.AutoGenerateColumns = false;
             dgvBaoCao.AutoGenerateColumns = false;
+            if (CNguoiDung.Admin)
+                btnImportDaXuLy.Visible = true;
+            else
+                btnImportDaXuLy.Visible = false;
             if (CNguoiDung.Doi)
             {
                 cmbTo.Visible = true;
@@ -603,8 +607,9 @@ namespace DocSo_PC.GUI.ToTruong
                                         dr["MaDon"] = "Mã: Lỗi, kiểm tra lại";
                                     dr["NoiDung"] = item.VanBan;
                                     dr["GhiChu"] = item.GhiChu;
+                                    dr["TenPhong"] = CNguoiDung.TenPhong.ToUpper();
                                     dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper();
-                                    dr["NguoiKy"] = CNguoiDung.NguoiKy.ToUpper();
+                                    dr["NguoiKy"] = CNguoiDung.NguoiKy;
                                     dsBaoCao.Tables["BaoCao"].Rows.Add(dr);
                                 }
                             }
@@ -910,6 +915,26 @@ namespace DocSo_PC.GUI.ToTruong
             if (e.KeyChar == 13 && txtSoPhieu.Text.Trim() != "")
             {
                 dgvDanhSach.DataSource = _cPhieuChuyen.getDS_SoPhieu(txtSoPhieu.Text.Trim());
+            }
+        }
+
+        private void btnImportDaXuLy_Click(object sender, EventArgs e)
+        {
+            string error = "";
+            try
+            {
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
+                dialog.Multiselect = false;
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+
+                    MessageBox.Show("Đã xử lý", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "\n" + error, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
