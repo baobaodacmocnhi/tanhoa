@@ -142,6 +142,7 @@ namespace KTKS_DonKH.GUI.HeThong
             {
                 try
                 {
+                    wsThuongVu ws = new wsThuongVu();
                     string result = "";
                     ws.them_CCCD(item["DanhBo"].ToString(), item["MaCT"].ToString(), out result);
                     _cMenu.ExecuteNonQuery("insert into CCCD_Temp(CCCD,DanhBo,Result,ModifyDate)values('" + item["MaCT"].ToString() + "','" + item["DanhBo"].ToString() + "',N'" + result + "',getdate())");

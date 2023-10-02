@@ -4049,7 +4049,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         public DataTable getTimKiemSoDangKyDinhMuc(string MaCT)
         {
-            string sql = "select Loai=N'CT Đơn',TenLCT,ctct.MaCT,ct.SoNKTong,ctct.DanhBo,ctct.SoNKDangKy,ctct.CreateDate"
+            string sql = "select Loai=N'CT Đơn',ctct.MaLCT,TenLCT,ctct.MaCT,ct.SoNKTong,ctct.DanhBo,ctct.SoNKDangKy,ctct.CreateDate"
                         + " from ChungTu ct,LoaiChungTu lct,ChungTu_ChiTiet ctct"
                         + " where ct.MaLCT=lct.MaLCT and ct.MaCT=ctct.MaCT and ctct.MaCT like N'%" + MaCT + "%'"
                         + " union"

@@ -33,14 +33,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.dgvDanhSach = new System.Windows.Forms.DataGridView();
+            this.btnFileBilling = new System.Windows.Forms.Button();
             this.Loai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaLCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenLCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoNKTong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoNKDangKy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnFileBilling = new System.Windows.Forms.Button();
+            this.btnXoa = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,6 +89,7 @@
             this.dgvDanhSach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDanhSach.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Loai,
+            this.MaLCT,
             this.TenLCT,
             this.MaCT,
             this.SoNKTong,
@@ -97,12 +100,30 @@
             this.dgvDanhSach.Name = "dgvDanhSach";
             this.dgvDanhSach.Size = new System.Drawing.Size(914, 320);
             this.dgvDanhSach.TabIndex = 38;
+            this.dgvDanhSach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellClick);
+            // 
+            // btnFileBilling
+            // 
+            this.btnFileBilling.Location = new System.Drawing.Point(386, 11);
+            this.btnFileBilling.Name = "btnFileBilling";
+            this.btnFileBilling.Size = new System.Drawing.Size(130, 25);
+            this.btnFileBilling.TabIndex = 39;
+            this.btnFileBilling.Text = "Xuất CCCD Billing";
+            this.btnFileBilling.UseVisualStyleBackColor = true;
+            this.btnFileBilling.Click += new System.EventHandler(this.btnFileBilling_Click);
             // 
             // Loai
             // 
             this.Loai.DataPropertyName = "Loai";
             this.Loai.HeaderText = "Loại";
             this.Loai.Name = "Loai";
+            // 
+            // MaLCT
+            // 
+            this.MaLCT.DataPropertyName = "MaLCT";
+            this.MaLCT.HeaderText = "MaLCT";
+            this.MaLCT.Name = "MaLCT";
+            this.MaLCT.Visible = false;
             // 
             // TenLCT
             // 
@@ -142,15 +163,15 @@
             this.CreateDate.HeaderText = "Ngày Lập";
             this.CreateDate.Name = "CreateDate";
             // 
-            // btnFileBilling
+            // btnXoa
             // 
-            this.btnFileBilling.Location = new System.Drawing.Point(386, 11);
-            this.btnFileBilling.Name = "btnFileBilling";
-            this.btnFileBilling.Size = new System.Drawing.Size(130, 25);
-            this.btnFileBilling.TabIndex = 39;
-            this.btnFileBilling.Text = "Xuất CCCD Billing";
-            this.btnFileBilling.UseVisualStyleBackColor = true;
-            this.btnFileBilling.Click += new System.EventHandler(this.btnFileBilling_Click);
+            this.btnXoa.Location = new System.Drawing.Point(713, 11);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(86, 25);
+            this.btnXoa.TabIndex = 40;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // frmSoDangKyDinhMuc
             // 
@@ -158,6 +179,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(983, 506);
+            this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnFileBilling);
             this.Controls.Add(this.dgvDanhSach);
             this.Controls.Add(this.btnTimKiem);
@@ -181,13 +203,15 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnTimKiem;
         private System.Windows.Forms.DataGridView dgvDanhSach;
+        private System.Windows.Forms.Button btnFileBilling;
         private System.Windows.Forms.DataGridViewTextBoxColumn Loai;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaLCT;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenLCT;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaCT;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoNKTong;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoNKDangKy;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
-        private System.Windows.Forms.Button btnFileBilling;
+        private System.Windows.Forms.Button btnXoa;
     }
 }
