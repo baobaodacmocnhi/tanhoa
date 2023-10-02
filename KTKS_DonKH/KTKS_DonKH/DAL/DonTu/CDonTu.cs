@@ -420,7 +420,7 @@ namespace KTKS_DonKH.DAL.DonTu
                 DataTable dtDonTu = new DataTable();
                 dtDonTu = ExecuteQuery_DataTable(sqlDonTu);
                 dtDonTu.TableName = "DonTu";
-                dtDonTu.DefaultView.Sort = "CreateDate ASC";
+                dtDonTu.DefaultView.Sort = "MaDon ASC";
                 ds.Tables.Add(dtDonTu.DefaultView.ToTable());
 
                 DataTable dtDonTuChiTiet = new DataTable();
