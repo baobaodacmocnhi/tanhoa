@@ -13467,6 +13467,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<int> _ModifyBy;
 		
+		private string _SHS;
+		
 		private EntityRef<ChungTu> _ChungTu;
 		
     #region Extensibility Method Definitions
@@ -13607,6 +13609,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnModifyDateChanged();
     partial void OnModifyByChanging(System.Nullable<int> value);
     partial void OnModifyByChanged();
+    partial void OnSHSChanging(string value);
+    partial void OnSHSChanged();
     #endregion
 		
 		public ChungTu_ChiTiet()
@@ -14959,6 +14963,26 @@ namespace KTKS_DonKH.LinQ
 					this._ModifyBy = value;
 					this.SendPropertyChanged("ModifyBy");
 					this.OnModifyByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SHS", DbType="VarChar(10)")]
+		public string SHS
+		{
+			get
+			{
+				return this._SHS;
+			}
+			set
+			{
+				if ((this._SHS != value))
+				{
+					this.OnSHSChanging(value);
+					this.SendPropertyChanging();
+					this._SHS = value;
+					this.SendPropertyChanged("SHS");
+					this.OnSHSChanged();
 				}
 			}
 		}

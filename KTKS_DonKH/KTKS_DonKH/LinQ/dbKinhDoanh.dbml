@@ -604,6 +604,7 @@
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SHS" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Association Name="ChungTu_ChungTu_ChiTiet" Member="ChungTu" ThisKey="MaCT,MaLCT" OtherKey="MaCT,MaLCT" Type="ChungTu" IsForeignKey="true" />
     </Type>
   </Table>
