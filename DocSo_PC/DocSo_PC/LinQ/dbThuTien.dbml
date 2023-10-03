@@ -240,4 +240,16 @@
       <Column Name="CodeFu" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.ViewGetAllNamHD" Member="ViewGetAllNamHDs">
+    <Type Name="ViewGetAllNamHD">
+      <Column Name="NAM" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ViewGetNamHD" Member="ViewGetNamHDs">
+    <Type Name="ViewGetNamHD">
+      <Column Name="NAM" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

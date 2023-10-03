@@ -9,12 +9,12 @@ using System.Data.SqlClient;
 
 namespace DocSo_PC.DAL
 {
-    class CThuTien 
+    class CThuTien
     {
         public static dbThuTienDataContext _db = new dbThuTienDataContext();
         public static CConnection _cDAL = new CConnection(_db.Connection.ConnectionString);
 
-        public HOADON GetMoiNhat(string DanhBo)
+        public HOADON getMoiNhat(string DanhBo)
         {
             HOADON a = new HOADON();
             if (_db.HOADONs.Any(item => item.DANHBA == DanhBo))
@@ -116,6 +116,18 @@ namespace DocSo_PC.DAL
             //a.TONGCONG_BU = b.TONGCONG_BU;
             a.TUNGAY = b.TUNGAY;
             return a;
+        }
+
+        public DataTable getNam()
+        {
+            return _cDAL.LINQToDataTable(_db.ViewGetNamHDs.OrderByDescending(item => item.NAM));
+        }
+
+        public DataTable get(string Nam, string Ky, string Dot)
+        {
+            string sql = "select * from HOADON_TA.dbo.HOADON hd, CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh"
+                +" where hd.Nam= and hd.Ky= and hd.Dot= hd.DanhBa=ttkh.DanhBo";
+            return _cDAL.ExecuteQuery_DataTable(sql);
         }
     }
 }

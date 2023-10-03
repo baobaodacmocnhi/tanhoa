@@ -83,6 +83,22 @@ namespace DocSo_PC.LinQ
 				return this.GetTable<TT_HoaDonCu>();
 			}
 		}
+		
+		public System.Data.Linq.Table<ViewGetAllNamHD> ViewGetAllNamHDs
+		{
+			get
+			{
+				return this.GetTable<ViewGetAllNamHD>();
+			}
+		}
+		
+		public System.Data.Linq.Table<ViewGetNamHD> ViewGetNamHDs
+		{
+			get
+			{
+				return this.GetTable<ViewGetNamHD>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.HOADON")]
@@ -5725,6 +5741,96 @@ namespace DocSo_PC.LinQ
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ViewGetAllNamHD")]
+	public partial class ViewGetAllNamHD
+	{
+		
+		private int _NAM;
+		
+		private string _ID;
+		
+		public ViewGetAllNamHD()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAM", DbType="Int NOT NULL")]
+		public int NAM
+		{
+			get
+			{
+				return this._NAM;
+			}
+			set
+			{
+				if ((this._NAM != value))
+				{
+					this._NAM = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="VarChar(4)")]
+		public string ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ViewGetNamHD")]
+	public partial class ViewGetNamHD
+	{
+		
+		private System.Nullable<int> _NAM;
+		
+		private string _ID;
+		
+		public ViewGetNamHD()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAM", DbType="Int")]
+		public System.Nullable<int> NAM
+		{
+			get
+			{
+				return this._NAM;
+			}
+			set
+			{
+				if ((this._NAM != value))
+				{
+					this._NAM = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="VarChar(4)")]
+		public string ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
 			}
 		}
 	}

@@ -19,6 +19,7 @@ namespace DocSo_PC.GUI.MaHoa
         CTo _cTo = new CTo();
         CMayDS _cMayDS = new CMayDS();
         CDHN _cDHN = new CDHN();
+        CThuTien _cThuTien = new CThuTien();
 
         public frmTimKiem()
         {
@@ -42,6 +43,9 @@ namespace DocSo_PC.GUI.MaHoa
                 cmbMay.DisplayMember = "May";
                 cmbMay.ValueMember = "May";
                 cmbMay.SelectedIndex = 0;
+                cmbNam.DataSource = _cThuTien.GetNam();
+                cmbNam.DisplayMember = "Nam";
+                cmbNam.ValueMember = "Nam";
             }
             catch (Exception ex)
             {
@@ -71,6 +75,18 @@ namespace DocSo_PC.GUI.MaHoa
             using (SolidBrush b = new SolidBrush(dgvDanhSach.RowHeadersDefaultCellStyle.ForeColor))
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void btnXem04_Click(object sender, EventArgs e)
+        {
+            try
+            {
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
