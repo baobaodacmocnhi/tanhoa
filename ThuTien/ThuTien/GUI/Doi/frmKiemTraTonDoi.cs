@@ -2320,5 +2320,6 @@ namespace ThuTien.GUI.Doi
             //Điền dữ liệu vào vùng đã thiết lập
             range.Value2 = arr;
         }
+
     }
 }

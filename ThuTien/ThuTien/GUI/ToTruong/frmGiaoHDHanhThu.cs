@@ -41,6 +41,7 @@ namespace ThuTien.GUI.ToTruong
                 cmbTo.DataSource = _cTo.getDS_HanhThu();
                 cmbTo.DisplayMember = "TenTo";
                 cmbTo.ValueMember = "MaTo";
+                cmbTo.SelectedIndex = -1;
             }
             else
                 lbTo.Text = "Tổ  " + CNguoiDung.TenTo;
@@ -284,8 +285,17 @@ namespace ThuTien.GUI.ToTruong
                 _selectedindex = e.RowIndex;
                 if (dgvHDTuGia["MaNV_TG", e.RowIndex].Value.ToString() != "")
                     cmbNhanVien.SelectedValue = dgvHDTuGia["MaNV_TG", e.RowIndex].Value;
-                txtTuSoPhatHanh.Text = dgvHDTuGia["TuSoPhatHanh_TG", e.RowIndex].Value.ToString();
-                txtDenSoPhatHanh.Text = dgvHDTuGia["DenSoPhatHanh_TG", e.RowIndex].Value.ToString();
+                if (radChiaTheoSoPhatHanh.Checked)
+                {
+                    txtTuSoPhatHanh.Text = dgvHDTuGia["TuSoPhatHanh_TG", e.RowIndex].Value.ToString();
+                    txtDenSoPhatHanh.Text = dgvHDTuGia["DenSoPhatHanh_TG", e.RowIndex].Value.ToString();
+                }
+                else
+                    if (radChiaTheoMLT.Checked)
+                    {
+                        txtTuSoPhatHanh.Text = dgvHDTuGia["TuMLT_TG", e.RowIndex].Value.ToString();
+                        txtDenSoPhatHanh.Text = dgvHDTuGia["DenMLT_TG", e.RowIndex].Value.ToString();
+                    }
                 cmbCucChia.SelectedItem = dgvHDTuGia["DotChia_TG", e.RowIndex].Value.ToString();
             }
             catch (Exception)
@@ -327,78 +337,80 @@ namespace ThuTien.GUI.ToTruong
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.Doi == false)
-                if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+            if (CNguoiDung.CheckQuyen(_mnu, "Them"))
+            {
+                int MaTo = CNguoiDung.MaTo;
+                if (CNguoiDung.Doi)
+                    MaTo = ((TT_To)cmbTo.SelectedItem).MaTo;
+                //var startTime = System.Diagnostics.Stopwatch.StartNew();
+                if (tabControl.SelectedTab.Name == "tabTuGia")
                 {
-                    //var startTime = System.Diagnostics.Stopwatch.StartNew();
-                    if (tabControl.SelectedTab.Name == "tabTuGia")
+                    if (dgvHDTuGia.RowCount > 0 && cmbNhanVien.SelectedIndex != -1 && txtTuSoPhatHanh.Text.Trim() != "" && txtDenSoPhatHanh.Text.Trim() != "")
                     {
-                        if (dgvHDTuGia.RowCount > 0 && cmbNhanVien.SelectedIndex != -1 && txtTuSoPhatHanh.Text.Trim() != "" && txtDenSoPhatHanh.Text.Trim() != "")
-                        {
-                            if (int.Parse(txtTuSoPhatHanh.Text.Trim()) <= int.Parse(txtDenSoPhatHanh.Text.Trim()))
-                                if (radChiaTheoSoPhatHanh.Checked)
-                                    if (!_cHoaDon.CheckGiaoBySoPhatHanhsNam(decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString())))
-                                        if (_cHoaDon.CheckSoPhatHanhByNamKyDot("", CNguoiDung.MaTo, decimal.Parse(txtTuSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()))
-                                            && _cHoaDon.CheckSoPhatHanhByNamKyDot("", CNguoiDung.MaTo, decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())))
+                        if (int.Parse(txtTuSoPhatHanh.Text.Trim()) <= int.Parse(txtDenSoPhatHanh.Text.Trim()))
+                            if (radChiaTheoSoPhatHanh.Checked)
+                                if (!_cHoaDon.CheckGiaoBySoPhatHanhsNam(decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString())))
+                                    if (_cHoaDon.CheckSoPhatHanhByNamKyDot("", MaTo, decimal.Parse(txtTuSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()))
+                                        && _cHoaDon.CheckSoPhatHanhByNamKyDot("", MaTo, decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())))
+                                    {
+                                        if (_cHoaDon.ThemChia_SoPhatHanh("", MaTo, int.Parse(cmbCucChia.SelectedItem.ToString()), decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()),
+                                            int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(cmbNhanVien.SelectedValue.ToString())))
                                         {
-                                            if (_cHoaDon.ThemChia_SoPhatHanh("", CNguoiDung.MaTo, int.Parse(cmbCucChia.SelectedItem.ToString()), decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()),
-                                                int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(cmbNhanVien.SelectedValue.ToString())))
-                                            {
-                                                btnXem.PerformClick();
-                                                Clear();
-                                            }
+                                            btnXem.PerformClick();
+                                            Clear();
                                         }
-                                        else
-                                            MessageBox.Show("Sai Số Phát Hành", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
                                     else
-                                        MessageBox.Show("Có Hóa Đơn được giao\nVui lòng kiểm tra lại Số Phát Hành", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        MessageBox.Show("Sai Số Phát Hành", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 else
-                                    if (radChiaTheoMLT.Checked)
-                                        if (!_cHoaDon.CheckGiaoByMLTsNam(decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString())))
-                                            if (_cHoaDon.CheckMLTByNamKyDot("", CNguoiDung.MaTo, decimal.Parse(txtTuSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()))
-                                                && _cHoaDon.CheckMLTByNamKyDot("", CNguoiDung.MaTo, decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())))
-                                            {
-                                                if (_cHoaDon.ThemChia_MLT("", CNguoiDung.MaTo, int.Parse(cmbCucChia.SelectedItem.ToString()), decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()),
-                                                    int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(cmbNhanVien.SelectedValue.ToString())))
-                                                {
-                                                    btnXem.PerformClick();
-                                                    Clear();
-                                                }
-                                            }
-                                            else
-                                                MessageBox.Show("Sai Số Phát Hành", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        else
-                                            MessageBox.Show("Có Hóa Đơn được giao\nVui lòng kiểm tra lại Số Phát Hành", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                                    MessageBox.Show("Có Hóa Đơn được giao\nVui lòng kiểm tra lại Số Phát Hành", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            else
+                                if (radChiaTheoMLT.Checked)
+                                    //if (!_cHoaDon.CheckGiaoByMLTsNam(decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString())))
+                                    if (_cHoaDon.CheckMLTByNamKyDot("", MaTo, decimal.Parse(txtTuSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()))
+                                        && _cHoaDon.CheckMLTByNamKyDot("", MaTo, decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())))
+                                    {
+                                        if (_cHoaDon.ThemChia_MLT("", MaTo, int.Parse(cmbCucChia.SelectedItem.ToString()), decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()),
+                                            int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(cmbNhanVien.SelectedValue.ToString())))
+                                        {
+                                            btnXem.PerformClick();
+                                            Clear();
+                                        }
+                                    }
+                                    else
+                                        MessageBox.Show("Sai MLT", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //else
+                        //    MessageBox.Show("Có Hóa Đơn được giao\nVui lòng kiểm tra lại Số Phát Hành", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    //else
-                    //    if (tabControl.SelectedTab.Name == "tabCoQuan")
-                    //    {
-                    //        if (dgvHDCoQuan.RowCount > 0 && cmbNhanVien.SelectedIndex != -1 && txtTuSoPhatHanh.Text.Trim() != "" && txtDenSoPhatHanh.Text.Trim() != "")
-                    //        {
-                    //            if (int.Parse(txtTuSoPhatHanh.Text.Trim()) <= int.Parse(txtDenSoPhatHanh.Text.Trim()))
-                    //                if (!_cHoaDon.CheckGiaoBySoPhatHanhsNam(decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString())))
-                    //                    if (_cHoaDon.CheckSoPhatHanhByNamKyDot("CQ", CNguoiDung.MaTo, decimal.Parse(txtTuSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()))
-                    //                        && _cHoaDon.CheckSoPhatHanhByNamKyDot("CQ", CNguoiDung.MaTo, decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())))
-                    //                    {
-                    //                        if (_cHoaDon.ThemChia("CQ", CNguoiDung.MaTo, int.Parse(cmbCucChia.SelectedItem.ToString()), decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()),
-                    //                            int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(cmbNhanVien.SelectedValue.ToString())))
-                    //                        {
-                    //                            btnXem.PerformClick();
-                    //                            Clear();
-                    //                        }
-                    //                    }
-                    //                    else
-                    //                        MessageBox.Show("Sai Số Phát Hành", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //                else
-                    //                    MessageBox.Show("Có Hóa Đơn được giao\nVui lòng kiểm tra lại Số Phát Hành", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //        }
-                    //    }
-                    //startTime.Stop();
-                    //MessageBox.Show(startTime.ElapsedMilliseconds.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                else
-                    MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //else
+                //    if (tabControl.SelectedTab.Name == "tabCoQuan")
+                //    {
+                //        if (dgvHDCoQuan.RowCount > 0 && cmbNhanVien.SelectedIndex != -1 && txtTuSoPhatHanh.Text.Trim() != "" && txtDenSoPhatHanh.Text.Trim() != "")
+                //        {
+                //            if (int.Parse(txtTuSoPhatHanh.Text.Trim()) <= int.Parse(txtDenSoPhatHanh.Text.Trim()))
+                //                if (!_cHoaDon.CheckGiaoBySoPhatHanhsNam(decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString())))
+                //                    if (_cHoaDon.CheckSoPhatHanhByNamKyDot("CQ", CNguoiDung.MaTo, decimal.Parse(txtTuSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()))
+                //                        && _cHoaDon.CheckSoPhatHanhByNamKyDot("CQ", CNguoiDung.MaTo, decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())))
+                //                    {
+                //                        if (_cHoaDon.ThemChia("CQ", CNguoiDung.MaTo, int.Parse(cmbCucChia.SelectedItem.ToString()), decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()),
+                //                            int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString()), int.Parse(cmbNhanVien.SelectedValue.ToString())))
+                //                        {
+                //                            btnXem.PerformClick();
+                //                            Clear();
+                //                        }
+                //                    }
+                //                    else
+                //                        MessageBox.Show("Sai Số Phát Hành", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //                else
+                //                    MessageBox.Show("Có Hóa Đơn được giao\nVui lòng kiểm tra lại Số Phát Hành", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //        }
+                //    }
+                //startTime.Stop();
+                //MessageBox.Show(startTime.ElapsedMilliseconds.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -408,63 +420,65 @@ namespace ThuTien.GUI.ToTruong
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.Doi == false)
-                if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
-                {
-                    if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                        if (_selectedindex != -1)
+            if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
+            {
+                if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    if (_selectedindex != -1)
+                    {
+                        int MaTo = CNguoiDung.MaTo;
+                        if (CNguoiDung.Doi)
+                            MaTo = ((TT_To)cmbTo.SelectedItem).MaTo;
+                        //var startTime = System.Diagnostics.Stopwatch.StartNew();
+                        if (tabControl.SelectedTab.Name == "tabTuGia")
                         {
-                            //var startTime = System.Diagnostics.Stopwatch.StartNew();
-                            if (tabControl.SelectedTab.Name == "tabTuGia")
+                            if (radChiaTheoSoPhatHanh.Checked)
+                            //if (!_cHoaDon.CheckDangNganBySoPhatHanhsNam(decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbNhanVien.SelectedValue.ToString())))
                             {
-                                if (radChiaTheoSoPhatHanh.Checked)
-                                    //if (!_cHoaDon.CheckDangNganBySoPhatHanhsNam(decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbNhanVien.SelectedValue.ToString())))
-                                    {
-                                        if (_cHoaDon.XoaChia_SoPhatHanh("", CNguoiDung.MaTo, decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()),
-                                                            int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())))
-                                        {
-                                            btnXem.PerformClick();
-                                            Clear();
-                                        }
-                                    }
-                                    //else
-                                    //    MessageBox.Show("Hóa Đơn đã được Đăng Ngân, Không được Xóa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                else
-                                    if (radChiaTheoMLT.Checked)
-                                        //if (!_cHoaDon.CheckDangNganBySoPhatHanhsNam(decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbNhanVien.SelectedValue.ToString())))
-                                        {
-                                            if (_cHoaDon.XoaChia_MLT("", CNguoiDung.MaTo, decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()),
-                                                                int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())))
-                                            {
-                                                btnXem.PerformClick();
-                                                Clear();
-                                            }
-                                        }
-                                        //else
-                                        //    MessageBox.Show("Hóa Đơn đã được Đăng Ngân, Không được Xóa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                if (_cHoaDon.XoaChia_SoPhatHanh("", MaTo, decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()),
+                                                    int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())))
+                                {
+                                    btnXem.PerformClick();
+                                    Clear();
+                                }
                             }
-                            //if (tabControl.SelectedTab.Name == "tabCoQuan")
-                            //{
-                            //    //if (!_cHoaDon.CheckDangNganBySoPhatHanhsNam(decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbNhanVien.SelectedValue.ToString())))
-                            //    //{
-                            //    if (_cHoaDon.XoaChia("CQ", CNguoiDung.MaTo, decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()),
-                            //                        int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())))
-                            //    {
-                            //        btnXem.PerformClick();
-                            //        Clear();
-                            //    }
-                            //    //}
-                            //    //else
-                            //    //    MessageBox.Show("Hóa Đơn đã được Đăng Ngân, Không được Xóa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            //}
-                            //startTime.Stop();
-                            //MessageBox.Show(startTime.ElapsedMilliseconds.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            //else
+                            //    MessageBox.Show("Hóa Đơn đã được Đăng Ngân, Không được Xóa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            else
+                                if (radChiaTheoMLT.Checked)
+                                //if (!_cHoaDon.CheckDangNganBySoPhatHanhsNam(decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbNhanVien.SelectedValue.ToString())))
+                                {
+                                    if (_cHoaDon.XoaChia_MLT("", MaTo, decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()),
+                                                        int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())))
+                                    {
+                                        btnXem.PerformClick();
+                                        Clear();
+                                    }
+                                }
+                            //else
+                            //    MessageBox.Show("Hóa Đơn đã được Đăng Ngân, Không được Xóa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                        else
-                            MessageBox.Show("Lỗi, Vui lòng chọn Hóa Đơn(đã giao) cần xóa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                    MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //if (tabControl.SelectedTab.Name == "tabCoQuan")
+                        //{
+                        //    //if (!_cHoaDon.CheckDangNganBySoPhatHanhsNam(decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbNhanVien.SelectedValue.ToString())))
+                        //    //{
+                        //    if (_cHoaDon.XoaChia("CQ", CNguoiDung.MaTo, decimal.Parse(txtTuSoPhatHanh.Text.Trim()), decimal.Parse(txtDenSoPhatHanh.Text.Trim()),
+                        //                        int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(cmbDot.SelectedItem.ToString())))
+                        //    {
+                        //        btnXem.PerformClick();
+                        //        Clear();
+                        //    }
+                        //    //}
+                        //    //else
+                        //    //    MessageBox.Show("Hóa Đơn đã được Đăng Ngân, Không được Xóa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //}
+                        //startTime.Stop();
+                        //MessageBox.Show(startTime.ElapsedMilliseconds.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                        MessageBox.Show("Lỗi, Vui lòng chọn Hóa Đơn(đã giao) cần xóa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void txtDenSoPhatHanh_TextChanged(object sender, EventArgs e)
@@ -527,7 +541,12 @@ namespace ThuTien.GUI.ToTruong
 
         private void cmbTo_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (cmbTo.SelectedIndex >= 0)
+            {
+                cmbNhanVien.DataSource = _cNguoiDung.GetDSHanhThuByMaTo(((TT_To)cmbTo.SelectedItem).MaTo);
+                cmbNhanVien.DisplayMember = "HoTen";
+                cmbNhanVien.ValueMember = "MaND";
+            }
         }
 
         private void btnInTongKy_Click(object sender, EventArgs e)
