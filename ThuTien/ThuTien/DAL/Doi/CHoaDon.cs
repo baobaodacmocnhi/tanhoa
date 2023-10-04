@@ -10243,32 +10243,42 @@ namespace ThuTien.DAL.Doi
             return null;
         }
 
-        public DataTable GetDSTon_Autocall(bool LocBoLenh, int SoKy, int SoTien)
+        public DataTable GetDSTon_Autocall(bool TongNo, int SoKy, int SoTien)
         {
-            if (LocBoLenh)
+            //return ExecuteQuery_DataTable("select DanhBo=DANHBA,TongCong=SUM(TONGCONG)"
+            //    + " ,DienThoai=(select top 1 DienThoai from CAPNUOCTANHOA.dbo.SDT_DHN where DanhBo=t1.DANHBA order by CreateDate desc)"
+            //    + " from HOADON t1 where MaNV_DangNgan is null and NGAYGIAITRACH is null and TBDongNuoc_Ngay is null group by DANHBA"
+            //    + " having COUNT(*)>=" + SoKy + " and SUM(TONGCONG)>=" + SoTien);
+            if (TongNo)
                 return ExecuteQuery_DataTable("select DanhBo=DANHBA,TongCong=SUM(TONGCONG)"
-                    + " ,DienThoai=(select top 1 DienThoai from CAPNUOCTANHOA.dbo.SDT_DHN where DanhBo=t1.DANHBA order by CreateDate desc)"
-                    + " from HOADON t1 where MaNV_DangNgan is null and NGAYGIAITRACH is null and TBDongNuoc_Ngay is null group by DANHBA"
-                    + " having COUNT(*)>=" + SoKy + " and SUM(TONGCONG)>=" + SoTien);
+                 + " ,DienThoai=(select top 1 DienThoai from CAPNUOCTANHOA.dbo.SDT_DHN where DanhBo=t1.DANHBA order by CreateDate desc)"
+                 + " from HOADON t1 where MaNV_DangNgan is null and NGAYGIAITRACH is null"
+                 + " and DANHBA in (select DanhBo from TT_KQDongNuoc where MoNuoc=0 and TroNgaiMN=0)"
+                 + " group by DANHBAhaving COUNT(*)>=" + SoKy + " and SUM(TONGCONG)>=" + SoTien);
             else
                 return ExecuteQuery_DataTable("select DanhBo=DANHBA,TongCong=SUM(TONGCONG)"
                 + " ,DienThoai=(select top 1 DienThoai from CAPNUOCTANHOA.dbo.SDT_DHN where DanhBo=t1.DANHBA order by CreateDate desc)"
-                + " from HOADON t1 where MaNV_DangNgan is null and NGAYGIAITRACH is null group by DANHBA"
-                + " having COUNT(*)>=" + SoKy + " and SUM(TONGCONG)>=" + SoTien);
+                + " from HOADON t1 where MaNV_DangNgan is null and NGAYGIAITRACH is null"
+                + " and DANHBA in (select DanhBo from TT_KQDongNuoc where MoNuoc=0 and TroNgaiMN=0)"
+                + " and (select top 1 hd.TongCong from HOADON hd where hd.DanhBa=t1.DanhBa order by hd.CreateDate desc)>=" + SoTien
+                + " group by DANHBA having COUNT(*)>=" + SoKy);
         }
 
-        public DataTable GetDSTon_Autocall(bool LocBoLenh, int SoKy, int SoTien, int FromDot, int ToDot)
+        public DataTable GetDSTon_Autocall(bool TongNo, int SoKy, int SoTien, int FromDot, int ToDot)
         {
-            if (LocBoLenh)
+            if (TongNo)
                 return ExecuteQuery_DataTable("select DanhBo=DANHBA,TongCong=SUM(TONGCONG)"
-                    + " ,DienThoai=(select top 1 DienThoai from CAPNUOCTANHOA.dbo.SDT_DHN where DanhBo=t1.DANHBA order by CreateDate desc)"
-                    + " from HOADON t1 where MaNV_DangNgan is null and NGAYGIAITRACH is null and TBDongNuoc_Ngay is null and Dot>=" + FromDot + " and Dot<=" + ToDot + " group by DANHBA"
-                    + " having COUNT(*)>=" + SoKy + " and SUM(TONGCONG)>=" + SoTien);
+                + " ,DienThoai=(select top 1 DienThoai from CAPNUOCTANHOA.dbo.SDT_DHN where DanhBo=t1.DANHBA order by CreateDate desc)"
+                + " from HOADON t1 where MaNV_DangNgan is null and NGAYGIAITRACH is null and Dot>=" + FromDot + " and Dot<=" + ToDot
+                + " and DANHBA in (select DanhBo from TT_KQDongNuoc where MoNuoc=0 and TroNgaiMN=0)"
+                + " group by DANHBA having COUNT(*)>=" + SoKy + " and SUM(TONGCONG)>=" + SoTien);
             else
                 return ExecuteQuery_DataTable("select DanhBo=DANHBA,TongCong=SUM(TONGCONG)"
                 + " ,DienThoai=(select top 1 DienThoai from CAPNUOCTANHOA.dbo.SDT_DHN where DanhBo=t1.DANHBA order by CreateDate desc)"
-                + " from HOADON t1 where MaNV_DangNgan is null and NGAYGIAITRACH is null and Dot>=" + FromDot + " and Dot<=" + ToDot + " group by DANHBA"
-                + " having COUNT(*)>=" + SoKy + " and SUM(TONGCONG)>=" + SoTien);
+                + " from HOADON t1 where MaNV_DangNgan is null and NGAYGIAITRACH is null and Dot>=" + FromDot + " and Dot<=" + ToDot
+                + " and DANHBA in (select DanhBo from TT_KQDongNuoc where MoNuoc=0 and TroNgaiMN=0)"
+                + " and (select top 1 hd.TongCong from HOADON hd where hd.DanhBa=t1.DanhBa order by hd.CreateDate desc)>=" + SoTien
+                + " group by DANHBA having COUNT(*)>=" + SoKy);
         }
 
         /// <summary>

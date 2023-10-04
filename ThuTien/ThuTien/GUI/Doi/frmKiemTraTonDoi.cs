@@ -2248,11 +2248,11 @@ namespace ThuTien.GUI.Doi
             DataTable dt = new DataTable();
             if (cmbFromDot.SelectedIndex == 0)
             {
-                dt = _cHoaDon.GetDSTon_Autocall(chkLocBoLenh.Checked, 2, int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+                dt = _cHoaDon.GetDSTon_Autocall(chkTongNo.Checked,2, int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
             }
             else if (cmbFromDot.SelectedIndex > 0)
             {
-                dt = _cHoaDon.GetDSTon_Autocall(chkLocBoLenh.Checked, 2, int.Parse(txtSoTien.Text.Trim().Replace(".", "")), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
+                dt = _cHoaDon.GetDSTon_Autocall(chkTongNo.Checked, 2, int.Parse(txtSoTien.Text.Trim().Replace(".", "")), int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
             }
 
             // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
@@ -2272,7 +2272,7 @@ namespace ThuTien.GUI.Doi
                     arr[i, 4] = hd.TENKH;
                     arr[i, 5] = hd.SO + " " + hd.DUONG;
                     arr[i, 7] = dr["TongCong"].ToString();
-                    arr[i, 8] = hd.CreateDate.Value.ToString("dd/MM/yyyy");
+                    arr[i, 8] = DateTime.Now.AddDays(1).ToString("dd/MM/yyyy");
                 }
             }
 
