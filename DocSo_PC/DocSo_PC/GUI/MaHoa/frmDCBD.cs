@@ -55,7 +55,7 @@ namespace DocSo_PC.GUI.MaHoa
                 item.Cells["HieuLucKy"].Value = str;
                 if (item.Cells["DanhBo"].Value != null && item.Cells["DanhBo"].Value.ToString().Length == 11)
                 {
-                    HOADON hd = _cThuTien.GetMoiNhat(item.Cells["DanhBo"].Value.ToString());
+                    HOADON hd = _cThuTien.getMoiNhat(item.Cells["DanhBo"].Value.ToString());
                     if (hd != null)
                         item.Cells["GiaBieuCu"].Value = hd.GB;
                 }
@@ -71,7 +71,7 @@ namespace DocSo_PC.GUI.MaHoa
                 item.Cells["HieuLucKy"].Value = str;
                 if (item.Cells["DanhBo"].Value != null && item.Cells["DanhBo"].Value.ToString().Length == 11)
                 {
-                    HOADON hd = _cThuTien.GetMoiNhat(item.Cells["DanhBo"].Value.ToString());
+                    HOADON hd = _cThuTien.getMoiNhat(item.Cells["DanhBo"].Value.ToString());
                     if (hd != null)
                         item.Cells["GiaBieuCu"].Value = hd.GB;
                 }
@@ -891,7 +891,7 @@ namespace DocSo_PC.GUI.MaHoa
                                 && !_cDCBD.checkExist(dontu.ID, item[1].ToString().Replace(" ", "").Replace("-", "")))
                                 {
                                     error = item[1].ToString().Replace(" ", "").Replace("-", "");
-                                    HOADON hoadon = _cThuTien.GetMoiNhat(item[1].ToString().Replace(" ", "").Replace("-", ""));
+                                    HOADON hoadon = _cThuTien.getMoiNhat(item[1].ToString().Replace(" ", "").Replace("-", ""));
                                     if (hoadon != null && (hoadon.GB == 10 || hoadon.GB == 11 || hoadon.GB == 15) && (hoadon.DiaChiHD == null || hoadon.DiaChiHD == ""))
                                     {
                                         MaHoa_DCBD ctdcbd = new MaHoa_DCBD();

@@ -43,9 +43,9 @@ namespace DocSo_PC.GUI.MaHoa
                 cmbMay.DisplayMember = "May";
                 cmbMay.ValueMember = "May";
                 cmbMay.SelectedIndex = 0;
-                cmbNam.DataSource = _cThuTien.GetNam();
-                cmbNam.DisplayMember = "Nam";
-                cmbNam.ValueMember = "Nam";
+                cmbNam04.DataSource = _cThuTien.getNam();
+                cmbNam04.DisplayMember = "Nam";
+                cmbNam04.ValueMember = "Nam";
             }
             catch (Exception ex)
             {
@@ -82,12 +82,23 @@ namespace DocSo_PC.GUI.MaHoa
         {
             try
             {
-               
+                string LoaiTieuThu = "";
+                if (rad0.Checked)
+                    LoaiTieuThu = "0";
+                else
+                    if (rad14.Checked)
+                        LoaiTieuThu = "14";
+                dgvDanhSach.DataSource = _cThuTien.getDS(cmbNam04.SelectedValue.ToString(), cmbKy04.SelectedItem.ToString(), cmbDot04.SelectedItem.ToString(), LoaiTieuThu);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

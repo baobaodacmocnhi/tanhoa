@@ -739,7 +739,7 @@ namespace DocSo_PC.GUI.ToTruong
                                 if (_cDonTu.checkExists(item.Cells["DanhBo"].Value.ToString().Replace(" ", ""), DateTime.Now) == false)
                                 {
                                     MaHoa_DonTu en = new MaHoa_DonTu();
-                                    HOADON hd = _cThuTien.GetMoiNhat(item.Cells["DanhBo"].Value.ToString().Replace(" ", ""));
+                                    HOADON hd = _cThuTien.getMoiNhat(item.Cells["DanhBo"].Value.ToString().Replace(" ", ""));
                                     if (hd != null)
                                     {
                                         en.DanhBo = hd.DANHBA;

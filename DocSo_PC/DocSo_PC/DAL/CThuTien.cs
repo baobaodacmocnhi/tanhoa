@@ -123,10 +123,23 @@ namespace DocSo_PC.DAL
             return _cDAL.LINQToDataTable(_db.ViewGetNamHDs.OrderByDescending(item => item.NAM));
         }
 
-        public DataTable get(string Nam, string Ky, string Dot)
+        public DataTable getDS(string Nam, string Ky, string Dot, string LoaiTieuThu)
         {
-            string sql = "select * from HOADON_TA.dbo.HOADON hd, CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh"
-                +" where hd.Nam= and hd.Ky= and hd.Dot= hd.DanhBa=ttkh.DanhBo";
+            if (Dot == "Tất Cả")
+                Dot = "";
+            else
+                Dot = " and hd.Dot=" + Ky;
+            if (LoaiTieuThu == "0")
+                LoaiTieuThu = " and hd.TieuThu=0";
+            else
+                if (LoaiTieuThu == "14")
+                    LoaiTieuThu = " and TieuThu>=1 and TieuThu<=4";
+            string sql = "select MLT=LOTRINH,DanhBo,HoTen,DiaChiDHN=SONHA+' '+TENDUONG,GiaBieu,Phuong=p.TENPHUONG,Quan=q.TENQUAN"
+                    + " ,Hieu=ttkh.HieuDH,Co=ttkh.CoDH,SoThan=SoThanDH,NgayKiemDinh,NgayThay,ViTriDHN_Ngoai,ViTriDHN_Hop,ViTriDHN"
+                    + " ,DiaChiHD=(select top 1 SO+' '+DUONG from HOADON_TA.dbo.HOADON where DANHBA=ttkh.DANHBO order by ID_HOADON desc)"
+                    //+ " ,TieuThu=(select top 1 TieuThuMoi from DocSoTH.dbo.DocSo where DanhBa=ttkh.DANHBO order by DocSoID desc)"
+                    + " from HOADON_TA.dbo.HOADON hd, CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh left join CAPNUOCTANHOA.dbo.PHUONG p on (p.MAPHUONG=ttkh.PHUONG and p.MAQUAN=QUAN) left join CAPNUOCTANHOA.dbo.QUAN q on q.MAQUAN=ttkh.QUAN"
+                    + " where hd.Nam=" + Nam + " and hd.Ky=" + Ky + Dot + LoaiTieuThu + " and hd.DanhBa=ttkh.DanhBo";
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
     }
