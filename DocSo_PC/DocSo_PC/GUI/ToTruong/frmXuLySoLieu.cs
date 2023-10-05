@@ -129,6 +129,9 @@ namespace DocSo_PC.GUI.ToTruong
                 if (_docso != null)
                 {
                     TB_DULIEUKHACHHANG dhn = _cDHN.get(_docso.DanhBa);
+                    TB_DULIEUKHACHHANG_HUYDB dhnhuy = null;
+                    if (dhn == null)
+                        dhnhuy = _cDHN.get_Huy(_docso.DanhBa);
                     if (dhn != null)
                     {
                         txtCSC.Text = _docso.CSCu.Value.ToString();
@@ -173,6 +176,51 @@ namespace DocSo_PC.GUI.ToTruong
                         //cmbCodeMoi.Focus();
                         dgvCongVanDen.DataSource = _cCVD.getDS_DanhBo_XuLySoLieu(_docso.DanhBa);
                     }
+                    else
+                        if (dhnhuy != null)
+                        {
+                            txtCSC.Text = _docso.CSCu.Value.ToString();
+                            if (_docso.CodeMoi != null && _docso.CodeMoi.ToString() != "")
+                                cmbCodeMoi.SelectedValue = _docso.CodeMoi;
+                            if (_docso.CSMoi != null)
+                                txtCSM.Text = _docso.CSMoi.Value.ToString();
+                            if (_docso.TieuThuMoi != null)
+                                txtTieuThu.Text = _docso.TieuThuMoi.Value.ToString();
+                            txtHoTen.Text = dhnhuy.HOTEN;
+                            txtDanhBo.Text = dhnhuy.DANHBO.Insert(7, " ").Insert(4, " ");
+                            txtHieu.Text = dhnhuy.HIEUDH;
+                            txtCo.Text = dhnhuy.CODH;
+                            txtSoThan.Text = dhnhuy.SOTHANDH;
+                            txtViTri.Text = dhnhuy.VITRIDHN;
+                            txtHopDong.Text = dhnhuy.HOPDONG;
+                            txtDiaChi.Text = dhnhuy.SONHA + " " + dhnhuy.TENDUONG;
+                            txtMLT.Text = dhnhuy.LOTRINH.Insert(4, " ").Insert(2, " ");
+                            txtGiaBieu.Text = dhnhuy.GIABIEU;
+                            txtDinhMuc.Text = dhnhuy.DINHMUC;
+                            if (_docso.GIOGHI != null)
+                                txtNgayGhiCS.Text = _docso.GIOGHI.Value.ToString();
+                            if (_docso.NVCapNhat != null)
+                                txtNguoiCapNhat.Text = _docso.NVCapNhat;
+                            if (_docso.NgayCapNhat != null)
+                                txtNgayCapNhat.Text = _docso.NgayCapNhat.Value.ToString();
+                            tbxGCDS.Text = _docso.GhiChuDS;
+                            tbxGCKH.Text = _docso.GhiChuKH;
+                            tbxGCTV.Text = _docso.GhiChuTV;
+                            dgvThongBao.DataSource = _cDocSo.getThongBao(_docso.DanhBa);
+                            dgvBaoThay.DataSource = _cDocSo.getBaoThay(_docso.DanhBa);
+                            dgvLichSu.DataSource = _cDocSo.getLichSu(_docso.DanhBa, _docso.Nam.Value.ToString(), _docso.Ky);
+                            foreach (DataGridViewColumn item in dgvLichSu.Columns)
+                            {
+                                if (item.Name.Contains("Ky") == true && dgvLichSu[item.Index, dgvLichSu.Rows.Count - 1].Value.ToString() != "")
+                                    dgvLichSu[item.Index, dgvLichSu.Rows.Count - 3].Style.BackColor = Color.Orange;
+                            }
+                            if (dgvLichSu.Rows.Count > 5)
+                                dgvLichSu.Rows.RemoveAt(dgvLichSu.Rows.Count - 1);
+                            if (chkLoadHinh.Checked == true)
+                                btnXemHinh.PerformClick();
+                            //cmbCodeMoi.Focus();
+                            dgvCongVanDen.DataSource = _cCVD.getDS_DanhBo_XuLySoLieu(_docso.DanhBa);
+                        }
                 }
             }
             catch (Exception ex)
