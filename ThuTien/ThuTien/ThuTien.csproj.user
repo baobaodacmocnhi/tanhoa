@@ -5,7 +5,7 @@
     <PublishUrlHistory>\\server5\TanHoa%24\ThuTien\|C:\Users\Admin\Desktop\ThuTienWFH\|C:\Users\BaoBao\Desktop\ThuTienWFH\|\\server9\BaoBao%24\ThuTien\|C:\Users\Admin\Desktop\ThuTien\</PublishUrlHistory>
     <InstallUrlHistory />
     <SupportUrlHistory />
-    <UpdateUrlHistory>http://113.161.88.180:81/ThuTienWFH/|\\server5\TanHoa%24\ThuTien\|\\server9\BaoBao%24\ThuTien\</UpdateUrlHistory>
+    <UpdateUrlHistory>\\server5\TanHoa%24\ThuTien\|http://113.161.88.180:81/ThuTienWFH/|\\server9\BaoBao%24\ThuTien\</UpdateUrlHistory>
     <BootstrapperUrlHistory>\\server9\BaoBao%24\ThuTien</BootstrapperUrlHistory>
     <ErrorReportUrlHistory />
     <FallbackCulture>en-US</FallbackCulture>

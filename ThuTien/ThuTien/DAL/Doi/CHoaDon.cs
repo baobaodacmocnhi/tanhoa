@@ -10252,14 +10252,18 @@ namespace ThuTien.DAL.Doi
             if (TongNo)
                 return ExecuteQuery_DataTable("select DanhBo=DANHBA,TongCong=SUM(TONGCONG)"
                  + " ,DienThoai=(select top 1 DienThoai from CAPNUOCTANHOA.dbo.SDT_DHN where DanhBo=t1.DANHBA order by CreateDate desc)"
+                 + " ,CreateDate=(select top 1 CreateDate from HOADON where HOADON.DANHBA=t1.DANHBA order by CreateDate desc)"
                  + " from HOADON t1 where MaNV_DangNgan is null and NGAYGIAITRACH is null"
-                 + " and DANHBA in (select DanhBo from TT_KQDongNuoc where MoNuoc=0 and TroNgaiMN=0)"
-                 + " group by DANHBAhaving COUNT(*)>=" + SoKy + " and SUM(TONGCONG)>=" + SoTien);
+                 + " and DANHBA not in (select DanhBo from TT_KQDongNuoc where MoNuoc=0 and TroNgaiMN=0)"
+                 + " and DANHBA not in (select DanhBo from TT_LenhHuy)"
+                 + " group by DANHBA having COUNT(*)>=" + SoKy + " and SUM(TONGCONG)>=" + SoTien);
             else
                 return ExecuteQuery_DataTable("select DanhBo=DANHBA,TongCong=SUM(TONGCONG)"
                 + " ,DienThoai=(select top 1 DienThoai from CAPNUOCTANHOA.dbo.SDT_DHN where DanhBo=t1.DANHBA order by CreateDate desc)"
+                + " ,CreateDate=(select top 1 CreateDate from HOADON where HOADON.DANHBA=t1.DANHBA order by CreateDate desc)"
                 + " from HOADON t1 where MaNV_DangNgan is null and NGAYGIAITRACH is null"
-                + " and DANHBA in (select DanhBo from TT_KQDongNuoc where MoNuoc=0 and TroNgaiMN=0)"
+                + " and DANHBA not in (select DanhBo from TT_KQDongNuoc where MoNuoc=0 and TroNgaiMN=0)"
+                + " and DANHBA not in (select DanhBo from TT_LenhHuy)"
                 + " and (select top 1 hd.TongCong from HOADON hd where hd.DanhBa=t1.DanhBa order by hd.CreateDate desc)>=" + SoTien
                 + " group by DANHBA having COUNT(*)>=" + SoKy);
         }
@@ -10269,14 +10273,18 @@ namespace ThuTien.DAL.Doi
             if (TongNo)
                 return ExecuteQuery_DataTable("select DanhBo=DANHBA,TongCong=SUM(TONGCONG)"
                 + " ,DienThoai=(select top 1 DienThoai from CAPNUOCTANHOA.dbo.SDT_DHN where DanhBo=t1.DANHBA order by CreateDate desc)"
+                + " ,CreateDate=(select top 1 CreateDate from HOADON where HOADON.DANHBA=t1.DANHBA order by CreateDate desc)"
                 + " from HOADON t1 where MaNV_DangNgan is null and NGAYGIAITRACH is null and Dot>=" + FromDot + " and Dot<=" + ToDot
-                + " and DANHBA in (select DanhBo from TT_KQDongNuoc where MoNuoc=0 and TroNgaiMN=0)"
+                + " and DANHBA not in (select DanhBo from TT_KQDongNuoc where MoNuoc=0 and TroNgaiMN=0)"
+                + " and DANHBA not in (select DanhBo from TT_LenhHuy)"
                 + " group by DANHBA having COUNT(*)>=" + SoKy + " and SUM(TONGCONG)>=" + SoTien);
             else
                 return ExecuteQuery_DataTable("select DanhBo=DANHBA,TongCong=SUM(TONGCONG)"
                 + " ,DienThoai=(select top 1 DienThoai from CAPNUOCTANHOA.dbo.SDT_DHN where DanhBo=t1.DANHBA order by CreateDate desc)"
+                + " ,CreateDate=(select top 1 CreateDate from HOADON where HOADON.DANHBA=t1.DANHBA order by CreateDate desc)"
                 + " from HOADON t1 where MaNV_DangNgan is null and NGAYGIAITRACH is null and Dot>=" + FromDot + " and Dot<=" + ToDot
-                + " and DANHBA in (select DanhBo from TT_KQDongNuoc where MoNuoc=0 and TroNgaiMN=0)"
+                + " and DANHBA not in (select DanhBo from TT_KQDongNuoc where MoNuoc=0 and TroNgaiMN=0)"
+                + " and DANHBA not in (select DanhBo from TT_LenhHuy)"
                 + " and (select top 1 hd.TongCong from HOADON hd where hd.DanhBa=t1.DanhBa order by hd.CreateDate desc)>=" + SoTien
                 + " group by DANHBA having COUNT(*)>=" + SoKy);
         }

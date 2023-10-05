@@ -257,7 +257,7 @@ namespace ThuTien.GUI.ToTruong
                             row["HoTen"] = hoadon.TENKH;
                             row["DanhBo"] = hoadon.DANHBA;
                             row["DiaChi"] = hoadon.SO + " " + hoadon.DUONG;
-                            row["Ky"] = docso.Ky + "/" + docso.Nam;
+                            row["Ky"] = (int.Parse(docso.Ky)).ToString() + "/" + docso.Nam;
                             row["GiaBieu"] = hoadon.GB;
                             if (hoadon.TILESH != null)
                                 row["TyLeSH"] = hoadon.TILESH;

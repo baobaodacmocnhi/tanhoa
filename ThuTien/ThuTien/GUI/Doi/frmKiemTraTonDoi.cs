@@ -2272,7 +2272,7 @@ namespace ThuTien.GUI.Doi
                     arr[i, 4] = hd.TENKH;
                     arr[i, 5] = hd.SO + " " + hd.DUONG;
                     arr[i, 7] = dr["TongCong"].ToString();
-                    arr[i, 8] = DateTime.Now.AddDays(1).ToString("dd/MM/yyyy");
+                    arr[i, 8] = DateTime.Parse(dr["CreateDate"].ToString()).ToString("dd/MM/yyyy");
                 }
             }
 
