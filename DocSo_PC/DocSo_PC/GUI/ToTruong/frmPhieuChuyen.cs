@@ -423,7 +423,7 @@ namespace DocSo_PC.GUI.ToTruong
                                 {
                                     pc.SoPhieu_In = "Số:" + pc.SoPhieu + "/PC-" + _cTo.get(CNguoiDung.MaTo).KyHieu + "-QLĐHN";
                                 }
-                                pc.NoiNhan = "Như trên\nLưu";
+                                pc.NoiNhan = "Như trên;\nLưu.";
                                 _cPhieuChuyen.sua(pc);
                             }
                         }
@@ -578,7 +578,7 @@ namespace DocSo_PC.GUI.ToTruong
                                 {
                                     item.SoPhieu_In = "Số:" + item.SoPhieu + "/PC-" + _cTo.get(CNguoiDung.MaTo).KyHieu + "-QLĐHN";
                                 }
-                                item.NoiNhan = "Như trên\nLưu";
+                                item.NoiNhan = "Như trên;\nLưu.";
                                 _cPhieuChuyen.sua(item);
                             }
                             //in
