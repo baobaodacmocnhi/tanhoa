@@ -1170,7 +1170,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 arr[i, 13] = dr["TieuThu"].ToString();
                 arr[i, 14] = dr["DinhMuc"].ToString();
                 arr[i, 15] = dr["DinhMucHN"].ToString();
-                arr[i, 16] = dr["CoDH"].ToString();
+                arr[i, 17] = dr["CoDH"].ToString();
             }
 
             //Thiết lập vùng điền dữ liệu
