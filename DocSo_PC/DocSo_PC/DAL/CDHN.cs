@@ -445,14 +445,19 @@ namespace DocSo_PC.DAL
             return _cDAL.ExecuteQuery_DataTable("select MLT=LOTRINH,DanhBo,HoTen,DiaChi=SONHA+' '+TENDUONG,Hieu=HIEUDH,Co=CODH,SoThan=SOTHANDH,Phuong=(select TENPHUONG from PHUONG where MAQUAN=Quan and MAPHUONG=PHUONG),Quan=(select TENQUAN from QUAN where MAQUAN=Quan and MAQUAN=QUAN) from TB_DULIEUKHACHHANG where Gieng=1");
         }
 
-        public DataTable getDS_DiaChiSaiLech(bool getAll, string Dot, string May)
+        public DataTable getDS_DiaChiSaiLech(bool getAll, string Dot, string May, string KyHD)
         {
+            string[] KyHDs = KyHD.Split('/');
+
             string sql = "select * from"
                     + " (select MLT=LOTRINH,DanhBo,HoTen,DiaChiDHN=SONHA+' '+TENDUONG,GiaBieu,Phuong=p.TENPHUONG,Quan=q.TENQUAN"
-                    + " ,Hieu=HieuDH,Co=CoDH,SoThan=SoThanDH,NgayKiemDinh,NgayThay,ViTriDHN_Ngoai,ViTriDHN_Hop,ViTriDHN"
-                    + " ,DiaChiHD=(select top 1 SO+' '+DUONG from HOADON_TA.dbo.HOADON where DANHBA=TB_DULIEUKHACHHANG.DANHBO order by ID_HOADON desc)"
-                    + " ,TieuThu=(select top 1 TieuThuMoi from DocSoTH.dbo.DocSo where DanhBa=TB_DULIEUKHACHHANG.DANHBO order by DocSoID desc)"
-                    + " from TB_DULIEUKHACHHANG left join PHUONG p on (p.MAPHUONG=PHUONG and p.MAQUAN=QUAN) left join QUAN q on q.MAQUAN=QUAN";
+                    + " ,Hieu=HieuDH,Co=CoDH,SoThan=SoThanDH,NgayKiemDinh,NgayThay,ViTriDHN_Ngoai,ViTriDHN_Hop,ViTriDHN,DMA=MADMA"
+                    + " ,DiaChiHD=(select top 1 SO+' '+DUONG from HOADON_TA.dbo.HOADON where DANHBA=TB_DULIEUKHACHHANG.DANHBO order by ID_HOADON desc)";
+            if (KyHDs != null && KyHDs.Count() == 2)
+                sql += " ,TieuThu=(select top 1 TieuThu from HOADON_TA.dbo.HOADON where DANHBA=TB_DULIEUKHACHHANG.DANHBO and NAM=" + KyHDs[1] + " and KY=" + KyHDs[0] + ")";
+            else
+                sql += " ,TieuThu=(select top 1 TieuThu from HOADON_TA.dbo.HOADON where DANHBA=TB_DULIEUKHACHHANG.DANHBO order by ID_HOADON desc)";
+            sql += " from TB_DULIEUKHACHHANG left join PHUONG p on (p.MAPHUONG=PHUONG and p.MAQUAN=QUAN) left join QUAN q on q.MAQUAN=QUAN";
             if (Dot == "Tất Cả")
                 Dot = "";
             else

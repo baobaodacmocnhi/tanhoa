@@ -135,7 +135,7 @@ namespace DocSo_PC.DAL
                 if (LoaiTieuThu == "14")
                     LoaiTieuThu = " and TieuThu>=1 and TieuThu<=4";
             string sql = "select MLT=LOTRINH,DanhBo,HoTen,DiaChiDHN=SONHA+' '+TENDUONG,GiaBieu,Phuong=p.TENPHUONG,Quan=q.TENQUAN"
-                    + " ,Hieu=ttkh.HieuDH,Co=ttkh.CoDH,SoThan=SoThanDH,NgayKiemDinh,NgayThay,ViTriDHN_Ngoai,ViTriDHN_Hop,ViTriDHN"
+                    + " ,Hieu=ttkh.HieuDH,Co=ttkh.CoDH,SoThan=SoThanDH,NgayKiemDinh,NgayThay,ViTriDHN_Ngoai,ViTriDHN_Hop,ViTriDHN,DMA=MADMA"
                     + " ,DiaChiHD=(select top 1 SO+' '+DUONG from HOADON_TA.dbo.HOADON where DANHBA=ttkh.DANHBO order by ID_HOADON desc)"
                     //+ " ,TieuThu=(select top 1 TieuThuMoi from DocSoTH.dbo.DocSo where DanhBa=ttkh.DANHBO order by DocSoID desc)"
                     + " from HOADON_TA.dbo.HOADON hd, CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh left join CAPNUOCTANHOA.dbo.PHUONG p on (p.MAPHUONG=ttkh.PHUONG and p.MAQUAN=QUAN) left join CAPNUOCTANHOA.dbo.QUAN q on q.MAQUAN=ttkh.QUAN"

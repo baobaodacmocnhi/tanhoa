@@ -28,6 +28,7 @@ namespace DocSo_PC.GUI.MaHoa
 
         private void frmTimKiem_Load(object sender, EventArgs e)
         {
+            dgvDanhSach.AutoGenerateColumns = false;
             try
             {
                 List<To> lst = _cTo.getDS_HanhThu();
@@ -59,7 +60,7 @@ namespace DocSo_PC.GUI.MaHoa
             {
                 if (cmbDot.SelectedIndex >= 0)
                 {
-                    dgvDanhSach.DataSource = _cDHN.getDS_DiaChiSaiLech(chkAll.Checked, cmbDot.SelectedItem.ToString(), cmbMay.SelectedValue.ToString());
+                    dgvDanhSach.DataSource = _cDHN.getDS_DiaChiSaiLech(chkAll.Checked, cmbDot.SelectedItem.ToString(), cmbMay.SelectedValue.ToString(),txtKyHD.Text.Trim());
                 }
                 else
                     MessageBox.Show("Chưa chọn Đợt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
