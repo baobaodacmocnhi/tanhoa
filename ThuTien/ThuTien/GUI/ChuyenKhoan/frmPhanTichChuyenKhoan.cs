@@ -1146,7 +1146,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
             // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
             // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
-            int column = 17;
+            int column = 18;
             object[,] arr = new object[dt.Rows.Count, column];
 
             //Chuyển dữ liệu từ DataTable vào mảng đối tượng
