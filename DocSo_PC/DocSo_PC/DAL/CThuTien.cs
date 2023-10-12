@@ -134,12 +134,14 @@ namespace DocSo_PC.DAL
             else
                 if (LoaiTieuThu == "14")
                     LoaiTieuThu = " and TieuThu>=1 and TieuThu<=4";
-            string sql = "select MLT=LOTRINH,DanhBo,HoTen,DiaChiDHN=SONHA+' '+TENDUONG,GiaBieu,Phuong=p.TENPHUONG,Quan=q.TENQUAN"
-                    + " ,Hieu=ttkh.HieuDH,Co=ttkh.CoDH,SoThan=SoThanDH,NgayKiemDinh,NgayThay,ViTriDHN_Ngoai,ViTriDHN_Hop,ViTriDHN,DMA=MADMA"
-                    + " ,DiaChiHD=(select top 1 SO+' '+DUONG from HOADON_TA.dbo.HOADON where DANHBA=ttkh.DANHBO order by ID_HOADON desc)"
-                    //+ " ,TieuThu=(select top 1 TieuThuMoi from DocSoTH.dbo.DocSo where DanhBa=ttkh.DANHBO order by DocSoID desc)"
-                    + " from HOADON_TA.dbo.HOADON hd, CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh left join CAPNUOCTANHOA.dbo.PHUONG p on (p.MAPHUONG=ttkh.PHUONG and p.MAQUAN=QUAN) left join CAPNUOCTANHOA.dbo.QUAN q on q.MAQUAN=ttkh.QUAN"
-                    + " where hd.Nam=" + Nam + " and hd.Ky=" + Ky + Dot + LoaiTieuThu + " and hd.DanhBa=ttkh.DanhBo";
+                else
+                    LoaiTieuThu = "";
+            string sql = "select MLT=hd.MALOTRINH,DanhBo=hd.DANHBA,HoTen,DiaChiDHN=SONHA+' '+TENDUONG,GiaBieu,Phuong=(select p.TENPHUONG from CAPNUOCTANHOA.dbo.PHUONG p where p.MAPHUONG=ttkh.PHUONG and p.MAQUAN=ttkh.QUAN),Quan=(select q.TENQUAN from CAPNUOCTANHOA.dbo.QUAN q where q.MAQUAN=ttkh.QUAN)"
+                    + " ,Hieu=ttkh.HieuDH,Co=ttkh.CoDH,SoThan=SoThanDH,NgayKiemDinh,NgayThay,ViTriDHN_Ngoai,ViTriDHN_Hop,ViTriDHN,DMA=ttkh.MADMA"
+                    + " ,DiaChiHD=SO+' '+DUONG"
+                    + " ,TieuThu"
+                    + " from HOADON_TA.dbo.HOADON hd left join CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh on hd.DanhBa=ttkh.DanhBo"
+                    + " where hd.Nam=" + Nam + " and hd.Ky=" + Ky + Dot + LoaiTieuThu + " order by hd.MALOTRINH";
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
     }

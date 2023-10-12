@@ -47,6 +47,7 @@ namespace DocSo_PC.GUI.MaHoa
                 cmbNam04.DataSource = _cThuTien.getNam();
                 cmbNam04.DisplayMember = "Nam";
                 cmbNam04.ValueMember = "Nam";
+                txtKyHD.Text = DateTime.Now.Month.ToString() + "/" + DateTime.Now.Year.ToString();
             }
             catch (Exception ex)
             {
@@ -60,7 +61,7 @@ namespace DocSo_PC.GUI.MaHoa
             {
                 if (cmbDot.SelectedIndex >= 0)
                 {
-                    dgvDanhSach.DataSource = _cDHN.getDS_DiaChiSaiLech(chkAll.Checked, cmbDot.SelectedItem.ToString(), cmbMay.SelectedValue.ToString(),txtKyHD.Text.Trim());
+                    dgvDanhSach.DataSource = _cDHN.getDS_DiaChiSaiLech(chkAll.Checked, cmbDot.SelectedItem.ToString(), cmbMay.SelectedValue.ToString(), txtKyHD.Text.Trim());
                 }
                 else
                     MessageBox.Show("Chưa chọn Đợt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -89,6 +90,8 @@ namespace DocSo_PC.GUI.MaHoa
                 else
                     if (rad14.Checked)
                         LoaiTieuThu = "14";
+                if (chkHoaDon.Checked)
+                    LoaiTieuThu = "";
                 dgvDanhSach.DataSource = _cThuTien.getDS(cmbNam04.SelectedValue.ToString(), cmbKy04.SelectedItem.ToString(), cmbDot04.SelectedItem.ToString(), LoaiTieuThu);
             }
             catch (Exception ex)
@@ -97,9 +100,6 @@ namespace DocSo_PC.GUI.MaHoa
             }
         }
 
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
 
-        }
     }
 }
