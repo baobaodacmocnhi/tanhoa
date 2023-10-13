@@ -59,7 +59,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dgvDanhSach.DataSource = _cChungTu.getDS_ChiTiet_DanhBo(txtDanhBo.Text.Trim());
             else
             if (txtSHS.Text.Trim() != "")
-                dgvDanhSach.DataSource = _cChungTu.getDS_ChiTiet_DanhBo(txtSHS.Text.Trim());
+                dgvDanhSach.DataSource = _cChungTu.getDS_ChiTiet_SHS(txtSHS.Text.Trim());
             int TongNK = 0;
             foreach (DataRow itemRow in ((DataTable)dgvDanhSach.DataSource).Rows)
                 if (!bool.Parse(itemRow["Cat"].ToString()))
