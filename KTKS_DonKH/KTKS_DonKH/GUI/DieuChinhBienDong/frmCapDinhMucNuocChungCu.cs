@@ -55,7 +55,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         /// </summary>
         private void LoadTongNK()
         {
-            dgvDanhSach.DataSource = _cChungTu.getDS_ChiTiet_DanhBo(txtDanhBo.Text.Trim());
+            if (txtDanhBo.Text.Trim() != "")
+                dgvDanhSach.DataSource = _cChungTu.getDS_ChiTiet_DanhBo(txtDanhBo.Text.Trim());
+            else
+            if (txtSHS.Text.Trim() != "")
+                dgvDanhSach.DataSource = _cChungTu.getDS_ChiTiet_DanhBo(txtSHS.Text.Trim());
             int TongNK = 0;
             foreach (DataRow itemRow in ((DataTable)dgvDanhSach.DataSource).Rows)
                 if (!bool.Parse(itemRow["Cat"].ToString()))
@@ -86,7 +90,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtGhiChu.Text = en.GhiChu;
             chkCat.Checked = en.Cat;
             if (en.SHS != "")
-                txtMaDon.Text = en.SHS;
+                txtSHS.Text = en.SHS;
         }
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
@@ -245,8 +249,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 ctchungtu.Phuong = _hoadon.Phuong;
                                 ctchungtu.Quan = _hoadon.Quan;
                             }
-                            if (txtMaDon.Text.Trim() != "")
-                                ctchungtu.SHS = txtMaDon.Text.Trim();
+                            if (txtSHS.Text.Trim() != "")
+                                ctchungtu.SHS = txtSHS.Text.Trim();
                             _cChungTu.ThemCT(ctchungtu);
                             ///Ghi thông tin Lịch Sử chung
                             ChungTu_LichSu lichsuchungtu = new ChungTu_LichSu();
@@ -317,8 +321,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             _ctchungtu.STT = int.Parse(txtSTT.Text.Trim());
                         _ctchungtu.Lo = txtLo.Text.Trim();
                         _ctchungtu.Phong = txtPhong.Text.Trim();
-                        if (txtMaDon.Text.Trim() != "")
-                            _ctchungtu.SHS = txtMaDon.Text.Trim();
+                        if (txtSHS.Text.Trim() != "")
+                            _ctchungtu.SHS = txtSHS.Text.Trim();
                         _ctchungtu.Cat = chkCat.Checked;
                         if (_cChungTu.SuaCT(_ctchungtu))
                         {
@@ -623,6 +627,21 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (e.KeyChar == 13 && txtNoiDungTimKiem.Text.Trim() != "")
             {
                 btnTimKiem.PerformClick();
+            }
+        }
+
+        private void txtSHS_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                if (e.KeyChar == 13 && txtSHS.Text.Trim() != "")
+                {
+                    LoadTongNK();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

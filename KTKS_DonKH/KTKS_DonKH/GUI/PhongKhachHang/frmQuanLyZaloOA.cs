@@ -12,21 +12,24 @@ using KTKS_DonKH.LinQ;
 using System.Net;
 using System.Xml.Linq;
 using System.Web.Script.Serialization;
+using KTKS_DonKH.DAL;
 
 namespace KTKS_DonKH.GUI.PhongKhachHang
 {
-    public partial class frmGuiTinNhanZalo : Form
+    public partial class frmQuanLyZaloOA : Form
     {
-        string _mnu = "mnuGuiTinNhanZalo";
+        string _mnu = "mnuQuanLyZaloOA";
         CGuiTinNhanZalo _cGTNZ = new CGuiTinNhanZalo();
- 
-        public frmGuiTinNhanZalo()
+        CTTKH _cTTKH = new CTTKH();
+
+        public frmQuanLyZaloOA()
         {
             InitializeComponent();
         }
 
         private void frmZaloGuiTinNhan_Load(object sender, EventArgs e)
         {
+            dgvDanhSach.AutoGenerateColumns = false;
             dgvTinNhan.AutoGenerateColumns = false;
             dgvTinNhan.DataSource = _cGTNZ.getDS();
         }
@@ -80,6 +83,36 @@ namespace KTKS_DonKH.GUI.PhongKhachHang
             //        + " insert into ZaloQuanTam(IDZalo, CreateDate)values(" + str + ", GETDATE())";
             //    _cGTNZ.excute(sql);
             //}
+        }
+
+        private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                if (txtDanhBo.Text.Trim() != "" && e.KeyChar == 13)
+                {
+                    dgvDanhSach.DataSource = _cTTKH.getDS_Zalo(txtDanhBo.Text.Trim().Replace(" ", "").Replace("-", ""));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvDanhSach_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dgvDanhSach.Columns[e.ColumnIndex].Name == "XemHinh")
+                {
+                    System.Diagnostics.Process.Start(dgvDanhSach.CurrentRow.Cells["Avatar"].Value.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
     }

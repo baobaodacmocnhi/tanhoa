@@ -1164,9 +1164,9 @@ namespace KTKS_DonKH
 
         private void mnuGuiTinNhanZalo_Click(object sender, EventArgs e)
         {
-            if (CTaiKhoan.CheckQuyen("mnuGuiTinNhanZalo", "Xem"))
+            if (CTaiKhoan.CheckQuyen("mnuQuanLyZaloOA", "Xem"))
             {
-                frmGuiTinNhanZalo frm = new frmGuiTinNhanZalo();
+                frmQuanLyZaloOA frm = new frmQuanLyZaloOA();
                 OpenForm(frm);
             }
             else

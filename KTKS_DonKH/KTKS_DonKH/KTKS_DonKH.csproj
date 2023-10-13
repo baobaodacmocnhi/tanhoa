@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>161</ApplicationRevision>
+    <ApplicationRevision>164</ApplicationRevision>
     <ApplicationVersion>1.5.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -1283,11 +1283,11 @@
     <Compile Include="GUI\PhongKhachHang\frmTraHopDong.Designer.cs">
       <DependentUpon>frmTraHopDong.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\PhongKhachHang\frmGuiTinNhanZalo.cs">
+    <Compile Include="GUI\PhongKhachHang\frmQuanLyZaloOA.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\PhongKhachHang\frmGuiTinNhanZalo.Designer.cs">
-      <DependentUpon>frmGuiTinNhanZalo.cs</DependentUpon>
+    <Compile Include="GUI\PhongKhachHang\frmQuanLyZaloOA.Designer.cs">
+      <DependentUpon>frmQuanLyZaloOA.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ThuMoi\frmInBienBan.cs">
       <SubType>Form</SubType>
@@ -2464,8 +2464,8 @@
     <EmbeddedResource Include="GUI\PhongKhachHang\frmTraHopDong.resx">
       <DependentUpon>frmTraHopDong.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\PhongKhachHang\frmGuiTinNhanZalo.resx">
-      <DependentUpon>frmGuiTinNhanZalo.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\PhongKhachHang\frmQuanLyZaloOA.resx">
+      <DependentUpon>frmQuanLyZaloOA.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ThuMoi\frmInBienBan.resx">
       <DependentUpon>frmInBienBan.cs</DependentUpon>

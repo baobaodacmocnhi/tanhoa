@@ -206,6 +206,43 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             return LINQToDataTable(query);
         }
 
+        public DataTable getDS_ChiTiet_SHS(string SHS)
+        {
+            var query = from itemCTCT in db.ChungTu_ChiTiets
+                        join itemCT in db.ChungTus on new { itemCTCT.MaCT, itemCTCT.MaLCT } equals new { itemCT.MaCT, itemCT.MaLCT }
+                        join itemLCT in db.LoaiChungTus on itemCT.MaLCT equals itemLCT.MaLCT
+                        where itemCTCT.SHS == SHS
+                        //orderby itemCTCT.Cat ascending, itemCTCT.MaLCT descending, itemCTCT.CreateDate ascending
+                        orderby itemCTCT.STT ascending
+                        select new
+                        {
+                            itemCTCT.DanhBo,
+                            itemCT.MaLCT,
+                            itemLCT.TenLCT,
+                            itemCTCT.MaCT,
+                            itemCT.NgaySinh,
+                            itemCT.HoTen,
+                            itemCT.DiaChi,
+                            itemCT.SoNKTong,
+                            itemCT.SoNKCat,
+                            itemCT.SoNKNhan,
+                            itemCT.SoNKConLai,
+                            itemCTCT.SoNKDangKy,
+                            itemCTCT.NgayHetHan,
+                            itemCTCT.ThoiHan,
+                            itemCTCT.DienThoai,
+                            itemCTCT.Cat,
+                            itemCTCT.GhiChu,
+                            itemCTCT.GiaHan,
+                            itemCTCT.Lo,
+                            itemCTCT.Phong,
+                            itemCTCT.CreateDate,
+                            itemCTCT.STT,
+                        };
+
+            return LINQToDataTable(query);
+        }
+
         public DataTable getDS_ChiTiet_TimKiem_CCCD(string CCCD)
         {
             var query = from itemCTCT in db.ChungTu_ChiTiets

@@ -128,6 +128,12 @@ namespace KTKS_DonKH.DAL
             return ExecuteQuery_DataTable("select * from SuCoNgungCungCapNuoc order by CreateDate desc");
         }
 
+        public DataTable getDS_Zalo(string DanhBo)
+        {
+            return ExecuteQuery_DataTable("select MLT=ttkh.LOTRINH,b.DanhBo,ttkh.HOTEN,DiaChi=ttkh.SONHA+' '+ttkh.TENDUONG,HoTenZalo=a.Name,Avatar=a.Avatar"
++ " from Zalo_QuanTam a,Zalo_DangKy b,CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh"
++ " where a.IDZalo=b.IDZalo and a.Follow=1 and b.DanhBo=ttkh.DANHBO and b.DanhBo='" + DanhBo + "'");
+        }
 
     }
 }
