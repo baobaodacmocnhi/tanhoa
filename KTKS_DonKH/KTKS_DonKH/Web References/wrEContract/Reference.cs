@@ -23,13 +23,19 @@ namespace KTKS_DonKH.wrEContract {
     
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Web.Services.WebServiceBindingAttribute(Name="wsEContractSoap", Namespace="http://tempuri.org/")]
     public partial class wsEContract : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
         private System.Threading.SendOrPostCallback getAccess_tokenOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getAccess_token_ClientOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getAccess_token_UserOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getAccess_token_DuyetOperationCompleted;
         
         private System.Threading.SendOrPostCallback renderEContractOperationCompleted;
         
@@ -42,6 +48,10 @@ namespace KTKS_DonKH.wrEContract {
         private System.Threading.SendOrPostCallback cancelEContractOperationCompleted;
         
         private System.Threading.SendOrPostCallback deleteEContractOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback updateDoiTacOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback duyetKhongKyOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -85,6 +95,15 @@ namespace KTKS_DonKH.wrEContract {
         public event getAccess_tokenCompletedEventHandler getAccess_tokenCompleted;
         
         /// <remarks/>
+        public event getAccess_token_ClientCompletedEventHandler getAccess_token_ClientCompleted;
+        
+        /// <remarks/>
+        public event getAccess_token_UserCompletedEventHandler getAccess_token_UserCompleted;
+        
+        /// <remarks/>
+        public event getAccess_token_DuyetCompletedEventHandler getAccess_token_DuyetCompleted;
+        
+        /// <remarks/>
         public event renderEContractCompletedEventHandler renderEContractCompleted;
         
         /// <remarks/>
@@ -101,6 +120,12 @@ namespace KTKS_DonKH.wrEContract {
         
         /// <remarks/>
         public event deleteEContractCompletedEventHandler deleteEContractCompleted;
+        
+        /// <remarks/>
+        public event updateDoiTacCompletedEventHandler updateDoiTacCompleted;
+        
+        /// <remarks/>
+        public event duyetKhongKyCompletedEventHandler duyetKhongKyCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getAccess_token", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -128,6 +153,93 @@ namespace KTKS_DonKH.wrEContract {
             if ((this.getAccess_tokenCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getAccess_tokenCompleted(this, new getAccess_tokenCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getAccess_token_Client", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool getAccess_token_Client(string checksum) {
+            object[] results = this.Invoke("getAccess_token_Client", new object[] {
+                        checksum});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getAccess_token_ClientAsync(string checksum) {
+            this.getAccess_token_ClientAsync(checksum, null);
+        }
+        
+        /// <remarks/>
+        public void getAccess_token_ClientAsync(string checksum, object userState) {
+            if ((this.getAccess_token_ClientOperationCompleted == null)) {
+                this.getAccess_token_ClientOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetAccess_token_ClientOperationCompleted);
+            }
+            this.InvokeAsync("getAccess_token_Client", new object[] {
+                        checksum}, this.getAccess_token_ClientOperationCompleted, userState);
+        }
+        
+        private void OngetAccess_token_ClientOperationCompleted(object arg) {
+            if ((this.getAccess_token_ClientCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getAccess_token_ClientCompleted(this, new getAccess_token_ClientCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getAccess_token_User", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool getAccess_token_User(string checksum) {
+            object[] results = this.Invoke("getAccess_token_User", new object[] {
+                        checksum});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getAccess_token_UserAsync(string checksum) {
+            this.getAccess_token_UserAsync(checksum, null);
+        }
+        
+        /// <remarks/>
+        public void getAccess_token_UserAsync(string checksum, object userState) {
+            if ((this.getAccess_token_UserOperationCompleted == null)) {
+                this.getAccess_token_UserOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetAccess_token_UserOperationCompleted);
+            }
+            this.InvokeAsync("getAccess_token_User", new object[] {
+                        checksum}, this.getAccess_token_UserOperationCompleted, userState);
+        }
+        
+        private void OngetAccess_token_UserOperationCompleted(object arg) {
+            if ((this.getAccess_token_UserCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getAccess_token_UserCompleted(this, new getAccess_token_UserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getAccess_token_Duyet", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool getAccess_token_Duyet(string checksum) {
+            object[] results = this.Invoke("getAccess_token_Duyet", new object[] {
+                        checksum});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getAccess_token_DuyetAsync(string checksum) {
+            this.getAccess_token_DuyetAsync(checksum, null);
+        }
+        
+        /// <remarks/>
+        public void getAccess_token_DuyetAsync(string checksum, object userState) {
+            if ((this.getAccess_token_DuyetOperationCompleted == null)) {
+                this.getAccess_token_DuyetOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetAccess_token_DuyetOperationCompleted);
+            }
+            this.InvokeAsync("getAccess_token_Duyet", new object[] {
+                        checksum}, this.getAccess_token_DuyetOperationCompleted, userState);
+        }
+        
+        private void OngetAccess_token_DuyetOperationCompleted(object arg) {
+            if ((this.getAccess_token_DuyetCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getAccess_token_DuyetCompleted(this, new getAccess_token_DuyetCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -529,6 +641,76 @@ namespace KTKS_DonKH.wrEContract {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/updateDoiTac", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool updateDoiTac(string CCCD, string Email, string DienThoai, string HoTen, string MST, string checksum, out string strResponse) {
+            object[] results = this.Invoke("updateDoiTac", new object[] {
+                        CCCD,
+                        Email,
+                        DienThoai,
+                        HoTen,
+                        MST,
+                        checksum});
+            strResponse = ((string)(results[1]));
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void updateDoiTacAsync(string CCCD, string Email, string DienThoai, string HoTen, string MST, string checksum) {
+            this.updateDoiTacAsync(CCCD, Email, DienThoai, HoTen, MST, checksum, null);
+        }
+        
+        /// <remarks/>
+        public void updateDoiTacAsync(string CCCD, string Email, string DienThoai, string HoTen, string MST, string checksum, object userState) {
+            if ((this.updateDoiTacOperationCompleted == null)) {
+                this.updateDoiTacOperationCompleted = new System.Threading.SendOrPostCallback(this.OnupdateDoiTacOperationCompleted);
+            }
+            this.InvokeAsync("updateDoiTac", new object[] {
+                        CCCD,
+                        Email,
+                        DienThoai,
+                        HoTen,
+                        MST,
+                        checksum}, this.updateDoiTacOperationCompleted, userState);
+        }
+        
+        private void OnupdateDoiTacOperationCompleted(object arg) {
+            if ((this.updateDoiTacCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.updateDoiTacCompleted(this, new updateDoiTacCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/duyetKhongKy", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool duyetKhongKy(string IDEContract, out string strResponse) {
+            object[] results = this.Invoke("duyetKhongKy", new object[] {
+                        IDEContract});
+            strResponse = ((string)(results[1]));
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void duyetKhongKyAsync(string IDEContract) {
+            this.duyetKhongKyAsync(IDEContract, null);
+        }
+        
+        /// <remarks/>
+        public void duyetKhongKyAsync(string IDEContract, object userState) {
+            if ((this.duyetKhongKyOperationCompleted == null)) {
+                this.duyetKhongKyOperationCompleted = new System.Threading.SendOrPostCallback(this.OnduyetKhongKyOperationCompleted);
+            }
+            this.InvokeAsync("duyetKhongKy", new object[] {
+                        IDEContract}, this.duyetKhongKyOperationCompleted, userState);
+        }
+        
+        private void OnduyetKhongKyOperationCompleted(object arg) {
+            if ((this.duyetKhongKyCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.duyetKhongKyCompleted(this, new duyetKhongKyCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -548,11 +730,11 @@ namespace KTKS_DonKH.wrEContract {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void getAccess_tokenCompletedEventHandler(object sender, getAccess_tokenCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getAccess_tokenCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -574,11 +756,89 @@ namespace KTKS_DonKH.wrEContract {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    public delegate void getAccess_token_ClientCompletedEventHandler(object sender, getAccess_token_ClientCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getAccess_token_ClientCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getAccess_token_ClientCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    public delegate void getAccess_token_UserCompletedEventHandler(object sender, getAccess_token_UserCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getAccess_token_UserCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getAccess_token_UserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    public delegate void getAccess_token_DuyetCompletedEventHandler(object sender, getAccess_token_DuyetCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getAccess_token_DuyetCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getAccess_token_DuyetCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void renderEContractCompletedEventHandler(object sender, renderEContractCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class renderEContractCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -608,11 +868,11 @@ namespace KTKS_DonKH.wrEContract {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void createEContractCompletedEventHandler(object sender, createEContractCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class createEContractCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -642,11 +902,11 @@ namespace KTKS_DonKH.wrEContract {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void sendEContractCompletedEventHandler(object sender, sendEContractCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class sendEContractCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -676,11 +936,11 @@ namespace KTKS_DonKH.wrEContract {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void editEContractCompletedEventHandler(object sender, editEContractCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class editEContractCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -710,11 +970,11 @@ namespace KTKS_DonKH.wrEContract {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void cancelEContractCompletedEventHandler(object sender, cancelEContractCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class cancelEContractCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -744,11 +1004,11 @@ namespace KTKS_DonKH.wrEContract {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void deleteEContractCompletedEventHandler(object sender, deleteEContractCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class deleteEContractCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -756,6 +1016,74 @@ namespace KTKS_DonKH.wrEContract {
         private object[] results;
         
         internal deleteEContractCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+        
+        /// <remarks/>
+        public string strResponse {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[1]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    public delegate void updateDoiTacCompletedEventHandler(object sender, updateDoiTacCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class updateDoiTacCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal updateDoiTacCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+        
+        /// <remarks/>
+        public string strResponse {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[1]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    public delegate void duyetKhongKyCompletedEventHandler(object sender, duyetKhongKyCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class duyetKhongKyCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal duyetKhongKyCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

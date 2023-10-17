@@ -16,6 +16,48 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="getAccess_token_Client">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="checksum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAccess_token_ClientResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getAccess_token_ClientResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAccess_token_User">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="checksum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAccess_token_UserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getAccess_token_UserResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAccess_token_Duyet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="checksum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAccess_token_DuyetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getAccess_token_DuyetResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="renderEContract">
         <s:complexType>
           <s:sequence>
@@ -152,6 +194,41 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="updateDoiTac">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CCCD" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DienThoai" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HoTen" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MST" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="checksum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateDoiTacResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="updateDoiTacResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strResponse" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="duyetKhongKy">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IDEContract" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="duyetKhongKyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="duyetKhongKyResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strResponse" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="getAccess_tokenSoapIn">
@@ -159,6 +236,24 @@
   </wsdl:message>
   <wsdl:message name="getAccess_tokenSoapOut">
     <wsdl:part name="parameters" element="tns:getAccess_tokenResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAccess_token_ClientSoapIn">
+    <wsdl:part name="parameters" element="tns:getAccess_token_Client" />
+  </wsdl:message>
+  <wsdl:message name="getAccess_token_ClientSoapOut">
+    <wsdl:part name="parameters" element="tns:getAccess_token_ClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAccess_token_UserSoapIn">
+    <wsdl:part name="parameters" element="tns:getAccess_token_User" />
+  </wsdl:message>
+  <wsdl:message name="getAccess_token_UserSoapOut">
+    <wsdl:part name="parameters" element="tns:getAccess_token_UserResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAccess_token_DuyetSoapIn">
+    <wsdl:part name="parameters" element="tns:getAccess_token_Duyet" />
+  </wsdl:message>
+  <wsdl:message name="getAccess_token_DuyetSoapOut">
+    <wsdl:part name="parameters" element="tns:getAccess_token_DuyetResponse" />
   </wsdl:message>
   <wsdl:message name="renderEContractSoapIn">
     <wsdl:part name="parameters" element="tns:renderEContract" />
@@ -196,10 +291,34 @@
   <wsdl:message name="deleteEContractSoapOut">
     <wsdl:part name="parameters" element="tns:deleteEContractResponse" />
   </wsdl:message>
+  <wsdl:message name="updateDoiTacSoapIn">
+    <wsdl:part name="parameters" element="tns:updateDoiTac" />
+  </wsdl:message>
+  <wsdl:message name="updateDoiTacSoapOut">
+    <wsdl:part name="parameters" element="tns:updateDoiTacResponse" />
+  </wsdl:message>
+  <wsdl:message name="duyetKhongKySoapIn">
+    <wsdl:part name="parameters" element="tns:duyetKhongKy" />
+  </wsdl:message>
+  <wsdl:message name="duyetKhongKySoapOut">
+    <wsdl:part name="parameters" element="tns:duyetKhongKyResponse" />
+  </wsdl:message>
   <wsdl:portType name="wsEContractSoap">
     <wsdl:operation name="getAccess_token">
       <wsdl:input message="tns:getAccess_tokenSoapIn" />
       <wsdl:output message="tns:getAccess_tokenSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAccess_token_Client">
+      <wsdl:input message="tns:getAccess_token_ClientSoapIn" />
+      <wsdl:output message="tns:getAccess_token_ClientSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAccess_token_User">
+      <wsdl:input message="tns:getAccess_token_UserSoapIn" />
+      <wsdl:output message="tns:getAccess_token_UserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAccess_token_Duyet">
+      <wsdl:input message="tns:getAccess_token_DuyetSoapIn" />
+      <wsdl:output message="tns:getAccess_token_DuyetSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="renderEContract">
       <wsdl:input message="tns:renderEContractSoapIn" />
@@ -225,11 +344,46 @@
       <wsdl:input message="tns:deleteEContractSoapIn" />
       <wsdl:output message="tns:deleteEContractSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="updateDoiTac">
+      <wsdl:input message="tns:updateDoiTacSoapIn" />
+      <wsdl:output message="tns:updateDoiTacSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="duyetKhongKy">
+      <wsdl:input message="tns:duyetKhongKySoapIn" />
+      <wsdl:output message="tns:duyetKhongKySoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="wsEContractSoap" type="tns:wsEContractSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="getAccess_token">
       <soap:operation soapAction="http://tempuri.org/getAccess_token" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccess_token_Client">
+      <soap:operation soapAction="http://tempuri.org/getAccess_token_Client" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccess_token_User">
+      <soap:operation soapAction="http://tempuri.org/getAccess_token_User" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccess_token_Duyet">
+      <soap:operation soapAction="http://tempuri.org/getAccess_token_Duyet" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -291,11 +445,56 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="updateDoiTac">
+      <soap:operation soapAction="http://tempuri.org/updateDoiTac" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="duyetKhongKy">
+      <soap:operation soapAction="http://tempuri.org/duyetKhongKy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="wsEContractSoap12" type="tns:wsEContractSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="getAccess_token">
       <soap12:operation soapAction="http://tempuri.org/getAccess_token" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccess_token_Client">
+      <soap12:operation soapAction="http://tempuri.org/getAccess_token_Client" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccess_token_User">
+      <soap12:operation soapAction="http://tempuri.org/getAccess_token_User" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccess_token_Duyet">
+      <soap12:operation soapAction="http://tempuri.org/getAccess_token_Duyet" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -350,6 +549,24 @@
     </wsdl:operation>
     <wsdl:operation name="deleteEContract">
       <soap12:operation soapAction="http://tempuri.org/deleteEContract" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateDoiTac">
+      <soap12:operation soapAction="http://tempuri.org/updateDoiTac" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="duyetKhongKy">
+      <soap12:operation soapAction="http://tempuri.org/duyetKhongKy" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
