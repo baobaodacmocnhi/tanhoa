@@ -786,7 +786,10 @@ namespace KTKS_DonKH.GUI.TruyThu
                 else
                 {
                     ds = _cDocSo.get(DanhBo, Ky, Nam);
-                    TuNgay = ds.TuNgay.Value;
+                    if (ds != null)
+                    {
+                        TuNgay = ds.TuNgay.Value;
+                    }
                 }
                 DenNgay = hd.DENNGAY.Value;
             }

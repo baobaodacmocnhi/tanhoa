@@ -87,7 +87,94 @@ namespace KTKS_DonKH.DAL
 
         public DocSo get(string DanhBo, int Ky, int Nam)
         {
-            return db.DocSos.SingleOrDefault(item => item.DanhBa == DanhBo && Convert.ToInt32(item.Ky) == Ky && item.Nam == Nam);
+            if (db.DocSos.Any(item => item.DanhBa == DanhBo && Convert.ToInt32(item.Ky) == Ky && item.Nam == Nam))
+                return db.DocSos.SingleOrDefault(item => item.DanhBa == DanhBo && Convert.ToInt32(item.Ky) == Ky && item.Nam == Nam);
+            else
+            {
+                DocSoLuuTru enLuuTru = db.DocSoLuuTrus.SingleOrDefault(item => item.DanhBa == DanhBo && Convert.ToInt32(item.Ky) == Ky && item.Nam == Nam);
+                DocSo en = new DocSo();
+                en.DocSoID = enLuuTru.DocSoID;
+                en.DanhBa = enLuuTru.DanhBa;
+                en.MLT1 = enLuuTru.MLT1;
+                en.MLT2 = enLuuTru.MLT2;
+                en.SoNhaCu = enLuuTru.SoNhaCu;
+                en.SoNhaMoi = enLuuTru.SoNhaMoi;
+                en.Duong = enLuuTru.Duong;
+                en.SDT = enLuuTru.SDT;
+                en.GB = enLuuTru.GB;
+                en.DM = enLuuTru.DM;
+                en.Nam = enLuuTru.Nam;
+                en.Ky = enLuuTru.Ky;
+                en.Dot = enLuuTru.Dot;
+                en.May = enLuuTru.May;
+                en.TBTT = enLuuTru.TBTT;
+                en.TamTinh = enLuuTru.TamTinh;
+                en.CSCu = enLuuTru.CSCu;
+                en.CSMoi = enLuuTru.CSMoi;
+                en.CodeCu = enLuuTru.CodeCu;
+                en.CodeMoi = enLuuTru.CodeMoi;
+                en.TTDHNCu = enLuuTru.TTDHNCu;
+                en.TTDHNMoi = enLuuTru.TTDHNMoi;
+                en.TieuThuCu = enLuuTru.TieuThuCu;
+                en.TieuThuMoi = enLuuTru.TieuThuMoi;
+                en.TuNgay = enLuuTru.TuNgay;
+                en.DenNgay = enLuuTru.DenNgay;
+                en.TienNuoc = enLuuTru.TienNuoc;
+                en.BVMT = enLuuTru.BVMT;
+                en.Thue = enLuuTru.Thue;
+                en.TongTien = enLuuTru.TongTien;
+                en.SoThanCu = enLuuTru.SoThanCu;
+                en.SoThanMoi = enLuuTru.SoThanMoi;
+                en.HieuCu = enLuuTru.HieuCu;
+                en.HieuMoi = enLuuTru.HieuMoi;
+                en.CoCu = enLuuTru.CoCu;
+                en.CoMoi = enLuuTru.CoMoi;
+                en.GiengCu = enLuuTru.GiengCu;
+                en.GiengMoi = enLuuTru.GiengMoi;
+                en.Van1Cu = enLuuTru.Van1Cu;
+                en.Van1Moi = enLuuTru.Van1Moi;
+                en.MVCu = enLuuTru.MVCu;
+                en.MVMoi = enLuuTru.MVMoi;
+                en.ChiCoCu = enLuuTru.ChiCoCu;
+                en.ChiCoMoi = enLuuTru.ChiCoMoi;
+                en.ChiThanCu = enLuuTru.ChiThanCu;
+                en.ChiThanMoi = enLuuTru.ChiThanMoi;
+                en.ViTriCu = enLuuTru.ViTriCu;
+                en.ViTriMoi = enLuuTru.ViTriMoi;
+                en.CapDoCu = enLuuTru.CapDoCu;
+                en.CapDoMoi = enLuuTru.CapDoMoi;
+                en.CongDungCu = enLuuTru.CongDungCu;
+                en.CongDungMoi = enLuuTru.CongDungMoi;
+                en.DMACu = enLuuTru.DMACu;
+                en.DMAMoi = enLuuTru.DMAMoi;
+                en.GhiChuKH = enLuuTru.GhiChuKH;
+                en.GhiChuDS = enLuuTru.GhiChuDS;
+                en.GhiChuTV = enLuuTru.GhiChuTV;
+                en.NVGHI = enLuuTru.NVGHI;
+                en.GIOGHI = enLuuTru.GIOGHI;
+                en.BARCODE = enLuuTru.BARCODE;
+                en.SOLANGHI = enLuuTru.SOLANGHI;
+                en.GPSDATA = enLuuTru.GPSDATA;
+                en.StaCapNhat = enLuuTru.StaCapNhat;
+                en.NgayCapNhat = enLuuTru.NgayCapNhat;
+                en.NVCapNhat = enLuuTru.NVCapNhat;
+                en.TODS = enLuuTru.TODS;
+                en.NgayTaoDot = enLuuTru.NgayTaoDot;
+                en.ChiTiet = enLuuTru.ChiTiet;
+                en.Latitude = enLuuTru.Latitude;
+                en.Longitude = enLuuTru.Longitude;
+                en.BVMT_Thue = enLuuTru.BVMT_Thue;
+                en.NgayChuyenListing = enLuuTru.NgayChuyenListing;
+                en.NgayTaoDS1 = enLuuTru.NgayTaoDS1;
+                en.DutChiThan = enLuuTru.DutChiThan;
+                en.DutChiGoc = enLuuTru.DutChiGoc;
+                en.DHNSaiTT = enLuuTru.DHNSaiTT;
+                en.BaoKinhDoanh = enLuuTru.BaoKinhDoanh;
+                en.DMHN = enLuuTru.DMHN;
+                en.PhanMay = enLuuTru.PhanMay;
+                en.ChuBao = enLuuTru.ChuBao;
+                return en;
+            }
         }
 
         public DataSet getDS_DocLoChiSoNuoc(int Nam, int Ky, int Dot)
