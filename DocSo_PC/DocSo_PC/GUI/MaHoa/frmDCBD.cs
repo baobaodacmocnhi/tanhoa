@@ -736,7 +736,7 @@ namespace DocSo_PC.GUI.MaHoa
                                     ghichu.NOIDUNG += " - HL : " + en.HieuLucKy + " - ĐC";
                                     if (!string.IsNullOrEmpty(en.DiaChi_BD))
                                     {
-                                        ghichu.NOIDUNG += " Địa Chỉ: " + en.DiaChi_BD + ",";
+                                        ghichu.NOIDUNG += " Địa Chỉ: " + en.DiaChi + " -> " + en.DiaChi_BD + ",";
                                     }
                                     if (!string.IsNullOrEmpty(en.GiaBieu_BD.ToString()))
                                     {
