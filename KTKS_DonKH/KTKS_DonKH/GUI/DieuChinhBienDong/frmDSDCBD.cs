@@ -1023,7 +1023,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                 }
                                                 if (!string.IsNullOrEmpty(ctdcbd.DiaChi_BD))
                                                 {
-                                                    ghichu.NOIDUNG += " Địa Chỉ: " + ctdcbd.DiaChi_BD + ",";
+                                                    ghichu.NOIDUNG += " Địa Chỉ: " + ctdcbd.DiaChi + " -> " + ctdcbd.DiaChi_BD + ",";
                                                 }
                                                 if (!string.IsNullOrEmpty(ctdcbd.MSThue_BD))
                                                 {
