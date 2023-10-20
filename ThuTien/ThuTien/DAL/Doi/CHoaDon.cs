@@ -846,7 +846,7 @@ namespace ThuTien.DAL.Doi
             //            };
             //return LINQToDataTable(query.OrderBy(item => item.Dot));
             string sql = "select DOT,TongHD=COUNT(ID_HOADON),TongTieuThu=SUM(TIEUTHU),TongGiaBan=SUM(GIABAN),TongThueGTGT=SUM(THUE),"
-                        + " TongPhiBVMT=SUM(PHI),TongCong=SUM(TONGCONG),HD0=COUNT(case when TIEUTHU = 0 then 1 else null end),"
+                        + " TongPhiBVMT=SUM(PHI),TongPhiBVMT_Thue=SUM(ThueGTGT_TDVTN),TongCong=SUM(TONGCONG),HD0=COUNT(case when TIEUTHU = 0 then 1 else null end),"
                         + " SONGAY=MAX(SONGAY),CreateDate=MAX(CreateDate)"
                         + " from HOADON where NAM=" + Nam + " and KY=" + Ky
                         + " group by DOT";

@@ -42,3 +42,6 @@ and tt.FK_HOADON=hd.ID_HOADON and hd.NAm=tv.Nam and hd.ky=tv.Ky and hd.DANHBA=tv
 and tt.phi_bd!=tv.phibvmt_start 
 
 select DANHBA,SOHOADON,SOPHATHANH,NAM,KY,GIABAN,THUE,PHI,ThueGTGT_TDVTN,TONGCONG from HOADON where CAST(NGAYGIAITRACH as date)='20220825' and MaNV_DangNgan is not null
+
+update HOADON set ThueGTGT_TDVTN=TongCong-(giaban+THUE+PHI) where nam=2023 and ThueGTGT_TDVTN is null
+and TongCong!=giaban+THUE+PHI

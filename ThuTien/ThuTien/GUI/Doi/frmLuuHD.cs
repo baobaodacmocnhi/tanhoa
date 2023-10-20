@@ -430,6 +430,7 @@ namespace ThuTien.GUI.Doi
                 long TongGiaBan = 0;
                 long TongThueGTGT = 0;
                 long TongPhiBVMT = 0;
+                long TongPhiBVMT_Thue = 0;
                 long TongCong = 0;
                 int TongHD0 = 0;
                 foreach (DataGridViewRow item in dgvHoaDon.Rows)
@@ -440,6 +441,7 @@ namespace ThuTien.GUI.Doi
                         item.Cells["TongGiaBan"].Value = long.Parse(item.Cells["TongGiaBan"].Value.ToString()) - long.Parse(dtDCHD.Rows[0]["GIABAN_DC"].ToString());
                         item.Cells["TongThueGTGT"].Value = long.Parse(item.Cells["TongThueGTGT"].Value.ToString()) - long.Parse(dtDCHD.Rows[0]["ThueGTGT_DC"].ToString());
                         item.Cells["TongPhiBVMT"].Value = long.Parse(item.Cells["TongPhiBVMT"].Value.ToString()) - long.Parse(dtDCHD.Rows[0]["PhiBVMT_DC"].ToString());
+                        item.Cells["TongPhiBVMT_Thue"].Value = long.Parse(item.Cells["TongPhiBVMT_Thue"].Value.ToString()) - long.Parse(dtDCHD.Rows[0]["PhiBVMT_Thue_DC"].ToString());
                         item.Cells["TongCong"].Value = long.Parse(item.Cells["TongCong"].Value.ToString()) - long.Parse(dtDCHD.Rows[0]["TONGCONG_DC"].ToString());
                     }
 
@@ -448,6 +450,7 @@ namespace ThuTien.GUI.Doi
                     TongGiaBan += long.Parse(item.Cells["TongGiaBan"].Value.ToString());
                     TongThueGTGT += long.Parse(item.Cells["TongThueGTGT"].Value.ToString());
                     TongPhiBVMT += long.Parse(item.Cells["TongPhiBVMT"].Value.ToString());
+                    TongPhiBVMT_Thue += long.Parse(item.Cells["TongPhiBVMT_Thue"].Value.ToString());
                     TongCong += long.Parse(item.Cells["TongCong"].Value.ToString());
                     TongHD0 += int.Parse(item.Cells["HD0"].Value.ToString());
                 }
@@ -456,6 +459,7 @@ namespace ThuTien.GUI.Doi
                 txtTongGiaBan.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongGiaBan);
                 txtTongThueGTGT.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongThueGTGT);
                 txtTongPhiBVMT.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongPhiBVMT);
+                txtTongPhiBVMT_Thue.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongPhiBVMT_Thue);
                 txtTongCong.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
                 txtTongHD0.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHD0);
             }

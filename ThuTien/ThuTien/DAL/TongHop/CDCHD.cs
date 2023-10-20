@@ -273,14 +273,17 @@ namespace ThuTien.DAL.TongHop
                             GIABAN_BD = itemGroup.Sum(groupItem => groupItem.GIABAN_BD) == null ? 0 : itemGroup.Sum(groupItem => groupItem.GIABAN_BD),
                             ThueGTGT_BD = itemGroup.Sum(groupItem => groupItem.THUE_BD) == null ? 0 : itemGroup.Sum(groupItem => groupItem.THUE_BD),
                             PhiBVMT_BD = itemGroup.Sum(groupItem => groupItem.PHI_BD) == null ? 0 : itemGroup.Sum(groupItem => groupItem.PHI_BD),
+                            PhiBVMT_Thue_BD = itemGroup.Sum(groupItem => groupItem.PHI_Thue_BD) == null ? 0 : itemGroup.Sum(groupItem => groupItem.PHI_Thue_BD),
                             TONGCONG_BD = itemGroup.Sum(groupItem => groupItem.TONGCONG_BD) == null ? 0 : itemGroup.Sum(groupItem => groupItem.TONGCONG_BD),
                             GIABAN_DC = itemGroup.Sum(groupItem => groupItem.GIABAN_DC) == null ? 0 : itemGroup.Sum(groupItem => groupItem.GIABAN_DC),
                             ThueGTGT_DC = itemGroup.Sum(groupItem => groupItem.THUE_DC) == null ? 0 : itemGroup.Sum(groupItem => groupItem.THUE_DC),
                             PhiBVMT_DC = itemGroup.Sum(groupItem => groupItem.PHI_DC) == null ? 0 : itemGroup.Sum(groupItem => groupItem.PHI_DC),
+                            PhiBVMT_Thue_DC = itemGroup.Sum(groupItem => groupItem.PHI_Thue_DC) == null ? 0 : itemGroup.Sum(groupItem => groupItem.PHI_Thue_DC),
                             TONGCONG_DC = itemGroup.Sum(groupItem => groupItem.TONGCONG_DC) == null ? 0 : itemGroup.Sum(groupItem => groupItem.TONGCONG_DC),
                             GIABAN_END = itemGroup.Sum(groupItem => groupItem.GIABAN_END) == null ? 0 : itemGroup.Sum(groupItem => groupItem.GIABAN_END),
                             ThueGTGT_End = itemGroup.Sum(groupItem => groupItem.THUE_END) == null ? 0 : itemGroup.Sum(groupItem => groupItem.THUE_END),
                             PhiBVMT_End = itemGroup.Sum(groupItem => groupItem.PHI_END) == null ? 0 : itemGroup.Sum(groupItem => groupItem.PHI_END),
+                            PhiBVMT_Thue_End = itemGroup.Sum(groupItem => groupItem.PHI_Thue_END) == null ? 0 : itemGroup.Sum(groupItem => groupItem.PHI_Thue_END),
                             TONGCONG_END = itemGroup.Sum(groupItem => groupItem.TONGCONG_END) == null ? 0 : itemGroup.Sum(groupItem => groupItem.TONGCONG_END),
                         };
             return LINQToDataTable(query);
