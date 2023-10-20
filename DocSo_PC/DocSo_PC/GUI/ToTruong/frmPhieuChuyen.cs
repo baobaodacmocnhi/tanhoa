@@ -638,84 +638,12 @@ namespace DocSo_PC.GUI.ToTruong
                 {
                     if (MessageBox.Show("Bạn chắc chắn???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        TB_DULIEUKHACHHANG ttkh = _cDHN.get(dgvDanhSach.CurrentRow.Cells["DanhBo"].Value.ToString());
-                        if (ttkh != null)
-                        {
-                            switch (dgvDanhSach.CurrentRow.Cells["NoiDung"].Value.ToString())
+                        foreach (DataGridViewRow item in dgvDanhSach.Rows)
+                            if (item.Cells["Chon"].Value != null && bool.Parse(item.Cells["Chon"].Value.ToString()))
                             {
-                                case "Âm Sâu":
-                                    ttkh.AmSau = false;
-                                    ttkh.AmSau_Ngay = null;
-                                    break;
-                                case "Xây Dựng":
-                                    ttkh.XayDung = false;
-                                    ttkh.XayDung_Ngay = null;
-                                    break;
-                                case "Đứt Chì Góc":
-                                    ttkh.DutChi_Goc = false;
-                                    ttkh.DutChi_Goc_Ngay = null;
-                                    break;
-                                case "Đứt Chì Thân":
-                                    ttkh.DutChi_Than = false;
-                                    ttkh.DutChi_Than_Ngay = null;
-                                    break;
-                                case "Ngập Nước":
-                                    ttkh.NgapNuoc = false;
-                                    ttkh.NgapNuoc_Ngay = null;
-                                    break;
-                                case "Kẹt Tường":
-                                    ttkh.KetTuong = false;
-                                    ttkh.KetTuong_Ngay = null;
-                                    break;
-                                case "Lấp Khóa Góc":
-                                    ttkh.LapKhoaGoc = false;
-                                    ttkh.LapKhoaGoc_Ngay = null;
-                                    break;
-                                case "Bể HBV":
-                                    ttkh.BeHBV = false;
-                                    ttkh.BeHBV_Ngay = null;
-                                    break;
-                                case "Bể Nấp, Mất Nấp HBV":
-                                    ttkh.BeNapMatNapHBV = false;
-                                    ttkh.BeNapMatNapHBV_Ngay = null;
-                                    break;
-                                case "Gãy Tay Van":
-                                    ttkh.GayTayVan = false;
-                                    ttkh.GayTayVan_Ngay = null;
-                                    break;
-                                case "Trở Ngại Thay":
-                                    ttkh.TroNgaiThay = false;
-                                    ttkh.TroNgaiThay_Ngay = null;
-                                    break;
-                                case "Đấu Chung Máy Bơm":
-                                    ttkh.DauChungMayBom = false;
-                                    ttkh.DauChungMayBom_Ngay = null;
-                                    break;
-                                default:
-                                    break;
+                                CDocSo._cDAL.ExecuteNonQuery("update MaHoa_PhieuChuyen_LichSu set TinhTrang=N'Xóa' where ID=" + dgvDanhSach.CurrentRow.Cells["ID"].Value.ToString());
                             }
-                            _cDHN.SubmitChanges();
-                            CDocSo._cDAL.ExecuteNonQuery("update MaHoa_PhieuChuyen_LichSu set TinhTrang=N'Xóa' where ID=" + dgvDanhSach.CurrentRow.Cells["ID"].Value.ToString());
-                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        //DataTable dt = CPhieuChuyen._cDAL.ExecuteQuery_DataTable("select * from capnuoctanhoa.dbo.TB_DULIEUKHACHHANG where DauChungMayBom=1 and DANHBO not in (select danhbo from DocSoTH.dbo.MaHoa_PhieuChuyen_LichSu where NoiDung=N'Đấu Chung Máy Bơm')");
-                        //foreach (DataRow item in dt.Rows)
-                        //{
-                        //    string ID = "";
-                        //    object checkExists = CDocSo._cDAL.ExecuteQuery_ReturnOneValue("select top 1 ID from MaHoa_PhieuChuyen_LichSu where ID like '" + DateTime.Now.ToString("yy") + "%'");
-                        //    if (checkExists != null)
-                        //    {
-                        //        object stt = CDocSo._cDAL.ExecuteQuery_ReturnOneValue("select MAX(SUBSTRING(CAST(ID as varchar(8)),3,5))+1 from MaHoa_PhieuChuyen_LichSu where ID like '" + DateTime.Now.ToString("yy") + "%'");
-                        //        if (stt != null)
-                        //            ID = DateTime.Now.ToString("yy") + ((int)stt).ToString("00000");
-                        //    }
-                        //    else
-                        //    {
-                        //        ID = DateTime.Now.ToString("yy") + 1.ToString("00000");
-                        //    }
-                        //    CDocSo._cDAL.ExecuteNonQuery("insert into MaHoa_PhieuChuyen_LichSu(ID,DanhBo,NoiDung,GhiChu,CreateBy,CreateDate,TinhTrang)values(" + ID + ",'" + item["DanhBo"].ToString() + "',N'Đấu Chung Máy Bơm',N'bổ sung'," + CNguoiDung.MaND + ",'" + DateTime.Parse(item["DauChungMayBom_Ngay"].ToString()).ToString("yyyy-MM-dd HH:mm:ss") + "','')");
-                        //}
-                        //MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Đã xử lý", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 else
