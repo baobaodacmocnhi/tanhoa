@@ -732,15 +732,15 @@ namespace DocSo_PC.GUI.MaHoa
                                     ghichu.DANHBO = en.DanhBo;
                                     ghichu.DONVI = "QLDHN";
                                     ghichu.NOIDUNG = "PYC: " + en.ID.ToString();
-                                    ghichu.NOIDUNG += " ," + en.CreateDate.Value.ToString("dd/MM/yyyy");
-                                    ghichu.NOIDUNG += " - HL : " + en.HieuLucKy + " - ĐC";
+                                    ghichu.NOIDUNG += ", " + en.CreateDate.Value.ToString("dd/MM/yyyy");
+                                    ghichu.NOIDUNG += " - HL: " + en.HieuLucKy + " - ĐC";
                                     if (!string.IsNullOrEmpty(en.DiaChi_BD))
                                     {
-                                        ghichu.NOIDUNG += " Địa Chỉ: " + en.DiaChi + " -> " + en.DiaChi_BD + ",";
+                                        ghichu.NOIDUNG += " Địa Chỉ từ " + en.DiaChi + " -> " + en.DiaChi_BD + ",";
                                     }
                                     if (!string.IsNullOrEmpty(en.GiaBieu_BD.ToString()))
                                     {
-                                        ghichu.NOIDUNG += " Giá Biểu Từ " + en.GiaBieu + " -> " + en.GiaBieu_BD + ",";
+                                        ghichu.NOIDUNG += " Giá Biểu từ " + en.GiaBieu + " -> " + en.GiaBieu_BD + ",";
                                     }
                                     string sqlGhiChu = "insert into TB_GHICHU(DANHBO,DONVI,NOIDUNG,CREATEDATE,CREATEBY)values('" + ghichu.DANHBO + "',N'" + ghichu.DONVI + "',N'" + ghichu.NOIDUNG + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture) + "',N'" + CNguoiDung.HoTen + "')";
                                     if (CDHN._cDAL.ExecuteNonQuery(sqlGhiChu))
