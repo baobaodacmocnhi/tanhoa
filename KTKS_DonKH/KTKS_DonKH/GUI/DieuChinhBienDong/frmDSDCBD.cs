@@ -1015,15 +1015,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                 ghichu.DANHBO = ctdcbd.DanhBo;
                                                 ghichu.DONVI = "KTKS";
                                                 ghichu.NOIDUNG = "PYC: " + ctdcbd.MaCTDCBD.ToString().Insert(ctdcbd.MaCTDCBD.ToString().Length - 2, "-");
-                                                ghichu.NOIDUNG += " ," + ctdcbd.CreateDate.Value.ToString("dd/MM/yyyy");
-                                                ghichu.NOIDUNG += " - HL : " + ctdcbd.HieuLucKy + " - ĐC";
+                                                ghichu.NOIDUNG += ", " + ctdcbd.CreateDate.Value.ToString("dd/MM/yyyy");
+                                                ghichu.NOIDUNG += " - HL: " + ctdcbd.HieuLucKy + " - ĐC";
                                                 if (!string.IsNullOrEmpty(ctdcbd.HoTen_BD))
                                                 {
                                                     ghichu.NOIDUNG += " Tên: " + ctdcbd.HoTen_BD + ",";
                                                 }
                                                 if (!string.IsNullOrEmpty(ctdcbd.DiaChi_BD))
                                                 {
-                                                    ghichu.NOIDUNG += " Địa Chỉ: " + ctdcbd.DiaChi + " -> " + ctdcbd.DiaChi_BD + ",";
+                                                    ghichu.NOIDUNG += " Địa Chỉ từ " + ctdcbd.DiaChi + " -> " + ctdcbd.DiaChi_BD + ",";
                                                 }
                                                 if (!string.IsNullOrEmpty(ctdcbd.MSThue_BD))
                                                 {
@@ -1031,15 +1031,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                 }
                                                 if (!string.IsNullOrEmpty(ctdcbd.GiaBieu_BD.ToString()))
                                                 {
-                                                    ghichu.NOIDUNG += " Giá Biểu Từ " + ctdcbd.GiaBieu + " -> " + ctdcbd.GiaBieu_BD + ",";
+                                                    ghichu.NOIDUNG += " Giá Biểu từ " + ctdcbd.GiaBieu + " -> " + ctdcbd.GiaBieu_BD + ",";
                                                 }
                                                 if (!string.IsNullOrEmpty(ctdcbd.DinhMuc_BD.ToString()))
                                                 {
-                                                    ghichu.NOIDUNG += " Định Mức Từ " + ctdcbd.DinhMuc + " -> " + ctdcbd.DinhMuc_BD + ",";
+                                                    ghichu.NOIDUNG += " Định Mức từ " + ctdcbd.DinhMuc + " -> " + ctdcbd.DinhMuc_BD + ",";
                                                 }
                                                 if (!string.IsNullOrEmpty(ctdcbd.DinhMucHN_BD.ToString()))
                                                 {
-                                                    ghichu.NOIDUNG += " Định Mức Hộ Nghèo Từ " + ctdcbd.DinhMucHN + " -> " + ctdcbd.DinhMucHN_BD + ",";
+                                                    ghichu.NOIDUNG += " Định Mức Hộ Nghèo từ " + ctdcbd.DinhMucHN + " -> " + ctdcbd.DinhMucHN_BD + ",";
                                                 }
 
                                                 string sqlGhiChu = "insert into TB_GHICHU(DANHBO,DONVI,NOIDUNG,CREATEDATE,CREATEBY)values('" + ghichu.DANHBO + "','" + ghichu.DONVI + "',N'" + ghichu.NOIDUNG + "','" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + "',N'" + CTaiKhoan.HoTen + "')";
