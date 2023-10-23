@@ -58,8 +58,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (txtDanhBo.Text.Trim() != "")
                 dgvDanhSach.DataSource = _cChungTu.getDS_ChiTiet_DanhBo(txtDanhBo.Text.Trim());
             else
-            if (txtSHS.Text.Trim() != "")
-                dgvDanhSach.DataSource = _cChungTu.getDS_ChiTiet_SHS(txtSHS.Text.Trim());
+                if (txtSHS.Text.Trim() != "")
+                    dgvDanhSach.DataSource = _cChungTu.getDS_ChiTiet_SHS(txtSHS.Text.Trim());
             int TongNK = 0;
             foreach (DataRow itemRow in ((DataTable)dgvDanhSach.DataSource).Rows)
                 if (!bool.Parse(itemRow["Cat"].ToString()))
@@ -71,7 +71,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             lbTongDM.Text = "Tổng ĐM: " + TongNK * 4;
 
             dgvDanhSach.Focus();
-            dgvDanhSach.CurrentCell = dgvDanhSach.Rows[dgvDanhSach.Rows.Count - 1].Cells[3];
+            if (dgvDanhSach.Rows.Count > 0)
+                dgvDanhSach.CurrentCell = dgvDanhSach.Rows[dgvDanhSach.Rows.Count - 1].Cells[3];
         }
 
         public void FillForm(ChungTu_ChiTiet en)
