@@ -849,7 +849,7 @@ namespace ThuTien.DAL.Doi
                         + " TongPhiBVMT=SUM(PHI),TongPhiBVMT_Thue=SUM(ThueGTGT_TDVTN),TongCong=SUM(TONGCONG),HD0=COUNT(case when TIEUTHU = 0 then 1 else null end),"
                         + " SONGAY=MAX(SONGAY),CreateDate=MAX(CreateDate)"
                         + " from HOADON where NAM=" + Nam + " and KY=" + Ky
-                        + " group by DOT";
+                        + " group by DOT order by DOT";
             return ExecuteQuery_DataTable(sql);
         }
 
