@@ -23,7 +23,7 @@ namespace KTKS_DonKH.wrThuongVu {
     
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Web.Services.WebServiceBindingAttribute(Name="wsThuongVuSoap", Namespace="http://tempuri.org/")]
@@ -60,8 +60,6 @@ namespace KTKS_DonKH.wrThuongVu {
         private System.Threading.SendOrPostCallback xoa_Folder_Hinh_RootOperationCompleted;
         
         private System.Threading.SendOrPostCallback get_FileinFolder_RootOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback testAdminOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -148,9 +146,6 @@ namespace KTKS_DonKH.wrThuongVu {
         
         /// <remarks/>
         public event get_FileinFolder_RootCompletedEventHandler get_FileinFolder_RootCompleted;
-        
-        /// <remarks/>
-        public event testAdminCompletedEventHandler testAdminCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/get_Hinh", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -679,32 +674,6 @@ namespace KTKS_DonKH.wrThuongVu {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/testAdmin", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void testAdmin() {
-            this.Invoke("testAdmin", new object[0]);
-        }
-        
-        /// <remarks/>
-        public void testAdminAsync() {
-            this.testAdminAsync(null);
-        }
-        
-        /// <remarks/>
-        public void testAdminAsync(object userState) {
-            if ((this.testAdminOperationCompleted == null)) {
-                this.testAdminOperationCompleted = new System.Threading.SendOrPostCallback(this.OntestAdminOperationCompleted);
-            }
-            this.InvokeAsync("testAdmin", new object[0], this.testAdminOperationCompleted, userState);
-        }
-        
-        private void OntestAdminOperationCompleted(object arg) {
-            if ((this.testAdminCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.testAdminCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -724,11 +693,11 @@ namespace KTKS_DonKH.wrThuongVu {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void get_HinhCompletedEventHandler(object sender, get_HinhCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class get_HinhCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -750,11 +719,11 @@ namespace KTKS_DonKH.wrThuongVu {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void ghi_HinhCompletedEventHandler(object sender, ghi_HinhCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class ghi_HinhCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -776,11 +745,11 @@ namespace KTKS_DonKH.wrThuongVu {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void xoa_HinhCompletedEventHandler(object sender, xoa_HinhCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class xoa_HinhCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -802,11 +771,11 @@ namespace KTKS_DonKH.wrThuongVu {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void xoa_Folder_HinhCompletedEventHandler(object sender, xoa_Folder_HinhCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class xoa_Folder_HinhCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -828,11 +797,11 @@ namespace KTKS_DonKH.wrThuongVu {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void get_FileinFolderCompletedEventHandler(object sender, get_FileinFolderCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class get_FileinFolderCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -854,11 +823,11 @@ namespace KTKS_DonKH.wrThuongVu {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void checkExists_DonTuCompletedEventHandler(object sender, checkExists_DonTuCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class checkExists_DonTuCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -880,11 +849,11 @@ namespace KTKS_DonKH.wrThuongVu {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void getAccess_token_CCCDCompletedEventHandler(object sender, getAccess_token_CCCDCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getAccess_token_CCCDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -906,11 +875,11 @@ namespace KTKS_DonKH.wrThuongVu {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void checkExists_CCCDCompletedEventHandler(object sender, checkExists_CCCDCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class checkExists_CCCDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -940,11 +909,11 @@ namespace KTKS_DonKH.wrThuongVu {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void them_CCCDCompletedEventHandler(object sender, them_CCCDCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class them_CCCDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -974,11 +943,11 @@ namespace KTKS_DonKH.wrThuongVu {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void sua_CCCDCompletedEventHandler(object sender, sua_CCCDCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class sua_CCCDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1008,11 +977,11 @@ namespace KTKS_DonKH.wrThuongVu {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void xoa_CCCDCompletedEventHandler(object sender, xoa_CCCDCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class xoa_CCCDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1042,11 +1011,11 @@ namespace KTKS_DonKH.wrThuongVu {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void get_Hinh_RootCompletedEventHandler(object sender, get_Hinh_RootCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class get_Hinh_RootCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1068,11 +1037,11 @@ namespace KTKS_DonKH.wrThuongVu {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void ghi_Hinh_RootCompletedEventHandler(object sender, ghi_Hinh_RootCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class ghi_Hinh_RootCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1094,11 +1063,11 @@ namespace KTKS_DonKH.wrThuongVu {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void xoa_Hinh_RootCompletedEventHandler(object sender, xoa_Hinh_RootCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class xoa_Hinh_RootCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1120,11 +1089,11 @@ namespace KTKS_DonKH.wrThuongVu {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void xoa_Folder_Hinh_RootCompletedEventHandler(object sender, xoa_Folder_Hinh_RootCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class xoa_Folder_Hinh_RootCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1146,11 +1115,11 @@ namespace KTKS_DonKH.wrThuongVu {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void get_FileinFolder_RootCompletedEventHandler(object sender, get_FileinFolder_RootCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class get_FileinFolder_RootCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1170,10 +1139,6 @@ namespace KTKS_DonKH.wrThuongVu {
             }
         }
     }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
-    public delegate void testAdminCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
 }
 
 #pragma warning restore 1591

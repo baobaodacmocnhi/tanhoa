@@ -260,12 +260,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="testAdmin">
-        <s:complexType />
-      </s:element>
-      <s:element name="testAdminResponse">
-        <s:complexType />
-      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="get_HinhSoapIn">
@@ -364,12 +358,6 @@
   <wsdl:message name="get_FileinFolder_RootSoapOut">
     <wsdl:part name="parameters" element="tns:get_FileinFolder_RootResponse" />
   </wsdl:message>
-  <wsdl:message name="testAdminSoapIn">
-    <wsdl:part name="parameters" element="tns:testAdmin" />
-  </wsdl:message>
-  <wsdl:message name="testAdminSoapOut">
-    <wsdl:part name="parameters" element="tns:testAdminResponse" />
-  </wsdl:message>
   <wsdl:portType name="wsThuongVuSoap">
     <wsdl:operation name="get_Hinh">
       <wsdl:input message="tns:get_HinhSoapIn" />
@@ -434,10 +422,6 @@
     <wsdl:operation name="get_FileinFolder_Root">
       <wsdl:input message="tns:get_FileinFolder_RootSoapIn" />
       <wsdl:output message="tns:get_FileinFolder_RootSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="testAdmin">
-      <wsdl:input message="tns:testAdminSoapIn" />
-      <wsdl:output message="tns:testAdminSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="wsThuongVuSoap" type="tns:wsThuongVuSoap">
@@ -586,15 +570,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="testAdmin">
-      <soap:operation soapAction="http://tempuri.org/testAdmin" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="wsThuongVuSoap12" type="tns:wsThuongVuSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -735,15 +710,6 @@
     </wsdl:operation>
     <wsdl:operation name="get_FileinFolder_Root">
       <soap12:operation soapAction="http://tempuri.org/get_FileinFolder_Root" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="testAdmin">
-      <soap12:operation soapAction="http://tempuri.org/testAdmin" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -104,27 +104,27 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetDSNhanVienTo">
+      <s:element name="GetDS_May_To">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="MaTo" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetDSNhanVienToResponse">
+      <s:element name="GetDS_May_ToResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetDSNhanVienToResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetDS_May_ToResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="getDS_NhanVien">
+      <s:element name="getDS_May">
         <s:complexType />
       </s:element>
-      <s:element name="getDS_NhanVienResponse">
+      <s:element name="getDS_MayResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="getDS_NhanVienResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="getDS_MayResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -302,18 +302,6 @@
             <s:element minOccurs="0" maxOccurs="1" name="ViTriHop" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="Gieng" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="KhoaTu" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="AmSau" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="XayDung" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="DutChiGoc" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="DutChiThan" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="NgapNuoc" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="KetTuong" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="LapKhoaGoc" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="BeHBV" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="BeNapMatNapHBV" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="GayTayVan" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="TroNgaiThay" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="DauChungMayBom" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="MauSacChiGoc" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="GhiChu" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="KinhDoanh" type="s:string" />
@@ -442,6 +430,7 @@
             <s:element minOccurs="0" maxOccurs="1" name="Dot" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="MaNV" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="TBTT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -468,6 +457,7 @@
             <s:element minOccurs="0" maxOccurs="1" name="Dot" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="MaNV" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="NgayDS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -571,6 +561,21 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="getTonCongTyResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="dangKyQRCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DanhBo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="dangKyQRCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dangKyQRCodeResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -832,17 +837,17 @@
   <wsdl:message name="getDS_NhanVien_HanhThuSoapOut">
     <wsdl:part name="parameters" element="tns:getDS_NhanVien_HanhThuResponse" />
   </wsdl:message>
-  <wsdl:message name="GetDSNhanVienToSoapIn">
-    <wsdl:part name="parameters" element="tns:GetDSNhanVienTo" />
+  <wsdl:message name="GetDS_May_ToSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDS_May_To" />
   </wsdl:message>
-  <wsdl:message name="GetDSNhanVienToSoapOut">
-    <wsdl:part name="parameters" element="tns:GetDSNhanVienToResponse" />
+  <wsdl:message name="GetDS_May_ToSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDS_May_ToResponse" />
   </wsdl:message>
-  <wsdl:message name="getDS_NhanVienSoapIn">
-    <wsdl:part name="parameters" element="tns:getDS_NhanVien" />
+  <wsdl:message name="getDS_MaySoapIn">
+    <wsdl:part name="parameters" element="tns:getDS_May" />
   </wsdl:message>
-  <wsdl:message name="getDS_NhanVienSoapOut">
-    <wsdl:part name="parameters" element="tns:getDS_NhanVienResponse" />
+  <wsdl:message name="getDS_MaySoapOut">
+    <wsdl:part name="parameters" element="tns:getDS_MayResponse" />
   </wsdl:message>
   <wsdl:message name="getDS_CodeSoapIn">
     <wsdl:part name="parameters" element="tns:getDS_Code" />
@@ -1012,6 +1017,12 @@
   <wsdl:message name="getTonCongTySoapOut">
     <wsdl:part name="parameters" element="tns:getTonCongTyResponse" />
   </wsdl:message>
+  <wsdl:message name="dangKyQRCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:dangKyQRCode" />
+  </wsdl:message>
+  <wsdl:message name="dangKyQRCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:dangKyQRCodeResponse" />
+  </wsdl:message>
   <wsdl:message name="SendNotificationToClientSoapIn">
     <wsdl:part name="parameters" element="tns:SendNotificationToClient" />
   </wsdl:message>
@@ -1123,13 +1134,13 @@
       <wsdl:input message="tns:getDS_NhanVien_HanhThuSoapIn" />
       <wsdl:output message="tns:getDS_NhanVien_HanhThuSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetDSNhanVienTo">
-      <wsdl:input message="tns:GetDSNhanVienToSoapIn" />
-      <wsdl:output message="tns:GetDSNhanVienToSoapOut" />
+    <wsdl:operation name="GetDS_May_To">
+      <wsdl:input message="tns:GetDS_May_ToSoapIn" />
+      <wsdl:output message="tns:GetDS_May_ToSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="getDS_NhanVien">
-      <wsdl:input message="tns:getDS_NhanVienSoapIn" />
-      <wsdl:output message="tns:getDS_NhanVienSoapOut" />
+    <wsdl:operation name="getDS_May">
+      <wsdl:input message="tns:getDS_MaySoapIn" />
+      <wsdl:output message="tns:getDS_MaySoapOut" />
     </wsdl:operation>
     <wsdl:operation name="getDS_Code">
       <wsdl:input message="tns:getDS_CodeSoapIn" />
@@ -1242,6 +1253,10 @@
     <wsdl:operation name="getTonCongTy">
       <wsdl:input message="tns:getTonCongTySoapIn" />
       <wsdl:output message="tns:getTonCongTySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="dangKyQRCode">
+      <wsdl:input message="tns:dangKyQRCodeSoapIn" />
+      <wsdl:output message="tns:dangKyQRCodeSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="SendNotificationToClient">
       <wsdl:input message="tns:SendNotificationToClientSoapIn" />
@@ -1370,8 +1385,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetDSNhanVienTo">
-      <soap:operation soapAction="http://tempuri.org/GetDSNhanVienTo" style="document" />
+    <wsdl:operation name="GetDS_May_To">
+      <soap:operation soapAction="http://tempuri.org/GetDS_May_To" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1379,8 +1394,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getDS_NhanVien">
-      <soap:operation soapAction="http://tempuri.org/getDS_NhanVien" style="document" />
+    <wsdl:operation name="getDS_May">
+      <soap:operation soapAction="http://tempuri.org/getDS_May" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1640,6 +1655,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="dangKyQRCode">
+      <soap:operation soapAction="http://tempuri.org/dangKyQRCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="SendNotificationToClient">
       <soap:operation soapAction="http://tempuri.org/SendNotificationToClient" style="document" />
       <wsdl:input>
@@ -1832,8 +1856,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetDSNhanVienTo">
-      <soap12:operation soapAction="http://tempuri.org/GetDSNhanVienTo" style="document" />
+    <wsdl:operation name="GetDS_May_To">
+      <soap12:operation soapAction="http://tempuri.org/GetDS_May_To" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1841,8 +1865,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getDS_NhanVien">
-      <soap12:operation soapAction="http://tempuri.org/getDS_NhanVien" style="document" />
+    <wsdl:operation name="getDS_May">
+      <soap12:operation soapAction="http://tempuri.org/getDS_May" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -2095,6 +2119,15 @@
     </wsdl:operation>
     <wsdl:operation name="getTonCongTy">
       <soap12:operation soapAction="http://tempuri.org/getTonCongTy" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dangKyQRCode">
+      <soap12:operation soapAction="http://tempuri.org/dangKyQRCode" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
