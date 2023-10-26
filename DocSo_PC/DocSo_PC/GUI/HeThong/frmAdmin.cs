@@ -150,13 +150,15 @@ namespace DocSo_PC.GUI.HeThong
                 //        CMenu._cDAL.ExecuteNonQuery("delete Temp_HinhDHN where ID='" + item["ID"].ToString() + "'");
                 //}
 
-                DataTable dt = CMenu._cDAL.ExecuteQuery_DataTable("select DanhBo=DanhBa,CSMoi,GIOGHI from sDHN.dbo.DHTM_NGHIEMTHU_TD td,DocSo ds"
-+ " where ds.DanhBa=td.DANHBO and Dot in (15,16) and nam=2023 and ky=5 and SUBSTRING(CodeMoi,1,1)='4'");
+//                DataTable dt = CMenu._cDAL.ExecuteQuery_DataTable("select DanhBo=DanhBa,CSMoi,GIOGHI from sDHN.dbo.DHTM_NGHIEMTHU_TD td,DocSo ds"
+//+ " where ds.DanhBa=td.DANHBO and Dot in (15,16) and nam=2023 and ky=5 and SUBSTRING(CodeMoi,1,1)='4'");
+                DataTable dt = CMenu._cDAL.ExecuteQuery_DataTable("select DanhBo=DanhBa,CSMoi,GIOGHI from sDHN.dbo.sDHN_TCT td,DocSo ds"
++ " where ds.DanhBa=td.DANHBO and nam=2023 and ky=10 and td.IDNCC=1");
                 foreach (DataRow item in dt.Rows)
                 {
-                    byte[] hinh = wsDHN.get_Hinh("202305" + item["DanhBo"].ToString());
+                    byte[] hinh = wsDHN.get_Hinh("202310" + item["DanhBo"].ToString());
                     if (hinh != null)
-                        System.IO.File.WriteAllBytes(@"C:\Users\BaoBao\Desktop\TanHoa.DocSo.19052023\" + item["DanhBo"].ToString() + ".jpg", hinh);
+                        System.IO.File.WriteAllBytes(@"C:\Users\BaoBao\Desktop\TanHoa.DocSo.202310\" + item["DanhBo"].ToString() + ".jpg", hinh);
                 }
             }
             catch (Exception ex)
@@ -227,7 +229,9 @@ namespace DocSo_PC.GUI.HeThong
                 oSheet.Name = "Sheet1";
 
                 //DataTable dt = CMenu._cDAL.ExecuteQuery_DataTable(txtQuery.Text.Trim());
-                DataTable dt = CMenu._cDAL.ExecuteQuery_DataTable("select CodeMoi,DanhBo=DanhBa,CSMoi,GIOGHI,KyHD=CONVERT(char(4),Nam)+''+CONVERT(char(2),Ky) from sDHN.dbo.Lech td,DocSo ds where ds.DanhBa=td.DANHBO and nam=2023 and ky=9");
+                //DataTable dt = CMenu._cDAL.ExecuteQuery_DataTable("select CodeMoi,DanhBo=DanhBa,CSMoi,GIOGHI,KyHD=CONVERT(char(4),Nam)+''+CONVERT(char(2),Ky) from sDHN.dbo.Lech td,DocSo ds where ds.DanhBa=td.DANHBO and nam=2023 and ky=9");
+                DataTable dt = CMenu._cDAL.ExecuteQuery_DataTable("select DanhBo=DanhBa,CSMoi,GIOGHI from sDHN.dbo.sDHN_TCT td,DocSo ds where ds.DanhBa=td.DANHBO and nam=2023 and ky=10 and td.IDNCC=1");
+
                 for (int i = 0; i < dt.Columns.Count; i++)
                 {
                     oSheet.Cells[1, i + 1] = dt.Columns[i].ColumnName;
