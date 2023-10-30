@@ -332,17 +332,17 @@ namespace ThuTien.DAL.TongHop
                 case "TG":
                     sql = "select COUNT(a.SoHoaDon) as TongHD,SUM(GIABAN) as TongGiaBan,SUM(THUE) as TongThueGTGT,SUM(PHI) as TongPhiBVMT,SUM(ThueGTGT_TDVTN) as TongPhiBVMT_Thue,SUM(TONGCONG) as TongCong from TT_CTChuyenNoKhoDoi a,HOADON b"
                             + " where a.MaHD=b.ID_HOADON and GB>=11 and GB<=20 and CAST(a.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(a.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'"
-                            + " group by CONVERT(varchar(10),a.CreateDate,103)";
+                            ;//+ " group by CONVERT(varchar(10),a.CreateDate,103)";
                     return ExecuteQuery_DataTable(sql);
                 case "CQ":
                     sql = "select COUNT(a.SoHoaDon) as TongHD,SUM(GIABAN) as TongGiaBan,SUM(THUE) as TongThueGTGT,SUM(PHI) as TongPhiBVMT,SUM(ThueGTGT_TDVTN) as TongPhiBVMT_Thue,SUM(TONGCONG) as TongCong from TT_CTChuyenNoKhoDoi a,HOADON b"
                         + " where a.MaHD=b.ID_HOADON and GB>20 and CAST(a.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(a.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'"
-                        + " group by CONVERT(varchar(10),a.CreateDate,103)";
+                        ;//+ " group by CONVERT(varchar(10),a.CreateDate,103)";
                     return ExecuteQuery_DataTable(sql);
                 default:
                     sql = "select COUNT(a.SoHoaDon) as TongHD,SUM(GIABAN) as TongGiaBan,SUM(THUE) as TongThueGTGT,SUM(PHI) as TongPhiBVMT,SUM(ThueGTGT_TDVTN) as TongPhiBVMT_Thue,SUM(TONGCONG) as TongCong from TT_CTChuyenNoKhoDoi a,HOADON b"
                         + " where a.MaHD=b.ID_HOADON and CAST(a.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(a.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'"
-                        + " group by CONVERT(varchar(10),a.CreateDate,103)";
+                        ;//+ " group by CONVERT(varchar(10),a.CreateDate,103)";
                     return ExecuteQuery_DataTable(sql);
             }
         }
@@ -571,7 +571,7 @@ namespace ThuTien.DAL.TongHop
         {
             string sql = "select COUNT(a.SoHoaDon) as TongHD,SUM(GIABAN) as TongGiaBan,SUM(THUE) as TongThueGTGT,SUM(PHI) as TongPhiBVMT,SUM(ThueGTGT_TDVTN) as TongPhiBVMT_Thue,SUM(TONGCONG) as TongCong from TT_CTChuyenNoKhoDoi a,HOADON b"
                        + " where a.MaHD=b.ID_HOADON and (b.NAM<2020 or(b.NAM=2020 and b.KY<7)) and CAST(a.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(a.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'"
-                       + " group by CONVERT(varchar(10),a.CreateDate,103)";
+                       + " ";
             return ExecuteQuery_DataTable(sql);
         }
 
@@ -587,7 +587,7 @@ namespace ThuTien.DAL.TongHop
         {
             string sql = "select COUNT(a.SoHoaDon) as TongHD,SUM(GIABAN) as TongGiaBan,SUM(THUE) as TongThueGTGT,SUM(PHI) as TongPhiBVMT,SUM(ThueGTGT_TDVTN) as TongPhiBVMT_Thue,SUM(TONGCONG) as TongCong from TT_CTChuyenNoKhoDoi a,HOADON b"
                         + " where a.MaHD=b.ID_HOADON and (b.NAM>2020 or(b.NAM=2020 and b.KY>=7)) and CAST(a.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(a.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'"
-                        + " group by CONVERT(varchar(10),a.CreateDate,103)";
+                        + " ";
             return ExecuteQuery_DataTable(sql);
         }
 
