@@ -2615,7 +2615,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             byte[] file = _wsThuongVu.get_Hinh("DCBD_ChiTietHoaDon_Hinh", _ctdchd.MaCTDCHD.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
             if (file != null)
                 if (dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString().ToLower().Contains("pdf"))
-                    _cDCBD.viewPDF(file);
+                    _cDCBD.viewPDF(1,file);
                 else
                     _cDCBD.viewImage(file);
             else

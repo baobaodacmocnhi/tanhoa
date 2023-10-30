@@ -2235,7 +2235,7 @@ namespace KTKS_DonKH.GUI.TruyThu
             byte[] file = _wsThuongVu.get_Hinh("TruyThuTienNuoc_ChiTiet_Hinh", _cttttn.IDCT.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
             if (file != null)
                 if (dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString().ToLower().Contains("pdf"))
-                    _cTTTN.viewPDF(file);
+                    _cTTTN.viewPDF(1,file);
                 else
                     _cTTTN.viewImage(file);
             else

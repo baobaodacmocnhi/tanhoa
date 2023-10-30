@@ -878,7 +878,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             byte[] file = _wsThuongVu.get_Hinh("ThuTraLoi_ChiTiet_Hinh", _cttttl.MaCTTTTL.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
             if (file != null)
                 if (dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString().ToLower().Contains("pdf"))
-                    _cTTTL.viewPDF(file);
+                    _cTTTL.viewPDF(1,file);
                 else
                     _cTTTL.viewImage(file);
             else

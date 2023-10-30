@@ -1714,7 +1714,7 @@ namespace KTKS_DonKH.GUI.DonTu
                         _hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim().Replace(" ", ""));
                     byte[] bytes = _wsEContract.renderEContract(txtHopDong.Text.Trim(), txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now, txtHoTenMoi.Text.Trim(), txtCCCD.Text.Trim(), txtNgayCap.Text.Trim(), txtDCThuongTru.Text.Trim(), txtDCHienNay.Text.Trim(), txtDienThoaiMoi.Text.Trim(), txtFax.Text.Trim(), txtEmail.Text.Trim(), txtSTK.Text.Trim(), txtBank.Text.Trim(), txtMST.Text.Trim(), _hoadon.CoDH, txtDCLapDat.Text.Trim(), "", "tanho@2022", out error);
                     if (error == "")
-                        _cDonTu.viewPDF(bytes);
+                        _cDonTu.viewPDF(1,bytes);
                     else
                         MessageBox.Show("Thất bại " + error, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

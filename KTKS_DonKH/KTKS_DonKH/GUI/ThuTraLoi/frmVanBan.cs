@@ -663,7 +663,7 @@ namespace KTKS_DonKH.GUI.VanBan
             byte[] file = _wsThuongVu.get_Hinh("VanBan_ChiTiet_Hinh", _enCT.IDCT.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
             if (file != null)
                 if (dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString().ToLower().Contains("pdf"))
-                    _cVanBan.viewPDF(file);
+                    _cVanBan.viewPDF(1,file);
                 else
                     _cVanBan.viewImage(file);
             else

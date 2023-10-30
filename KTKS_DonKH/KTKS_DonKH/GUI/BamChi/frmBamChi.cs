@@ -1086,7 +1086,7 @@ namespace KTKS_DonKH.GUI.BamChi
             byte[] file = _wsThuongVu.get_Hinh("BamChi_ChiTiet_Hinh", _ctbamchi.MaCTBC.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
             if (file != null)
                 if (dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString().ToLower().Contains("pdf"))
-                    _cBamChi.viewPDF(file);
+                    _cBamChi.viewPDF(1,file);
                 else
                     _cBamChi.viewImage(file);
             else

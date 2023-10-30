@@ -1315,7 +1315,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 byte[] file = _wsThuongVu.get_Hinh("DCBD_DKDM_DanhBo_Hinh", _danhbo.ID.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
                 if (file != null)
                     if (dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString().ToLower().Contains("pdf"))
-                        _cDKDM.viewPDF(file);
+                        _cDKDM.viewPDF(1,file);
                     else
                         _cDKDM.viewImage(file);
                 else

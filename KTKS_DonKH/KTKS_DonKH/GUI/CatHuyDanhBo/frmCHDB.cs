@@ -1545,7 +1545,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             byte[] file = _wsThuongVu.get_Hinh("CHDB_ChiTietCatHuy_Hinh", _ctchdb.MaCTCHDB.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
             if (file != null)
                 if (dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString().ToLower().Contains("pdf"))
-                    _cCHDB.viewPDF(file);
+                    _cCHDB.viewPDF(1,file);
                 else
                     _cCHDB.viewImage(file);
             else

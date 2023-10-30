@@ -1145,7 +1145,7 @@ namespace KTKS_DonKH.GUI.TruyThu
             byte[] file = _wsThuongVu.get_Hinh("GianLan_ChiTiet_Hinh", _gianlan.MaCTGL.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
             if (file != null)
                 if (dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString().ToLower().Contains("pdf"))
-                    _cGianLan.viewPDF(file);
+                    _cGianLan.viewPDF(1,file);
                 else
                     _cGianLan.viewImage(file);
             else
