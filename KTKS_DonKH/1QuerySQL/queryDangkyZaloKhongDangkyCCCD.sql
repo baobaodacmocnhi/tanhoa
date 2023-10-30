@@ -20,3 +20,6 @@ where dt.MaDon=ct.MaDon and t1.DanhBo=ct.DanhBo and CAST(ct.CreateDate as date)>
 select sum(DM) from
 (select danhba,DM=SUM(DM) from HOADON_TA.dbo.HOADON where NAM=2023 and ky in (8,9,10) and TIEUTHU=0 and DM>0
 group by danhba having count(*)=3)t1
+
+select danhba,DM=SUM(DM) from HOADON_TA.dbo.HOADON where NAM=2023 and ky in (8,9,10) and TIEUTHU=0 and DM>0
+group by danhba having count(*)=3 order by DANHBA
