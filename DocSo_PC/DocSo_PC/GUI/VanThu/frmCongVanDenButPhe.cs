@@ -108,7 +108,7 @@ namespace DocSo_PC.GUI.VanThu
                         int index = -1;
                         for (int i = 0; i < _dtDuyet.Rows.Count; i++)
                             if (_dtDuyet.Rows[i]["Type"].ToString().ToLower().Contains("pdf"))
-                                _cCVD.viewPDF((byte[])_dtDuyet.Rows[i]["File"]);
+                                _cCVD.viewPDF(i, (byte[])_dtDuyet.Rows[i]["File"]);
                             else
                                 if (index == -1)
                                     index = i;

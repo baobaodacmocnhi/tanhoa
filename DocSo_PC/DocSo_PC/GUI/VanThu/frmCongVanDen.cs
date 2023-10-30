@@ -162,12 +162,12 @@ namespace DocSo_PC.GUI.VanThu
                     }
                     DataTable dt = _cThuongVu.getFile(dgvDanhSach.CurrentRow.Cells["TableName"].Value.ToString(), int.Parse(dgvDanhSach.CurrentRow.Cells["IDCT"].Value.ToString()));
                     if (dt != null && dt.Rows.Count > 0)
-                        foreach (DataRow item in dt.Rows)
+                        for (int i = 0; i < dt.Rows.Count; i++)
                         {
-                            if (item["Type"].ToString().ToLower().Contains("pdf"))
-                                _cCVD.viewPDF((byte[])item["File"]);
+                            if (dt.Rows[i]["Type"].ToString().ToLower().Contains("pdf"))
+                                _cCVD.viewPDF(i, (byte[])dt.Rows[i]["File"]);
                             else
-                                _cCVD.viewImage((byte[])item["File"]);
+                                _cCVD.viewImage((byte[])dt.Rows[i]["File"]);
                         }
                     //string TableNameHinh, IDName;
                     //_cThuongVu.getTableHinh(dgvDanhSach.CurrentRow.Cells["TableName"].Value.ToString(), out TableNameHinh, out IDName);
@@ -507,7 +507,7 @@ namespace DocSo_PC.GUI.VanThu
                         int index = -1;
                         for (int i = 0; i < _dtDuyet.Rows.Count; i++)
                             if (_dtDuyet.Rows[i]["Type"].ToString().ToLower().Contains("pdf"))
-                                _cCVD.viewPDF((byte[])_dtDuyet.Rows[i]["File"]);
+                                _cCVD.viewPDF(i,(byte[])_dtDuyet.Rows[i]["File"]);
                             else
                                 if (index == -1)
                                     index = i;

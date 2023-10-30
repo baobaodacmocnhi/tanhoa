@@ -673,7 +673,7 @@ namespace DocSo_PC.GUI.MaHoa
             byte[] file = _wsDHN.get_Hinh_MaHoa("KTXM", _ctktxm.ID.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
             if (file != null)
                 if (dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString().Contains("pdf"))
-                    _cKTXM.viewPDF(file);
+                    _cKTXM.viewPDF(1, file);
                 else
                     _cKTXM.viewImage(file);
             else

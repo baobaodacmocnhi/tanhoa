@@ -856,7 +856,22 @@ namespace DocSo_PC.GUI.ToTruong
                 dialog.Multiselect = false;
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-
+                    DataTable dtExcel = _cDocSo.ExcelToDataTable(dialog.FileName);
+                    foreach (DataRow item in dtExcel.Rows)
+                        if ((string.IsNullOrEmpty(item[0].ToString()) && item[0].ToString().Replace(" ", "").Length == 11))
+                        {
+                            TB_DULIEUKHACHHANG ttkh = _cDHN.get(item[0].ToString().Replace(" ", ""));
+                            if (ttkh != null)
+                            {
+                                var index = dgvDanhBo.Rows.Add();
+                                dgvDanhBo.Rows[index].Cells["DanhBo_Nhap"].Value = ttkh.DANHBO;
+                                dgvDanhBo.Rows[index].Cells["HoTen_Nhap"].Value = ttkh.HOTEN;
+                                dgvDanhBo.Rows[index].Cells["DiaChi_Nhap"].Value = ttkh.SONHA + " " + ttkh.TENDUONG;
+                                dgvDanhBo.Rows[index].Cells["GhiChu_Nhap"].Value = item[1].ToString();
+                            }
+                            else
+                                MessageBox.Show("Danh bộ " + item[0].ToString().Replace(" ", "") + " không tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     MessageBox.Show("Đã xử lý", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }

@@ -57,38 +57,51 @@ namespace DocSo_PC.DAL
             return returnImage;
         }
 
-        public void viewPDF(byte[] pData)
+        public void viewPDF(int STT, byte[] pData)
         {
             try
             {
-                // get a tempfilename and store the image
-                //var tempFileName = Path.GetTempFileName();
-                string tempFileName = Path.GetRandomFileName();
-                tempFileName = Path.ChangeExtension(tempFileName, "pdf");
-                tempFileName = Path.Combine(Path.GetTempPath(), tempFileName);
-
-                File.WriteAllBytes(tempFileName, pData);
-
-                string path = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
-
-                // create our startup process and argument
-                var psi = new ProcessStartInfo();
-                psi.FileName = tempFileName;
-                psi.UseShellExecute = true;
-
-                var viewer = Process.Start(psi);
-                // cleanup when done...
-                viewer.EnableRaisingEvents = true;
-                viewer.Exited += (o, args) =>
-                {
-                    File.Delete(tempFileName);
-                };
+                File.WriteAllBytes(@"D:\temp" + STT.ToString() + ".pdf", pData);
+                System.Diagnostics.Process.Start(@"D:\temp" + STT.ToString() + ".pdf");
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
+
+        //public void viewPDF(byte[] pData)
+        //{
+        //    try
+        //    {
+        //        // get a tempfilename and store the image
+        //        //var tempFileName = Path.GetTempFileName();
+        //        string tempFileName = Path.GetRandomFileName();
+        //        tempFileName = Path.ChangeExtension(tempFileName, "pdf");
+        //        tempFileName = Path.Combine(Path.GetTempPath(), tempFileName);
+
+        //        File.WriteAllBytes(tempFileName, pData);
+
+        //        string path = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+
+        //        // create our startup process and argument
+        //        var psi = new ProcessStartInfo();
+        //        psi.FileName = tempFileName;
+        //        psi.UseShellExecute = true;
+
+        //        var viewer = Process.Start(psi);
+        //        // cleanup when done...
+        //        viewer.EnableRaisingEvents = true;
+        //        viewer.Exited += (o, args) =>
+        //        {
+        //            File.Delete(tempFileName);
+        //        };
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
 
         public void viewImage(byte[] pData)
         {
@@ -416,7 +429,7 @@ namespace DocSo_PC.DAL
             return dt;
         }
 
-        public DataTable ExcelToDataTable_OLDB( string path)
+        public DataTable ExcelToDataTable_OLDB(string path)
         {
             try
             {

@@ -425,6 +425,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnImportDaXuLy);
             this.groupBox1.Controls.Add(this.btnSua);
             this.groupBox1.Controls.Add(this.cmbVeViec);
             this.groupBox1.Controls.Add(this.btnPasteFromXuLy);
@@ -759,7 +760,7 @@
             // 
             // btnImportDaXuLy
             // 
-            this.btnImportDaXuLy.Location = new System.Drawing.Point(998, 269);
+            this.btnImportDaXuLy.Location = new System.Drawing.Point(575, 103);
             this.btnImportDaXuLy.Name = "btnImportDaXuLy";
             this.btnImportDaXuLy.Size = new System.Drawing.Size(75, 23);
             this.btnImportDaXuLy.TabIndex = 158;
@@ -772,7 +773,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1283, 636);
-            this.Controls.Add(this.btnImportDaXuLy);
             this.Controls.Add(this.txtSoPhieu);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.groupBox3);
