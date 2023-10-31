@@ -38,10 +38,10 @@ namespace DocSo_PC.GUI.ToTruong
         {
             dgvDanhSach.AutoGenerateColumns = false;
             dgvBaoCao.AutoGenerateColumns = false;
-            if (CNguoiDung.Admin)
-                btnImportDaXuLy.Visible = true;
-            else
-                btnImportDaXuLy.Visible = false;
+            //if (CNguoiDung.Admin)
+            //    btnImportDaXuLy.Visible = true;
+            //else
+            //    btnImportDaXuLy.Visible = false;
             if (CNguoiDung.Doi)
             {
                 cmbTo.Visible = true;
