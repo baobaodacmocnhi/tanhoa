@@ -928,7 +928,7 @@
             this.btnExcelHDDT.Name = "btnExcelHDDT";
             this.btnExcelHDDT.Size = new System.Drawing.Size(91, 25);
             this.btnExcelHDDT.TabIndex = 94;
-            this.btnExcelHDDT.Text = "Excel HĐĐT";
+            this.btnExcelHDDT.Text = "Xuất Excel";
             this.btnExcelHDDT.UseVisualStyleBackColor = true;
             this.btnExcelHDDT.Click += new System.EventHandler(this.btnExcelHDDT_Click);
             // 

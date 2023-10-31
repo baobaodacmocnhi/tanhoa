@@ -2475,6 +2475,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             try
             {
+                if (radDSDCBD.Checked)
+                {
+
+                }
+                else
                 if (radDSDCHD.Checked)
                 {
                     DataTable dtBinhThuong2021 = new DataTable();
