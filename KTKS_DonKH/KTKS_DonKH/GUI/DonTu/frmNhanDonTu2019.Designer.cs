@@ -67,6 +67,7 @@
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabTTKH = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnCapNhatDoiTac = new System.Windows.Forms.Button();
             this.txtDCLapDat = new System.Windows.Forms.TextBox();
             this.label43 = new System.Windows.Forms.Label();
             this.txtMST = new System.Windows.Forms.TextBox();
@@ -187,7 +188,7 @@
             this.btnTaoEContract = new System.Windows.Forms.Button();
             this.btnGuiEContract = new System.Windows.Forms.Button();
             this.btnXoaEContract = new System.Windows.Forms.Button();
-            this.btnCapNhatDoiTac = new System.Windows.Forms.Button();
+            this.btnCapNhatHieuLuc = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabTTKH.SuspendLayout();
@@ -598,6 +599,17 @@
             this.groupBox4.TabIndex = 96;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Thông Tin Sang Tên";
+            // 
+            // btnCapNhatDoiTac
+            // 
+            this.btnCapNhatDoiTac.ForeColor = System.Drawing.Color.Blue;
+            this.btnCapNhatDoiTac.Location = new System.Drawing.Point(537, 15);
+            this.btnCapNhatDoiTac.Name = "btnCapNhatDoiTac";
+            this.btnCapNhatDoiTac.Size = new System.Drawing.Size(89, 40);
+            this.btnCapNhatDoiTac.TabIndex = 101;
+            this.btnCapNhatDoiTac.Text = "Cập Nhật Đối Tác";
+            this.btnCapNhatDoiTac.UseVisualStyleBackColor = true;
+            this.btnCapNhatDoiTac.Click += new System.EventHandler(this.btnCapNhatDoiTac_Click);
             // 
             // txtDCLapDat
             // 
@@ -1709,16 +1721,16 @@
             this.btnXoaEContract.UseVisualStyleBackColor = true;
             this.btnXoaEContract.Click += new System.EventHandler(this.btnXoaEContract_Click);
             // 
-            // btnCapNhatDoiTac
+            // btnCapNhatHieuLuc
             // 
-            this.btnCapNhatDoiTac.ForeColor = System.Drawing.Color.Blue;
-            this.btnCapNhatDoiTac.Location = new System.Drawing.Point(537, 15);
-            this.btnCapNhatDoiTac.Name = "btnCapNhatDoiTac";
-            this.btnCapNhatDoiTac.Size = new System.Drawing.Size(89, 40);
-            this.btnCapNhatDoiTac.TabIndex = 101;
-            this.btnCapNhatDoiTac.Text = "Cập Nhật Đối Tác";
-            this.btnCapNhatDoiTac.UseVisualStyleBackColor = true;
-            this.btnCapNhatDoiTac.Click += new System.EventHandler(this.btnCapNhatDoiTac_Click);
+            this.btnCapNhatHieuLuc.ForeColor = System.Drawing.Color.Blue;
+            this.btnCapNhatHieuLuc.Location = new System.Drawing.Point(763, 271);
+            this.btnCapNhatHieuLuc.Name = "btnCapNhatHieuLuc";
+            this.btnCapNhatHieuLuc.Size = new System.Drawing.Size(75, 46);
+            this.btnCapNhatHieuLuc.TabIndex = 102;
+            this.btnCapNhatHieuLuc.Text = "Cập Nhật HL";
+            this.btnCapNhatHieuLuc.UseVisualStyleBackColor = true;
+            this.btnCapNhatHieuLuc.Click += new System.EventHandler(this.btnCapNhatHieuLuc_Click);
             // 
             // frmNhanDonTu2019
             // 
@@ -1727,6 +1739,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1326, 586);
+            this.Controls.Add(this.btnCapNhatHieuLuc);
             this.Controls.Add(this.btnXoaEContract);
             this.Controls.Add(this.btnGuiEContract);
             this.Controls.Add(this.btnTaoEContract);
@@ -1961,5 +1974,6 @@
         private System.Windows.Forms.Button btnGuiEContract;
         private System.Windows.Forms.Button btnXoaEContract;
         private System.Windows.Forms.Button btnCapNhatDoiTac;
+        private System.Windows.Forms.Button btnCapNhatHieuLuc;
     }
 }

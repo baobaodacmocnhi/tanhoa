@@ -1862,6 +1862,33 @@ namespace KTKS_DonKH.GUI.DonTu
             }
         }
 
+        private void btnCapNhatHieuLuc_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+                {
+                    if (MessageBox.Show("Bạn chắc chắn?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        string error;
+                        bool result = _wsEContract.editEContract(_dontu.MaDon.ToString(), "", "tanho@2022", out error);
+                        if (result)
+                        {
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                            MessageBox.Show("Thất bại " + error, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
 
     }

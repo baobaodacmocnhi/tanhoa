@@ -131,7 +131,18 @@ namespace KTKS_DonKH.GUI.DonTu
                 else
                 {
                     tabControl.SelectTab("tabCongVan");
-                    dgvDanhBo.DataSource = entity.DonTu_ChiTiets.ToList();
+                    //dgvDanhBo.DataSource = entity.DonTu_ChiTiets.ToList();
+                    foreach (DonTu_ChiTiet item in entity.DonTu_ChiTiets.ToList())
+                    {
+                        var index = dgvDanhBo.Rows.Add();
+                        dgvDanhBo.Rows[index].Cells["STT"].Value = item.STT;
+                        dgvDanhBo.Rows[index].Cells["DanhBo"].Value = item.DanhBo;
+                        dgvDanhBo.Rows[index].Cells["QLDHN_MaDon"].Value = item.QLDHN_MaDon;
+                        dgvDanhBo.Rows[index].Cells["HoTen"].Value = item.HoTen;
+                        dgvDanhBo.Rows[index].Cells["DiaChi"].Value = item.DiaChi;
+                        dgvDanhBo.Rows[index].Cells["GiaBieu"].Value = item.GiaBieu;
+                        dgvDanhBo.Rows[index].Cells["DinhMuc"].Value = item.DinhMuc;
+                    }
                     if (en_ChiTiet != null)
                     {
                         txtMaDon.Text += "." + en_ChiTiet.STT;
