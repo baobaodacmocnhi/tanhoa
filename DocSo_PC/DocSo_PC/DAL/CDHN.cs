@@ -450,7 +450,7 @@ namespace DocSo_PC.DAL
             string[] KyHDs = KyHD.Split('/');
 
             string sql = "select * from"
-                    + " (select MLT=LOTRINH,DanhBo,HoTen,DiaChiDHN=SONHA+' '+TENDUONG,GiaBieu,Phuong=p.TENPHUONG,Quan=q.TENQUAN"
+                    + " (select MLT=LOTRINH,DanhBo,HoTen,DiaChiDHN=SONHA+' '+TENDUONG,GiaBieu,DinhMuc,Phuong=p.TENPHUONG,Quan=q.TENQUAN"
                     + " ,Hieu=HieuDH,Co=CoDH,SoThan=SoThanDH,NgayKiemDinh,NgayThay,ViTriDHN_Ngoai,ViTriDHN_Hop,ViTriDHN,DMA=MADMA"
                     + " ,DiaChiHD=(select top 1 SO+' '+DUONG from HOADON_TA.dbo.HOADON where DANHBA=TB_DULIEUKHACHHANG.DANHBO order by ID_HOADON desc)";
             if (KyHDs != null && KyHDs.Count() == 2)

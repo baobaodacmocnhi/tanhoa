@@ -136,7 +136,7 @@ namespace DocSo_PC.DAL
                     LoaiTieuThu = " and TieuThu>=1 and TieuThu<=4";
                 else
                     LoaiTieuThu = "";
-            string sql = "select MLT=hd.MALOTRINH,DanhBo=hd.DANHBA,HoTen,DiaChiDHN=SONHA+' '+TENDUONG,GiaBieu,Phuong=(select p.TENPHUONG from CAPNUOCTANHOA.dbo.PHUONG p where p.MAPHUONG=ttkh.PHUONG and p.MAQUAN=ttkh.QUAN),Quan=(select q.TENQUAN from CAPNUOCTANHOA.dbo.QUAN q where q.MAQUAN=ttkh.QUAN)"
+            string sql = "select MLT=hd.MALOTRINH,DanhBo=hd.DANHBA,HoTen,DiaChiDHN=SONHA+' '+TENDUONG,GiaBieu,DinhMuc,Phuong=(select p.TENPHUONG from CAPNUOCTANHOA.dbo.PHUONG p where p.MAPHUONG=ttkh.PHUONG and p.MAQUAN=ttkh.QUAN),Quan=(select q.TENQUAN from CAPNUOCTANHOA.dbo.QUAN q where q.MAQUAN=ttkh.QUAN)"
                     + " ,Hieu=ttkh.HieuDH,Co=ttkh.CoDH,SoThan=SoThanDH,NgayKiemDinh,NgayThay,ViTriDHN_Ngoai,ViTriDHN_Hop,ViTriDHN,DMA=ttkh.MADMA"
                     + " ,DiaChiHD=SO+' '+DUONG"
                     + " ,TieuThu"

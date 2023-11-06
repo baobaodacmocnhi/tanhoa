@@ -858,7 +858,7 @@ namespace DocSo_PC.GUI.ToTruong
                 {
                     DataTable dtExcel = _cDocSo.ExcelToDataTable(dialog.FileName);
                     foreach (DataRow item in dtExcel.Rows)
-                        if ((string.IsNullOrEmpty(item[0].ToString()) && item[0].ToString().Replace(" ", "").Length == 11))
+                        if (!string.IsNullOrEmpty(item[0].ToString()) && item[0].ToString().Replace(" ", "").Length == 11)
                         {
                             TB_DULIEUKHACHHANG ttkh = _cDHN.get(item[0].ToString().Replace(" ", ""));
                             if (ttkh != null)
