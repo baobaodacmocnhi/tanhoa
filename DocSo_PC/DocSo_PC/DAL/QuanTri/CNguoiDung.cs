@@ -322,6 +322,11 @@ namespace DocSo_PC.DAL.QuanTri
             return _db.NguoiDungs.OrderBy(item => item.STT).ToList();
         }
 
+        public List<NguoiDung> GetDS_Admin(int IDPhong)
+        {
+            return _db.NguoiDungs.Where(item => item.IDPhong == IDPhong).OrderBy(item => item.STT).ToList();
+        }
+
         /// <summary>
         /// Lấy Danh Sách Nhân Viên thuộc Tổ truyền vào
         /// </summary>

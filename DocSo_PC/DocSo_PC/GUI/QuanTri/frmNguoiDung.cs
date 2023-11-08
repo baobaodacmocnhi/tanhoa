@@ -81,6 +81,15 @@ namespace DocSo_PC.GUI.QuanTri
 
             if (CNguoiDung.Doi == true)
                 dgvNguoiDung.Columns["MatKhau"].Visible = true;
+            if (CNguoiDung.Admin)
+            {
+                panel1.Visible = true;
+                cmbPhong.DataSource = _cTo.getDS_Phong();
+                cmbPhong.DisplayMember = "Name";
+                cmbPhong.ValueMember = "ID";
+            }
+            else
+                panel1.Visible = false;
         }
 
         public void fillEntity(NguoiDung en)
@@ -475,6 +484,18 @@ namespace DocSo_PC.GUI.QuanTri
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnXem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _blNguoiDung = new BindingList<NguoiDung>(_cNguoiDung.GetDS_Admin(((Phong)cmbPhong.SelectedItem).ID));
             }
             catch (Exception ex)
             {

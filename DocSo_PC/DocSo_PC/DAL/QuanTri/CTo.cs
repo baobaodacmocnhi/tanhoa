@@ -6,7 +6,7 @@ using DocSo_PC.LinQ;
 
 namespace DocSo_PC.DAL.QuanTri
 {
-    class CTo:CDAL
+    class CTo : CDAL
     {
         public bool Them(To to)
         {
@@ -86,6 +86,11 @@ namespace DocSo_PC.DAL.QuanTri
         public int get_May(int May)
         {
             return _db.Tos.SingleOrDefault(item => item.TuMay <= May && item.DenMay >= May).MaTo;
+        }
+
+        public List<Phong> getDS_Phong()
+        {
+            return _db.Phongs.ToList();
         }
     }
 }
