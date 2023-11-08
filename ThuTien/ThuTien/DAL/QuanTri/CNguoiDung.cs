@@ -283,6 +283,11 @@ namespace ThuTien.DAL.QuanTri
             return _db.TT_NguoiDungs.OrderBy(item => item.STT).ToList();
         }
 
+        public List<TT_NguoiDung> GetDS_Admin(int IDPhong)
+        {
+            return _db.TT_NguoiDungs.Where(item => item.IDPhong == IDPhong).OrderBy(item => item.STT).ToList();
+        }
+
         /// <summary>
         /// Lấy Danh Sách Nhân Viên thuộc Tổ truyền vào
         /// </summary>

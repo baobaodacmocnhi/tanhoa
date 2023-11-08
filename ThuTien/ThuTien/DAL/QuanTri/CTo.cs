@@ -105,5 +105,10 @@ namespace ThuTien.DAL.QuanTri
         {
             return _db.TT_Tos.Any(item => item.MaTo == MaTo && item.DongNuoc == true);
         }
+
+        public List<Phong> getDS_Phong()
+        {
+            return _db.Phongs.ToList();
+        }
     }
 }

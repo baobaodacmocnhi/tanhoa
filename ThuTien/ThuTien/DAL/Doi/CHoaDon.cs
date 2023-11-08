@@ -11804,6 +11804,7 @@ namespace ThuTien.DAL.Doi
             var query = from item in _db.HOADONs
                         where item.NAM == Nam
                         group item by item.GB into itemGroup
+                        orderby itemGroup.Key ascending
                         select new
                         {
                             Loai = itemGroup.Key,
@@ -11820,6 +11821,7 @@ namespace ThuTien.DAL.Doi
             var query = from item in _db.HOADONs
                         where item.NAM == Nam && item.KY == Ky
                         group item by item.GB into itemGroup
+                        orderby itemGroup.Key ascending
                         select new
                         {
                             Loai = itemGroup.Key,
@@ -11839,6 +11841,7 @@ namespace ThuTien.DAL.Doi
             var query0 = from item in _db.HOADONs
                          where item.NAM == Nam && (item.DM == 0 || item.DM == null)
                          group item by item.DM into itemGroup
+                         orderby itemGroup.Key ascending
                          select new
                          {
                              Loai = itemGroup.Key.ToString(),
@@ -11854,6 +11857,7 @@ namespace ThuTien.DAL.Doi
                 var query = from item in _db.HOADONs
                             where item.NAM == Nam && item.DM == DinhMuc
                             group item by item.DM into itemGroup
+                            orderby itemGroup.Key ascending
                             select new
                             {
                                 Loai = itemGroup.Key.ToString(),
@@ -11868,6 +11872,7 @@ namespace ThuTien.DAL.Doi
             var queryDM = from item in _db.HOADONs
                           where item.NAM == Nam && item.DM >= FromDinhMuc && item.DM <= ToDinhMuc
                           group item by item.DM >= FromDinhMuc && item.DM <= ToDinhMuc into itemGroup
+                          orderby itemGroup.Key ascending
                           select new
                           {
                               Loai = FromDinhMuc + " - " + ToDinhMuc,
@@ -11881,6 +11886,7 @@ namespace ThuTien.DAL.Doi
             queryDM = from item in _db.HOADONs
                       where item.NAM == Nam && item.DM > ToDinhMuc
                       group item by item.DM > ToDinhMuc into itemGroup
+                      orderby itemGroup.Key ascending
                       select new
                       {
                           Loai = ToDinhMuc + 4 + " - Còn Lại",
@@ -11902,6 +11908,7 @@ namespace ThuTien.DAL.Doi
             var query0 = from item in _db.HOADONs
                          where item.NAM == Nam && item.KY == Ky && (item.DM == 0 || item.DM == null)
                          group item by item.DM into itemGroup
+                         orderby itemGroup.Key ascending
                          select new
                          {
                              Loai = itemGroup.Key.ToString(),
@@ -11917,6 +11924,7 @@ namespace ThuTien.DAL.Doi
                 var query = from item in _db.HOADONs
                             where item.NAM == Nam && item.KY == Ky && item.DM == DinhMuc
                             group item by item.DM into itemGroup
+                            orderby itemGroup.Key ascending
                             select new
                             {
                                 Loai = itemGroup.Key.ToString(),
@@ -11931,6 +11939,7 @@ namespace ThuTien.DAL.Doi
             var queryDM = from item in _db.HOADONs
                           where item.NAM == Nam && item.KY == Ky && item.DM >= FromDinhMuc && item.DM <= ToDinhMuc
                           group item by item.DM >= FromDinhMuc && item.DM <= ToDinhMuc into itemGroup
+                          orderby itemGroup.Key ascending
                           select new
                           {
                               Loai = FromDinhMuc + " - " + ToDinhMuc,
@@ -11944,6 +11953,7 @@ namespace ThuTien.DAL.Doi
             queryDM = from item in _db.HOADONs
                       where item.NAM == Nam && item.KY == Ky && item.DM > ToDinhMuc
                       group item by item.DM > ToDinhMuc into itemGroup
+                      orderby itemGroup.Key ascending
                       select new
                       {
                           Loai = ToDinhMuc + 4 + " - Còn Lại",
@@ -12069,6 +12079,7 @@ namespace ThuTien.DAL.Doi
             var query0 = from item in _db.HOADONs
                          where item.NAM == Nam && item.KY == Ky && (item.DM == 0 || item.DM == null)
                          group item by item.DM into itemGroup
+                         orderby itemGroup.Key ascending
                          select new
                          {
                              Loai = itemGroup.Key.ToString(),
@@ -12084,6 +12095,7 @@ namespace ThuTien.DAL.Doi
                 var query = from item in _db.HOADONs
                             where item.NAM == Nam && item.KY == Ky && item.DM == DinhMuc
                             group item by item.DM into itemGroup
+                            orderby itemGroup.Key ascending
                             select new
                             {
                                 Loai = itemGroup.Key.ToString(),
@@ -12099,6 +12111,7 @@ namespace ThuTien.DAL.Doi
             var queryDM = from item in _db.HOADONs
                           where item.NAM == Nam && item.KY == Ky && item.DM >= FromDinhMuc && item.DM <= ToDinhMuc
                           group item by item.DM >= FromDinhMuc && item.DM <= ToDinhMuc into itemGroup
+                          orderby itemGroup.Key ascending
                           select new
                           {
                               Loai = FromDinhMuc + " - " + ToDinhMuc,
@@ -12116,6 +12129,7 @@ namespace ThuTien.DAL.Doi
                 queryDM = from item in _db.HOADONs
                           where item.NAM == Nam && item.KY == Ky && item.DM >= ToDinhMuc + 4 && item.DM <= FromDinhMuc2 - 4
                           group item by item.DM >= ToDinhMuc + 4 && item.DM <= FromDinhMuc2 - 4 into itemGroup
+                          orderby itemGroup.Key ascending
                           select new
                           {
                               Loai = (ToDinhMuc + 4).ToString() + " - " + (FromDinhMuc2 - 4).ToString(),
@@ -12130,6 +12144,7 @@ namespace ThuTien.DAL.Doi
             queryDM = from item in _db.HOADONs
                       where item.NAM == Nam && item.KY == Ky && item.DM >= FromDinhMuc2 && item.DM <= ToDinhMuc2
                       group item by item.DM >= FromDinhMuc2 && item.DM <= ToDinhMuc2 into itemGroup
+                      orderby itemGroup.Key ascending
                       select new
                       {
                           Loai = FromDinhMuc2 + " - " + ToDinhMuc2,
@@ -12145,6 +12160,7 @@ namespace ThuTien.DAL.Doi
             queryDM = from item in _db.HOADONs
                       where item.NAM == Nam && item.KY == Ky && item.DM > ToDinhMuc2
                       group item by item.DM > ToDinhMuc2 into itemGroup
+                      orderby itemGroup.Key ascending
                       select new
                       {
                           Loai = ToDinhMuc2 + 4 + " - Còn Lại",
@@ -12166,6 +12182,7 @@ namespace ThuTien.DAL.Doi
             var query0 = from item in _db.HOADONs
                          where item.NAM == Nam && item.KY == Ky && (item.DM == 0 || item.DM == null)
                          group item by item.DM into itemGroup
+                         orderby itemGroup.Key ascending
                          select new
                          {
                              Loai = itemGroup.Key.ToString(),
@@ -12181,6 +12198,7 @@ namespace ThuTien.DAL.Doi
                 var query = from item in _db.HOADONs
                             where item.NAM == Nam && item.KY == Ky && item.DM == DinhMuc
                             group item by item.DM into itemGroup
+                            orderby itemGroup.Key ascending
                             select new
                             {
                                 Loai = itemGroup.Key.ToString(),
@@ -12196,6 +12214,7 @@ namespace ThuTien.DAL.Doi
             var queryDM = from item in _db.HOADONs
                           where item.NAM == Nam && item.KY == Ky && item.DM >= FromDinhMuc && item.DM <= ToDinhMuc
                           group item by item.DM >= FromDinhMuc && item.DM <= ToDinhMuc into itemGroup
+                          orderby itemGroup.Key ascending
                           select new
                           {
                               Loai = FromDinhMuc + " - " + ToDinhMuc,
@@ -12213,6 +12232,7 @@ namespace ThuTien.DAL.Doi
                 queryDM = from item in _db.HOADONs
                           where item.NAM == Nam && item.KY == Ky && item.DM >= ToDinhMuc + 4 && item.DM <= FromDinhMuc2 - 4
                           group item by item.DM >= ToDinhMuc + 4 && item.DM <= FromDinhMuc2 - 4 into itemGroup
+                          orderby itemGroup.Key ascending
                           select new
                           {
                               Loai = (ToDinhMuc + 4).ToString() + " - " + (FromDinhMuc2 - 4).ToString(),
@@ -12227,6 +12247,7 @@ namespace ThuTien.DAL.Doi
             queryDM = from item in _db.HOADONs
                       where item.NAM == Nam && item.KY == Ky && item.DM >= FromDinhMuc2 && item.DM <= ToDinhMuc2
                       group item by item.DM >= FromDinhMuc2 && item.DM <= ToDinhMuc2 into itemGroup
+                      orderby itemGroup.Key ascending
                       select new
                       {
                           Loai = FromDinhMuc2 + " - " + ToDinhMuc2,
@@ -12244,6 +12265,7 @@ namespace ThuTien.DAL.Doi
                 queryDM = from item in _db.HOADONs
                           where item.NAM == Nam && item.KY == Ky && item.DM >= ToDinhMuc2 + 4 && item.DM <= FromDinhMuc3 - 4
                           group item by item.DM >= ToDinhMuc2 + 4 && item.DM <= FromDinhMuc3 - 4 into itemGroup
+                          orderby itemGroup.Key ascending
                           select new
                           {
                               Loai = (ToDinhMuc2 + 4).ToString() + " - " + (FromDinhMuc3 - 4).ToString(),
@@ -12258,6 +12280,7 @@ namespace ThuTien.DAL.Doi
             queryDM = from item in _db.HOADONs
                       where item.NAM == Nam && item.KY == Ky && item.DM >= FromDinhMuc3 && item.DM <= ToDinhMuc3
                       group item by item.DM >= FromDinhMuc3 && item.DM <= ToDinhMuc3 into itemGroup
+                      orderby itemGroup.Key ascending
                       select new
                       {
                           Loai = FromDinhMuc3 + " - " + ToDinhMuc3,
@@ -12273,6 +12296,7 @@ namespace ThuTien.DAL.Doi
             queryDM = from item in _db.HOADONs
                       where item.NAM == Nam && item.KY == Ky && item.DM > ToDinhMuc3
                       group item by item.DM > ToDinhMuc3 into itemGroup
+                      orderby itemGroup.Key ascending
                       select new
                       {
                           Loai = ToDinhMuc3 + 4 + " - Còn Lại",
