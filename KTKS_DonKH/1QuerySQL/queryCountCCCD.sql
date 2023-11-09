@@ -15,7 +15,6 @@ select count (*)*4 from KTKS_DonKH.dbo.DCBD_DKDM_CCCD where IDDanhBo in
 and thung is not null and DaXuLy=1)t1
 where num=1)
 
---select * from DCBD_DKDM_CCCD where IDDanhBo=24698
 select * from KTKS_DonKH.dbo.ChungTu_ChiTiet where DanhBo='13152175589'
 
 select count(*),sum(dtct.DinhMuc),sum(SoNK)*4 from KTKS_DonKH.dbo.DonTu dt,KTKS_DonKH.dbo.DonTu_ChiTiet dtct
@@ -56,19 +55,19 @@ select distinct DanhBo from TRUNGTAMKHACHHANG.dbo.Zalo_Send where Loai like '%cc
 --đã nhận đơn
 select count(*),sum(ct.DinhMuc)-sum(dt.soNK*4) from
 (select distinct DanhBo from TRUNGTAMKHACHHANG.dbo.Zalo_Send where Loai like '%cccd%' and DanhBo in (select distinct ct.danhbo from KTKS_DonKH.dbo.DonTu dt,KTKS_DonKH.dbo.DonTu_ChiTiet ct
-where dt.MaDon=ct.MaDon  and CAST(ct.CreateDate as date)>='20231012' and Name_NhomDon like N'%Cấp định mức%'))t1,KTKS_DonKH.dbo.DonTu dt,KTKS_DonKH.dbo.DonTu_ChiTiet ct
-where dt.MaDon=ct.MaDon and t1.DanhBo=ct.DanhBo and CAST(ct.CreateDate as date)>='20231012' and Name_NhomDon like N'%Cấp định mức%' and ct.DinhMuc<dt.soNK*4
+where dt.MaDon=ct.MaDon  and CAST(ct.CreateDate as date)>='20231012' and Name_NhomDon like N'%định mức%'))t1,KTKS_DonKH.dbo.DonTu dt,KTKS_DonKH.dbo.DonTu_ChiTiet ct
+where dt.MaDon=ct.MaDon and t1.DanhBo=ct.DanhBo and CAST(ct.CreateDate as date)>='20231012' and Name_NhomDon like N'%định mức%' and ct.DinhMuc<dt.soNK*4
 
 ---thống kê đã gửi zalo
 select distinct DanhBo,Quan=(select TENQUAN from CAPNUOCTANHOA.dbo.QUAN where MAQUAN=(select Quan from CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG where CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG.DanhBo=TRUNGTAMKHACHHANG.dbo.Zalo_Send.DanhBo)) from TRUNGTAMKHACHHANG.dbo.Zalo_Send where Loai like '%cccd%' and DanhBo not in (select ct.danhbo from KTKS_DonKH.dbo.DonTu dt,KTKS_DonKH.dbo.DonTu_ChiTiet ct
-where dt.MaDon=ct.MaDon  and CAST(ct.CreateDate as date)>='20231012' and Name_NhomDon like N'%Cấp định mức%')
+where dt.MaDon=ct.MaDon  and CAST(ct.CreateDate as date)>='20231012' and Name_NhomDon like N'%định mức%')
 
 
 
 select count(*),SUM(DM) from HOADON_TA.dbo.HOADON hd,(select distinct DanhBo from TRUNGTAMKHACHHANG.dbo.Zalo_Send where Loai like '%cccd%' )t1 where nam=2023 and ky=9  and t1.DanhBo=hd.DANHBA 
 
 select count(*),SUM(DM) from HOADON_TA.dbo.HOADON hd,(select distinct DanhBo from TRUNGTAMKHACHHANG.dbo.Zalo_Send where Loai like '%cccd%' and DanhBo not in (select distinct ct.danhbo from KTKS_DonKH.dbo.DonTu dt,KTKS_DonKH.dbo.DonTu_ChiTiet ct
-where dt.MaDon=ct.MaDon  and CAST(ct.CreateDate as date)>='20231012' and Name_NhomDon like N'%Cấp định mức%'))t1 where nam=2023 and ky=9 and DM>0 and t1.DanhBo=hd.DANHBA 
+where dt.MaDon=ct.MaDon  and CAST(ct.CreateDate as date)>='20231012' and Name_NhomDon like N'%định mức%'))t1 where nam=2023 and ky=9 and DM>0 and t1.DanhBo=hd.DANHBA 
 ---
 
 select count(*),SUM(DM) from HOADON_TA.dbo.HOADON where nam=2023 and ky=10 and danhba in
@@ -86,6 +85,20 @@ group by danhba having count(*)=1)
 select danhba,DM=SUM(DM) from HOADON_TA.dbo.HOADON where NAM=2023 and ky in (8,9,10) and TIEUTHU=0 and DM>0
 group by danhba having count(*)=3 order by DANHBA
 
+--danh sách tiêu thụ 0-4m3
+select t1.* from
+(select DOT,DANHBA,TENKH,SO,DUONG,GB,DM,TIEUTHU,Quan=(select TENQUAN from CAPNUOCTANHOA.dbo.QUAN where MAQUAN=Quan)
+,Phuong=(select TENPHUONG from CAPNUOCTANHOA.dbo.PHUONG where MAQUAN=Quan and MAPHUONG=PHUONG)
+from HOADON_TA.dbo.HOADON where DM>0 and TIEUTHU>=1 and TIEUTHU<=4 and NAM=2023 and ky=10 and DOT>=11 and DOT<=20
+and DANHBA not in (select distinct DanhBo from KTKS_DonKH.dbo.ChungTu_ChiTiet where MaLCT = 15 and cat = 0))t1
+
+order by DOT
+
+select distinct ct.danhbo from KTKS_DonKH.dbo.DonTu dt,KTKS_DonKH.dbo.DonTu_ChiTiet ct
+where dt.MaDon=ct.MaDon  and CAST(ct.CreateDate as date)>='20231012' and Name_NhomDon like N'%định mức%'
+
+--check chứng từ
+select * from KTKS_DonKH.dbo.ChungTu_ChiTiet where MaLCT = 15 and cat = 0 and DanhBo='13101690659'
 -----------------------------------------------
 --count giá biểu
 select count(*),SUM(DM) from HOADON_TA.dbo.HOADON where nam=2023 and ky=10 and gb=15 and DM>0
