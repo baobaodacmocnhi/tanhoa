@@ -2,16 +2,16 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="GK">
   <DataContextMoniker Name="/GKDataContext" />
   <nestedChildShapes>
-    <classShape Id="43936775-d630-405b-a489-516ba4d139f5" absoluteBounds="4.875, 1.625, 2, 3.6939111328124996">
-      <DataClassMoniker Name="/GKDataContext/A_GIAYKHEN" />
-      <nestedChildShapes>
-        <elementListCompartment Id="0b9f7cca-8bd8-4c1c-941e-c236f9f94fa9" absoluteBounds="4.89, 2.085, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="7e1146af-daea-4d42-a6a0-ae1083ca374c" absoluteBounds="2, 1.625, 2, 1.5785953776041666">
       <DataClassMoniker Name="/GKDataContext/QuaySo" />
       <nestedChildShapes>
         <elementListCompartment Id="5547acd4-306a-468b-a4ef-3663ca39cc4e" absoluteBounds="2.015, 2.085, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2b418dc5-eb25-4970-bdde-31c84a231c26" absoluteBounds="4.625, 1.375, 2, 3.6939111328124996">
+      <DataClassMoniker Name="/GKDataContext/A_GIAYKHEN" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b6a3a79e-17eb-42eb-9602-a0fd4330fa92" absoluteBounds="4.64, 1.835, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

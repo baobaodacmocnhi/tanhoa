@@ -18,7 +18,7 @@ namespace GIAYKHEN
             InitializeComponent();
         }
 
-        private void btnCongDoan_Click(object sender, EventArgs e)
+        private void btnImport_Click(object sender, EventArgs e)
         {
             try
             {
@@ -42,9 +42,22 @@ namespace GIAYKHEN
                                     en.GioiTinh = false;
                                 else
                                     en.GioiTinh = true;
-                                en.HCM = true;
+                               
                                 if (en.CHUCVU == "" && en.PHONGBAN == "")
                                     en.TAPTHE = true;
+
+                                if (radCongTy.Checked)
+                                    en.CongTy = true;
+                                if (radCongDoan.Checked)
+                                    en.CongDoan = true;
+                                if (radDoanThanhNien.Checked)
+                                    en.DoanThanhNien = true;
+                                if (radHCM.Checked)
+                                    en.HCM = true;
+                                if (radDanVanKheo.Checked)
+                                    en.DanVanKheo = true;
+
+                                en.CreateDate = DateTime.Now;
                                 _db.A_GIAYKHENs.InsertOnSubmit(en);
                                 _db.SubmitChanges();
 
@@ -152,112 +165,6 @@ namespace GIAYKHEN
             return value.All(char.IsNumber);
         }
 
-        private void btnCongTy_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                OpenFileDialog dialog = new OpenFileDialog();
-                dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
-                dialog.Multiselect = false;
-
-                if (dialog.ShowDialog() == DialogResult.OK)
-                    if (MessageBox.Show("Bạn có chắc chắn Thêm?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                    {
-                        DataTable dtExcel = ExcelToDataTable(dialog.FileName);
-                        string PhongBan = "";
-                        for (int i = 2; i < dtExcel.Rows.Count; i++)
-                            if (!string.IsNullOrEmpty(dtExcel.Rows[i][0].ToString().Trim()))
-                            {
-                                A_GIAYKHEN en = new A_GIAYKHEN();
-                                en.HOTEN = dtExcel.Rows[i][1].ToString().Trim();
-                                en.CHUCVU = dtExcel.Rows[i][3].ToString().Trim().ToUpper();
-                                en.PHONGBAN = dtExcel.Rows[i][4].ToString().Trim().ToUpper();
-                                if (dtExcel.Rows[i][2].ToString().Trim().ToUpper().Equals("NỮ"))
-                                    en.GioiTinh = false;
-                                else
-                                    en.GioiTinh = true;
-                                if (en.CHUCVU == "" && en.PHONGBAN == "")
-                                    en.TAPTHE = true;
-                                _db.A_GIAYKHENs.InsertOnSubmit(en);
-                                _db.SubmitChanges();
-
-                                //QuaySo en = new QuaySo();
-                                //if (_db.QuaySos.Count() == 0)
-                                //    en.STT = 1;
-                                //else
-                                //    en.STT = _db.QuaySos.Max(item => item.STT) + 1;
-                                //en.STT = int.Parse(dtExcel.Rows[i][0].ToString().Trim());
-                                //en.HoTen = dtExcel.Rows[i][2].ToString().Trim();
-                                //en.DonVi = dtExcel.Rows[i][9].ToString().Trim();
-                                //_db.QuaySos.InsertOnSubmit(en);
-                                //_db.SubmitChanges();
-                            }
-                            else
-                            {
-                                PhongBan = dtExcel.Rows[i][2].ToString().Trim();
-                            }
-                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi, Vui lòng thử lại\n" + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnDoanThanhNien_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                OpenFileDialog dialog = new OpenFileDialog();
-                dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
-                dialog.Multiselect = false;
-
-                if (dialog.ShowDialog() == DialogResult.OK)
-                    if (MessageBox.Show("Bạn có chắc chắn Thêm?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                    {
-                        DataTable dtExcel = ExcelToDataTable(dialog.FileName);
-                        string PhongBan = "";
-                        for (int i = 2; i < dtExcel.Rows.Count; i++)
-                            if (!string.IsNullOrEmpty(dtExcel.Rows[i][0].ToString().Trim()))
-                            {
-                                A_GIAYKHEN en = new A_GIAYKHEN();
-                                en.HOTEN = dtExcel.Rows[i][1].ToString().Trim();
-                                en.CHUCVU = dtExcel.Rows[i][3].ToString().Trim().ToUpper();
-                                en.PHONGBAN = dtExcel.Rows[i][4].ToString().Trim().ToUpper();
-                                if (dtExcel.Rows[i][2].ToString().Trim().ToUpper().Equals("NỮ"))
-                                    en.GioiTinh = false;
-                                else
-                                    en.GioiTinh = true;
-                                en.DoanThanhNien = true;
-                                if (en.CHUCVU == "" && en.PHONGBAN == "")
-                                    en.TAPTHE = true;
-                                _db.A_GIAYKHENs.InsertOnSubmit(en);
-                                _db.SubmitChanges();
-
-                                //QuaySo en = new QuaySo();
-                                //if (_db.QuaySos.Count() == 0)
-                                //    en.STT = 1;
-                                //else
-                                //    en.STT = _db.QuaySos.Max(item => item.STT) + 1;
-                                //en.STT = int.Parse(dtExcel.Rows[i][0].ToString().Trim());
-                                //en.HoTen = dtExcel.Rows[i][2].ToString().Trim();
-                                //en.DonVi = dtExcel.Rows[i][9].ToString().Trim();
-                                //_db.QuaySos.InsertOnSubmit(en);
-                                //_db.SubmitChanges();
-                            }
-                            else
-                            {
-                                PhongBan = dtExcel.Rows[i][2].ToString().Trim();
-                            }
-                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi, Vui lòng thử lại\n" + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
     }
 
 }

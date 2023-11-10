@@ -124,7 +124,7 @@
             this.txtQuyetDinhTapThe.Name = "txtQuyetDinhTapThe";
             this.txtQuyetDinhTapThe.Size = new System.Drawing.Size(160, 26);
             this.txtQuyetDinhTapThe.TabIndex = 11;
-            this.txtQuyetDinhTapThe.Text = "0072/QĐ-TH-TCHC";
+            this.txtQuyetDinhTapThe.Text = "0272/QĐ-TH-TCHC";
             // 
             // txtQDNm
             // 
@@ -187,7 +187,7 @@
             this.txtQuyetDinhCaNhan.Name = "txtQuyetDinhCaNhan";
             this.txtQuyetDinhCaNhan.Size = new System.Drawing.Size(160, 26);
             this.txtQuyetDinhCaNhan.TabIndex = 3;
-            this.txtQuyetDinhCaNhan.Text = "0072/QĐ-TH-TCHC";
+            this.txtQuyetDinhCaNhan.Text = "0272/QĐ-TH-TCHC";
             this.txtQuyetDinhCaNhan.TextChanged += new System.EventHandler(this.txtQuyetDinhCaNhan_TextChanged);
             // 
             // label4

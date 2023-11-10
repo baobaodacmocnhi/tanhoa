@@ -30,12 +30,12 @@ namespace GIAYKHEN
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertA_GIAYKHEN(A_GIAYKHEN instance);
-    partial void UpdateA_GIAYKHEN(A_GIAYKHEN instance);
-    partial void DeleteA_GIAYKHEN(A_GIAYKHEN instance);
     partial void InsertQuaySo(QuaySo instance);
     partial void UpdateQuaySo(QuaySo instance);
     partial void DeleteQuaySo(QuaySo instance);
+    partial void InsertA_GIAYKHEN(A_GIAYKHEN instance);
+    partial void UpdateA_GIAYKHEN(A_GIAYKHEN instance);
+    partial void DeleteA_GIAYKHEN(A_GIAYKHEN instance);
     #endregion
 		
 		public GKDataContext() : 
@@ -68,6 +68,14 @@ namespace GIAYKHEN
 			OnCreated();
 		}
 		
+		public System.Data.Linq.Table<QuaySo> QuaySos
+		{
+			get
+			{
+				return this.GetTable<QuaySo>();
+			}
+		}
+		
 		public System.Data.Linq.Table<A_GIAYKHEN> A_GIAYKHENs
 		{
 			get
@@ -75,12 +83,138 @@ namespace GIAYKHEN
 				return this.GetTable<A_GIAYKHEN>();
 			}
 		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.QuaySo")]
+	public partial class QuaySo : INotifyPropertyChanging, INotifyPropertyChanged
+	{
 		
-		public System.Data.Linq.Table<QuaySo> QuaySos
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _STT;
+		
+		private string _DonVi;
+		
+		private string _HoTen;
+		
+		private bool _Quay;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnSTTChanging(int value);
+    partial void OnSTTChanged();
+    partial void OnDonViChanging(string value);
+    partial void OnDonViChanged();
+    partial void OnHoTenChanging(string value);
+    partial void OnHoTenChanged();
+    partial void OnQuayChanging(bool value);
+    partial void OnQuayChanged();
+    #endregion
+		
+		public QuaySo()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STT", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int STT
 		{
 			get
 			{
-				return this.GetTable<QuaySo>();
+				return this._STT;
+			}
+			set
+			{
+				if ((this._STT != value))
+				{
+					this.OnSTTChanging(value);
+					this.SendPropertyChanging();
+					this._STT = value;
+					this.SendPropertyChanged("STT");
+					this.OnSTTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DonVi", DbType="NVarChar(200)")]
+		public string DonVi
+		{
+			get
+			{
+				return this._DonVi;
+			}
+			set
+			{
+				if ((this._DonVi != value))
+				{
+					this.OnDonViChanging(value);
+					this.SendPropertyChanging();
+					this._DonVi = value;
+					this.SendPropertyChanged("DonVi");
+					this.OnDonViChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoTen", DbType="NVarChar(100)")]
+		public string HoTen
+		{
+			get
+			{
+				return this._HoTen;
+			}
+			set
+			{
+				if ((this._HoTen != value))
+				{
+					this.OnHoTenChanging(value);
+					this.SendPropertyChanging();
+					this._HoTen = value;
+					this.SendPropertyChanged("HoTen");
+					this.OnHoTenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quay", DbType="Bit NOT NULL")]
+		public bool Quay
+		{
+			get
+			{
+				return this._Quay;
+			}
+			set
+			{
+				if ((this._Quay != value))
+				{
+					this.OnQuayChanging(value);
+					this.SendPropertyChanging();
+					this._Quay = value;
+					this.SendPropertyChanged("Quay");
+					this.OnQuayChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -113,13 +247,13 @@ namespace GIAYKHEN
 		
 		private bool _DoanThanhNien;
 		
-		private bool _DangBo;
-		
-		private bool _Guong;
+		private bool _CongTy;
 		
 		private bool _HCM;
 		
 		private bool _DanVanKheo;
+		
+		private System.DateTime _CreateDate;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -147,14 +281,14 @@ namespace GIAYKHEN
     partial void OnCongDoanChanged();
     partial void OnDoanThanhNienChanging(bool value);
     partial void OnDoanThanhNienChanged();
-    partial void OnDangBoChanging(bool value);
-    partial void OnDangBoChanged();
-    partial void OnGuongChanging(bool value);
-    partial void OnGuongChanged();
+    partial void OnCongTyChanging(bool value);
+    partial void OnCongTyChanged();
     partial void OnHCMChanging(bool value);
     partial void OnHCMChanged();
     partial void OnDanVanKheoChanging(bool value);
     partial void OnDanVanKheoChanged();
+    partial void OnCreateDateChanging(System.DateTime value);
+    partial void OnCreateDateChanged();
     #endregion
 		
 		public A_GIAYKHEN()
@@ -382,42 +516,22 @@ namespace GIAYKHEN
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DangBo", DbType="Bit NOT NULL")]
-		public bool DangBo
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CongTy", DbType="Bit NOT NULL")]
+		public bool CongTy
 		{
 			get
 			{
-				return this._DangBo;
+				return this._CongTy;
 			}
 			set
 			{
-				if ((this._DangBo != value))
+				if ((this._CongTy != value))
 				{
-					this.OnDangBoChanging(value);
+					this.OnCongTyChanging(value);
 					this.SendPropertyChanging();
-					this._DangBo = value;
-					this.SendPropertyChanged("DangBo");
-					this.OnDangBoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Guong", DbType="Bit NOT NULL")]
-		public bool Guong
-		{
-			get
-			{
-				return this._Guong;
-			}
-			set
-			{
-				if ((this._Guong != value))
-				{
-					this.OnGuongChanging(value);
-					this.SendPropertyChanging();
-					this._Guong = value;
-					this.SendPropertyChanged("Guong");
-					this.OnGuongChanged();
+					this._CongTy = value;
+					this.SendPropertyChanged("CongTy");
+					this.OnCongTyChanged();
 				}
 			}
 		}
@@ -462,136 +576,22 @@ namespace GIAYKHEN
 			}
 		}
 		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.QuaySo")]
-	public partial class QuaySo : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _STT;
-		
-		private string _DonVi;
-		
-		private string _HoTen;
-		
-		private bool _Quay;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnSTTChanging(int value);
-    partial void OnSTTChanged();
-    partial void OnDonViChanging(string value);
-    partial void OnDonViChanged();
-    partial void OnHoTenChanging(string value);
-    partial void OnHoTenChanged();
-    partial void OnQuayChanging(bool value);
-    partial void OnQuayChanged();
-    #endregion
-		
-		public QuaySo()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STT", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int STT
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime NOT NULL")]
+		public System.DateTime CreateDate
 		{
 			get
 			{
-				return this._STT;
+				return this._CreateDate;
 			}
 			set
 			{
-				if ((this._STT != value))
+				if ((this._CreateDate != value))
 				{
-					this.OnSTTChanging(value);
+					this.OnCreateDateChanging(value);
 					this.SendPropertyChanging();
-					this._STT = value;
-					this.SendPropertyChanged("STT");
-					this.OnSTTChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DonVi", DbType="NVarChar(200)")]
-		public string DonVi
-		{
-			get
-			{
-				return this._DonVi;
-			}
-			set
-			{
-				if ((this._DonVi != value))
-				{
-					this.OnDonViChanging(value);
-					this.SendPropertyChanging();
-					this._DonVi = value;
-					this.SendPropertyChanged("DonVi");
-					this.OnDonViChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoTen", DbType="NVarChar(100)")]
-		public string HoTen
-		{
-			get
-			{
-				return this._HoTen;
-			}
-			set
-			{
-				if ((this._HoTen != value))
-				{
-					this.OnHoTenChanging(value);
-					this.SendPropertyChanging();
-					this._HoTen = value;
-					this.SendPropertyChanged("HoTen");
-					this.OnHoTenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quay", DbType="Bit NOT NULL")]
-		public bool Quay
-		{
-			get
-			{
-				return this._Quay;
-			}
-			set
-			{
-				if ((this._Quay != value))
-				{
-					this.OnQuayChanging(value);
-					this.SendPropertyChanging();
-					this._Quay = value;
-					this.SendPropertyChanged("Quay");
-					this.OnQuayChanged();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
 				}
 			}
 		}
