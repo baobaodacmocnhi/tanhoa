@@ -138,7 +138,7 @@ namespace GIAYKHEN
                                             if (cmbNhom.SelectedIndex == 0)
                                             {
                                                 sql = "select * FROM A_GIAYKHEN WHERE TAPTHE=0 and DanVanKheo=1";
-                                                rp = new DanVanKheo_CANHAN_A3_2022();
+                                                rp = new DanVanKheo_CANHAN_A3_2022B();
                                             }
                                             else
                                                 if (cmbNhom.SelectedIndex == 1)
