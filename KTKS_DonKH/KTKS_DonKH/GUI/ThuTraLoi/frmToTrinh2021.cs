@@ -794,20 +794,20 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     dr["NoiDung"] = _cttt.NoiDung;
                     dr["NoiNhan"] = _cttt.NoiNhan;
                     dr["ChucVu"] = CTaiKhoan.ChucVu.ToUpper();
-                    dr["NguoiKy"] = CTaiKhoan.NguoiKy.ToUpper();
+                    dr["NguoiKy"] = CTaiKhoan.NguoiKy;
 
                     if (_cttt.VeViec.Contains("Hạ cỡ") || _cttt.VeViec.Contains("hộp bảo vệ"))
                     {
                         dr["ChucVuThongQua"] = "TRÌNH DUYỆT\n" + bgdTQ.ChucVu.ToUpper();
-                        dr["NguoiKyThongQua"] = bgdTQ.HoTen.ToUpper();
+                        dr["NguoiKyThongQua"] = bgdTQ.HoTen;
                     }
                     else
                     {
                         dr["ChucVuThongQua"] = "DUYỆT\n" + bgdTQ.ChucVu.ToUpper();
-                        dr["NguoiKyThongQua"] = bgdTQ.HoTen.ToUpper();
+                        dr["NguoiKyThongQua"] = bgdTQ.HoTen;
                     }
                     dr["ChucVuDuyet"] = bgdDuyet.ChucVu.ToUpper();
-                    dr["NguoiKyDuyet"] = bgdDuyet.HoTen.ToUpper();
+                    dr["NguoiKyDuyet"] = bgdDuyet.HoTen;
 
                     dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
 
@@ -868,17 +868,17 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         dr["NoiNhan"] = item.ToTrinh_ChiTiet.NoiNhan;
 
                         dr["ChucVu"] = CTaiKhoan.ChucVu.ToUpper();
-                        dr["NguoiKy"] = CTaiKhoan.NguoiKy.ToUpper();
+                        dr["NguoiKy"] = CTaiKhoan.NguoiKy;
 
                         //if (bgdTQ.ChucVu.ToUpper() == "GIÁM ĐỐC")
                         //    dr["ChucVuThongQua"] = "GIÁM ĐỐC";
                         //else
                         //    dr["ChucVuThongQua"] = "TRÌNH DUYỆT\n" + bgdTQ.ChucVu.ToUpper();
                         dr["ChucVuThongQua"] = "DUYỆT\n" + bgdTQ.ChucVu.ToUpper();
-                        dr["NguoiKyThongQua"] = bgdTQ.HoTen.ToUpper();
+                        dr["NguoiKyThongQua"] = bgdTQ.HoTen;
 
                         dr["ChucVuDuyet"] = bgdDuyet.ChucVu.ToUpper();
-                        dr["NguoiKyDuyet"] = bgdDuyet.HoTen.ToUpper();
+                        dr["NguoiKyDuyet"] = bgdDuyet.HoTen;
 
                         dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
                         //

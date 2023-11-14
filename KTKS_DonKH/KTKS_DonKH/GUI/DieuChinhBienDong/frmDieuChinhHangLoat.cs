@@ -330,7 +330,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                     ThongTin += "Định Mức";
                                                 else
                                                     ThongTin += ". Định Mức";
-                                                ctdcbd.DinhMuc_BD = 0;
+                                                ctdcbd.DinhMuc_BD = 4;
                                             }
                                             //if (txtDinhMucHN_BD.Text.Trim() != "" && txtDinhMucHN_BD.Text.Trim() != txtDinhMucHN.Text.Trim())
                                             //{

@@ -200,7 +200,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             itemCTCT.GiaHan,
                             itemCTCT.Lo,
                             itemCTCT.Phong,
-                            itemCTCT.CreateDate,itemCTCT.STT,
+                            itemCTCT.CreateDate,
+                            itemCTCT.STT,
                         };
 
             return LINQToDataTable(query);
@@ -272,7 +273,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             itemCTCT.GiaHan,
                             itemCTCT.Lo,
                             itemCTCT.Phong,
-                            itemCTCT.CreateDate,itemCTCT.STT,
+                            itemCTCT.CreateDate,
+                            itemCTCT.STT,
                         };
 
             return LINQToDataTable(query);
@@ -307,7 +309,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             itemCTCT.GiaHan,
                             itemCTCT.Lo,
                             itemCTCT.Phong,
-                            itemCTCT.CreateDate,itemCTCT.STT,
+                            itemCTCT.CreateDate,
+                            itemCTCT.STT,
                         };
 
             return LINQToDataTable(query);
@@ -342,7 +345,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             itemCTCT.GiaHan,
                             itemCTCT.Lo,
                             itemCTCT.Phong,
-                            itemCTCT.CreateDate,itemCTCT.STT,
+                            itemCTCT.CreateDate,
+                            itemCTCT.STT,
                         };
 
             return LINQToDataTable(query);
@@ -389,7 +393,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             itemCTCT.GiaHan,
                             itemCTCT.Lo,
                             itemCTCT.Phong,
-                            itemCTCT.CreateDate,itemCTCT.STT,
+                            itemCTCT.CreateDate,
+                            itemCTCT.STT,
                         };
 
             return LINQToDataTable(query);
@@ -424,7 +429,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             itemCTCT.GiaHan,
                             itemCTCT.Lo,
                             itemCTCT.Phong,
-                            itemCTCT.CreateDate,itemCTCT.STT,
+                            itemCTCT.CreateDate,
+                            itemCTCT.STT,
                         };
 
             return LINQToDataTable(query);
@@ -459,7 +465,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             itemCTCT.GiaHan,
                             itemCTCT.Lo,
                             itemCTCT.Phong,
-                            itemCTCT.CreateDate,itemCTCT.STT,
+                            itemCTCT.CreateDate,
+                            itemCTCT.STT,
                         };
 
             return LINQToDataTable(query);
@@ -494,7 +501,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             itemCTCT.GiaHan,
                             itemCTCT.Lo,
                             itemCTCT.Phong,
-                            itemCTCT.CreateDate,itemCTCT.STT,
+                            itemCTCT.CreateDate,
+                            itemCTCT.STT,
                         };
 
             return LINQToDataTable(query);
@@ -529,7 +537,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             itemCTCT.GiaHan,
                             itemCTCT.Lo,
                             itemCTCT.Phong,
-                            itemCTCT.CreateDate,itemCTCT.STT,
+                            itemCTCT.CreateDate,
+                            itemCTCT.STT,
                         };
 
             return LINQToDataTable(query);
@@ -564,7 +573,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             itemCTCT.GiaHan,
                             itemCTCT.Lo,
                             itemCTCT.Phong,
-                            itemCTCT.CreateDate,itemCTCT.STT,
+                            itemCTCT.CreateDate,
+                            itemCTCT.STT,
                         };
 
             return LINQToDataTable(query);
@@ -599,7 +609,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             itemCTCT.GiaHan,
                             itemCTCT.Lo,
                             itemCTCT.Phong,
-                            itemCTCT.CreateDate,itemCTCT.STT,
+                            itemCTCT.CreateDate,
+                            itemCTCT.STT,
                         };
 
             return LINQToDataTable(query);
@@ -634,7 +645,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             itemCTCT.GiaHan,
                             itemCTCT.Lo,
                             itemCTCT.Phong,
-                            itemCTCT.CreateDate,itemCTCT.STT,
+                            itemCTCT.CreateDate,
+                            itemCTCT.STT,
                         };
 
             return LINQToDataTable(query);
@@ -669,7 +681,8 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             itemCTCT.GiaHan,
                             itemCTCT.Lo,
                             itemCTCT.Phong,
-                            itemCTCT.CreateDate,itemCTCT.STT,
+                            itemCTCT.CreateDate,
+                            itemCTCT.STT,
                         };
 
             return LINQToDataTable(query);
@@ -3968,6 +3981,34 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             {
                 var query = from itemCTChungTu in db.ChungTu_ChiTiets
                             where itemCTChungTu.Cat == false && itemCTChungTu.ThoiHan != null && itemCTChungTu.NgayHetHan <= DateTime.Now.AddDays(15)
+                            orderby itemCTChungTu.NgayHetHan ascending
+                            select new
+                            {
+                                itemCTChungTu.DanhBo,
+                                itemCTChungTu.SoNKDangKy,
+                                itemCTChungTu.ChungTu.LoaiChungTu.MaLCT,
+                                itemCTChungTu.ChungTu.LoaiChungTu.TenLCT,
+                                itemCTChungTu.MaCT,
+                                itemCTChungTu.DienThoai,
+                                itemCTChungTu.NgayHetHan,
+                                itemCTChungTu.CreateDate,
+                                itemCTChungTu.GhiChu,
+                            };
+                return LINQToDataTable(query);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public DataTable LoadDSCapDinhMucHetHan_CCCD()
+        {
+            try
+            {
+                var query = from itemCTChungTu in db.ChungTu_ChiTiets
+                            where itemCTChungTu.Cat == false && itemCTChungTu.ThoiHan != null && itemCTChungTu.NgayHetHan <= DateTime.Now.AddDays(15) && itemCTChungTu.MaLCT == 15
                             orderby itemCTChungTu.NgayHetHan ascending
                             select new
                             {

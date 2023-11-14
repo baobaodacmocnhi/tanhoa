@@ -87,9 +87,9 @@ group by danhba having count(*)=3 order by DANHBA
 
 --danh sách tiêu thụ 0-4m3
 select t1.* from
-(select DOT,DANHBA,TENKH,SO,DUONG,GB,DM,TIEUTHU,Quan=(select TENQUAN from CAPNUOCTANHOA.dbo.QUAN where MAQUAN=Quan)
+(select DOT,DANHBA,TENKH,SO,DUONG,GB,DM,DinhMucHN,TIEUTHU,Quan=(select TENQUAN from CAPNUOCTANHOA.dbo.QUAN where MAQUAN=Quan)
 ,Phuong=(select TENPHUONG from CAPNUOCTANHOA.dbo.PHUONG where MAQUAN=Quan and MAPHUONG=PHUONG)
-from HOADON_TA.dbo.HOADON where DM>0 and TIEUTHU>=1 and TIEUTHU<=4 and NAM=2023 and ky=10 and DOT>=11 and DOT<=20
+from HOADON_TA.dbo.HOADON where GB!=10 and DM>4 and TIEUTHU>=1 and TIEUTHU<=4 and NAM=2023 and ky=10 and DOT>=14 and DOT<=20
 and DANHBA not in (select distinct DanhBo from KTKS_DonKH.dbo.ChungTu_ChiTiet where MaLCT = 15 and cat = 0))t1
 
 order by DOT

@@ -94,7 +94,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 txtSoPhieu_KeyPress(sender, arg);
             }
 
-            lbDSHetHan.Text = _cChungTu.LoadDSCapDinhMucHetHan().Rows.Count.ToString() + " Sổ sắp hết hạn";
+            lbDSHetHan.Text = _cChungTu.LoadDSCapDinhMucHetHan_CCCD().Rows.Count.ToString() + " cccd sắp hết hạn";
         }
 
         void txtMaDon_GotFocus(object sender, EventArgs e)
@@ -1174,7 +1174,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void lbDSHetHan_DoubleClick(object sender, EventArgs e)
         {
             DataTable dt = new DataTable();
-            dt = _cChungTu.LoadDSCapDinhMucHetHan();
+            dt = _cChungTu.LoadDSCapDinhMucHetHan_CCCD();
 
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
             foreach (DataRow itemRow in dt.Rows)
