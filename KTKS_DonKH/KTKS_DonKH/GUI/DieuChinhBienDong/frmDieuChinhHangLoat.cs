@@ -270,7 +270,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                     ctdcbd.HCSN = "";
                                             }
                                             ctdcbd.Dot = dontu_ChiTiet.Dot.ToString();
-                                            ctdcbd.HieuLucKy = "11/2023";
+                                            ctdcbd.HieuLucKy = "12/2023";
 
                                             ///Biến lưu Điều Chỉnh về gì (Họ Tên,Địa Chỉ,Định Mức,Giá Biểu,MSThuế)
                                             string ThongTin = "";
@@ -330,16 +330,17 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                     ThongTin += "Định Mức";
                                                 else
                                                     ThongTin += ". Định Mức";
-                                                ctdcbd.DinhMuc_BD = 4;
+                                                ctdcbd.DinhMuc_BD = 0;
+                                                if (hd.DinhMucHN != null)
+                                                {
+                                                    if (string.IsNullOrEmpty(ThongTin) == true)
+                                                        ThongTin += "Định Mức Nghèo";
+                                                    else
+                                                        ThongTin += ". Định Mức Nghèo";
+                                                    ctdcbd.DinhMucHN_BD = 0;
+                                                }
                                             }
-                                            //if (txtDinhMucHN_BD.Text.Trim() != "" && txtDinhMucHN_BD.Text.Trim() != txtDinhMucHN.Text.Trim())
-                                            //{
-                                            if (string.IsNullOrEmpty(ThongTin) == true)
-                                                ThongTin += "Định Mức Nghèo";
-                                            else
-                                                ThongTin += ". Định Mức Nghèo";
-                                            ctdcbd.DinhMucHN_BD = 0;
-                                            //}
+
                                             //if (txtSH_BD.Text.Trim() != "" || txtSX_BD.Text.Trim() != "" || txtDV_BD.Text.Trim() != "" || txtHCSN_BD.Text.Trim() != "")
                                             //{
                                             //    if (string.IsNullOrEmpty(ThongTin) == true)
