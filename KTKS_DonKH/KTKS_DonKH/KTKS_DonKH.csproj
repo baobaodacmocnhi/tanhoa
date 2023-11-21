@@ -1145,6 +1145,12 @@
     <Compile Include="GUI\CatHuyDanhBo\frmNoiDungXuLyCHDB.Designer.cs">
       <DependentUpon>frmNoiDungXuLyCHDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\DieuChinhBienDong\frmDCBD_Old.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DieuChinhBienDong\frmDCBD_Old.Designer.cs">
+      <DependentUpon>frmDCBD_Old.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\DieuChinhBienDong\frmCapDinhMucNuocCCCD.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2394,6 +2400,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\CatHuyDanhBo\frmNoiDungXuLyCHDB.resx">
       <DependentUpon>frmNoiDungXuLyCHDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DieuChinhBienDong\frmDCBD_Old.resx">
+      <DependentUpon>frmDCBD_Old.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DieuChinhBienDong\frmCapDinhMucNuocCCCD.resx">
       <DependentUpon>frmCapDinhMucNuocCCCD.cs</DependentUpon>
