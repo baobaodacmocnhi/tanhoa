@@ -12,6 +12,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
     public partial class frmCCCD : Form
     {
+        string _mnu = "mnuDCBD";
         CChungTu _cChungTu = new CChungTu();
         string _DanhBo = "";
 

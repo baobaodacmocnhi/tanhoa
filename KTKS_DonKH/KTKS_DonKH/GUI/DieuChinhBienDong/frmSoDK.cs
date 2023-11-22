@@ -368,6 +368,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 chungtu.DiaChi = txtDiaChi.Text.Trim();
                                 chungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
                                 chungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
+                                chungtu.KhacDiaBan = chkKhacDiaBan.Checked;
                                 _cChungTu.Them(chungtu);
                             }
                             ///Lấy thông tin Chứng Từ để kiểm tra
@@ -433,7 +434,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 }
                             #endregion
                             ///Ghi thông tin Lịch Sử chung
-                            ChungTu_LichSu lichsuchungtu = new ChungTu_LichSu();
+                            ChungTu_LichSu lichsuchungtu = _cChungTu.ChungTuToLichSu(ctchungtu);
                             switch (_dataT.Loai)
                             {
                                 case "MaDonMoi":
@@ -457,17 +458,18 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 lichsuchungtu.Phuong = _hd.Phuong;
                                 lichsuchungtu.Quan = _hd.Quan;
                             }
-                            lichsuchungtu.DanhBo = ctchungtu.DanhBo;
-                            lichsuchungtu.MaLCT = ctchungtu.MaLCT;
-                            lichsuchungtu.MaCT = ctchungtu.MaCT;
-                            lichsuchungtu.SoNKTong = _chungtu.SoNKTong;
-                            lichsuchungtu.SoNKDangKy = ctchungtu.SoNKDangKy;
-                            lichsuchungtu.ThoiHan = ctchungtu.ThoiHan;
-                            lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;
-                            lichsuchungtu.GhiChu = ctchungtu.GhiChu;
-                            lichsuchungtu.Lo = ctchungtu.Lo;
-                            lichsuchungtu.Phong = ctchungtu.Phong;
-
+                            //lichsuchungtu.DanhBo = ctchungtu.DanhBo;
+                            //lichsuchungtu.MaLCT = ctchungtu.MaLCT;
+                            //lichsuchungtu.MaCT = ctchungtu.MaCT;
+                            //lichsuchungtu.SoNKTong = _chungtu.SoNKTong;
+                            //lichsuchungtu.SoNKDangKy = ctchungtu.SoNKDangKy;
+                            //lichsuchungtu.ThoiHan = ctchungtu.ThoiHan;
+                            //lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;
+                            //lichsuchungtu.GhiChu = ctchungtu.GhiChu;
+                            //lichsuchungtu.Lo = ctchungtu.Lo;
+                            //lichsuchungtu.Phong = ctchungtu.Phong;
+                            //lichsuchungtu.ThuongTru = ctchungtu.ThuongTru;
+                            //lichsuchungtu.TamTru = ctchungtu.TamTru;
                             if (_cChungTu.ThemCT(ctchungtu))
                             {
                                 ///Thêm Lịch Sử đầu tiên
@@ -740,6 +742,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 _ctchungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
                                 _chungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
                             }
+                            _chungtu.KhacDiaBan = chkKhacDiaBan.Checked;
                             _cChungTu.Sua(_chungtu);
 
                             if (_chungtu.SoNKTong - _chungtu.ChungTu_ChiTiets.Sum(item => item.SoNKDangKy) + _ctchungtu.SoNKDangKy < int.Parse(txtSoNKDangKy.Text.Trim()))
@@ -825,7 +828,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             #endregion
 
                             ///Ghi thông tin Lịch Sử chung
-                            ChungTu_LichSu lichsuchungtu = new ChungTu_LichSu();
+                            ChungTu_LichSu lichsuchungtu = _cChungTu.ChungTuToLichSu(_ctchungtu);
                             switch (_dataT.Loai)
                             {
                                 case "MaDonMoi":
@@ -849,16 +852,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 lichsuchungtu.Phuong = _hd.Phuong;
                                 lichsuchungtu.Quan = _hd.Quan;
                             }
-                            lichsuchungtu.DanhBo = _ctchungtu.DanhBo;
-                            lichsuchungtu.MaLCT = _ctchungtu.MaLCT;
-                            lichsuchungtu.MaCT = _ctchungtu.MaCT;
-                            lichsuchungtu.SoNKTong = _ctchungtu.ChungTu.SoNKTong;
-                            lichsuchungtu.SoNKDangKy = _ctchungtu.SoNKDangKy;
-                            lichsuchungtu.ThoiHan = _ctchungtu.ThoiHan;
-                            lichsuchungtu.NgayHetHan = _ctchungtu.NgayHetHan;
-                            lichsuchungtu.GhiChu = _ctchungtu.GhiChu;
-                            lichsuchungtu.Lo = _ctchungtu.Lo;
-                            lichsuchungtu.Phong = _ctchungtu.Phong;
 
                             if (_cChungTu.SuaCT(_ctchungtu))
                             {
@@ -1621,6 +1614,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 txtThoiHan.Text = "6";
             }
         }
+
 
         
 

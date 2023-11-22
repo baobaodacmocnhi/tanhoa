@@ -24,7 +24,7 @@ using KTKS_DonKH.wrThuongVu;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
-    public partial class frmDCBD_Old : Form
+    public partial class frmDCBD_old : Form
     {
         string _mnu = "mnuDCBD";
         CDonTu _cDonTu = new CDonTu();
@@ -50,12 +50,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         bool _flagCtrl3 = false;
         decimal _MaCTDCBD = -1;
 
-        public frmDCBD_Old()
+        public frmDCBD_old()
         {
             InitializeComponent();
         }
 
-        public frmDCBD_Old(decimal MaCTDCBD)
+        public frmDCBD_old(decimal MaCTDCBD)
         {
             _MaCTDCBD = MaCTDCBD;
             InitializeComponent();
@@ -1112,11 +1112,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         frmTimKiemChungTu frm = new frmTimKiemChungTu();
                         frm.ShowDialog();
                         break;
-                    case Keys.D5://mở form cccd
-                        frmCCCD frm1 = new frmCCCD(txtDanhBo.Text.Trim());
-                        if (frm1.ShowDialog() == DialogResult.OK)
-                            dgvDSSoDangKy.DataSource = _cChungTu.getDS_ChiTiet_DanhBo(txtDanhBo.Text.Trim());
-                        break;
+                    //case Keys.D5://mở form cccd
+                    //    frmCCCD frm1 = new frmCCCD(txtDanhBo.Text.Trim());
+                    //    if (frm1.ShowDialog() == DialogResult.OK)
+                    //        dgvDSSoDangKy.DataSource = _cChungTu.getDS_ChiTiet_DanhBo(txtDanhBo.Text.Trim());
+                    //    break;
                     case Keys.T://mở form cập nhật tiến trình
                         if (_dontu_ChiTiet != null)
                         {

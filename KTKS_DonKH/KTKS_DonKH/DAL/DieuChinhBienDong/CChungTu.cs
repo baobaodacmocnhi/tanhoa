@@ -176,8 +176,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         join itemCT in db.ChungTus on new { itemCTCT.MaCT, itemCTCT.MaLCT } equals new { itemCT.MaCT, itemCT.MaLCT }
                         join itemLCT in db.LoaiChungTus on itemCT.MaLCT equals itemLCT.MaLCT
                         where itemCTCT.DanhBo == DanhBo
-                        //orderby itemCTCT.Cat ascending, itemCTCT.MaLCT descending, itemCTCT.CreateDate ascending
-                        orderby itemCTCT.STT ascending
+                        orderby itemCTCT.Cat descending, itemCTCT.MaLCT ascending, itemCTCT.CreateDate ascending
                         select new
                         {
                             itemCTCT.DanhBo,
@@ -202,6 +201,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             itemCTCT.Phong,
                             itemCTCT.CreateDate,
                             itemCTCT.STT,
+                            itemCT.KhacDiaBan,
+                            itemCTCT.ThuongTru,
+                            itemCTCT.TamTru,
                         };
 
             return LINQToDataTable(query);
@@ -2187,6 +2189,24 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
             }
+        }
+
+        public ChungTu_LichSu ChungTuToLichSu(ChungTu_ChiTiet ct)
+        {
+            ChungTu_LichSu ls = new ChungTu_LichSu();
+            ls.DanhBo = ct.DanhBo;
+            ls.MaLCT = ct.MaLCT;
+            ls.MaCT = ct.MaCT;
+            ls.SoNKTong = ct.ChungTu.SoNKTong;
+            ls.SoNKDangKy = ct.SoNKDangKy;
+            ls.ThoiHan = ct.ThoiHan;
+            ls.NgayHetHan = ct.NgayHetHan;
+            ls.GhiChu = ct.GhiChu;
+            ls.Lo = ct.Lo;
+            ls.Phong = ct.Phong;
+            ls.ThuongTru = ct.ThuongTru;
+            ls.TamTru = ct.TamTru;
+            return ls;
         }
 
         #endregion
