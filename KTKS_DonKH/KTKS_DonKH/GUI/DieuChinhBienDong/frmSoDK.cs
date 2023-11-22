@@ -453,11 +453,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 default:
                                     break;
                             }
-                            if (_hd != null)
-                            {
-                                lichsuchungtu.Phuong = _hd.Phuong;
-                                lichsuchungtu.Quan = _hd.Quan;
-                            }
+                            lichsuchungtu.Phuong = ctchungtu.Phuong;
+                            lichsuchungtu.Quan = ctchungtu.Quan;
                             //lichsuchungtu.DanhBo = ctchungtu.DanhBo;
                             //lichsuchungtu.MaLCT = ctchungtu.MaLCT;
                             //lichsuchungtu.MaCT = ctchungtu.MaCT;
@@ -1616,7 +1613,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         }
 
 
-        
+
 
     }
 }

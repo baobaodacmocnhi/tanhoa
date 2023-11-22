@@ -1358,6 +1358,37 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             try
             {
+                if (dgvDSSoDangKy.Columns[e.ColumnIndex].Name == "MaCT")
+                {
+                    if (dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString().Trim().Length != 12)
+                    {
+                        MessageBox.Show("CCCD gồm 12 số", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    ///Kiểm tra Danh Bộ & Số Chứng Từ
+                    if (_cChungTu.CheckExist_CT(_hoadon.DANHBA, dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString().Trim(), 15))
+                    {
+                        MessageBox.Show("Số đăng ký này đã đăng ký với Danh Bộ này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else
+                        if (_cChungTu.CheckExist_CT(dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString().Trim(), 15))
+                        {
+                            MessageBox.Show("Đã đăng ký với Danh Bộ " + _cChungTu.getDS_ChiTiet(dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString().Trim(), 15).Rows[0]["DanhBo"].ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvDSSoDangKy_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
                 if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
                 {
                     if (dgvDSSoDangKy["DanhBo", e.RowIndex].Value != null && dgvDSSoDangKy["MaCT", e.RowIndex].Value != null && dgvDSSoDangKy["DanhBo", e.RowIndex].Value.ToString() != "" && dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString() != "" && !_flagInsert)
@@ -1374,17 +1405,17 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 ctchungtu.Cat_Ngay = null;
                             _cChungTu.SuaCT(ctchungtu);
                         }
-                        if (bool.Parse(dgvDSSoDangKy["GiaHan_SCT", e.RowIndex].Value.ToString()) != ctchungtu.GiaHan)
-                        {
-                            ctchungtu.GiaHan = bool.Parse(dgvDSSoDangKy["GiaHan_SCT", e.RowIndex].Value.ToString());
-                            _cChungTu.SuaCT(ctchungtu);
-                        }
+
                         if (dgvDSSoDangKy["DienThoai", e.RowIndex].Value.ToString() != ctchungtu.DienThoai)
                         {
                             ctchungtu.DienThoai = dgvDSSoDangKy["DienThoai", e.RowIndex].Value.ToString();
                             _cChungTu.SuaCT(ctchungtu);
                         }
-
+                        //if (bool.Parse(dgvDSSoDangKy["GiaHan_SCT", e.RowIndex].Value.ToString()) != ctchungtu.GiaHan)
+                        //{
+                        //    ctchungtu.GiaHan = bool.Parse(dgvDSSoDangKy["GiaHan_SCT", e.RowIndex].Value.ToString());
+                        //    _cChungTu.SuaCT(ctchungtu);
+                        //}
                         this.ControlBox = true;
                         contextMenuStrip1.Enabled = true;
                     }
@@ -2109,6 +2140,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void dgvDSSoDangKy_UserAddedRow(object sender, DataGridViewRowEventArgs e)
         {
+            //if (_dontu_ChiTiet != null)
             _flagInsert = true;
         }
 
@@ -2147,17 +2179,22 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     chungtu = new ChungTu();
                                     chungtu.MaCT = dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString().Trim();
                                     string[] NgaySinhs = null;
-                                    if (dgvDSSoDangKy["NgaySinh", e.RowIndex].Value.ToString().Trim().Contains("/"))
-                                        NgaySinhs = dgvDSSoDangKy["NgaySinh", e.RowIndex].Value.ToString().Trim().Split('/');
+                                    string NgaySinh = "";
+                                    if (dgvDSSoDangKy["NgaySinh", e.RowIndex].Value.ToString().Trim().Contains(" "))
+                                        NgaySinh = dgvDSSoDangKy["NgaySinh", e.RowIndex].Value.ToString().Trim().Substring(0, dgvDSSoDangKy["NgaySinh", e.RowIndex].Value.ToString().Trim().IndexOf(" "));
                                     else
-                                        if (dgvDSSoDangKy["NgaySinh", e.RowIndex].Value.ToString().Trim().Contains("-"))
-                                            NgaySinhs = dgvDSSoDangKy["NgaySinh", e.RowIndex].Value.ToString().Trim().Split('-');
+                                        NgaySinh = dgvDSSoDangKy["NgaySinh", e.RowIndex].Value.ToString().Trim();
+                                    if (NgaySinh.Contains("/"))
+                                        NgaySinhs = NgaySinh.Split('/');
+                                    else
+                                        if (NgaySinh.Contains("-"))
+                                            NgaySinhs = NgaySinh.Split('-');
                                     if (NgaySinhs != null && NgaySinhs.Count() == 3)
                                     {
                                         chungtu.NgaySinh = new DateTime(int.Parse(NgaySinhs[2]), int.Parse(NgaySinhs[1]), int.Parse(NgaySinhs[0]));
                                     }
                                     else
-                                        chungtu.NgaySinh = new DateTime(int.Parse(dgvDSSoDangKy["NgaySinh", e.RowIndex].Value.ToString().Trim()), 1, 1);
+                                        chungtu.NgaySinh = new DateTime(int.Parse(NgaySinh), 1, 1);
                                     chungtu.HoTen = dgvDSSoDangKy["HoTen", e.RowIndex].Value.ToString().Trim();
                                     chungtu.DiaChi = dgvDSSoDangKy["DiaChi", e.RowIndex].Value.ToString().Trim();
                                     chungtu.SoNKTong = 1;
@@ -2170,17 +2207,22 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     chungtu.HoTen = dgvDSSoDangKy["HoTen", e.RowIndex].Value.ToString().Trim();
                                     chungtu.DiaChi = dgvDSSoDangKy["DiaChi", e.RowIndex].Value.ToString().Trim();
                                     string[] NgaySinhs = null;
-                                    if (dgvDSSoDangKy["NgaySinh", e.RowIndex].Value.ToString().Trim().Contains("/"))
-                                        NgaySinhs = dgvDSSoDangKy["NgaySinh", e.RowIndex].Value.ToString().Trim().Split('/');
+                                    string NgaySinh = "";
+                                    if (dgvDSSoDangKy["NgaySinh", e.RowIndex].Value.ToString().Trim().Contains(" "))
+                                        NgaySinh = dgvDSSoDangKy["NgaySinh", e.RowIndex].Value.ToString().Trim().Substring(0, dgvDSSoDangKy["NgaySinh", e.RowIndex].Value.ToString().Trim().IndexOf(" "));
                                     else
-                                        if (dgvDSSoDangKy["NgaySinh", e.RowIndex].Value.ToString().Trim().Contains("-"))
-                                            NgaySinhs = dgvDSSoDangKy["NgaySinh", e.RowIndex].Value.ToString().Trim().Split('-');
+                                        NgaySinh = dgvDSSoDangKy["NgaySinh", e.RowIndex].Value.ToString().Trim();
+                                    if (NgaySinh.Contains("/"))
+                                        NgaySinhs = NgaySinh.Split('/');
+                                    else
+                                        if (NgaySinh.Contains("-"))
+                                            NgaySinhs = NgaySinh.Split('-');
                                     if (NgaySinhs != null && NgaySinhs.Count() == 3)
                                     {
                                         chungtu.NgaySinh = new DateTime(int.Parse(NgaySinhs[2]), int.Parse(NgaySinhs[1]), int.Parse(NgaySinhs[0]));
                                     }
                                     else
-                                        chungtu.NgaySinh = new DateTime(int.Parse(dgvDSSoDangKy["NgaySinh", e.RowIndex].Value.ToString().Trim()), 1, 1);
+                                        chungtu.NgaySinh = new DateTime(int.Parse(NgaySinh), 1, 1);
                                     _cChungTu.Sua(chungtu);
                                 }
                                 ChungTu_ChiTiet ctchungtu = new ChungTu_ChiTiet();
@@ -2217,9 +2259,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 _cChungTu.ThemCT(ctchungtu);
                                 ///Ghi thông tin Lịch Sử chung
                                 ChungTu_LichSu lichsuchungtu = _cChungTu.ChungTuToLichSu(ctchungtu);
+                                if (_dontu_ChiTiet != null)
+                                {
+                                    lichsuchungtu.MaDonMoi = _dontu_ChiTiet.MaDon;
+                                    lichsuchungtu.STT = _dontu_ChiTiet.STT;
+                                }
                                 _cChungTu.ThemLichSuChungTu(lichsuchungtu);
-                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                Clear();
                             }
                             _flagInsert = false;
                         }
@@ -2230,11 +2275,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            }  
         }
 
+        private void dgvDSSoDangKy_RowValidated(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
 
-
+        
 
     }
 }
