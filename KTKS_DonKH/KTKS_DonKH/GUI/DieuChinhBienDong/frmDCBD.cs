@@ -1080,6 +1080,34 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private int _searchIndex = -1;
+        private string _searchNoiDung = "";
+
+        private void GetNoiDungfrmTimKiem(string NoiDung)
+        {
+            if (_searchNoiDung != NoiDung)
+                _searchIndex = -1;
+
+            for (int i = 0; i < dgvDSSoDangKy.Rows.Count; i++)
+            {
+                if (_searchNoiDung != NoiDung)
+                    _searchNoiDung = NoiDung;
+
+                _searchIndex = (_searchIndex + 1) % dgvDSSoDangKy.Rows.Count;
+                DataGridViewRow row = dgvDSSoDangKy.Rows[_searchIndex];
+                if (row.Cells["MaCT"].Value == null)
+                {
+                    continue;
+                }
+                if (row.Cells["MaCT"].Value.ToString() == NoiDung)
+                {
+                    dgvDSSoDangKy.CurrentCell = row.Cells["MaCT"];
+                    dgvDSSoDangKy.Rows[_searchIndex].Selected = true;
+                    return;
+                }
+            }
+        }
+
         private void frmDCBD_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control)
@@ -1114,7 +1142,19 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         break;
                     case Keys.D4://mở form tìm kiếm chung cư
                         frmTimKiemChungTu frm = new frmTimKiemChungTu();
-                        frm.ShowDialog();
+                        bool flag = false;
+                        foreach (var item in this.OwnedForms)
+                            if (item.Name == frm.Name)
+                            {
+                                item.Activate();
+                                flag = true;
+                            }
+                        if (flag == false)
+                        {
+                            frm.MyGetNoiDung = new frmTimKiemChungTu.GetNoiDung(GetNoiDungfrmTimKiem);
+                            frm.Owner = this;
+                            frm.Show();
+                        }
                         break;
                     //case Keys.D5://mở form cccd
                     //    frmCCCD frm1 = new frmCCCD(txtDanhBo.Text.Trim());
@@ -1377,18 +1417,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             MessageBox.Show("Đã đăng ký với Danh Bộ " + _cChungTu.getDS_ChiTiet(dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString().Trim(), 15).Rows[0]["DanhBo"].ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
+                    ChungTu ct = _cChungTu.Get(dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString(), 15);
+                    if (ct != null)
+                    {
+                        dgvDSSoDangKy["HoTen", e.RowIndex].Value = ct.HoTen;
+                        dgvDSSoDangKy["DiaChi", e.RowIndex].Value = ct.DiaChi;
+                        dgvDSSoDangKy["NgaySinh", e.RowIndex].Value = ct.NgaySinh.Value.ToString("dd/MM/yyyy");
+                    }
+                    dgvDSChungTu.DataSource = _cChungTu.getDS_ChiTiet(dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString(), 15);
+                    dgvLichSuChungTu.DataSource = _cChungTu.LoadDSLichSuChungTubyID(dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString(), 15);
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void dgvDSSoDangKy_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
                 if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
                 {
                     if (dgvDSSoDangKy["DanhBo", e.RowIndex].Value != null && dgvDSSoDangKy["MaCT", e.RowIndex].Value != null && dgvDSSoDangKy["DanhBo", e.RowIndex].Value.ToString() != "" && dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString() != "" && !_flagInsert)
@@ -1396,32 +1434,105 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         ///Hiện tại nếu check Cat mà exit bằng X thì dữ liệu không được lưu
                         ///Sau khi check phải check qua chỗ khác mới lưu
                         ChungTu_ChiTiet ctchungtu = _cChungTu.GetCT(dgvDSSoDangKy["DanhBo", e.RowIndex].Value.ToString(), dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString(), int.Parse(dgvDSSoDangKy["MaLCT", e.RowIndex].Value.ToString()));
-                        if (bool.Parse(dgvDSSoDangKy["Cat", e.RowIndex].Value.ToString()) != ctchungtu.Cat)
+                        if (dgvDSSoDangKy.Columns[e.ColumnIndex].Name == "HoTen")
+                            if (dgvDSSoDangKy["HoTen", e.RowIndex].Value.ToString() != ctchungtu.ChungTu.HoTen)
+                            {
+                                ctchungtu.ChungTu.HoTen = dgvDSSoDangKy["HoTen", e.RowIndex].Value.ToString();
+                                _cChungTu.SuaCT(ctchungtu);
+                            }
+                        if (dgvDSSoDangKy.Columns[e.ColumnIndex].Name == "DiaChi")
+                            if (dgvDSSoDangKy["DiaChi", e.RowIndex].Value.ToString() != ctchungtu.ChungTu.DiaChi)
+                            {
+                                ctchungtu.ChungTu.DiaChi = dgvDSSoDangKy["DiaChi", e.RowIndex].Value.ToString();
+                                _cChungTu.SuaCT(ctchungtu);
+                            }
+                        if (dgvDSSoDangKy.Columns[e.ColumnIndex].Name == "NgaySinh")
                         {
-                            ctchungtu.Cat = bool.Parse(dgvDSSoDangKy["Cat", e.RowIndex].Value.ToString());
-                            if (ctchungtu.Cat)
-                                ctchungtu.Cat_Ngay = DateTime.Now;
+                            string[] NgaySinhs = null;
+                            string NgaySinh = "";
+                            if (dgvDSSoDangKy["NgaySinh", e.RowIndex].Value.ToString().Trim().Contains(" "))
+                                NgaySinh = dgvDSSoDangKy["NgaySinh", e.RowIndex].Value.ToString().Trim().Substring(0, dgvDSSoDangKy["NgaySinh", e.RowIndex].Value.ToString().Trim().IndexOf(" "));
                             else
-                                ctchungtu.Cat_Ngay = null;
+                                NgaySinh = dgvDSSoDangKy["NgaySinh", e.RowIndex].Value.ToString().Trim();
+                            if (NgaySinh.Contains("/"))
+                                NgaySinhs = NgaySinh.Split('/');
+                            else
+                                if (NgaySinh.Contains("-"))
+                                    NgaySinhs = NgaySinh.Split('-');
+                            if (NgaySinhs != null && NgaySinhs.Count() == 3)
+                            {
+                                ctchungtu.ChungTu.NgaySinh = new DateTime(int.Parse(NgaySinhs[2]), int.Parse(NgaySinhs[1]), int.Parse(NgaySinhs[0]));
+                            }
+                            else
+                                ctchungtu.ChungTu.NgaySinh = new DateTime(int.Parse(NgaySinh), 1, 1);
                             _cChungTu.SuaCT(ctchungtu);
                         }
-
-                        if (dgvDSSoDangKy["DienThoai", e.RowIndex].Value.ToString() != ctchungtu.DienThoai)
+                        if (dgvDSSoDangKy.Columns[e.ColumnIndex].Name == "KhacDiaBan")
+                            if (bool.Parse(dgvDSSoDangKy["KhacDiaBan", e.RowIndex].Value.ToString()) != ctchungtu.ChungTu.KhacDiaBan)
+                            {
+                                ctchungtu.ChungTu.KhacDiaBan = bool.Parse(dgvDSSoDangKy["KhacDiaBan", e.RowIndex].Value.ToString());
+                                _cChungTu.SuaCT(ctchungtu);
+                            }
+                        if (dgvDSSoDangKy.Columns[e.ColumnIndex].Name == "ThuongTru")
+                            if (bool.Parse(dgvDSSoDangKy["ThuongTru", e.RowIndex].Value.ToString()) != ctchungtu.ThuongTru)
+                            {
+                                ctchungtu.ThuongTru = bool.Parse(dgvDSSoDangKy["ThuongTru", e.RowIndex].Value.ToString());
+                                _cChungTu.SuaCT(ctchungtu);
+                            }
+                        if (dgvDSSoDangKy.Columns[e.ColumnIndex].Name == "TamTru")
+                            if (bool.Parse(dgvDSSoDangKy["TamTru", e.RowIndex].Value.ToString()) != ctchungtu.TamTru)
+                            {
+                                ctchungtu.TamTru = bool.Parse(dgvDSSoDangKy["TamTru", e.RowIndex].Value.ToString());
+                                _cChungTu.SuaCT(ctchungtu);
+                            }
+                        if (dgvDSSoDangKy.Columns[e.ColumnIndex].Name == "NgayHetHan")
                         {
-                            ctchungtu.DienThoai = dgvDSSoDangKy["DienThoai", e.RowIndex].Value.ToString();
+                            string[] NgayHetHans = null;
+                            string NgayHetHan = "";
+                            if (dgvDSSoDangKy["NgayHetHan", e.RowIndex].Value.ToString().Trim().Contains(" "))
+                                NgayHetHan = dgvDSSoDangKy["NgayHetHan", e.RowIndex].Value.ToString().Trim().Substring(0, dgvDSSoDangKy["NgayHetHan", e.RowIndex].Value.ToString().Trim().IndexOf(" "));
+                            else
+                                NgayHetHan = dgvDSSoDangKy["NgayHetHan", e.RowIndex].Value.ToString().Trim();
+
+                            if (NgayHetHan.Contains("/"))
+                                NgayHetHans = NgayHetHan.Split('/');
+                            else
+                                if (NgayHetHan.Contains("-"))
+                                    NgayHetHans = NgayHetHan.Split('-');
+                            if (NgayHetHans.Count() == 3)
+                            {
+                                ctchungtu.NgayHetHan = new DateTime(int.Parse(NgayHetHans[2]), int.Parse(NgayHetHans[1]), int.Parse(NgayHetHans[0]));
+                            }
                             _cChungTu.SuaCT(ctchungtu);
                         }
+                        if (dgvDSSoDangKy.Columns[e.ColumnIndex].Name == "Cat")
+                            if (bool.Parse(dgvDSSoDangKy["Cat", e.RowIndex].Value.ToString()) != ctchungtu.Cat)
+                            {
+                                ctchungtu.Cat = bool.Parse(dgvDSSoDangKy["Cat", e.RowIndex].Value.ToString());
+                                if (ctchungtu.Cat)
+                                    ctchungtu.Cat_Ngay = DateTime.Now;
+                                else
+                                    ctchungtu.Cat_Ngay = null;
+                                _cChungTu.SuaCT(ctchungtu);
+                            }
+                        if (dgvDSSoDangKy.Columns[e.ColumnIndex].Name == "DienThoai")
+                            if (dgvDSSoDangKy["DienThoai", e.RowIndex].Value.ToString() != ctchungtu.DienThoai)
+                            {
+                                ctchungtu.DienThoai = dgvDSSoDangKy["DienThoai", e.RowIndex].Value.ToString();
+                                _cChungTu.SuaCT(ctchungtu);
+                            }
                         //if (bool.Parse(dgvDSSoDangKy["GiaHan_SCT", e.RowIndex].Value.ToString()) != ctchungtu.GiaHan)
                         //{
                         //    ctchungtu.GiaHan = bool.Parse(dgvDSSoDangKy["GiaHan_SCT", e.RowIndex].Value.ToString());
                         //    _cChungTu.SuaCT(ctchungtu);
                         //}
-                        this.ControlBox = true;
-                        contextMenuStrip1.Enabled = true;
+
                     }
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.ControlBox = true;
+                contextMenuStrip1.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -2140,8 +2251,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void dgvDSSoDangKy_UserAddedRow(object sender, DataGridViewRowEventArgs e)
         {
-            //if (_dontu_ChiTiet != null)
-            _flagInsert = true;
+            if (_dontu_ChiTiet != null)
+                _flagInsert = true;
         }
 
         private void dgvDSSoDangKy_RowLeave(object sender, DataGridViewCellEventArgs e)
@@ -2207,6 +2318,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     chungtu.HoTen = dgvDSSoDangKy["HoTen", e.RowIndex].Value.ToString().Trim();
                                     chungtu.DiaChi = dgvDSSoDangKy["DiaChi", e.RowIndex].Value.ToString().Trim();
                                     string[] NgaySinhs = null;
+
                                     string NgaySinh = "";
                                     if (dgvDSSoDangKy["NgaySinh", e.RowIndex].Value.ToString().Trim().Contains(" "))
                                         NgaySinh = dgvDSSoDangKy["NgaySinh", e.RowIndex].Value.ToString().Trim().Substring(0, dgvDSSoDangKy["NgaySinh", e.RowIndex].Value.ToString().Trim().IndexOf(" "));
@@ -2230,14 +2342,20 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 ctchungtu.MaLCT = 15;
                                 ctchungtu.MaCT = chungtu.MaCT;
                                 ctchungtu.SoNKDangKy = 1;
-                                if (dgvDSSoDangKy["NgayHetHan", e.RowIndex].Value != null)
+                                if (dgvDSSoDangKy["NgayHetHan", e.RowIndex].Value != null && dgvDSSoDangKy["NgayHetHan", e.RowIndex].Value.ToString() != "")
                                 {
                                     string[] NgayHetHans = null;
-                                    if (dgvDSSoDangKy["NgayHetHan", e.RowIndex].Value.ToString().Trim().Contains("/"))
-                                        NgayHetHans = dgvDSSoDangKy["NgayHetHan", e.RowIndex].Value.ToString().Trim().Split('/');
+                                    string NgayHetHan = "";
+                                    if (dgvDSSoDangKy["NgayHetHan", e.RowIndex].Value.ToString().Trim().Contains(" "))
+                                        NgayHetHan = dgvDSSoDangKy["NgayHetHan", e.RowIndex].Value.ToString().Trim().Substring(0, dgvDSSoDangKy["NgayHetHan", e.RowIndex].Value.ToString().Trim().IndexOf(" "));
                                     else
-                                        if (dgvDSSoDangKy["NgayHetHan", e.RowIndex].Value.ToString().Trim().Contains("-"))
-                                            NgayHetHans = dgvDSSoDangKy["NgayHetHan", e.RowIndex].Value.ToString().Trim().Split('-');
+                                        NgayHetHan = dgvDSSoDangKy["NgayHetHan", e.RowIndex].Value.ToString().Trim();
+
+                                    if (NgayHetHan.Contains("/"))
+                                        NgayHetHans = NgayHetHan.Split('/');
+                                    else
+                                        if (NgayHetHan.Contains("-"))
+                                            NgayHetHans = NgayHetHan.Split('-');
                                     if (NgayHetHans.Count() == 3)
                                     {
                                         ctchungtu.NgayHetHan = new DateTime(int.Parse(NgayHetHans[2]), int.Parse(NgayHetHans[1]), int.Parse(NgayHetHans[0]));
@@ -2268,6 +2386,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             }
                             _flagInsert = false;
                         }
+                        else
+                            _flagInsert = false;
                     }
                     else
                         MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -2275,15 +2395,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }  
+            }
         }
 
         private void dgvDSSoDangKy_RowValidated(object sender, DataGridViewCellEventArgs e)
         {
-            
+
         }
 
-        
+
 
     }
 }

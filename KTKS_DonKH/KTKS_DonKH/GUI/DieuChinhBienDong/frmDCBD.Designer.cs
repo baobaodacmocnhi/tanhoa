@@ -729,7 +729,6 @@
             this.dgvDSSoDangKy.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSSoDangKy_CellContentClick);
             this.dgvDSSoDangKy.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSSoDangKy_CellEndEdit);
             this.dgvDSSoDangKy.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvDSSoDangKy_CellMouseClick);
-            this.dgvDSSoDangKy.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSSoDangKy_CellValueChanged);
             this.dgvDSSoDangKy.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSSoDangKy_RowLeave);
             this.dgvDSSoDangKy.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSSoDangKy_RowPostPaint);
             this.dgvDSSoDangKy.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSSoDangKy_RowValidated);

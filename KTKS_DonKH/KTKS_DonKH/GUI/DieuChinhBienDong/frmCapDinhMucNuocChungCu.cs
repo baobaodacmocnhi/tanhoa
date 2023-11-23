@@ -504,8 +504,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         foreach (DataGridViewRow item in dgvDanhSach.Rows)
                             if (item.Cells["CCCD"].Value.ToString() == txtCCCD.Text.Trim())
                             {
-                                dgvDanhSach.Focus();
-                                dgvDanhSach.CurrentCell = dgvDanhSach.Rows[item.Index].Cells[6];
+                                dgvDanhSach.CurrentCell = dgvDanhSach.Rows[item.Index].Cells["CCCD"];
+                                dgvDanhSach.Rows[item.Index].Selected = true;
                             }
                     }
                     else

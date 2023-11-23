@@ -433,43 +433,44 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     return;
                                 }
                             #endregion
-                            ///Ghi thông tin Lịch Sử chung
-                            ChungTu_LichSu lichsuchungtu = _cChungTu.ChungTuToLichSu(ctchungtu);
-                            switch (_dataT.Loai)
-                            {
-                                case "MaDonMoi":
-                                    lichsuchungtu.MaDonMoi = _dataT.MaDonMoi;
-                                    lichsuchungtu.STT = _dataT.STT;
-                                    break;
-                                case "TKH":
-                                    lichsuchungtu.MaDon = _dataT.MaDon;
-                                    break;
-                                case "TXL":
-                                    lichsuchungtu.MaDonTXL = _dataT.MaDon;
-                                    break;
-                                case "TBC":
-                                    lichsuchungtu.MaDonTBC = _dataT.MaDon;
-                                    break;
-                                default:
-                                    break;
-                            }
-                            lichsuchungtu.Phuong = ctchungtu.Phuong;
-                            lichsuchungtu.Quan = ctchungtu.Quan;
-                            //lichsuchungtu.DanhBo = ctchungtu.DanhBo;
-                            //lichsuchungtu.MaLCT = ctchungtu.MaLCT;
-                            //lichsuchungtu.MaCT = ctchungtu.MaCT;
-                            //lichsuchungtu.SoNKTong = _chungtu.SoNKTong;
-                            //lichsuchungtu.SoNKDangKy = ctchungtu.SoNKDangKy;
-                            //lichsuchungtu.ThoiHan = ctchungtu.ThoiHan;
-                            //lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;
-                            //lichsuchungtu.GhiChu = ctchungtu.GhiChu;
-                            //lichsuchungtu.Lo = ctchungtu.Lo;
-                            //lichsuchungtu.Phong = ctchungtu.Phong;
-                            //lichsuchungtu.ThuongTru = ctchungtu.ThuongTru;
-                            //lichsuchungtu.TamTru = ctchungtu.TamTru;
+                            
                             if (_cChungTu.ThemCT(ctchungtu))
                             {
                                 ///Thêm Lịch Sử đầu tiên
+                                ///Ghi thông tin Lịch Sử chung
+                                ChungTu_LichSu lichsuchungtu = _cChungTu.ChungTuToLichSu(ctchungtu);
+                                switch (_dataT.Loai)
+                                {
+                                    case "MaDonMoi":
+                                        lichsuchungtu.MaDonMoi = _dataT.MaDonMoi;
+                                        lichsuchungtu.STT = _dataT.STT;
+                                        break;
+                                    case "TKH":
+                                        lichsuchungtu.MaDon = _dataT.MaDon;
+                                        break;
+                                    case "TXL":
+                                        lichsuchungtu.MaDonTXL = _dataT.MaDon;
+                                        break;
+                                    case "TBC":
+                                        lichsuchungtu.MaDonTBC = _dataT.MaDon;
+                                        break;
+                                    default:
+                                        break;
+                                }
+                                lichsuchungtu.Phuong = ctchungtu.Phuong;
+                                lichsuchungtu.Quan = ctchungtu.Quan;
+                                //lichsuchungtu.DanhBo = ctchungtu.DanhBo;
+                                //lichsuchungtu.MaLCT = ctchungtu.MaLCT;
+                                //lichsuchungtu.MaCT = ctchungtu.MaCT;
+                                //lichsuchungtu.SoNKTong = _chungtu.SoNKTong;
+                                //lichsuchungtu.SoNKDangKy = ctchungtu.SoNKDangKy;
+                                //lichsuchungtu.ThoiHan = ctchungtu.ThoiHan;
+                                //lichsuchungtu.NgayHetHan = ctchungtu.NgayHetHan;
+                                //lichsuchungtu.GhiChu = ctchungtu.GhiChu;
+                                //lichsuchungtu.Lo = ctchungtu.Lo;
+                                //lichsuchungtu.Phong = ctchungtu.Phong;
+                                //lichsuchungtu.ThuongTru = ctchungtu.ThuongTru;
+                                //lichsuchungtu.TamTru = ctchungtu.TamTru;
                                 _cChungTu.ThemLichSuChungTu(lichsuchungtu);
                                 #region Yêu Cầu Cắt
                                 if (chkYCCat1.Checked)

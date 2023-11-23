@@ -23,18 +23,19 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void frmTimKiemChungTu_Load(object sender, EventArgs e)
         {
             this.Location = new Point(70, 70);
-            dgvDSChungTu.AutoGenerateColumns = false;
-            dgvDSChungTu.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSChungTu.Font, FontStyle.Bold);
-            cmbLoaiCT.DataSource = _cLoaiChungTu.LoadDSLoaiChungTu();
-            cmbLoaiCT.DisplayMember = "TenLCT";
-            cmbLoaiCT.ValueMember = "MaLCT";
         }
 
-        private void txtMaCT_TextChanged(object sender, EventArgs e)
+        public delegate void GetNoiDung(String NoiDung);
+        public GetNoiDung MyGetNoiDung;
+
+        private void txtMaCT_KeyPress(object sender, KeyPressEventArgs e)
         {
-            dgvDSChungTu.DataSource = _cChungTu.getDS_ChiTiet(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
+            if (!string.IsNullOrEmpty(txtMaCT.Text.Trim()) && e.KeyChar == 13)
+            {
+                MyGetNoiDung(txtMaCT.Text.Trim());
+            }
         }
 
-        
+
     }
 }
