@@ -48,6 +48,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         HOADON _hoadon = null;
         DCBD_ChiTietBienDong _ctdcbd = null;
         bool _flagCtrl3 = false;
+        bool _flagInsert = false;
         decimal _MaCTDCBD = -1;
 
         public frmDCBD()
@@ -317,6 +318,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             _hoadon = null;
             _ctdcbd = null;
             _MaCTDCBD = -1;
+            _flagInsert = false;
             ///
             dgvDSSoDangKy.DataSource = null;
             dgvDSDieuChinh.DataSource = null;
@@ -2251,7 +2253,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             try
             {
-                if (dgvDSSoDangKy["DanhBo", e.RowIndex].Value != null && dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString() != ""
+                if (_flagInsert && dgvDSSoDangKy["DanhBo", e.RowIndex].Value != null && dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString() != ""
                     && dgvDSSoDangKy["MaCT", e.RowIndex].Value != null && dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString() != "")
                     if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
                     {
@@ -2384,6 +2386,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void dgvDSSoDangKy_UserAddedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            _flagInsert = true;
         }
 
 

@@ -731,6 +731,7 @@
             this.dgvDSSoDangKy.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvDSSoDangKy_CellMouseClick);
             this.dgvDSSoDangKy.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSSoDangKy_RowLeave);
             this.dgvDSSoDangKy.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSSoDangKy_RowPostPaint);
+            this.dgvDSSoDangKy.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgvDSSoDangKy_UserAddedRow);
             this.dgvDSSoDangKy.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvDSSoDangKy_MouseClick);
             // 
             // TenLCT

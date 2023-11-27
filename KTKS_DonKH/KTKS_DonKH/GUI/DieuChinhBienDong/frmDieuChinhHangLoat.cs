@@ -330,7 +330,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                     ThongTin += "Định Mức";
                                                 else
                                                     ThongTin += ". Định Mức";
-                                                ctdcbd.DinhMuc_BD = 4;
+                                                ctdcbd.DinhMuc_BD = 0;
                                                 if (hd.DinhMucHN != null)
                                                 {
                                                     if (string.IsNullOrEmpty(ThongTin) == true)
