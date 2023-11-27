@@ -484,15 +484,15 @@ namespace ThuTien.GUI.Doi
                         if (totrinh.DaKy == true)
                             foreach (TT_CTToTrinhCatHuy item in totrinh.TT_CTToTrinhCatHuys.ToList())
                             {
-                                //string[] MaHDs = item.MaHD.Split(',');
-                                string[] SoHoaDons = item.SoHoaDon.Split(',');
-                                foreach (string SoHoaDon in SoHoaDons)
-                                    if (String.IsNullOrEmpty(SoHoaDon) == false && _cLenhHuy.CheckExist(SoHoaDon) == false)
+                                string[] MaHDs = item.MaHD.Split(',');
+                                //string[] SoHoaDons = item.SoHoaDon.Split(',');
+                                foreach (string MaHD in MaHDs)
+                                    if (String.IsNullOrEmpty(MaHD) == false && _cLenhHuy.CheckExist(int.Parse(MaHD)) == false)
                                     {
-                                        HOADON hoadon = _cHoaDon.Get(SoHoaDon);
+                                        HOADON hoadon = _cHoaDon.Get(int.Parse(MaHD));
                                         TT_LenhHuy lenhhuy = new TT_LenhHuy();
                                         lenhhuy.MaHD = hoadon.ID_HOADON;
-                                        lenhhuy.SoHoaDon = SoHoaDon;
+                                        lenhhuy.SoHoaDon = hoadon.SOHOADON;
                                         lenhhuy.DanhBo = hoadon.DANHBA;
                                         lenhhuy.TinhTrang = totrinh.TT_CTToTrinhCatHuys.SingleOrDefault(itemLst => itemLst.DanhBo == item.DanhBo).GhiChu;
                                         _cLenhHuy.Them(lenhhuy);
