@@ -48,7 +48,12 @@
             this.chkHanhThu = new System.Windows.Forms.CheckBox();
             this.chkDongNuoc = new System.Windows.Forms.CheckBox();
             this.chkAn = new System.Windows.Forms.CheckBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnXem = new System.Windows.Forms.Button();
+            this.cmbPhong = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTo)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -236,12 +241,50 @@
             this.chkAn.Text = "Ẩn";
             this.chkAn.UseVisualStyleBackColor = true;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnXem);
+            this.panel1.Controls.Add(this.cmbPhong);
+            this.panel1.Controls.Add(this.label11);
+            this.panel1.Location = new System.Drawing.Point(508, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(212, 78);
+            this.panel1.TabIndex = 43;
+            // 
+            // btnXem
+            // 
+            this.btnXem.Location = new System.Drawing.Point(6, 49);
+            this.btnXem.Name = "btnXem";
+            this.btnXem.Size = new System.Drawing.Size(75, 23);
+            this.btnXem.TabIndex = 41;
+            this.btnXem.Text = "Xem";
+            this.btnXem.UseVisualStyleBackColor = true;
+            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
+            // 
+            // cmbPhong
+            // 
+            this.cmbPhong.FormattingEnabled = true;
+            this.cmbPhong.Location = new System.Drawing.Point(6, 22);
+            this.cmbPhong.Name = "cmbPhong";
+            this.cmbPhong.Size = new System.Drawing.Size(200, 21);
+            this.cmbPhong.TabIndex = 40;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(3, 6);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(38, 13);
+            this.label11.TabIndex = 39;
+            this.label11.Text = "Phòng";
+            // 
             // frmTo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(561, 430);
+            this.ClientSize = new System.Drawing.Size(842, 430);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.chkAn);
             this.Controls.Add(this.chkDongNuoc);
             this.Controls.Add(this.chkHanhThu);
@@ -259,6 +302,8 @@
             this.Text = "Tổ";
             this.Load += new System.EventHandler(this.frmTo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTo)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -286,5 +331,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DenCuonGCS;
         private System.Windows.Forms.DataGridViewCheckBoxColumn An;
         private System.Windows.Forms.CheckBox chkAn;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnXem;
+        private System.Windows.Forms.ComboBox cmbPhong;
+        private System.Windows.Forms.Label label11;
     }
 }

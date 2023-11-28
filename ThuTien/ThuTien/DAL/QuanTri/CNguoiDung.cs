@@ -23,6 +23,34 @@ namespace ThuTien.DAL.QuanTri
             set { CNguoiDung._HoTen = value; }
         }
 
+        static int _IDPhong;
+        public static int IDPhong
+        {
+            get { return CNguoiDung._IDPhong; }
+            set { CNguoiDung._IDPhong = value; }
+        }
+
+        static string _TenPhong;
+        public static string TenPhong
+        {
+            get { return CNguoiDung._TenPhong; }
+            set { CNguoiDung._TenPhong = value; }
+        }
+
+        static int _TuDot;
+        public static int TuDot
+        {
+            get { return _TuDot; }
+            set { _TuDot = value; }
+        }
+
+        static int _DenDot;
+        public static int DenDot
+        {
+            get { return _DenDot; }
+            set { _DenDot = value; }
+        }
+
         static int _MaTo;
         public static int MaTo
         {
@@ -35,6 +63,20 @@ namespace ThuTien.DAL.QuanTri
         {
             get { return CNguoiDung._TenTo; }
             set { CNguoiDung._TenTo = value; }
+        }
+
+        static int _TuMayDS;
+        public static int TuMayDS
+        {
+            get { return _TuMayDS; }
+            set { _TuMayDS = value; }
+        }
+
+        static int _DenMayDS;
+        public static int DenMayDS
+        {
+            get { return _DenMayDS; }
+            set { _DenMayDS = value; }
         }
 
         static string _MaKemBamChi;
@@ -70,6 +112,20 @@ namespace ThuTien.DAL.QuanTri
         {
             get { return CNguoiDung._ToTruong; }
             set { CNguoiDung._ToTruong = value; }
+        }
+
+        static string _ChucVu;
+        public static string ChucVu
+        {
+            get { return CNguoiDung._ChucVu; }
+            set { CNguoiDung._ChucVu = value; }
+        }
+
+        static string _NguoiKy;
+        public static string NguoiKy
+        {
+            get { return CNguoiDung._NguoiKy; }
+            set { CNguoiDung._NguoiKy = value; }
         }
 
         static bool _SyncNopTien;
@@ -285,7 +341,7 @@ namespace ThuTien.DAL.QuanTri
 
         public List<TT_NguoiDung> GetDS_Admin(int IDPhong)
         {
-            return _db.TT_NguoiDungs.Where(item => item.IDPhong == IDPhong).OrderBy(item => item.STT).ToList();
+            return _db.TT_NguoiDungs.Where(item => item.TT_To.IDPhong == IDPhong).OrderBy(item => item.STT).ToList();
         }
 
         /// <summary>
@@ -447,6 +503,16 @@ namespace ThuTien.DAL.QuanTri
                               item.Name_PC,
                           };
             return LINQToDataTable(query);
+        }
+
+        public string getChucVu()
+        {
+            return _db.TT_NguoiDungs.FirstOrDefault(item => item.KyTen == true).ChucVu;
+        }
+
+        public string getNguoiKy()
+        {
+            return _db.TT_NguoiDungs.FirstOrDefault(item => item.KyTen == true).HoTen;
         }
     }
 }

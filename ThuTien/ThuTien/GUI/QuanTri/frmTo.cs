@@ -31,13 +31,31 @@ namespace ThuTien.GUI.QuanTri
             chkAn.Checked = false;
             txtTuCuonGCS.Text = "";
             txtDenCuonGCS.Text = "";
-            dgvTo.DataSource = _cTo.getDS_All();
+            loaddgv();
+        }
+
+        public void loaddgv()
+        {
+            if (CNguoiDung.Admin)
+                dgvTo.DataSource = _cTo.getDS(((Phong)cmbPhong.SelectedItem).ID);
+            else
+                dgvTo.DataSource = _cTo.getDS();
         }
 
         private void frmTo_Load(object sender, EventArgs e)
         {
             dgvTo.AutoGenerateColumns = false;
-            dgvTo.DataSource = _cTo.getDS();
+            if (CNguoiDung.Admin)
+            {
+                panel1.Visible = true;
+                cmbPhong.DataSource = _cTo.getDS_Phong();
+                cmbPhong.DisplayMember = "Name";
+                cmbPhong.ValueMember = "ID";
+            }
+            else
+            {
+                panel1.Visible = false;
+            }
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -55,6 +73,7 @@ namespace ThuTien.GUI.QuanTri
                         to.TuCuonGCS = int.Parse(txtTuCuonGCS.Text.Trim());
                     if (!string.IsNullOrEmpty(txtDenCuonGCS.Text.Trim()))
                         to.DenCuonGCS = int.Parse(txtDenCuonGCS.Text.Trim());
+                    to.IDPhong = CNguoiDung.IDPhong;
                     _cTo.Them(to);
                     Clear();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -147,6 +166,11 @@ namespace ThuTien.GUI.QuanTri
         {
             if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
                 e.Handled = true;
+        }
+
+        private void btnXem_Click(object sender, EventArgs e)
+        {
+            loaddgv();
         }
 
         
