@@ -1068,23 +1068,6 @@
       <Column Name="TTKY10" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.[To]" Member="Tos">
-    <Type Name="To">
-      <Column Name="MaTo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="TenTo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="KyHieu" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="HanhThu" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="TuMay" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DenMay" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TuCuonGCS" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DenCuonGCS" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="To_NguoiDung" Member="NguoiDungs" ThisKey="MaTo" OtherKey="MaTo" Type="NguoiDung" />
-    </Type>
-  </Table>
   <Table Name="dbo.TTDHN" Member="TTDHNs">
     <Type Name="TTDHN">
       <Column Name="TTDHN" Member="TTDHN1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
@@ -1223,7 +1206,6 @@
       <Column Name="ChucVu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="KyTen" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="An" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="IDPhong" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="MaTo" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="MaNhom" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -1235,12 +1217,32 @@
       <Association Name="To_NguoiDung" Member="To" ThisKey="MaTo" OtherKey="MaTo" Type="To" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.[To]" Member="Tos">
+    <Type Name="To">
+      <Column Name="MaTo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenTo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="KyHieu" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="HanhThu" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="TuMay" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DenMay" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TuCuonGCS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DenCuonGCS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IDPhong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="To_NguoiDung" Member="NguoiDungs" ThisKey="MaTo" OtherKey="MaTo" Type="NguoiDung" />
+      <Association Name="Phong_To" Member="Phong" ThisKey="IDPhong" OtherKey="ID" Type="Phong" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.Phong" Member="Phongs">
     <Type Name="Phong">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="TuDot" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DenDot" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Phong_To" Member="Tos" ThisKey="ID" OtherKey="IDPhong" Type="To" />
     </Type>
   </Table>
 </Database>

@@ -30,20 +30,6 @@ namespace DocSo_PC.DAL.QuanTri
             set { CNguoiDung._Dot = value; }
         }
 
-        static int _TuMayDS;
-        public static int TuMayDS
-        {
-            get { return _TuMayDS; }
-            set { _TuMayDS = value; }
-        }
-
-        static int _DenMayDS;
-        public static int DenMayDS
-        {
-            get { return _DenMayDS; }
-            set { _DenMayDS = value; }
-        }
-
         static int _MaND;
         public static int MaND
         {
@@ -65,6 +51,34 @@ namespace DocSo_PC.DAL.QuanTri
             set { CNguoiDung._HoTen = value; }
         }
 
+        static int _IDPhong;
+        public static int IDPhong
+        {
+            get { return CNguoiDung._IDPhong; }
+            set { CNguoiDung._IDPhong = value; }
+        }
+
+        static string _TenPhong;
+        public static string TenPhong
+        {
+            get { return CNguoiDung._TenPhong; }
+            set { CNguoiDung._TenPhong = value; }
+        }
+
+        static int _TuDot;
+        public static int TuDot
+        {
+            get { return _TuDot; }
+            set { _TuDot = value; }
+        }
+
+        static int _DenDot;
+        public static int DenDot
+        {
+            get { return _DenDot; }
+            set { _DenDot = value; }
+        }
+
         static int _MaTo;
         public static int MaTo
         {
@@ -77,6 +91,20 @@ namespace DocSo_PC.DAL.QuanTri
         {
             get { return CNguoiDung._TenTo; }
             set { CNguoiDung._TenTo = value; }
+        }
+
+        static int _TuMayDS;
+        public static int TuMayDS
+        {
+            get { return _TuMayDS; }
+            set { _TuMayDS = value; }
+        }
+
+        static int _DenMayDS;
+        public static int DenMayDS
+        {
+            get { return _DenMayDS; }
+            set { _DenMayDS = value; }
         }
 
         static bool _Admin;
@@ -121,25 +149,18 @@ namespace DocSo_PC.DAL.QuanTri
             set { CNguoiDung._ThuKy = value; }
         }
 
-        static string _ChucVu = "";
+        static string _ChucVu;
         public static string ChucVu
         {
             get { return CNguoiDung._ChucVu; }
             set { CNguoiDung._ChucVu = value; }
         }
 
-        static string _NguoiKy = "";
+        static string _NguoiKy;
         public static string NguoiKy
         {
             get { return CNguoiDung._NguoiKy; }
             set { CNguoiDung._NguoiKy = value; }
-        }
-
-        static string _TenPhong = "ĐỘI QUẢN LÝ ĐỒNG HỒ NƯỚC";
-        public static string TenPhong
-        {
-            get { return CNguoiDung._TenPhong; }
-            set { CNguoiDung._TenPhong = value; }
         }
 
         static string _DanhBos = "";
@@ -307,14 +328,14 @@ namespace DocSo_PC.DAL.QuanTri
         /// </summary>
         /// <param name="MaND"></param>
         /// <returns></returns>
-        public List<NguoiDung> GetDSExceptMaND(int MaND)
+        public List<NguoiDung> GetDSExceptMaND(int IDPhong, int MaND)
         {
-            return _db.NguoiDungs.Where(item => item.MaND != MaND && item.MaND != 0 && item.An == false && item.PhoGiamDoc == false).OrderBy(item => item.STT).ToList();
+            return _db.NguoiDungs.Where(item => item.MaND != MaND && item.MaND != 0 && item.An == false && item.PhoGiamDoc == false && item.To.Phong.ID == IDPhong).OrderBy(item => item.STT).ToList();
         }
 
-        public List<NguoiDung> GetDSExceptMaND_Doi(int MaND)
+        public List<NguoiDung> GetDSExceptMaND_Doi(int IDPhong, int MaND)
         {
-            return _db.NguoiDungs.Where(item => item.MaND != MaND && item.MaND != 0 && item.PhoGiamDoc == false).OrderBy(item => item.STT).ToList();
+            return _db.NguoiDungs.Where(item => item.MaND != MaND && item.MaND != 0 && item.PhoGiamDoc == false && item.To.Phong.ID == IDPhong).OrderBy(item => item.STT).ToList();
         }
 
         public List<NguoiDung> GetDS_Admin()
@@ -324,7 +345,7 @@ namespace DocSo_PC.DAL.QuanTri
 
         public List<NguoiDung> GetDS_Admin(int IDPhong)
         {
-            return _db.NguoiDungs.Where(item => item.IDPhong == IDPhong).OrderBy(item => item.STT).ToList();
+            return _db.NguoiDungs.Where(item => item.To.IDPhong == IDPhong).OrderBy(item => item.STT).ToList();
         }
 
         /// <summary>
@@ -419,12 +440,12 @@ namespace DocSo_PC.DAL.QuanTri
 
         public string getChucVu()
         {
-            return _db.NguoiDungs.SingleOrDefault(item => item.KyTen == true).ChucVu;
+            return _db.NguoiDungs.FirstOrDefault(item => item.KyTen == true).ChucVu;
         }
 
         public string getNguoiKy()
         {
-            return _db.NguoiDungs.SingleOrDefault(item => item.KyTen == true).HoTen;
+            return _db.NguoiDungs.FirstOrDefault(item => item.KyTen == true).HoTen;
         }
 
     }

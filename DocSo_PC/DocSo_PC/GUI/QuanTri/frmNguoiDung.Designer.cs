@@ -819,15 +819,15 @@
             // cmbPhong
             // 
             this.cmbPhong.FormattingEnabled = true;
-            this.cmbPhong.Location = new System.Drawing.Point(15, 24);
+            this.cmbPhong.Location = new System.Drawing.Point(6, 22);
             this.cmbPhong.Name = "cmbPhong";
-            this.cmbPhong.Size = new System.Drawing.Size(121, 21);
+            this.cmbPhong.Size = new System.Drawing.Size(200, 21);
             this.cmbPhong.TabIndex = 40;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(12, 8);
+            this.label11.Location = new System.Drawing.Point(3, 6);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(38, 13);
             this.label11.TabIndex = 39;
@@ -840,12 +840,12 @@
             this.panel1.Controls.Add(this.label11);
             this.panel1.Location = new System.Drawing.Point(661, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(151, 83);
+            this.panel1.Size = new System.Drawing.Size(212, 78);
             this.panel1.TabIndex = 41;
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(15, 51);
+            this.btnXem.Location = new System.Drawing.Point(6, 49);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(75, 23);
             this.btnXem.TabIndex = 41;

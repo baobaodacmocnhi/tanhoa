@@ -29,13 +29,32 @@ namespace DocSo_PC.GUI.QuanTri
             chkHanhThu.Checked = false;
             txtTuMay.Text = "";
             txtDenMay.Text = "";
-            dgvTo.DataSource = _cTo.getDS();
+            loaddgv();
+        }
+
+        public void loaddgv()
+        {
+            if (CNguoiDung.Admin)
+                dgvTo.DataSource = _cTo.getDS(((Phong)cmbPhong.SelectedItem).ID);
+            else
+                dgvTo.DataSource = _cTo.getDS();
         }
 
         private void frmTo_Load(object sender, EventArgs e)
         {
             dgvTo.AutoGenerateColumns = false;
-            dgvTo.DataSource = _cTo.getDS();
+            if (CNguoiDung.Admin)
+            {
+                panel1.Visible = true;
+                cmbPhong.DataSource = _cTo.getDS_Phong();
+                cmbPhong.DisplayMember = "Name";
+                cmbPhong.ValueMember = "ID";
+            }
+            else
+            {
+                panel1.Visible = false;
+            }
+            loaddgv();
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -51,6 +70,7 @@ namespace DocSo_PC.GUI.QuanTri
                         to.TuMay = int.Parse(txtTuMay.Text.Trim());
                     if (!string.IsNullOrEmpty(txtDenMay.Text.Trim()))
                         to.DenMay = int.Parse(txtDenMay.Text.Trim());
+                    to.IDPhong = CNguoiDung.IDPhong;
                     _cTo.Them(to);
                     Clear();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -141,7 +161,12 @@ namespace DocSo_PC.GUI.QuanTri
                 e.Handled = true;
         }
 
-      
+        private void btnXem_Click(object sender, EventArgs e)
+        {
+            loaddgv();
+        }
+
+
 
     }
 }

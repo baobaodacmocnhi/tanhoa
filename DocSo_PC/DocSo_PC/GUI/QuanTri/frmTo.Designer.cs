@@ -44,7 +44,12 @@
             this.txtDenMay = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.chkHanhThu = new System.Windows.Forms.CheckBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnXem = new System.Windows.Forms.Button();
+            this.cmbPhong = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTo)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -58,7 +63,7 @@
             // 
             // txtTenTo
             // 
-            this.txtTenTo.Location = new System.Drawing.Point(91, 12);
+            this.txtTenTo.Location = new System.Drawing.Point(63, 12);
             this.txtTenTo.Name = "txtTenTo";
             this.txtTenTo.Size = new System.Drawing.Size(100, 20);
             this.txtTenTo.TabIndex = 1;
@@ -121,7 +126,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(407, 12);
+            this.btnThem.Location = new System.Drawing.Point(248, 12);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 23);
             this.btnThem.TabIndex = 6;
@@ -131,7 +136,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(407, 41);
+            this.btnSua.Location = new System.Drawing.Point(248, 41);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 7;
@@ -141,7 +146,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(407, 70);
+            this.btnXoa.Location = new System.Drawing.Point(248, 70);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 8;
@@ -151,9 +156,9 @@
             // 
             // txtTuMay
             // 
-            this.txtTuMay.Location = new System.Drawing.Point(91, 61);
+            this.txtTuMay.Location = new System.Drawing.Point(63, 61);
             this.txtTuMay.Name = "txtTuMay";
-            this.txtTuMay.Size = new System.Drawing.Size(100, 20);
+            this.txtTuMay.Size = new System.Drawing.Size(50, 20);
             this.txtTuMay.TabIndex = 3;
             this.txtTuMay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCuonGCS_From_KeyPress);
             // 
@@ -168,16 +173,16 @@
             // 
             // txtDenMay
             // 
-            this.txtDenMay.Location = new System.Drawing.Point(283, 61);
+            this.txtDenMay.Location = new System.Drawing.Point(178, 61);
             this.txtDenMay.Name = "txtDenMay";
-            this.txtDenMay.Size = new System.Drawing.Size(100, 20);
+            this.txtDenMay.Size = new System.Drawing.Size(50, 20);
             this.txtDenMay.TabIndex = 5;
             this.txtDenMay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCuonGCS_To_KeyPress);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(197, 64);
+            this.label3.Location = new System.Drawing.Point(119, 64);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 13);
             this.label3.TabIndex = 4;
@@ -186,18 +191,56 @@
             // chkHanhThu
             // 
             this.chkHanhThu.AutoSize = true;
-            this.chkHanhThu.Location = new System.Drawing.Point(91, 38);
+            this.chkHanhThu.Location = new System.Drawing.Point(63, 38);
             this.chkHanhThu.Name = "chkHanhThu";
             this.chkHanhThu.Size = new System.Drawing.Size(74, 17);
             this.chkHanhThu.TabIndex = 10;
             this.chkHanhThu.Text = "Hành Thu";
             this.chkHanhThu.UseVisualStyleBackColor = true;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnXem);
+            this.panel1.Controls.Add(this.cmbPhong);
+            this.panel1.Controls.Add(this.label11);
+            this.panel1.Location = new System.Drawing.Point(345, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(212, 78);
+            this.panel1.TabIndex = 42;
+            // 
+            // btnXem
+            // 
+            this.btnXem.Location = new System.Drawing.Point(6, 49);
+            this.btnXem.Name = "btnXem";
+            this.btnXem.Size = new System.Drawing.Size(75, 23);
+            this.btnXem.TabIndex = 41;
+            this.btnXem.Text = "Xem";
+            this.btnXem.UseVisualStyleBackColor = true;
+            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
+            // 
+            // cmbPhong
+            // 
+            this.cmbPhong.FormattingEnabled = true;
+            this.cmbPhong.Location = new System.Drawing.Point(6, 22);
+            this.cmbPhong.Name = "cmbPhong";
+            this.cmbPhong.Size = new System.Drawing.Size(200, 21);
+            this.cmbPhong.TabIndex = 40;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(3, 6);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(38, 13);
+            this.label11.TabIndex = 39;
+            this.label11.Text = "Phòng";
+            // 
             // frmTo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(500, 430);
+            this.ClientSize = new System.Drawing.Size(571, 430);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.chkHanhThu);
             this.Controls.Add(this.txtDenMay);
             this.Controls.Add(this.label3);
@@ -213,6 +256,8 @@
             this.Text = "Tổ";
             this.Load += new System.EventHandler(this.frmTo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTo)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -236,5 +281,9 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn HanhThu;
         private System.Windows.Forms.DataGridViewTextBoxColumn TuMay;
         private System.Windows.Forms.DataGridViewTextBoxColumn DenMay;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnXem;
+        private System.Windows.Forms.ComboBox cmbPhong;
+        private System.Windows.Forms.Label label11;
     }
 }

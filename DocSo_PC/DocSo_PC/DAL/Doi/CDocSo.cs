@@ -252,6 +252,44 @@ namespace DocSo_PC.DAL.Doi
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
+        public DataTable getTong_TaoDot(string IDPhong, string Nam, string Ky)
+        {
+            string sql = "";
+            if (Ky == "01")
+                sql = "declare @TuDot int=(select TuDot from Phong where ID=" + IDPhong + ")"
+                    + " declare @DenDot int=(select DenDot from Phong where ID=" + IDPhong + ")"
+                    + " select *"
+                            + " ,TongHD=(select COUNT(*) from HOADON_TA.dbo.HOADON where NAM=t1.Nam-1 and KY=12 and DOT=t1.Dot)"
+                            + " ,TongBD=(select COUNT(*) from BienDong where Nam=t1.Nam and Ky=t1.Ky and Dot=t1.Dot)"
+                            + " ,TongTD=(select COUNT(*) from DocSo where Nam=t1.Nam and Ky=t1.Ky and Dot=t1.Dot)"
+                            + " ,CreateDateBD=(select top 1 NgayCapNhat from BienDong where BienDongID like '" + Nam + Ky + "%' and Dot=t1.Dot)"
+                            + " ,CreateDateTD=(select top 1 NgayTaoDot from DocSo where DocSoID like '" + Nam + Ky + "%' and Dot=t1.Dot)"
+                            + " from"
+                            + " (select Nam=SUBSTRING(BillID,0,5)"
+                            + " ,Ky=SUBSTRING(BillID,5,2)"
+                            + " ,Dot=SUBSTRING(BillID,7,2)"
+                            + " ,BillID=BillID"
+                            + " ,Chot=case when izDS is null then 'false' else 'true' end"
+                            + " from BillState where BillID>='" + Nam + Ky + "'+RIGHT('0' + CAST(@TuDot AS VARCHAR(2)), 2) and BillID<='" + Nam + Ky + "'+RIGHT('0' + CAST(@DenDot AS VARCHAR(2)), 2))t1";
+            else
+                sql = "declare @TuDot int=(select TuDot from Phong where ID=" + IDPhong + ")"
+                    + " declare @DenDot int=(select DenDot from Phong where ID=" + IDPhong + ")"
+                    + " select *"
+                        + " ,TongHD=(select COUNT(*) from HOADON_TA.dbo.HOADON where NAM=t1.Nam and KY=t1.Ky-1 and DOT=t1.Dot)"
+                        + " ,TongBD=(select COUNT(*) from BienDong where Nam=t1.Nam and Ky=t1.Ky and Dot=t1.Dot)"
+                        + " ,TongTD=(select COUNT(*) from DocSo where Nam=t1.Nam and Ky=t1.Ky and Dot=t1.Dot)"
+                        + " ,CreateDateBD=(select top 1 NgayCapNhat from BienDong where BienDongID like '" + Nam + Ky + "%' and Dot=t1.Dot)"
+                        + " ,CreateDateTD=(select top 1 NgayTaoDot from DocSo where DocSoID like '" + Nam + Ky + "%' and Dot=t1.Dot)"
+                        + " from"
+                        + " (select Nam=SUBSTRING(BillID,0,5)"
+                        + " ,Ky=SUBSTRING(BillID,5,2)"
+                        + " ,Dot=SUBSTRING(BillID,7,2)"
+                        + " ,BillID=BillID"
+                        + " ,Chot=case when izDS is null then 'false' else 'true' end"
+                        + " from BillState where BillID>='" + Nam + Ky + "'+RIGHT('0' + CAST(@TuDot AS VARCHAR(2)), 2) and BillID<='" + Nam + Ky + "'+RIGHT('0' + CAST(@DenDot AS VARCHAR(2)), 2))t1";
+            return _cDAL.ExecuteQuery_DataTable(sql);
+        }
+
         public DataTable getTaoDot_KiemTra(string Nam, string Ky, string Dot)
         {
             //string sql = "declare @Nam char(4),@Ky char(2),@Dot char(2),@Nam2 int,@Ky2 int"
@@ -464,7 +502,7 @@ namespace DocSo_PC.DAL.Doi
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
-        
+
 
         public DataTable getThongBao(string DanhBo)
         {

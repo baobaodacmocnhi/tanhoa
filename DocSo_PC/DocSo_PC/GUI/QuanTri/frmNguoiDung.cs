@@ -51,33 +51,18 @@ namespace DocSo_PC.GUI.QuanTri
             chkKyTen.Checked = false;
             chkAn.Checked = false;
             txtChucVu.Text = "";
-            if (CNguoiDung.Admin)
-            {
-                _blNguoiDung = new BindingList<NguoiDung>(_cNguoiDung.GetDS_Admin());
-            }
-            else
-            {
-                _blNguoiDung = new BindingList<NguoiDung>(_cNguoiDung.GetDSExceptMaND(CNguoiDung.MaND));
-            }
-            dgvNguoiDung.DataSource = _blNguoiDung;
+            _nguoidung = null;
+            loaddgv();
         }
 
         private void frmNguoiDung_Load(object sender, EventArgs e)
         {
-            loaddgv();
             dgvNguoiDung.AutoGenerateColumns = false;
-
-            cmbTo.DataSource = _cTo.getDS();
-            cmbTo.DisplayMember = "TenTo";
-            cmbTo.ValueMember = "MaTo";
-            //cmbTo.SelectedIndex = -1;
 
             cmbNhom.DataSource = _cNhom.GetDS();
             cmbNhom.DisplayMember = "TenNhom";
             cmbNhom.ValueMember = "MaNhom";
             //cmbNhom.SelectedIndex = -1;
-
-            dgvNguoiDung.DataSource = _blNguoiDung;
 
             if (CNguoiDung.Doi == true)
                 dgvNguoiDung.Columns["MatKhau"].Visible = true;
@@ -89,7 +74,13 @@ namespace DocSo_PC.GUI.QuanTri
                 cmbPhong.ValueMember = "ID";
             }
             else
+            {
                 panel1.Visible = false;
+                cmbTo.DataSource = _cTo.getDS(CNguoiDung.IDPhong);
+                cmbTo.DisplayMember = "TenTo";
+                cmbTo.ValueMember = "MaTo";
+            }
+            loaddgv();
         }
 
         public void fillEntity(NguoiDung en)
@@ -140,20 +131,21 @@ namespace DocSo_PC.GUI.QuanTri
             {
                 chkPhoGiamDoc.Visible = true;
                 chkAn.Visible = true;
-                _blNguoiDung = new BindingList<NguoiDung>(_cNguoiDung.GetDS_Admin());
+                _blNguoiDung = new BindingList<NguoiDung>(_cNguoiDung.GetDS_Admin(((Phong)cmbPhong.SelectedItem).ID));
             }
             else
                 if (CNguoiDung.Doi)
                 {
                     chkAn.Visible = true;
-                    _blNguoiDung = new BindingList<NguoiDung>(_cNguoiDung.GetDSExceptMaND_Doi(CNguoiDung.MaND));
+                    _blNguoiDung = new BindingList<NguoiDung>(_cNguoiDung.GetDSExceptMaND_Doi(CNguoiDung.IDPhong, CNguoiDung.MaND));
                 }
                 else
                 {
                     chkPhoGiamDoc.Visible = false;
                     chkAn.Visible = false;
-                    _blNguoiDung = new BindingList<NguoiDung>(_cNguoiDung.GetDSExceptMaND(CNguoiDung.MaND));
+                    _blNguoiDung = new BindingList<NguoiDung>(_cNguoiDung.GetDSExceptMaND(CNguoiDung.IDPhong, CNguoiDung.MaND));
                 }
+            dgvNguoiDung.DataSource = _blNguoiDung;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -495,7 +487,11 @@ namespace DocSo_PC.GUI.QuanTri
         {
             try
             {
-                _blNguoiDung = new BindingList<NguoiDung>(_cNguoiDung.GetDS_Admin(((Phong)cmbPhong.SelectedItem).ID));
+                loaddgv();
+
+                cmbTo.DataSource = _cTo.getDS(((Phong)cmbPhong.SelectedItem).ID);
+                cmbTo.DisplayMember = "TenTo";
+                cmbTo.ValueMember = "MaTo";
             }
             catch (Exception ex)
             {

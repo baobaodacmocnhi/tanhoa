@@ -65,6 +65,10 @@ namespace DocSo_PC.GUI.HeThong
                     CNguoiDung.updateChuyenListing = nguoidung.updateChuyenListing;
                     if (nguoidung.MaTo != null)
                     {
+                        CNguoiDung.IDPhong = nguoidung.To.IDPhong.Value;
+                        CNguoiDung.TenPhong = nguoidung.To.Phong.Name;
+                        CNguoiDung.TuDot = nguoidung.To.Phong.TuDot.Value;
+                        CNguoiDung.DenDot = nguoidung.To.Phong.DenDot.Value;
                         CNguoiDung.MaTo = nguoidung.MaTo.Value;
                         CNguoiDung.TenTo = nguoidung.To.TenTo;
                         if (_ct.get(nguoidung.MaTo.Value).TuMay != null)
@@ -74,14 +78,18 @@ namespace DocSo_PC.GUI.HeThong
                     }
                     else
                     {
+                        CNguoiDung.IDPhong = 0;
+                        CNguoiDung.TenPhong = "";
+                        CNguoiDung.TuDot = 0;
+                        CNguoiDung.DenDot = 0;
                         CNguoiDung.MaTo = 0;
                         CNguoiDung.TenTo = "";
+                        CNguoiDung.TuMayDS = 0;
+                        CNguoiDung.DenMayDS = 0;
                     }
-
                     if (nguoidung.MaNhom != null)
                         CNguoiDung.dtQuyenNhom = _cPhanQuyenNhom.GetDSByMaNhom(true, nguoidung.MaNhom.Value);
                     CNguoiDung.dtQuyenNguoiDung = _cPhanQuyenNguoiDung.GetDSByMaND(true, nguoidung.MaND);
-
                     string NamKyDot = _cLDS.getNamKyDot(DateTime.Now);
                     if (NamKyDot != "")
                     {
