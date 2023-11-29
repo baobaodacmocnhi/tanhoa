@@ -256,7 +256,7 @@
             this.groupBox3.Size = new System.Drawing.Size(619, 521);
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Chi Tiết 20 Đợt Trong Kỳ";
+            this.groupBox3.Text = "Chi Tiết 15 Đợt Trong Kỳ";
             // 
             // dgvDot
             // 

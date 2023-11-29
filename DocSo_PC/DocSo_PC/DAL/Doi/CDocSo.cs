@@ -252,7 +252,7 @@ namespace DocSo_PC.DAL.Doi
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
-        public DataTable getTong_TaoDot(string IDPhong, string Nam, string Ky)
+        public DataTable getTong_TaoDot(int IDPhong, string Nam, string Ky)
         {
             string sql = "";
             if (Ky == "01")
@@ -270,7 +270,8 @@ namespace DocSo_PC.DAL.Doi
                             + " ,Dot=SUBSTRING(BillID,7,2)"
                             + " ,BillID=BillID"
                             + " ,Chot=case when izDS is null then 'false' else 'true' end"
-                            + " from BillState where BillID>='" + Nam + Ky + "'+RIGHT('0' + CAST(@TuDot AS VARCHAR(2)), 2) and BillID<='" + Nam + Ky + "'+RIGHT('0' + CAST(@DenDot AS VARCHAR(2)), 2))t1";
+                            + " from BillState where BillID>='" + Nam + Ky + "'+RIGHT('0' + CAST(@TuDot AS VARCHAR(2)), 2) and BillID<='" + Nam + Ky + "'+RIGHT('0' + CAST(@DenDot AS VARCHAR(2)), 2))t1"
+                            +" order by Dot";
             else
                 sql = "declare @TuDot int=(select TuDot from Phong where ID=" + IDPhong + ")"
                     + " declare @DenDot int=(select DenDot from Phong where ID=" + IDPhong + ")"
@@ -286,7 +287,8 @@ namespace DocSo_PC.DAL.Doi
                         + " ,Dot=SUBSTRING(BillID,7,2)"
                         + " ,BillID=BillID"
                         + " ,Chot=case when izDS is null then 'false' else 'true' end"
-                        + " from BillState where BillID>='" + Nam + Ky + "'+RIGHT('0' + CAST(@TuDot AS VARCHAR(2)), 2) and BillID<='" + Nam + Ky + "'+RIGHT('0' + CAST(@DenDot AS VARCHAR(2)), 2))t1";
+                        + " from BillState where BillID>='" + Nam + Ky + "'+RIGHT('0' + CAST(@TuDot AS VARCHAR(2)), 2) and BillID<='" + Nam + Ky + "'+RIGHT('0' + CAST(@DenDot AS VARCHAR(2)), 2))t1"
+                        + " order by Dot";
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
