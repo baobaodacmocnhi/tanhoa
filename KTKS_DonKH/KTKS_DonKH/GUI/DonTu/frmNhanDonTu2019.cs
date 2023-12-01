@@ -85,6 +85,11 @@ namespace KTKS_DonKH.GUI.DonTu
             cmbPhongBanDoi.ValueMember = "Name";
             cmbPhongBanDoi.SelectedIndex = -1;
 
+            if (CTaiKhoan.Admin)
+                btnCapNhatHieuLuc.Visible = true;
+            else
+                btnCapNhatHieuLuc.Visible = false;
+
             if (_MaDon != -1)
             {
                 txtMaDon.Text = _MaDon.ToString();
@@ -1714,7 +1719,7 @@ namespace KTKS_DonKH.GUI.DonTu
                         _hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim().Replace(" ", ""));
                     byte[] bytes = _wsEContract.renderEContract(txtHopDong.Text.Trim(), txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now, txtHoTenMoi.Text.Trim(), txtCCCD.Text.Trim(), txtNgayCap.Text.Trim(), txtDCThuongTru.Text.Trim(), txtDCHienNay.Text.Trim(), txtDienThoaiMoi.Text.Trim(), txtFax.Text.Trim(), txtEmail.Text.Trim(), txtSTK.Text.Trim(), txtBank.Text.Trim(), txtMST.Text.Trim(), _hoadon.CoDH, txtDCLapDat.Text.Trim(), "", "tanho@2022", out error);
                     if (error == "")
-                        _cDonTu.viewPDF(1,bytes);
+                        _cDonTu.viewPDF(1, bytes);
                     else
                         MessageBox.Show("Thất bại " + error, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -1870,8 +1875,12 @@ namespace KTKS_DonKH.GUI.DonTu
                 {
                     if (MessageBox.Show("Bạn chắc chắn?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        string error;
-                        bool result = _wsEContract.editEContract(_dontu.MaDon.ToString(), "", "tanho@2022", out error);
+                        string error = "";
+                        bool result = false;
+                        if (txtPhieuChuyen.Text.Trim() == "")
+                            result = _wsEContract.editEContract(_dontu.MaDon.ToString(), "", "tanho@2022", out error);
+                        else
+                            result = _wsEContract.editEContract("", txtPhieuChuyen.Text.Trim(), "tanho@2022", out error);
                         if (result)
                         {
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

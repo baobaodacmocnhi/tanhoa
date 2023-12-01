@@ -109,3 +109,12 @@ and DANHBA not in (select distinct DanhBo from KTKS_DonKH.dbo.ChungTu_ChiTiet wh
 
 select count(MaCT) from KTKS_DonKH.dbo.ChungTu_ChiTiet where MaLCT=15 and cat=0 and DanhBo in
 (select sum(DM) from HOADON_TA.dbo.HOADON where nam=2023 and ky=10 and gb in (59,21,51,68) and DM>0)
+
+--TieuThu<DM
+select * from
+(select DANHBA,DM=case when exists(select dc.DinhMuc from HOADON hd,DIEUCHINH_HD dc
+where hd.ID_HOADON=dc.FK_HOADON and hd.ID_HOADON=hd2.ID_HOADON) then (select dc.DinhMuc from HOADON hd,DIEUCHINH_HD dc
+where hd.ID_HOADON=dc.FK_HOADON and hd.ID_HOADON=hd2.ID_HOADON) else hd2.DM end,TIEUTHU from HOADON hd2 where nam=2023 and ky=11 and DM>=40
+and DANHBA not in (select DanhBo from KTKS_DonKH.dbo.DCBD_ChiTietBienDong where HieuLucKy like '%12/2023%' and ThongTin like N'%Định Mức%'))t1
+where t1.DM>t1.TIEUTHU and DM-TIEUTHU>=4
+order by t1.DANHBA
