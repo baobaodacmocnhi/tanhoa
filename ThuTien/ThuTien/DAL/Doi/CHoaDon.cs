@@ -828,27 +828,20 @@ namespace ThuTien.DAL.Doi
         /// <returns></returns>
         public DataTable GetTongByNamKy(int Nam, int Ky)
         {
-            //var query = from item in _db.HOADONs
-            //            where item.NAM == Nam && item.KY == Ky
-            //            //orderby item.DOT ascending
-            //            group item by item.DOT into itemGroup
-            //            select new
-            //            {
-            //                Dot = itemGroup.Key,
-            //                TongHD = itemGroup.Count(),
-            //                TongTieuThu = itemGroup.Sum(groupItem => groupItem.TIEUTHU),
-            //                TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
-            //                TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
-            //                TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),TongPhiBVMT_Thue = itemGroup.Sum(groupItem => groupItem.ThueGTGT_TDVTN),
-            //                TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
-            //                itemGroup.FirstOrDefault().CreateDate,
-            //                HD0 = itemGroup.Count(groupItem => groupItem.TIEUTHU == 0),
-            //            };
-            //return LINQToDataTable(query.OrderBy(item => item.Dot));
             string sql = "select DOT,TongHD=COUNT(ID_HOADON),TongTieuThu=SUM(TIEUTHU),TongGiaBan=SUM(GIABAN),TongThueGTGT=SUM(THUE),"
                         + " TongPhiBVMT=SUM(PHI),TongPhiBVMT_Thue=SUM(ThueGTGT_TDVTN),TongCong=SUM(TONGCONG),HD0=COUNT(case when TIEUTHU = 0 then 1 else null end),"
                         + " SONGAY=MAX(SONGAY),CreateDate=MAX(CreateDate)"
                         + " from HOADON where NAM=" + Nam + " and KY=" + Ky
+                        + " group by DOT order by DOT";
+            return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetTongByNamKy(int Nam, int Ky, int FromDot, int ToDot)
+        {
+            string sql = "select DOT,TongHD=COUNT(ID_HOADON),TongTieuThu=SUM(TIEUTHU),TongGiaBan=SUM(GIABAN),TongThueGTGT=SUM(THUE),"
+                        + " TongPhiBVMT=SUM(PHI),TongPhiBVMT_Thue=SUM(ThueGTGT_TDVTN),TongCong=SUM(TONGCONG),HD0=COUNT(case when TIEUTHU = 0 then 1 else null end),"
+                        + " SONGAY=MAX(SONGAY),CreateDate=MAX(CreateDate)"
+                        + " from HOADON where NAM=" + Nam + " and KY=" + Ky + " and Dot>=" + FromDot + " and Dot<=" + ToDot
                         + " group by DOT order by DOT";
             return ExecuteQuery_DataTable(sql);
         }
@@ -4084,6 +4077,17 @@ namespace ThuTien.DAL.Doi
                     + " group by Ky) t1"
                     + " left join"
                     + " (select KY,TongHDTon=COUNT(ID_HOADON),TongGiaBanTon=SUM(GIABAN) from HOADON where NAM=" + Nam + " and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
+                    + " group by Ky) t2 on t1.KY=t2.KY order by t1.KY asc";
+            return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetBaoCaoTyLeTon(int Nam, int FromDot, int ToDot)
+        {
+            string sql = "select * from"
+                    + " (select KY,TongHD=COUNT(ID_HOADON),TongGiaBan=SUM(GIABAN) from HOADON where NAM=" + Nam + " and Dot>=" + FromDot + " and Dot<=" + ToDot
+                    + " group by Ky) t1"
+                    + " left join"
+                    + " (select KY,TongHDTon=COUNT(ID_HOADON),TongGiaBanTon=SUM(GIABAN) from HOADON where NAM=" + Nam + " and Dot>=" + FromDot + " and Dot<=" + ToDot + " and (KhoaTienDu=1 or NGAYGIAITRACH is null)"
                     + " group by Ky) t2 on t1.KY=t2.KY order by t1.KY asc";
             return ExecuteQuery_DataTable(sql);
         }
