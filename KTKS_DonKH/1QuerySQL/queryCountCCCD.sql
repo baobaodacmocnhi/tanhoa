@@ -118,3 +118,9 @@ where hd.ID_HOADON=dc.FK_HOADON and hd.ID_HOADON=hd2.ID_HOADON) else hd2.DM end,
 and DANHBA not in (select DanhBo from KTKS_DonKH.dbo.DCBD_ChiTietBienDong where HieuLucKy like '%12/2023%' and ThongTin like N'%Định Mức%'))t1
 where t1.DM>t1.TIEUTHU and DM-TIEUTHU>=4
 order by t1.DANHBA
+
+insert into KTKS_DonKH.dbo.DieuChinhHangLoat(DanhBo,Nam,Ky,Dot,DinhMuc,TieuThu,DCBD)
+select DanhBo=DanhBa,Nam,Ky,Dot,DinhMuc=DM,TieuThu=TieuThuMoi,DCBD=cast(1 as bit) from DocSoTH.dbo.DocSo
+where Nam=2023 and Ky=12 and Dot=1 and DM-TieuThuMoi>=4 and GB not in (21,51,59,68)
+and DanhBa not in (select distinct DanhBo from KTKS_DonKH.dbo.ChungTu_ChiTiet where Cat=0 and MaLCT=15)
+and DanhBa not in (select b.DanhBo from KTKS_DonKH.dbo.DonTu a,KTKS_DonKH.dbo.DonTu_ChiTiet b where a.MaDon=b.MaDon and a.Name_NhomDon_PKH like N'%định mức%' and CAST(a.CreateDate as date)>='20231101')

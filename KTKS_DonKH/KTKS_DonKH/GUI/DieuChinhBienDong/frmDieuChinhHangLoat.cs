@@ -108,7 +108,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 sql += " and DCBD=1";
             else
                 if (radDCHD.Checked)
-                    sql += " and DCHD=1s    ";
+                    sql += " and DCHD=1";
             sql += "  order by STT2 asc";
             dgvDanhSach.DataSource = _cDCBD.ExecuteQuery_DataTable(sql);
         }
@@ -140,7 +140,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         int STT = 0;
                         for (int i = 0; i < dgvDanhSach.Rows.Count; i++)
                         {
-                            HOADON hd = _cThuTien.Get(dgvDanhSach.Rows[i].Cells["DanhBo"].Value.ToString(), int.Parse(dgvDanhSach.Rows[0].Cells["Ky"].Value.ToString()), int.Parse(dgvDanhSach.Rows[0].Cells["Nam"].Value.ToString()));
+                            //HOADON hd = _cThuTien.Get(dgvDanhSach.Rows[i].Cells["DanhBo"].Value.ToString(), int.Parse(dgvDanhSach.Rows[0].Cells["Ky"].Value.ToString()), int.Parse(dgvDanhSach.Rows[0].Cells["Nam"].Value.ToString()));
+                            HOADON hd = _cThuTien.GetMoiNhat(dgvDanhSach.Rows[i].Cells["DanhBo"].Value.ToString());
                             if (hd != null)
                             {
                                 DonTu_ChiTiet entityCT = new DonTu_ChiTiet();
@@ -330,7 +331,17 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                     ThongTin += "Định Mức";
                                                 else
                                                     ThongTin += ". Định Mức";
-                                                ctdcbd.DinhMuc_BD = 0;
+                                                int TieuThu = int.Parse(_cDCBD.ExecuteQuery_ReturnOneValue("select TieuThu from  KTKS_DonKH.dbo.DieuChinhHangLoat where DanhBo='" + dontu_ChiTiet.DanhBo + "' and Nam=" + txtNam.Text.Trim() + " and Ky=" + txtKy.Text.Trim() + " and Dot=" + txtDot.Text.Trim()).ToString());
+                                                if (TieuThu == 0)
+                                                    ctdcbd.DinhMuc_BD = 0;
+                                                else
+                                                {
+                                                    while (TieuThu % 4 != 0)
+                                                    {
+                                                        TieuThu++;
+                                                    }
+                                                    ctdcbd.DinhMuc_BD = TieuThu;
+                                                }
                                                 if (hd.DinhMucHN != null)
                                                 {
                                                     if (string.IsNullOrEmpty(ThongTin) == true)
