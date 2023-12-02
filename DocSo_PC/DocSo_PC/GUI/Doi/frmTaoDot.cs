@@ -173,7 +173,7 @@ namespace DocSo_PC.GUI.Doi
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvDanhSach.DataSource = _cDocSo.getTong_TaoDot(CNguoiDung.IDPhong, cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString());
+            dgvDanhSach.DataSource = _cDocSo.getTong_TaoDot(cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), CNguoiDung.TuDot.ToString("00"), CNguoiDung.DenDot.ToString("00"));
             int TongHD = 0, TongBD = 0, TongTD = 0;
             foreach (DataGridViewRow item in dgvDanhSach.Rows)
             {

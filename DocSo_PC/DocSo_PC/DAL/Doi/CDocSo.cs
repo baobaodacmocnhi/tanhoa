@@ -252,13 +252,11 @@ namespace DocSo_PC.DAL.Doi
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
-        public DataTable getTong_TaoDot(int IDPhong, string Nam, string Ky)
+        public DataTable getTong_TaoDot(string Nam, string Ky, string TuDot, string DenDot)
         {
             string sql = "";
             if (Ky == "01")
-                sql = "declare @TuDot int=(select TuDot from Phong where ID=" + IDPhong + ")"
-                    + " declare @DenDot int=(select DenDot from Phong where ID=" + IDPhong + ")"
-                    + " select *"
+                sql = " select *"
                             + " ,TongHD=(select COUNT(*) from HOADON_TA.dbo.HOADON where NAM=t1.Nam-1 and KY=12 and DOT=t1.Dot)"
                             + " ,TongBD=(select COUNT(*) from BienDong where Nam=t1.Nam and Ky=t1.Ky and Dot=t1.Dot)"
                             + " ,TongTD=(select COUNT(*) from DocSo where Nam=t1.Nam and Ky=t1.Ky and Dot=t1.Dot)"
@@ -270,12 +268,10 @@ namespace DocSo_PC.DAL.Doi
                             + " ,Dot=SUBSTRING(BillID,7,2)"
                             + " ,BillID=BillID"
                             + " ,Chot=case when izDS is null then 'false' else 'true' end"
-                            + " from BillState where BillID>='" + Nam + Ky + "'+RIGHT('0' + CAST(@TuDot AS VARCHAR(2)), 2) and BillID<='" + Nam + Ky + "'+RIGHT('0' + CAST(@DenDot AS VARCHAR(2)), 2))t1"
-                            +" order by Dot";
+                            + " from BillState where BillID>='" + Nam + Ky + TuDot + "' and BillID<='" + Nam + Ky + DenDot + "')t1"
+                            + " order by Dot";
             else
-                sql = "declare @TuDot int=(select TuDot from Phong where ID=" + IDPhong + ")"
-                    + " declare @DenDot int=(select DenDot from Phong where ID=" + IDPhong + ")"
-                    + " select *"
+                sql = " select *"
                         + " ,TongHD=(select COUNT(*) from HOADON_TA.dbo.HOADON where NAM=t1.Nam and KY=t1.Ky-1 and DOT=t1.Dot)"
                         + " ,TongBD=(select COUNT(*) from BienDong where Nam=t1.Nam and Ky=t1.Ky and Dot=t1.Dot)"
                         + " ,TongTD=(select COUNT(*) from DocSo where Nam=t1.Nam and Ky=t1.Ky and Dot=t1.Dot)"
@@ -287,7 +283,7 @@ namespace DocSo_PC.DAL.Doi
                         + " ,Dot=SUBSTRING(BillID,7,2)"
                         + " ,BillID=BillID"
                         + " ,Chot=case when izDS is null then 'false' else 'true' end"
-                        + " from BillState where BillID>='" + Nam + Ky + "'+RIGHT('0' + CAST(@TuDot AS VARCHAR(2)), 2) and BillID<='" + Nam + Ky + "'+RIGHT('0' + CAST(@DenDot AS VARCHAR(2)), 2))t1"
+                        + " from BillState where BillID>='" + Nam + Ky + TuDot + "' and BillID<='" + Nam + Ky + DenDot + "')t1"
                         + " order by Dot";
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
@@ -618,6 +614,23 @@ namespace DocSo_PC.DAL.Doi
                         + " ,BillID=BillID,NgayChot"
                         + " ,Chot=case when izDS is null then 'false' else 'true' end"
                         + " from BillState where BillID like '" + Nam + Ky + "%')t1 order by t1.Dot asc";
+            return _cDAL.ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable getTong_ChuyenBilling(string Nam, string Ky, string TuDot, string DenDot)
+        {
+            string sql = "select *"
+                        + " ,TongHD=(select COUNT(DocSoID) from DocSo where Nam=t1.Nam and Ky=t1.Ky and Dot=t1.Dot)"
+                        + " ,TongTieuThu=(select SUM(TieuThuMoi) from DocSo where Nam=t1.Nam and Ky=t1.Ky and Dot=t1.Dot)"
+                        + " ,TongHDChuaChuyen=(select COUNT(DocSoID) from DocSo where Nam=t1.Nam and Ky=t1.Ky and Dot=t1.Dot and NgayChuyenListing is not null)"
+                        + " ,CreateDateChuyen=(select top 1 NgayChuyenListing from DocSo where Nam=t1.Nam and Ky=t1.Ky and Dot=t1.Dot and NgayChuyenListing is not null)"
+                        + " from"
+                        + " (select Nam=SUBSTRING(BillID,0,5)"
+                        + " ,Ky=SUBSTRING(BillID,5,2)"
+                        + " ,Dot=SUBSTRING(BillID,7,2)"
+                        + " ,BillID=BillID,NgayChot"
+                        + " ,Chot=case when izDS is null then 'false' else 'true' end"
+                        + " from BillState where BillID <= '" + Nam + Ky + TuDot + "' and BillID >= '" + Nam + Ky + DenDot + "')t1 order by t1.Dot asc";
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 

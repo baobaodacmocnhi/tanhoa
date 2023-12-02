@@ -53,27 +53,6 @@
             // cmbDot
             // 
             this.cmbDot.FormattingEnabled = true;
-            this.cmbDot.Items.AddRange(new object[] {
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20"});
             this.cmbDot.Location = new System.Drawing.Point(351, 12);
             this.cmbDot.Name = "cmbDot";
             this.cmbDot.Size = new System.Drawing.Size(39, 21);

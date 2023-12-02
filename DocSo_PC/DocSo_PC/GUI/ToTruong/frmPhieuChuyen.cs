@@ -45,7 +45,7 @@ namespace DocSo_PC.GUI.ToTruong
             if (CNguoiDung.Doi)
             {
                 cmbTo.Visible = true;
-                List<To> lst = _cTo.getDS_HanhThu();
+                List<To> lst = _cTo.getDS_HanhThu(CNguoiDung.IDPhong);
                 To en = new To();
                 en.MaTo = 0;
                 en.TenTo = "Tất Cả";

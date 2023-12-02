@@ -73,6 +73,11 @@ namespace DocSo_PC.DAL.QuanTri
             return _db.Tos.Where(item => item.HanhThu == true).ToList();
         }
 
+        public List<To> getDS_HanhThu(int IDPhong)
+        {
+            return _db.Tos.Where(item => item.IDPhong == IDPhong && item.HanhThu == true).ToList();
+        }
+
         public To get(int MaTo)
         {
             return _db.Tos.SingleOrDefault(item => item.MaTo == MaTo);

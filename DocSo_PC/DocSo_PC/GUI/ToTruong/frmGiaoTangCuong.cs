@@ -33,13 +33,22 @@ namespace DocSo_PC.GUI.ToTruong
             cmbNam.DisplayMember = "Nam";
             cmbNam.ValueMember = "Nam";
             cmbKy.SelectedItem = CNguoiDung.Ky;
+            for (int i = CNguoiDung.TuDot; i <= CNguoiDung.DenDot; i++)
+            {
+                cmbDot.Items.Add(i.ToString("00"));
+            }
             cmbDot.SelectedItem = CNguoiDung.Dot;
 
-            if (CNguoiDung.Doi)
+            if (CNguoiDung.Doi || CNguoiDung.Admin)
             {
                 cmbTo.Visible = true;
-
-                cmbTo.DataSource = _cTo.getDS_HanhThu();
+                List<To> lst = null;
+                if (CNguoiDung.Admin)
+                    lst = _cTo.getDS_HanhThu();
+                else
+                    if (CNguoiDung.Doi)
+                        lst = _cTo.getDS_HanhThu(CNguoiDung.IDPhong);
+                cmbTo.DataSource = lst;
                 cmbTo.DisplayMember = "TenTo";
                 cmbTo.ValueMember = "MaTo";
                 loadMay(cmbTo.SelectedValue.ToString());
@@ -118,7 +127,7 @@ namespace DocSo_PC.GUI.ToTruong
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-                dgvDanhSach.DataSource = _cDocSo.getDS_GiaoTangCuong(cmbMay.SelectedValue.ToString(), cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString());
+            dgvDanhSach.DataSource = _cDocSo.getDS_GiaoTangCuong(cmbMay.SelectedValue.ToString(), cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString());
         }
 
 

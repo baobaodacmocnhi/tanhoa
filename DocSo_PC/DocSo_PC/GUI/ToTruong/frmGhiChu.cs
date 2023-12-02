@@ -40,12 +40,22 @@ namespace DocSo_PC.GUI.ToTruong
             dgvThongKe.AutoGenerateColumns = false;
             dgvPhieuChuyen.AutoGenerateColumns = false;
             dgvGhiChu.AutoGenerateColumns = false;
+            cmbDot.Items.Add("Tất Cả");
+            for (int i = CNguoiDung.TuDot; i <= CNguoiDung.DenDot; i++)
+            {
+                cmbDot.Items.Add(i.ToString("00"));
+            }
             if (CNguoiDung.Admin)
                 btnChonFile.Visible = true;
-            if (CNguoiDung.Doi)
+            if (CNguoiDung.Doi || CNguoiDung.Admin)
             {
                 cmbTo.Visible = true;
-                List<To> lst = _cTo.getDS_HanhThu();
+                List<To> lst = null;
+                if (CNguoiDung.Admin)
+                    lst = _cTo.getDS_HanhThu();
+                else
+                    if (CNguoiDung.Doi)
+                        lst = _cTo.getDS_HanhThu(CNguoiDung.IDPhong);
                 To en = new To();
                 en.MaTo = 0;
                 en.TenTo = "Tất Cả";
