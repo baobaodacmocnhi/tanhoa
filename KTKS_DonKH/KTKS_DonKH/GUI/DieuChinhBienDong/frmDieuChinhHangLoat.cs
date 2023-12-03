@@ -211,11 +211,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             MessageBox.Show("Chưa có Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        if (_db.DieuChinhHangLoats.Any(item => item.Nam == int.Parse(dgvDanhSach.Rows[0].Cells["Nam"].Value.ToString()) && item.Ky == int.Parse(dgvDanhSach.Rows[0].Cells["Ky"].Value.ToString()) && item.Dot == int.Parse(dgvDanhSach.Rows[0].Cells["Dot"].Value.ToString()) && item.DaXuLy == true) == true)
-                        {
-                            MessageBox.Show("Đã Điều Chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
+                        //if (_db.DieuChinhHangLoats.Any(item => item.Nam == int.Parse(dgvDanhSach.Rows[0].Cells["Nam"].Value.ToString()) && item.Ky == int.Parse(dgvDanhSach.Rows[0].Cells["Ky"].Value.ToString()) && item.Dot == int.Parse(dgvDanhSach.Rows[0].Cells["Dot"].Value.ToString()) && item.DaXuLy == true) == true)
+                        //{
+                        //    MessageBox.Show("Đã Điều Chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //    return;
+                        //}
                         for (int i = 0; i < dgvDanhSach.Rows.Count; i++)
                         {
                             if (dgvDanhSach.Rows[i].Cells["MaDon"].Value.ToString() != "")
@@ -342,7 +342,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                     }
                                                     ctdcbd.DinhMuc_BD = TieuThu;
                                                 }
-                                                if (hd.DinhMucHN != null)
+                                                if (hd != null && hd.DinhMucHN != null)
                                                 {
                                                     if (string.IsNullOrEmpty(ThongTin) == true)
                                                         ThongTin += "Định Mức Nghèo";
