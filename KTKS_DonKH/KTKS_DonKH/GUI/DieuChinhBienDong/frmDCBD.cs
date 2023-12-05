@@ -1398,7 +1398,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             try
             {
-                if (dgvDSSoDangKy.Columns[e.ColumnIndex].Name == "MaCT")
+                if ((dgvDSSoDangKy["TenLCT", e.RowIndex].Value == null || dgvDSSoDangKy["TenLCT", e.RowIndex].Value.ToString() == "Căn cước công dân") && dgvDSSoDangKy.Columns[e.ColumnIndex].Name == "MaCT")
                 {
                     if (dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString().Trim().Length != 12)
                     {
