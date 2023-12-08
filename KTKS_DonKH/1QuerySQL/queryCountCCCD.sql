@@ -127,3 +127,11 @@ and DanhBa not in (select b.DanhBo from KTKS_DonKH.dbo.DonTu a,KTKS_DonKH.dbo.Do
 where a.MaDon=b.MaDon and (a.Name_NhomDon_PKH like N'%định mức%' or a.Name_NhomDon like N'%định mức%') and CAST(a.CreateDate as date)>='20231101')
 
 select danhbo,dinhmuc,dinhmuc_bd from KTKS_DonKH.dbo.DCBD_ChiTietBienDong where CreateBy=74  and CAST(CreateDate as date)>='20231208'
+
+--thông tin send zalo
+select *
+,Avatar=(select Avatar from TRUNGTAMKHACHHANG.dbo.Zalo_QuanTam where IDZalo=s.IDZalo)
+,Name=(select Name from TRUNGTAMKHACHHANG.dbo.Zalo_QuanTam where IDZalo=s.IDZalo)
+,CreateDate=(select CreateDate from TRUNGTAMKHACHHANG.dbo.Zalo_DangKy where IDZalo=s.IDZalo and DanhBo=s.DanhBo)
+from TRUNGTAMKHACHHANG.dbo.Zalo_Send s
+where DanhBo='13141983452' and Loai='thongbaocccd' 
