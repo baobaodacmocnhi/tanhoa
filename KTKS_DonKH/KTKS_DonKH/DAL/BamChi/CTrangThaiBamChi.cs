@@ -72,7 +72,7 @@ namespace KTKS_DonKH.DAL.BamChi
 
         public List<BamChi_TrangThai> GetDS()
         {
-                    return db.BamChi_TrangThais.OrderBy(item => item.STT).ToList();
+            return db.BamChi_TrangThais.OrderBy(item => item.TenTTBC).ToList();
         }
 
         public int GetMaxSTT()
