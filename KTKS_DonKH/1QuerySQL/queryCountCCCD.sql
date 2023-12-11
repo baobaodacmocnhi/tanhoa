@@ -126,7 +126,8 @@ and DanhBa not in (select distinct DanhBo from KTKS_DonKH.dbo.ChungTu_ChiTiet wh
 and DanhBa not in (select b.DanhBo from KTKS_DonKH.dbo.DonTu a,KTKS_DonKH.dbo.DonTu_ChiTiet b 
 where a.MaDon=b.MaDon and (a.Name_NhomDon_PKH like N'%định mức%' or a.Name_NhomDon like N'%định mức%') and CAST(a.CreateDate as date)>='20231101')
 
-select danhbo,dinhmuc,dinhmuc_bd from KTKS_DonKH.dbo.DCBD_ChiTietBienDong where CreateBy=74  and CAST(CreateDate as date)>='20231208'
+select DanhBo,DinhMuc,DinhMuc_BD,GiaBieu,Code=(select CodeMoi from DocSoTH.dbo.DocSo where DanhBa=DanhBo and nam=2023 and ky=12)
+from KTKS_DonKH.dbo.DCBD_ChiTietBienDong where CreateBy=74  and CAST(CreateDate as date)>='20231211'
 
 --thông tin send zalo
 select *
