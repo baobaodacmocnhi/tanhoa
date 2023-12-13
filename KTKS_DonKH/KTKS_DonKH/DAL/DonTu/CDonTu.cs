@@ -998,7 +998,6 @@ namespace KTKS_DonKH.DAL.DonTu
                     default:
                         break;
                 }
-
                 entity.MaDon = MaDon;
                 entity.STT = STT;
                 if (db.DonTu_LichSus.Count() == 0)

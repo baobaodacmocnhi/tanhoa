@@ -39,9 +39,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnChonFile = new System.Windows.Forms.Button();
             this.dgvDanhSach = new System.Windows.Forms.DataGridView();
-            this.btnTVDieuChinh = new System.Windows.Forms.Button();
-            this.radDCBD = new System.Windows.Forms.RadioButton();
-            this.radDCHD = new System.Windows.Forms.RadioButton();
             this.STT2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DaXuLy = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -52,6 +49,9 @@
             this.Dot = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UpdatedDHN = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.UpdatedDHN_Ngay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnTVDieuChinh = new System.Windows.Forms.Button();
+            this.radDCBD = new System.Windows.Forms.RadioButton();
+            this.radDCHD = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.SuspendLayout();
             // 
@@ -107,7 +107,6 @@
             this.txtKy.Name = "txtKy";
             this.txtKy.Size = new System.Drawing.Size(50, 20);
             this.txtKy.TabIndex = 99;
-            this.txtKy.Text = "10";
             // 
             // label2
             // 
@@ -124,7 +123,6 @@
             this.txtNam.Name = "txtNam";
             this.txtNam.Size = new System.Drawing.Size(50, 20);
             this.txtNam.TabIndex = 97;
-            this.txtNam.Text = "2023";
             // 
             // label1
             // 
@@ -166,38 +164,6 @@
             this.dgvDanhSach.Size = new System.Drawing.Size(787, 466);
             this.dgvDanhSach.TabIndex = 94;
             this.dgvDanhSach.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhSach_RowPostPaint);
-            // 
-            // btnTVDieuChinh
-            // 
-            this.btnTVDieuChinh.Location = new System.Drawing.Point(633, 7);
-            this.btnTVDieuChinh.Name = "btnTVDieuChinh";
-            this.btnTVDieuChinh.Size = new System.Drawing.Size(90, 23);
-            this.btnTVDieuChinh.TabIndex = 104;
-            this.btnTVDieuChinh.Text = "TV Điều Chỉnh";
-            this.btnTVDieuChinh.UseVisualStyleBackColor = true;
-            this.btnTVDieuChinh.Click += new System.EventHandler(this.btnTVDieuChinh_Click);
-            // 
-            // radDCBD
-            // 
-            this.radDCBD.AutoSize = true;
-            this.radDCBD.Checked = true;
-            this.radDCBD.Location = new System.Drawing.Point(12, 6);
-            this.radDCBD.Name = "radDCBD";
-            this.radDCBD.Size = new System.Drawing.Size(93, 17);
-            this.radDCBD.TabIndex = 106;
-            this.radDCBD.TabStop = true;
-            this.radDCBD.Text = "ĐC Biến Động";
-            this.radDCBD.UseVisualStyleBackColor = true;
-            // 
-            // radDCHD
-            // 
-            this.radDCHD.AutoSize = true;
-            this.radDCHD.Location = new System.Drawing.Point(12, 29);
-            this.radDCHD.Name = "radDCHD";
-            this.radDCHD.Size = new System.Drawing.Size(86, 17);
-            this.radDCHD.TabIndex = 107;
-            this.radDCHD.Text = "ĐC Hóa Đơn";
-            this.radDCHD.UseVisualStyleBackColor = true;
             // 
             // STT2
             // 
@@ -264,6 +230,38 @@
             this.UpdatedDHN_Ngay.DataPropertyName = "UpdatedDHN_Ngay";
             this.UpdatedDHN_Ngay.HeaderText = "UpdatedDHN_Ngay";
             this.UpdatedDHN_Ngay.Name = "UpdatedDHN_Ngay";
+            // 
+            // btnTVDieuChinh
+            // 
+            this.btnTVDieuChinh.Location = new System.Drawing.Point(633, 7);
+            this.btnTVDieuChinh.Name = "btnTVDieuChinh";
+            this.btnTVDieuChinh.Size = new System.Drawing.Size(90, 23);
+            this.btnTVDieuChinh.TabIndex = 104;
+            this.btnTVDieuChinh.Text = "TV Điều Chỉnh";
+            this.btnTVDieuChinh.UseVisualStyleBackColor = true;
+            this.btnTVDieuChinh.Click += new System.EventHandler(this.btnTVDieuChinh_Click);
+            // 
+            // radDCBD
+            // 
+            this.radDCBD.AutoSize = true;
+            this.radDCBD.Checked = true;
+            this.radDCBD.Location = new System.Drawing.Point(12, 6);
+            this.radDCBD.Name = "radDCBD";
+            this.radDCBD.Size = new System.Drawing.Size(93, 17);
+            this.radDCBD.TabIndex = 106;
+            this.radDCBD.TabStop = true;
+            this.radDCBD.Text = "ĐC Biến Động";
+            this.radDCBD.UseVisualStyleBackColor = true;
+            // 
+            // radDCHD
+            // 
+            this.radDCHD.AutoSize = true;
+            this.radDCHD.Location = new System.Drawing.Point(12, 29);
+            this.radDCHD.Name = "radDCHD";
+            this.radDCHD.Size = new System.Drawing.Size(86, 17);
+            this.radDCHD.TabIndex = 107;
+            this.radDCHD.Text = "ĐC Hóa Đơn";
+            this.radDCHD.UseVisualStyleBackColor = true;
             // 
             // frmDieuChinhHangLoat
             // 

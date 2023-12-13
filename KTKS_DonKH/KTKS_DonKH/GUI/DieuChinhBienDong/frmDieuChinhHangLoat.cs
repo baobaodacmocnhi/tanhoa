@@ -33,6 +33,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void frmDieuChinhHangLoat_Load(object sender, EventArgs e)
         {
             dgvDanhSach.AutoGenerateColumns = false;
+            txtNam.Text = DateTime.Now.Year.ToString();
+            txtKy.Text = DateTime.Now.Month.ToString();
         }
 
         private void btnChonFile_Click(object sender, EventArgs e)
