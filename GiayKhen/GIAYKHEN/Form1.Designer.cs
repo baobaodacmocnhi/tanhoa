@@ -187,7 +187,7 @@
             this.txtQuyetDinhCaNhan.Name = "txtQuyetDinhCaNhan";
             this.txtQuyetDinhCaNhan.Size = new System.Drawing.Size(160, 26);
             this.txtQuyetDinhCaNhan.TabIndex = 3;
-            this.txtQuyetDinhCaNhan.Text = "0272/QĐ-TH-TCHC";
+            this.txtQuyetDinhCaNhan.Text = "0291/QĐ-TH-TCHC";
             this.txtQuyetDinhCaNhan.TextChanged += new System.EventHandler(this.txtQuyetDinhCaNhan_TextChanged);
             // 
             // label4
