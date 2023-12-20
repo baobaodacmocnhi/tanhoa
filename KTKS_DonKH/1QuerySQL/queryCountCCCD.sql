@@ -121,14 +121,14 @@ order by t1.DANHBA
 
 insert into KTKS_DonKH.dbo.DieuChinhHangLoat(DanhBo,Nam,Ky,Dot,DinhMuc,TieuThu,DCBD)
 select DanhBo=DanhBa,Nam,Ky,Dot,DinhMuc=DM,TieuThu=TieuThuMoi,DCBD=cast(1 as bit) from DocSoTH.dbo.DocSo
-where Nam=2023 and Ky=12 and Dot=14 and TieuThuMoi>=0 and DM-TieuThuMoi>=4 and GB not in (21,51,59,68)
+where Nam=2023 and Ky=12 and Dot=19 and TieuThuMoi>=0 and DM-TieuThuMoi>=4 and GB not in (21,51,59,68)
 and DanhBa not in (select distinct DanhBo from KTKS_DonKH.dbo.ChungTu_ChiTiet where Cat=0 and MaLCT=15)
 and DanhBa not in (select b.DanhBo from KTKS_DonKH.dbo.DonTu a,KTKS_DonKH.dbo.DonTu_ChiTiet b 
 where a.MaDon=b.MaDon and (a.Name_NhomDon_PKH like N'%định mức%' or a.Name_NhomDon like N'%định mức%'
 or a.Name_NhomDon like N'%thông tin khách hàng%' ) and CAST(a.CreateDate as date)>='20231101')
 
 select DanhBo,DinhMuc,DinhMuc_BD,GiaBieu,Code=(select CodeMoi from DocSoTH.dbo.DocSo where DanhBa=DanhBo and nam=2023 and ky=12)
-from KTKS_DonKH.dbo.DCBD_ChiTietBienDong where CreateBy=74  and CAST(CreateDate as date)>='20231215' and dot=13
+from KTKS_DonKH.dbo.DCBD_ChiTietBienDong where CreateBy=74  and CAST(CreateDate as date)>='20231220' and dot=13
 
 --thông tin send zalo
 select *
@@ -137,3 +137,4 @@ select *
 ,CreateDate=(select CreateDate from TRUNGTAMKHACHHANG.dbo.Zalo_DangKy where IDZalo=s.IDZalo and DanhBo=s.DanhBo)
 from TRUNGTAMKHACHHANG.dbo.Zalo_Send s
 where DanhBo='13141983452' and Loai='thongbaocccd' 
+

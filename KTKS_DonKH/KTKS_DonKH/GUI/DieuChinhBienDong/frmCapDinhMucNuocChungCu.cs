@@ -173,7 +173,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             return;
                         }
                         ///Kiểm tra Danh Bộ & Số Chứng Từ
-                        if (_cChungTu.CheckExist_CT(_hoadon.DANHBA, txtCCCD.Text.Trim(), 15))
+                        if (_hoadon != null && _cChungTu.CheckExist_CT(_hoadon.DANHBA, txtCCCD.Text.Trim(), 15))
                         {
                             MessageBox.Show("Đã đăng ký với Danh Bộ này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             foreach (DataGridViewRow item in dgvDanhSach.Rows)
