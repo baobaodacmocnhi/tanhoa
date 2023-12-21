@@ -279,7 +279,10 @@ namespace DocSo_PC.GUI.Doi
                 if (_docso != null)
                 {
                     FillEntity(_docso);
-                    dgvDot.DataSource = _docso.Lich_DocSo_ChiTiets.Where(o => o.IDDot >= CNguoiDung.TuDot && o.IDDot <= CNguoiDung.DenDot).ToList();
+                    if (CNguoiDung.Admin)
+                        dgvDot.DataSource = _docso.Lich_DocSo_ChiTiets.ToList();
+                    else
+                        dgvDot.DataSource = _docso.Lich_DocSo_ChiTiets.Where(o => o.IDDot >= CNguoiDung.TuDot && o.IDDot <= CNguoiDung.DenDot).ToList();
                 }
             }
             catch
