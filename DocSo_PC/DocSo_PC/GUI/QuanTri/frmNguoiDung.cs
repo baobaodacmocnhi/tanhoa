@@ -489,14 +489,19 @@ namespace DocSo_PC.GUI.QuanTri
             {
                 loaddgv();
 
-                cmbTo.DataSource = _cTo.getDS(((Phong)cmbPhong.SelectedItem).ID);
-                cmbTo.DisplayMember = "TenTo";
-                cmbTo.ValueMember = "MaTo";
+                
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void cmbPhong_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cmbTo.DataSource = _cTo.getDS(((Phong)cmbPhong.SelectedItem).ID);
+            cmbTo.DisplayMember = "TenTo";
+            cmbTo.ValueMember = "MaTo";
         }
 
 

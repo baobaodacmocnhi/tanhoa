@@ -115,6 +115,8 @@
             this.chkKyTen = new System.Windows.Forms.CheckBox();
             this.txtChucVu = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.txtMay = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNguoiDung)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -866,6 +868,7 @@
             this.cmbPhong.Name = "cmbPhong";
             this.cmbPhong.Size = new System.Drawing.Size(200, 21);
             this.cmbPhong.TabIndex = 40;
+            this.cmbPhong.SelectedIndexChanged += new System.EventHandler(this.cmbPhong_SelectedIndexChanged);
             // 
             // label11
             // 
@@ -902,12 +905,30 @@
             this.label12.TabIndex = 43;
             this.label12.Text = "Chức Vụ";
             // 
+            // txtMay
+            // 
+            this.txtMay.Location = new System.Drawing.Point(269, 79);
+            this.txtMay.Name = "txtMay";
+            this.txtMay.Size = new System.Drawing.Size(50, 20);
+            this.txtMay.TabIndex = 47;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(201, 82);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(30, 13);
+            this.label13.TabIndex = 46;
+            this.label13.Text = "Máy:";
+            // 
             // frmNguoiDung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1337, 666);
+            this.Controls.Add(this.txtMay);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.chkKyTen);
             this.Controls.Add(this.txtChucVu);
             this.Controls.Add(this.label12);
@@ -1058,5 +1079,7 @@
         private System.Windows.Forms.CheckBox chkKyTen;
         private System.Windows.Forms.TextBox txtChucVu;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtMay;
+        private System.Windows.Forms.Label label13;
     }
 }

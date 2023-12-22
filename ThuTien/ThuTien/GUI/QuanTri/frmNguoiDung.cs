@@ -38,6 +38,7 @@ namespace ThuTien.GUI.QuanTri
             txtZalo.Text = "";
             txtNam.Text = "";
             txtMaKemBamChi.Text = "";
+            txtMay.Text = "";
             txtIDMobile.Text = "";
             cmbTo.SelectedIndex = -1;
             cmbNhom.SelectedIndex = -1;
@@ -98,6 +99,8 @@ namespace ThuTien.GUI.QuanTri
                     cmbTo.SelectedValue = en.MaTo.Value;
                 if (en.MaNhom != null)
                     cmbNhom.SelectedValue = en.MaNhom.Value;
+                if (en.May != null)
+                    txtMay.Text = en.May.Value.ToString();
                 chkPhoGiamDoc.Checked = en.PhoGiamDoc;
                 chkAn.Checked = en.An;
                 chkDoi.Checked = en.Doi;
@@ -169,6 +172,8 @@ namespace ThuTien.GUI.QuanTri
                         nguoidung.NgayPhepNamCu = nguoidung.NgayPhepNamMoi = 0;
                     }
                     nguoidung.MaKemBamChi = txtMaKemBamChi.Text.Trim();
+                    if (txtMay.Text.Trim() != "")
+                        nguoidung.May = int.Parse(txtMay.Text.Trim());
                     if (cmbTo.SelectedIndex != -1)
                         nguoidung.MaTo = (int)cmbTo.SelectedValue;
                     if (cmbNhom.SelectedIndex != -1)
@@ -231,6 +236,10 @@ namespace ThuTien.GUI.QuanTri
                         if (!string.IsNullOrEmpty(txtNam.Text.Trim()))
                             _nguoidung.NamVaoLam = int.Parse(txtNam.Text.Trim());
                         _nguoidung.MaKemBamChi = txtMaKemBamChi.Text.Trim();
+                        if (txtMay.Text.Trim() != "")
+                            _nguoidung.May = int.Parse(txtMay.Text.Trim());
+                        else
+                            _nguoidung.May = null;
                         _nguoidung.MaTo = (int)cmbTo.SelectedValue;
                         _nguoidung.MaNhom = (int)cmbNhom.SelectedValue;
                         _nguoidung.PhoGiamDoc = chkPhoGiamDoc.Checked;
@@ -497,14 +506,19 @@ namespace ThuTien.GUI.QuanTri
             {
                 loaddgv();
 
-                cmbTo.DataSource = _cTo.getDS(((Phong)cmbPhong.SelectedItem).ID);
-                cmbTo.DisplayMember = "TenTo";
-                cmbTo.ValueMember = "MaTo";
+                
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void cmbPhong_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cmbTo.DataSource = _cTo.getDS(((Phong)cmbPhong.SelectedItem).ID);
+            cmbTo.DisplayMember = "TenTo";
+            cmbTo.ValueMember = "MaTo";
         }
 
     }

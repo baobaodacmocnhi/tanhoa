@@ -823,6 +823,7 @@
             this.cmbPhong.Name = "cmbPhong";
             this.cmbPhong.Size = new System.Drawing.Size(200, 21);
             this.cmbPhong.TabIndex = 40;
+            this.cmbPhong.SelectedIndexChanged += new System.EventHandler(this.cmbPhong_SelectedIndexChanged);
             // 
             // label11
             // 

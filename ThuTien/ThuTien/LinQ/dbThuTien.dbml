@@ -2176,6 +2176,35 @@
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.Phong" Member="Phongs">
+    <Type Name="Phong">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TuDot" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DenDot" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Phong_TT_To" Member="TT_Tos" ThisKey="ID" OtherKey="IDPhong" Type="TT_To" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TT_To" Member="TT_Tos">
+    <Type Name="TT_To">
+      <Column Name="MaTo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenTo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="HanhThu" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DongNuoc" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="TuCuonGCS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DenCuonGCS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TuMay" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DenMay" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="An" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IDPhong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="TT_To_TT_NguoiDung" Member="TT_NguoiDungs" ThisKey="MaTo" OtherKey="MaTo" Type="TT_NguoiDung" />
+      <Association Name="Phong_TT_To" Member="Phong" ThisKey="IDPhong" OtherKey="ID" Type="Phong" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.TT_NguoiDung" Member="TT_NguoiDungs">
     <Type Name="TT_NguoiDung">
       <Column Name="MaND" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -2186,6 +2215,7 @@
       <Column Name="TaiKhoan" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="MatKhau" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="MaKemBamChi" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="May" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="LoginDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="NamVaoLam" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="NgayPhepNamCu" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -2219,35 +2249,6 @@
       <Association Name="TT_NguoiDung_TT_CTChamCong" Member="TT_CTChamCongs" ThisKey="MaND" OtherKey="MaND" Type="TT_CTChamCong" />
       <Association Name="TT_NguoiDung_TT_PhanQuyenNguoiDung" Member="TT_PhanQuyenNguoiDungs" ThisKey="MaND" OtherKey="MaND" Type="TT_PhanQuyenNguoiDung" />
       <Association Name="TT_To_TT_NguoiDung" Member="TT_To" ThisKey="MaTo" OtherKey="MaTo" Type="TT_To" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Phong" Member="Phongs">
-    <Type Name="Phong">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="TuDot" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DenDot" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Phong_TT_To" Member="TT_Tos" ThisKey="ID" OtherKey="IDPhong" Type="TT_To" />
-    </Type>
-  </Table>
-  <Table Name="dbo.TT_To" Member="TT_Tos">
-    <Type Name="TT_To">
-      <Column Name="MaTo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="TenTo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="HanhThu" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="DongNuoc" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="TuCuonGCS" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DenCuonGCS" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TuMay" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DenMay" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="An" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="IDPhong" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="TT_To_TT_NguoiDung" Member="TT_NguoiDungs" ThisKey="MaTo" OtherKey="MaTo" Type="TT_NguoiDung" />
-      <Association Name="Phong_TT_To" Member="Phong" ThisKey="IDPhong" OtherKey="ID" Type="Phong" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.TimKiem" Method="TimKiem" IsComposable="true">
