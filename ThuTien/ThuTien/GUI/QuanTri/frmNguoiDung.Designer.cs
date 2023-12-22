@@ -39,31 +39,6 @@
             this.cmbNhom = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.dgvNguoiDung = new System.Windows.Forms.DataGridView();
-            this.MaND = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ActiveMobile = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TaiKhoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MatKhau = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaKemBamChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NamVaoLam = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaNhom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenNhom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PhoGiamDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.An = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Doi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ToTruong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HanhThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HanhThuVanPhong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DongNuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VanPhong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ChamCong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TestApp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InPhieuBao = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.IDMobile = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Zalo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
@@ -117,6 +92,32 @@
             this.label12 = new System.Windows.Forms.Label();
             this.txtMay = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.MaND = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ActiveMobile = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TaiKhoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MatKhau = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaKemBamChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NamVaoLam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.May = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaNhom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenNhom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PhoGiamDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.An = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Doi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ToTruong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HanhThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HanhThuVanPhong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DongNuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VanPhong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ChamCong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TestApp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InPhieuBao = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.IDMobile = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Zalo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNguoiDung)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -228,6 +229,7 @@
             this.NamVaoLam,
             this.MaTo,
             this.TenTo,
+            this.May,
             this.MaNhom,
             this.TenNhom,
             this.PhoGiamDoc,
@@ -255,180 +257,6 @@
             this.dgvNguoiDung.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvNguoiDung_DragDrop);
             this.dgvNguoiDung.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvNguoiDung_DragEnter);
             this.dgvNguoiDung.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvNguoiDung_MouseClick);
-            // 
-            // MaND
-            // 
-            this.MaND.DataPropertyName = "MaND";
-            this.MaND.HeaderText = "MaND";
-            this.MaND.Name = "MaND";
-            this.MaND.Visible = false;
-            // 
-            // ActiveMobile
-            // 
-            this.ActiveMobile.DataPropertyName = "ActiveMobile";
-            this.ActiveMobile.HeaderText = "ĐN Mobile";
-            this.ActiveMobile.Name = "ActiveMobile";
-            this.ActiveMobile.Width = 40;
-            // 
-            // HoTen
-            // 
-            this.HoTen.DataPropertyName = "HoTen";
-            this.HoTen.HeaderText = "Họ Tên";
-            this.HoTen.Name = "HoTen";
-            // 
-            // DienThoai
-            // 
-            this.DienThoai.DataPropertyName = "DienThoai";
-            this.DienThoai.HeaderText = "Điện Thoại";
-            this.DienThoai.Name = "DienThoai";
-            // 
-            // TaiKhoan
-            // 
-            this.TaiKhoan.DataPropertyName = "TaiKhoan";
-            this.TaiKhoan.HeaderText = "Tài Khoản";
-            this.TaiKhoan.Name = "TaiKhoan";
-            // 
-            // MatKhau
-            // 
-            this.MatKhau.DataPropertyName = "MatKhau";
-            this.MatKhau.HeaderText = "Mật Khẩu";
-            this.MatKhau.Name = "MatKhau";
-            this.MatKhau.Width = 70;
-            // 
-            // MaKemBamChi
-            // 
-            this.MaKemBamChi.DataPropertyName = "MaKemBamChi";
-            this.MaKemBamChi.HeaderText = "Mã Kềm BC";
-            this.MaKemBamChi.Name = "MaKemBamChi";
-            this.MaKemBamChi.Width = 70;
-            // 
-            // NamVaoLam
-            // 
-            this.NamVaoLam.DataPropertyName = "NamVaoLam";
-            this.NamVaoLam.HeaderText = "Năm Vào Làm";
-            this.NamVaoLam.Name = "NamVaoLam";
-            this.NamVaoLam.Visible = false;
-            // 
-            // MaTo
-            // 
-            this.MaTo.DataPropertyName = "MaTo";
-            this.MaTo.HeaderText = "MaTo";
-            this.MaTo.Name = "MaTo";
-            this.MaTo.Visible = false;
-            // 
-            // TenTo
-            // 
-            this.TenTo.DataPropertyName = "TenTo";
-            this.TenTo.HeaderText = "Tổ";
-            this.TenTo.Name = "TenTo";
-            this.TenTo.Width = 80;
-            // 
-            // MaNhom
-            // 
-            this.MaNhom.DataPropertyName = "MaNhom";
-            this.MaNhom.HeaderText = "MaNhom";
-            this.MaNhom.Name = "MaNhom";
-            this.MaNhom.Visible = false;
-            this.MaNhom.Width = 70;
-            // 
-            // TenNhom
-            // 
-            this.TenNhom.DataPropertyName = "TenNhom";
-            this.TenNhom.HeaderText = "Nhóm";
-            this.TenNhom.Name = "TenNhom";
-            this.TenNhom.Width = 70;
-            // 
-            // PhoGiamDoc
-            // 
-            this.PhoGiamDoc.DataPropertyName = "PhoGiamDoc";
-            this.PhoGiamDoc.HeaderText = "PhoGiamDoc";
-            this.PhoGiamDoc.Name = "PhoGiamDoc";
-            this.PhoGiamDoc.Visible = false;
-            // 
-            // An
-            // 
-            this.An.DataPropertyName = "An";
-            this.An.HeaderText = "Ẩn";
-            this.An.Name = "An";
-            this.An.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.An.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.An.Width = 30;
-            // 
-            // Doi
-            // 
-            this.Doi.DataPropertyName = "Doi";
-            this.Doi.HeaderText = "Doi";
-            this.Doi.Name = "Doi";
-            this.Doi.Visible = false;
-            // 
-            // ToTruong
-            // 
-            this.ToTruong.DataPropertyName = "ToTruong";
-            this.ToTruong.HeaderText = "ToTruong";
-            this.ToTruong.Name = "ToTruong";
-            this.ToTruong.Visible = false;
-            // 
-            // HanhThu
-            // 
-            this.HanhThu.DataPropertyName = "HanhThu";
-            this.HanhThu.HeaderText = "HanhThu";
-            this.HanhThu.Name = "HanhThu";
-            this.HanhThu.Visible = false;
-            // 
-            // HanhThuVanPhong
-            // 
-            this.HanhThuVanPhong.DataPropertyName = "HanhThuVanPhong";
-            this.HanhThuVanPhong.HeaderText = "HanhThuVanPhong";
-            this.HanhThuVanPhong.Name = "HanhThuVanPhong";
-            this.HanhThuVanPhong.Visible = false;
-            // 
-            // DongNuoc
-            // 
-            this.DongNuoc.DataPropertyName = "DongNuoc";
-            this.DongNuoc.HeaderText = "DongNuoc";
-            this.DongNuoc.Name = "DongNuoc";
-            this.DongNuoc.Visible = false;
-            // 
-            // VanPhong
-            // 
-            this.VanPhong.DataPropertyName = "VanPhong";
-            this.VanPhong.HeaderText = "VanPhong";
-            this.VanPhong.Name = "VanPhong";
-            this.VanPhong.Visible = false;
-            // 
-            // ChamCong
-            // 
-            this.ChamCong.DataPropertyName = "ChamCong";
-            this.ChamCong.HeaderText = "ChamCong";
-            this.ChamCong.Name = "ChamCong";
-            this.ChamCong.Visible = false;
-            // 
-            // TestApp
-            // 
-            this.TestApp.DataPropertyName = "TestApp";
-            this.TestApp.HeaderText = "TestApp";
-            this.TestApp.Name = "TestApp";
-            this.TestApp.Visible = false;
-            // 
-            // InPhieuBao
-            // 
-            this.InPhieuBao.DataPropertyName = "InPhieuBao";
-            this.InPhieuBao.HeaderText = "InPhieuBao";
-            this.InPhieuBao.Name = "InPhieuBao";
-            this.InPhieuBao.Visible = false;
-            // 
-            // IDMobile
-            // 
-            this.IDMobile.DataPropertyName = "IDMobile";
-            this.IDMobile.HeaderText = "IDMobile";
-            this.IDMobile.Name = "IDMobile";
-            // 
-            // Zalo
-            // 
-            this.Zalo.DataPropertyName = "Zalo";
-            this.Zalo.HeaderText = "Zalo";
-            this.Zalo.Name = "Zalo";
-            this.Zalo.Visible = false;
             // 
             // btnXoa
             // 
@@ -921,6 +749,187 @@
             this.label13.TabIndex = 46;
             this.label13.Text = "Máy:";
             // 
+            // MaND
+            // 
+            this.MaND.DataPropertyName = "MaND";
+            this.MaND.HeaderText = "MaND";
+            this.MaND.Name = "MaND";
+            this.MaND.Visible = false;
+            // 
+            // ActiveMobile
+            // 
+            this.ActiveMobile.DataPropertyName = "ActiveMobile";
+            this.ActiveMobile.HeaderText = "ĐN Mobile";
+            this.ActiveMobile.Name = "ActiveMobile";
+            this.ActiveMobile.Width = 40;
+            // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Họ Tên";
+            this.HoTen.Name = "HoTen";
+            // 
+            // DienThoai
+            // 
+            this.DienThoai.DataPropertyName = "DienThoai";
+            this.DienThoai.HeaderText = "Điện Thoại";
+            this.DienThoai.Name = "DienThoai";
+            // 
+            // TaiKhoan
+            // 
+            this.TaiKhoan.DataPropertyName = "TaiKhoan";
+            this.TaiKhoan.HeaderText = "Tài Khoản";
+            this.TaiKhoan.Name = "TaiKhoan";
+            // 
+            // MatKhau
+            // 
+            this.MatKhau.DataPropertyName = "MatKhau";
+            this.MatKhau.HeaderText = "Mật Khẩu";
+            this.MatKhau.Name = "MatKhau";
+            this.MatKhau.Width = 70;
+            // 
+            // MaKemBamChi
+            // 
+            this.MaKemBamChi.DataPropertyName = "MaKemBamChi";
+            this.MaKemBamChi.HeaderText = "Mã Kềm BC";
+            this.MaKemBamChi.Name = "MaKemBamChi";
+            this.MaKemBamChi.Width = 70;
+            // 
+            // NamVaoLam
+            // 
+            this.NamVaoLam.DataPropertyName = "NamVaoLam";
+            this.NamVaoLam.HeaderText = "Năm Vào Làm";
+            this.NamVaoLam.Name = "NamVaoLam";
+            this.NamVaoLam.Visible = false;
+            // 
+            // MaTo
+            // 
+            this.MaTo.DataPropertyName = "MaTo";
+            this.MaTo.HeaderText = "MaTo";
+            this.MaTo.Name = "MaTo";
+            this.MaTo.Visible = false;
+            // 
+            // TenTo
+            // 
+            this.TenTo.DataPropertyName = "TenTo";
+            this.TenTo.HeaderText = "Tổ";
+            this.TenTo.Name = "TenTo";
+            this.TenTo.Width = 80;
+            // 
+            // May
+            // 
+            this.May.DataPropertyName = "May";
+            this.May.HeaderText = "Máy";
+            this.May.Name = "May";
+            this.May.Width = 50;
+            // 
+            // MaNhom
+            // 
+            this.MaNhom.DataPropertyName = "MaNhom";
+            this.MaNhom.HeaderText = "MaNhom";
+            this.MaNhom.Name = "MaNhom";
+            this.MaNhom.Visible = false;
+            this.MaNhom.Width = 70;
+            // 
+            // TenNhom
+            // 
+            this.TenNhom.DataPropertyName = "TenNhom";
+            this.TenNhom.HeaderText = "Nhóm";
+            this.TenNhom.Name = "TenNhom";
+            this.TenNhom.Width = 70;
+            // 
+            // PhoGiamDoc
+            // 
+            this.PhoGiamDoc.DataPropertyName = "PhoGiamDoc";
+            this.PhoGiamDoc.HeaderText = "PhoGiamDoc";
+            this.PhoGiamDoc.Name = "PhoGiamDoc";
+            this.PhoGiamDoc.Visible = false;
+            // 
+            // An
+            // 
+            this.An.DataPropertyName = "An";
+            this.An.HeaderText = "Ẩn";
+            this.An.Name = "An";
+            this.An.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.An.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.An.Width = 30;
+            // 
+            // Doi
+            // 
+            this.Doi.DataPropertyName = "Doi";
+            this.Doi.HeaderText = "Doi";
+            this.Doi.Name = "Doi";
+            this.Doi.Visible = false;
+            // 
+            // ToTruong
+            // 
+            this.ToTruong.DataPropertyName = "ToTruong";
+            this.ToTruong.HeaderText = "ToTruong";
+            this.ToTruong.Name = "ToTruong";
+            this.ToTruong.Visible = false;
+            // 
+            // HanhThu
+            // 
+            this.HanhThu.DataPropertyName = "HanhThu";
+            this.HanhThu.HeaderText = "HanhThu";
+            this.HanhThu.Name = "HanhThu";
+            this.HanhThu.Visible = false;
+            // 
+            // HanhThuVanPhong
+            // 
+            this.HanhThuVanPhong.DataPropertyName = "HanhThuVanPhong";
+            this.HanhThuVanPhong.HeaderText = "HanhThuVanPhong";
+            this.HanhThuVanPhong.Name = "HanhThuVanPhong";
+            this.HanhThuVanPhong.Visible = false;
+            // 
+            // DongNuoc
+            // 
+            this.DongNuoc.DataPropertyName = "DongNuoc";
+            this.DongNuoc.HeaderText = "DongNuoc";
+            this.DongNuoc.Name = "DongNuoc";
+            this.DongNuoc.Visible = false;
+            // 
+            // VanPhong
+            // 
+            this.VanPhong.DataPropertyName = "VanPhong";
+            this.VanPhong.HeaderText = "VanPhong";
+            this.VanPhong.Name = "VanPhong";
+            this.VanPhong.Visible = false;
+            // 
+            // ChamCong
+            // 
+            this.ChamCong.DataPropertyName = "ChamCong";
+            this.ChamCong.HeaderText = "ChamCong";
+            this.ChamCong.Name = "ChamCong";
+            this.ChamCong.Visible = false;
+            // 
+            // TestApp
+            // 
+            this.TestApp.DataPropertyName = "TestApp";
+            this.TestApp.HeaderText = "TestApp";
+            this.TestApp.Name = "TestApp";
+            this.TestApp.Visible = false;
+            // 
+            // InPhieuBao
+            // 
+            this.InPhieuBao.DataPropertyName = "InPhieuBao";
+            this.InPhieuBao.HeaderText = "InPhieuBao";
+            this.InPhieuBao.Name = "InPhieuBao";
+            this.InPhieuBao.Visible = false;
+            // 
+            // IDMobile
+            // 
+            this.IDMobile.DataPropertyName = "IDMobile";
+            this.IDMobile.HeaderText = "IDMobile";
+            this.IDMobile.Name = "IDMobile";
+            // 
+            // Zalo
+            // 
+            this.Zalo.DataPropertyName = "Zalo";
+            this.Zalo.HeaderText = "Zalo";
+            this.Zalo.Name = "Zalo";
+            this.Zalo.Visible = false;
+            // 
             // frmNguoiDung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1045,6 +1054,17 @@
         private System.Windows.Forms.CheckBox chkInPhieuBao;
         private System.Windows.Forms.TextBox txtZalo;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtMaKemBamChi;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnXem;
+        private System.Windows.Forms.ComboBox cmbPhong;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.CheckBox chkKyTen;
+        private System.Windows.Forms.TextBox txtChucVu;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtMay;
+        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaND;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ActiveMobile;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
@@ -1055,6 +1075,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NamVaoLam;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaTo;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenTo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn May;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaNhom;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenNhom;
         private System.Windows.Forms.DataGridViewTextBoxColumn PhoGiamDoc;
@@ -1070,16 +1091,5 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn InPhieuBao;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDMobile;
         private System.Windows.Forms.DataGridViewTextBoxColumn Zalo;
-        private System.Windows.Forms.TextBox txtMaKemBamChi;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnXem;
-        private System.Windows.Forms.ComboBox cmbPhong;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.CheckBox chkKyTen;
-        private System.Windows.Forms.TextBox txtChucVu;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox txtMay;
-        private System.Windows.Forms.Label label13;
     }
 }
