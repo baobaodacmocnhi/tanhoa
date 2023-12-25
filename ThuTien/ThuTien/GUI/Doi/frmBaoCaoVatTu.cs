@@ -69,7 +69,7 @@ namespace ThuTien.GUI.Doi
                                 if (item.Cells["NiemChi"].Value.ToString() != "")
                                 {
                                     dr["NiemChi"] = item.Cells["NiemChi"].Value.ToString();
-                                    dr["DayDong"] = _cDongNuoc.convertToDouble("0,6");
+                                    dr["DayDong"] = _cDongNuoc.convertToDouble("0.6");
                                 }
                                 else
                                     if (bool.Parse(item.Cells["KhoaKhac"].Value.ToString()) == true || bool.Parse(item.Cells["KhoaTu"].Value.ToString()) == true)
@@ -82,7 +82,7 @@ namespace ThuTien.GUI.Doi
                                     if (item.Cells["NiemChiMN"].Value.ToString() != "")
                                     {
                                         dr["NiemChi"] = item.Cells["NiemChiMN"].Value.ToString();
-                                        dr["DayDong"] = _cDongNuoc.convertToDouble("0,6");
+                                        dr["DayDong"] = _cDongNuoc.convertToDouble("0.6");
                                     }
                                     else
                                         if (bool.Parse(item.Cells["KhoaKhac"].Value.ToString()) == true || bool.Parse(item.Cells["KhoaTu"].Value.ToString()) == true)
@@ -146,7 +146,7 @@ namespace ThuTien.GUI.Doi
                         dr["NhanVien"] = dtNC.Rows[i]["HoTen"].ToString();
 
                         dr["NiemChi"] = dtNC.Rows[i]["ID"].ToString();
-                        dr["DayDong"] = _cDongNuoc.convertToDouble("0,6");
+                        dr["DayDong"] = _cDongNuoc.convertToDouble("0.6");
 
                         dr["ChucVu"] = CNguoiKy.getChucVu();
                         dr["NguoiKy"] = CNguoiKy.getNguoiKy();

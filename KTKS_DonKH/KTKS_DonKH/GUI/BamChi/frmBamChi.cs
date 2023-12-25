@@ -924,7 +924,7 @@ namespace KTKS_DonKH.GUI.BamChi
                         break;
                     default:
                         txtVienChi.Text = "1";
-                        txtDayChi.Text = "0,6";
+                        txtDayChi.Text = "0.6";
                         break;
                 }
         }
