@@ -312,12 +312,14 @@ namespace DocSo_PC.GUI.ToTruong
             {
                 //tiêu thu tăng cao, tiêu thụ âm
                 if (item.Cells["TieuThuMoi"].Value != null && item.Cells["TieuThuMoi"].Value.ToString() != ""
-                    && (int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) >= int.Parse(item.Cells["TBTT"].Value.ToString()) * 1.3
+                    && ((int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) >= 50 && int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) >= int.Parse(item.Cells["TBTT"].Value.ToString()) * 1.5)
+                    || (int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) >= 1000 && int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) >= int.Parse(item.Cells["TBTT"].Value.ToString()) * 1.3)
                     || int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) < 0))
                     item.DefaultCellStyle.BackColor = Color.Red;
                 //tiêu thu giảm cao
                 if (item.Cells["TieuThuMoi"].Value != null && item.Cells["TieuThuMoi"].Value.ToString() != ""
-                    && int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) <= int.Parse(item.Cells["TBTT"].Value.ToString()) * (1 - 0.3)
+                    && ((int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) >= 50 && int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) <= int.Parse(item.Cells["TBTT"].Value.ToString()) * (1 - 0.5))
+                    || (int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) >= 1000 && int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) <= int.Parse(item.Cells["TBTT"].Value.ToString()) * (1 - 0.3)))
                     && int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) > 0)
                     item.DefaultCellStyle.BackColor = Color.DeepPink;
                 //có BBKT, tờ trình, code 8 không có hoàn công thay (bồi thường, tái lập,...)
