@@ -211,13 +211,18 @@ namespace KTKS_DonKH.GUI.PhongKhachHang
                         File.Delete(fileName);
                     }
                     CDocSo _cDocSo = new CDocSo();
+                    //string sql = "select Nam,Ky,Dot=RIGHT('0' + CAST(d.ID AS VARCHAR(2)), 2),nd.May,NgayDoc=CONVERT(varchar(10),NgayDoc,103),nd.HoTen,DienThoai=REPLACE(nd.DienThoai,'.','')"
+                    //                + " from Lich_DocSo ds,Lich_DocSo_ChiTiet ctds,Lich_Dot d,NguoiDung nd"
+                    //                + " where ds.ID=ctds.IDDocSo and d.ID=ctds.IDDot and Nam=" + txtNam.Text.Trim() + " and Ky=" + txtKy.Text.Trim() + " and nd.May!=''"
+                    //                + " and ((nd.May>=SUBSTRING(d.TB1_From,3,2) and nd.May<=SUBSTRING(d.TB1_To,3,2)) "
+                    //                + " or (nd.May>=SUBSTRING(d.TB2_From,3,2) and nd.May<=SUBSTRING(d.TB2_To,3,2)) "
+                    //                + " or (nd.May>=SUBSTRING(d.TP1_From,3,2) and nd.May<=SUBSTRING(d.TP1_To,3,2)) "
+                    //                + " or (nd.May>=SUBSTRING(d.TP2_From,3,2) and nd.May<=SUBSTRING(d.TP2_To,3,2)))";
                     string sql = "select Nam,Ky,Dot=RIGHT('0' + CAST(d.ID AS VARCHAR(2)), 2),nd.May,NgayDoc=CONVERT(varchar(10),NgayDoc,103),nd.HoTen,DienThoai=REPLACE(nd.DienThoai,'.','')"
-                                    + " from Lich_DocSo ds,Lich_DocSo_ChiTiet ctds,Lich_Dot d,NguoiDung nd"
-                                    + " where ds.ID=ctds.IDDocSo and d.ID=ctds.IDDot and Nam=" + txtNam.Text.Trim() + " and Ky=" + txtKy.Text.Trim() + " and nd.May!=''"
-                                    + " and ((nd.May>=SUBSTRING(d.TB1_From,3,2) and nd.May<=SUBSTRING(d.TB1_To,3,2)) "
-                                    + " or (nd.May>=SUBSTRING(d.TB2_From,3,2) and nd.May<=SUBSTRING(d.TB2_To,3,2)) "
-                                    + " or (nd.May>=SUBSTRING(d.TP1_From,3,2) and nd.May<=SUBSTRING(d.TP1_To,3,2)) "
-                                    + " or (nd.May>=SUBSTRING(d.TP2_From,3,2) and nd.May<=SUBSTRING(d.TP2_To,3,2)))";
+                                   + " from Lich_DocSo ds,Lich_DocSo_ChiTiet ctds,Lich_Dot d,NguoiDung nd"
+                                   + " where ds.ID=ctds.IDDocSo and d.ID=ctds.IDDot and Nam=" + txtNam.Text.Trim() + " and Ky=" + txtKy.Text.Trim() + " and nd.May!=''"
+                                   + " and ((nd.May>=SUBSTRING(d.To1_From,3,2) and nd.May<=SUBSTRING(d.To1_To,3,2)) "
+                                   + " or (nd.May>=SUBSTRING(d.To2_From,3,2) and nd.May<=SUBSTRING(d.To2_To,3,2)))";
                     DataTable dt = _cDocSo.ExecuteQuery_DataTable(sql);
                     // Create a new file     
                     using (StreamWriter sw = File.CreateText(fileName))
