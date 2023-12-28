@@ -142,10 +142,10 @@ namespace DocSo_PC.DAL.MaHoa
                 return _cDAL.LINQToDataTable(_db.MaHoa_DonTus.Where(item => item.TinhTrang.Contains("Tồn") && NoiDung.IndexOf(item.NoiDung) >= 0 && item.Nam == Nam && item.Ky == Ky && item.Dot == Dot && Convert.ToInt32(item.MLT.Substring(2, 2)) >= _db.Tos.SingleOrDefault(t => t.MaTo == Convert.ToInt32(MaTo)).TuMay && Convert.ToInt32(item.MLT.Substring(2, 2)) <= _db.Tos.SingleOrDefault(t => t.MaTo == Convert.ToInt32(MaTo)).DenMay));
         }
 
-        public DataTable getDS_ChuyenDCBD(DateTime FromCreateDate, DateTime ToCreateDate)
+        public DataTable getDS_ChuyenDCBD(int FromDot, int ToDot, DateTime FromCreateDate, DateTime ToCreateDate)
         {
             var query = from item in _db.MaHoa_DonTus
-                        where item.CreateDate.Date >= FromCreateDate.Date && item.CreateDate.Date <= ToCreateDate.Date && item.TinhTrang == "Tồn (Điều Chỉnh)"
+                        where item.Dot >= FromDot && item.Dot <= ToDot && item.CreateDate.Date >= FromCreateDate.Date && item.CreateDate.Date <= ToCreateDate.Date && item.TinhTrang == "Tồn (Điều Chỉnh)"
                         select new
                         {
                             item.ID,
@@ -290,7 +290,7 @@ namespace DocSo_PC.DAL.MaHoa
             return _cDAL.LINQToDataTable(query);
         }
 
-        public DataTable getDS_ChuyenKTXM(DateTime FromNgayChuyen, DateTime ToNgayChuyen)
+        public DataTable getDS_ChuyenKTXM(int FromDot, int ToDot, DateTime FromNgayChuyen, DateTime ToNgayChuyen)
         {
             string sql = "select MaDon=dt.ID,dt.DanhBo,dt.HoTen,dt.DiaChi,dtls.NgayChuyen,dtls.NgayNhan,GhiChu=dtls.NoiDung,dt.NoiDung,"
                         + " KTXM=case when exists(select ID from MaHoa_DonTu_LichSu where ID_NoiNhan=6 and IDMaDon=dt.ID) then 'true' else case when exists(select ID from MaHoa_KTXM where IDMaDon=dt.ID and (NgayKTXM_Truoc_NgayGiao=1 or cast(NgayKTXM as date)>=cast(dtls.NgayChuyen as date)))then 'true' else 'false' end end,"
@@ -298,7 +298,7 @@ namespace DocSo_PC.DAL.MaHoa
                         + " NoiDungKTXM=case when exists(select ID from MaHoa_DonTu_LichSu where ID_NoiNhan=6 and IDMaDon=dt.ID) then (select top 1 NoiNhan from MaHoa_DonTu_LichSu where ID_NoiNhan=6 and IDMaDon=dt.ID) else case when exists(select ID from MaHoa_KTXM where IDMaDon=dt.ID and (NgayKTXM_Truoc_NgayGiao=1 or cast(NgayKTXM as date)>=cast(dtls.NgayChuyen as date)))then (select top 1 NoiDungKiemTra from MaHoa_KTXM where IDMaDon=dt.ID and (NgayKTXM_Truoc_NgayGiao=1 or cast(NgayKTXM as date)>=cast(dtls.NgayChuyen as date))) else null end end,"
                         + " NguoiKTXM=(select HoTen from NguoiDung where MaND=dtls.ID_KTXM)"
                         + " from MaHoa_DonTu_LichSu dtls,MaHoa_DonTu dt"
-                        + " where dtls.IDMaDon=dt.ID and ID_NoiNhan=2 and dtls.Huy=0"
+                        + " where dtls.IDMaDon=dt.ID and ID_NoiNhan=2 and dtls.Huy=0 and dt.Dot>=" + FromDot + " and dt.Dot<=" + ToDot
                         + " and CAST(dtls.NgayChuyen as date)>='" + FromNgayChuyen.ToString("yyyyMMdd") + "' and CAST(dtls.NgayChuyen as date)<='" + ToNgayChuyen.ToString("yyyyMMdd") + "'"
                         + " order by dt.ID";
             //string sql = "select MaDon=dt.ID,dt.DanhBo,dt.HoTen,dt.DiaChi,dtls.NgayChuyen,dtls.NgayNhan,GhiChu=dtls.NoiDung,dt.NoiDung,"
@@ -313,7 +313,7 @@ namespace DocSo_PC.DAL.MaHoa
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
-        public DataTable getDS_ChuyenKTXM(int MaNV_KTXM, DateTime FromNgayChuyen, DateTime ToNgayChuyen)
+        public DataTable getDS_ChuyenKTXM(int FromDot, int ToDot, int MaNV_KTXM, DateTime FromNgayChuyen, DateTime ToNgayChuyen)
         {
             string sql = "select MaDon=dt.ID,dt.DanhBo,dt.HoTen,dt.DiaChi,dtls.NgayChuyen,dtls.NgayNhan,GhiChu=dtls.NoiDung,dt.NoiDung,"
                         + " KTXM=case when exists(select ID from MaHoa_DonTu_LichSu where ID_NoiNhan=6 and IDMaDon=dt.ID) then 'true' else case when exists(select ID from MaHoa_KTXM where IDMaDon=dt.ID and (NgayKTXM_Truoc_NgayGiao=1 or cast(NgayKTXM as date)>=cast(dtls.NgayChuyen as date)))then 'true' else 'false' end end,"
@@ -321,7 +321,7 @@ namespace DocSo_PC.DAL.MaHoa
                         + " NoiDungKTXM=case when exists(select ID from MaHoa_DonTu_LichSu where ID_NoiNhan=6 and IDMaDon=dt.ID) then (select top 1 NoiNhan from MaHoa_DonTu_LichSu where ID_NoiNhan=6 and IDMaDon=dt.ID) else case when exists(select ID from MaHoa_KTXM where IDMaDon=dt.ID and (NgayKTXM_Truoc_NgayGiao=1 or cast(NgayKTXM as date)>=cast(dtls.NgayChuyen as date)))then (select top 1 NoiDungKiemTra from MaHoa_KTXM where IDMaDon=dt.ID and (NgayKTXM_Truoc_NgayGiao=1 or cast(NgayKTXM as date)>=cast(dtls.NgayChuyen as date))) else null end end,"
                         + " NguoiKTXM=(select HoTen from NguoiDung where MaND=dtls.ID_KTXM)"
                         + " from MaHoa_DonTu_LichSu dtls,MaHoa_DonTu dt"
-                        + " where dtls.IDMaDon=dt.ID and ID_NoiNhan=2 and dtls.Huy=0 and ID_KTXM=" + MaNV_KTXM
+                        + " where dtls.IDMaDon=dt.ID and ID_NoiNhan=2 and dtls.Huy=0 and dt.Dot>=" + FromDot + " and dt.Dot<=" + ToDot + " and ID_KTXM=" + MaNV_KTXM
                         + " and CAST(dtls.NgayChuyen as date)>='" + FromNgayChuyen.ToString("yyyyMMdd") + "' and CAST(dtls.NgayChuyen as date)<='" + ToNgayChuyen.ToString("yyyyMMdd") + "'"
                         + " order by dt.ID";
             //string sql = "select MaDon=dt.ID,dt.DanhBo,dt.HoTen,dt.DiaChi,dtls.NgayChuyen,dtls.NgayNhan,GhiChu=dtls.NoiDung,dt.NoiDung,"

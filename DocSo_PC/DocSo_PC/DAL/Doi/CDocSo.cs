@@ -630,7 +630,7 @@ namespace DocSo_PC.DAL.Doi
                         + " ,Dot=SUBSTRING(BillID,7,2)"
                         + " ,BillID=BillID,NgayChot"
                         + " ,Chot=case when izDS is null then 'false' else 'true' end"
-                        + " from BillState where BillID <= '" + Nam + Ky + TuDot + "' and BillID >= '" + Nam + Ky + DenDot + "')t1 order by t1.Dot asc";
+                        + " from BillState where BillID >= '" + Nam + Ky + TuDot + "' and BillID <= '" + Nam + Ky + DenDot + "')t1 order by t1.Dot asc";
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 

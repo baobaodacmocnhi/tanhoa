@@ -218,10 +218,11 @@ namespace DocSo_PC.DAL
             }
         }
 
-        public DataTable getDS_CVD(string KyHieuTo, DateTime FromNgayChuyen, DateTime ToNgayChuyen)
+        public DataTable getDS_CVD(string IDPhong, string KyHieuTo, DateTime FromNgayChuyen, DateTime ToNgayChuyen)
         {
-            if (KyHieuTo != "")
-                KyHieuTo = " and '" + KyHieuTo + "'=(select KyHieu from [To] where MaTo=(select MaTo from Users where MaU=ls.CreateBy))";
+            KyHieuTo = "";
+            //if (KyHieuTo != "")
+            //    KyHieuTo = " and '" + KyHieuTo + "'=(select KyHieu from [To] where MaTo=(select MaTo from Users where MaU=ls.CreateBy))";
             string sql = "select t2.*,'To'=(select TenTo from DocSoTH.dbo.[To] where TuMay<=SUBSTRING(t2.MLT,3,2) and DenMay>=SUBSTRING(t2.MLT,3,2)) from "
                 + " (select t1.*,MLT=(select LOTRINH from CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG where DanhBo=t1.DanhBo) from "
                 + "( select LoaiVB=(select [Name] from TableHinh where TableHinh.TableName=ls.TableName),NoiChuyen=N'P. Thương Vụ',NoiNhan,NgayChuyen=CVD_Ngay,ls.ID,TableName,ls.IDCT,ToMaHoa='false'"
@@ -278,7 +279,7 @@ namespace DocSo_PC.DAL
 + " 		 when TableName='ToTrinh_ChiTiet' then (select (select [Name] from TableHinh where TableHinh.TableName=ls.TableName)+N' - Số: '+convert(varchar(10),IDCT)+' - '+convert(varchar(10),CreateDate,103)+' - V/v '+VeViec+' - '+(select HoTen from Users where MaU=ToTrinh_ChiTiet.CreateBy) from ToTrinh_ChiTiet where ToTrinh_ChiTiet.IDCT=ls.IDCT)"
 + " 		 when TableName='TruyThuTienNuoc_ChiTiet' then (select (select [Name] from TableHinh where TableHinh.TableName=ls.TableName)+N' - Số: '+convert(varchar(10),IDCT)+' - '+convert(varchar(10),CreateDate,103)+' - V/v '+NoiDung+' - '+(select HoTen from Users where MaU=TruyThuTienNuoc_ChiTiet.CreateBy) from TruyThuTienNuoc_ChiTiet where TruyThuTienNuoc_ChiTiet.IDCT=ls.IDCT)"
 + " 		 when TableName='VanBan_ChiTiet' then (select (select [Name] from TableHinh where TableHinh.TableName=ls.TableName)+N' - Số: '+convert(varchar(10),IDCT)+' - '+convert(varchar(10),CreateDate,103)+' - V/v '+VeViec+' - '+(select HoTen from Users where MaU=VanBan_ChiTiet.CreateBy) from VanBan_ChiTiet where VanBan_ChiTiet.IDCT=ls.IDCT) end"
-+ " from DonTu_LichSu ls where ls.CVD_Ngay>='" + FromNgayChuyen.ToString("yyyy-MM-dd HH:mm") + "' and ls.CVD_Ngay<='" + ToNgayChuyen.ToString("yyyy-MM-dd HH:mm") + "' and ls.ID_NoiNhan=22 and ls.TableName is not null " + KyHieuTo + ")t1 where not exists (select * from DocSoTH.dbo.CongVanDen where DocSoTH.dbo.CongVanDen.TableName=t1.TableName and DocSoTH.dbo.CongVanDen.IDCT=t1.IDCT) )t2 order by NgayChuyen asc,ID asc";
++ " from DonTu_LichSu ls where ls.CVD_Ngay>='" + FromNgayChuyen.ToString("yyyy-MM-dd HH:mm") + "' and ls.CVD_Ngay<='" + ToNgayChuyen.ToString("yyyy-MM-dd HH:mm") + "' and ls.ID_NoiNhan=" + IDPhong + " and ls.TableName is not null " + KyHieuTo + ")t1 where not exists (select * from DocSoTH.dbo.CongVanDen where DocSoTH.dbo.CongVanDen.TableName=t1.TableName and DocSoTH.dbo.CongVanDen.IDCT=t1.IDCT) )t2 order by NgayChuyen asc,ID asc";
 
             return _cDAL.ExecuteQuery_DataTable(sql);
         }

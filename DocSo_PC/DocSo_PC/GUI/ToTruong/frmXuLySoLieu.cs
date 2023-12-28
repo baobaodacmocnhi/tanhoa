@@ -241,7 +241,15 @@ namespace DocSo_PC.GUI.ToTruong
         private void cmbTo_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_flagLoadFirst == true && cmbTo.SelectedIndex > -1)
+            {
                 loadMay(cmbTo.SelectedValue.ToString());
+                To en = (To)cmbTo.SelectedItem;
+                cmbDot.Items.Clear();
+                for (int i = en.TuMay.Value; i <= en.DenMay.Value; i++)
+                {
+                    cmbDot.Items.Add(i.ToString("00"));
+                }
+            }
         }
 
         private void btnXem_Click(object sender, EventArgs e)

@@ -47,7 +47,7 @@ namespace DocSo_PC.GUI.VanThu
         {
             dgvDuyet.AutoGenerateColumns = false;
             if (_MaTo != "")
-                dgvDuyet.DataSource = _cCVD.getDS_ToMaHoa();
+                dgvDuyet.DataSource = _cCVD.getDS_ToMaHoa(CNguoiDung.TuDot, CNguoiDung.DenDot);
             else
                 if (_ID > 0)
                     dgvDuyet.DataSource = _cCVD.get_ID(_ID.ToString());

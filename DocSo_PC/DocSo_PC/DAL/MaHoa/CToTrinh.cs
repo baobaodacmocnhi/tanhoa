@@ -81,12 +81,12 @@ namespace DocSo_PC.DAL.MaHoa
             return _db.MaHoa_ToTrinhs.SingleOrDefault(item => item.IDMaDon == MaDon);
         }
 
-        public DataTable getDS(DateTime FromCreateDate, DateTime ToCreateDate)
+        public DataTable getDS(int FromDot, int ToDot, DateTime FromCreateDate, DateTime ToCreateDate)
         {
             var query = from item in _db.MaHoa_ToTrinhs
                         join itemND in _db.NguoiDungs on item.CreateBy equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
-                        where item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
+                        where item.Dot >= FromDot && item.Dot <= ToDot && item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date
                         orderby item.CreateDate descending
                         select new
                         {

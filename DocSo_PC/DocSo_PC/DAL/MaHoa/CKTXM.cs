@@ -107,11 +107,11 @@ namespace DocSo_PC.DAL.MaHoa
             return _cDAL.LINQToDataTable(query);
         }
 
-        public DataTable getDS(int MaNV_KTXM, DateTime FromNgayKTXM, DateTime ToNgayKTXM)
+        public DataTable getDS(int FromDot, int ToDot, int MaNV_KTXM, DateTime FromNgayKTXM, DateTime ToNgayKTXM)
         {
             var query = from itemCTKTXM in _db.MaHoa_KTXMs
                         join itemUser in _db.NguoiDungs on itemCTKTXM.CreateBy equals itemUser.MaND
-                        where itemCTKTXM.NgayKTXM.Value.Date >= FromNgayKTXM.Date && itemCTKTXM.NgayKTXM.Value.Date <= ToNgayKTXM.Date
+                        where itemCTKTXM.Dot >= FromDot && itemCTKTXM.Dot <= ToDot && itemCTKTXM.NgayKTXM.Value.Date >= FromNgayKTXM.Date && itemCTKTXM.NgayKTXM.Value.Date <= ToNgayKTXM.Date
                         && itemCTKTXM.CreateBy == MaNV_KTXM
                         select new
                         {

@@ -447,7 +447,7 @@ namespace DocSo_PC.GUI.MaHoa
             switch (cmbTimTheo.Text)
             {
                 case "Thời Gian":
-                    dgvToTrinh.DataSource = _cToTrinh.getDS(dateTu_DS.Value, dateDen_DS.Value);
+                    dgvToTrinh.DataSource = _cToTrinh.getDS(CNguoiDung.TuDot, CNguoiDung.DenDot, dateTu_DS.Value, dateDen_DS.Value);
                     break;
                 case "Mã Đơn":
                     if (txtDenSo.Text.Trim() != "")

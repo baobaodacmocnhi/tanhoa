@@ -85,7 +85,7 @@ namespace DocSo_PC.GUI.MaHoa
                 chkcmbNoiDung.Properties.DisplayMember = "Name";
                 chkcmbNoiDung.SetEditValue(str);
                 cmbTimTheo.SelectedIndex = 0;
-                List<To> lst = _cTo.getDS_HanhThu();
+                List<To> lst = _cTo.getDS_HanhThu(CNguoiDung.IDPhong);
                 To en = new To();
                 en.MaTo = 0;
                 en.TenTo = "Tất Cả";
@@ -627,7 +627,6 @@ namespace DocSo_PC.GUI.MaHoa
                         ClearChuyenDon();
                         _cDonTu.Refresh();
                     }
-
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -761,9 +760,9 @@ namespace DocSo_PC.GUI.MaHoa
             {
                 DataTable dt;
                 if (cmbKTXM_DSChuyenKTXM.SelectedIndex == 0)
-                    dt = _cDonTu.getDS_ChuyenKTXM(dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
+                    dt = _cDonTu.getDS_ChuyenKTXM(CNguoiDung.TuDot, CNguoiDung.DenDot, dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
                 else
-                    dt = _cDonTu.getDS_ChuyenKTXM(int.Parse(cmbKTXM_DSChuyenKTXM.SelectedValue.ToString()), dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
+                    dt = _cDonTu.getDS_ChuyenKTXM(CNguoiDung.TuDot, CNguoiDung.DenDot, int.Parse(cmbKTXM_DSChuyenKTXM.SelectedValue.ToString()), dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
                 if (dt != null && dt.Rows.Count > 0)
                 {
                     dsBaoCao dsBaoCao = new dsBaoCao();
@@ -842,7 +841,7 @@ namespace DocSo_PC.GUI.MaHoa
                     dr["NoiDung"] = item["NoiDung"].ToString();
                     dsBaoCaoTo.Tables["BaoCao"].Rows.Add(dr);
                 }
-                dt = _cDonTu.getDS_ChuyenKTXM(dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
+                dt = _cDonTu.getDS_ChuyenKTXM(CNguoiDung.TuDot, CNguoiDung.DenDot, dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
                 dsBaoCao dsBaoCaoNV = new dsBaoCao();
                 foreach (DataRow item in dt.Rows)
                 {
@@ -856,7 +855,7 @@ namespace DocSo_PC.GUI.MaHoa
                     dr["NoiDung"] = item["NoiDung"].ToString();
                     dsBaoCaoNV.Tables["BaoCao"].Rows.Add(dr);
                 }
-                dt = _cToTrinh.getDS(dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
+                dt = _cToTrinh.getDS(CNguoiDung.TuDot, CNguoiDung.DenDot, dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
                 dsBaoCao dsBaoCaoTT = new dsBaoCao();
                 foreach (DataRow item in dt.Rows)
                 {
@@ -865,7 +864,7 @@ namespace DocSo_PC.GUI.MaHoa
                     dr["NoiDung"] = item["VeViec"].ToString();
                     dsBaoCaoTT.Tables["BaoCao"].Rows.Add(dr);
                 }
-                dt = _cDCBD.getDS(dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
+                dt = _cDCBD.getDS(CNguoiDung.TuDot, CNguoiDung.DenDot, dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
                 foreach (DataRow item in dt.Rows)
                 {
                     DataRow dr = dsBaoCaoTT.Tables["BaoCao"].NewRow();
@@ -915,6 +914,28 @@ namespace DocSo_PC.GUI.MaHoa
         {
             frmCongVanDenButPhe frm = new frmCongVanDenButPhe("ToMaHoa");
             frm.ShowDialog();
+        }
+
+        private void dgvDanhSach_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                {
+                    if (dgvDanhSach.Columns[e.ColumnIndex].Name == "GhiChu")
+                    {
+                        MaHoa_DonTu en = _cDonTu.get(int.Parse(dgvDanhSach["ID", e.RowIndex].Value.ToString()));
+                        en.GhiChu = dgvDanhSach["GhiChu", e.RowIndex].Value.ToString();
+                        _cDonTu.Sua(en);
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 

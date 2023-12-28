@@ -47,7 +47,7 @@ namespace DocSo_PC.GUI.MaHoa
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvDanhSach.DataSource = _cDonTu.getDS_ChuyenDCBD(dateTuNgay.Value, dateDenNgay.Value);
+            dgvDanhSach.DataSource = _cDonTu.getDS_ChuyenDCBD(CNguoiDung.TuDot, CNguoiDung.DenDot, dateTuNgay.Value, dateDenNgay.Value);
             string str = _cLDS.getHieuLucKyToi();
             foreach (DataGridViewRow item in dgvDanhSach.Rows)
             {
@@ -203,7 +203,7 @@ namespace DocSo_PC.GUI.MaHoa
             switch (cmbTimTheo.Text)
             {
                 case "Thời Gian":
-                    dgvDCBD.DataSource = _cDCBD.getDS(dateTu_DS.Value, dateDen_DS.Value);
+                    dgvDCBD.DataSource = _cDCBD.getDS(CNguoiDung.TuDot, CNguoiDung.DenDot, dateTu_DS.Value, dateDen_DS.Value);
                     break;
                 case "Mã Đơn":
                     if (txtDenSo.Text.Trim() != "")
@@ -661,7 +661,7 @@ namespace DocSo_PC.GUI.MaHoa
             byte[] file = _wsDHN.get_Hinh_MaHoa("DCBD", _dcbd.ID.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
             if (file != null)
                 if (dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString().Contains("pdf"))
-                    _cDCBD.viewPDF(1,file);
+                    _cDCBD.viewPDF(1, file);
                 else
                     _cDCBD.viewImage(file);
             else

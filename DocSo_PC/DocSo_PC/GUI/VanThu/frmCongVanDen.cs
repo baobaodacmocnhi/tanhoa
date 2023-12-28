@@ -121,23 +121,29 @@ namespace DocSo_PC.GUI.VanThu
         {
             if (chkAuto.Checked)
             {
-                string MaTo = "";
-                if (cmbTo.SelectedItem.ToString() == "Tân Bình")
-                    MaTo = "ToTB";
+                //string MaTo = "";
+                //if (cmbTo.SelectedItem.ToString() == "Tân Bình")
+                //    MaTo = "ToTB";
+                //else
+                //    if (cmbTo.SelectedItem.ToString() == "Tân Phú")
+                //        MaTo = "ToTP";
+                //    else
+                //        if (cmbTo.SelectedItem.ToString() == "Bấm Chì")
+                //            MaTo = "ToBC";
+                string IDPhong = "";
+                if (CNguoiDung.IDPhong == 1)
+                    IDPhong = "42";
                 else
-                    if (cmbTo.SelectedItem.ToString() == "Tân Phú")
-                        MaTo = "ToTP";
-                    else
-                        if (cmbTo.SelectedItem.ToString() == "Bấm Chì")
-                            MaTo = "ToBC";
-                dgvDanhSach.DataSource = _cThuongVu.getDS_CVD(MaTo, dateTu.Value, dateDen.Value);
+                    if (CNguoiDung.IDPhong == 2)
+                        IDPhong = "43";
+                dgvDanhSach.DataSource = _cThuongVu.getDS_CVD(IDPhong, "", dateTu.Value, dateDen.Value);
             }
             else
             {
                 if (txtMaDon.Text.Trim() != "")
                     dgvDanhSach.DataSource = _cCVD.getDS(txtMaDon.Text.Trim().Replace(" ", "").Replace("-", ""));
                 else
-                    dgvDanhSach.DataSource = _cCVD.getDS(dateTu.Value, dateDen.Value);
+                    dgvDanhSach.DataSource = _cCVD.getDS(CNguoiDung.TuDot, CNguoiDung.DenDot, dateTu.Value, dateDen.Value);
             }
         }
 
@@ -507,7 +513,7 @@ namespace DocSo_PC.GUI.VanThu
                         int index = -1;
                         for (int i = 0; i < _dtDuyet.Rows.Count; i++)
                             if (_dtDuyet.Rows[i]["Type"].ToString().ToLower().Contains("pdf"))
-                                _cCVD.viewPDF(i,(byte[])_dtDuyet.Rows[i]["File"]);
+                                _cCVD.viewPDF(i, (byte[])_dtDuyet.Rows[i]["File"]);
                             else
                                 if (index == -1)
                                     index = i;
@@ -609,10 +615,10 @@ namespace DocSo_PC.GUI.VanThu
                     dgvDuyet.DataSource = _cCVD.getDS(txtDanhBo_ButPhe.Text.Trim().Replace(" ", "").Replace("-", ""));
                 else
                     if (radChuaDuyet.Checked)
-                        dgvDuyet.DataSource = _cCVD.getDS_ChuaDuyet(cmbLoaiVanBan_Duyet.SelectedValue.ToString());
+                        dgvDuyet.DataSource = _cCVD.getDS_ChuaDuyet(CNguoiDung.TuDot,CNguoiDung.DenDot,cmbLoaiVanBan_Duyet.SelectedValue.ToString());
                     else
                         if (radDaDuyet.Checked)
-                            dgvDuyet.DataSource = _cCVD.getDS_DaDuyet(cmbLoaiVanBan_Duyet.SelectedValue.ToString(), dateTu_Duyet.Value, dateDen_Duyet.Value);
+                            dgvDuyet.DataSource = _cCVD.getDS_DaDuyet(CNguoiDung.TuDot, CNguoiDung.DenDot, cmbLoaiVanBan_Duyet.SelectedValue.ToString(), dateTu_Duyet.Value, dateDen_Duyet.Value);
             }
             catch (Exception ex)
             {

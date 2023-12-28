@@ -671,6 +671,7 @@
             this.label15.Size = new System.Drawing.Size(20, 13);
             this.label15.TabIndex = 69;
             this.label15.Text = "Tổ";
+            this.label15.Visible = false;
             // 
             // cmbTo
             // 
@@ -684,6 +685,7 @@
             this.cmbTo.Name = "cmbTo";
             this.cmbTo.Size = new System.Drawing.Size(100, 21);
             this.cmbTo.TabIndex = 68;
+            this.cmbTo.Visible = false;
             // 
             // tabPage2
             // 
