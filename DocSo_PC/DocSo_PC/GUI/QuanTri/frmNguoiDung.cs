@@ -93,12 +93,20 @@ namespace DocSo_PC.GUI.QuanTri
                 txtMatKhau.Text = en.MatKhau;
                 if (en.NamVaoLam != null)
                     txtNam.Text = en.NamVaoLam.Value.ToString();
+                else
+                    txtNam.Text = "";
                 if (en.MaTo != null)
                     cmbTo.SelectedValue = en.MaTo.Value;
+                else
+                    cmbTo.SelectedIndex = -1;
                 if (en.MaNhom != null)
                     cmbNhom.SelectedValue = en.MaNhom.Value;
+                else
+                    cmbNhom.SelectedIndex = -1;
                 if (en.May != null)
                     txtMay.Text = en.May.Value.ToString();
+                else
+                    txtMay.Text = "";
                 chkPhoGiamDoc.Checked = en.PhoGiamDoc;
                 chkAn.Checked = en.An;
                 chkDoi.Checked = en.Doi;
@@ -120,8 +128,9 @@ namespace DocSo_PC.GUI.QuanTri
                 else
                     gridControl.DataSource = _cPhanQuyenNguoiDung.GetDSByMaND(false, en.MaND);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -489,7 +498,7 @@ namespace DocSo_PC.GUI.QuanTri
             {
                 loaddgv();
 
-                
+
             }
             catch (Exception ex)
             {
