@@ -32,7 +32,7 @@ namespace ThuTien.GUI.Doi
             dgvNiemChi_Nhap.AutoGenerateColumns = false;
             dgvNiemChi_Giao.AutoGenerateColumns = false;
 
-            cmbTo_Giao.DataSource = _cTo.getDS_HanhThu();
+            cmbTo_Giao.DataSource = _cTo.getDS_HanhThu(CNguoiDung.IDPhong);
             cmbTo_Giao.DisplayMember = "TenTo";
             cmbTo_Giao.ValueMember = "MaTo";
 
@@ -44,7 +44,7 @@ namespace ThuTien.GUI.Doi
 
         public void loadNhap()
         {
-            dgvNiemChi_Nhap.DataSource = _cNiemChi.getDSNhap_Group();
+            dgvNiemChi_Nhap.DataSource = _cNiemChi.getDSNhap_Group(CNguoiDung.IDPhong);
             int SLNhap = 0;
             int SLSuDung = 0;
             int SLHuHong = 0;
@@ -65,7 +65,7 @@ namespace ThuTien.GUI.Doi
             txtSLHuHong_Nhap.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", SLHuHong);
             txtSLTon_Nhap.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", SLTon);
 
-            dgvNiemChi_HuHong.DataSource = _cNiemChi.getDSHuHong_ChuaQyetToan();
+            dgvNiemChi_HuHong.DataSource = _cNiemChi.getDSHuHong_ChuaQyetToan(CNguoiDung.IDPhong);
         }
 
         private void btnThem_Nhap_Click(object sender, EventArgs e)
@@ -397,7 +397,7 @@ namespace ThuTien.GUI.Doi
                         {
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             _imgHuHong = null;
-                            dgvNiemChi_HuHong.DataSource = _cNiemChi.getDSHuHong_ChuaQyetToan();
+                            dgvNiemChi_HuHong.DataSource = _cNiemChi.getDSHuHong_ChuaQyetToan(CNguoiDung.IDPhong);
                         }
                     }
                 }
@@ -426,7 +426,7 @@ namespace ThuTien.GUI.Doi
                         {
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             _imgHuHong = null;
-                            dgvNiemChi_HuHong.DataSource = _cNiemChi.getDSHuHong_ChuaQyetToan();
+                            dgvNiemChi_HuHong.DataSource = _cNiemChi.getDSHuHong_ChuaQyetToan(CNguoiDung.IDPhong);
                         }
                     }
                 }
@@ -457,7 +457,7 @@ namespace ThuTien.GUI.Doi
                             }
                         }
                     }
-                    dgvNiemChi_HuHong.DataSource = _cNiemChi.getDSHuHong_ChuaQyetToan();
+                    dgvNiemChi_HuHong.DataSource = _cNiemChi.getDSHuHong_ChuaQyetToan(CNguoiDung.IDPhong);
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -473,7 +473,7 @@ namespace ThuTien.GUI.Doi
             if (chkXemAll_HuHong.Checked == true)
                 dgvNiemChi_HuHong.DataSource = _cNiemChi.getDSHuHong();
             else
-                dgvNiemChi_HuHong.DataSource = _cNiemChi.getDSHuHong_ChuaQyetToan();
+                dgvNiemChi_HuHong.DataSource = _cNiemChi.getDSHuHong_ChuaQyetToan(CNguoiDung.IDPhong);
         }
 
         private void dgvNiemChi_HuHong_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)

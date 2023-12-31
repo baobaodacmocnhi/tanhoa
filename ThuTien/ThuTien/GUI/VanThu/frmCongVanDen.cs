@@ -42,14 +42,20 @@ namespace ThuTien.GUI.VanThu
         {
             if (chkAuto.Checked)
             {
-                dgvDanhSach.DataSource = _cThuongVu.getDS_CVD("", dateTu.Value, dateDen.Value);
+                string IDPhong = "";
+                if (CNguoiDung.IDPhong == 1)
+                    IDPhong = "42";
+                else
+                    if (CNguoiDung.IDPhong == 2)
+                        IDPhong = "43";
+                dgvDanhSach.DataSource = _cThuongVu.getDS_CVD(IDPhong, "", dateTu.Value, dateDen.Value);
             }
             else
             {
                 if (txtMaDon.Text.Trim() != "")
                     dgvDanhSach.DataSource = _cCVD.getDS(txtMaDon.Text.Trim().Replace(" ", "").Replace("-", ""));
                 else
-                    dgvDanhSach.DataSource = _cCVD.getDS(dateTu.Value, dateDen.Value);
+                    dgvDanhSach.DataSource = _cCVD.getDS(dateTu.Value, dateDen.Value, CNguoiDung.FromDot, CNguoiDung.ToDot);
             }
         }
 

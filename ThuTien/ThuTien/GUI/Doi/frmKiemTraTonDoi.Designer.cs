@@ -980,27 +980,6 @@
             // cmbToDot
             // 
             this.cmbToDot.FormattingEnabled = true;
-            this.cmbToDot.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20"});
             this.cmbToDot.Location = new System.Drawing.Point(517, 12);
             this.cmbToDot.Name = "cmbToDot";
             this.cmbToDot.Size = new System.Drawing.Size(50, 21);
@@ -1018,28 +997,6 @@
             // cmbFromDot
             // 
             this.cmbFromDot.FormattingEnabled = true;
-            this.cmbFromDot.Items.AddRange(new object[] {
-            "Tất Cả",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20"});
             this.cmbFromDot.Location = new System.Drawing.Point(405, 12);
             this.cmbFromDot.Name = "cmbFromDot";
             this.cmbFromDot.Size = new System.Drawing.Size(50, 21);

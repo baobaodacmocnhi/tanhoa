@@ -760,9 +760,9 @@ namespace DocSo_PC.GUI.MaHoa
             {
                 DataTable dt;
                 if (cmbKTXM_DSChuyenKTXM.SelectedIndex == 0)
-                    dt = _cDonTu.getDS_ChuyenKTXM(CNguoiDung.TuDot, CNguoiDung.DenDot, dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
+                    dt = _cDonTu.getDS_ChuyenKTXM(CNguoiDung.FromDot, CNguoiDung.ToDot, dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
                 else
-                    dt = _cDonTu.getDS_ChuyenKTXM(CNguoiDung.TuDot, CNguoiDung.DenDot, int.Parse(cmbKTXM_DSChuyenKTXM.SelectedValue.ToString()), dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
+                    dt = _cDonTu.getDS_ChuyenKTXM(CNguoiDung.FromDot, CNguoiDung.ToDot, int.Parse(cmbKTXM_DSChuyenKTXM.SelectedValue.ToString()), dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
                 if (dt != null && dt.Rows.Count > 0)
                 {
                     dsBaoCao dsBaoCao = new dsBaoCao();
@@ -841,7 +841,7 @@ namespace DocSo_PC.GUI.MaHoa
                     dr["NoiDung"] = item["NoiDung"].ToString();
                     dsBaoCaoTo.Tables["BaoCao"].Rows.Add(dr);
                 }
-                dt = _cDonTu.getDS_ChuyenKTXM(CNguoiDung.TuDot, CNguoiDung.DenDot, dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
+                dt = _cDonTu.getDS_ChuyenKTXM(CNguoiDung.FromDot, CNguoiDung.ToDot, dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
                 dsBaoCao dsBaoCaoNV = new dsBaoCao();
                 foreach (DataRow item in dt.Rows)
                 {
@@ -855,7 +855,7 @@ namespace DocSo_PC.GUI.MaHoa
                     dr["NoiDung"] = item["NoiDung"].ToString();
                     dsBaoCaoNV.Tables["BaoCao"].Rows.Add(dr);
                 }
-                dt = _cToTrinh.getDS(CNguoiDung.TuDot, CNguoiDung.DenDot, dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
+                dt = _cToTrinh.getDS(CNguoiDung.FromDot, CNguoiDung.ToDot, dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
                 dsBaoCao dsBaoCaoTT = new dsBaoCao();
                 foreach (DataRow item in dt.Rows)
                 {
@@ -864,7 +864,7 @@ namespace DocSo_PC.GUI.MaHoa
                     dr["NoiDung"] = item["VeViec"].ToString();
                     dsBaoCaoTT.Tables["BaoCao"].Rows.Add(dr);
                 }
-                dt = _cDCBD.getDS(CNguoiDung.TuDot, CNguoiDung.DenDot, dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
+                dt = _cDCBD.getDS(CNguoiDung.FromDot, CNguoiDung.ToDot, dateTu_DSChuyenKTXM.Value, dateDen_DSChuyenKTXM.Value);
                 foreach (DataRow item in dt.Rows)
                 {
                     DataRow dr = dsBaoCaoTT.Tables["BaoCao"].NewRow();

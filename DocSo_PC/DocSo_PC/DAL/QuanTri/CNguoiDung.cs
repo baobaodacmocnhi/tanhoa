@@ -65,18 +65,18 @@ namespace DocSo_PC.DAL.QuanTri
             set { CNguoiDung._TenPhong = value; }
         }
 
-        static int _TuDot;
-        public static int TuDot
+        static int _FromDot;
+        public static int FromDot
         {
-            get { return _TuDot; }
-            set { _TuDot = value; }
+            get { return _FromDot; }
+            set { _FromDot = value; }
         }
 
-        static int _DenDot;
-        public static int DenDot
+        static int _ToDot;
+        public static int ToDot
         {
-            get { return _DenDot; }
-            set { _DenDot = value; }
+            get { return _ToDot; }
+            set { _ToDot = value; }
         }
 
         static int _MaTo;

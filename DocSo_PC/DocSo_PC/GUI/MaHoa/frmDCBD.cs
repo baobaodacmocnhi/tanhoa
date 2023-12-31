@@ -47,7 +47,7 @@ namespace DocSo_PC.GUI.MaHoa
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvDanhSach.DataSource = _cDonTu.getDS_ChuyenDCBD(CNguoiDung.TuDot, CNguoiDung.DenDot, dateTuNgay.Value, dateDenNgay.Value);
+            dgvDanhSach.DataSource = _cDonTu.getDS_ChuyenDCBD(CNguoiDung.FromDot, CNguoiDung.ToDot, dateTuNgay.Value, dateDenNgay.Value);
             string str = _cLDS.getHieuLucKyToi();
             foreach (DataGridViewRow item in dgvDanhSach.Rows)
             {
@@ -203,7 +203,7 @@ namespace DocSo_PC.GUI.MaHoa
             switch (cmbTimTheo.Text)
             {
                 case "Thời Gian":
-                    dgvDCBD.DataSource = _cDCBD.getDS(CNguoiDung.TuDot, CNguoiDung.DenDot, dateTu_DS.Value, dateDen_DS.Value);
+                    dgvDCBD.DataSource = _cDCBD.getDS(CNguoiDung.FromDot, CNguoiDung.ToDot, dateTu_DS.Value, dateDen_DS.Value);
                     break;
                 case "Mã Đơn":
                     if (txtDenSo.Text.Trim() != "")

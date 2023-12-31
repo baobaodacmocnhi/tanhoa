@@ -41,7 +41,7 @@ namespace ThuTien.GUI.Doi
             cmbNam.DisplayMember = "ID";
             cmbNam.ValueMember = "Nam";
 
-            _lstTo = _cTo.getDS_HanhThu();
+            _lstTo = _cTo.getDS_HanhThu(CNguoiDung.IDPhong);
             TT_To to = new TT_To();
             to.MaTo = 0;
             to.TenTo = "Tất Cả";
@@ -49,6 +49,11 @@ namespace ThuTien.GUI.Doi
             cmbTo.DataSource = _lstTo;
             cmbTo.DisplayMember = "TenTo";
             cmbTo.ValueMember = "MaTo";
+            cmbDot.Items.Add("Tất Cả");
+            for (int i = CNguoiDung.FromDot; i <= CNguoiDung.ToDot; i++)
+            {
+                cmbDot.Items.Add(i.ToString());
+            }
         }
 
         private void btnXem_Click(object sender, EventArgs e)

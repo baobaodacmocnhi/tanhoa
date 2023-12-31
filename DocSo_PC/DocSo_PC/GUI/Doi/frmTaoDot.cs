@@ -176,7 +176,7 @@ namespace DocSo_PC.GUI.Doi
             if (CNguoiDung.Admin)
                 dgvDanhSach.DataSource = _cDocSo.getTong_TaoDot(cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString());
             else
-                dgvDanhSach.DataSource = _cDocSo.getTong_TaoDot(cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), CNguoiDung.TuDot.ToString("00"), CNguoiDung.DenDot.ToString("00"));
+                dgvDanhSach.DataSource = _cDocSo.getTong_TaoDot(cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), CNguoiDung.FromDot.ToString("00"), CNguoiDung.ToDot.ToString("00"));
             int TongHD = 0, TongBD = 0, TongTD = 0;
             foreach (DataGridViewRow item in dgvDanhSach.Rows)
             {

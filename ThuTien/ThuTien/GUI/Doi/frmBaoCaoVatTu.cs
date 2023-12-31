@@ -37,10 +37,10 @@ namespace ThuTien.GUI.Doi
         private void btnXem_Click(object sender, EventArgs e)
         {
             if (radDongNuoc.Checked)
-                dgvBamChi.DataSource = _cDongNuoc.getDS_KQDongNuoc(dateTu.Value, dateDen.Value);
+                dgvBamChi.DataSource = _cDongNuoc.getDS_KQDongNuoc(dateTu.Value, dateDen.Value,CNguoiDung.FromDot,CNguoiDung.ToDot);
             else
                 if (radMoNuoc.Checked)
-                    dgvBamChi.DataSource = _cDongNuoc.getDS_KQMoNuoc(dateTu.Value, dateDen.Value);
+                    dgvBamChi.DataSource = _cDongNuoc.getDS_KQMoNuoc(dateTu.Value, dateDen.Value, CNguoiDung.FromDot, CNguoiDung.ToDot);
         }
 
         private void btnIn_Click(object sender, EventArgs e)

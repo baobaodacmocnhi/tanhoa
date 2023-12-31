@@ -39,7 +39,7 @@ namespace ThuTien.GUI.QuanTri
             if (CNguoiDung.Admin)
                 dgvTo.DataSource = _cTo.getDS(((Phong)cmbPhong.SelectedItem).ID);
             else
-                dgvTo.DataSource = _cTo.getDS();
+                dgvTo.DataSource = _cTo.getDS(CNguoiDung.IDPhong);
         }
 
         private void frmTo_Load(object sender, EventArgs e)
@@ -56,6 +56,7 @@ namespace ThuTien.GUI.QuanTri
             {
                 panel1.Visible = false;
             }
+            loaddgv();
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -101,7 +102,7 @@ namespace ThuTien.GUI.QuanTri
                     if (!string.IsNullOrEmpty(txtDenCuonGCS.Text.Trim()))
                         to.DenCuonGCS = int.Parse(txtDenCuonGCS.Text.Trim());
                     else
-                        to.DenCuonGCS=null;
+                        to.DenCuonGCS = null;
                     _cTo.Sua(to);
                     Clear();
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -173,7 +174,7 @@ namespace ThuTien.GUI.QuanTri
             loaddgv();
         }
 
-        
+
 
 
     }

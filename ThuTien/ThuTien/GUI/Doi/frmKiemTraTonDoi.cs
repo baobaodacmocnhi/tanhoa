@@ -44,7 +44,7 @@ namespace ThuTien.GUI.Doi
             dgvHDCoQuan.AutoGenerateColumns = false;
             dgvNhanVien.AutoGenerateColumns = false;
 
-            List<TT_To> lstTo = _cTo.getDS_HanhThu();
+            List<TT_To> lstTo = _cTo.getDS_HanhThu(CNguoiDung.IDPhong);
             TT_To to = new TT_To();
             to.MaTo = 0;
             to.TenTo = "Tất Cả";
@@ -61,10 +61,16 @@ namespace ThuTien.GUI.Doi
             cmbNam.DisplayMember = "ID";
             cmbNam.ValueMember = "Nam";
 
-            _lstTo = _cTo.getDS_HanhThu();
+            _lstTo = _cTo.getDS_HanhThu(CNguoiDung.IDPhong);
 
             cmbNam.SelectedValue = DateTime.Now.Year.ToString();
             cmbKy.SelectedItem = DateTime.Now.Month.ToString();
+            cmbFromDot.Items.Add("Tất Cả");
+            for (int i = CNguoiDung.FromDot; i <= CNguoiDung.ToDot; i++)
+            {
+                cmbFromDot.Items.Add(i.ToString());
+                cmbToDot.Items.Add(i.ToString());
+            }
             cmbFromDot.SelectedIndex = 0;
             cmbToDot.SelectedIndex = 0;
 
@@ -2248,7 +2254,7 @@ namespace ThuTien.GUI.Doi
             DataTable dt = new DataTable();
             if (cmbFromDot.SelectedIndex == 0)
             {
-                dt = _cHoaDon.GetDSTon_Autocall(chkTongNo.Checked,2, int.Parse(txtSoTien.Text.Trim().Replace(".", "")));
+                dt = _cHoaDon.GetDSTon_Autocall(chkTongNo.Checked, 2, int.Parse(txtSoTien.Text.Trim().Replace(".", "")), CNguoiDung.FromDot, CNguoiDung.ToDot);
             }
             else if (cmbFromDot.SelectedIndex > 0)
             {

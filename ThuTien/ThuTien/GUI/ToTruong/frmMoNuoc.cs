@@ -52,14 +52,14 @@ namespace ThuTien.GUI.ToTruong
             {
                 ///chọn tất cả các tổ
                 if (cmbTo.SelectedIndex == 0)
-                    dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSCanMoNuoc();
+                    dgvKQDongNuoc.DataSource = _cDongNuoc.getDS_CanMoNuoc(CNguoiDung.FromDot, CNguoiDung.ToDot);
                 else
                     ///chọn 1 tổ cụ thể
                     if (cmbTo.SelectedIndex > 0)
-                        dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSCanMoNuoc(int.Parse(cmbTo.SelectedValue.ToString()));
+                        dgvKQDongNuoc.DataSource = _cDongNuoc.getDS_CanMoNuoc(int.Parse(cmbTo.SelectedValue.ToString()));
             }
             else
-                dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSCanMoNuoc(CNguoiDung.MaTo);
+                dgvKQDongNuoc.DataSource = _cDongNuoc.getDS_CanMoNuoc(CNguoiDung.MaTo);
         }
 
         private void dgvKQDongNuoc_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -108,6 +108,6 @@ namespace ThuTien.GUI.ToTruong
             }
         }
 
-        
+
     }
 }

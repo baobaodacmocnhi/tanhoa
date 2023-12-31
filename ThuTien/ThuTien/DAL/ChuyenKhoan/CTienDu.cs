@@ -57,7 +57,7 @@ namespace ThuTien.DAL.ChuyenKhoan
             return LINQToDataTable(_db.TT_TienDus.Where(item => item.SoTien > 0).ToList());
         }
 
-        public DataTable GetDSPhiMoNuoc()
+        public DataTable getDS_PhiMoNuoc()
         {
             return LINQToDataTable(_db.TT_TienDus.Where(item => item.Phi > 0).ToList());
         }

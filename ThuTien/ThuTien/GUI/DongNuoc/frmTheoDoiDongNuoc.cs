@@ -28,7 +28,7 @@ namespace ThuTien.GUI.DongNuoc
         {
             if (CNguoiDung.Doi)
             {
-                cmbTo.DataSource = _cTo.getDS_HanhThu();
+                cmbTo.DataSource = _cTo.getDS_HanhThu(CNguoiDung.IDPhong);
                 cmbTo.DisplayMember = "TenTo";
                 cmbTo.ValueMember = "MaTo";
                 cmbTo.Visible = true;
@@ -41,26 +41,20 @@ namespace ThuTien.GUI.DongNuoc
                 cmbTo.Visible = false;
                 lbTo.Text = "Tổ: " + CNguoiDung.TenTo;
             }
-
             gridControl.LevelTree.Nodes.Add("Chi Tiết Đóng Nước", gridViewCTDN);
-
             cmbTimTheo.SelectedIndex = 0;
         }
 
         private void btnXem_Click(object sender, EventArgs e)
         {
             DataSet ds = null;
-
             ds = _cDongNuoc.getDS_Ton(cmbTimTheo.SelectedItem.ToString(), int.Parse(cmbNhanVienDongNuoc.SelectedValue.ToString()));
-
             gridControl.DataSource = ds.Tables["DongNuoc"];
-
             decimal TongHD = 0, TongCong = 0;
             for (int i = 0; i < gridViewDN.DataRowCount; i++)
             {
                 DataRow row = gridViewDN.GetDataRow(i);
                 DataRow[] childRows = row.GetChildRows("Chi Tiết Đóng Nước");
-
                 string TinhTrang = "Tồn";
                 int DangNgan = 0;
                 foreach (DataRow itemChild in childRows)
@@ -78,7 +72,8 @@ namespace ThuTien.GUI.DongNuoc
                     if (!string.IsNullOrEmpty(row["MaKQDN"].ToString()))
                         TinhTrang = "Đã Khóa Nước";
                     TongHD++;
-                    TongCong += int.Parse(itemChild["TongCong"].ToString());
+                    if (itemChild["TongCong"].ToString() != "")
+                        TongCong += int.Parse(itemChild["TongCong"].ToString());
                 }
                 gridViewDN.SetRowCellValue(i, "TinhTrang", TinhTrang);
             }
@@ -149,7 +144,7 @@ namespace ThuTien.GUI.DongNuoc
         {
             if (CNguoiDung.Doi == true && cmbTo.SelectedIndex >= 0)
             {
-                cmbNhanVienDongNuoc.DataSource = _cNguoiDung.GetDSDongNuocByMaTo(((TT_To)cmbTo.SelectedItem).MaTo);
+                cmbNhanVienDongNuoc.DataSource = _cNguoiDung.getDS_DongNuoc(CNguoiDung.IDPhong);
                 cmbNhanVienDongNuoc.DisplayMember = "HoTen";
                 cmbNhanVienDongNuoc.ValueMember = "MaND";
             }

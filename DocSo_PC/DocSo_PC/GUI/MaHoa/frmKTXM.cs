@@ -733,11 +733,11 @@ namespace DocSo_PC.GUI.MaHoa
         {
             if (CNguoiDung.Doi == true || CNguoiDung.ToTruong == true)
             {
-                dgvDanhSach.DataSource = _cKTXM.getDS(CNguoiDung.TuDot, CNguoiDung.DenDot, int.Parse(cmbKTXM.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
+                dgvDanhSach.DataSource = _cKTXM.getDS(CNguoiDung.FromDot, CNguoiDung.ToDot, int.Parse(cmbKTXM.SelectedValue.ToString()), dateTuNgay.Value, dateDenNgay.Value);
             }
             else
             {
-                dgvDanhSach.DataSource = _cKTXM.getDS(CNguoiDung.TuDot, CNguoiDung.DenDot, CNguoiDung.MaND, dateTuNgay.Value, dateDenNgay.Value);
+                dgvDanhSach.DataSource = _cKTXM.getDS(CNguoiDung.FromDot, CNguoiDung.ToDot, CNguoiDung.MaND, dateTuNgay.Value, dateDenNgay.Value);
             }
         }
 

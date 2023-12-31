@@ -45,7 +45,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvTienDu.DataSource = _cTienDu.GetDSPhiMoNuoc();
+            dgvTienDu.DataSource = _cTienDu.getDS_PhiMoNuoc();
 
             if (dateTu.Value <= dateDen.Value)
                 if (radPhiMoNuocChung.Checked)

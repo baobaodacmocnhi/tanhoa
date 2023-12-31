@@ -143,7 +143,7 @@ namespace DocSo_PC.GUI.VanThu
                 if (txtMaDon.Text.Trim() != "")
                     dgvDanhSach.DataSource = _cCVD.getDS(txtMaDon.Text.Trim().Replace(" ", "").Replace("-", ""));
                 else
-                    dgvDanhSach.DataSource = _cCVD.getDS(CNguoiDung.TuDot, CNguoiDung.DenDot, dateTu.Value, dateDen.Value);
+                    dgvDanhSach.DataSource = _cCVD.getDS(CNguoiDung.FromDot, CNguoiDung.ToDot, dateTu.Value, dateDen.Value);
             }
         }
 
@@ -615,10 +615,10 @@ namespace DocSo_PC.GUI.VanThu
                     dgvDuyet.DataSource = _cCVD.getDS(txtDanhBo_ButPhe.Text.Trim().Replace(" ", "").Replace("-", ""));
                 else
                     if (radChuaDuyet.Checked)
-                        dgvDuyet.DataSource = _cCVD.getDS_ChuaDuyet(CNguoiDung.TuDot,CNguoiDung.DenDot,cmbLoaiVanBan_Duyet.SelectedValue.ToString());
+                        dgvDuyet.DataSource = _cCVD.getDS_ChuaDuyet(CNguoiDung.FromDot,CNguoiDung.ToDot,cmbLoaiVanBan_Duyet.SelectedValue.ToString());
                     else
                         if (radDaDuyet.Checked)
-                            dgvDuyet.DataSource = _cCVD.getDS_DaDuyet(CNguoiDung.TuDot, CNguoiDung.DenDot, cmbLoaiVanBan_Duyet.SelectedValue.ToString(), dateTu_Duyet.Value, dateDen_Duyet.Value);
+                            dgvDuyet.DataSource = _cCVD.getDS_DaDuyet(CNguoiDung.FromDot, CNguoiDung.ToDot, cmbLoaiVanBan_Duyet.SelectedValue.ToString(), dateTu_Duyet.Value, dateDen_Duyet.Value);
             }
             catch (Exception ex)
             {

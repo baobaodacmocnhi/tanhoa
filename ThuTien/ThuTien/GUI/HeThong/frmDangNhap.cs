@@ -69,8 +69,8 @@ namespace ThuTien.GUI.HeThong
                         {
                             CNguoiDung.IDPhong = nguoidung.TT_To.IDPhong.Value;
                             CNguoiDung.TenPhong = nguoidung.TT_To.Phong.Name;
-                            CNguoiDung.TuDot = nguoidung.TT_To.Phong.TuDot.Value;
-                            CNguoiDung.DenDot = nguoidung.TT_To.Phong.DenDot.Value;
+                            CNguoiDung.FromDot = nguoidung.TT_To.Phong.TuDot.Value;
+                            CNguoiDung.ToDot = nguoidung.TT_To.Phong.DenDot.Value;
                             CNguoiDung.MaTo = nguoidung.MaTo.Value;
                             CNguoiDung.TenTo = nguoidung.TT_To.TenTo;
                             if (_ct.get(nguoidung.MaTo.Value).TuMay != null)
@@ -82,8 +82,8 @@ namespace ThuTien.GUI.HeThong
                         {
                             CNguoiDung.IDPhong = 0;
                             CNguoiDung.TenPhong = "";
-                            CNguoiDung.TuDot = 0;
-                            CNguoiDung.DenDot = 0;
+                            CNguoiDung.FromDot = 0;
+                            CNguoiDung.ToDot = 0;
                             CNguoiDung.MaTo = 0;
                             CNguoiDung.TenTo = "";
                             CNguoiDung.TuMayDS = 0;

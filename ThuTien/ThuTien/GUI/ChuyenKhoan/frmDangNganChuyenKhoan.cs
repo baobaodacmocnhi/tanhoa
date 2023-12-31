@@ -115,7 +115,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             if (e.KeyChar == 13 && !string.IsNullOrEmpty(txtSoHoaDon.Text.Trim()))
             {
                 foreach (string item in txtSoHoaDon.Lines)
-                    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) )
+                    if (!string.IsNullOrEmpty(item.Trim().ToUpper()))
                     {
                         if (lstHD.FindItemWithText(item.Trim().ToUpper()) == null)
                         {
@@ -123,16 +123,16 @@ namespace ThuTien.GUI.ChuyenKhoan
                             lstHD.EnsureVisible(lstHD.Items.Count - 1);
                         }
                     }
-                    //else
-                    //    ///Trung An thêm 'K' phía cuối liên hóa đơn
-                    //    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && item.ToString().Length == 14)
-                    //    {
-                    //        if (lstHD.FindItemWithText(item.Trim().ToUpper().Replace("K", "")) == null)
-                    //        {
-                    //            lstHD.Items.Add(item.Trim().ToUpper().Replace("K", ""));
-                    //            lstHD.EnsureVisible(lstHD.Items.Count - 1);
-                    //        }
-                    //    }
+                //else
+                //    ///Trung An thêm 'K' phía cuối liên hóa đơn
+                //    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && item.ToString().Length == 14)
+                //    {
+                //        if (lstHD.FindItemWithText(item.Trim().ToUpper().Replace("K", "")) == null)
+                //        {
+                //            lstHD.Items.Add(item.Trim().ToUpper().Replace("K", ""));
+                //            lstHD.EnsureVisible(lstHD.Items.Count - 1);
+                //        }
+                //    }
                 txtSoLuong.Text = lstHD.Items.Count.ToString();
                 txtSoHoaDon.Text = "";
             }
@@ -159,13 +159,13 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
-                dgvHDTuGia.DataSource = _cHoaDon.GetDSDangNganChuyenKhoan("", dateTu.Value, dateDen.Value);
+                dgvHDTuGia.DataSource = _cHoaDon.GetDSDangNganChuyenKhoan("", CNguoiDung.MaND, dateTu.Value, dateDen.Value, CNguoiDung.FromDot, CNguoiDung.ToDot);
                 CountdgvHDTuGia();
             }
             else
                 if (tabControl.SelectedTab.Name == "tabCoQuan")
                 {
-                    dgvHDCoQuan.DataSource = _cHoaDon.GetDSDangNganChuyenKhoan("CQ", dateTu.Value, dateDen.Value);
+                    dgvHDCoQuan.DataSource = _cHoaDon.GetDSDangNganChuyenKhoan("CQ", CNguoiDung.MaND, dateTu.Value, dateDen.Value, CNguoiDung.FromDot, CNguoiDung.ToDot);
                     CountdgvHDCoQuan();
                 }
         }

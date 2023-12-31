@@ -423,7 +423,7 @@ namespace ThuTien.GUI.Quay
             if (radDienTu.Checked == true)
                 HDDT = true;
             if (dateDen.Value >= dateTu.Value)
-                dgvTamThu.DataSource = _cTamThu.getDS(HDDT, false, dateTu.Value, dateDen.Value);
+                dgvTamThu.DataSource = _cTamThu.getDS_Quay(HDDT, false, dateTu.Value, dateDen.Value);
             string HoTen = "", TenTo = "";
             foreach (DataGridViewRow item in dgvTamThu.Rows)
             {

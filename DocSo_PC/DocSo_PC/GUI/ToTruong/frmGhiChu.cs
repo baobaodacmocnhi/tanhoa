@@ -41,7 +41,7 @@ namespace DocSo_PC.GUI.ToTruong
             dgvPhieuChuyen.AutoGenerateColumns = false;
             dgvGhiChu.AutoGenerateColumns = false;
             cmbDot.Items.Add("Tất Cả");
-            for (int i = CNguoiDung.TuDot; i <= CNguoiDung.DenDot; i++)
+            for (int i = CNguoiDung.FromDot; i <= CNguoiDung.ToDot; i++)
             {
                 cmbDot.Items.Add(i.ToString("00"));
             }

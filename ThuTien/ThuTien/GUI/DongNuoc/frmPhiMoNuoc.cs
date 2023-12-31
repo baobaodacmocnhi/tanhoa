@@ -32,7 +32,7 @@ namespace ThuTien.GUI.DongNuoc
         {
             dgvKQDongNuoc.AutoGenerateColumns = false;
 
-            if (CNguoiDung.Doi == true || _cNguoiDung.GetByMaND(CNguoiDung.MaND).TT_To.HanhThu==false)
+            if (CNguoiDung.Doi == true || _cNguoiDung.GetByMaND(CNguoiDung.MaND).TT_To.HanhThu == false)
             {
                 panel_To.Visible = true;
                 panel_NhanVien.Visible = true;
@@ -54,9 +54,9 @@ namespace ThuTien.GUI.DongNuoc
         private void btnXem_Click(object sender, EventArgs e)
         {
             if (CNguoiDung.Doi == true || CNguoiDung.ToTruong == true)
-                dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuoc_DongPhi(int.Parse(cmbNhanVien.SelectedValue.ToString()), dateTu.Value, dateDen.Value);
+                dgvKQDongNuoc.DataSource = _cDongNuoc.getDS_KQDongNuoc_DongPhi(int.Parse(cmbNhanVien.SelectedValue.ToString()), dateTu.Value, dateDen.Value, CNguoiDung.FromDot, CNguoiDung.ToDot);
             else
-                dgvKQDongNuoc.DataSource = _cDongNuoc.GetDSKQDongNuoc_DongPhi(CNguoiDung.MaND, dateTu.Value, dateDen.Value);
+                dgvKQDongNuoc.DataSource = _cDongNuoc.getDS_KQDongNuoc_DongPhi(CNguoiDung.MaND, dateTu.Value, dateDen.Value, CNguoiDung.FromDot, CNguoiDung.ToDot);
         }
 
         private void dgvKQDongNuoc_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

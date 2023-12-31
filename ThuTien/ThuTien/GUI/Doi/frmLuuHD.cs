@@ -224,7 +224,14 @@ namespace ThuTien.GUI.Doi
                             if (!string.IsNullOrWhiteSpace(contents[67]))
                                 hoadon.TDVTN2022 = int.Parse(contents[67]);
                             hoadon.MALOTRINH = hoadon.DOT.ToString("00") + hoadon.MAY + hoadon.STT;
-
+                            try
+                            {
+                                hoadon.MaNV_HanhThu = _cNguoiDung.getIDByMay(int.Parse(hoadon.MAY));
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Lỗi Máy của Nhân viên\n" + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                             //Nếu chưa có hóa đơn
                             if (!_cHoaDon.CheckExist(hoadon.DANHBA, hoadon.NAM, hoadon.KY))
                             {
@@ -361,7 +368,7 @@ namespace ThuTien.GUI.Doi
 
                         try
                         {
-                            if (Dot == 20)
+                            if (Dot == 15 || Dot == 30)
                             {
                                 CGiaBanBinhQuan _cGBBQ = new CGiaBanBinhQuan();
                                 DataTable dt = _cHoaDon.GetGiaBanBinhQuan(Nam, Ky);
@@ -376,7 +383,7 @@ namespace ThuTien.GUI.Doi
                                     _cGBBQ.Them(entity);
                                 }
                                 else
-                                    if (MessageBox.Show("Đã chốt Giá Bán Bình Quân, Bạn có chắc chốt lại không???", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                                    //if (MessageBox.Show("Đã chốt Giá Bán Bình Quân, Bạn có chắc chốt lại không???", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                                     {
                                         TT_GiaBanBinhQuan entity = _cGBBQ.Get(Nam, Ky);
                                         entity.TongGiaBan = decimal.Parse(dt.Rows[0]["TongGiaBan"].ToString());
@@ -409,7 +416,7 @@ namespace ThuTien.GUI.Doi
             if (cmbKy.SelectedIndex != -1)
             {
                 //var startTime = System.Diagnostics.Stopwatch.StartNew();
-                dgvHoaDon.DataSource = _cHoaDon.GetTongByNamKy(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), CNguoiDung.TuDot, CNguoiDung.DenDot);
+                dgvHoaDon.DataSource = _cHoaDon.GetTongByNamKy(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), CNguoiDung.FromDot, CNguoiDung.ToDot);
                 //startTime.Stop();
                 //MessageBox.Show(startTime.ElapsedMilliseconds.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -568,8 +575,8 @@ namespace ThuTien.GUI.Doi
                     NamTruoc = Nam;
                     KyTruoc = Ky - 1;
                 }
-                DataTable dt = _cHoaDon.GetTongByNamKy(Nam, Ky, CNguoiDung.TuDot, CNguoiDung.DenDot);
-                DataTable dtDCHD = _cDCHD.GetTongChuanThu(Nam, Ky, CNguoiDung.TuDot, CNguoiDung.DenDot);
+                DataTable dt = _cHoaDon.GetTongByNamKy(Nam, Ky, CNguoiDung.FromDot, CNguoiDung.ToDot);
+                DataTable dtDCHD = _cDCHD.GetTongChuanThu(Nam, Ky, CNguoiDung.FromDot, CNguoiDung.ToDot);
                 if (dtDCHD != null && dtDCHD.Rows.Count > 0)
                 {
                     dt.Rows[0]["TongGiaBan"] = long.Parse(dt.Rows[0]["TongGiaBan"].ToString()) - long.Parse(dtDCHD.Rows[0]["GIABAN_DC"].ToString());
@@ -577,8 +584,8 @@ namespace ThuTien.GUI.Doi
                     dt.Rows[0]["TongPhiBVMT"] = long.Parse(dt.Rows[0]["TongPhiBVMT"].ToString()) - long.Parse(dtDCHD.Rows[0]["PhiBVMT_DC"].ToString());
                     dt.Rows[0]["TongCong"] = long.Parse(dt.Rows[0]["TongCong"].ToString()) - long.Parse(dtDCHD.Rows[0]["TONGCONG_DC"].ToString());
                 }
-                DataTable dtTruoc = _cHoaDon.GetTongByNamKy(NamTruoc, KyTruoc, CNguoiDung.TuDot, CNguoiDung.DenDot);
-                dtDCHD = _cDCHD.GetTongChuanThu(NamTruoc, KyTruoc, CNguoiDung.TuDot, CNguoiDung.DenDot);
+                DataTable dtTruoc = _cHoaDon.GetTongByNamKy(NamTruoc, KyTruoc, CNguoiDung.FromDot, CNguoiDung.ToDot);
+                dtDCHD = _cDCHD.GetTongChuanThu(NamTruoc, KyTruoc, CNguoiDung.FromDot, CNguoiDung.ToDot);
                 if (dtDCHD != null && dtDCHD.Rows.Count > 0)
                 {
                     dtTruoc.Rows[0]["TongGiaBan"] = long.Parse(dtTruoc.Rows[0]["TongGiaBan"].ToString()) - long.Parse(dtDCHD.Rows[0]["GIABAN_DC"].ToString());
@@ -617,7 +624,7 @@ namespace ThuTien.GUI.Doi
 
         private void btnXem_TyLeTon_Click(object sender, EventArgs e)
         {
-            dgvTyLeTon.DataSource = _cHoaDon.GetBaoCaoTyLeTon(int.Parse(cmbNam.SelectedValue.ToString()), CNguoiDung.TuDot, CNguoiDung.DenDot);
+            dgvTyLeTon.DataSource = _cHoaDon.GetBaoCaoTyLeTon(int.Parse(cmbNam.SelectedValue.ToString()), CNguoiDung.FromDot, CNguoiDung.ToDot);
 
             int TongHD = 0;
             long TongGiaBan = 0;

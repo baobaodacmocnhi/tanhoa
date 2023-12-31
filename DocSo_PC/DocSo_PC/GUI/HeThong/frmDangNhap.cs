@@ -67,8 +67,8 @@ namespace DocSo_PC.GUI.HeThong
                     {
                         CNguoiDung.IDPhong = nguoidung.To.IDPhong.Value;
                         CNguoiDung.TenPhong = nguoidung.To.Phong.Name;
-                        CNguoiDung.TuDot = nguoidung.To.Phong.TuDot.Value;
-                        CNguoiDung.DenDot = nguoidung.To.Phong.DenDot.Value;
+                        CNguoiDung.FromDot = nguoidung.To.Phong.TuDot.Value;
+                        CNguoiDung.ToDot = nguoidung.To.Phong.DenDot.Value;
                         CNguoiDung.MaTo = nguoidung.MaTo.Value;
                         CNguoiDung.TenTo = nguoidung.To.TenTo;
                         if (_ct.get(nguoidung.MaTo.Value).TuMay != null)
@@ -80,8 +80,8 @@ namespace DocSo_PC.GUI.HeThong
                     {
                         CNguoiDung.IDPhong = 0;
                         CNguoiDung.TenPhong = "";
-                        CNguoiDung.TuDot = 0;
-                        CNguoiDung.DenDot = 0;
+                        CNguoiDung.FromDot = 0;
+                        CNguoiDung.ToDot = 0;
                         CNguoiDung.MaTo = 0;
                         CNguoiDung.TenTo = "";
                         CNguoiDung.TuMayDS = 0;

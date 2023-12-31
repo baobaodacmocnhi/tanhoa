@@ -41,7 +41,7 @@ namespace DocSo_PC.GUI.Doi
         {
             try
             {
-                dgvDanhSach.DataSource = _cDocSo.getTong_ChuyenBilling(cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), CNguoiDung.TuDot.ToString("00"), CNguoiDung.DenDot.ToString("00"));
+                dgvDanhSach.DataSource = _cDocSo.getTong_ChuyenBilling(cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), CNguoiDung.FromDot.ToString("00"), CNguoiDung.ToDot.ToString("00"));
             }
             catch (Exception ex)
             {

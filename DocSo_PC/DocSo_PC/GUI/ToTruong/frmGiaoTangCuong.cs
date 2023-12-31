@@ -33,7 +33,7 @@ namespace DocSo_PC.GUI.ToTruong
             cmbNam.DisplayMember = "Nam";
             cmbNam.ValueMember = "Nam";
             cmbKy.SelectedItem = CNguoiDung.Ky;
-            for (int i = CNguoiDung.TuDot; i <= CNguoiDung.DenDot; i++)
+            for (int i = CNguoiDung.FromDot; i <= CNguoiDung.ToDot; i++)
             {
                 cmbDot.Items.Add(i.ToString("00"));
             }

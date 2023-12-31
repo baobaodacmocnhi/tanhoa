@@ -1255,10 +1255,5 @@ namespace ThuTien
             //CNguoiDung.DangXuat();
         }
 
-       
-
-       
-
-
     }
 }

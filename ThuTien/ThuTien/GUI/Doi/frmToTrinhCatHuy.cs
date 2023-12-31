@@ -154,7 +154,7 @@ namespace ThuTien.GUI.Doi
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvToTrinh.DataSource = _cToTrinhCatHuy.GetDS();
+            dgvToTrinh.DataSource = _cToTrinhCatHuy.getDS(CNguoiDung.IDPhong);
             if (dgvCTToTrinh.DataSource != null)
                 dgvCTToTrinh.DataSource = null;
             if (dgvCTToTrinh.Rows.Count > 0)

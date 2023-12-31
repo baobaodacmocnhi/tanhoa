@@ -286,7 +286,7 @@ namespace DocSo_PC.GUI.QuanTri
                     if (_nguoidung != null)
                     {
                         ///xóa quan hệ 1 nhiều
-                        //_cPhanQuyenNguoiDung.Xoa(nguoidung.PhanQuyenNguoiDungs.ToList());
+                        //_cPhanQuyenNguoiDung.Xoa(_nguoidung.PhanQuyenNguoiDungs.ToList());
 
                         //_cNguoiDung.Xoa(_nguoidung);
                         //MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -44,7 +44,7 @@ namespace ThuTien.GUI.DongNuoc
         {
             if (CNguoiDung.Doi)
             {
-                cmbTo.DataSource = _cTo.getDS_HanhThu();
+                cmbTo.DataSource = _cTo.getDS_HanhThu(CNguoiDung.IDPhong);
                 cmbTo.DisplayMember = "TenTo";
                 cmbTo.ValueMember = "MaTo";
                 cmbTo.Visible = true;
@@ -52,7 +52,7 @@ namespace ThuTien.GUI.DongNuoc
             }
             else
             {
-                if(CNguoiDung.ToTruong)
+                if (CNguoiDung.ToTruong)
                     btnXoaLenh.Visible = true;
                 else
                     btnXoaLenh.Visible = false;
@@ -65,7 +65,7 @@ namespace ThuTien.GUI.DongNuoc
                 cmbNhanVienLap.DisplayMember = "HoTen";
                 cmbNhanVienLap.ValueMember = "MaND";
 
-                cmbNhanVienGiao.DataSource = _cNguoiDung.GetDSDongNuocByMaTo(CNguoiDung.MaTo);
+                cmbNhanVienGiao.DataSource = _cNguoiDung.getDS_DongNuoc(CNguoiDung.MaTo);
                 cmbNhanVienGiao.DisplayMember = "HoTen";
                 cmbNhanVienGiao.ValueMember = "MaND";
                 cmbTo.Visible = false;
@@ -76,7 +76,7 @@ namespace ThuTien.GUI.DongNuoc
             dateTu.Value = DateTime.Now;
             dateDen.Value = DateTime.Now;
 
-            cmbToCapNhat.DataSource = _cTo.getDS_HanhThu();
+            cmbToCapNhat.DataSource = _cTo.getDS_HanhThu(CNguoiDung.IDPhong);
             cmbToCapNhat.ValueMember = "MaTo";
             cmbToCapNhat.DisplayMember = "TenTo";
         }
@@ -752,7 +752,7 @@ namespace ThuTien.GUI.DongNuoc
                 cmbNhanVienLap.DisplayMember = "HoTen";
                 cmbNhanVienLap.ValueMember = "MaND";
 
-                cmbNhanVienGiao.DataSource = _cNguoiDung.GetDSDongNuocByMaTo(((TT_To)cmbTo.SelectedItem).MaTo);
+                cmbNhanVienGiao.DataSource = _cNguoiDung.getDS_DongNuoc(CNguoiDung.IDPhong);
                 cmbNhanVienGiao.DisplayMember = "HoTen";
                 cmbNhanVienGiao.ValueMember = "MaND";
             }
@@ -1067,7 +1067,7 @@ namespace ThuTien.GUI.DongNuoc
                                 if (!_cDongNuoc.CheckExist_KQDongNuoc(decimal.Parse(item["MaDN"].ToString())))
                                     if (!_cDongNuoc.Xoa(decimal.Parse(item["MaDN"].ToString())))
                                     {
-                                        
+
                                     }
                             }
                         MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

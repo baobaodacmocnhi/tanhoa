@@ -38,12 +38,10 @@ namespace ThuTien.GUI.DongNuoc
         private void frmKQDongNuoc_Load(object sender, EventArgs e)
         {
             dgvKQDongNuoc.AutoGenerateColumns = false;
-
             if (CNguoiDung.Doi)
             {
                 cmbTo.Visible = true;
-
-                List<TT_To> lstTo = _cTo.getDS_HanhThu();
+                List<TT_To> lstTo = _cTo.getDS_HanhThu(CNguoiDung.IDPhong);
                 TT_To to = new TT_To();
                 to.MaTo = 0;
                 to.TenTo = "Tất Cả";
@@ -54,10 +52,8 @@ namespace ThuTien.GUI.DongNuoc
             }
             else
                 lbTo.Text = "Tổ  " + CNguoiDung.TenTo;
-
             dateTu.Value = DateTime.Now;
             dateDen.Value = DateTime.Now;
-
             //txtMaKemBamChi.Text = CNguoiDung.MaKemBamChi;
         }
 
@@ -737,7 +733,7 @@ namespace ThuTien.GUI.DongNuoc
                 if (CNguoiDung.Doi)
                 {
                     if (cmbTo.SelectedIndex == 0)
-                        dgvKQDongNuoc.DataSource = _cDongNuoc.getDS_KQDongNuoc(dateTu.Value, dateDen.Value);
+                        dgvKQDongNuoc.DataSource = _cDongNuoc.getDS_KQDongNuoc(dateTu.Value, dateDen.Value,CNguoiDung.FromDot,CNguoiDung.ToDot);
                     else
                         if (cmbTo.SelectedIndex > 0)
                             dgvKQDongNuoc.DataSource = _cDongNuoc.getDS_KQDongNuoc_MaTo_NgayDN((int)cmbTo.SelectedValue, dateTu.Value, dateDen.Value);
@@ -754,7 +750,7 @@ namespace ThuTien.GUI.DongNuoc
                     if (CNguoiDung.Doi)
                     {
                         if (cmbTo.SelectedIndex == 0)
-                            dgvKQDongNuoc.DataSource = _cDongNuoc.getDS_KQMoNuoc(dateTu.Value, dateDen.Value);
+                            dgvKQDongNuoc.DataSource = _cDongNuoc.getDS_KQMoNuoc(dateTu.Value, dateDen.Value, CNguoiDung.FromDot, CNguoiDung.ToDot);
                         else
                             if (cmbTo.SelectedIndex > 0)
                                 dgvKQDongNuoc.DataSource = _cDongNuoc.getDS_KQMoNuoc_MaTo_NgayMN((int)cmbTo.SelectedValue, dateTu.Value, dateDen.Value);

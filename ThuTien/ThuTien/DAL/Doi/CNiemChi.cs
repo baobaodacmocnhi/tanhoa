@@ -149,9 +149,10 @@ namespace ThuTien.DAL.Doi
             return _db.TT_NiemChis.Where(item => item.CreateDate.Value.Date == CreateDate.Date).ToList();
         }
 
-        public DataTable getDSNhap_Group()
+        public DataTable getDSNhap_Group(int IDPhong)
         {
             var query = from item in _db.TT_NiemChis
+                        where _db.TT_NguoiDungs.SingleOrDefault(nd => nd.MaND == item.CreateBy).TT_To.IDPhong == IDPhong
                         group item by item.CreateDate.Value.Date into itemGroup
                         select new
                         {
@@ -207,9 +208,10 @@ namespace ThuTien.DAL.Doi
             return LINQToDataTable(query);
         }
 
-        public DataTable getDSHuHong_ChuaQyetToan()
+        public DataTable getDSHuHong_ChuaQyetToan(int IDPhong)
         {
             var query = from item in _db.TT_NiemChis
+                        where _db.TT_NguoiDungs.SingleOrDefault(nd => nd.MaND == item.CreateBy).TT_To.IDPhong == IDPhong
                         where item.HuHong == true && item.QuyetToan == false
                         select new
                         {

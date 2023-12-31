@@ -37,18 +37,18 @@ namespace ThuTien.DAL.QuanTri
             set { CNguoiDung._TenPhong = value; }
         }
 
-        static int _TuDot;
-        public static int TuDot
+        static int _FromDot;
+        public static int FromDot
         {
-            get { return _TuDot; }
-            set { _TuDot = value; }
+            get { return _FromDot; }
+            set { _FromDot = value; }
         }
 
-        static int _DenDot;
-        public static int DenDot
+        static int _ToDot;
+        public static int ToDot
         {
-            get { return _DenDot; }
-            set { _DenDot = value; }
+            get { return _ToDot; }
+            set { _ToDot = value; }
         }
 
         static int _MaTo;
@@ -369,9 +369,9 @@ namespace ThuTien.DAL.QuanTri
             return _db.TT_NguoiDungs.Where(item => item.MaTo == MaTo && item.DongNuoc == true).OrderBy(item => item.STT).ToList();
         }
 
-        public List<TT_NguoiDung> getDS_DongNuoc()
+        public List<TT_NguoiDung> getDS_DongNuoc(int IDPhong)
         {
-            return _db.TT_NguoiDungs.Where(item => item.TT_To.DongNuoc == true && item.DongNuoc == true).OrderBy(item => item.STT).ToList();
+            return _db.TT_NguoiDungs.Where(item => item.TT_To.DongNuoc == true && item.DongNuoc == true && item.TT_To.IDPhong == IDPhong).OrderBy(item => item.STT).ToList();
         }
 
         public List<TT_NguoiDung> GetDSDongNuocToTruongByMaTo(int MaTo)
@@ -488,6 +488,11 @@ namespace ThuTien.DAL.QuanTri
             {
                 throw ex;
             }
+        }
+
+        public int getIDByMay(int May)
+        {
+            return _db.TT_NguoiDungs.SingleOrDefault(o => o.May == May).MaND;
         }
 
         //Danh sách đăng nhập

@@ -81,9 +81,11 @@ namespace ThuTien.DAL.VanThu
             return _db.TT_CongVanDens.SingleOrDefault(item => item.TableName == TableName && item.IDCT == IDCT);
         }
 
-        public DataTable getDS(DateTime FromCreateDate, DateTime ToCreateDate)
+        public DataTable getDS(DateTime FromCreateDate, DateTime ToCreateDate, int FromDot, int ToDot)
         {
-            return ExecuteQuery_DataTable("select *,'To'=(select top 1 TenTo from [TT_To] where TuCuonGCS<=SUBSTRING(MLT,3,2) and DenCuonGCS>=SUBSTRING(MLT,3,2)) from TT_CongVanDen where cast(createdate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and cast(createdate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' order by createdate desc");
+            return ExecuteQuery_DataTable("select *,'To'=(select top 1 TenTo from [TT_To] where TuCuonGCS<=SUBSTRING(MLT,3,2) and DenCuonGCS>=SUBSTRING(MLT,3,2)) from TT_CongVanDen where"
+                + FromDot + "<=SUBSTRING(MLT,1,2) and " + ToDot + ">=SUBSTRING(MLT,1,2)"
+                + " and cast(createdate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and cast(createdate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' order by createdate desc");
         }
 
         public DataTable getDS(string DanhBo)
@@ -107,7 +109,7 @@ namespace ThuTien.DAL.VanThu
                 DaXuLy = "1";
             else
                 DaXuLy = "0";
-            return ExecuteQuery_DataTable("select *,'To'=(select top 1 TenTo from [TT_To] where TuCuonGCS<=SUBSTRING(MLT,3,2) and DenCuonGCS>=SUBSTRING(MLT,3,2)) from TT_CongVanDen where DaXuLy=" + DaXuLy 
+            return ExecuteQuery_DataTable("select *,'To'=(select top 1 TenTo from [TT_To] where TuCuonGCS<=SUBSTRING(MLT,3,2) and DenCuonGCS>=SUBSTRING(MLT,3,2)) from TT_CongVanDen where DaXuLy=" + DaXuLy
                 + " order by createdate desc");
         }
 

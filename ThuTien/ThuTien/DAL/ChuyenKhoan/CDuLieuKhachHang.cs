@@ -223,6 +223,14 @@ namespace ThuTien.DAL.ChuyenKhoan
                 return false;
         }
 
+        public bool CheckExist2(int MaHD)
+        {
+            if (_db.HOADONs.Any(itemHD => itemHD.ID_HOADON == MaHD))
+                return _db.TT_DuLieuKhachHang_SoHoaDons.Any(item => item.MaHD == MaHD);
+            else
+                return false;
+        }
+
         public TT_DuLieuKhachHang_SoHoaDon GetBySoHoaDon2(string SoHoaDon)
         {
             return _db.TT_DuLieuKhachHang_SoHoaDons.SingleOrDefault(item => item.SoHoaDon == SoHoaDon);

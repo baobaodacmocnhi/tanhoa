@@ -33,7 +33,7 @@ namespace ThuTien.GUI.DongNuoc
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            List<TT_To> lstTo = _cTo.getDS_HanhThu();
+            List<TT_To> lstTo = _cTo.getDS_HanhThu(CNguoiDung.IDPhong);
             DataTable dt = new DataTable();
 
             for (int i = 0; i < lstTo.Count; i++)
@@ -57,7 +57,7 @@ namespace ThuTien.GUI.DongNuoc
             txtTongMoNuoc.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongMoNuoc);
 
             ///
-            dgvDongNuoc.DataSource = _cDongNuoc.getDS_KQDongNuoc(dateTu.Value, dateDen.Value);
+            dgvDongNuoc.DataSource = _cDongNuoc.getDS_KQDongNuoc(dateTu.Value, dateDen.Value, CNguoiDung.FromDot, CNguoiDung.ToDot);
             foreach (DataGridViewRow item in dgvDongNuoc.Rows)
             {
                 DocSo entity = _cDocSoHandheld.Get(item.Cells["DanhBo"].Value.ToString());

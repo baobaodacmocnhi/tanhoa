@@ -44,12 +44,10 @@ namespace ThuTien.GUI.ToTruong
         {
             dgvHDTuGia.AutoGenerateColumns = false;
             dgvHDCoQuan.AutoGenerateColumns = false;
-
             if (CNguoiDung.Doi == true)
             {
                 cmbTo.Visible = true;
-
-                cmbTo.DataSource = _cTo.getDS_HanhThu();
+                cmbTo.DataSource = _cTo.getDS_HanhThu(CNguoiDung.IDPhong);
                 cmbTo.DisplayMember = "TenTo";
                 cmbTo.ValueMember = "MaTo";
             }
@@ -65,7 +63,6 @@ namespace ThuTien.GUI.ToTruong
                 cmbNhanVien.DisplayMember = "HoTen";
                 cmbNhanVien.ValueMember = "MaND";
             }
-
             DataTable dtNam = _cHoaDon.GetNam();
             DataRow dr = dtNam.NewRow();
             dr["ID"] = "Tất Cả";
@@ -75,9 +72,14 @@ namespace ThuTien.GUI.ToTruong
             cmbNam.ValueMember = "Nam";
 
             dateGiaiTrach.Value = DateTime.Now;
-
             cmbNam.SelectedValue = DateTime.Now.Year.ToString();
             cmbKy.SelectedItem = DateTime.Now.Month.ToString();
+            cmbFromDot.Items.Add("Tất Cả");
+            for (int i = CNguoiDung.FromDot; i <= CNguoiDung.ToDot; i++)
+            {
+                cmbFromDot.Items.Add(i.ToString());
+                cmbToDot.Items.Add(i.ToString());
+            }
             cmbFromDot.SelectedIndex = 0;
             cmbToDot.SelectedIndex = 0;
 
@@ -1381,7 +1383,7 @@ namespace ThuTien.GUI.ToTruong
                             DataTable dt = _cHoaDon.GetDSTonDenKy_NV(int.Parse(dgvHDTuGia.SelectedRows[0].Cells["MaNV_TG"].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(dgvHDTuGia.SelectedRows[0].Cells["Dot_TG"].Value.ToString()), 2);
                             //dồn lệnh cũ
                             foreach (DataRow item in dt.Rows)
-                                if (!_cDongNuoc.CheckExist_CTDongNuoc(item["SoHoaDon"].ToString()) && !_cLenhHuy.CheckExist(item["SoHoaDon"].ToString()) && !_cDLKH.CheckExist2(item["SoHoaDon"].ToString()))
+                                if (!_cDongNuoc.CheckExist_CTDongNuoc(int.Parse(item["MaHD"].ToString())) && !_cLenhHuy.CheckExist(int.Parse(item["MaHD"].ToString())) && !_cDLKH.CheckExist2(int.Parse(item["MaHD"].ToString())))
                                 {
                                     HOADON hoadon = _cHoaDon.GetMoiNhi(item["DanhBo"].ToString());
                                     if (_cDongNuoc.CheckExist_CTDongNuoc(hoadon.SOHOADON) == true)

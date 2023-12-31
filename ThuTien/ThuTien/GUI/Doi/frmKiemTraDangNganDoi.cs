@@ -42,7 +42,7 @@ namespace ThuTien.GUI.Doi
             dgvNhanVien_TC.AutoGenerateColumns = false;
             dgvChotDangNgan.AutoGenerateColumns = false;
 
-            List<TT_To> lst = _cTo.getDS();
+            List<TT_To> lst = _cTo.getDS(CNguoiDung.IDPhong);
             TT_To to = new TT_To();
             to.MaTo = 0;
             to.TenTo = "Tất Cả";
@@ -374,7 +374,6 @@ namespace ThuTien.GUI.Doi
                         dr["Loai"] = "TG";
                     ds.Tables["TamThuChuyenKhoan"].Rows.Add(dr);
                 }
-
                 rptDSTamThuChuyenKhoan rpt = new rptDSTamThuChuyenKhoan();
                 rpt.SetDataSource(ds);
                 frmBaoCao frm = new frmBaoCao(rpt);
@@ -384,7 +383,7 @@ namespace ThuTien.GUI.Doi
 
         private void btnXuatExcel_Click(object sender, EventArgs e)
         {
-            DataTable dt = _cHoaDon.GetDSDangNgan(dateTu.Value, dateDen.Value);
+            DataTable dt = _cHoaDon.getDS_DangNgan(dateTu.Value, dateDen.Value, CNguoiDung.FromDot, CNguoiDung.ToDot);
 
             //Tạo các đối tượng Excel
             Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
@@ -1064,7 +1063,7 @@ namespace ThuTien.GUI.Doi
             btnXemChot.PerformClick();
         }
 
-       
+
 
 
 

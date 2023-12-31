@@ -128,7 +128,6 @@ namespace ThuTien.GUI.ChuyenKhoan
                             //    return;
                             //}
                         }
-
                     foreach (DataGridViewRow item in dgvHoaDon.Rows)
                         if (item.Cells["Chon"].Value != null && bool.Parse(item.Cells["Chon"].Value.ToString()))
                             if (!_cTamThu.CheckExist(int.Parse(item.Cells["MaHD"].Value.ToString()), true))
@@ -177,7 +176,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             if (radDienTu.Checked == true)
                 HDDT = true;
             if (dateDen.Value >= dateTu.Value)
-                dgvTamThu.DataSource = _cTamThu.getDS(HDDT, true, dateTu.Value, dateDen.Value);
+                dgvTamThu.DataSource = _cTamThu.getDS(HDDT, true, dateTu.Value, dateDen.Value, CNguoiDung.FromDot, CNguoiDung.ToDot);
             //string HoTen = "", TenTo = "";
             foreach (DataGridViewRow item in dgvTamThu.Rows)
             {
@@ -373,9 +372,9 @@ namespace ThuTien.GUI.ChuyenKhoan
                         //&& _cDCHD.CheckExist_ChuaUpdatedHDDT(item[0].ToString().Replace(" ", "")) == false)
                         {
                             if (chkTruHoNgheo.Checked == true)
-                                dt.Merge(_cHoaDon.GetDSTonByDanhBo_TruHoNgheo(item[0].ToString().Replace(" ", "")));
+                                dt.Merge(_cHoaDon.getDSTonByDanhBo_TruHoNgheo(item[0].ToString().Replace(" ", ""), CNguoiDung.FromDot, CNguoiDung.ToDot));
                             else
-                                dt.Merge(_cHoaDon.GetDSTonByDanhBo_DCHD_ChuaUpdateTCT(item[0].ToString().Replace(" ", "")));
+                                dt.Merge(_cHoaDon.getDSTonByDanhBo_DCHD_ChuaUpdateTCT(item[0].ToString().Replace(" ", ""), CNguoiDung.FromDot, CNguoiDung.ToDot));
                         }
                     dgvHoaDon.DataSource = dt;
 
@@ -1005,7 +1004,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void btnKiemTraSaiSot_Click(object sender, EventArgs e)
         {
-            DataTable dt = _cTamThu.getDSSaiSot_ChuyenKhoan(dateTu.Value, dateDen.Value);
+            DataTable dt = _cTamThu.getDSSaiSot_ChuyenKhoan(dateTu.Value, dateDen.Value, CNguoiDung.FromDot, CNguoiDung.ToDot);
             DataTable dtTemp = new DataTable();
             dtTemp.Columns.Add("DanhBo", typeof(string));
             foreach (DataRow item in dt.Rows)
@@ -1046,13 +1045,13 @@ namespace ThuTien.GUI.ChuyenKhoan
                             return;
                         }
                         else
-                        if (!_cDCHD.checkExist_HDDC_DangNgan(int.Parse(item["MaHD"].ToString())))
-                        {
-                            TT_HDDC_DangNgan en = new TT_HDDC_DangNgan();
-                            en.MaHD = int.Parse(item["MaHD"].ToString());
-                            en.ChuyenKhoan = true;
-                            _cDCHD.Them_HDDC_DangNgan(en);
-                        }
+                            if (!_cDCHD.checkExist_HDDC_DangNgan(int.Parse(item["MaHD"].ToString())))
+                            {
+                                TT_HDDC_DangNgan en = new TT_HDDC_DangNgan();
+                                en.MaHD = int.Parse(item["MaHD"].ToString());
+                                en.ChuyenKhoan = true;
+                                _cDCHD.Them_HDDC_DangNgan(en);
+                            }
                     }
                     else
                         if (item["SoHoaDon"].ToString() != "")

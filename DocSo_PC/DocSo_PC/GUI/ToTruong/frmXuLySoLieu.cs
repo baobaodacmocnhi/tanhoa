@@ -55,7 +55,7 @@ namespace DocSo_PC.GUI.ToTruong
                 cmbNam.DisplayMember = "Nam";
                 cmbNam.ValueMember = "Nam";
                 cmbKy.SelectedItem = CNguoiDung.Ky;
-                for (int i = CNguoiDung.TuDot; i <= CNguoiDung.DenDot; i++)
+                for (int i = CNguoiDung.FromDot; i <= CNguoiDung.ToDot; i++)
                 {
                     cmbDot.Items.Add(i.ToString("00"));
                 }
@@ -779,6 +779,7 @@ namespace DocSo_PC.GUI.ToTruong
                         _docso.TienNuoc = null;
                         _docso.Thue = null;
                         _docso.BVMT = null;
+                        _docso.BVMT_Thue = null;
                         _docso.TongTien = null;
                         _docso.StaCapNhat = null;
                         _docso.NVCapNhat = CNguoiDung.HoTen;

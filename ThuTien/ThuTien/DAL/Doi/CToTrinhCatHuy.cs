@@ -73,9 +73,9 @@ namespace ThuTien.DAL.Doi
             }
         }
 
-        public DataTable GetDS()
+        public DataTable getDS(int IDPhong)
         {
-            return LINQToDataTable(_db.TT_ToTrinhCatHuys.OrderByDescending(item => item.CreateDate).ToList());
+            return LINQToDataTable(_db.TT_ToTrinhCatHuys.Where(item => _db.TT_NguoiDungs.SingleOrDefault(nd => nd.MaND == item.CreateBy).TT_To.IDPhong == IDPhong).OrderByDescending(item => item.CreateDate).ToList());
         }
 
         public TT_ToTrinhCatHuy Get(decimal MaTT)
