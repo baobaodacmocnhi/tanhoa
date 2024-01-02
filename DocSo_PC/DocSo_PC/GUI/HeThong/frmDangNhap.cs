@@ -60,8 +60,6 @@ namespace DocSo_PC.GUI.HeThong
                     CNguoiDung.DoiXem = nguoidung.DoiXem;
                     CNguoiDung.ToTruong = nguoidung.ToTruong;
                     CNguoiDung.ThuKy = nguoidung.ThuKy;
-                    CNguoiDung.ChucVu = _cNguoiDung.getChucVu();
-                    CNguoiDung.NguoiKy = _cNguoiDung.getNguoiKy();
                     CNguoiDung.updateChuyenListing = nguoidung.updateChuyenListing;
                     if (nguoidung.MaTo != null)
                     {
@@ -104,6 +102,8 @@ namespace DocSo_PC.GUI.HeThong
                         CNguoiDung.Ky = DateTime.Now.Month.ToString("00");
                         CNguoiDung.Dot = "01";
                     }
+                    CNguoiDung.ChucVu = _cNguoiDung.getChucVu(CNguoiDung.IDPhong);
+                    CNguoiDung.NguoiKy = _cNguoiDung.getNguoiKy(CNguoiDung.IDPhong);
                     GetLoginResult(true);
                     this.Hide();
                 }

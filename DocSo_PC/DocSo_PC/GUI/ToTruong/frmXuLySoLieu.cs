@@ -55,11 +55,11 @@ namespace DocSo_PC.GUI.ToTruong
                 cmbNam.DisplayMember = "Nam";
                 cmbNam.ValueMember = "Nam";
                 cmbKy.SelectedItem = CNguoiDung.Ky;
-                for (int i = CNguoiDung.FromDot; i <= CNguoiDung.ToDot; i++)
-                {
-                    cmbDot.Items.Add(i.ToString("00"));
-                }
-                cmbDot.SelectedItem = CNguoiDung.Dot;
+                //for (int i = CNguoiDung.FromDot; i <= CNguoiDung.ToDot; i++)
+                //{
+                //    cmbDot.Items.Add(i.ToString("00"));
+                //}
+                //cmbDot.SelectedItem = CNguoiDung.Dot;
 
                 DataTable dtCode = _cDocSo.getDS_Code2023();
                 cmbCodeMoi.DataSource = dtCode;
@@ -81,6 +81,17 @@ namespace DocSo_PC.GUI.ToTruong
                     cmbTo.DataSource = lst;
                     cmbTo.DisplayMember = "TenTo";
                     cmbTo.ValueMember = "MaTo";
+                    cmbDot.Items.Clear();
+                    for (int i = cmbTo.Items.Count - 1; i > 0; i--)
+                    {
+                        To enT = (To)cmbTo.Items[i];
+                        for (int j = enT.Phong.TuDot.Value; j <= enT.Phong.DenDot.Value; j++)
+                            if (!cmbDot.Items.Contains(j.ToString("00")))
+                            {
+                                cmbDot.Items.Add(j.ToString("00"));
+                            }
+                    }
+                    cmbDot.SelectedIndex = 0;
                     loadMay(cmbTo.SelectedValue.ToString());
                 }
                 else
@@ -242,12 +253,30 @@ namespace DocSo_PC.GUI.ToTruong
         {
             if (_flagLoadFirst == true && cmbTo.SelectedIndex > -1)
             {
-                loadMay(cmbTo.SelectedValue.ToString());
-                To en = (To)cmbTo.SelectedItem;
-                cmbDot.Items.Clear();
-                for (int i = en.TuMay.Value; i <= en.DenMay.Value; i++)
+                if (cmbTo.SelectedIndex == 0)
                 {
-                    cmbDot.Items.Add(i.ToString("00"));
+                    cmbDot.Items.Clear();
+                    for (int i = cmbTo.Items.Count - 1; i > 0; i--)
+                    {
+                        To en = (To)cmbTo.Items[i];
+                        for (int j = en.Phong.TuDot.Value; j <= en.Phong.DenDot.Value; j++)
+                            if (!cmbDot.Items.Contains(j.ToString("00")))
+                            {
+                                cmbDot.Items.Add(j.ToString("00"));
+                            }
+                    }
+                    cmbDot.SelectedIndex = 0;
+                }
+                else
+                {
+                    loadMay(cmbTo.SelectedValue.ToString());
+                    To en = (To)cmbTo.SelectedItem;
+                    cmbDot.Items.Clear();
+                    for (int i = en.Phong.TuDot.Value; i <= en.Phong.DenDot.Value; i++)
+                    {
+                        cmbDot.Items.Add(i.ToString("00"));
+                    }
+                    cmbDot.SelectedIndex = 0;
                 }
             }
         }
@@ -681,7 +710,7 @@ namespace DocSo_PC.GUI.ToTruong
 
         public void loadCodeMoi()
         {
-            if (_flagLoadFirst == true)
+            if (_flagLoadFirst == true && cmbDot.SelectedIndex > -1)
             {
                 DataTable dtCode = _cDocSo.getDS_Code(cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString());
                 DataRow dr = dtCode.NewRow();

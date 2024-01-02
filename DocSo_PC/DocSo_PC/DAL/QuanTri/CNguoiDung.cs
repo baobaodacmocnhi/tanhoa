@@ -438,14 +438,14 @@ namespace DocSo_PC.DAL.QuanTri
                 return _db.NguoiDungs.Max(item => item.STT).Value;
         }
 
-        public string getChucVu()
+        public string getChucVu(int IDPhong)
         {
-            return _db.NguoiDungs.FirstOrDefault(item => item.KyTen == true).ChucVu;
+            return _db.NguoiDungs.FirstOrDefault(item => item.KyTen == true&&item.To.IDPhong==IDPhong).ChucVu;
         }
 
-        public string getNguoiKy()
+        public string getNguoiKy(int IDPhong)
         {
-            return _db.NguoiDungs.FirstOrDefault(item => item.KyTen == true).HoTen;
+            return _db.NguoiDungs.FirstOrDefault(item => item.KyTen == true && item.To.IDPhong == IDPhong).HoTen;
         }
 
     }

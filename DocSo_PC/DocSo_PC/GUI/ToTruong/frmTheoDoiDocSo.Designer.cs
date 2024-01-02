@@ -145,6 +145,7 @@
             this.cmbTo.Size = new System.Drawing.Size(100, 21);
             this.cmbTo.TabIndex = 50;
             this.cmbTo.Visible = false;
+            this.cmbTo.SelectedIndexChanged += new System.EventHandler(this.cmbTo_SelectedIndexChanged);
             // 
             // btnXem
             // 

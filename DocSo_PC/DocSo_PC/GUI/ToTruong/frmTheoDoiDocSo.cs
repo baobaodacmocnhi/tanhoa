@@ -63,12 +63,45 @@ namespace DocSo_PC.GUI.ToTruong
             if (CNguoiDung.Doi == true)
             {
                 if (cmbTo.SelectedIndex == 0)
-                    dgvDanhSach.DataSource = _cDocSo.getTheoDoiDocSo(cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString());
+                {
+                    //dgvDanhSach.DataSource = _cDocSo.getTheoDoiDocSo(cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString());
+                }
                 else
                     dgvDanhSach.DataSource = _cDocSo.getTheoDoiDocSo(cmbTo.SelectedValue.ToString(), cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString());
             }
             else
                 dgvDanhSach.DataSource = _cDocSo.getTheoDoiDocSo(CNguoiDung.MaTo.ToString(), cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString());
+        }
+
+        private void cmbTo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbTo.SelectedIndex > -1)
+            {
+                if (cmbTo.SelectedIndex == 0)
+                {
+                    cmbDot.Items.Clear();
+                    for (int i = cmbTo.Items.Count - 1; i > 0; i--)
+                    {
+                        To en = (To)cmbTo.Items[i];
+                        for (int j = en.Phong.TuDot.Value; j <= en.Phong.DenDot.Value; j++)
+                            if (!cmbDot.Items.Contains(j.ToString("00")))
+                            {
+                                cmbDot.Items.Add(j.ToString("00"));
+                            }
+                    }
+                    cmbDot.SelectedIndex = 0;
+                }
+                else
+                {
+                    To en = (To)cmbTo.SelectedItem;
+                    cmbDot.Items.Clear();
+                    for (int i = en.Phong.TuDot.Value; i <= en.Phong.DenDot.Value; i++)
+                    {
+                        cmbDot.Items.Add(i.ToString("00"));
+                    }
+                    cmbDot.SelectedIndex = 0;
+                }
+            }
         }
     }
 }
