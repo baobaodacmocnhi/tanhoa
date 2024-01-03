@@ -375,6 +375,7 @@ namespace ThuTien.GUI.ToTruong
                         DataRow dr = ds.Tables["TongHopNo"].NewRow();
                         dr["SoPhieu"] = tonghopno.MaTHN.ToString().Insert(tonghopno.MaTHN.ToString().Length - 2, "-");
                         dr["KinhGui"] = txtKinhGui.Text.Trim();
+                        dr["KyHieuPhong"] = CNguoiDung.KyHieuPhong;
                         dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(4, " ").Insert(8, " ");
                         dr["DiaChi"] = item.Cells["DiaChi"].Value.ToString();
                         dr["Ky"] = item.Cells["Ky"].Value.ToString();
@@ -421,8 +422,10 @@ namespace ThuTien.GUI.ToTruong
                         dr1["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky.png";
                     }
                     if (chkTenKy.Checked == true)
-                        dr1["NguoiKy"] = CNguoiKy.getNguoiKy();
-
+                    {
+                        dr1["ChucVu"] = CNguoiDung.ChucVu + " " + CNguoiDung.TenPhong.ToUpper();
+                        dr1["NguoiKy"] = CNguoiDung.NguoiKy;
+                    }
                     ds.Tables["TongHopNo"].Rows.Add(dr1);
                     if (radA4.Checked)
                     {
@@ -574,6 +577,7 @@ namespace ThuTien.GUI.ToTruong
                 DataRow dr = ds.Tables["TongHopNo"].NewRow();
                 dr["SoPhieu"] = tonghopno.MaTHN.ToString().Insert(tonghopno.MaTHN.ToString().Length - 2, "-");
                 dr["KinhGui"] = tonghopno.KinhGui;
+                dr["KyHieuPhong"] = CNguoiDung.KyHieuPhong;
                 dr["DanhBo"] = item.DanhBo.Insert(4, " ").Insert(8, " ");
                 dr["DiaChi"] = item.DiaChi;
                 dr["Ky"] = item.Ky;
@@ -620,8 +624,10 @@ namespace ThuTien.GUI.ToTruong
                 dr1["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky.png";
             }
             if (chkTenKy.Checked == true)
-                dr1["NguoiKy"] = CNguoiKy.getNguoiKy();
-
+            {
+                dr1["ChucVu"] = CNguoiDung.ChucVu + " " + CNguoiDung.TenPhong.ToUpper();
+                dr1["NguoiKy"] = CNguoiDung.NguoiKy;
+            }
             ds.Tables["TongHopNo"].Rows.Add(dr1);
             if (radA4.Checked)
             {

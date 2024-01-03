@@ -90,6 +90,11 @@ namespace ThuTien.DAL.ChuyenKhoan
             return _db.NGANHANGs.SingleOrDefault(item => item.KyHieu == KyHieu).ID_NGANHANG;
         }
 
+        public string getKyHieuByTenNH(string TenNH)
+        {
+            return _db.NGANHANGs.SingleOrDefault(item => item.NGANHANG1 == TenNH).KyHieu;
+        }
+
         public System.Data.DataTable GetDS()
         {
             return LINQToDataTable(_db.NGANHANGs.Select(item => new { MaNH = item.ID_NGANHANG, item.KyHieu, TenNH = item.NGANHANG1, item.SoTK, item.GroupBank }).ToList());

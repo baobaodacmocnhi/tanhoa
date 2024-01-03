@@ -136,12 +136,12 @@ namespace ThuTien.GUI.ChuyenKhoan
                         tiendu.ChoXuLy = bool.Parse(e.FormattedValue.ToString());
                         _cTienDu.Sua(tiendu);
                     }
-                    if (dgvTienDu.Columns[e.ColumnIndex].Name == "Quan" && bool.Parse(e.FormattedValue.ToString()) != bool.Parse(dgvTienDu[e.ColumnIndex, e.RowIndex].Value.ToString()))
-                    {
-                        TT_TienDu tiendu = _cTienDu.Get(dgvTienDu["DanhBo_TienDu", e.RowIndex].Value.ToString());
-                        tiendu.Quan = Int32.Parse(e.FormattedValue.ToString()).ToString();
-                        _cTienDu.Sua(tiendu);
-                    }
+                    //if (dgvTienDu.Columns[e.ColumnIndex].Name == "Quan" && bool.Parse(e.FormattedValue.ToString()) != bool.Parse(dgvTienDu[e.ColumnIndex, e.RowIndex].Value.ToString()))
+                    //{
+                    //    TT_TienDu tiendu = _cTienDu.Get(dgvTienDu["DanhBo_TienDu", e.RowIndex].Value.ToString());
+                    //    tiendu.Quan = Int32.Parse(e.FormattedValue.ToString()).ToString();
+                    //    _cTienDu.Sua(tiendu);
+                    //}
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

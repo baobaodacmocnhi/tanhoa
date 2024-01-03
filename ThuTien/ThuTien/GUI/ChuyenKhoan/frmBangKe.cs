@@ -74,52 +74,89 @@ namespace ThuTien.GUI.ChuyenKhoan
                             //    {
                             //        _cDHN.ExecuteNonQuery("update TB_DULIEUKHACHHANG set CHIGOC='" + item[3].ToString().Replace(" ", "") + "',MauSacChiGoc=N'Vàng' where danhbo='" + item[1].ToString().Replace(" ", "") + "'");
                             //    }
+                            DataTable dtBK = new DataTable();
+                            dtBK.Columns.Add("DanhBo", typeof(System.String));
+                            dtBK.Columns.Add("SoTien", typeof(System.String));
+                            dtBK.Columns.Add("Bank", typeof(System.String));
                             foreach (DataRow item in dtExcel.Rows)
-                                if ((string.IsNullOrEmpty(item[0].ToString()) || item[0].ToString().Replace(" ", "").Length == 11) && !string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()))
+                                if ((string.IsNullOrEmpty(item[0].ToString()) || item[0].ToString().Replace(" ", "").Length == 11)
+                                    && !string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()))
                                 {
-                                    var transactionOptions = new TransactionOptions();
-                                    transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
-                                    using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
+                                    //if (item[0].ToString().Replace(" ", "") == "24010201000")
+                                    //{
+                                    //    string a = "";
+                                    //}
+                                    bool flag = false;
+                                    TB_DULIEUKHACHHANG ttkh = _cDHN.get(item[0].ToString().Replace(" ", ""));
+                                    if (ttkh != null && int.Parse(ttkh.LOTRINH.Substring(0, 2)) >= CNguoiDung.FromDot && int.Parse(ttkh.LOTRINH.Substring(0, 2)) <= CNguoiDung.ToDot && CNguoiDung.IDPhong == 1)
                                     {
-                                        //if (item[0].ToString().Length == 11 && _cBangKe.CheckExist(item[0].ToString(), DateTime.Now))
-                                        //{
-                                        //    MessageBox.Show("Danh Bộ: " + item[0].ToString() + " đã thêm trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        //    continue;
-                                        //}
-                                        TT_BangKe bangke = new TT_BangKe();
-                                        bangke.DanhBo = item[0].ToString().Trim().Replace(" ", "");
-                                        bangke.SoTien = int.Parse(item[1].ToString().Trim());
-                                        if (_cNganHang.CheckExist(item[2].ToString().Trim()))
-                                            bangke.MaNH = _cNganHang.GetMaNHByKyHieu(item[2].ToString().Trim());
-                                        else
+                                        flag = true;
+                                    }
+                                    else
+                                        if (ttkh == null || (int.Parse(ttkh.LOTRINH.Substring(0, 2)) >= CNguoiDung.FromDot && int.Parse(ttkh.LOTRINH.Substring(0, 2)) <= CNguoiDung.ToDot && CNguoiDung.IDPhong == 2))
                                         {
-                                            MessageBox.Show("Lỗi Tên Ngân Hàng tại Danh Bộ: " + bangke.DanhBo + "\nBảng Kê đã lưu được tới đây", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                            return;
+                                            flag = true;
                                         }
-                                        bangke.CreateBy = CNguoiDung.MaND;
-                                        bangke.CreateDate2 = DateTime.Now;
-                                        if (chkNgayLap.Checked == true)
+                                    if (flag == true)
+                                    {
+                                        var transactionOptions = new TransactionOptions();
+                                        transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                                        using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                                         {
-                                            bangke.CreateDate = dateNgayLap.Value;
-                                            if (_cBangKe.Them(bangke))
-                                                if (_cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value, "Bảng Kê", "Thêm", bangke.MaNH.Value, bangke.MaBK, dateNgayLap.Value))
-                                                {
-                                                    scope.Complete();
-                                                    scope.Dispose();
-                                                }
-                                        }
-                                        else
-                                        {
-                                            bangke.CreateDate = DateTime.Now;
-                                            if (_cBangKe.Them(bangke))
-                                                if (_cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value, "Bảng Kê", "Thêm", bangke.MaNH.Value, bangke.MaBK))
-                                                {
-                                                    scope.Complete();
-                                                    scope.Dispose();
-                                                }
+                                            //if (item[0].ToString().Length == 11 && _cBangKe.CheckExist(item[0].ToString(), DateTime.Now))
+                                            //{
+                                            //    MessageBox.Show("Danh Bộ: " + item[0].ToString() + " đã thêm trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            //    continue;
+                                            //}
+                                            TT_BangKe bangke = new TT_BangKe();
+                                            bangke.DanhBo = item[0].ToString().Trim().Replace(" ", "");
+                                            bangke.SoTien = int.Parse(item[1].ToString().Trim());
+                                            if (_cNganHang.CheckExist(item[2].ToString().Trim()))
+                                                bangke.MaNH = _cNganHang.GetMaNHByKyHieu(item[2].ToString().Trim());
+                                            else
+                                            {
+                                                MessageBox.Show("Lỗi Tên Ngân Hàng tại Danh Bộ: " + bangke.DanhBo + "\nBảng Kê đã lưu được tới đây", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                return;
+                                            }
+                                            bangke.CreateBy = CNguoiDung.MaND;
+                                            bangke.CreateDate2 = DateTime.Now;
+                                            if (chkNgayLap.Checked == true)
+                                            {
+                                                bangke.CreateDate = dateNgayLap.Value;
+                                                if (_cBangKe.Them(bangke))
+                                                    if (_cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value, "Bảng Kê", "Thêm", bangke.MaNH.Value, bangke.MaBK, dateNgayLap.Value))
+                                                    {
+                                                        DataRow drBK = dtBK.NewRow();
+                                                        drBK["DanhBo"] = bangke.DanhBo;
+                                                        drBK["SoTien"] = bangke.SoTien;
+                                                        drBK["Bank"] = item[2].ToString().Trim();
+                                                        dtBK.Rows.Add(drBK);
+                                                        flag = false;
+                                                        scope.Complete();
+                                                        scope.Dispose();
+                                                    }
+                                            }
+                                            else
+                                            {
+                                                bangke.CreateDate = DateTime.Now;
+                                                if (_cBangKe.Them(bangke))
+                                                    if (_cTienDu.Update(bangke.DanhBo, bangke.SoTien.Value, "Bảng Kê", "Thêm", bangke.MaNH.Value, bangke.MaBK))
+                                                    {
+                                                        DataRow drBK = dtBK.NewRow();
+                                                        drBK["DanhBo"] = bangke.DanhBo;
+                                                        drBK["SoTien"] = bangke.SoTien;
+                                                        drBK["Bank"] = item[2].ToString().Trim();
+                                                        dtBK.Rows.Add(drBK);
+                                                        flag = false;
+                                                        scope.Complete();
+                                                        scope.Dispose();
+                                                    }
+                                            }
                                         }
                                     }
                                 }
+                            if (dtBK.Rows.Count > 0)
+                                _cBangKe.XuatExcel(dtBK, "Bảng Kê " + CNguoiDung.TenPhong);
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             btnXem.PerformClick();
                         }
@@ -135,7 +172,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvBangKe.DataSource = _cBangKe.GetDS_BangKe_DangNgan(dateTu.Value, dateDen.Value);
+            dgvBangKe.DataSource = _cBangKe.GetDS_BangKe_DangNgan(dateTu.Value, dateDen.Value, CNguoiDung.IDPhong);
             long TongSoTien = 0;
             int TongHD = 0;
             long TongCong = 0;
@@ -156,8 +193,8 @@ namespace ThuTien.GUI.ChuyenKhoan
                 txtTongHD.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHD);
                 txtTongCong.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
             }
-            dgvBangKeGroup.DataSource = _cBangKe.GetDS_Group(dateTu.Value, dateDen.Value);
-            dgvBangKeGroup3.DataSource = _cBangKe.GetDS_Group3(dateTu.Value, dateDen.Value);
+            dgvBangKeGroup.DataSource = _cBangKe.GetDS_Group(dateTu.Value, dateDen.Value, CNguoiDung.IDPhong);
+            dgvBangKeGroup3.DataSource = _cBangKe.GetDS_Group3(dateTu.Value, dateDen.Value, CNguoiDung.IDPhong);
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -513,6 +550,31 @@ namespace ThuTien.GUI.ChuyenKhoan
             catch (Exception ex)
             {
                 _cBangKe.Rollback();
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataTable dtBK = new DataTable();
+                dtBK.Columns.Add("DanhBo", typeof(System.String));
+                dtBK.Columns.Add("SoTien", typeof(System.String));
+                dtBK.Columns.Add("Bank", typeof(System.String));
+                foreach (DataGridViewRow item in dgvBangKe.Rows)
+                {
+                    DataRow drBK = dtBK.NewRow();
+                    drBK["DanhBo"] = item.Cells["DanhBo"].Value.ToString();
+                    drBK["SoTien"] = item.Cells["SoTien"].Value.ToString();
+                    drBK["Bank"] = _cNganHang.getKyHieuByTenNH(item.Cells["TenNH"].Value.ToString());
+                    dtBK.Rows.Add(drBK);
+                }
+                if (dtBK.Rows.Count > 0)
+                    _cBangKe.XuatExcel(dtBK, "Bảng Kê " + CNguoiDung.TenPhong);
+            }
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

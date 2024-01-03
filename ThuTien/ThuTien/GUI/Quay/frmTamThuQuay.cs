@@ -655,7 +655,8 @@ namespace ThuTien.GUI.Quay
                     dr["ChuKy"] = true;
                     dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky.png";
                 }
-                dr["NguoiKy"] = CNguoiKy.getNguoiKy();
+                dr["ChucVu"] = CNguoiDung.ChucVu;
+                dr["NguoiKy"] = CNguoiDung.NguoiKy;
                 ds.Tables["PhieuTamThu"].Rows.Add(dr);
 
                 rptXacNhanNo rpt = new rptXacNhanNo();
@@ -792,7 +793,8 @@ namespace ThuTien.GUI.Quay
                     dr["ChuKy"] = true;
                     dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky.png";
                 }
-                dr["NguoiKy"] = CNguoiKy.getNguoiKy();
+                dr["ChucVu"] = CNguoiDung.ChucVu;
+                dr["NguoiKy"] = CNguoiDung.NguoiKy;
 
                 ds.Tables["PhieuTamThu"].Rows.Add(dr);
 
@@ -953,7 +955,8 @@ namespace ThuTien.GUI.Quay
             dr["DinhMuc"] = "";
             dr["Ky"] = "";
             dr["NhanVienThuTien"] = "";
-            dr["NguoiKy"] = CNguoiKy.getNguoiKy();
+            dr["ChucVu"] = CNguoiDung.ChucVu;
+            dr["NguoiKy"] = CNguoiDung.NguoiKy;
             if (chkChuKy.Checked)
             {
                 dr["ChuKy"] = true;

@@ -16,6 +16,7 @@ using ThuTien.BaoCao.NhanVien;
 using ThuTien.GUI.BaoCao;
 using ThuTien.GUI.TimKiem;
 using ThuTien.BaoCao.Quay;
+using ThuTien.LinQ;
 
 namespace ThuTien.GUI.Quay
 {
@@ -27,6 +28,7 @@ namespace ThuTien.GUI.Quay
         CDCHD _cDCHD = new CDCHD();
         CLenhHuy _cLenhHuy = new CLenhHuy();
         CChotDangNgan _cChotDangNgan = new CChotDangNgan();
+        CTo _cTo = new CTo();
 
         public frmDangNganQuay()
         {
@@ -113,16 +115,16 @@ namespace ThuTien.GUI.Quay
                             lstHD.EnsureVisible(lstHD.Items.Count - 1);
                         }
                     }
-                    //else
-                    //    ///Trung An thêm 'K' phía cuối liên hóa đơn
-                    //    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && item.ToString().Length == 14)
-                    //    {
-                    //        if (lstHD.FindItemWithText(item.Trim().ToUpper().Replace("K", "")) == null)
-                    //        {
-                    //            lstHD.Items.Add(item.Trim().ToUpper().Replace("K", ""));
-                    //            lstHD.EnsureVisible(lstHD.Items.Count - 1);
-                    //        }
-                    //    }
+                //else
+                //    ///Trung An thêm 'K' phía cuối liên hóa đơn
+                //    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && item.ToString().Length == 14)
+                //    {
+                //        if (lstHD.FindItemWithText(item.Trim().ToUpper().Replace("K", "")) == null)
+                //        {
+                //            lstHD.Items.Add(item.Trim().ToUpper().Replace("K", ""));
+                //            lstHD.EnsureVisible(lstHD.Items.Count - 1);
+                //        }
+                //    }
                 txtSoLuong.Text = lstHD.Items.Count.ToString();
                 txtSoHoaDon.Text = "";
             }
@@ -377,23 +379,28 @@ namespace ThuTien.GUI.Quay
             {
                 if (chkPhanKy.Checked == false)
                 {
-                    DataTable dt = _cHoaDon.GetTongDangNgan("", CNguoiDung.MaND, dateDen.Value);
-                    foreach (DataRow item in dt.Rows)
+                    List<Phong> lst = _cTo.getDS_Phong();
+                    foreach (Phong itemP in lst)
                     {
-                        DataRow dr = ds.Tables["PhieuDangNgan"].NewRow();
-                        dr["To"] = CNguoiDung.TenTo;
-                        dr["Loai"] = "";
-                        dr["LoaiHoaDon"] = item["LoaiHoaDon"].ToString();
-                        dr["NgayDangNgan"] = dateDen.Value.Date.ToString("dd/MM/yyyy");
-                        dr["TongHD"] = item["TongHD"].ToString();
-                        dr["TongGiaBan"] = item["TongGiaBan"].ToString();
-                        dr["TongThueGTGT"] = item["TongThueGTGT"].ToString();
-                        dr["TongPhiBVMT"] = item["TongPhiBVMT"].ToString();
-                        if (item["TongPhiBVMT_Thue"].ToString() != "")
-                            dr["TongPhiBVMT_Thue"] = item["TongPhiBVMT_Thue"].ToString();
-                        dr["TongCong"] = item["TongCong"].ToString();
-                        dr["NhanVien"] = CNguoiDung.HoTen;
-                        ds.Tables["PhieuDangNgan"].Rows.Add(dr);
+                        DataTable dt = _cHoaDon.GetTongDangNgan_Quay("", CNguoiDung.MaND, dateDen.Value, itemP.TuDot.Value, itemP.DenDot.Value);
+                        foreach (DataRow item in dt.Rows)
+                        {
+                            DataRow dr = ds.Tables["PhieuDangNgan"].NewRow();
+                            dr["TenPhong"] = itemP.Name.ToUpper();
+                            dr["To"] = CNguoiDung.TenTo;
+                            dr["Loai"] = itemP.KyHieu;
+                            dr["LoaiHoaDon"] = item["LoaiHoaDon"].ToString();
+                            dr["NgayDangNgan"] = dateDen.Value.Date.ToString("dd/MM/yyyy");
+                            dr["TongHD"] = item["TongHD"].ToString();
+                            dr["TongGiaBan"] = item["TongGiaBan"].ToString();
+                            dr["TongThueGTGT"] = item["TongThueGTGT"].ToString();
+                            dr["TongPhiBVMT"] = item["TongPhiBVMT"].ToString();
+                            if (item["TongPhiBVMT_Thue"].ToString() != "")
+                                dr["TongPhiBVMT_Thue"] = item["TongPhiBVMT_Thue"].ToString();
+                            dr["TongCong"] = item["TongCong"].ToString();
+                            dr["NhanVien"] = CNguoiDung.HoTen;
+                            ds.Tables["PhieuDangNgan"].Rows.Add(dr);
+                        }
                     }
                 }
                 else

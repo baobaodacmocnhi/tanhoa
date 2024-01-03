@@ -415,13 +415,13 @@ namespace DocSo_PC.GUI.ToTruong
                                 if (CNguoiDung.Doi)
                                 {
                                     if (cmbTo.SelectedIndex == 0)
-                                        pc.SoPhieu_In = "Số:" + pc.SoPhieu + "/PC-ĐỘI-QLĐHN";
+                                        pc.SoPhieu_In = "Số:" + pc.SoPhieu + "/PC-" + CNguoiDung.KyHieuPhong;
                                     else
-                                        pc.SoPhieu_In = "Số:" + pc.SoPhieu + "/PC-" + _cTo.get(int.Parse(cmbTo.SelectedValue.ToString())).KyHieu + "-QLĐHN";
+                                        pc.SoPhieu_In = "Số:" + pc.SoPhieu + "/PC-" + _cTo.get(int.Parse(cmbTo.SelectedValue.ToString())).KyHieu + "-" + CNguoiDung.KyHieuPhong;
                                 }
                                 else
                                 {
-                                    pc.SoPhieu_In = "Số:" + pc.SoPhieu + "/PC-" + _cTo.get(CNguoiDung.MaTo).KyHieu + "-QLĐHN";
+                                    pc.SoPhieu_In = "Số:" + pc.SoPhieu + "/PC-" + _cTo.get(CNguoiDung.MaTo).KyHieu + "-" + CNguoiDung.KyHieuPhong;
                                 }
                                 pc.NoiNhan = "Như trên;\nLưu.";
                                 _cPhieuChuyen.sua(pc);
@@ -570,13 +570,13 @@ namespace DocSo_PC.GUI.ToTruong
                                 if (CNguoiDung.Doi)
                                 {
                                     if (cmbTo.SelectedIndex == 0)
-                                        item.SoPhieu_In = "Số:" + item.SoPhieu + "/PC-ĐỘI-QLĐHN";
+                                        item.SoPhieu_In = "Số:" + item.SoPhieu + "/PC-" + CNguoiDung.KyHieuPhong;
                                     else
-                                        item.SoPhieu_In = "Số:" + item.SoPhieu + "/PC-" + _cTo.get(int.Parse(cmbTo.SelectedValue.ToString())).KyHieu + "-QLĐHN";
+                                        item.SoPhieu_In = "Số:" + item.SoPhieu + "/PC-" + _cTo.get(int.Parse(cmbTo.SelectedValue.ToString())).KyHieu + "-" + CNguoiDung.KyHieuPhong;
                                 }
                                 else
                                 {
-                                    item.SoPhieu_In = "Số:" + item.SoPhieu + "/PC-" + _cTo.get(CNguoiDung.MaTo).KyHieu + "-QLĐHN";
+                                    item.SoPhieu_In = "Số:" + item.SoPhieu + "/PC-" + _cTo.get(CNguoiDung.MaTo).KyHieu + "-" + CNguoiDung.KyHieuPhong;
                                 }
                                 item.NoiNhan = "Như trên;\nLưu.";
                                 _cPhieuChuyen.sua(item);

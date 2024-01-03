@@ -317,8 +317,23 @@ namespace DocSo_PC.DAL
 
         #endregion
 
-        public void XuatExcel(DataTable dt, Microsoft.Office.Interop.Excel.Worksheet oSheet, string SheetName)
+        public void XuatExcel(DataTable dt, string SheetName)
         {
+            //Tạo các đối tượng Excel
+            Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel.Workbooks oBooks;
+            Microsoft.Office.Interop.Excel.Sheets oSheets;
+            Microsoft.Office.Interop.Excel.Workbook oBook;
+            Microsoft.Office.Interop.Excel.Worksheet oSheet;
+            //Tạo mới một Excel WorkBook 
+            oExcel.Visible = true;
+            oExcel.DisplayAlerts = false;
+            //khai báo số lượng sheet
+            oExcel.Application.SheetsInNewWorkbook = 1;
+            oBooks = oExcel.Workbooks;
+            oBook = (Microsoft.Office.Interop.Excel.Workbook)(oExcel.Workbooks.Add(Type.Missing));
+            oSheets = oBook.Worksheets;
+            oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
             oSheet.Name = SheetName;
             object[,] arr = new object[dt.Rows.Count + 1, dt.Columns.Count];
             for (int j = 0; j < dt.Columns.Count; j++)
@@ -337,12 +352,10 @@ namespace DocSo_PC.DAL
             int columnStart = 1;
             int rowEnd = rowStart + dt.Rows.Count - 1;
             int columnEnd = dt.Columns.Count;
-
             Microsoft.Office.Interop.Excel.Range c1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, columnStart];
             Microsoft.Office.Interop.Excel.Range c2 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, columnEnd];
             Microsoft.Office.Interop.Excel.Range range = oSheet.get_Range(c1, c2);
             range.Value2 = arr;
-
             //Microsoft.Office.Interop.Excel.Range c1a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 1];
             //Microsoft.Office.Interop.Excel.Range c2a = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 1];
             //Microsoft.Office.Interop.Excel.Range c3a = oSheet.get_Range(c1a, c2a);

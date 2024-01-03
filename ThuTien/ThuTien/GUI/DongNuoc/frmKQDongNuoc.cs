@@ -968,8 +968,8 @@ namespace ThuTien.GUI.DongNuoc
                                 dr["ChiSoDongMoNuoc"] = item.ChiSoDN.Value.ToString("D4");
                             else
                                 dr["ChiSoDongMoNuoc"] = item.ChiSoDN.Value.ToString("D5");
-                            dr["ChucVu"] = CNguoiKy.getChucVu();
-                            dr["NguoiKy"] = CNguoiKy.getNguoiKy();
+                            dr["ChucVu"] = CNguoiDung.ChucVu;
+                            dr["NguoiKy"] = CNguoiDung.NguoiKy;
 
                             dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                         }
@@ -1041,8 +1041,8 @@ namespace ThuTien.GUI.DongNuoc
                                 if (item.ButChi == true)
                                     dr["ButChi"] = true;
                                 dr["ButChiParent"] = flagButChi;
-                                dr["ChucVu"] = CNguoiKy.getChucVu();
-                                dr["NguoiKy"] = CNguoiKy.getNguoiKy();
+                                dr["ChucVu"] = CNguoiDung.ChucVu;
+                                dr["NguoiKy"] = CNguoiDung.NguoiKy;
 
                                 dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                             }

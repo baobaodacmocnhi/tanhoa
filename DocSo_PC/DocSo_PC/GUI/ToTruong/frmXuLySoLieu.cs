@@ -649,26 +649,7 @@ namespace DocSo_PC.GUI.ToTruong
                         }
                         if (dt != null && dt.Rows.Count > 0)
                         {
-                            //Tạo các đối tượng Excel
-                            Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
-                            Microsoft.Office.Interop.Excel.Workbooks oBooks;
-                            Microsoft.Office.Interop.Excel.Sheets oSheets;
-                            Microsoft.Office.Interop.Excel.Workbook oBook;
-                            Microsoft.Office.Interop.Excel.Worksheet oSheet;
-                            //Microsoft.Office.Interop.Excel.Worksheet oSheetCQ;
-
-                            //Tạo mới một Excel WorkBook 
-                            oExcel.Visible = true;
-                            oExcel.DisplayAlerts = false;
-                            //khai báo số lượng sheet
-                            oExcel.Application.SheetsInNewWorkbook = 1;
-                            oBooks = oExcel.Workbooks;
-
-                            oBook = (Microsoft.Office.Interop.Excel.Workbook)(oExcel.Workbooks.Add(Type.Missing));
-                            oSheets = oBook.Worksheets;
-                            oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
-
-                            _cDocSo.XuatExcel(dt, oSheet, "5K,5N");
+                            _cDocSo.XuatExcel(dt, "5K,5N");
                             if (_cDocSo.updateDS_Code5K5N(cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString()) == true)
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }

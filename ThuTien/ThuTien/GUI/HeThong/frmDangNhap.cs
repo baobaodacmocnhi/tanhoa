@@ -62,13 +62,12 @@ namespace ThuTien.GUI.HeThong
                         CNguoiDung.PhoGiamDoc = nguoidung.PhoGiamDoc;
                         CNguoiDung.Doi = nguoidung.Doi;
                         CNguoiDung.ToTruong = nguoidung.ToTruong;
-                        CNguoiDung.ChucVu = _cNguoiDung.getChucVu();
-                        CNguoiDung.NguoiKy = _cNguoiDung.getNguoiKy();
                         CNguoiDung.SyncNopTien = nguoidung.SyncNopTien;
                         if (nguoidung.MaTo != null)
                         {
                             CNguoiDung.IDPhong = nguoidung.TT_To.IDPhong.Value;
                             CNguoiDung.TenPhong = nguoidung.TT_To.Phong.Name;
+                            CNguoiDung.KyHieuPhong = nguoidung.TT_To.Phong.KyHieu;
                             CNguoiDung.FromDot = nguoidung.TT_To.Phong.TuDot.Value;
                             CNguoiDung.ToDot = nguoidung.TT_To.Phong.DenDot.Value;
                             CNguoiDung.MaTo = nguoidung.MaTo.Value;
@@ -82,6 +81,7 @@ namespace ThuTien.GUI.HeThong
                         {
                             CNguoiDung.IDPhong = 0;
                             CNguoiDung.TenPhong = "";
+                            CNguoiDung.KyHieuPhong = "";
                             CNguoiDung.FromDot = 0;
                             CNguoiDung.ToDot = 0;
                             CNguoiDung.MaTo = 0;
@@ -92,7 +92,6 @@ namespace ThuTien.GUI.HeThong
                         if (nguoidung.MaNhom != null)
                             CNguoiDung.dtQuyenNhom = _cPhanQuyenNhom.GetDSByMaNhom(true, nguoidung.MaNhom.Value);
                         CNguoiDung.dtQuyenNguoiDung = _cPhanQuyenNguoiDung.GetDSByMaND(true, nguoidung.MaND);
-
                         //CNguoiDung.Name_PC = SystemInformation.ComputerName;
                         //var host = Dns.GetHostEntry(Dns.GetHostName());
                         //foreach (var ip in host.AddressList)
@@ -108,6 +107,8 @@ namespace ThuTien.GUI.HeThong
                         //en.IP_PC = CNguoiDung.IP_PC;
                         ////if (_cNguoiDung.DangNhap(en))
                         ////    CNguoiDung.ID_DangNhap = en.ID;
+                        CNguoiDung.ChucVu = _cNguoiDung.getChucVu(CNguoiDung.IDPhong);
+                        CNguoiDung.NguoiKy = _cNguoiDung.getNguoiKy(CNguoiDung.IDPhong);
                         GetLoginResult(true);
                         this.Hide();
                     }

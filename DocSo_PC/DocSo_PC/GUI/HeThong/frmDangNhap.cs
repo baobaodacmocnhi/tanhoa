@@ -65,6 +65,7 @@ namespace DocSo_PC.GUI.HeThong
                     {
                         CNguoiDung.IDPhong = nguoidung.To.IDPhong.Value;
                         CNguoiDung.TenPhong = nguoidung.To.Phong.Name;
+                        CNguoiDung.KyHieuPhong = nguoidung.To.Phong.KyHieu;
                         CNguoiDung.FromDot = nguoidung.To.Phong.TuDot.Value;
                         CNguoiDung.ToDot = nguoidung.To.Phong.DenDot.Value;
                         CNguoiDung.MaTo = nguoidung.MaTo.Value;
@@ -78,6 +79,7 @@ namespace DocSo_PC.GUI.HeThong
                     {
                         CNguoiDung.IDPhong = 0;
                         CNguoiDung.TenPhong = "";
+                        CNguoiDung.KyHieuPhong = "";
                         CNguoiDung.FromDot = 0;
                         CNguoiDung.ToDot = 0;
                         CNguoiDung.MaTo = 0;

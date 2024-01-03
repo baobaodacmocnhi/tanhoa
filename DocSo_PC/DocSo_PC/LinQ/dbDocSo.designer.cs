@@ -174,9 +174,6 @@ namespace DocSo_PC.LinQ
     partial void InsertPhanQuyenNhom(PhanQuyenNhom instance);
     partial void UpdatePhanQuyenNhom(PhanQuyenNhom instance);
     partial void DeletePhanQuyenNhom(PhanQuyenNhom instance);
-    partial void InsertPhong(Phong instance);
-    partial void UpdatePhong(Phong instance);
-    partial void DeletePhong(Phong instance);
     partial void InsertTemp_DanhBo(Temp_DanhBo instance);
     partial void UpdateTemp_DanhBo(Temp_DanhBo instance);
     partial void DeleteTemp_DanhBo(Temp_DanhBo instance);
@@ -186,6 +183,9 @@ namespace DocSo_PC.LinQ
     partial void InsertTo(To instance);
     partial void UpdateTo(To instance);
     partial void DeleteTo(To instance);
+    partial void InsertPhong(Phong instance);
+    partial void UpdatePhong(Phong instance);
+    partial void DeletePhong(Phong instance);
     #endregion
 		
 		public dbDocSoDataContext() : 
@@ -642,14 +642,6 @@ namespace DocSo_PC.LinQ
 			}
 		}
 		
-		public System.Data.Linq.Table<Phong> Phongs
-		{
-			get
-			{
-				return this.GetTable<Phong>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Temp> Temps
 		{
 			get
@@ -719,6 +711,14 @@ namespace DocSo_PC.LinQ
 			get
 			{
 				return this.GetTable<UserGroup>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Phong> Phongs
+		{
+			get
+			{
+				return this.GetTable<Phong>();
 			}
 		}
 	}
@@ -25394,168 +25394,6 @@ namespace DocSo_PC.LinQ
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Phong")]
-	public partial class Phong : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private string _Name;
-		
-		private System.Nullable<int> _TuDot;
-		
-		private System.Nullable<int> _DenDot;
-		
-		private EntitySet<To> _Tos;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    partial void OnTuDotChanging(System.Nullable<int> value);
-    partial void OnTuDotChanged();
-    partial void OnDenDotChanging(System.Nullable<int> value);
-    partial void OnDenDotChanged();
-    #endregion
-		
-		public Phong()
-		{
-			this._Tos = new EntitySet<To>(new Action<To>(this.attach_Tos), new Action<To>(this.detach_Tos));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(100)")]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TuDot", DbType="Int")]
-		public System.Nullable<int> TuDot
-		{
-			get
-			{
-				return this._TuDot;
-			}
-			set
-			{
-				if ((this._TuDot != value))
-				{
-					this.OnTuDotChanging(value);
-					this.SendPropertyChanging();
-					this._TuDot = value;
-					this.SendPropertyChanged("TuDot");
-					this.OnTuDotChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DenDot", DbType="Int")]
-		public System.Nullable<int> DenDot
-		{
-			get
-			{
-				return this._DenDot;
-			}
-			set
-			{
-				if ((this._DenDot != value))
-				{
-					this.OnDenDotChanging(value);
-					this.SendPropertyChanging();
-					this._DenDot = value;
-					this.SendPropertyChanged("DenDot");
-					this.OnDenDotChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Phong_To", Storage="_Tos", ThisKey="ID", OtherKey="IDPhong")]
-		public EntitySet<To> Tos
-		{
-			get
-			{
-				return this._Tos;
-			}
-			set
-			{
-				this._Tos.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Tos(To entity)
-		{
-			this.SendPropertyChanging();
-			entity.Phong = this;
-		}
-		
-		private void detach_Tos(To entity)
-		{
-			this.SendPropertyChanging();
-			entity.Phong = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Temp")]
 	public partial class Temp
 	{
@@ -27080,6 +26918,192 @@ namespace DocSo_PC.LinQ
 					this._DS = value;
 				}
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Phong")]
+	public partial class Phong : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _Name;
+		
+		private string _KyHieu;
+		
+		private System.Nullable<int> _TuDot;
+		
+		private System.Nullable<int> _DenDot;
+		
+		private EntitySet<To> _Tos;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnKyHieuChanging(string value);
+    partial void OnKyHieuChanged();
+    partial void OnTuDotChanging(System.Nullable<int> value);
+    partial void OnTuDotChanged();
+    partial void OnDenDotChanging(System.Nullable<int> value);
+    partial void OnDenDotChanged();
+    #endregion
+		
+		public Phong()
+		{
+			this._Tos = new EntitySet<To>(new Action<To>(this.attach_Tos), new Action<To>(this.detach_Tos));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(100)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KyHieu", DbType="NVarChar(50)")]
+		public string KyHieu
+		{
+			get
+			{
+				return this._KyHieu;
+			}
+			set
+			{
+				if ((this._KyHieu != value))
+				{
+					this.OnKyHieuChanging(value);
+					this.SendPropertyChanging();
+					this._KyHieu = value;
+					this.SendPropertyChanged("KyHieu");
+					this.OnKyHieuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TuDot", DbType="Int")]
+		public System.Nullable<int> TuDot
+		{
+			get
+			{
+				return this._TuDot;
+			}
+			set
+			{
+				if ((this._TuDot != value))
+				{
+					this.OnTuDotChanging(value);
+					this.SendPropertyChanging();
+					this._TuDot = value;
+					this.SendPropertyChanged("TuDot");
+					this.OnTuDotChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DenDot", DbType="Int")]
+		public System.Nullable<int> DenDot
+		{
+			get
+			{
+				return this._DenDot;
+			}
+			set
+			{
+				if ((this._DenDot != value))
+				{
+					this.OnDenDotChanging(value);
+					this.SendPropertyChanging();
+					this._DenDot = value;
+					this.SendPropertyChanged("DenDot");
+					this.OnDenDotChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Phong_To", Storage="_Tos", ThisKey="ID", OtherKey="IDPhong")]
+		public EntitySet<To> Tos
+		{
+			get
+			{
+				return this._Tos;
+			}
+			set
+			{
+				this._Tos.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Tos(To entity)
+		{
+			this.SendPropertyChanging();
+			entity.Phong = this;
+		}
+		
+		private void detach_Tos(To entity)
+		{
+			this.SendPropertyChanging();
+			entity.Phong = null;
 		}
 	}
 }

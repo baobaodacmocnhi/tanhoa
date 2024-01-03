@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.1439</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>99</ApplicationRevision>
+    <ApplicationRevision>104</ApplicationRevision>
     <ApplicationVersion>1.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -682,7 +682,6 @@
     <Compile Include="DAL\Doi\CHoaDonTon.cs" />
     <Compile Include="DAL\Doi\CDangKy.cs" />
     <Compile Include="DAL\Doi\CChotDangNgan.cs" />
-    <Compile Include="DAL\Doi\CNguoiKy.cs" />
     <Compile Include="DAL\Doi\CNiemChi.cs" />
     <Compile Include="DAL\Doi\CDangKy2.cs" />
     <Compile Include="DAL\Doi\CPhiMoNuocDoi.cs" />

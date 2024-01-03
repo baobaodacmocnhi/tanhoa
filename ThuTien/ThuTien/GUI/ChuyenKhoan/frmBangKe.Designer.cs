@@ -80,6 +80,7 @@
             this.btnChonFileCapNhatPhieuThu = new System.Windows.Forms.Button();
             this.chkNgayLap = new System.Windows.Forms.CheckBox();
             this.btnXoaLuonLichSu = new System.Windows.Forms.Button();
+            this.btnExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBangKe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBangKeGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBangKeGroup3)).BeginInit();
@@ -514,12 +515,23 @@
             this.btnXoaLuonLichSu.UseVisualStyleBackColor = true;
             this.btnXoaLuonLichSu.Click += new System.EventHandler(this.btnXoaLuonLichSu_Click);
             // 
+            // btnExcel
+            // 
+            this.btnExcel.Location = new System.Drawing.Point(0, 135);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(75, 23);
+            this.btnExcel.TabIndex = 93;
+            this.btnExcel.Text = "Excel";
+            this.btnExcel.UseVisualStyleBackColor = true;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            // 
             // frmBangKe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1360, 631);
+            this.Controls.Add(this.btnExcel);
             this.Controls.Add(this.btnXoaLuonLichSu);
             this.Controls.Add(this.chkNgayLap);
             this.Controls.Add(this.btnChonFileCapNhatPhieuThu);
@@ -594,5 +606,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayPhieuThu;
         private System.Windows.Forms.CheckBox chkNgayLap;
         private System.Windows.Forms.Button btnXoaLuonLichSu;
+        private System.Windows.Forms.Button btnExcel;
     }
 }

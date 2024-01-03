@@ -285,8 +285,8 @@ namespace ThuTien.GUI.TongHop
                 //dr["TieuThu"] = TieuThu;
                 dr["LyDo"] = item.Cells["LyDo"].Value;
                 dr["DeNghi"] = item.Cells["DeNghi"].Value;
-                dr["ChucVu"] = CNguoiKy.getChucVu();
-                dr["NguoiKy"] = CNguoiKy.getNguoiKy();
+                dr["ChucVu"] = CNguoiDung.ChucVu;
+                dr["NguoiKy"] = CNguoiDung.NguoiKy;
                 ds.Tables["ToTrinhCatHuy"].Rows.Add(dr);
             }
             //else

@@ -169,8 +169,8 @@ namespace ThuTien.GUI.ChuyenKhoan
                         dr["PhiMoNuocChu"] = _cPhiMoNuoc.ConvertMoneyToWord(dr["PhiMoNuoc"].ToString());
                     }
                     dr["SoTK"] = item.Cells["SoTK_PMN"].Value.ToString();
-                    dr["ChucVu"] = CNguoiKy.getChucVu();
-                    dr["NguoiKy"] = CNguoiKy.getNguoiKy();
+                    dr["ChucVu"] = CNguoiDung.ChucVu;
+                    dr["NguoiKy"] = CNguoiDung.NguoiKy;
                     ds.Tables["PhiMoNuoc"].Rows.Add(dr);
                 }
                 rptChuyenPhiMoNuoc rpt = new rptChuyenPhiMoNuoc();

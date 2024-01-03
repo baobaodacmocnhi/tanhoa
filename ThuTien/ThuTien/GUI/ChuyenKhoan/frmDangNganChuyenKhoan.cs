@@ -380,7 +380,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 if (chkPhanKy.Checked == false)
                 {
-                    DataTable dt = _cHoaDon.GetTongDangNgan("", CNguoiDung.MaND, dateDen.Value);
+                    DataTable dt = _cHoaDon.GetTongDangNgan_Quay("", CNguoiDung.MaND, dateDen.Value, CNguoiDung.FromDot, CNguoiDung.ToDot);
                     foreach (DataRow item in dt.Rows)
                     {
                         DataRow dr = ds.Tables["PhieuDangNgan"].NewRow();

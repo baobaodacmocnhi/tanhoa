@@ -37,6 +37,13 @@ namespace ThuTien.DAL.QuanTri
             set { CNguoiDung._TenPhong = value; }
         }
 
+        static string _KyHieuPhong;
+        public static string KyHieuPhong
+        {
+            get { return CNguoiDung._KyHieuPhong; }
+            set { CNguoiDung._KyHieuPhong = value; }
+        }
+
         static int _FromDot;
         public static int FromDot
         {
@@ -510,14 +517,19 @@ namespace ThuTien.DAL.QuanTri
             return LINQToDataTable(query);
         }
 
-        public string getChucVu()
+        public string getChucVu(int IDPhong)
         {
-            return _db.TT_NguoiDungs.FirstOrDefault(item => item.KyTen == true).ChucVu;
+            return _db.TT_NguoiDungs.FirstOrDefault(item => item.KyTen == true && item.TT_To.IDPhong == IDPhong).ChucVu;
         }
 
-        public string getNguoiKy()
+        public string getNguoiKy(int IDPhong)
         {
-            return _db.TT_NguoiDungs.FirstOrDefault(item => item.KyTen == true).HoTen;
+            return _db.TT_NguoiDungs.FirstOrDefault(item => item.KyTen == true && item.TT_To.IDPhong == IDPhong).HoTen;
+        }
+
+        public string getKyHieuPhong(int IDPhong)
+        {
+            return _db.Phongs.SingleOrDefault(o => o.ID == IDPhong).KyHieu;
         }
     }
 }

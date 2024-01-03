@@ -490,7 +490,10 @@ namespace ThuTien.GUI.DongNuoc
                             dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky.png";
                         }
                         if (chkCoTenNguoiKy.Checked)
-                            dr["NguoiKy"] = CNguoiKy.getNguoiKy();
+                        {
+                            dr["ChucVu"] = CNguoiDung.ChucVu;
+                            dr["NguoiKy"] = CNguoiDung.NguoiKy;
+                        }
 
                         dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
 
@@ -822,7 +825,10 @@ namespace ThuTien.GUI.DongNuoc
                         dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky.png";
                     }
                     if (chkCoTenNguoiKy.Checked)
-                        dr["NguoiKy"] = CNguoiKy.getNguoiKy();
+                    {
+                        dr["ChucVu"] = CNguoiDung.ChucVu;
+                        dr["NguoiKy"] = CNguoiDung.NguoiKy;
+                    }
 
                     dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
 

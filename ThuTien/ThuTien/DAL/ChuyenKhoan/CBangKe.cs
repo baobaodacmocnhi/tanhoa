@@ -206,12 +206,34 @@ namespace ThuTien.DAL.ChuyenKhoan
             return ExecuteQuery_DataTable(sql);
         }
 
-        public DataTable GetDS_Group(DateTime TuNgay, DateTime DenNgay)
+        public DataTable GetDS_BangKe_DangNgan(DateTime TuNgay, DateTime DenNgay, int IDPhong)
+        {
+            string sql = "declare @FromNgayGiaiTrach date;"
+                + " declare @ToNgayGiaiTrach date;"
+                + " set @FromNgayGiaiTrach='" + TuNgay.ToString("yyyyMMdd") + "';"
+                + " set @ToNgayGiaiTrach='" + DenNgay.ToString("yyyyMMdd") + "';"
+                + " select * from"
+                + " (select MaBK,bk.DanhBo,SoTien,Phi,SoPhieuThu,NgayPhieuThu,CreateDate,TenNH,HoaDon,TongCong,CASE WHEN TongCong is null THEN SoTien ELSE SoTien-TongCong END as ChenhLech from"
+                + " (select MaBK,DanhBo,SoTien,Phi,MaNH,SoPhieuThu,NgayPhieuThu,CreateDate from TT_BangKe where CAST(CreateDate as date)>=@FromNgayGiaiTrach and CAST(CreateDate as date)<=@ToNgayGiaiTrach and (select IDPhong from TT_NguoiDung nd,TT_To t where nd.MaTo=t.MaTo and nd.MaND=TT_BangKe.CreateBy)=" + IDPhong + ") bk"
+                + " left join"
+                + " (select ID_NGANHANG,NGANHANG as TenNH from NGANHANG) nh on bk.MaNH=nh.ID_NGANHANG"
+                + " left join"
+                + " (select DANHBA,COUNT(*) as HoaDon,SUM(TONGCONG) as TongCong from HOADON where DangNgan_ChuyenKhoan=1"
+                + " and CAST(NGAYGIAITRACH as date)>=@FromNgayGiaiTrach and CAST(NGAYGIAITRACH as date)<=@ToNgayGiaiTrach group by DANHBA) dn on bk.DanhBo=dn.DANHBA) as t1"
+                + " outer apply"
+                + " (select top 1 TENKH as HoTen from HOADON where DANHBA=t1.DanhBo order by ID_HOADON desc) as la"
+                + " order by MaBK asc";
+
+            return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable GetDS_Group(DateTime TuNgay, DateTime DenNgay, int IDPhong)
         {
             var query = from itemBK in _db.TT_BangKes
                         join itemNH in _db.NGANHANGs on itemBK.MaNH equals itemNH.ID_NGANHANG into tableNH
                         from itemtableNH in tableNH.DefaultIfEmpty()
                         where itemBK.CreateDate.Value.Date >= TuNgay.Date && itemBK.CreateDate.Value.Date <= DenNgay.Date
+                        && _db.TT_NguoiDungs.SingleOrDefault(o => o.MaND == itemBK.CreateBy).TT_To.IDPhong == IDPhong
                         group itemBK by itemtableNH.NGANHANG1 into itemGroup
                         select new
                         {
@@ -222,7 +244,7 @@ namespace ThuTien.DAL.ChuyenKhoan
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDS_Group3(DateTime TuNgay, DateTime DenNgay)
+        public DataTable GetDS_Group3(DateTime TuNgay, DateTime DenNgay,int IDPhong)
         {
             //var query = from itemBK in _db.TT_BangKes
             //            join itemNH in _db.NGANHANGs on itemBK.MaNH equals itemNH.ID_NGANHANG into tableNH
@@ -260,17 +282,18 @@ namespace ThuTien.DAL.ChuyenKhoan
             //                   SoLuong = itemGroup.Count(),
             //                   TongCong = itemGroup.Sum(groupItem => (long)groupItem.SoTien),
             //               };
-            
+
             //DataTable dt = LINQToDataTable(query);
             //dt.Merge(LINQToDataTable(queryVC));
             //dt.Merge(LINQToDataTable(queryAGR));
-            
+
             //return dt;
 
             var query = from itemBK in _db.TT_BangKes
                         join itemNH in _db.NGANHANGs on itemBK.MaNH equals itemNH.ID_NGANHANG into tableNH
                         from itemtableNH in tableNH.DefaultIfEmpty()
                         where itemBK.CreateDate.Value.Date >= TuNgay.Date && itemBK.CreateDate.Value.Date <= DenNgay.Date
+                        && _db.TT_NguoiDungs.SingleOrDefault(o => o.MaND == itemBK.CreateBy).TT_To.IDPhong == IDPhong
                         group itemBK by itemtableNH.GroupBank into itemGroup
                         select new
                         {

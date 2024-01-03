@@ -1165,15 +1165,6 @@
       <Association Name="Nhom_PhanQuyenNhom" Member="Nhom" ThisKey="MaNhom" OtherKey="MaNhom" Type="Nhom" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Phong" Member="Phongs">
-    <Type Name="Phong">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="TuDot" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DenDot" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Phong_To" Member="Tos" ThisKey="ID" OtherKey="IDPhong" Type="To" />
-    </Type>
-  </Table>
   <Table Name="dbo.Temp" Member="Temps">
     <Type Name="Temp">
       <Column Name="Name" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
@@ -1273,6 +1264,16 @@
       <Column Name="T4" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="TV" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="DS" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Phong" Member="Phongs">
+    <Type Name="Phong">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="KyHieu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TuDot" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DenDot" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Phong_To" Member="Tos" ThisKey="ID" OtherKey="IDPhong" Type="To" />
     </Type>
   </Table>
 </Database>

@@ -383,6 +383,10 @@ namespace ThuTien.GUI.ChuyenKhoan
                         //&& _cDCHD.CheckExist_ChuaUpdatedHDDT(itemExcel[0].ToString().Replace(" ", "")) == false)
                         {
                             DanhBo = itemExcel[0].ToString().Replace(" ", "");
+                            if (DanhBo == "13141989255")
+                            {
+                                string a = "";
+                            }
                             string ChenhLech = "";
                             int SoTien = 0;
                             DataRow[] dr = dt.Select("DanhBo like '" + itemExcel[0].ToString().Replace(" ", "") + "'");

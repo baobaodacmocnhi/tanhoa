@@ -104,8 +104,8 @@ namespace ThuTien.GUI.Doi
                             dr["NhanVien"] = item.Cells["NhanVien"].Value.ToString();
 
                             dr["GhiChu"] = "Thu hồi nợ";
-                            dr["ChucVu"] = CNguoiKy.getChucVu();
-                            dr["NguoiKy"] = CNguoiKy.getNguoiKy();
+                            dr["ChucVu"] = CNguoiDung.ChucVu;
+                            dr["NguoiKy"] = CNguoiDung.NguoiKy;
 
                             ds.Tables["KQDongNuoc"].Rows.Add(dr);
                         }
@@ -148,8 +148,8 @@ namespace ThuTien.GUI.Doi
                         dr["NiemChi"] = dtNC.Rows[i]["ID"].ToString();
                         dr["DayDong"] = _cDongNuoc.convertToDouble("0.6");
 
-                        dr["ChucVu"] = CNguoiKy.getChucVu();
-                        dr["NguoiKy"] = CNguoiKy.getNguoiKy();
+                        dr["ChucVu"] = CNguoiDung.ChucVu;
+                        dr["NguoiKy"] = CNguoiDung.NguoiKy;
 
                         ds.Tables["KQDongNuoc"].Rows.Add(dr);
                     }
