@@ -1406,7 +1406,7 @@ namespace ThuTien.GUI.TongHop
                 long TongCongCK = 0;
                 long TongTienMat = 0;
 
-                dt = _cHoaDon.GetTongHopDangNganChiTiet_HanhThu(dateGiaiTrachTongHopDangNgan.Value);
+                //dt = _cHoaDon.GetTongHopDangNganChiTiet_HanhThu(dateGiaiTrachTongHopDangNgan.Value);
                 for (int i = 0; i < lst.Count; i++)
                     if (lst[i].HanhThu == false && lst[i].DongNuoc == false)
                     {
@@ -1537,7 +1537,7 @@ namespace ThuTien.GUI.TongHop
                 long TongCongCK = 0;
                 long TongTienMat = 0;
 
-                dt = _cHoaDon.GetTongHopDangNganChiTiet_HanhThu_PhanKyLon(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value);
+                //dt = _cHoaDon.GetTongHopDangNganChiTiet_HanhThu_PhanKyLon(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value);
                 for (int i = 0; i < lst.Count; i++)
                     if (lst[i].HanhThu == false && lst[i].DongNuoc == false)
                     {
@@ -1656,7 +1656,7 @@ namespace ThuTien.GUI.TongHop
                 TongCongCK = 0;
                 TongTienMat = 0;
 
-                dt = _cHoaDon.GetTongHopDangNganChiTiet_HanhThu_PhanKyNho_Giay(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value);
+                //dt = _cHoaDon.GetTongHopDangNganChiTiet_HanhThu_PhanKyNho_Giay(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value);
                 for (int i = 0; i < lst.Count; i++)
                     if (lst[i].HanhThu == false && lst[i].DongNuoc == false)
                     {
@@ -1772,7 +1772,7 @@ namespace ThuTien.GUI.TongHop
                 TongCongCK = 0;
                 TongTienMat = 0;
 
-                dt = _cHoaDon.GetTongHopDangNganChiTiet_HanhThu_PhanKyNho_DienTu(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value);
+                //dt = _cHoaDon.GetTongHopDangNganChiTiet_HanhThu_PhanKyNho_DienTu(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrachTongHopDangNgan.Value);
                 for (int i = 0; i < lst.Count; i++)
                     if (lst[i].HanhThu == false && lst[i].DongNuoc == false)
                     {
@@ -1921,7 +1921,7 @@ namespace ThuTien.GUI.TongHop
             long TongCongCK = 0;
             long TongTienMat = 0;
 
-            dt = _cHoaDon.GetTongHopDangNganChiTiet_HanhThu_Giay(dateGiaiTrachTongHopDangNgan.Value);
+            //dt = _cHoaDon.GetTongHopDangNganChiTiet_HanhThu_Giay(dateGiaiTrachTongHopDangNgan.Value);
             for (int i = 0; i < lst.Count; i++)
                 if (lst[i].HanhThu == false && lst[i].DongNuoc == false)
                 {
@@ -2039,7 +2039,7 @@ namespace ThuTien.GUI.TongHop
             TongCongCK = 0;
             TongTienMat = 0;
 
-            dt = _cHoaDon.GetTongHopDangNganChiTiet_HanhThu_DienTu(dateGiaiTrachTongHopDangNgan.Value);
+            //dt = _cHoaDon.GetTongHopDangNganChiTiet_HanhThu_DienTu(dateGiaiTrachTongHopDangNgan.Value);
             for (int i = 0; i < lst.Count; i++)
                 if (lst[i].HanhThu == false && lst[i].DongNuoc == false)
                 {

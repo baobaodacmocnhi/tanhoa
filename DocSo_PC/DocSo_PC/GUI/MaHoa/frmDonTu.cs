@@ -530,7 +530,17 @@ namespace DocSo_PC.GUI.MaHoa
                             else
                                 str += ";" + chkcmbNoiDung.Properties.Items[i].Value.ToString();
                         }
-                    dgvDanhSach.DataSource = _cDonTu.getDS(cmbTo.SelectedValue.ToString(), str, dateTuNgay.Value, dateDenNgay.Value);
+                    if (cmbTo.SelectedIndex == 0)
+                    {
+                        DataTable dt = new DataTable();
+                        for (int i = 1; i < cmbTo.Items.Count; i++)
+                        {
+                            dt.Merge(_cDonTu.getDS(((To)cmbTo.Items[i]).MaTo.ToString(), str, dateTuNgay.Value, dateDenNgay.Value));
+                        }
+                        dgvDanhSach.DataSource = dt;
+                    }
+                    else
+                        dgvDanhSach.DataSource = _cDonTu.getDS(cmbTo.SelectedValue.ToString(), str, dateTuNgay.Value, dateDenNgay.Value);
                     break;
                 case "Mã Đơn":
                     dgvDanhSach.DataSource = _cDonTu.getDS(int.Parse(txtSo.Text.Trim()));

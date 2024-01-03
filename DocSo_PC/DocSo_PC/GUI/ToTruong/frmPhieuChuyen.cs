@@ -588,7 +588,7 @@ namespace DocSo_PC.GUI.ToTruong
                                 if (ttkh != null)
                                 {
                                     DataRow dr = dsBaoCao.Tables["BaoCao"].NewRow();
-                                    dr["TenPhong"] = CNguoiDung.TenPhong;
+                                    dr["TenPhong"] = CNguoiDung.TenPhong.ToUpper();
                                     dr["SoPhieu"] = item.SoPhieu_In;
                                     dr["KinhTrinh"] = item.KinhGui;
                                     dr["VeViec"] = item.VeViec;
@@ -607,7 +607,6 @@ namespace DocSo_PC.GUI.ToTruong
                                         dr["MaDon"] = "Mã: Lỗi, kiểm tra lại";
                                     dr["NoiDung"] = item.VanBan;
                                     dr["GhiChu"] = item.GhiChu;
-                                    dr["TenPhong"] = CNguoiDung.TenPhong.ToUpper();
                                     dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper();
                                     dr["NguoiKy"] = CNguoiDung.NguoiKy;
                                     dsBaoCao.Tables["BaoCao"].Rows.Add(dr);

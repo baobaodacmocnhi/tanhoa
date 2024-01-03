@@ -387,7 +387,7 @@ namespace ThuTien.GUI.Quay
                         {
                             DataRow dr = ds.Tables["PhieuDangNgan"].NewRow();
                             dr["TenPhong"] = itemP.Name.ToUpper();
-                            dr["To"] = CNguoiDung.TenTo;
+                            //dr["To"] = CNguoiDung.TenTo;
                             dr["Loai"] = itemP.KyHieu;
                             dr["LoaiHoaDon"] = item["LoaiHoaDon"].ToString();
                             dr["NgayDangNgan"] = dateDen.Value.Date.ToString("dd/MM/yyyy");
@@ -401,6 +401,24 @@ namespace ThuTien.GUI.Quay
                             dr["NhanVien"] = CNguoiDung.HoTen;
                             ds.Tables["PhieuDangNgan"].Rows.Add(dr);
                         }
+                    }
+                    DataTable dtTC = _cHoaDon.GetTongDangNgan("", CNguoiDung.MaND, dateDen.Value);
+                    foreach (DataRow item in dtTC.Rows)
+                    {
+                        DataRow drTC = ds.Tables["PhieuDangNgan"].NewRow();
+                        drTC["TenPhong"] = "PHÒNG GHI THU";
+                        drTC["Loai"] = "PHÒNG GHI THU";
+                        drTC["LoaiHoaDon"] = item["LoaiHoaDon"].ToString();
+                        drTC["NgayDangNgan"] = dateDen.Value.Date.ToString("dd/MM/yyyy");
+                        drTC["TongHD"] = item["TongHD"].ToString();
+                        drTC["TongGiaBan"] = item["TongGiaBan"].ToString();
+                        drTC["TongThueGTGT"] = item["TongThueGTGT"].ToString();
+                        drTC["TongPhiBVMT"] = item["TongPhiBVMT"].ToString();
+                        if (item["TongPhiBVMT_Thue"].ToString() != "")
+                            drTC["TongPhiBVMT_Thue"] = item["TongPhiBVMT_Thue"].ToString();
+                        drTC["TongCong"] = item["TongCong"].ToString();
+                        drTC["NhanVien"] = CNguoiDung.HoTen;
+                        ds.Tables["PhieuDangNgan"].Rows.Add(drTC);
                     }
                 }
                 else

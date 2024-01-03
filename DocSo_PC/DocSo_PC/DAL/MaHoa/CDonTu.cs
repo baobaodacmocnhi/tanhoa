@@ -97,9 +97,9 @@ namespace DocSo_PC.DAL.MaHoa
 
         public DataTable getDS(string MaTo, string NoiDung, DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            if (MaTo == "0")
-                return _cDAL.LINQToDataTable(_db.MaHoa_DonTus.Where(item => item.CreateDate.Date >= FromCreateDate.Date && item.CreateDate.Date <= ToCreateDate.Date && NoiDung.IndexOf(item.NoiDung) >= 0));
-            else
+            //if (MaTo == "0")
+            //    return _cDAL.LINQToDataTable(_db.MaHoa_DonTus.Where(item => item.CreateDate.Date >= FromCreateDate.Date && item.CreateDate.Date <= ToCreateDate.Date && NoiDung.IndexOf(item.NoiDung) >= 0));
+            //else
                 return _cDAL.LINQToDataTable(_db.MaHoa_DonTus.Where(item => item.CreateDate.Date >= FromCreateDate.Date && item.CreateDate.Date <= ToCreateDate.Date && NoiDung.IndexOf(item.NoiDung) >= 0 && Convert.ToInt32(item.MLT.Substring(2, 2)) >= _db.Tos.SingleOrDefault(t => t.MaTo == Convert.ToInt32(MaTo)).TuMay && Convert.ToInt32(item.MLT.Substring(2, 2)) <= _db.Tos.SingleOrDefault(t => t.MaTo == Convert.ToInt32(MaTo)).DenMay));
         }
 

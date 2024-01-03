@@ -64,7 +64,11 @@ namespace DocSo_PC.GUI.ToTruong
             {
                 if (cmbTo.SelectedIndex == 0)
                 {
-                    //dgvDanhSach.DataSource = _cDocSo.getTheoDoiDocSo(cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString());
+                    DataTable dt = new DataTable();
+                    for (int i = 1; i < cmbTo.Items.Count; i++)
+                    {
+                        dt.Merge(_cDocSo.getTheoDoiDocSo(((To)cmbTo.Items[i]).MaTo.ToString(), cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString()));
+                    }
                 }
                 else
                     dgvDanhSach.DataSource = _cDocSo.getTheoDoiDocSo(cmbTo.SelectedValue.ToString(), cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString());

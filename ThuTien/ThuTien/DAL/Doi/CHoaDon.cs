@@ -7298,7 +7298,6 @@ namespace ThuTien.DAL.Doi
             }
         }
 
-
         public DataTable GetTongHopDangNganChiTiet_Giay(int MaTo, DateTime NgayGiaiTrach)
         {
             ///Tổ Văn Phòng
