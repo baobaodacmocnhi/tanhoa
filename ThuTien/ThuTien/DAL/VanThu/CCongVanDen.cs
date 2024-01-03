@@ -83,7 +83,7 @@ namespace ThuTien.DAL.VanThu
 
         public DataTable getDS(DateTime FromCreateDate, DateTime ToCreateDate, int FromDot, int ToDot)
         {
-            return ExecuteQuery_DataTable("select *,'To'=(select top 1 TenTo from [TT_To] where TuCuonGCS<=SUBSTRING(MLT,3,2) and DenCuonGCS>=SUBSTRING(MLT,3,2)) from TT_CongVanDen where"
+            return ExecuteQuery_DataTable("select *,'To'=(select top 1 TenTo from [TT_To] where TuCuonGCS<=SUBSTRING(MLT,3,2) and DenCuonGCS>=SUBSTRING(MLT,3,2)) from TT_CongVanDen where "
                 + FromDot + "<=SUBSTRING(MLT,1,2) and " + ToDot + ">=SUBSTRING(MLT,1,2)"
                 + " and cast(createdate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and cast(createdate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' order by createdate desc");
         }
