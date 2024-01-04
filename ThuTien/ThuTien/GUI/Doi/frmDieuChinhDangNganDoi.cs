@@ -256,12 +256,12 @@ namespace ThuTien.GUI.Doi
                     }
                     try
                     {
-                        if (int.Parse(cmbNhanVien.SelectedValue.ToString()) == 52 && chkChuyenKhoanBinhThuong.Checked == false && chkChuyenKhoanTienMat.Checked == false)
+                        if ((int.Parse(cmbNhanVien.SelectedValue.ToString()) == 52 || int.Parse(cmbNhanVien.SelectedValue.ToString()) == 120) && chkChuyenKhoanBinhThuong.Checked == false && chkChuyenKhoanTienMat.Checked == false)
                         {
                             MessageBox.Show("Bạn chưa chọn Chuyển Khoản Bình Thường hay Tiền Mặt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        if (int.Parse(cmbNhanVien.SelectedValue.ToString()) == 52)
+                        if (int.Parse(cmbNhanVien.SelectedValue.ToString()) == 52 || int.Parse(cmbNhanVien.SelectedValue.ToString()) == 120)
                         {
                             if (chkChuyenKhoanBinhThuong.Checked)
                                 foreach (ListViewItem item in lstHD.Items)
@@ -353,7 +353,7 @@ namespace ThuTien.GUI.Doi
                                     MessageBox.Show("Ngày Đăng Ngân đã Chốt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
                                 }
-                            if (int.Parse(cmbNhanVien.SelectedValue.ToString()) == 52)
+                            if (int.Parse(cmbNhanVien.SelectedValue.ToString()) == 52 || int.Parse(cmbNhanVien.SelectedValue.ToString()) == 120)
                                 foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
                                     ///đăng ngân tiền mặt
                                     if (_cHoaDon.CheckDangNganChuyenKhoanTienMat(item.Cells["SoHoaDon_TG"].Value.ToString()))
@@ -389,7 +389,7 @@ namespace ThuTien.GUI.Doi
                         else
                             if (tabControl.SelectedTab.Name == "tabCoQuan")
                             {
-                                if (int.Parse(cmbNhanVien.SelectedValue.ToString()) == 52)
+                                if (int.Parse(cmbNhanVien.SelectedValue.ToString()) == 52 || int.Parse(cmbNhanVien.SelectedValue.ToString()) == 120)
                                     foreach (DataGridViewRow item in dgvHDCoQuan.SelectedRows)
                                         ///đăng ngân tiền mặt
                                         if (_cHoaDon.CheckDangNganChuyenKhoanTienMat(item.Cells["SoHoaDon_CQ"].Value.ToString()))

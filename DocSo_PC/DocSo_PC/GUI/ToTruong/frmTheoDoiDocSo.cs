@@ -69,6 +69,7 @@ namespace DocSo_PC.GUI.ToTruong
                     {
                         dt.Merge(_cDocSo.getTheoDoiDocSo(((To)cmbTo.Items[i]).MaTo.ToString(), cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString()));
                     }
+                    dgvDanhSach.DataSource = dt;
                 }
                 else
                     dgvDanhSach.DataSource = _cDocSo.getTheoDoiDocSo(cmbTo.SelectedValue.ToString(), cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString());

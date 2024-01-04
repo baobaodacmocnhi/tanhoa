@@ -696,6 +696,7 @@ namespace DocSo_PC.GUI.MaHoa
                     DataRow dr = dsBaoCao.Tables["BaoCao"].NewRow();
                     error = dontu.DanhBo;
                     dr["TenPhong"] = CNguoiDung.TenPhong;
+                    dr["SoPhieu"] = "Số:________/BK-"+CNguoiDung.KyHieuPhong;
                     dr["DanhBo"] = dontu.DanhBo.Insert(7, " ").Insert(4, " ");
                     dr["HopDong"] = dontu.HopDong;
                     dr["HoTen"] = dontu.HoTen;

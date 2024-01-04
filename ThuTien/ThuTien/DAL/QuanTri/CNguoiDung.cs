@@ -356,29 +356,34 @@ namespace ThuTien.DAL.QuanTri
         /// </summary>
         /// <param name="MaTo"></param>
         /// <returns></returns>
+        public List<TT_NguoiDung> GetDSHanhThuByIDPhong(int IDPhong)
+        {
+            return _db.TT_NguoiDungs.Where(item => item.TT_To.IDPhong == IDPhong && item.HanhThu == true && item.An == false).OrderBy(item => item.STT).ToList();
+        }
+
         public List<TT_NguoiDung> GetDSHanhThuByMaTo(int MaTo)
         {
-            return _db.TT_NguoiDungs.Where(item => item.MaTo == MaTo && item.HanhThu == true).OrderBy(item => item.STT).ToList();
+            return _db.TT_NguoiDungs.Where(item => item.MaTo == MaTo && item.HanhThu == true && item.An == false).OrderBy(item => item.STT).ToList();
         }
 
         public List<TT_NguoiDung> GetDSByMaTo(int MaTo)
         {
-            return _db.TT_NguoiDungs.Where(item => item.MaTo == MaTo && (item.HanhThu == true || item.ToTruong)).OrderBy(item => item.STT).ToList();
+            return _db.TT_NguoiDungs.Where(item => item.MaTo == MaTo && (item.HanhThu == true || item.ToTruong) && item.An == false).OrderBy(item => item.STT).ToList();
         }
 
         public List<TT_NguoiDung> GetDSByToVanPhong(int MaTo)
         {
-            return _db.TT_NguoiDungs.Where(item => item.MaTo == MaTo && item.TT_To.HanhThu == false && item.VanPhong == true).OrderBy(item => item.STT).ToList();
+            return _db.TT_NguoiDungs.Where(item => item.MaTo == MaTo && item.TT_To.HanhThu == false && item.VanPhong == true && item.An == false).OrderBy(item => item.STT).ToList();
         }
 
         public List<TT_NguoiDung> GetDSDongNuocByMaTo(int MaTo)
         {
-            return _db.TT_NguoiDungs.Where(item => item.MaTo == MaTo && item.DongNuoc == true).OrderBy(item => item.STT).ToList();
+            return _db.TT_NguoiDungs.Where(item => item.MaTo == MaTo && item.DongNuoc == true && item.An == false).OrderBy(item => item.STT).ToList();
         }
 
         public List<TT_NguoiDung> getDS_DongNuoc(int IDPhong)
         {
-            return _db.TT_NguoiDungs.Where(item => item.TT_To.DongNuoc == true && item.DongNuoc == true && item.TT_To.IDPhong == IDPhong).OrderBy(item => item.STT).ToList();
+            return _db.TT_NguoiDungs.Where(item => item.TT_To.DongNuoc == true && item.DongNuoc == true && item.TT_To.IDPhong == IDPhong && item.An == false).OrderBy(item => item.STT).ToList();
         }
 
         public List<TT_NguoiDung> GetDSDongNuocToTruongByMaTo(int MaTo)

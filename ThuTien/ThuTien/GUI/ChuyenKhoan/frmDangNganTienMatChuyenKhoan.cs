@@ -151,13 +151,13 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
-                dgvHDTuGia.DataSource = _cHoaDon.GetDSDangNganTienMatChuyenKhoan("", dateTu.Value, dateDen.Value);
+                dgvHDTuGia.DataSource = _cHoaDon.GetDSDangNganTienMatChuyenKhoan("", dateTu.Value, dateDen.Value,CNguoiDung.FromDot,CNguoiDung.ToDot);
                 CountdgvHDTuGia();
             }
             else
                 if (tabControl.SelectedTab.Name == "tabCoQuan")
                 {
-                    dgvHDCoQuan.DataSource = _cHoaDon.GetDSDangNganTienMatChuyenKhoan("CQ", dateTu.Value, dateDen.Value);
+                    dgvHDCoQuan.DataSource = _cHoaDon.GetDSDangNganTienMatChuyenKhoan("CQ", dateTu.Value, dateDen.Value, CNguoiDung.FromDot, CNguoiDung.ToDot);
                     CountdgvHDCoQuan();
                 }
         }

@@ -49,12 +49,14 @@ namespace ThuTien.DAL.ChuyenKhoan
 
         public DataTable GetDSTienAm()
         {
-            return LINQToDataTable(_db.TT_TienDus.Where(item => item.SoTien < 0).ToList());
+            //return LINQToDataTable(_db.TT_TienDus.Where(item => item.SoTien < 0).ToList());
+            return ExecuteQuery_DataTable("select MLT=SUBSTRING(ttkh.LOTRINH,1,2),td.* from TT_TienDu td left join CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh on td.DanhBo=ttkh.DANHBO where SoTien<0 order by td.DanhBo");
         }
 
         public DataTable GetDSTienDu()
         {
-            return LINQToDataTable(_db.TT_TienDus.Where(item => item.SoTien > 0).ToList());
+            //return LINQToDataTable(_db.TT_TienDus.Where(item => item.SoTien > 0).ToList());
+            return ExecuteQuery_DataTable("select MLT=SUBSTRING(ttkh.LOTRINH,1,2),td.* from TT_TienDu td left join CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh on td.DanhBo=ttkh.DANHBO where SoTien>0 order by td.DanhBo");
         }
 
         public DataTable getDS_PhiMoNuoc()

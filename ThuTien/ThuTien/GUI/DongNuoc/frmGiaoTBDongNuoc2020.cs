@@ -42,7 +42,7 @@ namespace ThuTien.GUI.DongNuoc
 
         private void frmGiaoTBDongNuoc_Load(object sender, EventArgs e)
         {
-            if (CNguoiDung.Doi)
+            if (CNguoiDung.Doi || (CNguoiDung.ToTruong && _cNguoiDung.GetByMaND(CNguoiDung.MaND).DongNuoc))
             {
                 cmbTo.DataSource = _cTo.getDS_HanhThu(CNguoiDung.IDPhong);
                 cmbTo.DisplayMember = "TenTo";
@@ -64,10 +64,6 @@ namespace ThuTien.GUI.DongNuoc
                 cmbNhanVienLap.DataSource = _lstND;
                 cmbNhanVienLap.DisplayMember = "HoTen";
                 cmbNhanVienLap.ValueMember = "MaND";
-
-                cmbNhanVienGiao.DataSource = _cNguoiDung.getDS_DongNuoc(CNguoiDung.MaTo);
-                cmbNhanVienGiao.DisplayMember = "HoTen";
-                cmbNhanVienGiao.ValueMember = "MaND";
                 cmbTo.Visible = false;
                 lbTo.Text = "Tổ: " + CNguoiDung.TenTo;
             }
@@ -75,7 +71,9 @@ namespace ThuTien.GUI.DongNuoc
 
             dateTu.Value = DateTime.Now;
             dateDen.Value = DateTime.Now;
-
+            cmbNhanVienGiao.DataSource = _cNguoiDung.getDS_DongNuoc(CNguoiDung.IDPhong);
+            cmbNhanVienGiao.DisplayMember = "HoTen";
+            cmbNhanVienGiao.ValueMember = "MaND";
             cmbToCapNhat.DataSource = _cTo.getDS_HanhThu(CNguoiDung.IDPhong);
             cmbToCapNhat.ValueMember = "MaTo";
             cmbToCapNhat.DisplayMember = "TenTo";
@@ -744,7 +742,7 @@ namespace ThuTien.GUI.DongNuoc
 
         private void cmbTo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (CNguoiDung.Doi == true && cmbTo.SelectedIndex >= 0)
+            if ((CNguoiDung.Doi == true || (CNguoiDung.ToTruong && _cNguoiDung.GetByMaND(CNguoiDung.MaND).DongNuoc)) && cmbTo.SelectedIndex >= 0)
             {
                 TT_NguoiDung nguoidung = new TT_NguoiDung();
                 nguoidung.MaND = -1;

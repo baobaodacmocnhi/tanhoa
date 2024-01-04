@@ -350,7 +350,7 @@ namespace DocSo_PC.DAL
             }
             int rowStart = 1;
             int columnStart = 1;
-            int rowEnd = rowStart + dt.Rows.Count - 1;
+            int rowEnd = rowStart + dt.Rows.Count;
             int columnEnd = dt.Columns.Count;
             Microsoft.Office.Interop.Excel.Range c1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, columnStart];
             Microsoft.Office.Interop.Excel.Range c2 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, columnEnd];
