@@ -82,18 +82,14 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 if ((string.IsNullOrEmpty(item[0].ToString()) || item[0].ToString().Replace(" ", "").Length == 11)
                                     && !string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()))
                                 {
-                                    //if (item[0].ToString().Replace(" ", "") == "24010201000")
-                                    //{
-                                    //    string a = "";
-                                    //}
                                     bool flag = false;
                                     TB_DULIEUKHACHHANG ttkh = _cDHN.get(item[0].ToString().Replace(" ", ""));
-                                    if (ttkh != null && int.Parse(ttkh.LOTRINH.Substring(0, 2)) >= CNguoiDung.FromDot && int.Parse(ttkh.LOTRINH.Substring(0, 2)) <= CNguoiDung.ToDot && CNguoiDung.IDPhong == 1)
+                                    if (ttkh != null && int.Parse(ttkh.LOTRINH.Substring(0, 2)) >= CNguoiDung.FromDot && int.Parse(ttkh.LOTRINH.Substring(0, 2)) <= CNguoiDung.ToDot)
                                     {
                                         flag = true;
                                     }
                                     else
-                                        if (ttkh == null || (int.Parse(ttkh.LOTRINH.Substring(0, 2)) >= CNguoiDung.FromDot && int.Parse(ttkh.LOTRINH.Substring(0, 2)) <= CNguoiDung.ToDot && CNguoiDung.IDPhong == 2))
+                                        if (ttkh == null && CNguoiDung.IDPhong == 2)
                                         {
                                             flag = true;
                                         }
