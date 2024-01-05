@@ -187,7 +187,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     dr["STT"] = item.Cells["MaKQDN"].Value;
                     dr["DanhBo"] = item.Cells["DanhBo_PMN"].Value;
                     dr["HoTen"] = item.Cells["HoTen_PMN"].Value;
-                    dr["DiaChi"] = item.Cells["DiaChi_PMN"].Value + _cDHN.GetPhuongQuan(item.Cells["DanhBo_PMN"].Value.ToString());
+                    dr["DiaChi"] = item.Cells["DiaChi_PMN"].Value + _cDHN.getPhuongQuan(item.Cells["DanhBo_PMN"].Value.ToString());
                     dr["Co"] = item.Cells["Co"].Value;
                     dr["Hieu"] = item.Cells["Hieu"].Value;
                     dr["SoThan"] = item.Cells["SoThan"].Value;

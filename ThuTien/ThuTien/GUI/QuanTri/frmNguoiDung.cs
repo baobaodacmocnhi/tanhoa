@@ -150,13 +150,13 @@ namespace ThuTien.GUI.QuanTri
                 if (CNguoiDung.Doi)
                 {
                     chkAn.Visible = true;
-                    _blNguoiDung = new BindingList<TT_NguoiDung>(_cNguoiDung.GetDSExceptMaND_Doi(CNguoiDung.MaND));
+                    _blNguoiDung = new BindingList<TT_NguoiDung>(_cNguoiDung.GetDSExceptMaND_Doi(CNguoiDung.MaND,CNguoiDung.IDPhong));
                 }
                 else
                 {
                     chkPhoGiamDoc.Visible = false;
                     chkAn.Visible = false;
-                    _blNguoiDung = new BindingList<TT_NguoiDung>(_cNguoiDung.GetDSExceptMaND(CNguoiDung.MaND));
+                    _blNguoiDung = new BindingList<TT_NguoiDung>(_cNguoiDung.GetDSExceptMaND(CNguoiDung.MaND, CNguoiDung.IDPhong));
                 }
             dgvNguoiDung.DataSource = _blNguoiDung;
         }

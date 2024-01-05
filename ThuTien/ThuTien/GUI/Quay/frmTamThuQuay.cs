@@ -38,6 +38,8 @@ namespace ThuTien.GUI.Quay
         CDichVuThu _cDichVuThu = new CDichVuThu();
         CChotDangNgan _cChotDangNgan = new CChotDangNgan();
         CDHN _cDHN = new CDHN();
+        CTo _cTo = new CTo();
+        List<Phong> _lstPhong;
 
         public frmTamThuQuay()
         {
@@ -53,6 +55,7 @@ namespace ThuTien.GUI.Quay
             dateTu.Value = DateTime.Now;
             dateDen.Value = DateTime.Now;
             dateDen_XacNhanNo.Value = DateTime.Now;
+            _lstPhong = _cTo.getDS_Phong();
         }
 
         public void Clear()
@@ -290,12 +293,12 @@ namespace ThuTien.GUI.Quay
                                                     return;
                                                 }
                                                 else
-                                                if (!_cDCHD.checkExist_HDDC_DangNgan(int.Parse(item.Cells["MaHD"].Value.ToString())))
-                                                {
-                                                    TT_HDDC_DangNgan en = new TT_HDDC_DangNgan();
-                                                    en.MaHD = int.Parse(item.Cells["MaHD"].Value.ToString());
-                                                    _cDCHD.Them_HDDC_DangNgan(en);
-                                                }
+                                                    if (!_cDCHD.checkExist_HDDC_DangNgan(int.Parse(item.Cells["MaHD"].Value.ToString())))
+                                                    {
+                                                        TT_HDDC_DangNgan en = new TT_HDDC_DangNgan();
+                                                        en.MaHD = int.Parse(item.Cells["MaHD"].Value.ToString());
+                                                        _cDCHD.Them_HDDC_DangNgan(en);
+                                                    }
                                             }
                                             else
                                             {
@@ -366,7 +369,6 @@ namespace ThuTien.GUI.Quay
                     }
                     TongCongSo += (Int32)hd.TONGCONG;
                 }
-
                 if (lstTamThu.Count > 0)
                 {
                     dsBaoCao ds = new dsBaoCao();
@@ -375,7 +377,7 @@ namespace ThuTien.GUI.Quay
                     dr["SoPhieu"] = lstTamThu[0].SoPhieu.ToString().Insert(lstTamThu[0].SoPhieu.ToString().Length - 2, "-");
                     dr["DanhBo"] = lstTamThu[0].DANHBA.Insert(7, " ").Insert(4, " ");
                     dr["HoTen"] = hdIn.TENKH;
-                    dr["DiaChi"] = hdIn.SO + " " + hdIn.DUONG;
+                    dr["DiaChi"] = hdIn.SO + " " + hdIn.DUONG + " " + _cDHN.getPhuongQuan(lstTamThu[0].DANHBA);
                     dr["MLT"] = hdIn.MALOTRINH.Insert(4, " ").Insert(2, " ");
                     dr["GiaBieu"] = hdIn.GB;
                     dr["DinhMuc"] = hdIn.DM;
@@ -390,6 +392,15 @@ namespace ThuTien.GUI.Quay
                         dr["ChuKy"] = true;
                         dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky.png";
                     }
+                    int IDPhong = 0;
+                    for (int i = 0; i < _lstPhong.Count; i++)
+                        if (_lstPhong[i].TuDot <= hdIn.DOT && hdIn.DOT <= _lstPhong[i].DenDot)
+                        {
+                            IDPhong = _lstPhong[i].ID;
+                            break;
+                        }
+                    dr["TenPhong"] = _cNguoiDung.getChucVu(IDPhong);
+                    dr["NguoiKy"] = _cNguoiDung.getNguoiKy(IDPhong);
                     ds.Tables["PhieuTamThu"].Rows.Add(dr);
 
                     rptPhieuTamThu_HDDT rpt = new rptPhieuTamThu_HDDT();
@@ -655,6 +666,15 @@ namespace ThuTien.GUI.Quay
                     dr["ChuKy"] = true;
                     dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky.png";
                 }
+                int IDPhong = 0;
+                for (int i = 0; i < _lstPhong.Count; i++)
+                    if (_lstPhong[i].TuDot <= xacnhanno.MLT.Substring(0,2) && hdIn.DOT <= _lstPhong[i].DenDot)
+                    {
+                        IDPhong = _lstPhong[i].ID;
+                        break;
+                    }
+                dr["TenPhong"] = _cNguoiDung.getChucVu(IDPhong);
+                dr["NguoiKy"] = _cNguoiDung.getNguoiKy(IDPhong);
                 dr["ChucVu"] = CNguoiDung.ChucVu;
                 dr["NguoiKy"] = CNguoiDung.NguoiKy;
                 ds.Tables["PhieuTamThu"].Rows.Add(dr);
@@ -692,7 +712,6 @@ namespace ThuTien.GUI.Quay
                     }
                     TongCongSo += (Int32)hd.TONGCONG;
                 }
-
                 dsBaoCao ds = new dsBaoCao();
                 HOADON hdIn = _cHoaDon.Get(lstTamThu[0].SoHoaDon);
                 DataRow dr = ds.Tables["PhieuTamThu"].NewRow();
@@ -714,7 +733,6 @@ namespace ThuTien.GUI.Quay
                     dr["ChuKy"] = true;
                     dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky.png";
                 }
-
                 ds.Tables["PhieuTamThu"].Rows.Add(dr);
 
                 rptPhieuTamThu_HDDT rpt = new rptPhieuTamThu_HDDT();
@@ -1096,7 +1114,7 @@ namespace ThuTien.GUI.Quay
                     dr["STT"] = kqdongnuoc.MaKQDN;
                     dr["DanhBo"] = kqdongnuoc.DanhBo.Insert(7, " ").Insert(4, " ");
                     dr["HoTen"] = kqdongnuoc.HoTen;
-                    dr["DiaChi"] = kqdongnuoc.DiaChi + _cDHN.GetPhuongQuan(kqdongnuoc.DanhBo);
+                    dr["DiaChi"] = kqdongnuoc.DiaChi + _cDHN.getPhuongQuan(kqdongnuoc.DanhBo);
                     dr["Co"] = kqdongnuoc.Co;
                     dr["Hieu"] = kqdongnuoc.Hieu;
                     dr["SoThan"] = kqdongnuoc.SoThan;

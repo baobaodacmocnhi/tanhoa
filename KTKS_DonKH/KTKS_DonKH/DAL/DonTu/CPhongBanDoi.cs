@@ -7,7 +7,7 @@ using System.Data;
 
 namespace KTKS_DonKH.DAL.DonTu
 {
-    class CPhongBanDoi:CDAL
+    class CPhongBanDoi : CDAL
     {
         public DataTable getDS_ConfigChuongTrinh()
         {
@@ -21,7 +21,7 @@ namespace KTKS_DonKH.DAL.DonTu
 
         public DataTable GetDS()
         {
-            return LINQToDataTable(db.PhongBanDois.OrderBy(item => item.STT).ToList());
+            return LINQToDataTable(db.PhongBanDois.Where(item => item.An == false).OrderBy(item => item.STT).ToList());
         }
     }
 }

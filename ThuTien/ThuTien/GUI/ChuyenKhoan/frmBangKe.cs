@@ -34,7 +34,8 @@ namespace ThuTien.GUI.ChuyenKhoan
             dgvBangKe.AutoGenerateColumns = false;
             dgvBangKeGroup.AutoGenerateColumns = false;
             dgvBangKeGroup3.AutoGenerateColumns = false;
-
+            dgvBangKeGroup_Tong.AutoGenerateColumns = false;
+            dgvBangKeGroup3_Tong.AutoGenerateColumns = false;
             dateTu.Value = DateTime.Now;
             dateDen.Value = DateTime.Now;
             dateNgayLap.Value = DateTime.Now;
@@ -189,8 +190,38 @@ namespace ThuTien.GUI.ChuyenKhoan
                 txtTongHD.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHD);
                 txtTongCong.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
             }
+            TongCong = 0;
             dgvBangKeGroup.DataSource = _cBangKe.GetDS_Group(dateTu.Value, dateDen.Value, CNguoiDung.IDPhong);
+            foreach (DataGridViewRow item in dgvBangKeGroup.Rows)
+            {
+                if (!string.IsNullOrEmpty(item.Cells["TongCong_Group"].Value.ToString()))
+                    TongCong += long.Parse(item.Cells["TongCong_Group"].Value.ToString());
+            }
+            txtTongCong_Group.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
+            TongCong = 0;
             dgvBangKeGroup3.DataSource = _cBangKe.GetDS_Group3(dateTu.Value, dateDen.Value, CNguoiDung.IDPhong);
+            foreach (DataGridViewRow item in dgvBangKeGroup3.Rows)
+            {
+                if (!string.IsNullOrEmpty(item.Cells["TongCong_Group3"].Value.ToString()))
+                    TongCong += long.Parse(item.Cells["TongCong_Group3"].Value.ToString());
+            }
+            txtTongCong_Group3.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
+            TongCong = 0;
+            dgvBangKeGroup_Tong.DataSource = _cBangKe.GetDS_Group(dateTu.Value, dateDen.Value);
+            foreach (DataGridViewRow item in dgvBangKeGroup_Tong.Rows)
+            {
+                if (!string.IsNullOrEmpty(item.Cells["TongCong_Group_Tong"].Value.ToString()))
+                    TongCong += long.Parse(item.Cells["TongCong_Group_Tong"].Value.ToString());
+            }
+            txtTongCong_Group_Tong.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
+            TongCong = 0;
+            dgvBangKeGroup3_Tong.DataSource = _cBangKe.GetDS_Group3(dateTu.Value, dateDen.Value);
+            foreach (DataGridViewRow item in dgvBangKeGroup3_Tong.Rows)
+            {
+                if (!string.IsNullOrEmpty(item.Cells["TongCong_Group3_Tong"].Value.ToString()))
+                    TongCong += long.Parse(item.Cells["TongCong_Group3_Tong"].Value.ToString());
+            }
+            txtTongCong_Group3_Tong.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -427,6 +458,14 @@ namespace ThuTien.GUI.ChuyenKhoan
             }
         }
 
+        private void dgvBangKeGroup3_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvBangKeGroup3.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
         private void dgvBangKe_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             foreach (DataGridViewRow item in dgvBangKe.Rows)
@@ -438,73 +477,95 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void btnChonFileCapNhatPhieuThu_Click(object sender, EventArgs e)
         {
-            if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+            try
             {
-                try
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 {
                     OpenFileDialog dialog = new OpenFileDialog();
                     dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
                     dialog.Multiselect = false;
-
                     if (dgvBangKe.Rows.Count == 0)
                     {
                         MessageBox.Show("Chưa tải dữ liệu Bảng kê", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     if (dialog.ShowDialog() == DialogResult.OK)
-                    {
                         if (MessageBox.Show("Bạn có chắc chắn Cập nhật ngày " + dgvBangKe.Rows[0].Cells["CreateDate"].Value.ToString() + "?", "Xác nhận Cập nhật", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
                             DataTable dtExcel = _cBangKe.ExcelToDataTable(dialog.FileName);
-                            //CExcel fileExcel = new CExcel(dialog.FileName);
-                            //DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
-                            //check 2 source
-                            if (dgvBangKe.Rows.Count != dtExcel.Rows.Count)
-                            {
-                                MessageBox.Show("2 Danh Sách Khác Nhau", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
+                            //đội thu tiền
+                            ////check 2 source
+                            //if (dgvBangKe.Rows.Count != dtExcel.Rows.Count)
+                            //{
+                            //    MessageBox.Show("2 Danh Sách Khác Nhau", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            //    return;
+                            //}
+                            //var transactionOptions = new TransactionOptions();
+                            //transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                            //using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
+                            //{
+                            //    for (int i = 0; i < dgvBangKe.Rows.Count; i++)
+                            //        if (dgvBangKe.Rows[i].Cells["DanhBo"].Value.ToString() == dtExcel.Rows[i][0].ToString().Replace(" ", "") && dgvBangKe.Rows[i].Cells["SoTien"].Value.ToString() == dtExcel.Rows[i][1].ToString().Trim()
+                            //            && !string.IsNullOrEmpty(dtExcel.Rows[i][3].ToString().Trim()) && !string.IsNullOrEmpty(dtExcel.Rows[i][4].ToString().Trim()))
+                            //        {
+                            //            TT_BangKe bangke = _cBangKe.get(int.Parse(dgvBangKe.Rows[i].Cells["MaBK"].Value.ToString()));
+                            //            bangke.SoPhieuThu = dtExcel.Rows[i][3].ToString().Trim();
+                            //            string[] date = dtExcel.Rows[i][4].ToString().Trim().Split('/');
+                            //            string[] year = date[2].Split(' ');
+                            //            bangke.NgayPhieuThu = new DateTime(int.Parse(year[0]), int.Parse(date[1]), int.Parse(date[0]));
+                            //            _cBangKe.Sua(bangke);
+                            //        }
+                            //        else
+                            //        {
+                            //            MessageBox.Show("Lỗi Danh Bộ " + dtExcel.Rows[i][0].ToString().Replace(" ", ""), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            //            return;
+                            //        }
+                            //    scope.Complete();
+                            //}
+                            //phòng ghi thu
                             var transactionOptions = new TransactionOptions();
                             transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
                             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                             {
                                 for (int i = 0; i < dgvBangKe.Rows.Count; i++)
-                                    //if (dgvBangKe.Rows[i].Cells["DanhBo"].Value.ToString() == "13152203536")
-                                    //{
-                                    //    string str = dtExcel.Rows[i][0].ToString().Replace(" ", "");
-                                    //    string str2 = dtExcel.Rows[i][1].ToString();
-                                    //    string str3 = dtExcel.Rows[i][3].ToString();
-                                    //    string str4 = dtExcel.Rows[i][4].ToString();
-                                    //}
-                                    if (dgvBangKe.Rows[i].Cells["DanhBo"].Value.ToString() == dtExcel.Rows[i][0].ToString().Replace(" ", "") && dgvBangKe.Rows[i].Cells["SoTien"].Value.ToString() == dtExcel.Rows[i][1].ToString().Trim()
-                                        && !string.IsNullOrEmpty(dtExcel.Rows[i][3].ToString().Trim()) && !string.IsNullOrEmpty(dtExcel.Rows[i][4].ToString().Trim()))
+                                {
+                                    DataRow[] dr = dtExcel.Select("DanhBo=" + dgvBangKe["DanhBo", i].Value.ToString() + " and SoTien=" + dgvBangKe["SoTien", i].Value.ToString());
+                                    if (dr != null && dr.Count() == 1)
                                     {
-                                        TT_BangKe bangke = _cBangKe.get(int.Parse(dgvBangKe.Rows[i].Cells["MaBK"].Value.ToString()));
-                                        bangke.SoPhieuThu = dtExcel.Rows[i][3].ToString().Trim();
-                                        string[] date = dtExcel.Rows[i][4].ToString().Trim().Split('/');
-                                        string[] year = date[2].Split(' ');
-                                        bangke.NgayPhieuThu = new DateTime(int.Parse(year[0]), int.Parse(date[1]), int.Parse(date[0]));
-                                        _cBangKe.Sua(bangke);
+                                        if (!string.IsNullOrEmpty(dr[3].ToString().Trim()) && !string.IsNullOrEmpty(dr[4].ToString().Trim()))
+                                        {
+                                            TT_BangKe bangke = _cBangKe.get(int.Parse(dgvBangKe["MaBK", i].Value.ToString()));
+                                            bangke.SoPhieuThu = dr[3].ToString().Trim();
+                                            string[] date = dr[4].ToString().Trim().Split('/');
+                                            string[] year = date[2].Split(' ');
+                                            bangke.NgayPhieuThu = new DateTime(int.Parse(year[0]), int.Parse(date[1]), int.Parse(date[0]));
+                                            _cBangKe.Sua(bangke);
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Lỗi Danh Bộ " + dtExcel.Rows[i][0].ToString().Replace(" ", ""), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            return;
+                                        }
                                     }
                                     else
                                     {
-                                        MessageBox.Show("Lỗi Danh Bộ " + dtExcel.Rows[i][0].ToString().Replace(" ", ""), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        MessageBox.Show("Lỗi Danh Bộ " + dgvBangKe["DanhBo", i].Value.ToString() + " có nhiều hơn 1 dòng cùng Số Tiền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                         return;
                                     }
+                                }
                                 scope.Complete();
                             }
-                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Đã xử lý, vui lòng kiểm tra lại dữ liệu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             btnXem.PerformClick();
                         }
-                    }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Lỗi, Vui lòng thử lại\n" + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi, Vui lòng thử lại\n" + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void chkNgayLap_CheckedChanged(object sender, EventArgs e)
@@ -574,6 +635,40 @@ namespace ThuTien.GUI.ChuyenKhoan
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void dgvBangKeGroup_Tong_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvBangKeGroup_Tong.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvBangKeGroup_Tong_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvBangKeGroup_Tong.Columns[e.ColumnIndex].Name == "TongCong_Group_Tong" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+        }
+
+        private void dgvBangKeGroup3_Tong_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvBangKeGroup3_Tong.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvBangKeGroup3_Tong_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvBangKeGroup3_Tong.Columns[e.ColumnIndex].Name == "TongCong_Group3_Tong" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
+            }
+        }
+
+
 
     }
 }

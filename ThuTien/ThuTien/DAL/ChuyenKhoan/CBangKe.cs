@@ -227,6 +227,22 @@ namespace ThuTien.DAL.ChuyenKhoan
             return ExecuteQuery_DataTable(sql);
         }
 
+        public DataTable GetDS_Group(DateTime TuNgay, DateTime DenNgay)
+        {
+            var query = from itemBK in _db.TT_BangKes
+                        join itemNH in _db.NGANHANGs on itemBK.MaNH equals itemNH.ID_NGANHANG into tableNH
+                        from itemtableNH in tableNH.DefaultIfEmpty()
+                        where itemBK.CreateDate.Value.Date >= TuNgay.Date && itemBK.CreateDate.Value.Date <= DenNgay.Date
+                        group itemBK by itemtableNH.NGANHANG1 into itemGroup
+                        select new
+                        {
+                            TenNH = itemGroup.Key,
+                            SoLuong = itemGroup.Count(),
+                            TongCong = itemGroup.Sum(groupItem => (long)groupItem.SoTien),
+                        };
+            return LINQToDataTable(query);
+        }
+
         public DataTable GetDS_Group(DateTime TuNgay, DateTime DenNgay, int IDPhong)
         {
             var query = from itemBK in _db.TT_BangKes
@@ -235,6 +251,22 @@ namespace ThuTien.DAL.ChuyenKhoan
                         where itemBK.CreateDate.Value.Date >= TuNgay.Date && itemBK.CreateDate.Value.Date <= DenNgay.Date
                         && _db.TT_NguoiDungs.SingleOrDefault(o => o.MaND == itemBK.CreateBy).TT_To.IDPhong == IDPhong
                         group itemBK by itemtableNH.NGANHANG1 into itemGroup
+                        select new
+                        {
+                            TenNH = itemGroup.Key,
+                            SoLuong = itemGroup.Count(),
+                            TongCong = itemGroup.Sum(groupItem => (long)groupItem.SoTien),
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetDS_Group3(DateTime TuNgay, DateTime DenNgay)
+        {
+            var query = from itemBK in _db.TT_BangKes
+                        join itemNH in _db.NGANHANGs on itemBK.MaNH equals itemNH.ID_NGANHANG into tableNH
+                        from itemtableNH in tableNH.DefaultIfEmpty()
+                        where itemBK.CreateDate.Value.Date >= TuNgay.Date && itemBK.CreateDate.Value.Date <= DenNgay.Date
+                        group itemBK by itemtableNH.GroupBank into itemGroup
                         select new
                         {
                             TenNH = itemGroup.Key,

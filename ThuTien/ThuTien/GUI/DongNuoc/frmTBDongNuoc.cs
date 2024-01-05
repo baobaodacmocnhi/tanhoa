@@ -144,7 +144,7 @@ namespace ThuTien.GUI.DongNuoc
                             TT_DongNuoc dongnuoc = new TT_DongNuoc();
                             dongnuoc.DanhBo = lstHDTemp[0].DANHBA;
                             dongnuoc.HoTen = lstHDTemp[0].TENKH;
-                            dongnuoc.DiaChi = lstHDTemp[0].SO + " " + lstHDTemp[0].DUONG + _cDHN.GetPhuongQuan(lstHDTemp[0].DANHBA);
+                            dongnuoc.DiaChi = lstHDTemp[0].SO + " " + lstHDTemp[0].DUONG + _cDHN.getPhuongQuan(lstHDTemp[0].DANHBA);
                             dongnuoc.MLT = lstHDTemp[0].MALOTRINH;
                             if (chkNangSuat.Checked == true)
                             {

@@ -331,14 +331,14 @@ namespace ThuTien.DAL.QuanTri
         /// </summary>
         /// <param name="MaND"></param>
         /// <returns></returns>
-        public List<TT_NguoiDung> GetDSExceptMaND(int MaND)
+        public List<TT_NguoiDung> GetDSExceptMaND(int MaND, int IDPhong)
         {
-            return _db.TT_NguoiDungs.Where(item => item.MaND != MaND && item.MaND != 0 && item.An == false && item.PhoGiamDoc == false).OrderBy(item => item.STT).ToList();
+            return _db.TT_NguoiDungs.Where(item => item.MaND != MaND && item.MaND != 0 && item.An == false && item.PhoGiamDoc == false && item.TT_To.IDPhong == IDPhong).OrderBy(item => item.STT).ToList();
         }
 
-        public List<TT_NguoiDung> GetDSExceptMaND_Doi(int MaND)
+        public List<TT_NguoiDung> GetDSExceptMaND_Doi(int MaND, int IDPhong)
         {
-            return _db.TT_NguoiDungs.Where(item => item.MaND != MaND && item.MaND != 0 && item.PhoGiamDoc == false).OrderBy(item => item.STT).ToList();
+            return _db.TT_NguoiDungs.Where(item => item.MaND != MaND && item.MaND != 0 && item.PhoGiamDoc == false && item.TT_To.IDPhong == IDPhong).OrderBy(item => item.STT).ToList();
         }
 
         public List<TT_NguoiDung> GetDS_Admin()

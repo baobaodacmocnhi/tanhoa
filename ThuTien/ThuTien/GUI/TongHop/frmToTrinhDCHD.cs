@@ -119,7 +119,7 @@ namespace ThuTien.GUI.TongHop
 
                             dgvCTToTrinh["DanhBo", dgvCTToTrinh.Rows.Count - 1].Value = dtTon.Rows[0]["DanhBo"];
                             dgvCTToTrinh["HoTen", dgvCTToTrinh.Rows.Count - 1].Value = dtTon.Rows[0]["HoTen"];
-                            dgvCTToTrinh["DiaChi", dgvCTToTrinh.Rows.Count - 1].Value = dtTon.Rows[0]["DiaChi"] + " " + _cCapNuocTanHoa.GetPhuongQuan(dtTon.Rows[0]["DanhBo"].ToString());
+                            dgvCTToTrinh["DiaChi", dgvCTToTrinh.Rows.Count - 1].Value = dtTon.Rows[0]["DiaChi"] + " " + _cCapNuocTanHoa.getPhuongQuan(dtTon.Rows[0]["DanhBo"].ToString());
                             dgvCTToTrinh["Ky", dgvCTToTrinh.Rows.Count - 1].Value = Ky;
                         }
                         else
@@ -130,7 +130,7 @@ namespace ThuTien.GUI.TongHop
 
                             dr["DanhBo"] = dtTon.Rows[0]["DanhBo"];
                             dr["HoTen"] = dtTon.Rows[0]["HoTen"];
-                            dr["DiaChi"] = dtTon.Rows[0]["DiaChi"] + " " + _cCapNuocTanHoa.GetPhuongQuan(dtTon.Rows[0]["DanhBo"].ToString());
+                            dr["DiaChi"] = dtTon.Rows[0]["DiaChi"] + " " + _cCapNuocTanHoa.getPhuongQuan(dtTon.Rows[0]["DanhBo"].ToString());
                             dr["Ky"] = Ky;
 
                             dtTemp.Rows.Add(dr);
