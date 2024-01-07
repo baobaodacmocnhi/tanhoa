@@ -43,15 +43,6 @@
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvCTToTrinh = new System.Windows.Forms.DataGridView();
-            this.ID_CT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ky = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LyDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DeNghi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreateDate_CT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.btnXem = new System.Windows.Forms.Button();
             this.radPhoGiamDoc = new System.Windows.Forms.RadioButton();
@@ -59,6 +50,16 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.radBa = new System.Windows.Forms.RadioButton();
             this.radOng = new System.Windows.Forms.RadioButton();
+            this.ID_CT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MLT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ky = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LyDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DeNghi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateDate_CT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvToTrinh)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -169,7 +170,7 @@
             this.groupBox2.Controls.Add(this.dgvCTToTrinh);
             this.groupBox2.Location = new System.Drawing.Point(391, 41);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(925, 590);
+            this.groupBox2.Size = new System.Drawing.Size(950, 590);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Chi Tiết Tờ Trình";
@@ -190,6 +191,7 @@
             this.dgvCTToTrinh.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID_CT,
             this.IDCT,
+            this.MLT,
             this.DanhBo,
             this.HoTen,
             this.DiaChi,
@@ -201,74 +203,11 @@
             this.dgvCTToTrinh.Name = "dgvCTToTrinh";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvCTToTrinh.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvCTToTrinh.Size = new System.Drawing.Size(913, 565);
+            this.dgvCTToTrinh.Size = new System.Drawing.Size(938, 565);
             this.dgvCTToTrinh.TabIndex = 22;
             this.dgvCTToTrinh.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvCTToTrinh_CellFormatting);
             this.dgvCTToTrinh.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvCTToTrinh_CellValidating);
             this.dgvCTToTrinh.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvCTToTrinh_RowPostPaint);
-            // 
-            // ID_CT
-            // 
-            this.ID_CT.DataPropertyName = "ID";
-            this.ID_CT.HeaderText = "ID";
-            this.ID_CT.Name = "ID_CT";
-            this.ID_CT.Visible = false;
-            // 
-            // IDCT
-            // 
-            this.IDCT.DataPropertyName = "IDCT";
-            this.IDCT.HeaderText = "IDCT";
-            this.IDCT.Name = "IDCT";
-            this.IDCT.Visible = false;
-            // 
-            // DanhBo
-            // 
-            this.DanhBo.DataPropertyName = "DanhBo";
-            this.DanhBo.HeaderText = "Danh Bộ";
-            this.DanhBo.Name = "DanhBo";
-            // 
-            // HoTen
-            // 
-            this.HoTen.DataPropertyName = "HoTen";
-            this.HoTen.HeaderText = "Họ Tên";
-            this.HoTen.Name = "HoTen";
-            this.HoTen.Width = 150;
-            // 
-            // DiaChi
-            // 
-            this.DiaChi.DataPropertyName = "DiaChi";
-            this.DiaChi.HeaderText = "Địa Chỉ";
-            this.DiaChi.Name = "DiaChi";
-            this.DiaChi.Width = 200;
-            // 
-            // Ky
-            // 
-            this.Ky.DataPropertyName = "Ky";
-            this.Ky.HeaderText = "Kỳ";
-            this.Ky.Name = "Ky";
-            this.Ky.ReadOnly = true;
-            this.Ky.Width = 50;
-            // 
-            // LyDo
-            // 
-            this.LyDo.DataPropertyName = "LyDo";
-            this.LyDo.HeaderText = "Lý Do";
-            this.LyDo.Name = "LyDo";
-            this.LyDo.Width = 150;
-            // 
-            // DeNghi
-            // 
-            this.DeNghi.DataPropertyName = "DeNghi";
-            this.DeNghi.HeaderText = "Đề Nghị";
-            this.DeNghi.Name = "DeNghi";
-            this.DeNghi.Width = 150;
-            // 
-            // CreateDate_CT
-            // 
-            this.CreateDate_CT.DataPropertyName = "CreateDate";
-            this.CreateDate_CT.HeaderText = "CreateDate";
-            this.CreateDate_CT.Name = "CreateDate_CT";
-            this.CreateDate_CT.Visible = false;
             // 
             // label2
             // 
@@ -345,6 +284,76 @@
             this.radOng.Text = "Ông";
             this.radOng.UseVisualStyleBackColor = true;
             // 
+            // ID_CT
+            // 
+            this.ID_CT.DataPropertyName = "ID";
+            this.ID_CT.HeaderText = "ID";
+            this.ID_CT.Name = "ID_CT";
+            this.ID_CT.Visible = false;
+            // 
+            // IDCT
+            // 
+            this.IDCT.DataPropertyName = "IDCT";
+            this.IDCT.HeaderText = "IDCT";
+            this.IDCT.Name = "IDCT";
+            this.IDCT.Visible = false;
+            // 
+            // MLT
+            // 
+            this.MLT.DataPropertyName = "MLT";
+            this.MLT.HeaderText = "MLT";
+            this.MLT.Name = "MLT";
+            this.MLT.Width = 80;
+            // 
+            // DanhBo
+            // 
+            this.DanhBo.DataPropertyName = "DanhBo";
+            this.DanhBo.HeaderText = "Danh Bộ";
+            this.DanhBo.Name = "DanhBo";
+            // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Họ Tên";
+            this.HoTen.Name = "HoTen";
+            this.HoTen.Width = 150;
+            // 
+            // DiaChi
+            // 
+            this.DiaChi.DataPropertyName = "DiaChi";
+            this.DiaChi.HeaderText = "Địa Chỉ";
+            this.DiaChi.Name = "DiaChi";
+            this.DiaChi.Width = 200;
+            // 
+            // Ky
+            // 
+            this.Ky.DataPropertyName = "Ky";
+            this.Ky.HeaderText = "Kỳ";
+            this.Ky.Name = "Ky";
+            this.Ky.ReadOnly = true;
+            this.Ky.Width = 50;
+            // 
+            // LyDo
+            // 
+            this.LyDo.DataPropertyName = "LyDo";
+            this.LyDo.HeaderText = "Lý Do";
+            this.LyDo.Name = "LyDo";
+            this.LyDo.Width = 150;
+            // 
+            // DeNghi
+            // 
+            this.DeNghi.DataPropertyName = "DeNghi";
+            this.DeNghi.HeaderText = "Đề Nghị";
+            this.DeNghi.Name = "DeNghi";
+            this.DeNghi.Width = 150;
+            // 
+            // CreateDate_CT
+            // 
+            this.CreateDate_CT.DataPropertyName = "CreateDate";
+            this.CreateDate_CT.HeaderText = "CreateDate";
+            this.CreateDate_CT.Name = "CreateDate_CT";
+            this.CreateDate_CT.Visible = false;
+            // 
             // frmToTrinhDCHD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -399,6 +408,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_CT;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDCT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MLT;
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;

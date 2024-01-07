@@ -26,6 +26,7 @@ namespace ThuTien.GUI.TongHop
         CChuyenNoKhoDoi _cCNKD = new CChuyenNoKhoDoi();
         CLenhHuy _cLenhHuy = new CLenhHuy();
         CDCHD _cDCHD = new CDCHD();
+        CDHN _cDHN = new CDHN();
         wrThuTien.wsThuTien _wsThuTien = new wrThuTien.wsThuTien();
 
         public frmChuyenNoKhoDoi()
@@ -237,7 +238,7 @@ namespace ThuTien.GUI.TongHop
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvHoaDon.DataSource = _cCNKD.getDS_ChiTitet(dateTu.Value, dateDen.Value);
+            dgvHoaDon.DataSource = _cCNKD.getDS_ChiTitet(dateTu.Value, dateDen.Value, CNguoiDung.FromDot, CNguoiDung.ToDot);
             int TongCong = 0;
             foreach (DataGridViewRow item in dgvHoaDon.Rows)
             {
@@ -288,15 +289,13 @@ namespace ThuTien.GUI.TongHop
                 {
                     TT_ChuyenNoKhoDoi cnkd = _cCNKD.Get(decimal.Parse(item.Cells["MaCNKD"].Value.ToString()));
                     DataTable dt = _cCNKD.GetDSCT(decimal.Parse(item.Cells["MaCNKD"].Value.ToString()));
-
-
                     foreach (DataRow itemC in dt.Rows)
                     {
                         DataRow dr = ds.Tables["TongHopNo"].NewRow();
                         dr["SoPhieu"] = itemC["MaCNKD"].ToString().Insert(itemC["MaCNKD"].ToString().Length - 2, "-");
                         dr["DanhBo"] = cnkd.DanhBo.Insert(4, " ").Insert(8, " ");
                         dr["HoTen"] = cnkd.HoTen;
-                        dr["DiaChi"] = cnkd.DiaChi;
+                        dr["DiaChi"] = cnkd.DiaChi + " " + _cDHN.getPhuongQuan(cnkd.DanhBo);
                         if (cnkd.SoPhieuYCCHDB != null)
                             dr["SoPhieuYCCHDB"] = cnkd.SoPhieuYCCHDB.Value.ToString().Insert(cnkd.SoPhieuYCCHDB.Value.ToString().Length - 2, "-");
                         if (cnkd.NgayYCCHDB != null)

@@ -644,7 +644,7 @@ namespace ThuTien.GUI.Quay
                 dr["SoPhieu"] = xacnhanno.SoPhieu.ToString().Insert(xacnhanno.SoPhieu.ToString().Length - 2, "-");
                 dr["DanhBo"] = xacnhanno.DanhBo.Insert(4, " ").Insert(8, " ");
                 dr["HoTen"] = xacnhanno.HoTen;
-                dr["DiaChi"] = xacnhanno.DiaChi;
+                dr["DiaChi"] = xacnhanno.DiaChi + " " + _cDHN.getPhuongQuan(xacnhanno.DanhBo);
                 dr["MLT"] = xacnhanno.MLT.Insert(4, " ").Insert(2, " ");
                 dr["GiaBieu"] = xacnhanno.GiaBieu;
                 if (xacnhanno.DinhMuc == null)
@@ -668,15 +668,13 @@ namespace ThuTien.GUI.Quay
                 }
                 int IDPhong = 0;
                 for (int i = 0; i < _lstPhong.Count; i++)
-                    if (_lstPhong[i].TuDot <= xacnhanno.MLT.Substring(0,2) && hdIn.DOT <= _lstPhong[i].DenDot)
+                    if (_lstPhong[i].TuDot <= int.Parse(xacnhanno.MLT.Substring(0, 2)) && int.Parse(xacnhanno.MLT.Substring(0, 2)) <= _lstPhong[i].DenDot)
                     {
                         IDPhong = _lstPhong[i].ID;
                         break;
                     }
-                dr["TenPhong"] = _cNguoiDung.getChucVu(IDPhong);
+                dr["ChucVu"] = _cNguoiDung.getChucVu(IDPhong);
                 dr["NguoiKy"] = _cNguoiDung.getNguoiKy(IDPhong);
-                dr["ChucVu"] = CNguoiDung.ChucVu;
-                dr["NguoiKy"] = CNguoiDung.NguoiKy;
                 ds.Tables["PhieuTamThu"].Rows.Add(dr);
 
                 rptXacNhanNo rpt = new rptXacNhanNo();
@@ -718,7 +716,7 @@ namespace ThuTien.GUI.Quay
                 dr["SoPhieu"] = lstTamThu[0].SoPhieu.ToString().Insert(lstTamThu[0].SoPhieu.ToString().Length - 2, "-");
                 dr["DanhBo"] = lstTamThu[0].DANHBA.Insert(4, " ").Insert(8, " ");
                 dr["HoTen"] = hdIn.TENKH;
-                dr["DiaChi"] = hdIn.SO + " " + hdIn.DUONG;
+                dr["DiaChi"] = hdIn.SO + " " + hdIn.DUONG + " " + _cDHN.getPhuongQuan(lstTamThu[0].DANHBA);
                 dr["MLT"] = hdIn.MALOTRINH.Insert(4, " ").Insert(2, " ");
                 dr["GiaBieu"] = hdIn.GB;
                 dr["DinhMuc"] = hdIn.DM;
@@ -786,7 +784,7 @@ namespace ThuTien.GUI.Quay
                 dr["SoPhieu"] = item.Cells["SoPhieu_XacNhanNo"].Value.ToString().Insert(item.Cells["SoPhieu_XacNhanNo"].Value.ToString().Length - 2, "-");
                 dr["DanhBo"] = item.Cells["DanhBo_XacNhanNo"].Value.ToString().Insert(4, " ").Insert(8, " ");
                 dr["HoTen"] = item.Cells["HoTen_XacNhanNo"].Value.ToString();
-                dr["DiaChi"] = item.Cells["DiaChi_XacNhanNo"].Value.ToString();
+                dr["DiaChi"] = item.Cells["DiaChi_XacNhanNo"].Value.ToString() + " " + _cDHN.getPhuongQuan(item.Cells["DanhBo_XacNhanNo"].Value.ToString());
                 dr["MLT"] = item.Cells["MLT_XacNhanNo"].Value.ToString().Insert(4, " ").Insert(2, " ");
                 dr["GiaBieu"] = item.Cells["GiaBieu_XacNhanNo"].Value.ToString();
                 if (item.Cells["DinhMuc_XacNhanNo"].Value == null)
@@ -811,8 +809,15 @@ namespace ThuTien.GUI.Quay
                     dr["ChuKy"] = true;
                     dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky.png";
                 }
-                dr["ChucVu"] = CNguoiDung.ChucVu;
-                dr["NguoiKy"] = CNguoiDung.NguoiKy;
+                int IDPhong = 0;
+                for (int i = 0; i < _lstPhong.Count; i++)
+                    if (_lstPhong[i].TuDot <= int.Parse(item.Cells["MLT_XacNhanNo"].Value.ToString().Substring(0, 2)) && int.Parse(item.Cells["MLT_XacNhanNo"].Value.ToString().Substring(0, 2)) <= _lstPhong[i].DenDot)
+                    {
+                        IDPhong = _lstPhong[i].ID;
+                        break;
+                    }
+                dr["ChucVu"] = _cNguoiDung.getChucVu(IDPhong);
+                dr["NguoiKy"] = _cNguoiDung.getNguoiKy(IDPhong);
 
                 ds.Tables["PhieuTamThu"].Rows.Add(dr);
 

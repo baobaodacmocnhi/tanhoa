@@ -11788,14 +11788,15 @@ namespace ThuTien.DAL.Doi
         /// lấy danh sách chặn tiền dư
         /// </summary>
         /// <returns></returns>
-        public DataTable GetDSChanTienDu(bool ChanHoaDonAuto)
+        public DataTable GetDSChanTienDu(bool ChanHoaDonAuto, int FromDot, int ToDot)
         {
             var query = from itemHD in _db.HOADONs
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         join itemTD in _db.TT_TienDus on itemHD.DANHBA equals itemTD.DanhBo into tableTD
                         from itemtableTD in tableTD.DefaultIfEmpty()
-                        where itemHD.KhoaTienDu == true && _db.TT_ChanHoaDon_DanhBos.Any(item => item.DanhBo == itemHD.DANHBA && item.Nam == itemHD.NAM && itemHD.KY >= item.TuKy && itemHD.KY <= item.DenKy) == ChanHoaDonAuto
+                        where itemHD.KhoaTienDu == true && FromDot <= itemHD.DOT && itemHD.DOT <= ToDot
+                        &&_db.TT_ChanHoaDon_DanhBos.Any(item => item.DanhBo == itemHD.DANHBA && item.Nam == itemHD.NAM && itemHD.KY >= item.TuKy && itemHD.KY <= item.DenKy) == ChanHoaDonAuto
                         orderby itemHD.NgayChanTienDu descending
                         select new
                         {
@@ -11823,14 +11824,14 @@ namespace ThuTien.DAL.Doi
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDSDCHDTienDu()
+        public DataTable GetDSDCHDTienDu(int FromDot, int ToDot)
         {
             var query = from itemHD in _db.HOADONs
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         join itemTD in _db.TT_TienDus on itemHD.DANHBA equals itemTD.DanhBo into tableTD
                         from itemtableTD in tableTD.DefaultIfEmpty()
-                        where itemHD.DCHD == true
+                        where itemHD.DCHD == true && FromDot <= itemHD.DOT && itemHD.DOT <= ToDot
                         orderby itemHD.Ngay_DCHD descending
                         select new
                         {

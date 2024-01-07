@@ -146,7 +146,7 @@ namespace ThuTien.GUI.TongHop
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            dgvToTrinh.DataSource = _cToTrinhDCHD.GetDS();
+            dgvToTrinh.DataSource = _cToTrinhDCHD.getDS(CNguoiDung.IDPhong);
             if (dgvCTToTrinh.DataSource != null)
                 dgvCTToTrinh.DataSource = null;
             if (dgvCTToTrinh.Rows.Count > 0)
@@ -466,6 +466,10 @@ namespace ThuTien.GUI.TongHop
 
         private void dgvCTToTrinh_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            if (dgvCTToTrinh.Columns[e.ColumnIndex].Name == "MLT" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(4, " ").Insert(2, " ");
+            }
             if (dgvCTToTrinh.Columns[e.ColumnIndex].Name == "DanhBo" && e.Value != null)
             {
                 e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");
@@ -514,7 +518,7 @@ namespace ThuTien.GUI.TongHop
             }
         }
 
-       
+
 
     }
 }

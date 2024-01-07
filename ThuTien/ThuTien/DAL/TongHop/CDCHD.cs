@@ -2690,13 +2690,14 @@ namespace ThuTien.DAL.TongHop
             return LINQToDataTable(query);
         }
 
-        public DataTable getDS_HDDC_DangNgan_HD0()
+        public DataTable getDS_HDDC_DangNgan_HD0(int FromDot, int ToDot)
         {
             var query = from itemDC in _db.DIEUCHINH_HDs
                         join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where itemDC.TONGCONG_END == 0 && itemHD.NGAYGIAITRACH == null && itemDC.SoPhieu != null && itemDC.UpdatedHDDT == true && (itemHD.NAM > 2022 || (itemHD.NAM == 2022 && itemHD.KY >= 5))
+                        && itemHD.DOT >= FromDot && itemHD.DOT <= ToDot
                         select new
                         {
                             NgayDC = itemDC.NGAY_DC,
@@ -2744,7 +2745,7 @@ namespace ThuTien.DAL.TongHop
             return LINQToDataTable(query);
         }
 
-        public DataTable getDS_HDDC_DangNgan()
+        public DataTable getDS_HDDC_DangNgan(int FromDot, int ToDot)
         {
             var query = from itemDC in _db.DIEUCHINH_HDs
                         join itemHDDC in _db.TT_HDDC_DangNgans on itemDC.FK_HOADON equals itemHDDC.MaHD
@@ -2752,6 +2753,7 @@ namespace ThuTien.DAL.TongHop
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where itemDC.TONGCONG_END != 0 && itemDC.SoPhieu != null && itemDC.UpdatedHDDT == true && (itemHD.NAM > 2022 || (itemHD.NAM == 2022 && itemHD.KY >= 5))
+                        && itemHD.DOT >= FromDot && itemHD.DOT <= ToDot
                         select new
                         {
                             NgayDC = itemDC.NGAY_DC,

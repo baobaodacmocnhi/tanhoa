@@ -47,16 +47,30 @@ namespace ThuTien.DAL.ChuyenKhoan
             }
         }
 
-        public DataTable GetDSTienAm()
+        public DataTable GetDSTienAm(int FromDot, int ToDot)
         {
             //return LINQToDataTable(_db.TT_TienDus.Where(item => item.SoTien < 0).ToList());
-            return ExecuteQuery_DataTable("select MLT=SUBSTRING(ttkh.LOTRINH,1,2),td.* from TT_TienDu td left join CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh on td.DanhBo=ttkh.DANHBO where SoTien<0 order by td.DanhBo");
+            return ExecuteQuery_DataTable("with temp as"
+                + " ("
+                + " select Dot=SUBSTRING(ttkh.LOTRINH,1,2),td.* from TT_TienDu td left join CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh on td.DanhBo=ttkh.DANHBO where SoTien<0"
+                + " )"
+                + " select * from temp where Dot>=" + FromDot + " and Dot<=" + ToDot
+                + " union all"
+                + " select * from temp where Dot is null"
+                + " order by DanhBo");
         }
 
-        public DataTable GetDSTienDu()
+        public DataTable GetDSTienDu(int FromDot, int ToDot)
         {
             //return LINQToDataTable(_db.TT_TienDus.Where(item => item.SoTien > 0).ToList());
-            return ExecuteQuery_DataTable("select MLT=SUBSTRING(ttkh.LOTRINH,1,2),td.* from TT_TienDu td left join CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh on td.DanhBo=ttkh.DANHBO where SoTien>0 order by td.DanhBo");
+            return ExecuteQuery_DataTable("with temp as"
+               + " ("
+               + " select Dot=SUBSTRING(ttkh.LOTRINH,1,2),td.* from TT_TienDu td left join CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh on td.DanhBo=ttkh.DANHBO where SoTien>0"
+               + " )"
+               + " select * from temp where Dot>=" + FromDot + " and Dot<=" + ToDot
+               + " union all"
+               + " select * from temp where Dot is null"
+               + " order by DanhBo");
         }
 
         public DataTable getDS_PhiMoNuoc()
@@ -66,17 +80,44 @@ namespace ThuTien.DAL.ChuyenKhoan
 
         public DataTable GetDSTienDu(DateTime NgayGiaiTrach)
         {
-            string sql = "declare @NgayGiaiTrach date;"
+            return ExecuteQuery_DataTable("declare @NgayGiaiTrach date;"
                     + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "'"
-                    + " select a.DanhBo,CASE WHEN b.SoTien is null THEN a.SoTien ELSE a.SoTien-b.SoTien END as SoTien,DienThoai from"
+                    + " select a.DanhBo,CASE WHEN b.SoTien is null THEN a.SoTien ELSE a.SoTien-b.SoTien END as SoTien,DienThoai=(select top 1 DienThoai from CAPNUOCTANHOA.dbo.SDT_DHN where DanhBo=a.DanhBo) from"
                     + " (select DanhBo,SoTien from TT_TienDu) a"
                     + " left join"
                     + " (select DanhBo,SUM(CAST(SoTien AS bigint)) as SoTien from TT_TienDuLichSu where CAST(CreateDate as date)>@NgayGiaiTrach group by DanhBo) b on a.DanhBo=b.DanhBo"
                     + " left join"
                     + " (select DanhBo,DienThoai from TT_ThongTinKhachHang) c on a.DanhBo=c.DanhBo"
                     + " where case when b.SoTien is null then a.SoTien else a.SoTien-b.SoTien end >0"
-                    + " order by DanhBo";
-            return ExecuteQuery_DataTable(sql);
+                    + " order by DanhBo");
+        }
+
+        public DataTable GetDSTienDu(DateTime NgayGiaiTrach, int FromDot, int ToDot)
+        {
+            //string sql = "declare @NgayGiaiTrach date;"
+            //        + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "'"
+            //        + " select a.DanhBo,CASE WHEN b.SoTien is null THEN a.SoTien ELSE a.SoTien-b.SoTien END as SoTien,DienThoai from"
+            //        + " (select DanhBo,SoTien from TT_TienDu) a"
+            //        + " left join"
+            //        + " (select DanhBo,SUM(CAST(SoTien AS bigint)) as SoTien from TT_TienDuLichSu where CAST(CreateDate as date)>@NgayGiaiTrach group by DanhBo) b on a.DanhBo=b.DanhBo"
+            //        + " left join"
+            //        + " (select DanhBo,DienThoai from TT_ThongTinKhachHang) c on a.DanhBo=c.DanhBo"
+            //        + " where case when b.SoTien is null then a.SoTien else a.SoTien-b.SoTien end >0"
+            //        + " order by DanhBo";
+            return ExecuteQuery_DataTable(" declare @NgayGiaiTrach date;"
+                    + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
+                    + " with temp as"
+                    + " ("
+                    + " select a.Dot,a.DanhBo,CASE WHEN b.SoTien is null THEN a.SoTien ELSE a.SoTien-b.SoTien END as SoTien,DienThoai=(select top 1 DienThoai from CAPNUOCTANHOA.dbo.SDT_DHN where DanhBo=a.DanhBo) from"
+                    + " (select Dot=SUBSTRING(ttkh.LOTRINH,1,2),td.DanhBo,SoTien from TT_TienDu td left join CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh on td.DanhBo=ttkh.DANHBO) a"
+                    + " left join"
+                    + " (select DanhBo,SUM(CAST(SoTien AS bigint)) as SoTien from TT_TienDuLichSu where CAST(CreateDate as date)>@NgayGiaiTrach group by DanhBo) b on a.DanhBo=b.DanhBo"
+                    + " where case when b.SoTien is null then a.SoTien else a.SoTien-b.SoTien end >0"
+                    + " )"
+                    + " select * from temp where Dot>=" + FromDot + " and Dot<=" + ToDot
+                    + " union all"
+                    + " select * from temp where Dot is null"
+                    + " order by DanhBo");
         }
 
         public DataTable GetDSTienBienDong()
@@ -474,7 +515,7 @@ namespace ThuTien.DAL.ChuyenKhoan
 
         public TT_TienDuLichSu get_LichSu(string DanhBo, int SoTien, DateTime CreateDate, int MaBK)
         {
-            return _db.TT_TienDuLichSus.Where(item => item.DanhBo == DanhBo && item.SoTien == SoTien && item.CreateDate.Value.Date == CreateDate.Date && item.MaBK == MaBK).OrderByDescending(item=>item.CreateDate).FirstOrDefault();
+            return _db.TT_TienDuLichSus.Where(item => item.DanhBo == DanhBo && item.SoTien == SoTien && item.CreateDate.Value.Date == CreateDate.Date && item.MaBK == MaBK).OrderByDescending(item => item.CreateDate).FirstOrDefault();
         }
 
         public DataTable GetDSLichSu(string DanhBo)
@@ -489,7 +530,21 @@ namespace ThuTien.DAL.ChuyenKhoan
 
         public DataTable getThongKe(DateTime NgayGiaiTrach)
         {
-            //(select DATEADD(DAY, -1, @Ngay)
+            string sql = "declare @Ngay date"
+                    + " set @Ngay='" + NgayGiaiTrach.ToString("yyyyMMdd") + "'"
+                    + " select"
+                    + " TienDau=(select SUM(cast(SoTien as numeric(12, 0))) from TT_TienDu)-(select SUM(cast(SoTien as numeric(12, 0))) from TT_TienDuLichSu where CAST(CreateDate as date)>=@Ngay)"
+                    + " ,BangKe=(select SUM(cast(SoTien as numeric(12, 0))) from TT_BangKe where CAST(CreateDate as date)=@Ngay)"
+                    + " ,GiaiTrach=(select SUM(cast(TongCong as numeric(12, 0))) from HOADON where CAST(NGAYGIAITRACH as date)=@Ngay and DangNgan_ChuyenKhoan=1)"
+                    + " ,TienMat=(select SUM(cast(TienMat as numeric(12, 0))) from HOADON where CAST(NGAYGIAITRACH as date)=@Ngay and DangNgan_ChuyenKhoan=1)"
+                    + " ,PhiMoNuoc=(select SUM(cast(PhiMoNuoc as numeric(12, 0))) from TT_PhiMoNuoc where CAST(CreateDate as date)=@Ngay)"
+                    + " ,DieuChinh=(select SUM(cast(SoTien as numeric(12, 0))) from TT_TienDuLichSu where Loai like N'%Điều Chỉnh%' and GhiChu not like N'%Phí Mở Nước%' and CAST(CreateDate as date)=@Ngay)"
+                    + " ,TienCuoi=(select SUM(cast(SoTien as numeric(12, 0))) from TT_TienDu)-(select SUM(cast(SoTien as numeric(12, 0))) from TT_TienDuLichSu where CAST(CreateDate as date)>@Ngay)";
+            return ExecuteQuery_DataTable(sql);
+        }
+
+        public DataTable getThongKe(DateTime NgayGiaiTrach, int FromDot, int ToDot)
+        {
             string sql = "declare @Ngay date"
                     + " set @Ngay='" + NgayGiaiTrach.ToString("yyyyMMdd") + "'"
                     + " select"

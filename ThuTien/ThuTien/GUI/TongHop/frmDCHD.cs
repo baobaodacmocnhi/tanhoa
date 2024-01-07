@@ -57,7 +57,7 @@ namespace ThuTien.GUI.TongHop
 
         public void loadHoaDon()
         {
-            DataTable dt = _cDCHD.getDS_HDDC_DangNgan_HD0();
+            DataTable dt = _cDCHD.getDS_HDDC_DangNgan_HD0(CNguoiDung.FromDot,CNguoiDung.ToDot);
             if (dt != null && dt.Rows.Count > 0)
                 lbHD0.Text = dt.Rows.Count + " HĐ = 0 chưa Đăng Ngân";
             else
@@ -68,7 +68,7 @@ namespace ThuTien.GUI.TongHop
                 lbHDDCCho.Text = dt.Rows.Count + " HĐ chờ HĐĐC";
             else
                 lbHDDCCho.Text = "";
-            dt = _cDCHD.getDS_HDDC_DangNgan();
+            dt = _cDCHD.getDS_HDDC_DangNgan(CNguoiDung.FromDot, CNguoiDung.ToDot);
             if (dt != null && dt.Rows.Count > 0)
                 lbHDDC.Text = dt.Rows.Count + " HĐĐC chưa Đăng Ngân";
             else
@@ -993,10 +993,10 @@ namespace ThuTien.GUI.TongHop
                     if (MessageBox.Show("Bạn có chắc chắn?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
                         CNguoiDung _cNguoiDung = new CNguoiDung();
-                        DataTable dt = _cDCHD.getDS_HDDC_DangNgan_HD0();
+                        DataTable dt = _cDCHD.getDS_HDDC_DangNgan_HD0(CNguoiDung.FromDot,CNguoiDung.ToDot);
                         foreach (DataRow item in dt.Rows)
                         {
-                            _cHoaDon.DangNgan("ChuyenKhoan", item["SoHoaDon"].ToString(), _cNguoiDung.getChuyenKhoan().MaND);
+                            _cHoaDon.DangNgan("ChuyenKhoan", item["SoHoaDon"].ToString(), _cNguoiDung.getChuyenKhoan(CNguoiDung.IDPhong).MaND);
                             _cDCHD.ExecuteNonQuery("delete from TT_HDDC_DangNgan where MaHD=" + item["MaHD"].ToString());
                         }
                         loadHoaDon();
@@ -1029,7 +1029,7 @@ namespace ThuTien.GUI.TongHop
                     {
                         CNguoiDung _cNguoiDung = new CNguoiDung();
                         CTienDu _cTienDu = new CTienDu();
-                        DataTable dt = _cDCHD.getDS_HDDC_DangNgan();
+                        DataTable dt = _cDCHD.getDS_HDDC_DangNgan(CNguoiDung.FromDot, CNguoiDung.ToDot);
                         foreach (DataRow item in dt.Rows)
                         {
                             var transactionOptions = new TransactionOptions();
@@ -1038,7 +1038,7 @@ namespace ThuTien.GUI.TongHop
                             {
                                 if (bool.Parse(item["ChuyenKhoan"].ToString()))
                                 {
-                                    if (_cHoaDon.DangNgan("ChuyenKhoan", item["SoHoaDon"].ToString(), _cNguoiDung.getChuyenKhoan().MaND))
+                                    if (_cHoaDon.DangNgan("ChuyenKhoan", item["SoHoaDon"].ToString(), _cNguoiDung.getChuyenKhoan(CNguoiDung.IDPhong).MaND))
                                         if (_cTienDu.UpdateThem(item["SoHoaDon"].ToString()))
                                         {
                                             _cDCHD.LinQ_ExecuteNonQuery("delete from TT_HDDC_DangNgan where MaHD=" + item["MaHD"].ToString());

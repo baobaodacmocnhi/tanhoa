@@ -109,6 +109,10 @@ namespace DocSo_PC.GUI.ToTruong
                 cmbNoiDung.DisplayMember = "Name";
                 cmbNoiDung.SelectedIndex = -1;
                 btnChuyenDonToMaHoa.Text = "Chuyển Đơn" + Environment.NewLine + "Tổ Mã Hóa";
+                if (CNguoiDung.updateChuyenListing)
+                {
+                    txtCSC.ReadOnly = false;
+                }
             }
             catch (Exception ex)
             {
@@ -571,7 +575,8 @@ namespace DocSo_PC.GUI.ToTruong
 
                             _docso.CodeMoi = cmbCodeMoi.SelectedValue.ToString();
                             _docso.TTDHNMoi = _cDocSo.getTTDHNCode2023(_docso.CodeMoi);
-                            //_docso.CSCu = int.Parse(txtCSC.Text.Trim());
+                            if (CNguoiDung.updateChuyenListing)
+                                _docso.CSCu = int.Parse(txtCSC.Text.Trim());
                             _docso.CSMoi = int.Parse(txtCSM.Text.Trim());
                             //_docso.TieuThuMoi = TieuThu;
                             _docso.TieuThuMoi = int.Parse(txtTieuThu.Text.Trim());

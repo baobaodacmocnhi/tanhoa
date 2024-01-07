@@ -70,9 +70,9 @@ namespace ThuTien.DAL.TongHop
             }
         }
 
-        public DataTable GetDS()
+        public DataTable getDS(int IDPhong)
         {
-            return LINQToDataTable(_db.TT_ToTrinhDCHDs.OrderByDescending(item => item.CreateDate).ToList());
+            return LINQToDataTable(_db.TT_ToTrinhDCHDs.Where(item=>_db.TT_NguoiDungs.SingleOrDefault(nd=>nd.MaND==item.CreateBy).TT_To.IDPhong==IDPhong).OrderByDescending(item => item.CreateDate).ToList());
         }
 
         public TT_ToTrinhDCHD Get(decimal ID)

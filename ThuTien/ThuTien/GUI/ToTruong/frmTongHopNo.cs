@@ -51,7 +51,7 @@ namespace ThuTien.GUI.ToTruong
                 lbTo.Visible = true;
                 cmbTo.Visible = true;
 
-                List<TT_To> lstTo = _cTo.getDS_HanhThu();
+                List<TT_To> lstTo = _cTo.getDS_HanhThu(CNguoiDung.IDPhong);
                 TT_To to = new TT_To();
                 to.MaTo = 0;
                 to.TenTo = "Tất Cả";
@@ -423,7 +423,7 @@ namespace ThuTien.GUI.ToTruong
                     }
                     if (chkTenKy.Checked == true)
                     {
-                        dr1["ChucVu"] = CNguoiDung.ChucVu + " " + CNguoiDung.TenPhong.ToUpper();
+                        dr1["ChucVu"] = CNguoiDung.ChucVu.Replace("PHÒNG", "") + CNguoiDung.TenPhong.ToUpper();
                         dr1["NguoiKy"] = CNguoiDung.NguoiKy;
                     }
                     ds.Tables["TongHopNo"].Rows.Add(dr1);
@@ -524,7 +524,14 @@ namespace ThuTien.GUI.ToTruong
             {
                 ///chọn tất cả các tổ
                 if (cmbTo.SelectedIndex == 0)
-                    dgvTongHopNo.DataSource = _cTHN.GetDS(dateTu.Value, dateDen.Value);
+                {
+                    DataTable dt = new DataTable();
+                    for (int i = 1; i < cmbTo.Items.Count; i++)
+                    {
+                        dt.Merge(_cTHN.GetDS_To(((TT_To)cmbTo.Items[i]).MaTo, dateTu.Value, dateDen.Value));
+                    }
+                    dgvTongHopNo.DataSource = dt;
+                }
                 else
                     ///chọn 1 tổ cụ thể
                     if (cmbTo.SelectedIndex > 0)
@@ -625,7 +632,7 @@ namespace ThuTien.GUI.ToTruong
             }
             if (chkTenKy.Checked == true)
             {
-                dr1["ChucVu"] = CNguoiDung.ChucVu + " " + CNguoiDung.TenPhong.ToUpper();
+                dr1["ChucVu"] = CNguoiDung.ChucVu.Replace("PHÒNG", "") + CNguoiDung.TenPhong.ToUpper();
                 dr1["NguoiKy"] = CNguoiDung.NguoiKy;
             }
             ds.Tables["TongHopNo"].Rows.Add(dr1);

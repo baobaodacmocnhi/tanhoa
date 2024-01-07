@@ -247,13 +247,14 @@ namespace ThuTien.DAL.TongHop
             return LINQToDataTable(query);
         }
 
-        public DataTable getDS_ChiTitet(DateTime FromCreateDate, DateTime ToCreateDate)
+        public DataTable getDS_ChiTitet(DateTime FromCreateDate, DateTime ToCreateDate, int FromDot, int ToDot)
         {
             var query = from itemCNKD in _db.TT_CTChuyenNoKhoDois
                         join itemHD in _db.HOADONs on itemCNKD.MaHD equals itemHD.ID_HOADON
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where itemCNKD.CreateDate.Value.Date >= FromCreateDate.Date && itemCNKD.CreateDate.Value.Date <= ToCreateDate.Date
+                        && FromDot <= itemHD.DOT && itemHD.DOT <= ToDot
                         orderby itemCNKD.CreateDate ascending
                         select new
                         {
@@ -798,7 +799,7 @@ namespace ThuTien.DAL.TongHop
             }
         }
 
-        public DataTable 
+        public DataTable
             GetTongHopDangNganDCHD_PhanKyNho_DienTu(string Loai, int Nam, int Ky, DateTime FromCreateDate, DateTime ToCreateDate)
         {
             string sql = "";

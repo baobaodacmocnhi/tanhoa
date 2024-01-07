@@ -52,9 +52,10 @@ namespace ThuTien.DAL.ChuyenKhoan
             return _db.TT_ChanHoaDon_DanhBos.SingleOrDefault(item => item.DanhBo == DanhBo && item.Nam == Nam && item.TuKy == TuKy && item.DenKy == DenKy);
         }
 
-        public DataTable getDS()
+        public DataTable getDS(int FromDot, int ToDot)
         {
-            return LINQToDataTable(_db.TT_ChanHoaDon_DanhBos.ToList());
+            return ExecuteQuery_DataTable("select MLT=b.LOTRINH,a.* from TT_ChanHoaDon_DanhBo a,CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG b"
+                    + " where a.DanhBo=b.DANHBO and " + FromDot + "<=SUBSTRING(b.LOTRINH,1,2) and SUBSTRING(b.LOTRINH,1,2)<=" + ToDot);
         }
 
     }

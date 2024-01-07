@@ -34,10 +34,10 @@ namespace ThuTien.GUI.ChuyenKhoan
 
             dgvHoaDon_DCHD.AutoGenerateColumns = false;
             dgvDCHD.AutoGenerateColumns = false;
-            dgvDCHD.DataSource = _cHoaDon.GetDSDCHDTienDu();
+            dgvDCHD.DataSource = _cHoaDon.GetDSDCHDTienDu(CNguoiDung.FromDot, CNguoiDung.ToDot);
 
             dgvAuto.AutoGenerateColumns = false;
-            dgvAuto.DataSource = _cChanHoaDonAuto.getDS();
+            dgvAuto.DataSource = _cChanHoaDonAuto.getDS(CNguoiDung.FromDot, CNguoiDung.ToDot);
             cmbNam_Auto.DataSource = _cHoaDon.GetNam();
             cmbNam_Auto.DisplayMember = "Nam";
             cmbNam_Auto.ValueMember = "Nam";
@@ -46,10 +46,10 @@ namespace ThuTien.GUI.ChuyenKhoan
         public void loaddgvDSChanTienDu()
         {
             if (radChanThuong.Checked)
-                dgvDSChanTienDu.DataSource = _cHoaDon.GetDSChanTienDu(false);
+                dgvDSChanTienDu.DataSource = _cHoaDon.GetDSChanTienDu(false, CNguoiDung.FromDot, CNguoiDung.ToDot);
             else
                 if (radChanAuto.Checked)
-                    dgvDSChanTienDu.DataSource = _cHoaDon.GetDSChanTienDu(true);
+                    dgvDSChanTienDu.DataSource = _cHoaDon.GetDSChanTienDu(true, CNguoiDung.FromDot, CNguoiDung.ToDot);
         }
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
@@ -132,6 +132,10 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void dgvHoaDon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "MLT_HD" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(4, " ").Insert(2, " ");
+            }
             if (dgvHoaDon.Columns[e.ColumnIndex].Name == "DanhBo_HD" && e.Value != null)
             {
                 e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");
@@ -232,14 +236,12 @@ namespace ThuTien.GUI.ChuyenKhoan
                     OpenFileDialog dialog = new OpenFileDialog();
                     dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
                     dialog.Multiselect = false;
-
                     if (dialog.ShowDialog() == DialogResult.OK)
                         if (MessageBox.Show("Bạn có chắc chắn Thêm?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
                             DataTable dtExcel = _cHoaDon.ExcelToDataTable(dialog.FileName);
                             //CExcel fileExcel = new CExcel(dialog.FileName);
                             //DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
-
                             foreach (DataRow item in dtExcel.Rows)
                                 if (item[0].ToString().Trim().Replace(" ", "").Length == 11)
                                 {
@@ -313,7 +315,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                             }
                         }
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    dgvDCHD.DataSource = _cHoaDon.GetDSDCHDTienDu();
+                    dgvDCHD.DataSource = _cHoaDon.GetDSDCHDTienDu(CNguoiDung.FromDot, CNguoiDung.ToDot);
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -353,7 +355,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                             }
                         }
                     }
-                    dgvDCHD.DataSource = _cHoaDon.GetDSDCHDTienDu();
+                    dgvDCHD.DataSource = _cHoaDon.GetDSDCHDTienDu(CNguoiDung.FromDot, CNguoiDung.ToDot);
                     MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
@@ -400,7 +402,7 @@ namespace ThuTien.GUI.ChuyenKhoan
             cmbNam_Auto.SelectedIndex = -1;
             cmbTuKy_Auto.SelectedIndex = -1;
             cmbDenKy_Auto.SelectedIndex = -1;
-            dgvAuto.DataSource = _cChanHoaDonAuto.getDS();
+            dgvAuto.DataSource = _cChanHoaDonAuto.getDS(CNguoiDung.FromDot, CNguoiDung.ToDot);
         }
 
         private void btnThem_Auto_Click(object sender, EventArgs e)
@@ -454,6 +456,10 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void dgvAuto_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            if (dgvAuto.Columns[e.ColumnIndex].Name == "MLT_Auto" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(4, " ").Insert(2, " ");
+            }
             if (dgvAuto.Columns[e.ColumnIndex].Name == "DanhBo_Auto" && e.Value != null)
             {
                 e.Value = e.Value.ToString().Insert(7, " ").Insert(4, " ");
@@ -483,6 +489,22 @@ namespace ThuTien.GUI.ChuyenKhoan
             if (radChanAuto.Checked == true)
             {
                 loaddgvDSChanTienDu();
+            }
+        }
+
+        private void dgvHoaDon_DCHD_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvHoaDon_DCHD.Columns[e.ColumnIndex].Name == "MLT" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(4, " ").Insert(2, " ");
+            }
+            if (dgvHoaDon_DCHD.Columns[e.ColumnIndex].Name == "DanhBo" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");
+            }
+            if (dgvHoaDon_DCHD.Columns[e.ColumnIndex].Name == "TongCong" && e.Value != null)
+            {
+                e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
         }
 
