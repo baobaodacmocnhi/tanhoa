@@ -850,7 +850,7 @@ namespace ThuTien.DAL.DongNuoc
                         join itemND in _db.TT_NguoiDungs on item.TT_DongNuoc.MaNV_DongNuoc equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where item.NgayMN.Value.Date >= FromNgayMN.Date && item.NgayMN.Value.Date <= ToNgayMN.Date
-                        && int.Parse(item.MLT.Substring(0, 2)) >= FromDot && int.Parse(item.MLT.Substring(0, 2)) <= ToDot
+                        && Convert.ToInt32(item.MLT.Substring(0, 2)) >= FromDot && Convert.ToInt32(item.MLT.Substring(0, 2)) <= ToDot
                         select new
                         {
                             item.MaKQDN,

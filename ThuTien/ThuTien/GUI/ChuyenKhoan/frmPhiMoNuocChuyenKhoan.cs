@@ -38,7 +38,6 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             dgvTienDu.AutoGenerateColumns = false;
             dgvPhiMoNuoc.AutoGenerateColumns = false;
-
             dateTu.Value = DateTime.Now;
             dateDen.Value = DateTime.Now;
         }
@@ -46,12 +45,11 @@ namespace ThuTien.GUI.ChuyenKhoan
         private void btnXem_Click(object sender, EventArgs e)
         {
             dgvTienDu.DataSource = _cTienDu.getDS_PhiMoNuoc();
-
             if (dateTu.Value <= dateDen.Value)
                 if (radPhiMoNuocChung.Checked)
-                    dgvPhiMoNuoc.DataSource = _cPhiMoNuoc.getDS_Chung(dateTu.Value, dateDen.Value);
+                    dgvPhiMoNuoc.DataSource = _cPhiMoNuoc.getDS_Chung(dateTu.Value, dateDen.Value, CNguoiDung.FromDot, CNguoiDung.ToDot);
                 else if (radPhiMoNuocRieng.Checked)
-                    dgvPhiMoNuoc.DataSource = _cPhiMoNuoc.getDS_Rieng(dateTu.Value, dateDen.Value);
+                    dgvPhiMoNuoc.DataSource = _cPhiMoNuoc.getDS_Rieng(dateTu.Value, dateDen.Value, CNguoiDung.FromDot, CNguoiDung.ToDot);
 
             foreach (DataGridViewRow item in dgvPhiMoNuoc.Rows)
             {
@@ -146,6 +144,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 foreach (DataGridViewRow item in dgvPhiMoNuoc.Rows)
                 {
                     DataRow dr = ds.Tables["PhiMoNuoc"].NewRow();
+                    dr["TenPhong"] = CNguoiDung.TenPhong;
                     dr["SoPhieu"] = item.Cells["MaPMN"].Value.ToString().Insert(item.Cells["MaPMN"].Value.ToString().Length - 2, "-");
                     dr["DanhBo"] = item.Cells["DanhBo_PMN"].Value.ToString().Insert(7, " ").Insert(4, " ");
                     dr["HoTen"] = item.Cells["HoTen_PMN"].Value.ToString();
@@ -165,7 +164,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     }
                     else
                     {
-                        dr["PhiMoNuoc"] = 50000;
+                        dr["PhiMoNuoc"] = 235000;
                         dr["PhiMoNuocChu"] = _cPhiMoNuoc.ConvertMoneyToWord(dr["PhiMoNuoc"].ToString());
                     }
                     dr["SoTK"] = item.Cells["SoTK_PMN"].Value.ToString();
@@ -340,7 +339,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                 }
                 arr[i, 7] = dgvPhiMoNuoc["PhiMoNuoc", i].Value.ToString();
                 if (dgvPhiMoNuoc["MaPMN", i].Value != null)
-                arr[i, 9] = dgvPhiMoNuoc["MaPMN", i].Value.ToString();
+                    arr[i, 9] = dgvPhiMoNuoc["MaPMN", i].Value.ToString();
                 string phuong, quan;
                 _cDHN.GetPhuongQuan(dgvPhiMoNuoc["DanhBo_PMN", i].Value.ToString(), out phuong, out quan);
                 arr[i, 10] = phuong;

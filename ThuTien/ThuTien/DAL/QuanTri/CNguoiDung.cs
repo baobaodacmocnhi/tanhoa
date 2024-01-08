@@ -536,5 +536,10 @@ namespace ThuTien.DAL.QuanTri
         {
             return _db.Phongs.SingleOrDefault(o => o.ID == IDPhong).KyHieu;
         }
+
+        public string getTenPhong(int IDPhong)
+        {
+            return _db.Phongs.SingleOrDefault(o => o.ID == IDPhong).Name;
+        }
     }
 }

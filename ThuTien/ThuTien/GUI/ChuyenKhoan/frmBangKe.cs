@@ -169,6 +169,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void btnXem_Click(object sender, EventArgs e)
         {
+            //dgvBangKe.DataSource = _cBangKe.GetDS_BangKe_DangNgan(dateTu.Value, dateDen.Value);
             dgvBangKe.DataSource = _cBangKe.GetDS_BangKe_DangNgan(dateTu.Value, dateDen.Value, CNguoiDung.IDPhong);
             long TongSoTien = 0;
             int TongHD = 0;
@@ -493,7 +494,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         if (MessageBox.Show("Bạn có chắc chắn Cập nhật ngày " + dgvBangKe.Rows[0].Cells["CreateDate"].Value.ToString() + "?", "Xác nhận Cập nhật", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
                             DataTable dtExcel = _cBangKe.ExcelToDataTable(dialog.FileName);
-                            //đội thu tiền
+                            ////đội thu tiền
                             ////check 2 source
                             //if (dgvBangKe.Rows.Count != dtExcel.Rows.Count)
                             //{
@@ -505,21 +506,22 @@ namespace ThuTien.GUI.ChuyenKhoan
                             //using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                             //{
                             //    for (int i = 0; i < dgvBangKe.Rows.Count; i++)
-                            //        if (dgvBangKe.Rows[i].Cells["DanhBo"].Value.ToString() == dtExcel.Rows[i][0].ToString().Replace(" ", "") && dgvBangKe.Rows[i].Cells["SoTien"].Value.ToString() == dtExcel.Rows[i][1].ToString().Trim()
-                            //            && !string.IsNullOrEmpty(dtExcel.Rows[i][3].ToString().Trim()) && !string.IsNullOrEmpty(dtExcel.Rows[i][4].ToString().Trim()))
-                            //        {
-                            //            TT_BangKe bangke = _cBangKe.get(int.Parse(dgvBangKe.Rows[i].Cells["MaBK"].Value.ToString()));
-                            //            bangke.SoPhieuThu = dtExcel.Rows[i][3].ToString().Trim();
-                            //            string[] date = dtExcel.Rows[i][4].ToString().Trim().Split('/');
-                            //            string[] year = date[2].Split(' ');
-                            //            bangke.NgayPhieuThu = new DateTime(int.Parse(year[0]), int.Parse(date[1]), int.Parse(date[0]));
-                            //            _cBangKe.Sua(bangke);
-                            //        }
-                            //        else
-                            //        {
-                            //            MessageBox.Show("Lỗi Danh Bộ " + dtExcel.Rows[i][0].ToString().Replace(" ", ""), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            //            return;
-                            //        }
+                            //        //if (dtExcel.Rows[i][0].ToString().Replace(" ", "") == "13253310340")
+                            //            if (dgvBangKe.Rows[i].Cells["DanhBo"].Value.ToString() == dtExcel.Rows[i][0].ToString().Replace(" ", "") && dgvBangKe.Rows[i].Cells["SoTien"].Value.ToString() == dtExcel.Rows[i][1].ToString().Trim()
+                            //                && !string.IsNullOrEmpty(dtExcel.Rows[i][3].ToString().Trim()) && !string.IsNullOrEmpty(dtExcel.Rows[i][4].ToString().Trim()))
+                            //            {
+                            //                TT_BangKe bangke = _cBangKe.get(int.Parse(dgvBangKe.Rows[i].Cells["MaBK"].Value.ToString()));
+                            //                bangke.SoPhieuThu = dtExcel.Rows[i][3].ToString().Trim();
+                            //                string[] date = dtExcel.Rows[i][4].ToString().Trim().Split('/');
+                            //                string[] year = date[2].Split(' ');
+                            //                bangke.NgayPhieuThu = new DateTime(int.Parse(year[0]), int.Parse(date[1]), int.Parse(date[0]));
+                            //                _cBangKe.Sua(bangke);
+                            //            }
+                            //            else
+                            //            {
+                            //                MessageBox.Show("Lỗi Danh Bộ " + dtExcel.Rows[i][0].ToString().Replace(" ", ""), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            //                return;
+                            //            }
                             //    scope.Complete();
                             //}
                             //phòng ghi thu
@@ -530,28 +532,29 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 for (int i = 0; i < dgvBangKe.Rows.Count; i++)
                                 {
                                     DataRow[] dr = dtExcel.Select("DanhBo=" + dgvBangKe["DanhBo", i].Value.ToString() + " and SoTien=" + dgvBangKe["SoTien", i].Value.ToString());
-                                    if (dr != null && dr.Count() == 1)
-                                    {
-                                        if (!string.IsNullOrEmpty(dr[3].ToString().Trim()) && !string.IsNullOrEmpty(dr[4].ToString().Trim()))
+                                    if (dr != null && dr.Count() > 0)
+                                        if (dr != null && dr.Count() == 1)
                                         {
-                                            TT_BangKe bangke = _cBangKe.get(int.Parse(dgvBangKe["MaBK", i].Value.ToString()));
-                                            bangke.SoPhieuThu = dr[3].ToString().Trim();
-                                            string[] date = dr[4].ToString().Trim().Split('/');
-                                            string[] year = date[2].Split(' ');
-                                            bangke.NgayPhieuThu = new DateTime(int.Parse(year[0]), int.Parse(date[1]), int.Parse(date[0]));
-                                            _cBangKe.Sua(bangke);
+                                            if (!string.IsNullOrEmpty(dr[0][3].ToString().Trim()) && !string.IsNullOrEmpty(dr[0][4].ToString().Trim()))
+                                            {
+                                                TT_BangKe bangke = _cBangKe.get(int.Parse(dgvBangKe["MaBK", i].Value.ToString()));
+                                                bangke.SoPhieuThu = dr[0][3].ToString().Trim();
+                                                string[] date = dr[0][4].ToString().Trim().Split('/');
+                                                string[] year = date[2].Split(' ');
+                                                bangke.NgayPhieuThu = new DateTime(int.Parse(year[0]), int.Parse(date[1]), int.Parse(date[0]));
+                                                _cBangKe.Sua(bangke);
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("Lỗi Danh Bộ " + dtExcel.Rows[i][0].ToString().Replace(" ", ""), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                return;
+                                            }
                                         }
                                         else
                                         {
-                                            MessageBox.Show("Lỗi Danh Bộ " + dtExcel.Rows[i][0].ToString().Replace(" ", ""), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            MessageBox.Show("Lỗi Danh Bộ " + dgvBangKe["DanhBo", i].Value.ToString() + " có nhiều hơn 1 dòng cùng Số Tiền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                             return;
                                         }
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("Lỗi Danh Bộ " + dgvBangKe["DanhBo", i].Value.ToString() + " có nhiều hơn 1 dòng cùng Số Tiền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        return;
-                                    }
                                 }
                                 scope.Complete();
                             }

@@ -693,7 +693,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void btnXuatExcelTienDuTong_Click(object sender, EventArgs e)
         {
-            DataTable dt = _cTienDu.GetDSTienDu(dateNgayGiaiTrach.Value, CNguoiDung.FromDot, CNguoiDung.ToDot);
+            DataTable dt = _cTienDu.GetDSTienDu(dateNgayGiaiTrach.Value);
 
             DataTable dtTD = new DataTable();
             dtTD.Columns.Add("DanhBo", typeof(string));
