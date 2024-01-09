@@ -95,7 +95,6 @@
             this.btnInPhieu = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.dgvDCBD = new System.Windows.Forms.DataGridView();
-            this.btnXem_DS = new System.Windows.Forms.Button();
             this.Chon_DS = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ChuyenDocSo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ID_DS = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -114,6 +113,7 @@
             this.XemHinh = new System.Windows.Forms.DataGridViewButtonColumn();
             this.CreateBy_DS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDMaDon_DS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnXem_DS = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -319,7 +319,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1425, 605);
+            this.tabControl1.Size = new System.Drawing.Size(1370, 605);
             this.tabControl1.TabIndex = 63;
             // 
             // tabPage1
@@ -334,7 +334,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1417, 579);
+            this.tabPage1.Size = new System.Drawing.Size(1362, 579);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Nhập Điều Chỉnh";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -774,16 +774,6 @@
             this.dgvDCBD.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDCBD_CellEndEdit);
             this.dgvDCBD.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDCBD_RowPostPaint);
             // 
-            // btnXem_DS
-            // 
-            this.btnXem_DS.Location = new System.Drawing.Point(338, 4);
-            this.btnXem_DS.Name = "btnXem_DS";
-            this.btnXem_DS.Size = new System.Drawing.Size(75, 23);
-            this.btnXem_DS.TabIndex = 67;
-            this.btnXem_DS.Text = "Xem";
-            this.btnXem_DS.UseVisualStyleBackColor = true;
-            this.btnXem_DS.Click += new System.EventHandler(this.btnXem_DS_Click);
-            // 
             // Chon_DS
             // 
             this.Chon_DS.DataPropertyName = "Chon";
@@ -906,11 +896,21 @@
             this.IDMaDon_DS.Name = "IDMaDon_DS";
             this.IDMaDon_DS.Visible = false;
             // 
+            // btnXem_DS
+            // 
+            this.btnXem_DS.Location = new System.Drawing.Point(338, 4);
+            this.btnXem_DS.Name = "btnXem_DS";
+            this.btnXem_DS.Size = new System.Drawing.Size(75, 23);
+            this.btnXem_DS.TabIndex = 67;
+            this.btnXem_DS.Text = "Xem";
+            this.btnXem_DS.UseVisualStyleBackColor = true;
+            this.btnXem_DS.Click += new System.EventHandler(this.btnXem_DS_Click);
+            // 
             // frmDCBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1425, 605);
+            this.ClientSize = new System.Drawing.Size(1370, 605);
             this.Controls.Add(this.tabControl1);
             this.Name = "frmDCBD";
             this.Text = "Điều Chỉnh Thông Tin";
