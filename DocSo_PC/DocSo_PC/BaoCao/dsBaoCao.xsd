@@ -53,6 +53,8 @@
               <xs:element name="NoiNhan" msprop:Generator_ColumnVarNameInTable="columnNoiNhan" msprop:Generator_ColumnPropNameInRow="NoiNhan" msprop:Generator_ColumnPropNameInTable="NoiNhanColumn" msprop:Generator_UserColumnName="NoiNhan" type="xs:string" minOccurs="0" />
               <xs:element name="TinhTrang" msprop:Generator_ColumnVarNameInTable="columnTinhTrang" msprop:Generator_ColumnPropNameInRow="TinhTrang" msprop:Generator_ColumnPropNameInTable="TinhTrangColumn" msprop:Generator_UserColumnName="TinhTrang" type="xs:string" minOccurs="0" />
               <xs:element name="Image" msprop:Generator_ColumnVarNameInTable="columnImage" msprop:Generator_ColumnPropNameInRow="Image" msprop:Generator_ColumnPropNameInTable="ImageColumn" msprop:Generator_UserColumnName="Image" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="ChuKy" msprop:Generator_ColumnVarNameInTable="columnChuKy" msprop:Generator_ColumnPropNameInRow="ChuKy" msprop:Generator_ColumnPropNameInTable="ChuKyColumn" msprop:Generator_UserColumnName="ChuKy" type="xs:boolean" minOccurs="0" />
+              <xs:element name="ChuKyImage" msprop:Generator_ColumnVarNameInTable="columnChuKyImage" msprop:Generator_ColumnPropNameInRow="ChuKyImage" msprop:Generator_ColumnPropNameInTable="ChuKyImageColumn" msprop:Generator_UserColumnName="ChuKyImage" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -98,6 +100,8 @@
               <xs:element name="TienNuocSHVuot1" msprop:Generator_ColumnVarNameInTable="columnTienNuocSHVuot1" msprop:Generator_ColumnPropNameInRow="TienNuocSHVuot1" msprop:Generator_ColumnPropNameInTable="TienNuocSHVuot1Column" msprop:Generator_UserColumnName="TienNuocSHVuot1" type="xs:int" minOccurs="0" />
               <xs:element name="TienNuocSHVuot2" msprop:Generator_ColumnVarNameInTable="columnTienNuocSHVuot2" msprop:Generator_ColumnPropNameInRow="TienNuocSHVuot2" msprop:Generator_ColumnPropNameInTable="TienNuocSHVuot2Column" msprop:Generator_UserColumnName="TienNuocSHVuot2" type="xs:int" minOccurs="0" />
               <xs:element name="TienNuocKDDV" msprop:Generator_ColumnVarNameInTable="columnTienNuocKDDV" msprop:Generator_ColumnPropNameInRow="TienNuocKDDV" msprop:Generator_ColumnPropNameInTable="TienNuocKDDVColumn" msprop:Generator_UserColumnName="TienNuocKDDV" type="xs:int" minOccurs="0" />
+              <xs:element name="ChuKy" msprop:Generator_ColumnVarNameInTable="columnChuKy" msprop:Generator_ColumnPropNameInRow="ChuKy" msprop:Generator_ColumnPropNameInTable="ChuKyColumn" msprop:Generator_UserColumnName="ChuKy" type="xs:boolean" minOccurs="0" />
+              <xs:element name="ChuKyImage" msprop:Generator_ColumnVarNameInTable="columnChuKyImage" msprop:Generator_ColumnPropNameInRow="ChuKyImage" msprop:Generator_ColumnPropNameInTable="ChuKyImageColumn" msprop:Generator_UserColumnName="ChuKyImage" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

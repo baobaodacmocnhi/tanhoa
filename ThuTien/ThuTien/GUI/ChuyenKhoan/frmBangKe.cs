@@ -530,32 +530,33 @@ namespace ThuTien.GUI.ChuyenKhoan
                             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                             {
                                 for (int i = 0; i < dgvBangKe.Rows.Count; i++)
-                                {
-                                    DataRow[] dr = dtExcel.Select("DanhBo=" + dgvBangKe["DanhBo", i].Value.ToString() + " and SoTien=" + dgvBangKe["SoTien", i].Value.ToString());
-                                    if (dr != null && dr.Count() > 0)
-                                        if (dr != null && dr.Count() == 1)
-                                        {
-                                            if (!string.IsNullOrEmpty(dr[0][3].ToString().Trim()) && !string.IsNullOrEmpty(dr[0][4].ToString().Trim()))
+                                    if (dgvBangKe["SoPhieuThu", i].Value.ToString() == "")
+                                    {
+                                        DataRow[] dr = dtExcel.Select("DanhBo='" + dgvBangKe["DanhBo", i].Value.ToString() + "' and SoTien=" + dgvBangKe["SoTien", i].Value.ToString());
+                                        if (dr != null && dr.Count() > 0)
+                                            if (dr != null && dr.Count() == 1)
                                             {
-                                                TT_BangKe bangke = _cBangKe.get(int.Parse(dgvBangKe["MaBK", i].Value.ToString()));
-                                                bangke.SoPhieuThu = dr[0][3].ToString().Trim();
-                                                string[] date = dr[0][4].ToString().Trim().Split('/');
-                                                string[] year = date[2].Split(' ');
-                                                bangke.NgayPhieuThu = new DateTime(int.Parse(year[0]), int.Parse(date[1]), int.Parse(date[0]));
-                                                _cBangKe.Sua(bangke);
+                                                if (!string.IsNullOrEmpty(dr[0][3].ToString().Trim()) && !string.IsNullOrEmpty(dr[0][4].ToString().Trim()))
+                                                {
+                                                    TT_BangKe bangke = _cBangKe.get(int.Parse(dgvBangKe["MaBK", i].Value.ToString()));
+                                                    bangke.SoPhieuThu = dr[0][3].ToString().Trim();
+                                                    string[] date = dr[0][4].ToString().Trim().Split('/');
+                                                    string[] year = date[2].Split(' ');
+                                                    bangke.NgayPhieuThu = new DateTime(int.Parse(year[0]), int.Parse(date[1]), int.Parse(date[0]));
+                                                    _cBangKe.Sua(bangke);
+                                                }
+                                                else
+                                                {
+                                                    MessageBox.Show("Lỗi Danh Bộ " + dtExcel.Rows[i][0].ToString().Replace(" ", ""), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                    return;
+                                                }
                                             }
                                             else
                                             {
-                                                MessageBox.Show("Lỗi Danh Bộ " + dtExcel.Rows[i][0].ToString().Replace(" ", ""), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                MessageBox.Show("Lỗi Danh Bộ " + dgvBangKe["DanhBo", i].Value.ToString() + " có nhiều hơn 1 dòng cùng Số Tiền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                                 return;
                                             }
-                                        }
-                                        else
-                                        {
-                                            MessageBox.Show("Lỗi Danh Bộ " + dgvBangKe["DanhBo", i].Value.ToString() + " có nhiều hơn 1 dòng cùng Số Tiền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                            return;
-                                        }
-                                }
+                                    }
                                 scope.Complete();
                             }
                             MessageBox.Show("Đã xử lý, vui lòng kiểm tra lại dữ liệu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

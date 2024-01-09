@@ -12526,7 +12526,6 @@ namespace ThuTien.DAL.Doi
                         {
                             sql = "update HOADON set DangNgan_ChuyenKhoan=1,MaNV_DangNgan=" + MaNV_DangNgan + ",NGAYGIAITRACH=getdate(),Name_PC='" + CNguoiDung.Name_PC + "',IP_PC='" + CNguoiDung.IP_PC + "',ModifyBy=" + CNguoiDung.MaND + ",ModifyDate=getdate() "
                                 + "where SOHOADON='" + SoHoaDon + "' and NGAYGIAITRACH is null ";
-
                         }
                         else
                             if (Loai == "Ton")

@@ -117,6 +117,7 @@ namespace DocSo_PC.DAL.MaHoa
                             CreateBy = itemtableND.HoTen,
                             item.ChuyenDocSo,
                             item.IDMaDon,
+                            item.MaHoa_DonTu.MLT,
                         };
             return _cDAL.LINQToDataTable(query);
         }
@@ -147,6 +148,7 @@ namespace DocSo_PC.DAL.MaHoa
                             CreateBy = itemtableND.HoTen,
                             item.ChuyenDocSo,
                             item.IDMaDon,
+                            item.MaHoa_DonTu.MLT,
                         };
             return _cDAL.LINQToDataTable(query);
         }
@@ -177,6 +179,7 @@ namespace DocSo_PC.DAL.MaHoa
                             CreateBy = itemtableND.HoTen,
                             item.ChuyenDocSo,
                             item.IDMaDon,
+                            item.MaHoa_DonTu.MLT,
                         };
             return _cDAL.LINQToDataTable(query);
         }
@@ -207,6 +210,7 @@ namespace DocSo_PC.DAL.MaHoa
                             CreateBy = itemtableND.HoTen,
                             item.ChuyenDocSo,
                             item.IDMaDon,
+                            item.MaHoa_DonTu.MLT,
                         };
             return _cDAL.LINQToDataTable(query);
         }
@@ -237,6 +241,7 @@ namespace DocSo_PC.DAL.MaHoa
                             CreateBy = itemtableND.HoTen,
                             item.ChuyenDocSo,
                             item.IDMaDon,
+                            item.MaHoa_DonTu.MLT,
                         };
             return _cDAL.LINQToDataTable(query);
         }
@@ -267,6 +272,7 @@ namespace DocSo_PC.DAL.MaHoa
                             CreateBy = itemtableND.HoTen,
                             item.ChuyenDocSo,
                             item.IDMaDon,
+                            item.MaHoa_DonTu.MLT,
                         };
             return _cDAL.LINQToDataTable(query);
         }

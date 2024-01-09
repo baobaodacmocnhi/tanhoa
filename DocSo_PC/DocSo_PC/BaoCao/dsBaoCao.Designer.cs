@@ -390,6 +390,10 @@ namespace DocSo_PC.BaoCao {
             
             private global::System.Data.DataColumn columnImage;
             
+            private global::System.Data.DataColumn columnChuKy;
+            
+            private global::System.Data.DataColumn columnChuKyImage;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public BaoCaoDataTable() {
@@ -729,6 +733,22 @@ namespace DocSo_PC.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ChuKyColumn {
+                get {
+                    return this.columnChuKy;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ChuKyImageColumn {
+                get {
+                    return this.columnChuKyImage;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -802,7 +822,9 @@ namespace DocSo_PC.BaoCao {
                         string KinhTrinh, 
                         string NoiNhan, 
                         string TinhTrang, 
-                        byte[] Image) {
+                        byte[] Image, 
+                        bool ChuKy, 
+                        string ChuKyImage) {
                 BaoCaoRow rowBaoCaoRow = ((BaoCaoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         PathLogo,
@@ -842,7 +864,9 @@ namespace DocSo_PC.BaoCao {
                         KinhTrinh,
                         NoiNhan,
                         TinhTrang,
-                        Image};
+                        Image,
+                        ChuKy,
+                        ChuKyImage};
                 rowBaoCaoRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowBaoCaoRow);
                 return rowBaoCaoRow;
@@ -903,6 +927,8 @@ namespace DocSo_PC.BaoCao {
                 this.columnNoiNhan = base.Columns["NoiNhan"];
                 this.columnTinhTrang = base.Columns["TinhTrang"];
                 this.columnImage = base.Columns["Image"];
+                this.columnChuKy = base.Columns["ChuKy"];
+                this.columnChuKyImage = base.Columns["ChuKyImage"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -984,6 +1010,10 @@ namespace DocSo_PC.BaoCao {
                 base.Columns.Add(this.columnTinhTrang);
                 this.columnImage = new global::System.Data.DataColumn("Image", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnImage);
+                this.columnChuKy = new global::System.Data.DataColumn("ChuKy", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnChuKy);
+                this.columnChuKyImage = new global::System.Data.DataColumn("ChuKyImage", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnChuKyImage);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1194,6 +1224,10 @@ namespace DocSo_PC.BaoCao {
             private global::System.Data.DataColumn columnTienNuocSHVuot2;
             
             private global::System.Data.DataColumn columnTienNuocKDDV;
+            
+            private global::System.Data.DataColumn columnChuKy;
+            
+            private global::System.Data.DataColumn columnChuKyImage;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -1542,6 +1576,22 @@ namespace DocSo_PC.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ChuKyColumn {
+                get {
+                    return this.columnChuKy;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ChuKyImageColumn {
+                get {
+                    return this.columnChuKyImage;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1616,7 +1666,9 @@ namespace DocSo_PC.BaoCao {
                         int TienNuocSH, 
                         int TienNuocSHVuot1, 
                         int TienNuocSHVuot2, 
-                        int TienNuocKDDV) {
+                        int TienNuocKDDV, 
+                        bool ChuKy, 
+                        string ChuKyImage) {
                 DCBDRow rowDCBDRow = ((DCBDRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         KyHieuPhong,
@@ -1657,7 +1709,9 @@ namespace DocSo_PC.BaoCao {
                         TienNuocSH,
                         TienNuocSHVuot1,
                         TienNuocSHVuot2,
-                        TienNuocKDDV};
+                        TienNuocKDDV,
+                        ChuKy,
+                        ChuKyImage};
                 rowDCBDRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDCBDRow);
                 return rowDCBDRow;
@@ -1719,6 +1773,8 @@ namespace DocSo_PC.BaoCao {
                 this.columnTienNuocSHVuot1 = base.Columns["TienNuocSHVuot1"];
                 this.columnTienNuocSHVuot2 = base.Columns["TienNuocSHVuot2"];
                 this.columnTienNuocKDDV = base.Columns["TienNuocKDDV"];
+                this.columnChuKy = base.Columns["ChuKy"];
+                this.columnChuKyImage = base.Columns["ChuKyImage"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1802,6 +1858,10 @@ namespace DocSo_PC.BaoCao {
                 base.Columns.Add(this.columnTienNuocSHVuot2);
                 this.columnTienNuocKDDV = new global::System.Data.DataColumn("TienNuocKDDV", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTienNuocKDDV);
+                this.columnChuKy = new global::System.Data.DataColumn("ChuKy", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnChuKy);
+                this.columnChuKyImage = new global::System.Data.DataColumn("ChuKyImage", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnChuKyImage);
                 this.columnHoTenBD.Caption = "HoTen";
                 this.columnDiaChiBD.Caption = "DiaChi";
                 this.columnMSThueBD.Caption = "MSThue";
@@ -2561,6 +2621,38 @@ namespace DocSo_PC.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool ChuKy {
+                get {
+                    try {
+                        return ((bool)(this[this.tableBaoCao.ChuKyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ChuKy\' in table \'BaoCao\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBaoCao.ChuKyColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ChuKyImage {
+                get {
+                    try {
+                        return ((string)(this[this.tableBaoCao.ChuKyImageColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ChuKyImage\' in table \'BaoCao\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBaoCao.ChuKyImageColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsPathLogoNull() {
                 return this.IsNull(this.tableBaoCao.PathLogoColumn);
             }
@@ -3013,6 +3105,30 @@ namespace DocSo_PC.BaoCao {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetImageNull() {
                 this[this.tableBaoCao.ImageColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsChuKyNull() {
+                return this.IsNull(this.tableBaoCao.ChuKyColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetChuKyNull() {
+                this[this.tableBaoCao.ChuKyColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsChuKyImageNull() {
+                return this.IsNull(this.tableBaoCao.ChuKyImageColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetChuKyImageNull() {
+                this[this.tableBaoCao.ChuKyImageColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -3656,6 +3772,38 @@ namespace DocSo_PC.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool ChuKy {
+                get {
+                    try {
+                        return ((bool)(this[this.tableDCBD.ChuKyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ChuKy\' in table \'DCBD\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDCBD.ChuKyColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ChuKyImage {
+                get {
+                    try {
+                        return ((string)(this[this.tableDCBD.ChuKyImageColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ChuKyImage\' in table \'DCBD\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDCBD.ChuKyImageColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsKyHieuPhongNull() {
                 return this.IsNull(this.tableDCBD.KyHieuPhongColumn);
             }
@@ -4120,6 +4268,30 @@ namespace DocSo_PC.BaoCao {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetTienNuocKDDVNull() {
                 this[this.tableDCBD.TienNuocKDDVColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsChuKyNull() {
+                return this.IsNull(this.tableDCBD.ChuKyColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetChuKyNull() {
+                this[this.tableDCBD.ChuKyColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsChuKyImageNull() {
+                return this.IsNull(this.tableDCBD.ChuKyImageColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetChuKyImageNull() {
+                this[this.tableDCBD.ChuKyImageColumn] = global::System.Convert.DBNull;
             }
         }
         
