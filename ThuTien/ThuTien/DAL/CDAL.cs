@@ -570,9 +570,9 @@ namespace ThuTien.DAL
                 int noofrow = 1;
                 for (int c = 1; c <= cols; c++)
                 {
-                    //string colname = xlWorksheet.Cells[1, c].Text;
-                    //dt.Columns.Add(colname);
-                    dt.Columns.Add(c.ToString());
+                    string colname = xlWorksheet.Cells[1, c].Text;
+                    dt.Columns.Add(colname);
+                    //dt.Columns.Add(c.ToString());
                     noofrow = 2;
                 }
                 for (int r = noofrow; r <= rows; r++)

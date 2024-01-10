@@ -235,14 +235,14 @@ namespace DocSo_PC.GUI.Doi
                                     en.Nam = item.Nam;
                                     en.Ky = item.Ky;
                                     en.Dot = item.Dot;
-                                    if (en.Nam == 2023 && en.Ky == "01")
-                                    {
-                                        int TongSoNgay = _cLichDocSo.getTongSoNgay(int.Parse(dgvDanhSach["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvDanhSach["Nam", e.RowIndex].Value.ToString()), int.Parse(dgvDanhSach["Dot", e.RowIndex].Value.ToString()));
-                                        double motngay = Math.Round(double.Parse(en.DM.ToString()) / 30, 2, MidpointRounding.AwayFromZero);
-                                        double motngayHN = Math.Round(double.Parse(en.DMHN.ToString()) / 30, 2, MidpointRounding.AwayFromZero);
-                                        en.DM = ((int)Math.Round(motngay * TongSoNgay)).ToString();
-                                        en.DMHN = (int)Math.Round(motngayHN * TongSoNgay);
-                                    }
+                                    //if (en.Nam == 2023 && en.Ky == "01")
+                                    //{
+                                    //    int TongSoNgay = _cLichDocSo.getTongSoNgay(int.Parse(dgvDanhSach["Ky", e.RowIndex].Value.ToString()), int.Parse(dgvDanhSach["Nam", e.RowIndex].Value.ToString()), int.Parse(dgvDanhSach["Dot", e.RowIndex].Value.ToString()));
+                                    //    double motngay = Math.Round(double.Parse(en.DM.ToString()) / 30, 2, MidpointRounding.AwayFromZero);
+                                    //    double motngayHN = Math.Round(double.Parse(en.DMHN.ToString()) / 30, 2, MidpointRounding.AwayFromZero);
+                                    //    en.DM = ((int)Math.Round(motngay * TongSoNgay)).ToString();
+                                    //    en.DMHN = (int)Math.Round(motngayHN * TongSoNgay);
+                                    //}
                                     en.May = en.PhanMay = item.May;
                                     en.TBTT = 0;
                                     en.TamTinh = 0;

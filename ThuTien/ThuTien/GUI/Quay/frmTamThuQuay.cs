@@ -238,7 +238,7 @@ namespace ThuTien.GUI.Quay
                                 }
                                 else
                                     //chốt đăng ngân quầy
-                                    if ((DateTime.Now.Hour == 15 && DateTime.Now.Minute > 0) || DateTime.Now.Hour > 15)
+                                    if ((DateTime.Now.Hour == 11 && DateTime.Now.Minute > 30) || DateTime.Now.Hour > 11)
                                     {
                                         DateTime NgayGiaiTrach = DateTime.Now;
                                         NgayGiaiTrach = NgayGiaiTrach.AddDays(1);
@@ -599,7 +599,7 @@ namespace ThuTien.GUI.Quay
                 MessageBox.Show("Danh Bộ này đã có Xác Nhận Nợ trong ngày", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
+            TB_DULIEUKHACHHANG ttkh = _cDHN.get(txtDanhBo.Text.Trim().Replace(" ", ""));
             HOADON hoadon = _cHoaDon.GetMoiNhat(txtDanhBo.Text.Trim().Replace(" ", ""));
             TT_XacNhanNo xacnhanno = new TT_XacNhanNo();
             xacnhanno.TinhDenKy = "Tính đến Kỳ " + hoadon.KY + "/" + hoadon.NAM;
@@ -611,7 +611,7 @@ namespace ThuTien.GUI.Quay
                 xacnhanno.DanhBo = dgvHoaDon["DanhBo", 0].Value.ToString();
                 xacnhanno.HoTen = dgvHoaDon["HoTen", 0].Value.ToString();
                 xacnhanno.DiaChi = dgvHoaDon["DiaChi", 0].Value.ToString();
-                xacnhanno.MLT = dgvHoaDon["MLT", 0].Value.ToString();
+                xacnhanno.MLT = ttkh.LOTRINH;
                 xacnhanno.GiaBieu = int.Parse(dgvHoaDon["GiaBieu", 0].Value.ToString());
                 if (!string.IsNullOrEmpty(dgvHoaDon["DinhMuc", 0].Value.ToString()))
                     xacnhanno.DinhMuc = int.Parse(dgvHoaDon["DinhMuc", 0].Value.ToString());
@@ -626,7 +626,7 @@ namespace ThuTien.GUI.Quay
                 xacnhanno.DanhBo = hoadon.DANHBA;
                 xacnhanno.HoTen = hoadon.TENKH;
                 xacnhanno.DiaChi = hoadon.SO + " " + hoadon.DUONG;
-                xacnhanno.MLT = hoadon.MALOTRINH;
+                xacnhanno.MLT = ttkh.LOTRINH;
                 xacnhanno.GiaBieu = hoadon.GB;
                 if (hoadon.DM != null)
                     xacnhanno.DinhMuc = (int)hoadon.DM;
@@ -661,11 +661,6 @@ namespace ThuTien.GUI.Quay
                 if (xacnhanno.Cat != null)
                     dr["Cat"] = xacnhanno.Cat;
                 //dr["NhanVienQuay"] = CNguoiDung.HoTen;
-                if (chkChuKy.Checked)
-                {
-                    dr["ChuKy"] = true;
-                    dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky.png";
-                }
                 int IDPhong = 0;
                 for (int i = 0; i < _lstPhong.Count; i++)
                     if (_lstPhong[i].TuDot <= int.Parse(xacnhanno.MLT.Substring(0, 2)) && int.Parse(xacnhanno.MLT.Substring(0, 2)) <= _lstPhong[i].DenDot)
@@ -673,6 +668,12 @@ namespace ThuTien.GUI.Quay
                         IDPhong = _lstPhong[i].ID;
                         break;
                     }
+                if (chkChuKy.Checked || IDPhong == 2)
+                {
+                    dr["ChuKy"] = true;
+                    dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky.png";
+                }
+                dr["TenPhong"] = _cNguoiDung.getTenPhong(IDPhong).ToUpper();
                 dr["ChucVu"] = _cNguoiDung.getChucVu(IDPhong);
                 dr["NguoiKy"] = _cNguoiDung.getNguoiKy(IDPhong);
                 ds.Tables["PhieuTamThu"].Rows.Add(dr);
@@ -803,12 +804,7 @@ namespace ThuTien.GUI.Quay
                     dr["TinhDenKy"] = item.Cells["TinhDenKy_XacNhanNo"].Value.ToString();
                 if (item.Cells["Cat_XacNhanNo"].Value != null)
                     dr["Cat"] = item.Cells["Cat_XacNhanNo"].Value.ToString();
-                //dr["NhanVienQuay"] = CNguoiDung.HoTen;
-                if (chkChuKy.Checked)
-                {
-                    dr["ChuKy"] = true;
-                    dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky.png";
-                }
+                //dr["NhanVienQuay"] = CNguoiDung.HoTen;           
                 int IDPhong = 0;
                 for (int i = 0; i < _lstPhong.Count; i++)
                     if (_lstPhong[i].TuDot <= int.Parse(item.Cells["MLT_XacNhanNo"].Value.ToString().Substring(0, 2)) && int.Parse(item.Cells["MLT_XacNhanNo"].Value.ToString().Substring(0, 2)) <= _lstPhong[i].DenDot)
@@ -816,11 +812,15 @@ namespace ThuTien.GUI.Quay
                         IDPhong = _lstPhong[i].ID;
                         break;
                     }
+                if (chkChuKy.Checked || IDPhong == 2)
+                {
+                    dr["ChuKy"] = true;
+                    dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky.png";
+                }
+                dr["TenPhong"] = _cNguoiDung.getTenPhong(IDPhong).ToUpper();
                 dr["ChucVu"] = _cNguoiDung.getChucVu(IDPhong);
                 dr["NguoiKy"] = _cNguoiDung.getNguoiKy(IDPhong);
-
                 ds.Tables["PhieuTamThu"].Rows.Add(dr);
-
                 rptXacNhanNo rpt = new rptXacNhanNo();
                 rpt.SetDataSource(ds);
                 frmInQuay frm = new frmInQuay(rpt);

@@ -412,7 +412,7 @@ namespace ThuTien.DAL.QuanTri
 
         public TT_NguoiDung getChuyenKhoan(int IDPhong)
         {
-            return _db.TT_NguoiDungs.FirstOrDefault(item => item.HoTen.Contains("Chuyển Khoản")&&item.TT_To.IDPhong==IDPhong);
+            return _db.TT_NguoiDungs.FirstOrDefault(item => (item.HoTen.Contains("Chuyển Khoản") || item.HoTen.Contains("CK")) && item.TT_To.IDPhong == IDPhong);
         }
 
         public TT_NguoiDung getQuay()
@@ -535,6 +535,11 @@ namespace ThuTien.DAL.QuanTri
         public string getKyHieuPhong(int IDPhong)
         {
             return _db.Phongs.SingleOrDefault(o => o.ID == IDPhong).KyHieu;
+        }
+
+        public string getTenPhong(int IDPhong)
+        {
+            return _db.Phongs.SingleOrDefault(o => o.ID == IDPhong).Name;
         }
     }
 }

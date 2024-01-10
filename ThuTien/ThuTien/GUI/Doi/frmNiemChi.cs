@@ -31,13 +31,10 @@ namespace ThuTien.GUI.Doi
         {
             dgvNiemChi_Nhap.AutoGenerateColumns = false;
             dgvNiemChi_Giao.AutoGenerateColumns = false;
-
             cmbTo_Giao.DataSource = _cTo.getDS_HanhThu(CNguoiDung.IDPhong);
             cmbTo_Giao.DisplayMember = "TenTo";
             cmbTo_Giao.ValueMember = "MaTo";
-
             loadNhap();
-
             cmbTo_Giao.SelectedIndex = -1;
             _flagFirstLoad = true;
         }
@@ -64,7 +61,6 @@ namespace ThuTien.GUI.Doi
             txtSLSuDung_Nhap.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", SLSuDung);
             txtSLHuHong_Nhap.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", SLHuHong);
             txtSLTon_Nhap.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", SLTon);
-
             dgvNiemChi_HuHong.DataSource = _cNiemChi.getDSHuHong_ChuaQyetToan(CNguoiDung.IDPhong);
         }
 
