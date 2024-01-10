@@ -15,3 +15,6 @@
 
 select * from HOADON_TA.dbo.HOADON where TONGCONG!=GIABAN+THUE+PHI and ThueGTGT_TDVTN is null and nam=2023
 --update HOADON_TA.dbo.HOADON set ThueGTGT_TDVTN=TONGCONG-(GIABAN+THUE+PHI) where TONGCONG!=GIABAN+THUE+PHI and ThueGTGT_TDVTN is null and nam=2023
+
+--select * from HOADON_TA.dbo.HOADON where DANHBA='13182551911' and nam=2023 and ky=12
+--update HOADON_TA.dbo.HOADON set ThueGTGT_TDVTN=TONGCONG-(GIABAN+THUE+PHI) where DANHBA='13182551911' and nam=2023 and ky=12
