@@ -387,11 +387,6 @@ namespace ThuTien.GUI.Quay
                     if (hdIn.MaNV_HanhThu != null)
                         dr["NhanVienThuTien"] = _cNguoiDung.GetHoTenByMaND(hdIn.MaNV_HanhThu.Value);
                     dr["NhanVienQuay"] = CNguoiDung.HoTen;
-                    if (chkChuKy.Checked)
-                    {
-                        dr["ChuKy"] = true;
-                        dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky.png";
-                    }
                     int IDPhong = 0;
                     for (int i = 0; i < _lstPhong.Count; i++)
                         if (_lstPhong[i].TuDot <= hdIn.DOT && hdIn.DOT <= _lstPhong[i].DenDot)
@@ -401,6 +396,11 @@ namespace ThuTien.GUI.Quay
                         }
                     dr["TenPhong"] = _cNguoiDung.getChucVu(IDPhong);
                     dr["NguoiKy"] = _cNguoiDung.getNguoiKy(IDPhong);
+                    if (chkChuKy.Checked)
+                    {
+                        dr["ChuKy"] = true;
+                        dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky"+IDPhong+".png";
+                    }
                     ds.Tables["PhieuTamThu"].Rows.Add(dr);
 
                     rptPhieuTamThu_HDDT rpt = new rptPhieuTamThu_HDDT();
@@ -671,7 +671,7 @@ namespace ThuTien.GUI.Quay
                 if (chkChuKy.Checked || IDPhong == 2)
                 {
                     dr["ChuKy"] = true;
-                    dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky.png";
+                    dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky"+IDPhong+".png";
                 }
                 dr["TenPhong"] = _cNguoiDung.getTenPhong(IDPhong).ToUpper();
                 dr["ChucVu"] = _cNguoiDung.getChucVu(IDPhong);
@@ -730,7 +730,7 @@ namespace ThuTien.GUI.Quay
                 if (chkChuKy.Checked)
                 {
                     dr["ChuKy"] = true;
-                    dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky.png";
+                    dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky"+CNguoiDung.IDPhong+".png";
                 }
                 ds.Tables["PhieuTamThu"].Rows.Add(dr);
 
@@ -815,7 +815,7 @@ namespace ThuTien.GUI.Quay
                 if (chkChuKy.Checked || IDPhong == 2)
                 {
                     dr["ChuKy"] = true;
-                    dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky.png";
+                    dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky"+IDPhong+".png";
                 }
                 dr["TenPhong"] = _cNguoiDung.getTenPhong(IDPhong).ToUpper();
                 dr["ChucVu"] = _cNguoiDung.getChucVu(IDPhong);
@@ -983,7 +983,7 @@ namespace ThuTien.GUI.Quay
             if (chkChuKy.Checked)
             {
                 dr["ChuKy"] = true;
-                dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky.png";
+                dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky"+CNguoiDung.IDPhong+".png";
             }
             ds.Tables["PhieuTamThu"].Rows.Add(dr);
 

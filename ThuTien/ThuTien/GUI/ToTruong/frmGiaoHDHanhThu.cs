@@ -37,29 +37,29 @@ namespace ThuTien.GUI.ToTruong
             if (CNguoiDung.Doi)
             {
                 cmbTo.Visible = true;
-
-                cmbTo.DataSource = _cTo.getDS_HanhThu();
+                cmbTo.DataSource = _cTo.getDS_HanhThu(CNguoiDung.IDPhong);
                 cmbTo.DisplayMember = "TenTo";
                 cmbTo.ValueMember = "MaTo";
                 cmbTo.SelectedIndex = -1;
             }
             else
                 lbTo.Text = "Tổ  " + CNguoiDung.TenTo;
-
             cmbNam.DataSource = _cHoaDon.GetNam();
             cmbNam.DisplayMember = "Nam";
             cmbNam.ValueMember = "Nam";
-
             cmbNhanVien.DataSource = _cNguoiDung.GetDSHanhThuByMaTo(CNguoiDung.MaTo);
             cmbNhanVien.DisplayMember = "HoTen";
             cmbNhanVien.ValueMember = "MaND";
-
             cmbCucChia.SelectedIndex = 0;
-
             //tabTuGia.Text = "Hóa Đơn";
             //tabControl.TabPages.Remove(tabCoQuan);
-
+            cmbNam.SelectedValue = DateTime.Now.Year.ToString();
             cmbKy.SelectedItem = DateTime.Now.Month.ToString();
+            for (int i = CNguoiDung.FromDot; i <= CNguoiDung.ToDot; i++)
+            {
+                cmbDot.Items.Add(i.ToString());
+            }
+            cmbDot.SelectedIndex = 0;
         }
 
         public void Clear()
@@ -541,7 +541,7 @@ namespace ThuTien.GUI.ToTruong
 
         private void cmbTo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbTo.SelectedIndex >= 0)
+            if (cmbTo.Items.Count > 0 && cmbTo.SelectedIndex > -1)
             {
                 cmbNhanVien.DataSource = _cNguoiDung.GetDSHanhThuByMaTo(((TT_To)cmbTo.SelectedItem).MaTo);
                 cmbNhanVien.DisplayMember = "HoTen";

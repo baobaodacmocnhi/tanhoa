@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.1439</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>118</ApplicationRevision>
+    <ApplicationRevision>120</ApplicationRevision>
     <ApplicationVersion>1.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -2501,7 +2501,7 @@
     <None Include="Resources\loading.gif" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\chuky.png">
+    <Content Include="Resources\chuky2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\logocongty.png">

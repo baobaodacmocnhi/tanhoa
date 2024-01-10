@@ -260,7 +260,7 @@ namespace ThuTien.GUI.DongNuoc
                                 if (!_cDongNuoc.CheckExist_KQDongNuoc(decimal.Parse(item["MaDN"].ToString())))
                                     if (!_cDongNuoc.Xoa(decimal.Parse(item["MaDN"].ToString())))
                                     {
-        
+
                                     }
                             }
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -330,7 +330,7 @@ namespace ThuTien.GUI.DongNuoc
                         if (chkChuKy.Checked)
                         {
                             dr["ChuKy"] = true;
-                            dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky.png";
+                            dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky" + CNguoiDung.IDPhong + ".png";
                         }
                         if (chkCoTenNguoiKy.Checked)
                         {
@@ -669,7 +669,7 @@ namespace ThuTien.GUI.DongNuoc
                     if (chkChuKy.Checked)
                     {
                         dr["ChuKy"] = true;
-                        dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky.png";
+                        dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky" + CNguoiDung.IDPhong + ".png";
                     }
                     if (chkCoTenNguoiKy.Checked)
                     {

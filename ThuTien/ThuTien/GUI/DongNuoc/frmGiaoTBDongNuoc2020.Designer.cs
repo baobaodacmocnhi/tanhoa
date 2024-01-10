@@ -46,6 +46,7 @@
             this.In = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.MaDN = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.SoLuong = new DevExpress.XtraGrid.Columns.GridColumn();
             this.DanhBo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.HoTen = new DevExpress.XtraGrid.Columns.GridColumn();
             this.DiaChi = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -104,7 +105,6 @@
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.btnXoaLenh = new System.Windows.Forms.Button();
-            this.SoLuong = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
@@ -282,6 +282,15 @@
             this.MaDN.Visible = true;
             this.MaDN.VisibleIndex = 1;
             this.MaDN.Width = 70;
+            // 
+            // SoLuong
+            // 
+            this.SoLuong.Caption = "HĐ";
+            this.SoLuong.FieldName = "SoLuong";
+            this.SoLuong.Name = "SoLuong";
+            this.SoLuong.Visible = true;
+            this.SoLuong.VisibleIndex = 2;
+            this.SoLuong.Width = 40;
             // 
             // DanhBo
             // 
@@ -568,7 +577,6 @@
             this.chkChuKy.TabIndex = 96;
             this.chkChuKy.Text = "Có Chữ Ký";
             this.chkChuKy.UseVisualStyleBackColor = true;
-            this.chkChuKy.Visible = false;
             // 
             // btnInDSTBTonThucTeNguoiGiao
             // 
@@ -800,15 +808,6 @@
             this.btnXoaLenh.Text = "Xóa Lệnh";
             this.btnXoaLenh.UseVisualStyleBackColor = true;
             this.btnXoaLenh.Click += new System.EventHandler(this.btnXoaLenh_Click);
-            // 
-            // SoLuong
-            // 
-            this.SoLuong.Caption = "HĐ";
-            this.SoLuong.FieldName = "SoLuong";
-            this.SoLuong.Name = "SoLuong";
-            this.SoLuong.Visible = true;
-            this.SoLuong.VisibleIndex = 2;
-            this.SoLuong.Width = 40;
             // 
             // frmGiaoTBDongNuoc2020
             // 

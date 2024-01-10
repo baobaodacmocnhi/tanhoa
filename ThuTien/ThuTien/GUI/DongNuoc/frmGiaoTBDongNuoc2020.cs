@@ -319,7 +319,6 @@ namespace ThuTien.GUI.DongNuoc
                     {
                         //DataRow row = gridViewDN.GetDataRow(i);
                         DataRow[] childRows = item.GetChildRows("Chi Tiết Đóng Nước");
-
                         foreach (DataRow itemChild in childRows)
                         {
                             DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
@@ -357,7 +356,6 @@ namespace ThuTien.GUI.DongNuoc
                     if (row["MaNV_DongNuoc"].ToString() == cmbNhanVienGiao.SelectedValue.ToString())
                     {
                         DataRow[] childRows = row.GetChildRows("Chi Tiết Đóng Nước");
-
                         foreach (DataRow itemChild in childRows)
                         {
                             DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
@@ -396,7 +394,6 @@ namespace ThuTien.GUI.DongNuoc
                     if (row["MaNV_DongNuoc"].ToString() == cmbNhanVienGiao.SelectedValue.ToString())
                     {
                         DataRow[] childRows = row.GetChildRows("Chi Tiết Đóng Nước");
-
                         foreach (DataRow itemChild in childRows)
                             if (string.IsNullOrEmpty(itemChild["NgayGiaiTrach"].ToString()))
                             {
@@ -457,7 +454,6 @@ namespace ThuTien.GUI.DongNuoc
                             Ky += itemChild["Ky"] + "  Số tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", itemChild["TongCong"]) + "; ";
                             TongCong += int.Parse(itemChild["TongCong"].ToString());
                         }
-
                         DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
                         dr["Ngay"] = DateTime.Parse(item["CreateDate"].ToString()).Day.ToString("00");
                         dr["Thang"] = DateTime.Parse(item["CreateDate"].ToString()).Month.ToString("00");
@@ -485,16 +481,14 @@ namespace ThuTien.GUI.DongNuoc
                         if (chkChuKy.Checked)
                         {
                             dr["ChuKy"] = true;
-                            dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky.png";
+                            dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky" + CNguoiDung.IDPhong + ".png";
                         }
                         if (chkCoTenNguoiKy.Checked)
                         {
                             dr["ChucVu"] = CNguoiDung.ChucVu;
                             dr["NguoiKy"] = CNguoiDung.NguoiKy;
                         }
-
                         dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
-
                         //ReportDocument rpt = new ReportDocument();
                         //if(radA4.Checked==true)
                         // rpt = new rptTBDongNuocPhotoA4();
@@ -820,7 +814,7 @@ namespace ThuTien.GUI.DongNuoc
                     if (chkChuKy.Checked)
                     {
                         dr["ChuKy"] = true;
-                        dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky.png";
+                        dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky"+CNguoiDung.IDPhong+".png";
                     }
                     if (chkCoTenNguoiKy.Checked)
                     {

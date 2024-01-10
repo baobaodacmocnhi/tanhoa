@@ -63,9 +63,9 @@ namespace ThuTien.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap chuky {
+        internal static System.Drawing.Bitmap chuky2 {
             get {
-                object obj = ResourceManager.GetObject("chuky", resourceCulture);
+                object obj = ResourceManager.GetObject("chuky2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

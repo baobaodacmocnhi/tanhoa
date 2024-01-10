@@ -181,7 +181,7 @@ namespace ThuTien.GUI.Quay
             if (chkChuKy.Checked)
             {
                 dr["ChuKy"] = true;
-                dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky.png";
+                dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky"+CNguoiDung.IDPhong+".png";
             }
             dr["ChucVu"] = CNguoiDung.ChucVu;
             dr["NguoiKy"] = CNguoiDung.NguoiKy;

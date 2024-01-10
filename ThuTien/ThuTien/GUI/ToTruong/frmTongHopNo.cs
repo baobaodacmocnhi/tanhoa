@@ -419,7 +419,7 @@ namespace ThuTien.GUI.ToTruong
                     if (chkChuKy.Checked == true)
                     {
                         dr1["ChuKy"] = true;
-                        dr1["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky.png";
+                        dr1["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky"+CNguoiDung.IDPhong+".png";
                     }
                     if (chkTenKy.Checked == true)
                     {
@@ -628,7 +628,7 @@ namespace ThuTien.GUI.ToTruong
             if (chkChuKy.Checked == true)
             {
                 dr1["ChuKy"] = true;
-                dr1["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky.png";
+                dr1["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky"+CNguoiDung.IDPhong+".png";
             }
             if (chkTenKy.Checked == true)
             {
