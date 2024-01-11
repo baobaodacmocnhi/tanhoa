@@ -46,22 +46,27 @@ namespace ThuTien.GUI.ChuyenKhoan
 
             dateTu.Value = DateTime.Now;
             dateDen.Value = DateTime.Now;
-
+            cmbFromDot.Items.Add("Tất Cả");
+            for (int i = CNguoiDung.FromDot; i <= CNguoiDung.ToDot; i++)
+            {
+                cmbFromDot.Items.Add(i.ToString());
+                cmbToDot.Items.Add(i.ToString());
+            }
+            cmbFromDot.SelectedIndex = 0;
             cmbToDot.SelectedIndex = 0;
-            cmbDenDot.SelectedIndex = 0;
         }
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            if (cmbToDot.SelectedIndex == 0)
-                dgvDanhBo.DataSource = _cDLKH.GetDSDanhBoTon();
+            if (cmbFromDot.SelectedIndex == 0)
+                dgvDanhBo.DataSource = _cDLKH.GetDSDanhBoTon(CNguoiDung.FromDot, CNguoiDung.ToDot);
             else
-                if (cmbToDot.SelectedIndex > 0)
-                    if (cmbDenDot.SelectedIndex == 0)
-                        dgvDanhBo.DataSource = _cDLKH.GetDSDanhBoTon(int.Parse(cmbToDot.SelectedItem.ToString()));
+                if (cmbFromDot.SelectedIndex > 0)
+                    if (cmbToDot.SelectedIndex == 0)
+                        dgvDanhBo.DataSource = _cDLKH.GetDSDanhBoTon(int.Parse(cmbFromDot.SelectedItem.ToString()));
                     else
-                        if (cmbDenDot.SelectedIndex > 0)
-                            dgvDanhBo.DataSource = _cDLKH.GetDSDanhBoTon(int.Parse(cmbToDot.SelectedItem.ToString()), int.Parse(cmbDenDot.SelectedItem.ToString()));
+                        if (cmbToDot.SelectedIndex > 0)
+                            dgvDanhBo.DataSource = _cDLKH.GetDSDanhBoTon(int.Parse(cmbFromDot.SelectedItem.ToString()), int.Parse(cmbToDot.SelectedItem.ToString()));
         }
 
         private void btnIn_Click(object sender, EventArgs e)

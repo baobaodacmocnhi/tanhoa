@@ -38,10 +38,10 @@
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabDLKH1 = new System.Windows.Forms.TabPage();
             this.btnLayHoaDon = new System.Windows.Forms.Button();
-            this.cmbDenDot = new System.Windows.Forms.ComboBox();
+            this.cmbToDot = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnXemDanhBo = new System.Windows.Forms.Button();
-            this.cmbToDot = new System.Windows.Forms.ComboBox();
+            this.cmbFromDot = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnInDSTon_DB = new System.Windows.Forms.Button();
             this.btnChonFile = new System.Windows.Forms.Button();
@@ -136,10 +136,10 @@
             // tabDLKH1
             // 
             this.tabDLKH1.Controls.Add(this.btnLayHoaDon);
-            this.tabDLKH1.Controls.Add(this.cmbDenDot);
+            this.tabDLKH1.Controls.Add(this.cmbToDot);
             this.tabDLKH1.Controls.Add(this.label4);
             this.tabDLKH1.Controls.Add(this.btnXemDanhBo);
-            this.tabDLKH1.Controls.Add(this.cmbToDot);
+            this.tabDLKH1.Controls.Add(this.cmbFromDot);
             this.tabDLKH1.Controls.Add(this.label1);
             this.tabDLKH1.Controls.Add(this.btnInDSTon_DB);
             this.tabDLKH1.Controls.Add(this.btnChonFile);
@@ -169,35 +169,13 @@
             this.btnLayHoaDon.UseVisualStyleBackColor = true;
             this.btnLayHoaDon.Click += new System.EventHandler(this.btnLayHoaDon_Click);
             // 
-            // cmbDenDot
+            // cmbToDot
             // 
-            this.cmbDenDot.FormattingEnabled = true;
-            this.cmbDenDot.Items.AddRange(new object[] {
-            "",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20"});
-            this.cmbDenDot.Location = new System.Drawing.Point(477, 6);
-            this.cmbDenDot.Name = "cmbDenDot";
-            this.cmbDenDot.Size = new System.Drawing.Size(50, 21);
-            this.cmbDenDot.TabIndex = 63;
+            this.cmbToDot.FormattingEnabled = true;
+            this.cmbToDot.Location = new System.Drawing.Point(477, 6);
+            this.cmbToDot.Name = "cmbToDot";
+            this.cmbToDot.Size = new System.Drawing.Size(50, 21);
+            this.cmbToDot.TabIndex = 63;
             // 
             // label4
             // 
@@ -218,35 +196,13 @@
             this.btnXemDanhBo.UseVisualStyleBackColor = true;
             this.btnXemDanhBo.Click += new System.EventHandler(this.btnXemDanhBo_Click);
             // 
-            // cmbToDot
+            // cmbFromDot
             // 
-            this.cmbToDot.FormattingEnabled = true;
-            this.cmbToDot.Items.AddRange(new object[] {
-            "Tất Cả",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20"});
-            this.cmbToDot.Location = new System.Drawing.Point(365, 6);
-            this.cmbToDot.Name = "cmbToDot";
-            this.cmbToDot.Size = new System.Drawing.Size(50, 21);
-            this.cmbToDot.TabIndex = 60;
+            this.cmbFromDot.FormattingEnabled = true;
+            this.cmbFromDot.Location = new System.Drawing.Point(365, 6);
+            this.cmbFromDot.Name = "cmbFromDot";
+            this.cmbFromDot.Size = new System.Drawing.Size(50, 21);
+            this.cmbFromDot.TabIndex = 60;
             // 
             // label1
             // 
@@ -1049,7 +1005,7 @@
         private System.Windows.Forms.Button btnXuatExcel2;
         private System.Windows.Forms.Button btnChonFile;
         private System.Windows.Forms.Button btnInDSTon_DB;
-        private System.Windows.Forms.ComboBox cmbToDot;
+        private System.Windows.Forms.ComboBox cmbFromDot;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnXemDanhBo;
         private System.Windows.Forms.Button btnXuatExcelDangNgan;
@@ -1079,7 +1035,7 @@
         private System.Windows.Forms.ListView lstHD;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.Button btnCopyToClipboard;
-        private System.Windows.Forms.ComboBox cmbDenDot;
+        private System.Windows.Forms.ComboBox cmbToDot;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnLayHoaDon;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayGiaiTrach_DB;

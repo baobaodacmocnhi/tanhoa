@@ -196,7 +196,6 @@ namespace ThuTien.GUI.ChuyenKhoan
                     DateTime NgayDN = new DateTime();
                     DateTime.TryParse(item.Cells["NgayDN"].Value.ToString(), out NgayDN);
                     dr["NgayDN"] = NgayDN;
-
                     ds.Tables["KQDongNuoc"].Rows.Add(dr);
                 }
                 rptBBDongNuoc rpt = new rptBBDongNuoc();

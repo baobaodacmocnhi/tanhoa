@@ -1148,6 +1148,8 @@ namespace KTKS_DonKH.GUI.DonTu
                 if (entity.DonTu_ChiTiets.Count == 1)
                 {
                     dr["KhachHang"] = entity.DonTu_ChiTiets.SingleOrDefault().HoTen;
+                    if (entity.DonTu_ChiTiets.SingleOrDefault().MLT != "")
+                        dr["MLT"] = entity.DonTu_ChiTiets.SingleOrDefault().MLT.Insert(4, " ").Insert(2, " ");
                     if (entity.DonTu_ChiTiets.SingleOrDefault().DanhBo != "")
                         dr["DanhBo"] = entity.DonTu_ChiTiets.SingleOrDefault().DanhBo.Insert(7, " ").Insert(4, " ");
                     dr["DiaChi"] = entity.DonTu_ChiTiets.SingleOrDefault().DiaChi;

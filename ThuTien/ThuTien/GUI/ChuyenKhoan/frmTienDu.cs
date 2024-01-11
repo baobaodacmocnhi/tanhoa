@@ -372,7 +372,6 @@ namespace ThuTien.GUI.ChuyenKhoan
         private void btnXuatExcelTienDu_Click(object sender, EventArgs e)
         {
             DataTable dt = _cTienDu.GetDSTienDu(dateNgayGiaiTrach.Value, CNguoiDung.FromDot, CNguoiDung.ToDot);
-
             DataTable dtTD = new DataTable();
             dtTD.Columns.Add("DanhBo", typeof(string));
             dtTD.Columns.Add("SoTien", typeof(string));
@@ -387,7 +386,6 @@ namespace ThuTien.GUI.ChuyenKhoan
             dtTD.Columns.Add("Loai", typeof(string));
             dtTD.Columns.Add("SoPhieuThu", typeof(string));
             dtTD.Columns.Add("NgayPhieuThu", typeof(string));
-
             foreach (DataRow item in dt.Rows)
             {
                 DataRow drTD = dtTD.NewRow();
@@ -453,7 +451,6 @@ namespace ThuTien.GUI.ChuyenKhoan
                 //                drTD_extra["NgayPhieuThu"] = dtBK.Rows[k]["NgayPhieuThu"];
                 //            if (dtBK.Rows[k]["SoPhieuThu"].ToString() != "" || dtBK.Rows[k]["NgayPhieuThu"].ToString() != "")
                 //                dtTD.Rows.Add(drTD_extra);
-
                 //            TienBK += int.Parse(dtBK.Rows[k]["SoTien"].ToString());
                 //            k++;
                 //        };
@@ -464,7 +461,6 @@ namespace ThuTien.GUI.ChuyenKhoan
                     dtTD.Rows.Add(drTD);
                 }
             }
-
             //Tạo các đối tượng Excel
             Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
             Microsoft.Office.Interop.Excel.Workbooks oBooks;
@@ -479,11 +475,9 @@ namespace ThuTien.GUI.ChuyenKhoan
             //khai báo số lượng sheet
             oExcel.Application.SheetsInNewWorkbook = 1;
             oBooks = oExcel.Workbooks;
-
             oBook = (Microsoft.Office.Interop.Excel.Workbook)(oExcel.Workbooks.Add(Type.Missing));
             oSheets = oBook.Worksheets;
             oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
-
             oSheet.Name = "Tiền Dư";
 
             // Tạo phần đầu nếu muốn
@@ -552,74 +546,12 @@ namespace ThuTien.GUI.ChuyenKhoan
             // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
             // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
             object[,] arr = new object[dtTD.Rows.Count, 13];
-
-            //Chuyển dữ liệu từ DataTable vào mảng đối tượng
-            //for (int i = 0; i < dt.Rows.Count; i++)
-            //{
-            //    DataRow dr = dt.Rows[i];
-
-            //    arr[i, 0] = dr["DanhBo"].ToString();
-            //    arr[i, 1] = dr["SoTien"].ToString();
-            //    //TT_BangKe bangke = _cBangKe.get(dr["DanhBo"].ToString(), dateNgayGiaiTrach.Value);
-            //    //if (bangke != null)
-            //    //{
-            //    //    arr[i, 2] = bangke.CreateDate.Value.ToString("dd/MM/yyyy");
-            //    //    arr[i, 8] = _cNganHang.getTenNH(bangke.MaNH.Value);
-            //    //    arr[i, 11] = bangke.SoPhieuThu;
-            //    //    arr[i, 12] = bangke.NgayPhieuThu;
-            //    //}
-            //    HOADON hoadon = _cHoaDon.GetMoiNhat(dr["DanhBo"].ToString());
-            //    if (hoadon != null)
-            //    {
-            //        arr[i, 3] = hoadon.MALOTRINH;
-            //        arr[i, 4] = hoadon.TENKH;
-            //        arr[i, 5] = hoadon.SO + " " + hoadon.DUONG;
-            //        if (hoadon.MaNV_HanhThu != null)
-            //        {
-            //            arr[i, 6] = _cNguoiDung.GetTenToByMaND(hoadon.MaNV_HanhThu.Value);
-            //            arr[i, 7] = _cNguoiDung.GetHoTenByMaND(hoadon.MaNV_HanhThu.Value);
-            //        }
-            //        if (hoadon.GB <= 20)
-            //            arr[i, 10] = "TG";
-            //        else
-            //            arr[i, 10] = "CQ";
-            //    }
-            //    arr[i, 9] = dr["DienThoai"].ToString();
-            //    //tính sophieuthu
-            //    DataTable dtBK = _cBangKe.getDS_XuatTienDu(dr["DanhBo"].ToString(), dateNgayGiaiTrach.Value);
-            //    int TienDu = int.Parse(dr["SoTien"].ToString());
-            //    int TienBK = int.Parse(dtBK.Rows[0]["SoTien"].ToString());
-            //    int k = 1;
-            //    while (TienBK < TienDu && dtBK != null && dtBK.Rows.Count > 0 && k <= dtBK.Rows.Count)
-            //    {
-            //        TienBK += int.Parse(dtBK.Rows[k]["SoTien"].ToString());
-            //        if (dtBK.Rows[k]["SoPhieuThu"].ToString() != "")
-            //            if (arr[i, 11] == null)
-            //                arr[i, 11] += dtBK.Rows[k]["SoPhieuThu"].ToString();
-            //            else
-            //                arr[i, 11] += ", " + dtBK.Rows[k]["SoPhieuThu"].ToString();
-            //        if (dtBK.Rows[k]["NgayPhieuThu"].ToString() != "")
-            //            if (arr[i, 12] == null)
-            //                arr[i, 12] += DateTime.Parse(dtBK.Rows[k]["NgayPhieuThu"].ToString()).ToString("dd/MM/yyyy");
-            //            else
-            //                arr[i, 12] += ", " + DateTime.Parse(dtBK.Rows[k]["NgayPhieuThu"].ToString()).ToString("dd/MM/yyyy");
-            //        k++;
-            //    };
-            //}
             for (int i = 0; i < dtTD.Rows.Count; i++)
             {
                 DataRow dr = dtTD.Rows[i];
 
                 arr[i, 0] = dr["DanhBo"].ToString();
                 arr[i, 1] = dr["SoTien"].ToString();
-                //TT_BangKe bangke = _cBangKe.get(dr["DanhBo"].ToString(), dateNgayGiaiTrach.Value);
-                //if (bangke != null)
-                //{
-                //    arr[i, 2] = bangke.CreateDate.Value.ToString("dd/MM/yyyy");
-                //    arr[i, 8] = _cNganHang.getTenNH(bangke.MaNH.Value);
-                //    arr[i, 11] = bangke.SoPhieuThu;
-                //    arr[i, 12] = bangke.NgayPhieuThu;
-                //}
                 arr[i, 3] = dr["MLT"].ToString();
                 arr[i, 4] = dr["HoTen"].ToString();
                 arr[i, 5] = dr["DiaChi"].ToString();
@@ -630,13 +562,10 @@ namespace ThuTien.GUI.ChuyenKhoan
                 arr[i, 11] = dr["SoPhieuThu"].ToString();
                 if (dr["NgayPhieuThu"].ToString() != "")
                     arr[i, 12] = DateTime.Parse(dr["NgayPhieuThu"].ToString()).ToString("dd/MM/yyyy");
-                //arr[i, 12] = dr["NgayPhieuThu"].ToString();
             }
-
             //Thiết lập vùng điền dữ liệu
             int rowStart = 4;
             int columnStart = 1;
-
             int rowEnd = rowStart + dtTD.Rows.Count - 1;
             int columnEnd = 13;
 
@@ -670,8 +599,8 @@ namespace ThuTien.GUI.ChuyenKhoan
             c3g.NumberFormat = "@";
             c3g.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
 
-            Microsoft.Office.Interop.Excel.Range c1e = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 12];
-            Microsoft.Office.Interop.Excel.Range c2e = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 12];
+            Microsoft.Office.Interop.Excel.Range c1e = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 10];
+            Microsoft.Office.Interop.Excel.Range c2e = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 10];
             Microsoft.Office.Interop.Excel.Range c3e = oSheet.get_Range(c1e, c2e);
             c3e.NumberFormat = "@";
             c3e.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;

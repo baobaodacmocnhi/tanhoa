@@ -397,7 +397,9 @@ namespace ThuTien.GUI.ChuyenKhoan
                                     _cTienDu.Sua(tdNew);
                                 }
                                 TT_TienDuLichSu tdls = _cTienDu.get_LichSu(dgvBangKe[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(" ", ""), bangke.SoTien.Value, bangke.CreateDate.Value, bangke.MaBK);
+                                tdls.DanhBoTruoc = tdls.DanhBo;
                                 tdls.DanhBo = bangke.DanhBo;
+                                tdls.DanhBoSau = tdls.DanhBo;
                                 _cTienDu.SubmitChanges();
                                 scope.Complete();
                             }

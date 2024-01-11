@@ -968,11 +968,12 @@
             this.mnuVanThu.Name = "mnuVanThu";
             this.mnuVanThu.Size = new System.Drawing.Size(61, 19);
             this.mnuVanThu.Text = "Văn Thư";
+            this.mnuVanThu.Visible = false;
             // 
             // mnuCongVanDen
             // 
             this.mnuCongVanDen.Name = "mnuCongVanDen";
-            this.mnuCongVanDen.Size = new System.Drawing.Size(149, 22);
+            this.mnuCongVanDen.Size = new System.Drawing.Size(152, 22);
             this.mnuCongVanDen.Text = "Công Văn Đến";
             this.mnuCongVanDen.Click += new System.EventHandler(this.mnuCongVanDen_Click);
             // 
