@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using DocSo_PC.DAL.QuanTri;
 using DocSo_PC.LinQ;
+using System.IO;
 
 namespace DocSo_PC.GUI.QuanTri
 {
@@ -48,9 +49,10 @@ namespace DocSo_PC.GUI.QuanTri
             chkHanhThu.Checked = false;
             chkDongNuoc.Checked = false;
             chkVanPhong.Checked = false;
-            chkKyTen.Checked = false;
             chkAn.Checked = false;
+            chkKyTen.Checked = false;
             txtChucVu.Text = "";
+            picChuKy.Image = null;
             _nguoidung = null;
             loaddgv();
         }
@@ -58,14 +60,12 @@ namespace DocSo_PC.GUI.QuanTri
         private void frmNguoiDung_Load(object sender, EventArgs e)
         {
             dgvNguoiDung.AutoGenerateColumns = false;
-
             cmbNhom.DataSource = _cNhom.GetDS();
             cmbNhom.DisplayMember = "TenNhom";
             cmbNhom.ValueMember = "MaNhom";
             //cmbNhom.SelectedIndex = -1;
-
-            if (CNguoiDung.Doi == true)
-                dgvNguoiDung.Columns["MatKhau"].Visible = true;
+            //if (CNguoiDung.Doi == true)
+            //    dgvNguoiDung.Columns["MatKhau"].Visible = true;
             if (CNguoiDung.Admin)
             {
                 panel1.Visible = true;
@@ -116,9 +116,12 @@ namespace DocSo_PC.GUI.QuanTri
                 chkHanhThu.Checked = en.HanhThu;
                 chkDongNuoc.Checked = en.DongNuoc;
                 chkVanPhong.Checked = en.VanPhong;
-                chkChamCong.Checked = en.ChamCong;
                 chkKyTen.Checked = en.KyTen;
                 txtChucVu.Text = en.ChucVu;
+                if (en.ChuKy != null)
+                    picChuKy.Image = _cNguoiDung.byteArrayToImage(en.ChuKy.ToArray());
+                else
+                    picChuKy.Image = null;
                 if (en.IDMobile != null)
                     txtIDMobile.Text = en.IDMobile;
                 else
@@ -139,6 +142,7 @@ namespace DocSo_PC.GUI.QuanTri
             if (CNguoiDung.Admin)
             {
                 chkPhoGiamDoc.Visible = true;
+                chkDoiXem.Visible = true;
                 chkAn.Visible = true;
                 _blNguoiDung = new BindingList<NguoiDung>(_cNguoiDung.GetDS_Admin(((Phong)cmbPhong.SelectedItem).ID));
             }
@@ -151,6 +155,7 @@ namespace DocSo_PC.GUI.QuanTri
                 else
                 {
                     chkPhoGiamDoc.Visible = false;
+                    chkDoiXem.Visible = false;
                     chkAn.Visible = false;
                     _blNguoiDung = new BindingList<NguoiDung>(_cNguoiDung.GetDSExceptMaND(CNguoiDung.IDPhong, CNguoiDung.MaND));
                 }
@@ -191,7 +196,6 @@ namespace DocSo_PC.GUI.QuanTri
                     nguoidung.HanhThu = chkHanhThu.Checked;
                     nguoidung.DongNuoc = chkDongNuoc.Checked;
                     nguoidung.VanPhong = chkVanPhong.Checked;
-                    nguoidung.ChamCong = chkChamCong.Checked;
                     nguoidung.KyTen = chkKyTen.Checked;
                     nguoidung.ChucVu = txtChucVu.Text.Trim();
                     ///tự động thêm quyền cho người mới
@@ -202,12 +206,12 @@ namespace DocSo_PC.GUI.QuanTri
                         phanquyennguoidung.MaND = nguoidung.MaND;
                         nguoidung.PhanQuyenNguoiDungs.Add(phanquyennguoidung);
                     }
-                    if (chkChamCong.Checked)
-                    {
-                        //CTChamCong ctchamcong = new CTChamCong();
-                        //ctchamcong.MaCC = _cChamCong.GetMaxMaCC();
-                        //nguoidung.CTChamCongs.Add(ctchamcong);
-                    }
+                    //if (chkChamCong.Checked)
+                    //{
+                    //    CTChamCong ctchamcong = new CTChamCong();
+                    //    ctchamcong.MaCC = _cChamCong.GetMaxMaCC();
+                    //    nguoidung.CTChamCongs.Add(ctchamcong);
+                    //}
                     if (_cNguoiDung.Them(nguoidung))
                     {
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -250,7 +254,6 @@ namespace DocSo_PC.GUI.QuanTri
                     _nguoidung.HanhThu = chkHanhThu.Checked;
                     _nguoidung.DongNuoc = chkDongNuoc.Checked;
                     _nguoidung.VanPhong = chkVanPhong.Checked;
-                    _nguoidung.ChamCong = chkChamCong.Checked;
                     _nguoidung.KyTen = chkKyTen.Checked;
                     _nguoidung.ChucVu = txtChucVu.Text.Trim();
                     _cNguoiDung.Sua(_nguoidung);
@@ -497,8 +500,6 @@ namespace DocSo_PC.GUI.QuanTri
             try
             {
                 loaddgv();
-
-
             }
             catch (Exception ex)
             {
@@ -511,6 +512,37 @@ namespace DocSo_PC.GUI.QuanTri
             cmbTo.DataSource = _cTo.getDS(((Phong)cmbPhong.SelectedItem).ID);
             cmbTo.DisplayMember = "TenTo";
             cmbTo.ValueMember = "MaTo";
+        }
+
+        private void btnImportChuKy_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
+                {
+                    if (_nguoidung != null)
+                    {
+                        OpenFileDialog dialog = new OpenFileDialog();
+                        dialog.Filter = "Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png";
+                        dialog.Multiselect = false;
+                        if (dialog.ShowDialog() == DialogResult.OK)
+                        {
+                            byte[] bytes = _cNguoiDung.scanImage(dialog.FileName);
+                            _nguoidung.ChuKy = bytes;
+                            if (_cNguoiDung.Sua(_nguoidung))
+                            {
+                                picChuKy.Image = _cNguoiDung.byteArrayToImage(bytes);
+                            }
+                        }
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 

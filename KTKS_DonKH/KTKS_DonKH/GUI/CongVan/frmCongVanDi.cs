@@ -58,10 +58,8 @@ namespace KTKS_DonKH.GUI.CongVan
         private void frmCongVanDi_Load(object sender, EventArgs e)
         {
             dgvDSCongVan.AutoGenerateColumns = false;
-
             cmbTuGio.SelectedItem = "7";
             cmbDenGio.SelectedItem = DateTime.Now.Hour.ToString();
-
             DataTable dt1 = _cCongVanDi.GetDSNoiDung();
             AutoCompleteStringCollection auto1 = new AutoCompleteStringCollection();
             foreach (DataRow item in dt1.Rows)
@@ -69,15 +67,12 @@ namespace KTKS_DonKH.GUI.CongVan
                 auto1.Add(item["NoiDung"].ToString());
             }
             txtNoiDung.AutoCompleteCustomSource = auto1;
-
             cmbNoiChuyen.DataSource = _cNoiChuyen.GetDS("DonTuChuyen");
             cmbNoiChuyen.ValueMember = "ID";
             cmbNoiChuyen.DisplayMember = "Name";
-
             cmbNoiChuyen_Moi.DataSource = _cNoiChuyen.GetDS("DonTuChuyen");
             cmbNoiChuyen_Moi.ValueMember = "ID";
             cmbNoiChuyen_Moi.DisplayMember = "Name";
-
             cmbNoiNhan_Moi.DataSource = _cNoiChuyen.GetDS("DonTuNhan");
             cmbNoiNhan_Moi.ValueMember = "ID";
             cmbNoiNhan_Moi.DisplayMember = "Name";

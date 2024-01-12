@@ -106,6 +106,7 @@ namespace DocSo_PC.GUI.HeThong
                     }
                     CNguoiDung.ChucVu = _cNguoiDung.getChucVu(CNguoiDung.IDPhong);
                     CNguoiDung.NguoiKy = _cNguoiDung.getNguoiKy(CNguoiDung.IDPhong);
+                    CNguoiDung.ChuKy = _cNguoiDung.getChuKy(CNguoiDung.IDPhong);
                     GetLoginResult(true);
                     this.Hide();
                 }

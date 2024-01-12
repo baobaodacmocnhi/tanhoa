@@ -393,6 +393,20 @@ namespace ThuTien.DAL
 
         #endregion
 
+        public byte[] imageToByteArray(Image imageIn)
+        {
+            MemoryStream ms = new MemoryStream();
+            imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
+            return ms.ToArray();
+        }
+
+        public Image byteArrayToImage(byte[] byteArrayIn)
+        {
+            MemoryStream ms = new MemoryStream(byteArrayIn);
+            Image returnImage = Image.FromStream(ms);
+            return returnImage;
+        }
+
         public void viewPDF(byte[] pData)
         {
             try
@@ -503,6 +517,16 @@ namespace ThuTien.DAL
             int width = (int)Math.Round(image.Width * percentage, MidpointRounding.AwayFromZero);
             int height = (int)Math.Round(image.Height * percentage, MidpointRounding.AwayFromZero);
             return resizeImage(image, width, height);
+        }
+
+        public Bitmap ByteToImage(byte[] pData)
+        {
+            Bitmap image;
+            using (MemoryStream stream = new MemoryStream(pData))
+            {
+                image = new Bitmap(stream);
+            }
+            return image;
         }
 
         public byte[] ImageToByte(Bitmap image)

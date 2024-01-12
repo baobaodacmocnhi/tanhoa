@@ -890,7 +890,6 @@ namespace ThuTien.GUI.ToTruong
                     dr["LenhHuy"] = true;
                 dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
             }
-
             dt = _cLenhHuy.GetDSTon_ExceptDongNuoc(CNguoiDung.MaTo, dateDen.Value);
             foreach (DataRow item in dt.Rows)
             {
@@ -910,7 +909,6 @@ namespace ThuTien.GUI.ToTruong
                     dr["LenhHuy"] = true;
                 dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
             }
-
             rptDSHDDongNuoc rpt = new rptDSHDDongNuoc();
             rpt.SetDataSource(dsBaoCao);
             frmBaoCao frm = new frmBaoCao(rpt);
@@ -943,17 +941,17 @@ namespace ThuTien.GUI.ToTruong
             //1 tổ hành thu có đóng nước
             if (CNguoiDung.Doi)
             {
-                dtDongNuoc = _cDongNuoc.GetBaoCaoTongHop(int.Parse(cmbTo.SelectedValue.ToString()), dateTu.Value, dateDen.Value);
-                dtDCHD_DongNuoc = _cDCHD.GetChuanThu_DongNuoc_BaoCaoTongHop(int.Parse(cmbTo.SelectedValue.ToString()), dateTu.Value, dateDen.Value);
-                dtDongNuoc_ChiTiet = _cDongNuoc.GetBaoCaoTongHop_ChiTiet(int.Parse(cmbTo.SelectedValue.ToString()), dateTu.Value, dateDen.Value);
-                dtDongNuoc_DanhSach = _cDongNuoc.GetBaoCaoTongHop_DanhSach(int.Parse(cmbTo.SelectedValue.ToString()), dateTu.Value, dateDen.Value);
+                dtDongNuoc = _cDongNuoc.GetBaoCaoTongHop(dateTu.Value, dateDen.Value, CNguoiDung.IDPhong);
+                dtDCHD_DongNuoc = _cDCHD.GetChuanThu_DongNuoc_BaoCaoTongHop(dateTu.Value, dateDen.Value, CNguoiDung.IDPhong);
+                dtDongNuoc_ChiTiet = _cDongNuoc.GetBaoCaoTongHop_ChiTiet(dateTu.Value, dateDen.Value, CNguoiDung.IDPhong);
+                dtDongNuoc_DanhSach = _cDongNuoc.GetBaoCaoTongHop_DanhSach(dateTu.Value, dateDen.Value, CNguoiDung.IDPhong);
             }
             else
             {
-                dtDongNuoc = _cDongNuoc.GetBaoCaoTongHop(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
-                dtDCHD_DongNuoc = _cDCHD.GetChuanThu_DongNuoc_BaoCaoTongHop(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
-                dtDongNuoc_ChiTiet = _cDongNuoc.GetBaoCaoTongHop_ChiTiet(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
-                dtDongNuoc_DanhSach = _cDongNuoc.GetBaoCaoTongHop_DanhSach(CNguoiDung.MaTo, dateTu.Value, dateDen.Value);
+                dtDongNuoc = _cDongNuoc.GetBaoCaoTongHop(dateTu.Value, dateDen.Value, CNguoiDung.IDPhong);
+                dtDCHD_DongNuoc = _cDCHD.GetChuanThu_DongNuoc_BaoCaoTongHop(dateTu.Value, dateDen.Value, CNguoiDung.IDPhong);
+                dtDongNuoc_ChiTiet = _cDongNuoc.GetBaoCaoTongHop_ChiTiet(dateTu.Value, dateDen.Value, CNguoiDung.IDPhong);
+                dtDongNuoc_DanhSach = _cDongNuoc.GetBaoCaoTongHop_DanhSach(dateTu.Value, dateDen.Value, CNguoiDung.IDPhong);
             }
             foreach (DataRow item in dtDCHD_DongNuoc.Rows)
             {
@@ -969,11 +967,9 @@ namespace ThuTien.GUI.ToTruong
                 if (!string.IsNullOrEmpty(item["TCTongTon_END"].ToString()))
                     drDN[0]["TCTongTon"] = long.Parse(drDN[0]["TCTongTon"].ToString()) - long.Parse(item["TCTongTon_END"].ToString()) + long.Parse(item["TCTongTon_BD"].ToString());
             }
-
             foreach (DataRow item in dtDongNuoc.Rows)
             {
                 DataRow dr = ds.Tables["DSDongNuoc"].NewRow();
-
                 dr["Ky"] = dateTu.Value.Month.ToString() + "/" + dateTu.Value.Year.ToString();
                 dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
                 dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
@@ -981,7 +977,6 @@ namespace ThuTien.GUI.ToTruong
                     dr["To"] = ((TT_To)cmbTo.SelectedItem).TenTo;
                 else
                     dr["To"] = CNguoiDung.TenTo;
-
                 dr["STT"] = item["STT"];
                 dr["HanhThu"] = item["HoTen"];
                 if (string.IsNullOrEmpty(item["DCTonCu"].ToString()))
@@ -1057,7 +1052,6 @@ namespace ThuTien.GUI.ToTruong
                 //{
                 //    dr["DCDongNuoc"] = item["DCDongNuoc"];
                 //}
-
                 ds.Tables["DSDongNuoc"].Rows.Add(dr);
             }
 

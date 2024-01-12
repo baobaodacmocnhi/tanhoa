@@ -288,7 +288,6 @@ namespace DocSo_PC.GUI.MaHoa
                         if (en != null)
                         {
                             DataRow dr = dsBaoCao.Tables["DCBD"].NewRow();
-
                             dr["MaDon"] = en.IDMaDon.ToString();
                             dr["SoPhieu"] = en.ID.ToString();
                             dr["ThongTin"] = en.ThongTin.ToUpper();
@@ -387,7 +386,6 @@ namespace DocSo_PC.GUI.MaHoa
                             if (en.GiaBieu == 68 || en.GiaBieu_BD == 68)
                             {
                                 DataRow dr = dsBaoCaoCC.Tables["DCBD"].NewRow();
-
                                 dr["KyHieuPhong"] = CNguoiDung.KyHieuPhong;
                                 dr["SoPhieu"] = en.ID.ToString();
                                 dr["HieuLucKy"] = en.HieuLucKy;
@@ -425,11 +423,11 @@ namespace DocSo_PC.GUI.MaHoa
                                 dr["TenPhong"] = CNguoiDung.TenPhong.ToUpper();
                                 dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper().Replace("PHÒNG", "");
                                 dr["NguoiKy"] = CNguoiDung.NguoiKy;
-                                if (chkChuKy.Checked || CNguoiDung.IDPhong == 2)
+                                if (chkChuKy.Checked)
                                 {
-                                    dr["ChuKy"] = true;
-                                    dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky.png";
+                                    dr["ChuKy"] = CNguoiDung.ChuKy;
                                 }
+                                dr["ChuKy"] = CNguoiDung.ChuKy;
                                 dsBaoCaoCC.Tables["DCBD"].Rows.Add(dr);
                                 DataRow drLogo = dsBaoCaoCC.Tables["BaoCao"].NewRow();
                                 drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
@@ -476,13 +474,11 @@ namespace DocSo_PC.GUI.MaHoa
                                 dr["TenPhong"] = CNguoiDung.TenPhong.ToUpper();
                                 dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper().Replace("PHÒNG","");
                                 dr["NguoiKy"] = CNguoiDung.NguoiKy;
-                                if (chkChuKy.Checked || CNguoiDung.IDPhong == 2)
+                                if (chkChuKy.Checked)
                                 {
-                                    dr["ChuKy"] = true;
-                                    dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky.png";
+                                    dr["ChuKy"] = CNguoiDung.ChuKy;
                                 }
                                 dsBaoCao.Tables["DCBD"].Rows.Add(dr);
-
                                 DataRow drLogo = dsBaoCao.Tables["BaoCao"].NewRow();
                                 drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
                                 dsBaoCao.Tables["BaoCao"].Rows.Add(drLogo);

@@ -170,6 +170,13 @@ namespace DocSo_PC.DAL.QuanTri
             set { CNguoiDung._NguoiKy = value; }
         }
 
+        static byte[] _ChuKy;
+        public static byte[] ChuKy
+        {
+            get { return CNguoiDung._ChuKy; }
+            set { CNguoiDung._ChuKy = value; }
+        }
+
         static string _DanhBos = "";
         public static string DanhBos
         {
@@ -455,10 +462,20 @@ namespace DocSo_PC.DAL.QuanTri
             return _db.NguoiDungs.FirstOrDefault(item => item.KyTen == true && item.To.IDPhong == IDPhong).HoTen;
         }
 
+        public byte[] getChuKy(int IDPhong)
+        {
+            if (_db.NguoiDungs.FirstOrDefault(item => item.KyTen == true && item.To.IDPhong == IDPhong).ChuKy != null)
+                return _db.NguoiDungs.FirstOrDefault(item => item.KyTen == true && item.To.IDPhong == IDPhong).ChuKy.ToArray();
+            else
+                return null;
+        }
+
         public string getKyHieuPhong(int IDPhong)
         {
             return _db.Phongs.SingleOrDefault(o => o.ID == IDPhong).KyHieu;
         }
+
+
 
     }
 }

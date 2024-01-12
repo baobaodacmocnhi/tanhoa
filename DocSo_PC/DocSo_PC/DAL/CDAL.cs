@@ -182,6 +182,16 @@ namespace DocSo_PC.DAL
             return resizeImage(image, width, height);
         }
 
+        public Bitmap ByteToImage(byte[] pData)
+        {
+            Bitmap image;
+            using (MemoryStream stream = new MemoryStream(pData))
+            {
+                image = new Bitmap(stream);
+            }
+            return image;
+        }
+
         public byte[] ImageToByte(Bitmap image)
         {
             ImageConverter converter = new ImageConverter();

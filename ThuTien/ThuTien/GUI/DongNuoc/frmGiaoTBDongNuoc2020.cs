@@ -480,8 +480,7 @@ namespace ThuTien.GUI.DongNuoc
                             dr["NhanVienDN"] = _cNguoiDung.GetDienThoaiByMaND(int.Parse(item["MaNV_DongNuoc"].ToString()));
                         if (chkChuKy.Checked)
                         {
-                            dr["ChuKy"] = true;
-                            dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky" + CNguoiDung.IDPhong + ".png";
+                            dr["ChuKy"] = CNguoiDung.ChuKy;
                         }
                         if (chkCoTenNguoiKy.Checked)
                         {
@@ -496,14 +495,11 @@ namespace ThuTien.GUI.DongNuoc
                         //    if(radA5.Checked==true)
                         //        rpt = new rptTBDongNuocPhotoA5();
                         //rpt.SetDataSource(dsBaoCao);
-
                         //printDialog.AllowSomePages = true;
                         //printDialog.ShowHelp = true;
-
                         //rpt.PrintOptions.PaperOrientation = rpt.PrintOptions.PaperOrientation;
                         //rpt.PrintOptions.PaperSize = rpt.PrintOptions.PaperSize;
                         //rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
-
                         //rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, true, 0, 0);
                         //rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
                     }
@@ -813,17 +809,14 @@ namespace ThuTien.GUI.DongNuoc
                         dr["NhanVienDN"] = _cNguoiDung.GetDienThoaiByMaND(int.Parse(item["MaNV_DongNuoc"].ToString()));
                     if (chkChuKy.Checked)
                     {
-                        dr["ChuKy"] = true;
-                        dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky"+CNguoiDung.IDPhong+".png";
+                        dr["ChuKy"] = CNguoiDung.ChuKy;
                     }
                     if (chkCoTenNguoiKy.Checked)
                     {
                         dr["ChucVu"] = CNguoiDung.ChucVu;
                         dr["NguoiKy"] = CNguoiDung.NguoiKy;
                     }
-
                     dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
-
                     //ReportDocument rpt = new ReportDocument();
                     //if(radA4.Checked==true)
                     // rpt = new rptTBDongNuocPhotoA4();
@@ -831,14 +824,11 @@ namespace ThuTien.GUI.DongNuoc
                     //    if(radA5.Checked==true)
                     //        rpt = new rptTBDongNuocPhotoA5();
                     //rpt.SetDataSource(dsBaoCao);
-
                     //printDialog.AllowSomePages = true;
                     //printDialog.ShowHelp = true;
-
                     //rpt.PrintOptions.PaperOrientation = rpt.PrintOptions.PaperOrientation;
                     //rpt.PrintOptions.PaperSize = rpt.PrintOptions.PaperSize;
                     //rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
-
                     //rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, true, 0, 0);
                     //rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
                 }
@@ -848,12 +838,10 @@ namespace ThuTien.GUI.DongNuoc
             else
                 if (radA5.Checked == true)
                     rpt = new rptTBDongNuocA5();
-
             DataRow dr1 = dsBaoCao.Tables["DSHoaDon"].NewRow();
             dr1["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
             dsBaoCao.Tables["DSHoaDon"].Rows.Add(dr1);
             rpt.Subreports[0].SetDataSource(dsBaoCao);
-
             rpt.SetDataSource(dsBaoCao);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.ShowDialog();

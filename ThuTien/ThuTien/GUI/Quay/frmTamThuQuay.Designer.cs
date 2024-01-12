@@ -109,10 +109,6 @@
             this.dateDen_XacNhanNo = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.dgvXacNhanNo = new System.Windows.Forms.DataGridView();
-            this.label6 = new System.Windows.Forms.Label();
-            this.btnInTamThuKhong = new System.Windows.Forms.Button();
-            this.chkChuKy = new System.Windows.Forms.CheckBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.SoPhieu_XacNhanNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate_XacNhanNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MLT_XacNhanNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -126,6 +122,10 @@
             this.TongCong_XacNhanNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TinhDenKy_XacNhanNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cat_XacNhanNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnInTamThuKhong = new System.Windows.Forms.Button();
+            this.chkChuKy = new System.Windows.Forms.CheckBox();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             this.tabControl.SuspendLayout();
             this.tabThongTin.SuspendLayout();
@@ -876,47 +876,6 @@
             this.dgvXacNhanNo.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvXacNhanNo_CellFormatting);
             this.dgvXacNhanNo.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvXacNhanNo_RowPostPaint);
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(353, 7);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(38, 13);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "(Enter)";
-            // 
-            // btnInTamThuKhong
-            // 
-            this.btnInTamThuKhong.Location = new System.Drawing.Point(397, 2);
-            this.btnInTamThuKhong.Name = "btnInTamThuKhong";
-            this.btnInTamThuKhong.Size = new System.Drawing.Size(105, 23);
-            this.btnInTamThuKhong.TabIndex = 20;
-            this.btnInTamThuKhong.Text = "In Tạm Thu Không";
-            this.btnInTamThuKhong.UseVisualStyleBackColor = true;
-            this.btnInTamThuKhong.Click += new System.EventHandler(this.btnInTamThuKhong_Click);
-            // 
-            // chkChuKy
-            // 
-            this.chkChuKy.AutoSize = true;
-            this.chkChuKy.Location = new System.Drawing.Point(508, 6);
-            this.chkChuKy.Name = "chkChuKy";
-            this.chkChuKy.Size = new System.Drawing.Size(76, 17);
-            this.chkChuKy.TabIndex = 97;
-            this.chkChuKy.Text = "Có Chữ Ký";
-            this.chkChuKy.UseVisualStyleBackColor = true;
-            this.chkChuKy.Visible = false;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.Red;
-            this.label8.Location = new System.Drawing.Point(590, 9);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(433, 15);
-            this.label8.TabIndex = 99;
-            this.label8.Text = "Sau 15h hệ thống sẽ tự động chuyển đăng ngân qua ngày hôm sau";
-            // 
             // SoPhieu_XacNhanNo
             // 
             this.SoPhieu_XacNhanNo.DataPropertyName = "SoPhieu";
@@ -1005,6 +964,49 @@
             this.Cat_XacNhanNo.Name = "Cat_XacNhanNo";
             this.Cat_XacNhanNo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Cat_XacNhanNo.Visible = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(353, 7);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(38, 13);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "(Enter)";
+            // 
+            // btnInTamThuKhong
+            // 
+            this.btnInTamThuKhong.Location = new System.Drawing.Point(397, 2);
+            this.btnInTamThuKhong.Name = "btnInTamThuKhong";
+            this.btnInTamThuKhong.Size = new System.Drawing.Size(105, 23);
+            this.btnInTamThuKhong.TabIndex = 20;
+            this.btnInTamThuKhong.Text = "In Tạm Thu Không";
+            this.btnInTamThuKhong.UseVisualStyleBackColor = true;
+            this.btnInTamThuKhong.Click += new System.EventHandler(this.btnInTamThuKhong_Click);
+            // 
+            // chkChuKy
+            // 
+            this.chkChuKy.AutoSize = true;
+            this.chkChuKy.Checked = true;
+            this.chkChuKy.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkChuKy.Location = new System.Drawing.Point(508, 6);
+            this.chkChuKy.Name = "chkChuKy";
+            this.chkChuKy.Size = new System.Drawing.Size(76, 17);
+            this.chkChuKy.TabIndex = 97;
+            this.chkChuKy.Text = "Có Chữ Ký";
+            this.chkChuKy.UseVisualStyleBackColor = true;
+            this.chkChuKy.Visible = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Red;
+            this.label8.Location = new System.Drawing.Point(590, 9);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(433, 15);
+            this.label8.TabIndex = 99;
+            this.label8.Text = "Sau 15h hệ thống sẽ tự động chuyển đăng ngân qua ngày hôm sau";
             // 
             // frmTamThuQuay
             // 

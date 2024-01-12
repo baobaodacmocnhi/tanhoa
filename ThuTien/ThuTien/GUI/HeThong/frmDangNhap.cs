@@ -109,6 +109,7 @@ namespace ThuTien.GUI.HeThong
                         ////    CNguoiDung.ID_DangNhap = en.ID;
                         CNguoiDung.ChucVu = _cNguoiDung.getChucVu(CNguoiDung.IDPhong);
                         CNguoiDung.NguoiKy = _cNguoiDung.getNguoiKy(CNguoiDung.IDPhong);
+                        CNguoiDung.ChuKy = _cNguoiDung.getChuKy(CNguoiDung.IDPhong);
                         GetLoginResult(true);
                         this.Hide();
                     }

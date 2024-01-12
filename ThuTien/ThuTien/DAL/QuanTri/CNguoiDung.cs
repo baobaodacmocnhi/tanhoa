@@ -135,6 +135,13 @@ namespace ThuTien.DAL.QuanTri
             set { CNguoiDung._NguoiKy = value; }
         }
 
+        static byte[] _ChuKy;
+        public static byte[] ChuKy
+        {
+            get { return CNguoiDung._ChuKy; }
+            set { CNguoiDung._ChuKy = value; }
+        }
+
         static bool _SyncNopTien;
         public static bool SyncNopTien
         {
@@ -530,6 +537,14 @@ namespace ThuTien.DAL.QuanTri
         public string getNguoiKy(int IDPhong)
         {
             return _db.TT_NguoiDungs.FirstOrDefault(item => item.KyTen == true && item.TT_To.IDPhong == IDPhong).HoTen;
+        }
+
+        public byte[] getChuKy(int IDPhong)
+        {
+            if (_db.TT_NguoiDungs.FirstOrDefault(item => item.KyTen == true && item.TT_To.IDPhong == IDPhong).ChuKy != null)
+                return _db.TT_NguoiDungs.FirstOrDefault(item => item.KyTen == true && item.TT_To.IDPhong == IDPhong).ChuKy.ToArray();
+            else
+                return null;
         }
 
         public string getKyHieuPhong(int IDPhong)
