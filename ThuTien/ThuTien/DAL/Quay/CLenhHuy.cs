@@ -414,6 +414,31 @@ namespace ThuTien.DAL.Quay
             return LINQToDataTable(query);
         }
 
+        public DataTable GetDSTon_ExceptDongNuoc(DateTime NgayKiemTra, int FromDot, int ToDot)
+        {
+            var query = from itemLH in _db.TT_LenhHuys
+                        join itemHD in _db.HOADONs on itemLH.MaHD equals itemHD.ID_HOADON
+                        where !(from itemCT in _db.TT_CTDongNuocs select itemCT.SoHoaDon).Contains(itemLH.SoHoaDon)
+                        && (itemHD.NGAYGIAITRACH == null || itemHD.NGAYGIAITRACH.Value.Date > NgayKiemTra.Date)
+                        && Convert.ToInt32(itemHD.DOT) >= FromDot && Convert.ToInt32(itemHD.DOT) <= ToDot
+                        orderby itemHD.MALOTRINH ascending
+                        select new
+                        {
+                            MaDN = "",
+                            HoTen = itemHD.TENKH,
+                            DiaChi = itemHD.SO + " " + itemHD.DUONG,
+                            DanhBo = itemHD.DANHBA,
+                            MLT = itemHD.MALOTRINH,
+                            itemHD.SOHOADON,
+                            itemLH.MaHD,
+                            Ky = itemHD.KY + "/" + itemHD.NAM,
+                            itemHD.TONGCONG,
+                            TenTo = "",
+                            NhanVien = "",
+                        };
+            return LINQToDataTable(query);
+        }
+
         public DataTable GetDSDangNgan()
         {
             DataTable dt = new DataTable();

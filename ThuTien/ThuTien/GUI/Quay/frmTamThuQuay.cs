@@ -238,7 +238,7 @@ namespace ThuTien.GUI.Quay
                                 }
                                 else
                                     //chốt đăng ngân quầy
-                                    if ((DateTime.Now.Hour == 11 && DateTime.Now.Minute > 30) || DateTime.Now.Hour > 11)
+                                    if ((DateTime.Now.Hour == 11 && DateTime.Now.Minute > 0) || DateTime.Now.Hour > 11)
                                     {
                                         DateTime NgayGiaiTrach = DateTime.Now;
                                         NgayGiaiTrach = NgayGiaiTrach.AddDays(1);
