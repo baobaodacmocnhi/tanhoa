@@ -287,7 +287,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                             HanhThu = itemtableND.HoTen,
                             To = itemtableND.TT_To.TenTo,
                         };
-            return LINQToDataTable(query);
+            return LINQToDataTable(query.ToList());
         }
 
         public DataTable GetTongQuet(int MaTo, DateTime CreateDate1, DateTime CreateDate2)

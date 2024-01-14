@@ -400,6 +400,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 tdls.DanhBoTruoc = tdls.DanhBo;
                                 tdls.DanhBo = bangke.DanhBo;
                                 tdls.DanhBoSau = tdls.DanhBo;
+                                tdls.DanhBoNgay = DateTime.Now;
                                 _cTienDu.SubmitChanges();
                                 scope.Complete();
                             }

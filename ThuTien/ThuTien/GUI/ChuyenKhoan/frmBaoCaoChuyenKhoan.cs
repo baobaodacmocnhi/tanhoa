@@ -935,7 +935,6 @@ namespace ThuTien.GUI.ChuyenKhoan
                 MessageBox.Show("Lỗi, Dữ liệu Đăng Ngân không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
             DataTable dt = new DataTable();
             dt.Columns.Add("MaBK", typeof(int));
             dt.Columns.Add("DanhBo", typeof(string));
@@ -956,7 +955,6 @@ namespace ThuTien.GUI.ChuyenKhoan
             dt.Columns.Add("TienMat", typeof(int));
             //dt.Columns.Add("Loai", typeof(string));
             dt.Columns.Add("BangKeCu", typeof(string));
-
             string SoPhieuThu = "";
             int count = 1, countSum = 1, SumSoTien = 0, SumGiaBan = 0, SumThueGTGT = 0, SumPhiBVMT = 0, SumPhiBVMT_Thue = 0, SumTongCong = 0;
             foreach (DataRow item in dtBK.Rows)
@@ -1000,9 +998,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         SumSoTien = int.Parse(item["SoTien"].ToString());
                     }
                 count++;
-
                 DataRow[] drDN = dtDN.Select("DanhBo like '" + item["DanhBo"].ToString() + "'");
-
                 //bảng kê có đăng ngân
                 if (drDN.Count() > 0)
                 {
@@ -1012,7 +1008,6 @@ namespace ThuTien.GUI.ChuyenKhoan
                     int PhiBVMT = int.Parse(dtDN.Compute("sum(PhiBVMT)", "DanhBo like '" + item["DanhBo"].ToString() + "'").ToString());
                     int PhiBVMT_Thue = int.Parse(dtDN.Compute("sum(PhiBVMT_Thue)", "DanhBo like '" + item["DanhBo"].ToString() + "'").ToString());
                     int TongCong = int.Parse(dtDN.Compute("sum(TongCong)", "DanhBo like '" + item["DanhBo"].ToString() + "'").ToString());
-
                     //cập nhật sum
                     if (SoPhieuThu == item["SoPhieuThu"].ToString())
                     {
@@ -1030,7 +1025,6 @@ namespace ThuTien.GUI.ChuyenKhoan
                     //    SumPhiBVMT = PhiBVMT;
                     //    SumTongCong = TongCong;
                     //}
-
                     foreach (DataRow itemdrDN in drDN)
                     {
                         //thêm dòng
@@ -1054,7 +1048,6 @@ namespace ThuTien.GUI.ChuyenKhoan
                             dr["NgayPhieuThu"] = item["NgayPhieuThu"];
                             dr["CreateDate"] = item["CreateDate"];
                         }
-
                         dr["DanhBo"] = item["DanhBo"];
                         dr["HoTen"] = itemdrDN["HoTen"];
                         dr["Ky"] = itemdrDN["Ky"];
@@ -1079,7 +1072,6 @@ namespace ThuTien.GUI.ChuyenKhoan
                         //    dr["Loai"] = "CQ";
                         //else
                         //    dr["Loai"] = "TG";
-
                         dt.Rows.Add(dr);
                         i++;
                         //trừ bớt trong danh sách đăng ngân
@@ -1102,7 +1094,6 @@ namespace ThuTien.GUI.ChuyenKhoan
                     //    dr["Lech"] = int.Parse(item["SoTien"].ToString()) - TongCong;
                     //    dt.Rows.Add(dr);
                     //}
-
                 }
                 //bảng kê không có đăng ngân
                 else
@@ -1127,16 +1118,12 @@ namespace ThuTien.GUI.ChuyenKhoan
                     //        else
                     //            dr["Loai"] = "TG";
                     //}
-
                     dt.Rows.Add(dr);
                 }
-
             }
-
             //dt.DefaultView.Sort = "Loai DESC,MaBK ASC";
             dt.DefaultView.Sort = "MaBK ASC";
             dt = dt.DefaultView.ToTable();
-
             //danh sách đăng ngân còn lại
             //if (dtDN.Rows.Count > 0)
             //{
@@ -1146,12 +1133,10 @@ namespace ThuTien.GUI.ChuyenKhoan
             foreach (DataRow item in dtDN.Rows)
             {
                 TT_BangKe bk = _cBangKe.getLast(item["DanhBo"].ToString(), dateGiaiTrach.Value);
-
                 ///có bảng kê
                 if (bk != null)
                 {
                     DataRow dr = dt.NewRow();
-
                     dr["MaBK"] = bk.MaBK;
                     dr["DanhBo"] = bk.DanhBo;
                     //dr["SoTien"] = bk.SoTien;
@@ -1191,14 +1176,12 @@ namespace ThuTien.GUI.ChuyenKhoan
                     //    dr["Loai"] = "CQ";
                     //else
                     //    dr["Loai"] = "TG";
-
                     dt.Rows.Add(dr);
                 }
                 //không có bảng kê
                 else
                 {
                     DataRow dr = dt.NewRow();
-
                     dr["DanhBo"] = item["DanhBo"];
                     dr["HoTen"] = item["HoTen"];
                     dr["Ky"] = item["Ky"];
@@ -1224,11 +1207,9 @@ namespace ThuTien.GUI.ChuyenKhoan
                     //    dr["Loai"] = "CQ";
                     //else
                     //    dr["Loai"] = "TG";
-
                     dt.Rows.Add(dr);
                 }
             }
-
             //Tạo các đối tượng Excel
             Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
             Microsoft.Office.Interop.Excel.Workbooks oBooks;
@@ -1236,18 +1217,15 @@ namespace ThuTien.GUI.ChuyenKhoan
             Microsoft.Office.Interop.Excel.Workbook oBook;
             Microsoft.Office.Interop.Excel.Worksheet oSheet;
             //Microsoft.Office.Interop.Excel.Worksheet oSheetCQ;
-
             //Tạo mới một Excel WorkBook 
             oExcel.Visible = true;
             oExcel.DisplayAlerts = false;
             //khai báo số lượng sheet
             oExcel.Application.SheetsInNewWorkbook = 1;
             oBooks = oExcel.Workbooks;
-
             oBook = (Microsoft.Office.Interop.Excel.Workbook)(oExcel.Workbooks.Add(Type.Missing));
             oSheets = oBook.Worksheets;
             oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
-
             oSheet.Name = "BẢNG KÊ";
 
             // Tạo phần đầu nếu muốn
@@ -1440,13 +1418,11 @@ namespace ThuTien.GUI.ChuyenKhoan
             // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
             // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
             object[,] arr = new object[dt.Rows.Count, 18];
-
             //Chuyển dữ liệu từ DataTable vào mảng đối tượng
             //int STT = 1;
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 DataRow dr = dt.Rows[i];
-
                 //if (!string.IsNullOrEmpty(dr["DanhBo"].ToString()))
                 //    arr[i, 0] = STT++;
                 arr[i, 0] = i + 1;
@@ -1472,7 +1448,6 @@ namespace ThuTien.GUI.ChuyenKhoan
                 //    arr[i, 13] = int.Parse(dr["SoTien"].ToString()) - int.Parse(dr["TongCong"].ToString());
                 arr[i, 13] = dr["Lech"];
                 //arr[i, 14] = dr["Loai"];
-
                 arr[i, 15] = dr["NganHang"];
                 arr[i, 16] = dr["TienMat"];
                 arr[i, 17] = dr["BangKeCu"];
@@ -1483,14 +1458,11 @@ namespace ThuTien.GUI.ChuyenKhoan
                 //    if (int.Parse(dr["TongHD"].ToString()) > 1)
                 //        arr[i, 14] = "X";
             }
-
             //Thiết lập vùng điền dữ liệu
             int rowStart = 7;
             int columnStart = 1;
-
             int rowEnd = rowStart + dt.Rows.Count - 1;
             int columnEnd = 18;
-
             // Ô bắt đầu điền dữ liệu
             Microsoft.Office.Interop.Excel.Range c1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, columnStart];
             // Ô kết thúc điền dữ liệu
@@ -1635,7 +1607,6 @@ namespace ThuTien.GUI.ChuyenKhoan
                 MessageBox.Show("Lỗi, Dữ liệu Đăng Ngân không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
             DataTable dt = new DataTable();
             dt.Columns.Add("MaBK", typeof(int));
             dt.Columns.Add("DanhBo", typeof(string));
@@ -1654,7 +1625,6 @@ namespace ThuTien.GUI.ChuyenKhoan
             dt.Columns.Add("Lech", typeof(int));
             dt.Columns.Add("TienMat", typeof(int));
             //dt.Columns.Add("Loai", typeof(string));
-
             string SoPhieuThu = "";
             int count = 1, countSum = 1, SumSoTien = 0, SumGiaBan = 0, SumThueGTGT = 0, SumPhiBVMT = 0, SumTongCong = 0;
             foreach (DataRow item in dtBK.Rows)
@@ -1696,9 +1666,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         SumSoTien = int.Parse(item["SoTien"].ToString());
                     }
                 count++;
-
                 DataRow[] drDN = dtDN.Select("DanhBo like '" + item["DanhBo"].ToString() + "'");
-
                 //bảng kê có đăng ngân
                 if (drDN.Count() > 0)
                 {
@@ -1707,7 +1675,6 @@ namespace ThuTien.GUI.ChuyenKhoan
                     int ThueGTGT = int.Parse(dtDN.Compute("sum(ThueGTGT)", "DanhBo like '" + item["DanhBo"].ToString() + "'").ToString());
                     int PhiBVMT = int.Parse(dtDN.Compute("sum(PhiBVMT)", "DanhBo like '" + item["DanhBo"].ToString() + "'").ToString());
                     int TongCong = int.Parse(dtDN.Compute("sum(TongCong)", "DanhBo like '" + item["DanhBo"].ToString() + "'").ToString());
-
                     //cập nhật sum
                     if (SoPhieuThu == item["SoPhieuThu"].ToString())
                     {
@@ -1724,7 +1691,6 @@ namespace ThuTien.GUI.ChuyenKhoan
                     //    SumPhiBVMT = PhiBVMT;
                     //    SumTongCong = TongCong;
                     //}
-
                     foreach (DataRow itemdrDN in drDN)
                     {
                         //thêm dòng
@@ -1748,7 +1714,6 @@ namespace ThuTien.GUI.ChuyenKhoan
                             dr["NgayPhieuThu"] = item["NgayPhieuThu"];
                             dr["CreateDate"] = item["CreateDate"];
                         }
-
                         dr["DanhBo"] = item["DanhBo"];
                         dr["HoTen"] = itemdrDN["HoTen"];
                         dr["Ky"] = itemdrDN["Ky"];
@@ -1771,7 +1736,6 @@ namespace ThuTien.GUI.ChuyenKhoan
                         //    dr["Loai"] = "CQ";
                         //else
                         //    dr["Loai"] = "TG";
-
                         dt.Rows.Add(dr);
                         i++;
                         //trừ bớt trong danh sách đăng ngân
@@ -1794,7 +1758,6 @@ namespace ThuTien.GUI.ChuyenKhoan
                     //    dr["Lech"] = int.Parse(item["SoTien"].ToString()) - TongCong;
                     //    dt.Rows.Add(dr);
                     //}
-
                 }
                 //bảng kê không có đăng ngân
                 else
@@ -1819,16 +1782,12 @@ namespace ThuTien.GUI.ChuyenKhoan
                     //        else
                     //            dr["Loai"] = "TG";
                     //}
-
                     dt.Rows.Add(dr);
                 }
-
             }
-
             //dt.DefaultView.Sort = "Loai DESC,MaBK ASC";
             dt.DefaultView.Sort = "MaBK ASC";
             dt = dt.DefaultView.ToTable();
-
             //danh sách đăng ngân còn lại
             //if (dtDN.Rows.Count > 0)
             //{
@@ -1838,7 +1797,6 @@ namespace ThuTien.GUI.ChuyenKhoan
             foreach (DataRow item in dtDN.Rows)
             {
                 TT_BangKe bk = _cBangKe.getLast(item["DanhBo"].ToString(), dateGiaiTrach.Value);
-
                 ///có bảng kê
                 if (bk != null)
                 {
@@ -1880,14 +1838,12 @@ namespace ThuTien.GUI.ChuyenKhoan
                     //    dr["Loai"] = "CQ";
                     //else
                     //    dr["Loai"] = "TG";
-
                     dt.Rows.Add(dr);
                 }
                 //không có bảng kê
                 else
                 {
                     DataRow dr = dt.NewRow();
-
                     dr["DanhBo"] = item["DanhBo"];
                     dr["HoTen"] = item["HoTen"];
                     dr["Ky"] = item["Ky"];
@@ -1911,11 +1867,9 @@ namespace ThuTien.GUI.ChuyenKhoan
                     //    dr["Loai"] = "CQ";
                     //else
                     //    dr["Loai"] = "TG";
-
                     dt.Rows.Add(dr);
                 }
             }
-
             //Tạo các đối tượng Excel
             Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
             Microsoft.Office.Interop.Excel.Workbooks oBooks;
@@ -1923,18 +1877,15 @@ namespace ThuTien.GUI.ChuyenKhoan
             Microsoft.Office.Interop.Excel.Workbook oBook;
             Microsoft.Office.Interop.Excel.Worksheet oSheet;
             //Microsoft.Office.Interop.Excel.Worksheet oSheetCQ;
-
             //Tạo mới một Excel WorkBook 
             oExcel.Visible = true;
             oExcel.DisplayAlerts = false;
             //khai báo số lượng sheet
             oExcel.Application.SheetsInNewWorkbook = 1;
             oBooks = oExcel.Workbooks;
-
             oBook = (Microsoft.Office.Interop.Excel.Workbook)(oExcel.Workbooks.Add(Type.Missing));
             oSheets = oBook.Worksheets;
             oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
-
             oSheet.Name = "BẢNG KÊ";
 
             // Tạo phần đầu nếu muốn
@@ -2110,17 +2061,14 @@ namespace ThuTien.GUI.ChuyenKhoan
             cl8.Font.Bold = true;
             cl8.Font.Name = "Times New Roman";
 
-
             // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
             // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
             object[,] arr = new object[dt.Rows.Count, 16];
-
             //Chuyển dữ liệu từ DataTable vào mảng đối tượng
             //int STT = 1;
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 DataRow dr = dt.Rows[i];
-
                 //if (!string.IsNullOrEmpty(dr["DanhBo"].ToString()))
                 //    arr[i, 0] = STT++;
                 arr[i, 0] = i + 1;
@@ -2145,7 +2093,6 @@ namespace ThuTien.GUI.ChuyenKhoan
                 //    arr[i, 12] = int.Parse(dr["SoTien"].ToString()) - int.Parse(dr["TongCong"].ToString());
                 arr[i, 12] = dr["Lech"];
                 //arr[i, 13] = dr["Loai"];
-
                 arr[i, 14] = dr["NganHang"];
                 arr[i, 15] = dr["TienMat"];
                 //if (!string.IsNullOrEmpty(dr["TongBK"].ToString()))
@@ -2159,10 +2106,8 @@ namespace ThuTien.GUI.ChuyenKhoan
             //Thiết lập vùng điền dữ liệu
             int rowStart = 7;
             int columnStart = 1;
-
             int rowEnd = rowStart + dt.Rows.Count - 1;
             int columnEnd = 16;
-
             // Ô bắt đầu điền dữ liệu
             Microsoft.Office.Interop.Excel.Range c1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, columnStart];
             // Ô kết thúc điền dữ liệu

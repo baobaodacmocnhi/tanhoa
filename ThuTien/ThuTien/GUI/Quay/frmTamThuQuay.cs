@@ -386,19 +386,6 @@ namespace ThuTien.GUI.Quay
                     if (hdIn.MaNV_HanhThu != null)
                         dr["NhanVienThuTien"] = _cNguoiDung.GetHoTenByMaND(hdIn.MaNV_HanhThu.Value);
                     dr["NhanVienQuay"] = CNguoiDung.HoTen;
-                    //int IDPhong = 0;
-                    //for (int i = 0; i < _lstPhong.Count; i++)
-                    //    if (_lstPhong[i].TuDot <= hdIn.DOT && hdIn.DOT <= _lstPhong[i].DenDot)
-                    //    {
-                    //        IDPhong = _lstPhong[i].ID;
-                    //        break;
-                    //    }
-                    //dr["TenPhong"] = _cNguoiDung.getChucVu(IDPhong);
-                    //dr["NguoiKy"] = _cNguoiDung.getNguoiKy(IDPhong);
-                    //if (chkChuKy.Checked)
-                    //{
-                    //    dr["ChuKy"] = _cNguoiDung.getChuKy(IDPhong);
-                    //}
                     ds.Tables["PhieuTamThu"].Rows.Add(dr);
                     rptPhieuTamThu_HDDT rpt = new rptPhieuTamThu_HDDT();
                     rpt.SetDataSource(ds);
@@ -717,19 +704,6 @@ namespace ThuTien.GUI.Quay
                 if (hdIn.MaNV_HanhThu != null)
                     dr["NhanVienThuTien"] = _cNguoiDung.GetHoTenByMaND(hdIn.MaNV_HanhThu.Value);
                 //dr["NhanVienQuay"] = CNguoiDung.HoTen;
-                //int IDPhong = 0;
-                //for (int i = 0; i < _lstPhong.Count; i++)
-                //    if (_lstPhong[i].TuDot <= hdIn.DOT && hdIn.DOT <= _lstPhong[i].DenDot)
-                //    {
-                //        IDPhong = _lstPhong[i].ID;
-                //        break;
-                //    }
-                //dr["TenPhong"] = _cNguoiDung.getChucVu(IDPhong);
-                //dr["NguoiKy"] = _cNguoiDung.getNguoiKy(IDPhong);
-                //if (chkChuKy.Checked)
-                //{
-                //    dr["ChuKy"] = _cNguoiDung.getChuKy(IDPhong);
-                //}
                 ds.Tables["PhieuTamThu"].Rows.Add(dr);
                 rptPhieuTamThu_HDDT rpt = new rptPhieuTamThu_HDDT();
                 rpt.SetDataSource(ds);
@@ -903,7 +877,6 @@ namespace ThuTien.GUI.Quay
                                 item.Selected = true;
                             }
                     }
-
         }
 
         private void frmTamThuQuay_KeyDown(object sender, KeyEventArgs e)
@@ -973,13 +946,7 @@ namespace ThuTien.GUI.Quay
             dr["NhanVienThuTien"] = "";
             dr["ChucVu"] = CNguoiDung.ChucVu;
             dr["NguoiKy"] = CNguoiDung.NguoiKy;
-            if (chkChuKy.Checked)
-            {
-                dr["ChuKy"] = true;
-                dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky" + CNguoiDung.IDPhong + ".png";
-            }
             ds.Tables["PhieuTamThu"].Rows.Add(dr);
-
             rptPhieuTamThu rpt = new rptPhieuTamThu();
             rpt.SetDataSource(ds);
             frmInQuay frm = new frmInQuay(rpt);

@@ -78,7 +78,7 @@ namespace ThuTien.DAL.ChuyenKhoan
             return LINQToDataTable(_db.TT_TienDus.Where(item => item.Phi > 0).ToList());
         }
 
-        public DataTable GetDSTienDu(DateTime NgayGiaiTrach)
+        public DataTable getDSTienDu(DateTime NgayGiaiTrach)
         {
             return ExecuteQuery_DataTable("declare @NgayGiaiTrach date;"
                     + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "'"
@@ -92,7 +92,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                     + " order by DanhBo");
         }
 
-        public DataTable GetDSTienDu(DateTime NgayGiaiTrach, int FromDot, int ToDot)
+        public DataTable getDSTienDu(DateTime NgayGiaiTrach, int FromDot, int ToDot)
         {
             //string sql = "declare @NgayGiaiTrach date;"
             //        + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "'"
@@ -118,6 +118,13 @@ namespace ThuTien.DAL.ChuyenKhoan
                     + " union all"
                     + " select * from temp where Dot is null"
                     + " order by DanhBo");
+        }
+
+        public DataTable getDSTienDu_ChuyenNhanTien(DateTime NgayGiaiTrach, int FromDot, int ToDot)
+        {
+            return ExecuteQuery_DataTable("select tdls.* from TT_TienDuLichSu tdls,CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh"
+                + " where CAST(tdls.CreateDate as date)='20240111' and (tdls.Loai like N'%chuyển tiền%' or tdls.Loai like N'%nhận tiền%')"
+                + " and tdls.DanhBoChuyenNhan!='12000000000' and tdls.DanhBo=ttkh.DANHBO and " + FromDot + "<=SUBSTRING(ttkh.LOTRINH,1,2) and SUBSTRING(ttkh.LOTRINH,1,2)<=" + ToDot);
         }
 
         public DataTable GetDSTienBienDong()

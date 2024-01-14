@@ -45,6 +45,7 @@
             this.btnXuatExcelDSChuyenKhoan = new System.Windows.Forms.Button();
             this.backgroundWorker_BangKe = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker_BangKeMoi = new System.ComponentModel.BackgroundWorker();
+            this.chkTanHoa = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -112,6 +113,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.chkTanHoa);
             this.groupBox2.Controls.Add(this.btnXuatExcelBangKeMoi);
             this.groupBox2.Controls.Add(this.btnXuatExcelBangKe);
             this.groupBox2.Controls.Add(this.dateGiaiTrach);
@@ -210,6 +212,16 @@
             this.backgroundWorker_BangKeMoi.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_BangKeMoi_DoWork);
             this.backgroundWorker_BangKeMoi.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_BangKeMoi_RunWorkerCompleted);
             // 
+            // chkTanHoa
+            // 
+            this.chkTanHoa.AutoSize = true;
+            this.chkTanHoa.Location = new System.Drawing.Point(65, 21);
+            this.chkTanHoa.Name = "chkTanHoa";
+            this.chkTanHoa.Size = new System.Drawing.Size(68, 17);
+            this.chkTanHoa.TabIndex = 30;
+            this.chkTanHoa.Text = "Tân Hòa";
+            this.chkTanHoa.UseVisualStyleBackColor = true;
+            // 
             // frmBaoCaoChuyenKhoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -251,5 +263,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker_BangKe;
         private System.Windows.Forms.Button btnXuatExcelBangKeMoi;
         private System.ComponentModel.BackgroundWorker backgroundWorker_BangKeMoi;
+        private System.Windows.Forms.CheckBox chkTanHoa;
     }
 }

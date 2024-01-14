@@ -253,7 +253,6 @@ namespace ThuTien.GUI.ChuyenKhoan
         private void btnXuatExcel2_Click(object sender, EventArgs e)
         {
             DataTable dt = (DataTable)dgvHoaDon.DataSource;
-
             //Tạo các đối tượng Excel
             Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
             Microsoft.Office.Interop.Excel.Workbooks oBooks;
@@ -261,18 +260,15 @@ namespace ThuTien.GUI.ChuyenKhoan
             Microsoft.Office.Interop.Excel.Workbook oBook;
             Microsoft.Office.Interop.Excel.Worksheet oSheet;
             //Microsoft.Office.Interop.Excel.Worksheet oSheetCQ;
-
             //Tạo mới một Excel WorkBook 
             oExcel.Visible = true;
             oExcel.DisplayAlerts = false;
             //khai báo số lượng sheet
             oExcel.Application.SheetsInNewWorkbook = 1;
             oBooks = oExcel.Workbooks;
-
             oBook = (Microsoft.Office.Interop.Excel.Workbook)(oExcel.Workbooks.Add(Type.Missing));
             oSheets = oBook.Worksheets;
             oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
-
             XuatExcel2(dt, oSheet, "ĐÔNG Á");
         }
 
@@ -308,35 +304,35 @@ namespace ThuTien.GUI.ChuyenKhoan
             cl14.Value2 = "Khách Hàng";
             cl14.ColumnWidth = 25;
 
-            Microsoft.Office.Interop.Excel.Range cl7 = oSheet.get_Range("H1", "H1");
-            cl7.Value2 = "Số Phát Hành";
-            cl7.ColumnWidth = 15;
+            //Microsoft.Office.Interop.Excel.Range cl7 = oSheet.get_Range("H1", "H1");
+            //cl7.Value2 = "Số Phát Hành";
+            //cl7.ColumnWidth = 15;
 
-            Microsoft.Office.Interop.Excel.Range cl8 = oSheet.get_Range("I1", "I1");
+            Microsoft.Office.Interop.Excel.Range cl8 = oSheet.get_Range("H1", "H1");
             cl8.Value2 = "Số Tài Khoản";
             cl8.ColumnWidth = 15;
 
-            Microsoft.Office.Interop.Excel.Range cl9 = oSheet.get_Range("J1", "J1");
+            Microsoft.Office.Interop.Excel.Range cl9 = oSheet.get_Range("I1", "I1");
             cl9.Value2 = "Số Tiền Phải Thu";
             cl9.ColumnWidth = 15;
 
-            Microsoft.Office.Interop.Excel.Range cl10 = oSheet.get_Range("K1", "K1");
+            Microsoft.Office.Interop.Excel.Range cl10 = oSheet.get_Range("J1", "J1");
             cl10.Value2 = "LNTT";
             cl10.ColumnWidth = 5;
 
-            Microsoft.Office.Interop.Excel.Range cl11 = oSheet.get_Range("L1", "L1");
+            Microsoft.Office.Interop.Excel.Range cl11 = oSheet.get_Range("K1", "K1");
             cl11.Value2 = "Tiền Nước";
             cl11.ColumnWidth = 10;
 
-            Microsoft.Office.Interop.Excel.Range cl12 = oSheet.get_Range("M1", "M1");
+            Microsoft.Office.Interop.Excel.Range cl12 = oSheet.get_Range("L1", "L1");
             cl12.Value2 = "Thuế GTGT";
             cl12.ColumnWidth = 10;
 
-            Microsoft.Office.Interop.Excel.Range cl13 = oSheet.get_Range("N1", "N1");
+            Microsoft.Office.Interop.Excel.Range cl13 = oSheet.get_Range("M1", "M1");
             cl13.Value2 = "Phí BVMT";
             cl13.ColumnWidth = 10;
 
-            Microsoft.Office.Interop.Excel.Range cl15 = oSheet.get_Range("O1", "O1");
+            Microsoft.Office.Interop.Excel.Range cl15 = oSheet.get_Range("N1", "N1");
             cl15.Value2 = "Trừ Tiền Dư";
             cl15.ColumnWidth = 10;
 
@@ -349,8 +345,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
             // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
             // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
-            object[,] arr = new object[dt.Rows.Count, 15];
-
+            object[,] arr = new object[dt.Rows.Count, 14];
             //Chuyển dữ liệu từ DataTable vào mảng đối tượng
             for (int i = 0; i < dt.Rows.Count; i++)
             {
@@ -362,33 +357,31 @@ namespace ThuTien.GUI.ChuyenKhoan
                 arr[i, 4] = int.Parse(dr["Dot"].ToString()).ToString("00");
                 arr[i, 5] = dr["DanhBo"].ToString();
                 arr[i, 6] = dr["HoTen"].ToString();
-                arr[i, 7] = int.Parse(dr["SoPhatHanh"].ToString()).ToString("00000000");
-                arr[i, 8] = dr["SoTaiKhoan"].ToString();
+                //arr[i, 7] = int.Parse(dr["SoPhatHanh"].ToString()).ToString("00000000");
+                arr[i, 7] = dr["SoTaiKhoan"].ToString();
                 int TienDu = _cTienDu.GetTienDu(dr["DanhBo"].ToString());
                 if (TienDu > 0)
                 {
-                    arr[i, 14] = "Có";
+                    arr[i, 13] = "Có";
                     if (TienDu >= int.Parse(dr["TongCong"].ToString()))
-                        arr[i, 9] = 0;
+                        arr[i, 8] = 0;
                     else
-                        arr[i, 9] = int.Parse(dr["TongCong"].ToString()) - TienDu;
+                        arr[i, 8] = int.Parse(dr["TongCong"].ToString()) - TienDu;
                 }
                 else
                 {
-                    arr[i, 9] = int.Parse(dr["TongCong"].ToString());
+                    arr[i, 8] = int.Parse(dr["TongCong"].ToString());
                 }
-                arr[i, 10] = int.Parse(dr["TieuThu"].ToString()).ToString("00");
-                arr[i, 11] = dr["GiaBan"].ToString();
-                arr[i, 12] = dr["ThueGTGT"].ToString();
-                arr[i, 13] = dr["PhiBVMT"].ToString();
+                arr[i, 9] = int.Parse(dr["TieuThu"].ToString()).ToString("00");
+                arr[i, 10] = dr["GiaBan"].ToString();
+                arr[i, 11] = dr["ThueGTGT"].ToString();
+                arr[i, 12] = dr["PhiBVMT"].ToString();
             }
-
             //Thiết lập vùng điền dữ liệu
             int rowStart = 2;
             int columnStart = 1;
-
             int rowEnd = rowStart + dt.Rows.Count - 1;
-            int columnEnd = 15;
+            int columnEnd = 14;
 
             // Ô bắt đầu điền dữ liệu
             Microsoft.Office.Interop.Excel.Range c1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, columnStart];
@@ -473,9 +466,6 @@ namespace ThuTien.GUI.ChuyenKhoan
                     if (dialog.ShowDialog() == DialogResult.OK)
                     {
                         DataTable dtExcel = _cHoaDon.ExcelToDataTable(dialog.FileName);
-                        //CExcel fileExcel = new CExcel(dialog.FileName);
-                        //DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
-
                         foreach (DataRow item in dtExcel.Rows)
                             if (item[0].ToString().Replace(" ", "").Length == 11 && !_cDLKH.CheckExistDanhBo(item[0].ToString().Replace(" ", "")))
                             {
