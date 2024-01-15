@@ -887,7 +887,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                         if (item.Cells["NgayGiaiTrach_TT"].Value == null || item.Cells["NgayGiaiTrach_TT"].Value.ToString() == "")
                                         {
                                             var transactionOptions = new TransactionOptions();
-                                            transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                                            transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted;
                                             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                                             {
                                                 if (_cHoaDon.DangNgan("ChuyenKhoan", item.Cells["SoHoaDon_TT"].Value.ToString(), CNguoiDung.MaND))
@@ -903,7 +903,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                         if (_cHoaDon.checkExists_KyMoi(item.Cells["Ky_TT"].Value.ToString()) == false && (item.Cells["NgayGiaiTrach_TT"].Value == null || item.Cells["NgayGiaiTrach_TT"].Value.ToString() == ""))
                                         {
                                             var transactionOptions = new TransactionOptions();
-                                            transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                                            transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted;
                                             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                                             {
                                                 if (_cHoaDon.DangNgan("ChuyenKhoan", item.Cells["SoHoaDon_TT"].Value.ToString(), CNguoiDung.MaND))

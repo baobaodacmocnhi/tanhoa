@@ -79,41 +79,44 @@ namespace ThuTien.DAL.ChuyenKhoan
         public DataTable getDS_Chung(DateTime FromCreateDate, DateTime ToCreateDate, int FromDot, int ToDot)
         {
             //return LINQToDataTable(_db.TT_PhiMoNuocs.Where(item => item.CreateDate.Value.Date >= FromCreateDate.Date && item.CreateDate.Value.Date <= ToCreateDate.Date).ToList().OrderByDescending(item=>item.CreateDate));
-            string sql = "select a.*,b.Co,b.MLT from TT_PhiMoNuoc a left join TT_KQDongNuoc b on a.MaKQDN=b.MaKQDN"
-                        + " where CAST(a.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(a.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and " + FromDot + "<=SUBSTRING(b.MLT,1,2) and SUBSTRING(b.MLT,1,2)<=" + ToDot
+            string sql = "select a.*,b.Co,MLT=ttkh.LOTRINH from TT_PhiMoNuoc a left join TT_KQDongNuoc b on a.MaKQDN=b.MaKQDN left join CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh on ttkh.DANHBO=b.DanhBo"
+                        + " where CAST(a.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(a.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and " + FromDot + "<=SUBSTRING(ttkh.LOTRINH,1,2) and SUBSTRING(ttkh.LOTRINH,1,2)<=" + ToDot
                         + " order by a.CreateDate desc";
             return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable getDS_Rieng(DateTime FromCreateDate, DateTime ToCreateDate, int FromDot, int ToDot)
         {
-            var query = from itemP in _db.TT_BangKe_PhiMoNuocs
-                        join itemKQ in _db.TT_KQDongNuocs on itemP.MaKQDN equals itemKQ.MaKQDN
-                        join itemND in _db.TT_NguoiDungs on itemKQ.CreateBy equals itemND.MaND
-                        where itemP.CreateDate.Value.Date >= FromCreateDate.Date && itemP.CreateDate.Value.Date <= ToCreateDate.Date
-                        && FromDot <= Convert.ToInt32(itemKQ.MLT.Substring(0, 2)) && Convert.ToInt32(itemKQ.MLT.Substring(0, 2)) <= ToDot
-                        select new
-                        {
-                            itemKQ.MaDN,
-                            itemKQ.MaKQDN,
-                            itemKQ.CreateDate,
-                            itemKQ.MLT,
-                            itemKQ.DanhBo,
-                            itemKQ.HoTen,
-                            itemKQ.DiaChi,
-                            itemKQ.NgayDN,
-                            itemKQ.PhiMoNuoc,
-                            itemKQ.DongPhi,
-                            itemKQ.NgayDongPhi,
-                            itemKQ.ChuyenKhoan,
-                            itemKQ.Co,
-                            itemKQ.Hieu,
-                            itemKQ.SoThan,
-                            itemKQ.ChiSoDN,
-                            itemKQ.LyDo,
-                            CreateBy = itemND.HoTen,
-                        };
-            return LINQToDataTable(query.ToList());
+            //var query = from itemP in _db.TT_BangKe_PhiMoNuocs
+            //            join itemKQ in _db.TT_KQDongNuocs on itemP.MaKQDN equals itemKQ.MaKQDN
+            //            join itemND in _db.TT_NguoiDungs on itemKQ.CreateBy equals itemND.MaND
+            //            where itemP.CreateDate.Value.Date >= FromCreateDate.Date && itemP.CreateDate.Value.Date <= ToCreateDate.Date
+            //            && FromDot <= Convert.ToInt32(itemKQ.MLT.Substring(0, 2)) && Convert.ToInt32(itemKQ.MLT.Substring(0, 2)) <= ToDot
+            //            select new
+            //            {
+            //                itemKQ.MaDN,
+            //                itemKQ.MaKQDN,
+            //                itemKQ.CreateDate,
+            //                itemKQ.MLT,
+            //                itemKQ.DanhBo,
+            //                itemKQ.HoTen,
+            //                itemKQ.DiaChi,
+            //                itemKQ.NgayDN,
+            //                itemKQ.PhiMoNuoc,
+            //                itemKQ.DongPhi,
+            //                itemKQ.NgayDongPhi,
+            //                itemKQ.ChuyenKhoan,
+            //                itemKQ.Co,
+            //                itemKQ.Hieu,
+            //                itemKQ.SoThan,
+            //                itemKQ.ChiSoDN,
+            //                itemKQ.LyDo,
+            //                CreateBy = itemND.HoTen,
+            //            };
+            //return LINQToDataTable(query.ToList());
+            return ExecuteQuery_DataTable("select b.*,b.Co,MLT=ttkh.LOTRINH from TT_BangKe_PhiMoNuoc a left join TT_KQDongNuoc b on a.MaKQDN=b.MaKQDN left join CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh on ttkh.DANHBO=b.DanhBo"
+                        + " where CAST(a.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(a.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and " + FromDot + "<=SUBSTRING(ttkh.LOTRINH,1,2) and SUBSTRING(ttkh.LOTRINH,1,2)<=" + ToDot
+                        + " order by a.CreateDate desc");
         }
 
         public int getPhiMoNuoc_Chot(bool Chot)

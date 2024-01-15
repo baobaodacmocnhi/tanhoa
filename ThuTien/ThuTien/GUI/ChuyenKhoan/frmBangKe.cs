@@ -97,7 +97,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                     if (flag == true)
                                     {
                                         var transactionOptions = new TransactionOptions();
-                                        transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                                        transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted;
                                         using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                                         {
                                             //if (item[0].ToString().Length == 11 && _cBangKe.CheckExist(item[0].ToString(), DateTime.Now))
