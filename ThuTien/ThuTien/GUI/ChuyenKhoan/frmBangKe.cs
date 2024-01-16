@@ -528,12 +528,13 @@ namespace ThuTien.GUI.ChuyenKhoan
                             //    scope.Complete();
                             //}
                             //phòng ghi thu
-                            var transactionOptions = new TransactionOptions();
-                            transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
-                            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
-                            {
-                                for (int i = 0; i < dgvBangKe.Rows.Count; i++)
-                                    if (dgvBangKe["SoPhieuThu", i].Value.ToString() == "")
+
+                            for (int i = 0; i < dgvBangKe.Rows.Count; i++)
+                                if (dgvBangKe["SoPhieuThu", i].Value.ToString() == "")
+                                {
+                                    var transactionOptions = new TransactionOptions();
+                                    transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                                    using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                                     {
                                         DataRow[] dr = dtExcel.Select("DanhBo='" + dgvBangKe["DanhBo", i].Value.ToString() + "' and SoTien=" + dgvBangKe["SoTien", i].Value.ToString());
                                         if (dr != null && dr.Count() > 0)
@@ -550,18 +551,39 @@ namespace ThuTien.GUI.ChuyenKhoan
                                                 }
                                                 else
                                                 {
-                                                    MessageBox.Show("Lỗi Danh Bộ " + dtExcel.Rows[i][0].ToString().Replace(" ", ""), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                    MessageBox.Show("Lỗi Danh Bộ " + dgvBangKe["DanhBo", i].Value.ToString().Replace(" ", ""), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                                     return;
                                                 }
                                             }
                                             else
                                             {
-                                                MessageBox.Show("Lỗi Danh Bộ " + dgvBangKe["DanhBo", i].Value.ToString() + " có nhiều hơn 1 dòng cùng Số Tiền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                                return;
+                                                //MessageBox.Show("Lỗi Danh Bộ " + dgvBangKe["DanhBo", i].Value.ToString() + " có nhiều hơn 1 dòng cùng Số Tiền", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                //return;
+                                                for (int j = 0; j < dr.Count(); j++)
+                                                    if (!string.IsNullOrEmpty(dr[j][3].ToString().Trim()) && !string.IsNullOrEmpty(dr[j][4].ToString().Trim()))
+                                                    {
+                                                        for (int k = i; k < dgvBangKe.Rows.Count; k++)
+                                                            if (dgvBangKe["SoPhieuThu", k].Value.ToString() == "")
+                                                            {
+                                                                TT_BangKe bangke = _cBangKe.get(int.Parse(dgvBangKe["MaBK", k].Value.ToString()));
+                                                                bangke.SoPhieuThu = dr[j][3].ToString().Trim();
+                                                                string[] date = dr[j][4].ToString().Trim().Split('/');
+                                                                string[] year = date[2].Split(' ');
+                                                                bangke.NgayPhieuThu = new DateTime(int.Parse(year[0]), int.Parse(date[1]), int.Parse(date[0]));
+                                                                _cBangKe.Sua(bangke);
+                                                                dgvBangKe["SoPhieuThu", k].Value = bangke.SoPhieuThu;
+                                                                break;
+                                                            }
+                                                    }
+                                                    else
+                                                    {
+                                                        MessageBox.Show("Lỗi Danh Bộ " + dgvBangKe["DanhBo", i].Value.ToString().Replace(" ", ""), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                        return;
+                                                    }
                                             }
+                                        scope.Complete();
                                     }
-                                scope.Complete();
-                            }
+                                }
                             MessageBox.Show("Đã xử lý, vui lòng kiểm tra lại dữ liệu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             btnXem.PerformClick();
                         }

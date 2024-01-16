@@ -114,7 +114,7 @@ namespace ThuTien.DAL.ChuyenKhoan
             //                CreateBy = itemND.HoTen,
             //            };
             //return LINQToDataTable(query.ToList());
-            return ExecuteQuery_DataTable("select b.*,b.Co,MLT=ttkh.LOTRINH from TT_BangKe_PhiMoNuoc a left join TT_KQDongNuoc b on a.MaKQDN=b.MaKQDN left join CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh on ttkh.DANHBO=b.DanhBo"
+            return ExecuteQuery_DataTable("select CreateBy=(select HoTen from TT_NguoiDung where MaND=b.CreateBy),b.*,b.Co,MLT=ttkh.LOTRINH from TT_BangKe_PhiMoNuoc a left join TT_KQDongNuoc b on a.MaKQDN=b.MaKQDN left join CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh on ttkh.DANHBO=b.DanhBo"
                         + " where CAST(a.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(a.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and " + FromDot + "<=SUBSTRING(ttkh.LOTRINH,1,2) and SUBSTRING(ttkh.LOTRINH,1,2)<=" + ToDot
                         + " order by a.CreateDate desc");
         }

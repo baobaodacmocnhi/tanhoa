@@ -257,7 +257,7 @@ namespace ThuTien.DAL.ChuyenKhoan
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDS2(DateTime CreateDate1, DateTime CreateDate2)
+        public DataTable GetDS2(DateTime CreateDate1, DateTime CreateDate2, int FromDot, int ToDot)
         {
             var query = from itemDLKH in _db.TT_DuLieuKhachHang_SoHoaDons
                         join itemHD in _db.HOADONs on itemDLKH.MaHD equals itemHD.ID_HOADON
@@ -266,6 +266,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
                         from itemtableND in tableND.DefaultIfEmpty()
                         where itemDLKH.CreateDate.Value.Date >= CreateDate1.Date && itemDLKH.CreateDate.Value.Date <= CreateDate2.Date
+                        && FromDot <= itemHD.DOT && itemHD.DOT <= ToDot
                         select new
                         {
                             itemHD.NGAYGIAITRACH,

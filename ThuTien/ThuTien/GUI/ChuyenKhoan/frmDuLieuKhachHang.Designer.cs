@@ -46,26 +46,6 @@
             this.btnInDSTon_DB = new System.Windows.Forms.Button();
             this.btnChonFile = new System.Windows.Forms.Button();
             this.dgvDanhBo = new System.Windows.Forms.DataGridView();
-            this.NgayGiaiTrach_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DanhBo_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoTaiKhoan_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaHD_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoHoaDon_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoPhatHanh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nam_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ky_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dot_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MLT_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GiaBieu_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TieuThu_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GiaBan_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ThueGTGT_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PhiBVMT_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongCong_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HanhThu_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.To_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmbKy = new System.Windows.Forms.ComboBox();
             this.btnXem = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
@@ -86,6 +66,36 @@
             this.dateDen = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.dgvHoaDon = new System.Windows.Forms.DataGridView();
+            this.btnXem2 = new System.Windows.Forms.Button();
+            this.dateTu = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnXoa2 = new System.Windows.Forms.Button();
+            this.btnThem2 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtSoLuong = new System.Windows.Forms.TextBox();
+            this.txtSoHoaDon = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.NgayGiaiTrach_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MLT_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DanhBo_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoTaiKhoan_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaHD_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoHoaDon_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoPhatHanh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nam_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ky_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dot_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GiaBieu_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TieuThu_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GiaBan_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ThueGTGT_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PhiBVMT_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongCong_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HanhThu_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.To_DB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaHD_HD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayGiaiTrach_HD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoHoaDon_HD = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -105,16 +115,6 @@
             this.To_HD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoTaiKhoan_HD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GiaBieu_HD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnXem2 = new System.Windows.Forms.Button();
-            this.dateTu = new System.Windows.Forms.DateTimePicker();
-            this.label7 = new System.Windows.Forms.Label();
-            this.btnXoa2 = new System.Windows.Forms.Button();
-            this.btnThem2 = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtSoLuong = new System.Windows.Forms.TextBox();
-            this.txtSoHoaDon = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.tabDLKH1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhBo)).BeginInit();
@@ -248,6 +248,7 @@
             this.dgvDanhBo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDanhBo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NgayGiaiTrach_DB,
+            this.MLT_DB,
             this.DanhBo_DB,
             this.HoTen,
             this.SoTaiKhoan_DB,
@@ -257,7 +258,6 @@
             this.Nam_DB,
             this.Ky_DB,
             this.Dot_DB,
-            this.MLT_DB,
             this.HoTen_DB,
             this.GiaBieu_DB,
             this.TieuThu_DB,
@@ -289,165 +289,10 @@
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvDanhBo.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvDanhBo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDanhBo.Size = new System.Drawing.Size(1174, 567);
+            this.dgvDanhBo.Size = new System.Drawing.Size(1270, 567);
             this.dgvDanhBo.TabIndex = 0;
             this.dgvDanhBo.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDanhBo_CellFormatting);
             this.dgvDanhBo.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhBo_RowPostPaint);
-            // 
-            // NgayGiaiTrach_DB
-            // 
-            this.NgayGiaiTrach_DB.DataPropertyName = "NgayGiaiTrach";
-            this.NgayGiaiTrach_DB.HeaderText = "Ngày Giải Trách";
-            this.NgayGiaiTrach_DB.Name = "NgayGiaiTrach_DB";
-            this.NgayGiaiTrach_DB.ReadOnly = true;
-            this.NgayGiaiTrach_DB.Visible = false;
-            this.NgayGiaiTrach_DB.Width = 80;
-            // 
-            // DanhBo_DB
-            // 
-            this.DanhBo_DB.DataPropertyName = "DanhBo";
-            this.DanhBo_DB.HeaderText = "Danh Bộ";
-            this.DanhBo_DB.Name = "DanhBo_DB";
-            this.DanhBo_DB.ReadOnly = true;
-            // 
-            // HoTen
-            // 
-            this.HoTen.DataPropertyName = "HoTen";
-            this.HoTen.HeaderText = "Khách Hàng";
-            this.HoTen.Name = "HoTen";
-            this.HoTen.ReadOnly = true;
-            this.HoTen.Width = 200;
-            // 
-            // SoTaiKhoan_DB
-            // 
-            this.SoTaiKhoan_DB.DataPropertyName = "SoTaiKhoan";
-            this.SoTaiKhoan_DB.HeaderText = "Tài Khoản";
-            this.SoTaiKhoan_DB.Name = "SoTaiKhoan_DB";
-            this.SoTaiKhoan_DB.ReadOnly = true;
-            // 
-            // MaHD_DB
-            // 
-            this.MaHD_DB.DataPropertyName = "MaHD";
-            this.MaHD_DB.HeaderText = "MaHD";
-            this.MaHD_DB.Name = "MaHD_DB";
-            this.MaHD_DB.ReadOnly = true;
-            this.MaHD_DB.Visible = false;
-            // 
-            // SoHoaDon_DB
-            // 
-            this.SoHoaDon_DB.DataPropertyName = "SoHoaDon";
-            this.SoHoaDon_DB.HeaderText = "Số HĐ";
-            this.SoHoaDon_DB.Name = "SoHoaDon_DB";
-            this.SoHoaDon_DB.ReadOnly = true;
-            // 
-            // SoPhatHanh
-            // 
-            this.SoPhatHanh.DataPropertyName = "SoPhatHanh";
-            this.SoPhatHanh.HeaderText = "SoPhatHanh";
-            this.SoPhatHanh.Name = "SoPhatHanh";
-            this.SoPhatHanh.ReadOnly = true;
-            this.SoPhatHanh.Visible = false;
-            // 
-            // Nam_DB
-            // 
-            this.Nam_DB.DataPropertyName = "Nam";
-            this.Nam_DB.HeaderText = "Năm";
-            this.Nam_DB.Name = "Nam_DB";
-            this.Nam_DB.ReadOnly = true;
-            this.Nam_DB.Width = 50;
-            // 
-            // Ky_DB
-            // 
-            this.Ky_DB.DataPropertyName = "Ky";
-            this.Ky_DB.HeaderText = "Kỳ";
-            this.Ky_DB.Name = "Ky_DB";
-            this.Ky_DB.ReadOnly = true;
-            this.Ky_DB.Width = 50;
-            // 
-            // Dot_DB
-            // 
-            this.Dot_DB.DataPropertyName = "Dot";
-            this.Dot_DB.HeaderText = "Đợt";
-            this.Dot_DB.Name = "Dot_DB";
-            this.Dot_DB.ReadOnly = true;
-            this.Dot_DB.Width = 50;
-            // 
-            // MLT_DB
-            // 
-            this.MLT_DB.DataPropertyName = "MLT";
-            this.MLT_DB.HeaderText = "MLT";
-            this.MLT_DB.Name = "MLT_DB";
-            this.MLT_DB.ReadOnly = true;
-            this.MLT_DB.Visible = false;
-            // 
-            // HoTen_DB
-            // 
-            this.HoTen_DB.DataPropertyName = "HoTen";
-            this.HoTen_DB.HeaderText = "HoTen";
-            this.HoTen_DB.Name = "HoTen_DB";
-            this.HoTen_DB.ReadOnly = true;
-            this.HoTen_DB.Visible = false;
-            // 
-            // GiaBieu_DB
-            // 
-            this.GiaBieu_DB.DataPropertyName = "GiaBieu";
-            this.GiaBieu_DB.HeaderText = "GiaBieu";
-            this.GiaBieu_DB.Name = "GiaBieu_DB";
-            this.GiaBieu_DB.ReadOnly = true;
-            this.GiaBieu_DB.Visible = false;
-            // 
-            // TieuThu_DB
-            // 
-            this.TieuThu_DB.DataPropertyName = "TieuThu";
-            this.TieuThu_DB.HeaderText = "Tiêu Thụ";
-            this.TieuThu_DB.Name = "TieuThu_DB";
-            this.TieuThu_DB.ReadOnly = true;
-            this.TieuThu_DB.Width = 80;
-            // 
-            // GiaBan_DB
-            // 
-            this.GiaBan_DB.DataPropertyName = "GiaBan";
-            this.GiaBan_DB.HeaderText = "Giá Bán";
-            this.GiaBan_DB.Name = "GiaBan_DB";
-            this.GiaBan_DB.ReadOnly = true;
-            this.GiaBan_DB.Width = 80;
-            // 
-            // ThueGTGT_DB
-            // 
-            this.ThueGTGT_DB.DataPropertyName = "ThueGTGT";
-            this.ThueGTGT_DB.HeaderText = "Thuế GTGT";
-            this.ThueGTGT_DB.Name = "ThueGTGT_DB";
-            this.ThueGTGT_DB.ReadOnly = true;
-            // 
-            // PhiBVMT_DB
-            // 
-            this.PhiBVMT_DB.DataPropertyName = "PhiBVMT";
-            this.PhiBVMT_DB.HeaderText = "Phí BVMT";
-            this.PhiBVMT_DB.Name = "PhiBVMT_DB";
-            this.PhiBVMT_DB.ReadOnly = true;
-            // 
-            // TongCong_DB
-            // 
-            this.TongCong_DB.DataPropertyName = "TongCong";
-            this.TongCong_DB.HeaderText = "Tổng Cộng";
-            this.TongCong_DB.Name = "TongCong_DB";
-            this.TongCong_DB.ReadOnly = true;
-            // 
-            // HanhThu_DB
-            // 
-            this.HanhThu_DB.DataPropertyName = "HanhThu";
-            this.HanhThu_DB.HeaderText = "HanhThu";
-            this.HanhThu_DB.Name = "HanhThu_DB";
-            this.HanhThu_DB.ReadOnly = true;
-            this.HanhThu_DB.Visible = false;
-            // 
-            // To_DB
-            // 
-            this.To_DB.DataPropertyName = "To";
-            this.To_DB.HeaderText = "To";
-            this.To_DB.Name = "To_DB";
-            this.To_DB.ReadOnly = true;
-            this.To_DB.Visible = false;
             // 
             // cmbKy
             // 
@@ -718,150 +563,6 @@
             this.dgvHoaDon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHoaDon_CellFormatting);
             this.dgvHoaDon.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvHoaDon_RowPostPaint);
             // 
-            // MaHD_HD
-            // 
-            this.MaHD_HD.DataPropertyName = "MaHD";
-            this.MaHD_HD.HeaderText = "MaHD";
-            this.MaHD_HD.Name = "MaHD_HD";
-            this.MaHD_HD.ReadOnly = true;
-            this.MaHD_HD.Visible = false;
-            // 
-            // NgayGiaiTrach_HD
-            // 
-            this.NgayGiaiTrach_HD.DataPropertyName = "NgayGiaiTrach";
-            this.NgayGiaiTrach_HD.HeaderText = "Ngày Giải Trách";
-            this.NgayGiaiTrach_HD.Name = "NgayGiaiTrach_HD";
-            this.NgayGiaiTrach_HD.ReadOnly = true;
-            this.NgayGiaiTrach_HD.Width = 80;
-            // 
-            // SoHoaDon_HD
-            // 
-            this.SoHoaDon_HD.DataPropertyName = "SoHoaDon";
-            this.SoHoaDon_HD.HeaderText = "Số HĐ";
-            this.SoHoaDon_HD.Name = "SoHoaDon_HD";
-            this.SoHoaDon_HD.ReadOnly = true;
-            // 
-            // Nam_HD
-            // 
-            this.Nam_HD.DataPropertyName = "Nam";
-            this.Nam_HD.HeaderText = "Năm";
-            this.Nam_HD.Name = "Nam_HD";
-            this.Nam_HD.ReadOnly = true;
-            this.Nam_HD.Width = 50;
-            // 
-            // Ky_HD
-            // 
-            this.Ky_HD.DataPropertyName = "Ky";
-            this.Ky_HD.HeaderText = "Kỳ";
-            this.Ky_HD.Name = "Ky_HD";
-            this.Ky_HD.ReadOnly = true;
-            this.Ky_HD.Width = 50;
-            // 
-            // Dot_HD
-            // 
-            this.Dot_HD.DataPropertyName = "Dot";
-            this.Dot_HD.HeaderText = "Đợt";
-            this.Dot_HD.Name = "Dot_HD";
-            this.Dot_HD.ReadOnly = true;
-            this.Dot_HD.Width = 50;
-            // 
-            // MLT_HD
-            // 
-            this.MLT_HD.DataPropertyName = "MLT";
-            this.MLT_HD.HeaderText = "MLT";
-            this.MLT_HD.Name = "MLT_HD";
-            this.MLT_HD.ReadOnly = true;
-            // 
-            // SoPhatHanh_HD
-            // 
-            this.SoPhatHanh_HD.DataPropertyName = "SoPhatHanh";
-            this.SoPhatHanh_HD.HeaderText = "Số Phát Hành";
-            this.SoPhatHanh_HD.Name = "SoPhatHanh_HD";
-            this.SoPhatHanh_HD.ReadOnly = true;
-            this.SoPhatHanh_HD.Visible = false;
-            // 
-            // DanhBo_HD
-            // 
-            this.DanhBo_HD.DataPropertyName = "DanhBo";
-            this.DanhBo_HD.HeaderText = "Danh Bộ";
-            this.DanhBo_HD.Name = "DanhBo_HD";
-            this.DanhBo_HD.ReadOnly = true;
-            // 
-            // HoTen_HD
-            // 
-            this.HoTen_HD.DataPropertyName = "HoTen";
-            this.HoTen_HD.HeaderText = "HoTen";
-            this.HoTen_HD.Name = "HoTen_HD";
-            this.HoTen_HD.ReadOnly = true;
-            this.HoTen_HD.Visible = false;
-            // 
-            // TieuThu_HD
-            // 
-            this.TieuThu_HD.DataPropertyName = "TieuThu";
-            this.TieuThu_HD.HeaderText = "Tiêu Thụ";
-            this.TieuThu_HD.Name = "TieuThu_HD";
-            this.TieuThu_HD.ReadOnly = true;
-            this.TieuThu_HD.Width = 50;
-            // 
-            // GiaBan_HD
-            // 
-            this.GiaBan_HD.DataPropertyName = "GiaBan";
-            this.GiaBan_HD.HeaderText = "Giá Bán";
-            this.GiaBan_HD.Name = "GiaBan_HD";
-            this.GiaBan_HD.ReadOnly = true;
-            // 
-            // ThueGTGT_HD
-            // 
-            this.ThueGTGT_HD.DataPropertyName = "ThueGTGT";
-            this.ThueGTGT_HD.HeaderText = "Thuế GTGT";
-            this.ThueGTGT_HD.Name = "ThueGTGT_HD";
-            this.ThueGTGT_HD.ReadOnly = true;
-            // 
-            // PhiBVMT_HD
-            // 
-            this.PhiBVMT_HD.DataPropertyName = "PhiBVMT";
-            this.PhiBVMT_HD.HeaderText = "Phí BVMT";
-            this.PhiBVMT_HD.Name = "PhiBVMT_HD";
-            this.PhiBVMT_HD.ReadOnly = true;
-            // 
-            // TongCong_HD
-            // 
-            this.TongCong_HD.DataPropertyName = "TongCong";
-            this.TongCong_HD.HeaderText = "Tổng Cộng";
-            this.TongCong_HD.Name = "TongCong_HD";
-            this.TongCong_HD.ReadOnly = true;
-            // 
-            // HanhThu_HD
-            // 
-            this.HanhThu_HD.DataPropertyName = "HanhThu";
-            this.HanhThu_HD.HeaderText = "HanhThu";
-            this.HanhThu_HD.Name = "HanhThu_HD";
-            this.HanhThu_HD.ReadOnly = true;
-            this.HanhThu_HD.Visible = false;
-            // 
-            // To_HD
-            // 
-            this.To_HD.DataPropertyName = "To";
-            this.To_HD.HeaderText = "To";
-            this.To_HD.Name = "To_HD";
-            this.To_HD.ReadOnly = true;
-            this.To_HD.Visible = false;
-            // 
-            // SoTaiKhoan_HD
-            // 
-            this.SoTaiKhoan_HD.DataPropertyName = "SoTaiKhoan";
-            this.SoTaiKhoan_HD.HeaderText = "SoTaiKhoan";
-            this.SoTaiKhoan_HD.Name = "SoTaiKhoan_HD";
-            this.SoTaiKhoan_HD.ReadOnly = true;
-            // 
-            // GiaBieu_HD
-            // 
-            this.GiaBieu_HD.DataPropertyName = "GiaBieu";
-            this.GiaBieu_HD.HeaderText = "GiaBieu";
-            this.GiaBieu_HD.Name = "GiaBieu_HD";
-            this.GiaBieu_HD.ReadOnly = true;
-            this.GiaBieu_HD.Visible = false;
-            // 
             // btnXem2
             // 
             this.btnXem2.Location = new System.Drawing.Point(557, 6);
@@ -953,6 +654,306 @@
             this.label5.TabIndex = 42;
             this.label5.Text = "Số Hóa Đơn:";
             // 
+            // NgayGiaiTrach_DB
+            // 
+            this.NgayGiaiTrach_DB.DataPropertyName = "NgayGiaiTrach";
+            this.NgayGiaiTrach_DB.HeaderText = "Ngày Giải Trách";
+            this.NgayGiaiTrach_DB.Name = "NgayGiaiTrach_DB";
+            this.NgayGiaiTrach_DB.ReadOnly = true;
+            this.NgayGiaiTrach_DB.Visible = false;
+            this.NgayGiaiTrach_DB.Width = 80;
+            // 
+            // MLT_DB
+            // 
+            this.MLT_DB.DataPropertyName = "MLT";
+            this.MLT_DB.HeaderText = "MLT";
+            this.MLT_DB.Name = "MLT_DB";
+            this.MLT_DB.ReadOnly = true;
+            this.MLT_DB.Width = 80;
+            // 
+            // DanhBo_DB
+            // 
+            this.DanhBo_DB.DataPropertyName = "DanhBo";
+            this.DanhBo_DB.HeaderText = "Danh Bộ";
+            this.DanhBo_DB.Name = "DanhBo_DB";
+            this.DanhBo_DB.ReadOnly = true;
+            // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Khách Hàng";
+            this.HoTen.Name = "HoTen";
+            this.HoTen.ReadOnly = true;
+            this.HoTen.Width = 200;
+            // 
+            // SoTaiKhoan_DB
+            // 
+            this.SoTaiKhoan_DB.DataPropertyName = "SoTaiKhoan";
+            this.SoTaiKhoan_DB.HeaderText = "Tài Khoản";
+            this.SoTaiKhoan_DB.Name = "SoTaiKhoan_DB";
+            this.SoTaiKhoan_DB.ReadOnly = true;
+            // 
+            // MaHD_DB
+            // 
+            this.MaHD_DB.DataPropertyName = "MaHD";
+            this.MaHD_DB.HeaderText = "MaHD";
+            this.MaHD_DB.Name = "MaHD_DB";
+            this.MaHD_DB.ReadOnly = true;
+            this.MaHD_DB.Visible = false;
+            // 
+            // SoHoaDon_DB
+            // 
+            this.SoHoaDon_DB.DataPropertyName = "SoHoaDon";
+            this.SoHoaDon_DB.HeaderText = "Số HĐ";
+            this.SoHoaDon_DB.Name = "SoHoaDon_DB";
+            this.SoHoaDon_DB.ReadOnly = true;
+            // 
+            // SoPhatHanh
+            // 
+            this.SoPhatHanh.DataPropertyName = "SoPhatHanh";
+            this.SoPhatHanh.HeaderText = "SoPhatHanh";
+            this.SoPhatHanh.Name = "SoPhatHanh";
+            this.SoPhatHanh.ReadOnly = true;
+            this.SoPhatHanh.Visible = false;
+            // 
+            // Nam_DB
+            // 
+            this.Nam_DB.DataPropertyName = "Nam";
+            this.Nam_DB.HeaderText = "Năm";
+            this.Nam_DB.Name = "Nam_DB";
+            this.Nam_DB.ReadOnly = true;
+            this.Nam_DB.Width = 50;
+            // 
+            // Ky_DB
+            // 
+            this.Ky_DB.DataPropertyName = "Ky";
+            this.Ky_DB.HeaderText = "Kỳ";
+            this.Ky_DB.Name = "Ky_DB";
+            this.Ky_DB.ReadOnly = true;
+            this.Ky_DB.Width = 50;
+            // 
+            // Dot_DB
+            // 
+            this.Dot_DB.DataPropertyName = "Dot";
+            this.Dot_DB.HeaderText = "Đợt";
+            this.Dot_DB.Name = "Dot_DB";
+            this.Dot_DB.ReadOnly = true;
+            this.Dot_DB.Width = 50;
+            // 
+            // HoTen_DB
+            // 
+            this.HoTen_DB.DataPropertyName = "HoTen";
+            this.HoTen_DB.HeaderText = "HoTen";
+            this.HoTen_DB.Name = "HoTen_DB";
+            this.HoTen_DB.ReadOnly = true;
+            this.HoTen_DB.Visible = false;
+            // 
+            // GiaBieu_DB
+            // 
+            this.GiaBieu_DB.DataPropertyName = "GiaBieu";
+            this.GiaBieu_DB.HeaderText = "GiaBieu";
+            this.GiaBieu_DB.Name = "GiaBieu_DB";
+            this.GiaBieu_DB.ReadOnly = true;
+            this.GiaBieu_DB.Visible = false;
+            // 
+            // TieuThu_DB
+            // 
+            this.TieuThu_DB.DataPropertyName = "TieuThu";
+            this.TieuThu_DB.HeaderText = "Tiêu Thụ";
+            this.TieuThu_DB.Name = "TieuThu_DB";
+            this.TieuThu_DB.ReadOnly = true;
+            this.TieuThu_DB.Width = 80;
+            // 
+            // GiaBan_DB
+            // 
+            this.GiaBan_DB.DataPropertyName = "GiaBan";
+            this.GiaBan_DB.HeaderText = "Giá Bán";
+            this.GiaBan_DB.Name = "GiaBan_DB";
+            this.GiaBan_DB.ReadOnly = true;
+            this.GiaBan_DB.Width = 80;
+            // 
+            // ThueGTGT_DB
+            // 
+            this.ThueGTGT_DB.DataPropertyName = "ThueGTGT";
+            this.ThueGTGT_DB.HeaderText = "Thuế GTGT";
+            this.ThueGTGT_DB.Name = "ThueGTGT_DB";
+            this.ThueGTGT_DB.ReadOnly = true;
+            // 
+            // PhiBVMT_DB
+            // 
+            this.PhiBVMT_DB.DataPropertyName = "PhiBVMT";
+            this.PhiBVMT_DB.HeaderText = "Phí BVMT";
+            this.PhiBVMT_DB.Name = "PhiBVMT_DB";
+            this.PhiBVMT_DB.ReadOnly = true;
+            // 
+            // TongCong_DB
+            // 
+            this.TongCong_DB.DataPropertyName = "TongCong";
+            this.TongCong_DB.HeaderText = "Tổng Cộng";
+            this.TongCong_DB.Name = "TongCong_DB";
+            this.TongCong_DB.ReadOnly = true;
+            // 
+            // HanhThu_DB
+            // 
+            this.HanhThu_DB.DataPropertyName = "HanhThu";
+            this.HanhThu_DB.HeaderText = "HanhThu";
+            this.HanhThu_DB.Name = "HanhThu_DB";
+            this.HanhThu_DB.ReadOnly = true;
+            this.HanhThu_DB.Visible = false;
+            // 
+            // To_DB
+            // 
+            this.To_DB.DataPropertyName = "To";
+            this.To_DB.HeaderText = "To";
+            this.To_DB.Name = "To_DB";
+            this.To_DB.ReadOnly = true;
+            this.To_DB.Visible = false;
+            // 
+            // MaHD_HD
+            // 
+            this.MaHD_HD.DataPropertyName = "MaHD";
+            this.MaHD_HD.HeaderText = "MaHD";
+            this.MaHD_HD.Name = "MaHD_HD";
+            this.MaHD_HD.ReadOnly = true;
+            this.MaHD_HD.Visible = false;
+            // 
+            // NgayGiaiTrach_HD
+            // 
+            this.NgayGiaiTrach_HD.DataPropertyName = "NgayGiaiTrach";
+            this.NgayGiaiTrach_HD.HeaderText = "Ngày Giải Trách";
+            this.NgayGiaiTrach_HD.Name = "NgayGiaiTrach_HD";
+            this.NgayGiaiTrach_HD.ReadOnly = true;
+            this.NgayGiaiTrach_HD.Width = 80;
+            // 
+            // SoHoaDon_HD
+            // 
+            this.SoHoaDon_HD.DataPropertyName = "SoHoaDon";
+            this.SoHoaDon_HD.HeaderText = "Số HĐ";
+            this.SoHoaDon_HD.Name = "SoHoaDon_HD";
+            this.SoHoaDon_HD.ReadOnly = true;
+            // 
+            // Nam_HD
+            // 
+            this.Nam_HD.DataPropertyName = "Nam";
+            this.Nam_HD.HeaderText = "Năm";
+            this.Nam_HD.Name = "Nam_HD";
+            this.Nam_HD.ReadOnly = true;
+            this.Nam_HD.Width = 50;
+            // 
+            // Ky_HD
+            // 
+            this.Ky_HD.DataPropertyName = "Ky";
+            this.Ky_HD.HeaderText = "Kỳ";
+            this.Ky_HD.Name = "Ky_HD";
+            this.Ky_HD.ReadOnly = true;
+            this.Ky_HD.Width = 50;
+            // 
+            // Dot_HD
+            // 
+            this.Dot_HD.DataPropertyName = "Dot";
+            this.Dot_HD.HeaderText = "Đợt";
+            this.Dot_HD.Name = "Dot_HD";
+            this.Dot_HD.ReadOnly = true;
+            this.Dot_HD.Width = 50;
+            // 
+            // MLT_HD
+            // 
+            this.MLT_HD.DataPropertyName = "MLT";
+            this.MLT_HD.HeaderText = "MLT";
+            this.MLT_HD.Name = "MLT_HD";
+            this.MLT_HD.ReadOnly = true;
+            this.MLT_HD.Width = 80;
+            // 
+            // SoPhatHanh_HD
+            // 
+            this.SoPhatHanh_HD.DataPropertyName = "SoPhatHanh";
+            this.SoPhatHanh_HD.HeaderText = "Số Phát Hành";
+            this.SoPhatHanh_HD.Name = "SoPhatHanh_HD";
+            this.SoPhatHanh_HD.ReadOnly = true;
+            this.SoPhatHanh_HD.Visible = false;
+            // 
+            // DanhBo_HD
+            // 
+            this.DanhBo_HD.DataPropertyName = "DanhBo";
+            this.DanhBo_HD.HeaderText = "Danh Bộ";
+            this.DanhBo_HD.Name = "DanhBo_HD";
+            this.DanhBo_HD.ReadOnly = true;
+            // 
+            // HoTen_HD
+            // 
+            this.HoTen_HD.DataPropertyName = "HoTen";
+            this.HoTen_HD.HeaderText = "HoTen";
+            this.HoTen_HD.Name = "HoTen_HD";
+            this.HoTen_HD.ReadOnly = true;
+            this.HoTen_HD.Visible = false;
+            // 
+            // TieuThu_HD
+            // 
+            this.TieuThu_HD.DataPropertyName = "TieuThu";
+            this.TieuThu_HD.HeaderText = "Tiêu Thụ";
+            this.TieuThu_HD.Name = "TieuThu_HD";
+            this.TieuThu_HD.ReadOnly = true;
+            this.TieuThu_HD.Width = 50;
+            // 
+            // GiaBan_HD
+            // 
+            this.GiaBan_HD.DataPropertyName = "GiaBan";
+            this.GiaBan_HD.HeaderText = "Giá Bán";
+            this.GiaBan_HD.Name = "GiaBan_HD";
+            this.GiaBan_HD.ReadOnly = true;
+            // 
+            // ThueGTGT_HD
+            // 
+            this.ThueGTGT_HD.DataPropertyName = "ThueGTGT";
+            this.ThueGTGT_HD.HeaderText = "Thuế GTGT";
+            this.ThueGTGT_HD.Name = "ThueGTGT_HD";
+            this.ThueGTGT_HD.ReadOnly = true;
+            // 
+            // PhiBVMT_HD
+            // 
+            this.PhiBVMT_HD.DataPropertyName = "PhiBVMT";
+            this.PhiBVMT_HD.HeaderText = "Phí BVMT";
+            this.PhiBVMT_HD.Name = "PhiBVMT_HD";
+            this.PhiBVMT_HD.ReadOnly = true;
+            // 
+            // TongCong_HD
+            // 
+            this.TongCong_HD.DataPropertyName = "TongCong";
+            this.TongCong_HD.HeaderText = "Tổng Cộng";
+            this.TongCong_HD.Name = "TongCong_HD";
+            this.TongCong_HD.ReadOnly = true;
+            // 
+            // HanhThu_HD
+            // 
+            this.HanhThu_HD.DataPropertyName = "HanhThu";
+            this.HanhThu_HD.HeaderText = "HanhThu";
+            this.HanhThu_HD.Name = "HanhThu_HD";
+            this.HanhThu_HD.ReadOnly = true;
+            this.HanhThu_HD.Visible = false;
+            // 
+            // To_HD
+            // 
+            this.To_HD.DataPropertyName = "To";
+            this.To_HD.HeaderText = "To";
+            this.To_HD.Name = "To_HD";
+            this.To_HD.ReadOnly = true;
+            this.To_HD.Visible = false;
+            // 
+            // SoTaiKhoan_HD
+            // 
+            this.SoTaiKhoan_HD.DataPropertyName = "SoTaiKhoan";
+            this.SoTaiKhoan_HD.HeaderText = "SoTaiKhoan";
+            this.SoTaiKhoan_HD.Name = "SoTaiKhoan_HD";
+            this.SoTaiKhoan_HD.ReadOnly = true;
+            // 
+            // GiaBieu_HD
+            // 
+            this.GiaBieu_HD.DataPropertyName = "GiaBieu";
+            this.GiaBieu_HD.HeaderText = "GiaBieu";
+            this.GiaBieu_HD.Name = "GiaBieu_HD";
+            this.GiaBieu_HD.ReadOnly = true;
+            this.GiaBieu_HD.Visible = false;
+            // 
             // frmDuLieuKhachHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1012,6 +1013,33 @@
         private System.Windows.Forms.Button btnXuatExcelQuet;
         private System.Windows.Forms.Button btnInDSTon;
         private System.Windows.Forms.Button btnXuatExcelTon;
+        private System.Windows.Forms.Button btnTra;
+        private System.Windows.Forms.ListView lstHD;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.Button btnCopyToClipboard;
+        private System.Windows.Forms.ComboBox cmbToDot;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnLayHoaDon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayGiaiTrach_DB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MLT_DB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo_DB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoTaiKhoan_DB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaHD_DB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoHoaDon_DB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoPhatHanh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nam_DB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ky_DB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Dot_DB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HoTen_DB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GiaBieu_DB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TieuThu_DB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GiaBan_DB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ThueGTGT_DB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PhiBVMT_DB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_DB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HanhThu_DB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn To_DB;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaHD_HD;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayGiaiTrach_HD;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoHoaDon_HD;
@@ -1031,33 +1059,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn To_HD;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoTaiKhoan_HD;
         private System.Windows.Forms.DataGridViewTextBoxColumn GiaBieu_HD;
-        private System.Windows.Forms.Button btnTra;
-        private System.Windows.Forms.ListView lstHD;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.Button btnCopyToClipboard;
-        private System.Windows.Forms.ComboBox cmbToDot;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btnLayHoaDon;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NgayGiaiTrach_DB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo_DB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SoTaiKhoan_DB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaHD_DB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SoHoaDon_DB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SoPhatHanh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nam_DB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ky_DB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Dot_DB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MLT_DB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HoTen_DB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GiaBieu_DB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TieuThu_DB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GiaBan_DB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ThueGTGT_DB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PhiBVMT_DB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TongCong_DB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HanhThu_DB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn To_DB;
 
     }
 }

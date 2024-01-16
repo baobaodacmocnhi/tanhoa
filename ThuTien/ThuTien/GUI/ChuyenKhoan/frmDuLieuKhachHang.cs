@@ -170,7 +170,7 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void btnXem2_Click(object sender, EventArgs e)
         {
-            dgvHoaDon.DataSource = _cDLKH.GetDS2(dateTu.Value, dateDen.Value);
+            dgvHoaDon.DataSource = _cDLKH.GetDS2(dateTu.Value, dateDen.Value,CNguoiDung.FromDot,CNguoiDung.ToDot);
         }
 
         private void btnThem2_Click(object sender, EventArgs e)
@@ -489,6 +489,10 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void dgvDanhBo_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            if (dgvDanhBo.Columns[e.ColumnIndex].Name == "MLT_DB" && e.Value != null)
+            {
+                e.Value = e.Value.ToString().Insert(4, " ").Insert(2, " ");
+            }
             if (dgvDanhBo.Columns[e.ColumnIndex].Name == "DanhBo_DB" && e.Value != null)
             {
                 e.Value = e.Value.ToString().Insert(4, " ").Insert(8, " ");
