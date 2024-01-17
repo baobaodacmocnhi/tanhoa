@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="C:\Users\BaoBao\Desktop\QuaySoMayMan" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="True" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="Web.config" publishTime="01/17/2024 14:41:06" />
+    <file relUrl="Image/background1.jpg" publishTime="01/02/2020 08:25:04" />
+    <file relUrl="Account/Web.config" publishTime="01/25/2019 15:30:21" />
+    <file relUrl="Account/Register.aspx" publishTime="01/25/2019 15:30:21" />
+    <file relUrl="quaysomayman.accdb" publishTime="01/25/2021 08:42:22" />
+    <file relUrl="bin/QuaySoMayMan_Web.dll" publishTime="01/17/2024 14:40:20" />
+    <file relUrl="bin/QuaySoMayMan_Web.pdb" publishTime="01/17/2024 14:40:20" />
+    <file relUrl="Account/Login.aspx" publishTime="01/25/2019 15:30:21" />
+    <file relUrl="Styles/Site.css" publishTime="01/25/2019 15:30:21" />
+    <file relUrl="Scripts/jquery-1.4.1.js" publishTime="01/25/2019 15:30:21" />
+    <file relUrl="Account/ChangePassword.aspx" publishTime="01/25/2019 15:30:21" />
+    <file relUrl="Styles/StyleSheet.css" publishTime="01/02/2020 08:31:33" />
+    <file relUrl="Image/logoctyCP.png" publishTime="01/25/2019 16:06:08" />
+    <file relUrl="Global.asax" publishTime="01/25/2019 15:30:21" />
+    <file relUrl="Scripts/jquery-1.4.1-vsdoc.js" publishTime="01/25/2019 15:30:21" />
+    <file relUrl="countdown.aspx" publishTime="01/16/2020 17:26:08" />
+    <file relUrl="Account/ChangePasswordSuccess.aspx" publishTime="01/25/2019 15:30:21" />
+    <file relUrl="Default.aspx" publishTime="01/17/2024 14:40:44" />
+    <file relUrl="Scripts/jquery-1.4.1.min.js" publishTime="01/25/2019 15:30:21" />
+    <file relUrl="Image/ThiepMoiTatNien.png" publishTime="01/28/2019 09:11:29" />
+  </publishProfile>
+</publishData>
