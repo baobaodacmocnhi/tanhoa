@@ -248,7 +248,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             LoadTongNK();
 
             dgvHinh.Rows.Clear();
-            foreach (DCBD_ChiTietBienDong_Hinh item in ctdcbd.DCBD_ChiTietBienDong_Hinhs.ToList())
+            foreach (DCBD_ChiTietBienDong_Hinh item in ctdcbd.DCBD_ChiTietBienDong_Hinhs.OrderByDescending(o => o.CreateDate).ToList())
             {
                 var index = dgvHinh.Rows.Add();
                 dgvHinh.Rows[index].Cells["ID_Hinh"].Value = item.ID;

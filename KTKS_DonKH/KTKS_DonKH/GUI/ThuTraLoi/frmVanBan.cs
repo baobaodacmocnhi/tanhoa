@@ -116,7 +116,7 @@ namespace KTKS_DonKH.GUI.VanBan
             txtNoiNhan.Text = en.NoiNhan;
 
             dgvHinh.Rows.Clear();
-            foreach (VanBan_ChiTiet_Hinh item in en.VanBan_ChiTiet_Hinhs.ToList())
+            foreach (VanBan_ChiTiet_Hinh item in en.VanBan_ChiTiet_Hinhs.OrderByDescending(o => o.CreateDate).ToList())
             {
                 var index = dgvHinh.Rows.Add();
                 dgvHinh.Rows[index].Cells["ID_Hinh"].Value = item.ID;

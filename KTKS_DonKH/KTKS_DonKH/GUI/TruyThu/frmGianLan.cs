@@ -215,7 +215,7 @@ namespace KTKS_DonKH.GUI.TruyThu
             }
 
             dgvHinh.Rows.Clear();
-            foreach (GianLan_ChiTiet_Hinh item in entity.GianLan_ChiTiet_Hinhs.ToList())
+            foreach (GianLan_ChiTiet_Hinh item in entity.GianLan_ChiTiet_Hinhs.OrderByDescending(o => o.CreateDate).ToList())
             {
                 var index = dgvHinh.Rows.Add();
                 dgvHinh.Rows[index].Cells["ID_Hinh"].Value = item.ID;

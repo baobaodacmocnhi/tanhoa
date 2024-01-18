@@ -19,6 +19,8 @@ namespace ThuTien.GUI.DongNuoc
         string Loai = "";
         TT_KQDongNuoc _kqdongnuoc = null;
         CDongNuoc _cDongNuoc = new CDongNuoc();
+        string _pathHinh = @"\\rackstation\HinhDHN\ThuTien";
+        wrThuTien.wsThuTien _wsThuTien = new wrThuTien.wsThuTien();
 
         public frmHinhDongMoNuoc()
         {
@@ -61,23 +63,24 @@ namespace ThuTien.GUI.DongNuoc
                 {
                     var index = dgvHinh.Rows.Add();
                     byte[] bytes = null;
-                    if (item.Hinh == null)
-                        switch (Loai)
-                        {
-                            case "DongNuoc":
-                                bytes = item.HinhDN.ToArray();
-                                break;
-                            case "DongNuoc2":
-                                bytes = item.HinhDN1.ToArray();
-                                break;
-                            case "MoNuoc":
-                                bytes = item.HinhMN.ToArray();
-                                break;
-                            default:
-                                break;
-                        }
-                    else
-                        bytes = item.Hinh.ToArray();
+                    //if (item.Hinh == null)
+                    //    switch (Loai)
+                    //    {
+                    //        case "DongNuoc":
+                    //            bytes = item.HinhDN.ToArray();
+                    //            break;
+                    //        case "DongNuoc2":
+                    //            bytes = item.HinhDN1.ToArray();
+                    //            break;
+                    //        case "MoNuoc":
+                    //            bytes = item.HinhMN.ToArray();
+                    //            break;
+                    //        default:
+                    //            break;
+                    //    }
+                    //else
+                    //    bytes = item.Hinh.ToArray();
+                    bytes = _wsThuTien.get_Hinh_ThuTien("DongNuoc", _kqdongnuoc.MaKQDN.ToString(), item.ID + ".jpg");
                     MemoryStream ms = new MemoryStream(bytes);
                     Image img = Image.FromStream(ms);
                     dgvHinh.Rows[index].Cells["ID"].Value = item.ID;
@@ -109,7 +112,7 @@ namespace ThuTien.GUI.DongNuoc
 
                             TT_KQDongNuoc_Hinh en = new TT_KQDongNuoc_Hinh();
                             en.MaKQDN = _kqdongnuoc.MaKQDN;
-                            en.Hinh = bytes;
+                            //en.Hinh = bytes;
                             switch (Loai)
                             {
                                 case "DongNuoc":
@@ -126,6 +129,7 @@ namespace ThuTien.GUI.DongNuoc
                             }
                             if (_cDongNuoc.ThemKQ_Hinh(en) == true)
                             {
+                                _wsThuTien.ghi_Hinh_ThuTien("DongNuoc", _kqdongnuoc.MaKQDN.ToString(), en.ID + ".jpg", bytes);
                                 _kqdongnuoc.TT_KQDongNuoc_Hinhs.Add(en);
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 loaddgvHinh();
@@ -164,6 +168,7 @@ namespace ThuTien.GUI.DongNuoc
                         if (MessageBox.Show("Bạn có chắc chắn xóa?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                             if (_cDongNuoc.XoaKQ_Hinh(_cDongNuoc.getHinh(int.Parse(dgvHinh.CurrentRow.Cells["ID"].Value.ToString()))) == true)
                             {
+                                _wsThuTien.xoa_Hinh_ThuTien("DongNuoc", _kqdongnuoc.MaKQDN.ToString(), dgvHinh.CurrentRow.Cells["ID"].Value.ToString() + ".jpg");
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 loaddgvHinh();
                             }

@@ -193,7 +193,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             txtNoiNhan.Text = en.NoiNhan;
 
             dgvHinh.Rows.Clear();
-            foreach (ToTrinh_ChiTiet_Hinh item in en.ToTrinh_ChiTiet_Hinhs.ToList())
+            foreach (ToTrinh_ChiTiet_Hinh item in en.ToTrinh_ChiTiet_Hinhs.OrderByDescending(o => o.CreateDate).ToList())
             {
                 var index = dgvHinh.Rows.Add();
                 dgvHinh.Rows[index].Cells["ID_Hinh"].Value = item.ID;

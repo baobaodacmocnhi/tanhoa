@@ -150,7 +150,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             }
 
             dgvHinh.Rows.Clear();
-            foreach (CHDB_Phieu_Hinh item in phieuCHDB.CHDB_Phieu_Hinhs.ToList())
+            foreach (CHDB_Phieu_Hinh item in phieuCHDB.CHDB_Phieu_Hinhs.OrderByDescending(o => o.CreateDate).ToList())
             {
                 var index = dgvHinh.Rows.Add();
                 dgvHinh.Rows[index].Cells["ID_Hinh"].Value = item.ID;

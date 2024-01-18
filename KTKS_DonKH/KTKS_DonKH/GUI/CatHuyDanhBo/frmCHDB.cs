@@ -219,7 +219,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             }
 
             dgvHinh.Rows.Clear();
-            foreach (CHDB_ChiTietCatHuy_Hinh item in ctchdb.CHDB_ChiTietCatHuy_Hinhs.ToList())
+            foreach (CHDB_ChiTietCatHuy_Hinh item in ctchdb.CHDB_ChiTietCatHuy_Hinhs.OrderByDescending(o => o.CreateDate).ToList())
             {
                 var index = dgvHinh.Rows.Add();
                 dgvHinh.Rows[index].Cells["ID_Hinh"].Value = item.ID;

@@ -210,7 +210,7 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                 }
                 LoaddgvBangGia();
                 dgvHinh.Rows.Clear();
-                foreach (KTXM_ChiTiet_Hinh item in ctktxm.KTXM_ChiTiet_Hinhs.ToList())
+                foreach (KTXM_ChiTiet_Hinh item in ctktxm.KTXM_ChiTiet_Hinhs.OrderByDescending(o => o.CreateDate).ToList())
                 {
                     var index = dgvHinh.Rows.Add();
                     dgvHinh.Rows[index].Cells["ID_Hinh"].Value = item.ID;

@@ -177,7 +177,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             dgvGhiChu.DataSource = _cGhiChuCTTTTL.GetDS(cttttl.MaCTTTTL);
 
             dgvHinh.Rows.Clear();
-            foreach (ThuTraLoi_ChiTiet_Hinh item in cttttl.ThuTraLoi_ChiTiet_Hinhs.ToList())
+            foreach (ThuTraLoi_ChiTiet_Hinh item in cttttl.ThuTraLoi_ChiTiet_Hinhs.OrderByDescending(o => o.CreateDate).ToList())
             {
                 var index = dgvHinh.Rows.Add();
                 dgvHinh.Rows[index].Cells["ID_Hinh"].Value = item.ID;
