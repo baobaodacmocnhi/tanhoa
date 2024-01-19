@@ -45,6 +45,8 @@ namespace KTKS_DonKH.wrEContract {
         
         private System.Threading.SendOrPostCallback editEContractOperationCompleted;
         
+        private System.Threading.SendOrPostCallback editEContract2OperationCompleted;
+        
         private System.Threading.SendOrPostCallback cancelEContractOperationCompleted;
         
         private System.Threading.SendOrPostCallback deleteEContractOperationCompleted;
@@ -114,6 +116,9 @@ namespace KTKS_DonKH.wrEContract {
         
         /// <remarks/>
         public event editEContractCompletedEventHandler editEContractCompleted;
+        
+        /// <remarks/>
+        public event editEContract2CompletedEventHandler editEContract2Completed;
         
         /// <remarks/>
         public event cancelEContractCompletedEventHandler cancelEContractCompleted;
@@ -573,6 +578,39 @@ namespace KTKS_DonKH.wrEContract {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/editEContract2", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool editEContract2(string MaDon, string SHS, string checksum) {
+            object[] results = this.Invoke("editEContract2", new object[] {
+                        MaDon,
+                        SHS,
+                        checksum});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void editEContract2Async(string MaDon, string SHS, string checksum) {
+            this.editEContract2Async(MaDon, SHS, checksum, null);
+        }
+        
+        /// <remarks/>
+        public void editEContract2Async(string MaDon, string SHS, string checksum, object userState) {
+            if ((this.editEContract2OperationCompleted == null)) {
+                this.editEContract2OperationCompleted = new System.Threading.SendOrPostCallback(this.OneditEContract2OperationCompleted);
+            }
+            this.InvokeAsync("editEContract2", new object[] {
+                        MaDon,
+                        SHS,
+                        checksum}, this.editEContract2OperationCompleted, userState);
+        }
+        
+        private void OneditEContract2OperationCompleted(object arg) {
+            if ((this.editEContract2Completed != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.editEContract2Completed(this, new editEContract2CompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/cancelEContract", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public bool cancelEContract(string MaDon, string SHS, string checksum, out string strResponse) {
             object[] results = this.Invoke("cancelEContract", new object[] {
@@ -965,6 +1003,32 @@ namespace KTKS_DonKH.wrEContract {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[1]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    public delegate void editEContract2CompletedEventHandler(object sender, editEContract2CompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class editEContract2CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal editEContract2CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
             }
         }
     }

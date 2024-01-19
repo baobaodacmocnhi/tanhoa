@@ -182,7 +182,6 @@ namespace KTKS_DonKH.DAL
             try
             {
                 DataSet ds = new DataSet();
-
                 string sql = "select Chon=CAST(0 as bit),DocSoID,DanhBo=DanhBa,MLT=MLT1,HoTen=(select TenKH from KhachHang where DanhBa=DocSo.DanhBa),DiaChi=SoNhaCu+' '+Duong,Nam,Ky,Dot,CodeCu,CodeMoi,CSC=CSCu,CSM=CSMoi,TieuThu=TieuThuMoi,TieuThuLo=0,TieuThuLoConLai=0,TinhTrang=''"
                             + " ,ID='',MaDon='',STT='' from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " and CodeMoi='N' order by MLT asc";
                 DataTable dtParent = ExecuteQuery_DataTable(sql);
@@ -200,7 +199,6 @@ namespace KTKS_DonKH.DAL
                 DataTable dtChild = ExecuteQuery_DataTable(sql);
                 dtChild.TableName = "Child";
                 ds.Tables.Add(dtChild);
-
                 if (dtParent.Rows.Count > 0 && dtChild.Rows.Count > 0)
                     ds.Relations.Add("Chi Tiết", ds.Tables["Parent"].Columns["DanhBo"], ds.Tables["Child"].Columns["DanhBo"]);
                 return ds;

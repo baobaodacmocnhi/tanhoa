@@ -114,27 +114,6 @@
             // cmbToDot
             // 
             this.cmbToDot.FormattingEnabled = true;
-            this.cmbToDot.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20"});
             this.cmbToDot.Location = new System.Drawing.Point(969, 7);
             this.cmbToDot.Name = "cmbToDot";
             this.cmbToDot.Size = new System.Drawing.Size(40, 21);
@@ -200,27 +179,6 @@
             // cmbFromDot
             // 
             this.cmbFromDot.FormattingEnabled = true;
-            this.cmbFromDot.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20"});
             this.cmbFromDot.Location = new System.Drawing.Point(867, 7);
             this.cmbFromDot.Name = "cmbFromDot";
             this.cmbFromDot.Size = new System.Drawing.Size(40, 21);

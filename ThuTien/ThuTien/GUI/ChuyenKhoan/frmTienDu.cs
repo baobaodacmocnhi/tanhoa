@@ -45,9 +45,14 @@ namespace ThuTien.GUI.ChuyenKhoan
         {
             dgvTienAm.AutoGenerateColumns = false;
             dgvTienDu.AutoGenerateColumns = false;
-
             dateNgayGiaiTrach.Value = DateTime.Now;
-
+            for (int i = CNguoiDung.FromDot; i <= CNguoiDung.ToDot; i++)
+            {
+                cmbFromDot.Items.Add(i.ToString());
+                cmbToDot.Items.Add(i.ToString());
+            }
+            cmbFromDot.SelectedIndex = 0;
+            cmbToDot.SelectedIndex = 0;
             cmbFromDot.SelectedIndex = 0;
             cmbToDot.SelectedIndex = 0;
         }

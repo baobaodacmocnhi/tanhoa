@@ -168,7 +168,10 @@ namespace KTKS_DonKH.GUI.DonTu
                         dateHetHan.Value = entity.NgayHetHan.Value;
                     }
                     if (entity.DonTu_ChiTiets.SingleOrDefault().DanhBo != null && entity.DonTu_ChiTiets.SingleOrDefault().DanhBo.Length == 11)
+                    {
                         txtDanhBo.Text = entity.DonTu_ChiTiets.SingleOrDefault().DanhBo.Insert(7, " ").Insert(4, " ");
+                        _hoadon = _cThuTien.GetMoiNhat(entity.DonTu_ChiTiets.SingleOrDefault().DanhBo);
+                    }
                     txtHopDong.Text = entity.DonTu_ChiTiets.SingleOrDefault().HopDong;
                     txtDienThoai.Text = entity.DonTu_ChiTiets.SingleOrDefault().DienThoai;
                     txtNguoiBao.Text = entity.DonTu_ChiTiets.SingleOrDefault().NguoiBao;

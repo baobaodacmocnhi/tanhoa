@@ -35,7 +35,6 @@ namespace DocSo_PC.DAL
                     entity.ID = 1;
                 entity.CreateBy = CNguoiDung.MaND;
                 entity.CreateDate = DateTime.Now;
-
                 foreach (Lich_Dot item in _db.Lich_Dots.ToList())
                 {
                     Lich_DocSo_ChiTiet enCT = new Lich_DocSo_ChiTiet();
@@ -46,7 +45,6 @@ namespace DocSo_PC.DAL
                     enCT.CreateDate = DateTime.Now;
                     entity.Lich_DocSo_ChiTiets.Add(enCT);
                 }
-
                 _db.Lich_DocSos.InsertOnSubmit(entity);
                 _db.SubmitChanges();
                 return true;
