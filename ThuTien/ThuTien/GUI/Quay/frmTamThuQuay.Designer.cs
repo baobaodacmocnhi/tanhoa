@@ -995,7 +995,6 @@
             this.chkChuKy.TabIndex = 97;
             this.chkChuKy.Text = "Có Chữ Ký";
             this.chkChuKy.UseVisualStyleBackColor = true;
-            this.chkChuKy.Visible = false;
             // 
             // label8
             // 

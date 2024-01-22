@@ -42,7 +42,7 @@ namespace ThuTien.GUI.Doi
                 cmbTo.Visible = true;
                 lbNhanVien.Visible = true;
                 cmbNhanVien.Visible = true;
-                List<TT_To> lst = _cTo.getDS_HanhThu();
+                List<TT_To> lst = _cTo.getDS_HanhThu(CNguoiDung.IDPhong);
                 TT_To to = new TT_To();
                 to.MaTo = 0;
                 to.TenTo = "Tất Cả";
@@ -97,10 +97,8 @@ namespace ThuTien.GUI.Doi
                         Microsoft.Office.Interop.Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(dialog.FileName);
                         Microsoft.Office.Interop.Excel._Worksheet xlWorksheet = xlWorkbook.Sheets[1];
                         Microsoft.Office.Interop.Excel.Range xlRange = xlWorksheet.UsedRange;
-
                         int rowCount = xlRange.Rows.Count;
                         int colCount = xlRange.Columns.Count;
-
                         //iterate over the rows and columns and print to the console as it appears in the file
                         //excel is not zero based!!
                         for (int i = 3; i <= rowCount; i++)
@@ -125,7 +123,6 @@ namespace ThuTien.GUI.Doi
                                 }
                             }
                         }
-
                         //cleanup
                         GC.Collect();
                         GC.WaitForPendingFinalizers();
@@ -141,7 +138,6 @@ namespace ThuTien.GUI.Doi
                         //quit and release
                         xlApp.Quit();
                         Marshal.ReleaseComObject(xlApp);
-
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear();
                     }

@@ -82,7 +82,6 @@ namespace ThuTien.GUI.DongNuoc
         private void btnXem_Click(object sender, EventArgs e)
         {
             DataSet ds = null;
-
             if (CNguoiDung.Doi == true)
             {
                 if (cmbNhanVienLap.SelectedIndex == 0 && dateTu.Value <= dateDen.Value)

@@ -28,7 +28,7 @@ namespace ThuTien.GUI.DongNuoc
         {
             if (CNguoiDung.Doi)
             {
-                cmbTo.DataSource = _cTo.getDS_HanhThu(CNguoiDung.IDPhong);
+                cmbTo.DataSource = _cTo.getDS_DongNuoc(CNguoiDung.IDPhong);
                 cmbTo.DisplayMember = "TenTo";
                 cmbTo.ValueMember = "MaTo";
                 cmbTo.Visible = true;
