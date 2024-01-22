@@ -98,16 +98,16 @@ namespace ThuTien.GUI.HanhThu
                             lstHD.EnsureVisible(lstHD.Items.Count - 1);
                         }
                     }
-                    //else
-                    //    ///Trung An thêm 'K' phía cuối liên hóa đơn
-                    //    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && item.ToString().Length == 14)
-                    //    {
-                    //        if (lstHD.FindItemWithText(item.Trim().ToUpper().Replace("K", "")) == null)
-                    //        {
-                    //            lstHD.Items.Add(item.Trim().ToUpper().Replace("K", ""));
-                    //            lstHD.EnsureVisible(lstHD.Items.Count - 1);
-                    //        }
-                    //    }
+                //else
+                //    ///Trung An thêm 'K' phía cuối liên hóa đơn
+                //    if (!string.IsNullOrEmpty(item.Trim().ToUpper()) && item.ToString().Length == 14)
+                //    {
+                //        if (lstHD.FindItemWithText(item.Trim().ToUpper().Replace("K", "")) == null)
+                //        {
+                //            lstHD.Items.Add(item.Trim().ToUpper().Replace("K", ""));
+                //            lstHD.EnsureVisible(lstHD.Items.Count - 1);
+                //        }
+                //    }
                 txtSoLuong.Text = lstHD.Items.Count.ToString();
                 txtSoHoaDon.Text = "";
             }
@@ -519,7 +519,6 @@ namespace ThuTien.GUI.HanhThu
             dsBaoCao dsBaoCao = new dsBaoCao();
             DataTable dt = new DataTable();
             dsBaoCao.Tables["TBDongNuoc"].PrimaryKey = new DataColumn[] { dsBaoCao.Tables["TBDongNuoc"].Columns["DanhBo"] };
-
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
                 dt = (DataTable)dgvHDTuGia.DataSource;
@@ -527,7 +526,6 @@ namespace ThuTien.GUI.HanhThu
                     if (!dsBaoCao.Tables["TBDongNuoc"].Rows.Contains(item.Cells["DanhBo_TG"].Value.ToString().Insert(4, " ").Insert(8, " ")))
                     {
                         DataRow[] drTemp = dt.Select("DanhBo like '" + item.Cells["DanhBo_TG"].Value.ToString() + "'");
-
                         string Ky = "";
                         string SoTien = "";
                         int TongCong = 0;
@@ -545,7 +543,6 @@ namespace ThuTien.GUI.HanhThu
                                 _cQuetTam.SubmitChanges();
                             }
                         }
-
                         DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
                         if (SoPhieu == 0)
                             dr["MaDN"] = item.Cells["SoPhieu_TG"].Value.ToString().Insert(item.Cells["SoPhieu_TG"].Value.ToString().Length - 2, "-");
@@ -564,15 +561,13 @@ namespace ThuTien.GUI.HanhThu
                         dr["TongCong"] = TongCong;
                         if (chkChuKy.Checked)
                         {
-                            dr["ChuKy"] = true;
-                            dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky"+CNguoiDung.IDPhong+".png";
+                            dr["ChuKy"] = CNguoiDung.ChuKy;
                         }
                         if (chkCoTenNguoiKy.Checked)
                         {
                             dr["ChucVu"] = CNguoiDung.ChucVu;
                             dr["NguoiKy"] = CNguoiDung.NguoiKy;
                         }
-
                         dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                     }
             }
@@ -584,7 +579,6 @@ namespace ThuTien.GUI.HanhThu
                         if (!dsBaoCao.Tables["TBDongNuoc"].Rows.Contains(item.Cells["DanhBo_CQ"].Value.ToString().Insert(4, " ").Insert(8, " ")))
                         {
                             DataRow[] drTemp = dt.Select("DanhBo like '" + item.Cells["DanhBo_CQ"].Value.ToString() + "'");
-
                             string Ky = "";
                             string SoTien = "";
                             int TongCong = 0;
@@ -602,7 +596,6 @@ namespace ThuTien.GUI.HanhThu
                                     _cQuetTam.SubmitChanges();
                                 }
                             }
-
                             DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
                             if (SoPhieu == 0)
                                 dr["MaDN"] = item.Cells["SoPhieu_CQ"].Value.ToString().Insert(item.Cells["SoPhieu_CQ"].Value.ToString().Length - 2, "-");
@@ -621,8 +614,7 @@ namespace ThuTien.GUI.HanhThu
                             dr["TongCong"] = TongCong;
                             if (chkChuKy.Checked)
                             {
-                                dr["ChuKy"] = true;
-                                dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky"+CNguoiDung.IDPhong+".png";
+                                dr["ChuKy"] = CNguoiDung.ChuKy;
                             }
                             if (chkCoTenNguoiKy.Checked)
                             {
@@ -679,13 +671,11 @@ namespace ThuTien.GUI.HanhThu
             if (tabControl.SelectedTab.Name == "tabTuGia")
             {
                 dt = (DataTable)dgvHDTuGia.DataSource;
-
                 dsBaoCao.Tables["TBDongNuoc"].PrimaryKey = new DataColumn[] { dsBaoCao.Tables["TBDongNuoc"].Columns["DanhBo"] };
                 foreach (DataGridViewRow item in dgvHDTuGia.Rows)
                     if (!dsBaoCao.Tables["TBDongNuoc"].Rows.Contains(item.Cells["DanhBo_TG"].Value.ToString().Insert(4, " ").Insert(8, " ")))
                     {
                         DataRow[] drTemp = dt.Select("DanhBo like '" + item.Cells["DanhBo_TG"].Value.ToString() + "'");
-
                         string Ky = "";
                         int TongCong = 0;
                         int SoPhieu = 0;
@@ -701,7 +691,6 @@ namespace ThuTien.GUI.HanhThu
                                 _cQuetTam.SubmitChanges();
                             }
                         }
-
                         DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
                         if (SoPhieu == 0)
                             dr["MaDN"] = item.Cells["SoPhieu_TG"].Value.ToString().Insert(item.Cells["SoPhieu_TG"].Value.ToString().Length - 2, "-");
@@ -718,8 +707,7 @@ namespace ThuTien.GUI.HanhThu
                         dr["TongCong"] = TongCong;
                         if (chkChuKy.Checked)
                         {
-                            dr["ChuKy"] = true;
-                            dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky"+CNguoiDung.IDPhong+".png";
+                            dr["ChuKy"] = CNguoiDung.ChuKy;
                         }
                         if (chkCoTenNguoiKy.Checked)
                         {
@@ -733,7 +721,6 @@ namespace ThuTien.GUI.HanhThu
                 if (tabControl.SelectedTab.Name == "tabCoQuan")
                 {
                     dt = (DataTable)dgvHDCoQuan.DataSource;
-
                     dsBaoCao.Tables["TBDongNuoc"].PrimaryKey = new DataColumn[] { dsBaoCao.Tables["TBDongNuoc"].Columns["DanhBo"] };
                     foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
                         if (!dsBaoCao.Tables["TBDongNuoc"].Rows.Contains(item.Cells["DanhBo_CQ"].Value.ToString().Insert(4, " ").Insert(8, " ")))
@@ -755,7 +742,6 @@ namespace ThuTien.GUI.HanhThu
                                     _cQuetTam.SubmitChanges();
                                 }
                             }
-
                             DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
                             if (SoPhieu == 0)
                                 dr["MaDN"] = item.Cells["SoPhieu_CQ"].Value.ToString().Insert(item.Cells["SoPhieu_CQ"].Value.ToString().Length - 2, "-");
@@ -771,8 +757,7 @@ namespace ThuTien.GUI.HanhThu
                             dr["TongCong"] = TongCong;
                             if (chkChuKy.Checked)
                             {
-                                dr["ChuKy"] = true;
-                                dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky"+CNguoiDung.IDPhong+".png";
+                                dr["ChuKy"] = CNguoiDung.ChuKy;
                             }
                             if (chkCoTenNguoiKy.Checked)
                             {
@@ -782,12 +767,10 @@ namespace ThuTien.GUI.HanhThu
                             dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                         }
                 }
-
             rptTBCatOngPhoto rpt = new rptTBCatOngPhoto();
             rpt.SetDataSource(dsBaoCao);
             frmBaoCao frm = new frmBaoCao(rpt);
             frm.Show();
-
             //    foreach (DataRow item in ds.Tables["TBDongNuoc"].Rows)
             //    {
             //        dsBaoCao dsTemp = new dsBaoCao();
@@ -801,20 +784,16 @@ namespace ThuTien.GUI.HanhThu
             //        dr["HopDong"] = item["HopDong"];
             //        dr["Ky"] = item["Ky"];
             //        dr["TongCong"] = item["TongCong"];
-
             //        dsTemp.Tables["TBDongNuoc"].Rows.Add(dr);
-
             //        rptTBCatOngPhoto rpt = new rptTBCatOngPhoto();
             //        rpt.SetDataSource(dsTemp);
             //        //frmBaoCao frm = new frmBaoCao(rpt);
             //        //frm.ShowDialog();
             //        printDialog.AllowSomePages = true;
             //        printDialog.ShowHelp = true;
-
             //        rpt.PrintOptions.PaperOrientation = rpt.PrintOptions.PaperOrientation;
             //        rpt.PrintOptions.PaperSize = rpt.PrintOptions.PaperSize;
             //        rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
-
             //        rpt.PrintToPrinter(printDialog.PrinterSettings.Copies, false, 1, 1);
             //    }
             //}
@@ -854,7 +833,6 @@ namespace ThuTien.GUI.HanhThu
                                 Ky += ", " + itemChild["Ky"];
                             TongCong += int.Parse(itemChild["TongCong"].ToString());
                         }
-
                         DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
                         dr["DiaChi"] = item.Cells["DiaChi_TG"].Value.ToString();
                         if (!string.IsNullOrEmpty(item.Cells["DanhBo_TG"].Value.ToString()))
@@ -862,7 +840,6 @@ namespace ThuTien.GUI.HanhThu
                         dr["MLT"] = item.Cells["MLT_TG"].Value.ToString().Insert(4, " ").Insert(2, " ");
                         dr["Ky"] = Ky;
                         dr["SoTien"] = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
-
                         dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                     }
             }
@@ -885,7 +862,6 @@ namespace ThuTien.GUI.HanhThu
                                     Ky += ", " + itemChild["Ky"];
                                 TongCong += int.Parse(itemChild["TongCong"].ToString());
                             }
-
                             DataRow dr = dsBaoCao.Tables["TBDongNuoc"].NewRow();
                             dr["DiaChi"] = item.Cells["DiaChi_CQ"].Value.ToString();
                             if (!string.IsNullOrEmpty(item.Cells["DanhBo_CQ"].Value.ToString()))
@@ -893,7 +869,6 @@ namespace ThuTien.GUI.HanhThu
                             dr["MLT"] = item.Cells["MLT_CQ"].Value.ToString().Insert(4, " ").Insert(2, " ");
                             dr["Ky"] = Ky;
                             dr["SoTien"] = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongCong);
-
                             dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                         }
                 }
@@ -1281,7 +1256,7 @@ namespace ThuTien.GUI.HanhThu
                 MessageBox.Show("Bạn không có quyền Thêm Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-    
+
 
     }
 }

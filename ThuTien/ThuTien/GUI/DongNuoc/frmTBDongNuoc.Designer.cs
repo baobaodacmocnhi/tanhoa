@@ -555,6 +555,8 @@
             // chkChuKy
             // 
             this.chkChuKy.AutoSize = true;
+            this.chkChuKy.Checked = true;
+            this.chkChuKy.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkChuKy.Location = new System.Drawing.Point(1107, 7);
             this.chkChuKy.Name = "chkChuKy";
             this.chkChuKy.Size = new System.Drawing.Size(76, 17);
@@ -565,6 +567,8 @@
             // chkCoTenNguoiKy
             // 
             this.chkCoTenNguoiKy.AutoSize = true;
+            this.chkCoTenNguoiKy.Checked = true;
+            this.chkCoTenNguoiKy.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkCoTenNguoiKy.Location = new System.Drawing.Point(1107, 30);
             this.chkCoTenNguoiKy.Name = "chkCoTenNguoiKy";
             this.chkCoTenNguoiKy.Size = new System.Drawing.Size(107, 17);

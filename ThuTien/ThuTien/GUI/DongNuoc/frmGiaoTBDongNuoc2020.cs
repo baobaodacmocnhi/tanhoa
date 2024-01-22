@@ -334,7 +334,6 @@ namespace ThuTien.GUI.DongNuoc
                             dr["TongCong"] = itemChild["TongCong"];
                             dr["NhanVien"] = cmbNhanVienLap.Text;
                             dr["HanhThu"] = item["HanhThu"];
-
                             dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                         }
                     }
@@ -371,7 +370,6 @@ namespace ThuTien.GUI.DongNuoc
                             dr["TongCong"] = itemChild["TongCong"];
                             dr["NhanVien"] = cmbNhanVienGiao.Text;
                             dr["HanhThu"] = row["HanhThu"];
-
                             dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                         }
                     }
@@ -414,7 +412,6 @@ namespace ThuTien.GUI.DongNuoc
                                     dr["LenhHuy"] = true;
                                 else
                                     dr["LenhHuy"] = false;
-
                                 dsBaoCao.Tables["TBDongNuoc"].Rows.Add(dr);
                             }
                     }
