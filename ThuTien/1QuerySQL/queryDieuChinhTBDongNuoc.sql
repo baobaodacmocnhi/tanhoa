@@ -33,3 +33,21 @@ where dn.MaDN=kq.MaDN and dn.Huy=0 and kq.MoNuoc=0 and kq.TroNgaiMN=0 and kq.Co>
 
 --update TT_KQDongNuoc set PhiMoNuoc=259000 where MaKQDN in (select MaKQDN from TT_DongNuoc dn, TT_KQDongNuoc kq
 --where dn.MaDN=kq.MaDN and dn.Huy=0 and kq.MoNuoc=0 and kq.TroNgaiMN=0 and kq.Co<=25)
+--------------------------------------------------------------------------------------------
+select MaDN from TT_DongNuoc where MaDN in
+(select MaDN from
+(select dn.MaDN,SL=count(MaHD) from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.MaDN=ctdn.MaDN 
+group by dn.MaDN)t1 where t1.SL=(select count(*) from HOADON hd1,TT_CTDongNuoc ctdn1 where hd1.ID_HOADON=ctdn1.MaHD and MaNV_DangNgan is null and NGAYGIAITRACH is null and ctdn1.MaDN=t1.MaDN))
+
+
+--update TT_DongNuoc set MLT=(select lotrinh from CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG where CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG.DANHBO=TT_DongNuoc.DanhBo)
+--where MaDN in (select MaDN from TT_DongNuoc where MaDN in
+--(select MaDN from
+--(select dn.MaDN,SL=count(MaHD) from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.MaDN=ctdn.MaDN 
+--group by dn.MaDN)t1 where t1.SL=(select count(*) from HOADON hd1,TT_CTDongNuoc ctdn1 where hd1.ID_HOADON=ctdn1.MaHD and MaNV_DangNgan is null and NGAYGIAITRACH is null and ctdn1.MaDN=t1.MaDN)))
+
+--update TT_DongNuoc set CreateBy=(select MaND from TT_NguoiDung where May=SUBSTRING(MLT,3,2))
+--where MaDN in (select MaDN from TT_DongNuoc where MaDN in
+--(select MaDN from
+--(select dn.MaDN,SL=count(MaHD) from TT_DongNuoc dn,TT_CTDongNuoc ctdn where dn.MaDN=ctdn.MaDN 
+--group by dn.MaDN)t1 where t1.SL=(select count(*) from HOADON hd1,TT_CTDongNuoc ctdn1 where hd1.ID_HOADON=ctdn1.MaHD and MaNV_DangNgan is null and NGAYGIAITRACH is null and ctdn1.MaDN=t1.MaDN)))
