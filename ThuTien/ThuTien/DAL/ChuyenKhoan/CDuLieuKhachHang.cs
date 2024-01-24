@@ -271,7 +271,7 @@ namespace ThuTien.DAL.ChuyenKhoan
                         {
                             itemHD.NGAYGIAITRACH,
                             itemHD.SOHOADON,
-                            itemHD.SOPHATHANH,
+                            SoPhatHanh = itemHD.SOPHATHANH,
                             MLT = itemHD.MALOTRINH,
                             itemHD.KY,
                             itemHD.NAM,

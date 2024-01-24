@@ -43,7 +43,6 @@ namespace ThuTien.GUI.Doi
             dgvHDTuGia.AutoGenerateColumns = false;
             dgvHDCoQuan.AutoGenerateColumns = false;
             dgvNhanVien.AutoGenerateColumns = false;
-
             List<TT_To> lstTo = _cTo.getDS_HanhThu(CNguoiDung.IDPhong);
             TT_To to = new TT_To();
             to.MaTo = 0;
@@ -52,7 +51,6 @@ namespace ThuTien.GUI.Doi
             cmbTo.DataSource = lstTo;
             cmbTo.DisplayMember = "TenTo";
             cmbTo.ValueMember = "MaTo";
-
             DataTable dtNam = _cHoaDon.GetNam();
             DataRow dr = dtNam.NewRow();
             dr["ID"] = "Tất Cả";
@@ -60,9 +58,7 @@ namespace ThuTien.GUI.Doi
             cmbNam.DataSource = dtNam;
             cmbNam.DisplayMember = "ID";
             cmbNam.ValueMember = "Nam";
-
             _lstTo = _cTo.getDS_HanhThu(CNguoiDung.IDPhong);
-
             cmbNam.SelectedValue = DateTime.Now.Year.ToString();
             cmbKy.SelectedItem = DateTime.Now.Month.ToString();
             cmbFromDot.Items.Add("Tất Cả");
@@ -73,7 +69,6 @@ namespace ThuTien.GUI.Doi
             }
             cmbFromDot.SelectedIndex = 0;
             cmbToDot.SelectedIndex = 0;
-
             tabTuGia.Text = "Hóa Đơn";
             tabControl.TabPages.Remove(tabCoQuan);
         }

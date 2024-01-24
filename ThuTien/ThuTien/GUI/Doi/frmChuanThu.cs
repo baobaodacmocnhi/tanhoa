@@ -34,12 +34,16 @@ namespace ThuTien.GUI.Doi
             dgvHDTuGia.AutoGenerateColumns = false;
             dgvHDCoQuan.AutoGenerateColumns = false;
             dgvNhanVien.AutoGenerateColumns = false;
-
             cmbNam.DataSource = _cHoaDon.GetNam();
             cmbNam.DisplayMember = "Nam";
             cmbNam.ValueMember = "Nam";
-
             _lstTo = _cTo.getDS_HanhThu();
+            cmbDot.Items.Add("Tất Cả");
+            for (int i = CNguoiDung.FromDot; i <= CNguoiDung.ToDot; i++)
+            {
+                cmbDot.Items.Add(i.ToString());
+            }
+            cmbDot.SelectedIndex = 0;
         }
 
         public void CountdgvHDTuGia()

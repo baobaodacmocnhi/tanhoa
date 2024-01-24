@@ -26,7 +26,6 @@ namespace KTKS_DonKH.DAL
             catch (Exception)
             {
             }
-
         }
 
         public void Connect()
@@ -187,7 +186,6 @@ namespace KTKS_DonKH.DAL
                 DataTable dtParent = ExecuteQuery_DataTable(sql);
                 dtParent.TableName = "Parent";
                 ds.Tables.Add(dtParent);
-
                 sql = "(select t2.* from"
                         + "(select DocSoID,DanhBo=DanhBa,MLT=MLT1,HoTen=TenKH,DiaChi=SoNhaCu+' '+Duong,Nam,Ky,Dot,CodeCu,CodeMoi,CSC=CSCu,CSM=CSMoi,TieuThu=TieuThuMoi"
                         + " from DocSo where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " and CodeMoi='N')t1,"

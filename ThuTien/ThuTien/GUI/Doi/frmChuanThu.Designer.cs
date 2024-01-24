@@ -729,28 +729,6 @@
             // cmbDot
             // 
             this.cmbDot.FormattingEnabled = true;
-            this.cmbDot.Items.AddRange(new object[] {
-            "Tất Cả",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20"});
             this.cmbDot.Location = new System.Drawing.Point(427, 12);
             this.cmbDot.Name = "cmbDot";
             this.cmbDot.Size = new System.Drawing.Size(50, 21);

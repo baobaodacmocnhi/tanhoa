@@ -41,7 +41,6 @@ namespace ThuTien.GUI.Doi
             dgvHDCoQuan.AutoGenerateColumns = false;
             dgvNhanVien_TC.AutoGenerateColumns = false;
             dgvChotDangNgan.AutoGenerateColumns = false;
-
             List<TT_To> lst = _cTo.getDS(CNguoiDung.IDPhong);
             TT_To to = new TT_To();
             to.MaTo = 0;
@@ -50,10 +49,8 @@ namespace ThuTien.GUI.Doi
             cmbTo.DataSource = lst;
             cmbTo.DisplayMember = "TenTo";
             cmbTo.ValueMember = "MaTo";
-
             dateTu.Value = DateTime.Now;
             dateDen.Value = DateTime.Now;
-
             tabTuGia.Text = "Hóa Đơn";
             tabControl.TabPages.Remove(tabCoQuan);
         }

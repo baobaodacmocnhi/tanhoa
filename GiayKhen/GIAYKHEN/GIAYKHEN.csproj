@@ -117,6 +117,12 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="ChinhQuyen_CANHAN_A3_ChuKy.cs">
+      <DependentUpon>ChinhQuyen_CANHAN_A3_ChuKy.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="DanVanKheo_CANHAN_A3_2022B.cs">
       <DependentUpon>DanVanKheo_CANHAN_A3_2022B.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -422,6 +428,10 @@
     <EmbeddedResource Include="ChinhQuyen_CANHAN_A3_DacBiet.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ChinhQuyen_CANHAN_A3_DacBiet.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChinhQuyen_CANHAN_A3_ChuKy.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ChinhQuyen_CANHAN_A3_ChuKy.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="DanVanKheo_CANHAN_A3_2022B.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
