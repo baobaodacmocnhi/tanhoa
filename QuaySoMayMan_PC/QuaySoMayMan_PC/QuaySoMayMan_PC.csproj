@@ -52,6 +52,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CDAL.cs" />
+    <Compile Include="frmHienThi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHienThi.Designer.cs">
+      <DependentUpon>frmHienThi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,6 +71,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>quaysomaymanDataSet.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmHienThi.resx">
+      <DependentUpon>frmHienThi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

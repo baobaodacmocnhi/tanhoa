@@ -118,9 +118,9 @@ namespace QuaySoMayMan_PC
 
                 for (int c = 1; c <= cols; c++)
                 {
-                    //string colname = xlWorksheet.Cells[1, c].Text;
-                    //dt.Columns.Add(colname);
-                    dt.Columns.Add(c.ToString());
+                    string colname = xlWorksheet.Cells[1, c].Text;
+                    dt.Columns.Add(colname);
+                    //dt.Columns.Add(c.ToString());
                     noofrow = 2;
                 }
 
