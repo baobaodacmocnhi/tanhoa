@@ -294,7 +294,7 @@ namespace ThuTien.DAL.TongHop
             var query = from itemDC in _db.DIEUCHINH_HDs
                         join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                         where itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT >= TuDot && itemHD.DOT <= DenDot
-                        group itemDC by itemHD.DOT into itemGroup
+                        group itemDC by itemHD.KY into itemGroup
                         select new
                         {
                             GIABAN_BD = itemGroup.Sum(groupItem => groupItem.GIABAN_BD) == null ? 0 : itemGroup.Sum(groupItem => groupItem.GIABAN_BD),
@@ -343,6 +343,25 @@ namespace ThuTien.DAL.TongHop
             var query = from itemDC in _db.DIEUCHINH_HDs
                         join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
                         where itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.KY == Ky && (itemHD.KhoaTienDu == true || itemHD.NGAYGIAITRACH == null)
+                        group itemDC by itemHD.KY into itemGroup
+                        select new
+                        {
+                            Ky = Ky,
+                            GIABAN_BD = itemGroup.Sum(groupItem => groupItem.GIABAN_BD) == null ? 0 : itemGroup.Sum(groupItem => groupItem.GIABAN_BD),
+                            TONGCONG_BD = itemGroup.Sum(groupItem => groupItem.TONGCONG_BD) == null ? 0 : itemGroup.Sum(groupItem => groupItem.TONGCONG_BD),
+                            GIABAN_DC = itemGroup.Sum(groupItem => groupItem.GIABAN_DC) == null ? 0 : itemGroup.Sum(groupItem => groupItem.GIABAN_DC),
+                            TONGCONG_DC = itemGroup.Sum(groupItem => groupItem.TONGCONG_DC) == null ? 0 : itemGroup.Sum(groupItem => groupItem.TONGCONG_DC),
+                            GIABAN_END = itemGroup.Sum(groupItem => groupItem.GIABAN_END) == null ? 0 : itemGroup.Sum(groupItem => groupItem.GIABAN_END),
+                            TONGCONG_END = itemGroup.Sum(groupItem => groupItem.TONGCONG_END) == null ? 0 : itemGroup.Sum(groupItem => groupItem.TONGCONG_END),
+                        };
+            return LINQToDataTable(query);
+        }
+
+        public DataTable GetTongChuanThuTon(int Nam, int Ky, int TuDot, int DenDot)
+        {
+            var query = from itemDC in _db.DIEUCHINH_HDs
+                        join itemHD in _db.HOADONs on itemDC.FK_HOADON equals itemHD.ID_HOADON
+                        where itemDC.ChuanThu1 == false && itemHD.NAM == Nam && itemHD.KY == Ky && itemHD.DOT >= TuDot && itemHD.DOT <= DenDot && (itemHD.KhoaTienDu == true || itemHD.NGAYGIAITRACH == null)
                         group itemDC by itemHD.KY into itemGroup
                         select new
                         {

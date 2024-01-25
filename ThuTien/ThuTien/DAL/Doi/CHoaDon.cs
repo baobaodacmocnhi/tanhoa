@@ -11033,6 +11033,7 @@ namespace ThuTien.DAL.Doi
                 + " ,NgayDN=(select top 1 NgayDN from TT_DongNuoc a,TT_CTDongNuoc b,TT_KQDongNuoc c where a.MaDN=b.MaDN and a.MaDN=c.MaDN and b.MaHD=ID_HOADON and a.Huy=0)"
                 + " ,LenhHuy=case when exists(select MaHD from TT_LenhHuy where MaHD=ID_HOADON) then 'true' else 'false' end"
                 + " ,HanhThu=(select HoTen from TT_NguoiDung where MaND=MaNV_HanhThu),'To'=(select TenTo from TT_To where MaTo=(select MaTo from TT_NguoiDung where MaND=MaNV_HanhThu))"
+                + ",DienThoai=(select top 1 DienThoai from [CAPNUOCTANHOA].[dbo].[SDT_DHN] where DanhBo=DANHBA order by CreateDate desc)"
                 + " from HOADON where MAY>=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ") and MAY<=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")";
             if (Ton)
                 sql += " and MaNV_DangNgan is null";
@@ -11056,6 +11057,7 @@ namespace ThuTien.DAL.Doi
                 + " ,NgayDN=(select top 1 NgayDN from TT_DongNuoc a,TT_CTDongNuoc b,TT_KQDongNuoc c where a.MaDN=b.MaDN and a.MaDN=c.MaDN and b.MaHD=ID_HOADON and a.Huy=0)"
                 + " ,LenhHuy=case when exists(select MaHD from TT_LenhHuy where MaHD=ID_HOADON) then 'true' else 'false' end"
                 + " ,HanhThu=(select HoTen from TT_NguoiDung where MaND=MaNV_HanhThu),'To'=(select TenTo from TT_To where MaTo=(select MaTo from TT_NguoiDung where MaND=MaNV_HanhThu))"
+                + ",DienThoai=(select top 1 DienThoai from [CAPNUOCTANHOA].[dbo].[SDT_DHN] where DanhBo=DANHBA order by CreateDate desc)"
                 + " from HOADON where NAM=" + Nam + " and MAY>=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ") and MAY<=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")";
             if (Ton)
                 sql += " and MaNV_DangNgan is null";
@@ -11079,6 +11081,7 @@ namespace ThuTien.DAL.Doi
                 + " ,NgayDN=(select top 1 NgayDN from TT_DongNuoc a,TT_CTDongNuoc b,TT_KQDongNuoc c where a.MaDN=b.MaDN and a.MaDN=c.MaDN and b.MaHD=ID_HOADON and a.Huy=0)"
                 + " ,LenhHuy=case when exists(select MaHD from TT_LenhHuy where MaHD=ID_HOADON) then 'true' else 'false' end"
                 + " ,HanhThu=(select HoTen from TT_NguoiDung where MaND=MaNV_HanhThu),'To'=(select TenTo from TT_To where MaTo=(select MaTo from TT_NguoiDung where MaND=MaNV_HanhThu))"
+                + ",DienThoai=(select top 1 DienThoai from [CAPNUOCTANHOA].[dbo].[SDT_DHN] where DanhBo=DANHBA order by CreateDate desc)"
                 + " from HOADON where NAM=" + Nam + " and KY=" + Ky + " and MAY>=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ") and MAY<=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")";
             if (Ton)
                 sql += " and MaNV_DangNgan is null";
@@ -11102,6 +11105,7 @@ namespace ThuTien.DAL.Doi
                 + " ,NgayDN=(select top 1 NgayDN from TT_DongNuoc a,TT_CTDongNuoc b,TT_KQDongNuoc c where a.MaDN=b.MaDN and a.MaDN=c.MaDN and b.MaHD=ID_HOADON and a.Huy=0)"
                 + " ,LenhHuy=case when exists(select MaHD from TT_LenhHuy where MaHD=ID_HOADON) then 'true' else 'false' end"
                 + " ,HanhThu=(select HoTen from TT_NguoiDung where MaND=MaNV_HanhThu),'To'=(select TenTo from TT_To where MaTo=(select MaTo from TT_NguoiDung where MaND=MaNV_HanhThu))"
+                + ",DienThoai=(select top 1 DienThoai from [CAPNUOCTANHOA].[dbo].[SDT_DHN] where DanhBo=DANHBA order by CreateDate desc)"
                 + " from HOADON where NAM=" + Nam + " and KY=" + Ky + " and DOT=" + Dot + " and MAY>=(select TuCuonGCS from TT_To where MaTo=" + MaTo + ") and MAY<=(select DenCuonGCS from TT_To where MaTo=" + MaTo + ")";
             if (Ton)
                 sql += " and MaNV_DangNgan is null";
@@ -11796,7 +11800,7 @@ namespace ThuTien.DAL.Doi
                         join itemTD in _db.TT_TienDus on itemHD.DANHBA equals itemTD.DanhBo into tableTD
                         from itemtableTD in tableTD.DefaultIfEmpty()
                         where itemHD.KhoaTienDu == true && FromDot <= itemHD.DOT && itemHD.DOT <= ToDot
-                        &&_db.TT_ChanHoaDon_DanhBos.Any(item => item.DanhBo == itemHD.DANHBA && item.Nam == itemHD.NAM && itemHD.KY >= item.TuKy && itemHD.KY <= item.DenKy) == ChanHoaDonAuto
+                        && _db.TT_ChanHoaDon_DanhBos.Any(item => item.DanhBo == itemHD.DANHBA && item.Nam == itemHD.NAM && itemHD.KY >= item.TuKy && itemHD.KY <= item.DenKy) == ChanHoaDonAuto
                         orderby itemHD.NgayChanTienDu descending
                         select new
                         {

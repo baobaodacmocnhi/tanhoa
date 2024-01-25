@@ -1225,7 +1225,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1498, 625);
+            this.ClientSize = new System.Drawing.Size(1532, 625);
             this.Controls.Add(this.txtTongPhiBVMT_Thue_TC);
             this.Controls.Add(this.btnXuatExcel);
             this.Controls.Add(this.label3);

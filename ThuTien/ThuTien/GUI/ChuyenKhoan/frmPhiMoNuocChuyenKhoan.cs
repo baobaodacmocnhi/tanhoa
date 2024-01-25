@@ -144,7 +144,6 @@ namespace ThuTien.GUI.ChuyenKhoan
                 foreach (DataGridViewRow item in dgvPhiMoNuoc.Rows)
                 {
                     DataRow dr = ds.Tables["PhiMoNuoc"].NewRow();
-                    dr["TenPhong"] = CNguoiDung.TenPhong;
                     dr["SoPhieu"] = item.Cells["MaPMN"].Value.ToString().Insert(item.Cells["MaPMN"].Value.ToString().Length - 2, "-");
                     dr["DanhBo"] = item.Cells["DanhBo_PMN"].Value.ToString().Insert(7, " ").Insert(4, " ");
                     dr["HoTen"] = item.Cells["HoTen_PMN"].Value.ToString();
@@ -168,7 +167,8 @@ namespace ThuTien.GUI.ChuyenKhoan
                         dr["PhiMoNuocChu"] = _cPhiMoNuoc.ConvertMoneyToWord(dr["PhiMoNuoc"].ToString());
                     }
                     dr["SoTK"] = item.Cells["SoTK_PMN"].Value.ToString();
-                    dr["ChucVu"] = CNguoiDung.ChucVu;
+                    dr["ChucVu"] = CNguoiDung.ChucVu.Replace(" PHÒNG", "");
+                    dr["TenPhong"] = CNguoiDung.TenPhong.ToUpper();
                     dr["NguoiKy"] = CNguoiDung.NguoiKy;
                     ds.Tables["PhiMoNuoc"].Rows.Add(dr);
                 }

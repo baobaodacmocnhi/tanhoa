@@ -419,7 +419,6 @@ namespace ThuTien.GUI.Doi
                 dgvHoaDon.DataSource = _cHoaDon.GetTongByNamKy(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), CNguoiDung.FromDot, CNguoiDung.ToDot);
                 //startTime.Stop();
                 //MessageBox.Show(startTime.ElapsedMilliseconds.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 //for (int i = 0; i < dgvHoaDon.Rows.Count; i++)
                 //{
                 //    DataTable dtDCHD = _cDCHD.GetTongChuanThu(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), i);
@@ -431,7 +430,6 @@ namespace ThuTien.GUI.Doi
                 //        dgvHoaDon["TongCong", i].Value = long.Parse(dgvHoaDon["TongCong", i].Value.ToString()) - long.Parse(dtDCHD.Rows[0]["TONGCONG_End"].ToString()) + long.Parse(dtDCHD.Rows[0]["TONGCONG_BD"].ToString());
                 //    }
                 //}
-
                 int TongHD = 0;
                 int TongTieuThu = 0;
                 long TongGiaBan = 0;
@@ -451,7 +449,6 @@ namespace ThuTien.GUI.Doi
                         item.Cells["TongPhiBVMT_Thue"].Value = long.Parse(item.Cells["TongPhiBVMT_Thue"].Value.ToString()) - long.Parse(dtDCHD.Rows[0]["PhiBVMT_Thue_DC"].ToString());
                         item.Cells["TongCong"].Value = long.Parse(item.Cells["TongCong"].Value.ToString()) - long.Parse(dtDCHD.Rows[0]["TONGCONG_DC"].ToString());
                     }
-
                     TongHD += int.Parse(item.Cells["TongHD"].Value.ToString());
                     TongTieuThu += int.Parse(item.Cells["TongTieuThu"].Value.ToString());
                     TongGiaBan += long.Parse(item.Cells["TongGiaBan"].Value.ToString());
@@ -625,35 +622,29 @@ namespace ThuTien.GUI.Doi
         private void btnXem_TyLeTon_Click(object sender, EventArgs e)
         {
             dgvTyLeTon.DataSource = _cHoaDon.GetBaoCaoTyLeTon(int.Parse(cmbNam.SelectedValue.ToString()), CNguoiDung.FromDot, CNguoiDung.ToDot);
-
             int TongHD = 0;
             long TongGiaBan = 0;
             int TongHDTon = 0;
             long TongGiaBanTon = 0;
-
             foreach (DataGridViewRow item in dgvTyLeTon.Rows)
             {
-                DataTable dtDCHD = _cDCHD.GetTongChuanThu(int.Parse(cmbNam_TyLeTon.SelectedValue.ToString()), int.Parse(item.Cells["Ky_TyLeTon"].Value.ToString()));
+                DataTable dtDCHD = _cDCHD.GetTongChuanThu(int.Parse(cmbNam_TyLeTon.SelectedValue.ToString()), int.Parse(item.Cells["Ky_TyLeTon"].Value.ToString()), CNguoiDung.FromDot, CNguoiDung.ToDot);
                 if (dtDCHD != null && dtDCHD.Rows.Count > 0)
                 {
                     item.Cells["TongGiaBan_TyLeTon"].Value = long.Parse(item.Cells["TongGiaBan_TyLeTon"].Value.ToString()) - long.Parse(dtDCHD.Rows[0]["GIABAN_DC"].ToString());
                 }
-
-                DataTable dtDCHDTon = _cDCHD.GetTongChuanThuTon(int.Parse(cmbNam_TyLeTon.SelectedValue.ToString()), int.Parse(item.Cells["Ky_TyLeTon"].Value.ToString()));
+                DataTable dtDCHDTon = _cDCHD.GetTongChuanThuTon(int.Parse(cmbNam_TyLeTon.SelectedValue.ToString()), int.Parse(item.Cells["Ky_TyLeTon"].Value.ToString()), CNguoiDung.FromDot, CNguoiDung.ToDot);
                 if (dtDCHDTon != null && dtDCHDTon.Rows.Count > 0)
                 {
                     item.Cells["TongGiaBanTon_TyLeTon"].Value = long.Parse(item.Cells["TongGiaBanTon_TyLeTon"].Value.ToString()) - long.Parse(dtDCHD.Rows[0]["GIABAN_DC"].ToString());
                 }
-
                 item.Cells["TyLeTongHDTon_TyLeTon"].Value = Math.Round(double.Parse(item.Cells["TongHDTon_TyLeTon"].Value.ToString()) / double.Parse(item.Cells["TongHD_TyLeTon"].Value.ToString()) * 100, 2);
                 item.Cells["TyLeGiaBanTon_TyLeTon"].Value = Math.Round(double.Parse(item.Cells["TongGiaBanTon_TyLeTon"].Value.ToString()) / double.Parse(item.Cells["TongGiaBan_TyLeTon"].Value.ToString()) * 100, 2);
-
                 TongHD += int.Parse(item.Cells["TongHD_TyLeTon"].Value.ToString());
                 TongGiaBan += long.Parse(item.Cells["TongGiaBan_TyLeTon"].Value.ToString());
                 TongHDTon += int.Parse(item.Cells["TongHDTon_TyLeTon"].Value.ToString());
                 TongGiaBanTon += long.Parse(item.Cells["TongGiaBanTon_TyLeTon"].Value.ToString());
             }
-
             txtTongHD_TyLeTon.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHD);
             txtTongGiaBan_TyLeTon.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongGiaBan);
             txtTongHDTon_TyLeTon.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongHDTon);
