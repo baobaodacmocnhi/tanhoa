@@ -849,13 +849,13 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 i++;
                                 //if(i==972)
                                 //    MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item.Cells["SoHoaDon_TT"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                if (_cHoaDon.CheckKhoaTienDuBySoHoaDon(int.Parse(item.Cells["MaHD_TT"].Value.ToString())))
+                                if (_cHoaDon.CheckKhoaTienDuByMaHD(int.Parse(item.Cells["MaHD_TT"].Value.ToString())))
                                 {
                                     MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item.Cells["DanhBo_TT"].Value.ToString() + " - " + item.Cells["Ky_TT"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     item.Selected = true;
                                     return;
                                 }
-                                if (_cHoaDon.CheckDCHDTienDuBySoHoaDon(int.Parse(item.Cells["MaHD_TT"].Value.ToString())))
+                                if (_cHoaDon.CheckDCHDTienDuByMaHD(int.Parse(item.Cells["MaHD_TT"].Value.ToString())))
                                 {
                                     MessageBox.Show("Hóa Đơn đã Điều Chỉnh Tiền Dư " + item.Cells["DanhBo_TT"].Value.ToString() + " - " + item.Cells["Ky_TT"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     item.Selected = true;
@@ -940,13 +940,13 @@ namespace ThuTien.GUI.ChuyenKhoan
                         i++;
                         //if(i==972)
                         //    MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item.Cells["SoHoaDon_TT"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        if (_cHoaDon.CheckKhoaTienDuBySoHoaDon(int.Parse(item.Cells["MaHD_TT"].Value.ToString())))
+                        if (_cHoaDon.CheckKhoaTienDuByMaHD(int.Parse(item.Cells["MaHD_TT"].Value.ToString())))
                         {
                             MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item.Cells["DanhBo_TT"].Value.ToString() + " - " + item.Cells["Ky_TT"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             item.Selected = true;
                             return;
                         }
-                        if (_cHoaDon.CheckDCHDTienDuBySoHoaDon(int.Parse(item.Cells["MaHD_TT"].Value.ToString())))
+                        if (_cHoaDon.CheckDCHDTienDuByMaHD(int.Parse(item.Cells["MaHD_TT"].Value.ToString())))
                         {
                             MessageBox.Show("Hóa Đơn đã Điều Chỉnh Tiền Dư " + item.Cells["DanhBo_TT"].Value.ToString() + " - " + item.Cells["Ky_TT"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             item.Selected = true;
@@ -1026,12 +1026,12 @@ namespace ThuTien.GUI.ChuyenKhoan
                 DataTable dt = _cTamThu.getDSTon_KyMoi(true);
                 foreach (DataRow item in dt.Rows)
                 {
-                    if (_cHoaDon.CheckKhoaTienDuBySoHoaDon(int.Parse(item["MaHD"].ToString())))
+                    if (_cHoaDon.CheckKhoaTienDuByMaHD(int.Parse(item["MaHD"].ToString())))
                     {
                         MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item["DanhBo_TT"].ToString() + " - " + item["Ky_TT"].ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    if (_cHoaDon.CheckDCHDTienDuBySoHoaDon(int.Parse(item["MaHD"].ToString())))
+                    if (_cHoaDon.CheckDCHDTienDuByMaHD(int.Parse(item["MaHD"].ToString())))
                     {
                         MessageBox.Show("Hóa Đơn đã Điều Chỉnh Tiền Dư " + item["DanhBo_TT"].ToString() + " - " + item["Ky_TT"].ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;

@@ -536,7 +536,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                     transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
                                     using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                                     {
-                                        DataRow[] dr = dtExcel.Select("DanhBo='" + dgvBangKe["DanhBo", i].Value.ToString() + "' and SoTien=" + dgvBangKe["SoTien", i].Value.ToString());
+                                        DataRow[] dr = dtExcel.Select("DanhBo like '" + dgvBangKe["DanhBo", i].Value.ToString() + "' and SoTien like '" + dgvBangKe["SoTien", i].Value.ToString()+"'");
                                         if (dr != null && dr.Count() > 0)
                                             if (dr != null && dr.Count() == 1)
                                             {

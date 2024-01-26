@@ -151,14 +151,14 @@ namespace ThuTien.GUI.Quay
                         //    item.Selected = true;
                         //    return;
                         //}
-                        if (_cHoaDon.CheckKhoaTienDuBySoHoaDon(int.Parse(item.Cells["MaHD"].Value.ToString())))
+                        if (_cHoaDon.CheckKhoaTienDuByMaHD(int.Parse(item.Cells["MaHD"].Value.ToString())))
                         {
                             MessageBox.Show("Hóa Đơn đã Khóa Tiền Dư " + item.Cells["SoHoaDon"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             dgvHoaDon.CurrentCell = item.Cells["DanhBo"];
                             item.Selected = true;
                             return;
                         }
-                        if (_cHoaDon.CheckDCHDTienDuBySoHoaDon(int.Parse(item.Cells["MaHD"].Value.ToString())))
+                        if (_cHoaDon.CheckDCHDTienDuByMaHD(int.Parse(item.Cells["MaHD"].Value.ToString())))
                         {
                             MessageBox.Show("Hóa Đơn đã Điều Chỉnh Tiền Dư " + item.Cells["SoHoaDon"].Value.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             dgvHoaDon.CurrentCell = item.Cells["DanhBo"];

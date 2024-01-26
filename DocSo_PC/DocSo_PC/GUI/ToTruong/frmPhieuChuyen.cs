@@ -450,6 +450,20 @@ namespace DocSo_PC.GUI.ToTruong
                             dr["HoTen"] = ttkh.HOTEN;
                             dr["DiaChi"] = ttkh.SONHA + " " + ttkh.TENDUONG + _cDHN.getTenPhuongQuan(ttkh.QUAN, ttkh.PHUONG);
                             dr["Hieu"] = ttkh.HIEUDH;
+                            dr["SoThan"] = ttkh.SOTHANDH;
+                            dr["ViTri"] = ttkh.VITRIDHN;
+                            if (ttkh.ViTriDHN_Hop)
+                                if (dr["ViTri"].ToString() != "")
+                                    dr["ViTri"] += ", Hộp";
+                                else
+                                    dr["ViTri"] = "Hộp";
+                            if (ttkh.ViTriDHN_Ngoai)
+                                if (dr["ViTri"].ToString() != "")
+                                    dr["ViTri"] += ", Ngoài";
+                                else
+                                    dr["ViTri"] = "Ngoài";
+                            dr["Phuong"] = _cDHN.getTenPhuong(ttkh.QUAN, ttkh.PHUONG);
+                            dr["Quan"] = _cDHN.getTenQuan(ttkh.QUAN);
                             HOADON hd = _cThuTien.getMoiNhat(ttkh.DANHBO);
                             if (hd != null)
                                 dr["HopDong"] = hd.SO + " " + hd.DUONG + _cDHN.getTenPhuongQuan(hd.Quan, hd.Phuong);
@@ -465,10 +479,35 @@ namespace DocSo_PC.GUI.ToTruong
                             dsBaoCao.Tables["BaoCao"].Rows.Add(dr);
                         }
                     }
-                rptPhieuChuyen rpt = new rptPhieuChuyen();
-                rpt.SetDataSource(dsBaoCao);
-                frmShowBaoCao frm = new frmShowBaoCao(rpt);
-                frm.Show();
+                if (lst[0].KinhGui.Contains("Phòng KHĐT"))
+                {
+                    rptPhieuChuyen_KHDT rpt = new rptPhieuChuyen_KHDT();
+                    rpt.SetDataSource(dsBaoCao);
+                    frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                    frm.Show();
+                    wrDHN.wsDHN wsDHN = new wrDHN.wsDHN();
+                    using (FolderBrowserDialog dlg = new FolderBrowserDialog())
+                    {
+                        dlg.Description = "Chọn Thư Mục Chứa File";
+                        if (dlg.ShowDialog() == DialogResult.OK)
+                        {
+                            foreach (MaHoa_PhieuChuyen_LichSu item in lst)
+                                if (item.TinhTrang != "Xóa")
+                                {
+                                    byte[] hinh = _wsDHN.get_Hinh_MaHoa("AmSau", "", item.DanhBo + ".jpg");
+                                    if (hinh != null)
+                                        System.IO.File.WriteAllBytes(@"" + dlg.SelectedPath + @"\" + item.DanhBo + ".jpg", hinh);
+                                }
+                        }
+                    }
+                }
+                else
+                {
+                    rptPhieuChuyen rpt = new rptPhieuChuyen();
+                    rpt.SetDataSource(dsBaoCao);
+                    frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                    frm.Show();
+                }
             }
         }
 
@@ -598,6 +637,20 @@ namespace DocSo_PC.GUI.ToTruong
                                     dr["HoTen"] = ttkh.HOTEN;
                                     dr["DiaChi"] = ttkh.SONHA + " " + ttkh.TENDUONG + _cDHN.getTenPhuongQuan(ttkh.QUAN, ttkh.PHUONG);
                                     dr["Hieu"] = ttkh.HIEUDH;
+                                    dr["SoThan"] = ttkh.SOTHANDH;
+                                    dr["ViTri"] = ttkh.VITRIDHN;
+                                    if (ttkh.ViTriDHN_Hop)
+                                        if (dr["ViTri"].ToString() != "")
+                                            dr["ViTri"] += ", Hộp";
+                                        else
+                                            dr["ViTri"] = "Hộp";
+                                    if (ttkh.ViTriDHN_Ngoai)
+                                        if (dr["ViTri"].ToString() != "")
+                                            dr["ViTri"] += ", Ngoài";
+                                        else
+                                            dr["ViTri"] = "Ngoài";
+                                    dr["Phuong"] = _cDHN.getTenPhuong(ttkh.QUAN, ttkh.PHUONG);
+                                    dr["Quan"] = _cDHN.getTenQuan(ttkh.QUAN);
                                     HOADON hd = _cThuTien.getMoiNhat(ttkh.DANHBO);
                                     if (hd != null)
                                         dr["HopDong"] = hd.SO + " " + hd.DUONG + _cDHN.getTenPhuongQuan(hd.Quan, hd.Phuong);
@@ -612,10 +665,35 @@ namespace DocSo_PC.GUI.ToTruong
                                     dsBaoCao.Tables["BaoCao"].Rows.Add(dr);
                                 }
                             }
-                            rptPhieuChuyen rpt = new rptPhieuChuyen();
-                            rpt.SetDataSource(dsBaoCao);
-                            frmShowBaoCao frm = new frmShowBaoCao(rpt);
-                            frm.Show();
+                            if (lst[0].KinhGui.Contains("Phòng KHĐT"))
+                            {
+                                rptPhieuChuyen_KHDT rpt = new rptPhieuChuyen_KHDT();
+                                rpt.SetDataSource(dsBaoCao);
+                                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                                frm.Show();
+                                wrDHN.wsDHN wsDHN = new wrDHN.wsDHN();
+                                using (FolderBrowserDialog dlg = new FolderBrowserDialog())
+                                {
+                                    dlg.Description = "Chọn Thư Mục Chứa File";
+                                    if (dlg.ShowDialog() == DialogResult.OK)
+                                    {
+                                        foreach (MaHoa_PhieuChuyen_LichSu item in lst)
+                                            if (item.TinhTrang != "Xóa")
+                                            {
+                                                byte[] hinh = _wsDHN.get_Hinh_MaHoa("AmSau", "", item.DanhBo + ".jpg");
+                                                if (hinh != null)
+                                                    System.IO.File.WriteAllBytes(@"" + dlg.SelectedPath + @"\" + item.DanhBo + ".jpg", hinh);
+                                            }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                rptPhieuChuyen rpt = new rptPhieuChuyen();
+                                rpt.SetDataSource(dsBaoCao);
+                                frmShowBaoCao frm = new frmShowBaoCao(rpt);
+                                frm.Show();
+                            }
                         }
                         dgvDanhBo.Rows.Clear();
                     }

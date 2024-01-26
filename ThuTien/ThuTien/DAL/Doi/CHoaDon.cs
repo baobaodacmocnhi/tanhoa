@@ -838,9 +838,10 @@ namespace ThuTien.DAL.Doi
 
         public DataTable GetTongByNamKy(int Nam, int Ky, int FromDot, int ToDot)
         {
-            string sql = "select DOT,TongHD=COUNT(ID_HOADON),TongTieuThu=SUM(TIEUTHU),TongGiaBan=SUM(GIABAN),TongThueGTGT=SUM(THUE),"
-                        + " TongPhiBVMT=SUM(PHI),TongPhiBVMT_Thue=SUM(ThueGTGT_TDVTN),TongCong=SUM(TONGCONG),HD0=COUNT(case when TIEUTHU = 0 then 1 else null end),"
-                        + " SONGAY=MAX(SONGAY),CreateDate=MAX(CreateDate)"
+            string sql = "select DOT,TongHD=COUNT(ID_HOADON),TongTieuThu=SUM(TIEUTHU),TongGiaBan=SUM(GIABAN),TongThueGTGT=SUM(THUE)"
+                        + " ,TongPhiBVMT=SUM(PHI),TongPhiBVMT_Thue=SUM(ThueGTGT_TDVTN),TongCong=SUM(TONGCONG),HD0=COUNT(case when TIEUTHU = 0 then 1 else null end)"
+                        + " ,HD14=COUNT(case when 1<=TIEUTHU and TIEUTHU<=4 then 1 else null end)"
+                        + " ,SONGAY=MAX(SONGAY),CreateDate=MAX(CreateDate)"
                         + " from HOADON where NAM=" + Nam + " and KY=" + Ky + " and Dot>=" + FromDot + " and Dot<=" + ToDot
                         + " group by DOT order by DOT";
             return ExecuteQuery_DataTable(sql);
@@ -12834,7 +12835,7 @@ namespace ThuTien.DAL.Doi
             return _db.HOADONs.Any(item => item.SOHOADON == SoHoaDon && item.KhoaTienDu == true);
         }
 
-        public bool CheckKhoaTienDuBySoHoaDon(int MaHD)
+        public bool CheckKhoaTienDuByMaHD(int MaHD)
         {
             return _db.HOADONs.Any(item => item.ID_HOADON == MaHD && item.KhoaTienDu == true);
         }
@@ -12849,7 +12850,7 @@ namespace ThuTien.DAL.Doi
             return _db.HOADONs.Any(item => item.SOHOADON == SoHoaDon && item.DCHD == true);
         }
 
-        public bool CheckDCHDTienDuBySoHoaDon(int MaHD)
+        public bool CheckDCHDTienDuByMaHD(int MaHD)
         {
             return _db.HOADONs.Any(item => item.ID_HOADON == MaHD && item.DCHD == true);
         }

@@ -259,13 +259,13 @@ namespace ThuTien.GUI.TongHop
                 {
                     if (CNguoiDung.Doi == false)
                     {
-                        if (_cHoaDon.CheckDangNganBySoHoaDon(_SoHoaDon))
+                        if (_cHoaDon.CheckDangNganByMaHD(_MaHD))
                         {
                             MessageBox.Show("Hóa đơn đã đăng ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                     }
-                    if (_cHoaDon.CheckDCHDTienDuBySoHoaDon(_SoHoaDon))
+                    if (_cHoaDon.CheckDCHDTienDuByMaHD(_MaHD))
                     {
                         MessageBox.Show("Hóa Đơn này đã ĐCHĐ Tiền Dư", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -609,7 +609,7 @@ namespace ThuTien.GUI.TongHop
             {
                 if (CNguoiDung.CheckQuyen("mnuDCHD", "Them"))
                 {
-                    if (_cHoaDon.CheckDangNganBySoHoaDon(_SoHoaDon))
+                    if (_cHoaDon.CheckDangNganByMaHD(_MaHD))
                     {
                         MessageBox.Show("Hóa đơn đã đăng ngân", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -620,7 +620,7 @@ namespace ThuTien.GUI.TongHop
                         MessageBox.Show("Hóa Đơn này đã Tạm Thu(" + loai + ")", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    if (_cHoaDon.CheckDCHDTienDuBySoHoaDon(_SoHoaDon))
+                    if (_cHoaDon.CheckDCHDTienDuByMaHD(_MaHD))
                     {
                         MessageBox.Show("Hóa Đơn này đã ĐCHĐ Tiền Dư", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;

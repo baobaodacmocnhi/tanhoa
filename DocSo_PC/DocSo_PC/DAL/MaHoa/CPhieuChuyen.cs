@@ -130,7 +130,7 @@ namespace DocSo_PC.DAL.MaHoa
         public DataTable getDS(string MaTo, string NoiDung, DateTime FromCreateDate, DateTime ToCreateDate)
         {
             if (MaTo == "0")
-                MaTo = "";
+                MaTo = "and SUBSTRING(LOTRINH,1,2)>=" + CNguoiDung.FromDot + " and SUBSTRING(LOTRINH,1,2)<=" + CNguoiDung.ToDot;
             else
                 MaTo = "and SUBSTRING(LOTRINH,3,2)>=(select TuMay from DocSoTH.dbo.[To] where MaTo=" + MaTo + ") and SUBSTRING(LOTRINH,3,2)<=(select DenMay from DocSoTH.dbo.[To] where MaTo=" + MaTo + ")";
             if (NoiDung == "Tất Cả")
