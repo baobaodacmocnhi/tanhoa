@@ -705,7 +705,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
                     using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                     {
-                        DonTu_LichSu dtls = _cDonTu.get_LichSu("CHDB_ChiTietCatTam", (int)_ctctdb.MaCTCTDB,_ctctdb.CreateBy.Value);
+                        DonTu_LichSu dtls = _cDonTu.get_LichSu("CHDB_ChiTietCatTam", (int)_ctctdb.MaCTCTDB, _ctctdb.CreateBy.Value);
                         if (dtls != null)
                         {
                             _cDonTu.Xoa_LichSu(dtls, true);
@@ -786,6 +786,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             ycchdb.GhiChuLyDo = _ctctdb.GhiChuLyDo;
                             ycchdb.SoTien = _ctctdb.SoTien;
                             ycchdb.HieuLucKy = txtHieuLucKy.Text.Trim();
+                            ycchdb.NoiNhan = _cCHDB.getNoiNhan_PhieuHuy(ycchdb.DanhBo,);
                             HOADON hoadon = _cThuTien.GetMoiNhat(_ctctdb.DanhBo);
                             if (hoadon != null)
                             {
@@ -854,7 +855,12 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
 
                                 if (ycchdb.CHDB.MaDonMoi != null)
-                                    dr["MaDon"] = ycchdb.CHDB.MaDonMoi.ToString();
+                                {
+                                     if (ycchdb.CHDB.DonTu.DonTu_ChiTiets.Count == 1)
+                            dr["MaDon"] = ycchdb.CHDB.MaDonMoi.Value.ToString();
+                        else
+                            dr["MaDon"] = ycchdb.CHDB.MaDonMoi.Value.ToString() + "." + ycchdb.STT.Value.ToString();
+                                }
                                 else
                                     if (ycchdb.CHDB.MaDon != null)
                                         dr["MaDon"] = ycchdb.CHDB.MaDon.ToString().Insert(ycchdb.CHDB.MaDon.ToString().Length - 2, "-");
@@ -1429,7 +1435,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             byte[] file = _wsThuongVu.get_Hinh("CHDB_ChiTietCatTam_Hinh", _ctctdb.MaCTCTDB.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
             if (file != null)
                 if (dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString().ToLower().Contains("pdf"))
-                    _cCHDB.viewPDF(1,file);
+                    _cCHDB.viewPDF(1, file);
                 else
                     _cCHDB.viewImage(file);
             else

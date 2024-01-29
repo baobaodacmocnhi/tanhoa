@@ -2239,5 +2239,16 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
         }
 
         #endregion
+
+        public string getNoiNhan_PhieuHuy(string DanhBo, string MaDon)
+        {
+            string NoiNhan = "-Phòng Kinh Doanh Dịch Vụ Khách Hàng.\n"
+                + "-" + ExecuteQuery_ReturnOneValue("select KyHieu from DocSoTH.dbo.Phong where TuDot<=(select SUBSTRING(LOTRINH,1,2) from CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG where DANHBO='" + DanhBo + "')"
+  + " and (select SUBSTRING(LOTRINH,1,2) from CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG where DANHBO='" + DanhBo + "')<=DenDot").ToString() + " cập nhật."
+                     + "-Phòng GNKDT theo dõi.\n"
+                     + "-Lưu.(" + MaDon + ")";
+
+            return NoiNhan;
+        }
     }
 }

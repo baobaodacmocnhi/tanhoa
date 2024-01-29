@@ -667,7 +667,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             {
                                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                                 DataRow dr = dsBaoCao.Tables["PhieuCHDB"].NewRow();
-
                                 CHDB_Phieu ycchdb = _cCHDB.GetPhieuHuy(decimal.Parse(dgvDSYCCHDB["SoPhieu", i].Value.ToString()));
                                 dr["SoPhieu"] = ycchdb.MaYCCHDB.ToString().Insert(ycchdb.MaYCCHDB.ToString().Length - 2, "-");
                                 dr["HieuLucKy"] = ycchdb.HieuLucKy;
@@ -687,11 +686,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                     dr["LyDo"] += ycchdb.GhiChuLyDo + ". ";
                                 if (ycchdb.SoTien.ToString() != "")
                                     dr["LyDo"] += "Tổng số tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,## đồng}", ycchdb.SoTien);
-
+                                dr["NoiNhan"] = ycchdb.NoiNhan;
                                 dr["ChucVu"] = ycchdb.ChucVu;
                                 dr["NguoiKy"] = ycchdb.NguoiKy;
                                 dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
-
                                 if (ycchdb.CHDB.MaDonMoi != null)
                                 {
                                     if (ycchdb.CHDB.DonTu.DonTu_ChiTiets.Count == 1)
@@ -708,9 +706,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                         else
                                             if (ycchdb.CHDB.MaDonTBC != null)
                                                 dr["MaDon"] = "TBC" + ycchdb.CHDB.MaDonTBC.ToString().Insert(ycchdb.CHDB.MaDonTBC.ToString().Length - 2, "-");
-
                                 dsBaoCao.Tables["PhieuCHDB"].Rows.Add(dr);
-
                                 //rptPhieuCHDBx2 rpt = new rptPhieuCHDBx2();
                                 //for (int j = 0; j < rpt.Subreports.Count; j++)
                                 //{
@@ -719,13 +715,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 DataRow drLogo = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
                                 drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
                                 dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(drLogo);
-
                                 rptPhieuCHDB rpt = new rptPhieuCHDB();
                                 rpt.SetDataSource(dsBaoCao);
-
                                 printDialog.AllowSomePages = true;
                                 printDialog.ShowHelp = true;
-
                                 rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
                                 rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
                                 rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
