@@ -572,37 +572,27 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                         ctktxm.Phuong = _hoadon.Phuong;
                         ctktxm.Quan = _hoadon.Quan;
                     }
-                    ///
                     ctktxm.NgayKTXM_Truoc_NgayGiao = chkNgayKTXMTruocNgayGiao.Checked;
                     ctktxm.NgayKTXM = dateKTXM.Value;
-
                     if (cmbHienTrangKiemTra.SelectedValue != null)
                         ctktxm.HienTrangKiemTra = cmbHienTrangKiemTra.SelectedValue.ToString();
-
                     if (cmbViTriDHN1.SelectedItem != null)
                         ctktxm.ViTriDHN1 = cmbViTriDHN1.SelectedItem.ToString();
-
                     if (cmbViTriDHN2.SelectedItem != null)
                         ctktxm.ViTriDHN2 = cmbViTriDHN2.SelectedItem.ToString();
-
                     ctktxm.Hieu = txtHieu.Text.Trim();
                     ctktxm.Co = txtCo.Text.Trim();
                     ctktxm.SoThan = txtSoThan.Text.Trim();
                     ctktxm.ChiSo = txtChiSo.Text.Trim();
-
                     if (cmbTinhTrangChiSo.SelectedItem != null)
                         ctktxm.TinhTrangChiSo = cmbTinhTrangChiSo.SelectedItem.ToString();
-
                     if (cmbChiMatSo.SelectedItem != null)
                         ctktxm.ChiMatSo = cmbChiMatSo.SelectedItem.ToString();
-
                     if (cmbChiKhoaGoc.SelectedItem != null)
                         ctktxm.ChiKhoaGoc = cmbChiKhoaGoc.SelectedItem.ToString();
-
                     ctktxm.MucDichSuDung = txtMucDichSuDung.Text.Trim();
                     ctktxm.DienThoai = txtDienThoai.Text.Trim();
                     ctktxm.HoTenKHKy = txtHoTenKHKy.Text.Trim().ToUpper();
-
                     ctktxm.NoiDungKiemTra = txtNoiDungKiemTra.Text.Trim();
                     ctktxm.TheoYeuCau = txtTheoYeuCau.Text.Trim().ToUpper();
                     ctktxm.TieuThuTrungBinh = int.Parse(txtTieuThuTrungBinh.Text.Trim());
@@ -722,7 +712,6 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             _ctktxm.Phuong = _hoadon.Phuong;
                             _ctktxm.Quan = _hoadon.Quan;
                         }
-                        ///
                         _ctktxm.NgayKTXM_Truoc_NgayGiao = chkNgayKTXMTruocNgayGiao.Checked;
                         //cập nhật lại thời gian bên lịch sử chuyển đơn
                         if (_ctktxm.NgayKTXM.Value.Date != dateKTXM.Value.Date)
@@ -735,34 +724,25 @@ namespace KTKS_DonKH.GUI.KiemTraXacMinh
                             }
                         }
                         _ctktxm.NgayKTXM = dateKTXM.Value;
-
                         if (cmbHienTrangKiemTra.SelectedValue != null && cmbHienTrangKiemTra.SelectedValue.ToString() != "")
                             _ctktxm.HienTrangKiemTra = cmbHienTrangKiemTra.SelectedValue.ToString();
-
                         if (cmbViTriDHN1.SelectedItem != null)
                             _ctktxm.ViTriDHN1 = cmbViTriDHN1.SelectedItem.ToString();
-
                         if (cmbViTriDHN2.SelectedItem != null)
                             _ctktxm.ViTriDHN2 = cmbViTriDHN2.SelectedItem.ToString();
-
                         _ctktxm.Hieu = txtHieu.Text.Trim();
                         _ctktxm.Co = txtCo.Text.Trim();
                         _ctktxm.SoThan = txtSoThan.Text.Trim();
                         _ctktxm.ChiSo = txtChiSo.Text.Trim();
-
                         if (cmbTinhTrangChiSo.SelectedItem != null)
                             _ctktxm.TinhTrangChiSo = cmbTinhTrangChiSo.SelectedItem.ToString();
-
                         if (cmbChiMatSo.SelectedItem != null)
                             _ctktxm.ChiMatSo = cmbChiMatSo.SelectedItem.ToString();
-
                         if (cmbChiKhoaGoc.SelectedItem != null)
                             _ctktxm.ChiKhoaGoc = cmbChiKhoaGoc.SelectedItem.ToString();
-
                         _ctktxm.MucDichSuDung = txtMucDichSuDung.Text.Trim();
                         _ctktxm.DienThoai = txtDienThoai.Text.Trim();
                         _ctktxm.HoTenKHKy = txtHoTenKHKy.Text.Trim();
-
                         _ctktxm.NoiDungKiemTra = txtNoiDungKiemTra.Text.Trim();
                         _ctktxm.TheoYeuCau = txtTheoYeuCau.Text.Trim().ToUpper();
                         _ctktxm.TieuThuTrungBinh = int.Parse(txtTieuThuTrungBinh.Text.Trim());

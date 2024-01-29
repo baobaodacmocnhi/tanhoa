@@ -544,7 +544,7 @@
             this.btnInDS.TabIndex = 33;
             this.btnInDS.Text = "In DS";
             this.btnInDS.UseVisualStyleBackColor = true;
-            this.btnInDS.Click += new System.EventHandler(this.btnInDS_Click_1);
+            this.btnInDS.Click += new System.EventHandler(this.btnInDS_Click);
             // 
             // frmDSCHDB
             // 
@@ -552,7 +552,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1404, 619);
+            this.ClientSize = new System.Drawing.Size(1421, 619);
             this.Controls.Add(this.btnInDS);
             this.Controls.Add(this.cmbQuan);
             this.Controls.Add(this.label9);

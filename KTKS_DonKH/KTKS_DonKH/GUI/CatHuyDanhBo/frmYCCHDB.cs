@@ -79,6 +79,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             txtHopDong.Text = hoadon.HOPDONG;
             txtHoTen.Text = hoadon.TENKH;
             txtDiaChi.Text = hoadon.SO + " " + hoadon.DUONG + _cDHN.GetPhuongQuan(hoadon.Quan, hoadon.Phuong);
+            txtNoiNhan.Text = _cCHDB.getNoiNhan_PhieuHuy(hoadon.DANHBA, txtMaDonMoi.Text.Trim());
             if (_cDHN.CheckExist(hoadon.DANHBA) == false)
                 MessageBox.Show("Danh Bộ Hủy", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
@@ -171,6 +172,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             txtSoTien.Text = "";
             txtGhiChu.Text = "";
             txtHieuLucKy.Text = "";
+            txtNoiNhan.Text = "";
             ///
             chkCatTamNutBit.Checked = false;
             chkTroNgai.Checked = false;
@@ -269,14 +271,12 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                     if (dt != null)
                         _dontu_ChiTiet = dt.DonTu_ChiTiets.SingleOrDefault();
                 }
-                //
                 if (_dontu_ChiTiet != null)
                 {
                     if (_dontu_ChiTiet.DonTu.DonTu_ChiTiets.Count() == 1)
                         txtMaDonMoi.Text = _dontu_ChiTiet.MaDon.Value.ToString();
                     else
                         txtMaDonMoi.Text = _dontu_ChiTiet.MaDon.Value.ToString() + "." + _dontu_ChiTiet.STT.Value.ToString();
-
                     _hoadon = _cThuTien.GetMoiNhat(_dontu_ChiTiet.DanhBo);
                     if (_hoadon != null)
                     {

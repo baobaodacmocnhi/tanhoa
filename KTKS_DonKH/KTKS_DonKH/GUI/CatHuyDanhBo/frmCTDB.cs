@@ -786,7 +786,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             ycchdb.GhiChuLyDo = _ctctdb.GhiChuLyDo;
                             ycchdb.SoTien = _ctctdb.SoTien;
                             ycchdb.HieuLucKy = txtHieuLucKy.Text.Trim();
-                            ycchdb.NoiNhan = _cCHDB.getNoiNhan_PhieuHuy(ycchdb.DanhBo,);
+                            ycchdb.NoiNhan = _cCHDB.getNoiNhan_PhieuHuy(ycchdb.DanhBo, txtMaDonMoi.Text.Trim());
                             HOADON hoadon = _cThuTien.GetMoiNhat(_ctctdb.DanhBo);
                             if (hoadon != null)
                             {
@@ -796,7 +796,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 ycchdb.Phuong = hoadon.Phuong;
                                 ycchdb.Quan = hoadon.Quan;
                             }
-                            ///Ký Tên
                             BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
                             if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
                                 ycchdb.ChucVu = "GIÁM ĐỐC";
@@ -804,18 +803,15 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 ycchdb.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
                             ycchdb.NguoiKy = bangiamdoc.HoTen.ToUpper();
                             ycchdb.PhieuDuocKy = true;
-
                             if (_cCHDB.ThemPhieuHuy(ycchdb))
                             {
                                 if (_dontu_ChiTiet != null)
                                     _cDonTu.Them_LichSu(ycchdb.CreateDate.Value, "PhieuCHDB", "Đã Lập Phiếu Hủy, " + ycchdb.LyDo, (int)ycchdb.MaYCCHDB, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
-
                                 _ctctdb.DaLapPhieu = true;
                                 _ctctdb.SoPhieu = ycchdb.MaYCCHDB;
                                 _ctctdb.NgayLapPhieu = ycchdb.CreateDate;
                                 _ctctdb.HieuLucKy = ycchdb.HieuLucKy;
                                 _ctctdb.PhieuDuocKy = true;
-                                ///
                                 CHDB_GhiChu ghichu = new CHDB_GhiChu();
                                 ghichu.NgayLap = _ctctdb.NgayXuLy;
                                 ghichu.NoiDung = _ctctdb.NoiDungXuLy;
@@ -828,10 +824,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 _ctctdb.NoiDungXuLy = "Lập phiếu hủy DB";
                                 _ctctdb.CreateDate_NgayXuLy = DateTime.Now;
                                 _cCHDB.SuaCTCTDB(_ctctdb);
-
                                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                                 DataRow dr = dsBaoCao.Tables["PhieuCHDB"].NewRow();
-
                                 dr["SoPhieu"] = ycchdb.MaYCCHDB.ToString().Insert(ycchdb.MaYCCHDB.ToString().Length - 2, "-");
                                 dr["HieuLucKy"] = ycchdb.HieuLucKy;
                                 dr["Dot"] = ycchdb.Dot;
@@ -839,7 +833,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 dr["DiaChi"] = ycchdb.DiaChi;
                                 dr["DanhBo"] = ycchdb.DanhBo.Insert(7, " ").Insert(4, " ");
                                 dr["HopDong"] = ycchdb.HopDong;
-
                                 if (ycchdb.LyDo == "Vấn Đề Khác")
                                     dr["LyDo"] = "";
                                 else
@@ -849,17 +842,15 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                     dr["LyDo"] += ycchdb.GhiChuLyDo + ". ";
                                 if (ycchdb.SoTien.ToString() != "")
                                     dr["LyDo"] += "Số Tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,## đồng}", ycchdb.SoTien);
-
                                 dr["ChucVu"] = ycchdb.ChucVu;
                                 dr["NguoiKy"] = ycchdb.NguoiKy;
                                 dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
-
                                 if (ycchdb.CHDB.MaDonMoi != null)
                                 {
-                                     if (ycchdb.CHDB.DonTu.DonTu_ChiTiets.Count == 1)
-                            dr["MaDon"] = ycchdb.CHDB.MaDonMoi.Value.ToString();
-                        else
-                            dr["MaDon"] = ycchdb.CHDB.MaDonMoi.Value.ToString() + "." + ycchdb.STT.Value.ToString();
+                                    if (ycchdb.CHDB.DonTu.DonTu_ChiTiets.Count == 1)
+                                        dr["MaDon"] = ycchdb.CHDB.MaDonMoi.Value.ToString();
+                                    else
+                                        dr["MaDon"] = ycchdb.CHDB.MaDonMoi.Value.ToString() + "." + ycchdb.STT.Value.ToString();
                                 }
                                 else
                                     if (ycchdb.CHDB.MaDon != null)
@@ -870,20 +861,17 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                         else
                                             if (ycchdb.CHDB.MaDonTBC != null)
                                                 dr["MaDon"] = "TBC" + ycchdb.CHDB.MaDonTBC.ToString().Insert(ycchdb.CHDB.MaDonTBC.ToString().Length - 2, "-");
-
+                                dr["NoiNhan"] = ycchdb.NoiNhan;
                                 dsBaoCao.Tables["PhieuCHDB"].Rows.Add(dr);
-
                                 //rptPhieuCHDBx2 rpt = new rptPhieuCHDBx2();
                                 //for (int j = 0; j < rpt.Subreports.Count; j++)
                                 //{
                                 //    rpt.Subreports[j].SetDataSource(dsBaoCao);
                                 //}
                                 rptPhieuCHDB rpt = new rptPhieuCHDB();
-
                                 DataRow drLogo = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
                                 drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
                                 dsBaoCao.Tables["DSHoaDon"].Rows.Add(drLogo);
-
                                 rpt.SetDataSource(dsBaoCao);
                                 frmShowBaoCao frm = new frmShowBaoCao(rpt);
                                 frm.ShowDialog();
@@ -920,6 +908,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                 ycchdb.GhiChuLyDo = _ctctdb.GhiChuLyDo;
                                 ycchdb.SoTien = _ctctdb.SoTien;
                                 ycchdb.HieuLucKy = txtHieuLucKy.Text.Trim();
+                                ycchdb.NoiNhan = _cCHDB.getNoiNhan_PhieuHuy(ycchdb.DanhBo, txtMaDonMoi.Text.Trim());
                                 HOADON hoadon = _cThuTien.GetMoiNhat(_ctctdb.DanhBo);
                                 if (hoadon != null)
                                 {
@@ -929,7 +918,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                     ycchdb.Phuong = hoadon.Phuong;
                                     ycchdb.Quan = hoadon.Quan;
                                 }
-                                ///Ký Tên
                                 BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
                                 if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
                                     ycchdb.ChucVu = "GIÁM ĐỐC";
@@ -946,10 +934,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                     _ctctdb.NgayLapPhieu = ycchdb.CreateDate;
                                     _ctctdb.PhieuDuocKy = true;
                                     _cCHDB.SuaCTCTDB(_ctctdb);
-
                                     DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                                     DataRow dr = dsBaoCao.Tables["PhieuCHDB"].NewRow();
-
                                     dr["SoPhieu"] = ycchdb.MaYCCHDB.ToString().Insert(ycchdb.MaYCCHDB.ToString().Length - 2, "-");
                                     dr["HieuLucKy"] = ycchdb.HieuLucKy;
                                     dr["Dot"] = ycchdb.Dot;
@@ -957,7 +943,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                     dr["DiaChi"] = ycchdb.DiaChi;
                                     dr["DanhBo"] = ycchdb.DanhBo.Insert(7, " ").Insert(4, " ");
                                     dr["HopDong"] = ycchdb.HopDong;
-
                                     if (ycchdb.LyDo == "Vấn Đề Khác")
                                         dr["LyDo"] = "";
                                     else
@@ -967,11 +952,9 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                         dr["LyDo"] += ycchdb.GhiChuLyDo + ". ";
                                     if (ycchdb.SoTien.ToString() != "")
                                         dr["LyDo"] += "Tổng Số Tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,## đồng}", ycchdb.SoTien);
-
                                     dr["ChucVu"] = ycchdb.ChucVu;
                                     dr["NguoiKy"] = ycchdb.NguoiKy;
                                     dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
-
                                     if (ycchdb.CHDB.MaDonMoi != null)
                                         dr["MaDon"] = ycchdb.CHDB.MaDonMoi.ToString();
                                     else
@@ -983,9 +966,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                             else
                                                 if (ycchdb.CHDB.MaDonTBC != null)
                                                     dr["MaDon"] = "TBC" + ycchdb.CHDB.MaDonTBC.ToString().Insert(ycchdb.CHDB.MaDonTBC.ToString().Length - 2, "-");
-
+                                    dr["NoiNhan"] = ycchdb.NoiNhan;
                                     dsBaoCao.Tables["PhieuCHDB"].Rows.Add(dr);
-
                                     //rptPhieuCHDBx2 rpt = new rptPhieuCHDBx2();
                                     //for (int j = 0; j < rpt.Subreports.Count; j++)
                                     //{
@@ -994,7 +976,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                     DataRow drLogo = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
                                     drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
                                     dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(drLogo);
-
                                     rptPhieuCHDB rpt = new rptPhieuCHDB();
                                     rpt.SetDataSource(dsBaoCao);
                                     frmShowBaoCao frm = new frmShowBaoCao(rpt);
@@ -1010,7 +991,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             CHDB_Phieu ycchdb = _cCHDB.GetPhieuHuyByMaCTCTDB(_ctctdb.MaCTCTDB);
                             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                             DataRow dr = dsBaoCao.Tables["PhieuCHDB"].NewRow();
-
                             dr["SoPhieu"] = ycchdb.MaYCCHDB.ToString().Insert(ycchdb.MaYCCHDB.ToString().Length - 2, "-");
                             dr["HieuLucKy"] = ycchdb.HieuLucKy;
                             dr["Dot"] = ycchdb.Dot;
@@ -1018,21 +998,17 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             dr["DiaChi"] = ycchdb.DiaChi;
                             dr["DanhBo"] = ycchdb.DanhBo.Insert(7, " ").Insert(4, " ");
                             dr["HopDong"] = ycchdb.HopDong;
-
                             if (ycchdb.LyDo == "Vấn Đề Khác")
                                 dr["LyDo"] = "";
                             else
                                 dr["LyDo"] = ycchdb.LyDo + ". ";
-
                             if (ycchdb.GhiChuLyDo != "")
                                 dr["LyDo"] += ycchdb.GhiChuLyDo + ". ";
                             if (ycchdb.SoTien.ToString() != "")
                                 dr["LyDo"] += "Số Tiền: " + String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,## đồng}", ycchdb.SoTien);
-
                             dr["ChucVu"] = ycchdb.ChucVu;
                             dr["NguoiKy"] = ycchdb.NguoiKy;
                             dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
-
                             if (ycchdb.CHDB.MaDonMoi != null)
                                 dr["MaDon"] = ycchdb.CHDB.MaDonMoi.ToString();
                             else
@@ -1044,9 +1020,8 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                     else
                                         if (ycchdb.CHDB.MaDonTBC != null)
                                             dr["MaDon"] = "TBC" + ycchdb.CHDB.MaDonTBC.ToString().Insert(ycchdb.CHDB.MaDonTBC.ToString().Length - 2, "-");
-
+                            dr["NoiNhan"] = ycchdb.NoiNhan;
                             dsBaoCao.Tables["PhieuCHDB"].Rows.Add(dr);
-
                             //rptPhieuCHDBx2 rpt = new rptPhieuCHDBx2();
                             //for (int j = 0; j < rpt.Subreports.Count; j++)
                             //{
@@ -1055,7 +1030,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             DataRow drLogo = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
                             drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";
                             dsBaoCao.Tables["BienNhanDonKH"].Rows.Add(drLogo);
-
                             rptPhieuCHDB rpt = new rptPhieuCHDB();
                             rpt.SetDataSource(dsBaoCao);
                             frmShowBaoCao frm = new frmShowBaoCao(rpt);
