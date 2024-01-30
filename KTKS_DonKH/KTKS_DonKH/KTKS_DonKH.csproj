@@ -3229,10 +3229,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://server5:81/wsEContract.asmx">
+    <WebReferenceUrl Include="http://localhost:40348/wsEContract.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\wrEContract\</RelPath>
-      <UpdateFromURL>http://server5:81/wsEContract.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:40348/wsEContract.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
