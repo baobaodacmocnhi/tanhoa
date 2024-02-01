@@ -336,9 +336,6 @@ namespace ThuTien.GUI.ChuyenKhoan
                 try
                 {
                     DataTable dtExcel = _cHoaDon.ExcelToDataTable(dialog.FileName);
-                    //CExcel fileExcel = new CExcel(dialog.FileName);
-                    //DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
-
                     ///kiểm tra danh bộ chặn tiền dư
                     string strTienDu = "";
                     string strDCHD = "";
@@ -354,7 +351,6 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 {
                                     strDCHD += item[0].ToString().Replace(" ", "") + "\n";
                                 }
-
                     if (!string.IsNullOrWhiteSpace(strTienDu))
                     {
                         MessageBox.Show("Chặn Tiền Dư:\n" + strTienDu, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -365,7 +361,6 @@ namespace ThuTien.GUI.ChuyenKhoan
                         MessageBox.Show("DCHD Tiền Dư:\n" + strDCHD, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-
                     DataTable dt = new DataTable();
                     foreach (DataRow item in dtExcel.Rows)
                         if (item[0].ToString().Replace(" ", "").Length == 11 && !string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()))
@@ -377,7 +372,6 @@ namespace ThuTien.GUI.ChuyenKhoan
                                 dt.Merge(_cHoaDon.getDSTonByDanhBo_DCHD_ChuaUpdateTCT(item[0].ToString().Replace(" ", ""), CNguoiDung.FromDot, CNguoiDung.ToDot));
                         }
                     dgvHoaDon.DataSource = dt;
-
                     foreach (DataRow itemExcel in dtExcel.Rows)
                         if (itemExcel[0].ToString().Replace(" ", "").Length == 11 && !string.IsNullOrEmpty(itemExcel[1].ToString()) && !string.IsNullOrEmpty(itemExcel[2].ToString()))
                         //&& _cDCHD.CheckExist_ChuaUpdatedHDDT(itemExcel[0].ToString().Replace(" ", "")) == false)

@@ -212,9 +212,21 @@ namespace KTKS_DonKH.DAL
 
         public string getHieuLucKyToi(bool CCDM, int Dot)
         {
-            DataTable dt = ExecuteQuery_DataTable("select top 1 ds.Ky,ds.Nam,Dot=dsct.IDDot from Lich_DocSo ds,Lich_DocSo_ChiTiet dsct where NgayDoc=CAST(getdate() as date) and ds.ID=dsct.IDDocSo order by dsct.NgayDoc asc");
+            int FromDot = 0, ToDot = 0;
+            if (Dot <= 15)
+            {
+                FromDot = 1;
+                ToDot = 15;
+            }
+            else
+                if (Dot >= 16)
+                {
+                    FromDot = 16;
+                    ToDot = 30;
+                }
+            DataTable dt = ExecuteQuery_DataTable("select top 1 ds.Ky,ds.Nam,Dot=dsct.IDDot from Lich_DocSo ds,Lich_DocSo_ChiTiet dsct where NgayDoc=CAST(getdate() as date) and ds.ID=dsct.IDDocSo and IDDot>=" + FromDot + " and IDDot<=" + ToDot + " order by dsct.NgayDoc asc");
             if (dt != null && dt.Rows.Count == 0)
-                dt = ExecuteQuery_DataTable("select top 1 ds.Ky,ds.Nam,Dot=dsct.IDDot from Lich_DocSo ds,Lich_DocSo_ChiTiet dsct where NgayDoc>CAST(getdate() as date) and ds.ID=dsct.IDDocSo order by dsct.NgayDoc asc");
+                dt = ExecuteQuery_DataTable("select top 1 ds.Ky,ds.Nam,Dot=dsct.IDDot from Lich_DocSo ds,Lich_DocSo_ChiTiet dsct where NgayDoc>CAST(getdate() as date) and ds.ID=dsct.IDDocSo and IDDot>=" + FromDot + " and IDDot<=" + ToDot + " order by dsct.NgayDoc asc");
             if (dt != null && dt.Rows.Count > 0)
             {
                 //lấy mặc định 2 kỳ
@@ -228,7 +240,7 @@ namespace KTKS_DonKH.DAL
                 //chưa tới đợt đọc số
                 if (Dot >= int.Parse(dt.Rows[0]["Dot"].ToString()))
                     if ((int.Parse(dt.Rows[0]["Dot"].ToString()) >= 1 && int.Parse(dt.Rows[0]["Dot"].ToString()) <= 6)
-                        ||(int.Parse(dt.Rows[0]["Dot"].ToString()) >= 16 && int.Parse(dt.Rows[0]["Dot"].ToString()) <= 21))
+                        || (int.Parse(dt.Rows[0]["Dot"].ToString()) >= 16 && int.Parse(dt.Rows[0]["Dot"].ToString()) <= 21))
                     {
                         if (CCDM)
                             if (dt.Rows[0]["Ky"].ToString() == "11")

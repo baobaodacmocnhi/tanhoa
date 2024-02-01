@@ -437,49 +437,53 @@ namespace ThuTien.GUI.ChuyenKhoan
                     }
                     drTD["DienThoai"] = item["DienThoai"].ToString();
                     //tính sophieuthu
-                    //DataTable dtBK = _cBangKe.getDS_XuatTienDu(item["DanhBo"].ToString(), dateNgayGiaiTrach.Value);
-                    //if (dtBK != null && dtBK.Rows.Count > 0)
-                    //{
-                    //    int TienDu = int.Parse(item["SoTien"].ToString());
-                    //    int TienBK = int.Parse(dtBK.Rows[0]["SoTien"].ToString());
-                    //    int k = 1;
-                    //    while (TienBK < TienDu && k < dtBK.Rows.Count)
-                    //    {
-                    //        TienBK += int.Parse(dtBK.Rows[k]["SoTien"].ToString());
-                    //        k++;
-                    //    }
-                    //    if (k == 1)
-                    //    {
-                    //        drTD["NgayPhieuThu"] = dtBK.Rows[0]["NgayPhieuThu"];
-                    //        drTD["SoPhieuThu"] = dtBK.Rows[0]["SoPhieuThu"];
-                    //        dtTD.Rows.Add(drTD);
-                    //    }
-                    //    else
-                    //    {
-                    //        dtTD.Rows.Add(drTD);
-                    //        TienBK = 0;
-                    //        k = 0;
-                    //        while (TienBK < TienDu && k < dtBK.Rows.Count)
-                    //        {
-                    //            DataRow drTD_extra = dtTD.NewRow();
-                    //            drTD_extra["DanhBo"] = item["DanhBo"];
-                    //            if (dtBK.Rows[k]["SoTien"].ToString() != "")
-                    //                drTD_extra["SoTien"] = dtBK.Rows[k]["SoTien"];
-                    //            if (dtBK.Rows[k]["SoPhieuThu"].ToString() != "")
-                    //                drTD_extra["SoPhieuThu"] = dtBK.Rows[k]["SoPhieuThu"];
-                    //            if (dtBK.Rows[k]["NgayPhieuThu"].ToString() != "")
-                    //                drTD_extra["NgayPhieuThu"] = dtBK.Rows[k]["NgayPhieuThu"];
-                    //            if (dtBK.Rows[k]["SoPhieuThu"].ToString() != "" || dtBK.Rows[k]["NgayPhieuThu"].ToString() != "")
-                    //                dtTD.Rows.Add(drTD_extra);
-                    //            TienBK += int.Parse(dtBK.Rows[k]["SoTien"].ToString());
-                    //            k++;
-                    //        };
-                    //    }
-                    //}
-                    //else
+                    DataTable dtBK = _cBangKe.getDS_XuatTienDu(item["DanhBo"].ToString(), dateNgayGiaiTrach.Value);
+                    if (dtBK != null && dtBK.Rows.Count > 0)
                     {
-                        dtTD.Rows.Add(drTD);
+                        //    int TienDu = int.Parse(item["SoTien"].ToString());
+                        //    int TienBK = int.Parse(dtBK.Rows[0]["SoTien"].ToString());
+                        //    int k = 1;
+                        //    while (TienBK < TienDu && k < dtBK.Rows.Count)
+                        //    {
+                        //        TienBK += int.Parse(dtBK.Rows[k]["SoTien"].ToString());
+                        //        k++;
+                        //    }
+                        //    if (k == 1)
+                        //    {
+                        //        drTD["NgayPhieuThu"] = dtBK.Rows[0]["NgayPhieuThu"];
+                        //        drTD["SoPhieuThu"] = dtBK.Rows[0]["SoPhieuThu"];
+                        //        dtTD.Rows.Add(drTD);
+                        //    }
+                        //    else
+                        //    {
+                        //        dtTD.Rows.Add(drTD);
+                        //        TienBK = 0;
+                        //        k = 0;
+                        //        while (TienBK < TienDu && k < dtBK.Rows.Count)
+                        //        {
+                        //            DataRow drTD_extra = dtTD.NewRow();
+                        //            drTD_extra["DanhBo"] = item["DanhBo"];
+                        //            if (dtBK.Rows[k]["SoTien"].ToString() != "")
+                        //                drTD_extra["SoTien"] = dtBK.Rows[k]["SoTien"];
+                        //            if (dtBK.Rows[k]["SoPhieuThu"].ToString() != "")
+                        //                drTD_extra["SoPhieuThu"] = dtBK.Rows[k]["SoPhieuThu"];
+                        //            if (dtBK.Rows[k]["NgayPhieuThu"].ToString() != "")
+                        //                drTD_extra["NgayPhieuThu"] = dtBK.Rows[k]["NgayPhieuThu"];
+                        //            if (dtBK.Rows[k]["SoPhieuThu"].ToString() != "" || dtBK.Rows[k]["NgayPhieuThu"].ToString() != "")
+                        //                dtTD.Rows.Add(drTD_extra);
+                        //            TienBK += int.Parse(dtBK.Rows[k]["SoTien"].ToString());
+                        //            k++;
+                        //        };
+                        //    }
+                        if (dtBK.Rows[0]["SoPhieuThu"].ToString() != "")
+                            drTD["SoPhieuThu"] = dtBK.Rows[0]["SoPhieuThu"];
+                        if (dtBK.Rows[0]["NgayPhieuThu"].ToString() != "")
+                            drTD["NgayPhieuThu"] = dtBK.Rows[0]["NgayPhieuThu"];
                     }
+                    //else
+                    //{
+                    dtTD.Rows.Add(drTD);
+                    //}
                 }
                 else
                 {
@@ -512,9 +516,9 @@ namespace ThuTien.GUI.ChuyenKhoan
                     //}
                     //drTD["DienThoai"] = item["DienThoai"].ToString();
                     //tính sophieuthu
-                    //DataTable dtBK = _cBangKe.getDS_XuatTienDu(item["DanhBo"].ToString(), dateNgayGiaiTrach.Value);
-                    //if (dtBK != null && dtBK.Rows.Count > 0)
-                    //{
+                    DataTable dtBK = _cBangKe.getDS_XuatTienDu(item["DanhBo"].ToString(), dateNgayGiaiTrach.Value);
+                    if (dtBK != null && dtBK.Rows.Count > 0)
+                    {
                     //    int TienDu = int.Parse(item["SoTien"].ToString());
                     //    int TienBK = int.Parse(dtBK.Rows[0]["SoTien"].ToString());
                     //    int k = 1;
@@ -550,11 +554,15 @@ namespace ThuTien.GUI.ChuyenKhoan
                     //            k++;
                     //        };
                     //    }
-                    //}
-                    //else
-                    {
-                        dtTDAo.Rows.Add(drTD);
+                        if (dtBK.Rows[0]["SoPhieuThu"].ToString() != "")
+                            drTD["SoPhieuThu"] = dtBK.Rows[0]["SoPhieuThu"];
+                        if (dtBK.Rows[0]["NgayPhieuThu"].ToString() != "")
+                            drTD["NgayPhieuThu"] = dtBK.Rows[0]["NgayPhieuThu"];
                     }
+                    //else
+                    //{
+                        dtTDAo.Rows.Add(drTD);
+                    //}
                 }
             //Tạo các đối tượng Excel
             Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
@@ -908,50 +916,54 @@ namespace ThuTien.GUI.ChuyenKhoan
                 }
                 drTD["DienThoai"] = item["DienThoai"].ToString();
                 //tính sophieuthu
-                //DataTable dtBK = _cBangKe.getDS_XuatTienDu(item["DanhBo"].ToString(), dateNgayGiaiTrach.Value);
-                //if (dtBK != null && dtBK.Rows.Count > 0)
-                //{
-                //    int TienDu = int.Parse(item["SoTien"].ToString());
-                //    int TienBK = int.Parse(dtBK.Rows[0]["SoTien"].ToString());
-                //    int k = 1;
-                //    while (TienBK < TienDu && k < dtBK.Rows.Count)
-                //    {
-                //        TienBK += int.Parse(dtBK.Rows[k]["SoTien"].ToString());
-                //        k++;
-                //    }
-                //    if (k == 1)
-                //    {
-                //        drTD["NgayPhieuThu"] = dtBK.Rows[0]["NgayPhieuThu"];
-                //        drTD["SoPhieuThu"] = dtBK.Rows[0]["SoPhieuThu"];
-                //        dtTD.Rows.Add(drTD);
-                //    }
-                //    else
-                //    {
-                //        dtTD.Rows.Add(drTD);
-                //        TienBK = 0;
-                //        k = 0;
-                //        while (TienBK < TienDu && k < dtBK.Rows.Count)
-                //        {
-                //            DataRow drTD_extra = dtTD.NewRow();
-                //            drTD_extra["DanhBo"] = item["DanhBo"];
-                //            if (dtBK.Rows[k]["SoTien"].ToString() != "")
-                //                drTD_extra["SoTien"] = dtBK.Rows[k]["SoTien"];
-                //            if (dtBK.Rows[k]["SoPhieuThu"].ToString() != "")
-                //                drTD_extra["SoPhieuThu"] = dtBK.Rows[k]["SoPhieuThu"];
-                //            if (dtBK.Rows[k]["NgayPhieuThu"].ToString() != "")
-                //                drTD_extra["NgayPhieuThu"] = dtBK.Rows[k]["NgayPhieuThu"];
-                //            if (dtBK.Rows[k]["SoPhieuThu"].ToString() != "" || dtBK.Rows[k]["NgayPhieuThu"].ToString() != "")
-                //                dtTD.Rows.Add(drTD_extra);
-
-                //            TienBK += int.Parse(dtBK.Rows[k]["SoTien"].ToString());
-                //            k++;
-                //        };
-                //    }
-                //}
-                //else
+                DataTable dtBK = _cBangKe.getDS_XuatTienDu(item["DanhBo"].ToString(), dateNgayGiaiTrach.Value);
+                if (dtBK != null && dtBK.Rows.Count > 0)
                 {
-                    dtTD.Rows.Add(drTD);
+                    //int TienDu = int.Parse(item["SoTien"].ToString());
+                    //int TienBK = int.Parse(dtBK.Rows[0]["SoTien"].ToString());
+                    //int k = 1;
+                    //while (TienBK < TienDu && k < dtBK.Rows.Count)
+                    //{
+                    //    TienBK += int.Parse(dtBK.Rows[k]["SoTien"].ToString());
+                    //    k++;
+                    //}
+                    //if (k == 1)
+                    //{
+                    //    drTD["NgayPhieuThu"] = dtBK.Rows[0]["NgayPhieuThu"];
+                    //    drTD["SoPhieuThu"] = dtBK.Rows[0]["SoPhieuThu"];
+                    //    dtTD.Rows.Add(drTD);
+                    //}
+                    //else
+                    //{
+                    //    dtTD.Rows.Add(drTD);
+                    //    TienBK = 0;
+                    //    k = 0;
+                    //    while (TienBK < TienDu && k < dtBK.Rows.Count)
+                    //    {
+                    //        DataRow drTD_extra = dtTD.NewRow();
+                    //        drTD_extra["DanhBo"] = item["DanhBo"];
+                    //        if (dtBK.Rows[k]["SoTien"].ToString() != "")
+                    //            drTD_extra["SoTien"] = dtBK.Rows[k]["SoTien"];
+                    //        if (dtBK.Rows[k]["SoPhieuThu"].ToString() != "")
+                    //            drTD_extra["SoPhieuThu"] = dtBK.Rows[k]["SoPhieuThu"];
+                    //        if (dtBK.Rows[k]["NgayPhieuThu"].ToString() != "")
+                    //            drTD_extra["NgayPhieuThu"] = dtBK.Rows[k]["NgayPhieuThu"];
+                    //        if (dtBK.Rows[k]["SoPhieuThu"].ToString() != "" || dtBK.Rows[k]["NgayPhieuThu"].ToString() != "")
+                    //            dtTD.Rows.Add(drTD_extra);
+
+                    //        TienBK += int.Parse(dtBK.Rows[k]["SoTien"].ToString());
+                    //        k++;
+                    //    };
+                    //}
+                    if (dtBK.Rows[0]["SoPhieuThu"].ToString() != "")
+                        drTD["SoPhieuThu"] = dtBK.Rows[0]["SoPhieuThu"];
+                    if (dtBK.Rows[0]["NgayPhieuThu"].ToString() != "")
+                        drTD["NgayPhieuThu"] = dtBK.Rows[0]["NgayPhieuThu"];
                 }
+                //else
+                //{
+                dtTD.Rows.Add(drTD);
+                //}
             }
             //Tạo các đối tượng Excel
             Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
