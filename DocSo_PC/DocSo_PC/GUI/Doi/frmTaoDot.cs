@@ -256,9 +256,11 @@ namespace DocSo_PC.GUI.Doi
                                         en.TieuThuCu = item.TieuThu;
                                     else
                                         en.TieuThuCu = 0;
-                                    if (en.CSCu == en.TieuThuCu)
+                                    if (item.Code.Substring(0, 1) == "F" || item.Code.Substring(0, 1) == "K")
                                     {
-
+                                        DocSo ds = _cDocSo.get_DocSo_MoiNhat(item.DanhBa);
+                                        en.CSCu = ds.CSMoi;
+                                        en.TieuThuCu = ds.TieuThuMoi;
                                     }
                                     en.TienNuoc = 0;
                                     en.BVMT = 0;

@@ -40,18 +40,15 @@ namespace ThuTien.GUI.ToTruong
         {
             dgvHDTuGia.AutoGenerateColumns = false;
             dgvHDCoQuan.AutoGenerateColumns = false;
-
             if (CNguoiDung.Doi)
             {
                 cmbTo.Visible = true;
-
-                cmbTo.DataSource = _cTo.getDS_HanhThu();
+                cmbTo.DataSource = _cTo.getDS_HanhThu(CNguoiDung.IDPhong);
                 cmbTo.DisplayMember = "TenTo";
                 cmbTo.ValueMember = "MaTo";
             }
             else
                 lbTo.Text = "Tổ  " + CNguoiDung.TenTo;
-
             cmbNam.DataSource = _cHoaDon.GetNam();
             cmbNam.DisplayMember = "Nam";
             cmbNam.ValueMember = "Nam";
@@ -68,7 +65,6 @@ namespace ThuTien.GUI.ToTruong
             int TongHDTon = 0;
             long TongGiaBanTon = 0;
             long TongCongTon = 0;
-
             if (dgvHDTuGia.RowCount > 0)
             {
                 foreach (DataGridViewRow item in dgvHDTuGia.Rows)
@@ -79,21 +75,18 @@ namespace ThuTien.GUI.ToTruong
                         TongGiaBan += long.Parse(item.Cells["TongGiaBan_TG"].Value.ToString());
                     if (!string.IsNullOrEmpty(item.Cells["TongCong_TG"].Value.ToString()))
                         TongCong += long.Parse(item.Cells["TongCong_TG"].Value.ToString());
-
                     if (!string.IsNullOrEmpty(item.Cells["TongHDThu_TG"].Value.ToString()))
                         TongHDThu += int.Parse(item.Cells["TongHDThu_TG"].Value.ToString());
                     if (!string.IsNullOrEmpty(item.Cells["TongGiaBanThu_TG"].Value.ToString()))
                         TongGiaBanThu += long.Parse(item.Cells["TongGiaBanThu_TG"].Value.ToString());
                     if (!string.IsNullOrEmpty(item.Cells["TongCongThu_TG"].Value.ToString()))
                         TongCongThu += long.Parse(item.Cells["TongCongThu_TG"].Value.ToString());
-
                     if (!string.IsNullOrEmpty(item.Cells["TongHDTon_TG"].Value.ToString()))
                         TongHDTon += int.Parse(item.Cells["TongHDTon_TG"].Value.ToString());
                     if (!string.IsNullOrEmpty(item.Cells["TongGiaBanTon_TG"].Value.ToString()))
                         TongGiaBanTon += long.Parse(item.Cells["TongGiaBanTon_TG"].Value.ToString());
                     if (!string.IsNullOrEmpty(item.Cells["TongCongTon_TG"].Value.ToString()))
                         TongCongTon += long.Parse(item.Cells["TongCongTon_TG"].Value.ToString());
-
                     if (string.IsNullOrEmpty(item.Cells["TongGiaBanThu_TG"].Value.ToString()))
                         item.Cells["TiLeGiaBan_TG"].Value = "0%";
                     else
@@ -127,7 +120,6 @@ namespace ThuTien.GUI.ToTruong
             int TongHDTon = 0;
             long TongGiaBanTon = 0;
             long TongCongTon = 0;
-
             if (dgvHDCoQuan.RowCount > 0)
             {
                 foreach (DataGridViewRow item in dgvHDCoQuan.Rows)
@@ -138,21 +130,18 @@ namespace ThuTien.GUI.ToTruong
                         TongGiaBan += long.Parse(item.Cells["TongGiaBan_CQ"].Value.ToString());
                     if (!string.IsNullOrEmpty(item.Cells["TongCong_CQ"].Value.ToString()))
                         TongCong += long.Parse(item.Cells["TongCong_CQ"].Value.ToString());
-
                     if (!string.IsNullOrEmpty(item.Cells["TongHDThu_CQ"].Value.ToString()))
                         TongHDThu += int.Parse(item.Cells["TongHDThu_CQ"].Value.ToString());
                     if (!string.IsNullOrEmpty(item.Cells["TongGiaBanThu_CQ"].Value.ToString()))
                         TongGiaBanThu += long.Parse(item.Cells["TongGiaBanThu_CQ"].Value.ToString());
                     if (!string.IsNullOrEmpty(item.Cells["TongCongThu_CQ"].Value.ToString()))
                         TongCongThu += long.Parse(item.Cells["TongCongThu_CQ"].Value.ToString());
-
                     if (!string.IsNullOrEmpty(item.Cells["TongHDTon_CQ"].Value.ToString()))
                         TongHDTon += int.Parse(item.Cells["TongHDTon_CQ"].Value.ToString());
                     if (!string.IsNullOrEmpty(item.Cells["TongGiaBanTon_CQ"].Value.ToString()))
                         TongGiaBanTon += long.Parse(item.Cells["TongGiaBanTon_CQ"].Value.ToString());
                     if (!string.IsNullOrEmpty(item.Cells["TongCongTon_CQ"].Value.ToString()))
                         TongCongTon += long.Parse(item.Cells["TongCongTon_CQ"].Value.ToString());
-
                     if (string.IsNullOrEmpty(item.Cells["TongGiaBanThu_CQ"].Value.ToString()))
                         item.Cells["TiLeGiaBan_CQ"].Value = "0%";
                     else
