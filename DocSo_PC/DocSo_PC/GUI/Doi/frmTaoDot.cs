@@ -191,6 +191,7 @@ namespace DocSo_PC.GUI.Doi
 
         private void dgvDanhSach_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            string DanhBo = "";
             try
             {
                 if (dgvDanhSach.Columns[e.ColumnIndex].Name == "TaoDot")
@@ -218,7 +219,7 @@ namespace DocSo_PC.GUI.Doi
                                 {
                                     DocSo en = new DocSo();
                                     en.DocSoID = item.BienDongID;
-                                    en.DanhBa = item.DanhBa;
+                                    en.DanhBa = DanhBo = item.DanhBa;
                                     en.MLT1 = item.MLT1;
                                     en.MLT2 = item.MLT1;
                                     en.SoNhaCu = item.So;
@@ -256,11 +257,23 @@ namespace DocSo_PC.GUI.Doi
                                         en.TieuThuCu = item.TieuThu;
                                     else
                                         en.TieuThuCu = 0;
-                                    if (item.Code.Substring(0, 1) == "F" || item.Code.Substring(0, 1) == "K")
+                                    if (item.Code != null && item.Code != "" && (item.Code.Substring(0, 1) == "F" || item.Code.Substring(0, 1) == "K"))
                                     {
-                                        DocSo ds = _cDocSo.get_DocSo_MoiNhat(item.DanhBa);
-                                        en.CSCu = ds.CSMoi;
-                                        en.TieuThuCu = ds.TieuThuMoi;
+                                        int Nam = item.Nam.Value;
+                                        int Ky = int.Parse(item.Ky);
+                                        if (Ky == 1)
+                                        {
+                                            Ky = 12;
+                                            Nam = Nam - 1;
+                                        }
+                                        else
+                                            Ky = Ky - 1;
+                                        DocSo ds = _cDocSo.get_DocSo(item.DanhBa, Nam.ToString(), Ky.ToString());
+                                        if (ds != null)
+                                        {
+                                            en.CSCu = ds.CSMoi;
+                                            en.TieuThuCu = ds.TieuThuMoi;
+                                        }
                                     }
                                     en.TienNuoc = 0;
                                     en.BVMT = 0;
@@ -301,7 +314,7 @@ namespace DocSo_PC.GUI.Doi
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message + "\n" + DanhBo, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
