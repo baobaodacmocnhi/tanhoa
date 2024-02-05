@@ -351,16 +351,26 @@ namespace DocSo_PC.GUI.ToTruong
         {
             foreach (DataGridViewRow item in dgvDanhSach.Rows)
             {
+                ////tiêu thu tăng cao, tiêu thụ âm
+                //if (item.Cells["TieuThuMoi"].Value != null && item.Cells["TieuThuMoi"].Value.ToString() != ""
+                //    && ((int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) >= 50 && int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) >= int.Parse(item.Cells["TBTT"].Value.ToString()) * 1.5)
+                //    || (int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) >= 1000 && int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) >= int.Parse(item.Cells["TBTT"].Value.ToString()) * 1.3)
+                //    || int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) < 0))
+                //    item.DefaultCellStyle.BackColor = Color.Red;
+                ////tiêu thu giảm cao
+                //if (item.Cells["TieuThuMoi"].Value != null && item.Cells["TieuThuMoi"].Value.ToString() != ""
+                //    && ((int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) >= 50 && int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) <= int.Parse(item.Cells["TBTT"].Value.ToString()) * (1 - 0.5))
+                //    || (int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) >= 1000 && int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) <= int.Parse(item.Cells["TBTT"].Value.ToString()) * (1 - 0.3)))
+                //    && int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) > 0)
+                //    item.DefaultCellStyle.BackColor = Color.DeepPink;
                 //tiêu thu tăng cao, tiêu thụ âm
                 if (item.Cells["TieuThuMoi"].Value != null && item.Cells["TieuThuMoi"].Value.ToString() != ""
-                    && ((int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) >= 50 && int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) >= int.Parse(item.Cells["TBTT"].Value.ToString()) * 1.5)
-                    || (int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) >= 1000 && int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) >= int.Parse(item.Cells["TBTT"].Value.ToString()) * 1.3)
+                    && (int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) >= int.Parse(item.Cells["TBTT"].Value.ToString()) * 1.3
                     || int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) < 0))
                     item.DefaultCellStyle.BackColor = Color.Red;
                 //tiêu thu giảm cao
                 if (item.Cells["TieuThuMoi"].Value != null && item.Cells["TieuThuMoi"].Value.ToString() != ""
-                    && ((int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) >= 50 && int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) <= int.Parse(item.Cells["TBTT"].Value.ToString()) * (1 - 0.5))
-                    || (int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) >= 1000 && int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) <= int.Parse(item.Cells["TBTT"].Value.ToString()) * (1 - 0.3)))
+                    && int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) <= int.Parse(item.Cells["TBTT"].Value.ToString()) * (1 - 0.3)
                     && int.Parse(item.Cells["TieuThuMoi"].Value.ToString()) > 0)
                     item.DefaultCellStyle.BackColor = Color.DeepPink;
                 //có BBKT, tờ trình, code 8 không có hoàn công thay (bồi thường, tái lập,...)
@@ -646,16 +656,16 @@ namespace DocSo_PC.GUI.ToTruong
                         DataTable dt = new DataTable();
                         switch (cmbDieuChinhXuat.SelectedItem.ToString())
                         {
-                            case "Điều chỉnh Code 5N, 5K":
-                                dt = _cDocSo.getDS_Code5K5N(cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString());
+                            case "Điều chỉnh Code 5N, 5K, 5F":
+                                dt = _cDocSo.getDS_Code5K5N5F(cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString());
                                 break;
                             default:
                                 break;
                         }
                         if (dt != null && dt.Rows.Count > 0)
                         {
-                            _cDocSo.XuatExcel(dt, "5K,5N");
-                            if (_cDocSo.updateDS_Code5K5N(cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString()) == true)
+                            _cDocSo.XuatExcel(dt, "5K,5N,5F");
+                            if (_cDocSo.updateDS_Code5K5N5F(cmbNam.SelectedValue.ToString(), cmbKy.SelectedItem.ToString(), cmbDot.SelectedItem.ToString()) == true)
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }

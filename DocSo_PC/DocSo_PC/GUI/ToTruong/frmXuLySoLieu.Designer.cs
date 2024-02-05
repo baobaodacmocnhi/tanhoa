@@ -1537,7 +1537,7 @@
             // 
             this.cmbDieuChinhXuat.FormattingEnabled = true;
             this.cmbDieuChinhXuat.Items.AddRange(new object[] {
-            "Điều chỉnh Code 5N, 5K"});
+            "Điều chỉnh Code 5N, 5K, 5F"});
             this.cmbDieuChinhXuat.Location = new System.Drawing.Point(909, 313);
             this.cmbDieuChinhXuat.Name = "cmbDieuChinhXuat";
             this.cmbDieuChinhXuat.Size = new System.Drawing.Size(120, 21);

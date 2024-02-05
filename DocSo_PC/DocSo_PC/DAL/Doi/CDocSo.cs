@@ -582,20 +582,20 @@ namespace DocSo_PC.DAL.Doi
                 return -1;
         }
 
-        public DataTable getDS_Code5K5N(string Nam, string Ky, string Dot)
+        public DataTable getDS_Code5K5N5F(string Nam, string Ky, string Dot)
         {
             string sql = "select DanhBa,MLT1,CSCu,CSMoi,TieuThuMoi,CodeMoi"
                             + " from DocSoTH.dbo.DocSo"
-                            + " where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " and CodeMoi in ('5N','5K')"
+                            + " where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " and CodeMoi in ('5N','5K','5F')"
                             + " order by MLT1 asc";
             return _cDAL.ExecuteQuery_DataTable(sql);
         }
 
-        public bool updateDS_Code5K5N(string Nam, string Ky, string Dot)
+        public bool updateDS_Code5K5N5F(string Nam, string Ky, string Dot)
         {
             string sql = "update DocSo"
                             + " set CSCu=CSMoi-TieuThuMoi,NgayCapNhat=getdate(),NVCapNhat=N'" + CNguoiDung.HoTen + "'"
-                            + " where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " and CodeMoi in ('5N','5K')";
+                            + " where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + " and CodeMoi in ('5N','5K','5F')";
             return _cDAL.ExecuteNonQuery(sql);
         }
 

@@ -268,7 +268,7 @@ namespace DocSo_PC.GUI.Doi
                                         }
                                         else
                                             Ky = Ky - 1;
-                                        DocSo ds = _cDocSo.get_DocSo(item.DanhBa, Nam.ToString(), Ky.ToString());
+                                        DocSo ds = _cDocSo.get_DocSo(item.DanhBa, Nam.ToString(), Ky.ToString("00"));
                                         if (ds != null)
                                         {
                                             en.CSCu = ds.CSMoi;
