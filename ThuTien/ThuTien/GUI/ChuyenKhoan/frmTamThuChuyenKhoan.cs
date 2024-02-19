@@ -329,7 +329,6 @@ namespace ThuTien.GUI.ChuyenKhoan
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
             dialog.Multiselect = false;
-
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 string DanhBo = "";
@@ -340,7 +339,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     string strTienDu = "";
                     string strDCHD = "";
                     foreach (DataRow item in dtExcel.Rows)
-                        if (item[0].ToString().Replace(" ", "").Length == 11 && !string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()))
+                        if (item[0].ToString().Replace(" ", "").Length == 11 && !string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()) && !_cTienDu.checkExist_ChoXuLy(item[0].ToString().Replace(" ", "")))
                             //&& _cDCHD.CheckExist_ChuaUpdatedHDDT(item[0].ToString().Replace(" ", "")) == false)
                             if (_cHoaDon.CheckKhoaTienDuByDanhBo(item[0].ToString().Replace(" ", "")))
                             {
@@ -363,7 +362,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                     }
                     DataTable dt = new DataTable();
                     foreach (DataRow item in dtExcel.Rows)
-                        if (item[0].ToString().Replace(" ", "").Length == 11 && !string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()))
+                        if (item[0].ToString().Replace(" ", "").Length == 11 && !string.IsNullOrEmpty(item[1].ToString()) && !string.IsNullOrEmpty(item[2].ToString()) && !_cTienDu.checkExist_ChoXuLy(item[0].ToString().Replace(" ", "")))
                         //&& _cDCHD.CheckExist_ChuaUpdatedHDDT(item[0].ToString().Replace(" ", "")) == false)
                         {
                             if (chkTruHoNgheo.Checked == true)
@@ -373,7 +372,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                         }
                     dgvHoaDon.DataSource = dt;
                     foreach (DataRow itemExcel in dtExcel.Rows)
-                        if (itemExcel[0].ToString().Replace(" ", "").Length == 11 && !string.IsNullOrEmpty(itemExcel[1].ToString()) && !string.IsNullOrEmpty(itemExcel[2].ToString()))
+                        if (itemExcel[0].ToString().Replace(" ", "").Length == 11 && !string.IsNullOrEmpty(itemExcel[1].ToString()) && !string.IsNullOrEmpty(itemExcel[2].ToString()) && !_cTienDu.checkExist_ChoXuLy(itemExcel[0].ToString().Replace(" ", "")))
                         //&& _cDCHD.CheckExist_ChuaUpdatedHDDT(itemExcel[0].ToString().Replace(" ", "")) == false)
                         {
                             DanhBo = itemExcel[0].ToString().Replace(" ", "");

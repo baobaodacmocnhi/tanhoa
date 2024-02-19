@@ -234,7 +234,6 @@ namespace DocSo_PC.GUI.Doi
                     _docso.Nam = Nam;
                     _docso.TuNgay = dateTu.Value;
                     _docso.DenNgay = dateDen.Value;
-
                     foreach (DataGridViewRow item in dgvDot.Rows)
                     {
                         Lich_DocSo_ChiTiet enCT = _docso.Lich_DocSo_ChiTiets.SingleOrDefault(itemA => itemA.IDDot == int.Parse(item.Cells["IDDot"].Value.ToString()));
@@ -255,7 +254,6 @@ namespace DocSo_PC.GUI.Doi
                         enCT.ModifyDate = DateTime.Now;
                         _cLDS.SubmitChanges();
                     }
-
                     if (_cLDS.Sua(_docso) == true)
                     {
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

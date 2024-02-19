@@ -137,9 +137,14 @@ namespace ThuTien.DAL.ChuyenKhoan
             return _db.TT_TienDus.SingleOrDefault(item => item.DanhBo == DanhBo);
         }
 
-        public bool CheckExist(string DanhBo)
+        public bool checkExist(string DanhBo)
         {
             return _db.TT_TienDus.Any(item => item.DanhBo == DanhBo);
+        }
+
+        public bool checkExist_ChoXuLy(string DanhBo)
+        {
+            return _db.TT_TienDus.Any(item => item.DanhBo == DanhBo && item.ChoXuLy == true);
         }
 
         public bool Update(string DanhBo, int SoTien, string Loai, string GhiChu)
