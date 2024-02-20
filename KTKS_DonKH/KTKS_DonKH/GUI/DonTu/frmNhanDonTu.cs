@@ -1903,6 +1903,14 @@ namespace KTKS_DonKH.GUI.DonTu
             }
         }
 
+        private void chkCCDM_CheckedChanged(object sender, EventArgs e)
+        {
+            if (txtSoNK.Text.Trim() != "")
+            {
+                txtHieuLucKy.Text = _cDocSo.getHieuLucKyToi(chkCCDM.Checked, _hoadon.DOT);
+            }
+        }
+
 
 
     }
