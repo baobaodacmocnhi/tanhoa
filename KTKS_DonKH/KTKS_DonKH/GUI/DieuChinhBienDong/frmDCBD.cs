@@ -1597,7 +1597,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         else
                             if (ctdcbd.DCBD.MaDonTBC != null)
                                 dr["MaDon"] = "TBC" + ctdcbd.DCBD.MaDonTBC.Value.ToString().Insert(ctdcbd.DCBD.MaDonTBC.Value.ToString().Length - 2, "-");
-
                     dr["HoTen"] = ctdcbd.HoTen;
                     dr["DiaChi"] = ctdcbd.DiaChi;
                     dr["GiaBieu"] = ctdcbd.GiaBieu;
@@ -1609,19 +1608,16 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     dr["GiaBieuBD"] = ctdcbd.GiaBieu_BD;
                     dr["DinhMucBD"] = ctdcbd.DinhMuc_BD;
                     dr["MSThueBD"] = ctdcbd.MSThue_BD;
-
                     dsBaoCao.Tables["ChiTietDieuChinh"].Rows.Add(dr);
                 }
                 else
                     foreach (DataRow itemRow in dt.Rows)
                     {
                         DataRow dr = dsBaoCao.Tables["ChiTietDieuChinh"].NewRow();
-
                         dr["SoPhieu"] = ctdcbd.MaCTDCBD.ToString().Insert(ctdcbd.MaCTDCBD.ToString().Length - 2, "-");
                         dr["ThongTin"] = ctdcbd.ThongTin;
                         dr["HieuLucKy"] = ctdcbd.HieuLucKy;
                         dr["DanhBo"] = ctdcbd.DanhBo.Insert(7, " ").Insert(4, " ");
-
                         if (ctdcbd.DCBD.MaDon != null)
                             dr["MaDon"] = ctdcbd.DCBD.MaDon.Value.ToString().Insert(ctdcbd.DCBD.MaDon.Value.ToString().Length - 2, "-");
                         else
@@ -1630,7 +1626,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             else
                                 if (ctdcbd.DCBD.MaDonTBC != null)
                                     dr["MaDon"] = "TBC" + ctdcbd.DCBD.MaDonTBC.Value.ToString().Insert(ctdcbd.DCBD.MaDonTBC.Value.ToString().Length - 2, "-");
-
                         dr["HoTen"] = ctdcbd.HoTen;
                         dr["DiaChi"] = ctdcbd.DiaChi;
                         dr["GiaBieu"] = ctdcbd.GiaBieu;
@@ -1642,13 +1637,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         dr["GiaBieuBD"] = ctdcbd.GiaBieu_BD;
                         dr["DinhMucBD"] = ctdcbd.DinhMuc_BD;
                         dr["MSThueBD"] = ctdcbd.MSThue_BD;
-
                         dr["TenLCT"] = itemRow["TenLCT"].ToString();
                         dr["MaCT"] = itemRow["MaCT"].ToString();
                         dr["DiaChiCT"] = itemRow["DiaChi"].ToString();
                         dr["SoNKTong"] = itemRow["SoNKTong"].ToString();
                         dr["SoNKDangKy"] = itemRow["SoNKDangKy"].ToString();
-
                         dsBaoCao.Tables["ChiTietDieuChinh"].Rows.Add(dr);
                     }
                 rptChiTietDieuChinh rpt = new rptChiTietDieuChinh();
@@ -2377,6 +2370,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 lichsuchungtu.STT = _dontu_ChiTiet.STT;
                             }
                             _cChungTu.ThemLichSuChungTu(lichsuchungtu);
+                            _flagInsert = false;
                         }
                     }
                     else

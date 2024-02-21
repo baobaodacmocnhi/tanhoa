@@ -189,6 +189,8 @@
             this.btnGuiEContract = new System.Windows.Forms.Button();
             this.btnXoaEContract = new System.Windows.Forms.Button();
             this.btnCapNhatHieuLuc = new System.Windows.Forms.Button();
+            this.txtMLT = new System.Windows.Forms.TextBox();
+            this.label44 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabTTKH.SuspendLayout();
@@ -535,6 +537,8 @@
             // tabTTKH
             // 
             this.tabTTKH.AutoScroll = true;
+            this.tabTTKH.Controls.Add(this.txtMLT);
+            this.tabTTKH.Controls.Add(this.label44);
             this.tabTTKH.Controls.Add(this.groupBox4);
             this.tabTTKH.Controls.Add(this.chkChanHoaDon);
             this.tabTTKH.Controls.Add(this.txtKyHDChan);
@@ -1733,6 +1737,22 @@
             this.btnCapNhatHieuLuc.UseVisualStyleBackColor = true;
             this.btnCapNhatHieuLuc.Click += new System.EventHandler(this.btnCapNhatHieuLuc_Click);
             // 
+            // txtMLT
+            // 
+            this.txtMLT.Location = new System.Drawing.Point(429, 6);
+            this.txtMLT.Name = "txtMLT";
+            this.txtMLT.Size = new System.Drawing.Size(100, 22);
+            this.txtMLT.TabIndex = 98;
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(388, 9);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(35, 16);
+            this.label44.TabIndex = 97;
+            this.label44.Text = "MLT";
+            // 
             // frmNhanDonTu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1976,5 +1996,7 @@
         private System.Windows.Forms.Button btnXoaEContract;
         private System.Windows.Forms.Button btnCapNhatDoiTac;
         private System.Windows.Forms.Button btnCapNhatHieuLuc;
+        private System.Windows.Forms.TextBox txtMLT;
+        private System.Windows.Forms.Label label44;
     }
 }

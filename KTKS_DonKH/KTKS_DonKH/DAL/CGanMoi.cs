@@ -231,7 +231,7 @@ namespace KTKS_DonKH.DAL
                     + "   then 'false' else 'true' end"
                     + " end"
                     + " else"
-                    + " select 'fasle'";
+                    + " select 'false'";
             return bool.Parse(ExecuteQuery_ReturnOneValue(sql).ToString());
         }
 

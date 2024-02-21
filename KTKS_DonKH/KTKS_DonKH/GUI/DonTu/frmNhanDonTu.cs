@@ -103,6 +103,7 @@ namespace KTKS_DonKH.GUI.DonTu
         {
             txtDanhBo.Text = entity.DANHBA.Insert(7, " ").Insert(4, " ");
             txtHopDong.Text = entity.HOPDONG;
+            txtMLT.Text = entity.MALOTRINH;
             txtHoTen.Text = entity.TENKH;
             txtDiaChi.Text = entity.SO + " " + entity.DUONG + _cDHN.GetPhuongQuan(entity.Quan, entity.Phuong);
             txtGiaBieu.Text = entity.GB.ToString();
@@ -118,7 +119,6 @@ namespace KTKS_DonKH.GUI.DonTu
 
             if (_cDonTu.checkExists_14ngay(entity.DANHBA) == true)
                 MessageBox.Show("Danh Bộ này có Đơn trong 14 ngày gần nhất", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             string str, TinhTrang = "";
             str = _cTTTN.check_TinhTrang_Ton(entity.DANHBA);
             if (str == "")
@@ -173,6 +173,7 @@ namespace KTKS_DonKH.GUI.DonTu
                         _hoadon = _cThuTien.GetMoiNhat(entity.DonTu_ChiTiets.SingleOrDefault().DanhBo);
                     }
                     txtHopDong.Text = entity.DonTu_ChiTiets.SingleOrDefault().HopDong;
+                    txtMLT.Text = entity.DonTu_ChiTiets.SingleOrDefault().MLT;
                     txtDienThoai.Text = entity.DonTu_ChiTiets.SingleOrDefault().DienThoai;
                     txtNguoiBao.Text = entity.DonTu_ChiTiets.SingleOrDefault().NguoiBao;
                     txtHoTen.Text = entity.DonTu_ChiTiets.SingleOrDefault().HoTen;
@@ -308,7 +309,6 @@ namespace KTKS_DonKH.GUI.DonTu
                 cmbPhongBanDoi.SelectedIndex = -1;
                 txtSoCongVan.Text = "";
                 txtTongDB.Text = "1";
-
                 for (int i = 0; i < chkcmbDieuChinh.Properties.Items.Count; i++)
                 {
                     chkcmbDieuChinh.Properties.Items[i].CheckState = CheckState.Unchecked;
@@ -333,16 +333,15 @@ namespace KTKS_DonKH.GUI.DonTu
             txtMaDon.Text = "";
             lbTruyThu.Text = "";
             txtNguoiLap.Text = "";
-
             cmbNhomDon_ChiTiet.SelectedIndex = -1;
             chkCCDM.Checked = false;
             txtSoNK.Text = "";
             txtHieuLucKy.Text = "";
             cmbThoiHan.SelectedIndex = -1;
             //dateHetHan.Value = DateTime.Now;
-
             txtDanhBo.Text = "";
             txtHopDong.Text = "";
+            txtMLT.Text = "";
             txtDienThoai.Text = "";
             txtHoTen.Text = "";
             txtDiaChi.Text = "";

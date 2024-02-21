@@ -224,53 +224,31 @@ namespace KTKS_DonKH.DAL
                     FromDot = 16;
                     ToDot = 30;
                 }
-            DataTable dt = ExecuteQuery_DataTable("select top 1 ds.Ky,ds.Nam,Dot=dsct.IDDot from Lich_DocSo ds,Lich_DocSo_ChiTiet dsct where NgayDoc=CAST(getdate() as date) and ds.ID=dsct.IDDocSo and IDDot>=" + FromDot + " and IDDot<=" + ToDot + " order by dsct.NgayDoc asc");
+            DataTable dt = ExecuteQuery_DataTable("select top 1 ds.Ky,ds.Nam,Dot=dsct.IDDot from Lich_DocSo ds,Lich_DocSo_ChiTiet dsct where ds.TuNgay<=CAST(getdate() as date) and NgayDoc=CAST(getdate() as date) and ds.ID=dsct.IDDocSo and IDDot>=" + FromDot + " and IDDot<=" + ToDot + " order by dsct.NgayDoc asc");
             if (dt != null && dt.Rows.Count == 0)
-                dt = ExecuteQuery_DataTable("select top 1 ds.Ky,ds.Nam,Dot=dsct.IDDot from Lich_DocSo ds,Lich_DocSo_ChiTiet dsct where NgayDoc>CAST(getdate() as date) and ds.ID=dsct.IDDocSo and IDDot>=" + FromDot + " and IDDot<=" + ToDot + " order by dsct.NgayDoc asc");
-            if (dt != null && dt.Rows.Count > 0)
+                dt = ExecuteQuery_DataTable("select top 1 ds.Ky,ds.Nam,Dot=dsct.IDDot from Lich_DocSo ds,Lich_DocSo_ChiTiet dsct where ds.TuNgay<=CAST(getdate() as date) and NgayDoc>CAST(getdate() as date) and ds.ID=dsct.IDDocSo and IDDot>=" + FromDot + " and IDDot<=" + ToDot + " order by dsct.NgayDoc asc");
+            if (dt != null && dt.Rows.Count > 0)//có lịch đọc số
             {
-                //lấy mặc định 2 kỳ
-                //if (dt.Rows[0]["Ky"].ToString() == "11")
-                //    return "01/" + (int.Parse(dt.Rows[0]["Nam"].ToString()) + 1).ToString();
-                //else
-                //    if (dt.Rows[0]["Ky"].ToString() == "12")
-                //        return "02/" + (int.Parse(dt.Rows[0]["Nam"].ToString()) + 1).ToString();
-                //    else
-                //        return (int.Parse(dt.Rows[0]["Ky"].ToString()) + 2).ToString("00") + "/" + dt.Rows[0]["Nam"].ToString();
-                //chưa tới đợt đọc số
-                if (Dot >= int.Parse(dt.Rows[0]["Dot"].ToString()))
-                    if ((int.Parse(dt.Rows[0]["Dot"].ToString()) >= 1 && int.Parse(dt.Rows[0]["Dot"].ToString()) <= 6)
-                        || (int.Parse(dt.Rows[0]["Dot"].ToString()) >= 16 && int.Parse(dt.Rows[0]["Dot"].ToString()) <= 21))
-                    {
-                        if (CCDM)
-                            if (dt.Rows[0]["Ky"].ToString() == "11")
-                                return "01/" + (int.Parse(dt.Rows[0]["Nam"].ToString()) + 1).ToString();
-                            else
-                                if (dt.Rows[0]["Ky"].ToString() == "12")
-                                    return "02/" + (int.Parse(dt.Rows[0]["Nam"].ToString()) + 1).ToString();
-                                else
-                                    return (int.Parse(dt.Rows[0]["Ky"].ToString()) + 2).ToString("00") + "/" + dt.Rows[0]["Nam"].ToString();
+                if (CCDM)//cắt chuyển định mức
+                {
+                    if (dt.Rows[0]["Ky"].ToString() == "11")
+                        return "01/" + (int.Parse(dt.Rows[0]["Nam"].ToString()) + 1).ToString();
+                    else
+                        if (dt.Rows[0]["Ky"].ToString() == "12")
+                            return "02/" + (int.Parse(dt.Rows[0]["Nam"].ToString()) + 1).ToString();
                         else
-                            if (dt.Rows[0]["Ky"].ToString() == "12")
-                                return "01/" + (int.Parse(dt.Rows[0]["Nam"].ToString()) + 1).ToString();
-                            else
-                                return (int.Parse(dt.Rows[0]["Ky"].ToString()) + 1).ToString("00") + "/" + dt.Rows[0]["Nam"].ToString();
+                            return (int.Parse(dt.Rows[0]["Ky"].ToString()) + 2).ToString("00") + "/" + dt.Rows[0]["Nam"].ToString();
+                }
+                else
+                {
+                    if (Dot > int.Parse(dt.Rows[0]["Dot"].ToString()) + 5)
+                    {
+                        if (dt.Rows[0]["Ky"].ToString() == "12")
+                            return "01/" + (int.Parse(dt.Rows[0]["Nam"].ToString()) + 1).ToString();
+                        else
+                            return (int.Parse(dt.Rows[0]["Ky"].ToString()) + 1).ToString("00") + "/" + dt.Rows[0]["Nam"].ToString();
                     }
                     else
-                        if ((int.Parse(dt.Rows[0]["Dot"].ToString()) >= 7 && int.Parse(dt.Rows[0]["Dot"].ToString()) <= 15)
-                            || (int.Parse(dt.Rows[0]["Dot"].ToString()) >= 17 && int.Parse(dt.Rows[0]["Dot"].ToString()) <= 30))
-                            if (dt.Rows[0]["Ky"].ToString() == "11")
-                                return "01/" + (int.Parse(dt.Rows[0]["Nam"].ToString()) + 1).ToString();
-                            else
-                                if (dt.Rows[0]["Ky"].ToString() == "12")
-                                    return "02/" + (int.Parse(dt.Rows[0]["Nam"].ToString()) + 1).ToString();
-                                else
-                                    return (int.Parse(dt.Rows[0]["Ky"].ToString()) + 2).ToString("00") + "/" + dt.Rows[0]["Nam"].ToString();
-                        else
-                            return "";
-                else//đã qua đợt đọc số
-                    if ((int.Parse(dt.Rows[0]["Dot"].ToString()) >= 1 && int.Parse(dt.Rows[0]["Dot"].ToString()) <= 6)
-                        || (int.Parse(dt.Rows[0]["Dot"].ToString()) >= 16 && int.Parse(dt.Rows[0]["Dot"].ToString()) <= 21))
                     {
                         if (dt.Rows[0]["Ky"].ToString() == "11")
                             return "01/" + (int.Parse(dt.Rows[0]["Nam"].ToString()) + 1).ToString();
@@ -280,27 +258,19 @@ namespace KTKS_DonKH.DAL
                             else
                                 return (int.Parse(dt.Rows[0]["Ky"].ToString()) + 2).ToString("00") + "/" + dt.Rows[0]["Nam"].ToString();
                     }
-                    else
-                        if ((int.Parse(dt.Rows[0]["Dot"].ToString()) >= 7 && int.Parse(dt.Rows[0]["Dot"].ToString()) <= 15)
-                            || (int.Parse(dt.Rows[0]["Dot"].ToString()) >= 17 && int.Parse(dt.Rows[0]["Dot"].ToString()) <= 30))
-                            if (CCDM)
-                                if (dt.Rows[0]["Ky"].ToString() == "11")
-                                    return "01/" + (int.Parse(dt.Rows[0]["Nam"].ToString()) + 1).ToString();
-                                else
-                                    if (dt.Rows[0]["Ky"].ToString() == "12")
-                                        return "02/" + (int.Parse(dt.Rows[0]["Nam"].ToString()) + 1).ToString();
-                                    else
-                                        return (int.Parse(dt.Rows[0]["Ky"].ToString()) + 2).ToString("00") + "/" + dt.Rows[0]["Nam"].ToString();
-                            else
-                                if (dt.Rows[0]["Ky"].ToString() == "12")
-                                    return "01/" + (int.Parse(dt.Rows[0]["Nam"].ToString()) + 1).ToString();
-                                else
-                                    return (int.Parse(dt.Rows[0]["Ky"].ToString()) + 1).ToString("00") + "/" + dt.Rows[0]["Nam"].ToString();
-                        else
-                            return "";
+                }
             }
-            else
-                return "";
+            else//không có lịch đọc số
+            {
+                dt = ExecuteQuery_DataTable("select top 1 ds.Ky,ds.Nam,Dot=dsct.IDDot from Lich_DocSo ds,Lich_DocSo_ChiTiet dsct where NgayDoc<CAST(GETDATE() as date) and ds.ID=dsct.IDDocSo and IDDot>=" + FromDot + " and IDDot<=" + ToDot + " order by dsct.NgayDoc desc");
+                if (dt.Rows[0]["Ky"].ToString() == "11")
+                    return "01/" + (int.Parse(dt.Rows[0]["Nam"].ToString()) + 1).ToString();
+                else
+                    if (dt.Rows[0]["Ky"].ToString() == "12")
+                        return "02/" + (int.Parse(dt.Rows[0]["Nam"].ToString()) + 1).ToString();
+                    else
+                        return (int.Parse(dt.Rows[0]["Ky"].ToString()) + 2).ToString("00") + "/" + dt.Rows[0]["Nam"].ToString();
+            }
         }
 
         public DataTable getPhieuChuyen(string SoPhieu)
