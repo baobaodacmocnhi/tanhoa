@@ -50,7 +50,7 @@ namespace ThuTien
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            Application.Idle += new EventHandler(Application_Idle);
+            //Application.Idle += new EventHandler(Application_Idle);
             mnuDangNhap.PerformClick();
         }
 
@@ -64,7 +64,7 @@ namespace ThuTien
 
         private void frmMain_MouseMove(object sender, MouseEventArgs e)
         {
-            timer.Stop();
+            //timer.Stop();
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -143,7 +143,6 @@ namespace ThuTien
                     TabPage tp = new TabPage(this.ActiveMdiChild.Text);
                     tabControl.SelectedTab = tp;
                 }
-
                 if (!tabControl.Visible) tabControl.Visible = true;
             }
         }
