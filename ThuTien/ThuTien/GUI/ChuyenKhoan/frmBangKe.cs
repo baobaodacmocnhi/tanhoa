@@ -528,7 +528,6 @@ namespace ThuTien.GUI.ChuyenKhoan
                             //    scope.Complete();
                             //}
                             //phòng ghi thu
-
                             for (int i = 0; i < dgvBangKe.Rows.Count; i++)
                                 if (dgvBangKe["SoPhieuThu", i].Value.ToString() == "")
                                 {

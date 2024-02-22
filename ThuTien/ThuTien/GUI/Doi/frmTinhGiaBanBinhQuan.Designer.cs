@@ -36,10 +36,6 @@
             this.cmbNam = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvGiaBanBinhQuan = new System.Windows.Forms.DataGridView();
-            this.Ky = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongGiaBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongTieuThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GiaBanBinhQuan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label4 = new System.Windows.Forms.Label();
             this.txtTongDoanhThu = new System.Windows.Forms.TextBox();
             this.txtTongSanLuong = new System.Windows.Forms.TextBox();
@@ -52,6 +48,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Ky = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongGiaBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongTieuThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GiaBanBinhQuan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TyLeThuThang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TyLeThucThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGiaBanBinhQuan)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -98,9 +101,12 @@
             this.dgvGiaBanBinhQuan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvGiaBanBinhQuan.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Ky,
+            this.Nam,
             this.TongGiaBan,
             this.TongTieuThu,
-            this.GiaBanBinhQuan});
+            this.GiaBanBinhQuan,
+            this.TyLeThuThang,
+            this.TyLeThucThu});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -122,38 +128,9 @@
             this.dgvGiaBanBinhQuan.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvGiaBanBinhQuan.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvGiaBanBinhQuan.Size = new System.Drawing.Size(412, 300);
+            this.dgvGiaBanBinhQuan.Size = new System.Drawing.Size(567, 300);
             this.dgvGiaBanBinhQuan.TabIndex = 57;
             this.dgvGiaBanBinhQuan.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvGiaBanBinhQuan_CellFormatting);
-            // 
-            // Ky
-            // 
-            this.Ky.DataPropertyName = "Ky";
-            this.Ky.HeaderText = "Kỳ";
-            this.Ky.Name = "Ky";
-            this.Ky.ReadOnly = true;
-            this.Ky.Width = 50;
-            // 
-            // TongGiaBan
-            // 
-            this.TongGiaBan.DataPropertyName = "TongGiaBan";
-            this.TongGiaBan.HeaderText = "Doanh Thu";
-            this.TongGiaBan.Name = "TongGiaBan";
-            this.TongGiaBan.ReadOnly = true;
-            // 
-            // TongTieuThu
-            // 
-            this.TongTieuThu.DataPropertyName = "TongTieuThu";
-            this.TongTieuThu.HeaderText = "Sản Lượng";
-            this.TongTieuThu.Name = "TongTieuThu";
-            this.TongTieuThu.ReadOnly = true;
-            // 
-            // GiaBanBinhQuan
-            // 
-            this.GiaBanBinhQuan.DataPropertyName = "GiaBanBinhQuan";
-            this.GiaBanBinhQuan.HeaderText = "Giá Bán Bình Quân";
-            this.GiaBanBinhQuan.Name = "GiaBanBinhQuan";
-            this.GiaBanBinhQuan.ReadOnly = true;
             // 
             // label4
             // 
@@ -265,12 +242,65 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txtMa);
-            this.groupBox1.Location = new System.Drawing.Point(516, 15);
+            this.groupBox1.Location = new System.Drawing.Point(641, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(321, 101);
             this.groupBox1.TabIndex = 69;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Phòng Kinh Doanh";
+            // 
+            // Ky
+            // 
+            this.Ky.DataPropertyName = "Ky";
+            this.Ky.HeaderText = "Kỳ";
+            this.Ky.Name = "Ky";
+            this.Ky.ReadOnly = true;
+            this.Ky.Width = 50;
+            // 
+            // Nam
+            // 
+            this.Nam.DataPropertyName = "Nam";
+            this.Nam.HeaderText = "Năm";
+            this.Nam.Name = "Nam";
+            this.Nam.ReadOnly = true;
+            this.Nam.Visible = false;
+            // 
+            // TongGiaBan
+            // 
+            this.TongGiaBan.DataPropertyName = "TongGiaBan";
+            this.TongGiaBan.HeaderText = "Doanh Thu";
+            this.TongGiaBan.Name = "TongGiaBan";
+            this.TongGiaBan.ReadOnly = true;
+            // 
+            // TongTieuThu
+            // 
+            this.TongTieuThu.DataPropertyName = "TongTieuThu";
+            this.TongTieuThu.HeaderText = "Sản Lượng";
+            this.TongTieuThu.Name = "TongTieuThu";
+            this.TongTieuThu.ReadOnly = true;
+            // 
+            // GiaBanBinhQuan
+            // 
+            this.GiaBanBinhQuan.DataPropertyName = "GiaBanBinhQuan";
+            this.GiaBanBinhQuan.HeaderText = "Giá Bán Bình Quân";
+            this.GiaBanBinhQuan.Name = "GiaBanBinhQuan";
+            this.GiaBanBinhQuan.ReadOnly = true;
+            // 
+            // TyLeThuThang
+            // 
+            this.TyLeThuThang.DataPropertyName = "TyLeThuThang";
+            this.TyLeThuThang.HeaderText = "Tỷ Lệ Thu Tháng";
+            this.TyLeThuThang.Name = "TyLeThuThang";
+            this.TyLeThuThang.ReadOnly = true;
+            this.TyLeThuThang.Width = 90;
+            // 
+            // TyLeThucThu
+            // 
+            this.TyLeThucThu.DataPropertyName = "TyLeThucThu";
+            this.TyLeThucThu.HeaderText = "Tỷ Lệ Thực Thu";
+            this.TyLeThucThu.Name = "TyLeThucThu";
+            this.TyLeThucThu.ReadOnly = true;
+            this.TyLeThucThu.Width = 80;
             // 
             // frmTinhGiaBanBinhQuan
             // 
@@ -305,10 +335,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dgvGiaBanBinhQuan;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ky;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TongGiaBan;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TongTieuThu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GiaBanBinhQuan;
         private System.Windows.Forms.TextBox txtTongDoanhThu;
         private System.Windows.Forms.TextBox txtTongSanLuong;
         private System.Windows.Forms.TextBox txtGiaBanBinhQuan;
@@ -320,5 +346,12 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnTimKiem;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ky;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nam;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongGiaBan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TongTieuThu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GiaBanBinhQuan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TyLeThuThang;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TyLeThucThu;
     }
 }

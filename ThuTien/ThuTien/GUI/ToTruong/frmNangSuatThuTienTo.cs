@@ -435,7 +435,6 @@ namespace ThuTien.GUI.ToTruong
                 {
                     dtNV = _cHoaDon.GetBaoCaoTongHop_NV("TG", (int)cmbTo.SelectedValue, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), NgayGiaiTrachNow, NgayGiaiTrachOld, dateGiaiTrach.Value);
                     dtNV.Merge(_cHoaDon.GetBaoCaoTongHop_NV("CQ", (int)cmbTo.SelectedValue, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), NgayGiaiTrachNow, NgayGiaiTrachOld, dateGiaiTrach.Value));
-
                     dtCNKD = _cCNKD.GetBaoCaoTongHop("TG", (int)cmbTo.SelectedValue, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                     dtCNKD.Merge(_cCNKD.GetBaoCaoTongHop("CQ", (int)cmbTo.SelectedValue, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
                     foreach (DataRow item in dtCNKD.Rows)
@@ -450,7 +449,6 @@ namespace ThuTien.GUI.ToTruong
                 {
                     dtNV = _cHoaDon.GetBaoCaoTongHop_NV("TG", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), NgayGiaiTrachNow, NgayGiaiTrachOld, dateGiaiTrach.Value);
                     dtNV.Merge(_cHoaDon.GetBaoCaoTongHop_NV("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), NgayGiaiTrachNow, NgayGiaiTrachOld, dateGiaiTrach.Value));
-
                     dtCNKD = _cCNKD.GetBaoCaoTongHop("TG", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
                     dtCNKD.Merge(_cCNKD.GetBaoCaoTongHop("CQ", CNguoiDung.MaTo, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString())));
                     foreach (DataRow item in dtCNKD.Rows)
@@ -502,6 +500,7 @@ namespace ThuTien.GUI.ToTruong
                     if (!string.IsNullOrEmpty(item["HDTonCu"].ToString()) || !string.IsNullOrEmpty(item["HDChuanThu"].ToString()) || !string.IsNullOrEmpty(item["HDTongTon"].ToString()))
                     {
                         DataRow dr = ds.Tables["BaoCaoTongHop"].NewRow();
+                        dr["TenPhong"] = CNguoiDung.TenPhong.ToUpper();
                         dr["Ky"] = cmbKy.SelectedItem.ToString();
                         dr["Nam"] = cmbNam.SelectedValue.ToString();
                         if (CNguoiDung.Doi)
@@ -556,7 +555,6 @@ namespace ThuTien.GUI.ToTruong
                         else
                             dr["ThuDat"] = 100;
                         dr["NhanVien"] = CNguoiDung.HoTen;
-
                         if (dtCNKD.Rows.Count > 0)
                         {
                             if (!string.IsNullOrEmpty(dtCNKD.Compute("SUM(TongCong)", "Loai='" + item["Loai"] + "' and MaNV=" + item["MaNV"]).ToString()))
@@ -575,12 +573,12 @@ namespace ThuTien.GUI.ToTruong
                             dr["CNKD"] = 0;
                             dr["TCCNKD"] = 0;
                         }
-
                         ds.Tables["BaoCaoTongHop"].Rows.Add(dr);
                     }
                 ///Dòng Tổng Cộng
                 ///TG
                 DataRow drTC = ds.Tables["BaoCaoTongHop"].NewRow();
+                drTC["TenPhong"] = CNguoiDung.TenPhong.ToUpper();
                 drTC["Ky"] = cmbKy.SelectedItem.ToString();
                 drTC["Nam"] = cmbNam.SelectedValue.ToString();
                 if (CNguoiDung.Doi)
@@ -648,6 +646,7 @@ namespace ThuTien.GUI.ToTruong
                 ds.Tables["BaoCaoTongHop"].Rows.Add(drTC);
                 ///CQ
                 drTC = ds.Tables["BaoCaoTongHop"].NewRow();
+                drTC["TenPhong"] = CNguoiDung.TenPhong.ToUpper();
                 drTC["Ky"] = cmbKy.SelectedItem.ToString();
                 drTC["Nam"] = cmbNam.SelectedValue.ToString();
                 drTC["To"] = CNguoiDung.TenTo;

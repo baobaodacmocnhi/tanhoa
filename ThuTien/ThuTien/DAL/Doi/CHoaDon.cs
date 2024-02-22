@@ -2193,8 +2193,6 @@ namespace ThuTien.DAL.Doi
             return ExecuteQuery_DataTable(sql);
         }
 
-
-
         public DataTable GetBaoCaoTon_To(int MaTo, DateTime NgayGiaiTrach)
         {
             string sql = "declare @NgayGiaiTrach date;"
@@ -3833,6 +3831,25 @@ namespace ThuTien.DAL.Doi
                     return ExecuteQuery_DataTable(sql);
                 }
             return null;
+        }
+
+        public DataTable getNangSuat_Doi(int Nam, int Ky, DateTime NgayGiaiTrach)
+        {
+            return ExecuteQuery_DataTable("declare @NgayGiaiTrach date;"
+                             + " set @NgayGiaiTrach='" + NgayGiaiTrach.ToString("yyyyMMdd") + "';"
+                             + " select MAX(t1.TongHD)as TongHD,MAX(t1.TongGiaBan)as TongGiaBan,MAX(t1.TongCong)as TongCong,MAX(t1.TongHDThu)as TongHDThu,MAX(t1.TongGiaBanThu)as TongGiaBanThu,MAX(t1.TongCongThu)as TongCongThu,MAX(t1.TongHDTon)as TongHDTon,MAX(t1.TongGiaBanTon)as TongGiaBanTon,MAX(t1.TongCongTon)as TongCongTon"
+                             + " ,MAX(t1.TongHDThucThu)as TongHDThucThu,MAX(t1.TongGiaBanThucThu)as TongGiaBanThucThu,MAX(t1.TongCongThucThu)as TongCongThucThu from"
+                             + " ((select count(DANHBA) as TongHD,sum(hd.GIABAN) as TongGiaBan,sum(hd.TONGCONG) as TongCong,0 as TongHDThu,0 as TongGiaBanThu,0 as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongHDThucThu,0 as TongGiaBanThucThu,0 as TongCongThucThu"
+                             + " from HOADON hd where NAM=" + Nam + " and KY=" + Ky + ")"
+                             + " union"
+                             + " (select 0 as TongHD,0 as TongGiaBan,0 as TongCong,count(DANHBA) as TongHDThu,sum(hd.GIABAN) as TongGiaBanThu,sum(hd.TONGCONG) as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,0 as TongHDThucThu,0 as TongGiaBanThucThu,0 as TongCongThucThu"
+                             + " from HOADON hd where NAM=" + Nam + " and KY=" + Ky + " and NGAYGIAITRACH is not null and CAST(NGAYGIAITRACH as date)<=@NgayGiaiTrach)"
+                             + " union"
+                             + " (select 0 as TongHD,0 as TongGiaBan,0 as TongCong,0 as TongHDThu,0 as TongGiaBanThu,0 as TongCongThu,count(DANHBA) as TongHDTon,sum(hd.GIABAN) as TongGiaBanTon,sum(hd.TONGCONG) as TongCongTon,0 as TongHDThucThu,0 as TongGiaBanThucThu,0 as TongCongThucThu"
+                             + " from HOADON hd where NAM=" + Nam + " and KY=" + Ky + " and (NGAYGIAITRACH is null or CAST(NGAYGIAITRACH as date)>@NgayGiaiTrach))"
+                             + " union"
+                             + " (select 0 as TongHD,0 as TongGiaBan,0 as TongCong,0 as TongHDThu,0 as TongGiaBanThu,0 as TongCongThu,0 as TongHDTon,0 as TongGiaBanTon,0 as TongCongTon,count(DANHBA) as TongHDThucThu,sum(hd.GIABAN) as TongGiaBanThucThu,sum(hd.TONGCONG) as TongCongThucThu"
+                             + " from HOADON hd where NAM=" + Nam + " and KY=" + Ky + " and NGAYGIAITRACH is not null)) t1");
         }
 
         public DataTable GetChuanThu_Doi(int MaTo, int Nam, int Ky, int Dot)

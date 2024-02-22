@@ -627,13 +627,13 @@ namespace ThuTien.DAL
                 //close and release
                 if (xlWorkbook != null)
                 {
-                    xlWorkbook.Close();
+                    //xlWorkbook.Close();
                     System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWorkbook);
                 }
                 //quit and release
                 if (xlApp != null)
                 {
-                    xlApp.Quit();
+                    //xlApp.Quit();
                     System.Runtime.InteropServices.Marshal.ReleaseComObject(xlApp);
                 }
                 GC.Collect();
