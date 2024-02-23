@@ -101,6 +101,7 @@
             this.dateDen = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbTo = new System.Windows.Forms.ComboBox();
+            this.btnBaoCaoHanhChinh = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabTuGia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHDTuGia)).BeginInit();
@@ -447,7 +448,7 @@
             this.tabCoQuan.Location = new System.Drawing.Point(4, 22);
             this.tabCoQuan.Name = "tabCoQuan";
             this.tabCoQuan.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCoQuan.Size = new System.Drawing.Size(1248, 350);
+            this.tabCoQuan.Size = new System.Drawing.Size(1248, 398);
             this.tabCoQuan.TabIndex = 1;
             this.tabCoQuan.Text = "Cơ Quan";
             this.tabCoQuan.UseVisualStyleBackColor = true;
@@ -798,12 +799,23 @@
             this.cmbTo.TabIndex = 73;
             this.cmbTo.Visible = false;
             // 
+            // btnBaoCaoHanhChinh
+            // 
+            this.btnBaoCaoHanhChinh.Location = new System.Drawing.Point(566, 39);
+            this.btnBaoCaoHanhChinh.Name = "btnBaoCaoHanhChinh";
+            this.btnBaoCaoHanhChinh.Size = new System.Drawing.Size(120, 23);
+            this.btnBaoCaoHanhChinh.TabIndex = 74;
+            this.btnBaoCaoHanhChinh.Text = "Báo Cáo Hành Chính";
+            this.btnBaoCaoHanhChinh.UseVisualStyleBackColor = true;
+            this.btnBaoCaoHanhChinh.Click += new System.EventHandler(this.btnBaoCaoHanhChinh_Click);
+            // 
             // frmNangSuatThuTienTo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1354, 517);
+            this.Controls.Add(this.btnBaoCaoHanhChinh);
             this.Controls.Add(this.cmbTo);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnBaoCao);
@@ -905,5 +917,6 @@
         private System.Windows.Forms.Button btnInDSTon;
         private System.Windows.Forms.ComboBox cmbTo;
         private System.Windows.Forms.Button btnBaoCaoDongNuoc;
+        private System.Windows.Forms.Button btnBaoCaoHanhChinh;
     }
 }
