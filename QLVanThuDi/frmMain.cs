@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using QLVanThu.DAL;
+using QLVanThuDi;
 
 namespace QLVanThu
 {
@@ -29,6 +30,8 @@ namespace QLVanThu
 
         private void FormMain_Load(object sender, EventArgs e)
         {
+            frmDangNhap frm = new frmDangNhap();
+            frm.ShowDialog();
             dgvDSVanThuDi.AutoGenerateColumns = false;
             vanthudis.DataSource = _CDataQLVanThuDi.LoadDSVanThuDi();
             dgvDSVanThuDi.DataSource =  vanthudis ;

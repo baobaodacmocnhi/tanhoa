@@ -29,6 +29,8 @@ namespace QLVanThuDen
 
         private void FormMain_Load(object sender, EventArgs e)
         {
+            frmDangNhap frm = new frmDangNhap();
+            frm.ShowDialog();
             vanthus.DataSource = _CDataQLVanThuDen.LoadDSVanThuDen();
             dgvDSVanThuDen.DataSource = vanthus;
             cmbPhanLoai.SelectedIndex = 0;

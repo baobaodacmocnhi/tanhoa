@@ -49,6 +49,7 @@
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.dateDen = new System.Windows.Forms.DateTimePicker();
             this.cmbTimTheo = new System.Windows.Forms.ComboBox();
@@ -80,7 +81,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.cmbQuan = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.chkTon = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDonChiTiet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDon)).BeginInit();
@@ -299,6 +300,12 @@
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 9;
             this.gridColumn9.Width = 100;
+            // 
+            // gridColumn16
+            // 
+            this.gridColumn16.Caption = "gridColumn16";
+            this.gridColumn16.FieldName = "NoiDungPKHB";
+            this.gridColumn16.Name = "gridColumn16";
             // 
             // repositoryItemCheckEdit1
             // 
@@ -601,11 +608,15 @@
             this.label6.TabIndex = 46;
             this.label6.Text = "Quận:";
             // 
-            // gridColumn16
+            // chkTon
             // 
-            this.gridColumn16.Caption = "gridColumn16";
-            this.gridColumn16.FieldName = "NoiDungPKHB";
-            this.gridColumn16.Name = "gridColumn16";
+            this.chkTon.AutoSize = true;
+            this.chkTon.Location = new System.Drawing.Point(767, 37);
+            this.chkTon.Name = "chkTon";
+            this.chkTon.Size = new System.Drawing.Size(51, 20);
+            this.chkTon.TabIndex = 50;
+            this.chkTon.Text = "Tồn";
+            this.chkTon.UseVisualStyleBackColor = true;
             // 
             // frmDSDonTu
             // 
@@ -614,6 +625,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1377, 630);
+            this.Controls.Add(this.chkTon);
             this.Controls.Add(this.cmbPhuong);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.cmbQuan);
@@ -702,5 +714,6 @@
         private System.Windows.Forms.ComboBox cmbQuan;
         private System.Windows.Forms.Label label6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
+        private System.Windows.Forms.CheckBox chkTon;
     }
 }

@@ -147,7 +147,10 @@ namespace KTKS_DonKH.GUI.DonTu
                     case "Ngày":
                         //dgvDSDonTu.DataSource = _cDonTu.getDS(cmbLoai.Text, dateTu.Value, dateDen.Value, int.Parse(cmbPhong.SelectedValue.ToString()));
                         if (cmbQuan.SelectedIndex == 0)
-                            gridControl.DataSource = _cDonTu.getDS_GridControl(cmbLoai.Text, dateTu.Value, dateDen.Value).Tables["DonTu"];
+                            if (chkTon.Checked)
+                                gridControl.DataSource = _cDonTu.getDS_Ton_GridControl(dateTu.Value, dateDen.Value).Tables["DonTu"];
+                            else
+                                gridControl.DataSource = _cDonTu.getDS_GridControl(cmbLoai.Text, dateTu.Value, dateDen.Value).Tables["DonTu"];
                         else
                             if (cmbQuan.SelectedIndex > 0)
                                 if (cmbPhuong.SelectedIndex == 0)
@@ -184,7 +187,10 @@ namespace KTKS_DonKH.GUI.DonTu
                     case "Ngày":
                         //dgvDSDonTu.DataSource = _cDonTu.getDS(cmbLoai.Text, dateTu.Value, dateDen.Value, CTaiKhoan.MaPhong);
                         if (cmbQuan.SelectedIndex == 0)
-                            gridControl.DataSource = _cDonTu.getDS_GridControl(cmbLoai.Text, dateTu.Value, dateDen.Value).Tables["DonTu"];
+                            if (chkTon.Checked)
+                                gridControl.DataSource = _cDonTu.getDS_Ton_GridControl(dateTu.Value, dateDen.Value).Tables["DonTu"];
+                            else
+                                gridControl.DataSource = _cDonTu.getDS_GridControl(cmbLoai.Text, dateTu.Value, dateDen.Value).Tables["DonTu"];
                         else
                             if (cmbQuan.SelectedIndex > 0)
                                 if (cmbPhuong.SelectedIndex == 0)

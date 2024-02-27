@@ -1047,12 +1047,16 @@ namespace ThuTien.GUI.DongNuoc
                             if (bool.Parse(item["In"].ToString()))
                             {
                                 if (!_cDongNuoc.CheckExist_KQDongNuoc(decimal.Parse(item["MaDN"].ToString())))
+                                {
                                     if (!_cDongNuoc.Xoa(decimal.Parse(item["MaDN"].ToString())))
                                     {
 
                                     }
+                                }
+                                else
+                                    MessageBox.Show("Có Đóng Nước không xóa được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
-                        MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Đã xử lý", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         btnXem.PerformClick();
                     }
                 }
