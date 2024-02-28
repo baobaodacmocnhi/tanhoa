@@ -39,14 +39,12 @@ namespace KeToan.GUI.HoaDonDienTu
                     OpenFileDialog dialog = new OpenFileDialog();
                     dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
                     dialog.Multiselect = false;
-
                     if (dialog.ShowDialog() == DialogResult.OK)
                         if (MessageBox.Show("Bạn có chắc chắn Thêm?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
                             DataTable dtExcel = _cHDDT.ExcelToDataTable(dialog.FileName);
                             //CExcel fileExcel = new CExcel(dialog.FileName);
                             //DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
-
                             foreach (DataRow item in dtExcel.Rows)
                                 if (item[1].ToString().Trim() != "" && item[4].ToString().Trim() != "")
                                     if (chkNgayLap.Checked == true)
@@ -95,7 +93,6 @@ namespace KeToan.GUI.HoaDonDienTu
                                             _cHDDT.Sua(en);
                                         }
                                     }
-
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             btnXem.PerformClick();
                         }
@@ -165,7 +162,7 @@ namespace KeToan.GUI.HoaDonDienTu
                     if (item.Cells["SoHoaDon"].Value.ToString() != "")
                     {
                         //str = String.Format("{0:D7}", int.Parse(item.Cells["SoHoaDon"].Value.ToString()));
-                        dr["SoHoaDon"] = str;
+                        dr["SoHoaDon"] = item.Cells["SoHoaDon"].Value.ToString();
                     }
                     dr["MaTaiHoaDon"] = item.Cells["MaTaiHoaDon"].Value.ToString();
                     DateTime dateNgayLap = DateTime.Parse(item.Cells["CreateDate"].Value.ToString());
@@ -203,14 +200,14 @@ namespace KeToan.GUI.HoaDonDienTu
             {
                 e.Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", e.Value);
             }
-            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "SoHoaDon" && e.Value != null)
-            {
-                if (e.Value.ToString() != "")
-                {
-                    string str = String.Format("{0:D7}", int.Parse(e.Value.ToString()));
-                    e.Value = str.ToString();
-                }
-            }
+            //if (dgvHoaDon.Columns[e.ColumnIndex].Name == "SoHoaDon" && e.Value != null)
+            //{
+            //    if (e.Value.ToString() != "")
+            //    {
+            //        string str = String.Format("{0:D7}", int.Parse(e.Value.ToString()));
+            //        e.Value = str.ToString();
+            //    }
+            //}
         }
 
         private void dgvHoaDon_CellValueChanged(object sender, DataGridViewCellEventArgs e)

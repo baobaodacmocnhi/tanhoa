@@ -27,9 +27,5 @@ namespace QLVanThuDi
             }
         }
 
-        private void frmDangNhap_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.Exit();
-        }
     }
 }

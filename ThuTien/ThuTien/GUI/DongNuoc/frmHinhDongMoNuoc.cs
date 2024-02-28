@@ -19,7 +19,7 @@ namespace ThuTien.GUI.DongNuoc
         string Loai = "";
         TT_KQDongNuoc _kqdongnuoc = null;
         CDongNuoc _cDongNuoc = new CDongNuoc();
-        string _pathHinh = @"\\rackstation\HinhDHN\ThuTien";
+        //string _pathHinh = @"\\rackstation\HinhDHN\ThuTien";
         wrThuTien.wsThuTien _wsThuTien = new wrThuTien.wsThuTien();
 
         public frmHinhDongMoNuoc()

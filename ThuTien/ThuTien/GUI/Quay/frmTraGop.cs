@@ -65,7 +65,7 @@ namespace ThuTien.GUI.Quay
                     ///Trung An thêm 'K' phía cuối liên hóa đơn
                     if (!string.IsNullOrEmpty(txtSoHoaDon.Text.Trim()) && txtSoHoaDon.Text.Length == 14)
                     {
-                        if (_cHoaDon.CheckExist(txtSoHoaDon.Text.Trim().ToUpper().Replace("K","")))
+                        if (_cHoaDon.CheckExist(txtSoHoaDon.Text.Trim().ToUpper().Replace("K", "")))
                         {
                             dgvHoaDon.Rows.Clear();
                             HOADON hoadon = _cHoaDon.Get(txtSoHoaDon.Text.Trim().ToUpper().Replace("K", ""));
@@ -88,8 +88,8 @@ namespace ThuTien.GUI.Quay
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            if(radTon.Checked)
-            dgvHoaDon.DataSource = _cTraGop.getDS_Ton();
+            if (radTon.Checked)
+                dgvHoaDon.DataSource = _cTraGop.getDS_Ton();
             else
                 if (radAll.Checked)
                     dgvHoaDon.DataSource = _cTraGop.getDS();
@@ -178,11 +178,11 @@ namespace ThuTien.GUI.Quay
             if (hd.MaNV_HanhThu != null)
                 dr["NhanVienThuTien"] = _cNguoiDung.GetHoTenByMaND(hd.MaNV_HanhThu.Value);
             dr["NhanVienQuay"] = CNguoiDung.HoTen;
-            if (chkChuKy.Checked)
-            {
-                dr["ChuKy"] = true;
-                dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky"+CNguoiDung.IDPhong+".png";
-            }
+            //if (chkChuKy.Checked)
+            //{
+            //    dr["ChuKy"] = true;
+            //    dr["ChuKyImage"] = Application.StartupPath.ToString() + @"\Resources\chuky" + CNguoiDung.IDPhong + ".png";
+            //}
             dr["ChucVu"] = CNguoiDung.ChucVu;
             dr["NguoiKy"] = CNguoiDung.NguoiKy;
             ds.Tables["PhieuTamThu"].Rows.Add(dr);
@@ -265,6 +265,6 @@ namespace ThuTien.GUI.Quay
             {
             }
         }
-        
+
     }
 }
