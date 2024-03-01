@@ -344,9 +344,9 @@ namespace ThuTien.DAL.ChuyenKhoan
                 return 0;
         }
 
-        public double getTongSoTien(string SoPhieuThu)
+        public string getTongSoTien(string SoPhieuThu)
         {
-            return (double)_db.TT_BangKes.Where(item => item.SoPhieuThu == SoPhieuThu).Sum(item => item.SoTien);
+            return ExecuteQuery_ReturnOneValue("select SUM(CAST(SoTien AS bigint)) from TT_BangKe where SoPhieuThu='"+SoPhieuThu+"'").ToString();
         }
 
         public string GetSoTK(string DanhBo, DateTime CreateDate)

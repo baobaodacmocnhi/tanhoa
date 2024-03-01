@@ -57,7 +57,7 @@ namespace ThuTien.GUI.TongHop
 
         public void loadHoaDon()
         {
-            DataTable dt = _cDCHD.getDS_HDDC_DangNgan_HD0(CNguoiDung.FromDot,CNguoiDung.ToDot);
+            DataTable dt = _cDCHD.getDS_HDDC_DangNgan_HD0(CNguoiDung.FromDot, CNguoiDung.ToDot);
             if (dt != null && dt.Rows.Count > 0)
                 lbHD0.Text = dt.Rows.Count + " HĐ = 0 chưa Đăng Ngân";
             else
@@ -130,48 +130,25 @@ namespace ThuTien.GUI.TongHop
             }
             else
             {
-                if (radGiay.Checked == true)
+                if (chkTongChuaDangNgan.Checked)
                 {
-                    if (chkTV.Checked == true && chkTong.Checked == true)
-                    {
-                        dt = _cDCHD.getDS_Giay_TV_Tong_ChuaCapNhat();
-                    }
-                    else
-                        if (chkTV.Checked == true)
-                        {
-                            dt = _cDCHD.getDS_Giay_TV_ChuaCapNhat();
-                        }
-                        else if (chkTong.Checked == true)
-                        {
-                            dt = _cDCHD.getDS_Giay_Tong_ChuaCapNhat();
-                        }
-                        else
-                            if (chkTrongKy.Checked == true)
-                                if (radNgayDC.Checked == true)
-                                    dt = _cDCHD.GetDSByNgayDC(dateTu.Value, dateDen.Value, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
-                                else
-                                    dt = _cDCHD.GetDSByNgayChan(dateTu.Value, dateDen.Value, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
-                            else
-                                if (radNgayDC.Checked == true)
-                                    dt = _cDCHD.GetDSByNgayDC(dateTu.Value, dateDen.Value);
-                                else
-                                    dt = _cDCHD.GetDSByNgayChan(dateTu.Value, dateDen.Value);
+                    dt = _cDCHD.getDS_HDDT_Tong_CapNhat_ChuaDangNgan();
                 }
                 else
-                    if (radDienTu.Checked == true)
+                    if (radGiay.Checked == true)
                     {
                         if (chkTV.Checked == true && chkTong.Checked == true)
                         {
-                            dt = _cDCHD.getDS_HDDT_TV_Tong_ChuaCapNhat();
+                            dt = _cDCHD.getDS_Giay_TV_Tong_ChuaCapNhat();
                         }
                         else
                             if (chkTV.Checked == true)
                             {
-                                dt = _cDCHD.getDS_HDDT_TV_ChuaCapNhat();
+                                dt = _cDCHD.getDS_Giay_TV_ChuaCapNhat();
                             }
                             else if (chkTong.Checked == true)
                             {
-                                dt = _cDCHD.getDS_HDDT_Tong_ChuaCapNhat();
+                                dt = _cDCHD.getDS_Giay_Tong_ChuaCapNhat();
                             }
                             else
                                 if (chkTrongKy.Checked == true)
@@ -185,6 +162,34 @@ namespace ThuTien.GUI.TongHop
                                     else
                                         dt = _cDCHD.GetDSByNgayChan(dateTu.Value, dateDen.Value);
                     }
+                    else
+                        if (radDienTu.Checked == true)
+                        {
+                            if (chkTV.Checked == true && chkTong.Checked == true)
+                            {
+                                dt = _cDCHD.getDS_HDDT_TV_Tong_ChuaCapNhat();
+                            }
+                            else
+                                if (chkTV.Checked == true)
+                                {
+                                    dt = _cDCHD.getDS_HDDT_TV_ChuaCapNhat();
+                                }
+                                else if (chkTong.Checked == true)
+                                {
+                                    dt = _cDCHD.getDS_HDDT_Tong_ChuaCapNhat();
+                                }
+                                else
+                                    if (chkTrongKy.Checked == true)
+                                        if (radNgayDC.Checked == true)
+                                            dt = _cDCHD.GetDSByNgayDC(dateTu.Value, dateDen.Value, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                                        else
+                                            dt = _cDCHD.GetDSByNgayChan(dateTu.Value, dateDen.Value, int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()));
+                                    else
+                                        if (radNgayDC.Checked == true)
+                                            dt = _cDCHD.GetDSByNgayDC(dateTu.Value, dateDen.Value);
+                                        else
+                                            dt = _cDCHD.GetDSByNgayChan(dateTu.Value, dateDen.Value);
+                        }
                 dgvDCHD.DataSource = dt;
             }
         }
@@ -978,6 +983,15 @@ namespace ThuTien.GUI.TongHop
                 }
         }
 
+        private void chkTongChuaDangNgan_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkTongChuaDangNgan.Checked)
+            {
+                dateTu.Enabled = false;
+                dateDen.Enabled = false;
+            }
+        }
+
         private void btnHDChoDieuChinh_Click(object sender, EventArgs e)
         {
             frmHoaDonChoDieuChinh frm = new frmHoaDonChoDieuChinh();
@@ -993,7 +1007,7 @@ namespace ThuTien.GUI.TongHop
                     if (MessageBox.Show("Bạn có chắc chắn?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
                         CNguoiDung _cNguoiDung = new CNguoiDung();
-                        DataTable dt = _cDCHD.getDS_HDDC_DangNgan_HD0(CNguoiDung.FromDot,CNguoiDung.ToDot);
+                        DataTable dt = _cDCHD.getDS_HDDC_DangNgan_HD0(CNguoiDung.FromDot, CNguoiDung.ToDot);
                         foreach (DataRow item in dt.Rows)
                         {
                             _cHoaDon.DangNgan("ChuyenKhoan", item["SoHoaDon"].ToString(), _cNguoiDung.getChuyenKhoan(CNguoiDung.IDPhong).MaND);
@@ -1688,6 +1702,8 @@ namespace ThuTien.GUI.TongHop
                     }
             }
         }
+
+
 
     }
 }

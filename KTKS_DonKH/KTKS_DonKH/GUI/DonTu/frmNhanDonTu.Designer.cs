@@ -66,6 +66,8 @@
             this.label16 = new System.Windows.Forms.Label();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabTTKH = new System.Windows.Forms.TabPage();
+            this.txtMLT = new System.Windows.Forms.TextBox();
+            this.label44 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnCapNhatDoiTac = new System.Windows.Forms.Button();
             this.txtDCLapDat = new System.Windows.Forms.TextBox();
@@ -189,8 +191,6 @@
             this.btnGuiEContract = new System.Windows.Forms.Button();
             this.btnXoaEContract = new System.Windows.Forms.Button();
             this.btnCapNhatHieuLuc = new System.Windows.Forms.Button();
-            this.txtMLT = new System.Windows.Forms.TextBox();
-            this.label44 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabTTKH.SuspendLayout();
@@ -279,7 +279,7 @@
             this.groupBox1.Controls.Add(this.chkCT_HDTN_CQN);
             this.groupBox1.Controls.Add(this.chkCT_HK_KT3);
             this.groupBox1.Controls.Add(this.chkCT_HopDongNganHang);
-            this.groupBox1.Location = new System.Drawing.Point(15, 452);
+            this.groupBox1.Location = new System.Drawing.Point(15, 553);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(670, 130);
             this.groupBox1.TabIndex = 20;
@@ -531,7 +531,7 @@
             this.tabControl.Location = new System.Drawing.Point(15, 223);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(661, 223);
+            this.tabControl.Size = new System.Drawing.Size(661, 324);
             this.tabControl.TabIndex = 19;
             // 
             // tabTTKH
@@ -564,10 +564,26 @@
             this.tabTTKH.Location = new System.Drawing.Point(4, 25);
             this.tabTTKH.Name = "tabTTKH";
             this.tabTTKH.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTTKH.Size = new System.Drawing.Size(653, 194);
+            this.tabTTKH.Size = new System.Drawing.Size(653, 295);
             this.tabTTKH.TabIndex = 0;
             this.tabTTKH.Text = "Thông Tin Khách Hàng";
             this.tabTTKH.UseVisualStyleBackColor = true;
+            // 
+            // txtMLT
+            // 
+            this.txtMLT.Location = new System.Drawing.Point(429, 6);
+            this.txtMLT.Name = "txtMLT";
+            this.txtMLT.Size = new System.Drawing.Size(100, 22);
+            this.txtMLT.TabIndex = 98;
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(388, 9);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(35, 16);
+            this.label44.TabIndex = 97;
+            this.label44.Text = "MLT";
             // 
             // groupBox4
             // 
@@ -1737,29 +1753,13 @@
             this.btnCapNhatHieuLuc.UseVisualStyleBackColor = true;
             this.btnCapNhatHieuLuc.Click += new System.EventHandler(this.btnCapNhatHieuLuc_Click);
             // 
-            // txtMLT
-            // 
-            this.txtMLT.Location = new System.Drawing.Point(429, 6);
-            this.txtMLT.Name = "txtMLT";
-            this.txtMLT.Size = new System.Drawing.Size(100, 22);
-            this.txtMLT.TabIndex = 98;
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.Location = new System.Drawing.Point(388, 9);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(35, 16);
-            this.label44.TabIndex = 97;
-            this.label44.Text = "MLT";
-            // 
             // frmNhanDonTu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1326, 586);
+            this.ClientSize = new System.Drawing.Size(1326, 711);
             this.Controls.Add(this.btnCapNhatHieuLuc);
             this.Controls.Add(this.btnXoaEContract);
             this.Controls.Add(this.btnGuiEContract);
