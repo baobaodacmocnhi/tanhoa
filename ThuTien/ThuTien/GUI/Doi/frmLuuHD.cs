@@ -383,14 +383,14 @@ namespace ThuTien.GUI.Doi
                                     _cGBBQ.Them(entity);
                                 }
                                 else
-                                    //if (MessageBox.Show("Đã chốt Giá Bán Bình Quân, Bạn có chắc chốt lại không???", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                                    {
-                                        TT_GiaBanBinhQuan entity = _cGBBQ.Get(Nam, Ky);
-                                        entity.TongGiaBan = decimal.Parse(dt.Rows[0]["TongGiaBan"].ToString());
-                                        entity.TongTieuThu = decimal.Parse(dt.Rows[0]["TongTieuThu"].ToString());
-                                        entity.GiaBanBinhQuan = float.Parse(dt.Rows[0]["GiaBanBinhQuan"].ToString());
-                                        _cGBBQ.Sua(entity);
-                                    }
+                                //if (MessageBox.Show("Đã chốt Giá Bán Bình Quân, Bạn có chắc chốt lại không???", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                                {
+                                    TT_GiaBanBinhQuan entity = _cGBBQ.Get(Nam, Ky);
+                                    entity.TongGiaBan = decimal.Parse(dt.Rows[0]["TongGiaBan"].ToString());
+                                    entity.TongTieuThu = decimal.Parse(dt.Rows[0]["TongTieuThu"].ToString());
+                                    entity.GiaBanBinhQuan = float.Parse(dt.Rows[0]["GiaBanBinhQuan"].ToString());
+                                    _cGBBQ.Sua(entity);
+                                }
                             }
                         }
                         catch (Exception ex)
@@ -444,6 +444,7 @@ namespace ThuTien.GUI.Doi
                     DataTable dtDCHD = _cDCHD.GetTongChuanThu(int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(item.Cells["Dot"].Value.ToString()));
                     if (dtDCHD != null && dtDCHD.Rows.Count > 0)
                     {
+                        item.Cells["TongTieuThu"].Value = long.Parse(item.Cells["TongTieuThu"].Value.ToString()) - long.Parse(dtDCHD.Rows[0]["TieuThu_DC"].ToString()) + long.Parse(dtDCHD.Rows[0]["TieuThu_BD"].ToString());
                         item.Cells["TongGiaBan"].Value = long.Parse(item.Cells["TongGiaBan"].Value.ToString()) - long.Parse(dtDCHD.Rows[0]["GIABAN_DC"].ToString());
                         item.Cells["TongThueGTGT"].Value = long.Parse(item.Cells["TongThueGTGT"].Value.ToString()) - long.Parse(dtDCHD.Rows[0]["ThueGTGT_DC"].ToString());
                         item.Cells["TongPhiBVMT"].Value = long.Parse(item.Cells["TongPhiBVMT"].Value.ToString()) - long.Parse(dtDCHD.Rows[0]["PhiBVMT_DC"].ToString());

@@ -15,43 +15,55 @@
         </div>
     </div>
 
-    <div class="container mt-4 navbar navbar-inverse navbar-default">
+    <div class="container mt-4 navbar navbar-light">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+                <button type="button" class="navbar-toggle" style="background-color:#f6b5d1" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar" style="background-color:white"></span>
+                    <span class="icon-bar" style="background-color:white"></span>
+                    <span class="icon-bar" style="background-color:white"></span>
                 </button>
                 @Html.ActionLink("KGVH Hồ Chí Minh", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>
-                        @Html.ActionLink("About", "About", "Home")
-                    <ul>
-                        <li>1</li>
-                        <li>2</li>
-                    </ul>
-                </li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-            </ul>
+                    <li>@Html.ActionLink("Trang chủ", "Index", "Home")</li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Menu 1
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="https://hochiminh.capnuoctanhoa.com.vn/menu/menu1/HtmlPage1.html">Menu 1</a></li>
+                            <li><a href="https://hochiminh.capnuoctanhoa.com.vn/menu/menu1/HtmlPage2.html">Menu 2</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Menu 2
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="https://hochiminh.capnuoctanhoa.com.vn/menu/menu2/HtmlPage1.html">Menu 1</a></li>
+                            <li><a href="https://hochiminh.capnuoctanhoa.com.vn/menu/menu2/HtmlPage2.html">Menu 2</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
-<div class="container body-content">
-    @RenderBody()
-    @*<hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>*@
-</div>
-<div class="row">
-    <div class="col-sm-12"><img src="~/HCM/images/footer.png" width="100%" /></div>
-</div>
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/bootstrap")
-@RenderSection("scripts", required: false)
+    <div class="container body-content">
+        @RenderBody()
+        @*<hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>*@
+    </div>
+    <div class="row">
+        <div class="col-sm-12"><img src="~/HCM/images/footer.png" width="100%" /></div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
 </body>
 </html>
