@@ -78,17 +78,6 @@
             this.MaHD_TT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtDanhBo = new System.Windows.Forms.TextBox();
             this.dgvHoaDon = new System.Windows.Forms.DataGridView();
-            this.tabThongTin = new System.Windows.Forms.TabPage();
-            this.chkNgayLap = new System.Windows.Forms.CheckBox();
-            this.dateNgayLap = new System.Windows.Forms.DateTimePicker();
-            this.cmbNganHang = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnThem = new System.Windows.Forms.Button();
-            this.tabControl = new System.Windows.Forms.TabControl();
-            this.btnChonFile = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.chkTruHoNgheo = new System.Windows.Forms.CheckBox();
-            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.Chon = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.MaHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoHoaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -105,6 +94,17 @@
             this.ChenhLech = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NganHang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DCHD = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.tabThongTin = new System.Windows.Forms.TabPage();
+            this.chkNgayLap = new System.Windows.Forms.CheckBox();
+            this.dateNgayLap = new System.Windows.Forms.DateTimePicker();
+            this.cmbNganHang = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnThem = new System.Windows.Forms.Button();
+            this.tabControl = new System.Windows.Forms.TabControl();
+            this.btnChonFile = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.chkTruHoNgheo = new System.Windows.Forms.CheckBox();
+            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.tabTamThu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTamThu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
@@ -606,115 +606,6 @@
             this.dgvHoaDon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHoaDon_CellFormatting);
             this.dgvHoaDon.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvHoaDon_RowPostPaint);
             // 
-            // tabThongTin
-            // 
-            this.tabThongTin.Controls.Add(this.chkNgayLap);
-            this.tabThongTin.Controls.Add(this.dateNgayLap);
-            this.tabThongTin.Controls.Add(this.cmbNganHang);
-            this.tabThongTin.Controls.Add(this.label2);
-            this.tabThongTin.Controls.Add(this.dgvHoaDon);
-            this.tabThongTin.Controls.Add(this.btnThem);
-            this.tabThongTin.Location = new System.Drawing.Point(4, 22);
-            this.tabThongTin.Name = "tabThongTin";
-            this.tabThongTin.Padding = new System.Windows.Forms.Padding(3);
-            this.tabThongTin.Size = new System.Drawing.Size(1352, 564);
-            this.tabThongTin.TabIndex = 0;
-            this.tabThongTin.Text = "Thông Tin";
-            this.tabThongTin.UseVisualStyleBackColor = true;
-            // 
-            // chkNgayLap
-            // 
-            this.chkNgayLap.AutoSize = true;
-            this.chkNgayLap.Location = new System.Drawing.Point(500, 10);
-            this.chkNgayLap.Name = "chkNgayLap";
-            this.chkNgayLap.Size = new System.Drawing.Size(72, 17);
-            this.chkNgayLap.TabIndex = 29;
-            this.chkNgayLap.Text = "Ngày Lập";
-            this.chkNgayLap.UseVisualStyleBackColor = true;
-            this.chkNgayLap.CheckedChanged += new System.EventHandler(this.chkNgayLap_CheckedChanged);
-            // 
-            // dateNgayLap
-            // 
-            this.dateNgayLap.CustomFormat = "dd/MM/yyyy HH:mm:ss";
-            this.dateNgayLap.Enabled = false;
-            this.dateNgayLap.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateNgayLap.Location = new System.Drawing.Point(578, 8);
-            this.dateNgayLap.Name = "dateNgayLap";
-            this.dateNgayLap.Size = new System.Drawing.Size(140, 20);
-            this.dateNgayLap.TabIndex = 28;
-            // 
-            // cmbNganHang
-            // 
-            this.cmbNganHang.FormattingEnabled = true;
-            this.cmbNganHang.Location = new System.Drawing.Point(310, 8);
-            this.cmbNganHang.Name = "cmbNganHang";
-            this.cmbNganHang.Size = new System.Drawing.Size(121, 21);
-            this.cmbNganHang.TabIndex = 23;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(239, 11);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 13);
-            this.label2.TabIndex = 22;
-            this.label2.Text = "Ngân Hàng:";
-            // 
-            // btnThem
-            // 
-            this.btnThem.Location = new System.Drawing.Point(98, 6);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(75, 23);
-            this.btnThem.TabIndex = 21;
-            this.btnThem.Text = "Tạm Thu";
-            this.btnThem.UseVisualStyleBackColor = true;
-            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
-            // 
-            // tabControl
-            // 
-            this.tabControl.Controls.Add(this.tabThongTin);
-            this.tabControl.Controls.Add(this.tabTamThu);
-            this.tabControl.Location = new System.Drawing.Point(0, 31);
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1360, 590);
-            this.tabControl.TabIndex = 4;
-            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
-            // 
-            // btnChonFile
-            // 
-            this.btnChonFile.Location = new System.Drawing.Point(195, 2);
-            this.btnChonFile.Name = "btnChonFile";
-            this.btnChonFile.Size = new System.Drawing.Size(75, 23);
-            this.btnChonFile.TabIndex = 0;
-            this.btnChonFile.Text = "Chọn File";
-            this.btnChonFile.UseVisualStyleBackColor = true;
-            this.btnChonFile.Click += new System.EventHandler(this.btnChonFile_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(447, 2);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(38, 13);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "(Enter)";
-            // 
-            // chkTruHoNgheo
-            // 
-            this.chkTruHoNgheo.AutoSize = true;
-            this.chkTruHoNgheo.Location = new System.Drawing.Point(99, 4);
-            this.chkTruHoNgheo.Name = "chkTruHoNgheo";
-            this.chkTruHoNgheo.Size = new System.Drawing.Size(90, 17);
-            this.chkTruHoNgheo.TabIndex = 23;
-            this.chkTruHoNgheo.Text = "trừ Hộ Nghèo";
-            this.chkTruHoNgheo.UseVisualStyleBackColor = true;
-            // 
-            // backgroundWorker
-            // 
-            this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
-            this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
-            // 
             // Chon
             // 
             this.Chon.FalseValue = "false";
@@ -824,6 +715,115 @@
             this.DCHD.HeaderText = "ĐCHĐ";
             this.DCHD.Name = "DCHD";
             this.DCHD.Width = 50;
+            // 
+            // tabThongTin
+            // 
+            this.tabThongTin.Controls.Add(this.chkNgayLap);
+            this.tabThongTin.Controls.Add(this.dateNgayLap);
+            this.tabThongTin.Controls.Add(this.cmbNganHang);
+            this.tabThongTin.Controls.Add(this.label2);
+            this.tabThongTin.Controls.Add(this.dgvHoaDon);
+            this.tabThongTin.Controls.Add(this.btnThem);
+            this.tabThongTin.Location = new System.Drawing.Point(4, 22);
+            this.tabThongTin.Name = "tabThongTin";
+            this.tabThongTin.Padding = new System.Windows.Forms.Padding(3);
+            this.tabThongTin.Size = new System.Drawing.Size(1352, 564);
+            this.tabThongTin.TabIndex = 0;
+            this.tabThongTin.Text = "Thông Tin";
+            this.tabThongTin.UseVisualStyleBackColor = true;
+            // 
+            // chkNgayLap
+            // 
+            this.chkNgayLap.AutoSize = true;
+            this.chkNgayLap.Location = new System.Drawing.Point(500, 10);
+            this.chkNgayLap.Name = "chkNgayLap";
+            this.chkNgayLap.Size = new System.Drawing.Size(72, 17);
+            this.chkNgayLap.TabIndex = 29;
+            this.chkNgayLap.Text = "Ngày Lập";
+            this.chkNgayLap.UseVisualStyleBackColor = true;
+            this.chkNgayLap.CheckedChanged += new System.EventHandler(this.chkNgayLap_CheckedChanged);
+            // 
+            // dateNgayLap
+            // 
+            this.dateNgayLap.CustomFormat = "dd/MM/yyyy HH:mm:ss";
+            this.dateNgayLap.Enabled = false;
+            this.dateNgayLap.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateNgayLap.Location = new System.Drawing.Point(578, 8);
+            this.dateNgayLap.Name = "dateNgayLap";
+            this.dateNgayLap.Size = new System.Drawing.Size(140, 20);
+            this.dateNgayLap.TabIndex = 28;
+            // 
+            // cmbNganHang
+            // 
+            this.cmbNganHang.FormattingEnabled = true;
+            this.cmbNganHang.Location = new System.Drawing.Point(310, 8);
+            this.cmbNganHang.Name = "cmbNganHang";
+            this.cmbNganHang.Size = new System.Drawing.Size(121, 21);
+            this.cmbNganHang.TabIndex = 23;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(239, 11);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 13);
+            this.label2.TabIndex = 22;
+            this.label2.Text = "Ngân Hàng:";
+            // 
+            // btnThem
+            // 
+            this.btnThem.Location = new System.Drawing.Point(98, 6);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(75, 23);
+            this.btnThem.TabIndex = 21;
+            this.btnThem.Text = "Tạm Thu";
+            this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            // 
+            // tabControl
+            // 
+            this.tabControl.Controls.Add(this.tabThongTin);
+            this.tabControl.Controls.Add(this.tabTamThu);
+            this.tabControl.Location = new System.Drawing.Point(0, 31);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(1360, 590);
+            this.tabControl.TabIndex = 4;
+            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
+            // 
+            // btnChonFile
+            // 
+            this.btnChonFile.Location = new System.Drawing.Point(195, 2);
+            this.btnChonFile.Name = "btnChonFile";
+            this.btnChonFile.Size = new System.Drawing.Size(75, 23);
+            this.btnChonFile.TabIndex = 0;
+            this.btnChonFile.Text = "Chọn File";
+            this.btnChonFile.UseVisualStyleBackColor = true;
+            this.btnChonFile.Click += new System.EventHandler(this.btnChonFile_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(447, 2);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(38, 13);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "(Enter)";
+            // 
+            // chkTruHoNgheo
+            // 
+            this.chkTruHoNgheo.AutoSize = true;
+            this.chkTruHoNgheo.Location = new System.Drawing.Point(99, 4);
+            this.chkTruHoNgheo.Name = "chkTruHoNgheo";
+            this.chkTruHoNgheo.Size = new System.Drawing.Size(90, 17);
+            this.chkTruHoNgheo.TabIndex = 23;
+            this.chkTruHoNgheo.Text = "trừ Hộ Nghèo";
+            this.chkTruHoNgheo.UseVisualStyleBackColor = true;
+            // 
+            // backgroundWorker
+            // 
+            this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
+            this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
             // 
             // frmTamThuChuyenKhoan
             // 

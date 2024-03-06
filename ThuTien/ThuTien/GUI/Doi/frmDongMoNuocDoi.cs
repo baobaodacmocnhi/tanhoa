@@ -26,7 +26,6 @@ namespace ThuTien.GUI.Doi
         private void frmPhiMoNuocDoi_Load(object sender, EventArgs e)
         {
             dgvDongNuoc.AutoGenerateColumns = false;
-
             dgvPhiMoNuoc.AutoGenerateColumns = false;
             dgvPhiMoNuocDoi.AutoGenerateColumns = false;
             
@@ -35,7 +34,6 @@ namespace ThuTien.GUI.Doi
         private void btnXem_Click(object sender, EventArgs e)
         {
             dgvPhiMoNuoc.DataSource = _cDongNuoc.GetDSKQDongNuoc_PhiMoNuoc(dateTu.Value, dateDen.Value);
-
             foreach (DataGridViewRow item in dgvPhiMoNuoc.Rows)
             {
                 if (int.Parse(item.Cells["PhiMoNuoc"].Value.ToString()) / _cDongNuoc.GetPhiMoNuoc(int.Parse(item.Cells["CoDHN"].Value.ToString())) > 1)
@@ -82,18 +80,15 @@ namespace ThuTien.GUI.Doi
             if (dgvPhiMoNuocDoi.Columns[e.ColumnIndex].Name == "DanhBo_Doi" && dgvPhiMoNuocDoi["DanhBo_Doi", e.RowIndex].Value.ToString().Replace(" ", "").Length == 11)
             {
                 HOADON hoadon = _cHoaDon.GetMoiNhat(dgvPhiMoNuocDoi[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(" ", ""));
-
                 if (hoadon != null)
                 {
                     dgvPhiMoNuocDoi["HoTen_Doi", e.RowIndex].Value = hoadon.TENKH;
                     dgvPhiMoNuocDoi["DiaChi_Doi", e.RowIndex].Value = hoadon.SO + " " + hoadon.DUONG;
-
                     TT_PhiMoNuocDoi entity = new TT_PhiMoNuocDoi();
-
+                    entity.MLT = hoadon.MALOTRINH;
                     entity.DanhBo = dgvPhiMoNuocDoi["DanhBo_Doi", e.RowIndex].Value.ToString().Replace(" ", "");
                     entity.HoTen = dgvPhiMoNuocDoi["HoTen_Doi", e.RowIndex].Value.ToString();
                     entity.DiaChi = dgvPhiMoNuocDoi["DiaChi_Doi", e.RowIndex].Value.ToString();
-
                     if (_cPhiMoNuocDoi.Them(entity))
                         dgvPhiMoNuocDoi["ID_Doi", e.RowIndex].Value = entity.ID;
                 }
@@ -105,7 +100,6 @@ namespace ThuTien.GUI.Doi
             if (e.Row.Cells["ID_Doi"].Value != null && string.IsNullOrEmpty(e.Row.Cells["ID_Doi"].Value.ToString()))
             {
                 TT_PhiMoNuocDoi entity = _cPhiMoNuocDoi.Get(int.Parse(e.Row.Cells["ID_Doi"].Value.ToString()));
-
                 _cPhiMoNuocDoi.Xoa(entity);
             }
         }

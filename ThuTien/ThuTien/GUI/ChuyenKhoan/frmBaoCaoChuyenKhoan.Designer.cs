@@ -35,6 +35,7 @@
             this.dateDen = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.chkTanHoa = new System.Windows.Forms.CheckBox();
             this.btnXuatExcelBangKeMoi = new System.Windows.Forms.Button();
             this.btnXuatExcelBangKe = new System.Windows.Forms.Button();
             this.dateGiaiTrach = new System.Windows.Forms.DateTimePicker();
@@ -45,7 +46,6 @@
             this.btnXuatExcelDSChuyenKhoan = new System.Windows.Forms.Button();
             this.backgroundWorker_BangKe = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker_BangKeMoi = new System.ComponentModel.BackgroundWorker();
-            this.chkTanHoa = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -125,6 +125,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Bảng Kê";
             // 
+            // chkTanHoa
+            // 
+            this.chkTanHoa.AutoSize = true;
+            this.chkTanHoa.Location = new System.Drawing.Point(65, 21);
+            this.chkTanHoa.Name = "chkTanHoa";
+            this.chkTanHoa.Size = new System.Drawing.Size(68, 17);
+            this.chkTanHoa.TabIndex = 30;
+            this.chkTanHoa.Text = "Tân Hòa";
+            this.chkTanHoa.UseVisualStyleBackColor = true;
+            // 
             // btnXuatExcelBangKeMoi
             // 
             this.btnXuatExcelBangKeMoi.Location = new System.Drawing.Point(422, 17);
@@ -133,6 +143,7 @@
             this.btnXuatExcelBangKeMoi.TabIndex = 29;
             this.btnXuatExcelBangKeMoi.Text = "Xuất Excel 2";
             this.btnXuatExcelBangKeMoi.UseVisualStyleBackColor = true;
+            this.btnXuatExcelBangKeMoi.Visible = false;
             this.btnXuatExcelBangKeMoi.Click += new System.EventHandler(this.btnXuatExcelBangKeMoi_Click);
             // 
             // btnXuatExcelBangKe
@@ -211,16 +222,6 @@
             // 
             this.backgroundWorker_BangKeMoi.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_BangKeMoi_DoWork);
             this.backgroundWorker_BangKeMoi.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_BangKeMoi_RunWorkerCompleted);
-            // 
-            // chkTanHoa
-            // 
-            this.chkTanHoa.AutoSize = true;
-            this.chkTanHoa.Location = new System.Drawing.Point(65, 21);
-            this.chkTanHoa.Name = "chkTanHoa";
-            this.chkTanHoa.Size = new System.Drawing.Size(68, 17);
-            this.chkTanHoa.TabIndex = 30;
-            this.chkTanHoa.Text = "Tân Hòa";
-            this.chkTanHoa.UseVisualStyleBackColor = true;
             // 
             // frmBaoCaoChuyenKhoan
             // 

@@ -9073,6 +9073,30 @@ namespace ThuTien.DAL.Doi
             return LINQToDataTable(query);
         }
 
+        public DataTable GetDSDangNganChuyenKhoan(DateTime NgayGiaiTrach, int FromDot, int ToDot)
+        {
+            var query = from itemHD in _db.HOADONs
+                        //join itemND in _db.TT_NguoiDungs on itemHD.MaNV_HanhThu equals itemND.MaND into tableND
+                        //from itemtableND in tableND.DefaultIfEmpty()
+                        where itemHD.DangNgan_ChuyenKhoan == true && itemHD.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date
+                        && itemHD.DOT >= FromDot && itemHD.DOT <= ToDot
+                        orderby itemHD.ID_HOADON ascending
+                        select new
+                        {
+                            DanhBo = itemHD.DANHBA,
+                            HoTen = itemHD.TENKH,
+                            itemHD.KY,
+                            itemHD.GIABAN,
+                            ThueGTGT = itemHD.THUE,
+                            PhiBVMT = itemHD.PHI,
+                            PhiBVMT_Thue = itemHD.ThueGTGT_TDVTN != null ? itemHD.ThueGTGT_TDVTN : 0,
+                            TongCong = itemHD.TONGCONG,
+                            GiaBieu = itemHD.GB,
+                            itemHD.TienMat,
+                        };
+            return LINQToDataTable(query);
+        }
+
         public DataTable GetDSDangNganChuyenKhoan(int MaTo, int Nam, int Ky)
         {
             var query = from itemHD in _db.HOADONs

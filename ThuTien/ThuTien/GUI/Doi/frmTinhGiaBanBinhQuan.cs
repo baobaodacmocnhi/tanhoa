@@ -44,6 +44,7 @@ namespace ThuTien.GUI.Doi
             dgvGiaBanBinhQuan.DataSource = _cGBBQ.GetDS(int.Parse(cmbNam.SelectedValue.ToString()));
             double TongDoanhThu = 0;
             double TongSanLuong = 0;
+            double TongTyLeThucThu = 0;
             for (int i = 0; i < dgvGiaBanBinhQuan.RowCount; i++)
             {
                 //DataTable dtDCHD = _cDCHD.GetTongChuanThu(int.Parse(cmbNam.SelectedValue.ToString()), i + 1);
@@ -63,10 +64,12 @@ namespace ThuTien.GUI.Doi
                     dgvGiaBanBinhQuan["TyLeThuThang", i].Value = Math.Round((double.Parse(dt.Rows[0]["TongGiaBanThu"].ToString()) - double.Parse(dtDCHD.Rows[0]["TongGiaBanThu"].ToString())) / (double.Parse(dt.Rows[0]["TongGiaBan"].ToString()) - double.Parse(dtDCHD.Rows[0]["TongGiaBan"].ToString())) * 100, 2);
                     dgvGiaBanBinhQuan["TyLeThucThu", i].Value = Math.Round((double.Parse(dt.Rows[0]["TongGiaBanThucThu"].ToString()) - double.Parse(dtDCHD.Rows[0]["TongGiaBanThucThu"].ToString())) / (double.Parse(dt.Rows[0]["TongGiaBan"].ToString()) - double.Parse(dtDCHD.Rows[0]["TongGiaBan"].ToString())) * 100, 2);
                 }
+                TongTyLeThucThu += double.Parse(dgvGiaBanBinhQuan["TyLeThucThu", i].Value.ToString());
             }
             txtTongDoanhThu.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongDoanhThu);
             txtTongSanLuong.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TongSanLuong);
             txtGiaBanBinhQuan.Text = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", Math.Round((TongDoanhThu / TongSanLuong)));
+            txtTongTyLeThucThu.Text = Math.Round((TongTyLeThucThu / dgvGiaBanBinhQuan.RowCount), 2).ToString();
         }
 
         private void dgvGiaBanBinhQuan_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

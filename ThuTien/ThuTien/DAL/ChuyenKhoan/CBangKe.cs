@@ -165,6 +165,29 @@ namespace ThuTien.DAL.ChuyenKhoan
             return LINQToDataTable(query);
         }
 
+        public DataTable GetDS_BangKe(DateTime CreateDate, int IDPhong)
+        {
+            var query = from itemBK in _db.TT_BangKes
+                        join itemNH in _db.NGANHANGs on itemBK.MaNH equals itemNH.ID_NGANHANG into tableNH
+                        from itemtableNH in tableNH.DefaultIfEmpty()
+                        where itemBK.CreateDate.Value.Date == CreateDate.Date
+                        && _db.TT_NguoiDungs.SingleOrDefault(o => o.MaND == itemBK.CreateBy).TT_To.IDPhong == IDPhong
+                        orderby itemBK.MaBK ascending
+                        select new
+                        {
+                            itemBK.MaBK,
+                            itemBK.DanhBo,
+                            itemBK.SoTien,
+                            itemBK.CreateDate,
+                            MaNH = itemtableNH.ID_NGANHANG,
+                            TenNH = itemtableNH.NGANHANG1,
+                            itemtableNH.GroupBank,
+                            itemBK.SoPhieuThu,
+                            itemBK.NgayPhieuThu,
+                        };
+            return LINQToDataTable(query);
+        }
+
         public DataTable GetDS_BangKeLui5(DateTime CreateDate)
         {
             var query = from itemBK in _db.TT_BangKes
@@ -276,7 +299,7 @@ namespace ThuTien.DAL.ChuyenKhoan
             return LINQToDataTable(query);
         }
 
-        public DataTable GetDS_Group3(DateTime TuNgay, DateTime DenNgay,int IDPhong)
+        public DataTable GetDS_Group3(DateTime TuNgay, DateTime DenNgay, int IDPhong)
         {
             //var query = from itemBK in _db.TT_BangKes
             //            join itemNH in _db.NGANHANGs on itemBK.MaNH equals itemNH.ID_NGANHANG into tableNH
@@ -346,7 +369,7 @@ namespace ThuTien.DAL.ChuyenKhoan
 
         public string getTongSoTien(string SoPhieuThu)
         {
-            return ExecuteQuery_ReturnOneValue("select SUM(CAST(SoTien AS bigint)) from TT_BangKe where SoPhieuThu='"+SoPhieuThu+"'").ToString();
+            return ExecuteQuery_ReturnOneValue("select SUM(CAST(SoTien AS bigint)) from TT_BangKe where SoPhieuThu='" + SoPhieuThu + "'").ToString();
         }
 
         public string GetSoTK(string DanhBo, DateTime CreateDate)

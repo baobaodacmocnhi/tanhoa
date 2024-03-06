@@ -150,6 +150,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                     HOADON hoadon = _cHoaDon.GetMoiNhat(txtDanhBoSuaTien.Text.Trim().Replace(" ", ""));
 
                                     TT_PhiMoNuoc phimonuoc = new TT_PhiMoNuoc();
+                                    phimonuoc.MLT = hoadon.MALOTRINH;
                                     phimonuoc.DanhBo = hoadon.DANHBA;
                                     phimonuoc.HoTen = hoadon.TENKH;
                                     phimonuoc.DiaChi = hoadon.SO + " " + hoadon.DUONG;

@@ -126,5 +126,13 @@ namespace ThuTien.DAL.ChuyenKhoan
             else
                 return _db.TT_PhiMoNuocs.Where(item => item.Chot == Chot).Sum(item => item.PhiMoNuoc).Value;
         }
+
+        public int getPhiMoNuoc_Chot(bool Chot, int FromDot, int ToDot)
+        {
+            if (_db.TT_PhiMoNuocs.Any(item => item.Chot == Chot && Convert.ToInt32(item.MLT.Substring(0, 2)) >= FromDot && Convert.ToInt32(item.MLT.Substring(0, 2)) <= ToDot) == false)
+                return 0;
+            else
+                return _db.TT_PhiMoNuocs.Where(item => item.Chot == Chot && Convert.ToInt32(item.MLT.Substring(0, 2)) >= FromDot && Convert.ToInt32(item.MLT.Substring(0, 2)) <= ToDot).Sum(item => item.PhiMoNuoc).Value;
+        }
     }
 }

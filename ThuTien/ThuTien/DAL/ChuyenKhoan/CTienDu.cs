@@ -489,6 +489,14 @@ namespace ThuTien.DAL.ChuyenKhoan
                 return (long)(_db.TT_TienDus.Sum(item => (long)item.SoTien));
         }
 
+        public long GetTongTienTonDenNgay(DateTime CreateDate, int IDPhong)
+        {
+            if (_db.TT_TienDuLichSus.Any(item => item.CreateDate.Value.Date > CreateDate.Date && _db.TT_NguoiDungs.SingleOrDefault(o => o.MaND == item.CreateBy).TT_To.IDPhong == IDPhong))
+                return (long)(_db.TT_TienDus.Sum(item => (long)item.SoTien) - _db.TT_TienDuLichSus.Where(item => item.CreateDate.Value.Date > CreateDate.Date && _db.TT_NguoiDungs.SingleOrDefault(o => o.MaND == item.CreateBy).TT_To.IDPhong == IDPhong).Sum(item => (long)item.SoTien));
+            else
+                return (long)(_db.TT_TienDus.Sum(item => (long)item.SoTien));
+        }
+
         public int GetTienDu(string DanhBo)
         {
             if (_db.TT_TienDus.Any(item => item.DanhBo == DanhBo))

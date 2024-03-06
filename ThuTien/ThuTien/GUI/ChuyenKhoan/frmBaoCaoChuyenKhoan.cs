@@ -927,8 +927,18 @@ namespace ThuTien.GUI.ChuyenKhoan
 
         private void backgroundWorker_BangKe_DoWork(object sender, DoWorkEventArgs e)
         {
-            DataTable dtBK = _cBangKe.GetDS_BangKe(dateGiaiTrach.Value);
-            DataTable dtDN = _cHoaDon.GetDSDangNganChuyenKhoan(dateGiaiTrach.Value);
+            DataTable dtBK = new DataTable();
+            DataTable dtDN = new DataTable();
+            if (chkTanHoa.Checked)
+            {
+                dtBK = _cBangKe.GetDS_BangKe(dateGiaiTrach.Value);
+                dtDN = _cHoaDon.GetDSDangNganChuyenKhoan(dateGiaiTrach.Value);
+            }
+            else
+            {
+                dtBK = _cBangKe.GetDS_BangKe(dateGiaiTrach.Value, CNguoiDung.IDPhong);
+                dtDN = _cHoaDon.GetDSDangNganChuyenKhoan(dateGiaiTrach.Value, CNguoiDung.FromDot, CNguoiDung.ToDot);
+            }
             //DataTable dtBKLui5 = _cBangKe.GetDS_BangKeLui5(dateGiaiTrach.Value);
             if (dtBK == null || dtBK.Rows.Count == 0 || dtDN == null || dtDN.Rows.Count == 0)
             {
@@ -1568,7 +1578,10 @@ namespace ThuTien.GUI.ChuyenKhoan
             oSheet.get_Range(c2sum2, c3sum2).NumberFormat = "#,##0";
 
             oSheet.Cells[rowEnd + 8, 2] = "Tồn cuối ngày:";
-            oSheet.Cells[rowEnd + 8, 3] = _cTienDu.GetTongTienTonDenNgay(dateGiaiTrach.Value) + _cPMN.getPhiMoNuoc_Chot(false);
+            if (chkTanHoa.Checked)
+                oSheet.Cells[rowEnd + 8, 3] = _cTienDu.GetTongTienTonDenNgay(dateGiaiTrach.Value) + _cPMN.getPhiMoNuoc_Chot(false);
+            else
+                oSheet.Cells[rowEnd + 8, 3] = _cTienDu.GetTongTienTonDenNgay(dateGiaiTrach.Value, CNguoiDung.IDPhong) + _cPMN.getPhiMoNuoc_Chot(false, CNguoiDung.FromDot, CNguoiDung.ToDot);
             //format number
             Microsoft.Office.Interop.Excel.Range c1sum3 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd + 8, 3];
             Microsoft.Office.Interop.Excel.Range c2sum3 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd + 8, 3];
