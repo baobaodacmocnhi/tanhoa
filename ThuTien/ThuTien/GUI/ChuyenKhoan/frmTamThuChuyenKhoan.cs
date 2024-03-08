@@ -418,6 +418,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                         }
                                 }
                         }
+                    this.dgvHoaDon.Sort(this.dgvHoaDon.Columns["ChenhLech"], ListSortDirection.Ascending);
                     foreach (DataGridViewRow item in dgvHoaDon.Rows)
                     {
                         item.Cells["Chon"].Value = true;
