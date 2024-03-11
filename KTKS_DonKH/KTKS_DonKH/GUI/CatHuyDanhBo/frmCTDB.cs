@@ -805,6 +805,7 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                             ycchdb.PhieuDuocKy = true;
                             if (_cCHDB.ThemPhieuHuy(ycchdb))
                             {
+                                ycchdb.NoiNhan += "\r\n(" + ycchdb.MaYCCHDB.ToString().Insert(ycchdb.MaYCCHDB.ToString().Length - 2, "-") + ")";
                                 if (_dontu_ChiTiet != null)
                                     _cDonTu.Them_LichSu(ycchdb.CreateDate.Value, "PhieuCHDB", "Đã Lập Phiếu Hủy, " + ycchdb.LyDo, (int)ycchdb.MaYCCHDB, _dontu_ChiTiet.MaDon.Value, _dontu_ChiTiet.STT.Value);
                                 _ctctdb.DaLapPhieu = true;

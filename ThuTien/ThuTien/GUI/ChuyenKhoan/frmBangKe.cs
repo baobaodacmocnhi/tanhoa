@@ -529,7 +529,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                             //}
                             //phòng ghi thu
                             for (int i = 0; i < dgvBangKe.Rows.Count; i++)
-                                if (dgvBangKe["SoPhieuThu", i].Value.ToString() == "")
+                                //if (dgvBangKe["SoPhieuThu", i].Value.ToString() == "")
                                 {
                                     var transactionOptions = new TransactionOptions();
                                     transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
