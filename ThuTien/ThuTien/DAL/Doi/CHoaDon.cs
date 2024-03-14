@@ -10537,6 +10537,8 @@ namespace ThuTien.DAL.Doi
                             itemHD.DENNGAY,
                             Ky2 = itemHD.KY,
                             itemHD.NAM,
+                            ChenhLech = "",
+                            NganHang = "",
                         };
             return LINQToDataTable(query);
         }
@@ -10577,6 +10579,8 @@ namespace ThuTien.DAL.Doi
                             HanhThu = itemtableND.HoTen,
                             itemHD.TUNGAY,
                             itemHD.DENNGAY,
+                            ChenhLech = "",
+                            NganHang = "",
                         };
             return LINQToDataTable(query);
         }

@@ -418,7 +418,7 @@ namespace ThuTien.GUI.ChuyenKhoan
                                         }
                                 }
                         }
-                    this.dgvHoaDon.Sort(this.dgvHoaDon.Columns["ChenhLech"], ListSortDirection.Ascending);
+                    //dgvHoaDon.Sort(dgvHoaDon.Columns["ChenhLech"], ListSortDirection.Ascending);
                     foreach (DataGridViewRow item in dgvHoaDon.Rows)
                     {
                         item.Cells["Chon"].Value = true;
@@ -1070,6 +1070,26 @@ namespace ThuTien.GUI.ChuyenKhoan
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void dgvHoaDon_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (dgvHoaDon.Columns[e.ColumnIndex].Name == "ChenhLech")
+                foreach (DataGridViewRow item in dgvHoaDon.Rows)
+                {
+                    if (item.Cells["ChenhLech"].Value.ToString() != "")
+                    {
+                        if (int.Parse(item.Cells["ChenhLech"].Value.ToString().Replace("Dư: ", "").Replace("Thiếu: ", "").Replace(".", "")) > 0)
+                            item.DefaultCellStyle.BackColor = Color.GreenYellow;
+                        else
+                            if (int.Parse(item.Cells["ChenhLech"].Value.ToString().Replace("Dư: ", "").Replace("Thiếu: ", "").Replace(".", "")) < 0)
+                                item.DefaultCellStyle.BackColor = Color.Orange;
+                    }
+                    else
+                        if (_cDongNuoc.CheckPhiMoNuoc(item.Cells["DanhBo"].Value.ToString()) == true)
+                            item.DefaultCellStyle.BackColor = Color.Yellow;
+                    item.Cells["Chon"].Value = true;
+                }
         }
 
 
