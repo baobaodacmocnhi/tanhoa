@@ -43,6 +43,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             dgvDSChungTu.AutoGenerateColumns = false;
             dgvDSChungTu.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSChungTu.Font, FontStyle.Bold);
             dgvDSChungTu.DataSource = _cLoaiChungTu.LoadDSLoaiChungTu();
+            dgvPhimTat.AutoGenerateColumns = false;
+            dgvPhimTat.DataSource = _cLoaiChungTu.ExecuteQuery_DataTable("select * from PhimTat");
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -56,7 +58,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     loaichungtu.ThoiHan = int.Parse(txtThoiHan.Text.Trim());
                 else
                     loaichungtu.ThoiHan = null;
-
                 if (_cLoaiChungTu.ThemLoaiChungTu(loaichungtu))
                     Clear();
             }
@@ -111,7 +112,50 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void txtThoiHan_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
-                e.Handled = true; 
+                e.Handled = true;
         }
+
+        private void dgvPhimTat_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvPhimTat.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvPhimTat_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            try
+            {
+                if (e.Row.Cells["ID"].Value != null && _cLoaiChungTu.ExecuteNonQuery("delete PhimTat where ID='" + e.Row.Cells["ID"].Value.ToString() + "'"))
+                    dgvPhimTat.DataSource = _cLoaiChungTu.ExecuteQuery_DataTable("select * from PhimTat");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvPhimTat_RowLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                //sửa
+                if (dgvPhimTat["ID", e.RowIndex].Value != null && dgvPhimTat["ID", e.RowIndex].Value.ToString() != "")
+                {
+                    _cLoaiChungTu.ExecuteNonQuery("update PhimTat set KyHieu='" + dgvPhimTat["KyHieu", e.RowIndex].Value.ToString() + "',NoiDung=N'" + dgvPhimTat["NoiDung", e.RowIndex].Value.ToString() + "' where ID=" + dgvPhimTat["ID", e.RowIndex].Value.ToString());
+                }
+                else//thêm
+                {
+                    _cLoaiChungTu.ExecuteNonQuery("insert into PhimTat(ID,KyHieu,NoiDung)values((select count(ID)+1 from PhimTat),'" + dgvPhimTat["KyHieu", e.RowIndex].Value.ToString() + "',N'" + dgvPhimTat["NoiDung", e.RowIndex].Value.ToString() + "')");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
     }
 }

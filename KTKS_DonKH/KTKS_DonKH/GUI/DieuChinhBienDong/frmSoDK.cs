@@ -476,7 +476,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 if (chkYCCat1.Checked)
                                 {
                                     ChungTu_LichSu lichsuchungtu1 = new ChungTu_LichSu();
-                                    CopyLichSuChungTu(lichsuchungtu, ref lichsuchungtu1);
+                                    _cChungTu.CopyLichSuChungTu(lichsuchungtu, ref lichsuchungtu1);
                                     lichsuchungtu1.SoPhieu = _cChungTu.getMaxNextSoPhieuLSCT();
                                     ///
                                     lichsuchungtu1.NhanNK_MaCN = _cChiNhanh.GetIDByTenCN("Tân Hòa");
@@ -518,7 +518,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 if (chkYCCat2.Checked)
                                 {
                                     ChungTu_LichSu lichsuchungtu1 = new ChungTu_LichSu();
-                                    CopyLichSuChungTu(lichsuchungtu, ref lichsuchungtu1);
+                                    _cChungTu.CopyLichSuChungTu(lichsuchungtu, ref lichsuchungtu1);
                                     lichsuchungtu1.SoPhieu = _cChungTu.getMaxNextSoPhieuLSCT();
                                     ///
                                     lichsuchungtu1.NhanNK_MaCN = _cChiNhanh.GetIDByTenCN("Tân Hòa");
@@ -560,7 +560,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 if (chkYCCat3.Checked)
                                 {
                                     ChungTu_LichSu lichsuchungtu1 = new ChungTu_LichSu();
-                                    CopyLichSuChungTu(lichsuchungtu, ref lichsuchungtu1);
+                                    _cChungTu.CopyLichSuChungTu(lichsuchungtu, ref lichsuchungtu1);
                                     lichsuchungtu1.SoPhieu = _cChungTu.getMaxNextSoPhieuLSCT();
                                     ///
                                     lichsuchungtu1.NhanNK_MaCN = _cChiNhanh.GetIDByTenCN("Tân Hòa");
@@ -602,7 +602,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 if (chkYCCat4.Checked)
                                 {
                                     ChungTu_LichSu lichsuchungtu1 = new ChungTu_LichSu();
-                                    CopyLichSuChungTu(lichsuchungtu, ref lichsuchungtu1);
+                                    _cChungTu.CopyLichSuChungTu(lichsuchungtu, ref lichsuchungtu1);
                                     lichsuchungtu1.SoPhieu = _cChungTu.getMaxNextSoPhieuLSCT();
                                     ///
                                     lichsuchungtu1.NhanNK_MaCN = _cChiNhanh.GetIDByTenCN("Tân Hòa");
@@ -644,7 +644,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 if (chkYCCat5.Checked)
                                 {
                                     ChungTu_LichSu lichsuchungtu1 = new ChungTu_LichSu();
-                                    CopyLichSuChungTu(lichsuchungtu, ref lichsuchungtu1);
+                                    _cChungTu.CopyLichSuChungTu(lichsuchungtu, ref lichsuchungtu1);
                                     lichsuchungtu1.SoPhieu = _cChungTu.getMaxNextSoPhieuLSCT();
                                     ///
                                     lichsuchungtu1.NhanNK_MaCN = _cChiNhanh.GetIDByTenCN("Tân Hòa");
@@ -885,7 +885,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     else
                                     {
                                         ChungTu_LichSu lichsuchungtu1 = new ChungTu_LichSu();
-                                        CopyLichSuChungTu(lichsuchungtu, ref lichsuchungtu1);
+                                        _cChungTu.CopyLichSuChungTu(lichsuchungtu, ref lichsuchungtu1);
                                         lichsuchungtu1.SoPhieu = _cChungTu.getMaxNextSoPhieuLSCT();
                                         ///
                                         lichsuchungtu1.NhanNK_MaCN = _cChiNhanh.GetIDByTenCN("Tân Hòa");
@@ -968,7 +968,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     else
                                     {
                                         ChungTu_LichSu lichsuchungtu1 = new ChungTu_LichSu();
-                                        CopyLichSuChungTu(lichsuchungtu, ref lichsuchungtu1);
+                                        _cChungTu.CopyLichSuChungTu(lichsuchungtu, ref lichsuchungtu1);
                                         lichsuchungtu1.SoPhieu = _cChungTu.getMaxNextSoPhieuLSCT();
                                         ///
                                         lichsuchungtu1.NhanNK_MaCN = _cChiNhanh.GetIDByTenCN("Tân Hòa");
@@ -1051,7 +1051,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     else
                                     {
                                         ChungTu_LichSu lichsuchungtu1 = new ChungTu_LichSu();
-                                        CopyLichSuChungTu(lichsuchungtu, ref lichsuchungtu1);
+                                        _cChungTu.CopyLichSuChungTu(lichsuchungtu, ref lichsuchungtu1);
                                         lichsuchungtu1.SoPhieu = _cChungTu.getMaxNextSoPhieuLSCT();
                                         ///
                                         lichsuchungtu1.NhanNK_MaCN = _cChiNhanh.GetIDByTenCN("Tân Hòa");
@@ -1134,7 +1134,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     else
                                     {
                                         ChungTu_LichSu lichsuchungtu1 = new ChungTu_LichSu();
-                                        CopyLichSuChungTu(lichsuchungtu, ref lichsuchungtu1);
+                                        _cChungTu.CopyLichSuChungTu(lichsuchungtu, ref lichsuchungtu1);
                                         lichsuchungtu1.SoPhieu = _cChungTu.getMaxNextSoPhieuLSCT();
                                         ///
                                         lichsuchungtu1.NhanNK_MaCN = _cChiNhanh.GetIDByTenCN("Tân Hòa");
@@ -1217,7 +1217,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     else
                                     {
                                         ChungTu_LichSu lichsuchungtu1 = new ChungTu_LichSu();
-                                        CopyLichSuChungTu(lichsuchungtu, ref lichsuchungtu1);
+                                        _cChungTu.CopyLichSuChungTu(lichsuchungtu, ref lichsuchungtu1);
                                         lichsuchungtu1.SoPhieu = _cChungTu.getMaxNextSoPhieuLSCT();
                                         ///
                                         lichsuchungtu1.NhanNK_MaCN = _cChiNhanh.GetIDByTenCN("Tân Hòa");
@@ -1314,11 +1314,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (e.KeyChar == 13)
                 txtMaCT.Focus();
-        }
-
-        private void txtMaCT_Leave(object sender, EventArgs e)
-        {
-
         }
 
         private void txtMaCT_KeyPress(object sender, KeyPressEventArgs e)
@@ -1568,27 +1563,27 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             this.DialogResult = DialogResult.OK;
         }
 
-        public void CopyLichSuChungTu(ChungTu_LichSu A, ref ChungTu_LichSu B)
-        {
-            B.MaDonMoi = A.MaDonMoi;
-            B.STT = A.STT;
-            B.MaDonTBC = A.MaDonTBC;
-            B.MaDonTXL = A.MaDonTXL;
-            B.MaDon = A.MaDon;
-            B.DanhBo = A.DanhBo;
-            B.MaLCT = A.MaLCT;
-            B.MaCT = A.MaCT;
-            B.SoNKTong = A.SoNKTong;
-            B.SoNKDangKy = A.SoNKDangKy;
-            B.ThoiHan = A.ThoiHan;
-            B.NgayHetHan = A.NgayHetHan;
-            B.CatNK_HoTens = A.CatNK_HoTens;
-            B.GhiChu = A.GhiChu;
-            B.Lo = A.Lo;
-            B.Phong = A.Phong;
-            B.Quan = A.Quan;
-            B.Phuong = A.Phuong;
-        }
+        //public void _cChungTu.CopyLichSuChungTu(ChungTu_LichSu A, ref ChungTu_LichSu B)
+        //{
+        //    B.MaDonMoi = A.MaDonMoi;
+        //    B.STT = A.STT;
+        //    B.MaDonTBC = A.MaDonTBC;
+        //    B.MaDonTXL = A.MaDonTXL;
+        //    B.MaDon = A.MaDon;
+        //    B.DanhBo = A.DanhBo;
+        //    B.MaLCT = A.MaLCT;
+        //    B.MaCT = A.MaCT;
+        //    B.SoNKTong = A.SoNKTong;
+        //    B.SoNKDangKy = A.SoNKDangKy;
+        //    B.ThoiHan = A.ThoiHan;
+        //    B.NgayHetHan = A.NgayHetHan;
+        //    B.CatNK_HoTens = A.CatNK_HoTens;
+        //    B.GhiChu = A.GhiChu;
+        //    B.Lo = A.Lo;
+        //    B.Phong = A.Phong;
+        //    B.Quan = A.Quan;
+        //    B.Phuong = A.Phuong;
+        //}
 
         private void chkSuaNgayHetHan_CheckedChanged(object sender, EventArgs e)
         {

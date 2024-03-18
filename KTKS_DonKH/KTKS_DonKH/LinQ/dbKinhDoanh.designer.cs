@@ -399,6 +399,9 @@ namespace KTKS_DonKH.LinQ
     partial void InsertVanBan_ChiTiet_Hinh(VanBan_ChiTiet_Hinh instance);
     partial void UpdateVanBan_ChiTiet_Hinh(VanBan_ChiTiet_Hinh instance);
     partial void DeleteVanBan_ChiTiet_Hinh(VanBan_ChiTiet_Hinh instance);
+    partial void InsertPhimTat(PhimTat instance);
+    partial void UpdatePhimTat(PhimTat instance);
+    partial void DeletePhimTat(PhimTat instance);
     #endregion
 		
 		public dbKinhDoanhDataContext() : 
@@ -1428,6 +1431,14 @@ namespace KTKS_DonKH.LinQ
 			get
 			{
 				return this.GetTable<VanBan_ChiTiet_Hinh>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PhimTat> PhimTats
+		{
+			get
+			{
+				return this.GetTable<PhimTat>();
 			}
 		}
 	}
@@ -66704,6 +66715,116 @@ namespace KTKS_DonKH.LinQ
 						this._IDVanBan_ChiTiet = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("VanBan_ChiTiet");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PhimTat")]
+	public partial class PhimTat : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _KyHieu;
+		
+		private string _NoiDung;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnKyHieuChanging(string value);
+    partial void OnKyHieuChanged();
+    partial void OnNoiDungChanging(string value);
+    partial void OnNoiDungChanged();
+    #endregion
+		
+		public PhimTat()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KyHieu", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string KyHieu
+		{
+			get
+			{
+				return this._KyHieu;
+			}
+			set
+			{
+				if ((this._KyHieu != value))
+				{
+					this.OnKyHieuChanging(value);
+					this.SendPropertyChanging();
+					this._KyHieu = value;
+					this.SendPropertyChanged("KyHieu");
+					this.OnKyHieuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NoiDung", DbType="NVarChar(200)")]
+		public string NoiDung
+		{
+			get
+			{
+				return this._NoiDung;
+			}
+			set
+			{
+				if ((this._NoiDung != value))
+				{
+					this.OnNoiDungChanging(value);
+					this.SendPropertyChanging();
+					this._NoiDung = value;
+					this.SendPropertyChanged("NoiDung");
+					this.OnNoiDungChanged();
 				}
 			}
 		}

@@ -42,17 +42,17 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 14);
+            this.label1.Location = new System.Drawing.Point(3, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(125, 20);
+            this.label1.Size = new System.Drawing.Size(99, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Tên Chi Nhánh:";
             // 
             // txtTenCN
             // 
-            this.txtTenCN.Location = new System.Drawing.Point(127, 12);
+            this.txtTenCN.Location = new System.Drawing.Point(108, 12);
             this.txtTenCN.Name = "txtTenCN";
-            this.txtTenCN.Size = new System.Drawing.Size(399, 26);
+            this.txtTenCN.Size = new System.Drawing.Size(262, 22);
             this.txtTenCN.TabIndex = 1;
             // 
             // btnThem
@@ -94,7 +94,7 @@
             this.dgvDSChiNhanh.Location = new System.Drawing.Point(11, 74);
             this.dgvDSChiNhanh.Name = "dgvDSChiNhanh";
             this.dgvDSChiNhanh.ReadOnly = true;
-            this.dgvDSChiNhanh.Size = new System.Drawing.Size(530, 233);
+            this.dgvDSChiNhanh.Size = new System.Drawing.Size(360, 358);
             this.dgvDSChiNhanh.TabIndex = 4;
             this.dgvDSChiNhanh.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSChiNhanh_CellContentClick);
             this.dgvDSChiNhanh.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDSChiNhanh_RowPostPaint);
@@ -113,15 +113,15 @@
             this.TenCN.HeaderText = "Tên Chi Nhánh";
             this.TenCN.Name = "TenCN";
             this.TenCN.ReadOnly = true;
-            this.TenCN.Width = 400;
+            this.TenCN.Width = 300;
             // 
             // frmChiNhanh
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(555, 323);
+            this.ClientSize = new System.Drawing.Size(555, 444);
             this.Controls.Add(this.dgvDSChiNhanh);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnThem);

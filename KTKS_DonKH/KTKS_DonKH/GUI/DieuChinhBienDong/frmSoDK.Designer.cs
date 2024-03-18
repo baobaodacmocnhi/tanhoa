@@ -226,9 +226,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(9, 128);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 16);
+            this.label3.Size = new System.Drawing.Size(49, 16);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Số Sổ:";
+            this.label3.Text = "Số CT:";
             // 
             // txtMaCT
             // 
@@ -237,7 +237,6 @@
             this.txtMaCT.Size = new System.Drawing.Size(100, 22);
             this.txtMaCT.TabIndex = 1;
             this.txtMaCT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaCT_KeyPress);
-            this.txtMaCT.Leave += new System.EventHandler(this.txtMaCT_Leave);
             // 
             // txtSoNKTong
             // 

@@ -2209,6 +2209,28 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             return ls;
         }
 
+        public void CopyLichSuChungTu(ChungTu_LichSu A, ref ChungTu_LichSu B)
+        {
+            B.MaDonMoi = A.MaDonMoi;
+            B.STT = A.STT;
+            B.MaDonTBC = A.MaDonTBC;
+            B.MaDonTXL = A.MaDonTXL;
+            B.MaDon = A.MaDon;
+            B.DanhBo = A.DanhBo;
+            B.MaLCT = A.MaLCT;
+            B.MaCT = A.MaCT;
+            B.SoNKTong = A.SoNKTong;
+            B.SoNKDangKy = A.SoNKDangKy;
+            B.ThoiHan = A.ThoiHan;
+            B.NgayHetHan = A.NgayHetHan;
+            B.CatNK_HoTens = A.CatNK_HoTens;
+            B.GhiChu = A.GhiChu;
+            B.Lo = A.Lo;
+            B.Phong = A.Phong;
+            B.Quan = A.Quan;
+            B.Phuong = A.Phuong;
+        }
+
         #endregion
 
         #region Method

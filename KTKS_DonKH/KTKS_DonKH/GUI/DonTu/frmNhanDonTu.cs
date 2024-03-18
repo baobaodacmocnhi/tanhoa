@@ -517,26 +517,23 @@ namespace KTKS_DonKH.GUI.DonTu
                                 if (MessageBox.Show("Danh Bộ " + txtDanhBo.Text.Trim().Replace(" ", "") + " đã nhận đơn trong ngày hôm nay rồi\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                                     return;
                             }
-
                         //if (_cKTXM.checkKhongLienHe(txtDanhBo.Text.Trim().Replace(" ", "")) == true)
                         //{
                         //    if (MessageBox.Show("Danh Bộ này Đã có THƯ MỜI bên Kiểm Tra Xác Minh, nhưng không liên hệ\nBạn vẫn muốn tiếp tục???", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                         //        //MessageBox.Show("Danh Bộ này Đã có THƯ MỜI, nhưng không liên hệ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         //        return;
                         //}
-
                         if (txtSoNK.Text.Trim() != "")
                         {
                             entity.CCDM = chkCCDM.Checked;
                             entity.SoNK = int.Parse(txtSoNK.Text.Trim());
                             entity.HieuLucKy = txtHieuLucKy.Text.Trim();
-                            if (cmbThoiHan.SelectedIndex >= 0)
+                            if (cmbThoiHan.SelectedIndex > 0)
                             {
                                 entity.ThoiHan = cmbThoiHan.SelectedItem.ToString();
                                 entity.NgayHetHan = dateHetHan.Value;
                             }
                         }
-
                         DonTu_ChiTiet entityCT = new DonTu_ChiTiet();
                         entityCT.ID = _cDonTu.getMaxID_ChiTiet() + 1;
                         entityCT.STT = 1;
@@ -584,7 +581,6 @@ namespace KTKS_DonKH.GUI.DonTu
                                     MessageBox.Show("Sai số điện thoại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
                                 }
-
                             }//doanh nghiệp
                             else
                             {
@@ -658,7 +654,6 @@ namespace KTKS_DonKH.GUI.DonTu
                                 DonTu_ChiTiet entityCT = new DonTu_ChiTiet();
                                 entityCT.ID = ++ID;
                                 entityCT.STT = ++STT;
-
                                 if (item.Cells["DanhBo"].Value != null && item.Cells["DanhBo"].Value.ToString() != "")
                                     entityCT.DanhBo = item.Cells["DanhBo"].Value.ToString();
                                 if (item.Cells["QLDHN_MaDon"].Value != null && item.Cells["QLDHN_MaDon"].Value.ToString() != "")
@@ -687,17 +682,14 @@ namespace KTKS_DonKH.GUI.DonTu
                                     entityCT.Quan = item.Cells["Quan"].Value.ToString();
                                 if (item.Cells["Phuong"].Value != null && item.Cells["Phuong"].Value.ToString() != "")
                                     entityCT.Phuong = item.Cells["Phuong"].Value.ToString();
-
                                 entityCT.ChanHoaDon = chkChanHoaDon.Checked;
                                 entityCT.CreateBy = CTaiKhoan.MaUser;
                                 entityCT.CreateDate = DateTime.Now;
                                 entityCT.TinhTrang = "Tồn";
-
                                 entity.DonTu_ChiTiets.Add(entityCT);
                             }
                         }
                     }
-                    //
                     if (txtSoCongVan.Text.Trim() != "")
                     {
                         if (cmbPhongBanDoi.SelectedIndex != -1)
@@ -705,7 +697,6 @@ namespace KTKS_DonKH.GUI.DonTu
                         entity.SoCongVan = txtSoCongVan.Text.Trim();
                         entity.TongDB = int.Parse(txtTongDB.Text.Trim());
                     }
-                    //
                     entity.NgayHenGiaiQuyet = "Trong thời gian 5 ngày làm việc kể từ ngày nhận hồ sơ, sẽ có nhân viên đến liên hệ với Khách Hàng. ";
                     //entity.NgayHenGiaiQuyet = "";
                     entity.ID_NhomDon_PKH = "";
@@ -779,7 +770,6 @@ namespace KTKS_DonKH.GUI.DonTu
                         entity.CT_Khac = true;
                         entity.CT_Khac_GhiChu = txtCT_Khac_GhiChu.Text.Trim();
                     }
-
                     if (chkCT_HK_KT3.Checked)
                         entity.CT_HK_KT3 = true;
                     //if (chkCT_STT_GXNTT.Checked)
@@ -788,7 +778,6 @@ namespace KTKS_DonKH.GUI.DonTu
                         entity.CT_GDKKD = true;
                     if (chkCT_GiayUyQuyen.Checked)
                         entity.CT_GiayUyQuyen = true;
-
                     if (chkCT_GC_SDSN.Checked)
                         entity.CT_GC_SDSN = true;
                     //if (chkCT_GXN2SN.Checked)
@@ -843,6 +832,16 @@ namespace KTKS_DonKH.GUI.DonTu
                                 _dontu.CCDM = chkCCDM.Checked;
                                 _dontu.SoNK = int.Parse(txtSoNK.Text.Trim());
                                 _dontu.HieuLucKy = txtHieuLucKy.Text.Trim();
+                                if (cmbThoiHan.SelectedIndex > 0)
+                                {
+                                    _dontu.ThoiHan = cmbThoiHan.SelectedItem.ToString();
+                                    _dontu.NgayHetHan = dateHetHan.Value;
+                                }
+                                else
+                                {
+                                    _dontu.ThoiHan = null;
+                                    _dontu.NgayHetHan = null;
+                                }
                             }
                             else
                                 if (_dontu.SoNK != null)
@@ -850,6 +849,8 @@ namespace KTKS_DonKH.GUI.DonTu
                                     _dontu.CCDM = false;
                                     _dontu.SoNK = null;
                                     _dontu.HieuLucKy = null;
+                                    _dontu.ThoiHan = null;
+                                    _dontu.NgayHetHan = null;
                                 }
                             _dontu.DonTu_ChiTiets.SingleOrDefault().DanhBo = txtDanhBo.Text.Trim().Replace(" ", "");
                             _dontu.DonTu_ChiTiets.SingleOrDefault().HopDong = txtHopDong.Text.Trim();
@@ -915,7 +916,6 @@ namespace KTKS_DonKH.GUI.DonTu
                                 _dontu.DonTu_ChiTiets[i].STT = i + 1;
                             }
                         }
-                        //
                         _dontu.VanPhong = chkVanPhong.Checked;
                         if (txtSoCongVan.Text.Trim() != "")
                         {
@@ -979,22 +979,18 @@ namespace KTKS_DonKH.GUI.DonTu
                             _dontu.CT_HopDongNganHang = true;
                         else
                             _dontu.CT_HopDongNganHang = false;
-
                         if (chkCT_GiaiQuyet_Huy_DKCT.Checked)
                             _dontu.CT_GiaiQuyet_Huy_DKCT = true;
                         else
                             _dontu.CT_GiaiQuyet_Huy_DKCT = false;
-
                         if (chkCT_HDTN_CQN.Checked)
                             _dontu.CT_HDTN_CQN = true;
                         else
                             _dontu.CT_HDTN_CQN = false;
-
                         if (chkCT_CQN.Checked)
                             _dontu.CT_CQN = true;
                         else
                             _dontu.CT_CQN = false;
-
                         if (chkCT_Khac.Checked)
                         {
                             _dontu.CT_Khac = true;
@@ -1005,19 +1001,14 @@ namespace KTKS_DonKH.GUI.DonTu
                             _dontu.CT_Khac = false;
                             _dontu.CT_Khac_GhiChu = null;
                         }
-
-                        //
-
                         if (chkCT_HK_KT3.Checked)
                             _dontu.CT_HK_KT3 = true;
                         else
                             _dontu.CT_HK_KT3 = false;
-
                         //if (chkCT_STT_GXNTT.Checked)
                         //    _dontu.CT_STT_GXNTT = true;
                         //else
                         //    _dontu.CT_STT_GXNTT = false;
-
                         if (chkCT_GDKKD.Checked)
                             _dontu.CT_GDKKD = true;
                         else
@@ -1026,19 +1017,15 @@ namespace KTKS_DonKH.GUI.DonTu
                             _dontu.CT_GiayUyQuyen = true;
                         else
                             _dontu.CT_GiayUyQuyen = false;
-
                         //
-
                         if (chkCT_GC_SDSN.Checked)
                             _dontu.CT_GC_SDSN = true;
                         else
                             _dontu.CT_GC_SDSN = false;
-
                         //if (chkCT_GXN2SN.Checked)
                         //    _dontu.CT_GXN2SN = true;
                         //else
                         //    _dontu.CT_GXN2SN = false;
-
                         if (chkCT_GCNDTDHN.Checked)
                             _dontu.CT_GCNDTDHN = true;
                         else
@@ -1146,7 +1133,6 @@ namespace KTKS_DonKH.GUI.DonTu
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                 DataRow dr = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
                 dr["MaDon"] = entity.MaDon.ToString();
-
                 if (entity.DonTu_ChiTiets.Count == 1)
                 {
                     dr["KhachHang"] = entity.DonTu_ChiTiets.SingleOrDefault().HoTen;
