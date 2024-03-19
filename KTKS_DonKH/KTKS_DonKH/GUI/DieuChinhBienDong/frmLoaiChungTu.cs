@@ -136,6 +136,30 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
+        private void dgvPhimTat_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                //sửa
+                if (dgvPhimTat["ID", e.RowIndex].Value != null && dgvPhimTat["ID", e.RowIndex].Value.ToString() != "")
+                {
+                    _cLoaiChungTu.ExecuteNonQuery("update PhimTat set KyHieu='" + dgvPhimTat["KyHieu", e.RowIndex].Value.ToString() + "',NoiDung=N'" + dgvPhimTat["NoiDung", e.RowIndex].Value.ToString() + "' where ID=" + dgvPhimTat["ID", e.RowIndex].Value.ToString());
+                }
+                else//thêm
+                {
+                    if (dgvPhimTat["KyHieu", e.RowIndex].Value != null && dgvPhimTat["KyHieu", e.RowIndex].Value.ToString() != "")
+                    {
+                        _cLoaiChungTu.ExecuteNonQuery("insert into PhimTat(ID,KyHieu,NoiDung)values((select count(ID)+1 from PhimTat),'" + dgvPhimTat["KyHieu", e.RowIndex].Value.ToString() + "',N'" + dgvPhimTat["NoiDung", e.RowIndex].Value.ToString() + "')");
+                        dgvPhimTat["ID", e.RowIndex].Value = _cLoaiChungTu.ExecuteQuery_ReturnOneValue("select max(ID) from PhimTat").ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void dgvPhimTat_RowLeave(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -147,7 +171,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 }
                 else//thêm
                 {
-                    _cLoaiChungTu.ExecuteNonQuery("insert into PhimTat(ID,KyHieu,NoiDung)values((select count(ID)+1 from PhimTat),'" + dgvPhimTat["KyHieu", e.RowIndex].Value.ToString() + "',N'" + dgvPhimTat["NoiDung", e.RowIndex].Value.ToString() + "')");
+                    if (dgvPhimTat["KyHieu", e.RowIndex].Value != null && dgvPhimTat["KyHieu", e.RowIndex].Value.ToString() != "")
+                    {
+                        _cLoaiChungTu.ExecuteNonQuery("insert into PhimTat(ID,KyHieu,NoiDung)values((select count(ID)+1 from PhimTat),'" + dgvPhimTat["KyHieu", e.RowIndex].Value.ToString() + "',N'" + dgvPhimTat["NoiDung", e.RowIndex].Value.ToString() + "')");
+                        dgvPhimTat["ID", e.RowIndex].Value = _cLoaiChungTu.ExecuteQuery_ReturnOneValue("select max(ID) from PhimTat").ToString();
+                    }
                 }
             }
             catch (Exception ex)
@@ -156,6 +184,21 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
+        private void dgvPhimTat_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                //sửa
+                if (dgvPhimTat["ID", e.RowIndex].Value != null && dgvPhimTat["ID", e.RowIndex].Value.ToString() != "")
+                {
+                    _cLoaiChungTu.ExecuteNonQuery("update PhimTat set KyHieu='" + dgvPhimTat["KyHieu", e.RowIndex].Value.ToString() + "',NoiDung=N'" + dgvPhimTat["NoiDung", e.RowIndex].Value.ToString() + "' where ID=" + dgvPhimTat["ID", e.RowIndex].Value.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
     }
 }

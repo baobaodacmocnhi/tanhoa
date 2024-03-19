@@ -135,7 +135,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             else
                 lbKhongTinhPhiBVMT.Visible = false;
             dgvDSSoDangKy.DataSource = _cChungTu.getDS_ChiTiet_DanhBo(txtDanhBo.Text.Trim());
-            dgvDSSoDangKy.CurrentCell = dgvDSSoDangKy.Rows[dgvDSSoDangKy.Rows.Count - 1].Cells[1];
+            if (dgvDSSoDangKy.Rows.Count > 0)
+                dgvDSSoDangKy.CurrentCell = dgvDSSoDangKy.Rows[dgvDSSoDangKy.Rows.Count - 1].Cells[1];
             dgvDSDieuChinh.DataSource = _cDCBD.getDSDCBD(txtDanhBo.Text.Trim());
             if (dgvDSDieuChinh.Rows.Count > 0)
             {
@@ -238,6 +239,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             chkChuaKTXM.Checked = ctdcbd.ChuaKTXM;
             ///
             dgvDSSoDangKy.DataSource = _cChungTu.getDS_ChiTiet_DanhBo(ctdcbd.DanhBo);
+            if (dgvDSSoDangKy.Rows.Count > 0)
             dgvDSSoDangKy.CurrentCell = dgvDSSoDangKy.Rows[dgvDSSoDangKy.Rows.Count - 1].Cells[1];
             dgvDSDieuChinh.DataSource = _cDCBD.getDSDCBD(ctdcbd.DanhBo);
             if (dgvDSDieuChinh.Rows.Count > 0)
@@ -2404,6 +2406,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             }
                         }
                         dgvDSSoDangKy.DataSource = _cChungTu.getDS_ChiTiet_DanhBo(txtDanhBo.Text.Trim());
+                        if (dgvDSSoDangKy.Rows.Count > 0)
                         dgvDSSoDangKy.CurrentCell = dgvDSSoDangKy.Rows[dgvDSSoDangKy.Rows.Count - 1].Cells[1];
                         LoadTongNK();
                         clearCCCD(false);

@@ -315,10 +315,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         if (txtNgayHetHan.Text.Trim() != "")
                         {
                             string[] NgayHetHans = null;
-                            if (txtGhiChu.Text.Trim().Contains("/"))
+                            if (txtNgayHetHan.Text.Trim().Contains("/"))
                                 NgayHetHans = txtGhiChu.Text.Trim().Split('/');
                             else
-                                if (txtGhiChu.Text.Trim().Contains("-"))
+                                if (txtNgayHetHan.Text.Trim().Contains("-"))
                                     NgayHetHans = txtGhiChu.Text.Trim().Split('-');
                             if (NgayHetHans.Count() == 3)
                             {

@@ -243,7 +243,7 @@
             this.dgvDanhSach.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvDanhSach.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvDanhSach.Size = new System.Drawing.Size(930, 555);
+            this.dgvDanhSach.Size = new System.Drawing.Size(930, 630);
             this.dgvDanhSach.TabIndex = 60;
             this.dgvDanhSach.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhSach_RowPostPaint);
             // 
@@ -388,7 +388,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1044, 606);
+            this.ClientSize = new System.Drawing.Size(1044, 681);
             this.Controls.Add(this.txtTieuThu2);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.chkGieng);

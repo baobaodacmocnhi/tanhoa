@@ -32,19 +32,17 @@ namespace DocSo_PC.GUI.BaoCao
             cmbNam.ValueMember = "Nam";
             cmbKy.SelectedItem = CNguoiDung.Ky;
             cmbDot.SelectedItem = CNguoiDung.Dot;
-
             DataTable dtCode = _cDocSo.getDS_Code2023();
             DataRow dr = dtCode.NewRow();
             dr["Code"] = "Tất Cả";
-            dtCode.Rows.InsertAt( dr,0);
+            dtCode.Rows.InsertAt(dr, 0);
             cmbCode.DataSource = dtCode;
             cmbCode.DisplayMember = "Code";
             cmbCode.ValueMember = "Code";
-
             if (CNguoiDung.Doi)
             {
                 cmbTo.Visible = true;
-                List<To> lst = _cTo.getDS_HanhThu();
+                List<To> lst = _cTo.getDS_HanhThu(CNguoiDung.IDPhong);
                 To en = new To();
                 en.MaTo = 0;
                 en.TenTo = "Tất Cả";

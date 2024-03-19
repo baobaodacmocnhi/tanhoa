@@ -1411,7 +1411,6 @@ namespace ThuTien.GUI.TongHop
                     {
                         dt.Merge(_cHoaDon.GetTongHopDangNganChiTiet("", lst[i].MaTo, dateGiaiTrachTongHopDangNgan.Value));
                     }
-
                 dtCNKD = _cCNKD.GetTongHopDangNgan("", dateGiaiTrachTongHopDangNgan.Value);
                 DataTable dtCNKD_DCHD = _cCNKD.GetTongHopDangNganDCHD("", dateGiaiTrachTongHopDangNgan.Value);
                 if (dtCNKD_DCHD.Rows.Count > 0 && dtCNKD.Rows.Count > 0)
@@ -1706,7 +1705,6 @@ namespace ThuTien.GUI.TongHop
                     dr["NhanVien"] = CNguoiDung.HoTen;
                     ds.Tables["TongHopDangNgan"].Rows.Add(dr);
                 }
-
                 if (dt.Rows.Count == 0)
                     if (dtCNKD.Rows.Count > 0)
                     {
@@ -1811,7 +1809,6 @@ namespace ThuTien.GUI.TongHop
                     dr["NguoiKy"] = CNguoiDung.NguoiKy;
                     ds.Tables["TongHopDangNgan"].Rows.Add(dr);
                 }
-
                 if (dt.Rows.Count == 0)
                     if (dtCNKD.Rows.Count > 0)
                     {

@@ -203,6 +203,8 @@
             this.dgvPhimTat.Name = "dgvPhimTat";
             this.dgvPhimTat.Size = new System.Drawing.Size(458, 519);
             this.dgvPhimTat.TabIndex = 0;
+            this.dgvPhimTat.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPhimTat_CellEndEdit);
+            this.dgvPhimTat.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPhimTat_RowEnter);
             this.dgvPhimTat.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPhimTat_RowLeave);
             this.dgvPhimTat.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvPhimTat_RowPostPaint);
             this.dgvPhimTat.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgvPhimTat_UserDeletingRow);

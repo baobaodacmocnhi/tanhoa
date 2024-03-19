@@ -361,7 +361,6 @@ namespace ThuTien.DAL.DongNuoc
         public DataSet GetDSByCreateByCreateDates(string TenTo, int CreateBy, DateTime FromCreateDate, DateTime ToCreateDate)
         {
             DataSet ds = new DataSet();
-
             var queryDN = from itemDN in _db.TT_DongNuocs
                           join itemND1 in _db.TT_NguoiDungs on itemDN.CreateBy equals itemND1.MaND into tableND1
                           from itemtableND1 in tableND1.DefaultIfEmpty()
@@ -398,7 +397,6 @@ namespace ThuTien.DAL.DongNuoc
             dtDongNuoc = LINQToDataTable(queryDN);
             dtDongNuoc.TableName = "DongNuoc";
             ds.Tables.Add(dtDongNuoc);
-
             var queryCTDN = from itemCTDN in _db.TT_CTDongNuocs
                             join itemDVT in _db.TT_DichVuThus on itemCTDN.MaHD equals itemDVT.MaHD into tableDVT
                             from itemtableDVT in tableDVT.DefaultIfEmpty()
@@ -424,10 +422,8 @@ namespace ThuTien.DAL.DongNuoc
             dtCTDongNuoc = LINQToDataTable(queryCTDN);
             dtCTDongNuoc.TableName = "CTDongNuoc";
             ds.Tables.Add(dtCTDongNuoc);
-
             if (dtDongNuoc.Rows.Count > 0 && dtCTDongNuoc.Rows.Count > 0)
                 ds.Relations.Add("Chi Tiết Đóng Nước", ds.Tables["DongNuoc"].Columns["MaDN"], ds.Tables["CTDongNuoc"].Columns["MaDN"]);
-
             return ds;
         }
 

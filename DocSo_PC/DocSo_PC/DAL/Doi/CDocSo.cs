@@ -661,7 +661,7 @@ namespace DocSo_PC.DAL.Doi
             string TieuThu = "";
             TieuThu = " and TieuThuMoi>=" + TieuThu1 + " and TieuThuMoi<=" + TieuThu2;
             string sql = "select MLT=LOTRINH,DanhBo,HoTen,DiaChi=SONHA+' '+TENDUONG,Hieu=HIEUDH,Co=CODH,SoThan=SOTHANDH,t2.TieuThu from CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG t1,"
-                        + " (select DanhBa,TieuThu=Max(TieuThuMoi) from DocSo where (" + Nam + "*12+" + Ky + ")-(Nam*12+Ky)>=0 and (" + Nam + "*12+" + Ky + ")-(Nam*12+Ky)<=" + SoKy + Dot + MaTo + Code + TieuThu
+                        + " (select DanhBa,TieuThu=Max(TieuThuMoi) from DocSo where (" + Nam + "*12+" + Ky + ")-(Nam*12+Ky)>=0 and (" + Nam + "*12+" + Ky + ")-(Nam*12+Ky)<=" + (int.Parse(SoKy) - 1) + Dot + MaTo + Code + TieuThu
                         + " group by DanhBa having count(DanhBa)=" + SoKy + ")t2"
                         + " where t1.DanhBo=t2.DanhBa";
             return _cDAL.ExecuteQuery_DataTable(sql);

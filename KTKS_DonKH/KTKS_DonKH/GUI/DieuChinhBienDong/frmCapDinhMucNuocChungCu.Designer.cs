@@ -38,20 +38,6 @@
             this.txtGiaBieu = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.dgvDanhSach = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreateDate_CC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Lo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Phong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CCCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgayHetHan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cat = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Cat_Ngay = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaLCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtDiaChiCC = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtHoTenCC = new System.Windows.Forms.TextBox();
@@ -120,6 +106,20 @@
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.cmbTimTheo = new System.Windows.Forms.ComboBox();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateDate_CC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Lo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Phong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CCCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayHetHan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cat = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Cat_Ngay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaLCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSDanhBo)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -215,99 +215,6 @@
             this.dgvDanhSach.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhSach_RowPostPaint);
             this.dgvDanhSach.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgvDanhSach_UserDeletingRow);
             this.dgvDanhSach.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvDanhSach_MouseClick);
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.Visible = false;
-            // 
-            // CreateDate_CC
-            // 
-            this.CreateDate_CC.DataPropertyName = "CreateDate";
-            this.CreateDate_CC.HeaderText = "Ngày Lập";
-            this.CreateDate_CC.Name = "CreateDate_CC";
-            // 
-            // STT
-            // 
-            this.STT.DataPropertyName = "STT";
-            this.STT.HeaderText = "STT";
-            this.STT.Name = "STT";
-            this.STT.Width = 50;
-            // 
-            // Lo
-            // 
-            this.Lo.DataPropertyName = "Lo";
-            this.Lo.HeaderText = "Lô";
-            this.Lo.Name = "Lo";
-            this.Lo.Width = 30;
-            // 
-            // Phong
-            // 
-            this.Phong.DataPropertyName = "Phong";
-            this.Phong.HeaderText = "Phòng";
-            this.Phong.Name = "Phong";
-            this.Phong.Width = 50;
-            // 
-            // CCCD
-            // 
-            this.CCCD.DataPropertyName = "MaCT";
-            this.CCCD.HeaderText = "CCCD";
-            this.CCCD.Name = "CCCD";
-            // 
-            // HoTen
-            // 
-            this.HoTen.DataPropertyName = "HoTen";
-            this.HoTen.HeaderText = "Họ Tên";
-            this.HoTen.Name = "HoTen";
-            this.HoTen.Width = 150;
-            // 
-            // NgaySinh
-            // 
-            this.NgaySinh.DataPropertyName = "NgaySinh";
-            this.NgaySinh.HeaderText = "Ngày Sinh";
-            this.NgaySinh.Name = "NgaySinh";
-            // 
-            // DiaChi
-            // 
-            this.DiaChi.DataPropertyName = "DiaChi";
-            this.DiaChi.HeaderText = "Địa Chỉ";
-            this.DiaChi.Name = "DiaChi";
-            this.DiaChi.Width = 200;
-            // 
-            // GhiChu
-            // 
-            this.GhiChu.DataPropertyName = "GhiChu";
-            this.GhiChu.HeaderText = "Ghi Chú";
-            this.GhiChu.Name = "GhiChu";
-            // 
-            // NgayHetHan
-            // 
-            this.NgayHetHan.DataPropertyName = "NgayHetHan";
-            this.NgayHetHan.HeaderText = "Ngày Hết Hạn";
-            this.NgayHetHan.Name = "NgayHetHan";
-            this.NgayHetHan.Width = 80;
-            // 
-            // Cat
-            // 
-            this.Cat.DataPropertyName = "Cat";
-            this.Cat.HeaderText = "Cắt";
-            this.Cat.Name = "Cat";
-            this.Cat.Width = 30;
-            // 
-            // Cat_Ngay
-            // 
-            this.Cat_Ngay.DataPropertyName = "Cat_Ngay";
-            this.Cat_Ngay.HeaderText = "Cắt Ngày";
-            this.Cat_Ngay.Name = "Cat_Ngay";
-            // 
-            // MaLCT
-            // 
-            this.MaLCT.DataPropertyName = "MaLCT";
-            this.MaLCT.HeaderText = "MaLCT";
-            this.MaLCT.Name = "MaLCT";
-            this.MaLCT.Visible = false;
             // 
             // txtDiaChiCC
             // 
@@ -558,7 +465,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.ForeColor = System.Drawing.Color.Red;
-            this.label13.Location = new System.Drawing.Point(355, 22);
+            this.label13.Location = new System.Drawing.Point(384, 22);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(115, 13);
             this.label13.TabIndex = 44;
@@ -568,7 +475,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.ForeColor = System.Drawing.Color.Red;
-            this.label12.Location = new System.Drawing.Point(290, 22);
+            this.label12.Location = new System.Drawing.Point(319, 22);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(67, 13);
             this.label12.TabIndex = 43;
@@ -694,7 +601,7 @@
             // 
             this.txtPhong.Location = new System.Drawing.Point(234, 19);
             this.txtPhong.Name = "txtPhong";
-            this.txtPhong.Size = new System.Drawing.Size(50, 20);
+            this.txtPhong.Size = new System.Drawing.Size(70, 20);
             this.txtPhong.TabIndex = 5;
             this.txtPhong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhong_KeyPress);
             // 
@@ -970,6 +877,99 @@
             this.cmbTimTheo.Size = new System.Drawing.Size(121, 21);
             this.cmbTimTheo.TabIndex = 0;
             this.cmbTimTheo.SelectedIndexChanged += new System.EventHandler(this.cmbTimTheo_SelectedIndexChanged);
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            // 
+            // CreateDate_CC
+            // 
+            this.CreateDate_CC.DataPropertyName = "CreateDate";
+            this.CreateDate_CC.HeaderText = "Ngày Lập";
+            this.CreateDate_CC.Name = "CreateDate_CC";
+            // 
+            // STT
+            // 
+            this.STT.DataPropertyName = "STT";
+            this.STT.HeaderText = "STT";
+            this.STT.Name = "STT";
+            this.STT.Width = 50;
+            // 
+            // Lo
+            // 
+            this.Lo.DataPropertyName = "Lo";
+            this.Lo.HeaderText = "Lô";
+            this.Lo.Name = "Lo";
+            this.Lo.Width = 30;
+            // 
+            // Phong
+            // 
+            this.Phong.DataPropertyName = "Phong";
+            this.Phong.HeaderText = "Phòng";
+            this.Phong.Name = "Phong";
+            this.Phong.Width = 60;
+            // 
+            // CCCD
+            // 
+            this.CCCD.DataPropertyName = "MaCT";
+            this.CCCD.HeaderText = "CCCD";
+            this.CCCD.Name = "CCCD";
+            // 
+            // HoTen
+            // 
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Họ Tên";
+            this.HoTen.Name = "HoTen";
+            this.HoTen.Width = 150;
+            // 
+            // NgaySinh
+            // 
+            this.NgaySinh.DataPropertyName = "NgaySinh";
+            this.NgaySinh.HeaderText = "Ngày Sinh";
+            this.NgaySinh.Name = "NgaySinh";
+            // 
+            // DiaChi
+            // 
+            this.DiaChi.DataPropertyName = "DiaChi";
+            this.DiaChi.HeaderText = "Địa Chỉ";
+            this.DiaChi.Name = "DiaChi";
+            this.DiaChi.Width = 200;
+            // 
+            // GhiChu
+            // 
+            this.GhiChu.DataPropertyName = "GhiChu";
+            this.GhiChu.HeaderText = "Ghi Chú";
+            this.GhiChu.Name = "GhiChu";
+            // 
+            // NgayHetHan
+            // 
+            this.NgayHetHan.DataPropertyName = "NgayHetHan";
+            this.NgayHetHan.HeaderText = "Ngày Hết Hạn";
+            this.NgayHetHan.Name = "NgayHetHan";
+            this.NgayHetHan.Width = 80;
+            // 
+            // Cat
+            // 
+            this.Cat.DataPropertyName = "Cat";
+            this.Cat.HeaderText = "Cắt";
+            this.Cat.Name = "Cat";
+            this.Cat.Width = 30;
+            // 
+            // Cat_Ngay
+            // 
+            this.Cat_Ngay.DataPropertyName = "Cat_Ngay";
+            this.Cat_Ngay.HeaderText = "Cắt Ngày";
+            this.Cat_Ngay.Name = "Cat_Ngay";
+            // 
+            // MaLCT
+            // 
+            this.MaLCT.DataPropertyName = "MaLCT";
+            this.MaLCT.HeaderText = "MaLCT";
+            this.MaLCT.Name = "MaLCT";
+            this.MaLCT.Visible = false;
             // 
             // frmCapDinhMucNuocChungCu
             // 
