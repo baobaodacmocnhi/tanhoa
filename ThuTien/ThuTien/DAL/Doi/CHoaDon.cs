@@ -4044,7 +4044,6 @@ namespace ThuTien.DAL.Doi
                         + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (NGAYGIAITRACH is null or (CAST(NGAYGIAITRACH as date)>@NgayGiaiTrachNow) or KhoaTienDu=1)"
                         + " and GB>=10 and GB<=20 group by nd.MaND,nd.HoTen,nd.STT) tongton on nd.MaND=tongton.MaND"
                         + " order by nd.STT asc";
-
                 return ExecuteQuery_DataTable(sql);
             }
             else
@@ -4082,7 +4081,6 @@ namespace ThuTien.DAL.Doi
                         + " and (NAM<@Nam or (NAM=@Nam and KY<=@Ky)) and (NGAYGIAITRACH is null or (CAST(NGAYGIAITRACH as date)>@NgayGiaiTrachNow) or KhoaTienDu=1)"
                         + " and GB>20 group by nd.MaND,nd.HoTen,nd.STT) tongton on nd.MaND=tongton.MaND"
                         + " order by nd.STT asc";
-
                     return ExecuteQuery_DataTable(sql);
                 }
             return null;

@@ -551,9 +551,9 @@ namespace ThuTien.GUI.ToTruong
                             dr["TyLeTongTon"] = item["GTTongTon"];
                         }
                         if (!string.IsNullOrEmpty(item["GTTonThu"].ToString()))
-                            dr["ThuDat"] = 100 - Math.Round(double.Parse(item["GTTonThu"].ToString()) / double.Parse(item["GTChuanThu"].ToString()) * 100, 2);
+                            dr["TyLe"] = 100 - Math.Round(double.Parse(item["GTTonThu"].ToString()) / double.Parse(item["GTChuanThu"].ToString()) * 100, 2);
                         else
-                            dr["ThuDat"] = 100;
+                            dr["TyLe"] = 100;
                         dr["NhanVien"] = CNguoiDung.HoTen;
                         if (dtCNKD.Rows.Count > 0)
                         {
@@ -639,9 +639,9 @@ namespace ThuTien.GUI.ToTruong
                     drTC["TCCNKD"] = 0;
                 }
                 if (!string.IsNullOrEmpty(drTC["TyLeTonThu"].ToString()))
-                    drTC["ThuDat"] = 100 - Math.Round(double.Parse(drTC["TyLeTonThu"].ToString()) / double.Parse(drTC["TyLeChuanThu"].ToString()) * 100, 2);
+                    drTC["TyLe"] = 100 - Math.Round(double.Parse(drTC["TyLeTonThu"].ToString()) / double.Parse(drTC["TyLeChuanThu"].ToString()) * 100, 2);
                 else
-                    drTC["ThuDat"] = 100;
+                    drTC["TyLe"] = 100;
                 drTC["NhanVien"] = CNguoiDung.HoTen;
                 ds.Tables["BaoCaoTongHop"].Rows.Add(drTC);
                 ///CQ
@@ -704,9 +704,9 @@ namespace ThuTien.GUI.ToTruong
                     drTC["TCCNKD"] = 0;
                 }
                 if (!string.IsNullOrEmpty(drTC["TyLeTonThu"].ToString()))
-                    drTC["ThuDat"] = 100 - Math.Round(double.Parse(drTC["TyLeTonThu"].ToString()) / double.Parse(drTC["TyLeChuanThu"].ToString()) * 100, 2);
+                    drTC["TyLe"] = 100 - Math.Round(double.Parse(drTC["TyLeTonThu"].ToString()) / double.Parse(drTC["TyLeChuanThu"].ToString()) * 100, 2);
                 else
-                    drTC["ThuDat"] = 100;
+                    drTC["TyLe"] = 100;
                 drTC["NhanVien"] = CNguoiDung.HoTen;
                 ds.Tables["BaoCaoTongHop"].Rows.Add(drTC);
                 ///Thêm Đóng Nước
@@ -1231,9 +1231,9 @@ namespace ThuTien.GUI.ToTruong
                             dr["TyLeTongTon"] = item["GTTongTon"];
                         }
                         if (!string.IsNullOrEmpty(item["GTTonThu"].ToString()))
-                            dr["ThuDat"] = 100 - Math.Round(double.Parse(item["GTTonThu"].ToString()) / double.Parse(item["GTChuanThu"].ToString()) * 100, 2);
+                            dr["TyLe"] = 100 - Math.Round(double.Parse(item["GTTonThu"].ToString()) / double.Parse(item["GTChuanThu"].ToString()) * 100, 2);
                         else
-                            dr["ThuDat"] = 100;
+                            dr["TyLe"] = 100;
                         dr["NhanVien"] = CNguoiDung.HoTen;
                         if (dtCNKD.Rows.Count > 0)
                         {
@@ -1319,9 +1319,9 @@ namespace ThuTien.GUI.ToTruong
                     drTC["TCCNKD"] = 0;
                 }
                 if (!string.IsNullOrEmpty(drTC["TyLeTonThu"].ToString()))
-                    drTC["ThuDat"] = 100 - Math.Round(double.Parse(drTC["TyLeTonThu"].ToString()) / double.Parse(drTC["TyLeChuanThu"].ToString()) * 100, 2);
+                    drTC["TyLe"] = 100 - Math.Round(double.Parse(drTC["TyLeTonThu"].ToString()) / double.Parse(drTC["TyLeChuanThu"].ToString()) * 100, 2);
                 else
-                    drTC["ThuDat"] = 100;
+                    drTC["TyLe"] = 100;
                 drTC["NhanVien"] = CNguoiDung.HoTen;
                 ds.Tables["BaoCaoTongHop"].Rows.Add(drTC);
                 ///CQ
@@ -1384,9 +1384,9 @@ namespace ThuTien.GUI.ToTruong
                     drTC["TCCNKD"] = 0;
                 }
                 if (!string.IsNullOrEmpty(drTC["TyLeTonThu"].ToString()))
-                    drTC["ThuDat"] = 100 - Math.Round(double.Parse(drTC["TyLeTonThu"].ToString()) / double.Parse(drTC["TyLeChuanThu"].ToString()) * 100, 2);
+                    drTC["TyLe"] = 100 - Math.Round(double.Parse(drTC["TyLeTonThu"].ToString()) / double.Parse(drTC["TyLeChuanThu"].ToString()) * 100, 2);
                 else
-                    drTC["ThuDat"] = 100;
+                    drTC["TyLe"] = 100;
                 drTC["NhanVien"] = CNguoiDung.HoTen;
                 ds.Tables["BaoCaoTongHop"].Rows.Add(drTC);
                 rptBaoCaoTongHopTo_HanhThu rpt = new rptBaoCaoTongHopTo_HanhThu();

@@ -10110,6 +10110,8 @@ namespace ThuTien.BaoCao {
             
             private global::System.Data.DataColumn columnNhanVien;
             
+            private global::System.Data.DataColumn columnTyLe;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public BaoCaoTongHopDataTable() {
@@ -10305,6 +10307,14 @@ namespace ThuTien.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TyLeColumn {
+                get {
+                    return this.columnTyLe;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -10360,7 +10370,8 @@ namespace ThuTien.BaoCao {
                         double ThuDat, 
                         int CNKD, 
                         double TCCNKD, 
-                        string NhanVien) {
+                        string NhanVien, 
+                        string TyLe) {
                 BaoCaoTongHopRow rowBaoCaoTongHopRow = ((BaoCaoTongHopRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         TenPhong,
@@ -10382,7 +10393,8 @@ namespace ThuTien.BaoCao {
                         ThuDat,
                         CNKD,
                         TCCNKD,
-                        NhanVien};
+                        NhanVien,
+                        TyLe};
                 rowBaoCaoTongHopRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowBaoCaoTongHopRow);
                 return rowBaoCaoTongHopRow;
@@ -10425,6 +10437,7 @@ namespace ThuTien.BaoCao {
                 this.columnCNKD = base.Columns["CNKD"];
                 this.columnTCCNKD = base.Columns["TCCNKD"];
                 this.columnNhanVien = base.Columns["NhanVien"];
+                this.columnTyLe = base.Columns["TyLe"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10470,6 +10483,8 @@ namespace ThuTien.BaoCao {
                 base.Columns.Add(this.columnTCCNKD);
                 this.columnNhanVien = new global::System.Data.DataColumn("NhanVien", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNhanVien);
+                this.columnTyLe = new global::System.Data.DataColumn("TyLe", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTyLe);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -23575,6 +23590,22 @@ namespace ThuTien.BaoCao {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TyLe {
+                get {
+                    try {
+                        return ((string)(this[this.tableBaoCaoTongHop.TyLeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TyLe\' in table \'BaoCaoTongHop\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBaoCaoTongHop.TyLeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsTenPhongNull() {
                 return this.IsNull(this.tableBaoCaoTongHop.TenPhongColumn);
             }
@@ -23811,6 +23842,18 @@ namespace ThuTien.BaoCao {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetNhanVienNull() {
                 this[this.tableBaoCaoTongHop.NhanVienColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTyLeNull() {
+                return this.IsNull(this.tableBaoCaoTongHop.TyLeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTyLeNull() {
+                this[this.tableBaoCaoTongHop.TyLeColumn] = global::System.Convert.DBNull;
             }
         }
         
