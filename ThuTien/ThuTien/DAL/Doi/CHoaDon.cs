@@ -4479,20 +4479,12 @@ namespace ThuTien.DAL.Doi
                                 {
                                     MaNV = itemGroup.Key,
                                     _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemGroup.Key).HoTen,
-                                    //TuMLT = itemGroup.Min(groupItem => groupItem.MALOTRINH),
-                                    //DenMLT = itemGroup.Max(groupItem => groupItem.MALOTRINH),
-                                    //TuSoPhatHanh = itemGroup.Min(groupItem => groupItem.SOPHATHANH),
-                                    //DenSoPhatHanh = itemGroup.Max(groupItem => groupItem.SOPHATHANH),
                                     TongHD = itemGroup.Count(),
                                     TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
                                     TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
                                     TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
                                     TongPhiBVMT_Thue = itemGroup.Sum(groupItem => groupItem.ThueGTGT_TDVTN),
                                     TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
-                                    //TongHDThu = itemGroup.Count(groupItem => groupItem.MaNV_DangNgan == itemGroup.Key),
-                                    //TongCongThu = itemGroup.Where(groupItem => groupItem.MaNV_DangNgan == itemGroup.Key).Sum(groupItem => groupItem.TONGCONG),
-                                    //TongHDTon = itemGroup.Count(groupItem => groupItem.MaNV_DangNgan == null && groupItem.NGAYGIAITRACH == null),
-                                    //TongCongTon = itemGroup.Where(groupItem => groupItem.MaNV_DangNgan == null && groupItem.NGAYGIAITRACH == null).Sum(groupItem => groupItem.TONGCONG),
                                 };
                     return LINQToDataTable(query);
                 }
@@ -4510,20 +4502,12 @@ namespace ThuTien.DAL.Doi
                                 {
                                     MaNV = itemGroup.Key,
                                     _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemGroup.Key).HoTen,
-                                    //TuMLT = itemGroup.Min(groupItem => groupItem.MALOTRINH),
-                                    //DenMLT = itemGroup.Max(groupItem => groupItem.MALOTRINH),
-                                    //TuSoPhatHanh = itemGroup.Min(groupItem => groupItem.SOPHATHANH),
-                                    //DenSoPhatHanh = itemGroup.Max(groupItem => groupItem.SOPHATHANH),
                                     TongHD = itemGroup.Count(),
                                     TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
                                     TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
                                     TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
                                     TongPhiBVMT_Thue = itemGroup.Sum(groupItem => groupItem.ThueGTGT_TDVTN),
                                     TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
-                                    //TongHDThu = itemGroup.Count(groupItem => groupItem.MaNV_DangNgan == itemGroup.Key),
-                                    //TongCongThu = itemGroup.Where(groupItem => groupItem.MaNV_DangNgan == itemGroup.Key).Sum(groupItem => groupItem.TONGCONG),
-                                    //TongHDTon = itemGroup.Count(groupItem => groupItem.MaNV_DangNgan == null && groupItem.NGAYGIAITRACH == null),
-                                    //TongCongTon = itemGroup.Where(groupItem => groupItem.MaNV_DangNgan == null && groupItem.NGAYGIAITRACH == null).Sum(groupItem => groupItem.TONGCONG),
                                 };
                     return LINQToDataTable(query);
                 }
@@ -4543,20 +4527,12 @@ namespace ThuTien.DAL.Doi
                                     {
                                         MaNV = itemGroup.Key,
                                         _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemGroup.Key).HoTen,
-                                        //TuMLT = itemGroup.Min(groupItem => groupItem.MALOTRINH),
-                                        //DenMLT = itemGroup.Max(groupItem => groupItem.MALOTRINH),
-                                        //TuSoPhatHanh = itemGroup.Min(groupItem => groupItem.SOPHATHANH),
-                                        //DenSoPhatHanh = itemGroup.Max(groupItem => groupItem.SOPHATHANH),
                                         TongHD = itemGroup.Count(),
                                         TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
                                         TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
                                         TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
                                         TongPhiBVMT_Thue = itemGroup.Sum(groupItem => groupItem.ThueGTGT_TDVTN),
                                         TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
-                                        //TongHDThu = itemGroup.Count(groupItem => groupItem.MaNV_DangNgan == itemGroup.Key),
-                                        //TongCongThu = itemGroup.Where(groupItem => groupItem.MaNV_DangNgan == itemGroup.Key).Sum(groupItem => groupItem.TONGCONG),
-                                        //TongHDTon = itemGroup.Count(groupItem => groupItem.MaNV_DangNgan == null && groupItem.NGAYGIAITRACH == null),
-                                        //TongCongTon = itemGroup.Where(groupItem => groupItem.MaNV_DangNgan == null && groupItem.NGAYGIAITRACH == null).Sum(groupItem => groupItem.TONGCONG),
                                     };
                         return LINQToDataTable(query);
                     }
@@ -4574,20 +4550,12 @@ namespace ThuTien.DAL.Doi
                                     {
                                         MaNV = itemGroup.Key,
                                         _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemGroup.Key).HoTen,
-                                        //TuMLT = itemGroup.Min(groupItem => groupItem.MALOTRINH),
-                                        //DenMLT = itemGroup.Max(groupItem => groupItem.MALOTRINH),
-                                        //TuSoPhatHanh = itemGroup.Min(groupItem => groupItem.SOPHATHANH),
-                                        //DenSoPhatHanh = itemGroup.Max(groupItem => groupItem.SOPHATHANH),
                                         TongHD = itemGroup.Count(),
                                         TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
                                         TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
                                         TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
                                         TongPhiBVMT_Thue = itemGroup.Sum(groupItem => groupItem.ThueGTGT_TDVTN),
                                         TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
-                                        //TongHDThu = itemGroup.Count(groupItem => groupItem.MaNV_DangNgan == itemGroup.Key),
-                                        //TongCongThu = itemGroup.Where(groupItem => groupItem.MaNV_DangNgan == itemGroup.Key).Sum(groupItem => groupItem.TONGCONG),
-                                        //TongHDTon = itemGroup.Count(groupItem => groupItem.MaNV_DangNgan == null && groupItem.NGAYGIAITRACH == null),
-                                        //TongCongTon = itemGroup.Where(groupItem => groupItem.MaNV_DangNgan == null && groupItem.NGAYGIAITRACH == null).Sum(groupItem => groupItem.TONGCONG),
                                     };
                         return LINQToDataTable(query);
                     }
@@ -4607,20 +4575,12 @@ namespace ThuTien.DAL.Doi
                                         {
                                             MaNV = itemGroup.Key,
                                             _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemGroup.Key).HoTen,
-                                            //TuMLT = itemGroup.Min(groupItem => groupItem.MALOTRINH),
-                                            //DenMLT = itemGroup.Max(groupItem => groupItem.MALOTRINH),
-                                            //TuSoPhatHanh = itemGroup.Min(groupItem => groupItem.SOPHATHANH),
-                                            //DenSoPhatHanh = itemGroup.Max(groupItem => groupItem.SOPHATHANH),
                                             TongHD = itemGroup.Count(),
                                             TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
                                             TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
                                             TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
                                             TongPhiBVMT_Thue = itemGroup.Sum(groupItem => groupItem.ThueGTGT_TDVTN),
                                             TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
-                                            //TongHDThu = itemGroup.Count(groupItem => groupItem.MaNV_DangNgan == itemGroup.Key),
-                                            //TongCongThu = itemGroup.Where(groupItem => groupItem.MaNV_DangNgan == itemGroup.Key).Sum(groupItem => groupItem.TONGCONG),
-                                            //TongHDTon = itemGroup.Count(groupItem => groupItem.MaNV_DangNgan == null && groupItem.NGAYGIAITRACH == null),
-                                            //TongCongTon = itemGroup.Where(groupItem => groupItem.MaNV_DangNgan == null && groupItem.NGAYGIAITRACH == null).Sum(groupItem => groupItem.TONGCONG),
                                         };
                             return LINQToDataTable(query);
                         }
@@ -4638,20 +4598,12 @@ namespace ThuTien.DAL.Doi
                                         {
                                             MaNV = itemGroup.Key,
                                             _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemGroup.Key).HoTen,
-                                            //TuMLT = itemGroup.Min(groupItem => groupItem.MALOTRINH),
-                                            //DenMLT = itemGroup.Max(groupItem => groupItem.MALOTRINH),
-                                            //TuSoPhatHanh = itemGroup.Min(groupItem => groupItem.SOPHATHANH),
-                                            //DenSoPhatHanh = itemGroup.Max(groupItem => groupItem.SOPHATHANH),
                                             TongHD = itemGroup.Count(),
                                             TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
                                             TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
                                             TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
                                             TongPhiBVMT_Thue = itemGroup.Sum(groupItem => groupItem.ThueGTGT_TDVTN),
                                             TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
-                                            //TongHDThu = itemGroup.Count(groupItem => groupItem.MaNV_DangNgan == itemGroup.Key),
-                                            //TongCongThu = itemGroup.Where(groupItem => groupItem.MaNV_DangNgan == itemGroup.Key).Sum(groupItem => groupItem.TONGCONG),
-                                            //TongHDTon = itemGroup.Count(groupItem => groupItem.MaNV_DangNgan == null && groupItem.NGAYGIAITRACH == null),
-                                            //TongCongTon = itemGroup.Where(groupItem => groupItem.MaNV_DangNgan == null && groupItem.NGAYGIAITRACH == null).Sum(groupItem => groupItem.TONGCONG),
                                         };
                             return LINQToDataTable(query);
                         }
@@ -4757,10 +4709,6 @@ namespace ThuTien.DAL.Doi
                                     TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
                                     TongPhiBVMT_Thue = itemGroup.Sum(groupItem => groupItem.ThueGTGT_TDVTN),
                                     TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
-                                    //TongHDThu = itemGroup.Count(groupItem => groupItem.MaNV_DangNgan == itemGroup.Key),
-                                    //TongCongThu = itemGroup.Where(groupItem => groupItem.MaNV_DangNgan == itemGroup.Key).Sum(groupItem => groupItem.TONGCONG),
-                                    //TongHDTon = itemGroup.Count(groupItem => groupItem.MaNV_DangNgan == null && groupItem.NGAYGIAITRACH == null),
-                                    //TongCongTon = itemGroup.Where(groupItem => groupItem.MaNV_DangNgan == null && groupItem.NGAYGIAITRACH == null).Sum(groupItem => groupItem.TONGCONG),
                                 };
                     return LINQToDataTable(query);
                 }
@@ -4788,10 +4736,6 @@ namespace ThuTien.DAL.Doi
                                     TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
                                     TongPhiBVMT_Thue = itemGroup.Sum(groupItem => groupItem.ThueGTGT_TDVTN),
                                     TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
-                                    //TongHDThu = itemGroup.Count(groupItem => groupItem.MaNV_DangNgan == itemGroup.Key),
-                                    //TongCongThu = itemGroup.Where(groupItem => groupItem.MaNV_DangNgan == itemGroup.Key).Sum(groupItem => groupItem.TONGCONG),
-                                    //TongHDTon = itemGroup.Count(groupItem => groupItem.MaNV_DangNgan == null && groupItem.NGAYGIAITRACH == null),
-                                    //TongCongTon = itemGroup.Where(groupItem => groupItem.MaNV_DangNgan == null && groupItem.NGAYGIAITRACH == null).Sum(groupItem => groupItem.TONGCONG),
                                 };
                     return LINQToDataTable(query);
                 }
@@ -4821,10 +4765,6 @@ namespace ThuTien.DAL.Doi
                                         TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
                                         TongPhiBVMT_Thue = itemGroup.Sum(groupItem => groupItem.ThueGTGT_TDVTN),
                                         TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
-                                        //TongHDThu = itemGroup.Count(groupItem => groupItem.MaNV_DangNgan == itemGroup.Key),
-                                        //TongCongThu = itemGroup.Where(groupItem => groupItem.MaNV_DangNgan == itemGroup.Key).Sum(groupItem => groupItem.TONGCONG),
-                                        //TongHDTon = itemGroup.Count(groupItem => groupItem.MaNV_DangNgan == null && groupItem.NGAYGIAITRACH == null),
-                                        //TongCongTon = itemGroup.Where(groupItem => groupItem.MaNV_DangNgan == null && groupItem.NGAYGIAITRACH == null).Sum(groupItem => groupItem.TONGCONG),
                                     };
                         return LINQToDataTable(query);
                     }
@@ -4852,10 +4792,6 @@ namespace ThuTien.DAL.Doi
                                         TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
                                         TongPhiBVMT_Thue = itemGroup.Sum(groupItem => groupItem.ThueGTGT_TDVTN),
                                         TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
-                                        //TongHDThu = itemGroup.Count(groupItem => groupItem.MaNV_DangNgan == itemGroup.Key),
-                                        //TongCongThu = itemGroup.Where(groupItem => groupItem.MaNV_DangNgan == itemGroup.Key).Sum(groupItem => groupItem.TONGCONG),
-                                        //TongHDTon = itemGroup.Count(groupItem => groupItem.MaNV_DangNgan == null && groupItem.NGAYGIAITRACH == null),
-                                        //TongCongTon = itemGroup.Where(groupItem => groupItem.MaNV_DangNgan == null && groupItem.NGAYGIAITRACH == null).Sum(groupItem => groupItem.TONGCONG),
                                     };
                         return LINQToDataTable(query);
                     }
@@ -4885,10 +4821,6 @@ namespace ThuTien.DAL.Doi
                                             TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
                                             TongPhiBVMT_Thue = itemGroup.Sum(groupItem => groupItem.ThueGTGT_TDVTN),
                                             TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
-                                            //TongHDThu = itemGroup.Count(groupItem => groupItem.MaNV_DangNgan == itemGroup.Key),
-                                            //TongCongThu = itemGroup.Where(groupItem => groupItem.MaNV_DangNgan == itemGroup.Key).Sum(groupItem => groupItem.TONGCONG),
-                                            //TongHDTon = itemGroup.Count(groupItem => groupItem.MaNV_DangNgan == null && groupItem.NGAYGIAITRACH == null),
-                                            //TongCongTon = itemGroup.Where(groupItem => groupItem.MaNV_DangNgan == null && groupItem.NGAYGIAITRACH == null).Sum(groupItem => groupItem.TONGCONG),
                                         };
                             return LINQToDataTable(query);
                         }
@@ -4916,10 +4848,6 @@ namespace ThuTien.DAL.Doi
                                             TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
                                             TongPhiBVMT_Thue = itemGroup.Sum(groupItem => groupItem.ThueGTGT_TDVTN),
                                             TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
-                                            //TongHDThu = itemGroup.Count(groupItem => groupItem.MaNV_DangNgan == itemGroup.Key),
-                                            //TongCongThu = itemGroup.Where(groupItem => groupItem.MaNV_DangNgan == itemGroup.Key).Sum(groupItem => groupItem.TONGCONG),
-                                            //TongHDTon = itemGroup.Count(groupItem => groupItem.MaNV_DangNgan == null && groupItem.NGAYGIAITRACH == null),
-                                            //TongCongTon = itemGroup.Where(groupItem => groupItem.MaNV_DangNgan == null && groupItem.NGAYGIAITRACH == null).Sum(groupItem => groupItem.TONGCONG),
                                         };
                             return LINQToDataTable(query);
                         }
@@ -7504,48 +7432,48 @@ namespace ThuTien.DAL.Doi
                             };
                 dt.Merge(LINQToDataTable(query.OrderBy(item => item.STT)));
                 var queryQTP = from item in _db.HOADONs
-                            where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                && item.ChuyenNoKhoDoi == false && (item.NAM > 2020 || (item.NAM == 2020 && item.KY >= 7)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null
-                                && item.KhoaTienDu == false && item.DangNgan_Quay == true && Convert.ToInt32(item.DOT) >= 1 && Convert.ToInt32(item.DOT) <= 15
-                            //orderby item.STT ascending
-                            group item by item.MaNV_DangNgan into itemGroup
-                            select new
-                            {
-                                MaNV = itemGroup.Key,
-                                HoTen = _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemGroup.Key).HoTen + " TP",
-                                _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemGroup.Key).STT,
-                                ChuyenKhoan = itemGroup.FirstOrDefault().DangNgan_ChuyenKhoan,
-                                TongHD = itemGroup.Count(),
-                                TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
-                                TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
-                                TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
-                                TongPhiBVMT_Thue = itemGroup.Sum(groupItem => groupItem.ThueGTGT_TDVTN),
-                                TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
-                                TongTienDu = itemGroup.Sum(groupItem => groupItem.TienDu),
-                                TongTienMat = itemGroup.Sum(groupItem => groupItem.TienMat),
-                            };
+                               where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
+                                   && item.ChuyenNoKhoDoi == false && (item.NAM > 2020 || (item.NAM == 2020 && item.KY >= 7)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null
+                                   && item.KhoaTienDu == false && item.DangNgan_Quay == true && Convert.ToInt32(item.DOT) >= 1 && Convert.ToInt32(item.DOT) <= 15
+                               //orderby item.STT ascending
+                               group item by item.MaNV_DangNgan into itemGroup
+                               select new
+                               {
+                                   MaNV = itemGroup.Key,
+                                   HoTen = _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemGroup.Key).HoTen + " TP",
+                                   _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemGroup.Key).STT,
+                                   ChuyenKhoan = itemGroup.FirstOrDefault().DangNgan_ChuyenKhoan,
+                                   TongHD = itemGroup.Count(),
+                                   TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
+                                   TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
+                                   TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
+                                   TongPhiBVMT_Thue = itemGroup.Sum(groupItem => groupItem.ThueGTGT_TDVTN),
+                                   TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
+                                   TongTienDu = itemGroup.Sum(groupItem => groupItem.TienDu),
+                                   TongTienMat = itemGroup.Sum(groupItem => groupItem.TienMat),
+                               };
                 dt.Merge(LINQToDataTable(queryQTP.OrderBy(item => item.STT)));
                 var queryQTB = from item in _db.HOADONs
-                            where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
-                                && item.ChuyenNoKhoDoi == false && (item.NAM > 2020 || (item.NAM == 2020 && item.KY >= 7)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null
-                                && item.KhoaTienDu == false && item.DangNgan_Quay == true && Convert.ToInt32(item.DOT) >= 16 && Convert.ToInt32(item.DOT) <= 30
-                            //orderby item.STT ascending
-                            group item by item.MaNV_DangNgan into itemGroup
-                            select new
-                            {
-                                MaNV = itemGroup.Key,
-                                HoTen = _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemGroup.Key).HoTen + " TB",
-                                _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemGroup.Key).STT,
-                                ChuyenKhoan = itemGroup.FirstOrDefault().DangNgan_ChuyenKhoan,
-                                TongHD = itemGroup.Count(),
-                                TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
-                                TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
-                                TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
-                                TongPhiBVMT_Thue = itemGroup.Sum(groupItem => groupItem.ThueGTGT_TDVTN),
-                                TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
-                                TongTienDu = itemGroup.Sum(groupItem => groupItem.TienDu),
-                                TongTienMat = itemGroup.Sum(groupItem => groupItem.TienMat),
-                            };
+                               where _db.TT_NguoiDungs.Any(itemND => itemND.MaTo == MaTo && itemND.MaND == item.MaNV_DangNgan)///Kiểm tra nhân viên đăng ngân thuộc tổ
+                                   && item.ChuyenNoKhoDoi == false && (item.NAM > 2020 || (item.NAM == 2020 && item.KY >= 7)) && item.NGAYGIAITRACH.Value.Date == NgayGiaiTrach.Date && item.MaNV_DangNgan != null
+                                   && item.KhoaTienDu == false && item.DangNgan_Quay == true && Convert.ToInt32(item.DOT) >= 16 && Convert.ToInt32(item.DOT) <= 30
+                               //orderby item.STT ascending
+                               group item by item.MaNV_DangNgan into itemGroup
+                               select new
+                               {
+                                   MaNV = itemGroup.Key,
+                                   HoTen = _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemGroup.Key).HoTen + " TB",
+                                   _db.TT_NguoiDungs.SingleOrDefault(itemND => itemND.MaND == itemGroup.Key).STT,
+                                   ChuyenKhoan = itemGroup.FirstOrDefault().DangNgan_ChuyenKhoan,
+                                   TongHD = itemGroup.Count(),
+                                   TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
+                                   TongThueGTGT = itemGroup.Sum(groupItem => groupItem.THUE),
+                                   TongPhiBVMT = itemGroup.Sum(groupItem => groupItem.PHI),
+                                   TongPhiBVMT_Thue = itemGroup.Sum(groupItem => groupItem.ThueGTGT_TDVTN),
+                                   TongCong = itemGroup.Sum(groupItem => groupItem.TONGCONG),
+                                   TongTienDu = itemGroup.Sum(groupItem => groupItem.TienDu),
+                                   TongTienMat = itemGroup.Sum(groupItem => groupItem.TienMat),
+                               };
                 dt.Merge(LINQToDataTable(queryQTB.OrderBy(item => item.STT)));
                 return dt;
             }

@@ -149,13 +149,11 @@ namespace ThuTien.GUI.Doi
                 if (int.Parse(cmbTo.SelectedValue.ToString()) == 0)
                 {
                     DataTable dt = new DataTable();
-
-                    dt = _cHoaDon.GetTongDangNgan_Doi("", lst[0].MaTo, dateTu.Value, dateDen.Value);
-                    for (int i = 1; i < lst.Count; i++)
+                    //dt = _cHoaDon.GetTongDangNgan_Doi("", lst[0].MaTo, dateTu.Value, dateDen.Value);
+                    for (int i = 0; i < lst.Count; i++)
                     {
                         dt.Merge(_cHoaDon.GetTongDangNgan_Doi("", lst[i].MaTo, dateTu.Value, dateDen.Value));
                     }
-
                     dgvHDTuGia.DataSource = dt;
                 }
                 else
@@ -170,13 +168,11 @@ namespace ThuTien.GUI.Doi
                     if (int.Parse(cmbTo.SelectedValue.ToString()) == 0)
                     {
                         DataTable dt = new DataTable();
-
-                        dt = _cHoaDon.GetTongDangNgan_Doi("CQ", lst[0].MaTo, dateTu.Value, dateDen.Value);
-                        for (int i = 1; i < lst.Count; i++)
+                        //dt = _cHoaDon.GetTongDangNgan_Doi("CQ", lst[0].MaTo, dateTu.Value, dateDen.Value);
+                        for (int i = 0; i < lst.Count; i++)
                         {
                             dt.Merge(_cHoaDon.GetTongDangNgan_Doi("CQ", lst[i].MaTo, dateTu.Value, dateDen.Value));
                         }
-
                         dgvHDCoQuan.DataSource = dt;
                     }
                     else

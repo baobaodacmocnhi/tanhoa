@@ -123,7 +123,7 @@ namespace ThuTien.DAL.ChuyenKhoan
         public DataTable getDSTienDu_ChuyenNhanTien(DateTime NgayGiaiTrach, int FromDot, int ToDot)
         {
             return ExecuteQuery_DataTable("select tdls.* from TT_TienDuLichSu tdls,CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh"
-                + " where CAST(tdls.CreateDate as date)='20240111' and (tdls.Loai like N'%chuyển tiền%' or tdls.Loai like N'%nhận tiền%')"
+                + " where CAST(tdls.CreateDate as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "' and (tdls.Loai like N'%chuyển tiền%' or tdls.Loai like N'%nhận tiền%')"
                 + " and tdls.DanhBoChuyenNhan!='12000000000' and tdls.DanhBo=ttkh.DANHBO and " + FromDot + "<=SUBSTRING(ttkh.LOTRINH,1,2) and SUBSTRING(ttkh.LOTRINH,1,2)<=" + ToDot);
         }
 
