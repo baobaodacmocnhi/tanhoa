@@ -728,7 +728,6 @@ namespace ThuTien.GUI.ChuyenKhoan
                 oSheet.Cells[rowEnd + 1 + i + 2, 4] = dtLSChuyenNhan.Rows[i]["Loai"].ToString();
                 oSheet.Cells[rowEnd + 1 + i + 2, 5] = dtLSChuyenNhan.Rows[i]["GhiChu"].ToString();
             }
-
             /////////////////////////////tiền dư danh bộ ảo///////////////////////////////////////////
             oSheetAo.Name = "Tiền Dư Danh Bộ Ảo";
             // Tạo phần đầu nếu muốn

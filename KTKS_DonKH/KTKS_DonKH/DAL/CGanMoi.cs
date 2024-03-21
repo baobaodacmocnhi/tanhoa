@@ -227,7 +227,7 @@ namespace KTKS_DonKH.DAL
                     + " select case when exists"
                     + " (SELECT * FROM [TANHOA_WATER].[dbo].[KH_HOSOKHACHHANG] hskh,[TANHOA_WATER].[dbo].[DON_KHACHHANG] donkh,HOADON_TA.dbo.HOADON hd"
                     + "   where hskh.HOANCONG=1 and hskh.SHS=donkh.SHS and REPLACE(donkh.DANHBO,'-','')='" + DanhBo + "'"
-                    + "   and CAST(hd.CreateDate as date)>CAST(hskh.NGAYHOANCONG as date) and REPLACE(donkh.DANHBO,'-','')=hd.DANHBA)"
+                    + "   and (hskh.NGAYHOANCONG is null or CAST(hd.CreateDate as date)>CAST(hskh.NGAYHOANCONG as date)) and REPLACE(donkh.DANHBO,'-','')=hd.DANHBA)"
                     + "   then 'false' else 'true' end"
                     + " end"
                     + " else"

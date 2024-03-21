@@ -155,15 +155,15 @@ namespace KTKS_DonKH.GUI.BamChi
                 cmbMauSac.SelectedItem = ctbamchi.MauSac;
             }
             cmbTinhTrangChiSo.SelectedItem = ctbamchi.TinhTrangChiSo;
-            cmbTrangThaiBC.SelectedValue = ctbamchi.TrangThaiBC;
+            if (ctbamchi.TrangThaiBC != null)
+                cmbTrangThaiBC.SelectedValue = ctbamchi.TrangThaiBC;
             txtVienChi.Text = ctbamchi.VienChi.ToString();
             txtDayChi.Text = ctbamchi.DayChi.ToString();
-
             txtGhiChu.Text = ctbamchi.GhiChu;
             txtMaSoBC.Text = ctbamchi.MaSoBC;
             txtTheoYeuCau.Text = ctbamchi.TheoYeuCau;
             dgvHinh.Rows.Clear();
-            foreach (BamChi_ChiTiet_Hinh item in ctbamchi.BamChi_ChiTiet_Hinhs.OrderByDescending(o=>o.CreateDate).ToList())
+            foreach (BamChi_ChiTiet_Hinh item in ctbamchi.BamChi_ChiTiet_Hinhs.OrderByDescending(o => o.CreateDate).ToList())
             {
                 var index = dgvHinh.Rows.Add();
                 dgvHinh.Rows[index].Cells["ID_Hinh"].Value = item.ID;
@@ -241,12 +241,10 @@ namespace KTKS_DonKH.GUI.BamChi
             //txtMaSoBC.Text = "";
             //txtTheoYeuCau.Text = "";
             txtGhiChu.Text = "";
-
             _MaCTBamChi = -1;
             _ctbamchi = null;
             _hoadon = null;
             dgvHinh.Rows.Clear();
-
             txtMaDonMoi.Focus();
         }
 
@@ -293,7 +291,6 @@ namespace KTKS_DonKH.GUI.BamChi
             txtMaSoBC.Text = "";
             txtTheoYeuCau.Text = "";
             txtGhiChu.Text = "";
-
             _MaCTBamChi = -1;
             _ctbamchi = null;
             _dontu_ChiTiet = null;
@@ -464,7 +461,6 @@ namespace KTKS_DonKH.GUI.BamChi
                     //        return;
                     //    }
                     //}
-
                     DateTime NgayQuyetToan = _cBamChi.getMaxNgayQuyetToan();
                     if (dateBamChi.Value.Date <= NgayQuyetToan.Date)
                     {
@@ -543,7 +539,6 @@ namespace KTKS_DonKH.GUI.BamChi
                                     MessageBox.Show("Chưa nhập Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
                                 }
-
                     ctbamchi.DanhBo = txtDanhBo.Text.Trim();
                     ctbamchi.HopDong = txtHopDong.Text.Trim();
                     ctbamchi.HoTen = txtHoTen.Text.Trim().ToUpper();
@@ -565,21 +560,14 @@ namespace KTKS_DonKH.GUI.BamChi
                     ///
                     ctbamchi.NgayBC_Truoc_NgayGiao = chkNgayBCTruocNgayGiao.Checked;
                     ctbamchi.NgayBC = dateBamChi.Value;
-
                     if (cmbHienTrangKiemTra.SelectedItem != null)
                         ctbamchi.HienTrangKiemTra = cmbHienTrangKiemTra.SelectedItem.ToString();
-
                     ctbamchi.Hieu = txtHieu.Text.Trim();
-
                     if (!string.IsNullOrEmpty(txtCo.Text.Trim()))
                         ctbamchi.Co = int.Parse(txtCo.Text.Trim());
-
                     ctbamchi.SoThan = txtSoThan.Text.Trim();
-
                     if (!string.IsNullOrEmpty(txtChiSo.Text.Trim()))
                         ctbamchi.ChiSo = int.Parse(txtChiSo.Text.Trim());
-
-
                     if (txtNiemChi.Text.Trim() == "" && cmbMauSac.SelectedIndex == -1)
                     {
                         MessageBox.Show("Thiếu Số Niêm Chì - Màu sắc", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -587,7 +575,6 @@ namespace KTKS_DonKH.GUI.BamChi
                     }
                     if (!string.IsNullOrEmpty(txtNiemChi.Text.Trim()))
                     {
-
                         if (_cNiemChi.checkExist(txtNiemChi.Text.Trim().ToUpper()) == false)
                         {
                             MessageBox.Show("Số Niêm Chì không Tồn Tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -607,32 +594,22 @@ namespace KTKS_DonKH.GUI.BamChi
                         ctbamchi.MauSac = cmbMauSac.Text;
                         //_cNiemChi.suDung(int.Parse(txtNiemChi.Text.Trim()));
                     }
-
                     if (cmbTinhTrangChiSo.SelectedItem != null)
                         ctbamchi.TinhTrangChiSo = cmbTinhTrangChiSo.SelectedItem.ToString();
-
                     if (cmbChiMatSo.SelectedItem != null)
                         ctbamchi.ChiMatSo = cmbChiMatSo.SelectedItem.ToString();
-
                     if (cmbChiKhoaGoc.SelectedItem != null)
                         ctbamchi.ChiKhoaGoc = cmbChiKhoaGoc.SelectedItem.ToString();
-
                     ctbamchi.MucDichSuDung = txtMucDichSuDung.Text.Trim();
-
                     if (cmbTrangThaiBC.SelectedValue != null)
                         ctbamchi.TrangThaiBC = cmbTrangThaiBC.SelectedValue.ToString();
-
                     ctbamchi.GhiChu = txtGhiChu.Text.Trim();
                     ctbamchi.MaSoBC = txtMaSoBC.Text.Trim();
-
                     if (!string.IsNullOrEmpty(txtVienChi.Text.Trim()))
                         ctbamchi.VienChi = int.Parse(txtVienChi.Text.Trim());
-
                     if (!string.IsNullOrEmpty(txtDayChi.Text.Trim()))
                         ctbamchi.DayChi = _cBamChi.convertToDouble(txtDayChi.Text.Trim());
-
                     ctbamchi.TheoYeuCau = txtTheoYeuCau.Text.Trim().ToUpper();
-
                     using (TransactionScope scope = new TransactionScope())
                         if (_cBamChi.ThemCT(ctbamchi))
                         {
@@ -724,7 +701,7 @@ namespace KTKS_DonKH.GUI.BamChi
                         //cập nhật lại thời gian bên lịch sử chuyển đơn
                         if (_ctbamchi.NgayBC.Value.Date != dateBamChi.Value.Date)
                         {
-                            DonTu_LichSu dtls = _cDonTu.get_LichSu("BamChi_ChiTiet", (int)_ctbamchi.MaCTBC,_ctbamchi.CreateBy.Value);
+                            DonTu_LichSu dtls = _cDonTu.get_LichSu("BamChi_ChiTiet", (int)_ctbamchi.MaCTBC, _ctbamchi.CreateBy.Value);
                             if (dtls != null)
                             {
                                 dtls.NgayChuyen = dateBamChi.Value;
@@ -832,7 +809,7 @@ namespace KTKS_DonKH.GUI.BamChi
                             MessageBox.Show("Biên bản bấm chì đã được Chốt Quyết Toán", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        if (CTaiKhoan.ToTruong == false && CTaiKhoan.ThuKy == false)
+                        if (CTaiKhoan.Admin == false && CTaiKhoan.ToTruong == false && CTaiKhoan.ThuKy == false)
                             if (_ctbamchi.CreateBy != CTaiKhoan.MaUser)
                             {
                                 MessageBox.Show("Bạn không phải người lập nên không được phép điều chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -845,7 +822,7 @@ namespace KTKS_DonKH.GUI.BamChi
                         transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
                         using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                         {
-                            DonTu_LichSu dtls = _cDonTu.get_LichSu("BamChi_ChiTiet", (int)_ctbamchi.MaCTBC,_ctbamchi.CreateBy.Value);
+                            DonTu_LichSu dtls = _cDonTu.get_LichSu("BamChi_ChiTiet", (int)_ctbamchi.MaCTBC, _ctbamchi.CreateBy.Value);
                             if (dtls != null)
                             {
                                 _cDonTu.Xoa_LichSu(dtls, true);
@@ -1006,7 +983,6 @@ namespace KTKS_DonKH.GUI.BamChi
             }
         }
 
-
         //add file
         private void btnChonFile_Click(object sender, EventArgs e)
         {
@@ -1086,7 +1062,7 @@ namespace KTKS_DonKH.GUI.BamChi
             byte[] file = _wsThuongVu.get_Hinh("BamChi_ChiTiet_Hinh", _ctbamchi.MaCTBC.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
             if (file != null)
                 if (dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString().ToLower().Contains("pdf"))
-                    _cBamChi.viewPDF(1,file);
+                    _cBamChi.viewPDF(1, file);
                 else
                     _cBamChi.viewImage(file);
             else

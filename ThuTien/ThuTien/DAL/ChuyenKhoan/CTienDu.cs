@@ -124,7 +124,8 @@ namespace ThuTien.DAL.ChuyenKhoan
         {
             return ExecuteQuery_DataTable("select tdls.* from TT_TienDuLichSu tdls,CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh"
                 + " where CAST(tdls.CreateDate as date)='" + NgayGiaiTrach.ToString("yyyyMMdd") + "' and (tdls.Loai like N'%chuyển tiền%' or tdls.Loai like N'%nhận tiền%')"
-                + " and tdls.DanhBoChuyenNhan!='12000000000' and tdls.DanhBo=ttkh.DANHBO and " + FromDot + "<=SUBSTRING(ttkh.LOTRINH,1,2) and SUBSTRING(ttkh.LOTRINH,1,2)<=" + ToDot);
+                + " and tdls.DanhBoChuyenNhan!='12000000000' and tdls.DanhBo=ttkh.DANHBO and ((" + FromDot + "<=SUBSTRING(ttkh.LOTRINH,1,2) and SUBSTRING(ttkh.LOTRINH,1,2)<=" + ToDot+")"
+                + " or (select IDPhong from TT_To,TT_NguoiDung where TT_To.MaTo=TT_NguoiDung.MaTo and TT_NguoiDung.MaND=tdls.CreateBy)=2)");
         }
 
         public DataTable GetDSTienBienDong()
