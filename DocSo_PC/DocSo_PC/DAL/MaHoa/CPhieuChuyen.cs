@@ -83,7 +83,7 @@ namespace DocSo_PC.DAL.MaHoa
             }
             else
             {
-                return int.Parse(DateTime.Now.ToString("yy") + 1.ToString("00000"));
+                return int.Parse(DateTime.Now.ToString("yy") + 2.ToString("00000"));
             }
         }
 

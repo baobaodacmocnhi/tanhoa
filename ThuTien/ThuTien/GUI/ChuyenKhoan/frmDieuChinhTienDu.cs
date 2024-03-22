@@ -163,7 +163,6 @@ namespace ThuTien.GUI.ChuyenKhoan
                                     phimonuoc.TongCong = phimonuoc.SoTien - kqdongnuoc.PhiMoNuoc.Value;
                                     phimonuoc.PhiMoNuoc = kqdongnuoc.PhiMoNuoc;
                                     phimonuoc.MaKQDN = kqdongnuoc.MaKQDN;
-
                                     if (_cPhiMoNuoc.Them(phimonuoc, dateLap.Value))
                                     {
                                         if (_cTienDu.LinQ_ExecuteNonQuery("update TT_TienDu set ChoXuLy=0 where DanhBo='" + hoadon.DANHBA + "'"))
