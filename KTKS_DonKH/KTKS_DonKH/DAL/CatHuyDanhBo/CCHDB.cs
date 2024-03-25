@@ -2252,7 +2252,7 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                          + "-Lưu.(" + MaDon + ")";
                 return NoiNhan;
             }
-            catch (Exception ex)
+            catch
             {
                 return "";
             }

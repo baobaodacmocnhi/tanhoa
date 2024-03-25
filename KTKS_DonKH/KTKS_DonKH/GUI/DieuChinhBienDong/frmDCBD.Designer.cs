@@ -223,11 +223,11 @@
             this.chkTamTru = new System.Windows.Forms.CheckBox();
             this.chkThuongTru = new System.Windows.Forms.CheckBox();
             this.chkKhacDiaBan = new System.Windows.Forms.CheckBox();
-            this.txtDiaChi_CCCD = new System.Windows.Forms.TextBox();
+            this.txtDiaChi_CCCD = new KTKS_DonKH.DAL.DieuChinhBienDong.AutoCompleteTextBox();
             this.label43 = new System.Windows.Forms.Label();
             this.txtNgaySinh = new System.Windows.Forms.TextBox();
             this.label69 = new System.Windows.Forms.Label();
-            this.txtHoTen_CCCD = new System.Windows.Forms.TextBox();
+            this.txtHoTen_CCCD = new KTKS_DonKH.DAL.DieuChinhBienDong.AutoCompleteTextBox();
             this.label58 = new System.Windows.Forms.Label();
             this.txtMaCT = new System.Windows.Forms.TextBox();
             this.label42 = new System.Windows.Forms.Label();

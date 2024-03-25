@@ -993,6 +993,9 @@
     <Compile Include="DAL\CDocSo.cs" />
     <Compile Include="DAL\CGanMoi.cs" />
     <Compile Include="DAL\CTTKH.cs" />
+    <Compile Include="DAL\DieuChinhBienDong\AutoCompleteTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DAL\DieuChinhBienDong\CDangKyDinhMucCCCD.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CDataTransfer.cs" />
     <Compile Include="DAL\DieuChinhBienDong\CHoNgheo.cs" />

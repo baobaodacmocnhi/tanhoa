@@ -649,7 +649,7 @@
             // 
             // txtMST
             // 
-            this.txtMST.Location = new System.Drawing.Point(437, 133);
+            this.txtMST.Location = new System.Drawing.Point(417, 133);
             this.txtMST.Name = "txtMST";
             this.txtMST.Size = new System.Drawing.Size(114, 22);
             this.txtMST.TabIndex = 27;
@@ -669,7 +669,7 @@
             // 
             this.label42.AutoSize = true;
             this.label42.ForeColor = System.Drawing.Color.Red;
-            this.label42.Location = new System.Drawing.Point(394, 136);
+            this.label42.Location = new System.Drawing.Point(374, 136);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(37, 16);
             this.label42.TabIndex = 26;
@@ -677,15 +677,15 @@
             // 
             // txtBank
             // 
-            this.txtBank.Location = new System.Drawing.Point(288, 133);
+            this.txtBank.Location = new System.Drawing.Point(278, 133);
             this.txtBank.Name = "txtBank";
-            this.txtBank.Size = new System.Drawing.Size(100, 22);
+            this.txtBank.Size = new System.Drawing.Size(90, 22);
             this.txtBank.TabIndex = 25;
             // 
             // label41
             // 
             this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(205, 136);
+            this.label41.Location = new System.Drawing.Point(195, 136);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(77, 16);
             this.label41.TabIndex = 24;
@@ -695,7 +695,7 @@
             // 
             this.txtSTK.Location = new System.Drawing.Point(99, 133);
             this.txtSTK.Name = "txtSTK";
-            this.txtSTK.Size = new System.Drawing.Size(100, 22);
+            this.txtSTK.Size = new System.Drawing.Size(90, 22);
             this.txtSTK.TabIndex = 23;
             // 
             // label40
@@ -869,7 +869,7 @@
             // 
             this.txtDinhMucHN.Location = new System.Drawing.Point(597, 90);
             this.txtDinhMucHN.Name = "txtDinhMucHN";
-            this.txtDinhMucHN.Size = new System.Drawing.Size(50, 22);
+            this.txtDinhMucHN.Size = new System.Drawing.Size(40, 22);
             this.txtDinhMucHN.TabIndex = 17;
             // 
             // label25
@@ -917,7 +917,7 @@
             // 
             this.txtDinhMuc.Location = new System.Drawing.Point(597, 62);
             this.txtDinhMuc.Name = "txtDinhMuc";
-            this.txtDinhMuc.Size = new System.Drawing.Size(50, 22);
+            this.txtDinhMuc.Size = new System.Drawing.Size(40, 22);
             this.txtDinhMuc.TabIndex = 13;
             // 
             // label10
@@ -965,7 +965,7 @@
             // 
             this.txtGiaBieu.Location = new System.Drawing.Point(597, 34);
             this.txtGiaBieu.Name = "txtGiaBieu";
-            this.txtGiaBieu.Size = new System.Drawing.Size(50, 22);
+            this.txtGiaBieu.Size = new System.Drawing.Size(40, 22);
             this.txtGiaBieu.TabIndex = 9;
             // 
             // label7

@@ -48,7 +48,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         DonTBC _dontbc = null;
         HOADON _hoadon = null;
         DCBD_ChiTietBienDong _ctdcbd = null;
-        bool _flagCtrl3 = false;
+        //bool _flagCtrl3 = false;
         decimal _MaCTDCBD = -1;
 
         public frmDCBD()
@@ -64,6 +64,19 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void frmDCBD_Load(object sender, EventArgs e)
         {
+            Dictionary<string, string> lstPhimTat = new Dictionary<string, string>();
+            DataTable dt = _cLoaiChungTu.getDS_PhimTat();
+            foreach (DataRow item in dt.Rows)
+            {
+                lstPhimTat.Add(item["KyHieu"].ToString(), item["NoiDung"].ToString());
+            }
+            string[] nameArray = { "name1", "name2", "name3", "bla name" };
+            AutoCompleteTextBox tb = new AutoCompleteTextBox();
+            tb.Values = nameArray;
+            tb.Location = new Point(1223, 654);
+            tb.Size = new Size(100, 75);
+            this.Controls.Add(tb);
+
             ///this.KeyPreview = true;
             ///Hàm Properties không có nên phải add code
             ///Dùng để bôi đen Text
@@ -119,7 +132,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             txtDV.Text = hoadon.TILEDV.ToString();
             txtHCSN.Text = hoadon.TILEHCSN.ToString();
             txtDot.Text = _cDHN.GetDot(hoadon.DANHBA);
-
             //kiểm tra phí bvmt
             string sohoadon = "";
             if (hoadon.SoHoaDonCu != null)
@@ -240,7 +252,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             ///
             dgvDSSoDangKy.DataSource = _cChungTu.getDS_ChiTiet_DanhBo(ctdcbd.DanhBo);
             if (dgvDSSoDangKy.Rows.Count > 0)
-            dgvDSSoDangKy.CurrentCell = dgvDSSoDangKy.Rows[dgvDSSoDangKy.Rows.Count - 1].Cells[1];
+                dgvDSSoDangKy.CurrentCell = dgvDSSoDangKy.Rows[dgvDSSoDangKy.Rows.Count - 1].Cells[1];
             dgvDSDieuChinh.DataSource = _cDCBD.getDSDCBD(ctdcbd.DanhBo);
             if (dgvDSDieuChinh.Rows.Count > 0)
             {
@@ -2407,7 +2419,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         }
                         dgvDSSoDangKy.DataSource = _cChungTu.getDS_ChiTiet_DanhBo(txtDanhBo.Text.Trim());
                         if (dgvDSSoDangKy.Rows.Count > 0)
-                        dgvDSSoDangKy.CurrentCell = dgvDSSoDangKy.Rows[dgvDSSoDangKy.Rows.Count - 1].Cells[1];
+                            dgvDSSoDangKy.CurrentCell = dgvDSSoDangKy.Rows[dgvDSSoDangKy.Rows.Count - 1].Cells[1];
                         LoadTongNK();
                         clearCCCD(false);
                         txtMaCT.Focus();
