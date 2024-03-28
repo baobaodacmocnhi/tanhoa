@@ -138,7 +138,6 @@ namespace KTKS_DonKH.GUI
             DataTable dtGiaNuoc = _cGiaNuoc.getDS();
             //check giảm giá
             _cGiaNuoc.checkExists_GiamGiaNuoc(int.Parse(txtNam.Text.Trim()), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtGiaBieu.Text.Trim()), ref dtGiaNuoc);
-
             int index = -1;
             for (int i = 0; i < dtGiaNuoc.Rows.Count; i++)
                 if (dateTu.Value.Date < DateTime.Parse(dtGiaNuoc.Rows[i]["NgayTangGia"].ToString()).Date && DateTime.Parse(dtGiaNuoc.Rows[i]["NgayTangGia"].ToString()).Date < dateDen.Value.Date)
@@ -160,7 +159,6 @@ namespace KTKS_DonKH.GUI
                     {
                         //int TieuThu_DieuChinhGia;
                         int TongSoNgay = (int)((dateDen.Value.Date - dateTu.Value.Date).TotalDays);
-
                         int SoNgayCu = (int)((DateTime.Parse(dtGiaNuoc.Rows[index]["NgayTangGia"].ToString()).Date - dateTu.Value.Date).TotalDays);
                         int TieuThuCu = (int)Math.Round(double.Parse(txtTieuThu.Text.Trim()) * SoNgayCu / TongSoNgay, 0, MidpointRounding.AwayFromZero);
                         int TieuThuMoi = int.Parse(txtTieuThu.Text.Trim()) - TieuThuCu;
@@ -172,7 +170,6 @@ namespace KTKS_DonKH.GUI
                                 DinhMucHN_Cu = (int)Math.Round((double)TongDinhMucCu * int.Parse(txtDinhMucHN.Text.Trim()) / int.Parse(txtDinhMuc.Text.Trim()), 0, MidpointRounding.AwayFromZero);
                         if (TongDinhMucMoi != 0 && int.Parse(txtDinhMucHN.Text.Trim()) != 0 && int.Parse(txtDinhMuc.Text.Trim()) != 0)
                             DinhMucHN_Moi = (int)Math.Round((double)TongDinhMucMoi * int.Parse(txtDinhMucHN.Text.Trim()) / int.Parse(txtDinhMuc.Text.Trim()), 0, MidpointRounding.AwayFromZero);
-
                         txtTongSoNgay.Text = TongSoNgay.ToString();
                         txtSoNgayCu.Text = SoNgayCu.ToString();
                         txtSoNgayMoi.Text = (TongSoNgay - SoNgayCu).ToString();
@@ -190,23 +187,18 @@ namespace KTKS_DonKH.GUI
             else
             {
             }
-
             int TienNuocNamCu = 0, TienNuocNamMoi = 0, TienNuoc = 0, ThueGTGT = 0, TDVTNNamCu = 0, TDVTNNamMoi = 0, TDVTN = 0, ThueTDVTN = 0, TongCong = 0, TieuThu_DieuChinhGia = 0, ThueTDVTN_VAT = 0;
             string ChiTietNamCu = "", ChiTietNamMoi = "", ChiTietPhiBVMTNamCu = "", ChiTietPhiBVMTNamMoi = "";
             _cGiaNuoc.TinhTienNuoc(false, false, false, 0, txtDanhBo.Text.Trim(), int.Parse(cmbKy.SelectedItem.ToString()), int.Parse(txtNam.Text.Trim()), dateTu.Value, dateDen.Value, int.Parse(txtGiaBieu.Text.Trim()), int.Parse(txtSH.Text.Trim()), int.Parse(txtSX.Text.Trim()), int.Parse(txtDV.Text.Trim()), int.Parse(txtHCSN.Text.Trim()), int.Parse(txtDinhMuc.Text.Trim()), int.Parse(txtDinhMucHN.Text.Trim()), int.Parse(txtTieuThu.Text.Trim()), out TienNuocNamCu, out ChiTietNamCu, out TienNuocNamMoi, out ChiTietNamMoi, out TieuThu_DieuChinhGia, out  TDVTNNamCu, out  ChiTietPhiBVMTNamCu, out  TDVTNNamMoi, out ChiTietPhiBVMTNamMoi, out TienNuoc, out ThueGTGT, out TDVTN, out ThueTDVTN, out ThueTDVTN_VAT);
             //ThueGTGT = (int)Math.Round((double)(TienNuocNamCu + TienNuocNamMoi) * 5 / 100, 0, MidpointRounding.AwayFromZero);
             TongCong = TienNuoc + ThueGTGT + TDVTN + ThueTDVTN;
-
             txtGiaBanCu.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TienNuocNamCu);
             txtGiaBanMoi.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TienNuocNamMoi);
             txtGiaBan.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TienNuoc);
-
             txtThueGTGT.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", ThueGTGT);
-
             txtTDVTNCu.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TDVTNNamCu);
             txtTDVTNMoi.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TDVTNNamMoi);
             txtTDVTN.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", TDVTN);
-
             txtChiTietCu.Text = ChiTietNamCu;
             txtChiTietTDVTNCu.Text = ChiTietPhiBVMTNamCu;
             txtChiTietMoi.Text = ChiTietNamMoi;

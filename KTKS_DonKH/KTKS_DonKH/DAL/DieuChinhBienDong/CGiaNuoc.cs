@@ -4962,7 +4962,6 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             //check giảm giá
             if (KhongApGiaGiam == false)
                 checkExists_GiamGiaNuoc(Nam, Ky, GiaBieu, ref dtGiaNuoc);
-
             int index = -1;
             TienNuocNamCu = TienNuocNamMoi = PhiBVMTNamCu = PhiBVMTNamMoi = TienNuoc = ThueGTGT = TDVTN = ThueTDVTN = 0;
             ChiTietNamCu = ChiTietNamMoi = ChiTietPhiBVMTNamCu = ChiTietPhiBVMTNamMoi = "";
@@ -5032,7 +5031,6 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 ThueGTGT = (int)Math.Round((double)(TienNuocNamCu + TienNuocNamMoi) * 5 / 100, 0, MidpointRounding.AwayFromZero);
                 TDVTN = PhiBVMTNamCu + PhiBVMTNamMoi;
                 //Từ 2022 Phí BVMT -> Tiền Dịch Vụ Thoát Nước
-
                 if (dtGiaNuoc.Rows[index]["VAT2_Ky"].ToString().Contains(Ky.ToString("00") + "/" + Nam))
                     ThueTDVTN_VAT = int.Parse(dtGiaNuoc.Rows[index]["VAT2"].ToString());
                 else

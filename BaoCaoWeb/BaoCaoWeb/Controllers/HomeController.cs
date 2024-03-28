@@ -15,6 +15,7 @@ namespace BaoCaoWeb.Controllers
         cThuTien _cThuTien = new cThuTien();
         cTTKH _cTTKH = new cTTKH();
         cDMA _cDMA = new cDMA();
+
         public ActionResult Index()
         {
             ThongTin enTT = new ThongTin();
@@ -47,9 +48,9 @@ namespace BaoCaoWeb.Controllers
                     en.NoiDung3 = dt.Rows[i][3].ToString();
                 enTT.lstSanLuongNam.Add(en);
             }
-            dt = _cDMA.ExecuteQuery_DataTable("SELECT sum(LN_ThatThoat)/sum(SL_DHT)*100 FROM[tanhoa].[dbo].[g_ThatThoatMangLuoi] where nam = " + enTT.NamPresent);
-            enTT.lstSanLuongNam[enTT.lstSanLuongNam.Count - 1].ThucHien = Math.Round(double.Parse(dt.Rows[0][0].ToString()), 2);
-            enTT.lstSanLuongNam[enTT.lstSanLuongNam.Count - 1].TyLe = Math.Round(enTT.lstSanLuongNam[enTT.lstSanLuongNam.Count - 1].KeHoach / enTT.lstSanLuongNam[enTT.lstSanLuongNam.Count - 1].ThucHien * 100, 2);
+            //dt = _cDMA.ExecuteQuery_DataTable("SELECT sum(LN_ThatThoat)/sum(SL_DHT)*100 FROM [tanhoa].[dbo].[g_ThatThoatMangLuoi] where nam = " + enTT.NamPresent);
+            //enTT.lstSanLuongNam[enTT.lstSanLuongNam.Count - 1].ThucHien = Math.Round(double.Parse(dt.Rows[0][0].ToString()), 2);
+            //enTT.lstSanLuongNam[enTT.lstSanLuongNam.Count - 1].TyLe = Math.Round(enTT.lstSanLuongNam[enTT.lstSanLuongNam.Count - 1].KeHoach / enTT.lstSanLuongNam[enTT.lstSanLuongNam.Count - 1].ThucHien * 100, 2);
             return View(enTT);
         }
 
@@ -167,20 +168,21 @@ namespace BaoCaoWeb.Controllers
             return Json(lstChart, JsonRequestBehavior.AllowGet);
         }
 
-        //public ActionResult Index()
-        //{
-        //    ThongTin enTT = new ThongTin();
-        //    enTT.NamPresent = DateTime.Now.Year;
-        //    enTT.NamPrevious = DateTime.Now.Year - 1;
-        //    enTT.KhachHang = decimal.Parse(_cDHN.ExecuteQuery_ReturnOneValue("select count(DanhBo) from TB_DULIEUKHACHHANG").ToString());
-        //    enTT.SanLuong = decimal.Parse(_cDocSo.ExecuteQuery_ReturnOneValue("select SUM(TieuThuMoi) from DocSo where Nam=" + enTT.NamPresent).ToString());
-        //    enTT.DoanhThu = decimal.Parse(_cThuTien.ExecuteQuery_ReturnOneValue("select SUM(TONGCONG) from HOADON where YEAR(NGAYGIAITRACH)=" + enTT.NamPresent + " and MaNV_DangNgan is not null").ToString());
-        //    enTT.lstSanLuongChuanThu = getlstSanLuongChuanThu(enTT.NamPresent);
-        //    enTT.lstDoanhThu = getlstDoanhThu(enTT.NamPrevious,enTT.NamPresent);
-        //    enTT.lstGiaBanBinhQuan = getlstGiaBanBinhQuan(enTT.NamPrevious,enTT.NamPresent);
-        //    enTT.ThatThoatNuoc = (double)_cTTKH.ExecuteQuery_ReturnOneValue("select TyLeThatThoatNuoc2 from BC_SoLieu where Nam=2022");
-        //    return View(enTT);
-        //}
+        public ActionResult IndexOld()
+        {
+            ThongTin enTT = new ThongTin();
+            enTT.NamPresent = DateTime.Now.Year;
+            enTT.NamPrevious = DateTime.Now.Year - 1;
+            enTT.KhachHang = decimal.Parse(_cDHN.ExecuteQuery_ReturnOneValue("select count(DanhBo) from TB_DULIEUKHACHHANG").ToString());
+            enTT.SanLuong = decimal.Parse(_cDocSo.ExecuteQuery_ReturnOneValue("select SUM(TieuThuMoi) from DocSo where Nam=" + enTT.NamPresent).ToString());
+            enTT.DoanhThu = decimal.Parse(_cThuTien.ExecuteQuery_ReturnOneValue("select SUM(TONGCONG) from HOADON where YEAR(NGAYGIAITRACH)=" + enTT.NamPresent + " and MaNV_DangNgan is not null").ToString());
+            //enTT.lstSanLuongChuanThu = getlstSanLuongChuanThu(enTT.NamPresent);
+            enTT.lstSanLuongNam = getlstSanLuongNam(enTT.NamPrevious, enTT.NamPresent);
+            enTT.lstDoanhThu = getlstDoanhThu(enTT.NamPrevious, enTT.NamPresent);
+            enTT.lstGiaBanBinhQuan = getlstGiaBanBinhQuan(enTT.NamPrevious, enTT.NamPresent);
+            //enTT.ThatThoatNuoc = (double)_cTTKH.ExecuteQuery_ReturnOneValue("select TyLeThatThoatNuoc2 from BC_SoLieu where Nam=2022");
+            return View(enTT);
+        }
 
         #region ChiTietSanLuong
         public ActionResult ChiTietSanLuong()
@@ -350,7 +352,10 @@ namespace BaoCaoWeb.Controllers
                 enSL.Ky = i;
                 if (dt.Rows.Count >= i)
                 {
-                    enSL.NamPrevious = decimal.Parse(dt.Rows[i - 1]["SanLuongPrevious"].ToString());
+                    if (dt.Rows[i - 1]["SanLuongPrevious"].ToString() != "")
+                        enSL.NamPrevious = decimal.Parse(dt.Rows[i - 1]["SanLuongPrevious"].ToString());
+                    else
+                        enSL.NamPrevious = 0;
                     if (dt.Rows[i - 1]["SanLuongPresent"].ToString() != "")
                     {
                         enSL.NamPresent = decimal.Parse(dt.Rows[i - 1]["SanLuongPresent"].ToString());
@@ -543,7 +548,6 @@ namespace BaoCaoWeb.Controllers
             enTT.ThatThoatNuocDat = enTT.ThatThoatNuoc - enTT.ThatThoatNuocKH;
             return View(enTT);
         }
-
 
 
 

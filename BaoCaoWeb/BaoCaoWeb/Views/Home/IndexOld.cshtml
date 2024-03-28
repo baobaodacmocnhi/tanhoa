@@ -17,78 +17,80 @@
 <link href="https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css" type="text/css" rel="stylesheet">
 <link href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css" type="text/css" rel="stylesheet">
 
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery-3.6.0.min.js"></script>
 <script src="~/Scripts/anychart/jschartSanLuong.js"></script>
 <script src="~/Scripts/anychart/jschartDoanhThu.js"></script>
 <script src="~/Scripts/anychart/jschartGiaBanBinhQuan.js"></script>
 <script>
     $(document).ready(function () {
-        getSanLuong();
-        getDoanhThu();
-        getGiaBanBinhQuan();
+        getSanLuongNam_chart(new Date().getFullYear() - 1, new Date().getFullYear());
+        getDoanhThu_chart(new Date().getFullYear() - 1, new Date().getFullYear());
+        getGiaBanBinhQuan_chart(new Date().getFullYear() - 1, new Date().getFullYear());
     });
 
 </script>
 
+<div class="row">
 
-<div class="col-xl-3 col-md-6 mb-4">
-    <div class="card border-left-info shadow h-100">
-        <div class="card-body">
-            <div class="row no-gutters align-items-center">
-                <div class="col mr-2">
-                    <div class="font-weight-bold text-info mb-1">
-                        Số lượng khách hàng
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-info shadow h-100">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="font-weight-bold text-info mb-1">
+                            Số lượng khách hàng
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.KhachHang.ToString("N0").Replace(",", ".")</div>
                     </div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.KhachHang.ToString("N0").Replace(",", ".")</div>
-                </div>
-                <div class="col-auto">
-                    <i class="fas fa-user fa-2x text-info"></i>
+                    <div class="col-auto">
+                        <i class="fas fa-user fa-2x text-info"></i>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 
-<div class="col-xl-3 col-md-6 mb-4">
-    <div class="card border-left-primary shadow h-100">
-        <div class="card-body">
-            <div class="row no-gutters align-items-center">
-                <div class="col mr-2">
-                    <div class="font-weight-bold text-primary mb-1">
-                        Tổng sản lượng năm @Model.NamPresent (m<sup>3</sup>)
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="font-weight-bold text-primary mb-1">
+                            Tổng sản lượng năm @Model.NamPresent (m<sup>3</sup>)
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.SanLuong.ToString("N0").Replace(",", ".")</div>
                     </div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.SanLuong.ToString("N0").Replace(",", ".")</div>
-                </div>
-                <div class="col-auto">
-                    <span class="glyphicon glyphicon-tint fa-2x text-primary"></span>
+                    <div class="col-auto">
+                        <span class="glyphicon glyphicon-tint fa-2x text-primary"></span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 
-<div class="col-xl-3 col-md-6 mb-4">
-    <div class="card border-left-warning shadow h-100">
-        <div class="card-body">
-            <div class="row no-gutters align-items-center">
-                <div class="col mr-2">
-                    <div class="font-weight-bold text-warning mb-1">
-                        Tổng doanh thu năm @Model.NamPresent (vnđ)
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="font-weight-bold text-warning mb-1">
+                            Tổng doanh thu năm @Model.NamPresent (vnđ)
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.DoanhThu.ToString("N0").Replace(",", ".")</div>
                     </div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.DoanhThu.ToString("N0").Replace(",", ".")</div>
-                </div>
-                <div class="col-auto">
-                    <i class="fas fa-dollar-sign fa-2x text-warning"></i>
+                    <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-warning"></i>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
 </div>
 
-
-<div class="col-xl-3 col-md-6 mb-4">
+@*<div class="col-xl-3 col-md-6 mb-4">
     <div class="card border-left-danger shadow h-100">
         <div class="card-body">
             <div class="row no-gutters align-items-center">
@@ -104,7 +106,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
 
 
 <!-- Content Row -->
@@ -121,7 +123,7 @@
             </div>
             <!-- Card Body -->
             <div class="card-body">
-                <div id="chartSanLuong" class="chartdiv"></div>
+                <div id="chartSanLuongNam" class="chartdiv"></div>
                 @*<div class="chart-area">
                         <div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
                         <canvas id="myAreaChart" width="504" height="160" class="chartjs-render-monitor" style="display: block; width: 504px; height: 160px;"></canvas>
