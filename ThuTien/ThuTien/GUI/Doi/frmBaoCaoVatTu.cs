@@ -37,7 +37,7 @@ namespace ThuTien.GUI.Doi
         private void btnXem_Click(object sender, EventArgs e)
         {
             if (radDongNuoc.Checked)
-                dgvBamChi.DataSource = _cDongNuoc.getDS_KQDongNuoc(dateTu.Value, dateDen.Value,CNguoiDung.FromDot,CNguoiDung.ToDot);
+                dgvBamChi.DataSource = _cDongNuoc.getDS_KQDongNuoc(dateTu.Value, dateDen.Value, CNguoiDung.FromDot, CNguoiDung.ToDot);
             else
                 if (radMoNuoc.Checked)
                     dgvBamChi.DataSource = _cDongNuoc.getDS_KQMoNuoc(dateTu.Value, dateDen.Value, CNguoiDung.FromDot, CNguoiDung.ToDot);
@@ -88,6 +88,8 @@ namespace ThuTien.GUI.Doi
                                         if (bool.Parse(item.Cells["KhoaKhac"].Value.ToString()) == true || bool.Parse(item.Cells["KhoaTu"].Value.ToString()) == true)
                                             dr["KhoaTu"] = "X";
                                 }
+                            dr["KyHieuPhong"] = CNguoiDung.KyHieuPhong;
+                            dr["TenPhong"] = CNguoiDung.TenPhong.ToUpper();
                             dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
                             dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
                             dr["DanhBo"] = item.Cells["DanhBo"].Value.ToString().Insert(7, " ").Insert(4, " ");
@@ -102,17 +104,14 @@ namespace ThuTien.GUI.Doi
                             dr["NgayDN"] = date.ToString("dd/MM/yyyy");
                             dr["To"] = item.Cells["To"].Value.ToString();
                             dr["NhanVien"] = item.Cells["NhanVien"].Value.ToString();
-
                             dr["GhiChu"] = "Thu hồi nợ";
                             dr["ChucVu"] = CNguoiDung.ChucVu;
                             dr["NguoiKy"] = CNguoiDung.NguoiKy;
-
                             ds.Tables["KQDongNuoc"].Rows.Add(dr);
                         }
                     }
-
                 object soluong = _cNiemChi.countHuHong_ChuQuyetToan();
-                DataTable dtNC=new DataTable() ;
+                DataTable dtNC = new DataTable();
                 if (radDongNuoc.Checked)
                 {
                     soluong = _cNiemChi.countHuHong_ChuQuyetToan("Xanh");
@@ -127,11 +126,9 @@ namespace ThuTien.GUI.Doi
                 if (soluong != null && int.Parse(soluong.ToString()) > 0)
                 {
                     DataTable dtHD = _cHoaDon.getDS(soluong.ToString());
-                    
                     for (int i = 0; i < dtNC.Rows.Count; i++)
                     {
                         DataRow dr = ds.Tables["KQDongNuoc"].NewRow();
-
                         dr["TuNgay"] = dateTu.Value.ToString("dd/MM/yyyy");
                         dr["DenNgay"] = dateDen.Value.ToString("dd/MM/yyyy");
                         //if (dtHD.Rows[i]["DanhBo"].ToString() == "13071494248")
@@ -141,16 +138,12 @@ namespace ThuTien.GUI.Doi
                         dr["DiaChi"] = dtHD.Rows[i]["DiaChi"].ToString();
                         dr["Hieu"] = dtHD.Rows[i]["Hieu"].ToString();
                         dr["Co"] = dtHD.Rows[i]["Co"].ToString();
-
                         dr["To"] = dtNC.Rows[i]["TenTo"].ToString();
                         dr["NhanVien"] = dtNC.Rows[i]["HoTen"].ToString();
-
                         dr["NiemChi"] = dtNC.Rows[i]["ID"].ToString();
                         dr["DayDong"] = _cDongNuoc.convertToDouble("0.6");
-
                         dr["ChucVu"] = CNguoiDung.ChucVu;
                         dr["NguoiKy"] = CNguoiDung.NguoiKy;
-
                         ds.Tables["KQDongNuoc"].Rows.Add(dr);
                     }
                 }

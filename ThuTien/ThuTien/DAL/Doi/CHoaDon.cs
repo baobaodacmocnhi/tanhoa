@@ -11944,34 +11944,16 @@ namespace ThuTien.DAL.Doi
 
         public DataTable GetGiaBanBinhQuan(int Nam)
         {
-            var query = from item in _db.HOADONs
-                        where item.NAM == Nam
-                        group item by item.NAM into itemGroup
-                        select new
-                        {
-                            TongHD = itemGroup.Count(),
-                            TongDinhMuc = itemGroup.Sum(groupItem => groupItem.DM),
-                            TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
-                            TongTieuThu = itemGroup.Sum(groupItem => groupItem.TIEUTHU),
-                            GiaBanBinhQuan = (double)itemGroup.Sum(groupItem => groupItem.GIABAN) / (double)itemGroup.Sum(groupItem => groupItem.TIEUTHU),
-                        };
-            return LINQToDataTable(query);
+            return ExecuteQuery_DataTable("select ky,TongHD=count(*),TongDinhMuc=sum(hd.dm)-sum(dc.DinhMuc)+sum(dc.DM_DC),TongGiaBan=sum(hd.GIABAN)-sum(dc.GIABAN_DC)"
+                + " ,TongTieuThu=sum(hd.TIEUTHU)-sum(dc.TIEUTHU_DC)+sum(dc.TIEUTHU_BD),GiaBanBinhQuan=(sum(hd.GIABAN)-sum(dc.GIABAN_DC))/(sum(hd.TIEUTHU)-sum(dc.TIEUTHU_DC)+sum(dc.TIEUTHU_BD))"
+                + " from HOADON hd left join DIEUCHINH_HD dc on hd.ID_HOADON=dc.FK_HOADON where nam=" + Nam + " group by ky");
         }
 
         public DataTable GetGiaBanBinhQuan(int Nam, int Ky)
         {
-            var query = from item in _db.HOADONs
-                        where item.NAM == Nam && item.KY == Ky
-                        group item by item.KY into itemGroup
-                        select new
-                        {
-                            TongHD = itemGroup.Count(),
-                            TongDinhMuc = itemGroup.Sum(groupItem => groupItem.DM),
-                            TongGiaBan = itemGroup.Sum(groupItem => groupItem.GIABAN),
-                            TongTieuThu = itemGroup.Sum(groupItem => groupItem.TIEUTHU),
-                            GiaBanBinhQuan = (double)itemGroup.Sum(groupItem => groupItem.GIABAN) / (double)itemGroup.Sum(groupItem => groupItem.TIEUTHU),
-                        };
-            return LINQToDataTable(query);
+            return ExecuteQuery_DataTable("select ky,TongHD=count(*),TongDinhMuc=sum(hd.dm)-sum(dc.DinhMuc)+sum(dc.DM_DC),TongGiaBan=sum(hd.GIABAN)-sum(dc.GIABAN_DC)"
+                + " ,TongTieuThu=sum(hd.TIEUTHU)-sum(dc.TIEUTHU_DC)+sum(dc.TIEUTHU_BD),GiaBanBinhQuan=(sum(hd.GIABAN)-sum(dc.GIABAN_DC))/(sum(hd.TIEUTHU)-sum(dc.TIEUTHU_DC)+sum(dc.TIEUTHU_BD))"
+                + " from HOADON hd left join DIEUCHINH_HD dc on hd.ID_HOADON=dc.FK_HOADON where nam=" + Nam + " and ky=" + Ky + " group by ky");
         }
 
         public DataTable PhanTichDoanhThuByGiaBieu(int Nam)

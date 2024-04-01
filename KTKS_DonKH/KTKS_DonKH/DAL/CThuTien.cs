@@ -358,5 +358,10 @@ namespace KTKS_DonKH.DAL
         {
             return ExecuteQuery_ReturnOneValue("select BieuMau from TT_BieuMauHoaDon where KyHieu='" + KyHieu + "'").ToString();
         }
+
+        public string getTenPhongGhiThu(string Dot)
+        {
+            return ExecuteQuery_ReturnOneValue("select name from Phong where TuDot<=" + Dot + " and " + Dot + "<=DenDot").ToString();
+        }
     }
 }

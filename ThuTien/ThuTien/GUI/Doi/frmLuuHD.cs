@@ -46,7 +46,6 @@ namespace ThuTien.GUI.Doi
             cmbNam.DisplayMember = "Nam";
             cmbNam.ValueMember = "Nam";
             cmbKy.SelectedItem = DateTime.Now.Month.ToString();
-
             dgvTyLeTon.AutoGenerateColumns = false;
             cmbNam_TyLeTon.DataSource = _cHoaDon.GetNam();
             cmbNam_TyLeTon.DisplayMember = "Nam";
@@ -347,7 +346,6 @@ namespace ThuTien.GUI.Doi
                                 _cHoaDon.Sua(hoadonCN);
                             }
                         }
-
                         try
                         {
                             _cHoaDon.ExecuteNonQuery("if not exists (select * from Temp_Insert_HoaDon where Nam=" + Nam + " and Ky=" + Ky + " and Dot=" + Dot + ") insert into Temp_Insert_HoaDon(Nam,Ky,Dot)values(" + Nam + "," + Ky + "," + Dot + ")");
@@ -356,7 +354,6 @@ namespace ThuTien.GUI.Doi
                         {
                             MessageBox.Show("Lỗi Temp_Insert_HoaDon\n" + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-
                         try
                         {
                             _cHoaDon.ExecuteNonQuery("exec spUpdateHoaDonFromDHN " + Dot + "," + Ky + "," + Nam);
@@ -365,7 +362,6 @@ namespace ThuTien.GUI.Doi
                         {
                             MessageBox.Show("Lỗi spUpdateHoaDonFromDHN\n" + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-
                         try
                         {
                             if (Dot == 15 || Dot == 30)

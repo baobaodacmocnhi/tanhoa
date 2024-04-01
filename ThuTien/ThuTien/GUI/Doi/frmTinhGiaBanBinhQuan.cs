@@ -54,7 +54,7 @@ namespace ThuTien.GUI.Doi
                 //    dgvGiaBanBinhQuan["GiaBanBinhQuan", i].Value = String.Format(CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", long.Parse(dgvGiaBanBinhQuan["TongGiaBan", i].Value.ToString()) / long.Parse(dgvGiaBanBinhQuan["TongTieuThu", i].Value.ToString()));
                 //}
                 //else
-                dgvGiaBanBinhQuan["GiaBanBinhQuan", i].Value = double.Parse(dgvGiaBanBinhQuan["TongGiaBan", i].Value.ToString()) / double.Parse(dgvGiaBanBinhQuan["TongTieuThu", i].Value.ToString());
+                //dgvGiaBanBinhQuan["GiaBanBinhQuan", i].Value = double.Parse(dgvGiaBanBinhQuan["TongGiaBan", i].Value.ToString()) / double.Parse(dgvGiaBanBinhQuan["TongTieuThu", i].Value.ToString());
                 TongDoanhThu += double.Parse(dgvGiaBanBinhQuan["TongGiaBan", i].Value.ToString());
                 TongSanLuong += double.Parse(dgvGiaBanBinhQuan["TongTieuThu", i].Value.ToString());
                 DataTable dt = _cHoaDon.getNangSuat_Doi(int.Parse(dgvGiaBanBinhQuan["Nam", i].Value.ToString()), int.Parse(dgvGiaBanBinhQuan["Ky", i].Value.ToString()), new DateTime(int.Parse(dgvGiaBanBinhQuan["Nam", i].Value.ToString()), int.Parse(dgvGiaBanBinhQuan["Ky", i].Value.ToString()), DateTime.DaysInMonth(int.Parse(dgvGiaBanBinhQuan["Nam", i].Value.ToString()), int.Parse(dgvGiaBanBinhQuan["Ky", i].Value.ToString())) - 1));

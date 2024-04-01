@@ -7,7 +7,7 @@ using ThuTien.DAL.QuanTri;
 
 namespace ThuTien.DAL.Doi
 {
-    class CGiaBanBinhQuan:CDAL
+    class CGiaBanBinhQuan : CDAL
     {
         public bool Them(TT_GiaBanBinhQuan entity)
         {
@@ -70,12 +70,12 @@ namespace ThuTien.DAL.Doi
 
         public List<TT_GiaBanBinhQuan> GetDS(int Nam)
         {
-            return _db.TT_GiaBanBinhQuans.Where(item=>item.Nam==Nam).ToList();
+            return _db.TT_GiaBanBinhQuans.Where(item => item.Nam == Nam).ToList();
         }
 
         public TT_GiaBanBinhQuan Get(int Nam, int Ky)
         {
-           return  _db.TT_GiaBanBinhQuans.SingleOrDefault(item => item.Nam == Nam && item.Ky == Ky);
+            return _db.TT_GiaBanBinhQuans.SingleOrDefault(item => item.Nam == Nam && item.Ky == Ky);
         }
 
     }
