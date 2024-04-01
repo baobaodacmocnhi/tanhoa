@@ -59,42 +59,34 @@ namespace KTKS_DonKH.GUI.DonTu
             dgvDanhBo.AutoGenerateColumns = false;
             dgvLichSuNhanDon.AutoGenerateColumns = false;
             lbTruyThu.Text = "";
-
             DataTable dt = _cNhomDon.getDSGroup("DieuChinh");
             chkcmbDieuChinh.Properties.DataSource = dt;
             chkcmbDieuChinh.Properties.ValueMember = "ID";
             chkcmbDieuChinh.Properties.DisplayMember = "Name";
-
             dt = _cNhomDon.getDSGroup("KhieuNai");
             chkcmbKhieuNai.Properties.DataSource = dt;
             chkcmbKhieuNai.Properties.ValueMember = "ID";
             chkcmbKhieuNai.Properties.DisplayMember = "Name";
-
             dt = _cNhomDon.getDSGroup("SuCo");
             chkcmbDHN.Properties.DataSource = dt;
             chkcmbDHN.Properties.ValueMember = "ID";
             chkcmbDHN.Properties.DisplayMember = "Name";
-
             dt = _cNhomDon.getDSGroup("QuanLy");
             chkcmbQuanLy.Properties.DataSource = dt;
             chkcmbQuanLy.Properties.ValueMember = "ID";
             chkcmbQuanLy.Properties.DisplayMember = "Name";
-
             cmbPhongBanDoi.DataSource = _cPBD.GetDS();
             cmbPhongBanDoi.DisplayMember = "Name";
             cmbPhongBanDoi.ValueMember = "Name";
             cmbPhongBanDoi.SelectedIndex = -1;
-
             if (CTaiKhoan.Admin)
                 btnCapNhatHieuLuc.Visible = true;
             else
                 btnCapNhatHieuLuc.Visible = false;
-
             if (_MaDon != -1)
             {
                 txtMaDon.Text = _MaDon.ToString();
                 KeyPressEventArgs arg = new KeyPressEventArgs(Convert.ToChar(Keys.Enter));
-
                 txtMaDon_KeyPress(sender, arg);
             }
         }
@@ -116,7 +108,6 @@ namespace KTKS_DonKH.GUI.DonTu
             else
                 txtDinhMucHN.Text = "";
             dgvLichSuNhanDon.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo(entity.DANHBA);
-
             if (_cDonTu.checkExists_14ngay(entity.DANHBA) == true)
                 MessageBox.Show("Danh Bộ này có Đơn trong 14 ngày gần nhất", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             string str, TinhTrang = "";
@@ -201,10 +192,9 @@ namespace KTKS_DonKH.GUI.DonTu
                 {
                     tabControl.SelectTab("tabCongVan");
 
-                    foreach (DonTu_ChiTiet item in entity.DonTu_ChiTiets.ToList())
+                    foreach (DonTu_ChiTiet item in entity.DonTu_ChiTiets.OrderBy(o => o.STT).ToList())
                     {
                         dgvDanhBo.Rows.Insert(dgvDanhBo.RowCount - 1, 1);
-
                         dgvDanhBo["ID", dgvDanhBo.RowCount - 2].Value = item.ID;
                         dgvDanhBo["STT", dgvDanhBo.RowCount - 2].Value = item.STT;
                         dgvDanhBo["DanhBo", dgvDanhBo.RowCount - 2].Value = item.DanhBo;
@@ -240,7 +230,6 @@ namespace KTKS_DonKH.GUI.DonTu
                     txtSoCongVan.Text = entity.SoCongVan;
                     txtTongDB.Text = entity.TongDB.ToString();
                 }
-
                 if (entity.ID_NhomDon_PKH != null)
                 {
                     chkcmbDieuChinh.SetEditValue(entity.ID_NhomDon_PKH);
@@ -270,7 +259,6 @@ namespace KTKS_DonKH.GUI.DonTu
                 txtNoiDungKhachHang.Text = entity.Name_NhomDon_PKH;
                 txtNoiDungThuongVu.Text = entity.Name_NhomDon;
                 txtVanDeKhac.Text = entity.VanDeKhac;
-
                 chkCT_HopDongNganHang.Checked = entity.CT_HopDongNganHang;
                 chkCT_GiaiQuyet_Huy_DKCT.Checked = entity.CT_GiayBao;
                 chkCT_HDTN_CQN.Checked = entity.CT_HDTN_CQN;
@@ -289,11 +277,9 @@ namespace KTKS_DonKH.GUI.DonTu
                 //chkCT_STT_GXNTT.Checked = entity.CT_STT_GXNTT;
                 chkCT_GDKKD.Checked = entity.CT_GDKKD;
                 chkCT_GiayUyQuyen.Checked = entity.CT_HoNgheo;
-
                 chkCT_GC_SDSN.Checked = entity.CT_GC_SDSN;
                 //chkCT_GXN2SN.Checked = entity.CT_GXN2SN;
                 chkCT_GCNDTDHN.Checked = entity.CT_GCNDTDHN;
-
                 dgvLichSuNhanDon.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo(entity.DanhBo);
             }
             catch (Exception ex)

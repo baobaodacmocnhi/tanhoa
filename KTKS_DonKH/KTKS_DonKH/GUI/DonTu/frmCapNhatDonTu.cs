@@ -40,41 +40,34 @@ namespace KTKS_DonKH.GUI.DonTu
             dgvLichSuDonTu.AutoGenerateColumns = false;
             dgvLichSuDonTu_Update.AutoGenerateColumns = false;
             dgvLichSuNhanDon.AutoGenerateColumns = false;
-
             DataTable dt = _cNhomDon.getDS("DieuChinh");
             chkcmbDieuChinh.Properties.DataSource = dt;
             chkcmbDieuChinh.Properties.ValueMember = "ID";
             chkcmbDieuChinh.Properties.DisplayMember = "Name";
             chkcmbDieuChinh.Properties.DropDownRows = dt.Rows.Count + 1;
-
             dt = _cNhomDon.getDS("KhieuNai");
             chkcmbKhieuNai.Properties.DataSource = dt;
             chkcmbKhieuNai.Properties.ValueMember = "ID";
             chkcmbKhieuNai.Properties.DisplayMember = "Name";
             chkcmbKhieuNai.Properties.DropDownRows = dt.Rows.Count + 1;
-
             dt = _cNhomDon.getDS("SuCo");
             chkcmbDHN.Properties.DataSource = dt;
             chkcmbDHN.Properties.ValueMember = "ID";
             chkcmbDHN.Properties.DisplayMember = "Name";
             chkcmbDHN.Properties.DropDownRows = dt.Rows.Count + 1;
-
             dt = _cNhomDon.getDS("QuanLy");
             chkcmbQuanLy.Properties.DataSource = dt;
             chkcmbQuanLy.Properties.ValueMember = "ID";
             chkcmbQuanLy.Properties.DisplayMember = "Name";
             chkcmbQuanLy.Properties.DropDownRows = dt.Rows.Count + 1;
-
             cmbNoiChuyen.DataSource = _cNoiChuyen.GetDS("DonTuChuyen");
             cmbNoiChuyen.ValueMember = "ID";
             cmbNoiChuyen.DisplayMember = "Name";
             cmbNoiChuyen.SelectedIndex = -1;
-
             chkcmbNoiNhan.Properties.DataSource = _cNoiChuyen.GetDS("DonTuNhan");
             chkcmbNoiNhan.Properties.ValueMember = "ID";
             chkcmbNoiNhan.Properties.DisplayMember = "Name";
             //chkcmbNoiNhan.Properties.DropDownRows = dt.Rows.Count + 1;
-
         }
 
         public void LoadDonTu(LinQ.DonTu entity, DonTu_ChiTiet en_ChiTiet)
@@ -91,7 +84,6 @@ namespace KTKS_DonKH.GUI.DonTu
                     txtSoCongVan.Text = entity.SoCongVan;
                     txtTongDB.Text = entity.TongDB.ToString();
                 }
-
                 if (entity.ID_NhomDon_PKH != null && entity.ID_NhomDon_PKH.Contains("7"))
                     panel1.Visible = true;
                 else
@@ -133,7 +125,7 @@ namespace KTKS_DonKH.GUI.DonTu
                     tabControl.SelectTab("tabCongVan");
                     dgvDanhBo.Rows.Clear();
                     //dgvDanhBo.DataSource = entity.DonTu_ChiTiets.ToList();
-                    foreach (DonTu_ChiTiet item in entity.DonTu_ChiTiets.ToList())
+                    foreach (DonTu_ChiTiet item in entity.DonTu_ChiTiets.OrderBy(o => o.STT).ToList())
                     {
                         var index = dgvDanhBo.Rows.Add();
                         dgvDanhBo.Rows[index].Cells["ID_CongVan"].Value = item.ID;
@@ -159,7 +151,6 @@ namespace KTKS_DonKH.GUI.DonTu
                     }
                 }
                 loaddgv();
-
             }
             catch (Exception ex)
             {
@@ -172,7 +163,6 @@ namespace KTKS_DonKH.GUI.DonTu
             try
             {
                 txtMaDon.Text += "." + entity.STT.Value;
-
                 loaddgv();
             }
             catch (Exception ex)
@@ -240,7 +230,6 @@ namespace KTKS_DonKH.GUI.DonTu
             for (int i = 0; i < chkcmbNoiNhanKTXM.Properties.Items.Count; i++)
                 chkcmbNoiNhanKTXM.Properties.Items[i].CheckState = CheckState.Unchecked;
             dateChuyen.Value = en.NgayChuyen.Value;
-
             if (en.ID_NoiChuyen != null)
                 cmbNoiChuyen.SelectedValue = en.ID_NoiChuyen;
             else
@@ -251,7 +240,6 @@ namespace KTKS_DonKH.GUI.DonTu
 
             if (en.ID_KTXM != null)
                 chkcmbNoiNhanKTXM.SetEditValue(en.ID_KTXM);
-
             txtNoiDung_LichSu.Text = en.NoiDung;
         }
 
@@ -279,14 +267,12 @@ namespace KTKS_DonKH.GUI.DonTu
             {
                 chkcmbQuanLy.Properties.Items[i].CheckState = CheckState.Unchecked;
             }
-
             txtSoNK.Text = "";
             txtHieuLucKy.Text = "";
             txtDM.Text = "";
             txtNoiDungKhachHang.Text = "";
             txtNoiDungThuongVu.Text = "";
             txtVanDeKhac.Text = "";
-
             txtDanhBo.Text = "";
             txtHopDong.Text = "";
             txtDienThoai.Text = "";
@@ -295,11 +281,9 @@ namespace KTKS_DonKH.GUI.DonTu
             txtGiaBieu.Text = "";
             txtDinhMuc.Text = "";
             dgvDanhBo.DataSource = null;
-
             _dontu = null;
             _dontu_ChiTiet = null;
             _dontu_LichSu = null;
-
             dateChuyen.Value = DateTime.Now;
             cmbNoiChuyen.SelectedIndex = -1;
             for (int i = 0; i < chkcmbNoiNhan.Properties.Items.Count; i++)
@@ -349,7 +333,6 @@ namespace KTKS_DonKH.GUI.DonTu
                 {
                     _dontu = _cDonTu.get(int.Parse(MaDon));
                 }
-
                 if (_dontu != null)
                 {
                     //if (_dontu.SoCongVan != null && _dontu_ChiTiet == null)
