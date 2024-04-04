@@ -40,12 +40,8 @@ namespace BauCu
         public DataTable LINQToDataTable<T>(IEnumerable<T> varlist)
         {
             DataTable dtReturn = new DataTable();
-
-            // column names 
             PropertyInfo[] oProps = null;
-
             if (varlist == null) return dtReturn;
-
             foreach (T rec in varlist)
             {
                 // Use reflection to get property names, to create table, Only first time, others will follow 
@@ -55,25 +51,20 @@ namespace BauCu
                     foreach (PropertyInfo pi in oProps)
                     {
                         Type colType = pi.PropertyType;
-
                         if ((colType.IsGenericType) && (colType.GetGenericTypeDefinition()
                         == typeof(Nullable<>)))
                         {
                             colType = colType.GetGenericArguments()[0];
                         }
-
                         dtReturn.Columns.Add(new DataColumn(pi.Name, colType));
                     }
                 }
-
                 DataRow dr = dtReturn.NewRow();
-
                 foreach (PropertyInfo pi in oProps)
                 {
                     dr[pi.Name] = pi.GetValue(rec, null) == null ? DBNull.Value : pi.GetValue
                     (rec, null);
                 }
-
                 dtReturn.Rows.Add(dr);
             }
             return dtReturn;
@@ -210,8 +201,6 @@ namespace BauCu
                 else
                     if (txtTyLePhieuKhongTinNhiem.Text.Trim() != "0")
                         txtTyLePhieuKhongTinNhiem.Text = Math.Round((double.Parse(txtTyLeBoPhieu.Text.Trim()) - double.Parse(txtTyLeHopLe.Text.Trim())), 2).ToString();
-                ///
-
                 var query = from itemBC in db.KIEMPHIEU_BAUCUs
                             join itemUV in db.UNGVIENs on itemBC.ID_UngCu equals itemUV.ID
                             join itemCD in db.DSCODONG_THAMDUs on itemBC.STTCD equals itemCD.STTCD
@@ -226,9 +215,6 @@ namespace BauCu
                                 SoPhieu = itemBC.TONGCD,
                             };
                 dgvBauCu.DataSource = LINQToDataTable(query);
-
-                ///
-
                 var query2 = from itemBC in db.KIEMPHIEU_BAUCUs
                              where itemBC.UNGVIEN.LoaiBC == LoaiBC
                              group itemBC by itemBC.ID_UngCu into itemGroup
@@ -241,7 +227,6 @@ namespace BauCu
                                  Dat = Math.Round(((double)(itemGroup.Sum(item => item.TONGCD.Value)) / (double)(db.DSCODONG_THAMDUs.Sum(item => item.TONGCD.Value)) * 100), 2, MidpointRounding.AwayFromZero),
                              };
                 dgvUngVien_KQ.DataSource = LINQToDataTable(query2);
-
                 //tính tròn 100%
                 //double Sum = 0;
                 //foreach (DataGridViewRow item in dgvUngVien_KQ.Rows)
@@ -256,9 +241,6 @@ namespace BauCu
                 //    {
                 //        item.Cells["Dat_KQ"].Value = Math.Round(200 - Sum - double.Parse(txtTyLeKhongBoPhieu.Text.Trim()) - double.Parse(txtTyLeKhongHopLe.Text.Trim()) - double.Parse(txtTyLePhieuKhongTinNhiem.Text.Trim()), 2);
                 //    }
-
-                ///
-
                 var query3 = from item in db.KHONGHOPLEs
                              where item.LoaiBC == LoaiBC
                              select new
@@ -269,9 +251,6 @@ namespace BauCu
                                  SoPhieu = item.TONGCD.Value * TongUV,
                              };
                 dgvKhongHopLe.DataSource = LINQToDataTable(query3);
-
-                ///
-
                 string sql2 = "select sttcd,tencd,sophieu=tongcd*(" + TongUV + ") from DSCODONG_THAMDU where MACD not in (select distinct MACD from KHONGHOPLE WHERE LoaiBC=" + LoaiBC + " ) AND  MACD not in (select distinct MACD from KIEMPHIEU_BAUCU a,UNGVIEN b where a.ID_UngCu=b.ID and b.LoaiBC=" + LoaiBC + ")";
                 dgvChuaBoPhieu.DataSource = ExecuteQuery_SqlDataAdapter_DataTable(sql2);
             }
@@ -424,7 +403,6 @@ namespace BauCu
                     MessageBox.Show("Cổ đông này đã có trong không hợp lệ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
                 int sophieu = 0;
                 foreach (DataGridViewRow item in dgvUngVien.Rows)
                     if (item.Cells["SoPhieu"].Value != null && item.Cells["SoPhieu"].Value.ToString().Trim() != "")
@@ -450,7 +428,6 @@ namespace BauCu
                         db.KIEMPHIEU_BAUCUs.InsertOnSubmit(entity);
                         db.SubmitChanges();
                     }
-
                 LoadDSBauCu();
                 txtSTTCD.Focus();
             }
@@ -535,7 +512,6 @@ namespace BauCu
                     MessageBox.Show("Đã bỏ phiếu rồi, Không làm được nữa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
                 db.KHONGHOPLEs.InsertOnSubmit(entity);
                 db.SubmitChanges();
                 LoadDSBauCu();
@@ -567,7 +543,7 @@ namespace BauCu
                 LoadDSBauCu();
             }
         }
-
+        
         protected static string _connectionString;  // Chuỗi kết nối
         protected SqlConnection connection;         // Đối tượng kết nối
         protected SqlDataAdapter adapter;           // Đối tượng adapter chứa dữ liệu
@@ -658,13 +634,11 @@ namespace BauCu
                 OpenFileDialog dialog = new OpenFileDialog();
                 dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
                 dialog.Multiselect = false;
-
                 if (dialog.ShowDialog() == DialogResult.OK)
                     if (MessageBox.Show("Bạn có chắc chắn Thêm?", "Xác nhận xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
                         CExcel fileExcel = new CExcel(dialog.FileName);
                         DataTable dtExcel = fileExcel.GetDataTable("select * from [Sheet1$]");
-
                         for (int i =0; i < dtExcel.Rows.Count; i++)
                         {
                             DSCODONG en = new DSCODONG();
@@ -710,13 +684,9 @@ namespace BauCu
         {
             if (String.IsNullOrEmpty(s))
                 return s;
-
             string result = "";
-
             //lấy danh sách các từ  
-
             string[] words = s.Split(' ');
-
             foreach (string word in words)
             {
                 // từ nào là các khoảng trắng thừa thì bỏ  
@@ -727,7 +697,6 @@ namespace BauCu
                     else
                         result += word.ToUpper() + " ";
                 }
-
             }
             return result.Trim();
         }
@@ -736,18 +705,14 @@ namespace BauCu
         {
             DataTable dt = ExecuteQuery_SqlDataAdapter_DataTable("select * from DSCODONG");
             dsReport dsReport = new dsReport();
-
             foreach (DataRow item in dt.Rows)
             {
                 DataRow dr = dsReport.Tables["CoDong"].NewRow();
-
                 dr["HoTen"] = item["TENCD"];
                 dr["CMND"] = item["CMND"];
                 dr["NgayCap"] = item["NgayCap"];
-
                 dsReport.Tables["CoDong"].Rows.Add(dr);
             }
-
             rptDSCoDong rpt = new rptDSCoDong();
             rpt.SetDataSource(dsReport);
             frmShowReport frm = new frmShowReport(rpt);
@@ -764,7 +729,5 @@ namespace BauCu
                         break;
                 }
         }
-
-
     }
 }

@@ -160,6 +160,14 @@ namespace DocSo_PC.GUI.MaHoa
                                     else
                                         ctdcbd.ThongTin += ", Giá Biểu";
                                 }
+                                if (item.Cells["MaQuanPhuongMoi"].Value != null && item.Cells["MaQuanPhuongMoi"].Value.ToString() != "")
+                                {
+                                    ctdcbd.MaQuanPhuong_BD = item.Cells["MaQuanPhuongMoi"].Value.ToString();
+                                    if (ctdcbd.ThongTin == "")
+                                        ctdcbd.ThongTin = "Mã Quận Phường";
+                                    else
+                                        ctdcbd.ThongTin += ", Mã Quận Phường";
+                                }
                                 ctdcbd.HieuLucKy = item.Cells["HieuLucKy"].Value.ToString();
                                 ctdcbd.CongDung = item.Cells["GhiChu"].Value.ToString();
                                 ctdcbd.PhieuDuocKy = true;
@@ -596,13 +604,15 @@ namespace DocSo_PC.GUI.MaHoa
                     if (_dcbd != null)
                         if (dgvDCBD.Columns[e.ColumnIndex].Name == "GhiChu_DS" || dgvDCBD.Columns[e.ColumnIndex].Name == "GiaBieu_DS"
                             || dgvDCBD.Columns[e.ColumnIndex].Name == "GiaBieu_BD" || dgvDCBD.Columns[e.ColumnIndex].Name == "HieuLucKy_DS"
-                            || dgvDCBD.Columns[e.ColumnIndex].Name == "DiaChi_BD_DS")
+                            || dgvDCBD.Columns[e.ColumnIndex].Name == "DiaChi_BD_DS" || dgvDCBD.Columns[e.ColumnIndex].Name == "MaQuanPhuong_BD")
                         {
                             _dcbd.GiaBieu = int.Parse(dgvDCBD["GiaBieu_DS", e.RowIndex].Value.ToString());
                             if (dgvDCBD["GiaBieu_BD", e.RowIndex].Value != null && dgvDCBD["GiaBieu_BD", e.RowIndex].Value.ToString() != "")
                                 _dcbd.GiaBieu_BD = int.Parse(dgvDCBD["GiaBieu_BD", e.RowIndex].Value.ToString());
                             if (dgvDCBD["DiaChi_BD_DS", e.RowIndex].Value != null && dgvDCBD["DiaChi_BD_DS", e.RowIndex].Value.ToString() != "")
                                 _dcbd.DiaChi_BD = dgvDCBD["DiaChi_BD_DS", e.RowIndex].Value.ToString();
+                            if (dgvDCBD["MaQuanPhuong_BD", e.RowIndex].Value != null && dgvDCBD["MaQuanPhuong_BD", e.RowIndex].Value.ToString() != "")
+                                _dcbd.MaQuanPhuong_BD = dgvDCBD["MaQuanPhuong_BD", e.RowIndex].Value.ToString();
                             _dcbd.HieuLucKy = dgvDCBD["HieuLucKy_DS", e.RowIndex].Value.ToString();
                             _dcbd.CongDung = dgvDCBD["GhiChu_DS", e.RowIndex].Value.ToString();
                             if (_cDCBD.Sua(_dcbd))
