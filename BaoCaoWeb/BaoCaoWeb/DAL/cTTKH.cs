@@ -19,7 +19,7 @@ namespace BaoCaoWeb.DAL
         {
             try
             {
-                _connectionString = CGlobalVariable.TrungTamKhachHangWFH;
+                _connectionString = CGlobalVariable.TrungTamKhachHang;
                 connection = new SqlConnection(_connectionString);
             }
             catch (Exception)

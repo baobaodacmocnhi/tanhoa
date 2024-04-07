@@ -2250,7 +2250,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void txtMaCT_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13)
+            if (e.KeyChar == 13 || e.KeyChar == (char)Keys.Tab)
             {
                 DataTable dt = new DataTable();
                 if (_cChungTu.CheckExist_CT(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString())))
