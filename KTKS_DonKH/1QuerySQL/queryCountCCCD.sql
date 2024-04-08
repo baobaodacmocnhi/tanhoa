@@ -38,7 +38,7 @@ and hd.NAM=2023 and hd.ky=10 and t2.DanhBo=hd.DANHBA and hd.DM>=40
 select Quan=(select TENQUAN from CAPNUOCTANHOA.dbo.QUAN where MAQUAN=Quan)
 ,Phuong=(select TENPHUONG from CAPNUOCTANHOA.dbo.PHUONG where MAQUAN=Quan and MAPHUONG=PHUONG),* from HOADON_TA.dbo.HOADON hd
 where DanhBa not in (select distinct DanhBo from KTKS_DonKH.dbo.ChungTu_ChiTiet where MaLCT=15 and cat=0)
-and hd.NAM=2024 and hd.ky=2 and hd.DM>=4 and hd.DM<=36 and DANHBA not  in (select distinct DanhBo from TRUNGTAMKHACHHANG.dbo.Zalo_QuanTam a,TRUNGTAMKHACHHANG.dbo.Zalo_DangKy b where a.IDZalo=b.IDZalo and a.Follow=1)
+and hd.NAM=2024 and hd.ky=3 and hd.DM>=32 and hd.DM<=36 and DANHBA not  in (select distinct DanhBo from TRUNGTAMKHACHHANG.dbo.Zalo_QuanTam a,TRUNGTAMKHACHHANG.dbo.Zalo_DangKy b where a.IDZalo=b.IDZalo and a.Follow=1)
 
 select hd.DM,Tong=count(hd.DANHBA)
 from HOADON_TA.dbo.HOADON hd

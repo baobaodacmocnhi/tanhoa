@@ -1693,7 +1693,11 @@ namespace KTKS_DonKH.GUI.DonTu
                         _hoadon = _cThuTien.GetMoiNhat(_dontu.DonTu_ChiTiets.SingleOrDefault().DanhBo);
                     else
                         _hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim().Replace(" ", ""));
-                    byte[] bytes = _wsEContract.renderEContract(txtHopDong.Text.Trim(), txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now, txtHoTenMoi.Text.Trim(), txtCCCD.Text.Trim(), txtNgayCap.Text.Trim(), txtDCThuongTru.Text.Trim(), txtDCHienNay.Text.Trim(), txtDienThoaiMoi.Text.Trim(), txtFax.Text.Trim(), txtEmail.Text.Trim(), txtSTK.Text.Trim(), txtBank.Text.Trim(), txtMST.Text.Trim(), _hoadon.CoDH, txtDCLapDat.Text.Trim(), "", "tanho@2022", out error);
+                    byte[] bytes = null;
+                    if (_dontu.Name_NhomDon_PKH.Contains("Thông tin khách hàng"))
+                        bytes = _wsEContract.renderEContract(txtHopDong.Text.Trim(), txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now, txtHoTenMoi.Text.Trim(), txtCCCD.Text.Trim(), txtNgayCap.Text.Trim(), txtDCThuongTru.Text.Trim(), txtDCHienNay.Text.Trim(), txtDienThoaiMoi.Text.Trim(), txtFax.Text.Trim(), txtEmail.Text.Trim(), txtSTK.Text.Trim(), txtBank.Text.Trim(), txtMST.Text.Trim(), _hoadon.CoDH, txtDCLapDat.Text.Trim(), "", "tanho@2022", out error);
+                    else
+                        bytes = _wsEContract.renderEContract(txtHopDong.Text.Trim(), txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now, txtHoTenMoi.Text.Trim(), txtCCCD.Text.Trim(), txtNgayCap.Text.Trim(), txtDCThuongTru.Text.Trim(), txtDCHienNay.Text.Trim(), txtDienThoaiMoi.Text.Trim(), txtFax.Text.Trim(), txtEmail.Text.Trim(), txtSTK.Text.Trim(), txtBank.Text.Trim(), txtMST.Text.Trim(), _hoadon.CoDH, txtDCLapDat.Text.Trim(), DateTime.Now.ToString("dd/MM/yyyy"), "tanho@2022", out error);
                     if (error == "")
                         _cDonTu.viewPDF(1, bytes);
                     else
@@ -1864,7 +1868,7 @@ namespace KTKS_DonKH.GUI.DonTu
                         //else
                         //    MessageBox.Show("Thất bại " + error, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         if (!_dontu.Name_NhomDon_PKH.Contains("Thông tin khách hàng"))
-                            result = _wsEContract.duyetKhongKy(_cTaiKhoan.ExecuteQuery_ReturnOneValue("select top 1 IDEContract from TRUNGTAMKHACHHANG.dbo.Zalo_EContract_ChiTiet where MaDon='" + _dontu.MaDon + "' and Huy=0 and HieuLuc=0 order by CreateDate desc").ToString(), out error);
+                            result = _wsEContract.editEContract_NgayHieuLuc(_cTaiKhoan.ExecuteQuery_ReturnOneValue("select top 1 IDEContract from TRUNGTAMKHACHHANG.dbo.Zalo_EContract_ChiTiet where MaDon='" + _dontu.MaDon + "' and Huy=0 and HieuLuc=0 order by CreateDate desc").ToString(), "", "tanho@2022", out error);
                         if (result)
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         else

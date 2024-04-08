@@ -45,6 +45,8 @@ namespace KTKS_DonKH.wrEContract {
         
         private System.Threading.SendOrPostCallback editEContractOperationCompleted;
         
+        private System.Threading.SendOrPostCallback editEContract_NgayHieuLucOperationCompleted;
+        
         private System.Threading.SendOrPostCallback editEContract2OperationCompleted;
         
         private System.Threading.SendOrPostCallback cancelEContractOperationCompleted;
@@ -116,6 +118,9 @@ namespace KTKS_DonKH.wrEContract {
         
         /// <remarks/>
         public event editEContractCompletedEventHandler editEContractCompleted;
+        
+        /// <remarks/>
+        public event editEContract_NgayHieuLucCompletedEventHandler editEContract_NgayHieuLucCompleted;
         
         /// <remarks/>
         public event editEContract2CompletedEventHandler editEContract2Completed;
@@ -578,6 +583,40 @@ namespace KTKS_DonKH.wrEContract {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/editEContract_NgayHieuLuc", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool editEContract_NgayHieuLuc(string MaDon, string SHS, string checksum, out string strResponse) {
+            object[] results = this.Invoke("editEContract_NgayHieuLuc", new object[] {
+                        MaDon,
+                        SHS,
+                        checksum});
+            strResponse = ((string)(results[1]));
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void editEContract_NgayHieuLucAsync(string MaDon, string SHS, string checksum) {
+            this.editEContract_NgayHieuLucAsync(MaDon, SHS, checksum, null);
+        }
+        
+        /// <remarks/>
+        public void editEContract_NgayHieuLucAsync(string MaDon, string SHS, string checksum, object userState) {
+            if ((this.editEContract_NgayHieuLucOperationCompleted == null)) {
+                this.editEContract_NgayHieuLucOperationCompleted = new System.Threading.SendOrPostCallback(this.OneditEContract_NgayHieuLucOperationCompleted);
+            }
+            this.InvokeAsync("editEContract_NgayHieuLuc", new object[] {
+                        MaDon,
+                        SHS,
+                        checksum}, this.editEContract_NgayHieuLucOperationCompleted, userState);
+        }
+        
+        private void OneditEContract_NgayHieuLucOperationCompleted(object arg) {
+            if ((this.editEContract_NgayHieuLucCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.editEContract_NgayHieuLucCompleted(this, new editEContract_NgayHieuLucCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/editEContract2", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public bool editEContract2(string MaDon, string SHS, string checksum) {
             object[] results = this.Invoke("editEContract2", new object[] {
@@ -986,6 +1025,40 @@ namespace KTKS_DonKH.wrEContract {
         private object[] results;
         
         internal editEContractCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+        
+        /// <remarks/>
+        public string strResponse {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[1]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    public delegate void editEContract_NgayHieuLucCompletedEventHandler(object sender, editEContract_NgayHieuLucCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class editEContract_NgayHieuLucCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal editEContract_NgayHieuLucCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

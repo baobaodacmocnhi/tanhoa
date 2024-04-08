@@ -32,7 +32,7 @@ namespace ThuTien.GUI.DongNuoc
         CLenhHuy _cLenhHuy = new CLenhHuy();
         CHoaDon _cHoaDon = new CHoaDon();
         CThuongVu _cKinhDoanh = new CThuongVu();
-
+        CDHN _cDHN = new CDHN();
         DataRowView _selectedRow = null;
 
         public frmGiaoTBDongNuoc2020()
@@ -111,13 +111,11 @@ namespace ThuTien.GUI.DongNuoc
                         ds = _cDongNuoc.GetDSByCreateByCreateDates(CNguoiDung.TenTo, int.Parse(cmbNhanVienLap.SelectedValue.ToString()), dateTu.Value, dateDen.Value);
             }
             gridControl.DataSource = ds.Tables["DongNuoc"];
-
             ///Kiểm Tra Tình Trạng, Giải Trách hết Hóa Đơn trong Thông Báo Đóng Nước mới tính
             for (int i = 0; i < gridViewDN.DataRowCount; i++)
             {
                 DataRow row = gridViewDN.GetDataRow(i);
                 DataRow[] childRows = row.GetChildRows("Chi Tiết Đóng Nước");
-
                 string TinhTrang = "Tồn";
                 //if (_cDongNuoc.CheckExist_KQDongNuoc(int.Parse(row["MaDN"].ToString()), dateDen.Value.Date))
                 if (row["MaKQDN"].ToString() != "")
@@ -149,6 +147,13 @@ namespace ThuTien.GUI.DongNuoc
                             TinhTrang = "Thu Hộ";
                 }
                 gridViewDN.SetRowCellValue(i, "TinhTrang", TinhTrang);
+                TB_DULIEUKHACHHANG ttkh = _cDHN.get(gridViewDN.GetRowCellValue(i, "DanhBo").ToString());
+                if (ttkh != null)
+                {
+                    gridViewDN.SetRowCellValue(i, "ViTriDHN", ttkh.VITRIDHN);
+                    gridViewDN.SetRowCellValue(i, "ViTriDHN_Hop", ttkh.ViTriDHN_Hop);
+                    gridViewDN.SetRowCellValue(i, "ViTriDHN_Ngoai", ttkh.ViTriDHN_Ngoai);
+                }
             }
         }
 

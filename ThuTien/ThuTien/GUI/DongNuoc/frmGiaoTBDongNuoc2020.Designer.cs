@@ -105,6 +105,11 @@
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.btnXoaLenh = new System.Windows.Forms.Button();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCTDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDN)).BeginInit();
@@ -112,6 +117,8 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).BeginInit();
             this.SuspendLayout();
             // 
             // gridViewCTDN
@@ -222,8 +229,10 @@
             this.gridControl.MainView = this.gridViewDN;
             this.gridControl.Name = "gridControl";
             this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemCheckEdit1});
-            this.gridControl.Size = new System.Drawing.Size(1068, 590);
+            this.repositoryItemCheckEdit1,
+            this.repositoryItemCheckEdit2,
+            this.repositoryItemCheckEdit3});
+            this.gridControl.Size = new System.Drawing.Size(1236, 590);
             this.gridControl.TabIndex = 26;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewDN,
@@ -247,7 +256,10 @@
             this.TinhTrang,
             this.CreateBy,
             this.MaNV_DongNuoc,
-            this.ThemHoaDon});
+            this.ThemHoaDon,
+            this.gridColumn2,
+            this.gridColumn5,
+            this.gridColumn6});
             this.gridViewDN.GridControl = this.gridControl;
             this.gridViewDN.IndicatorWidth = 41;
             this.gridViewDN.Name = "gridViewDN";
@@ -472,7 +484,7 @@
             // cmbNhanVienGiao
             // 
             this.cmbNhanVienGiao.FormattingEnabled = true;
-            this.cmbNhanVienGiao.Location = new System.Drawing.Point(1086, 107);
+            this.cmbNhanVienGiao.Location = new System.Drawing.Point(1254, 107);
             this.cmbNhanVienGiao.Name = "cmbNhanVienGiao";
             this.cmbNhanVienGiao.Size = new System.Drawing.Size(118, 21);
             this.cmbNhanVienGiao.TabIndex = 28;
@@ -480,7 +492,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1083, 91);
+            this.label2.Location = new System.Drawing.Point(1251, 91);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(85, 13);
             this.label2.TabIndex = 27;
@@ -488,7 +500,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(1210, 105);
+            this.btnThem.Location = new System.Drawing.Point(1378, 105);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 23);
             this.btnThem.TabIndex = 29;
@@ -498,7 +510,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(1210, 163);
+            this.btnXoa.Location = new System.Drawing.Point(1378, 163);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 31;
@@ -508,7 +520,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(1210, 134);
+            this.btnSua.Location = new System.Drawing.Point(1378, 134);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 30;
@@ -529,7 +541,7 @@
             // 
             // btnInDSTBNguoiGiao
             // 
-            this.btnInDSTBNguoiGiao.Location = new System.Drawing.Point(1086, 207);
+            this.btnInDSTBNguoiGiao.Location = new System.Drawing.Point(1254, 207);
             this.btnInDSTBNguoiGiao.Name = "btnInDSTBNguoiGiao";
             this.btnInDSTBNguoiGiao.Size = new System.Drawing.Size(121, 23);
             this.btnInDSTBNguoiGiao.TabIndex = 33;
@@ -539,7 +551,7 @@
             // 
             // btnInDSTBTonNguoiGiao
             // 
-            this.btnInDSTBTonNguoiGiao.Location = new System.Drawing.Point(1086, 236);
+            this.btnInDSTBTonNguoiGiao.Location = new System.Drawing.Point(1254, 236);
             this.btnInDSTBTonNguoiGiao.Name = "btnInDSTBTonNguoiGiao";
             this.btnInDSTBTonNguoiGiao.Size = new System.Drawing.Size(145, 23);
             this.btnInDSTBTonNguoiGiao.TabIndex = 34;
@@ -573,7 +585,7 @@
             this.chkChuKy.AutoSize = true;
             this.chkChuKy.Checked = true;
             this.chkChuKy.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkChuKy.Location = new System.Drawing.Point(1086, 38);
+            this.chkChuKy.Location = new System.Drawing.Point(1254, 38);
             this.chkChuKy.Name = "chkChuKy";
             this.chkChuKy.Size = new System.Drawing.Size(76, 17);
             this.chkChuKy.TabIndex = 96;
@@ -582,7 +594,7 @@
             // 
             // btnInDSTBTonThucTeNguoiGiao
             // 
-            this.btnInDSTBTonThucTeNguoiGiao.Location = new System.Drawing.Point(1086, 265);
+            this.btnInDSTBTonThucTeNguoiGiao.Location = new System.Drawing.Point(1254, 265);
             this.btnInDSTBTonThucTeNguoiGiao.Name = "btnInDSTBTonThucTeNguoiGiao";
             this.btnInDSTBTonThucTeNguoiGiao.Size = new System.Drawing.Size(190, 23);
             this.btnInDSTBTonThucTeNguoiGiao.TabIndex = 97;
@@ -605,7 +617,7 @@
             this.chkCoTenNguoiKy.AutoSize = true;
             this.chkCoTenNguoiKy.Checked = true;
             this.chkCoTenNguoiKy.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkCoTenNguoiKy.Location = new System.Drawing.Point(1086, 61);
+            this.chkCoTenNguoiKy.Location = new System.Drawing.Point(1254, 61);
             this.chkCoTenNguoiKy.Name = "chkCoTenNguoiKy";
             this.chkCoTenNguoiKy.Size = new System.Drawing.Size(107, 17);
             this.chkCoTenNguoiKy.TabIndex = 99;
@@ -616,7 +628,7 @@
             // 
             this.radA4.AutoSize = true;
             this.radA4.Checked = true;
-            this.radA4.Location = new System.Drawing.Point(1204, 37);
+            this.radA4.Location = new System.Drawing.Point(1372, 37);
             this.radA4.Name = "radA4";
             this.radA4.Size = new System.Drawing.Size(38, 17);
             this.radA4.TabIndex = 100;
@@ -627,7 +639,7 @@
             // radA5
             // 
             this.radA5.AutoSize = true;
-            this.radA5.Location = new System.Drawing.Point(1204, 60);
+            this.radA5.Location = new System.Drawing.Point(1372, 60);
             this.radA5.Name = "radA5";
             this.radA5.Size = new System.Drawing.Size(38, 17);
             this.radA5.TabIndex = 101;
@@ -641,7 +653,7 @@
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.cmbToCapNhat);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Location = new System.Drawing.Point(1086, 326);
+            this.groupBox1.Location = new System.Drawing.Point(1254, 326);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(140, 130);
             this.groupBox1.TabIndex = 102;
@@ -760,14 +772,14 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(1309, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(1562, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 666);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1309, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1562, 0);
             // 
             // barDockControlLeft
             // 
@@ -780,7 +792,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1309, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(1562, 0);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 666);
             // 
             // barButtonItem1
@@ -805,7 +817,7 @@
             // 
             // btnXoaLenh
             // 
-            this.btnXoaLenh.Location = new System.Drawing.Point(1086, 163);
+            this.btnXoaLenh.Location = new System.Drawing.Point(1254, 163);
             this.btnXoaLenh.Name = "btnXoaLenh";
             this.btnXoaLenh.Size = new System.Drawing.Size(75, 23);
             this.btnXoaLenh.TabIndex = 115;
@@ -813,12 +825,52 @@
             this.btnXoaLenh.UseVisualStyleBackColor = true;
             this.btnXoaLenh.Click += new System.EventHandler(this.btnXoaLenh_Click);
             // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Ngoài";
+            this.gridColumn2.ColumnEdit = this.repositoryItemCheckEdit2;
+            this.gridColumn2.FieldName = "ViTriDHN_Ngoai";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 13;
+            this.gridColumn2.Width = 50;
+            // 
+            // repositoryItemCheckEdit2
+            // 
+            this.repositoryItemCheckEdit2.AutoHeight = false;
+            this.repositoryItemCheckEdit2.Caption = "Check";
+            this.repositoryItemCheckEdit2.Name = "repositoryItemCheckEdit2";
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.Caption = "Hộp";
+            this.gridColumn5.ColumnEdit = this.repositoryItemCheckEdit3;
+            this.gridColumn5.FieldName = "ViTriDHN_Hop";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 14;
+            this.gridColumn5.Width = 50;
+            // 
+            // repositoryItemCheckEdit3
+            // 
+            this.repositoryItemCheckEdit3.AutoHeight = false;
+            this.repositoryItemCheckEdit3.Caption = "Check";
+            this.repositoryItemCheckEdit3.Name = "repositoryItemCheckEdit3";
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "Vị Trí";
+            this.gridColumn6.FieldName = "ViTriDHN";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 15;
+            // 
             // frmGiaoTBDongNuoc2020
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1309, 666);
+            this.ClientSize = new System.Drawing.Size(1562, 666);
             this.Controls.Add(this.btnXoaLenh);
             this.Controls.Add(this.btnExcelTon);
             this.Controls.Add(this.btnInTBTrang);
@@ -864,6 +916,8 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -946,5 +1000,10 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private System.Windows.Forms.Button btnXoaLenh;
         private DevExpress.XtraGrid.Columns.GridColumn SoLuong;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
     }
 }

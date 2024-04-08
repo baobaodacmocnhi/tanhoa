@@ -392,6 +392,9 @@ namespace ThuTien.DAL.DongNuoc
                                 TongCongLenh = itemDN.TT_CTDongNuocs.Sum(item => item.TongCong),
                                 MaKQDN = itemtableKQ == null ? "" : itemtableKQ.MaKQDN.ToString(),
                                 SoLuong = itemDN.TT_CTDongNuocs.Count(),
+                                ViTriDHN = "",
+                                ViTriDHN_Hop = false,
+                                ViTriDHN_Ngoai = false,
                             };
             DataTable dtDongNuoc = new DataTable();
             dtDongNuoc = LINQToDataTable(queryDN);
@@ -453,7 +456,7 @@ namespace ThuTien.DAL.DongNuoc
             return LINQToDataTable(query.Distinct());
         }
 
-        public DataTable GetDSCTDongNuocTon(DateTime NgayKiemTra,int IDPhong)
+        public DataTable GetDSCTDongNuocTon(DateTime NgayKiemTra, int IDPhong)
         {
             var query = from itemCT in _db.TT_CTDongNuocs
                         join itemDN in _db.TT_DongNuocs on itemCT.MaDN equals itemDN.MaDN
@@ -1415,7 +1418,7 @@ namespace ThuTien.DAL.DongNuoc
             return ExecuteQuery_DataTable(sql);
         }
 
-        public DataTable GetBaoCaoTongHop_ChiTiet(DateTime FromDate, DateTime ToDate,int IDPhong)
+        public DataTable GetBaoCaoTongHop_ChiTiet(DateTime FromDate, DateTime ToDate, int IDPhong)
         {
             string sql = "declare @FromDate date;"
                         + " declare @ToDate date;"
@@ -1534,7 +1537,7 @@ namespace ThuTien.DAL.DongNuoc
             return ExecuteQuery_DataTable(sql);
         }
 
-        public DataTable GetBaoCaoTongHop_DanhSach(DateTime FromDate, DateTime ToDate,int IDPhong)
+        public DataTable GetBaoCaoTongHop_DanhSach(DateTime FromDate, DateTime ToDate, int IDPhong)
         {
             string sql = "declare @FromDate date;"
                         + " declare @ToDate date;"
