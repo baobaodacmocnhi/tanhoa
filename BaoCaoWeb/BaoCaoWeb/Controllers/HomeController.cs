@@ -25,15 +25,16 @@ namespace BaoCaoWeb.Controllers
             DataTable dt = _cDHN.ExecuteQuery_DataTable("declare @Nam int=" + enTT.NamPresent
                     + " select SUM(TieuThuMoi), (select SanLuong from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Nước tiêu thụ (m3)','ChiTietSanLuong' from DocSoTH.dbo.DocSo where Nam = @Nam"
                     + " union all"
-                    + " select SUM(GIABAN), (select DoanhThu from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Doanh thu tiền nước (đồng)','ChiTietDoanhThu' from HOADON_TA.dbo.HOADON where Nam = @Nam"
+                    + " select SUM(GIABAN)-SUM(GIABAN_DC), (select DoanhThu from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Doanh thu tiền nước (đồng)','ChiTietDoanhThu' from HOADON_TA.dbo.HOADON hd"
+                    + " left join HOADON_TA.dbo.DIEUCHINH_HD dc on hd.ID_HOADON = dc.FK_HOADON where Nam = @Nam"
                     + " union all"
                     + " select SUM(GiaBanBinhQuan) / COUNT(*), (select GiaBanBinhQuan from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Giá bán bình quân (đồng)','ChiTietGiaBanBinhQuan' from HOADON_TA.dbo.TT_GiaBanBinhQuan where Nam = @Nam"
                     + " union all"
                     + " select COUNT(*), (select GanMoi from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Gắn mới ĐHN (cái)','' from CAPNUOCTANHOA.dbo.TB_GANMOI where YEAR(CREATEDATE) = @Nam"
                     + " union all"
-                    + " select COUNT(*), (select ThayDHNNho from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Thay ĐHN cỡ nhỏ (cái)','' from CAPNUOCTANHOA.dbo.TB_THAYDHN where YEAR(HCT_CREATEDATE) = @Nam and DHN_CODH<= 25"
+                    + " select COUNT(*), (select ThayDHNNho from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Thay ĐHN cỡ nhỏ (cái)','' from CAPNUOCTANHOA.dbo.TB_THAYDHN where HCT_SOTHANGAN is not null and YEAR(HCT_CREATEDATE) = @Nam and DHN_CODH<= 25"
                     + " union all"
-                    + " select COUNT(*), (select ThayDHNLon from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Thay ĐHN cỡ lớn (cái)','' from CAPNUOCTANHOA.dbo.TB_THAYDHN where YEAR(HCT_CREATEDATE) = @Nam and DHN_CODH> 25"
+                    + " select COUNT(*), (select ThayDHNLon from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Thay ĐHN cỡ lớn (cái)','' from CAPNUOCTANHOA.dbo.TB_THAYDHN where HCT_SOTHANGAN is not null and YEAR(HCT_CREATEDATE) = @Nam and DHN_CODH> 25"
                     + " union all"
                     + " select 0, (select TyLeThatThoatNuoc from TRUNGTAMKHACHHANG.dbo.BC_KeHoach where Nam = @Nam),N'Tỷ lệ thất thoát thất thu (%)','ChiTietThatThoatNuoc'");
             for (int i = 0; i < dt.Rows.Count; i++)

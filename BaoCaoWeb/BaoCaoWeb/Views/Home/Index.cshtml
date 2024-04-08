@@ -142,25 +142,25 @@
                                                     @if (@item.TyLe <= 25)
                                                     {
                                                         <div class="progress-bar" role="progressbar"
-                                                             style="width:@item.TyLe%; background-color: red" aria-valuenow="100" aria-valuemin="0"
+                                                             style="width:@item.TyLe.ToString().Replace(",", ".")% background-color: red" aria-valuenow="@item.TyLe" aria-valuemin="0"
                                                              aria-valuemax="100"><b style="color:Blue">@item.TyLe.ToString().Replace(".", ",")%</b></div>
                                                     }
                                                     else if (@item.TyLe <= 50)
                                                     {
                                                         <div class="progress-bar" role="progressbar"
-                                                             style="width:@item.TyLe%; background-color: orange" aria-valuenow="100" aria-valuemin="0"
+                                                             style="width:@item.TyLe.ToString().Replace(",", ".")%; background-color: orange" aria-valuenow="@item.TyLe" aria-valuemin="0"
                                                              aria-valuemax="100"><b style="color:Blue">@item.TyLe.ToString().Replace(".", ",")%</b></div>
                                                     }
                                                     else if (@item.TyLe <= 75)
                                                     {
                                                         <div class="progress-bar" role="progressbar"
-                                                             style="width:@item.TyLe%; background-color: Gold" aria-valuenow="100" aria-valuemin="0"
+                                                             style="width:@item.TyLe.ToString().Replace(",", ".")%; background-color: Gold" aria-valuenow="@item.TyLe" aria-valuemin="0"
                                                              aria-valuemax="100"><b style="color:Blue">@item.TyLe.ToString().Replace(".", ",")%</b></div>
                                                     }
                                                     else if (@item.TyLe > 75)
                                                     {
                                                         <div class="progress-bar" role="progressbar"
-                                                             style="width:@item.TyLe%; background-color: limegreen" aria-valuenow="100" aria-valuemin="0"
+                                                             style="width:@item.TyLe.ToString().Replace(",", ".")%; background-color: limegreen" aria-valuenow="@item.TyLe" aria-valuemin="0"
                                                              aria-valuemax="100"><b style="color:Blue">@item.TyLe.ToString().Replace(".", ",")%</b></div>
                                                     }
                                                 </div>
@@ -172,7 +172,7 @@
                                         {
                                             if (item.NoiDung3 == "ChiTietThatThoatNuoc")
                                             {
-                                                <a class="btn btn-primary" href="http://dma.capnuoctanhoa.com.vn/pageThatThoatMangLuoi.aspx" role="button">Chi tiết</a>
+                                                <a class="btn btn-primary" href="http://dma.capnuoctanhoa.com.vn:88/pageThatThoatMangLuoi.aspx" role="button">Chi tiết</a>
                                             }
                                             else
                                             {
@@ -195,25 +195,25 @@
                                                     @if (@item.TyLe <= 25)
                                                     {
                                                         <div class="progress-bar" role="progressbar"
-                                                             style="width:@item.TyLe%; background-color: red" aria-valuenow="100" aria-valuemin="0"
+                                                             style="width:@item.TyLe.ToString().Replace(",", ".")%; background-color: red" aria-valuenow="@item.TyLe" aria-valuemin="0"
                                                              aria-valuemax="100"><b style="color:Blue">@item.TyLe.ToString().Replace(".", ",")%</b></div>
                                                     }
                                                     else if (@item.TyLe <= 50)
                                                     {
                                                         <div class="progress-bar" role="progressbar"
-                                                             style="width:@item.TyLe%; background-color: orange" aria-valuenow="100" aria-valuemin="0"
+                                                             style="width:@item.TyLe.ToString().Replace(",", ".")%; background-color: orange" aria-valuenow="@item.TyLe" aria-valuemin="0"
                                                              aria-valuemax="100"><b style="color:Blue">@item.TyLe.ToString().Replace(".", ",")%</b></div>
                                                     }
                                                     else if (@item.TyLe <= 75)
                                                     {
                                                         <div class="progress-bar" role="progressbar"
-                                                             style="width:@item.TyLe%; background-color: Gold" aria-valuenow="100" aria-valuemin="0"
+                                                             style="width:@item.TyLe.ToString().Replace(",", ".")%; background-color: Gold" aria-valuenow="@item.TyLe" aria-valuemin="0"
                                                              aria-valuemax="100"><b style="color:Blue">@item.TyLe.ToString().Replace(".", ",")%</b></div>
                                                     }
                                                     else if (@item.TyLe > 75)
                                                     {
                                                         <div class="progress-bar" role="progressbar"
-                                                             style="width:@item.TyLe%; background-color: limegreen" aria-valuenow="100" aria-valuemin="0"
+                                                             style="width:@item.TyLe.ToString().Replace(",", ".")%; background-color: limegreen" aria-valuenow="@item.TyLe" aria-valuemin="0"
                                                              aria-valuemax="100"><b style="color:Blue">@item.TyLe.ToString().Replace(".", ",")%</b></div>
                                                     }
                                                 </div>
