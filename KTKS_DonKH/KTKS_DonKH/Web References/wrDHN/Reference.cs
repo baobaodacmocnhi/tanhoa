@@ -45,9 +45,9 @@ namespace KTKS_DonKH.wrDHN {
         
         private System.Threading.SendOrPostCallback getDS_NhanVien_HanhThuOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GetDS_May_ToOperationCompleted;
-        
         private System.Threading.SendOrPostCallback getDS_MayOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getDS_May_ToOperationCompleted;
         
         private System.Threading.SendOrPostCallback getDS_CodeOperationCompleted;
         
@@ -68,6 +68,8 @@ namespace KTKS_DonKH.wrDHN {
         private System.Threading.SendOrPostCallback getDS_Hinh_TonOperationCompleted;
         
         private System.Threading.SendOrPostCallback getDS_HoaDonTonOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getDS_CuaHangThuHoOperationCompleted;
         
         private System.Threading.SendOrPostCallback getDS_LichSu_DocSoOperationCompleted;
         
@@ -196,10 +198,10 @@ namespace KTKS_DonKH.wrDHN {
         public event getDS_NhanVien_HanhThuCompletedEventHandler getDS_NhanVien_HanhThuCompleted;
         
         /// <remarks/>
-        public event GetDS_May_ToCompletedEventHandler GetDS_May_ToCompleted;
+        public event getDS_MayCompletedEventHandler getDS_MayCompleted;
         
         /// <remarks/>
-        public event getDS_MayCompletedEventHandler getDS_MayCompleted;
+        public event getDS_May_ToCompletedEventHandler getDS_May_ToCompleted;
         
         /// <remarks/>
         public event getDS_CodeCompletedEventHandler getDS_CodeCompleted;
@@ -230,6 +232,9 @@ namespace KTKS_DonKH.wrDHN {
         
         /// <remarks/>
         public event getDS_HoaDonTonCompletedEventHandler getDS_HoaDonTonCompleted;
+        
+        /// <remarks/>
+        public event getDS_CuaHangThuHoCompletedEventHandler getDS_CuaHangThuHoCompleted;
         
         /// <remarks/>
         public event getDS_LichSu_DocSoCompletedEventHandler getDS_LichSu_DocSoCompleted;
@@ -511,22 +516,24 @@ namespace KTKS_DonKH.wrDHN {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetDSTo", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string GetDSTo() {
-            object[] results = this.Invoke("GetDSTo", new object[0]);
+        public string GetDSTo(string MaTo) {
+            object[] results = this.Invoke("GetDSTo", new object[] {
+                        MaTo});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void GetDSToAsync() {
-            this.GetDSToAsync(null);
+        public void GetDSToAsync(string MaTo) {
+            this.GetDSToAsync(MaTo, null);
         }
         
         /// <remarks/>
-        public void GetDSToAsync(object userState) {
+        public void GetDSToAsync(string MaTo, object userState) {
             if ((this.GetDSToOperationCompleted == null)) {
                 this.GetDSToOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetDSToOperationCompleted);
             }
-            this.InvokeAsync("GetDSTo", new object[0], this.GetDSToOperationCompleted, userState);
+            this.InvokeAsync("GetDSTo", new object[] {
+                        MaTo}, this.GetDSToOperationCompleted, userState);
         }
         
         private void OnGetDSToOperationCompleted(object arg) {
@@ -538,22 +545,24 @@ namespace KTKS_DonKH.wrDHN {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getDS_NhanVien_HanhThu", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string getDS_NhanVien_HanhThu() {
-            object[] results = this.Invoke("getDS_NhanVien_HanhThu", new object[0]);
+        public string getDS_NhanVien_HanhThu(string MaTo) {
+            object[] results = this.Invoke("getDS_NhanVien_HanhThu", new object[] {
+                        MaTo});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void getDS_NhanVien_HanhThuAsync() {
-            this.getDS_NhanVien_HanhThuAsync(null);
+        public void getDS_NhanVien_HanhThuAsync(string MaTo) {
+            this.getDS_NhanVien_HanhThuAsync(MaTo, null);
         }
         
         /// <remarks/>
-        public void getDS_NhanVien_HanhThuAsync(object userState) {
+        public void getDS_NhanVien_HanhThuAsync(string MaTo, object userState) {
             if ((this.getDS_NhanVien_HanhThuOperationCompleted == null)) {
                 this.getDS_NhanVien_HanhThuOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetDS_NhanVien_HanhThuOperationCompleted);
             }
-            this.InvokeAsync("getDS_NhanVien_HanhThu", new object[0], this.getDS_NhanVien_HanhThuOperationCompleted, userState);
+            this.InvokeAsync("getDS_NhanVien_HanhThu", new object[] {
+                        MaTo}, this.getDS_NhanVien_HanhThuOperationCompleted, userState);
         }
         
         private void OngetDS_NhanVien_HanhThuOperationCompleted(object arg) {
@@ -564,58 +573,60 @@ namespace KTKS_DonKH.wrDHN {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetDS_May_To", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string GetDS_May_To(string MaTo) {
-            object[] results = this.Invoke("GetDS_May_To", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getDS_May", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getDS_May(string MaTo) {
+            object[] results = this.Invoke("getDS_May", new object[] {
                         MaTo});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void GetDS_May_ToAsync(string MaTo) {
-            this.GetDS_May_ToAsync(MaTo, null);
+        public void getDS_MayAsync(string MaTo) {
+            this.getDS_MayAsync(MaTo, null);
         }
         
         /// <remarks/>
-        public void GetDS_May_ToAsync(string MaTo, object userState) {
-            if ((this.GetDS_May_ToOperationCompleted == null)) {
-                this.GetDS_May_ToOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetDS_May_ToOperationCompleted);
-            }
-            this.InvokeAsync("GetDS_May_To", new object[] {
-                        MaTo}, this.GetDS_May_ToOperationCompleted, userState);
-        }
-        
-        private void OnGetDS_May_ToOperationCompleted(object arg) {
-            if ((this.GetDS_May_ToCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetDS_May_ToCompleted(this, new GetDS_May_ToCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getDS_May", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string getDS_May() {
-            object[] results = this.Invoke("getDS_May", new object[0]);
-            return ((string)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void getDS_MayAsync() {
-            this.getDS_MayAsync(null);
-        }
-        
-        /// <remarks/>
-        public void getDS_MayAsync(object userState) {
+        public void getDS_MayAsync(string MaTo, object userState) {
             if ((this.getDS_MayOperationCompleted == null)) {
                 this.getDS_MayOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetDS_MayOperationCompleted);
             }
-            this.InvokeAsync("getDS_May", new object[0], this.getDS_MayOperationCompleted, userState);
+            this.InvokeAsync("getDS_May", new object[] {
+                        MaTo}, this.getDS_MayOperationCompleted, userState);
         }
         
         private void OngetDS_MayOperationCompleted(object arg) {
             if ((this.getDS_MayCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getDS_MayCompleted(this, new getDS_MayCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getDS_May_To", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getDS_May_To(string MaTo) {
+            object[] results = this.Invoke("getDS_May_To", new object[] {
+                        MaTo});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getDS_May_ToAsync(string MaTo) {
+            this.getDS_May_ToAsync(MaTo, null);
+        }
+        
+        /// <remarks/>
+        public void getDS_May_ToAsync(string MaTo, object userState) {
+            if ((this.getDS_May_ToOperationCompleted == null)) {
+                this.getDS_May_ToOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetDS_May_ToOperationCompleted);
+            }
+            this.InvokeAsync("getDS_May_To", new object[] {
+                        MaTo}, this.getDS_May_ToOperationCompleted, userState);
+        }
+        
+        private void OngetDS_May_ToOperationCompleted(object arg) {
+            if ((this.getDS_May_ToCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getDS_May_ToCompleted(this, new getDS_May_ToCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -926,6 +937,37 @@ namespace KTKS_DonKH.wrDHN {
             if ((this.getDS_HoaDonTonCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getDS_HoaDonTonCompleted(this, new getDS_HoaDonTonCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getDS_CuaHangThuHo", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getDS_CuaHangThuHo(string Dot, string May) {
+            object[] results = this.Invoke("getDS_CuaHangThuHo", new object[] {
+                        Dot,
+                        May});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getDS_CuaHangThuHoAsync(string Dot, string May) {
+            this.getDS_CuaHangThuHoAsync(Dot, May, null);
+        }
+        
+        /// <remarks/>
+        public void getDS_CuaHangThuHoAsync(string Dot, string May, object userState) {
+            if ((this.getDS_CuaHangThuHoOperationCompleted == null)) {
+                this.getDS_CuaHangThuHoOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetDS_CuaHangThuHoOperationCompleted);
+            }
+            this.InvokeAsync("getDS_CuaHangThuHo", new object[] {
+                        Dot,
+                        May}, this.getDS_CuaHangThuHoOperationCompleted, userState);
+        }
+        
+        private void OngetDS_CuaHangThuHoOperationCompleted(object arg) {
+            if ((this.getDS_CuaHangThuHoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getDS_CuaHangThuHoCompleted(this, new getDS_CuaHangThuHoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1956,8 +1998,9 @@ namespace KTKS_DonKH.wrDHN {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getDS_SoLieu_SanLuong", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string getDS_SoLieu_SanLuong(string Nam, string Ky, string Dot) {
+        public string getDS_SoLieu_SanLuong(string MaTo, string Nam, string Ky, string Dot) {
             object[] results = this.Invoke("getDS_SoLieu_SanLuong", new object[] {
+                        MaTo,
                         Nam,
                         Ky,
                         Dot});
@@ -1965,16 +2008,17 @@ namespace KTKS_DonKH.wrDHN {
         }
         
         /// <remarks/>
-        public void getDS_SoLieu_SanLuongAsync(string Nam, string Ky, string Dot) {
-            this.getDS_SoLieu_SanLuongAsync(Nam, Ky, Dot, null);
+        public void getDS_SoLieu_SanLuongAsync(string MaTo, string Nam, string Ky, string Dot) {
+            this.getDS_SoLieu_SanLuongAsync(MaTo, Nam, Ky, Dot, null);
         }
         
         /// <remarks/>
-        public void getDS_SoLieu_SanLuongAsync(string Nam, string Ky, string Dot, object userState) {
+        public void getDS_SoLieu_SanLuongAsync(string MaTo, string Nam, string Ky, string Dot, object userState) {
             if ((this.getDS_SoLieu_SanLuongOperationCompleted == null)) {
                 this.getDS_SoLieu_SanLuongOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetDS_SoLieu_SanLuongOperationCompleted);
             }
             this.InvokeAsync("getDS_SoLieu_SanLuong", new object[] {
+                        MaTo,
                         Nam,
                         Ky,
                         Dot}, this.getDS_SoLieu_SanLuongOperationCompleted, userState);
@@ -1989,8 +2033,9 @@ namespace KTKS_DonKH.wrDHN {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getDS_SoLieu_HD0", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string getDS_SoLieu_HD0(string Nam, string Ky, string Dot) {
+        public string getDS_SoLieu_HD0(string MaTo, string Nam, string Ky, string Dot) {
             object[] results = this.Invoke("getDS_SoLieu_HD0", new object[] {
+                        MaTo,
                         Nam,
                         Ky,
                         Dot});
@@ -1998,16 +2043,17 @@ namespace KTKS_DonKH.wrDHN {
         }
         
         /// <remarks/>
-        public void getDS_SoLieu_HD0Async(string Nam, string Ky, string Dot) {
-            this.getDS_SoLieu_HD0Async(Nam, Ky, Dot, null);
+        public void getDS_SoLieu_HD0Async(string MaTo, string Nam, string Ky, string Dot) {
+            this.getDS_SoLieu_HD0Async(MaTo, Nam, Ky, Dot, null);
         }
         
         /// <remarks/>
-        public void getDS_SoLieu_HD0Async(string Nam, string Ky, string Dot, object userState) {
+        public void getDS_SoLieu_HD0Async(string MaTo, string Nam, string Ky, string Dot, object userState) {
             if ((this.getDS_SoLieu_HD0OperationCompleted == null)) {
                 this.getDS_SoLieu_HD0OperationCompleted = new System.Threading.SendOrPostCallback(this.OngetDS_SoLieu_HD0OperationCompleted);
             }
             this.InvokeAsync("getDS_SoLieu_HD0", new object[] {
+                        MaTo,
                         Nam,
                         Ky,
                         Dot}, this.getDS_SoLieu_HD0OperationCompleted, userState);
@@ -2249,17 +2295,17 @@ namespace KTKS_DonKH.wrDHN {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
-    public delegate void GetDS_May_ToCompletedEventHandler(object sender, GetDS_May_ToCompletedEventArgs e);
+    public delegate void getDS_MayCompletedEventHandler(object sender, getDS_MayCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetDS_May_ToCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class getDS_MayCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal GetDS_May_ToCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal getDS_MayCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -2275,17 +2321,17 @@ namespace KTKS_DonKH.wrDHN {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
-    public delegate void getDS_MayCompletedEventHandler(object sender, getDS_MayCompletedEventArgs e);
+    public delegate void getDS_May_ToCompletedEventHandler(object sender, getDS_May_ToCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class getDS_MayCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class getDS_May_ToCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal getDS_MayCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal getDS_May_ToCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -2546,6 +2592,32 @@ namespace KTKS_DonKH.wrDHN {
         private object[] results;
         
         internal getDS_HoaDonTonCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    public delegate void getDS_CuaHangThuHoCompletedEventHandler(object sender, getDS_CuaHangThuHoCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getDS_CuaHangThuHoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getDS_CuaHangThuHoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

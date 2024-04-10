@@ -10,35 +10,92 @@
         color: inherit;
     }
 </style>
+@Scripts.Render("~/bundles/datepicker")
 <script src="~/Scripts/bootstrap.bundle.js"></script>
 <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
 <script src="https://cdn.anychart.com/releases/v8/js/anychart-ui.min.js"></script>
 <script src="https://cdn.anychart.com/releases/v8/js/anychart-exports.min.js"></script>
 <link href="https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css" type="text/css" rel="stylesheet">
 <link href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css" type="text/css" rel="stylesheet">
-
 <script src="~/Scripts/anychart/jschartNhanDon.js"></script>
 
 <script>
-    $(document).ready(function () {
-        getThongTin(1);
-    });
-    function getThongTin2() {
-        getThongTin($("#SoNgay").val());
-    };
-    function getThongTin(SoNgay) {
-        getThuHo(SoNgay);
+    //$(document).ready(function () {
+    //    getThongTin(1);
+    //});
+    //function getThongTin2() {
+    //    getThongTin($("#SoNgay").val());
+    //};
+    //function getThongTin(SoNgay) {
+    //    getThuHo(SoNgay);
+    //    $("#vNhanDon").empty();
+    //    getNhanDon(SoNgay);
+    //    getDiemBe(SoNgay);
+    //};
+    //function getThuHo(SoNgay) {
+    //    $("#vThuHo tr").remove();
+    //    $.ajax({
+    //        type: 'POST',
+    //        url: '/Home/getThuHo/',
+    //        dataType: 'json',
+    //        data: { SoNgay: SoNgay },
+    //        success: function (data) {
+    //            var items = '';
+    //            $.each(data, function (i, item) {
+    //                var rows = "<tr>"
+    //                    + "<td>" + item.NoiDung1 + "</td>"
+    //                    + "<td>" + item.NoiDung2 + "</td>"
+    //                    + "<td>" + item.NoiDung3 + "</td>"
+    //                    + "<td>" + item.NoiDung4 + "</td>"
+    //                + "</tr>"
+    //                $("#vThuHo").append(rows);
+    //            });
+    //        },
+    //        error: function (ex) {
+    //            alert("Error: " + ex.statusText);
+    //        }
+    //    });
+    //};
+    //function getDiemBe(SoNgay) {
+    //    $("#vDiemBe tr").remove();
+    //    $.ajax({
+    //        type: 'POST',
+    //        url: '/Home/getDiemBe/',
+    //        dataType: 'json',
+    //        data: { SoNgay: SoNgay },
+    //        success: function (data) {
+    //            var items = '';
+    //            $.each(data, function (i, item) {
+    //                var rows = "<tr>"
+    //                    + "<td>" + item.NoiDung1 + "</td>"
+    //                    + "<td>" + item.NoiDung2 + "</td>"
+    //                    + "<td>" + item.NoiDung3 + "</td>"
+    //                    + "<td>" + item.NoiDung4 + "</td>"
+    //                    + "<td>" + item.NoiDung5 + "</td>"
+    //                    + "<td>" + item.NoiDung6 + "</td>"
+    //                + "</tr>"
+    //                $("#vDiemBe").append(rows);
+    //            });
+    //        },
+    //        error: function (ex) {
+    //            alert("Error: " + ex.statusText);
+    //        }
+    //    });
+    //};
+
+    function getThongTin() {
+        getThuHo($("#TuNgay").val(), $("#DenNgay").val());
         $("#vNhanDon").empty();
-        getNhanDon(SoNgay);
-        getDiemBe(SoNgay);
+        getNhanDons($("#TuNgay").val(), $("#DenNgay").val());
+        getDiemBe($("#TuNgay").val(), $("#DenNgay").val());
     };
-    function getThuHo(SoNgay) {
+    function getThuHo(TuNgay, DenNgay) {
         $("#vThuHo tr").remove();
         $.ajax({
             type: 'POST',
-            url: '/Home/getThuHo/',
+            url: '/Home/getThuHos/',
             dataType: 'json',
-            data: { SoNgay: SoNgay },
+            data: { TuNgay: TuNgay, DenNgay: DenNgay },
             success: function (data) {
                 var items = '';
                 $.each(data, function (i, item) {
@@ -56,13 +113,72 @@
             }
         });
     };
-    function getDiemBe(SoNgay) {
+    function getNhanDons(TuNgay, DenNgay) {
+        CharHelperNhanDons.LoadChart(TuNgay, DenNgay);
+    };
+    var ChartManagerNhanDons = {
+        GetChart: function (TuNgay, DenNgay) {
+            var objLeaveType = "";
+            var jsonParam = { TuNgay: TuNgay, DenNgay: DenNgay };
+            var serviceUrl = "../Home/getNhanDon_anychartss";
+            ChartManagerNhanDons.GetJsonResult(serviceUrl, jsonParam, false, false, onSuccess, onFailed);
+            function onSuccess(jsonData) {
+                objLeaveType = jsonData;
+            }
+            function onFailed(error) {
+                alert(error.statusText);
+            }
+            return objLeaveType;
+        }, GetJsonResult(serviceUrl, jsonParam, isAsync, isCache, successCallback, errorCallback) {
+            $.ajax({
+                type: "GET",
+                async: isAsync,
+                cache: isCache,
+                url: serviceUrl,
+                data: jsonParam,
+                contentType: "application/json; chartset=utf-8",
+                success: successCallback,
+                error: errorCallback
+            });
+        }
+    };
+    var CharHelperNhanDons = {
+        LoadChart: function (TuNgay, DenNgay) {
+            var data = ChartManagerNhanDons.GetChart(TuNgay, DenNgay);
+            anychart.onDocumentReady(function () {
+                // set the data
+                //var data = [
+                //  { x: 'White', value: 223553265 },
+                //  { x: 'Black or African American', value: 38929319 },
+                //  { x: 'Asian', value: 14674252 },
+                //  { x: 'Some Other Race', value: 19107368 }
+                //];
+                // create the chart
+                var chart = anychart.pie();
+                // set the chart title
+                chart.title('');
+                // add the data
+                chart.data(data);
+                // sort elements
+                chart.sort('desc');
+                // set legend position
+                chart.legend().position('right');
+                // set items layout
+                chart.legend().itemsLayout('vertical');
+                chart.labels().fontSize('15');
+                // display the chart in the container
+                chart.container('vNhanDon');
+                chart.draw();
+            });
+        }
+    };
+    function getDiemBe(TuNgay, DenNgay) {
         $("#vDiemBe tr").remove();
         $.ajax({
             type: 'POST',
-            url: '/Home/getDiemBe/',
+            url: '/Home/getDiemBes/',
             dataType: 'json',
-            data: { SoNgay: SoNgay },
+            data: { TuNgay: TuNgay, DenNgay: DenNgay },
             success: function (data) {
                 var items = '';
                 $.each(data, function (i, item) {
@@ -241,31 +357,20 @@
         <!-- Card Header - Dropdown -->
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
             <div class="col-auto"><h6 class="m-0 font-weight-bold text-primary">THỐNG KÊ THEO NGÀY</h6></div>
-            <div class="col">
-                <select name="SoNgay" id="SoNgay" onchange="getThongTin2()">
-                    <option value="1">1</option>
-                    <option value="7">7</option>
-                    <option value="14">14</option>
-                    <option value="30">30</option>
-                    <option value="60">60</option>
-                    <option value="90">90</option>
-                </select>
-            </div>
-
-            @*<div class="btn-group ml-2">
-                    <button type="button" class="btn btn-info btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        Chọn ngày
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" onclick="getThongTin(1)">1</a></li>
-                        <li><a class="dropdown-item" onclick="getThongTin(7)">7</a></li>
-                        <li><a class="dropdown-item" onclick="getThongTin(14)">14</a></li>
-                        <li><a class="dropdown-item" onclick="getThongTin(30)">30</a></li>
-                        <li><a class="dropdown-item" onclick="getThongTin(60)">60</a></li>
-                        <li><a class="dropdown-item" onclick="getThongTin(90)">90</a></li>
-                    </ul>
+            @*<div class="col">
+                    <select name="SoNgay" id="SoNgay" onchange="getThongTin2()">
+                        <option value="1">1</option>
+                        <option value="7">7</option>
+                        <option value="14">14</option>
+                        <option value="30">30</option>
+                        <option value="60">60</option>
+                        <option value="90">90</option>
+                    </select>
                 </div>*@
-
+            <div class="col">
+                <input class="mt-2 datepicker form-control" type="text" id="TuNgay" name="TuNgay" placeholder="Từ Ngày" autocomplete="off">
+                <input class="mt-2 datepicker form-control" type="text" id="DenNgay" name="DenNgay" placeholder="Đến Ngày" autocomplete="off" onchange="getThongTin()">
+            </div>
         </div>
         <!-- Card Body -->
         <div class="card-body">

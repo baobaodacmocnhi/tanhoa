@@ -1868,7 +1868,10 @@ namespace KTKS_DonKH.GUI.DonTu
                         //else
                         //    MessageBox.Show("Thất bại " + error, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         if (!_dontu.Name_NhomDon_PKH.Contains("Thông tin khách hàng"))
-                            result = _wsEContract.editEContract_NgayHieuLuc(_cTaiKhoan.ExecuteQuery_ReturnOneValue("select top 1 IDEContract from TRUNGTAMKHACHHANG.dbo.Zalo_EContract_ChiTiet where MaDon='" + _dontu.MaDon + "' and Huy=0 and HieuLuc=0 order by CreateDate desc").ToString(), "", "tanho@2022", out error);
+                        {
+                         //string str=_cTaiKhoan.ExecuteQuery_ReturnOneValue("select top 1 IDEContract from TRUNGTAMKHACHHANG.dbo.Zalo_EContract_ChiTiet where MaDon='" + _dontu.MaDon + "' and Huy=0 and HieuLuc=0 order by CreateDate desc").ToString();
+                            result = _wsEContract.editEContract_NgayHieuLuc(_dontu.MaDon.ToString(), "", "tanho@2022", out error);
+                        }
                         if (result)
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         else

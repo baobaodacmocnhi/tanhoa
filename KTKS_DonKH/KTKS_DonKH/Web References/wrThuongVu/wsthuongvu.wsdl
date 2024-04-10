@@ -144,6 +144,22 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="them_CCCD_BoSung2023">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DanhBo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CCCD" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="them_CCCD_BoSung2023Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="them_CCCD_BoSung2023Result" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="sua_CCCD">
         <s:complexType>
           <s:sequence>
@@ -260,6 +276,57 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="get_Hinh_241">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FolderRoot" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FolderLoai" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FolderIDCT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_Hinh_241Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="get_Hinh_241Result" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_FileinFolder_241">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FolderRoot" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FolderLoai" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FolderIDCT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_FileinFolder_241Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="get_FileinFolder_241Result" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_FileInfo_CreateDate_241">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FolderRoot" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FolderLoai" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FolderIDCT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_FileInfo_CreateDate_241Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="get_FileInfo_CreateDate_241Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="get_HinhSoapIn">
@@ -316,6 +383,12 @@
   <wsdl:message name="them_CCCDSoapOut">
     <wsdl:part name="parameters" element="tns:them_CCCDResponse" />
   </wsdl:message>
+  <wsdl:message name="them_CCCD_BoSung2023SoapIn">
+    <wsdl:part name="parameters" element="tns:them_CCCD_BoSung2023" />
+  </wsdl:message>
+  <wsdl:message name="them_CCCD_BoSung2023SoapOut">
+    <wsdl:part name="parameters" element="tns:them_CCCD_BoSung2023Response" />
+  </wsdl:message>
   <wsdl:message name="sua_CCCDSoapIn">
     <wsdl:part name="parameters" element="tns:sua_CCCD" />
   </wsdl:message>
@@ -358,6 +431,24 @@
   <wsdl:message name="get_FileinFolder_RootSoapOut">
     <wsdl:part name="parameters" element="tns:get_FileinFolder_RootResponse" />
   </wsdl:message>
+  <wsdl:message name="get_Hinh_241SoapIn">
+    <wsdl:part name="parameters" element="tns:get_Hinh_241" />
+  </wsdl:message>
+  <wsdl:message name="get_Hinh_241SoapOut">
+    <wsdl:part name="parameters" element="tns:get_Hinh_241Response" />
+  </wsdl:message>
+  <wsdl:message name="get_FileinFolder_241SoapIn">
+    <wsdl:part name="parameters" element="tns:get_FileinFolder_241" />
+  </wsdl:message>
+  <wsdl:message name="get_FileinFolder_241SoapOut">
+    <wsdl:part name="parameters" element="tns:get_FileinFolder_241Response" />
+  </wsdl:message>
+  <wsdl:message name="get_FileInfo_CreateDate_241SoapIn">
+    <wsdl:part name="parameters" element="tns:get_FileInfo_CreateDate_241" />
+  </wsdl:message>
+  <wsdl:message name="get_FileInfo_CreateDate_241SoapOut">
+    <wsdl:part name="parameters" element="tns:get_FileInfo_CreateDate_241Response" />
+  </wsdl:message>
   <wsdl:portType name="wsThuongVuSoap">
     <wsdl:operation name="get_Hinh">
       <wsdl:input message="tns:get_HinhSoapIn" />
@@ -395,6 +486,10 @@
       <wsdl:input message="tns:them_CCCDSoapIn" />
       <wsdl:output message="tns:them_CCCDSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="them_CCCD_BoSung2023">
+      <wsdl:input message="tns:them_CCCD_BoSung2023SoapIn" />
+      <wsdl:output message="tns:them_CCCD_BoSung2023SoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="sua_CCCD">
       <wsdl:input message="tns:sua_CCCDSoapIn" />
       <wsdl:output message="tns:sua_CCCDSoapOut" />
@@ -422,6 +517,18 @@
     <wsdl:operation name="get_FileinFolder_Root">
       <wsdl:input message="tns:get_FileinFolder_RootSoapIn" />
       <wsdl:output message="tns:get_FileinFolder_RootSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="get_Hinh_241">
+      <wsdl:input message="tns:get_Hinh_241SoapIn" />
+      <wsdl:output message="tns:get_Hinh_241SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="get_FileinFolder_241">
+      <wsdl:input message="tns:get_FileinFolder_241SoapIn" />
+      <wsdl:output message="tns:get_FileinFolder_241SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="get_FileInfo_CreateDate_241">
+      <wsdl:input message="tns:get_FileInfo_CreateDate_241SoapIn" />
+      <wsdl:output message="tns:get_FileInfo_CreateDate_241SoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="wsThuongVuSoap" type="tns:wsThuongVuSoap">
@@ -507,6 +614,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="them_CCCD_BoSung2023">
+      <soap:operation soapAction="http://tempuri.org/them_CCCD_BoSung2023" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="sua_CCCD">
       <soap:operation soapAction="http://tempuri.org/sua_CCCD" style="document" />
       <wsdl:input>
@@ -563,6 +679,33 @@
     </wsdl:operation>
     <wsdl:operation name="get_FileinFolder_Root">
       <soap:operation soapAction="http://tempuri.org/get_FileinFolder_Root" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_Hinh_241">
+      <soap:operation soapAction="http://tempuri.org/get_Hinh_241" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_FileinFolder_241">
+      <soap:operation soapAction="http://tempuri.org/get_FileinFolder_241" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_FileInfo_CreateDate_241">
+      <soap:operation soapAction="http://tempuri.org/get_FileInfo_CreateDate_241" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -654,6 +797,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="them_CCCD_BoSung2023">
+      <soap12:operation soapAction="http://tempuri.org/them_CCCD_BoSung2023" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="sua_CCCD">
       <soap12:operation soapAction="http://tempuri.org/sua_CCCD" style="document" />
       <wsdl:input>
@@ -710,6 +862,33 @@
     </wsdl:operation>
     <wsdl:operation name="get_FileinFolder_Root">
       <soap12:operation soapAction="http://tempuri.org/get_FileinFolder_Root" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_Hinh_241">
+      <soap12:operation soapAction="http://tempuri.org/get_Hinh_241" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_FileinFolder_241">
+      <soap12:operation soapAction="http://tempuri.org/get_FileinFolder_241" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_FileInfo_CreateDate_241">
+      <soap12:operation soapAction="http://tempuri.org/get_FileInfo_CreateDate_241" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

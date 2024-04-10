@@ -26,6 +26,12 @@ namespace BaoCaoWeb
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/datepicker").Include(
+                      "~/Scripts/jquery-{version}.js",
+                      "~/Lib/bootstrap-datepicker-1.9.0/js/bootstrap-datepicker.js",
+                      "~/Lib/bootstrap-datepicker-1.9.0/locales/bootstrap-datepicker.vi.min.js",
+                      "~/Scripts/globalscript.js"));
         }
     }
 }
