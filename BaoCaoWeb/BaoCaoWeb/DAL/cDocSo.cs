@@ -86,15 +86,15 @@ namespace BaoCaoWeb.DAL
             return ExecuteQuery_DataTable(sql);
         }
 
-        public DataTable getSanLuongChuanThu(int NamPresent)
-        {
-            string sql = "select t1.Ky,SanLuongPrevious=t1.SanLuong,SanLuongPresent=t2.SanLuong,ChenhLech=t2.SanLuong-t1.SanLuong from"
-                        + " (select Ky, SanLuong = SUM(TieuThuMoi) from DocSo where Nam = " + NamPresent + " group by Ky)t1"
-                        + " left join"
-                        + " (select Ky, SanLuong = SUM(TIEUTHU) from HOADON_TA.dbo.HOADON where Nam = " + NamPresent + " group by Ky)t2 on t1.Ky = t2.Ky"
-                        + " order by t1.Ky";
-            return ExecuteQuery_DataTable(sql);
-        }
+        //public DataTable getSanLuongChuanThu(int NamPresent)
+        //{
+        //    string sql = "select t1.Ky,SanLuongPrevious=t1.SanLuong,SanLuongPresent=t2.SanLuong,ChenhLech=t2.SanLuong-t1.SanLuong from"
+        //                + " (select Ky, SanLuong = SUM(TieuThuMoi) from DocSo where Nam = " + NamPresent + " group by Ky)t1"
+        //                + " left join"
+        //                + " (select Ky, SanLuong = SUM(TIEUTHU) from HOADON_TA.dbo.HOADON where Nam = " + NamPresent + " group by Ky)t2 on t1.Ky = t2.Ky"
+        //                + " order by t1.Ky";
+        //    return ExecuteQuery_DataTable(sql);
+        //}
 
     }
 }

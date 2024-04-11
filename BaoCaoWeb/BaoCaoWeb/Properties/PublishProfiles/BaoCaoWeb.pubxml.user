@@ -13,7 +13,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/08/2023 14:46:59</publishTime>
     </File>
     <File Include="bin/BaoCaoWeb.dll">
-      <publishTime>04/09/2024 09:55:55</publishTime>
+      <publishTime>04/11/2024 11:26:31</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>12/08/2023 14:46:59</publishTime>
@@ -5929,13 +5929,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/08/2023 14:46:59</publishTime>
     </File>
     <File Include="Views/Home/ChiTietDoanhThu.cshtml">
-      <publishTime>12/08/2023 14:46:59</publishTime>
+      <publishTime>04/11/2024 08:58:29</publishTime>
     </File>
     <File Include="Views/Home/ChiTietGiaBanBinhQuan.cshtml">
       <publishTime>12/08/2023 14:46:59</publishTime>
     </File>
     <File Include="Views/Home/ChiTietSanLuong.cshtml">
-      <publishTime>12/08/2023 14:46:59</publishTime>
+      <publishTime>04/11/2024 10:36:45</publishTime>
     </File>
     <File Include="Views/Home/Contact.cshtml">
       <publishTime>12/08/2023 14:46:59</publishTime>
@@ -5983,7 +5983,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/08/2023 14:46:59</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>12/08/2023 14:46:59</publishTime>
+      <publishTime>04/11/2024 10:29:33</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>12/08/2023 14:46:59</publishTime>

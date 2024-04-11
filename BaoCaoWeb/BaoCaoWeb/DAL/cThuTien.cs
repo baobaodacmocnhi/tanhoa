@@ -76,12 +76,22 @@ namespace BaoCaoWeb.DAL
             return dt;
         }
 
+        public DataTable getSanLuongNam(int NamPrevious, int NamPresent)
+        {
+            string sql = "select t1.Ky,SanLuongPrevious=t1.SanLuong,SanLuongPresent=t2.SanLuong,ChenhLech=t2.SanLuong-t1.SanLuong from"
+                        + " (select Ky, SanLuong = SUM(TIEUTHU)-SUM(case when dc.TIEUTHU_DC is null then 0 else dc.TIEUTHU_DC end)+SUM(case when dc.TIEUTHU_BD is null then 0 else dc.TIEUTHU_BD end) from HOADON hd left join DIEUCHINH_HD dc on hd.ID_HOADON=dc.FK_HOADON where Nam = " + NamPrevious + " group by Ky)t1"
+                        + " left join"
+                        + " (select Ky, SanLuong = SUM(TIEUTHU)-SUM(case when dc.TIEUTHU_DC is null then 0 else dc.TIEUTHU_DC end)+SUM(case when dc.TIEUTHU_BD is null then 0 else dc.TIEUTHU_BD end) from HOADON hd left join DIEUCHINH_HD dc on hd.ID_HOADON=dc.FK_HOADON where Nam = " + NamPresent + " group by Ky)t2 on t1.Ky = t2.Ky"
+                        + " order by t1.Ky";
+            return ExecuteQuery_DataTable(sql);
+        }
+
         public DataTable getDoanhThu(int NamPrevious, int NamPresent)
         {
             string sql = "select t1.Ky,DoanhThuPrevious=t1.DoanhThu,DoanhThuPresent=t2.DoanhThu,ChenhLech=t2.DoanhThu-t1.DoanhThu from"
-                        + " (select Ky,DoanhThu=SUM(GiaBan)-sum(dc.GIABAN_DC) from HOADON hd left join DIEUCHINH_HD dc on hd.ID_HOADON=dc.FK_HOADON where Nam = " + NamPrevious + " group by Ky)t1"
+                        + " (select Ky,DoanhThu=SUM(GiaBan)-sum(case when dc.GIABAN_DC is null then 0 else dc.GIABAN_DC end) from HOADON hd left join DIEUCHINH_HD dc on hd.ID_HOADON=dc.FK_HOADON where Nam = " + NamPrevious + " group by Ky)t1"
                         + " left join"
-                        + " (select Ky,DoanhThu=SUM(GiaBan)-sum(dc.GIABAN_DC) from HOADON hd left join DIEUCHINH_HD dc on hd.ID_HOADON=dc.FK_HOADON where Nam = " + NamPresent + " group by Ky)t2 on t1.Ky = t2.Ky"
+                        + " (select Ky,DoanhThu=SUM(GiaBan)-sum(case when dc.GIABAN_DC is null then 0 else dc.GIABAN_DC end) from HOADON hd left join DIEUCHINH_HD dc on hd.ID_HOADON=dc.FK_HOADON where Nam = " + NamPresent + " group by Ky)t2 on t1.Ky = t2.Ky"
                         + " order by t1.Ky";
             return ExecuteQuery_DataTable(sql);
         }
