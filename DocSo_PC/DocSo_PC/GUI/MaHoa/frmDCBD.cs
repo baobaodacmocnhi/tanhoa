@@ -343,7 +343,6 @@ namespace DocSo_PC.GUI.MaHoa
                         if (en != null)
                         {
                             DataRow dr = dsBaoCao.Tables["DCBD"].NewRow();
-
                             dr["MaDon"] = en.IDMaDon.ToString();
                             dr["SoPhieu"] = en.ID.ToString();
                             dr["ThongTin"] = en.ThongTin.ToUpper();
@@ -356,8 +355,11 @@ namespace DocSo_PC.GUI.MaHoa
                             dr["DiaChi"] = en.DiaChi;
                             dr["HoTenBD"] = en.HoTen_BD;
                             dr["DiaChiBD"] = en.DiaChi_BD;
-                            if (en.DiaChi_BD != null && en.DiaChi_BD != "")
+                            if ((en.DiaChi_BD != null && en.DiaChi_BD != "") || (en.MaQuanPhuong_BD != null && en.MaQuanPhuong_BD != ""))
+                            {
                                 dr["MaQuanPhuong"] = en.MaQuanPhuong;
+                                dr["MaQuanPhuongBD"] = en.MaQuanPhuong_BD;
+                            }
                             dr["GiaBieu"] = en.GiaBieu;
                             dr["DinhMuc"] = en.DinhMuc;
                             dr["DinhMucHN"] = en.DinhMucHN;
@@ -480,7 +482,7 @@ namespace DocSo_PC.GUI.MaHoa
                                         dr["DV"] = en.DV;
                                 dr["MaDon"] = en.IDMaDon.ToString();
                                 dr["TenPhong"] = CNguoiDung.TenPhong.ToUpper();
-                                dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper().Replace("PHÒNG","");
+                                dr["ChucVu"] = CNguoiDung.ChucVu.ToUpper().Replace("PHÒNG", "");
                                 dr["NguoiKy"] = CNguoiDung.NguoiKy;
                                 if (chkChuKy.Checked)
                                 {

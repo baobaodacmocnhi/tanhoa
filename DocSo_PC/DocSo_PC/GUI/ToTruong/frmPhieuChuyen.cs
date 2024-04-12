@@ -430,7 +430,6 @@ namespace DocSo_PC.GUI.ToTruong
                         else
                             if (!lst.Any(itemlst => itemlst.SoPhieu == int.Parse(item.Cells["SoPhieu"].Value.ToString())))
                                 lst = lst.Concat(_cPhieuChuyen.getDS(int.Parse(item.Cells["SoPhieu"].Value.ToString()))).ToList();
-
                 lst = lst.Concat(_cPhieuChuyen.getDS(SoPhieu)).ToList();
                 lst = lst.Concat(_cPhieuChuyen.getDS(SoPhieu2)).ToList();
                 foreach (MaHoa_PhieuChuyen_LichSu item in lst)
@@ -479,7 +478,7 @@ namespace DocSo_PC.GUI.ToTruong
                             dsBaoCao.Tables["BaoCao"].Rows.Add(dr);
                         }
                     }
-                if (lst[0].KinhGui.Contains("Phòng KHĐT"))
+                if (lst.Count > 0 && lst[0].KinhGui.Contains("Phòng KHĐT"))
                 {
                     rptPhieuChuyen_KHDT rpt = new rptPhieuChuyen_KHDT();
                     rpt.SetDataSource(dsBaoCao);
