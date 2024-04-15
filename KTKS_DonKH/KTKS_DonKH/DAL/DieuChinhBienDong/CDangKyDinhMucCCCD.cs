@@ -480,40 +480,18 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         public DataTable getDS_Online(string DanhBo)
         {
-            var query = from item in db.DCBD_DKDM_DanhBos
-                        where item.DanhBo == DanhBo
-                        orderby item.ID ascending
-                        select new
-                        {
-                            item.ID,
-                            item.DanhBo,
-                            item.GiaBieu,
-                            item.DinhMuc,
-                            item.SDT,
-                            SoNK = item.DCBD_DKDM_CCCDs.Count,
-                            item.CreateDate,
-                            CreateBy = item.CreateBy != null ? "Thương Vụ" : "Khách Hàng",
-                        };
-            return LINQToDataTable(query);
+            return ExecuteQuery_DataTable("select 'In'='false',db.ID,ttkh.DANHBO,DiaChi=ttkh.SONHA+' '+ttkh.TENDUONG,db.GiaBieu,db.DinhMuc,db.SDT,SoNK=(select COUNT(*) from KTKS_DonKH.dbo.DCBD_DKDM_CCCD where IDDanhBo=db.ID),db.CreateDate,CreateBy=case when db.CreateBy is not null then N'Thương Vụ' else N'Khách Hàng' end"
+                + " from KTKS_DonKH.dbo.DCBD_DKDM_DanhBo db,CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh"
+                + " where db.DanhBo=ttkh.DANHBO and db.DanhBo='" + DanhBo + "' and db.CreateBy is null"
+                + " order by db.ID asc");
         }
 
         public DataTable getDS_Online(DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            var query = from item in db.DCBD_DKDM_DanhBos
-                        where item.CreateDate.Date >= FromCreateDate.Date && item.CreateDate.Date <= ToCreateDate.Date && item.CreateBy == null
-                        orderby item.ID ascending
-                        select new
-                        {
-                            item.ID,
-                            item.DanhBo,
-                            item.GiaBieu,
-                            item.DinhMuc,
-                            item.SDT,
-                            SoNK = item.DCBD_DKDM_CCCDs.Count,
-                            item.CreateDate,
-                            CreateBy = item.CreateBy != null ? "Thương Vụ" : "Khách Hàng",
-                        };
-            return LINQToDataTable(query);
+            return ExecuteQuery_DataTable("select 'In'='false',db.ID,ttkh.DANHBO,DiaChi=ttkh.SONHA+' '+ttkh.TENDUONG,db.GiaBieu,db.DinhMuc,db.SDT,SoNK=(select COUNT(*) from KTKS_DonKH.dbo.DCBD_DKDM_CCCD where IDDanhBo=db.ID),db.CreateDate,CreateBy=case when db.CreateBy is not null then N'Thương Vụ' else N'Khách Hàng' end"
+                + " from KTKS_DonKH.dbo.DCBD_DKDM_DanhBo db,CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh"
+                + " where db.DanhBo=ttkh.DANHBO and CAST(db.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(db.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and db.CreateBy is null"
+                + " order by db.ID asc");
         }
 
         public DataTable getDS_NguoiLap()

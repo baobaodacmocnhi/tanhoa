@@ -137,7 +137,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             return;
                         }
                         LinQ.DonTu entity = new LinQ.DonTu();
-
                         int ID = _cDonTu.getMaxID_ChiTiet();
                         int STT = 0;
                         for (int i = 0; i < dgvDanhSach.Rows.Count; i++)
@@ -149,7 +148,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 DonTu_ChiTiet entityCT = new DonTu_ChiTiet();
                                 entityCT.ID = ++ID;
                                 entityCT.STT = ++STT;
-
                                 entityCT.DanhBo = hd.DANHBA;
                                 entityCT.MLT = hd.MALOTRINH;
                                 entityCT.HopDong = hd.HOPDONG;
@@ -163,11 +161,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 entityCT.Nam = hd.NAM;
                                 entityCT.Quan = hd.Quan;
                                 entityCT.Phuong = hd.Phuong;
-
                                 entityCT.CreateBy = CTaiKhoan.MaUser;
                                 entityCT.CreateDate = DateTime.Now;
                                 entityCT.TinhTrang = "Hoàn Thành";
-
                                 entity.DonTu_ChiTiets.Add(entityCT);
                             }
                         }
@@ -223,7 +219,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             if (dgvDanhSach.Rows[i].Cells["MaDon"].Value.ToString() != "")
                             {
                                 DonTu_ChiTiet dontu_ChiTiet = _cDonTu.get_ChiTiet(int.Parse(dgvDanhSach.Rows[i].Cells["MaDon"].Value.ToString()), int.Parse(dgvDanhSach.Rows[i].Cells["STT"].Value.ToString()));
-
                                 if (_cDCBD.checkExist(dontu_ChiTiet.MaDon.Value) == false)
                                 {
                                     DCBD dcbd = new DCBD();
@@ -274,7 +269,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             }
                                             ctdcbd.Dot = dontu_ChiTiet.Dot.ToString();
                                             ctdcbd.HieuLucKy = "12/2023";
-
                                             ///Biến lưu Điều Chỉnh về gì (Họ Tên,Địa Chỉ,Định Mức,Giá Biểu,MSThuế)
                                             string ThongTin = "";
                                             ///Họ Tên
@@ -353,7 +347,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                     ctdcbd.DinhMucHN_BD = 0;
                                                 }
                                             }
-
                                             //if (txtSH_BD.Text.Trim() != "" || txtSX_BD.Text.Trim() != "" || txtDV_BD.Text.Trim() != "" || txtHCSN_BD.Text.Trim() != "")
                                             //{
                                             //    if (string.IsNullOrEmpty(ThongTin) == true)
@@ -389,7 +382,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             /////HCSN
                                             //if (txtHCSN_BD.Text.Trim() != "")
                                             //    ctdcbd.HCSN_BD = txtHCSN_BD.Text.Trim();
-
                                             ctdcbd.ThongTin = ThongTin;
                                             ctdcbd.PhieuDuocKy = true;
                                             _cDCBD.ThemDCBD(ctdcbd);
@@ -409,16 +401,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                     DCBD_ChiTietHoaDon ctdchd = new DCBD_ChiTietHoaDon();
                                                     ctdchd.MaDCBD = _cDCBD.get(dontu_ChiTiet.MaDon.Value).MaDCBD;
                                                     ctdchd.STT = dontu_ChiTiet.STT.Value;
-
                                                     ctdchd.DanhBo = dontu_ChiTiet.DanhBo;
                                                     ctdchd.MLT = dontu_ChiTiet.MLT;
                                                     ctdchd.HoTen = dontu_ChiTiet.HoTen;
                                                     ctdchd.DiaChi = dontu_ChiTiet.DiaChi;
-
                                                     ctdchd.NgayKy = DateTime.Now;
-
                                                     ctdchd.KyHD = int.Parse(dgvDanhSach.Rows[i].Cells["Ky"].Value.ToString()).ToString("00") + "/" + int.Parse(dgvDanhSach.Rows[i].Cells["Nam"].Value.ToString());
-
                                                     DocSo ds = _cDocSo.get(dontu_ChiTiet.DanhBo, int.Parse(dgvDanhSach.Rows[i].Cells["Ky"].Value.ToString()), int.Parse(dgvDanhSach.Rows[i].Cells["Nam"].Value.ToString()));
                                                     if (hd != null)
                                                         ctdchd.Dot = hd.DOT;
@@ -460,7 +448,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                         , PhiBVMTNamCuTruoc = 0, PhiBVMTNamMoiTruoc = 0, PhiBVMTNamCuSau = 0, PhiBVMTNamMoiSau = 0
                                                         , TienNuocTruoc = 0, ThueGTGTTruoc = 0, TDVTNTruoc = 0, ThueTDVTNTruoc = 0, TienNuocSau = 0, ThueGTGTSau = 0, TDVTNSau = 0, ThueTDVTNSau = 0, ThueTDVTN_VAT = 0;
                                                     DateTime TuNgay = new DateTime(), DenNgay = new DateTime();
-
                                                     if (hd != null)
                                                     {
                                                         Ky = hd.KY;
@@ -502,105 +489,85 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                             if (hoadon.TILEHCSN != null && hoadon.TILEHCSN.Value != 0)
                                                                 TyLeHCSN = hoadon.TILEHCSN.Value;
                                                         }
-
                                                     _cGiaNuoc.TinhTienNuoc(false, false, false, 0, hd.DANHBA, Ky, Nam, TuNgay, DenNgay, ctdchd.GiaBieu.Value, TyleSH, TyLeSX, TyLeDV, TyLeHCSN, ctdchd.DinhMuc.Value, ctdchd.DinhMucHN.Value, ctdchd.TieuThu.Value, out TienNuocNamCuTruoc, out ChiTietNamCuTruoc, out TienNuocNamMoiTruoc, out ChiTietNamMoiTruoc, out TieuThu_DieuChinhGia, out PhiBVMTNamCuTruoc, out ChiTietPhiBVMTNamCuTruoc, out PhiBVMTNamMoiTruoc, out ChiTietPhiBVMTNamMoiTruoc, out TienNuocTruoc, out ThueGTGTTruoc, out TDVTNTruoc, out ThueTDVTNTruoc, out ThueTDVTN_VAT);
-
                                                     _cGiaNuoc.TinhTienNuoc(false, false, false, 0, hd.DANHBA, Ky, Nam, TuNgay, DenNgay, ctdchd.GiaBieu_BD.Value, TyleSH, TyLeSX, TyLeDV, TyLeHCSN, ctdchd.DinhMuc_BD.Value, ctdchd.DinhMucHN_BD.Value, ctdchd.TieuThu_BD.Value, out TienNuocNamCuSau, out ChiTietNamCuSau, out TienNuocNamMoiSau, out ChiTietNamMoiSau, out TieuThu_DieuChinhGia, out PhiBVMTNamCuSau, out ChiTietPhiBVMTNamCuSau, out PhiBVMTNamMoiSau, out ChiTietPhiBVMTNamMoiSau, out TienNuocSau, out ThueGTGTSau, out TDVTNSau, out ThueTDVTNSau, out ThueTDVTN_VAT);
-
                                                     ctdchd.ChiTietCu = ChiTietNamCuTruoc + "\r\n" + ChiTietNamMoiTruoc;
                                                     ctdchd.ChiTietMoi = ChiTietNamCuSau + "\r\n" + ChiTietNamMoiSau;
                                                     ctdchd.HoTen_BD = "";
                                                     ctdchd.DiaChi_BD = "";
                                                     ctdchd.MST_BD = "";
-
                                                     ///Tiền Nước
                                                     if (hd.GIABAN.Value != 0)
                                                         ctdchd.TienNuoc_Start = (int)hd.GIABAN.Value;
                                                     else
                                                         ctdchd.TienNuoc_Start = 0;
-
                                                     if (TienNuocSau - (int)hd.GIABAN.Value != 0)
                                                         ctdchd.TienNuoc_BD = TienNuocSau - (int)hd.GIABAN.Value;
                                                     else
                                                         ctdchd.TienNuoc_BD = 0;
-
                                                     if (TienNuocSau != 0)
                                                         ctdchd.TienNuoc_End = TienNuocSau;
                                                     else
                                                         ctdchd.TienNuoc_End = 0;
-
                                                     ///Thuế GTGT
                                                     if ((int)hd.GIABAN.Value != 0)
                                                         ctdchd.ThueGTGT_Start = (int)hd.THUE.Value;
                                                     else
                                                         ctdchd.ThueGTGT_Start = 0;
-
                                                     if (TienNuocSau - (int)hd.GIABAN.Value != 0)
                                                         ctdchd.ThueGTGT_BD = (ThueGTGTSau - (int)hd.THUE.Value);
                                                     else
                                                         ctdchd.ThueGTGT_BD = 0;
-
                                                     if (TienNuocSau != 0)
                                                         ctdchd.ThueGTGT_End = (int)ThueGTGTSau;
                                                     else
                                                         ctdchd.ThueGTGT_End = 0;
-
                                                     ///Phí BVMT
                                                     if ((int)hd.GIABAN.Value != 0)
                                                         ctdchd.PhiBVMT_Start = (int)hd.PHI.Value;
                                                     else
                                                         ctdchd.PhiBVMT_Start = 0;
-
                                                     if (TienNuocSau - (int)hd.GIABAN.Value != 0)
                                                         //ctdchd.PhiBVMT_BD = (int)(Math.Round((double)TienNuocSau * 10 / 100, 0, MidpointRounding.AwayFromZero) - (int)hd.PHI.Value);
                                                         ctdchd.PhiBVMT_BD = TDVTNSau - (int)hd.PHI.Value;
                                                     else
                                                         ctdchd.PhiBVMT_BD = 0;
-
                                                     if (TienNuocSau != 0)
                                                         //ctdchd.PhiBVMT_End = (int)Math.Round((double)TienNuocSau * 10 / 100, 0, MidpointRounding.AwayFromZero);
                                                         ctdchd.PhiBVMT_End = TDVTNSau;
                                                     else
                                                         ctdchd.PhiBVMT_End = 0;
-
                                                     ///Phí BVMT Thuế
                                                     if ((int)hd.GIABAN.Value != 0)
                                                         ctdchd.PhiBVMT_Thue_Start = (int)hd.ThueGTGT_TDVTN.Value;
                                                     else
                                                         ctdchd.PhiBVMT_Thue_Start = 0;
-
                                                     if (TienNuocSau - (int)hd.GIABAN.Value != 0)
                                                         //ctdchd.PhiBVMT_BD = (int)(Math.Round((double)TienNuocSau * 10 / 100, 0, MidpointRounding.AwayFromZero) - (int)hd.PHI.Value);
                                                         ctdchd.PhiBVMT_Thue_BD = ThueTDVTNSau - (int)hd.ThueGTGT_TDVTN.Value;
                                                     else
                                                         ctdchd.PhiBVMT_Thue_BD = 0;
-
                                                     if (TienNuocSau != 0)
                                                         //ctdchd.PhiBVMT_End = (int)Math.Round((double)TienNuocSau * 10 / 100, 0, MidpointRounding.AwayFromZero);
                                                         ctdchd.PhiBVMT_Thue_End = ThueTDVTNSau;
                                                     else
                                                         ctdchd.PhiBVMT_Thue_End = 0;
-
                                                     ///Tổng Cộng
                                                     if ((int)hd.GIABAN.Value != 0)
                                                         ctdchd.TongCong_Start = (int)hd.TONGCONG.Value;
                                                     else
                                                         ctdchd.TongCong_Start = 0;
-
                                                     if (TienNuocSau - (int)hd.GIABAN.Value != 0)
                                                         //ctdchd.TongCong_BD = ((TienNuocSau + (int)Math.Round((double)TienNuocSau * 5 / 100, 0, MidpointRounding.AwayFromZero) + (int)Math.Round((double)TienNuocSau * 10 / 100, 0, MidpointRounding.AwayFromZero)) - (int)hd.TONGCONG.Value);
                                                         ctdchd.TongCong_BD = ((TienNuocSau + ThueGTGTSau + TDVTNSau) - (int)hd.TONGCONG.Value);
                                                     else
                                                         ctdchd.TongCong_BD = 0;
-
                                                     if (TienNuocSau != 0)
                                                         //ctdchd.TongCong_End = (TienNuocSau + (int)Math.Round((double)TienNuocSau * 5 / 100, 0, MidpointRounding.AwayFromZero) + (int)Math.Round((double)TienNuocSau * 10 / 100, 0, MidpointRounding.AwayFromZero));
                                                         ctdchd.TongCong_End = (TienNuocSau + ThueGTGTSau + TDVTNSau);
                                                     else
                                                         ctdchd.TongCong_End = 0;
-
                                                     ctdchd.ThongTin = "Tiêu Thụ";
-
                                                     if (ctdchd.TienNuoc_End - ctdchd.TienNuoc_Start == 0)
                                                         ctdchd.TangGiam = "";
                                                     else
@@ -608,7 +575,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                             ctdchd.TangGiam = "Tăng";
                                                         else
                                                             ctdchd.TangGiam = "Giảm";
-
                                                     ctdchd.PhieuDuocKy = true;
                                                     _cDCBD.ThemDCHD(ctdchd);
                                                     _cDCBD.ExecuteNonQuery("update DieuChinhHangLoat set DaXuLy=1 where DCHD=1 and DanhBo='" + dontu_ChiTiet.DanhBo + "' and Nam=" + txtNam.Text.Trim() + " and Ky=" + txtKy.Text.Trim() + " and Dot=" + txtDot.Text.Trim());
