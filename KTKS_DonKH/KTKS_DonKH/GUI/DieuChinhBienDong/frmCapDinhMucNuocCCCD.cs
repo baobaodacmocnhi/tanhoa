@@ -32,6 +32,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CDHN _cDHN = new CDHN();
         CDocSo _cDocSo = new CDocSo();
         wsThuongVu _wsThuongVu = new wsThuongVu();
+        CChiNhanh _cChiNhanh = new CChiNhanh();
         HOADON _hoadon = null;
         DCBD_DKDM_DanhBo _danhbo = null;
         bool _flag = false;
@@ -58,6 +59,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             cmbNguoiLap.DisplayMember = "Name";
             cmbNguoiLap.ValueMember = "ID";
             cmbKiemTra.SelectedIndex = 0;
+            cmbChiNhanh.DataSource = _cChiNhanh.LoadDSChiNhanh("Tân Hòa");
+            cmbChiNhanh.DisplayMember = "TenCN";
+            cmbChiNhanh.ValueMember = "MaCN";
         }
 
         public void Clear()
@@ -1495,6 +1499,26 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 Clear();
                             }
                         }
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvDanhSach_Online_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+                {
+                    if (dgvDanhSach_Online.Columns[e.ColumnIndex].Name == "HieuLucKy")
+                    {
+                        MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
