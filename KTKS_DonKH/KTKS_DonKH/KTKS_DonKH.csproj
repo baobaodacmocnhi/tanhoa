@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>214</ApplicationRevision>
+    <ApplicationRevision>218</ApplicationRevision>
     <ApplicationVersion>1.5.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -1143,6 +1143,12 @@
     </Compile>
     <Compile Include="GUI\CatHuyDanhBo\frmNoiDungXuLyCHDB.Designer.cs">
       <DependentUpon>frmNoiDungXuLyCHDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\DieuChinhBienDong\frmCapDinhMucNuocCCCD_Show.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DieuChinhBienDong\frmCapDinhMucNuocCCCD_Show.Designer.cs">
+      <DependentUpon>frmCapDinhMucNuocCCCD_Show.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\DieuChinhBienDong\frmDCBD_old.cs">
       <SubType>Form</SubType>
@@ -2393,6 +2399,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\CatHuyDanhBo\frmNoiDungXuLyCHDB.resx">
       <DependentUpon>frmNoiDungXuLyCHDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DieuChinhBienDong\frmCapDinhMucNuocCCCD_Show.resx">
+      <DependentUpon>frmCapDinhMucNuocCCCD_Show.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DieuChinhBienDong\frmDCBD_old.resx">
       <DependentUpon>frmDCBD_old.cs</DependentUpon>

@@ -708,6 +708,7 @@ namespace BauCu
             foreach (DataRow item in dt.Rows)
             {
                 DataRow dr = dsReport.Tables["CoDong"].NewRow();
+                dr["MACD"] = item["MACD"];
                 dr["HoTen"] = item["TENCD"];
                 dr["CMND"] = item["CMND"];
                 dr["NgayCap"] = item["NgayCap"];
@@ -715,6 +716,7 @@ namespace BauCu
             }
             rptDSCoDong rpt = new rptDSCoDong();
             rpt.SetDataSource(dsReport);
+            rpt.SetParameterValue("Ngay", "25");
             frmShowReport frm = new frmShowReport(rpt);
             frm.ShowDialog();
         }

@@ -279,6 +279,8 @@ namespace BauCu {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class CoDongDataTable : global::System.Data.TypedTableBase<CoDongRow> {
             
+            private global::System.Data.DataColumn columnMACD;
+            
             private global::System.Data.DataColumn columnHoTen;
             
             private global::System.Data.DataColumn columnCMND;
@@ -316,6 +318,14 @@ namespace BauCu {
             protected CoDongDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MACDColumn {
+                get {
+                    return this.columnMACD;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -379,9 +389,10 @@ namespace BauCu {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CoDongRow AddCoDongRow(string HoTen, string CMND, string NgayCap) {
+            public CoDongRow AddCoDongRow(string MACD, string HoTen, string CMND, string NgayCap) {
                 CoDongRow rowCoDongRow = ((CoDongRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
+                        MACD,
                         HoTen,
                         CMND,
                         NgayCap};
@@ -407,6 +418,7 @@ namespace BauCu {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
+                this.columnMACD = base.Columns["MACD"];
                 this.columnHoTen = base.Columns["HoTen"];
                 this.columnCMND = base.Columns["CMND"];
                 this.columnNgayCap = base.Columns["NgayCap"];
@@ -415,6 +427,8 @@ namespace BauCu {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
+                this.columnMACD = new global::System.Data.DataColumn("MACD", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMACD);
                 this.columnHoTen = new global::System.Data.DataColumn("HoTen", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnHoTen);
                 this.columnCMND = new global::System.Data.DataColumn("CMND", typeof(string), null, global::System.Data.MappingType.Element);
@@ -563,6 +577,22 @@ namespace BauCu {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string MACD {
+                get {
+                    try {
+                        return ((string)(this[this.tableCoDong.MACDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MACD\' in table \'CoDong\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCoDong.MACDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string HoTen {
                 get {
                     try {
@@ -607,6 +637,18 @@ namespace BauCu {
                 set {
                     this[this.tableCoDong.NgayCapColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMACDNull() {
+                return this.IsNull(this.tableCoDong.MACDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMACDNull() {
+                this[this.tableCoDong.MACDColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

@@ -56,7 +56,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         public ChungTu Get(string MaCT, int MaLCT)
         {
-            return db.ChungTus.Single(itemCT => itemCT.MaCT == MaCT && itemCT.MaLCT == MaLCT);
+            return db.ChungTus.SingleOrDefault(itemCT => itemCT.MaCT == MaCT && itemCT.MaLCT == MaLCT);
         }
 
         #endregion
@@ -79,7 +79,6 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 //    ExecuteNonQuery("insert into CCCD_Temp(CCCD,Result,CreateBy,ModifyDate)values('" + ctchungtu.MaCT + "',N'" + result + "'," + CTaiKhoan.MaUser + ",getdate())");
                 //}
                 //catch { };
-
                 return true;
             }
             catch (Exception ex)
@@ -207,6 +206,84 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         };
 
             return LINQToDataTable(query);
+        }
+
+        public DataTable getDS_ChiTiet_CreateDates(int CreateBy, DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            var query = from itemCTCT in db.ChungTu_ChiTiets
+                        join itemCT in db.ChungTus on new { itemCTCT.MaCT, itemCTCT.MaLCT } equals new { itemCT.MaCT, itemCT.MaLCT }
+                        join itemLCT in db.LoaiChungTus on itemCT.MaLCT equals itemLCT.MaLCT
+                        where itemCTCT.CreateBy == CreateBy && itemCTCT.CreateDate.Value.Date >= FromCreateDate.Date && itemCTCT.CreateDate.Value.Date <= ToCreateDate.Date
+                        orderby itemCTCT.Cat descending, itemCTCT.MaLCT ascending, itemCTCT.CreateDate ascending
+                        select new
+                        {
+                            itemCTCT.DanhBo,
+                            itemCT.MaLCT,
+                            itemLCT.TenLCT,
+                            itemCTCT.MaCT,
+                            itemCT.NgaySinh,
+                            itemCT.HoTen,
+                            itemCT.DiaChi,
+                            itemCT.SoNKTong,
+                            itemCT.SoNKCat,
+                            itemCT.SoNKNhan,
+                            itemCT.SoNKConLai,
+                            itemCTCT.SoNKDangKy,
+                            itemCTCT.NgayHetHan,
+                            itemCTCT.ThoiHan,
+                            itemCTCT.DienThoai,
+                            itemCTCT.Cat,
+                            itemCTCT.GhiChu,
+                            itemCTCT.GiaHan,
+                            itemCTCT.Lo,
+                            itemCTCT.Phong,
+                            itemCTCT.CreateDate,
+                            itemCTCT.STT,
+                            itemCT.KhacDiaBan,
+                            itemCTCT.ThuongTru,
+                            itemCTCT.TamTru,
+                        };
+
+            return LINQToDataTable(query);
+        }
+
+        public int countDS_ChiTiet_CreateDates(int CreateBy, DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            var query = from itemCTCT in db.ChungTu_ChiTiets
+                        join itemCT in db.ChungTus on new { itemCTCT.MaCT, itemCTCT.MaLCT } equals new { itemCT.MaCT, itemCT.MaLCT }
+                        join itemLCT in db.LoaiChungTus on itemCT.MaLCT equals itemLCT.MaLCT
+                        where itemCTCT.CreateBy == CreateBy && itemCTCT.CreateDate.Value.Date >= FromCreateDate.Date && itemCTCT.CreateDate.Value.Date <= ToCreateDate.Date
+                        orderby itemCTCT.Cat descending, itemCTCT.MaLCT ascending, itemCTCT.CreateDate ascending
+                        select new
+                        {
+                            itemCTCT.DanhBo,
+                            itemCT.MaLCT,
+                            itemLCT.TenLCT,
+                            itemCTCT.MaCT,
+                            itemCT.NgaySinh,
+                            itemCT.HoTen,
+                            itemCT.DiaChi,
+                            itemCT.SoNKTong,
+                            itemCT.SoNKCat,
+                            itemCT.SoNKNhan,
+                            itemCT.SoNKConLai,
+                            itemCTCT.SoNKDangKy,
+                            itemCTCT.NgayHetHan,
+                            itemCTCT.ThoiHan,
+                            itemCTCT.DienThoai,
+                            itemCTCT.Cat,
+                            itemCTCT.GhiChu,
+                            itemCTCT.GiaHan,
+                            itemCTCT.Lo,
+                            itemCTCT.Phong,
+                            itemCTCT.CreateDate,
+                            itemCTCT.STT,
+                            itemCT.KhacDiaBan,
+                            itemCTCT.ThuongTru,
+                            itemCTCT.TamTru,
+                        };
+
+            return query.GroupBy(o => o.DanhBo).Count();
         }
 
         public DataTable getDS_ChiTiet_SHS(string SHS)

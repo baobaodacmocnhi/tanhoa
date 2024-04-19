@@ -328,12 +328,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     if (txtMaCT.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "" && txtSoNKDangKy.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "0" && txtSoNKDangKy.Text.Trim() != "0")
                     {
-                        ///Kiểm tra Số Chứng Từ đã đăng ký danh bộ khác
-                        if (_cChungTu.CheckExist_CT(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString())))
-                        {
-                            MessageBox.Show("Số đăng ký này đã có đăng ký trước", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            return;
-                        }
+                        /////Kiểm tra Số Chứng Từ đã đăng ký danh bộ khác
+                        //if (_cChungTu.CheckExist_CT(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString())))
+                        //{
+                        //    MessageBox.Show("Số đăng ký này đã có đăng ký trước", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //    return;
+                        //}
                         ///Kiểm tra Danh Bộ & Số Chứng Từ
                         if (_cChungTu.CheckExist_CT(txtDanhBo.Text.Trim(), txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString())) == true)
                         {
@@ -379,13 +379,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             }
                             ///Lấy thông tin Chứng Từ để kiểm tra
                             ChungTu _chungtu = _cChungTu.Get(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
-                            if (_chungtu.SoNKTong - _chungtu.ChungTu_ChiTiets.Sum(item => item.SoNKDangKy) < int.Parse(txtSoNKDangKy.Text.Trim()))
+                            if (_chungtu.SoNKTong - _chungtu.ChungTu_ChiTiets.Sum(o => o.SoNKDangKy) < int.Parse(txtSoNKDangKy.Text.Trim()))
                             {
                                 MessageBox.Show("Vượt Nhân Khẩu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
-                            ///
-
                             ChungTu_ChiTiet ctchungtu = new ChungTu_ChiTiet();
                             ctchungtu.DanhBo = txtDanhBo.Text.Trim();
                             ctchungtu.ThuongTru = chkThuongTru.Checked;
@@ -1281,7 +1279,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 }
 
                                 #endregion
-
                                 _cChungTu.SubmitChanges();
                                 scope.Complete();
                                 MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1289,6 +1286,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 this.Close();
                             }
                         }
+                        _cChungTu.Refresh();
                     }
                 }
                 catch (Exception ex)
