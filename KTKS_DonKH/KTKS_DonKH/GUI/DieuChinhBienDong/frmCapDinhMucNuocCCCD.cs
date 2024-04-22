@@ -1510,6 +1510,72 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
+        private void dgvDanhSach_Online_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void chkAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkAll.Checked)
+                foreach (DataGridViewRow item in dgvDanhSach_Online.Rows)
+                {
+                    item.Cells["In"].Value = true;
+                }
+            else
+                foreach (DataGridViewRow item in dgvDanhSach_Online.Rows)
+                {
+                    item.Cells["In"].Value = false;
+                }
+        }
+
+        private void dgvDanhSachCT_Online_CellValidated(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+                {
+                    string[] NgaySinhs = null;
+                    if (dgvDanhSachCT_Online["NgaySinhCT_Online", e.RowIndex].Value.ToString().Contains("/"))
+                        NgaySinhs = dgvDanhSachCT_Online["NgaySinhCT_Online", e.RowIndex].Value.ToString().Split('/');
+                    else
+                        if (dgvDanhSachCT_Online["NgaySinhCT_Online", e.RowIndex].Value.ToString().Contains("-"))
+                            NgaySinhs = dgvDanhSachCT_Online["NgaySinhCT_Online", e.RowIndex].Value.ToString().Split('-');
+                    string[] NgayHetHans = null;
+                    if (dgvDanhSachCT_Online["NgayHetHan_Online", e.RowIndex].Value.ToString().Contains("/"))
+                        NgayHetHans = dgvDanhSachCT_Online["NgayHetHan_Online", e.RowIndex].Value.ToString().Split('/');
+                    else
+                        if (dgvDanhSachCT_Online["NgayHetHan_Online", e.RowIndex].Value.ToString().Contains("-"))
+                            NgayHetHans = dgvDanhSachCT_Online["NgayHetHan_Online", e.RowIndex].Value.ToString().Split('-');
+                    string KhacDiaBan = "0", ThuongTru = "0", TamTru = "0", ChiNhanh = "0";
+                    if (bool.Parse(dgvDanhSachCT_Online["KhacDiaBan", e.RowIndex].Value.ToString()))
+                        KhacDiaBan = "1";
+                    if (bool.Parse(dgvDanhSachCT_Online["ThuongTru", e.RowIndex].Value.ToString()))
+                        ThuongTru = "1";
+                    if (bool.Parse(dgvDanhSachCT_Online["TamTru", e.RowIndex].Value.ToString()))
+                        TamTru = "1";
+                    if (dgvDanhSachCT_Online["cmbChiNhanh", e.RowIndex].Value != null && dgvDanhSachCT_Online["cmbChiNhanh", e.RowIndex].Value.ToString() != "")
+                        ChiNhanh = dgvDanhSachCT_Online["cmbChiNhanh", e.RowIndex].Value.ToString();
+                    _cDCBD.ExecuteNonQuery("update DCBD_DKDM_CCCD set HoTen=N'" + dgvDanhSachCT_Online["HoTenCT_Online", e.RowIndex].Value.ToString()
+                        + ",NgaySinh='" + NgaySinhs[2] + "-" + NgaySinhs[1] + "-" + NgaySinhs[0] + "'"
+                        + ",DCThuongTru=N''"
+                        + ",DCTamTru=N''"
+                        + ",KhacDiaBan=" + KhacDiaBan
+                        + ",ThuongTru=" + ThuongTru
+                        + ",TamTru=" + TamTru
+                        + ",NgayHetHan='" + NgayHetHans[2] + "-" + NgayHetHans[1] + "-" + NgayHetHans[0] + "'"
+                        + ",cmbChiNhanh=" + ChiNhanh
+                        + "' where ID=" + dgvDanhSachCT_Online["IDCT_Online", e.RowIndex].Value.ToString());
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void dgvDanhSach_Online_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -1518,7 +1584,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     if (dgvDanhSach_Online.Columns[e.ColumnIndex].Name == "HieuLucKy")
                     {
-                        MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        _cDCBD.ExecuteNonQuery("update DCBD_DKDM_DanhBo set HieuLucKy='" + dgvDanhSach_Online["HieuLucKy", e.RowIndex].Value.ToString() + "' where ID=" + dgvDanhSach_Online["ID_Online", e.RowIndex].Value.ToString());
                     }
                 }
                 else
@@ -1530,7 +1596,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
-       
+
+
+
 
     }
 }
