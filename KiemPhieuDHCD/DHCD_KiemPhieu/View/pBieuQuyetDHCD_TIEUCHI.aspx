@@ -91,6 +91,9 @@
                         <asp:ListItem>14</asp:ListItem>
                         <asp:ListItem>15</asp:ListItem>
                     </asp:DropDownList>
+                    <br />
+                    <br />
+                    <asp:Button ID="btnIn" runat="server" Text="In" onclick="btnIn_Click" />
                 </td>
                 <td class="style8" style="border-right: 2px #99cc99 solid; border-bottom: 1px solid;
                     background-color: #FFFFCC;">
@@ -111,7 +114,7 @@
                                 text-align: center; border-bottom-style: solid; border-bottom-color: inherit;
                                 border-bottom-width: 1px;">
                                 NHẬP STT CỔ ĐÔNG<br />
-                                &nbsp;KHÔNG ĐỒNG Ý
+                                &nbsp;KHÔNG TÁN THÀNH
                             </td>
                             <td class="style10" style="border-right: 2px #99cc99 solid; background-color: #99FFCC;
                                 border-bottom: 1px solid;">
@@ -154,7 +157,7 @@
                     <tr id="" class="head1" style="height: 17px;">
                         <td class="style5" colspan="2" style="border-right: 1px #FF0000 solid; color: Red;
                             background-color: #FFFF99; font-size: 20px; border-bottom: 2px #FF0000	 solid;">
-                            CỔ ĐÔNG KHÔNG ĐỒNG Ý
+                            CỔ ĐÔNG KHÔNG TÁN THÀNH
                         </td>
                     </tr>
                     <tr class="head1">
@@ -236,7 +239,8 @@
                         <tr class="head1" style="height: 17px;">
                             <td class="style5" style="border-right: 1px #FF0000 solid; background-color: #CCFFFF;
                                 font-size: 22px; border-bottom: 2px #FF0000	 solid;" colspan="2">
-                                <center> CỔ ĐÔNG ĐỒNG Ý</center>
+                                <center>
+                                    CỔ ĐÔNG TÁN THÀNH</center>
                             </td>
                         </tr>
                         <tr class="head1">

@@ -16,28 +16,58 @@ namespace DHCD_KiemPhieu.View
         log4net.ILog log = log4net.LogManager.GetLogger("File");
         protected void Page_Load(object sender, EventArgs e)
         {
-
             string sql = "";
             string title = "";
-
+            if ("InThamTraTuCach".Equals(Request.Params["page"] + ""))
+            {
+                CrystalReportSource1.Report.FileName = "inThamTraTuCach.rpt";
+                CrystalReportSource1.ReportDocument.SetParameterValue("ThoiGian", Session["ThoiGian"] + "");
+                CrystalReportSource1.ReportDocument.SetParameterValue("CoDong", Session["CoDong"] + "");
+                CrystalReportSource1.ReportDocument.SetParameterValue("CoPhan", Session["CoPhan"] + "");
+                CrystalReportSource1.ReportDocument.SetParameterValue("TyLe", Session["TyLe"] + "");
+                CrystalReportSource1.ReportDocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, false, "");
+            }
+            if ("inKQBieuQuyetDHCD".Equals(Request.Params["page"] + ""))
+            {
+                DataSet1 dsReport = new DataSet1();
+                DataSet ds = new DataSet();
+                TanHoaDataContext db = new TanHoaDataContext();
+                if (db.Connection.State == ConnectionState.Open)
+                {
+                    db.Connection.Close();
+                }
+                db.Connection.Open();
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT [TENLOAI] FROM [DH_CODONG].[dbo].[TIEUCHIBIEUQUYET]", db.Connection.ConnectionString);
+                adapter.Fill(ds, "abc");
+                foreach (DataRow item in ds.Tables[0].Rows)
+                {
+                    DataRow dr = dsReport.Tables["DSCODONG"].NewRow();
+                    dr["TENCD"] = item["TENLOAI"];
+                    dsReport.Tables["DSCODONG"].Rows.Add(dr);
+                }
+                CrystalReportSource1.Report.FileName = "inKQBieuQuyetDHCD.rpt";
+                CrystalReportSource1.ReportDocument.SetDataSource(dsReport);
+                CrystalReportSource1.ReportDocument.SetParameterValue("ThoiGian", Session["ThoiGian"] + "");
+                CrystalReportSource1.ReportDocument.SetParameterValue("CoDong", Session["CoDong"] + "");
+                CrystalReportSource1.ReportDocument.SetParameterValue("CoPhan", Session["CoPhan"] + "");
+                CrystalReportSource1.ReportDocument.SetParameterValue("TyLe", Session["TyLe"] + "");
+                CrystalReportSource1.ReportDocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, false, "");
+            }
             if ("BQ".Equals(Request.Params["page"] + ""))
             {
                 sql = Session["SQL"] + "";
                 CrystalReportSource1.Report.FileName = "inKQBieuQuyet.rpt";
-
                 CrystalReportSource1.ReportDocument.SetDataSource((DataTable)Session["TABLE"]);
-
                 CrystalReportSource1.ReportDocument.SetParameterValue("TC", Session["TC"] + "");
                 CrystalReportSource1.ReportDocument.SetParameterValue("TS", Session["TS"] + "");
                 CrystalReportSource1.ReportDocument.SetParameterValue("TR", Session["TR"] + "");
                 CrystalReportSource1.ReportDocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, false, "KET_QUA_BIEU_QUYET");
-
-            } if ("IN".Equals(Request.Params["page"] + ""))
+            }
+            if ("IN".Equals(Request.Params["page"] + ""))
             {
                 CrystalReportSource1.Report.FileName = "inTheBieuQuyet.rpt";
                 CrystalReportSource1.ReportDocument.SetDataSource(Img());
                 CrystalReportSource1.ReportDocument.SetParameterValue("TT", Session["TT"] + "");
-
                 CrystalReportSource1.ReportDocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, false, "THE_BIEU_QUYET");
             }
             if ("BC".Equals(Request.Params["page"] + ""))
@@ -57,20 +87,16 @@ namespace DHCD_KiemPhieu.View
                 sql = Session["SQL"] + "";
                 string sql2 = Session["SQL2"] + "";
                 TanHoaDataContext db = new TanHoaDataContext();
-
                 DataSet ds = new DataSet();
                 if (db.Connection.State == ConnectionState.Open)
                 {
                     db.Connection.Close();
                 }
                 db.Connection.Open();
-
                 SqlDataAdapter adapter = new SqlDataAdapter(sql, db.Connection.ConnectionString);
                 adapter.Fill(ds, "KQBAUCU");
-
                 adapter = new SqlDataAdapter(sql2, db.Connection.ConnectionString);
                 adapter.Fill(ds, "KQTRUNGCU");
-
                 if ("1".Equals(Session["LoaiBaoCao"].ToString()))
                 {
                     CrystalReportSource1.Report.FileName = "inKQBauCu_TDT.rpt";
@@ -96,20 +122,16 @@ namespace DHCD_KiemPhieu.View
                 sql = Session["SQL"] + "";
                 string sql2 = Session["SQL2"] + "";
                 TanHoaDataContext db = new TanHoaDataContext();
-
                 DataSet ds = new DataSet();
                 if (db.Connection.State == ConnectionState.Open)
                 {
                     db.Connection.Close();
                 }
                 db.Connection.Open();
-
                 SqlDataAdapter adapter = new SqlDataAdapter(sql, db.Connection.ConnectionString);
                 adapter.Fill(ds, "KQBAUCU");
-
                 adapter = new SqlDataAdapter(sql2, db.Connection.ConnectionString);
                 adapter.Fill(ds, "KQTRUNGCU");
-
                 //if ("1".Equals(Session["LoaiBaoCao"].ToString()))
                 {
                     CrystalReportSource1.Report.FileName = "inKQBauCu_CongDoan.rpt";
@@ -127,8 +149,7 @@ namespace DHCD_KiemPhieu.View
         {
             try
             {
-                FileStream fs = new FileStream(FilePath,
-                           System.IO.FileMode.Open, System.IO.FileAccess.Read);
+                FileStream fs = new FileStream(FilePath, System.IO.FileMode.Open, System.IO.FileAccess.Read);
                 byte[] Image = new byte[fs.Length];
                 fs.Read(Image, 0, Convert.ToInt32(fs.Length));
                 fs.Close();
@@ -142,7 +163,6 @@ namespace DHCD_KiemPhieu.View
         public DataTable Img()
         {
             DataTable tb = Class.LinQConnection.getDataTable("SELECT STT, STTCD, MACD, TENCD, CMND, NGAYCAP, NOICAP, DIACHI, CDGD, PHONGTOA, TONGCD, ImgPath, Image FROM DSCODONG  ");
-
             for (int index = 0; index < tb.Rows.Count; index++)
             {
                 if (tb.Rows[index]["STT"].ToString() != "")
@@ -156,14 +176,12 @@ namespace DHCD_KiemPhieu.View
                     }
                     else
                     {
-                        LoadImage(tb.Rows[index], "Image",
-                                  "DefaultPicturePath");
+                        LoadImage(tb.Rows[index], "Image", "DefaultPicturePath");
                     }
                 }
                 else
                 {
-                    LoadImage(tb.Rows[index], "Image",
-                              "DefaultPicturePath");
+                    LoadImage(tb.Rows[index], "Image", "DefaultPicturePath");
                 }
             }
             return tb;

@@ -756,6 +756,18 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\inKQBieuQuyetDHCD.cs">
+      <DependentUpon>inKQBieuQuyetDHCD.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="View\inThamTraTuCach.cs">
+      <DependentUpon>inThamTraTuCach.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="View\inTheBieuQuyetHDQT_1_2022.cs">
       <DependentUpon>inTheBieuQuyetHDQT_1_2022.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -998,6 +1010,14 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>inTheBieuQuyet_N.cs</LastGenOutput>
     </Content>
+    <EmbeddedResource Include="View\inKQBieuQuyetDHCD.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>inKQBieuQuyetDHCD.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\inThamTraTuCach.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>inThamTraTuCach.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\inTheBieuQuyetHDQT_1_2022.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>inTheBieuQuyetHDQT_1_2022.cs</LastGenOutput>
@@ -1043,7 +1063,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>2753</DevelopmentServerPort>
+          <DevelopmentServerPort>7475</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

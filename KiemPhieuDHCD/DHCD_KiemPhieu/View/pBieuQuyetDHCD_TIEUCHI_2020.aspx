@@ -110,7 +110,7 @@
                             <td class="style17" style="border-right: 2px #99cc99 solid; color: Black; background-color: #99FFCC;
                                 text-align: center; border-bottom-style: solid; border-bottom-color: inherit;
                                 border-bottom-width: 1px;">
-                                NHẬP STT CỔ ĐÔNG ĐỒNG Ý
+                                NHẬP STT CỔ ĐÔNG TÁN THÀNH
                             </td>
                             <td class="style10" style="border-right: 2px #99cc99 solid; background-color: #99FFCC;
                                 border-bottom: 1px solid;">
@@ -128,7 +128,7 @@
                         <td class="style18" style="border-right: 2px #99cc99 solid; color: Black; background-color: #99FFCC;
                             text-align: center; border-bottom-style: solid; border-bottom-color: inherit;
                             border-bottom-width: 1px;">
-                            NHẬP STT CỔ ĐÔNG KHÔNG ĐỒNG Ý
+                            NHẬP STT CỔ ĐÔNG KHÔNG TÁN THÀNH
                         </td>
                         <td class="style10" style="border-right: 2px #99cc99 solid; background-color: #99FFCC;
                             border-bottom: 1px solid;">
@@ -169,7 +169,7 @@
                     <tr id="" class="head1" style="height: 17px;">
                         <td class="style5" colspan="2" style="border-right: 1px #FF0000 solid; color: Red;
                             background-color: #FFFF99; font-size: 20px; border-bottom: 2px #FF0000	 solid;">
-                            CỔ ĐÔNG ĐỒNG Ý
+                            CỔ ĐÔNG TÁN THÀNH
                         </td>
                     </tr>
                     <tr class="head1">
@@ -208,7 +208,7 @@
                         <tr class="head1" style="height: 17px;">
                             <td class="style5" style="border-right: 1px #FF0000 solid; background-color: #D3D3D3;
                                 font-size: 19px; border-bottom: 2px #FF0000	 solid;" colspan="2">
-                                CỔ ĐÔNG KHÔNG ĐỒNG Ý
+                                CỔ ĐÔNG KHÔNG TÁN THÀNH
                             </td>
                         </tr>
                         <tr class="head1">

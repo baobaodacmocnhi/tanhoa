@@ -48,9 +48,12 @@
                                 <asp:TextBox ID="txtCoDong" runat="server" onfocus="Focus(this)" AutoPostBack="True"
                                     OnTextChanged="txtCoDong_TextChanged"></asp:TextBox>
                             </td>
+                            <td><asp:Button ID="btnInThamTraTuCach" runat="server" Text="In Thẩm Tra Tư Cách" 
+                                    onclick="btnInThamTraTuCach_Click" /></td>
                         </tr>
                     </tbody>
                 </table>
+                
             </td>
         </tr>
         <tr>
@@ -70,8 +73,9 @@
                             </td>
                             <td class="style4" style="border-right: 1px #FF0000 solid; border-bottom: 1px solid;
                                 background-color: #CCFFFF;">
-                                <center> <asp:Label ID="tc_sl" runat="server" Font-Bold="True" Font-Size="X-Large" 
-                                                ForeColor="Red" Text="0"></asp:Label></center>
+                                <center>
+                                    <asp:Label ID="tc_sl" runat="server" Font-Bold="True" Font-Size="X-Large" ForeColor="Red"
+                                        Text="0"></asp:Label></center>
                             </td>
                         </tr>
                         <tr class="head1">
@@ -80,8 +84,8 @@
                             </td>
                             <td class="style4" style="border-right: 1px #FF0000 solid; border-bottom: 1px solid;
                                 background-color: #CCFFFF;">
-                                <center><asp:Label ID="tc_cp" runat="server" Font-Size="X-Large" ForeColor="Red" 
-                                               Text="0"></asp:Label></center>
+                                <center>
+                                    <asp:Label ID="tc_cp" runat="server" Font-Size="X-Large" ForeColor="Red" Text="0"></asp:Label></center>
                             </td>
                         </tr>
                         <tr class="head1">
@@ -90,8 +94,8 @@
                             </td>
                             <td class="style4" style="border-right: 1px #FF0000 solid; border-bottom: 1px solid;
                                 background-color: #CCFFFF;">
-                                <center><asp:Label ID="tc_tl" runat="server" Font-Size="X-Large" ForeColor="Red" 
-                                               Text="0"></asp:Label></center>
+                                <center>
+                                    <asp:Label ID="tc_tl" runat="server" Font-Size="X-Large" ForeColor="Red" Text="0"></asp:Label></center>
                             </td>
                         </tr>
                     </tbody>

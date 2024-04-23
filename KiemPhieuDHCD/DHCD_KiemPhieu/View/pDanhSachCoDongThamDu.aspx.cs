@@ -25,27 +25,20 @@ namespace DHCD_KiemPhieu.View
         int _cpTC = 0;
         private void Binddata()
         {
-
             GridView1.AllowPaging = true;
             GridView1.DataSource = Class.C_DhCoDong.getDSCoDongThamDu("");
             GridView1.DataBind();
             int sl = GridView1.Rows.Count;
             tc_sl.Text = sl + "";
-
             if (_cpTC > 0)
                 tc_cp.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _cpTC);
             else
                 tc_cp.Text = "0";
-
             double tl = _cpTC / Class.LinQConnection.ReturnResult("SELECT SUM(TONGCD) FROM DSCODONG");
             tc_tl.Text = String.Format("{0:0.##}", tl * 100).Replace(".",",") + "%";
-
-
             GridView2.AllowPaging = true;
             GridView2.DataSource = Class.C_DhCoDong.getDSCoDongChuaDen();
             GridView2.DataBind();
-
-
         }
 
         protected void btSearch_Click(object sender, EventArgs e)
@@ -53,18 +46,14 @@ namespace DHCD_KiemPhieu.View
             Binddata();
         }
       
-
-      
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 Label cpGD = (Label)e.Row.FindControl("Label9");
                 _cpGD += int.Parse(cpGD.Text.Replace(".", "").Replace(",", ""));
-
                 Label cpPT = (Label)e.Row.FindControl("Label10");
                 _cpPT += int.Parse(cpPT.Text.Replace(".", "").Replace(",", ""));
-
                 Label cpTC = (Label)e.Row.FindControl("Label11");
                 _cpTC += int.Parse(cpTC.Text.Replace(".", "").Replace(",", ""));
             }
@@ -72,10 +61,8 @@ namespace DHCD_KiemPhieu.View
             {
                 Label kn_DHN = (Label)e.Row.FindControl("lbCPGD");
                 kn_DHN.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _cpGD); ;
-
                 Label knSanLuong = (Label)e.Row.FindControl("lbCPPT");
                 knSanLuong.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _cpPT);
-
                 Label kt_DHN = (Label)e.Row.FindControl("lbCPTC");
                 kt_DHN.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _cpTC);
             }          
@@ -114,6 +101,15 @@ namespace DHCD_KiemPhieu.View
                 Label kt_DHN = (Label)e.Row.FindControl("lbCPTC0");
                 kt_DHN.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", cdCD);
             }          
+        }
+
+        protected void btnInThamTraTuCach_Click(object sender, EventArgs e)
+        {
+            Session["ThoiGian"] = DateTime.Now.Hour.ToString("00") + " giờ " + DateTime.Now.Minute.ToString("00")+" phút";
+            Session["CoDong"] = tc_sl.Text;
+            Session["CoPhan"] = tc_cp.Text;
+            Session["TyLe"] = tc_tl.Text;
+            Response.Redirect("Print.aspx?page=InThamTraTuCach");
         }
 
        

@@ -24,7 +24,6 @@ namespace DHCD_KiemPhieu.View
         {
             Session["TT"] = this.DropDownList1.SelectedValue.ToString();
             Response.Redirect("Print.aspx?page=IN");
-            
         }
     }
 }

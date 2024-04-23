@@ -202,5 +202,14 @@ namespace DHCD_KiemPhieu.View
             Class.LinQConnection.ExecuteCommand("DELETE FROM KIEMPHIEU_BIEUQUYET WHERE ID='" + e.CommandArgument.ToString() + "'");
             Binddata();
         }
+
+        protected void btnIn_Click(object sender, EventArgs e)
+        {
+            Session["ThoiGian"] = DateTime.Now.Hour.ToString("00") + " giờ " + DateTime.Now.Minute.ToString("00") + " phút";
+            Session["CoDong"] = dy_sl.Text;
+            Session["CoPhan"] = dy_cp.Text;
+            Session["TyLe"] = dy_sl.Text;
+            Response.Redirect("Print.aspx?page=inKQBieuQuyetDHCD");
+        }
     }
 }

@@ -102,10 +102,8 @@ namespace DHCD_KiemPhieu.View
                 {
                     Label cpGD = (Label)e.Row.FindControl("Label9");
                     _cpGD += int.Parse(cpGD.Text.Replace(".", "").Replace(",", ""));
-
                     Label cpPT = (Label)e.Row.FindControl("Label10");
                     _cpPT += int.Parse(cpPT.Text.Replace(".", "").Replace(",", ""));
-
                     Label cpTC = (Label)e.Row.FindControl("Label11");
                     _cpTC += int.Parse(cpTC.Text.Replace(".", "").Replace(",", ""));
                 }
@@ -113,10 +111,8 @@ namespace DHCD_KiemPhieu.View
                 {
                     Label kn_DHN = (Label)e.Row.FindControl("lbCPGD");
                     kn_DHN.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _cpGD); ;
-
                     Label knSanLuong = (Label)e.Row.FindControl("lbCPPT");
                     knSanLuong.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _cpPT);
-
                     Label kt_DHN = (Label)e.Row.FindControl("lbCPTC");
                     kt_DHN.Text = String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN"), "{0:#,##}", _cpTC);
                 }      
