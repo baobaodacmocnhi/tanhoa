@@ -48,6 +48,23 @@ namespace KTKS_DonKH.DAL
             db = new dbTrungTamKhachHangDataContext();
         }
 
+        public object ExecuteQuery_ReturnOneValue(string sql)
+        {
+            try
+            {
+                Connect();
+                command = new SqlCommand(sql, connection);
+                object result = command.ExecuteScalar();
+                Disconnect();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Disconnect();
+                throw ex;
+            }
+        }
+
         public DataTable ExecuteQuery_DataTable(string sql)
         {
             this.Connect();
@@ -133,6 +150,13 @@ namespace KTKS_DonKH.DAL
             return ExecuteQuery_DataTable("select MLT=ttkh.LOTRINH,b.DanhBo,ttkh.HOTEN,DiaChi=ttkh.SONHA+' '+ttkh.TENDUONG,HoTenZalo=a.Name,Avatar=a.Avatar"
 + " from Zalo_QuanTam a,Zalo_DangKy b,CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh"
 + " where a.IDZalo=b.IDZalo and a.Follow=1 and b.DanhBo=ttkh.DANHBO and b.DanhBo='" + DanhBo + "'");
+        }
+
+        public bool checkExists_HDDT(string DanhBo)
+        {
+            return bool.Parse(ExecuteQuery_ReturnOneValue("if exists (select * from Zalo_EContract_ChiTiet where DanhBo='13041821585' and HieuLuc=1) select 'true'"
+                + " else if exists (select * from Zalo_EContract_ChiTiet a,[TANHOA_WATER].[dbo].[KH_HOSOKHACHHANG] b where a.SHS=b.SHS and b.DHN_SODANHBO='13141974417' and a.HieuLuc=1) select 'true'"
+                + " else select 'false'").ToString());
         }
 
     }

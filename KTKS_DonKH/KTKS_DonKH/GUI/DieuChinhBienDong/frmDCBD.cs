@@ -2330,7 +2330,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         else
                             if (txtNgaySinh.Text.ToString().Contains("-"))
                                 NgaySinhs = txtNgaySinh.Text.ToString().Split('-');
-                        using (var scope = new TransactionScope())
+                        var transactionOptions = new TransactionOptions();
+                        transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                        using (var scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                         {
                             ///Kiểm tra Số Chứng Từ
                             if (_cChungTu.CheckExist(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString())) == false)

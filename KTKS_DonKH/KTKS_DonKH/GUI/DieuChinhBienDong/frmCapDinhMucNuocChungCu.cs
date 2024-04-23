@@ -190,7 +190,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 MessageBox.Show("Đã đăng ký với Danh Bộ " + _cChungTu.getDS_ChiTiet(txtCCCD.Text.Trim(), 15).Rows[0]["DanhBo"].ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
-                        //using (var scope = new TransactionScope())
+                        var transactionOptions = new TransactionOptions();
+                        transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                        using (var scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                         {
                             ChungTu chungtu;
                             ///Kiểm tra Số Chứng Từ
@@ -273,7 +275,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             ///Ghi thông tin Lịch Sử chung
                             ChungTu_LichSu lichsuchungtu = _cChungTu.ChungTuToLichSu(ctchungtu);
                             _cChungTu.ThemLichSuChungTu(lichsuchungtu);
-                            //scope.Complete();
+                            scope.Complete();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Clear();
                         }

@@ -358,7 +358,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         //    MessageBox.Show("Thiếu Ngày Sinh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         //    return;
                         //}
-                        using (var scope = new TransactionScope())
+                        var transactionOptions = new TransactionOptions();
+                        transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                        using (var scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                         {
                             ///Kiểm tra Số Chứng Từ
                             if (_cChungTu.CheckExist(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString())) == false)

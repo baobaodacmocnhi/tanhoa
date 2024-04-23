@@ -138,6 +138,10 @@ namespace KTKS_DonKH.GUI.DonTu
             string strDuongCamDao = _cGanMoi.getDuongCamDao(entity.SO, entity.DUONG);
             if (strDuongCamDao != "")
                 MessageBox.Show(strDuongCamDao, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (_cTTKH.checkExists_HDDT(entity.DANHBA))
+                lbHDDT.Text = "Đã có HĐĐT";
+            else
+                lbHDDT.Text = "";
         }
 
         public void LoadDonTu(LinQ.DonTu entity)
