@@ -46,12 +46,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     OpenFileDialog dialog = new OpenFileDialog();
                     dialog.Filter = "Files (.Excel)|*.xlsx;*.xlt;*.xls";
                     dialog.Multiselect = false;
-
                     if (dialog.ShowDialog() == DialogResult.OK)
                         if (MessageBox.Show("Bạn có chắc chắn Thêm?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
                             DataTable dtExcel = _cDCBD.ExcelToDataTable(dialog.FileName);
-
                             foreach (DataRow item in dtExcel.Rows)
                                 if (item[1].ToString().Trim() != "")
                                 {
@@ -68,7 +66,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         en.Ky = int.Parse(txtKy.Text.Trim());
                                         if (txtDot.Text.Trim() != "")
                                             en.Dot = int.Parse(txtDot.Text.Trim());
-                                        en.STT2 = int.Parse(item[0].ToString().Trim());
+                                        //en.STT2 = int.Parse(item[0].ToString().Trim());
                                         if (radDCBD.Checked)
                                             en.DCBD = true;
                                         else
@@ -131,11 +129,20 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     if (MessageBox.Show("Bạn có chắc chắn?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        if (_db.DieuChinhHangLoats.Any(item => item.Nam == int.Parse(dgvDanhSach.Rows[0].Cells["Nam"].Value.ToString()) && item.Ky == int.Parse(dgvDanhSach.Rows[0].Cells["Ky"].Value.ToString()) && item.Dot == int.Parse(dgvDanhSach.Rows[0].Cells["Dot"].Value.ToString()) && item.MaDon != null) == true)
+                        if (dgvDanhSach.Rows[0].Cells["Dot"].Value != null && dgvDanhSach.Rows[0].Cells["Dot"].Value.ToString() != "")
                         {
-                            MessageBox.Show("Đã có Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
+                            if (_db.DieuChinhHangLoats.Any(item => item.Nam == int.Parse(dgvDanhSach.Rows[0].Cells["Nam"].Value.ToString()) && item.Ky == int.Parse(dgvDanhSach.Rows[0].Cells["Ky"].Value.ToString()) && item.Dot == int.Parse(dgvDanhSach.Rows[0].Cells["Dot"].Value.ToString()) && item.MaDon != null) == true)
+                            {
+                                MessageBox.Show("Đã có Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                         }
+                        else
+                            if (_db.DieuChinhHangLoats.Any(item => item.Nam == int.Parse(dgvDanhSach.Rows[0].Cells["Nam"].Value.ToString()) && item.Ky == int.Parse(dgvDanhSach.Rows[0].Cells["Ky"].Value.ToString()) && item.MaDon != null) == true)
+                            {
+                                MessageBox.Show("Đã có Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                         LinQ.DonTu entity = new LinQ.DonTu();
                         int ID = _cDonTu.getMaxID_ChiTiet();
                         int STT = 0;
@@ -180,7 +187,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         {
                             foreach (DonTu_ChiTiet itemDonChiTiet in entity.DonTu_ChiTiets)
                             {
-                                _cDCBD.ExecuteNonQuery("update DieuChinhHangLoat set MaDon=" + itemDonChiTiet.MaDon + ",STT=" + itemDonChiTiet.STT + " where DanhBo='" + itemDonChiTiet.DanhBo + "' and Nam=" + txtNam.Text.Trim() + " and Ky=" + txtKy.Text.Trim() + " and Dot=" + txtDot.Text.Trim());
+                                if (dgvDanhSach.Rows[0].Cells["Dot"].Value != null && dgvDanhSach.Rows[0].Cells["Dot"].Value.ToString() != "")
+                                    _cDCBD.ExecuteNonQuery("update DieuChinhHangLoat set MaDon=" + itemDonChiTiet.MaDon + ",STT=" + itemDonChiTiet.STT + " where DanhBo='" + itemDonChiTiet.DanhBo + "' and Nam=" + txtNam.Text.Trim() + " and Ky=" + txtKy.Text.Trim() + " and Dot=" + txtDot.Text.Trim());
+                                else
+                                    _cDCBD.ExecuteNonQuery("update DieuChinhHangLoat set MaDon=" + itemDonChiTiet.MaDon + ",STT=" + itemDonChiTiet.STT + " where DanhBo='" + itemDonChiTiet.DanhBo + "' and Nam=" + txtNam.Text.Trim() + " and Ky=" + txtKy.Text.Trim());
                             }
                             _db = new dbKinhDoanhDataContext();
                             MessageBox.Show("Thành công\nMã Đơn: " + entity.MaDon.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -204,11 +214,20 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     if (MessageBox.Show("Bạn có chắc chắn?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        if (_db.DieuChinhHangLoats.Count(item => item.Nam == int.Parse(dgvDanhSach.Rows[0].Cells["Nam"].Value.ToString()) && item.Ky == int.Parse(dgvDanhSach.Rows[0].Cells["Ky"].Value.ToString()) && item.Dot == int.Parse(dgvDanhSach.Rows[0].Cells["Dot"].Value.ToString()) && item.MaDon == null) == dgvDanhSach.Rows.Count)
+                        if (dgvDanhSach.Rows[0].Cells["Dot"].Value != null && dgvDanhSach.Rows[0].Cells["Dot"].Value.ToString() != "")
                         {
-                            MessageBox.Show("Chưa có Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
+                            if (_db.DieuChinhHangLoats.Count(item => item.Nam == int.Parse(dgvDanhSach.Rows[0].Cells["Nam"].Value.ToString()) && item.Ky == int.Parse(dgvDanhSach.Rows[0].Cells["Ky"].Value.ToString()) && item.Dot == int.Parse(dgvDanhSach.Rows[0].Cells["Dot"].Value.ToString()) && item.MaDon == null) == dgvDanhSach.Rows.Count)
+                            {
+                                MessageBox.Show("Chưa có Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                         }
+                        else
+                            if (_db.DieuChinhHangLoats.Count(item => item.Nam == int.Parse(dgvDanhSach.Rows[0].Cells["Nam"].Value.ToString()) && item.Ky == int.Parse(dgvDanhSach.Rows[0].Cells["Ky"].Value.ToString()) && item.MaDon == null) == dgvDanhSach.Rows.Count)
+                            {
+                                MessageBox.Show("Chưa có Mã Đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                         //if (_db.DieuChinhHangLoats.Any(item => item.Nam == int.Parse(dgvDanhSach.Rows[0].Cells["Nam"].Value.ToString()) && item.Ky == int.Parse(dgvDanhSach.Rows[0].Cells["Ky"].Value.ToString()) && item.Dot == int.Parse(dgvDanhSach.Rows[0].Cells["Dot"].Value.ToString()) && item.DaXuLy == true) == true)
                         //{
                         //    MessageBox.Show("Đã Điều Chỉnh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -268,7 +287,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                     ctdcbd.HCSN = "";
                                             }
                                             ctdcbd.Dot = dontu_ChiTiet.Dot.ToString();
-                                            ctdcbd.HieuLucKy = "12/2023";
+                                            ctdcbd.HieuLucKy = "05/2024";
                                             ///Biến lưu Điều Chỉnh về gì (Họ Tên,Địa Chỉ,Định Mức,Giá Biểu,MSThuế)
                                             string ThongTin = "";
                                             ///Họ Tên
@@ -327,17 +346,18 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                     ThongTin += "Định Mức";
                                                 else
                                                     ThongTin += ". Định Mức";
-                                                int TieuThu = int.Parse(_cDCBD.ExecuteQuery_ReturnOneValue("select TieuThu from  KTKS_DonKH.dbo.DieuChinhHangLoat where DanhBo='" + dontu_ChiTiet.DanhBo + "' and Nam=" + txtNam.Text.Trim() + " and Ky=" + txtKy.Text.Trim() + " and Dot=" + txtDot.Text.Trim()).ToString());
-                                                if (TieuThu == 0)
-                                                    ctdcbd.DinhMuc_BD = 0;
-                                                else
-                                                {
-                                                    while (TieuThu % 4 != 0)
-                                                    {
-                                                        TieuThu++;
-                                                    }
-                                                    ctdcbd.DinhMuc_BD = TieuThu;
-                                                }
+                                                ctdcbd.DinhMuc_BD = 0;
+                                                //int TieuThu = int.Parse(_cDCBD.ExecuteQuery_ReturnOneValue("select TieuThu from KTKS_DonKH.dbo.DieuChinhHangLoat where DanhBo='" + dontu_ChiTiet.DanhBo + "' and Nam=" + txtNam.Text.Trim() + " and Ky=" + txtKy.Text.Trim() + " and Dot=" + txtDot.Text.Trim()).ToString());
+                                                //if (TieuThu == 0)
+                                                //    ctdcbd.DinhMuc_BD = 0;
+                                                //else
+                                                //{
+                                                //    while (TieuThu % 4 != 0)
+                                                //    {
+                                                //        TieuThu++;
+                                                //    }
+                                                //    ctdcbd.DinhMuc_BD = TieuThu;
+                                                //}
                                                 if (hd != null && hd.DinhMucHN != null)
                                                 {
                                                     if (string.IsNullOrEmpty(ThongTin) == true)
@@ -385,7 +405,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             ctdcbd.ThongTin = ThongTin;
                                             ctdcbd.PhieuDuocKy = true;
                                             _cDCBD.ThemDCBD(ctdcbd);
-                                            _cDCBD.ExecuteNonQuery("update DieuChinhHangLoat set DaXuLy=1 where DCBD=1 and DanhBo='" + dontu_ChiTiet.DanhBo + "' and Nam=" + txtNam.Text.Trim() + " and Ky=" + txtKy.Text.Trim() + " and Dot=" + txtDot.Text.Trim());
+                                            if (dgvDanhSach.Rows[i].Cells["Dot"].Value != null && dgvDanhSach.Rows[i].Cells["Dot"].Value.ToString() != "")
+                                                _cDCBD.ExecuteNonQuery("update DieuChinhHangLoat set DaXuLy=1 where DCBD=1 and DanhBo='" + dontu_ChiTiet.DanhBo + "' and Nam=" + dgvDanhSach.Rows[i].Cells["Nam"].Value.ToString() + " and Ky=" + dgvDanhSach.Rows[i].Cells["Ky"].Value.ToString() + " and Dot=" + dgvDanhSach.Rows[i].Cells["Dot"].Value.ToString());
+                                            else
+                                                _cDCBD.ExecuteNonQuery("update DieuChinhHangLoat set DaXuLy=1 where DCBD=1 and DanhBo='" + dontu_ChiTiet.DanhBo + "' and Nam=" + dgvDanhSach.Rows[i].Cells["Nam"].Value.ToString() + " and Ky=" + dgvDanhSach.Rows[i].Cells["Ky"].Value.ToString());
                                         }
                                 }
                                 else
@@ -577,7 +600,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                             ctdchd.TangGiam = "Giảm";
                                                     ctdchd.PhieuDuocKy = true;
                                                     _cDCBD.ThemDCHD(ctdchd);
-                                                    _cDCBD.ExecuteNonQuery("update DieuChinhHangLoat set DaXuLy=1 where DCHD=1 and DanhBo='" + dontu_ChiTiet.DanhBo + "' and Nam=" + txtNam.Text.Trim() + " and Ky=" + txtKy.Text.Trim() + " and Dot=" + txtDot.Text.Trim());
+                                                    if (dgvDanhSach.Rows[i].Cells["Dot"].Value != null && dgvDanhSach.Rows[i].Cells["Dot"].Value.ToString() != "")
+                                                        _cDCBD.ExecuteNonQuery("update DieuChinhHangLoat set DaXuLy=1 where DCHD=1 and DanhBo='" + dontu_ChiTiet.DanhBo + "' and Nam=" + dgvDanhSach.Rows[i].Cells["Nam"].Value.ToString() + " and Ky=" + dgvDanhSach.Rows[i].Cells["Ky"].Value.ToString() + " and Dot=" + dgvDanhSach.Rows[i].Cells["Dot"].Value.ToString());
+                                                    else
+                                                        _cDCBD.ExecuteNonQuery("update DieuChinhHangLoat set DaXuLy=1 where DCHD=1 and DanhBo='" + dontu_ChiTiet.DanhBo + "' and Nam=" + dgvDanhSach.Rows[i].Cells["Nam"].Value.ToString() + " and Ky=" + dgvDanhSach.Rows[i].Cells["Ky"].Value.ToString());
                                                 }
                                             }
                                     }
