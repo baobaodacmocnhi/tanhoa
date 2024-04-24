@@ -41,9 +41,10 @@ namespace DHCD_KiemPhieu.View
                 adapter.Fill(ds, "abc");
                 foreach (DataRow item in ds.Tables[0].Rows)
                 {
-                    DataRow dr = dsReport.Tables["DSCODONG"].NewRow();
-                    dr["TENCD"] = item["TENLOAI"];
-                    dsReport.Tables["DSCODONG"].Rows.Add(dr);
+                    DataRow dr = dsReport.Tables["Report"].NewRow();
+                    dr["TieuChi"] = item["TENLOAI"];
+                    dr["CoPhan"] = "0";
+                    dsReport.Tables["Report"].Rows.Add(dr);
                 }
                 CrystalReportSource1.Report.FileName = "inKQBieuQuyetDHCD.rpt";
                 CrystalReportSource1.ReportDocument.SetDataSource(dsReport);

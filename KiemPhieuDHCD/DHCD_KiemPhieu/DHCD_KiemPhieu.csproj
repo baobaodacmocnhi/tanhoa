@@ -761,18 +761,21 @@
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="View\inThamTraTuCach.cs">
       <DependentUpon>inThamTraTuCach.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="View\inTheBieuQuyetHDQT_1_2022.cs">
       <DependentUpon>inTheBieuQuyetHDQT_1_2022.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="View\pBauCuDoanThanhNien.aspx.cs">
       <DependentUpon>pBauCuDoanThanhNien.aspx</DependentUpon>
@@ -800,30 +803,35 @@
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="View\inTheBieuQuyetHDQT_1.cs">
       <DependentUpon>inTheBieuQuyetHDQT_1.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="View\inTheBauCuBKS_3.cs">
       <DependentUpon>inTheBauCuBKS_3.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="View\inTheBauCuHDQT_5.cs">
       <DependentUpon>inTheBauCuHDQT_5.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="View\inKQBauCu_CongDoan.cs">
       <DependentUpon>inKQBauCu_CongDoan.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="View\pBauCuCongDoan.aspx.cs">
       <DependentUpon>pBauCuCongDoan.aspx</DependentUpon>
@@ -837,30 +845,35 @@
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="View\inTheBauCuHDQT_1.cs">
       <DependentUpon>inTheBauCuHDQT_1.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="View\inKQBauCu_TDT.cs">
       <DependentUpon>inKQBauCu_TDT.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="View\inKQBauCu.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>inKQBauCu.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="View\inTheBauCuHDQT_3.cs">
       <DependentUpon>inTheBauCuHDQT_3.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="View\pBauCuHDTV_01.aspx.cs">
       <DependentUpon>pBauCuHDTV_01.aspx</DependentUpon>
@@ -902,6 +915,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>inTheBieuQuyet.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="View\pBauCuDHCD.aspx.cs">
       <DependentUpon>pBauCuDHCD.aspx</DependentUpon>
@@ -1001,58 +1015,72 @@
     <Content Include="View\inKQBauCu_BTT.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>inKQBauCu_BTT.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="View\inKQBauCu_CongDoan.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>inKQBauCu_CongDoan.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="View\inTheBieuQuyet_N.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>inTheBieuQuyet_N.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="View\inKQBieuQuyetDHCD.rpt">
+    <Content Include="View\inKQBieuQuyetDHCD.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>inKQBieuQuyetDHCD.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\inThamTraTuCach.rpt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\inThamTraTuCach.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>inThamTraTuCach.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\inTheBieuQuyetHDQT_1_2022.rpt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\inTheBieuQuyetHDQT_1_2022.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>inTheBieuQuyetHDQT_1_2022.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\inTheBieuQuyetHDQT_1.rpt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\inTheBieuQuyetHDQT_1.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>inTheBieuQuyetHDQT_1.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\inTheBauCuBKS_3.rpt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\inTheBauCuBKS_3.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>inTheBauCuBKS_3.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\inTheBauCuHDQT_5.rpt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\inTheBauCuHDQT_5.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>inTheBauCuHDQT_5.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\inTheBauCuHDQT_1.rpt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\inTheBauCuHDQT_1.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>inTheBauCuHDQT_1.cs</LastGenOutput>
-    </EmbeddedResource>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="View\inKQBauCu_TDT.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>inKQBauCu_TDT.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="View\inKQBauCu.rpt">
+    <Content Include="View\inKQBauCu.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>inKQBauCu.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\inTheBauCuHDQT_3.rpt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\inTheBauCuHDQT_3.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>inTheBauCuHDQT_3.cs</LastGenOutput>
-    </EmbeddedResource>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="View\inTheBieuQuyet.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>inTheBieuQuyet.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

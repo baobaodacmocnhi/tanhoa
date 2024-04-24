@@ -677,7 +677,6 @@ namespace ThuTien.GUI.Doi
             {
                 dt = _cHoaDon.GetNangSuat_To("TG", int.Parse(dgvHDTuGia["MaTo_TG", e.RowIndex].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrach.Value);
                 dtDCHD = _cDCHD.GetChuanThu("TG", int.Parse(dgvHDTuGia["MaTo_TG", e.RowIndex].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrach.Value);
-
                 foreach (DataRow item in dtDCHD.Rows)
                 {
                     if (!string.IsNullOrEmpty(item["NgayGiaiTrach"].ToString()))
@@ -687,11 +686,9 @@ namespace ThuTien.GUI.Doi
                         //string[] time = year[1].Split(':');
                         //DateTime NgayGiaiTrach = new DateTime(int.Parse(year[0]), int.Parse(date[1]), int.Parse(date[0]), int.Parse(time[0]), int.Parse(time[1]), int.Parse(time[2]));
                         DateTime NgayGiaiTrach = DateTime.Parse(item["NgayGiaiTrach"].ToString());
-
                         if (NgayGiaiTrach.Date <= dateGiaiTrach.Value.Date)
                         {
                             DataRow[] dr = dt.Select("MaNV=" + item["MaNV"].ToString());
-
                             dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_DC"].ToString());
                             dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
                             dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;
@@ -700,7 +697,6 @@ namespace ThuTien.GUI.Doi
                         else
                         {
                             DataRow[] dr = dt.Select("MaNV=" + item["MaNV"].ToString());
-
                             dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_DC"].ToString());
                             dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString());
                             dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"].ToString()) - int.Parse(item["GIABAN_DC"].ToString());
@@ -710,7 +706,6 @@ namespace ThuTien.GUI.Doi
                     else
                     {
                         DataRow[] dr = dt.Select("MaNV=" + item["MaNV"].ToString());
-
                         dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;
                         dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
                         dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"].ToString()) - int.Parse(item["GIABAN_DC"].ToString());
@@ -747,7 +742,6 @@ namespace ThuTien.GUI.Doi
                     if (!string.IsNullOrEmpty(item["NgayGiaiTrach"].ToString()))
                     {
                         DataRow[] dr = dt.Select("MaNV=" + item["MaNV"].ToString());
-
                         dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;
                         dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
                         dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;
@@ -756,7 +750,6 @@ namespace ThuTien.GUI.Doi
                     else
                     {
                         DataRow[] dr = dt.Select("MaNV=" + item["MaNV"].ToString());
-
                         dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;
                         dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
                         dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;
@@ -776,7 +769,6 @@ namespace ThuTien.GUI.Doi
             {
                 dt = _cHoaDon.GetNangSuat_To("CQ", int.Parse(dgvHDCoQuan["MaTo_CQ", e.RowIndex].Value.ToString()),int.Parse(cmbNam.SelectedValue.ToString()),int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrach.Value);
                 dtDCHD = _cDCHD.GetChuanThu("CQ", int.Parse(dgvHDCoQuan["MaTo_CQ", e.RowIndex].Value.ToString()), int.Parse(cmbNam.SelectedValue.ToString()), int.Parse(cmbKy.SelectedItem.ToString()), dateGiaiTrach.Value);
-
                 foreach (DataRow item in dtDCHD.Rows)
                 {
                     if (!string.IsNullOrEmpty(item["NgayGiaiTrach"].ToString()))
@@ -790,7 +782,6 @@ namespace ThuTien.GUI.Doi
                         if (NgayGiaiTrach.Date <= dateGiaiTrach.Value.Date)
                         {
                             DataRow[] dr = dt.Select("MaNV=" + item["MaNV"].ToString());
-
                             dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_DC"].ToString());
                             dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString());
                             dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"].ToString()) - int.Parse(item["GIABAN_DC"].ToString());
@@ -799,7 +790,6 @@ namespace ThuTien.GUI.Doi
                         else
                         {
                             DataRow[] dr = dt.Select("MaNV=" + item["MaNV"].ToString());
-
                             dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;
                             dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
                             dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;
@@ -809,7 +799,6 @@ namespace ThuTien.GUI.Doi
                     else
                     {
                         DataRow[] dr = dt.Select("MaNV=" + item["MaNV"].ToString());
-
                         dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;
                         dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
                         dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"].ToString()) - int.Parse(item["GIABAN_DC"].ToString());
@@ -847,7 +836,6 @@ namespace ThuTien.GUI.Doi
                     if (!string.IsNullOrEmpty(item["NgayGiaiTrach"].ToString()))
                     {
                         DataRow[] dr = dt.Select("MaNV=" + item["MaNV"].ToString());
-
                         dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;
                         dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
                         dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanThu"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;
@@ -856,7 +844,6 @@ namespace ThuTien.GUI.Doi
                     else
                     {
                         DataRow[] dr = dt.Select("MaNV=" + item["MaNV"].ToString());
-
                         dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBan"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;
                         dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongCong"].ToString()) - int.Parse(item["TONGCONG_DC"].ToString()) ;
                         dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"] = long.Parse(dt.Rows[dt.Rows.IndexOf(dr[0])]["TongGiaBanTon"].ToString()) - int.Parse(item["GIABAN_DC"].ToString()) ;

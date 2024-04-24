@@ -35,12 +35,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             dgvDanhSach.AutoGenerateColumns = false;
             txtNam.Text = DateTime.Now.Year.ToString();
             txtKy.Text = DateTime.Now.Month.ToString();
-//            select * from
-//(select * from CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG)t1,
-//(select distinct DanhBo from Zalo_Send where Loai='thongbaocccd' and CAST(CreateDate as date)>='20240403')t2
-//where t1.DANHBO=t2.DanhBo and SUBSTRING(t1.LOTRINH,1,2)<=5
-//and t1.DANHBO not in (select DanhBo from KTKS_DonKH.dbo.DonTu_ChiTiet where CAST(CreateDate as date)>='20240404')
-//and t1.DANHBO not in (select DanhBo from KTKS_DonKH.dbo.DCBD_DKDM_DanhBo where CAST(CreateDate as date)>='20240404')
         }
 
         private void btnChonFile_Click(object sender, EventArgs e)

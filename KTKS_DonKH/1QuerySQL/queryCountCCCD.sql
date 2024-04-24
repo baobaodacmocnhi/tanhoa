@@ -145,3 +145,13 @@ select *
 from TRUNGTAMKHACHHANG.dbo.Zalo_Send s
 where DanhBo='13141983452' and Loai='thongbaocccd' 
 
+--danh sách gửi tin nhắn nhưng chưa liên hệ 4/2024
+            select * from
+(select * from CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG)t1,
+(select distinct DanhBo from TRUNGTAMKHACHHANG.dbo.Zalo_Send where Loai='thongbaocccd' and CAST(CreateDate as date)>='20240403')t2
+where t1.DANHBO=t2.DanhBo and SUBSTRING(t1.LOTRINH,1,2)<=5 and t1.DINHMUC>0
+and t1.DANHBO not in (select dtct.DanhBo from KTKS_DonKH.dbo.DonTu dt,KTKS_DonKH.dbo.DonTu_ChiTiet dtct where dt.MaDon=dtct.MaDon
+and ((CAST(dtct.CreateDate as date)>='20240404')or(dt.ID_NhomDon like '%23%' and CAST(dtct.CreateDate as date)>='20230101')or(dt.ID_NhomDon_PKH like '%7%' and CAST(dtct.CreateDate as date)>='20231201')))
+and t1.DANHBO not in (select DanhBo from KTKS_DonKH.dbo.DCBD_DKDM_DanhBo where CAST(CreateDate as date)>='20240404')
+and t1.DanhBo not in (select distinct DanhBo from KTKS_DonKH.dbo.DCBD_ChiTietBienDong where HieuLucKy in ('12/2023','01/2024','02/2024','03/2024','04/2024','05/2024','06/2024','07/2024','08/2024'))
+and t1.DanhBo not in (select distinct DanhBo from KTKS_DonKH.dbo.ChungTu_ChiTiet where MaLCT = 15 and cat = 0)
