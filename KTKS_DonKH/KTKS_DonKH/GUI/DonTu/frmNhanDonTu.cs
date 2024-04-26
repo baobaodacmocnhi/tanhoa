@@ -18,6 +18,7 @@ using KTKS_DonKH.DAL.KiemTraXacMinh;
 using KTKS_DonKH.DAL.ThuMoi;
 using KTKS_DonKH.wrThuongVu;
 using KTKS_DonKH.wrEContract;
+using KTKS_DonKH.DAL.DieuChinhBienDong;
 
 namespace KTKS_DonKH.GUI.DonTu
 {
@@ -32,6 +33,7 @@ namespace KTKS_DonKH.GUI.DonTu
         CGanMoi _cGanMoi = new CGanMoi();
         CKTXM _cKTXM = new CKTXM();
         CThuMoi _cThuMoi = new CThuMoi();
+        CDCBD _cDCBD = new CDCBD();
         CTaiKhoan _cTaiKhoan = new CTaiKhoan();
         CPhongBanDoi _cPBD = new CPhongBanDoi();
         CDocSo _cDocSo = new CDocSo();
@@ -1088,6 +1090,8 @@ namespace KTKS_DonKH.GUI.DonTu
                 }
                 if (_cGanMoi.checkTaiLapChuaCoHoaDon(txtDanhBo.Text.Trim().Replace(" ", "")))
                     MessageBox.Show("Danh Bộ tái lập chưa có hóa đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (_cDCBD.checkExist_BienDong_DinhMuc(txtDanhBo.Text.Trim().Replace(" ", ""), "05/2024"))
+                    MessageBox.Show("Danh Bộ có điều chỉnh Định Mức hiệu lực kỳ 05/2024", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -1873,7 +1877,7 @@ namespace KTKS_DonKH.GUI.DonTu
                         //    MessageBox.Show("Thất bại " + error, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         if (!_dontu.Name_NhomDon_PKH.Contains("Thông tin khách hàng"))
                         {
-                         //string str=_cTaiKhoan.ExecuteQuery_ReturnOneValue("select top 1 IDEContract from TRUNGTAMKHACHHANG.dbo.Zalo_EContract_ChiTiet where MaDon='" + _dontu.MaDon + "' and Huy=0 and HieuLuc=0 order by CreateDate desc").ToString();
+                            //string str=_cTaiKhoan.ExecuteQuery_ReturnOneValue("select top 1 IDEContract from TRUNGTAMKHACHHANG.dbo.Zalo_EContract_ChiTiet where MaDon='" + _dontu.MaDon + "' and Huy=0 and HieuLuc=0 order by CreateDate desc").ToString();
                             result = _wsEContract.editEContract_NgayHieuLuc(_dontu.MaDon.ToString(), "", "tanho@2022", out error);
                         }
                         if (result)

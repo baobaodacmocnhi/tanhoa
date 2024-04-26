@@ -439,7 +439,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     return;
                                 }
                             #endregion
-                            
+
                             if (_cChungTu.ThemCT(ctchungtu))
                             {
                                 ///Thêm Lịch Sử đầu tiên
@@ -732,7 +732,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         {
                             ChungTu _chungtu = _cChungTu.Get(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
                             ChungTu_ChiTiet _ctchungtu = _cChungTu.GetCT(txtDanhBo.Text.Trim(), txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
-
                             _chungtu.HoTen = txtHoTen.Text.Trim();
                             if (txtNgaySinh.Text.Trim() != "")
                                 if (NgaySinhs != null || NgaySinhs.Count() == 3)
@@ -748,13 +747,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             }
                             _chungtu.KhacDiaBan = chkKhacDiaBan.Checked;
                             _cChungTu.Sua(_chungtu);
-
                             if (_chungtu.SoNKTong - _chungtu.ChungTu_ChiTiets.Sum(item => item.SoNKDangKy) + _ctchungtu.SoNKDangKy < int.Parse(txtSoNKDangKy.Text.Trim()))
                             {
                                 MessageBox.Show("Vượt Nhân Khẩu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
-                            ///
                             _ctchungtu.ThuongTru = chkThuongTru.Checked;
                             _ctchungtu.TamTru = chkTamTru.Checked;
                             _ctchungtu.SoNKDangKy = int.Parse(txtSoNKDangKy.Text.Trim());
@@ -767,7 +764,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 _ctchungtu.Phuong = _hd.Phuong;
                                 _ctchungtu.Quan = _hd.Quan;
                             }
-                            ///
                             if (txtThoiHan.Text.Trim() != "" && txtThoiHan.Text.Trim() != "0")
                             {
                                 if (_ctchungtu.ThoiHan != int.Parse(txtThoiHan.Text.Trim()))
@@ -786,16 +782,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 _ctchungtu.ThoiHan = null;
                                 _ctchungtu.NgayHetHan = null;
                             }
-                            ///
                             if (chkSuaNgayHetHan.Checked)
-                                if (_ctchungtu.NgayHetHan.Value.Date != dateHetHan.Value.Date)
+                                if (_ctchungtu.NgayHetHan == null || _ctchungtu.NgayHetHan.Value.Date != dateHetHan.Value.Date)
                                 {
                                     if (_ctchungtu.CreateDateGoc == null)
                                         _ctchungtu.CreateDateGoc = _ctchungtu.CreateDate;
                                     _ctchungtu.CreateDate = DateTime.Now;
                                     _ctchungtu.NgayHetHan = dateHetHan.Value;
                                 }
-
                             #region Yêu Cầu Cắt
 
                             if (chkYCCat1.Checked)
@@ -830,7 +824,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 }
 
                             #endregion
-
                             ///Ghi thông tin Lịch Sử chung
                             ChungTu_LichSu lichsuchungtu = _cChungTu.ChungTuToLichSu(_ctchungtu);
                             switch (_dataT.Loai)
@@ -856,14 +849,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 lichsuchungtu.Phuong = _hd.Phuong;
                                 lichsuchungtu.Quan = _hd.Quan;
                             }
-
                             if (_cChungTu.SuaCT(_ctchungtu))
                             {
                                 ///Thêm Lịch Sử đầu tiên
                                 _cChungTu.ThemLichSuChungTu(lichsuchungtu);
-
                                 #region Yêu Cầu Cắt
-
                                 if (chkYCCat1.Checked)
                                 {
                                     if (_ctchungtu.SoPhieu != null)
@@ -908,7 +898,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         lichsuchungtu1.CatNK_DanhBo = txtDanhBo_Cat_YCC1.Text.Trim();
                                         lichsuchungtu1.CatNK_HoTen = txtHoTen_Cat_YCC1.Text.Trim();
                                         lichsuchungtu1.CatNK_DiaChi = txtDiaChiKH_Cat_YCC1.Text.Trim();
-
                                         BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
                                         if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
                                             lichsuchungtu1.ChucVu = "GIÁM ĐỐC";
@@ -916,7 +905,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             lichsuchungtu1.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
                                         lichsuchungtu1.NguoiKy = bangiamdoc.HoTen.ToUpper();
                                         lichsuchungtu1.PhieuDuocKy = true;
-
                                         if (_cChungTu.ThemLichSuChungTu(lichsuchungtu1))
                                         {
                                             _ctchungtu.SoPhieu = lichsuchungtu1.SoPhieu;

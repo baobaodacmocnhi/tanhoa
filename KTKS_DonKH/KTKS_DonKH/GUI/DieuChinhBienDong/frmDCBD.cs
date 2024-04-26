@@ -2351,6 +2351,20 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 chungtu.KhacDiaBan = chkKhacDiaBan.Checked;
                                 _cChungTu.Them(chungtu);
                             }
+                            else
+                            {
+                                ChungTu chungtu = _cChungTu.Get(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
+                                if (txtNgaySinh.Text.ToString() != "")
+                                    if (NgaySinhs != null && NgaySinhs.Count() == 3)
+                                        chungtu.NgaySinh = new DateTime(int.Parse(NgaySinhs[2]), int.Parse(NgaySinhs[1]), int.Parse(NgaySinhs[0]));
+                                    else
+                                        chungtu.NgaySinh = new DateTime(int.Parse(txtNgaySinh.Text.Trim()), 1, 1);
+                                chungtu.HoTen = txtHoTen_CCCD.Text.Trim();
+                                chungtu.DiaChi = txtDiaChi_CCCD.Text.Trim();
+                                chungtu.MaLCT = int.Parse(cmbLoaiCT.SelectedValue.ToString());
+                                chungtu.KhacDiaBan = chkKhacDiaBan.Checked;
+                                _cChungTu.SubmitChanges();
+                            }
                             ///Lấy thông tin Chứng Từ để kiểm tra
                             ChungTu _chungtu = _cChungTu.Get(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
                             if (_chungtu.SoNKTong - _chungtu.ChungTu_ChiTiets.Sum(o => o.SoNKDangKy) < 1)
@@ -2502,6 +2516,17 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             MessageBox.Show("Số đăng ký này đã đăng ký với Danh Bộ này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                 dgvDSDanhBo.DataSource = dt;
+                ChungTu ct = _cChungTu.Get(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
+                if (ct != null)
+                {
+                    txtHoTen_CCCD.Text = ct.HoTen;
+                    if (ct.NgaySinh != null)
+                        txtNgaySinh.Text = ct.NgaySinh.Value.ToString("dd/MM/yyyy");
+                    else
+                        txtNgaySinh.Text = "";
+                    txtDiaChi_CCCD.Text = ct.DiaChi;
+                    chkKhacDiaBan.Checked = ct.KhacDiaBan;
+                }
             }
         }
 
