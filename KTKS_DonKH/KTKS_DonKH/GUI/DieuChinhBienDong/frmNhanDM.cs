@@ -490,12 +490,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dt = _cChungTu.getDS_ChiTiet(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
                 MessageBox.Show("Số đăng ký này đã có đăng ký trước", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else
-                if (_cChungTu.CheckExist_CT_HoKhau_HoKhauNgheo(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString())))
-                {
-                    dt = _cChungTu.getDS_ChiTiet_HoKhau_HoKhauNgheo(txtMaCT.Text.Trim());
-                    MessageBox.Show("Số đăng ký này trùng Hộ Khẩu & Hộ Khẩu Nghèo", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+            //else
+            //    if (_cChungTu.CheckExist_CT_HoKhau_HoKhauNgheo(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString())))
+            //    {
+            //        dt = _cChungTu.getDS_ChiTiet_HoKhau_HoKhauNgheo(txtMaCT.Text.Trim());
+            //        MessageBox.Show("Số đăng ký này trùng Hộ Khẩu & Hộ Khẩu Nghèo", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    }
                 else
                     if (_cChungTu.CheckExist_CT(txtDanhBo_Nhan.Text.Trim(), txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString())))
                     {

@@ -1203,8 +1203,171 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             HOADON hd = _cThuTien.GetMoiNhat(dgvDanhSach_Online["DanhBo_Online", e.RowIndex].Value.ToString());
                             if (hd != null)
                             {
+                                //kiểm tra cccd
+                                string result = "";
+                                bool checkMaCTnull = false;
+                                foreach (DataGridViewRow item in dgvDanhSachCT_Online.Rows)
+                                    if (item.Cells["CCCDCT_Online"].Value.ToString() != "")
+                                    {
+                                        if (_cChungTu.CheckExist_CT(hd.DANHBA, item.Cells["CCCDCT_Online"].Value.ToString(), 15) == true)
+                                        {
+                                            result += "Danh Bộ trên đã đăng ký Số Chứng Từ " + item.Cells["CCCDCT_Online"].Value.ToString() + "\r\n";
+                                        }
+                                        ChungTu chungtu = _cChungTu.Get(item.Cells["CCCDCT_Online"].Value.ToString(), 15);
+                                        if (chungtu != null && chungtu.SoNKTong - chungtu.ChungTu_ChiTiets.Sum(o => o.SoNKDangKy) < 1)
+                                        {
+                                            result += "Vượt Nhân Khẩu " + item.Cells["CCCDCT_Online"].Value.ToString() + "\r\n";
+                                        }
+                                    }
+                                    else
+                                        checkMaCTnull = true;
+                                if (checkMaCTnull)
+                                {
+                                    MessageBox.Show("Có Chứng Từ thiếu thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                                if (result != "")
+                                {
+                                    MessageBox.Show(result, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                                //thêm cccd
+                                foreach (DataGridViewRow item in dgvDanhSachCT_Online.Rows)
+                                {
+                                    ///Kiểm tra Danh Bộ & Số Chứng Từ
+                                    if (_cChungTu.CheckExist_CT(hd.DANHBA, item.Cells["CCCDCT_Online"].Value.ToString(), 15) == true)
+                                    {
+                                        MessageBox.Show("Danh Bộ trên đã đăng ký Số Chứng Từ trên", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
+                                    ///Kiểm tra Ngày Sinh
+                                    var transactionOptions = new TransactionOptions();
+                                    transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+                                    using (var scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
+                                    {
+                                        ///Kiểm tra Số Chứng Từ
+                                        if (_cChungTu.CheckExist(item.Cells["CCCDCT_Online"].Value.ToString(), 15) == false)
+                                        {
+                                            ChungTu chungtu = new ChungTu();
+                                            chungtu.MaCT = item.Cells["CCCDCT_Online"].Value.ToString();
+                                            if (item.Cells["NgaySinhCT_Online"].Value.ToString() != "")
+                                            {
+                                                string[] NgaySinhs = null;
+                                                if (item.Cells["NgaySinhCT_Online"].Value.ToString().Contains("/"))
+                                                    NgaySinhs = item.Cells["NgaySinhCT_Online"].Value.ToString().Split('/');
+                                                else
+                                                    if (item.Cells["NgaySinhCT_Online"].Value.ToString().Contains("-"))
+                                                        NgaySinhs = item.Cells["NgaySinhCT_Online"].Value.ToString().Split('-');
+                                                if (NgaySinhs != null && NgaySinhs.Count() == 3)
+                                                    chungtu.NgaySinh = new DateTime(int.Parse(NgaySinhs[2]), int.Parse(NgaySinhs[1]), int.Parse(NgaySinhs[0]));
+                                                else
+                                                    chungtu.NgaySinh = new DateTime(int.Parse(item.Cells["NgaySinhCT_Online"].Value.ToString()), 1, 1);
+                                            }
+                                            chungtu.HoTen = item.Cells["HoTenCT_Online"].Value.ToString();
+                                            chungtu.DiaChi = item.Cells["DCThuongTruCT_Online"].Value.ToString();
+                                            chungtu.SoNKTong = 1;
+                                            chungtu.MaLCT = 15;
+                                            chungtu.KhacDiaBan = bool.Parse(item.Cells["KhacDiaBan"].Value.ToString());
+                                            _cChungTu.Them(chungtu);
+                                        }
+                                        else
+                                        {
+                                            ChungTu chungtu = _cChungTu.Get(item.Cells["CCCDCT_Online"].Value.ToString(), 15);
+                                            if (item.Cells["NgaySinhCT_Online"].Value.ToString() != "")
+                                            {
+                                                string[] NgaySinhs = null;
+                                                if (item.Cells["NgaySinhCT_Online"].Value.ToString().Contains("/"))
+                                                    NgaySinhs = item.Cells["NgaySinhCT_Online"].Value.ToString().Split('/');
+                                                else
+                                                    if (item.Cells["NgaySinhCT_Online"].Value.ToString().Contains("-"))
+                                                        NgaySinhs = item.Cells["NgaySinhCT_Online"].Value.ToString().Split('-');
+                                                if (NgaySinhs != null && NgaySinhs.Count() == 3)
+                                                    chungtu.NgaySinh = new DateTime(int.Parse(NgaySinhs[2]), int.Parse(NgaySinhs[1]), int.Parse(NgaySinhs[0]));
+                                                else
+                                                    chungtu.NgaySinh = new DateTime(int.Parse(item.Cells["NgaySinhCT_Online"].Value.ToString()), 1, 1);
+                                            }
+                                            chungtu.HoTen = item.Cells["HoTenCT_Online"].Value.ToString();
+                                            chungtu.DiaChi = item.Cells["DCThuongTruCT_Online"].Value.ToString();
+                                            chungtu.KhacDiaBan = bool.Parse(item.Cells["KhacDiaBan"].Value.ToString());
+                                            _cChungTu.SubmitChanges();
+                                        }
+                                        ///Lấy thông tin Chứng Từ để kiểm tra
+                                        ChungTu _chungtu = _cChungTu.Get(item.Cells["CCCDCT_Online"].Value.ToString(), 15);
+                                        if (_chungtu.SoNKTong - _chungtu.ChungTu_ChiTiets.Sum(o => o.SoNKDangKy) < 1)
+                                        {
+                                            MessageBox.Show("Vượt Nhân Khẩu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            return;
+                                        }
+                                        ///
+                                        ChungTu_ChiTiet ctchungtu = new ChungTu_ChiTiet();
+                                        ctchungtu.DanhBo = hd.DANHBA;
+                                        ctchungtu.ThuongTru = bool.Parse(item.Cells["ThuongTru"].Value.ToString());
+                                        ctchungtu.TamTru = bool.Parse(item.Cells["TamTru"].Value.ToString());
+                                        ctchungtu.MaLCT = 15;
+                                        ctchungtu.MaCT = item.Cells["CCCDCT_Online"].Value.ToString();
+                                        ctchungtu.SoNKDangKy = 1;
+                                        if (item.Cells["NgayHetHan_Online"].Value.ToString() != "")
+                                        {
+                                            string[] strs = item.Cells["NgayHetHan_Online"].Value.ToString().Split('/');
+                                            ctchungtu.NgayHetHan = new DateTime(int.Parse(strs[2]), int.Parse(strs[1]), int.Parse(strs[0]));
+                                        }
+                                        if (_hoadon != null)
+                                        {
+                                            ctchungtu.Phuong = _hoadon.Phuong;
+                                            ctchungtu.Quan = _hoadon.Quan;
+                                        }
+                                        if (_cChungTu.ThemCT(ctchungtu))
+                                        {
+                                            ///Thêm Lịch Sử đầu tiên
+                                            ///Ghi thông tin Lịch Sử chung
+                                            ChungTu_LichSu lichsuchungtu = _cChungTu.ChungTuToLichSu(ctchungtu);
+                                            lichsuchungtu.Phuong = ctchungtu.Phuong;
+                                            lichsuchungtu.Quan = ctchungtu.Quan;
+                                            _cChungTu.ThemLichSuChungTu(lichsuchungtu);
+                                            #region Yêu Cầu Cắt
+                                            if (ctchungtu.ChungTu.KhacDiaBan)
+                                            {
+                                                ChungTu_LichSu lichsuchungtu1 = new ChungTu_LichSu();
+                                                _cChungTu.CopyLichSuChungTu(lichsuchungtu, ref lichsuchungtu1);
+                                                lichsuchungtu1.SoPhieu = _cChungTu.getMaxNextSoPhieuLSCT();
+                                                ///
+                                                lichsuchungtu1.NhanNK_MaCN = _cChiNhanh.GetIDByTenCN("Tân Hòa");
+                                                lichsuchungtu1.NhanNK_DanhBo = txtDanhBo.Text.Trim();
+                                                lichsuchungtu1.NhanNK_HoTen = txtHoTen.Text.Trim();
+                                                lichsuchungtu1.NhanNK_DiaChi = txtDiaChi.Text.Trim();
+                                                ///
+                                                lichsuchungtu1.YeuCauCat = true;
+                                                lichsuchungtu1.SoNK = 1;
+                                                ///
+                                                lichsuchungtu1.CatNK_MaCN = int.Parse(item.Cells["cmbChiNhanh"].Value.ToString());
+                                                lichsuchungtu1.CatNK_HoTen = item.Cells["HoTenCT_Online"].Value.ToString();
+                                                lichsuchungtu1.CatNK_DiaChi = item.Cells["DCThuongTruCT_Online"].Value.ToString();
+                                                BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
+                                                if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
+                                                    lichsuchungtu1.ChucVu = "GIÁM ĐỐC";
+                                                else
+                                                    lichsuchungtu1.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
+                                                lichsuchungtu1.NguoiKy = bangiamdoc.HoTen.ToUpper();
+                                                lichsuchungtu1.PhieuDuocKy = true;
+                                                if (_cChungTu.ThemLichSuChungTu(lichsuchungtu1))
+                                                {
+                                                    ctchungtu.SoPhieu = lichsuchungtu1.SoPhieu;
+                                                    ctchungtu.YeuCauCat = true;
+                                                    ctchungtu.CatNK_MaCN = int.Parse(item.Cells["cmbChiNhanh"].Value.ToString());
+                                                    ctchungtu.CatNK_HoTen = item.Cells["HoTenCT_Online"].Value.ToString();
+                                                    ctchungtu.CatNK_DiaChi = item.Cells["DCThuongTruCT_Online"].Value.ToString();
+                                                    ctchungtu.CatNK_SoNKCat = 1;
+                                                    ctchungtu.SoLuongDC_YCC = 1;
+                                                }
+                                            }
+                                            #endregion
+                                            _cChungTu.SubmitChanges();
+                                            scope.Complete();
+                                        }
+                                    }
+                                }
                                 //khác định mức làm điều chỉnh
-                                if (hd.DM != int.Parse(dgvDanhSach_Online["SoNK_Online", e.RowIndex].Value.ToString()))
+                                if (hd.DM != int.Parse(dgvDanhSach_Online["SoNK_Online", e.RowIndex].Value.ToString()) * 4)
                                 {
                                     LinQ.DonTu entity = new LinQ.DonTu();
                                     entity.TinhTrang = "Hoàn Thành";
@@ -1278,18 +1441,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         }
                                         ctdcbd.Dot = entityCT.Dot.ToString();
                                         ctdcbd.HieuLucKy = dgvDanhSach_Online["HieuLucKy", e.RowIndex].Value.ToString();
-                                        ctdcbd.DinhMuc_BD = int.Parse(_cDCBD.ExecuteQuery_ReturnOneValue("select count(*) from DCBD_DKDM_CCCD where IDDanhBo=" + dgvDanhSach_Online["ID_Online", e.RowIndex].Value.ToString()).ToString());
+                                        ctdcbd.DinhMuc_BD = int.Parse(_cDCBD.ExecuteQuery_ReturnOneValue("select count(*)*4 from DCBD_DKDM_CCCD where IDDanhBo=" + dgvDanhSach_Online["ID_Online", e.RowIndex].Value.ToString()).ToString());
                                         ctdcbd.ThongTin = "Định Mức";
                                         ctdcbd.PhieuDuocKy = true;
                                         _cDCBD.ThemDCBD(ctdcbd);
                                         _cDCBD.ExecuteNonQuery("update DCBD_DKDM_DanhBo set DaXuLy=1,DCBD=1,DCBD_MaDon=" + entityCT.MaDon + ",DCBD_STT=" + entityCT.STT + ",DCBD_SoPhieu=" + ctdcbd.MaCTDCBD.ToString() + " where ID=" + dgvDanhSach_Online["ID_Online", e.RowIndex].Value.ToString());
                                     }
                                 }
-                                else//cùng định mức
-                                {
-
-                                }
                             }
+                            MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         //hàm cũ
                         //DCBD_DKDM_DanhBo en = _cDKDM.get(int.Parse(dgvDanhSach_Online["ID_Online", e.RowIndex].Value.ToString()));
@@ -1340,19 +1500,49 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         DCBD_DKDM_DanhBo danhbo = _cDKDM.get(int.Parse(dgvDanhSach_Online["ID_Online", e.RowIndex].Value.ToString()));
                         if (danhbo != null)
                         {
-                            dgvDanhSachCT_Online.Rows.Clear();
-                            foreach (DCBD_DKDM_CCCD item in danhbo.DCBD_DKDM_CCCDs.ToList())
-                            {
-                                var index = dgvDanhSachCT_Online.Rows.Add();
-                                dgvDanhSachCT_Online.Rows[index].Cells["IDCT_Online"].Value = item.ID;
-                                dgvDanhSachCT_Online.Rows[index].Cells["HoTenCT_Online"].Value = item.HoTen;
-                                dgvDanhSachCT_Online.Rows[index].Cells["NgaySinhCT_Online"].Value = item.NgaySinh.Value.ToString("dd/MM/yyyy");
-                                dgvDanhSachCT_Online.Rows[index].Cells["DCThuongTruCT_Online"].Value = item.DCThuongTru;
-                                dgvDanhSachCT_Online.Rows[index].Cells["DCTamTruCT_Online"].Value = item.DCTamTru;
-                                dgvDanhSachCT_Online.Rows[index].Cells["CCCDCT_Online"].Value = item.CCCD;
-                            }
+                            //dgvDanhSachCT_Online.Rows.Clear();
+                            //foreach (DCBD_DKDM_CCCD item in danhbo.DCBD_DKDM_CCCDs.ToList())
+                            //{
+                            //    var index = dgvDanhSachCT_Online.Rows.Add();
+                            //    dgvDanhSachCT_Online.Rows[index].Cells["IDCT_Online"].Value = item.ID;
+                            //    dgvDanhSachCT_Online.Rows[index].Cells["HoTenCT_Online"].Value = item.HoTen;
+                            //    dgvDanhSachCT_Online.Rows[index].Cells["NgaySinhCT_Online"].Value = item.NgaySinh.Value.ToString("dd/MM/yyyy");
+                            //    dgvDanhSachCT_Online.Rows[index].Cells["DCThuongTruCT_Online"].Value = item.DCThuongTru;
+                            //    dgvDanhSachCT_Online.Rows[index].Cells["DCTamTruCT_Online"].Value = item.DCTamTru;
+                            //    dgvDanhSachCT_Online.Rows[index].Cells["CCCDCT_Online"].Value = item.CCCD;
+                            //    dgvDanhSachCT_Online.Rows[index].Cells["KhacDiaBan"].Value = item.KhacDiaBan;
+                            //    dgvDanhSachCT_Online.Rows[index].Cells["ThuongTru"].Value = item.ThuongTru;
+                            //    dgvDanhSachCT_Online.Rows[index].Cells["TamTru"].Value = item.TamTru;
+                            //    if (item.NgayHetHan != null)
+                            //        dgvDanhSachCT_Online.Rows[index].Cells["NgayHetHan_Online"].Value = item.NgayHetHan.Value.ToString("dd/MM/yyyy");
+                            //    if (item.cmbChiNhanh != null)
+                            //        dgvDanhSachCT_Online.Rows[index].Cells["cmbChiNhanh"].Value = item.cmbChiNhanh;
+                            //}
+                            dgvDanhSachCT_Online.DataSource = _cDKDM.getDS_ChiTiet(danhbo.ID.ToString());
                         }
                     }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvDanhSach_Online_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex < 0)
+                    return;
+                if (dgvDanhSach_Online.Columns[e.ColumnIndex].Name == "HieuLucKy" && dgvDanhSach_Online["HieuLucKy", e.RowIndex].Value != null)
+                {
+                    if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+                    {
+                        _cDCBD.ExecuteNonQuery("update DCBD_DKDM_DanhBo set HieuLucKy='" + dgvDanhSach_Online["HieuLucKy", e.RowIndex].Value.ToString() + "' where ID=" + dgvDanhSach_Online["ID_Online", e.RowIndex].Value.ToString());
+                    }
+                    else
+                        MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {
@@ -1365,6 +1555,72 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             using (SolidBrush b = new SolidBrush(dgvDanhSachCT_Online.RowHeadersDefaultCellStyle.ForeColor))
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvDanhSachCT_Online_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex < 0)
+                    return;
+                if ((dgvDanhSachCT_Online.Columns[e.ColumnIndex].Name == "NgaySinhCT_Online" && dgvDanhSachCT_Online["NgaySinhCT_Online", e.RowIndex].Value != null)
+                    || (dgvDanhSachCT_Online.Columns[e.ColumnIndex].Name == "NgayHetHan_Online" && dgvDanhSachCT_Online["NgayHetHan_Online", e.RowIndex].Value != null)
+                    || (dgvDanhSachCT_Online.Columns[e.ColumnIndex].Name == "KhacDiaBan" && dgvDanhSachCT_Online["KhacDiaBan", e.RowIndex].Value != null)
+                    || (dgvDanhSachCT_Online.Columns[e.ColumnIndex].Name == "ThuongTru" && dgvDanhSachCT_Online["ThuongTru", e.RowIndex].Value != null)
+                    || (dgvDanhSachCT_Online.Columns[e.ColumnIndex].Name == "TamTru" && dgvDanhSachCT_Online["TamTru", e.RowIndex].Value != null)
+                    || (dgvDanhSachCT_Online.Columns[e.ColumnIndex].Name == "cmbChiNhanh" && dgvDanhSachCT_Online["cmbChiNhanh", e.RowIndex].Value != null)
+                    || (dgvDanhSachCT_Online.Columns[e.ColumnIndex].Name == "DCThuongTruCT_Online" && dgvDanhSachCT_Online["DCThuongTruCT_Online", e.RowIndex].Value != null)
+                    || (dgvDanhSachCT_Online.Columns[e.ColumnIndex].Name == "DCTamTruCT_Online" && dgvDanhSachCT_Online["DCTamTruCT_Online", e.RowIndex].Value != null)
+                    || (dgvDanhSachCT_Online.Columns[e.ColumnIndex].Name == "HoTenCT_Online" && dgvDanhSachCT_Online["HoTenCT_Online", e.RowIndex].Value != null)
+                    )
+                {
+                    if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+                    {
+                        string[] NgaySinhs = null;
+                        if (dgvDanhSachCT_Online["NgaySinhCT_Online", e.RowIndex].Value.ToString().Contains("/"))
+                            NgaySinhs = dgvDanhSachCT_Online["NgaySinhCT_Online", e.RowIndex].Value.ToString().Split('/');
+                        else
+                            if (dgvDanhSachCT_Online["NgaySinhCT_Online", e.RowIndex].Value.ToString().Contains("-"))
+                                NgaySinhs = dgvDanhSachCT_Online["NgaySinhCT_Online", e.RowIndex].Value.ToString().Split('-');
+                        string NgayHetHan = "";
+                        string[] NgayHetHans = null;
+                        if (dgvDanhSachCT_Online["NgayHetHan_Online", e.RowIndex].Value != null && dgvDanhSachCT_Online["NgayHetHan_Online", e.RowIndex].Value.ToString() != "")
+                        {
+                            if (dgvDanhSachCT_Online["NgayHetHan_Online", e.RowIndex].Value.ToString().Contains("/"))
+                                NgayHetHans = dgvDanhSachCT_Online["NgayHetHan_Online", e.RowIndex].Value.ToString().Split('/');
+                            else
+                                if (dgvDanhSachCT_Online["NgayHetHan_Online", e.RowIndex].Value.ToString().Contains("-"))
+                                    NgayHetHans = dgvDanhSachCT_Online["NgayHetHan_Online", e.RowIndex].Value.ToString().Split('-');
+                            NgayHetHan = ",NgayHetHan='" + NgayHetHans[2] + "-" + NgayHetHans[1] + "-" + NgayHetHans[0] + "'";
+                        }
+                        string KhacDiaBan = "0", ThuongTru = "0", TamTru = "0", ChiNhanh = "";
+                        if (bool.Parse(dgvDanhSachCT_Online["KhacDiaBan", e.RowIndex].Value.ToString()))
+                            KhacDiaBan = "1";
+                        if (bool.Parse(dgvDanhSachCT_Online["ThuongTru", e.RowIndex].Value.ToString()))
+                            ThuongTru = "1";
+                        if (bool.Parse(dgvDanhSachCT_Online["TamTru", e.RowIndex].Value.ToString()))
+                            TamTru = "1";
+                        if (dgvDanhSachCT_Online["cmbChiNhanh", e.RowIndex].Value != null && dgvDanhSachCT_Online["cmbChiNhanh", e.RowIndex].Value.ToString() != "")
+                            ChiNhanh = ",cmbChiNhanh=" + dgvDanhSachCT_Online["cmbChiNhanh", e.RowIndex].Value.ToString();
+                        _cDCBD.ExecuteNonQuery("update DCBD_DKDM_CCCD set HoTen=N'" + dgvDanhSachCT_Online["HoTenCT_Online", e.RowIndex].Value.ToString() + "'"
+                            + ",NgaySinh='" + NgaySinhs[2] + "-" + NgaySinhs[1] + "-" + NgaySinhs[0] + "'"
+                            + ",DCThuongTru=N'" + dgvDanhSachCT_Online["DCThuongTruCT_Online", e.RowIndex].Value.ToString() + "'"
+                            + ",DCTamTru=N'" + dgvDanhSachCT_Online["DCTamTruCT_Online", e.RowIndex].Value.ToString() + "'"
+                            + ",KhacDiaBan=" + KhacDiaBan
+                            + ",ThuongTru=" + ThuongTru
+                            + ",TamTru=" + TamTru
+                            + NgayHetHan
+                            + ChiNhanh
+                            + " where ID=" + dgvDanhSachCT_Online["IDCT_Online", e.RowIndex].Value.ToString());
+                    }
+                    else
+                        MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -1507,84 +1763,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 }
         }
 
-        private void dgvDanhSach_Online_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
-        {
-            try
-            {
-                if (dgvDanhSach_Online.Columns[e.ColumnIndex].Name == "HieuLucKy" && dgvDanhSach_Online["HieuLucKy", e.RowIndex].Value != null && e.FormattedValue.ToString() != dgvDanhSach_Online["HieuLucKy", e.RowIndex].Value.ToString())
-                {
-                    if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
-                    {
-                        _cDCBD.ExecuteNonQuery("update DCBD_DKDM_DanhBo set HieuLucKy='" + dgvDanhSach_Online["HieuLucKy", e.RowIndex].Value.ToString() + "' where ID=" + dgvDanhSach_Online["ID_Online", e.RowIndex].Value.ToString());
-                    }
-                    else
-                        MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
-        private void dgvDanhSachCT_Online_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
-        {
-            try
-            {
-                if ((dgvDanhSachCT_Online.Columns[e.ColumnIndex].Name == "NgaySinhCT_Online" && dgvDanhSachCT_Online["NgaySinhCT_Online", e.RowIndex].Value != null && e.FormattedValue.ToString() != dgvDanhSachCT_Online["NgaySinhCT_Online", e.RowIndex].Value.ToString())
-                    || (dgvDanhSachCT_Online.Columns[e.ColumnIndex].Name == "NgayHetHan_Online" && dgvDanhSachCT_Online["NgayHetHan_Online", e.RowIndex].Value != null && e.FormattedValue.ToString() != dgvDanhSachCT_Online["NgayHetHan_Online", e.RowIndex].Value.ToString())
-                    || (dgvDanhSachCT_Online.Columns[e.ColumnIndex].Name == "KhacDiaBan" && dgvDanhSachCT_Online["KhacDiaBan", e.RowIndex].Value != null && e.FormattedValue.ToString() != dgvDanhSachCT_Online["KhacDiaBan", e.RowIndex].Value.ToString())
-                    || (dgvDanhSachCT_Online.Columns[e.ColumnIndex].Name == "ThuongTru" && dgvDanhSachCT_Online["ThuongTru", e.RowIndex].Value != null && e.FormattedValue.ToString() != dgvDanhSachCT_Online["ThuongTru", e.RowIndex].Value.ToString())
-                    || (dgvDanhSachCT_Online.Columns[e.ColumnIndex].Name == "TamTru" && dgvDanhSachCT_Online["TamTru", e.RowIndex].Value != null && e.FormattedValue.ToString() != dgvDanhSachCT_Online["TamTru", e.RowIndex].Value.ToString())
-                    || (dgvDanhSachCT_Online.Columns[e.ColumnIndex].Name == "cmbChiNhanh" && dgvDanhSachCT_Online["cmbChiNhanh", e.RowIndex].Value != null && e.FormattedValue.ToString() != dgvDanhSachCT_Online["cmbChiNhanh", e.RowIndex].Value.ToString())
-                    || (dgvDanhSachCT_Online.Columns[e.ColumnIndex].Name == "DCThuongTruCT_Online" && dgvDanhSachCT_Online["DCThuongTruCT_Online", e.RowIndex].Value != null && e.FormattedValue.ToString() != dgvDanhSachCT_Online["DCThuongTruCT_Online", e.RowIndex].Value.ToString())
-                    || (dgvDanhSachCT_Online.Columns[e.ColumnIndex].Name == "DCTamTruCT_Online" && dgvDanhSachCT_Online["DCTamTruCT_Online", e.RowIndex].Value != null && e.FormattedValue.ToString() != dgvDanhSachCT_Online["DCTamTruCT_Online", e.RowIndex].Value.ToString())
-                    || (dgvDanhSachCT_Online.Columns[e.ColumnIndex].Name == "HoTenCT_Online" && dgvDanhSachCT_Online["HoTenCT_Online", e.RowIndex].Value != null && e.FormattedValue.ToString() != dgvDanhSachCT_Online["HoTenCT_Online", e.RowIndex].Value.ToString())
-                    )
-                {
-                    if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
-                    {
-                        string[] NgaySinhs = null;
-                        if (dgvDanhSachCT_Online["NgaySinhCT_Online", e.RowIndex].Value.ToString().Contains("/"))
-                            NgaySinhs = dgvDanhSachCT_Online["NgaySinhCT_Online", e.RowIndex].Value.ToString().Split('/');
-                        else
-                            if (dgvDanhSachCT_Online["NgaySinhCT_Online", e.RowIndex].Value.ToString().Contains("-"))
-                                NgaySinhs = dgvDanhSachCT_Online["NgaySinhCT_Online", e.RowIndex].Value.ToString().Split('-');
-                        string[] NgayHetHans = null;
-                        if (dgvDanhSachCT_Online["NgayHetHan_Online", e.RowIndex].Value.ToString().Contains("/"))
-                            NgayHetHans = dgvDanhSachCT_Online["NgayHetHan_Online", e.RowIndex].Value.ToString().Split('/');
-                        else
-                            if (dgvDanhSachCT_Online["NgayHetHan_Online", e.RowIndex].Value.ToString().Contains("-"))
-                                NgayHetHans = dgvDanhSachCT_Online["NgayHetHan_Online", e.RowIndex].Value.ToString().Split('-');
-                        string KhacDiaBan = "0", ThuongTru = "0", TamTru = "0", ChiNhanh = "0";
-                        if (bool.Parse(dgvDanhSachCT_Online["KhacDiaBan", e.RowIndex].Value.ToString()))
-                            KhacDiaBan = "1";
-                        if (bool.Parse(dgvDanhSachCT_Online["ThuongTru", e.RowIndex].Value.ToString()))
-                            ThuongTru = "1";
-                        if (bool.Parse(dgvDanhSachCT_Online["TamTru", e.RowIndex].Value.ToString()))
-                            TamTru = "1";
-                        if (dgvDanhSachCT_Online["cmbChiNhanh", e.RowIndex].Value != null && dgvDanhSachCT_Online["cmbChiNhanh", e.RowIndex].Value.ToString() != "")
-                            ChiNhanh = dgvDanhSachCT_Online["cmbChiNhanh", e.RowIndex].Value.ToString();
-                        _cDCBD.ExecuteNonQuery("update DCBD_DKDM_CCCD set HoTen=N'" + dgvDanhSachCT_Online["HoTenCT_Online", e.RowIndex].Value.ToString()
-                            + ",NgaySinh='" + NgaySinhs[2] + "-" + NgaySinhs[1] + "-" + NgaySinhs[0] + "'"
-                            + ",DCThuongTru=N'" + dgvDanhSachCT_Online["DCThuongTruCT_Online", e.RowIndex].Value.ToString() + "'"
-                            + ",DCTamTru=N'" + dgvDanhSachCT_Online["DCTamTruCT_Online", e.RowIndex].Value.ToString() + "'"
-                            + ",KhacDiaBan=" + KhacDiaBan
-                            + ",ThuongTru=" + ThuongTru
-                            + ",TamTru=" + TamTru
-                            + ",NgayHetHan='" + NgayHetHans[2] + "-" + NgayHetHans[1] + "-" + NgayHetHans[0] + "'"
-                            + ",cmbChiNhanh=" + ChiNhanh
-                            + "' where ID=" + dgvDanhSachCT_Online["IDCT_Online", e.RowIndex].Value.ToString());
-                    }
-                    else
-                        MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+
 
 
     }

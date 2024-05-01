@@ -428,7 +428,12 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             return LINQToDataTable(query);
         }
 
-
+        public DataTable getDS_ChiTiet(string IDDanhBo)
+        {
+            return ExecuteQuery_DataTable("select [ID],[IDDanhBo],[CCCD],[HoTen],[NgaySinh]=convert(char(10),NgaySinh,103)"
+              + ",[DCThuongTru],[DCTamTru],[KhongKiemTra],[KhacDiaBan],[cmbChiNhanh],[ThuongTru],[TamTru]"
+              + ",[NgayHetHan]=convert(char(10),[NgayHetHan],103) FROM [KTKS_DonKH].[dbo].[DCBD_DKDM_CCCD] where IDDanhBo=" + IDDanhBo);
+        }
 
         public DataTable getDS_KiemTra_Tang(DateTime FromCreateDate, DateTime ToCreateDate)
         {
@@ -480,18 +485,22 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         public DataTable getDS_Online(string DanhBo)
         {
-            return ExecuteQuery_DataTable("select 'In'='false',db.ID,Dot=SUBSTRING(ttkh.LOTRINH, 1, 2),ttkh.DANHBO,DiaChi=ttkh.SONHA+' '+ttkh.TENDUONG,db.GiaBieu,db.DinhMuc,db.SDT,SoNK=(select COUNT(*) from KTKS_DonKH.dbo.DCBD_DKDM_CCCD where IDDanhBo=db.ID),db.CreateDate,CreateBy=case when db.CreateBy is not null then N'Thương Vụ' else N'Khách Hàng' end"
-                + " from KTKS_DonKH.dbo.DCBD_DKDM_DanhBo db,CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh"
-                + " where db.DanhBo=ttkh.DANHBO and db.DanhBo='" + DanhBo + "' and db.CreateBy is null"
-                + " order by db.ID asc");
+            return ExecuteQuery_DataTable("select 'In'='false',db.ID,Dot=SUBSTRING(ttkh.LOTRINH, 1, 2),ttkh.DANHBO,DiaChi=ttkh.SONHA+' '+ttkh.TENDUONG,db.GiaBieu,db.DinhMuc,db.SDT,SoNK=(select COUNT(*) from KTKS_DonKH.dbo.DCBD_DKDM_CCCD where IDDanhBo=db.ID)"
+                + " ,db.CreateDate,CreateBy=case when db.CreateBy is not null then N'Thương Vụ' else N'Khách Hàng' end,db.DCBD,db.DaXuLy,db.HieuLucKy,dcbd.* from KTKS_DonKH.dbo.DCBD_DKDM_DanhBo db,CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh"
+                + " LEFT JOIN ("
+                + " SELECT DCBD_SoPhieu=MaCTDCBD,DCBD_CreateDate=CONVERT(char(10),CreateDate,103),DCBD_ThongTin=ThongTin,DCBD_DinhMucBD=DinhMuc_BD,DanhBo, ROW_NUMBER() OVER (PARTITION BY DanhBo ORDER BY CreateDate desc) AS RowNum"
+                + " FROM KTKS_DonKH.dbo.DCBD_ChiTietBienDong) dcbd ON ttkh.DANHBO = dcbd.DanhBo And RowNum = 1"
+                + " where db.DanhBo=ttkh.DANHBO and ttkh.DANHBO='" + DanhBo + "' and db.CreateBy is null order by db.ID asc");
         }
 
         public DataTable getDS_Online(DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            return ExecuteQuery_DataTable("select 'In'='false',db.ID,Dot=SUBSTRING(ttkh.LOTRINH, 1, 2),ttkh.DANHBO,DiaChi=ttkh.SONHA+' '+ttkh.TENDUONG,db.GiaBieu,db.DinhMuc,db.SDT,SoNK=(select COUNT(*) from KTKS_DonKH.dbo.DCBD_DKDM_CCCD where IDDanhBo=db.ID),db.CreateDate,CreateBy=case when db.CreateBy is not null then N'Thương Vụ' else N'Khách Hàng' end"
-                + " from KTKS_DonKH.dbo.DCBD_DKDM_DanhBo db,CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh"
-                + " where db.DanhBo=ttkh.DANHBO and CAST(db.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(db.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and db.CreateBy is null"
-                + " order by db.ID asc");
+            return ExecuteQuery_DataTable("select 'In'='false',db.ID,Dot=SUBSTRING(ttkh.LOTRINH, 1, 2),ttkh.DANHBO,DiaChi=ttkh.SONHA+' '+ttkh.TENDUONG,db.GiaBieu,db.DinhMuc,db.SDT,SoNK=(select COUNT(*) from KTKS_DonKH.dbo.DCBD_DKDM_CCCD where IDDanhBo=db.ID)"
+                + " ,db.CreateDate,CreateBy=case when db.CreateBy is not null then N'Thương Vụ' else N'Khách Hàng' end,db.DCBD,db.DaXuLy,db.HieuLucKy,dcbd.* from KTKS_DonKH.dbo.DCBD_DKDM_DanhBo db,CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh"
+                + " LEFT JOIN ("
+                + " SELECT DCBD_SoPhieu=MaCTDCBD,DCBD_CreateDate=CONVERT(char(10),CreateDate,103),DCBD_ThongTin=ThongTin,DCBD_DinhMucBD=DinhMuc_BD,DanhBo, ROW_NUMBER() OVER (PARTITION BY DanhBo ORDER BY CreateDate desc) AS RowNum"
+                + " FROM KTKS_DonKH.dbo.DCBD_ChiTietBienDong) dcbd ON ttkh.DANHBO = dcbd.DanhBo And RowNum = 1"
+                + " where db.DanhBo=ttkh.DANHBO and CAST(db.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(db.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and db.CreateBy is null order by db.ID asc");
         }
 
         public DataTable getDS_NguoiLap()
