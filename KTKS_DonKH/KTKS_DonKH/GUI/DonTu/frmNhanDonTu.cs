@@ -61,6 +61,7 @@ namespace KTKS_DonKH.GUI.DonTu
             dgvDanhBo.AutoGenerateColumns = false;
             dgvLichSuNhanDon.AutoGenerateColumns = false;
             lbTruyThu.Text = "";
+            lbHDDT.Text = "";
             DataTable dt = _cNhomDon.getDSGroup("DieuChinh");
             chkcmbDieuChinh.Properties.DataSource = dt;
             chkcmbDieuChinh.Properties.ValueMember = "ID";
@@ -110,6 +111,10 @@ namespace KTKS_DonKH.GUI.DonTu
             else
                 txtDinhMucHN.Text = "";
             dgvLichSuNhanDon.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo(entity.DANHBA);
+            if (_cTTKH.checkExists_HDDT(entity.DANHBA))
+                lbHDDT.Text = "Đã có HĐĐT";
+            else
+                lbHDDT.Text = "";
             if (_cDonTu.checkExists_14ngay(entity.DANHBA) == true)
                 MessageBox.Show("Danh Bộ này có Đơn trong 14 ngày gần nhất", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             string str, TinhTrang = "";
@@ -140,10 +145,6 @@ namespace KTKS_DonKH.GUI.DonTu
             string strDuongCamDao = _cGanMoi.getDuongCamDao(entity.SO, entity.DUONG);
             if (strDuongCamDao != "")
                 MessageBox.Show(strDuongCamDao, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            if (_cTTKH.checkExists_HDDT(entity.DANHBA))
-                lbHDDT.Text = "Đã có HĐĐT";
-            else
-                lbHDDT.Text = "";
         }
 
         public void LoadDonTu(LinQ.DonTu entity)

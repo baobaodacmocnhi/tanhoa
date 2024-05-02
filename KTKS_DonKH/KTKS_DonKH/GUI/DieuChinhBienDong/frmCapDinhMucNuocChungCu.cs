@@ -276,9 +276,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             ChungTu_LichSu lichsuchungtu = _cChungTu.ChungTuToLichSu(ctchungtu);
                             _cChungTu.ThemLichSuChungTu(lichsuchungtu);
                             scope.Complete();
-                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Clear();
                         }
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Clear();
                     }
                 }
                 else

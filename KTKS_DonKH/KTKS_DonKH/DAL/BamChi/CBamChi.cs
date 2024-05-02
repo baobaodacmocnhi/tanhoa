@@ -791,8 +791,6 @@ namespace KTKS_DonKH.DAL.BamChi
             return LINQToDataTable(query);
         }
 
-
-
         #endregion
 
         //MaDonMoi
@@ -867,7 +865,6 @@ namespace KTKS_DonKH.DAL.BamChi
         //                };
         //    return LINQToDataTable(query);
         //}
-
 
         #region Hình
 

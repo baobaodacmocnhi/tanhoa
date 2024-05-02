@@ -1189,6 +1189,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             try
             {
+                if (e.RowIndex < 0)
+                    return;
                 if (dgvDanhSach_Online.Columns[e.ColumnIndex].Name == "actionThem")
                 {
                     if (CTaiKhoan.CheckQuyen("mnuDCHD", "Them"))
@@ -1198,6 +1200,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             if (dgvDanhSach_Online["DaXuLy_Online", e.RowIndex].Value != null && bool.Parse(dgvDanhSach_Online["DaXuLy_Online", e.RowIndex].Value.ToString()))
                             {
                                 MessageBox.Show("Đã Xử Lý", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                            if (dgvDanhSach_Online["HieuLucKy", e.RowIndex].Value == null || dgvDanhSach_Online["HieuLucKy", e.RowIndex].Value.ToString() == "")
+                            {
+                                MessageBox.Show("Thiếu Hiệu Lực Kỳ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
                             HOADON hd = _cThuTien.GetMoiNhat(dgvDanhSach_Online["DanhBo_Online", e.RowIndex].Value.ToString());
@@ -1573,6 +1580,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     || (dgvDanhSachCT_Online.Columns[e.ColumnIndex].Name == "DCThuongTruCT_Online" && dgvDanhSachCT_Online["DCThuongTruCT_Online", e.RowIndex].Value != null)
                     || (dgvDanhSachCT_Online.Columns[e.ColumnIndex].Name == "DCTamTruCT_Online" && dgvDanhSachCT_Online["DCTamTruCT_Online", e.RowIndex].Value != null)
                     || (dgvDanhSachCT_Online.Columns[e.ColumnIndex].Name == "HoTenCT_Online" && dgvDanhSachCT_Online["HoTenCT_Online", e.RowIndex].Value != null)
+                    || (dgvDanhSachCT_Online.Columns[e.ColumnIndex].Name == "In_CT" && dgvDanhSachCT_Online["In_CT", e.RowIndex].Value != null)
                     )
                 {
                     if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
@@ -1594,13 +1602,15 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     NgayHetHans = dgvDanhSachCT_Online["NgayHetHan_Online", e.RowIndex].Value.ToString().Split('-');
                             NgayHetHan = ",NgayHetHan='" + NgayHetHans[2] + "-" + NgayHetHans[1] + "-" + NgayHetHans[0] + "'";
                         }
-                        string KhacDiaBan = "0", ThuongTru = "0", TamTru = "0", ChiNhanh = "";
+                        string KhacDiaBan = "0", ThuongTru = "0", TamTru = "0", ChiNhanh = "", In_CT = "1";
                         if (bool.Parse(dgvDanhSachCT_Online["KhacDiaBan", e.RowIndex].Value.ToString()))
                             KhacDiaBan = "1";
                         if (bool.Parse(dgvDanhSachCT_Online["ThuongTru", e.RowIndex].Value.ToString()))
                             ThuongTru = "1";
                         if (bool.Parse(dgvDanhSachCT_Online["TamTru", e.RowIndex].Value.ToString()))
                             TamTru = "1";
+                        if (!bool.Parse(dgvDanhSachCT_Online["In_CT", e.RowIndex].Value.ToString()))
+                            In_CT = "0";
                         if (dgvDanhSachCT_Online["cmbChiNhanh", e.RowIndex].Value != null && dgvDanhSachCT_Online["cmbChiNhanh", e.RowIndex].Value.ToString() != "")
                             ChiNhanh = ",cmbChiNhanh=" + dgvDanhSachCT_Online["cmbChiNhanh", e.RowIndex].Value.ToString();
                         _cDCBD.ExecuteNonQuery("update DCBD_DKDM_CCCD set HoTen=N'" + dgvDanhSachCT_Online["HoTenCT_Online", e.RowIndex].Value.ToString() + "'"
@@ -1610,6 +1620,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             + ",KhacDiaBan=" + KhacDiaBan
                             + ",ThuongTru=" + ThuongTru
                             + ",TamTru=" + TamTru
+                            + ",In_CT=" + In_CT
                             + NgayHetHan
                             + ChiNhanh
                             + " where ID=" + dgvDanhSachCT_Online["IDCT_Online", e.RowIndex].Value.ToString());

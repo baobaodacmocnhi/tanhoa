@@ -430,7 +430,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         public DataTable getDS_ChiTiet(string IDDanhBo)
         {
-            return ExecuteQuery_DataTable("select [ID],[IDDanhBo],[CCCD],[HoTen],[NgaySinh]=convert(char(10),NgaySinh,103)"
+            return ExecuteQuery_DataTable("select In_CT,[ID],[IDDanhBo],[CCCD],[HoTen],[NgaySinh]=convert(char(10),NgaySinh,103)"
               + ",[DCThuongTru],[DCTamTru],[KhongKiemTra],[KhacDiaBan],[cmbChiNhanh],[ThuongTru],[TamTru]"
               + ",[NgayHetHan]=convert(char(10),[NgayHetHan],103) FROM [KTKS_DonKH].[dbo].[DCBD_DKDM_CCCD] where IDDanhBo=" + IDDanhBo);
         }

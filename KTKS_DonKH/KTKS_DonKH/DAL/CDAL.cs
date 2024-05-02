@@ -488,7 +488,7 @@ namespace KTKS_DonKH.DAL
             }
         }
 
-        public double convertToDouble(string number)
+        public double convertToDouble1(string number)
         {
             if (System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator == ".")
                 number.Replace(",", ".");
