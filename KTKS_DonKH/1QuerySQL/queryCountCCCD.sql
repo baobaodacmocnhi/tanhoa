@@ -48,17 +48,25 @@ group by hd.dm
 order by hd.dm
 
 --gửi zalo
-select b.DanhBo,b.IDZalo from TRUNGTAMKHACHHANG.dbo.Zalo_QuanTam a,TRUNGTAMKHACHHANG.dbo.Zalo_DangKy b,HOADON_TA.dbo.HOADON hd where a.IDZalo=b.IDZalo and a.Follow=1
-                                 and hd.NAM = 2023 and hd.ky = 11 and b.DanhBo = hd.DANHBA and hd.DM >= 40
-								 and DanhBo not in (select distinct DanhBo from KTKS_DonKH.dbo.ChungTu_ChiTiet where MaLCT = 15 and cat = 0)
-								 and DanhBo not in (select distinct DanhBo from TRUNGTAMKHACHHANG.dbo.Zalo_Send where Loai like '%cccd%' and DanhBo in (select distinct ct.danhbo from KTKS_DonKH.dbo.DonTu dt,KTKS_DonKH.dbo.DonTu_ChiTiet ct
-where dt.MaDon=ct.MaDon  and CAST(ct.CreateDate as date)>='20231012' and Name_NhomDon_PKH like N'%định mức%'))
+--select b.DanhBo,b.IDZalo from TRUNGTAMKHACHHANG.dbo.Zalo_QuanTam a,TRUNGTAMKHACHHANG.dbo.Zalo_DangKy b,HOADON_TA.dbo.HOADON hd where a.IDZalo=b.IDZalo and a.Follow=1
+--                                 and hd.NAM = 2024 and hd.ky = 4 and b.DanhBo = hd.DANHBA and hd.DM>=4 and hd.DM <= 36
+--								 and DanhBo not in (select distinct DanhBo from KTKS_DonKH.dbo.ChungTu_ChiTiet where MaLCT = 15 and cat = 0)
+--								 and DanhBo not in (select distinct DanhBo from TRUNGTAMKHACHHANG.dbo.Zalo_Send where Loai like '%cccd%' and DanhBo in (select distinct ct.danhbo from KTKS_DonKH.dbo.DonTu dt,KTKS_DonKH.dbo.DonTu_ChiTiet ct
+--where dt.MaDon=ct.MaDon  and CAST(ct.CreateDate as date)>='20231201' and Name_NhomDon_PKH like N'%định mức%'))
 
-select hd.DANHBA from TRUNGTAMKHACHHANG.dbo.Zalo_QuanTam a,TRUNGTAMKHACHHANG.dbo.Zalo_DangKy b,HOADON_TA.dbo.HOADON hd where a.IDZalo=b.IDZalo and a.Follow=1
-								and hd.NAM = 2023 and hd.ky = 11 and b.DanhBo = hd.DANHBA and hd.DM >= 40
-                                 and b.DanhBo not in (select distinct DanhBo from KTKS_DonKH.dbo.ChungTu_ChiTiet where MaLCT = 15 and cat = 0)
-								 and b.DanhBo  in (select distinct ct.DanhBo from KTKS_DonKH.dbo.DonTu dt,KTKS_DonKH.dbo.DonTu_ChiTiet ct
-where dt.MaDon=ct.MaDon  and CAST(ct.CreateDate as date)>='20231012' and dt.Name_NhomDon_PKH like N'%định mức%')
+--select hd.DANHBA from TRUNGTAMKHACHHANG.dbo.Zalo_QuanTam a,TRUNGTAMKHACHHANG.dbo.Zalo_DangKy b,HOADON_TA.dbo.HOADON hd where a.IDZalo=b.IDZalo and a.Follow=1
+--								and hd.NAM = 2023 and hd.ky = 11 and b.DanhBo = hd.DANHBA and hd.DM >= 40
+--                                 and b.DanhBo not in (select distinct DanhBo from KTKS_DonKH.dbo.ChungTu_ChiTiet where MaLCT = 15 and cat = 0)
+--								 and b.DanhBo  in (select distinct ct.DanhBo from KTKS_DonKH.dbo.DonTu dt,KTKS_DonKH.dbo.DonTu_ChiTiet ct
+--where dt.MaDon=ct.MaDon  and CAST(ct.CreateDate as date)>='20231012' and dt.Name_NhomDon_PKH like N'%định mức%')
+
+select * from
+(select DanhBo, IDZalo, HoTen = TENKH, DiaChi = SO + ' ' + DUONG, DinhMuc = DM from(select distinct DanhBo, b.IDZalo from TRUNGTAMKHACHHANG.dbo.Zalo_QuanTam a, TRUNGTAMKHACHHANG.dbo.Zalo_DangKy b where a.IDZalo = b.IDZalo and a.Follow = 1)t2, HOADON_TA.dbo.HOADON hd
+where DOT in ( 6, 21, 7, 22) and DanhBo not in (select distinct DanhBo from KTKS_DonKH.dbo.ChungTu_ChiTiet where MaLCT = 15 and cat = 0)
+and hd.NAM = 2024 and hd.ky = 4 and t2.DanhBo = hd.DANHBA and hd.DM >= 4 and hd.DM <= 36)t1
+where t1.DANHBO not in (select dtct.DanhBo from KTKS_DonKH.dbo.DonTu dt, KTKS_DonKH.dbo.DonTu_ChiTiet dtct where dt.MaDon = dtct.MaDon and CAST(dtct.CreateDate as date) >= '20231201' and Name_NhomDon_PKH like N'%định mức%')
+and t1.DANHBO not in (select DanhBo from KTKS_DonKH.dbo.DCBD_DKDM_DanhBo where CAST(CreateDate as date) >= '20240404')
+and t1.DanhBo not in (select DanhBo from TRUNGTAMKHACHHANG.dbo.Zalo_Send where CAST(CreateDate as date) >= '20240503' and Loai = 'thongbaocccd')
 
 
 --danh sách đã gửi
