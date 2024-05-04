@@ -82,10 +82,10 @@ namespace KTKS_DonKH.GUI.DonTu
             cmbPhongBanDoi.DisplayMember = "Name";
             cmbPhongBanDoi.ValueMember = "Name";
             cmbPhongBanDoi.SelectedIndex = -1;
-            //if (CTaiKhoan.Admin)
-            //    btnCapNhatHieuLuc.Visible = true;
-            //else
-            //    btnCapNhatHieuLuc.Visible = false;
+            if (CTaiKhoan.Admin)
+                btnCapNhatLaiHieuLuc.Visible = true;
+            else
+                btnCapNhatLaiHieuLuc.Visible = false;
             if (_MaDon != -1)
             {
                 txtMaDon.Text = _MaDon.ToString();
@@ -1866,19 +1866,8 @@ namespace KTKS_DonKH.GUI.DonTu
                     {
                         string error = "";
                         bool result = false;
-                        //if (txtPhieuChuyen.Text.Trim() == "")
-                        //    result = _wsEContract.editEContract(_dontu.MaDon.ToString(), "", "tanho@2022", out error);
-                        //else
-                        //    result = _wsEContract.editEContract("", txtPhieuChuyen.Text.Trim(), "tanho@2022", out error);
-                        //if (result)
-                        //{
-                        //    MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        //}
-                        //else
-                        //    MessageBox.Show("Thất bại " + error, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         if (!_dontu.Name_NhomDon_PKH.Contains("Thông tin khách hàng"))
                         {
-                            //string str=_cTaiKhoan.ExecuteQuery_ReturnOneValue("select top 1 IDEContract from TRUNGTAMKHACHHANG.dbo.Zalo_EContract_ChiTiet where MaDon='" + _dontu.MaDon + "' and Huy=0 and HieuLuc=0 order by CreateDate desc").ToString();
                             result = _wsEContract.editEContract_NgayHieuLuc(_dontu.MaDon.ToString(), "", "tanho@2022", out error);
                         }
                         if (result)
@@ -1901,6 +1890,37 @@ namespace KTKS_DonKH.GUI.DonTu
             if (txtSoNK.Text.Trim() != "")
             {
                 txtHieuLucKy.Text = _cDocSo.getHieuLucKyToi(chkCCDM.Checked, _hoadon.DOT);
+            }
+        }
+
+        private void btnCapNhatLaiHieuLuc_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
+                {
+                    if (MessageBox.Show("Bạn chắc chắn?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        string error = "";
+                        bool result = false;
+                        if (txtPhieuChuyen.Text.Trim() == "")
+                            result = _wsEContract.editEContract(_dontu.MaDon.ToString(), "", "tanho@2022", out error);
+                        else
+                            result = _wsEContract.editEContract("", txtPhieuChuyen.Text.Trim(), "tanho@2022", out error);
+                        if (result)
+                        {
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                            MessageBox.Show("Thất bại " + error, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

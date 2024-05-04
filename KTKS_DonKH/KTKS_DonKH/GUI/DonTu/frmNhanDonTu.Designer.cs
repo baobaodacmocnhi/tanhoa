@@ -192,6 +192,7 @@
             this.btnGuiEContract = new System.Windows.Forms.Button();
             this.btnXoaEContract = new System.Windows.Forms.Button();
             this.btnCapNhatHieuLuc = new System.Windows.Forms.Button();
+            this.btnCapNhatLaiHieuLuc = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabTTKH.SuspendLayout();
@@ -1767,6 +1768,17 @@
             this.btnCapNhatHieuLuc.UseVisualStyleBackColor = true;
             this.btnCapNhatHieuLuc.Click += new System.EventHandler(this.btnCapNhatHieuLuc_Click);
             // 
+            // btnCapNhatLaiHieuLuc
+            // 
+            this.btnCapNhatLaiHieuLuc.ForeColor = System.Drawing.Color.Blue;
+            this.btnCapNhatLaiHieuLuc.Location = new System.Drawing.Point(691, 595);
+            this.btnCapNhatLaiHieuLuc.Name = "btnCapNhatLaiHieuLuc";
+            this.btnCapNhatLaiHieuLuc.Size = new System.Drawing.Size(89, 46);
+            this.btnCapNhatLaiHieuLuc.TabIndex = 103;
+            this.btnCapNhatLaiHieuLuc.Text = "Cập Nhật Lại Hệu Lực";
+            this.btnCapNhatLaiHieuLuc.UseVisualStyleBackColor = true;
+            this.btnCapNhatLaiHieuLuc.Click += new System.EventHandler(this.btnCapNhatLaiHieuLuc_Click);
+            // 
             // frmNhanDonTu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1774,6 +1786,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1369, 731);
+            this.Controls.Add(this.btnCapNhatLaiHieuLuc);
             this.Controls.Add(this.btnCapNhatHieuLuc);
             this.Controls.Add(this.btnXoaEContract);
             this.Controls.Add(this.btnGuiEContract);
@@ -2013,5 +2026,6 @@
         private System.Windows.Forms.TextBox txtMLT;
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.Label lbHDDT;
+        private System.Windows.Forms.Button btnCapNhatLaiHieuLuc;
     }
 }
