@@ -520,9 +520,9 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
-        public bool checkExist_BienDong_DinhMuc(string DanhBo, string HieuLucKy)
+        public bool checkExist_BienDong_DinhMuc(string DanhBo, string HieuLucKy, int CreateBy, DateTime CreateDate)
         {
-            return db.DCBD_ChiTietBienDongs.Any(item => item.DanhBo == DanhBo && item.HieuLucKy == HieuLucKy && item.ThongTin.Contains("Định Mức"));
+            return db.DCBD_ChiTietBienDongs.Any(item => item.DanhBo == DanhBo && item.HieuLucKy == HieuLucKy && item.ThongTin.Contains("Định Mức") && item.CreateBy == CreateBy && item.CreateDate.Value.Date >= CreateDate.Date);
         }
 
         public string getDiaChiXuatHoaDon(string DanhBo)

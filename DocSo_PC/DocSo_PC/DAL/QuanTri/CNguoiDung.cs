@@ -475,7 +475,10 @@ namespace DocSo_PC.DAL.QuanTri
             return _db.Phongs.SingleOrDefault(o => o.ID == IDPhong).KyHieu;
         }
 
-
+        public void sendDangXuattoClient()
+        {
+            _cDAL.ExecuteNonQuery("EXEC [dbo].[spSendNotificationToClient_DangXuat]");
+        }
 
     }
 }

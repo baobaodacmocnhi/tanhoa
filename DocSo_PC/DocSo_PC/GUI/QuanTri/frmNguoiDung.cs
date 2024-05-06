@@ -51,6 +51,7 @@ namespace DocSo_PC.GUI.QuanTri
             chkVanPhong.Checked = false;
             chkAn.Checked = false;
             chkKyTen.Checked = false;
+            chkKhoa.Checked = false;
             txtChucVu.Text = "";
             picChuKy.Image = null;
             _nguoidung = null;
@@ -117,6 +118,7 @@ namespace DocSo_PC.GUI.QuanTri
                 chkDongNuoc.Checked = en.DongNuoc;
                 chkVanPhong.Checked = en.VanPhong;
                 chkKyTen.Checked = en.KyTen;
+                chkKhoa.Checked = en.Khoa;
                 txtChucVu.Text = en.ChucVu;
                 if (en.ChuKy != null)
                     picChuKy.Image = _cNguoiDung.byteArrayToImage(en.ChuKy.ToArray());
@@ -255,8 +257,13 @@ namespace DocSo_PC.GUI.QuanTri
                     _nguoidung.DongNuoc = chkDongNuoc.Checked;
                     _nguoidung.VanPhong = chkVanPhong.Checked;
                     _nguoidung.KyTen = chkKyTen.Checked;
+                    _nguoidung.Khoa = chkKhoa.Checked;
                     _nguoidung.ChucVu = txtChucVu.Text.Trim();
                     _cNguoiDung.Sua(_nguoidung);
+                    if (_nguoidung.Khoa)
+                    {
+                        _cNguoiDung.sendDangXuattoClient();
+                    }
                     DataTable dt = ((DataView)gridView.DataSource).Table;
                     foreach (DataRow item in dt.Rows)
                     {

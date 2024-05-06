@@ -142,8 +142,9 @@ and DanhBa not in (select b.DanhBo from KTKS_DonKH.dbo.DonTu a,KTKS_DonKH.dbo.Do
 where a.MaDon=b.MaDon and (a.Name_NhomDon_PKH like N'%định mức%' or a.Name_NhomDon like N'%định mức%'
 or a.Name_NhomDon like N'%thông tin khách hàng%' ) and CAST(a.CreateDate as date)>='20231101')
 
-select DanhBo,DinhMuc,DinhMuc_BD,GiaBieu,Code=(select CodeMoi from DocSoTH.dbo.DocSo where DanhBa=DanhBo and nam=2023 and ky=12)
-from KTKS_DonKH.dbo.DCBD_ChiTietBienDong where CreateBy=74  and CAST(CreateDate as date)>='20231220' and dot=13
+--lấy danh sách điều chỉnh gửi tct
+select MLT=(select Lotrinh from CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG where CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG.DANHBO=KTKS_DonKH.dbo.DCBD_ChiTietBienDong.DanhBo),DanhBo,DinhMuc,DinhMuc_BD,GiaBieu--,Code=(select CodeMoi from DocSoTH.dbo.DocSo where DanhBa=DanhBo and nam=2024 and ky=4)
+from KTKS_DonKH.dbo.DCBD_ChiTietBienDong where CreateBy=74  and CAST(CreateDate as date)='20240506' --and dot=13
 
 --thông tin send zalo
 select *
@@ -154,21 +155,22 @@ from TRUNGTAMKHACHHANG.dbo.Zalo_Send s
 where DanhBo='13141983452' and Loai='thongbaocccd' 
 
 --danh sách gửi tin nhắn nhưng chưa liên hệ 4/2024
-            select * from
+
+            select t1.DanhBo from
 (select * from CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG)t1,
-(select distinct DanhBo from TRUNGTAMKHACHHANG.dbo.Zalo_Send where Loai='thongbaocccd' and CAST(CreateDate as date)>='20240403')t2
-where t1.DANHBO=t2.DanhBo and ((SUBSTRING(t1.LOTRINH,1,2)>=1 and SUBSTRING(t1.LOTRINH,1,2)<=5)or(SUBSTRING(t1.LOTRINH,1,2)>=16 and SUBSTRING(t1.LOTRINH,1,2)<=20)) and t1.DINHMUC>0
-and t1.DANHBO not in (select dtct.DanhBo from KTKS_DonKH.dbo.DonTu dt,KTKS_DonKH.dbo.DonTu_ChiTiet dtct where dt.MaDon=dtct.MaDon
-and ((CAST(dtct.CreateDate as date)>='20240404')or(dt.ID_NhomDon like '%23%' and CAST(dtct.CreateDate as date)>='20230101')or(dt.ID_NhomDon_PKH like '%7%' and CAST(dtct.CreateDate as date)>='20231201')))
-and t1.DANHBO not in (select DanhBo from KTKS_DonKH.dbo.DCBD_DKDM_DanhBo where CAST(CreateDate as date)>='20240404')
-and t1.DanhBo not in (select distinct DanhBo from KTKS_DonKH.dbo.DCBD_ChiTietBienDong where HieuLucKy in ('12/2023','01/2024','02/2024','03/2024','04/2024','05/2024','06/2024','07/2024','08/2024') and ThongTin like N'%định mức%')
-and t1.DanhBo not in (select distinct DanhBo from KTKS_DonKH.dbo.ChungTu_ChiTiet where MaLCT = 15 and cat = 0)
+(select distinct DanhBo from TRUNGTAMKHACHHANG.dbo.Zalo_Send where Loai='thongbaocccd' and CAST(CreateDate as date)>='20240403')t2 left join
+(select distinct dtct.DANHBO from KTKS_DonKH.dbo.DonTu dt,KTKS_DonKH.dbo.DonTu_ChiTiet dtct where dt.MaDon=dtct.MaDon
+and ((CAST(dtct.CreateDate as date)>='20240404')or(dt.Name_NhomDon like N'%Hồ sơ truy thu%' and CAST(dtct.CreateDate as date)>='20230101')or(dt.Name_NhomDon_PKH like N'%định mức%' and CAST(dtct.CreateDate as date)>='20231201')))t3 on t3.DanhBo=t2.DanhBo
+where t1.DANHBO=t2.DanhBo and ((SUBSTRING(t1.LOTRINH,1,2)>=6 and SUBSTRING(t1.LOTRINH,1,2)<=10)or(SUBSTRING(t1.LOTRINH,1,2)>=21 and SUBSTRING(t1.LOTRINH,1,2)<=25)) and t1.DINHMUC>0 and t3.DanhBo is null
+and t1.DANHBO not in (select distinct DanhBo from KTKS_DonKH.dbo.DCBD_DKDM_DanhBo where CAST(CreateDate as date)>='20240404')
+and t1.DANHBO not in (select distinct DanhBo from KTKS_DonKH.dbo.DCBD_ChiTietBienDong where HieuLucKy in ('12/2023','01/2024','02/2024','03/2024','04/2024','05/2024','06/2024','07/2024','08/2024') and ThongTin like N'%định mức%')
+and t1.DANHBO not in (select distinct DanhBo from KTKS_DonKH.dbo.ChungTu_ChiTiet where MaLCT = 15 and cat = 0)
 
 select  * from
     (select DanhBo, IDZalo, HoTen = TENKH, DiaChi = SO + ' ' + DUONG, DinhMuc = DM from(select distinct DanhBo, b.IDZalo from TRUNGTAMKHACHHANG.dbo.Zalo_QuanTam a, TRUNGTAMKHACHHANG.dbo.Zalo_DangKy b where a.IDZalo = b.IDZalo and a.Follow = 1)t2, HOADON_TA.dbo.HOADON hd
     where DOT in (6, 21, 7, 22,8,23,9,24) and DanhBo not in (select distinct DanhBo from KTKS_DonKH.dbo.ChungTu_ChiTiet where MaLCT = 15 and cat = 0)
     and hd.NAM = 2024 and hd.ky = 4 and t2.DanhBo = hd.DANHBA and hd.DM >= 4 and hd.DM <= 36)t1
     where t1.DANHBO not in (select dtct.DanhBo from KTKS_DonKH.dbo.DonTu dt, KTKS_DonKH.dbo.DonTu_ChiTiet dtct where dt.MaDon = dtct.MaDon and CAST(dtct.CreateDate as date) >= '20231201' and Name_NhomDon_PKH like N'%định mức%')
-    and t1.DANHBO not in (select DanhBo from KTKS_DonKH.dbo.DCBD_DKDM_DanhBo where CAST(CreateDate as date) >= '20240404')
-    and t1.DanhBo not in (select DanhBo from TRUNGTAMKHACHHANG.dbo.Zalo_Send where CAST(CreateDate as date) >= '20240502' and Loai = 'thongbaocccd')
+    and t1.DANHBO not in (select distinct DanhBo from KTKS_DonKH.dbo.DCBD_DKDM_DanhBo where CAST(CreateDate as date) >= '20240404')
+    and t1.DanhBo not in (select distinct DanhBo from TRUNGTAMKHACHHANG.dbo.Zalo_Send where CAST(CreateDate as date) >= '20240502' and Loai = 'thongbaocccd')
 	and t1.DanhBo not in (select distinct DanhBo from KTKS_DonKH.dbo.DCBD_ChiTietBienDong where HieuLucKy in ('12/2023','01/2024','02/2024','03/2024','04/2024','05/2024','06/2024','07/2024','08/2024') and ThongTin like N'%định mức%')

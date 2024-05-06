@@ -1091,7 +1091,7 @@ namespace KTKS_DonKH.GUI.DonTu
                 }
                 if (_cGanMoi.checkTaiLapChuaCoHoaDon(txtDanhBo.Text.Trim().Replace(" ", "")))
                     MessageBox.Show("Danh Bộ tái lập chưa có hóa đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                if (_cDCBD.checkExist_BienDong_DinhMuc(txtDanhBo.Text.Trim().Replace(" ", ""), "05/2024"))
+                if (_cDCBD.checkExist_BienDong_DinhMuc(txtDanhBo.Text.Trim().Replace(" ", ""), "05/2024", 74, new DateTime(2024, 04, 24)))
                     MessageBox.Show("Danh Bộ có điều chỉnh Định Mức hiệu lực kỳ 05/2024", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

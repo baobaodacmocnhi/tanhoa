@@ -258,7 +258,6 @@ namespace ThuTien.GUI.TongHop
         private void btnIn_Click(object sender, EventArgs e)
         {
             dsBaoCao ds = new dsBaoCao();
-
             //if (!bool.Parse(dgvToTrinh.SelectedRows[0].Cells["Khoa"].Value.ToString()))
             foreach (DataGridViewRow item in dgvCTToTrinh.Rows)
             {
@@ -285,6 +284,8 @@ namespace ThuTien.GUI.TongHop
                 //dr["TieuThu"] = TieuThu;
                 dr["LyDo"] = item.Cells["LyDo"].Value;
                 dr["DeNghi"] = item.Cells["DeNghi"].Value;
+                dr["KyHieuPhong"] = CNguoiDung.KyHieuPhong;
+                dr["TenPhong"] = CNguoiDung.TenPhong.ToUpper();
                 dr["ChucVu"] = CNguoiDung.ChucVu;
                 dr["NguoiKy"] = CNguoiDung.NguoiKy;
                 ds.Tables["ToTrinhCatHuy"].Rows.Add(dr);
@@ -318,7 +319,6 @@ namespace ThuTien.GUI.TongHop
             //        dr["NguoiKy"] = CNguoiKy.getNguoiKy();
             //        ds.Tables["ToTrinhCatHuy"].Rows.Add(dr);
             //    }
-
             rptToTrinhDCHD rpt = new rptToTrinhDCHD();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);

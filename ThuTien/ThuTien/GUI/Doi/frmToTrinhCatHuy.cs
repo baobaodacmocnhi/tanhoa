@@ -266,7 +266,6 @@ namespace ThuTien.GUI.Doi
         private void btnIn_Click(object sender, EventArgs e)
         {
             dsBaoCao ds = new dsBaoCao();
-
             if (!bool.Parse(dgvToTrinh.SelectedRows[0].Cells["Khoa"].Value.ToString()))
                 foreach (DataGridViewRow item in dgvCTToTrinh.Rows)
                 {
@@ -315,6 +314,8 @@ namespace ThuTien.GUI.Doi
                     dr["TongCong"] = TongCongSo;
                     dr["TieuThu"] = TieuThu;
                     dr["GhiChu"] = item.Cells["GhiChu"].Value;
+                    dr["KyHieuPhong"] = CNguoiDung.KyHieuPhong;
+                    dr["TenPhong"] = CNguoiDung.TenPhong.ToUpper();
                     dr["ChucVu"] = CNguoiDung.ChucVu;
                     dr["NguoiKy"] = CNguoiDung.NguoiKy;
                     ds.Tables["ToTrinhCatHuy"].Rows.Add(dr);
@@ -352,11 +353,12 @@ namespace ThuTien.GUI.Doi
                     dr["TongCong"] = item.Cells["TongCong"].Value;
                     dr["TieuThu"] = item.Cells["TieuThu"].Value;
                     dr["GhiChu"] = item.Cells["GhiChu"].Value;
+                    dr["KyHieuPhong"] = CNguoiDung.KyHieuPhong;
+                    dr["TenPhong"] = CNguoiDung.TenPhong.ToUpper();
                     dr["ChucVu"] = CNguoiDung.ChucVu;
                     dr["NguoiKy"] = CNguoiDung.NguoiKy;
                     ds.Tables["ToTrinhCatHuy"].Rows.Add(dr);
                 }
-
             rptToTrinhCatHuy rpt = new rptToTrinhCatHuy();
             rpt.SetDataSource(ds);
             frmBaoCao frm = new frmBaoCao(rpt);
@@ -369,7 +371,6 @@ namespace ThuTien.GUI.Doi
             {
                 e.Value = e.Value.ToString().Insert(e.Value.ToString().Length - 2, "-");
             }
-
         }
 
         private void dgvToTrinh_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -394,7 +395,6 @@ namespace ThuTien.GUI.Doi
                     if (bool.Parse(e.FormattedValue.ToString()) == true)
                     {
                         TT_ToTrinhCatHuy totrinh = _cToTrinhCatHuy.Get(decimal.Parse(dgvToTrinh["MaTT", e.RowIndex].Value.ToString()));
-
                         foreach (TT_CTToTrinhCatHuy item in totrinh.TT_CTToTrinhCatHuys.ToList())
                         {
                             DataTable dtTon = _cHoaDon.GetDSTonByDanhBo_ExceptHD0(item.DanhBo);
@@ -417,7 +417,6 @@ namespace ThuTien.GUI.Doi
                                     SoHoaDon += itemTon["SoHoaDon"].ToString();
                                 else
                                     SoHoaDon += "," + itemTon["SoHoaDon"].ToString();
-
                                 //if (!_cLenhHuy.CheckExist(itemTon["SoHoaDon"].ToString()))
                                 //{
                                 //    TT_LenhHuy lenhhuy = new TT_LenhHuy();
@@ -427,23 +426,19 @@ namespace ThuTien.GUI.Doi
                                 //    _cLenhHuy.Them(lenhhuy);
                                 //}
                             }
-
                             item.Ky = Ky;
                             item.TongCong = TongCongSo;
                             item.TieuThu = TieuThu;
                             item.MaHD = MaHD;
                             item.SoHoaDon = SoHoaDon;
-
                             _cToTrinhCatHuy.SuaCT(item);
                         }
-
                         totrinh.Khoa = true;
                         _cToTrinhCatHuy.Sua(totrinh);
                     }
                     else
                     {
                         TT_ToTrinhCatHuy totrinh = _cToTrinhCatHuy.Get(decimal.Parse(dgvToTrinh["MaTT", e.RowIndex].Value.ToString()));
-
                         if (totrinh.DaKy == true)
                         {
                             MessageBox.Show("Đã Ký, Không tắt được", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -460,7 +455,6 @@ namespace ThuTien.GUI.Doi
                                 item.SoHoaDon = "";
                                 _cToTrinhCatHuy.SuaCT(item);
                             }
-
                             totrinh.Khoa = false;
                             _cToTrinhCatHuy.Sua(totrinh);
                         }

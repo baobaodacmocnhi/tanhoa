@@ -113,22 +113,24 @@ namespace DocSo_PC.GUI.ToTruong
             chkViTriDHN_Ngoai.Checked = false;
             chkViTriDHN_Hop.Checked = false;
             chkGieng.Checked = false;
-            chkAmSau.Checked = false;
-            chkXayDung.Checked = false;
-            chkDutChiGoc.Checked = false;
-            chkDutChiThan.Checked = false;
-            chkNgapNuoc.Checked = false;
-            chkKetTuong.Checked = false;
-            chkLapKhoaGoc.Checked = false;
-            chkBeHBV.Checked = false;
-            chkBeNapMatNapHBV.Checked = false;
-            chkGayTayVan.Checked = false;
-            chkTroNgaiThay.Checked = false;
-            chkDauChungMayBom.Checked = false;
+            cmbMauSacChiGoc.SelectedIndex = -1;
+            //chkAmSau.Checked = false;
+            //chkXayDung.Checked = false;
+            //chkDutChiGoc.Checked = false;
+            //chkDutChiThan.Checked = false;
+            //chkNgapNuoc.Checked = false;
+            //chkKetTuong.Checked = false;
+            //chkLapKhoaGoc.Checked = false;
+            //chkBeHBV.Checked = false;
+            //chkBeNapMatNapHBV.Checked = false;
+            //chkGayTayVan.Checked = false;
+            //chkTroNgaiThay.Checked = false;
+            //chkDauChungMayBom.Checked = false;
         }
 
         public void loadthongtin(TB_DULIEUKHACHHANG en)
         {
+            clear();
             if (en != null)
             {
                 txtSoNha.Text = en.SONHA;
@@ -140,42 +142,42 @@ namespace DocSo_PC.GUI.ToTruong
                 chkGieng.Checked = en.Gieng;
                 cmbMauSacChiGoc.SelectedItem = en.MauSacChiGoc;
                 dgvDienThoai.DataSource = _cDHN.getDS_DienThoai(en.DANHBO);
-                chkAmSau.Checked = en.AmSau;
-                if (en.AmSau == true)
-                    dateAmSau.Value = en.AmSau_Ngay.Value;
-                chkXayDung.Checked = en.XayDung;
-                if (en.XayDung == true)
-                    dateXayDung.Value = en.XayDung_Ngay.Value;
-                chkDutChiGoc.Checked = en.DutChi_Goc;
-                if (en.DutChi_Goc == true)
-                    dateDutChiGoc.Value = en.DutChi_Goc_Ngay.Value;
-                chkDutChiThan.Checked = en.DutChi_Than;
-                if (en.DutChi_Than == true)
-                    dateDutChiThan.Value = en.DutChi_Than_Ngay.Value;
-                chkNgapNuoc.Checked = en.NgapNuoc;
-                if (en.NgapNuoc == true)
-                    dateNgapNuoc.Value = en.NgapNuoc_Ngay.Value;
-                chkKetTuong.Checked = en.KetTuong;
-                if (en.KetTuong == true)
-                    dateKetTuong.Value = en.KetTuong_Ngay.Value;
-                chkLapKhoaGoc.Checked = en.LapKhoaGoc;
-                if (en.LapKhoaGoc == true)
-                    dateLapKhoaGoc.Value = en.LapKhoaGoc_Ngay.Value;
-                chkBeHBV.Checked = en.BeHBV;
-                if (en.BeHBV == true)
-                    dateBeHBV.Value = en.BeHBV_Ngay.Value;
-                chkBeNapMatNapHBV.Checked = en.BeNapMatNapHBV;
-                if (en.BeNapMatNapHBV == true)
-                    dateBeNapMatNapHBV.Value = en.BeNapMatNapHBV_Ngay.Value;
-                chkGayTayVan.Checked = en.GayTayVan;
-                if (en.GayTayVan == true)
-                    dateGayTayVan.Value = en.GayTayVan_Ngay.Value;
-                chkTroNgaiThay.Checked = en.TroNgaiThay;
-                if (en.TroNgaiThay == true)
-                    dateTroNgaiThay.Value = en.TroNgaiThay_Ngay.Value;
-                chkDauChungMayBom.Checked = en.DauChungMayBom;
-                if (en.DauChungMayBom == true)
-                    dateDauChungMayBom.Value = en.DauChungMayBom_Ngay.Value;
+                //chkAmSau.Checked = en.AmSau;
+                //if (en.AmSau == true)
+                //    dateAmSau.Value = en.AmSau_Ngay.Value;
+                //chkXayDung.Checked = en.XayDung;
+                //if (en.XayDung == true)
+                //    dateXayDung.Value = en.XayDung_Ngay.Value;
+                //chkDutChiGoc.Checked = en.DutChi_Goc;
+                //if (en.DutChi_Goc == true)
+                //    dateDutChiGoc.Value = en.DutChi_Goc_Ngay.Value;
+                //chkDutChiThan.Checked = en.DutChi_Than;
+                //if (en.DutChi_Than == true)
+                //    dateDutChiThan.Value = en.DutChi_Than_Ngay.Value;
+                //chkNgapNuoc.Checked = en.NgapNuoc;
+                //if (en.NgapNuoc == true)
+                //    dateNgapNuoc.Value = en.NgapNuoc_Ngay.Value;
+                //chkKetTuong.Checked = en.KetTuong;
+                //if (en.KetTuong == true)
+                //    dateKetTuong.Value = en.KetTuong_Ngay.Value;
+                //chkLapKhoaGoc.Checked = en.LapKhoaGoc;
+                //if (en.LapKhoaGoc == true)
+                //    dateLapKhoaGoc.Value = en.LapKhoaGoc_Ngay.Value;
+                //chkBeHBV.Checked = en.BeHBV;
+                //if (en.BeHBV == true)
+                //    dateBeHBV.Value = en.BeHBV_Ngay.Value;
+                //chkBeNapMatNapHBV.Checked = en.BeNapMatNapHBV;
+                //if (en.BeNapMatNapHBV == true)
+                //    dateBeNapMatNapHBV.Value = en.BeNapMatNapHBV_Ngay.Value;
+                //chkGayTayVan.Checked = en.GayTayVan;
+                //if (en.GayTayVan == true)
+                //    dateGayTayVan.Value = en.GayTayVan_Ngay.Value;
+                //chkTroNgaiThay.Checked = en.TroNgaiThay;
+                //if (en.TroNgaiThay == true)
+                //    dateTroNgaiThay.Value = en.TroNgaiThay_Ngay.Value;
+                //chkDauChungMayBom.Checked = en.DauChungMayBom;
+                //if (en.DauChungMayBom == true)
+                //    dateDauChungMayBom.Value = en.DauChungMayBom_Ngay.Value;
                 dgvPhieuChuyen.DataSource = _cPhieuChuyen.getDS(en.DANHBO);
                 dgvGhiChu.DataSource = _cDHN.getDS_GhiChu(en.DANHBO);
             }
