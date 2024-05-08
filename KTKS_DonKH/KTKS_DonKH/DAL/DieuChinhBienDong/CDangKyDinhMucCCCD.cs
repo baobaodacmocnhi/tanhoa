@@ -156,6 +156,21 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             }
         }
 
+        public bool XoaCTs(List<DCBD_DKDM_CCCD> en)
+        {
+            try
+            {
+                db.DCBD_DKDM_CCCDs.DeleteAllOnSubmit(en);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
         public DCBD_DKDM_DanhBo get(int ID)
         {
             return db.DCBD_DKDM_DanhBos.SingleOrDefault(item => item.ID == ID);

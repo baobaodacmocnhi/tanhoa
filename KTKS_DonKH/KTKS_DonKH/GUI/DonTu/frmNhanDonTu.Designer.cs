@@ -1764,7 +1764,7 @@
             this.btnCapNhatHieuLuc.Name = "btnCapNhatHieuLuc";
             this.btnCapNhatHieuLuc.Size = new System.Drawing.Size(89, 46);
             this.btnCapNhatHieuLuc.TabIndex = 102;
-            this.btnCapNhatHieuLuc.Text = "Cập Nhật Hệu Lực";
+            this.btnCapNhatHieuLuc.Text = "Cập Nhật Hiệu Lực";
             this.btnCapNhatHieuLuc.UseVisualStyleBackColor = true;
             this.btnCapNhatHieuLuc.Click += new System.EventHandler(this.btnCapNhatHieuLuc_Click);
             // 
@@ -1775,7 +1775,7 @@
             this.btnCapNhatLaiHieuLuc.Name = "btnCapNhatLaiHieuLuc";
             this.btnCapNhatLaiHieuLuc.Size = new System.Drawing.Size(89, 46);
             this.btnCapNhatLaiHieuLuc.TabIndex = 103;
-            this.btnCapNhatLaiHieuLuc.Text = "Cập Nhật Lại Hệu Lực";
+            this.btnCapNhatLaiHieuLuc.Text = "Cập Nhật Lại Hiệu Lực";
             this.btnCapNhatLaiHieuLuc.UseVisualStyleBackColor = true;
             this.btnCapNhatLaiHieuLuc.Click += new System.EventHandler(this.btnCapNhatLaiHieuLuc_Click);
             // 

@@ -82,6 +82,7 @@
             this.cmbQuan = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.chkTon = new System.Windows.Forms.CheckBox();
+            this.chkTachPhong = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDonChiTiet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDon)).BeginInit();
@@ -618,6 +619,16 @@
             this.chkTon.Text = "Tồn";
             this.chkTon.UseVisualStyleBackColor = true;
             // 
+            // chkTachPhong
+            // 
+            this.chkTachPhong.AutoSize = true;
+            this.chkTachPhong.Location = new System.Drawing.Point(824, 37);
+            this.chkTachPhong.Name = "chkTachPhong";
+            this.chkTachPhong.Size = new System.Drawing.Size(100, 20);
+            this.chkTachPhong.TabIndex = 51;
+            this.chkTachPhong.Text = "Tách Phòng";
+            this.chkTachPhong.UseVisualStyleBackColor = true;
+            // 
             // frmDSDonTu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -625,6 +636,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1377, 630);
+            this.Controls.Add(this.chkTachPhong);
             this.Controls.Add(this.chkTon);
             this.Controls.Add(this.cmbPhuong);
             this.Controls.Add(this.label5);
@@ -715,5 +727,6 @@
         private System.Windows.Forms.Label label6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
         private System.Windows.Forms.CheckBox chkTon;
+        private System.Windows.Forms.CheckBox chkTachPhong;
     }
 }

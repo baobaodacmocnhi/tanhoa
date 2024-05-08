@@ -407,6 +407,44 @@ namespace KTKS_DonKH.DAL.DonTu
             }
         }
 
+        public DataSet getDS_Ton_GridControl(DateTime FromCreateDate, DateTime ToCreateDate, int MaPhong)
+        {
+            try
+            {
+                DataSet ds = new DataSet();
+                string sqlDonTu = "select MaDon,SoCongVan,CreateDate=CONVERT(varchar(10),CreateDate,103)+' '+CONVERT(varchar(10),CreateDate,108)"
+                            + " ,DanhBo=case when (select COUNT(ID) from DonTu_ChiTiet where MaDon=DonTu.MaDon)=1 then (select DanhBo from DonTu_ChiTiet where MaDon=DonTu.MaDon) else '' end"
+                            + " ,HoTen=case when (select COUNT(ID) from DonTu_ChiTiet where MaDon=DonTu.MaDon)=1 then (select HoTen from DonTu_ChiTiet where MaDon=DonTu.MaDon) else '' end"
+                            + " ,DiaChi=case when (select COUNT(ID) from DonTu_ChiTiet where MaDon=DonTu.MaDon)=1 then (select DiaChi from DonTu_ChiTiet where MaDon=DonTu.MaDon) else N'Số: ' + SoCongVan + N' gồm ' + CAST(TongDB as varchar(3)) + N' địa chỉ' end"
+                            + " ,NoiDungPKHB=Name_NhomDon_PKH"
+                            + " ,NoiDungPKH=case when VanDeKhac not like '' then case when Name_NhomDon_PKH not like '' then Name_NhomDon_PKH+'; '+VanDeKhac else VanDeKhac end else Name_NhomDon_PKH end"
+                            + " ,NoiDungPTV=case when VanDeKhac not like '' then case when Name_NhomDon not like '' then Name_NhomDon+'; '+VanDeKhac else VanDeKhac end else Name_NhomDon end"
+                            + " ,CreateBy=(select HoTen from Users where MaU=DonTu.CreateBy),TinhTrang"
+                            + " from DonTu where MaPhong=" + MaPhong + " and CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm") + "' and CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm") + "'"
+                            + " and TinhTrang!=N'Hoàn Thành' and (select count(*) from DonTu_LichSu where DonTu_LichSu.MaDon=DonTu.MaDon)<2";
+                string sqlDonTuChiTiet = "select dtct.STT,dtct.MaDon,dtct.DanhBo,dtct.HoTen,dtct.DiaChi,dtct.TinhTrang"
+                    + " from DonTu dt,DonTu_ChiTiet dtct where (select COUNT(ID) from DonTu_ChiTiet where MaDon=dt.MaDon)>1"
+                    + " and dt.MaDon=dtct.MaDon and dt.MaPhong=" + MaPhong + " and dt.CreateDate>='" + FromCreateDate.ToString("yyyyMMdd HH:mm") + "' and dt.CreateDate<='" + ToCreateDate.ToString("yyyyMMdd HH:mm") + "'"
+                    + " and dt.TinhTrang!=N'Hoàn Thành' and (select count(*) from DonTu_LichSu where DonTu_LichSu.MaDon=dt.MaDon)<2";
+                DataTable dtDonTu = new DataTable();
+                dtDonTu = ExecuteQuery_DataTable(sqlDonTu);
+                dtDonTu.TableName = "DonTu";
+                dtDonTu.DefaultView.Sort = "MaDon ASC";
+                ds.Tables.Add(dtDonTu.DefaultView.ToTable());
+                DataTable dtDonTuChiTiet = new DataTable();
+                dtDonTuChiTiet = ExecuteQuery_DataTable(sqlDonTuChiTiet);
+                dtDonTuChiTiet.TableName = "DonTuChiTiet";
+                ds.Tables.Add(dtDonTuChiTiet);
+                if (dtDonTu.Rows.Count > 0 && dtDonTuChiTiet.Rows.Count > 0)
+                    ds.Relations.Add("Chi Tiết Đơn", ds.Tables["DonTu"].Columns["MaDon"], ds.Tables["DonTuChiTiet"].Columns["MaDon"]);
+                return ds;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public DataSet getDS_GridControl(string Loai, DateTime FromCreateDate, DateTime ToCreateDate)
         {
             try
@@ -493,6 +531,24 @@ namespace KTKS_DonKH.DAL.DonTu
             return EntityToDataset(lst);
         }
 
+        public DataSet getDS_GridControl_Quan(string Loai, DateTime FromCreateDate, DateTime ToCreateDate, int Quan, int MaPhong)
+        {
+            List<LinQ.DonTu> lst = new List<LinQ.DonTu>();
+            switch (Loai)
+            {
+                case "Quầy":
+                    lst = db.DonTus.Where(item => item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate && item.MaPhong == MaPhong && item.VanPhong == false && item.DonTu_ChiTiets.Any(itemA => Convert.ToInt32(itemA.Quan) == Quan) == true).OrderBy(item => item.MaDon).ToList();
+                    break;
+                case "Văn Phòng":
+                    lst = db.DonTus.Where(item => item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate && item.MaPhong == MaPhong && item.VanPhong == true && item.DonTu_ChiTiets.Any(itemA => Convert.ToInt32(itemA.Quan) == Quan) == true).OrderBy(item => item.MaDon).ToList();
+                    break;
+                default:
+                    lst = db.DonTus.Where(item => item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate && item.MaPhong == MaPhong && item.DonTu_ChiTiets.Any(itemA => Convert.ToInt32(itemA.Quan) == Quan) == true).OrderBy(item => item.MaDon).ToList();
+                    break;
+            }
+            return EntityToDataset(lst);
+        }
+
         public DataSet getDS_GridControl_QuanPhuong(string Loai, DateTime FromCreateDate, DateTime ToCreateDate, int Quan, int Phuong)
         {
             List<LinQ.DonTu> lst = new List<LinQ.DonTu>();
@@ -506,6 +562,24 @@ namespace KTKS_DonKH.DAL.DonTu
                     break;
                 default:
                     lst = db.DonTus.Where(item => item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate && item.DonTu_ChiTiets.Any(itemA => Convert.ToInt32(itemA.Quan) == Quan && Convert.ToInt32(itemA.Phuong) == Phuong) == true).OrderBy(item => item.MaDon).ToList();
+                    break;
+            }
+            return EntityToDataset(lst);
+        }
+
+        public DataSet getDS_GridControl_QuanPhuong(string Loai, DateTime FromCreateDate, DateTime ToCreateDate, int Quan, int Phuong, int MaPhong)
+        {
+            List<LinQ.DonTu> lst = new List<LinQ.DonTu>();
+            switch (Loai)
+            {
+                case "Quầy":
+                    lst = db.DonTus.Where(item => item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate && item.MaPhong == MaPhong && item.VanPhong == false && item.DonTu_ChiTiets.Any(itemA => Convert.ToInt32(itemA.Quan) == Quan && Convert.ToInt32(itemA.Phuong) == Phuong) == true).OrderBy(item => item.MaDon).ToList();
+                    break;
+                case "Văn Phòng":
+                    lst = db.DonTus.Where(item => item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate && item.MaPhong == MaPhong && item.VanPhong == true && item.DonTu_ChiTiets.Any(itemA => Convert.ToInt32(itemA.Quan) == Quan && Convert.ToInt32(itemA.Phuong) == Phuong) == true).OrderBy(item => item.MaDon).ToList();
+                    break;
+                default:
+                    lst = db.DonTus.Where(item => item.CreateDate.Value >= FromCreateDate && item.CreateDate.Value <= ToCreateDate && item.MaPhong == MaPhong && item.DonTu_ChiTiets.Any(itemA => Convert.ToInt32(itemA.Quan) == Quan && Convert.ToInt32(itemA.Phuong) == Phuong) == true).OrderBy(item => item.MaDon).ToList();
                     break;
             }
             return EntityToDataset(lst);

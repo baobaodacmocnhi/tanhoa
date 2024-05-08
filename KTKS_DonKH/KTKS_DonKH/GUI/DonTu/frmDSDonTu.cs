@@ -132,31 +132,52 @@ namespace KTKS_DonKH.GUI.DonTu
                         //else
                         if (txtNoiDungTimKiem.Text.Trim() != "")
                             //dgvDSDonTu.DataSource = _cDonTu.getDS_Phong(int.Parse(txtNoiDungTimKiem.Text.Trim()), int.Parse(cmbPhong.SelectedValue.ToString()));
-                            gridControl.DataSource = _cDonTu.getDS_Phong_GridControl(int.Parse(txtNoiDungTimKiem.Text.Trim())).Tables["DonTu"];
+                            if (chkTachPhong.Checked)
+                                gridControl.DataSource = _cDonTu.getDS_Phong_GridControl(int.Parse(txtNoiDungTimKiem.Text.Trim()), CTaiKhoan.MaPhong).Tables["DonTu"];
+                            else
+                                gridControl.DataSource = _cDonTu.getDS_Phong_GridControl(int.Parse(txtNoiDungTimKiem.Text.Trim())).Tables["DonTu"];
                         break;
                     case "Danh Bộ":
                         if (txtNoiDungTimKiem.Text.Trim() != "")
                             //dgvDSDonTu.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""), int.Parse(cmbPhong.SelectedValue.ToString()));
-                            gridControl.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo_GridControl(txtNoiDungTimKiem.Text.Trim().Replace(" ", "")).Tables["DonTu"];
+                            if (chkTachPhong.Checked)
+                                gridControl.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo_GridControl(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""), CTaiKhoan.MaPhong).Tables["DonTu"];
+                            else
+                                gridControl.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo_GridControl(txtNoiDungTimKiem.Text.Trim().Replace(" ", "")).Tables["DonTu"];
                         break;
                     case "Số Công Văn":
                         if (txtNoiDungTimKiem.Text.Trim() != "")
                             //dgvDSDonTu.DataSource = _cDonTu.getDSBySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper(), int.Parse(cmbPhong.SelectedValue.ToString()));
-                            gridControl.DataSource = _cDonTu.getDSBySoCongVan_GridControl(txtNoiDungTimKiem.Text.Trim().ToUpper()).Tables["DonTu"];
+                            if (chkTachPhong.Checked)
+                                gridControl.DataSource = _cDonTu.getDSBySoCongVan_GridControl(txtNoiDungTimKiem.Text.Trim().ToUpper(), CTaiKhoan.MaPhong).Tables["DonTu"];
+                            else
+                                gridControl.DataSource = _cDonTu.getDSBySoCongVan_GridControl(txtNoiDungTimKiem.Text.Trim().ToUpper()).Tables["DonTu"];
                         break;
                     case "Ngày":
                         //dgvDSDonTu.DataSource = _cDonTu.getDS(cmbLoai.Text, dateTu.Value, dateDen.Value, int.Parse(cmbPhong.SelectedValue.ToString()));
                         if (cmbQuan.SelectedIndex == 0)
                             if (chkTon.Checked)
-                                gridControl.DataSource = _cDonTu.getDS_Ton_GridControl(dateTu.Value, dateDen.Value).Tables["DonTu"];
+                                if (chkTachPhong.Checked)
+                                    gridControl.DataSource = _cDonTu.getDS_Ton_GridControl(dateTu.Value, dateDen.Value, CTaiKhoan.MaPhong).Tables["DonTu"];
+                                else
+                                    gridControl.DataSource = _cDonTu.getDS_Ton_GridControl(dateTu.Value, dateDen.Value).Tables["DonTu"];
                             else
-                                gridControl.DataSource = _cDonTu.getDS_GridControl(cmbLoai.Text, dateTu.Value, dateDen.Value).Tables["DonTu"];
+                                if (chkTachPhong.Checked)
+                                    gridControl.DataSource = _cDonTu.getDS_GridControl(cmbLoai.Text, dateTu.Value, dateDen.Value, CTaiKhoan.MaPhong).Tables["DonTu"];
+                                else
+                                    gridControl.DataSource = _cDonTu.getDS_GridControl(cmbLoai.Text, dateTu.Value, dateDen.Value).Tables["DonTu"];
                         else
                             if (cmbQuan.SelectedIndex > 0)
                                 if (cmbPhuong.SelectedIndex == 0)
-                                    gridControl.DataSource = _cDonTu.getDS_GridControl_Quan(cmbLoai.Text, dateTu.Value, dateDen.Value, int.Parse(cmbQuan.SelectedValue.ToString())).Tables["DonTu"];
+                                    if (chkTachPhong.Checked)
+                                        gridControl.DataSource = _cDonTu.getDS_GridControl_Quan(cmbLoai.Text, dateTu.Value, dateDen.Value, int.Parse(cmbQuan.SelectedValue.ToString()), CTaiKhoan.MaPhong).Tables["DonTu"];
+                                    else
+                                        gridControl.DataSource = _cDonTu.getDS_GridControl_Quan(cmbLoai.Text, dateTu.Value, dateDen.Value, int.Parse(cmbQuan.SelectedValue.ToString())).Tables["DonTu"];
                                 else
-                                    gridControl.DataSource = _cDonTu.getDS_GridControl_QuanPhuong(cmbLoai.Text, dateTu.Value, dateDen.Value, int.Parse(cmbQuan.SelectedValue.ToString()), int.Parse(cmbPhuong.SelectedValue.ToString())).Tables["DonTu"];
+                                    if (chkTachPhong.Checked)
+                                        gridControl.DataSource = _cDonTu.getDS_GridControl_QuanPhuong(cmbLoai.Text, dateTu.Value, dateDen.Value, int.Parse(cmbQuan.SelectedValue.ToString()), int.Parse(cmbPhuong.SelectedValue.ToString()), CTaiKhoan.MaPhong).Tables["DonTu"];
+                                    else
+                                        gridControl.DataSource = _cDonTu.getDS_GridControl_QuanPhuong(cmbLoai.Text, dateTu.Value, dateDen.Value, int.Parse(cmbQuan.SelectedValue.ToString()), int.Parse(cmbPhuong.SelectedValue.ToString())).Tables["DonTu"];
                         break;
                     default:
                         break;
@@ -172,31 +193,52 @@ namespace KTKS_DonKH.GUI.DonTu
                         //else
                         if (txtNoiDungTimKiem.Text.Trim() != "")
                             //dgvDSDonTu.DataSource = _cDonTu.getDS_Phong(int.Parse(txtNoiDungTimKiem.Text.Trim()), CTaiKhoan.MaPhong);
-                            gridControl.DataSource = _cDonTu.getDS_Phong_GridControl(int.Parse(txtNoiDungTimKiem.Text.Trim())).Tables["DonTu"];
+                            if (chkTachPhong.Checked)
+                                gridControl.DataSource = _cDonTu.getDS_Phong_GridControl(int.Parse(txtNoiDungTimKiem.Text.Trim()), CTaiKhoan.MaPhong).Tables["DonTu"];
+                            else
+                                gridControl.DataSource = _cDonTu.getDS_Phong_GridControl(int.Parse(txtNoiDungTimKiem.Text.Trim())).Tables["DonTu"];
                         break;
                     case "Danh Bộ":
                         if (txtNoiDungTimKiem.Text.Trim() != "")
                             //dgvDSDonTu.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""), CTaiKhoan.MaPhong);
-                            gridControl.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo_GridControl(txtNoiDungTimKiem.Text.Trim().Replace(" ", "")).Tables["DonTu"];
+                            if (chkTachPhong.Checked)
+                                gridControl.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo_GridControl(txtNoiDungTimKiem.Text.Trim().Replace(" ", ""), CTaiKhoan.MaPhong).Tables["DonTu"];
+                            else
+                                gridControl.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo_GridControl(txtNoiDungTimKiem.Text.Trim().Replace(" ", "")).Tables["DonTu"];
                         break;
                     case "Số Công Văn":
                         if (txtNoiDungTimKiem.Text.Trim() != "")
                             //dgvDSDonTu.DataSource = _cDonTu.getDSBySoCongVan(txtNoiDungTimKiem.Text.Trim().ToUpper(), CTaiKhoan.MaPhong);
-                            gridControl.DataSource = _cDonTu.getDSBySoCongVan_GridControl(txtNoiDungTimKiem.Text.Trim().ToUpper()).Tables["DonTu"];
+                            if (chkTachPhong.Checked)
+                                gridControl.DataSource = _cDonTu.getDSBySoCongVan_GridControl(txtNoiDungTimKiem.Text.Trim().ToUpper(), CTaiKhoan.MaPhong).Tables["DonTu"];
+                            else
+                                gridControl.DataSource = _cDonTu.getDSBySoCongVan_GridControl(txtNoiDungTimKiem.Text.Trim().ToUpper()).Tables["DonTu"];
                         break;
                     case "Ngày":
                         //dgvDSDonTu.DataSource = _cDonTu.getDS(cmbLoai.Text, dateTu.Value, dateDen.Value, CTaiKhoan.MaPhong);
                         if (cmbQuan.SelectedIndex == 0)
                             if (chkTon.Checked)
-                                gridControl.DataSource = _cDonTu.getDS_Ton_GridControl(dateTu.Value, dateDen.Value).Tables["DonTu"];
+                                if (chkTachPhong.Checked)
+                                    gridControl.DataSource = _cDonTu.getDS_Ton_GridControl(dateTu.Value, dateDen.Value, CTaiKhoan.MaPhong).Tables["DonTu"];
+                                else
+                                    gridControl.DataSource = _cDonTu.getDS_Ton_GridControl(dateTu.Value, dateDen.Value).Tables["DonTu"];
                             else
-                                gridControl.DataSource = _cDonTu.getDS_GridControl(cmbLoai.Text, dateTu.Value, dateDen.Value).Tables["DonTu"];
+                                if (chkTachPhong.Checked)
+                                    gridControl.DataSource = _cDonTu.getDS_GridControl(cmbLoai.Text, dateTu.Value, dateDen.Value, CTaiKhoan.MaPhong).Tables["DonTu"];
+                                else
+                                    gridControl.DataSource = _cDonTu.getDS_GridControl(cmbLoai.Text, dateTu.Value, dateDen.Value).Tables["DonTu"];
                         else
                             if (cmbQuan.SelectedIndex > 0)
                                 if (cmbPhuong.SelectedIndex == 0)
-                                    gridControl.DataSource = _cDonTu.getDS_GridControl_Quan(cmbLoai.Text, dateTu.Value, dateDen.Value, int.Parse(cmbQuan.SelectedValue.ToString())).Tables["DonTu"];
+                                    if (chkTachPhong.Checked)
+                                        gridControl.DataSource = _cDonTu.getDS_GridControl_Quan(cmbLoai.Text, dateTu.Value, dateDen.Value, int.Parse(cmbQuan.SelectedValue.ToString()), CTaiKhoan.MaPhong).Tables["DonTu"];
+                                    else
+                                        gridControl.DataSource = _cDonTu.getDS_GridControl_Quan(cmbLoai.Text, dateTu.Value, dateDen.Value, int.Parse(cmbQuan.SelectedValue.ToString())).Tables["DonTu"];
                                 else
-                                    gridControl.DataSource = _cDonTu.getDS_GridControl_QuanPhuong(cmbLoai.Text, dateTu.Value, dateDen.Value, int.Parse(cmbQuan.SelectedValue.ToString()), int.Parse(cmbPhuong.SelectedValue.ToString())).Tables["DonTu"];
+                                    if (chkTachPhong.Checked)
+                                        gridControl.DataSource = _cDonTu.getDS_GridControl_QuanPhuong(cmbLoai.Text, dateTu.Value, dateDen.Value, int.Parse(cmbQuan.SelectedValue.ToString()), int.Parse(cmbPhuong.SelectedValue.ToString()), CTaiKhoan.MaPhong).Tables["DonTu"];
+                                    else
+                                        gridControl.DataSource = _cDonTu.getDS_GridControl_QuanPhuong(cmbLoai.Text, dateTu.Value, dateDen.Value, int.Parse(cmbQuan.SelectedValue.ToString()), int.Parse(cmbPhuong.SelectedValue.ToString())).Tables["DonTu"];
                         break;
                     default:
                         break;

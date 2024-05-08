@@ -1504,8 +1504,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     }
                     else
                     {
-                        DCBD_DKDM_DanhBo danhbo = _cDKDM.get(int.Parse(dgvDanhSach_Online["ID_Online", e.RowIndex].Value.ToString()));
-                        if (danhbo != null)
+                        _danhbo = _cDKDM.get(int.Parse(dgvDanhSach_Online["ID_Online", e.RowIndex].Value.ToString()));
+                        if (_danhbo != null)
                         {
                             //dgvDanhSachCT_Online.Rows.Clear();
                             //foreach (DCBD_DKDM_CCCD item in danhbo.DCBD_DKDM_CCCDs.ToList())
@@ -1525,7 +1525,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             //    if (item.cmbChiNhanh != null)
                             //        dgvDanhSachCT_Online.Rows[index].Cells["cmbChiNhanh"].Value = item.cmbChiNhanh;
                             //}
-                            dgvDanhSachCT_Online.DataSource = _cDKDM.getDS_ChiTiet(danhbo.ID.ToString());
+                            dgvDanhSachCT_Online.DataSource = _cDKDM.getDS_ChiTiet(_danhbo.ID.ToString());
                         }
                     }
             }
@@ -1772,6 +1772,29 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     item.Cells["In"].Value = false;
                 }
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CTaiKhoan.CheckQuyen(_mnu, "Xoa"))
+                {
+                    if (_danhbo != null && MessageBox.Show("Bạn có chắc chắn?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        _cDKDM.XoaCTs(_danhbo.DCBD_DKDM_CCCDs.ToList());
+                        _cDKDM.Xoa(_danhbo);
+                        //_wsThuongVu.xoa_Folder_Hinh_Root("ThuongVu", "DangKyDinhMuc", _danhbo.DanhBo + "." + _danhbo.CreateDate.ToString("yyyyMMdd"));
+                        MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn không có quyền Xóa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 

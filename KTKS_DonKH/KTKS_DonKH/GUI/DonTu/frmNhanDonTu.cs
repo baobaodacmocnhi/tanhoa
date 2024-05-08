@@ -96,55 +96,64 @@ namespace KTKS_DonKH.GUI.DonTu
 
         public void LoadTTKH(HOADON entity)
         {
-            txtDanhBo.Text = entity.DANHBA.Insert(7, " ").Insert(4, " ");
-            txtHopDong.Text = entity.HOPDONG;
-            txtMLT.Text = entity.MALOTRINH;
-            txtHoTen.Text = entity.TENKH;
-            txtDiaChi.Text = entity.SO + " " + entity.DUONG + _cDHN.GetPhuongQuan(entity.Quan, entity.Phuong);
-            txtGiaBieu.Text = entity.GB.ToString();
-            if (entity.DM != null)
-                txtDinhMuc.Text = entity.DM.ToString();
-            else
-                txtDinhMuc.Text = "";
-            if (entity.DinhMucHN != null)
-                txtDinhMucHN.Text = entity.DinhMucHN.Value.ToString();
-            else
-                txtDinhMucHN.Text = "";
-            dgvLichSuNhanDon.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo(entity.DANHBA);
-            if (_cTTKH.checkExists_HDDT(entity.DANHBA))
-                lbHDDT.Text = "Đã có HĐĐT";
-            else
-                lbHDDT.Text = "";
-            if (_cDonTu.checkExists_14ngay(entity.DANHBA) == true)
-                MessageBox.Show("Danh Bộ này có Đơn trong 14 ngày gần nhất", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            string str, TinhTrang = "";
-            str = _cTTTN.check_TinhTrang_Ton(entity.DANHBA);
-            if (str == "")
+            try
             {
-                if (_cKTXM.checkCanKhachHangLienHe(txtDanhBo.Text.Trim().Replace(" ", ""), out TinhTrang) == true)
-                    str = TinhTrang;
+                txtDanhBo.Text = entity.DANHBA.Insert(7, " ").Insert(4, " ");
+                txtHopDong.Text = entity.HOPDONG;
+                txtMLT.Text = entity.MALOTRINH;
+                txtHoTen.Text = entity.TENKH;
+                txtDiaChi.Text = entity.SO + " " + entity.DUONG + _cDHN.GetPhuongQuan(entity.Quan, entity.Phuong);
+                txtGiaBieu.Text = entity.GB.ToString();
+                if (entity.DM != null)
+                    txtDinhMuc.Text = entity.DM.ToString();
+                else
+                    txtDinhMuc.Text = "";
+                if (entity.DinhMucHN != null)
+                    txtDinhMucHN.Text = entity.DinhMucHN.Value.ToString();
+                else
+                    txtDinhMucHN.Text = "";
+                dgvLichSuNhanDon.DataSource = _cDonTu.getDS_ChiTiet_ByDanhBo(entity.DANHBA);
+                if (_cTTKH.checkExists_HDDT(entity.DANHBA))
+                    lbHDDT.Text = "Đã có HĐĐT";
+                else
+                    lbHDDT.Text = "";
+                if (_cDCBD.checkExist_BienDong_DinhMuc(txtDanhBo.Text.Trim().Replace(" ", ""), "05/2024", 74, new DateTime(2024, 04, 24)))
+                    MessageBox.Show("Danh Bộ có điều chỉnh Định Mức hiệu lực kỳ 05/2024", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (_cDonTu.checkExists_14ngay(entity.DANHBA) == true)
+                    MessageBox.Show("Danh Bộ này có Đơn trong 14 ngày gần nhất", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string str, TinhTrang = "";
+                str = _cTTTN.check_TinhTrang_Ton(entity.DANHBA);
+                if (str == "")
+                {
+                    if (_cKTXM.checkCanKhachHangLienHe(txtDanhBo.Text.Trim().Replace(" ", ""), out TinhTrang) == true)
+                        str = TinhTrang;
+                }
+                if (str == "")
+                {
+                    if (_cThuMoi.checkCanKhachHangLienHe(txtDanhBo.Text.Trim().Replace(" ", ""), out TinhTrang) == true)
+                        str = TinhTrang;
+                }
+                if (str == "")
+                {
+                    if (_cDonTu.checkExist_ChuyenDeDinhMuc_ChuaKTXM(txtDanhBo.Text.Trim().Replace(" ", ""), out TinhTrang) == true)
+                        str = TinhTrang;
+                }
+                //hiện thị
+                if (str != "")
+                {
+                    lbTruyThu.Text = str;
+                    MessageBox.Show("Danh Bộ này đang có Đơn Tồn\n" + str, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                    lbTruyThu.Text = "";
+                string strDuongCamDao = _cGanMoi.getDuongCamDao(entity.SO, entity.DUONG);
+                if (strDuongCamDao != "")
+                    MessageBox.Show(strDuongCamDao, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (str == "")
+            catch (Exception ex)
             {
-                if (_cThuMoi.checkCanKhachHangLienHe(txtDanhBo.Text.Trim().Replace(" ", ""), out TinhTrang) == true)
-                    str = TinhTrang;
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (str == "")
-            {
-                if (_cDonTu.checkExist_ChuyenDeDinhMuc_ChuaKTXM(txtDanhBo.Text.Trim().Replace(" ", ""), out TinhTrang) == true)
-                    str = TinhTrang;
-            }
-            //hiện thị
-            if (str != "")
-            {
-                lbTruyThu.Text = str;
-                MessageBox.Show("Danh Bộ này đang có Đơn Tồn\n" + str, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-                lbTruyThu.Text = "";
-            string strDuongCamDao = _cGanMoi.getDuongCamDao(entity.SO, entity.DUONG);
-            if (strDuongCamDao != "")
-                MessageBox.Show(strDuongCamDao, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void LoadDonTu(LinQ.DonTu entity)
@@ -1075,7 +1084,7 @@ namespace KTKS_DonKH.GUI.DonTu
 
         private void txtDanhBo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (txtDanhBo.Text.Trim().Replace(" ", "").Length == 11 && e.KeyChar == 13)
+            if (txtDanhBo.Text.Trim().Replace(" ", "") != "" && e.KeyChar == 13)
             {
                 _hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim().Replace(" ", ""));
                 if (_hoadon != null)
@@ -1091,8 +1100,6 @@ namespace KTKS_DonKH.GUI.DonTu
                 }
                 if (_cGanMoi.checkTaiLapChuaCoHoaDon(txtDanhBo.Text.Trim().Replace(" ", "")))
                     MessageBox.Show("Danh Bộ tái lập chưa có hóa đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                if (_cDCBD.checkExist_BienDong_DinhMuc(txtDanhBo.Text.Trim().Replace(" ", ""), "05/2024", 74, new DateTime(2024, 04, 24)))
-                    MessageBox.Show("Danh Bộ có điều chỉnh Định Mức hiệu lực kỳ 05/2024", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
