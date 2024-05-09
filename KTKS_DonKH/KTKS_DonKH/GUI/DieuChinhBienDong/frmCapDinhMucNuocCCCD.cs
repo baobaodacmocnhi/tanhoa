@@ -825,7 +825,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             ctdcbd.Dot = _cDHN.GetDot(hoadon.DANHBA);
                                             ctdcbd.HieuLucKy = _cDocSo.getHieuLucKyToi(false, hoadon.DOT);
                                             ctdcbd.DienThoai = txtDienThoai.Text.Trim();
-
                                             ///Biến lưu Điều Chỉnh về gì (Họ Tên,Địa Chỉ,Định Mức,Giá Biểu,MSThuế)
                                             string ThongTin = "";
                                             ///Định Mức
@@ -868,7 +867,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             //    ctdcbd.DinhMucHN_BD = int.Parse(txtDinhMucHN_BD.Text.Trim());
                                             //}
                                             ctdcbd.ThongTin = ThongTin;
-
                                             using (var scope = new TransactionScope())
                                                 if (_cDCBD.ThemDCBD(ctdcbd))
                                                 {
@@ -919,7 +917,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                                 chungtu.MaLCT = MaLCT;
                                                                 _cChungTu.Them(chungtu);
                                                             }
-
                                                             ChungTu_ChiTiet ctchungtu = new ChungTu_ChiTiet();
                                                             ctchungtu.DanhBo = ctdcbd.DanhBo;
                                                             ctchungtu.MaLCT = MaLCT;
@@ -948,12 +945,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                             lichsuchungtu.GhiChu = ctchungtu.GhiChu;
                                                             lichsuchungtu.Lo = ctchungtu.Lo;
                                                             lichsuchungtu.Phong = ctchungtu.Phong;
-
                                                             if (_cChungTu.ThemCT(ctchungtu))
                                                             {
                                                                 ///Thêm Lịch Sử đầu tiên
+                                                                lichsuchungtu.Loai = "Thêm";
                                                                 _cChungTu.ThemLichSuChungTu(lichsuchungtu);
-
                                                                 _cChungTu.SubmitChanges();
                                                             }
                                                         }
@@ -1064,12 +1060,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                         lichsuchungtu.GhiChu = ctchungtu.GhiChu;
                                                         lichsuchungtu.Lo = ctchungtu.Lo;
                                                         lichsuchungtu.Phong = ctchungtu.Phong;
-
                                                         if (_cChungTu.ThemCT(ctchungtu))
                                                         {
                                                             ///Thêm Lịch Sử đầu tiên
+                                                            lichsuchungtu.Loai = "Thêm";
                                                             _cChungTu.ThemLichSuChungTu(lichsuchungtu);
-
                                                             _cChungTu.SubmitChanges();
                                                         }
                                                     }
@@ -1330,6 +1325,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             ChungTu_LichSu lichsuchungtu = _cChungTu.ChungTuToLichSu(ctchungtu);
                                             lichsuchungtu.Phuong = ctchungtu.Phuong;
                                             lichsuchungtu.Quan = ctchungtu.Quan;
+                                            lichsuchungtu.Loai = "Thêm";
                                             _cChungTu.ThemLichSuChungTu(lichsuchungtu);
                                             #region Yêu Cầu Cắt
                                             if (ctchungtu.ChungTu.KhacDiaBan)

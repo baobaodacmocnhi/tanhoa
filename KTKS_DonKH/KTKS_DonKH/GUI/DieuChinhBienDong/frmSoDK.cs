@@ -439,12 +439,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     return;
                                 }
                             #endregion
-
                             if (_cChungTu.ThemCT(ctchungtu))
                             {
                                 ///Thêm Lịch Sử đầu tiên
                                 ///Ghi thông tin Lịch Sử chung
                                 ChungTu_LichSu lichsuchungtu = _cChungTu.ChungTuToLichSu(ctchungtu);
+                                lichsuchungtu.Loai = "Thêm";
                                 switch (_dataT.Loai)
                                 {
                                     case "MaDonMoi":

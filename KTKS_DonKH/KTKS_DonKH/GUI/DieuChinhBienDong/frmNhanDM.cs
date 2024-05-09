@@ -244,12 +244,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     lichsuchungtu.GhiChu = txtGhiChu.Text.Trim();
                                     lichsuchungtu.Lo = txtLo.Text.Trim();
                                     lichsuchungtu.Phong = txtPhong.Text.Trim();
-
                                     if (_cChungTu.ThemCT(ctchungtu))
                                     {
                                         ///Thêm Lịch Sử đầu tiên
                                         _cChungTu.ThemLichSuChungTu(lichsuchungtu);
-
                                         ChungTu_LichSu lichsuchungtuCat = new ChungTu_LichSu();
                                         CopyLichSuChungTu(lichsuchungtu, ref lichsuchungtuCat);
                                         lichsuchungtuCat.SoPhieu = _cChungTu.getMaxNextSoPhieuLSCT();
@@ -273,7 +271,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             lichsuchungtuCat.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
                                         lichsuchungtuCat.NguoiKy = bangiamdoc.HoTen.ToUpper();
                                         lichsuchungtuCat.PhieuDuocKy = true;
-
                                         if (_cChungTu.ThemLichSuChungTu(lichsuchungtuCat))
                                         {
                                             ctchungtu.YeuCauCat = true;
@@ -283,7 +280,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             ctchungtu.CatNK_DiaChi = txtDiaChi_Cat.Text.Trim();
                                             ctchungtu.CatNK_SoNKCat = int.Parse(txtSoNKNhan.Text.Trim());
                                             ctchungtu.SoPhieu = lichsuchungtuCat.SoPhieu;
-
                                             _cChungTu.SuaCT(ctchungtu);
                                         }
                                     }
@@ -337,7 +333,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     {
                                         ///Thêm Lịch Sử đầu tiên
                                         _cChungTu.ThemLichSuChungTu(lichsuchungtu);
-
                                         ChungTu_LichSu lichsuchungtuCat = new ChungTu_LichSu();
                                         CopyLichSuChungTu(lichsuchungtu, ref lichsuchungtuCat);
                                         lichsuchungtuCat.SoPhieu = _cChungTu.getMaxNextSoPhieuLSCT();
@@ -361,7 +356,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             lichsuchungtuCat.ChucVu = "KT.GIÁM ĐỐC\n" + bangiamdoc.ChucVu.ToUpper();
                                         lichsuchungtuCat.NguoiKy = bangiamdoc.HoTen.ToUpper();
                                         lichsuchungtuCat.PhieuDuocKy = true;
-
                                         if (_cChungTu.ThemLichSuChungTu(lichsuchungtuCat))
                                         {
                                             #region YeuCauCat

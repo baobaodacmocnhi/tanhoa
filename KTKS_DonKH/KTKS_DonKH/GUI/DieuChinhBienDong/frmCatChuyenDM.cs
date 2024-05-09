@@ -145,7 +145,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 return;
                             }
                             ///Cùng Chi Nhánh
-                            if (((ChiNhanh)cmbChiNhanh_Nhan.SelectedItem).TenCN.ToUpper().Contains("TÂN HÒA")==true)
+                            if (((ChiNhanh)cmbChiNhanh_Nhan.SelectedItem).TenCN.ToUpper().Contains("TÂN HÒA") == true)
                             //if (_cChiNhanh.getChiNhanhbyID(int.Parse(cmbChiNhanh_Nhan.SelectedValue.ToString())).TenCN.ToUpper().Contains("TÂN HÒA"))
                             {
                                 ///Cập nhật ChungTu_ChiTiet, Danh Bộ Cắt
@@ -153,7 +153,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 _ctchungtu.GhiChu = txtGhiChu_Cat.Text.Trim();
                                 _ctchungtu.ModifyDate = DateTime.Now;
                                 _ctchungtu.ModifyBy = CTaiKhoan.MaUser;
-
                                 ChungTu_ChiTiet ctchungtuNhan = new ChungTu_ChiTiet();
                                 ///Nếu Chứng Từ đã đăng ký với Danh Bộ
                                 if (_cChungTu.CheckExist_CT(txtDanhBo_Nhan.Text.Trim(), txtMaCT_Cat.Text.Trim(), int.Parse(cmbLoaiCT_Cat.SelectedValue.ToString())))
@@ -195,7 +194,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     default:
                                         break;
                                 }
-
                                 lichsuchungtu.MaLCT = _ctchungtu.MaLCT;
                                 lichsuchungtu.MaCT = _ctchungtu.MaCT;
                                 lichsuchungtu.DanhBo = _ctchungtu.DanhBo;
@@ -216,9 +214,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 lichsuchungtu.NhanNK_HoTen = txtHoTen_Nhan.Text.Trim();
                                 lichsuchungtu.NhanNK_DiaChi = txtDiaChi_Nhan.Text.Trim();
                                 lichsuchungtu.SoNK = int.Parse(txtSoNK_Cat.Text.Trim());
-
                                 _cChungTu.ThemLichSuChungTu(lichsuchungtu);
-
                                 ///Cập nhật ChungTu_LichSu, Chứng Từ & Danh Bộ Nhận
                                 ChungTu_LichSu lichsuchungtuNhan = new ChungTu_LichSu();
                                 switch (_dataT.Loai)
@@ -239,7 +235,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     default:
                                         break;
                                 }
-
                                 lichsuchungtuNhan.MaLCT = ctchungtuNhan.MaLCT;
                                 lichsuchungtuNhan.MaCT = ctchungtuNhan.MaCT;
                                 lichsuchungtuNhan.DanhBo = ctchungtuNhan.DanhBo;
@@ -261,7 +256,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 lichsuchungtuNhan.NhanNK_DiaChi = lichsuchungtu.CatNK_DiaChi;
                                 lichsuchungtuNhan.NhanNK_GhiChu = txtGhiChu_Nhan.Text.Trim();
                                 lichsuchungtuNhan.SoNK = lichsuchungtu.SoNK;
-
                                 _cChungTu.ThemLichSuChungTu(lichsuchungtuNhan);
                             }
                             ///Khác Chi Nhánh
@@ -270,7 +264,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 _ctchungtu.SoNKDangKy -= int.Parse(txtSoNK_Cat.Text.Trim());
                                 _ctchungtu.GhiChu = txtGhiChu_Cat.Text.Trim();
                                 _cChungTu.SuaCT(_ctchungtu);
-
                                 ChungTu_LichSu lichsuchungtu = new ChungTu_LichSu();
                                 switch (_dataT.Loai)
                                 {
@@ -290,7 +283,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     default:
                                         break;
                                 }
-
                                 lichsuchungtu.MaLCT = _ctchungtu.MaLCT;
                                 lichsuchungtu.MaCT = _ctchungtu.MaCT;
                                 lichsuchungtu.DanhBo = _ctchungtu.DanhBo;
@@ -345,10 +337,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 //if (_lichsuchungtu != null)
                 //{
-                    MessageBox.Show("Xin liên hệ BaoBao", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //this.DialogResult = DialogResult.OK;
-                    //this.Close();
+                MessageBox.Show("Xin liên hệ BaoBao", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //this.DialogResult = DialogResult.OK;
+                //this.Close();
                 //}
             }
             else

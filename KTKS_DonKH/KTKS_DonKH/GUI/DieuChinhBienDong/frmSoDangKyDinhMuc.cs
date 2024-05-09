@@ -78,6 +78,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     {
                         if (_cChungTu.XoaCT(_ctct))
                         {
+                            ChungTu_LichSu lichsuchungtu = _cChungTu.ChungTuToLichSu(_ctct);
+                            lichsuchungtu.Loai = "Xóa";
+                            _cChungTu.ThemLichSuChungTu(lichsuchungtu);
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             _ctct = null;
                         }

@@ -1286,6 +1286,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         ChungTu_ChiTiet ctchungtu = _cChungTu.GetCT(txtDanhBo.Text.Trim(), dgvDSSoDangKy.CurrentRow.Cells["MaCT"].Value.ToString(), int.Parse(dgvDSSoDangKy.CurrentRow.Cells["MaLCT"].Value.ToString()));
                         if (_cChungTu.XoaCT(ctchungtu))
                         {
+                            ChungTu_LichSu lichsuchungtu = _cChungTu.ChungTuToLichSu(ctchungtu);
+                            lichsuchungtu.Loai = "Xóa";
+                            _cChungTu.ThemLichSuChungTu(lichsuchungtu);
                             dgvDSSoDangKy.DataSource = _cChungTu.getDS_ChiTiet_DanhBo(txtDanhBo.Text.Trim());
                             LoadTongNK();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

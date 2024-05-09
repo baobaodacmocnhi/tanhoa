@@ -147,7 +147,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     if (ctchungtu != null)
                     {
                         if (_cChungTu.XoaCT(ctchungtu))
+                        {
+                            ChungTu_LichSu lichsuchungtu = _cChungTu.ChungTuToLichSu(ctchungtu);
+                            lichsuchungtu.Loai = "Xóa";
+                            _cChungTu.ThemLichSuChungTu(lichsuchungtu);
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
                 }
                 else
@@ -271,10 +276,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             }
                             if (txtSHS.Text.Trim() != "")
                                 ctchungtu.SHS = txtSHS.Text.Trim();
-                            _cChungTu.ThemCT(ctchungtu);
-                            ///Ghi thông tin Lịch Sử chung
-                            ChungTu_LichSu lichsuchungtu = _cChungTu.ChungTuToLichSu(ctchungtu);
-                            _cChungTu.ThemLichSuChungTu(lichsuchungtu);
+                            if (_cChungTu.ThemCT(ctchungtu))
+                            {
+                                ///Ghi thông tin Lịch Sử chung
+                                ChungTu_LichSu lichsuchungtu = _cChungTu.ChungTuToLichSu(ctchungtu);
+                                lichsuchungtu.Loai = "Thêm";
+                                _cChungTu.ThemLichSuChungTu(lichsuchungtu);
+                            }
                             scope.Complete();
                         }
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -449,6 +457,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     if (_cChungTu.XoaCT(_ctchungtu))
                     {
+                        ChungTu_LichSu lichsuchungtu = _cChungTu.ChungTuToLichSu(_ctchungtu);
+                        lichsuchungtu.Loai = "Xóa";
+                        _cChungTu.ThemLichSuChungTu(lichsuchungtu);
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear();
                     }
