@@ -91,7 +91,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             //dgvDSDieuChinh.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSDieuChinh.Font, FontStyle.Bold);
             dgvLichSuChungTu.AutoGenerateColumns = false;
             //dgvLichSuChungTu.ColumnHeadersDefaultCellStyle.Font = new Font(dgvLichSuChungTu.Font, FontStyle.Bold);
-            dgvDSChungTu.AutoGenerateColumns = false;
+            dgvDSDanhBo.AutoGenerateColumns = false;
             //dgvDSChungTu.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSChungTu.Font, FontStyle.Bold);
             dgvHinh.AutoGenerateColumns = false;
             if (_MaCTDCBD != -1)
@@ -101,7 +101,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 txtSoPhieu_KeyPress(sender, arg);
             }
             lbDSHetHan.Text = _cChungTu.LoadDSCapDinhMucHetHan_CCCD().Rows.Count.ToString() + " cccd sắp hết hạn";
-            dgvDSDanhBo.AutoGenerateColumns = false;
             cmbLoaiCT.DataSource = _cLoaiChungTu.LoadDSLoaiChungTu();
             cmbLoaiCT.DisplayMember = "TenLCT";
             cmbLoaiCT.ValueMember = "MaLCT";
@@ -335,7 +334,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             dgvDSSoDangKy.DataSource = null;
             dgvDSDieuChinh.DataSource = null;
             dgvLichSuChungTu.DataSource = null;
-            dgvDSChungTu.DataSource = null;
             dgvHinh.Rows.Clear();
 
             txtMaDonMoi.Focus();
@@ -1434,8 +1432,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         dgvDSSoDangKy["DiaChi", e.RowIndex].Value = ct.DiaChi;
                         dgvDSSoDangKy["NgaySinh", e.RowIndex].Value = ct.NgaySinh.Value.ToString("dd/MM/yyyy");
                     }
-                    dgvDSChungTu.DataSource = _cChungTu.getDS_ChiTiet(dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString(), 15);
-                    dgvLichSuChungTu.DataSource = _cChungTu.LoadDSLichSuChungTubyID(dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString(), 15);
+                    dgvLichSuChungTu.DataSource = _cChungTu.getLichSuChungTu(dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString(), 15);
                 }
                 if (CTaiKhoan.CheckQuyen(_mnu, "Sua"))
                 {
@@ -1550,17 +1547,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
-        private void dgvDSSoDangKy_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvDSSoDangKy_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                dgvDSChungTu.DataSource = _cChungTu.getDS_ChiTiet(dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString(), int.Parse(dgvDSSoDangKy["MaLCT", e.RowIndex].Value.ToString()));
-                dgvLichSuChungTu.DataSource = _cChungTu.LoadDSLichSuChungTubyID(dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString(), int.Parse(dgvDSSoDangKy["MaLCT", e.RowIndex].Value.ToString()));
+                dgvLichSuChungTu.DataSource = _cChungTu.getLichSuChungTu(dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString(), int.Parse(dgvDSSoDangKy["MaLCT", e.RowIndex].Value.ToString()));
             }
-            catch (Exception)
-            {
-
-            }
+            catch { }
         }
 
         private void dgvDSDieuChinh_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -1668,14 +1661,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void dgvLichSuChungTu_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             using (SolidBrush b = new SolidBrush(dgvLichSuChungTu.RowHeadersDefaultCellStyle.ForeColor))
-            {
-                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
-            }
-        }
-
-        private void dgvDSChungTu_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
-        {
-            using (SolidBrush b = new SolidBrush(dgvDSChungTu.RowHeadersDefaultCellStyle.ForeColor))
             {
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
@@ -2306,7 +2291,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
                 {
-                    if ((int.Parse(cmbLoaiCT.SelectedValue.ToString()) == 15 || int.Parse(cmbLoaiCT.SelectedValue.ToString()) == 16) && txtMaCT.Text.Trim() != "")
+                    if ((int.Parse(cmbLoaiCT.SelectedValue.ToString()) == 15 || int.Parse(cmbLoaiCT.SelectedValue.ToString()) == 16) && txtMaCT.Text.Trim() != "" && txtDanhBo.Text.Trim().Length == 11)
                     {
                         /////Kiểm tra Số Chứng Từ đã đăng ký danh bộ khác
                         //if (_cChungTu.CheckExist_CT(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString())))
@@ -2523,13 +2508,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 //        dt = _cChungTu.getDS_ChiTiet_HoKhau_HoKhauNgheo(txtMaCT.Text.Trim());
                 //        MessageBox.Show("Số đăng ký này trùng Hộ Khẩu & Hộ Khẩu Nghèo", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 //    }
-                    else
-                        if (_cChungTu.CheckExist_CT(txtDanhBo.Text.Trim(), txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString())))
-                        {
-                            dt = _cChungTu.getDS_ChiTiet(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
-                            MessageBox.Show("Số đăng ký này đã đăng ký với Danh Bộ này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                else
+                    if (_cChungTu.CheckExist_CT(txtDanhBo.Text.Trim(), txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString())))
+                    {
+                        dt = _cChungTu.getDS_ChiTiet(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
+                        MessageBox.Show("Số đăng ký này đã đăng ký với Danh Bộ này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 dgvDSDanhBo.DataSource = dt;
+                dgvLichSuChungTu.DataSource = _cChungTu.getLichSuChungTu(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
                 ChungTu ct = _cChungTu.Get(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
                 if (ct != null)
                 {
@@ -2613,8 +2599,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             frmCapDinhMucNuocCCCD_Show frm = new frmCapDinhMucNuocCCCD_Show();
             frm.ShowDialog();
         }
-
-
 
     }
 }

@@ -26,11 +26,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void frmSoDangKyDinhMuc_Load(object sender, EventArgs e)
         {
             dgvDanhSach.AutoGenerateColumns = false;
+            dgvLichSuChungTu.AutoGenerateColumns = false;
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             dgvDanhSach.DataSource = _cChungTu.getTimKiemSoDangKyDinhMuc(txtMaCT.Text.Trim());
+            dgvLichSuChungTu.DataSource = _cChungTu.getLichSuChungTu(txtMaCT.Text.Trim());
         }
 
         private void txtMaCT_KeyPress(object sender, KeyPressEventArgs e)
@@ -106,6 +108,24 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void dgvDanhSach_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvDanhSach.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+        private void dgvLichSuChungTu_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvLichSuChungTu.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
+
+
 
     }
 }

@@ -326,7 +326,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 try
                 {
-                    if (txtMaCT.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "" && txtSoNKDangKy.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "0" && txtSoNKDangKy.Text.Trim() != "0")
+                    if (txtMaCT.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "" && txtSoNKDangKy.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "0" && txtSoNKDangKy.Text.Trim() != "0" && txtDanhBo.Text.Trim().Length == 11)
                     {
                         /////Kiểm tra Số Chứng Từ đã đăng ký danh bộ khác
                         //if (_cChungTu.CheckExist_CT(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString())))

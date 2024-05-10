@@ -1,0 +1,45 @@
+1, Thanh toán lô:
+https://hoadon.sawaco.com.vn/api/sawacobusiness/thanhtoanlo
+Method: POST
+Data:
+	{
+		"branchcode":"",
+		"pattern":"",
+		"serial":"",
+		"xmldata":"<Payments><Payment><SoHD></SoHD><NgayThanhToan>15/04/2024</NgayThanhToan><TongSoTien></TongSoTien><LoaiThuTien></LoaiThuTien><TenThuTien></TenThuTien></Payment><Payment>...</Payment></Payments>"
+	}
+Reponse:
+	{
+		"status": "OK"/"ERR:2",
+		"message":""
+	}
+	
+2, Nộp tiền lô:
+https://hoadon.sawaco.com.vn/api/sawacobusiness/noptienlohoadon
+Method: POST
+Data:
+	{
+		"branchcode":"",
+		"pattern":"",
+		"serial":"",
+		"data":[
+			{
+				"branchcode":"",
+				"pattern":"",
+				"serial":"",
+				"SoHD":0,
+				"NgayNopTien":"15/04/2024",
+				"TongSoTien": 0,
+				"HinhThucThanhToan": 1
+			},
+			{
+			...
+			}
+		]
+	}
+Reponse:
+	{
+		"status": "OK"/"ERR:2",
+		"message":"",
+		"result": []
+	}

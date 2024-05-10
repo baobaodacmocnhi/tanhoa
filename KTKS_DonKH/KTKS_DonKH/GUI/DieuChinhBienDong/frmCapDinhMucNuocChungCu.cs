@@ -177,6 +177,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             MessageBox.Show("CCCD gồm 12 số", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
+                        if (txtSHS.Text.Trim() == "" && txtDanhBo.Text.Trim().Length != 11)
+                        {
+                            MessageBox.Show("Thiếu Danh Bộ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                         ///Kiểm tra Danh Bộ & Số Chứng Từ
                         if (_hoadon != null && _cChungTu.CheckExist_CT(_hoadon.DANHBA, txtCCCD.Text.Trim(), 15))
                         {
@@ -275,7 +280,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 ctchungtu.Quan = _hoadon.Quan;
                             }
                             if (txtSHS.Text.Trim() != "")
+                            {
                                 ctchungtu.SHS = txtSHS.Text.Trim();
+                                ctchungtu.DanhBo = null;
+                            }
                             if (_cChungTu.ThemCT(ctchungtu))
                             {
                                 ///Ghi thông tin Lịch Sử chung

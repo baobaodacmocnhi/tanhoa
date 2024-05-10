@@ -2173,16 +2173,6 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         }
 
         /// <summary>
-        /// Lấy Danh Sách Lịch Sử Chứng Từ với Sổ Đăng Ký truyền vào
-        /// </summary>
-        /// <param name="MaCT"></param>
-        /// <returns></returns>
-        public List<ChungTu_LichSu> LoadDSLichSuChungTubyID(string MaCT, int MaLCT)
-        {
-            return db.ChungTu_LichSus.Where(itemLSCT => itemLSCT.MaCT == MaCT && itemLSCT.MaLCT == MaLCT).ToList();
-        }
-
-        /// <summary>
         /// Lấy ChungTu_LichSu dự theo Số Phiếu
         /// </summary>
         /// <param name="SoPhieu"></param>
@@ -2306,6 +2296,16 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             B.Phong = A.Phong;
             B.Quan = A.Quan;
             B.Phuong = A.Phuong;
+        }
+
+        public DataTable getLichSuChungTu(string MaCT)
+        {
+            return ExecuteQuery_DataTable("select CreateDate,Loai,DanhBo,MaCT from ChungTu_LichSu where MaCT='" + MaCT + "' and Loai is not null order by CreateDate desc");
+        }
+
+        public DataTable getLichSuChungTu(string MaCT, int MaLCT)
+        {
+            return ExecuteQuery_DataTable("select CreateDate,Loai,DanhBo,MaCT,GhiChu,SoNKDangKy from ChungTu_LichSu where MaCT='" + MaCT + "' and MaLCT=" + MaLCT + " and Loai is not null order by CreateDate desc");
         }
 
         #endregion
@@ -4246,14 +4246,6 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         public DataTable getTimKiemSoDangKyDinhMuc(string MaCT)
         {
-            //string sql = "select Loai=N'CT Đơn',ctct.MaLCT,TenLCT,ctct.MaCT,ct.SoNKTong,ctct.DanhBo,ctct.SoNKDangKy,ctct.CreateDate"
-            //            + " from ChungTu ct,LoaiChungTu lct,ChungTu_ChiTiet ctct"
-            //            + " where ct.MaLCT=lct.MaLCT and ct.MaCT=ctct.MaCT and ctct.MaCT like N'%" + MaCT + "%'"
-            //            + " union"
-            //            + " select Loai=N'CT Chung Cư',TenLCT=(select TenLCT from LoaiChungTu where MaLCT=ctct.MaLCT),MaCT,SoNKTong,DanhBo,SoNKDangKy,CreateDate"
-            //            + " from ChungCu.dbo.DanhSachChungTu ctct"
-            //            + " where ctct.MaCT like N'%" + MaCT + "%'"
-            //            + " order by CreateDate";
             string sql = "select ctct.MaLCT,TenLCT,ctct.MaCT,ct.SoNKTong,ctct.DanhBo,ctct.SoNKDangKy,ctct.CreateDate"
                         + " from ChungTu ct,LoaiChungTu lct,ChungTu_ChiTiet ctct"
                         + " where ct.MaLCT=lct.MaLCT and ct.MaCT=ctct.MaCT and ctct.MaCT like N'%" + MaCT + "%'"

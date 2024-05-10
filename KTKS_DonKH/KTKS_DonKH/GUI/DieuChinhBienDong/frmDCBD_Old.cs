@@ -1399,7 +1399,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             try
             {
                 dgvDSChungTu.DataSource = _cChungTu.getDS_ChiTiet(dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString(), int.Parse(dgvDSSoDangKy["MaLCT", e.RowIndex].Value.ToString()));
-                dgvLichSuChungTu.DataSource = _cChungTu.LoadDSLichSuChungTubyID(dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString(), int.Parse(dgvDSSoDangKy["MaLCT", e.RowIndex].Value.ToString()));
+                dgvLichSuChungTu.DataSource = _cChungTu.getLichSuChungTu(dgvDSSoDangKy["MaCT", e.RowIndex].Value.ToString(), int.Parse(dgvDSSoDangKy["MaLCT", e.RowIndex].Value.ToString()));
             }
             catch (Exception)
             {
