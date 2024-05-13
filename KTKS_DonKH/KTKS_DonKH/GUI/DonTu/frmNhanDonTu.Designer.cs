@@ -193,6 +193,7 @@
             this.btnXoaEContract = new System.Windows.Forms.Button();
             this.btnCapNhatHieuLuc = new System.Windows.Forms.Button();
             this.btnCapNhatLaiHieuLuc = new System.Windows.Forms.Button();
+            this.chkKyCaNhan = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabTTKH.SuspendLayout();
@@ -601,6 +602,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.chkKyCaNhan);
             this.groupBox4.Controls.Add(this.btnCapNhatDoiTac);
             this.groupBox4.Controls.Add(this.txtDCLapDat);
             this.groupBox4.Controls.Add(this.label43);
@@ -1779,6 +1781,16 @@
             this.btnCapNhatLaiHieuLuc.UseVisualStyleBackColor = true;
             this.btnCapNhatLaiHieuLuc.Click += new System.EventHandler(this.btnCapNhatLaiHieuLuc_Click);
             // 
+            // chkKyCaNhan
+            // 
+            this.chkKyCaNhan.AutoSize = true;
+            this.chkKyCaNhan.Location = new System.Drawing.Point(537, 135);
+            this.chkKyCaNhan.Name = "chkKyCaNhan";
+            this.chkKyCaNhan.Size = new System.Drawing.Size(97, 20);
+            this.chkKyCaNhan.TabIndex = 102;
+            this.chkKyCaNhan.Text = "Ký Cá Nhân";
+            this.chkKyCaNhan.UseVisualStyleBackColor = true;
+            // 
             // frmNhanDonTu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -2027,5 +2039,6 @@
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.Label lbHDDT;
         private System.Windows.Forms.Button btnCapNhatLaiHieuLuc;
+        private System.Windows.Forms.CheckBox chkKyCaNhan;
     }
 }

@@ -365,6 +365,7 @@ namespace KTKS_DonKH.GUI.DonTu
             txtSTK.Text = "";
             txtBank.Text = "";
             txtMST.Text = "";
+            chkKyCaNhan.Checked = false;
             if (dgvDanhBo.DataSource != null)
                 dgvDanhBo.DataSource = null;
             else
@@ -372,23 +373,19 @@ namespace KTKS_DonKH.GUI.DonTu
                 dgvDanhBo.Rows.Clear();
                 //dgvDanhBo.Rows.Add();
             }
-
             chkCT_HopDongNganHang.Checked = false;
             chkCT_GiaiQuyet_Huy_DKCT.Checked = false;
             chkCT_HDTN_CQN.Checked = false;
             chkCT_CQN.Checked = false;
             chkCT_Khac.Checked = false;
             txtCT_Khac_GhiChu.Text = "";
-
             chkCT_HK_KT3.Checked = false;
             //chkCT_STT_GXNTT.Checked = false;
             chkCT_GDKKD.Checked = false;
             chkCT_GiayUyQuyen.Checked = false;
-
             chkCT_GC_SDSN.Checked = false;
             //chkCT_GXN2SN.Checked = false;
             chkCT_GCNDTDHN.Checked = false;
-
             _dontu = null;
             _hoadon = null;
             _MaDon = -1;

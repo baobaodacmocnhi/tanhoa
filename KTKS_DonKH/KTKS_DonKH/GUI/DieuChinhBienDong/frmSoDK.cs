@@ -981,7 +981,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         lichsuchungtu1.CatNK_DanhBo = txtDanhBo_Cat_YCC2.Text.Trim();
                                         lichsuchungtu1.CatNK_HoTen = txtHoTen_Cat_YCC2.Text.Trim();
                                         lichsuchungtu1.CatNK_DiaChi = txtDiaChiKH_Cat_YCC2.Text.Trim();
-
                                         BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
                                         if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
                                             lichsuchungtu1.ChucVu = "GIÁM ĐỐC";
@@ -1147,7 +1146,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                         lichsuchungtu1.CatNK_DanhBo = txtDanhBo_Cat_YCC4.Text.Trim();
                                         lichsuchungtu1.CatNK_HoTen = txtHoTen_Cat_YCC4.Text.Trim();
                                         lichsuchungtu1.CatNK_DiaChi = txtDiaChiKH_Cat_YCC4.Text.Trim();
-
                                         BanGiamDoc bangiamdoc = _cBanGiamDoc.getBGDNguoiKy();
                                         if (bangiamdoc.ChucVu.ToUpper() == "GIÁM ĐỐC")
                                             lichsuchungtu1.ChucVu = "GIÁM ĐỐC";
