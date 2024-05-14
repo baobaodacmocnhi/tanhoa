@@ -139,6 +139,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.StripStatus_HoTen = new System.Windows.Forms.ToolStripStatusLabel();
+            this.mnuScanDonTu = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -259,7 +260,8 @@
             this.mnuCapNhatDonTu,
             this.mnuDSDonTu,
             this.mnuBaoCaoDonTu,
-            this.mnuNhomDon});
+            this.mnuNhomDon,
+            this.mnuScanDonTu});
             this.mnuDonTu.Name = "mnuDonTu";
             this.mnuDonTu.Size = new System.Drawing.Size(98, 20);
             this.mnuDonTu.Text = "Đơn Từ(New)";
@@ -1033,6 +1035,13 @@
             this.StripStatus_HoTen.Size = new System.Drawing.Size(205, 17);
             this.StripStatus_HoTen.Text = "                                                 Xin Chào:";
             // 
+            // mnuScanDonTu
+            // 
+            this.mnuScanDonTu.Name = "mnuScanDonTu";
+            this.mnuScanDonTu.Size = new System.Drawing.Size(169, 22);
+            this.mnuScanDonTu.Text = "Scan Đơn";
+            this.mnuScanDonTu.Click += new System.EventHandler(this.mnuScanDonTu_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1172,5 +1181,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuCapNhatDienThoai;
         private System.Windows.Forms.ToolStripMenuItem mnuCapDinhMucNuocChungCuCCCD;
         private System.Windows.Forms.ToolStripMenuItem mnuBaoCaoTTTL;
+        private System.Windows.Forms.ToolStripMenuItem mnuScanDonTu;
     }
 }

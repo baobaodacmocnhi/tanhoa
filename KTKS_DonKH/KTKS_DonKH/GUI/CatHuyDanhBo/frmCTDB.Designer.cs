@@ -275,9 +275,9 @@
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(80, 226);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(98, 16);
+            this.label15.Size = new System.Drawing.Size(105, 16);
             this.label15.TabIndex = 129;
-            this.label15.Text = "Ngày Thự Hiện";
+            this.label15.Text = "Ngày Thực Hiện";
             // 
             // chkCode68
             // 
@@ -293,7 +293,7 @@
             // 
             this.dateThucHien.CustomFormat = "dd/MM/yyyy";
             this.dateThucHien.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateThucHien.Location = new System.Drawing.Point(184, 223);
+            this.dateThucHien.Location = new System.Drawing.Point(191, 223);
             this.dateThucHien.Name = "dateThucHien";
             this.dateThucHien.Size = new System.Drawing.Size(90, 22);
             this.dateThucHien.TabIndex = 128;
@@ -487,7 +487,7 @@
             this.dateXuLy.CustomFormat = "dd/MM/yyyy";
             this.dateXuLy.Enabled = false;
             this.dateXuLy.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateXuLy.Location = new System.Drawing.Point(184, 251);
+            this.dateXuLy.Location = new System.Drawing.Point(191, 251);
             this.dateXuLy.Name = "dateXuLy";
             this.dateXuLy.Size = new System.Drawing.Size(90, 22);
             this.dateXuLy.TabIndex = 16;

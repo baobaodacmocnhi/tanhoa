@@ -41,7 +41,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CDocSo _cDocSo = new CDocSo();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         wsThuongVu _wsThuongVu = new wsThuongVu();
-
         DonTu_ChiTiet _dontu_ChiTiet = null;
         DonKH _dontkh = null;
         DonTXL _dontxl = null;
@@ -483,7 +482,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (e.KeyChar == 13)
             {
-                _hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim());
+                _hoadon = _cThuTien.GetMoiNhat(txtDanhBo.Text.Trim().Replace(" ", "").Replace("-", ""));
                 if (_hoadon != null)
                 {
                     LoadTTKH(_hoadon);
@@ -491,7 +490,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 }
                 else
                     MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
         }
 

@@ -62,6 +62,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.cmbLyDo = new System.Windows.Forms.ComboBox();
             this.groupBoxNoiDungXuLy = new System.Windows.Forms.GroupBox();
+            this.chkNgayHetHan = new System.Windows.Forms.CheckBox();
+            this.dateNgayHetHan = new System.Windows.Forms.DateTimePicker();
             this.label16 = new System.Windows.Forms.Label();
             this.dateThucHien = new System.Windows.Forms.DateTimePicker();
             this.chkCode68 = new System.Windows.Forms.CheckBox();
@@ -433,6 +435,8 @@
             // 
             // groupBoxNoiDungXuLy
             // 
+            this.groupBoxNoiDungXuLy.Controls.Add(this.chkNgayHetHan);
+            this.groupBoxNoiDungXuLy.Controls.Add(this.dateNgayHetHan);
             this.groupBoxNoiDungXuLy.Controls.Add(this.label16);
             this.groupBoxNoiDungXuLy.Controls.Add(this.dateThucHien);
             this.groupBoxNoiDungXuLy.Controls.Add(this.chkCode68);
@@ -464,20 +468,43 @@
             this.groupBoxNoiDungXuLy.TabStop = false;
             this.groupBoxNoiDungXuLy.Text = "Nội Dung Xử Lý";
             // 
+            // chkNgayHetHan
+            // 
+            this.chkNgayHetHan.AutoSize = true;
+            this.chkNgayHetHan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkNgayHetHan.Location = new System.Drawing.Point(80, 309);
+            this.chkNgayHetHan.Name = "chkNgayHetHan";
+            this.chkNgayHetHan.Size = new System.Drawing.Size(124, 20);
+            this.chkNgayHetHan.TabIndex = 133;
+            this.chkNgayHetHan.Text = "Ngày Hết Hạn";
+            this.chkNgayHetHan.UseVisualStyleBackColor = true;
+            this.chkNgayHetHan.CheckedChanged += new System.EventHandler(this.chkNgayHetHan_CheckedChanged);
+            // 
+            // dateNgayHetHan
+            // 
+            this.dateNgayHetHan.CustomFormat = "dd/MM/yyyy";
+            this.dateNgayHetHan.Enabled = false;
+            this.dateNgayHetHan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateNgayHetHan.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateNgayHetHan.Location = new System.Drawing.Point(210, 309);
+            this.dateNgayHetHan.Name = "dateNgayHetHan";
+            this.dateNgayHetHan.Size = new System.Drawing.Size(100, 22);
+            this.dateNgayHetHan.TabIndex = 132;
+            // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(80, 226);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(98, 16);
+            this.label16.Size = new System.Drawing.Size(105, 16);
             this.label16.TabIndex = 131;
-            this.label16.Text = "Ngày Thự Hiện";
+            this.label16.Text = "Ngày Thực Hiện";
             // 
             // dateThucHien
             // 
             this.dateThucHien.CustomFormat = "dd/MM/yyyy";
             this.dateThucHien.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateThucHien.Location = new System.Drawing.Point(184, 223);
+            this.dateThucHien.Location = new System.Drawing.Point(191, 223);
             this.dateThucHien.Name = "dateThucHien";
             this.dateThucHien.Size = new System.Drawing.Size(90, 22);
             this.dateThucHien.TabIndex = 130;
@@ -680,7 +707,7 @@
             this.dateXuLy.CustomFormat = "dd/MM/yyyy";
             this.dateXuLy.Enabled = false;
             this.dateXuLy.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateXuLy.Location = new System.Drawing.Point(184, 251);
+            this.dateXuLy.Location = new System.Drawing.Point(191, 251);
             this.dateXuLy.Name = "dateXuLy";
             this.dateXuLy.Size = new System.Drawing.Size(90, 22);
             this.dateXuLy.TabIndex = 61;
@@ -1259,6 +1286,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Name_Hinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bytes_Hinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn Loai_Hinh;
+        private System.Windows.Forms.CheckBox chkNgayHetHan;
+        private System.Windows.Forms.DateTimePicker dateNgayHetHan;
 
     }
 }

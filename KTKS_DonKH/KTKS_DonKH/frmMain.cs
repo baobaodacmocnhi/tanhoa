@@ -1136,6 +1136,17 @@ namespace KTKS_DonKH
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void mnuScanDonTu_Click(object sender, EventArgs e)
+        {
+            if (CTaiKhoan.CheckQuyen("mnuScanDonTu", "Xem"))
+            {
+                frmDonTu_Scan frm = new frmDonTu_Scan();
+                OpenForm(frm);
+            }
+            else
+                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion
 
         #region Phòng Khách Hàng
@@ -1196,13 +1207,6 @@ namespace KTKS_DonKH
             else
                 MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-
-        
-
-       
-
-      
-
        
     }
 }

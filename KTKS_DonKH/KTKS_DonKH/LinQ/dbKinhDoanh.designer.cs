@@ -54,9 +54,6 @@ namespace KTKS_DonKH.LinQ
     partial void InsertCCCD_BoSung2023(CCCD_BoSung2023 instance);
     partial void UpdateCCCD_BoSung2023(CCCD_BoSung2023 instance);
     partial void DeleteCCCD_BoSung2023(CCCD_BoSung2023 instance);
-    partial void InsertCCCD_Temp2(CCCD_Temp2 instance);
-    partial void UpdateCCCD_Temp2(CCCD_Temp2 instance);
-    partial void DeleteCCCD_Temp2(CCCD_Temp2 instance);
     partial void InsertCHDB(CHDB instance);
     partial void UpdateCHDB(CHDB instance);
     partial void DeleteCHDB(CHDB instance);
@@ -195,6 +192,12 @@ namespace KTKS_DonKH.LinQ
     partial void InsertDonTu_LichSu(DonTu_LichSu instance);
     partial void UpdateDonTu_LichSu(DonTu_LichSu instance);
     partial void DeleteDonTu_LichSu(DonTu_LichSu instance);
+    partial void InsertDonTu_Scan(DonTu_Scan instance);
+    partial void UpdateDonTu_Scan(DonTu_Scan instance);
+    partial void DeleteDonTu_Scan(DonTu_Scan instance);
+    partial void InsertDonTu_Scan_ChiTiet(DonTu_Scan_ChiTiet instance);
+    partial void UpdateDonTu_Scan_ChiTiet(DonTu_Scan_ChiTiet instance);
+    partial void DeleteDonTu_Scan_ChiTiet(DonTu_Scan_ChiTiet instance);
     partial void InsertDonTXL(DonTXL instance);
     partial void UpdateDonTXL(DonTXL instance);
     partial void DeleteDonTXL(DonTXL instance);
@@ -503,14 +506,6 @@ namespace KTKS_DonKH.LinQ
 			get
 			{
 				return this.GetTable<CCCD_Temp>();
-			}
-		}
-		
-		public System.Data.Linq.Table<CCCD_Temp2> CCCD_Temp2s
-		{
-			get
-			{
-				return this.GetTable<CCCD_Temp2>();
 			}
 		}
 		
@@ -879,6 +874,22 @@ namespace KTKS_DonKH.LinQ
 			get
 			{
 				return this.GetTable<DonTu_LichSu>();
+			}
+		}
+		
+		public System.Data.Linq.Table<DonTu_Scan> DonTu_Scans
+		{
+			get
+			{
+				return this.GetTable<DonTu_Scan>();
+			}
+		}
+		
+		public System.Data.Linq.Table<DonTu_Scan_ChiTiet> DonTu_Scan_ChiTiets
+		{
+			get
+			{
+				return this.GetTable<DonTu_Scan_ChiTiet>();
 			}
 		}
 		
@@ -5034,6 +5045,12 @@ namespace KTKS_DonKH.LinQ
 		
 		private System.Nullable<System.DateTime> _ModifyDate;
 		
+		private string _Trung_ChiNhanh;
+		
+		private string _Trung_DanhBo;
+		
+		private System.Nullable<System.DateTime> _Trung_ThoiGian;
+		
 		public CCCD_Temp()
 		{
 		}
@@ -5133,186 +5150,52 @@ namespace KTKS_DonKH.LinQ
 				}
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CCCD_Temp2")]
-	public partial class CCCD_Temp2 : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _CCCD;
-		
-		private string _DanhBo;
-		
-		private string _Result;
-		
-		private System.Nullable<int> _CreateBy;
-		
-		private System.DateTime _CreateDate;
-		
-		private System.Nullable<System.DateTime> _ModifyDate;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnCCCDChanging(string value);
-    partial void OnCCCDChanged();
-    partial void OnDanhBoChanging(string value);
-    partial void OnDanhBoChanged();
-    partial void OnResultChanging(string value);
-    partial void OnResultChanged();
-    partial void OnCreateByChanging(System.Nullable<int> value);
-    partial void OnCreateByChanged();
-    partial void OnCreateDateChanging(System.DateTime value);
-    partial void OnCreateDateChanged();
-    partial void OnModifyDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnModifyDateChanged();
-    #endregion
-		
-		public CCCD_Temp2()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CCCD", DbType="Char(12) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string CCCD
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Trung_ChiNhanh", DbType="NVarChar(100)")]
+		public string Trung_ChiNhanh
 		{
 			get
 			{
-				return this._CCCD;
+				return this._Trung_ChiNhanh;
 			}
 			set
 			{
-				if ((this._CCCD != value))
+				if ((this._Trung_ChiNhanh != value))
 				{
-					this.OnCCCDChanging(value);
-					this.SendPropertyChanging();
-					this._CCCD = value;
-					this.SendPropertyChanged("CCCD");
-					this.OnCCCDChanged();
+					this._Trung_ChiNhanh = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DanhBo", DbType="Char(11)")]
-		public string DanhBo
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Trung_DanhBo", DbType="Char(11)")]
+		public string Trung_DanhBo
 		{
 			get
 			{
-				return this._DanhBo;
+				return this._Trung_DanhBo;
 			}
 			set
 			{
-				if ((this._DanhBo != value))
+				if ((this._Trung_DanhBo != value))
 				{
-					this.OnDanhBoChanging(value);
-					this.SendPropertyChanging();
-					this._DanhBo = value;
-					this.SendPropertyChanged("DanhBo");
-					this.OnDanhBoChanged();
+					this._Trung_DanhBo = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="NVarChar(200)")]
-		public string Result
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Trung_ThoiGian", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Trung_ThoiGian
 		{
 			get
 			{
-				return this._Result;
+				return this._Trung_ThoiGian;
 			}
 			set
 			{
-				if ((this._Result != value))
+				if ((this._Trung_ThoiGian != value))
 				{
-					this.OnResultChanging(value);
-					this.SendPropertyChanging();
-					this._Result = value;
-					this.SendPropertyChanged("Result");
-					this.OnResultChanged();
+					this._Trung_ThoiGian = value;
 				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
-		public System.Nullable<int> CreateBy
-		{
-			get
-			{
-				return this._CreateBy;
-			}
-			set
-			{
-				if ((this._CreateBy != value))
-				{
-					this.OnCreateByChanging(value);
-					this.SendPropertyChanging();
-					this._CreateBy = value;
-					this.SendPropertyChanged("CreateBy");
-					this.OnCreateByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime NOT NULL")]
-		public System.DateTime CreateDate
-		{
-			get
-			{
-				return this._CreateDate;
-			}
-			set
-			{
-				if ((this._CreateDate != value))
-				{
-					this.OnCreateDateChanging(value);
-					this.SendPropertyChanging();
-					this._CreateDate = value;
-					this.SendPropertyChanged("CreateDate");
-					this.OnCreateDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ModifyDate
-		{
-			get
-			{
-				return this._ModifyDate;
-			}
-			set
-			{
-				if ((this._ModifyDate != value))
-				{
-					this.OnModifyDateChanging(value);
-					this.SendPropertyChanging();
-					this._ModifyDate = value;
-					this.SendPropertyChanged("ModifyDate");
-					this.OnModifyDateChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -5927,6 +5810,10 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _TCHC;
 		
+		private bool _HetHan;
+		
+		private System.Nullable<System.DateTime> _NgayHetHan;
+		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private System.Nullable<int> _CreateBy;
@@ -6065,6 +5952,10 @@ namespace KTKS_DonKH.LinQ
     partial void OnThongBaoDuocKyChanged();
     partial void OnTCHCChanging(string value);
     partial void OnTCHCChanged();
+    partial void OnHetHanChanging(bool value);
+    partial void OnHetHanChanged();
+    partial void OnNgayHetHanChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayHetHanChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
@@ -7120,6 +7011,46 @@ namespace KTKS_DonKH.LinQ
 					this._TCHC = value;
 					this.SendPropertyChanged("TCHC");
 					this.OnTCHCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HetHan", DbType="Bit NOT NULL")]
+		public bool HetHan
+		{
+			get
+			{
+				return this._HetHan;
+			}
+			set
+			{
+				if ((this._HetHan != value))
+				{
+					this.OnHetHanChanging(value);
+					this.SendPropertyChanging();
+					this._HetHan = value;
+					this.SendPropertyChanged("HetHan");
+					this.OnHetHanChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayHetHan", DbType="Date")]
+		public System.Nullable<System.DateTime> NgayHetHan
+		{
+			get
+			{
+				return this._NgayHetHan;
+			}
+			set
+			{
+				if ((this._NgayHetHan != value))
+				{
+					this.OnNgayHetHanChanging(value);
+					this.SendPropertyChanging();
+					this._NgayHetHan = value;
+					this.SendPropertyChanged("NgayHetHan");
+					this.OnNgayHetHanChanged();
 				}
 			}
 		}
@@ -33240,6 +33171,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private EntitySet<DonTu_LichSu> _DonTu_LichSus;
 		
+		private EntitySet<DonTu_Scan> _DonTu_Scans;
+		
 		private EntitySet<GianLan> _GianLans;
 		
 		private EntitySet<KTXM> _KTXMs;
@@ -33388,6 +33321,7 @@ namespace KTKS_DonKH.LinQ
 			this._DongNuocs = new EntitySet<DongNuoc>(new Action<DongNuoc>(this.attach_DongNuocs), new Action<DongNuoc>(this.detach_DongNuocs));
 			this._DonTu_ChiTiets = new EntitySet<DonTu_ChiTiet>(new Action<DonTu_ChiTiet>(this.attach_DonTu_ChiTiets), new Action<DonTu_ChiTiet>(this.detach_DonTu_ChiTiets));
 			this._DonTu_LichSus = new EntitySet<DonTu_LichSu>(new Action<DonTu_LichSu>(this.attach_DonTu_LichSus), new Action<DonTu_LichSu>(this.detach_DonTu_LichSus));
+			this._DonTu_Scans = new EntitySet<DonTu_Scan>(new Action<DonTu_Scan>(this.attach_DonTu_Scans), new Action<DonTu_Scan>(this.detach_DonTu_Scans));
 			this._GianLans = new EntitySet<GianLan>(new Action<GianLan>(this.attach_GianLans), new Action<GianLan>(this.detach_GianLans));
 			this._KTXMs = new EntitySet<KTXM>(new Action<KTXM>(this.attach_KTXMs), new Action<KTXM>(this.detach_KTXMs));
 			this._ThuMois = new EntitySet<ThuMoi>(new Action<ThuMoi>(this.attach_ThuMois), new Action<ThuMoi>(this.detach_ThuMois));
@@ -34657,6 +34591,19 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTu_DonTu_Scan", Storage="_DonTu_Scans", ThisKey="MaDon", OtherKey="MaDon")]
+		public EntitySet<DonTu_Scan> DonTu_Scans
+		{
+			get
+			{
+				return this._DonTu_Scans;
+			}
+			set
+			{
+				this._DonTu_Scans.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTu_GianLan", Storage="_GianLans", ThisKey="MaDon", OtherKey="MaDonMoi")]
 		public EntitySet<GianLan> GianLans
 		{
@@ -34853,6 +34800,18 @@ namespace KTKS_DonKH.LinQ
 			entity.DonTu = null;
 		}
 		
+		private void attach_DonTu_Scans(DonTu_Scan entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTu = this;
+		}
+		
+		private void detach_DonTu_Scans(DonTu_Scan entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTu = null;
+		}
+		
 		private void attach_GianLans(GianLan entity)
 		{
 			this.SendPropertyChanging();
@@ -35034,6 +34993,8 @@ namespace KTKS_DonKH.LinQ
 		
 		private string _DCLapDat;
 		
+		private bool _KyCaNhan;
+		
 		private System.Nullable<int> _CreateBy;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
@@ -35128,6 +35089,8 @@ namespace KTKS_DonKH.LinQ
     partial void OnCoDHNChanged();
     partial void OnDCLapDatChanging(string value);
     partial void OnDCLapDatChanged();
+    partial void OnKyCaNhanChanging(bool value);
+    partial void OnKyCaNhanChanged();
     partial void OnCreateByChanging(System.Nullable<int> value);
     partial void OnCreateByChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
@@ -35930,6 +35893,26 @@ namespace KTKS_DonKH.LinQ
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KyCaNhan", DbType="Bit NOT NULL")]
+		public bool KyCaNhan
+		{
+			get
+			{
+				return this._KyCaNhan;
+			}
+			set
+			{
+				if ((this._KyCaNhan != value))
+				{
+					this.OnKyCaNhanChanging(value);
+					this.SendPropertyChanging();
+					this._KyCaNhan = value;
+					this.SendPropertyChanged("KyCaNhan");
+					this.OnKyCaNhanChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
 		public System.Nullable<int> CreateBy
 		{
@@ -36643,6 +36626,545 @@ namespace KTKS_DonKH.LinQ
 						this._MaDon = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("DonTu");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.DonTu_Scan")]
+	public partial class DonTu_Scan : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _DanhBo;
+		
+		private string _DienThoai;
+		
+		private string _NguoiBao;
+		
+		private System.Nullable<int> _MaDon;
+		
+		private System.Nullable<int> _CreateBy;
+		
+		private System.DateTime _CreateDate;
+		
+		private EntitySet<DonTu_Scan_ChiTiet> _DonTu_Scan_ChiTiets;
+		
+		private EntitySet<DonTu_Scan_ChiTiet> _DonTu_Scan_ChiTiets1;
+		
+		private EntityRef<DonTu> _DonTu;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnDanhBoChanging(string value);
+    partial void OnDanhBoChanged();
+    partial void OnDienThoaiChanging(string value);
+    partial void OnDienThoaiChanged();
+    partial void OnNguoiBaoChanging(string value);
+    partial void OnNguoiBaoChanged();
+    partial void OnMaDonChanging(System.Nullable<int> value);
+    partial void OnMaDonChanged();
+    partial void OnCreateByChanging(System.Nullable<int> value);
+    partial void OnCreateByChanged();
+    partial void OnCreateDateChanging(System.DateTime value);
+    partial void OnCreateDateChanged();
+    #endregion
+		
+		public DonTu_Scan()
+		{
+			this._DonTu_Scan_ChiTiets = new EntitySet<DonTu_Scan_ChiTiet>(new Action<DonTu_Scan_ChiTiet>(this.attach_DonTu_Scan_ChiTiets), new Action<DonTu_Scan_ChiTiet>(this.detach_DonTu_Scan_ChiTiets));
+			this._DonTu_Scan_ChiTiets1 = new EntitySet<DonTu_Scan_ChiTiet>(new Action<DonTu_Scan_ChiTiet>(this.attach_DonTu_Scan_ChiTiets1), new Action<DonTu_Scan_ChiTiet>(this.detach_DonTu_Scan_ChiTiets1));
+			this._DonTu = default(EntityRef<DonTu>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DanhBo", DbType="Char(11)")]
+		public string DanhBo
+		{
+			get
+			{
+				return this._DanhBo;
+			}
+			set
+			{
+				if ((this._DanhBo != value))
+				{
+					this.OnDanhBoChanging(value);
+					this.SendPropertyChanging();
+					this._DanhBo = value;
+					this.SendPropertyChanged("DanhBo");
+					this.OnDanhBoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DienThoai", DbType="VarChar(11)")]
+		public string DienThoai
+		{
+			get
+			{
+				return this._DienThoai;
+			}
+			set
+			{
+				if ((this._DienThoai != value))
+				{
+					this.OnDienThoaiChanging(value);
+					this.SendPropertyChanging();
+					this._DienThoai = value;
+					this.SendPropertyChanged("DienThoai");
+					this.OnDienThoaiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NguoiBao", DbType="NVarChar(100)")]
+		public string NguoiBao
+		{
+			get
+			{
+				return this._NguoiBao;
+			}
+			set
+			{
+				if ((this._NguoiBao != value))
+				{
+					this.OnNguoiBaoChanging(value);
+					this.SendPropertyChanging();
+					this._NguoiBao = value;
+					this.SendPropertyChanged("NguoiBao");
+					this.OnNguoiBaoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDon", DbType="Int")]
+		public System.Nullable<int> MaDon
+		{
+			get
+			{
+				return this._MaDon;
+			}
+			set
+			{
+				if ((this._MaDon != value))
+				{
+					if (this._DonTu.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMaDonChanging(value);
+					this.SendPropertyChanging();
+					this._MaDon = value;
+					this.SendPropertyChanged("MaDon");
+					this.OnMaDonChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
+		public System.Nullable<int> CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime NOT NULL")]
+		public System.DateTime CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTu_Scan_DonTu_Scan_ChiTiet", Storage="_DonTu_Scan_ChiTiets", ThisKey="ID", OtherKey="IDParent")]
+		public EntitySet<DonTu_Scan_ChiTiet> DonTu_Scan_ChiTiets
+		{
+			get
+			{
+				return this._DonTu_Scan_ChiTiets;
+			}
+			set
+			{
+				this._DonTu_Scan_ChiTiets.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTu_Scan_DonTu_Scan_ChiTiet1", Storage="_DonTu_Scan_ChiTiets1", ThisKey="ID", OtherKey="IDParent")]
+		public EntitySet<DonTu_Scan_ChiTiet> DonTu_Scan_ChiTiets1
+		{
+			get
+			{
+				return this._DonTu_Scan_ChiTiets1;
+			}
+			set
+			{
+				this._DonTu_Scan_ChiTiets1.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTu_DonTu_Scan", Storage="_DonTu", ThisKey="MaDon", OtherKey="MaDon", IsForeignKey=true)]
+		public DonTu DonTu
+		{
+			get
+			{
+				return this._DonTu.Entity;
+			}
+			set
+			{
+				DonTu previousValue = this._DonTu.Entity;
+				if (((previousValue != value) 
+							|| (this._DonTu.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DonTu.Entity = null;
+						previousValue.DonTu_Scans.Remove(this);
+					}
+					this._DonTu.Entity = value;
+					if ((value != null))
+					{
+						value.DonTu_Scans.Add(this);
+						this._MaDon = value.MaDon;
+					}
+					else
+					{
+						this._MaDon = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("DonTu");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_DonTu_Scan_ChiTiets(DonTu_Scan_ChiTiet entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTu_Scan = this;
+		}
+		
+		private void detach_DonTu_Scan_ChiTiets(DonTu_Scan_ChiTiet entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTu_Scan = null;
+		}
+		
+		private void attach_DonTu_Scan_ChiTiets1(DonTu_Scan_ChiTiet entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTu_Scan1 = this;
+		}
+		
+		private void detach_DonTu_Scan_ChiTiets1(DonTu_Scan_ChiTiet entity)
+		{
+			this.SendPropertyChanging();
+			entity.DonTu_Scan1 = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.DonTu_Scan_ChiTiet")]
+	public partial class DonTu_Scan_ChiTiet : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _Name;
+		
+		private System.Nullable<int> _IDParent;
+		
+		private System.Nullable<int> _CreateBy;
+		
+		private System.DateTime _CreateDate;
+		
+		private EntityRef<DonTu_Scan> _DonTu_Scan;
+		
+		private EntityRef<DonTu_Scan> _DonTu_Scan1;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnIDParentChanging(System.Nullable<int> value);
+    partial void OnIDParentChanged();
+    partial void OnCreateByChanging(System.Nullable<int> value);
+    partial void OnCreateByChanged();
+    partial void OnCreateDateChanging(System.DateTime value);
+    partial void OnCreateDateChanged();
+    #endregion
+		
+		public DonTu_Scan_ChiTiet()
+		{
+			this._DonTu_Scan = default(EntityRef<DonTu_Scan>);
+			this._DonTu_Scan1 = default(EntityRef<DonTu_Scan>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(100)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDParent", DbType="Int")]
+		public System.Nullable<int> IDParent
+		{
+			get
+			{
+				return this._IDParent;
+			}
+			set
+			{
+				if ((this._IDParent != value))
+				{
+					if ((this._DonTu_Scan.HasLoadedOrAssignedValue || this._DonTu_Scan1.HasLoadedOrAssignedValue))
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDParentChanging(value);
+					this.SendPropertyChanging();
+					this._IDParent = value;
+					this.SendPropertyChanged("IDParent");
+					this.OnIDParentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="Int")]
+		public System.Nullable<int> CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime NOT NULL")]
+		public System.DateTime CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTu_Scan_DonTu_Scan_ChiTiet", Storage="_DonTu_Scan", ThisKey="IDParent", OtherKey="ID", IsForeignKey=true)]
+		public DonTu_Scan DonTu_Scan
+		{
+			get
+			{
+				return this._DonTu_Scan.Entity;
+			}
+			set
+			{
+				DonTu_Scan previousValue = this._DonTu_Scan.Entity;
+				if (((previousValue != value) 
+							|| (this._DonTu_Scan.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DonTu_Scan.Entity = null;
+						previousValue.DonTu_Scan_ChiTiets.Remove(this);
+					}
+					this._DonTu_Scan.Entity = value;
+					if ((value != null))
+					{
+						value.DonTu_Scan_ChiTiets.Add(this);
+						this._IDParent = value.ID;
+					}
+					else
+					{
+						this._IDParent = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("DonTu_Scan");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DonTu_Scan_DonTu_Scan_ChiTiet1", Storage="_DonTu_Scan1", ThisKey="IDParent", OtherKey="ID", IsForeignKey=true)]
+		public DonTu_Scan DonTu_Scan1
+		{
+			get
+			{
+				return this._DonTu_Scan1.Entity;
+			}
+			set
+			{
+				DonTu_Scan previousValue = this._DonTu_Scan1.Entity;
+				if (((previousValue != value) 
+							|| (this._DonTu_Scan1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DonTu_Scan1.Entity = null;
+						previousValue.DonTu_Scan_ChiTiets1.Remove(this);
+					}
+					this._DonTu_Scan1.Entity = value;
+					if ((value != null))
+					{
+						value.DonTu_Scan_ChiTiets1.Add(this);
+						this._IDParent = value.ID;
+					}
+					else
+					{
+						this._IDParent = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("DonTu_Scan1");
 				}
 			}
 		}

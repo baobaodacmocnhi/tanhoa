@@ -171,16 +171,9 @@
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.CCCD_Temp2" Member="CCCD_Temp2s">
-    <Type Name="CCCD_Temp2">
-      <Column Name="CCCD" Type="System.String" DbType="Char(12) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="DanhBo" Type="System.String" DbType="Char(11)" CanBeNull="true" />
-      <Column Name="Result" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Trung_ChiNhanh" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Trung_DanhBo" Type="System.String" DbType="Char(11)" CanBeNull="true" />
+      <Column Name="Trung_ThoiGian" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.CHDB" Member="CHDBs">
@@ -256,6 +249,8 @@
       <Column Name="ChucVu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="ThongBaoDuocKy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="TCHC" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="HetHan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="NgayHetHan" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -1476,6 +1471,7 @@
       <Association Name="DonTu_DongNuoc" Member="DongNuocs" ThisKey="MaDon" OtherKey="MaDonMoi" Type="DongNuoc" />
       <Association Name="DonTu_DonTu_ChiTiet" Member="DonTu_ChiTiets" ThisKey="MaDon" OtherKey="MaDon" Type="DonTu_ChiTiet" />
       <Association Name="DonTu_DonTu_LichSu" Member="DonTu_LichSus" ThisKey="MaDon" OtherKey="MaDon" Type="DonTu_LichSu" />
+      <Association Name="DonTu_DonTu_Scan" Member="DonTu_Scans" ThisKey="MaDon" OtherKey="MaDon" Type="DonTu_Scan" />
       <Association Name="DonTu_GianLan" Member="GianLans" ThisKey="MaDon" OtherKey="MaDonMoi" Type="GianLan" />
       <Association Name="DonTu_KTXM" Member="KTXMs" ThisKey="MaDon" OtherKey="MaDonMoi" Type="KTXM" />
       <Association Name="DonTu_ThuMoi" Member="ThuMois" ThisKey="MaDon" OtherKey="MaDonMoi" Type="ThuMoi" />
@@ -1527,6 +1523,7 @@
       <Column Name="MST" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="CoDHN" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DCLapDat" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="KyCaNhan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -1559,6 +1556,31 @@
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CVD_Ngay" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="DonTu_DonTu_LichSu" Member="DonTu" ThisKey="MaDon" OtherKey="MaDon" Type="DonTu" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DonTu_Scan" Member="DonTu_Scans">
+    <Type Name="DonTu_Scan">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DanhBo" Type="System.String" DbType="Char(11)" CanBeNull="true" />
+      <Column Name="DienThoai" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
+      <Column Name="NguoiBao" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MaDon" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="DonTu_Scan_DonTu_Scan_ChiTiet" Member="DonTu_Scan_ChiTiets" ThisKey="ID" OtherKey="IDParent" Type="DonTu_Scan_ChiTiet" />
+      <Association Name="DonTu_Scan_DonTu_Scan_ChiTiet1" Member="DonTu_Scan_ChiTiets1" ThisKey="ID" OtherKey="IDParent" Type="DonTu_Scan_ChiTiet" />
+      <Association Name="DonTu_DonTu_Scan" Member="DonTu" ThisKey="MaDon" OtherKey="MaDon" Type="DonTu" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DonTu_Scan_ChiTiet" Member="DonTu_Scan_ChiTiets">
+    <Type Name="DonTu_Scan_ChiTiet">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="IDParent" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="DonTu_Scan_DonTu_Scan_ChiTiet" Member="DonTu_Scan" ThisKey="IDParent" OtherKey="ID" Type="DonTu_Scan" IsForeignKey="true" />
+      <Association Name="DonTu_Scan_DonTu_Scan_ChiTiet1" Member="DonTu_Scan1" ThisKey="IDParent" OtherKey="ID" Type="DonTu_Scan" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.DonTXL" Member="DonTXLs">

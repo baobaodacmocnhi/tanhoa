@@ -2759,5 +2759,56 @@ namespace KTKS_DonKH.DAL.DonTu
             return ExecuteQuery_DataTable(sql);
         }
 
+        //scan đơn từ
+
+        public bool Them_Scan(DonTu_Scan en)
+        {
+            try
+            {
+                if (db.DonTu_Scans.Count() == 0)
+                    en.ID = 1;
+                else
+                    en.ID = db.DonTu_Scans.Max(item => item.ID) + 1;
+                en.CreateBy = CTaiKhoan.MaUser;
+                db.DonTu_Scans.InsertOnSubmit(en);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public bool Xoa_Scan(DonTu_Scan en)
+        {
+            try
+            {
+                db.DonTu_Scan_ChiTiets.DeleteAllOnSubmit(en.DonTu_Scan_ChiTiets.ToList());
+                db.DonTu_Scans.DeleteOnSubmit(en);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Refresh();
+                throw ex;
+            }
+        }
+
+        public DonTu_Scan get_Scan(int ID)
+        {
+            return db.DonTu_Scans.SingleOrDefault(o => o.ID == ID);
+        }
+
+        public DataTable getDS_Scan(DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            return ExecuteQuery_DataTable("select CreateDate,DanhBo,DienThoai,NguoiBao"
+                + " ,HoTen=(select top 1 TENKH from HOADON_TA.dbo.HOADON where HOADON_TA.dbo.HOADON.DANHBA=KTKS_DonKH.dbo.DonTu_Scan.DanhBo order by HOADON_TA.dbo.HOADON.CreateDate desc)"
+                + " ,DiaChi=(select top 1 TENKH from HOADON_TA.dbo.HOADON where HOADON_TA.dbo.HOADON.DANHBA=KTKS_DonKH.dbo.DonTu_Scan.DanhBo order by HOADON_TA.dbo.HOADON.CreateDate desc)"
+                + " from KTKS_DonKH.dbo.DonTu_Scan where CAST(CreateDate as date)>='20240514' and CAST(CreateDate as date)>='20240514'");
+        }
+
     }
 }
