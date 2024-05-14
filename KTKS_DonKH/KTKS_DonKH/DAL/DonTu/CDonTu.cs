@@ -2804,10 +2804,18 @@ namespace KTKS_DonKH.DAL.DonTu
 
         public DataTable getDS_Scan(DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            return ExecuteQuery_DataTable("select CreateDate,DanhBo,DienThoai,NguoiBao"
+            return ExecuteQuery_DataTable("select ID,CreateDate,DanhBo,DienThoai,NguoiBao"
                 + " ,HoTen=(select top 1 TENKH from HOADON_TA.dbo.HOADON where HOADON_TA.dbo.HOADON.DANHBA=KTKS_DonKH.dbo.DonTu_Scan.DanhBo order by HOADON_TA.dbo.HOADON.CreateDate desc)"
                 + " ,DiaChi=(select top 1 TENKH from HOADON_TA.dbo.HOADON where HOADON_TA.dbo.HOADON.DANHBA=KTKS_DonKH.dbo.DonTu_Scan.DanhBo order by HOADON_TA.dbo.HOADON.CreateDate desc)"
                 + " from KTKS_DonKH.dbo.DonTu_Scan where CAST(CreateDate as date)>='20240514' and CAST(CreateDate as date)>='20240514'");
+        }
+
+        public int getNextIDScan_ChiTiet()
+        {
+            if (db.DonTu_Scan_ChiTiets.Count() == 0)
+                return 1;
+            else
+                return db.DonTu_Scan_ChiTiets.Max(o => o.ID) + 1;
         }
 
     }

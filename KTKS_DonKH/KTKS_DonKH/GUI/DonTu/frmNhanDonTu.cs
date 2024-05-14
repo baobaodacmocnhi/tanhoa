@@ -203,11 +203,11 @@ namespace KTKS_DonKH.GUI.DonTu
                     txtBank.Text = entity.DonTu_ChiTiets.SingleOrDefault().Bank;
                     txtMST.Text = entity.DonTu_ChiTiets.SingleOrDefault().MST;
                     txtDCLapDat.Text = entity.DonTu_ChiTiets.SingleOrDefault().DCLapDat;
+                    chkKyCaNhan.Checked = entity.DonTu_ChiTiets.SingleOrDefault().KyCaNhan;
                 }
                 else
                 {
                     tabControl.SelectTab("tabCongVan");
-
                     foreach (DonTu_ChiTiet item in entity.DonTu_ChiTiets.OrderBy(o => o.STT).ToList())
                     {
                         dgvDanhBo.Rows.Insert(dgvDanhBo.RowCount - 1, 1);
@@ -602,6 +602,7 @@ namespace KTKS_DonKH.GUI.DonTu
                         entityCT.Bank = txtBank.Text.Trim();
                         entityCT.MST = txtMST.Text.Trim();
                         entityCT.DCLapDat = txtDCLapDat.Text.Trim();
+                        entityCT.KyCaNhan = chkKyCaNhan.Checked;
                         entityCT.CreateBy = CTaiKhoan.MaUser;
                         entityCT.CreateDate = DateTime.Now;
                         entityCT.TinhTrang = "Tồn";
@@ -891,6 +892,7 @@ namespace KTKS_DonKH.GUI.DonTu
                             _dontu.DonTu_ChiTiets.SingleOrDefault().Bank = txtBank.Text.Trim();
                             _dontu.DonTu_ChiTiets.SingleOrDefault().MST = txtMST.Text.Trim();
                             _dontu.DonTu_ChiTiets.SingleOrDefault().DCLapDat = txtDCLapDat.Text.Trim();
+                            _dontu.DonTu_ChiTiets.SingleOrDefault().KyCaNhan = chkKyCaNhan.Checked;
                         }
                         if (tabControl.SelectedTab.Name == "tabTTKH")
                         {
@@ -1750,9 +1752,9 @@ namespace KTKS_DonKH.GUI.DonTu
                         string error = "";
                         bool result = false;
                         if (_dontu.Name_NhomDon_PKH.Contains("Thông tin khách hàng"))
-                            result = _wsEContract.createEContract(txtHopDong.Text.Trim(), txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now, txtHoTenMoi.Text.Trim(), txtCCCD.Text.Trim(), txtNgayCap.Text.Trim(), txtDCThuongTru.Text.Trim(), txtDCHienNay.Text.Trim(), txtDienThoaiMoi.Text.Trim(), txtFax.Text.Trim(), txtEmail.Text.Trim(), txtSTK.Text.Trim(), txtBank.Text.Trim(), txtMST.Text.Trim(), _hoadon.CoDH, txtDCLapDat.Text.Trim(), "", false, CaNhan, _dontu.MaDon.ToString(), "", "tanho@2022", out error);
+                            result = _wsEContract.createEContract(txtHopDong.Text.Trim(), txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now, txtHoTenMoi.Text.Trim(), txtCCCD.Text.Trim(), txtNgayCap.Text.Trim(), txtDCThuongTru.Text.Trim(), txtDCHienNay.Text.Trim(), txtDienThoaiMoi.Text.Trim(), txtFax.Text.Trim(), txtEmail.Text.Trim(), txtSTK.Text.Trim(), txtBank.Text.Trim(), txtMST.Text.Trim(), _hoadon.CoDH, txtDCLapDat.Text.Trim(), "", false, CaNhan, chkKyCaNhan.Checked, _dontu.MaDon.ToString(), "", "tanho@2022", out error);
                         else
-                            result = _wsEContract.createEContract(txtHopDong.Text.Trim(), txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now, txtHoTenMoi.Text.Trim(), txtCCCD.Text.Trim(), txtNgayCap.Text.Trim(), txtDCThuongTru.Text.Trim(), txtDCHienNay.Text.Trim(), txtDienThoaiMoi.Text.Trim(), txtFax.Text.Trim(), txtEmail.Text.Trim(), txtSTK.Text.Trim(), txtBank.Text.Trim(), txtMST.Text.Trim(), _hoadon.CoDH, txtDCLapDat.Text.Trim(), DateTime.Now.ToString("dd/MM/yyyy"), false, CaNhan, _dontu.MaDon.ToString(), "", "tanho@2022", out error);
+                            result = _wsEContract.createEContract(txtHopDong.Text.Trim(), txtDanhBo.Text.Trim().Replace(" ", ""), DateTime.Now, txtHoTenMoi.Text.Trim(), txtCCCD.Text.Trim(), txtNgayCap.Text.Trim(), txtDCThuongTru.Text.Trim(), txtDCHienNay.Text.Trim(), txtDienThoaiMoi.Text.Trim(), txtFax.Text.Trim(), txtEmail.Text.Trim(), txtSTK.Text.Trim(), txtBank.Text.Trim(), txtMST.Text.Trim(), _hoadon.CoDH, txtDCLapDat.Text.Trim(), DateTime.Now.ToString("dd/MM/yyyy"), false, CaNhan, chkKyCaNhan.Checked, _dontu.MaDon.ToString(), "", "tanho@2022", out error);
                         if (result)
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         else

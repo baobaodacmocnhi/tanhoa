@@ -396,6 +396,7 @@ namespace KTKS_DonKH.wrEContract {
                     string NgayHieuLuc, 
                     bool GanMoi, 
                     bool CaNhan, 
+                    bool KyCaNhan, 
                     string MaDon, 
                     string SHS, 
                     string checksum, 
@@ -420,6 +421,7 @@ namespace KTKS_DonKH.wrEContract {
                         NgayHieuLuc,
                         GanMoi,
                         CaNhan,
+                        KyCaNhan,
                         MaDon,
                         SHS,
                         checksum});
@@ -448,10 +450,11 @@ namespace KTKS_DonKH.wrEContract {
                     string NgayHieuLuc, 
                     bool GanMoi, 
                     bool CaNhan, 
+                    bool KyCaNhan, 
                     string MaDon, 
                     string SHS, 
                     string checksum) {
-            this.createEContractAsync(HopDong, DanhBo, CreateDate, HoTen, CCCD, NgayCap, DCThuongTru, DCHienNay, DienThoai, Fax, Email, TaiKhoan, Bank, MST, CoDHN, DCLapDat, NgayHieuLuc, GanMoi, CaNhan, MaDon, SHS, checksum, null);
+            this.createEContractAsync(HopDong, DanhBo, CreateDate, HoTen, CCCD, NgayCap, DCThuongTru, DCHienNay, DienThoai, Fax, Email, TaiKhoan, Bank, MST, CoDHN, DCLapDat, NgayHieuLuc, GanMoi, CaNhan, KyCaNhan, MaDon, SHS, checksum, null);
         }
         
         /// <remarks/>
@@ -475,6 +478,7 @@ namespace KTKS_DonKH.wrEContract {
                     string NgayHieuLuc, 
                     bool GanMoi, 
                     bool CaNhan, 
+                    bool KyCaNhan, 
                     string MaDon, 
                     string SHS, 
                     string checksum, 
@@ -502,6 +506,7 @@ namespace KTKS_DonKH.wrEContract {
                         NgayHieuLuc,
                         GanMoi,
                         CaNhan,
+                        KyCaNhan,
                         MaDon,
                         SHS,
                         checksum}, this.createEContractOperationCompleted, userState);

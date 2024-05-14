@@ -112,6 +112,7 @@
             <s:element minOccurs="0" maxOccurs="1" name="NgayHieuLuc" type="s:string" />
             <s:element minOccurs="1" maxOccurs="1" name="GanMoi" type="s:boolean" />
             <s:element minOccurs="1" maxOccurs="1" name="CaNhan" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="KyCaNhan" type="s:boolean" />
             <s:element minOccurs="0" maxOccurs="1" name="MaDon" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="SHS" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="checksum" type="s:string" />
