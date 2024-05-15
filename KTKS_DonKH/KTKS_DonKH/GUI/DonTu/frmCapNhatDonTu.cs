@@ -11,6 +11,7 @@ using KTKS_DonKH.DAL.QuanTri;
 using KTKS_DonKH.LinQ;
 using System.Transactions;
 using KTKS_DonKH.DAL;
+using KTKS_DonKH.wrThuongVu;
 
 namespace KTKS_DonKH.GUI.DonTu
 {
@@ -24,7 +25,7 @@ namespace KTKS_DonKH.GUI.DonTu
         CLichSuDonTu _cLichSuDonTu = new CLichSuDonTu();
         CNhomDon _cNhomDon = new CNhomDon();
         CDHN _cDHN = new CDHN();
-
+        wsThuongVu _wsThuongVu = new wsThuongVu();
         LinQ.DonTu _dontu = null;
         DonTu_ChiTiet _dontu_ChiTiet = null;
         DonTu_LichSu _dontu_LichSu = null;
@@ -40,6 +41,7 @@ namespace KTKS_DonKH.GUI.DonTu
             dgvLichSuDonTu.AutoGenerateColumns = false;
             dgvLichSuDonTu_Update.AutoGenerateColumns = false;
             dgvLichSuNhanDon.AutoGenerateColumns = false;
+            dgvHinh.AutoGenerateColumns = false;
             DataTable dt = _cNhomDon.getDS("DieuChinh");
             chkcmbDieuChinh.Properties.DataSource = dt;
             chkcmbDieuChinh.Properties.ValueMember = "ID";
@@ -98,6 +100,7 @@ namespace KTKS_DonKH.GUI.DonTu
                 txtNoiDungKhachHang.Text = entity.Name_NhomDon_PKH;
                 txtNoiDungThuongVu.Text = entity.Name_NhomDon;
                 txtVanDeKhac.Text = entity.VanDeKhac;
+                chkYeuCauScan.Checked = entity.YeuCauScan;
                 if (entity.DonTu_ChiTiets.Count == 1)
                 {
                     tabControl.SelectTab("tabTTKH");
@@ -297,6 +300,7 @@ namespace KTKS_DonKH.GUI.DonTu
             chkHoanThanh.Checked = false;
             txtNoiDung_LichSu.Text = "";
             lbTinhTrang.Text = "Tình Trạng";
+            chkYeuCauScan.Checked = false;
         }
 
         public void ClearChuyenDon()
@@ -1077,6 +1081,26 @@ namespace KTKS_DonKH.GUI.DonTu
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvHinh_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            byte[] file = _wsThuongVu.get_Hinh("DonTu", _dontu.MaDon.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
+            if (file != null)
+                if (dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString().ToLower().Contains("pdf"))
+                    _cDonTu.viewPDF(1, file);
+                else
+                    _cDonTu.viewImage(file);
+            else
+                MessageBox.Show("File không tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void dgvHinh_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvHinh.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
             }
         }
 

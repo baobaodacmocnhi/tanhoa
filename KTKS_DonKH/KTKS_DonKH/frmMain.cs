@@ -1138,13 +1138,13 @@ namespace KTKS_DonKH
 
         private void mnuScanDonTu_Click(object sender, EventArgs e)
         {
-            if (CTaiKhoan.CheckQuyen("mnuScanDonTu", "Xem"))
-            {
-                frmDonTu_Scan frm = new frmDonTu_Scan();
-                OpenForm(frm);
-            }
-            else
-                MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //if (CTaiKhoan.CheckQuyen("mnuScanDonTu", "Xem"))
+            //{
+            //    frmDonTu_Scan frm = new frmDonTu_Scan();
+            //    OpenForm(frm);
+            //}
+            //else
+            //    MessageBox.Show("Bạn không có quyền Xem Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion

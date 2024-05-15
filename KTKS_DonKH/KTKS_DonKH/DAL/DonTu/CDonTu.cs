@@ -2818,5 +2818,12 @@ namespace KTKS_DonKH.DAL.DonTu
                 return db.DonTu_Scan_ChiTiets.Max(o => o.ID) + 1;
         }
 
+        public int getNextIDDonTu_Hinh()
+        {
+            if (db.DonTu_Hinhs.Count() == 0)
+                return 1;
+            else
+                return db.DonTu_Hinhs.Max(o => o.ID) + 1;
+        }
     }
 }
