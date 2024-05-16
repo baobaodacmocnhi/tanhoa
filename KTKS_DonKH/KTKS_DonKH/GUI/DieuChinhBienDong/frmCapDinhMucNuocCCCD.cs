@@ -1152,6 +1152,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             dr["HoTen"] = hd.TENKH;
                             dr["DiaChi"] = hd.SO + " " + hd.DUONG + _cDHN.GetPhuongQuan(hd.Quan, hd.Phuong);
                             dr["HopDong"] = en.SDT;
+                            dr["Dot"] = hd.DOT;
                             dr["DinhMuc"] = en.DCBD_DKDM_CCCDs.Count * 4;
                             dr["MSThue"] = itemCT.DCThuongTru;
                             dr["MSThueBD"] = itemCT.DCTamTru;

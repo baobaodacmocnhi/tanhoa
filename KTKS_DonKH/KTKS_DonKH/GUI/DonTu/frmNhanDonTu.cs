@@ -984,6 +984,8 @@ namespace KTKS_DonKH.GUI.DonTu
                         _dontu.Name_NhomDon_PKH = txtNoiDungKhachHang.Text.Trim();
                         if (txtVanDeKhac.Text.Trim() != "")
                             _dontu.VanDeKhac = txtVanDeKhac.Text.Trim();
+                        else
+                            _dontu.VanDeKhac = null;
                         //if (cmbNhomDon_ChiTiet.SelectedIndex > -1)
                         //{
                         //    _dontu.ID_NhomDon_ChiTiet = int.Parse(cmbNhomDon_ChiTiet.SelectedValue.ToString());

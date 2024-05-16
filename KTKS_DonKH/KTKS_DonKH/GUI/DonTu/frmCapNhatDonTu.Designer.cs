@@ -1225,7 +1225,7 @@
             this.lbTinhTrang.AutoSize = true;
             this.lbTinhTrang.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTinhTrang.ForeColor = System.Drawing.Color.Red;
-            this.lbTinhTrang.Location = new System.Drawing.Point(679, 316);
+            this.lbTinhTrang.Location = new System.Drawing.Point(361, 413);
             this.lbTinhTrang.Name = "lbTinhTrang";
             this.lbTinhTrang.Size = new System.Drawing.Size(88, 18);
             this.lbTinhTrang.TabIndex = 94;
