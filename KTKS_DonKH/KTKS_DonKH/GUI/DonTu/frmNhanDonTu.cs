@@ -827,7 +827,7 @@ namespace KTKS_DonKH.GUI.DonTu
                 {
                     if (_dontu != null)
                     {
-                        if (CTaiKhoan.Admin == false && _cDonTu.checkPhong(_dontu.MaDon, CTaiKhoan.MaPhong) == false)
+                        if (CTaiKhoan.Admin == false && CTaiKhoan.MaPhong != 1 && _cDonTu.checkPhong(_dontu.MaDon, CTaiKhoan.MaPhong) == false)
                         {
                             MessageBox.Show("Mã Đơn này không thuộc phòng của bạn lập", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
@@ -1076,6 +1076,7 @@ namespace KTKS_DonKH.GUI.DonTu
                 {
                     if (_dontu != null && MessageBox.Show("Bạn chắc chắn Xóa?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
+
                         if (CTaiKhoan.Admin == false && _cDonTu.checkPhong(_dontu.MaDon, CTaiKhoan.MaPhong) == false)
                         {
                             MessageBox.Show("Mã Đơn này không thuộc phòng của bạn lập", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
