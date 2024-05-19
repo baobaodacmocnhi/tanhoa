@@ -378,6 +378,7 @@ namespace KTKS_DonKH.GUI.DonTu
             txtMST.Text = "";
             chkKyCaNhan.Checked = false;
             chkYeuCauScan.Checked = false;
+            chkAutoFillHDDT.Checked = false;
             if (dgvDanhBo.DataSource != null)
                 dgvDanhBo.DataSource = null;
             else
@@ -2055,6 +2056,24 @@ namespace KTKS_DonKH.GUI.DonTu
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void chkAutoFillHDDT_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkAutoFillHDDT.Checked)
+            {
+                txtHoTenMoi.Text = txtHoTen.Text.Trim();
+                txtDCThuongTru.Text = txtDiaChi.Text.Trim();
+                txtDCHienNay.Text = txtDiaChi.Text.Trim();
+                txtDCLapDat.Text = txtDiaChi.Text.Trim();
+            }
+            else
+            {
+                txtHoTenMoi.Text = "";
+                txtDCThuongTru.Text = "";
+                txtDCHienNay.Text = "";
+                txtDCLapDat.Text = "";
             }
         }
 
