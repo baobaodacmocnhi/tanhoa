@@ -33,7 +33,7 @@
             this.cmbGiayKhen = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtQuyetDinhTapThe = new System.Windows.Forms.TextBox();
-            this.txtQDNm = new System.Windows.Forms.TextBox();
+            this.txtQDNam = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cmbNhom = new System.Windows.Forms.ComboBox();
             this.btXem = new System.Windows.Forms.Button();
@@ -64,7 +64,7 @@
             this.splitContainer1.Panel1.Controls.Add(this.cmbGiayKhen);
             this.splitContainer1.Panel1.Controls.Add(this.label6);
             this.splitContainer1.Panel1.Controls.Add(this.txtQuyetDinhTapThe);
-            this.splitContainer1.Panel1.Controls.Add(this.txtQDNm);
+            this.splitContainer1.Panel1.Controls.Add(this.txtQDNam);
             this.splitContainer1.Panel1.Controls.Add(this.label5);
             this.splitContainer1.Panel1.Controls.Add(this.cmbNhom);
             this.splitContainer1.Panel1.Controls.Add(this.btXem);
@@ -124,15 +124,15 @@
             this.txtQuyetDinhTapThe.Name = "txtQuyetDinhTapThe";
             this.txtQuyetDinhTapThe.Size = new System.Drawing.Size(160, 26);
             this.txtQuyetDinhTapThe.TabIndex = 11;
-            this.txtQuyetDinhTapThe.Text = "70-QĐ/ĐTN";
+            this.txtQuyetDinhTapThe.Text = "0058/QĐ-TH-TCHC";
             // 
-            // txtQDNm
+            // txtQDNam
             // 
-            this.txtQDNm.Location = new System.Drawing.Point(300, 13);
-            this.txtQDNm.Name = "txtQDNm";
-            this.txtQDNm.Size = new System.Drawing.Size(68, 26);
-            this.txtQDNm.TabIndex = 2;
-            this.txtQDNm.Text = "2023";
+            this.txtQDNam.Location = new System.Drawing.Point(300, 13);
+            this.txtQDNam.Name = "txtQDNam";
+            this.txtQDNam.Size = new System.Drawing.Size(68, 26);
+            this.txtQDNam.TabIndex = 2;
+            this.txtQDNam.Text = "2023";
             // 
             // label5
             // 
@@ -170,7 +170,7 @@
             this.txtNguoiKy.Name = "txtNguoiKy";
             this.txtNguoiKy.Size = new System.Drawing.Size(166, 26);
             this.txtNguoiKy.TabIndex = 5;
-            this.txtNguoiKy.Text = "NGUYỄN NGỌC ÁNH HOA";
+            this.txtNguoiKy.Text = "NGUYỄN MƯỜI";
             // 
             // txtNgay
             // 
@@ -187,7 +187,7 @@
             this.txtQuyetDinhCaNhan.Name = "txtQuyetDinhCaNhan";
             this.txtQuyetDinhCaNhan.Size = new System.Drawing.Size(160, 26);
             this.txtQuyetDinhCaNhan.TabIndex = 3;
-            this.txtQuyetDinhCaNhan.Text = "213/QĐ-TH-CĐ";
+            this.txtQuyetDinhCaNhan.Text = "0058/QĐ-TH-TCHC";
             this.txtQuyetDinhCaNhan.TextChanged += new System.EventHandler(this.txtQuyetDinhCaNhan_TextChanged);
             // 
             // label4
@@ -273,7 +273,7 @@
         private System.Windows.Forms.TextBox txtQuyetDinhCaNhan;
         private System.Windows.Forms.Button btXem;
         private System.Windows.Forms.ComboBox cmbNhom;
-        private System.Windows.Forms.TextBox txtQDNm;
+        private System.Windows.Forms.TextBox txtQDNam;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtNguoiKy;
         private System.Windows.Forms.TextBox txtQuyetDinhTapThe;

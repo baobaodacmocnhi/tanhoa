@@ -123,6 +123,18 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="HCM_CANHAN_ddmmyyyy_A3_2hang.cs">
+      <DependentUpon>HCM_CANHAN_ddmmyyyy_A3_2hang.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="HCM_CANHAN_ddmmyyyy_A3_ChuKy.cs">
+      <DependentUpon>HCM_CANHAN_ddmmyyyy_A3_ChuKy.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="DanVanKheo_CANHAN_A3_2022B.cs">
       <DependentUpon>DanVanKheo_CANHAN_A3_2022B.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -433,6 +445,14 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ChinhQuyen_CANHAN_A3_ChuKy.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="HCM_CANHAN_ddmmyyyy_A3_2hang.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>HCM_CANHAN_ddmmyyyy_A3_2hang.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HCM_CANHAN_ddmmyyyy_A3_ChuKy.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>HCM_CANHAN_ddmmyyyy_A3_ChuKy.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="DanVanKheo_CANHAN_A3_2022B.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>DanVanKheo_CANHAN_A3_2022B.cs</LastGenOutput>
@@ -676,6 +696,11 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\giamdoc.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

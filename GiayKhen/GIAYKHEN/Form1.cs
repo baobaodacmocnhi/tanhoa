@@ -18,7 +18,7 @@ namespace GIAYKHEN
         public Form1()
         {
             InitializeComponent();
-            this.txtQDNm.Focus();
+            this.txtQDNam.Focus();
 
         }
         private DataSet getData(string sql)
@@ -123,7 +123,7 @@ namespace GIAYKHEN
                                         if (cmbNhom.SelectedIndex == 0)
                                         {
                                             sql = "select * FROM A_GIAYKHEN WHERE TAPTHE=0 and HCM=1";
-                                            rp = new HCM_CANHAN_ddmmyyyy_A3();
+                                            rp = new HCM_CANHAN_ddmmyyyy_A3_2hang();
                                         }
                                         else
                                             if (cmbNhom.SelectedIndex == 1)
@@ -151,7 +151,8 @@ namespace GIAYKHEN
             DataTable dt = getData(sql).Tables[0];
             //ReportDocument rp = new GKCongDoan_CANHAN();
             rp.SetDataSource(dt);
-            rp.SetParameterValue("qdNam", this.txtQDNm.Text);
+            //rp.SetParameterValue("qdNam", Application.StartupPath.ToString() + @"\Resources\giamdoc.png");
+            rp.SetParameterValue("qdNam", this.txtQDNam.Text);
             if (cmbNhom.SelectedIndex == 0)
                 rp.SetParameterValue("qd", this.txtQuyetDinhCaNhan.Text);
             else
@@ -181,7 +182,7 @@ namespace GIAYKHEN
         {
             cmbGiayKhen.SelectedIndex = 0;
             cmbNhom.SelectedIndex = 0;
-            txtNgay.Value = new DateTime(2023, 12, 15);
+            txtNgay.Value = new DateTime(2024, 05, 15);
         }
 
         private void txtQuyetDinhCaNhan_TextChanged(object sender, EventArgs e)

@@ -36,8 +36,8 @@ namespace GIAYKHEN
                             {
                                 A_GIAYKHEN en = new A_GIAYKHEN();
                                 en.HOTEN = dtExcel.Rows[i][1].ToString().Trim();
-                                en.CHUCVU = dtExcel.Rows[i][3].ToString().Trim().ToUpper();
-                                en.PHONGBAN = dtExcel.Rows[i][4].ToString().Trim().ToUpper();
+                                en.CHUCVU = dtExcel.Rows[i][3].ToString();
+                                en.PHONGBAN = dtExcel.Rows[i][4].ToString();
                                 if (dtExcel.Rows[i][2].ToString().Trim().ToUpper().Equals("NỮ"))
                                     en.GioiTinh = false;
                                 else

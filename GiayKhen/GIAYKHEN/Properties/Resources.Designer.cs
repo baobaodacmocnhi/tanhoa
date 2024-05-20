@@ -59,5 +59,15 @@ namespace GIAYKHEN.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap giamdoc {
+            get {
+                object obj = ResourceManager.GetObject("giamdoc", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
