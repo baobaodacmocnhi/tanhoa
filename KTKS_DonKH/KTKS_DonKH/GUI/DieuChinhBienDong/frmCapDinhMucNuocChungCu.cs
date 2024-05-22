@@ -282,7 +282,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             if (txtSHS.Text.Trim() != "")
                             {
                                 ctchungtu.SHS = txtSHS.Text.Trim();
-                                ctchungtu.DanhBo = null;
+                                ctchungtu.DanhBo = "";
                             }
                             if (_cChungTu.ThemCT(ctchungtu))
                             {
