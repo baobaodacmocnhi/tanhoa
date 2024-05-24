@@ -39,6 +39,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CKTXM _cKTXM = new CKTXM();
         CDHN _cDHN = new CDHN();
         CDocSo _cDocSo = new CDocSo();
+        CDangKyDinhMucCCCD _cDKDM = new CDangKyDinhMucCCCD();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         wsThuongVu _wsThuongVu = new wsThuongVu();
         DonTu_ChiTiet _dontu_ChiTiet = null;
@@ -487,6 +488,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     LoadTTKH(_hoadon);
                     txtHieuLucKy.Focus();
+                    if (_cDKDM.checkExists(_hoadon.DANHBA, _dontu_ChiTiet.CreateDate.Value))
+                    {
+                        MessageBox.Show("Có đăng ký online trong 10 ngày gần nhất từ ngày lập đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                     MessageBox.Show("Danh Bộ này không có", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

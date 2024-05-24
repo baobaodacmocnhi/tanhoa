@@ -1123,7 +1123,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (txtDanhBo_Online.Text.Trim() != "")
                 dgvDanhSach_Online.DataSource = _cDKDM.getDS_Online(txtDanhBo_Online.Text.Trim());
             else
-                dgvDanhSach_Online.DataSource = _cDKDM.getDS_Online(dateTu_Online.Value, dateDen_Online.Value);
+                dgvDanhSach_Online.DataSource = _cDKDM.getDS_Online(chkDinhMucTang.Checked, dateTu_Online.Value, dateDen_Online.Value);
         }
 
         private void dgvDanhSach_Online_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)

@@ -28,6 +28,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             return db.DCBD_DKDM_DanhBos.Any(item => item.DanhBo == DanhBo && item.CreateBy != null);
         }
 
+        public bool checkExists(string DanhBo, DateTime CreateDate)
+        {
+            return db.DCBD_DKDM_DanhBos.Any(item => item.DanhBo == DanhBo && item.CreateDate.Date >= CreateDate.Date && CreateDate.AddDays(10).Date >= DateTime.Now.Date);
+        }
+
         public bool Them(DCBD_DKDM_DanhBo en, out string Thung)
         {
             try
@@ -497,7 +502,6 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             return ExecuteQuery_DataTable(sql);
         }
 
-
         public DataTable getDS_Online(string DanhBo)
         {
             return ExecuteQuery_DataTable("select 'In'='false',db.ID,Dot=SUBSTRING(ttkh.LOTRINH, 1, 2),ttkh.DANHBO,DiaChi=ttkh.SONHA+' '+ttkh.TENDUONG,db.GiaBieu,db.DinhMuc,db.SDT,SoNK=(select COUNT(*) from KTKS_DonKH.dbo.DCBD_DKDM_CCCD where IDDanhBo=db.ID)"
@@ -508,14 +512,18 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 + " where db.DanhBo=ttkh.DANHBO and ttkh.DANHBO='" + DanhBo + "' and db.CreateBy is null order by db.ID asc");
         }
 
-        public DataTable getDS_Online(DateTime FromCreateDate, DateTime ToCreateDate)
+        public DataTable getDS_Online(bool DinhMucTang, DateTime FromCreateDate, DateTime ToCreateDate)
         {
-            return ExecuteQuery_DataTable("select 'In'='false',db.ID,Dot=SUBSTRING(ttkh.LOTRINH, 1, 2),ttkh.DANHBO,DiaChi=ttkh.SONHA+' '+ttkh.TENDUONG,db.GiaBieu,db.DinhMuc,db.SDT,SoNK=(select COUNT(*) from KTKS_DonKH.dbo.DCBD_DKDM_CCCD where IDDanhBo=db.ID)"
+            string sql = "select 'In'='false',db.ID,Dot=SUBSTRING(ttkh.LOTRINH, 1, 2),ttkh.DANHBO,DiaChi=ttkh.SONHA+' '+ttkh.TENDUONG,db.GiaBieu,db.DinhMuc,db.SDT,SoNK=(select COUNT(*) from KTKS_DonKH.dbo.DCBD_DKDM_CCCD where IDDanhBo=db.ID)"
                 + " ,db.CreateDate,CreateBy=case when db.CreateBy is not null then N'Thương Vụ' else N'Khách Hàng' end,db.DCBD,db.DaXuLy,db.HieuLucKy,dcbd.* from KTKS_DonKH.dbo.DCBD_DKDM_DanhBo db,CAPNUOCTANHOA.dbo.TB_DULIEUKHACHHANG ttkh"
                 + " LEFT JOIN ("
                 + " SELECT DCBD_SoPhieu=MaCTDCBD,DCBD_CreateDate=CONVERT(char(10),CreateDate,103),DCBD_ThongTin=ThongTin,DCBD_DinhMucBD=DinhMuc_BD,DanhBo, ROW_NUMBER() OVER (PARTITION BY DanhBo ORDER BY CreateDate desc) AS RowNum"
                 + " FROM KTKS_DonKH.dbo.DCBD_ChiTietBienDong) dcbd ON ttkh.DANHBO = dcbd.DanhBo And RowNum = 1"
-                + " where db.DanhBo=ttkh.DANHBO and CAST(db.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(db.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and db.CreateBy is null order by db.ID asc");
+                + " where db.DanhBo=ttkh.DANHBO and CAST(db.CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and CAST(db.CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' and db.CreateBy is null";
+            if (DinhMucTang)
+                sql += " and db.DinhMuc<(select COUNT(*)*4 from KTKS_DonKH.dbo.DCBD_DKDM_CCCD where IDDanhBo=db.ID)";
+            sql += " order by db.ID asc";
+            return ExecuteQuery_DataTable(sql);
         }
 
         public DataTable getDS_NguoiLap()
