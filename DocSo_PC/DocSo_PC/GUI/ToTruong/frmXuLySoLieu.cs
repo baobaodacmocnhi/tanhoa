@@ -50,7 +50,6 @@ namespace DocSo_PC.GUI.ToTruong
                 dgvLichSu.AutoGenerateColumns = false;
                 dgvCongVanDen.AutoGenerateColumns = false;
                 dgvButPhe.AutoGenerateColumns = false;
-
                 cmbNam.DataSource = _cDocSo.getDS_Nam();
                 cmbNam.DisplayMember = "Nam";
                 cmbNam.ValueMember = "Nam";
@@ -60,7 +59,6 @@ namespace DocSo_PC.GUI.ToTruong
                 //    cmbDot.Items.Add(i.ToString("00"));
                 //}
                 //cmbDot.SelectedItem = CNguoiDung.Dot;
-
                 DataTable dtCode = _cDocSo.getDS_Code2023();
                 cmbCodeMoi.DataSource = dtCode;
                 cmbCodeMoi.DisplayMember = "Code";
@@ -92,12 +90,12 @@ namespace DocSo_PC.GUI.ToTruong
                             }
                     }
                     cmbDot.SelectedIndex = 0;
-                    loadMay(cmbTo.SelectedValue.ToString());
+                    loadMay(int.Parse(cmbTo.SelectedValue.ToString()));
                 }
                 else
                 {
                     lbTo.Text = "Tổ  " + CNguoiDung.TenTo;
-                    loadMay(CNguoiDung.MaTo.ToString());
+                    loadMay(CNguoiDung.MaTo);
                 }
                 _flagLoadFirst = true;
                 loadCodeMoi();
@@ -120,15 +118,15 @@ namespace DocSo_PC.GUI.ToTruong
             }
         }
 
-        public void loadMay(string MaTo)
+        public void loadMay(int MaTo)
         {
             try
             {
                 DataTable dtMay = new DataTable();
-                if (MaTo == "0")
+                if (MaTo == 0)
                     for (int i = 1; i < cmbTo.Items.Count; i++)
                     {
-                        dtMay.Merge(_cMayDS.getDS(((To)cmbTo.Items[i]).MaTo.ToString()));
+                        dtMay.Merge(_cMayDS.getDS(((To)cmbTo.Items[i]).MaTo));
                     }
                 else
                     dtMay = _cMayDS.getDS(MaTo);
@@ -273,7 +271,7 @@ namespace DocSo_PC.GUI.ToTruong
                 }
                 else
                 {
-                    loadMay(cmbTo.SelectedValue.ToString());
+                    loadMay(int.Parse(cmbTo.SelectedValue.ToString()));
                     To en = (To)cmbTo.SelectedItem;
                     cmbDot.Items.Clear();
                     for (int i = en.Phong.TuDot.Value; i <= en.Phong.DenDot.Value; i++)

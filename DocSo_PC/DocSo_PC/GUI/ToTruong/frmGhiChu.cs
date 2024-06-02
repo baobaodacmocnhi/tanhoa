@@ -63,12 +63,12 @@ namespace DocSo_PC.GUI.ToTruong
                 cmbTo.DataSource = lst;
                 cmbTo.DisplayMember = "TenTo";
                 cmbTo.ValueMember = "MaTo";
-                loadMay(cmbTo.SelectedValue.ToString());
+                loadMay(int.Parse(cmbTo.SelectedValue.ToString()));
             }
             else
             {
                 lbTo.Text = "Tổ  " + CNguoiDung.TenTo;
-                loadMay(CNguoiDung.MaTo.ToString());
+                loadMay(CNguoiDung.MaTo);
             }
             DataTable dt1, dt2;
             dt1 = dt2 = _cDHN.getDS_ViTriDHN();
@@ -79,15 +79,15 @@ namespace DocSo_PC.GUI.ToTruong
             _flagLoadFirst = true;
         }
 
-        public void loadMay(string MaTo)
+        public void loadMay(int MaTo)
         {
             try
             {
                 DataTable dtMay = new DataTable();
-                if (MaTo == "0")
+                if (MaTo == 0)
                     for (int i = 1; i < cmbTo.Items.Count; i++)
                     {
-                        dtMay.Merge(_cMayDS.getDS(((To)cmbTo.Items[i]).MaTo.ToString()));
+                        dtMay.Merge(_cMayDS.getDS(((To)cmbTo.Items[i]).MaTo));
                     }
                 else
                     dtMay = _cMayDS.getDS(MaTo);
@@ -186,7 +186,7 @@ namespace DocSo_PC.GUI.ToTruong
         private void cmbTo_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_flagLoadFirst == true && cmbTo.SelectedIndex > -1)
-                loadMay(cmbTo.SelectedValue.ToString());
+                loadMay(int.Parse(cmbTo.SelectedValue.ToString()));
         }
 
         private void btnXem_Click(object sender, EventArgs e)

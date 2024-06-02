@@ -72,20 +72,20 @@ namespace DocSo_PC.DAL.QuanTri
                         select new
                         {
                             itemM.May,
-                            //itemM.NhanVienID,
-                            //itemM.DienThoai,
                             To = itemT.TenTo
                         };
             return _cDAL.LINQToDataTable(query.ToList());
         }
 
-        public DataTable getDS(string MaTo)
+        public DataTable getDS(int MaTo)
         {
             var query = from itemM in _db.MayDs
-                        where itemM.MaTo == int.Parse(MaTo)
+                        join itemT in _db.Tos on Convert.ToInt32(itemM.MaTo) equals itemT.MaTo
+                        where itemM.MaTo == MaTo
                         select new
                         {
                             itemM.May,
+                            To = itemT.TenTo
                         };
             return _cDAL.LINQToDataTable(query.ToList());
         }

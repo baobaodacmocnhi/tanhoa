@@ -35,7 +35,7 @@ namespace DocSo_PC.GUI.MaHoa
                 DataTable dtMay = new DataTable();
                 for (int i = 0; i < lst.Count; i++)
                 {
-                    dtMay.Merge(_cMayDS.getDS(lst[i].MaTo.ToString()));
+                    dtMay.Merge(_cMayDS.getDS(lst[i].MaTo));
                 }
                 DataRow dr = dtMay.NewRow();
                 dr["May"] = "Tất Cả";

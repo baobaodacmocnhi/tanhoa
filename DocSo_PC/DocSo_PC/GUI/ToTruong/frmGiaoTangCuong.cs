@@ -51,17 +51,17 @@ namespace DocSo_PC.GUI.ToTruong
                 cmbTo.DataSource = lst;
                 cmbTo.DisplayMember = "TenTo";
                 cmbTo.ValueMember = "MaTo";
-                loadMay(cmbTo.SelectedValue.ToString());
+                loadMay(int.Parse(cmbTo.SelectedValue.ToString()));
             }
             else
             {
                 lbTo.Text = "Tổ  " + CNguoiDung.TenTo;
-                loadMay(CNguoiDung.MaTo.ToString());
+                loadMay(int.Parse(CNguoiDung.MaTo.ToString()));
             }
             _flagLoadFirst = true;
         }
 
-        public void loadMay(string MaTo)
+        public void loadMay(int MaTo)
         {
             DataTable dt = _cMayDS.getDS(MaTo);
             cmbMay.DataSource = dt;
@@ -99,7 +99,7 @@ namespace DocSo_PC.GUI.ToTruong
         private void cmbTo_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_flagLoadFirst == true && cmbTo.SelectedIndex > -1)
-                loadMay(cmbTo.SelectedValue.ToString());
+                loadMay(int.Parse(cmbTo.SelectedValue.ToString()));
         }
 
         private void btnGiao_Click(object sender, EventArgs e)

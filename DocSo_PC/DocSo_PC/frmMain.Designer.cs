@@ -152,30 +152,29 @@
             // mnuTo
             // 
             this.mnuTo.Name = "mnuTo";
-            this.mnuTo.Size = new System.Drawing.Size(139, 22);
+            this.mnuTo.Size = new System.Drawing.Size(152, 22);
             this.mnuTo.Text = "Tổ";
             this.mnuTo.Click += new System.EventHandler(this.mnuTo_Click);
             // 
             // mnuNhom
             // 
             this.mnuNhom.Name = "mnuNhom";
-            this.mnuNhom.Size = new System.Drawing.Size(139, 22);
+            this.mnuNhom.Size = new System.Drawing.Size(152, 22);
             this.mnuNhom.Text = "Nhóm";
             this.mnuNhom.Click += new System.EventHandler(this.mnuNhom_Click);
             // 
             // mnuNguoiDung
             // 
             this.mnuNguoiDung.Name = "mnuNguoiDung";
-            this.mnuNguoiDung.Size = new System.Drawing.Size(139, 22);
+            this.mnuNguoiDung.Size = new System.Drawing.Size(152, 22);
             this.mnuNguoiDung.Text = "Người Dùng";
             this.mnuNguoiDung.Click += new System.EventHandler(this.mnuNguoiDung_Click);
             // 
             // mnuNhanVienDocSo
             // 
             this.mnuNhanVienDocSo.Name = "mnuNhanVienDocSo";
-            this.mnuNhanVienDocSo.Size = new System.Drawing.Size(139, 22);
+            this.mnuNhanVienDocSo.Size = new System.Drawing.Size(152, 22);
             this.mnuNhanVienDocSo.Text = "Máy Đọc Số";
-            this.mnuNhanVienDocSo.Visible = false;
             this.mnuNhanVienDocSo.Click += new System.EventHandler(this.mnuNhanVienDocSo_Click);
             // 
             // mnuDoi

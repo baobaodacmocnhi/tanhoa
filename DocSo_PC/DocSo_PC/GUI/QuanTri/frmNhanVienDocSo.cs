@@ -17,6 +17,7 @@ namespace DocSo_PC.GUI.QuanTri
         CMayDS _cMayDS = new CMayDS();
         CTo _cTo = new CTo();
         MayD _may = null;
+        bool _flagLoad = false;
 
         public frmNhanVienDocSo()
         {
@@ -26,21 +27,29 @@ namespace DocSo_PC.GUI.QuanTri
         private void frmNhanVienDocSo_Load(object sender, EventArgs e)
         {
             dgvDanhSach.AutoGenerateColumns = false;
-            dgvDanhSach.DataSource = _cMayDS.getDS();
-            cmbTo.DataSource = _cTo.getDS_HanhThu();
-            cmbTo.DisplayMember = "TenTo";
-            cmbTo.ValueMember = "MaTo";
+            if (CNguoiDung.Admin)
+            {
+                panel1.Visible = true;
+                cmbPhong.DataSource = _cTo.getDS_Phong();
+                cmbPhong.DisplayMember = "Name";
+                cmbPhong.ValueMember = "ID";
+            }
+            else
+            {
+                panel1.Visible = false;
+                cmbTo.DataSource = _cTo.getDS_HanhThu(CNguoiDung.IDPhong);
+                cmbTo.DisplayMember = "TenTo";
+                cmbTo.ValueMember = "MaTo";
+            }
             cmbTo.SelectedIndex = -1;
         }
 
         public void Clear()
         {
             txtMay.Text = "";
-            txtNhanVien.Text = "";
-            txtDienThoai.Text = "";
             cmbTo.SelectedIndex = -1;
             _may = null;
-            dgvDanhSach.DataSource = _cMayDS.getDS();
+            dgvDanhSach.DataSource = _cMayDS.getDS(int.Parse(cmbTo.SelectedValue.ToString()));
         }
 
         public void fill()
@@ -48,9 +57,7 @@ namespace DocSo_PC.GUI.QuanTri
             try
             {
                 txtMay.Text = _may.May;
-                //txtNhanVien.Text = _may.NhanVienID;
-                //txtDienThoai.Text = _may.DienThoai;
-                //cmbTo.SelectedValue = int.Parse(_may.MaTo);
+                cmbTo.SelectedValue = _may.MaTo.Value;
             }
             catch (Exception ex)
             {
@@ -80,8 +87,6 @@ namespace DocSo_PC.GUI.QuanTri
                     {
                         MayD en = new MayD();
                         en.May = int.Parse(txtMay.Text.Trim()).ToString("00");
-                        //en.NhanVienID = txtNhanVien.Text.Trim();
-                        //en.DienThoai = txtDienThoai.Text.Trim();
                         en.MaTo = int.Parse(cmbTo.SelectedValue.ToString());
                         if (_cMayDS.them(en) == true)
                         {
@@ -105,7 +110,7 @@ namespace DocSo_PC.GUI.QuanTri
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Xoa"))
                 {
-                    if (_may != null)
+                    if (_may != null && MessageBox.Show("Bạn có chắc chắn???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
                         if (_cMayDS.xoa(_may) == true)
                         {
@@ -129,21 +134,48 @@ namespace DocSo_PC.GUI.QuanTri
             {
                 if (CNguoiDung.CheckQuyen(_mnu, "Sua"))
                 {
-                    if (MessageBox.Show("Bạn có chắc chắn???", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                        if (_may != null)
+                    if (_may != null)
+                    {
+                        _may.MaTo = int.Parse(cmbTo.SelectedValue.ToString());
+                        if (_cMayDS.sua(_may) == true)
                         {
-                            //_may.NhanVienID = txtNhanVien.Text.Trim();
-                            //_may.DienThoai = txtDienThoai.Text.Trim();
-                            _may.MaTo = int.Parse( cmbTo.SelectedValue.ToString());
-                            if (_cMayDS.sua(_may) == true)
-                            {
-                                MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                Clear();
-                            }
+                            MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Clear();
                         }
+                    }
                 }
                 else
                     MessageBox.Show("Bạn không có quyền Sửa Form này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cmbTo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cmbTo.Items.Count > 0 && cmbTo.SelectedIndex > -1 && _flagLoad == false)
+                    dgvDanhSach.DataSource = _cMayDS.getDS(int.Parse(cmbTo.SelectedValue.ToString()));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnXem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _flagLoad = true;
+                cmbTo.DataSource = _cTo.getDS_HanhThu(int.Parse(cmbPhong.SelectedValue.ToString()));
+                cmbTo.DisplayMember = "TenTo";
+                cmbTo.ValueMember = "MaTo";
+                cmbTo.SelectedIndex = -1;
+                _flagLoad = false;
             }
             catch (Exception ex)
             {
