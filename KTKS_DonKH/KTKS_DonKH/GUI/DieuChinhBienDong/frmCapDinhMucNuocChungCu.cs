@@ -385,7 +385,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
 
         private void txtCCCD_Leave(object sender, EventArgs e)
         {
-
+            if (txtCCCD.Text.Trim() != "" && txtCCCD.Text.Trim().Length != 12)
+            {
+                MessageBox.Show("CCCD gồm 12 số", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
         }
 
         private void frmCapDinhMucNuocChungCu_KeyDown(object sender, KeyEventArgs e)

@@ -154,8 +154,8 @@ namespace KTKS_DonKH.DAL
 
         public bool checkExists_HDDT(string DanhBo)
         {
-            return bool.Parse(ExecuteQuery_ReturnOneValue("if exists (select * from Zalo_EContract_ChiTiet where DanhBo='" + DanhBo + "' and HieuLuc=1) select 'true'"
-                + " else if exists (select * from Zalo_EContract_ChiTiet a,[TANHOA_WATER].[dbo].[KH_HOSOKHACHHANG] b where a.SHS=b.SHS and b.DHN_SODANHBO='" + DanhBo + "' and a.HieuLuc=1) select 'true'"
+            return bool.Parse(ExecuteQuery_ReturnOneValue("if exists (select * from Zalo_EContract_ChiTiet where DanhBo='" + DanhBo + "') select 'true'"
+                + " else if exists (select * from Zalo_EContract_ChiTiet a,[TANHOA_WATER].[dbo].[KH_HOSOKHACHHANG] b where a.SHS=b.SHS and b.DHN_SODANHBO='" + DanhBo + "') select 'true'"
                 + " else select 'false'").ToString());
         }
 

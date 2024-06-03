@@ -2499,6 +2499,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (txtMaCT.Text.Trim() != "")
             {
+                if (txtMaCT.Text.Trim() != "" && int.Parse(cmbLoaiCT.SelectedValue.ToString()) == 15 && txtMaCT.Text.Trim().Length != 12)
+                {
+                    MessageBox.Show("CCCD gồm 12 số", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 DataTable dt = new DataTable();
                 if (_cChungTu.CheckExist_CT(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString())))
                 {

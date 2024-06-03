@@ -237,6 +237,7 @@
             this.txtMaCT.Size = new System.Drawing.Size(100, 22);
             this.txtMaCT.TabIndex = 1;
             this.txtMaCT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaCT_KeyPress);
+            this.txtMaCT.Leave += new System.EventHandler(this.txtMaCT_Leave);
             // 
             // txtSoNKTong
             // 
