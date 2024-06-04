@@ -1,0 +1,2 @@
+select * from TT_KQDongNuoc where YEAR(NgayMN)=2024 and month(NgayMN)=04 and DATEPART(HOUR, NgayMN)>=17 and DATEPART(HOUR, NgayMN)<=20 and SUBSTRING(MLT,1,2)<=15
+select * from TT_KQDongNuoc where YEAR(NgayMN)=2024 and month(NgayMN)=04 and DATEPART(HOUR, NgayMN)>=17 and DATEPART(HOUR, NgayMN)<=20 and SUBSTRING(MLT,1,2)>=16

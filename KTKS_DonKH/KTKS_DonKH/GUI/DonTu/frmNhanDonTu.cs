@@ -2077,6 +2077,26 @@ namespace KTKS_DonKH.GUI.DonTu
             }
         }
 
+        private void btnKiemTraDoiTac_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string result = "";
+                if (txtCCCD.Text.Trim() != "")
+                    result = _wsEContract.getThongTinDoiTac(txtCCCD.Text.Trim());
+                if (txtDienThoaiMoi.Text.Trim() != "")
+                    result += "\r\n" + _wsEContract.getThongTinDoiTac(txtDienThoaiMoi.Text.Trim());
+                if (result != "")
+                    MessageBox.Show(result, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                    MessageBox.Show("CCCD hoặc SĐT trên chưa đăng ký", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
 
 

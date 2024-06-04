@@ -68,6 +68,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabTTKH = new System.Windows.Forms.TabPage();
+            this.chkAutoFillHDDT = new System.Windows.Forms.CheckBox();
             this.lbHDDT = new System.Windows.Forms.Label();
             this.txtMLT = new System.Windows.Forms.TextBox();
             this.label44 = new System.Windows.Forms.Label();
@@ -208,7 +209,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.xoaFile_dgvHinh = new System.Windows.Forms.ToolStripMenuItem();
             this.chkYeuCauScan = new System.Windows.Forms.CheckBox();
-            this.chkAutoFillHDDT = new System.Windows.Forms.CheckBox();
+            this.btnKiemTraDoiTac = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabTTKH.SuspendLayout();
@@ -591,6 +592,18 @@
             this.tabTTKH.TabIndex = 0;
             this.tabTTKH.Text = "Thông Tin Khách Hàng";
             this.tabTTKH.UseVisualStyleBackColor = true;
+            // 
+            // chkAutoFillHDDT
+            // 
+            this.chkAutoFillHDDT.AutoSize = true;
+            this.chkAutoFillHDDT.ForeColor = System.Drawing.Color.Red;
+            this.chkAutoFillHDDT.Location = new System.Drawing.Point(9, 117);
+            this.chkAutoFillHDDT.Name = "chkAutoFillHDDT";
+            this.chkAutoFillHDDT.Size = new System.Drawing.Size(111, 20);
+            this.chkAutoFillHDDT.TabIndex = 100;
+            this.chkAutoFillHDDT.Text = "AutoFill HĐĐT";
+            this.chkAutoFillHDDT.UseVisualStyleBackColor = true;
+            this.chkAutoFillHDDT.CheckedChanged += new System.EventHandler(this.chkAutoFillHDDT_CheckedChanged);
             // 
             // lbHDDT
             // 
@@ -1932,17 +1945,16 @@
             this.chkYeuCauScan.Text = "Yêu Cầu Scan";
             this.chkYeuCauScan.UseVisualStyleBackColor = true;
             // 
-            // chkAutoFillHDDT
+            // btnKiemTraDoiTac
             // 
-            this.chkAutoFillHDDT.AutoSize = true;
-            this.chkAutoFillHDDT.ForeColor = System.Drawing.Color.Red;
-            this.chkAutoFillHDDT.Location = new System.Drawing.Point(9, 117);
-            this.chkAutoFillHDDT.Name = "chkAutoFillHDDT";
-            this.chkAutoFillHDDT.Size = new System.Drawing.Size(111, 20);
-            this.chkAutoFillHDDT.TabIndex = 100;
-            this.chkAutoFillHDDT.Text = "AutoFill HĐĐT";
-            this.chkAutoFillHDDT.UseVisualStyleBackColor = true;
-            this.chkAutoFillHDDT.CheckedChanged += new System.EventHandler(this.chkAutoFillHDDT_CheckedChanged);
+            this.btnKiemTraDoiTac.ForeColor = System.Drawing.Color.Blue;
+            this.btnKiemTraDoiTac.Location = new System.Drawing.Point(691, 425);
+            this.btnKiemTraDoiTac.Name = "btnKiemTraDoiTac";
+            this.btnKiemTraDoiTac.Size = new System.Drawing.Size(89, 40);
+            this.btnKiemTraDoiTac.TabIndex = 106;
+            this.btnKiemTraDoiTac.Text = "Kiểm Tra Đối Tác";
+            this.btnKiemTraDoiTac.UseVisualStyleBackColor = true;
+            this.btnKiemTraDoiTac.Click += new System.EventHandler(this.btnKiemTraDoiTac_Click);
             // 
             // frmNhanDonTu
             // 
@@ -1951,6 +1963,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1369, 731);
+            this.Controls.Add(this.btnKiemTraDoiTac);
             this.Controls.Add(this.chkYeuCauScan);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.btnCapNhatLaiHieuLuc);
@@ -2212,5 +2225,6 @@
         private System.Windows.Forms.ToolStripMenuItem xoaFile_dgvHinh;
         private System.Windows.Forms.CheckBox chkYeuCauScan;
         private System.Windows.Forms.CheckBox chkAutoFillHDDT;
+        private System.Windows.Forms.Button btnKiemTraDoiTac;
     }
 }

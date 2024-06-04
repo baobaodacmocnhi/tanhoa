@@ -57,6 +57,8 @@ namespace KTKS_DonKH.wrEContract {
         
         private System.Threading.SendOrPostCallback duyetKhongKyOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getThongTinDoiTacOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -136,6 +138,9 @@ namespace KTKS_DonKH.wrEContract {
         
         /// <remarks/>
         public event duyetKhongKyCompletedEventHandler duyetKhongKyCompleted;
+        
+        /// <remarks/>
+        public event getThongTinDoiTacCompletedEventHandler getThongTinDoiTacCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getAccess_token", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -793,6 +798,35 @@ namespace KTKS_DonKH.wrEContract {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getThongTinDoiTac", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getThongTinDoiTac(string NoiDungTimKiem) {
+            object[] results = this.Invoke("getThongTinDoiTac", new object[] {
+                        NoiDungTimKiem});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getThongTinDoiTacAsync(string NoiDungTimKiem) {
+            this.getThongTinDoiTacAsync(NoiDungTimKiem, null);
+        }
+        
+        /// <remarks/>
+        public void getThongTinDoiTacAsync(string NoiDungTimKiem, object userState) {
+            if ((this.getThongTinDoiTacOperationCompleted == null)) {
+                this.getThongTinDoiTacOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetThongTinDoiTacOperationCompleted);
+            }
+            this.InvokeAsync("getThongTinDoiTac", new object[] {
+                        NoiDungTimKiem}, this.getThongTinDoiTacOperationCompleted, userState);
+        }
+        
+        private void OngetThongTinDoiTacOperationCompleted(object arg) {
+            if ((this.getThongTinDoiTacCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getThongTinDoiTacCompleted(this, new getThongTinDoiTacCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -1243,6 +1277,32 @@ namespace KTKS_DonKH.wrEContract {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[1]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    public delegate void getThongTinDoiTacCompletedEventHandler(object sender, getThongTinDoiTacCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getThongTinDoiTacCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getThongTinDoiTacCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
             }
         }
     }
