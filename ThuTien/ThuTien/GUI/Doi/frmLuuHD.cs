@@ -553,6 +553,7 @@ namespace ThuTien.GUI.Doi
             hoadonCu.PBVMT2021 = hoadonMoi.PBVMT2021;
             hoadonCu.TDVTN2022 = hoadonMoi.TDVTN2022;
             hoadonCu.DiaChiHD = hoadonMoi.DiaChiHD;
+            hoadonCu.MaNV_HanhThu = hoadonMoi.MaNV_HanhThu;
         }
 
         private void btnSoSanhKyTruoc_Click(object sender, EventArgs e)
