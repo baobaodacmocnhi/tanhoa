@@ -129,6 +129,7 @@
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.xoaFile_dgvHinh = new System.Windows.Forms.ToolStripMenuItem();
             this.btnInThongBaoMoi = new System.Windows.Forms.Button();
+            this.lbHetHan = new System.Windows.Forms.Label();
             this.groupBoxGhiChu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGhiChu)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -1122,6 +1123,17 @@
             this.btnInThongBaoMoi.UseVisualStyleBackColor = true;
             this.btnInThongBaoMoi.Click += new System.EventHandler(this.btnInThongBaoMoi_Click);
             // 
+            // lbHetHan
+            // 
+            this.lbHetHan.AutoSize = true;
+            this.lbHetHan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbHetHan.ForeColor = System.Drawing.Color.Red;
+            this.lbHetHan.Location = new System.Drawing.Point(848, 155);
+            this.lbHetHan.Name = "lbHetHan";
+            this.lbHetHan.Size = new System.Drawing.Size(73, 16);
+            this.lbHetHan.TabIndex = 126;
+            this.lbHetHan.Text = "lbHetHan";
+            // 
             // frmCHDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1129,6 +1141,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1434, 585);
+            this.Controls.Add(this.lbHetHan);
             this.Controls.Add(this.btnInThongBaoMoi);
             this.Controls.Add(this.label34);
             this.Controls.Add(this.txtTCHC);
@@ -1288,6 +1301,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Loai_Hinh;
         private System.Windows.Forms.CheckBox chkNgayHetHan;
         private System.Windows.Forms.DateTimePicker dateNgayHetHan;
+        private System.Windows.Forms.Label lbHetHan;
 
     }
 }

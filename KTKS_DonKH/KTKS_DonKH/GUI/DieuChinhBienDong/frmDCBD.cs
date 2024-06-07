@@ -76,7 +76,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             tb.Location = new Point(1223, 500);
             tb.Size = new Size(100, 75);
             this.Controls.Add(tb);
-
             ///this.KeyPreview = true;
             ///Hàm Properties không có nên phải add code
             ///Dùng để bôi đen Text
@@ -488,7 +487,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     LoadTTKH(_hoadon);
                     txtHieuLucKy.Focus();
-                    if (_cDKDM.checkExists(_hoadon.DANHBA, _dontu_ChiTiet.CreateDate.Value))
+                    if (_dontu_ChiTiet!=null&&_cDKDM.checkExists(_hoadon.DANHBA, _dontu_ChiTiet.CreateDate.Value))
                     {
                         MessageBox.Show("Có đăng ký online trong 10 ngày gần nhất từ ngày lập đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -1227,14 +1226,12 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             DataTable dt = new DataTable();
             dt = _cChungTu.LoadDSCapDinhMucHetHan_CCCD();
-
             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
             foreach (DataRow itemRow in dt.Rows)
             {
                 if (!string.IsNullOrEmpty(itemRow["NgayHetHan"].ToString()))
                 {
                     DataRow dr = dsBaoCao.Tables["DSCapDinhMuc"].NewRow();
-
                     dr["TuNgay"] = "";
                     dr["DenNgay"] = "";
                     if (_cDCBD.checkExist_BienDong(itemRow["DanhBo"].ToString(), DateTime.Parse(itemRow["CreateDate"].ToString())))
@@ -1244,7 +1241,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     }
                     else
                         dr["SoPhieu"] = "";
-
                     if (_cChungTu.CheckMaDonbyDanhBoChungTu(itemRow["DanhBo"].ToString(), itemRow["MaCT"].ToString()))
                     {
                         decimal MaDon = _cChungTu.getMaDonbyDanhBoChungTu(itemRow["DanhBo"].ToString(), itemRow["MaCT"].ToString());
@@ -1252,10 +1248,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     }
                     else
                         dr["MaDon"] = "";
-
                     if (!string.IsNullOrEmpty(itemRow["DanhBo"].ToString()))
                         dr["DanhBo"] = itemRow["DanhBo"].ToString().Insert(7, " ").Insert(4, " ");
-
                     HOADON hoadon = _cThuTien.GetMoiNhat(itemRow["DanhBo"].ToString());
                     if (hoadon != null)
                     {
@@ -1264,7 +1258,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         dr["Phuong"] = _cDonTu.getTenPhuong(int.Parse(hoadon.Quan), int.Parse(hoadon.Phuong));
                         dr["Quan"] = _cDonTu.getTenQuan(int.Parse(hoadon.Quan));
                     }
-
                     dr["MaLCT"] = itemRow["MaLCT"];
                     dr["TenLCT"] = itemRow["TenLCT"];
                     dr["MaCT"] = itemRow["MaCT"];
@@ -1272,11 +1265,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     dr["NgayHetHan"] = itemRow["NgayHetHan"];
                     dr["DienThoai"] = itemRow["DienThoai"];
                     dr["GhiChu"] = itemRow["GhiChu"];
-
                     dsBaoCao.Tables["DSCapDinhMuc"].Rows.Add(dr);
                 }
             }
-
             rptDSCapDinhMuc rpt = new rptDSCapDinhMuc();
             rpt.SetDataSource(dsBaoCao);
             frmShowBaoCao frm = new frmShowBaoCao(rpt);

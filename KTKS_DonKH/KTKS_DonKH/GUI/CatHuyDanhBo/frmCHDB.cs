@@ -41,7 +41,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
         CCHDB_NoiDungXuLy _cNoiDungXuLyCHDB = new CCHDB_NoiDungXuLy();
         CKTXM _cKTXM = new CKTXM();
         wsThuongVu _wsThuongVu = new wsThuongVu();
-
         DonTu_ChiTiet _dontu_ChiTiet = null;
         DonKH _dontkh = null;
         DonTXL _dontxl = null;
@@ -67,12 +66,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             dgvGhiChu.AutoGenerateColumns = false;
             dgvLichSuCHDB.AutoGenerateColumns = false;
             dgvGhiChuDocSo.AutoGenerateColumns = false;
-
             cmbLyDo.DataSource = _cLyDoCHDB.GetDS();
             cmbLyDo.DisplayMember = "LyDo";
             cmbLyDo.ValueMember = "LyDo";
             cmbLyDo.SelectedIndex = -1;
-
             DataTable dt1 = _cCHDB.GetDSNoiDungGhiChu();
             AutoCompleteStringCollection auto1 = new AutoCompleteStringCollection();
             foreach (DataRow item in dt1.Rows)
@@ -80,7 +77,6 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                 auto1.Add(item["NoiDung"].ToString());
             }
             txtNoiDungGhiChu.AutoCompleteCustomSource = auto1;
-
             //DataTable dt2 = _cCHDB.GetDSNoiNhanGhiChu();
             //AutoCompleteStringCollection auto2 = new AutoCompleteStringCollection();
             //foreach (DataRow item in dt2.Rows)
@@ -88,19 +84,17 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
             //    auto2.Add(item["NoiNhan"].ToString());
             //}
             //txtNoiNhanXuLy.AutoCompleteCustomSource = auto2;
-
             cmbNoiDung.DataSource = _cNoiDungXuLyCHDB.GetDS();
             cmbNoiDung.DisplayMember = "NoiDung";
             cmbNoiDung.ValueMember = "NoiDung";
             cmbNoiDung.SelectedIndex = -1;
-
             if (_MaCTCHDB != -1)
             {
                 txtMaThongBaoCH.Text = _MaCTCHDB.ToString();
                 KeyPressEventArgs arg = new KeyPressEventArgs(Convert.ToChar(Keys.Enter));
-
                 txtMaThongBaoCH_KeyPress(sender, arg);
             }
+            lbHetHan.Text = _cCHDB.getDS_CatHuy_HetHan().Rows.Count.ToString() + " sắp hết hạn";
         }
 
         public void LoadTTKH(HOADON hoadon)

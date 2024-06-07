@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.125, 18.875" name="dbDHN">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.125, 19.75" name="dbDHN">
   <DataContextMoniker Name="/dbDHNDataContext" />
   <nestedChildShapes>
     <classShape Id="8ec3c2d9-968d-4c8e-a8af-0d7820492da9" absoluteBounds="6.125, 3.25, 2, 2.5401025390625">
@@ -33,22 +33,22 @@
         <elementListCompartment Id="c63450f6-d8c1-4cab-88b3-e91e0e7fbbb8" absoluteBounds="8.515, 1.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="cc435332-bb47-4fe1-9afe-5eb2034ca4f4" absoluteBounds="3.875, 3.5, 2, 11.962872721354165">
-      <DataClassMoniker Name="/dbDHNDataContext/TB_DULIEUKHACHHANG_HUYDB" />
-      <nestedChildShapes>
-        <elementListCompartment Id="8138877d-31f6-44c5-ace5-c8135dc14d6f" absoluteBounds="3.89, 3.96, 1.9700000000000002, 11.402872721354166" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="513a063d-2091-468d-8ac5-3e1021e1911a" absoluteBounds="8.875, 3.375, 2, 2.5401025390625">
       <DataClassMoniker Name="/dbDHNDataContext/SDT_DHN" />
       <nestedChildShapes>
         <elementListCompartment Id="2e8f3fd8-2c4d-42fe-a2f9-a833d63c94b2" absoluteBounds="8.89, 3.835, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="9ec6e7ed-53b4-42c6-b64a-e622fff7889d" absoluteBounds="0.75, 2, 2, 16.578107096354167">
+    <classShape Id="adf80bcd-07d8-44da-94d4-a563847dfad3" absoluteBounds="0.75, 2.75, 2, 16.770408528645834">
       <DataClassMoniker Name="/dbDHNDataContext/TB_DULIEUKHACHHANG" />
       <nestedChildShapes>
-        <elementListCompartment Id="95f4ba9a-6a0e-4e3b-a0e0-7d418c3b2c62" absoluteBounds="0.76500000000000012, 2.46, 1.9700000000000002, 16.018107096354164" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="b144137c-d344-4105-ba4c-ea27c1bb665e" absoluteBounds="0.765, 3.21, 1.9700000000000002, 16.210408528645832" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9ddf6915-21eb-479d-8ded-8f8154b3b97c" absoluteBounds="3.75, 6.75, 2, 12.347475585937502">
+      <DataClassMoniker Name="/dbDHNDataContext/TB_DULIEUKHACHHANG_HUYDB" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9b510026-d0a7-47c1-8ed3-0e74a9d57dd7" absoluteBounds="3.765, 7.21, 1.9700000000000002, 11.7874755859375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

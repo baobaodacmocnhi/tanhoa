@@ -1159,6 +1159,34 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
             return LINQToDataTable(query);
         }
 
+        public DataTable getDS_CatHuy_HetHan()
+        {
+            var query = from item in db.CHDB_ChiTietCatHuys
+                        where item.NgayHetHan.Value.Date <= DateTime.Now.AddDays(7).Date
+                        select new
+                        {
+                            MaDon = item.CHDB.MaDonMoi != null ? db.DonTu_ChiTiets.Where(itemA => itemA.MaDon == item.CHDB.MaDonMoi).Count() == 1 ? item.CHDB.MaDonMoi.Value.ToString() : item.CHDB.MaDonMoi + "." + item.STT
+                                    : item.CHDB.MaDon != null ? "TKH" + item.CHDB.MaDon
+                                    : item.CHDB.MaDonTXL != null ? "TXL" + item.CHDB.MaDonTXL
+                                    : item.CHDB.MaDonTBC != null ? "TBC" + item.CHDB.MaDonTBC : null,
+                            item.PhieuDuocKy,
+                            item.DaLapPhieu,
+                            item.SoPhieu,
+                            item.ThongBaoDuocKy,
+                            ID = item.MaCTCHDB,
+                            item.CreateDate,
+                            item.DanhBo,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.LyDo,
+                            item.GhiChuLyDo,
+                            item.SoTien,
+                            item.NoiDungXuLy,
+                            item.NguoiKy
+                        };
+            return LINQToDataTable(query);
+        }
+
         ///// <summary>
         ///// Lấy Số Phiếu kế tiếp khi lập Cắt Hủy Danh Bộ
         ///// </summary>
@@ -1418,6 +1446,8 @@ namespace KTKS_DonKH.DAL.CatHuyDanhBo
                         + " select LuyKe=@LuyKe,Nhan=@Nhan,XuLy=@XuLy,Ton=@LuyKe+@Nhan-@XuLy";
             return ExecuteQuery_DataTable(sql);
         }
+
+
 
         #endregion
 

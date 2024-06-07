@@ -257,7 +257,10 @@ namespace KTKS_DonKH.DAL
             if (db.TB_DULIEUKHACHHANGs.Any(item => item.DANHBO == DanhBo) == true)
                 return db.TB_DULIEUKHACHHANGs.SingleOrDefault(item => item.DANHBO == DanhBo).LOTRINH.Substring(0, 2);
             else
-                return db.TB_DULIEUKHACHHANG_HUYDBs.SingleOrDefault(item => item.DANHBO == DanhBo).LOTRINH.Substring(0, 2);
+                if (db.TB_DULIEUKHACHHANG_HUYDBs.Any(item => item.DANHBO == DanhBo) == true)
+                    return db.TB_DULIEUKHACHHANG_HUYDBs.SingleOrDefault(item => item.DANHBO == DanhBo).LOTRINH.Substring(0, 2);
+                else
+                    return "";
         }
 
         public DataTable GetDSChungCu()

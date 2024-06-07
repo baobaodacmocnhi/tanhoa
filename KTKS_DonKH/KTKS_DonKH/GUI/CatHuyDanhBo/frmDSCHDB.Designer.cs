@@ -265,7 +265,8 @@
             "Danh Bộ",
             "Số Thông Báo/Số Phiếu",
             "Ngày",
-            "Lý Do"});
+            "Lý Do",
+            "Hết Hạn"});
             this.cmbTimTheo.Location = new System.Drawing.Point(441, 5);
             this.cmbTimTheo.Name = "cmbTimTheo";
             this.cmbTimTheo.Size = new System.Drawing.Size(100, 24);

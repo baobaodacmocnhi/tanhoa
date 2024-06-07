@@ -921,6 +921,10 @@ namespace KTKS_DonKH.GUI.CatHuyDanhBo
                                             dgvDSYCCHDB.DataSource = _cDongNuoc.getDS_DongNuoc_CreateDate(cmbQuan.SelectedValue.ToString(), dateTu.Value, dateDen.Value);
                         }
                     break;
+                case "Hết Hạn":
+                    if (radDSCatHuyDanhBo.Checked)
+                        dgvDSCTCHDB.DataSource = _cCHDB.getDS_CatHuy_HetHan();
+                    break;
                 default:
                     break;
             }
