@@ -1440,13 +1440,13 @@
             this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.xoaFile_dgvHinh});
             this.contextMenuStrip2.Name = "contextMenuStrip1";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(153, 48);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(101, 26);
             // 
             // xoaFile_dgvHinh
             // 
             this.xoaFile_dgvHinh.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xoaFile_dgvHinh.Name = "xoaFile_dgvHinh";
-            this.xoaFile_dgvHinh.Size = new System.Drawing.Size(152, 22);
+            this.xoaFile_dgvHinh.Size = new System.Drawing.Size(100, 22);
             this.xoaFile_dgvHinh.Text = "Xóa";
             this.xoaFile_dgvHinh.Click += new System.EventHandler(this.xoaFile_dgvHinh_Click);
             // 
@@ -1456,7 +1456,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1457, 750);
+            this.ClientSize = new System.Drawing.Size(1298, 657);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.chkYeuCauScan);
             this.Controls.Add(this.groupBox2);

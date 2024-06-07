@@ -1150,7 +1150,7 @@ namespace KTKS_DonKH.GUI.DonTu
         {
             if (e.Button == MouseButtons.Right)
             {
-                contextMenuStrip1.Show(dgvHinh, new Point(e.X, e.Y));
+                contextMenuStrip2.Show(dgvHinh, new Point(e.X, e.Y));
             }
         }
 
