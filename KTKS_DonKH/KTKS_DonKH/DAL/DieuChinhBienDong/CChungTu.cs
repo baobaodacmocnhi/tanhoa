@@ -131,7 +131,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         public bool CheckExist_CT(string MaCT, int MaLCT)
         {
-            return db.ChungTu_ChiTiets.Any(itemCT => itemCT.MaCT == MaCT && itemCT.MaLCT == MaLCT && itemCT.Cat == false);
+            return db.ChungTu_ChiTiets.Any(itemCT => itemCT.MaCT == MaCT && itemCT.MaLCT == MaLCT);
         }
 
         public bool CheckExist_CT_HoKhau_HoKhauNgheo(string MaCT, int MaLCT)

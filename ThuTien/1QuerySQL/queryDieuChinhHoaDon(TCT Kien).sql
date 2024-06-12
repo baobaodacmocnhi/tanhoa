@@ -43,5 +43,7 @@ and tt.phi_bd!=tv.phibvmt_start
 
 select DANHBA,SOHOADON,SOPHATHANH,NAM,KY,GIABAN,THUE,PHI,ThueGTGT_TDVTN,TONGCONG from HOADON where CAST(NGAYGIAITRACH as date)='20220825' and MaNV_DangNgan is not null
 
---update HOADON set ThueGTGT_TDVTN=TongCong-(giaban+THUE+PHI) where nam=2023 and ThueGTGT_TDVTN is null
---and TongCong!=giaban+THUE+PHI
+--update HOADON set ThueGTGT_TDVTN=TongCong-(giaban+THUE+PHI) where nam=2024 and ThueGTGT_TDVTN is null and TongCong!=giaban+THUE+PHI
+--update HOADON set PHI=TongCong-(giaban+THUE+ThueGTGT_TDVTN) where nam=2024 and PHI is null and TongCong!=giaban+THUE+ThueGTGT_TDVTN
+select * from  HOADON  where nam=2024 and ((ThueGTGT_TDVTN is null and TongCong!=giaban+THUE+PHI)or(PHI is null and TongCong!=giaban+THUE+ThueGTGT_TDVTN))
+update HOADON set GIABAN=445800,THUE=22290,phi=111450,ThueGTGT_TDVTN=8916 where SOHOADON='1K24TCT2503706'
