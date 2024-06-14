@@ -271,7 +271,7 @@ namespace ThuTien.DAL.TongHop
                         select new
                         {
                             TieuThu_BD = itemGroup.Sum(groupItem => groupItem.TIEUTHU_BD) == null ? 0 : itemGroup.Sum(groupItem => groupItem.TIEUTHU_BD),
-                            TieuThu_DC = itemGroup.Sum(groupItem => groupItem.TIEUTHU_DC) == null ? 0 : itemGroup.Sum(groupItem => groupItem.TIEUTHU_DC),
+                            TieuThu_DC = itemGroup.Sum(groupItem => groupItem.TIEUTHU_DC) == null ? itemGroup.Sum(groupItem => groupItem.TIEUTHU_BD) : itemGroup.Sum(groupItem => groupItem.TIEUTHU_DC),
                             GIABAN_BD = itemGroup.Sum(groupItem => groupItem.GIABAN_BD) == null ? 0 : itemGroup.Sum(groupItem => groupItem.GIABAN_BD),
                             ThueGTGT_BD = itemGroup.Sum(groupItem => groupItem.THUE_BD) == null ? 0 : itemGroup.Sum(groupItem => groupItem.THUE_BD),
                             PhiBVMT_BD = itemGroup.Sum(groupItem => groupItem.PHI_BD) == null ? 0 : itemGroup.Sum(groupItem => groupItem.PHI_BD),
