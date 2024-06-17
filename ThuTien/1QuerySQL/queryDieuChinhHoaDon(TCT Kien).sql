@@ -47,3 +47,7 @@ select DANHBA,SOHOADON,SOPHATHANH,NAM,KY,GIABAN,THUE,PHI,ThueGTGT_TDVTN,TONGCONG
 --update HOADON set PHI=TongCong-(giaban+THUE+ThueGTGT_TDVTN) where nam=2024 and PHI is null and TongCong!=giaban+THUE+ThueGTGT_TDVTN
 select * from  HOADON  where nam=2024 and ((ThueGTGT_TDVTN is null and TongCong!=giaban+THUE+PHI)or(PHI is null and TongCong!=giaban+THUE+ThueGTGT_TDVTN))
 update HOADON set GIABAN=445800,THUE=22290,phi=111450,ThueGTGT_TDVTN=8916 where SOHOADON='1K24TCT2503706'
+
+--get hóa đơn tồn gửi thu hộ
+select distinct dn.DanhBo from TT_KQDongNuoc khdn,TT_DongNuoc dn,TT_CTDongNuoc ctdn,HOADON hd where MoNuoc=0 and TroNgaiMN=0 and dn.MaDN=ctdn.MaDN and dn.MaDN=khdn.MaDN and ctdn.MaHD=hd.ID_HOADON
+and MaNV_DangNgan is null and NGAYGIAITRACH is null and ID_HOADON not in (select MaHD from TT_DichVuThu)

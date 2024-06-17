@@ -37,11 +37,6 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvLichSuChungTu = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Loai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaLCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenLCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +45,13 @@
             this.DanhBo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoNKDangKy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuChungTu)).BeginInit();
@@ -104,10 +106,11 @@
             this.SoNKTong,
             this.DanhBo,
             this.SoNKDangKy,
-            this.CreateDate});
+            this.CreateDate,
+            this.CreateBy});
             this.dgvDanhSach.Location = new System.Drawing.Point(12, 41);
             this.dgvDanhSach.Name = "dgvDanhSach";
-            this.dgvDanhSach.Size = new System.Drawing.Size(787, 134);
+            this.dgvDanhSach.Size = new System.Drawing.Size(880, 134);
             this.dgvDanhSach.TabIndex = 38;
             this.dgvDanhSach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellClick);
             this.dgvDanhSach.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDanhSach_RowPostPaint);
@@ -137,7 +140,7 @@
             this.groupBox1.Controls.Add(this.dgvLichSuChungTu);
             this.groupBox1.Location = new System.Drawing.Point(12, 181);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(571, 313);
+            this.groupBox1.Size = new System.Drawing.Size(667, 313);
             this.groupBox1.TabIndex = 41;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lịch Sử Chứng Từ";
@@ -152,43 +155,14 @@
             this.Column2,
             this.Column3,
             this.Column4,
-            this.Column5});
+            this.Column5,
+            this.dataGridViewTextBoxColumn1});
             this.dgvLichSuChungTu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvLichSuChungTu.Location = new System.Drawing.Point(3, 18);
             this.dgvLichSuChungTu.Name = "dgvLichSuChungTu";
-            this.dgvLichSuChungTu.Size = new System.Drawing.Size(565, 292);
+            this.dgvLichSuChungTu.Size = new System.Drawing.Size(661, 292);
             this.dgvLichSuChungTu.TabIndex = 39;
             this.dgvLichSuChungTu.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvLichSuChungTu_RowPostPaint);
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "CreateDate";
-            this.Column1.HeaderText = "Ngày Lập";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "Loai";
-            this.Column2.HeaderText = "Loại";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "DanhBo";
-            this.Column3.HeaderText = "Danh Bộ";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "MaCT";
-            this.Column4.HeaderText = "Mã CT";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "SoNKDangKy";
-            this.Column5.HeaderText = "Số NK Đăng Ký";
-            this.Column5.Name = "Column5";
             // 
             // Loai
             // 
@@ -240,6 +214,48 @@
             this.CreateDate.HeaderText = "Ngày Lập";
             this.CreateDate.Name = "CreateDate";
             // 
+            // CreateBy
+            // 
+            this.CreateBy.DataPropertyName = "CreateBy";
+            this.CreateBy.HeaderText = "Người Lập";
+            this.CreateBy.Name = "CreateBy";
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "CreateDate";
+            this.Column1.HeaderText = "Ngày Lập";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "Loai";
+            this.Column2.HeaderText = "Loại";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "DanhBo";
+            this.Column3.HeaderText = "Danh Bộ";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "MaCT";
+            this.Column4.HeaderText = "Mã CT";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "SoNKDangKy";
+            this.Column5.HeaderText = "Số NK Đăng Ký";
+            this.Column5.Name = "Column5";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "CreateBy";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Người Lập";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
             // frmSoDangKyDinhMuc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -285,10 +301,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DanhBo;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoNKDangKy;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateBy;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
     }
 }

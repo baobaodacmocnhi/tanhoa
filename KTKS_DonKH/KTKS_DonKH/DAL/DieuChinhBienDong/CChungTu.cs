@@ -203,6 +203,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             itemCT.KhacDiaBan,
                             itemCTCT.ThuongTru,
                             itemCTCT.TamTru,
+                            CreateBy = db.Users.SingleOrDefault(o => o.MaU == itemCTCT.CreateBy).HoTen,
                         };
 
             return LINQToDataTable(query);
@@ -4246,7 +4247,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
 
         public DataTable getTimKiemSoDangKyDinhMuc(string MaCT)
         {
-            string sql = "select ctct.MaLCT,TenLCT,ctct.MaCT,ct.SoNKTong,ctct.DanhBo,ctct.SoNKDangKy,ctct.CreateDate"
+            string sql = "select ctct.MaLCT,TenLCT,ctct.MaCT,ct.SoNKTong,ctct.DanhBo,ctct.SoNKDangKy,ctct.CreateDate,CreateBy=(select HoTen from Users where MaU=ctct.CreateBy)"
                         + " from ChungTu ct,LoaiChungTu lct,ChungTu_ChiTiet ctct"
                         + " where ct.MaLCT=lct.MaLCT and ct.MaCT=ctct.MaCT and ctct.MaCT like N'%" + MaCT + "%'"
                         + " order by CreateDate";
