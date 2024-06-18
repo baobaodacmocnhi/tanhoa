@@ -487,7 +487,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     LoadTTKH(_hoadon);
                     txtHieuLucKy.Focus();
-                    if (_dontu_ChiTiet!=null&&_cDKDM.checkExists(_hoadon.DANHBA, _dontu_ChiTiet.CreateDate.Value))
+                    if (_dontu_ChiTiet != null && _cDKDM.checkExists(_hoadon.DANHBA, _dontu_ChiTiet.CreateDate.Value))
                     {
                         MessageBox.Show("Có đăng ký online trong 10 ngày gần nhất từ ngày lập đơn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -1331,6 +1331,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         {
                             ChungTu_LichSu lichsuchungtu = _cChungTu.ChungTuToLichSu(ctchungtu);
                             lichsuchungtu.Loai = "Xóa";
+                            lichsuchungtu.NguoiThucHien = CTaiKhoan.HoTen;
                             _cChungTu.ThemLichSuChungTu(lichsuchungtu);
                             dgvDSSoDangKy.DataSource = _cChungTu.getDS_ChiTiet_DanhBo(txtDanhBo.Text.Trim());
                             LoadTongNK();

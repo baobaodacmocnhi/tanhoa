@@ -1288,6 +1288,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         {
                             ChungTu_LichSu lichsuchungtu = _cChungTu.ChungTuToLichSu(ctchungtu);
                             lichsuchungtu.Loai = "Xóa";
+                            lichsuchungtu.NguoiThucHien = CTaiKhoan.HoTen;
                             _cChungTu.ThemLichSuChungTu(lichsuchungtu);
                             dgvDSSoDangKy.DataSource = _cChungTu.getDS_ChiTiet_DanhBo(txtDanhBo.Text.Trim());
                             LoadTongNK();

@@ -150,6 +150,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         {
                             ChungTu_LichSu lichsuchungtu = _cChungTu.ChungTuToLichSu(ctchungtu);
                             lichsuchungtu.Loai = "Xóa";
+                            lichsuchungtu.NguoiThucHien = CTaiKhoan.HoTen;
                             _cChungTu.ThemLichSuChungTu(lichsuchungtu);
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
@@ -471,6 +472,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     {
                         ChungTu_LichSu lichsuchungtu = _cChungTu.ChungTuToLichSu(_ctchungtu);
                         lichsuchungtu.Loai = "Xóa";
+                        lichsuchungtu.NguoiThucHien = CTaiKhoan.HoTen;
                         _cChungTu.ThemLichSuChungTu(lichsuchungtu);
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear();
