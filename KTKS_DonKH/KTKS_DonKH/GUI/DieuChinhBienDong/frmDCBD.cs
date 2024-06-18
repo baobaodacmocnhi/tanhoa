@@ -2286,8 +2286,13 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
                 {
-                    if ((int.Parse(cmbLoaiCT.SelectedValue.ToString()) == 15 || int.Parse(cmbLoaiCT.SelectedValue.ToString()) == 16) && txtMaCT.Text.Trim() != "" && txtDanhBo.Text.Trim().Length == 11)
+                    if (txtMaCT.Text.Trim() != "" && txtDanhBo.Text.Trim().Length == 11)
                     {
+                        if (txtMaCT.Text.Trim() != "" && int.Parse(cmbLoaiCT.SelectedValue.ToString()) == 15 && txtMaCT.Text.Trim().Length != 12)
+                        {
+                            MessageBox.Show("CCCD gồm 12 số", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                         /////Kiểm tra Số Chứng Từ đã đăng ký danh bộ khác
                         //if (_cChungTu.CheckExist_CT(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString())))
                         //{
