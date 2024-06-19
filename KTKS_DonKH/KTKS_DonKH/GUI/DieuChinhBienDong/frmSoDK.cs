@@ -14,6 +14,7 @@ using KTKS_DonKH.GUI.BaoCao;
 using KTKS_DonKH.DAL.QuanTri;
 using System.Transactions;
 using KTKS_DonKH.DAL;
+using KTKS_DonKH.wrThuongVu;
 
 namespace KTKS_DonKH.GUI.DieuChinhBienDong
 {
@@ -25,7 +26,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         CChiNhanh _cChiNhanh = new CChiNhanh();
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
         CThuTien _cThuTien = new CThuTien();
-
+        wsThuongVu _wsThuongVu = new wsThuongVu();
         ChungTu_LichSu _LSCT = null;
         CDataTransfer _dataT = new CDataTransfer();
         HOADON _hd = null;
@@ -328,36 +329,30 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     if (txtMaCT.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "" && txtSoNKDangKy.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "0" && txtSoNKDangKy.Text.Trim() != "0" && txtDanhBo.Text.Trim().Length == 11)
                     {
-                        /////Kiểm tra Số Chứng Từ đã đăng ký danh bộ khác
-                        //if (_cChungTu.CheckExist_CT(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString())))
-                        //{
-                        //    MessageBox.Show("Số đăng ký này đã có đăng ký trước", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //    return;
-                        //}
-                        ///Kiểm tra Danh Bộ & Số Chứng Từ
-                        if (_cChungTu.CheckExist_CT(txtDanhBo.Text.Trim(), txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString())) == true)
+                        string resultCheckCCCD = "";
+                        int result = _wsThuongVu.checkExists_CCCD("", txtMaCT.Text.Trim(), out resultCheckCCCD);
+                        if (result == 1)
                         {
-                            MessageBox.Show("Danh Bộ trên đã đăng ký Số Chứng Từ trên", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
+                            if (!resultCheckCCCD.Contains("Tân Hòa"))
+                            {
+                                MessageBox.Show(resultCheckCCCD, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                            else
+                            {
+                                if (_cChungTu.CheckExist_CT(txtDanhBo.Text.Trim(), txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString())) == true)
+                                {
+                                    MessageBox.Show("Dữ liệu đã tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                            }
                         }
-                        ///Kiểm tra Danh Bộ & Số Chứng Từ
-                        //if (_cChungTu.CheckExist_CT_HoKhau_HoKhauNgheo(txtDanhBo.Text.Trim(), txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString())) == true)
-                        //{
-                        //    MessageBox.Show("Số đăng ký này trùng Hộ Khẩu & Hộ Khẩu Nghèo", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //    return;
-                        //}
-                        ///Kiểm tra Ngày Sinh
-                        string[] NgaySinhs = null;
-                        if (txtNgaySinh.Text.ToString().Contains("/"))
-                            NgaySinhs = txtNgaySinh.Text.ToString().Split('/');
                         else
-                            if (txtNgaySinh.Text.ToString().Contains("-"))
-                                NgaySinhs = txtNgaySinh.Text.ToString().Split('-');
-                        //if (NgaySinhs == null || NgaySinhs.Count() != 3)
-                        //{
-                        //    MessageBox.Show("Thiếu Ngày Sinh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //    return;
-                        //}
+                            if (result == -1)
+                            {
+                                MessageBox.Show("Lỗi, vui lòng thao tác lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                         var transactionOptions = new TransactionOptions();
                         transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
                         using (var scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
@@ -368,10 +363,18 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 ChungTu chungtu = new ChungTu();
                                 chungtu.MaCT = txtMaCT.Text.Trim();
                                 if (txtNgaySinh.Text.ToString() != "")
+                                {
+                                    string[] NgaySinhs = null;
+                                    if (txtNgaySinh.Text.ToString().Contains("/"))
+                                        NgaySinhs = txtNgaySinh.Text.ToString().Split('/');
+                                    else
+                                        if (txtNgaySinh.Text.ToString().Contains("-"))
+                                            NgaySinhs = txtNgaySinh.Text.ToString().Split('-');
                                     if (NgaySinhs != null && NgaySinhs.Count() == 3)
                                         chungtu.NgaySinh = new DateTime(int.Parse(NgaySinhs[2]), int.Parse(NgaySinhs[1]), int.Parse(NgaySinhs[0]));
                                     else
                                         chungtu.NgaySinh = new DateTime(int.Parse(txtNgaySinh.Text.Trim()), 1, 1);
+                                }
                                 chungtu.HoTen = txtHoTen.Text.Trim();
                                 chungtu.DiaChi = txtDiaChi.Text.Trim();
                                 chungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
@@ -716,18 +719,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     if (txtMaCT.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "" && txtSoNKDangKy.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "0")
                     {
-                        ///Kiểm tra Ngày Sinh
-                        string[] NgaySinhs = null;
-                        if (txtNgaySinh.Text.ToString().Contains("/"))
-                            NgaySinhs = txtNgaySinh.Text.ToString().Split('/');
-                        else
-                            if (txtNgaySinh.Text.ToString().Contains("-"))
-                                NgaySinhs = txtNgaySinh.Text.ToString().Split('-');
-                        //if (NgaySinhs == null || NgaySinhs.Count() != 3)
-                        //{
-                        //    MessageBox.Show("Thiếu Ngày Sinh", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //    return;
-                        //}
                         var transactionOptions = new TransactionOptions();
                         transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
                         using (var scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
@@ -736,10 +727,18 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             ChungTu_ChiTiet _ctchungtu = _cChungTu.GetCT(txtDanhBo.Text.Trim(), txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
                             _chungtu.HoTen = txtHoTen.Text.Trim();
                             if (txtNgaySinh.Text.Trim() != "")
+                            {
+                                string[] NgaySinhs = null;
+                                if (txtNgaySinh.Text.ToString().Contains("/"))
+                                    NgaySinhs = txtNgaySinh.Text.ToString().Split('/');
+                                else
+                                    if (txtNgaySinh.Text.ToString().Contains("-"))
+                                        NgaySinhs = txtNgaySinh.Text.ToString().Split('-');
                                 if (NgaySinhs != null || NgaySinhs.Count() == 3)
                                     _chungtu.NgaySinh = new DateTime(int.Parse(NgaySinhs[2]), int.Parse(NgaySinhs[1]), int.Parse(NgaySinhs[0]));
                                 else
                                     _chungtu.NgaySinh = new DateTime(int.Parse(txtNgaySinh.Text.Trim()), 1, 1);
+                            }
                             _chungtu.DiaChi = txtDiaChi.Text.Trim();
                             _chungtu.SoNKTong = int.Parse(txtSoNKTong.Text.Trim());
                             if (_chungtu.MaLCT != int.Parse(cmbLoaiCT.SelectedValue.ToString()))
@@ -1316,27 +1315,36 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             //    e.Handled = true;
             if (e.KeyChar == 13)
             {
-                DataTable dt = new DataTable();
-                if (_cChungTu.CheckExist_CT(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString())))
-                {
-                    dt = _cChungTu.getDS_ChiTiet(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
-                    MessageBox.Show("Số đăng ký này đã có đăng ký trước", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                //else
-                //    if (_cChungTu.CheckExist_CT_HoKhau_HoKhauNgheo(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString())))
-                //    {
-                //        dt = _cChungTu.getDS_ChiTiet_HoKhau_HoKhauNgheo(txtMaCT.Text.Trim());
-                //        MessageBox.Show("Số đăng ký này trùng Hộ Khẩu & Hộ Khẩu Nghèo", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //    }
-                    else
-                        if (_cChungTu.CheckExist_CT(txtDanhBo.Text.Trim(), txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString())))
-                        {
-                            dt = _cChungTu.getDS_ChiTiet(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
-                            MessageBox.Show("Số đăng ký này đã đăng ký với Danh Bộ này", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-
                 txtHoTen.Focus();
-                dgvDSDanhBo.DataSource = dt;
+            }
+        }
+
+        private void txtMaCT_Leave(object sender, EventArgs e)
+        {
+            if (txtMaCT.Text.Trim() != "")
+            {
+                if (txtMaCT.Text.Trim() != "" && int.Parse(cmbLoaiCT.SelectedValue.ToString()) == 15 && txtMaCT.Text.Trim().Length != 12)
+                {
+                    MessageBox.Show("CCCD gồm 12 số", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                string resultCheckCCCD = "";
+                int result = _wsThuongVu.checkExists_CCCD("", txtMaCT.Text.Trim(), out resultCheckCCCD);
+                if (result == 1)
+                {
+                    if (!resultCheckCCCD.Contains("Tân Hòa"))
+                    {
+                        MessageBox.Show(resultCheckCCCD, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        if (_cChungTu.CheckExist_CT(txtDanhBo.Text.Trim(), txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString())) == true)
+                        {
+                            MessageBox.Show("Dữ liệu đã tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                dgvDSDanhBo.DataSource = _cChungTu.getDS_ChiTiet(txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString()));
             }
         }
 
@@ -1602,14 +1610,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             }
         }
 
-        private void txtMaCT_Leave(object sender, EventArgs e)
-        {
-            if (txtMaCT.Text.Trim() != "" && int.Parse(cmbLoaiCT.SelectedValue.ToString()) == 15 && txtMaCT.Text.Trim().Length != 12)
-            {
-                MessageBox.Show("CCCD gồm 12 số", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-        }
+
 
 
 
