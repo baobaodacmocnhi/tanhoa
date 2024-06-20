@@ -2292,7 +2292,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             ls.Cat = ct.Cat;
             ls.Cat_Ngay = ct.Cat_Ngay;
             ls.YeuCauCat = ct.YeuCauCat;
-            ls.SoPhieu = ct.SoPhieu;
+            //ls.SoPhieu = ct.SoPhieu;
             ls.CatNK_MaCN = ct.CatNK_MaCN;
             ls.CatNK_DanhBo = ct.CatNK_DanhBo;
             ls.CatNK_HoTen = ct.CatNK_HoTen;
