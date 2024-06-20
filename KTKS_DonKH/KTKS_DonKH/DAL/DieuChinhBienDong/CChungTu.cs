@@ -827,10 +827,16 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 }
                 else
                     lichsuchungtu.MaLSCT = decimal.Parse(DateTime.Now.Year + "1");
-                //lichsuchungtu.CreateDate = DateTime.Now;
-                //lichsuchungtu.CreateBy = CTaiKhoan.MaUser;
-                lichsuchungtu.NguoiThucHien = CTaiKhoan.HoTen;
-                lichsuchungtu.NgayThucHien = DateTime.Now;
+                if (lichsuchungtu.Loai == null)
+                {
+                    lichsuchungtu.CreateDate = DateTime.Now;
+                    lichsuchungtu.CreateBy = CTaiKhoan.MaUser;
+                }
+                else
+                {
+                    lichsuchungtu.NguoiThucHien = CTaiKhoan.HoTen;
+                    lichsuchungtu.NgayThucHien = DateTime.Now;
+                }
                 db.ChungTu_LichSus.InsertOnSubmit(lichsuchungtu);
                 db.SubmitChanges();
                 return true;

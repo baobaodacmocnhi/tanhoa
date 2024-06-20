@@ -716,11 +716,9 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                     entityCT.Nam = hd.NAM;
                                     entityCT.Quan = hd.Quan;
                                     entityCT.Phuong = hd.Phuong;
-
                                     entityCT.CreateBy = CTaiKhoan.MaUser;
                                     entityCT.CreateDate = DateTime.Now;
                                     //entityCT.TinhTrang = "Tồn";
-
                                     entity.DonTu_ChiTiets.Add(entityCT);
                                 }
                             }
