@@ -949,6 +949,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                             {
                                                                 ///Thêm Lịch Sử đầu tiên
                                                                 lichsuchungtu.Loai = "Thêm";
+                                                                lichsuchungtu.NgayThucHien = DateTime.Now;
+                                                                lichsuchungtu.NguoiThucHien = CTaiKhoan.HoTen;
                                                                 _cChungTu.ThemLichSuChungTu(lichsuchungtu);
                                                                 _cChungTu.SubmitChanges();
                                                             }
@@ -1064,6 +1066,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                                         {
                                                             ///Thêm Lịch Sử đầu tiên
                                                             lichsuchungtu.Loai = "Thêm";
+                                                            lichsuchungtu.NgayThucHien = DateTime.Now;
+                                                            lichsuchungtu.NguoiThucHien = CTaiKhoan.HoTen;
                                                             _cChungTu.ThemLichSuChungTu(lichsuchungtu);
                                                             _cChungTu.SubmitChanges();
                                                         }
@@ -1327,6 +1331,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             lichsuchungtu.Phuong = ctchungtu.Phuong;
                                             lichsuchungtu.Quan = ctchungtu.Quan;
                                             lichsuchungtu.Loai = "Thêm";
+                                            lichsuchungtu.NgayThucHien = DateTime.Now;
+                                            lichsuchungtu.NguoiThucHien = CTaiKhoan.HoTen;
                                             _cChungTu.ThemLichSuChungTu(lichsuchungtu);
                                             #region Yêu Cầu Cắt
                                             if (ctchungtu.ChungTu.KhacDiaBan)

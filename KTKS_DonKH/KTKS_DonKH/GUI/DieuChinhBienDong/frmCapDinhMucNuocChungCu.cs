@@ -37,6 +37,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             dgvDanhSach.AutoGenerateColumns = false;
             dgvDSDanhBo.AutoGenerateColumns = false;
+            dgvDanhSachXoa.AutoGenerateColumns = false;
         }
 
         public void Clear()
@@ -62,7 +63,10 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         private void LoadTongNK()
         {
             if (txtDanhBo.Text.Trim() != "")
+            {
                 dgvDanhSach.DataSource = _cChungTu.getDS_ChiTiet_DanhBo(txtDanhBo.Text.Trim());
+                dgvDanhSachXoa.DataSource = _cChungTu.getDS_ChiTiet_Xoa_DanhBo(txtDanhBo.Text.Trim());
+            }
             else
                 if (txtSHS.Text.Trim() != "")
                     dgvDanhSach.DataSource = _cChungTu.getDS_ChiTiet_SHS(txtSHS.Text.Trim());
@@ -75,7 +79,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             _TongNK = TongNK;
             lbTongNK.Text = "Tổng NK: " + TongNK;
             lbTongDM.Text = "Tổng ĐM: " + TongNK * 4;
-
             dgvDanhSach.Focus();
             if (dgvDanhSach.Rows.Count > 0)
                 dgvDanhSach.CurrentCell = dgvDanhSach.Rows[dgvDanhSach.Rows.Count - 1].Cells[3];
@@ -150,10 +153,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     {
                         if (_cChungTu.XoaCT(ctchungtu))
                         {
-                            ChungTu_LichSu lichsuchungtu = _cChungTu.ChungTuToLichSu(ctchungtu);
-                            lichsuchungtu.Loai = "Xóa";
-                            lichsuchungtu.NguoiThucHien = CTaiKhoan.HoTen;
-                            _cChungTu.ThemLichSuChungTu(lichsuchungtu);
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
@@ -185,30 +184,30 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             MessageBox.Show("Thiếu Danh Bộ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        string resultCheckCCCD = "";
-                        int result = _wsThuongVu.checkExists_CCCD("", txtCCCD.Text.Trim(), out resultCheckCCCD);
-                        if (result == 1)
-                        {
-                            if (!resultCheckCCCD.Contains("Tân Hòa"))
-                            {
-                                MessageBox.Show(resultCheckCCCD, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
-                            else
-                            {
-                                if (_cChungTu.CheckExist_CT(txtDanhBo.Text.Trim(), txtCCCD.Text.Trim(), 15) == true)
-                                {
-                                    MessageBox.Show("Dữ liệu đã tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    return;
-                                }
-                            }
-                        }
-                        else
-                            if (result == -1)
-                            {
-                                MessageBox.Show("Lỗi, vui lòng thao tác lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
+                        //string resultCheckCCCD = "";
+                        //int result = _wsThuongVu.checkExists_CCCD("", txtCCCD.Text.Trim(), out resultCheckCCCD);
+                        //if (result == 1)
+                        //{
+                        //    if (!resultCheckCCCD.Contains("Tân Hòa"))
+                        //    {
+                        //        MessageBox.Show(resultCheckCCCD, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //        return;
+                        //    }
+                        //    else
+                        //    {
+                        //        if (_cChungTu.CheckExist_CT(txtDanhBo.Text.Trim(), txtCCCD.Text.Trim(), 15) == true)
+                        //        {
+                        //            MessageBox.Show("Dữ liệu đã tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //            return;
+                        //        }
+                        //    }
+                        //}
+                        //else
+                        //    if (result == -1)
+                        //    {
+                        //        MessageBox.Show("Lỗi, vui lòng thao tác lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //        return;
+                        //    }
                         var transactionOptions = new TransactionOptions();
                         transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
                         using (var scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
@@ -308,6 +307,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                 ///Ghi thông tin Lịch Sử chung
                                 ChungTu_LichSu lichsuchungtu = _cChungTu.ChungTuToLichSu(ctchungtu);
                                 lichsuchungtu.Loai = "Thêm";
+                                lichsuchungtu.NgayThucHien = DateTime.Now;
+                                lichsuchungtu.NguoiThucHien = CTaiKhoan.HoTen;
                                 _cChungTu.ThemLichSuChungTu(lichsuchungtu);
                             }
                             scope.Complete();
@@ -479,10 +480,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     if (_cChungTu.XoaCT(_ctchungtu))
                     {
-                        ChungTu_LichSu lichsuchungtu = _cChungTu.ChungTuToLichSu(_ctchungtu);
-                        lichsuchungtu.Loai = "Xóa";
-                        lichsuchungtu.NguoiThucHien = CTaiKhoan.HoTen;
-                        _cChungTu.ThemLichSuChungTu(lichsuchungtu);
                         MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Clear();
                     }
@@ -710,6 +707,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvDanhSachXoa_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvDanhSachXoa.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
             }
         }
 

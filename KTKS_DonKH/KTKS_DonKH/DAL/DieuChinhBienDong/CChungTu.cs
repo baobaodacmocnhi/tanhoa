@@ -109,7 +109,11 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             try
             {
                 db.ChungTu_ChiTiets.DeleteOnSubmit(ctchungtu);
-                db.SubmitChanges();
+                ChungTu_LichSu lichsuchungtu = ChungTuToLichSu(ctchungtu);
+                lichsuchungtu.Loai = "Xóa";
+                lichsuchungtu.NguoiThucHien = CTaiKhoan.HoTen;
+                lichsuchungtu.NgayThucHien = DateTime.Now;
+                ThemLichSuChungTu(lichsuchungtu);
                 return true;
             }
             catch (Exception ex)
@@ -205,8 +209,16 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                             itemCTCT.TamTru,
                             CreateBy = db.Users.SingleOrDefault(o => o.MaU == itemCTCT.CreateBy).HoTen,
                         };
-
             return LINQToDataTable(query);
+        }
+
+        public DataTable getDS_ChiTiet_Xoa_DanhBo(string DanhBo)
+        {
+            return ExecuteQuery_DataTable("select ls.DanhBo,ct.MaLCT,lct.TenLCT,ls.MaCT,ct.NgaySinh,ct.HoTen,ct.DiaChi,ct.SoNKTong,ct.SoNKCat,ct.SoNKNhan,ct.SoNKConLai,ls.SoNKDangKy"
+                + ",ls.NgayHetHan,ls.ThoiHan,ls.DienThoai,ls.Cat,ls.GhiChu,ls.Lo,ls.Phong,ls.CreateDate,ls.STT,ct.KhacDiaBan,ls.ThuongTru,ls.TamTru,ls.NguoiThucHien,ls.NgayThucHien"
+                + " from ChungTu_LichSu ls,ChungTu ct,LoaiChungTu lct"
+                + " where ct.MaLCT=lct.MaLCT and ls.MaCT=ct.MaCT and ct.MaLCT=ls.MaLCT"
+                + " and ls.Loai=N'Xóa' and ls.DanhBo='" + DanhBo + "'");
         }
 
         public DataTable getDS_ChiTiet_CreateDates(int CreateBy, DateTime FromCreateDate, DateTime ToCreateDate)
@@ -815,8 +827,10 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 }
                 else
                     lichsuchungtu.MaLSCT = decimal.Parse(DateTime.Now.Year + "1");
-                lichsuchungtu.CreateDate = DateTime.Now;
-                lichsuchungtu.CreateBy = CTaiKhoan.MaUser;
+                //lichsuchungtu.CreateDate = DateTime.Now;
+                //lichsuchungtu.CreateBy = CTaiKhoan.MaUser;
+                lichsuchungtu.NguoiThucHien = CTaiKhoan.HoTen;
+                lichsuchungtu.NgayThucHien = DateTime.Now;
                 db.ChungTu_LichSus.InsertOnSubmit(lichsuchungtu);
                 db.SubmitChanges();
                 return true;
@@ -2263,17 +2277,33 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         {
             ChungTu_LichSu ls = new ChungTu_LichSu();
             ls.DanhBo = ct.DanhBo;
-            ls.MaLCT = ct.MaLCT;
             ls.MaCT = ct.MaCT;
-            ls.SoNKTong = ct.ChungTu.SoNKTong;
+            ls.MaLCT = ct.MaLCT;
+            ls.ThuongTru = ct.ThuongTru;
+            ls.TamTru = ct.TamTru;
+            ls.DienThoai = ct.DienThoai;
             ls.SoNKDangKy = ct.SoNKDangKy;
             ls.ThoiHan = ct.ThoiHan;
             ls.NgayHetHan = ct.NgayHetHan;
             ls.GhiChu = ct.GhiChu;
+            ls.STT = ct.STT;
             ls.Lo = ct.Lo;
             ls.Phong = ct.Phong;
-            ls.ThuongTru = ct.ThuongTru;
-            ls.TamTru = ct.TamTru;
+            ls.Cat = ct.Cat;
+            ls.Cat_Ngay = ct.Cat_Ngay;
+            ls.YeuCauCat = ct.YeuCauCat;
+            ls.SoPhieu = ct.SoPhieu;
+            ls.CatNK_MaCN = ct.CatNK_MaCN;
+            ls.CatNK_DanhBo = ct.CatNK_DanhBo;
+            ls.CatNK_HoTen = ct.CatNK_HoTen;
+            ls.CatNK_HoTens = ct.CatNK_HoTens;
+            ls.CatNK_DiaChi = ct.CatNK_DiaChi;
+            ls.Quan = ct.Quan;
+            ls.Phuong = ct.Phuong;
+            ls.CreateDate = ct.CreateDate;
+            ls.CreateBy = ct.CreateBy;
+            ls.ModifyDate = ct.ModifyDate;
+            ls.ModifyBy = ct.ModifyBy;
             return ls;
         }
 
