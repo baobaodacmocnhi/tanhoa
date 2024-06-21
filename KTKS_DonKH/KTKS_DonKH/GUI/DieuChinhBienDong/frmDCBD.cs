@@ -1363,13 +1363,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 if (e.RowIndex >= 0)
                 {
                     sửaToolStripMenuItem.Enabled = true;
-                    cắtChuyểnĐịnhMứcToolStripMenuItem.Enabled = true;
                     xóaToolStripMenuItem.Enabled = true;
                 }
                 else
                 {
                     sửaToolStripMenuItem.Enabled = false;
-                    cắtChuyểnĐịnhMứcToolStripMenuItem.Enabled = false;
                     xóaToolStripMenuItem.Enabled = false;
                 }
                 ///Khi chuột phải Selected-Row sẽ được chuyển đến nơi click chuột
@@ -1382,7 +1380,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             if (e.Button == MouseButtons.Right && (_dontu_ChiTiet != null || _dontkh != null || _dontxl != null || _dontbc != null))
             {
                 thêmToolStripMenuItem.Enabled = true;
-                nhậnĐịnhMứctoolStripMenuItem.Enabled = true;
                 contextMenuStrip1.Show(dgvDSSoDangKy, new Point(e.X, e.Y));
             }
         }
@@ -2094,16 +2091,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 dataT.Quan = _hoadon.Quan;
                 dataT.Phuong = _hoadon.Phuong;
             }
-
             dataT.MaCT = dgvDSSoDangKy.CurrentRow.Cells["MaCT"].Value.ToString();
             dataT.MaLCT = int.Parse(dgvDSSoDangKy.CurrentRow.Cells["MaLCT"].Value.ToString());
-
-            frmCatChuyenDM frm = new frmCatChuyenDM(dataT);
-            if (frm.ShowDialog() == DialogResult.OK)
-            {
-                dgvDSSoDangKy.DataSource = _cChungTu.getDS_ChiTiet_DanhBo(txtDanhBo.Text.Trim());
-                LoadTongNK();
-            }
+            //frmCatChuyenCCCD frm = new frmCatChuyenCCCD(dataT);
+            //if (frm.ShowDialog() == DialogResult.OK)
+            //{
+            //    dgvDSSoDangKy.DataSource = _cChungTu.getDS_ChiTiet_DanhBo(txtDanhBo.Text.Trim());
+            //    LoadTongNK();
+            //}
         }
 
         #endregion

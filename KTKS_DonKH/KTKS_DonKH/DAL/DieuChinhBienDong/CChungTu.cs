@@ -71,14 +71,14 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 ctchungtu.CreateBy = CTaiKhoan.MaUser;
                 db.ChungTu_ChiTiets.InsertOnSubmit(ctchungtu);
                 db.SubmitChanges();
-                //try
-                //{
-                //    string result = "";
-                //    KTKS_DonKH.wrThuongVu.wsThuongVu ws = new KTKS_DonKH.wrThuongVu.wsThuongVu();
-                //    ws.them_CCCD(ctchungtu.DanhBo, ctchungtu.MaCT, out result);
-                //    ExecuteNonQuery("insert into CCCD_Temp(CCCD,Result,CreateBy,ModifyDate)values('" + ctchungtu.MaCT + "',N'" + result + "'," + CTaiKhoan.MaUser + ",getdate())");
-                //}
-                //catch { };
+                try
+                {
+                    string result = "";
+                    KTKS_DonKH.wrThuongVu.wsThuongVu ws = new KTKS_DonKH.wrThuongVu.wsThuongVu();
+                    ws.them_CCCD(ctchungtu.DanhBo, ctchungtu.MaCT, out result);
+                    ExecuteNonQuery("insert into CCCD_Temp(CCCD,DanhBo,Result,ModifyDate)values('" + ctchungtu.MaCT + "','" + ctchungtu.DanhBo + "',N'" + result + "',getdate())");
+                }
+                catch { };
                 return true;
             }
             catch (Exception ex)
@@ -114,6 +114,14 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 lichsuchungtu.NguoiThucHien = CTaiKhoan.HoTen;
                 lichsuchungtu.NgayThucHien = DateTime.Now;
                 ThemLichSuChungTu(lichsuchungtu);
+                try
+                {
+                    string result = "";
+                    KTKS_DonKH.wrThuongVu.wsThuongVu ws = new KTKS_DonKH.wrThuongVu.wsThuongVu();
+                    ws.xoa_CCCD(ctchungtu.DanhBo, ctchungtu.MaCT, out result);
+                    ExecuteNonQuery("insert into CCCD_Xoa_Temp(CCCD,DanhBo,Result,ModifyDate)values('" + ctchungtu.MaCT + "','" + ctchungtu.DanhBo + "',N'" + result + "',getdate())");
+                }
+                catch { };
                 return true;
             }
             catch (Exception ex)
@@ -4333,6 +4341,19 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
         public ChungTu_LichSu_Hinh get_Hinh(int ID)
         {
             return db.ChungTu_LichSu_Hinhs.SingleOrDefault(item => item.ID == ID);
+        }
+
+        #endregion
+
+        #region CatChuyenCCCD
+
+        public DataTable getDS_CatChuyenCCCD(bool TCT, DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            string sql = "select * from CatChuyenCCCD where cast(CreateDate as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and cast(CreateDate as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "'";
+            if (TCT)
+                sql += " and IDTCT is not null";
+            sql += " order by CreateDate asc";
+            return ExecuteQuery_DataTable(sql);
         }
 
         #endregion

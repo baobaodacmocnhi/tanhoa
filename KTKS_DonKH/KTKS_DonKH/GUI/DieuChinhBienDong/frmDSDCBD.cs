@@ -2012,8 +2012,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 if (dgvDSCatChuyenDM["Loai_CC", dgvDSCatChuyenDM.CurrentRow.Index].Value.ToString() == "Cắt")
                 {
-                    frmCatChuyenDM frm = new frmCatChuyenDM(decimal.Parse(dgvDSCatChuyenDM["MaLSCT", dgvDSCatChuyenDM.CurrentRow.Index].Value.ToString()));
-                    frm.ShowDialog();
+                    //frmCatChuyenCCCD frm = new frmCatChuyenCCCD(decimal.Parse(dgvDSCatChuyenDM["MaLSCT", dgvDSCatChuyenDM.CurrentRow.Index].Value.ToString()));
+                    //frm.ShowDialog();
                 }
                 else
                 {
