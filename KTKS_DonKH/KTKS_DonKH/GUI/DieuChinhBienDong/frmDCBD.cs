@@ -93,6 +93,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             dgvDSDanhBo.AutoGenerateColumns = false;
             //dgvDSChungTu.ColumnHeadersDefaultCellStyle.Font = new Font(dgvDSChungTu.Font, FontStyle.Bold);
             dgvHinh.AutoGenerateColumns = false;
+            dgvDSSoDangKyXoa.AutoGenerateColumns = false;
             if (_MaCTDCBD != -1)
             {
                 txtSoPhieu.Text = _MaCTDCBD.ToString();
@@ -145,6 +146,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             else
                 lbKhongTinhPhiBVMT.Visible = false;
             dgvDSSoDangKy.DataSource = _cChungTu.getDS_ChiTiet_DanhBo(txtDanhBo.Text.Trim());
+            dgvDSSoDangKyXoa.DataSource = _cChungTu.getDS_ChiTiet_Xoa_DanhBo(txtDanhBo.Text.Trim());
             if (dgvDSSoDangKy.Rows.Count > 0)
                 dgvDSSoDangKy.CurrentCell = dgvDSSoDangKy.Rows[dgvDSSoDangKy.Rows.Count - 1].Cells[1];
             dgvDSDieuChinh.DataSource = _cDCBD.getDSDCBD(txtDanhBo.Text.Trim());
@@ -1330,6 +1332,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         if (_cChungTu.XoaCT(ctchungtu))
                         {
                             dgvDSSoDangKy.DataSource = _cChungTu.getDS_ChiTiet_DanhBo(txtDanhBo.Text.Trim());
+                            dgvDSSoDangKyXoa.DataSource = _cChungTu.getDS_ChiTiet_Xoa_DanhBo(txtDanhBo.Text.Trim());
                             LoadTongNK();
                             MessageBox.Show("Thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
@@ -2599,6 +2602,14 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             frmCapDinhMucNuocCCCD_Show frm = new frmCapDinhMucNuocCCCD_Show();
             frm.ShowDialog();
+        }
+
+        private void dgvDSSoDangKyXoa_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dgvDSSoDangKyXoa.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
         }
 
     }

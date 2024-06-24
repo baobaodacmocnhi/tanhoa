@@ -593,7 +593,6 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 for (int i = 0; i < dgvDanhSach.Rows.Count; i++)
                 {
                     DataRow dr = dsBaoCao.Tables["DSChungTu"].NewRow();
-
                     dr["STT"] = i + 1;
                     dr["DanhBo"] = txtDanhBo.Text.Trim().Insert(7, " ").Insert(4, " ");
                     dr["HoTen"] = txtHoTenCC.Text.Trim();
@@ -615,7 +614,29 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     dr["GhiChu"] = dgvDanhSach["GhiChu", i].Value.ToString();
                     dr["Lo"] = dgvDanhSach["Lo", i].Value.ToString();
                     dr["Phong"] = dgvDanhSach["Phong", i].Value.ToString();
-
+                    dsBaoCao.Tables["DSChungTu"].Rows.Add(dr);
+                }
+                for (int i = 0; i < dgvDanhSachXoa.Rows.Count; i++)
+                {
+                    DataRow dr = dsBaoCao.Tables["DSChungTu"].NewRow();
+                    dr["STT"] = i + 1;
+                    dr["DanhBo"] = txtDanhBo.Text.Trim().Insert(7, " ").Insert(4, " ");
+                    dr["HoTen"] = txtHoTenCC.Text.Trim();
+                    dr["DiaChi"] = txtDiaChiCC.Text.Trim();
+                    dr["HopDong"] = _hoadon.HOPDONG;
+                    dr["Dot"] = _hoadon.DOT.ToString();
+                    dr["GiaBieu"] = _hoadon.GB;
+                    dr["DinhMuc"] = _hoadon.DM;
+                    dr["LoTrinh"] = _hoadon.DOT + _hoadon.MAY + _hoadon.STT;
+                    //dr["TenLCT"] = dgvKhachHangChungCu["TenLCT", i].Value.ToString();
+                    dr["HoTenCT"] = dgvDanhSach["HoTen", i].Value.ToString();
+                    dr["MaCT"] = dgvDanhSach["CCCD", i].Value.ToString();
+                    dr["SoNKTong"] = _TongNK;
+                    dr["SoNKDangKy"] = 0;
+                    //if (chkAnGhiChu.Checked == false)
+                    dr["GhiChu"] = dgvDanhSach["GhiChu", i].Value.ToString();
+                    dr["Lo"] = dgvDanhSach["Lo", i].Value.ToString();
+                    dr["Phong"] = dgvDanhSach["Phong", i].Value.ToString();
                     dsBaoCao.Tables["DSChungTu"].Rows.Add(dr);
                 }
                 rptDSChungTuChungCu rpt = new rptDSChungTuChungCu();
@@ -682,7 +703,47 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                     dgvDanhSach.DataSource = _cChungTu.getDS_ChiTiet_TimKiem_Ngay(txtDanhBo.Text.Trim(), txtLo.Text.Trim(), dateTu_TimKiem.Value, dateDen_TimKiem.Value);
                     break;
                 default:
-
+                    break;
+            }
+            switch (cmbTimTheo.SelectedItem.ToString())
+            {
+                case "CCCD":
+                    if (string.IsNullOrEmpty(txtDanhBo.Text.Trim()))
+                        dgvDanhSachXoa.DataSource = _cChungTu.getDS_ChiTiet_Xoa_TimKiem_CCCD(txtNoiDungTimKiem.Text.Trim());
+                    else
+                        dgvDanhSachXoa.DataSource = _cChungTu.getDS_ChiTiet_Xoa_TimKiem_CCCD(txtDanhBo.Text.Trim(), txtNoiDungTimKiem.Text.Trim());
+                    break;
+                case "Họ Tên":
+                    dgvDanhSachXoa.DataSource = _cChungTu.getDS_ChiTiet_Xoa_TimKiem_HoTen(txtNoiDungTimKiem.Text.Trim());
+                    break;
+                case "STT":
+                    if (string.IsNullOrEmpty(txtNoiDungTimKiem2.Text.Trim()))
+                        if (string.IsNullOrEmpty(txtDanhBo.Text.Trim()))
+                            dgvDanhSachXoa.DataSource = _cChungTu.getDS_ChiTiet_Xoa_TimKiem_STT(int.Parse(txtNoiDungTimKiem.Text.Trim()));
+                        else
+                            dgvDanhSachXoa.DataSource = _cChungTu.getDS_ChiTiet_Xoa_TimKiem_STT(txtDanhBo.Text.Trim(), int.Parse(txtNoiDungTimKiem.Text.Trim()));
+                    else
+                        if (string.IsNullOrEmpty(txtDanhBo.Text.Trim()))
+                            dgvDanhSachXoa.DataSource = _cChungTu.getDS_ChiTiet_Xoa_TimKiem_STT(int.Parse(txtNoiDungTimKiem.Text.Trim()), int.Parse(txtNoiDungTimKiem2.Text.Trim()));
+                        else
+                            dgvDanhSachXoa.DataSource = _cChungTu.getDS_ChiTiet_Xoa_TimKiem_STT(txtDanhBo.Text.Trim(), int.Parse(txtNoiDungTimKiem.Text.Trim()), int.Parse(txtNoiDungTimKiem2.Text.Trim()));
+                    break;
+                case "Lô":
+                    if (string.IsNullOrEmpty(txtDanhBo.Text.Trim()))
+                        dgvDanhSachXoa.DataSource = _cChungTu.getDS_ChiTiet_Xoa_TimKiem_Lo(txtNoiDungTimKiem.Text.Trim());
+                    else
+                        dgvDanhSachXoa.DataSource = _cChungTu.getDS_ChiTiet_Xoa_TimKiem_Lo(txtDanhBo.Text.Trim(), txtNoiDungTimKiem.Text.Trim());
+                    break;
+                case "Phòng":
+                    if (string.IsNullOrEmpty(txtDanhBo.Text.Trim()))
+                        dgvDanhSachXoa.DataSource = _cChungTu.getDS_ChiTiet_Xoa_TimKiem_Phong(txtNoiDungTimKiem.Text.Trim());
+                    else
+                        dgvDanhSachXoa.DataSource = _cChungTu.getDS_ChiTiet_Xoa_TimKiem_Phong(txtDanhBo.Text.Trim(), txtNoiDungTimKiem.Text.Trim());
+                    break;
+                case "Ngày":
+                    dgvDanhSachXoa.DataSource = _cChungTu.getDS_ChiTiet_Xoa_TimKiem_Ngay(txtDanhBo.Text.Trim(), txtLo.Text.Trim(), dateTu_TimKiem.Value, dateDen_TimKiem.Value);
+                    break;
+                default:
                     break;
             }
         }

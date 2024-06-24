@@ -767,7 +767,6 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                 BanGiamDoc bgdTQ = _cBanGiamDoc.getBGDNguoiKy();
                 BanGiamDoc bgdDuyet = _cBanGiamDoc.getBGDNguoiKyDuyet();
                 DataSetBaoCao dsBaoCao = new DataSetBaoCao();
-
                 if (tabControl.SelectedTab.Name == "tabTTKH")
                 {
                     DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
@@ -795,7 +794,6 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     dr["NoiNhan"] = _cttt.NoiNhan;
                     dr["ChucVu"] = CTaiKhoan.ChucVu.ToUpper();
                     dr["NguoiKy"] = CTaiKhoan.NguoiKy;
-
                     if (_cttt.VeViec.Contains("Hạ cỡ") || _cttt.VeViec.Contains("hộp bảo vệ"))
                     {
                         dr["ChucVuThongQua"] = "TRÌNH DUYỆT\n" + bgdTQ.ChucVu.ToUpper();
@@ -808,9 +806,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     }
                     dr["ChucVuDuyet"] = bgdDuyet.ChucVu.ToUpper();
                     dr["NguoiKyDuyet"] = bgdDuyet.HoTen;
-
                     dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
-
                     ReportDocument rpt;
                     //if (_cttt.KinhTrinh.ToLower().Contains("thông qua") == true)
                     //{
@@ -832,7 +828,6 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     foreach (ToTrinh_ChiTiet_DanhSach item in _cttt.ToTrinh_ChiTiet_DanhSaches.ToList())
                     {
                         DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
-
                         dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
                         dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
                         dr["SoPhieu"] = item.IDCT.ToString().Insert(item.IDCT.ToString().Length - 2, "-");
@@ -866,24 +861,18 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                     dr["Luuy"] = "đồng hồ nước bị lỗi kỹ thuật";
                                 }
                         dr["NoiNhan"] = item.ToTrinh_ChiTiet.NoiNhan;
-
                         dr["ChucVu"] = CTaiKhoan.ChucVu.ToUpper();
                         dr["NguoiKy"] = CTaiKhoan.NguoiKy;
-
                         //if (bgdTQ.ChucVu.ToUpper() == "GIÁM ĐỐC")
                         //    dr["ChucVuThongQua"] = "GIÁM ĐỐC";
                         //else
                         //    dr["ChucVuThongQua"] = "TRÌNH DUYỆT\n" + bgdTQ.ChucVu.ToUpper();
                         dr["ChucVuThongQua"] = "DUYỆT\n" + bgdTQ.ChucVu.ToUpper();
                         dr["NguoiKyThongQua"] = bgdTQ.HoTen;
-
                         dr["ChucVuDuyet"] = bgdDuyet.ChucVu.ToUpper();
                         dr["NguoiKyDuyet"] = bgdDuyet.HoTen;
-
                         dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
-                        //
                         DataRow dr2 = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
-
                         if (item.ToTrinh_ChiTiet.VeViec.Contains("Điều chỉnh hóa đơn"))
                         {
                             dr2["NgayXuLy"] = item.KyHD;
@@ -907,7 +896,6 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                 {
                                     dr2["LoaiBaoCao"] = "LỖI KỸ THUẬT";
                                 }
-
                         dr2["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
                         dr2["SoPhieu"] = item.IDCT.ToString().Insert(item.IDCT.ToString().Length - 2, "-");
                         dr2["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
@@ -925,10 +913,8 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                             dr2["NoiNhan"] = item.MaDon.Value;
                         else
                             dr2["NoiNhan"] = item.MaDon.Value + "." + item.STT;
-
                         dsBaoCao.Tables["ThongBaoCHDB"].Rows.Add(dr2);
                     }
-
                     if (_cttt.VeViec.Contains("Điều chỉnh hóa đơn") == true)
                     {
                         rptToTrinh_DCHD_DinhKem rpt2 = new rptToTrinh_DCHD_DinhKem();

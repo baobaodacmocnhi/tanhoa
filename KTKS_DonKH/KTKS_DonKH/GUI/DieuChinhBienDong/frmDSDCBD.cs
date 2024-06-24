@@ -530,6 +530,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
         {
             if (MessageBox.Show("Bạn chắc chắn In những Phiếu trên?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
+                BanGiamDoc bgdTQ = _cBanGiamDoc.getBGDNguoiKy();
+                BanGiamDoc bgdDuyet = _cBanGiamDoc.getBGDNguoiKyDuyet();
                 //PrintDialog printDialog = new PrintDialog();
                 //if (printDialog.ShowDialog() == DialogResult.OK)
                 {
@@ -781,8 +783,8 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                                             ///có thể sai MaCT, nếu sai đổi lại lấy txtMaCT
                                             dr["SoNKCat"] = lichsuchungtu.SoNK.ToString() + " nhân khẩu (" + _cLoaiChungTu.GetKyHieu(lichsuchungtu.MaLCT.Value) + ": " + lichsuchungtu.MaCT + ")";
                                             dr["HoTensCat"] = lichsuchungtu.CatNK_HoTens;
-                                            dr["ChucVu"] = lichsuchungtu.ChucVu;
-                                            dr["NguoiKy"] = lichsuchungtu.NguoiKy;
+                                            dr["ChucVu"] = bgdTQ.ChucVu.ToUpper();
+                                            dr["NguoiKy"] = bgdTQ.HoTen;
                                             dsBaoCao.Tables["PhieuCatChuyenDM"].Rows.Add(dr);
                                             DataRow drLogo = dsBaoCao.Tables["BienNhanDonKH"].NewRow();
                                             drLogo["PathLogo"] = Application.StartupPath.ToString() + @"\Resources\logocongty.png";

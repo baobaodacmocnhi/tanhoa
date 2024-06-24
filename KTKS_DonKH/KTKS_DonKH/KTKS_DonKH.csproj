@@ -32,7 +32,7 @@
     <MinimumRequiredVersion>1.0.0.126</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>257</ApplicationRevision>
+    <ApplicationRevision>261</ApplicationRevision>
     <ApplicationVersion>1.5.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -1156,7 +1156,9 @@
     <Compile Include="GUI\DieuChinhBienDong\frmCatChuyenCCCD.Designer.cs">
       <DependentUpon>frmCatChuyenCCCD.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\DieuChinhBienDong\frmCatChuyenDM.cs" />
+    <Compile Include="GUI\DieuChinhBienDong\frmCatChuyenDM.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GUI\DieuChinhBienDong\frmCatChuyenDM.Designer.cs">
       <DependentUpon>frmCatChuyenDM.cs</DependentUpon>
     </Compile>

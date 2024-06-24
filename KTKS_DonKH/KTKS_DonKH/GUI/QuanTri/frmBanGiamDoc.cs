@@ -168,10 +168,10 @@ namespace KTKS_DonKH.GUI.QuanTri
             }
         }
 
-        private void dgvDSBanGiamDoc_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        private void dgvDSBanGiamDoc_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             BanGiamDoc bangiamdoc = _cBanGiamDoc.get(int.Parse(dgvDSBanGiamDoc["MaBGD", selectedindex].Value.ToString()));
-            if (bool.Parse(dgvDSBanGiamDoc["KyTen", e.RowIndex].Value.ToString()) != bangiamdoc.KyTen)
+            //if (bool.Parse(dgvDSBanGiamDoc["KyTen", e.RowIndex].Value.ToString()) != bangiamdoc.KyTen)
             {
                 bangiamdoc.KyTen = bool.Parse(dgvDSBanGiamDoc["KyTen", e.RowIndex].Value.ToString());
                 _cBanGiamDoc.Sua(bangiamdoc);
@@ -463,6 +463,8 @@ namespace KTKS_DonKH.GUI.QuanTri
             if (txtNoiDung.Text.Trim().Length > 0 && e.KeyChar == 13)
                 btnXem.PerformClick();
         }
+
+        
 
 
 

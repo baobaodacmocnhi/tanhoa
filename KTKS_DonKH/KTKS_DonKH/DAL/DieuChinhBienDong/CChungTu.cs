@@ -71,14 +71,14 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 ctchungtu.CreateBy = CTaiKhoan.MaUser;
                 db.ChungTu_ChiTiets.InsertOnSubmit(ctchungtu);
                 db.SubmitChanges();
-                try
-                {
-                    string result = "";
-                    KTKS_DonKH.wrThuongVu.wsThuongVu ws = new KTKS_DonKH.wrThuongVu.wsThuongVu();
-                    ws.them_CCCD(ctchungtu.DanhBo, ctchungtu.MaCT, out result);
-                    ExecuteNonQuery("insert into CCCD_Temp(CCCD,DanhBo,Result,ModifyDate)values('" + ctchungtu.MaCT + "','" + ctchungtu.DanhBo + "',N'" + result + "',getdate())");
-                }
-                catch { };
+                //try
+                //{
+                //    string result = "";
+                //    KTKS_DonKH.wrThuongVu.wsThuongVu ws = new KTKS_DonKH.wrThuongVu.wsThuongVu();
+                //    ws.them_CCCD(ctchungtu.DanhBo, ctchungtu.MaCT, out result);
+                //    ExecuteNonQuery("insert into CCCD_Temp(CCCD,DanhBo,Result,ModifyDate)values('" + ctchungtu.MaCT + "','" + ctchungtu.DanhBo + "',N'" + result + "',getdate())");
+                //}
+                //catch { };
                 return true;
             }
             catch (Exception ex)
@@ -114,14 +114,14 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 lichsuchungtu.NguoiThucHien = CTaiKhoan.HoTen;
                 lichsuchungtu.NgayThucHien = DateTime.Now;
                 ThemLichSuChungTu(lichsuchungtu);
-                try
-                {
-                    string result = "";
-                    KTKS_DonKH.wrThuongVu.wsThuongVu ws = new KTKS_DonKH.wrThuongVu.wsThuongVu();
-                    ws.xoa_CCCD(ctchungtu.DanhBo, ctchungtu.MaCT, out result);
-                    ExecuteNonQuery("insert into CCCD_Xoa_Temp(CCCD,DanhBo,Result,ModifyDate)values('" + ctchungtu.MaCT + "','" + ctchungtu.DanhBo + "',N'" + result + "',getdate())");
-                }
-                catch { };
+                //try
+                //{
+                //    string result = "";
+                //    KTKS_DonKH.wrThuongVu.wsThuongVu ws = new KTKS_DonKH.wrThuongVu.wsThuongVu();
+                //    ws.xoa_CCCD(ctchungtu.DanhBo, ctchungtu.MaCT, out result);
+                //    ExecuteNonQuery("insert into CCCD_Xoa_Temp(CCCD,DanhBo,Result,ModifyDate)values('" + ctchungtu.MaCT + "','" + ctchungtu.DanhBo + "',N'" + result + "',getdate())");
+                //}
+                //catch { };
                 return true;
             }
             catch (Exception ex)
@@ -226,7 +226,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                 + ",ls.NgayHetHan,ls.ThoiHan,ls.DienThoai,ls.Cat,ls.GhiChu,ls.Lo,ls.Phong,ls.CreateDate,ls.STT,ct.KhacDiaBan,ls.ThuongTru,ls.TamTru,ls.NguoiThucHien,ls.NgayThucHien"
                 + " from ChungTu_LichSu ls,ChungTu ct,LoaiChungTu lct"
                 + " where ct.MaLCT=lct.MaLCT and ls.MaCT=ct.MaCT and ct.MaLCT=ls.MaLCT"
-                + " and ls.Loai=N'Xóa' and ls.DanhBo='" + DanhBo + "'");
+                + " and ls.Loai=N'Xóa' and ls.DanhBo='" + DanhBo + "' order by ls.CreateDate desc");
         }
 
         public DataTable getDS_ChiTiet_CreateDates(int CreateBy, DateTime FromCreateDate, DateTime ToCreateDate)
@@ -380,6 +380,15 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             return LINQToDataTable(query);
         }
 
+        public DataTable getDS_ChiTiet_Xoa_TimKiem_CCCD(string CCCD)
+        {
+            return ExecuteQuery_DataTable("select ls.DanhBo,ct.MaLCT,lct.TenLCT,ls.MaCT,ct.NgaySinh,ct.HoTen,ct.DiaChi,ct.SoNKTong,ct.SoNKCat,ct.SoNKNhan,ct.SoNKConLai,ls.SoNKDangKy"
+                 + ",ls.NgayHetHan,ls.ThoiHan,ls.DienThoai,ls.Cat,ls.GhiChu,ls.Lo,ls.Phong,ls.CreateDate,ls.STT,ct.KhacDiaBan,ls.ThuongTru,ls.TamTru,ls.NguoiThucHien,ls.NgayThucHien"
+                 + " from ChungTu_LichSu ls,ChungTu ct,LoaiChungTu lct"
+                 + " where ct.MaLCT=lct.MaLCT and ls.MaCT=ct.MaCT and ct.MaLCT=ls.MaLCT"
+                 + " and ls.Loai=N'Xóa' and ls.MaCT='" + CCCD + "' order by ls.CreateDate desc");
+        }
+
         public DataTable getDS_ChiTiet_TimKiem_CCCD(string DanhBo, string CCCD)
         {
             var query = from itemCTCT in db.ChungTu_ChiTiets
@@ -416,6 +425,15 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             return LINQToDataTable(query);
         }
 
+        public DataTable getDS_ChiTiet_Xoa_TimKiem_CCCD(string DanhBo, string CCCD)
+        {
+            return ExecuteQuery_DataTable("select ls.DanhBo,ct.MaLCT,lct.TenLCT,ls.MaCT,ct.NgaySinh,ct.HoTen,ct.DiaChi,ct.SoNKTong,ct.SoNKCat,ct.SoNKNhan,ct.SoNKConLai,ls.SoNKDangKy"
+                  + ",ls.NgayHetHan,ls.ThoiHan,ls.DienThoai,ls.Cat,ls.GhiChu,ls.Lo,ls.Phong,ls.CreateDate,ls.STT,ct.KhacDiaBan,ls.ThuongTru,ls.TamTru,ls.NguoiThucHien,ls.NgayThucHien"
+                  + " from ChungTu_LichSu ls,ChungTu ct,LoaiChungTu lct"
+                  + " where ct.MaLCT=lct.MaLCT and ls.MaCT=ct.MaCT and ct.MaLCT=ls.MaLCT"
+                  + " and ls.Loai=N'Xóa' and ls.DanhBo='" + DanhBo + "' and ls.MaCT='" + CCCD + "' order by ls.CreateDate desc");
+        }
+
         public DataTable getDS_ChiTiet_TimKiem_HoTen(string HoTen)
         {
             var query = from itemCTCT in db.ChungTu_ChiTiets
@@ -450,6 +468,15 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         };
 
             return LINQToDataTable(query);
+        }
+
+        public DataTable getDS_ChiTiet_Xoa_TimKiem_HoTen(string HoTen)
+        {
+            return ExecuteQuery_DataTable("select ls.DanhBo,ct.MaLCT,lct.TenLCT,ls.MaCT,ct.NgaySinh,ct.HoTen,ct.DiaChi,ct.SoNKTong,ct.SoNKCat,ct.SoNKNhan,ct.SoNKConLai,ls.SoNKDangKy"
+                  + ",ls.NgayHetHan,ls.ThoiHan,ls.DienThoai,ls.Cat,ls.GhiChu,ls.Lo,ls.Phong,ls.CreateDate,ls.STT,ct.KhacDiaBan,ls.ThuongTru,ls.TamTru,ls.NguoiThucHien,ls.NgayThucHien"
+                  + " from ChungTu_LichSu ls,ChungTu ct,LoaiChungTu lct"
+                  + " where ct.MaLCT=lct.MaLCT and ls.MaCT=ct.MaCT and ct.MaLCT=ls.MaLCT"
+                  + " and ls.Loai=N'Xóa' and ct.HoTen=N'" + HoTen + "' order by ls.CreateDate desc");
         }
 
         public DataTable getDS_ChiTiet(string MaCT)
@@ -500,6 +527,15 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             return LINQToDataTable(query);
         }
 
+        public DataTable getDS_ChiTiet_Xoa_TimKiem_STT(int STT)
+        {
+            return ExecuteQuery_DataTable("select ls.DanhBo,ct.MaLCT,lct.TenLCT,ls.MaCT,ct.NgaySinh,ct.HoTen,ct.DiaChi,ct.SoNKTong,ct.SoNKCat,ct.SoNKNhan,ct.SoNKConLai,ls.SoNKDangKy"
+                 + ",ls.NgayHetHan,ls.ThoiHan,ls.DienThoai,ls.Cat,ls.GhiChu,ls.Lo,ls.Phong,ls.CreateDate,ls.STT,ct.KhacDiaBan,ls.ThuongTru,ls.TamTru,ls.NguoiThucHien,ls.NgayThucHien"
+                 + " from ChungTu_LichSu ls,ChungTu ct,LoaiChungTu lct"
+                 + " where ct.MaLCT=lct.MaLCT and ls.MaCT=ct.MaCT and ct.MaLCT=ls.MaLCT"
+                 + " and ls.Loai=N'Xóa' and ls.STT=" + STT + " order by ls.CreateDate desc");
+        }
+
         public DataTable getDS_ChiTiet_TimKiem_STT(string DanhBo, int STT)
         {
             var query = from itemCTCT in db.ChungTu_ChiTiets
@@ -534,6 +570,15 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         };
 
             return LINQToDataTable(query);
+        }
+
+        public DataTable getDS_ChiTiet_Xoa_TimKiem_STT(string DanhBo, int STT)
+        {
+            return ExecuteQuery_DataTable("select ls.DanhBo,ct.MaLCT,lct.TenLCT,ls.MaCT,ct.NgaySinh,ct.HoTen,ct.DiaChi,ct.SoNKTong,ct.SoNKCat,ct.SoNKNhan,ct.SoNKConLai,ls.SoNKDangKy"
+                 + ",ls.NgayHetHan,ls.ThoiHan,ls.DienThoai,ls.Cat,ls.GhiChu,ls.Lo,ls.Phong,ls.CreateDate,ls.STT,ct.KhacDiaBan,ls.ThuongTru,ls.TamTru,ls.NguoiThucHien,ls.NgayThucHien"
+                 + " from ChungTu_LichSu ls,ChungTu ct,LoaiChungTu lct"
+                 + " where ct.MaLCT=lct.MaLCT and ls.MaCT=ct.MaCT and ct.MaLCT=ls.MaLCT"
+                 + " and ls.Loai=N'Xóa' and ls.DanhBo='" + DanhBo + "' and ls.STT=" + STT + " order by ls.CreateDate desc");
         }
 
         public DataTable getDS_ChiTiet_TimKiem_STT(int FormSTT, int ToSTT)
@@ -572,6 +617,15 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             return LINQToDataTable(query);
         }
 
+        public DataTable getDS_ChiTiet_Xoa_TimKiem_STT(int FormSTT, int ToSTT)
+        {
+            return ExecuteQuery_DataTable("select ls.DanhBo,ct.MaLCT,lct.TenLCT,ls.MaCT,ct.NgaySinh,ct.HoTen,ct.DiaChi,ct.SoNKTong,ct.SoNKCat,ct.SoNKNhan,ct.SoNKConLai,ls.SoNKDangKy"
+                 + ",ls.NgayHetHan,ls.ThoiHan,ls.DienThoai,ls.Cat,ls.GhiChu,ls.Lo,ls.Phong,ls.CreateDate,ls.STT,ct.KhacDiaBan,ls.ThuongTru,ls.TamTru,ls.NguoiThucHien,ls.NgayThucHien"
+                 + " from ChungTu_LichSu ls,ChungTu ct,LoaiChungTu lct"
+                 + " where ct.MaLCT=lct.MaLCT and ls.MaCT=ct.MaCT and ct.MaLCT=ls.MaLCT"
+                 + " and ls.Loai=N'Xóa' and ls.STT>=" + FormSTT + " and ls.STT<=" + ToSTT + " order by ls.CreateDate desc");
+        }
+
         public DataTable getDS_ChiTiet_TimKiem_STT(string DanhBo, int FormSTT, int ToSTT)
         {
             var query = from itemCTCT in db.ChungTu_ChiTiets
@@ -606,6 +660,15 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         };
 
             return LINQToDataTable(query);
+        }
+
+        public DataTable getDS_ChiTiet_Xoa_TimKiem_STT(string DanhBo, int FormSTT, int ToSTT)
+        {
+            return ExecuteQuery_DataTable("select ls.DanhBo,ct.MaLCT,lct.TenLCT,ls.MaCT,ct.NgaySinh,ct.HoTen,ct.DiaChi,ct.SoNKTong,ct.SoNKCat,ct.SoNKNhan,ct.SoNKConLai,ls.SoNKDangKy"
+                 + ",ls.NgayHetHan,ls.ThoiHan,ls.DienThoai,ls.Cat,ls.GhiChu,ls.Lo,ls.Phong,ls.CreateDate,ls.STT,ct.KhacDiaBan,ls.ThuongTru,ls.TamTru,ls.NguoiThucHien,ls.NgayThucHien"
+                 + " from ChungTu_LichSu ls,ChungTu ct,LoaiChungTu lct"
+                 + " where ct.MaLCT=lct.MaLCT and ls.MaCT=ct.MaCT and ct.MaLCT=ls.MaLCT"
+                 + " and ls.Loai=N'Xóa' and ls.DanhBo='" + DanhBo + "' and ls.STT>=" + FormSTT + " and ls.STT<=" + ToSTT + " order by ls.CreateDate desc");
         }
 
         public DataTable getDS_ChiTiet_TimKiem_Lo(string Lo)
@@ -644,6 +707,15 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             return LINQToDataTable(query);
         }
 
+        public DataTable getDS_ChiTiet_Xoa_TimKiem_Lo(string Lo)
+        {
+            return ExecuteQuery_DataTable("select ls.DanhBo,ct.MaLCT,lct.TenLCT,ls.MaCT,ct.NgaySinh,ct.HoTen,ct.DiaChi,ct.SoNKTong,ct.SoNKCat,ct.SoNKNhan,ct.SoNKConLai,ls.SoNKDangKy"
+                 + ",ls.NgayHetHan,ls.ThoiHan,ls.DienThoai,ls.Cat,ls.GhiChu,ls.Lo,ls.Phong,ls.CreateDate,ls.STT,ct.KhacDiaBan,ls.ThuongTru,ls.TamTru,ls.NguoiThucHien,ls.NgayThucHien"
+                 + " from ChungTu_LichSu ls,ChungTu ct,LoaiChungTu lct"
+                 + " where ct.MaLCT=lct.MaLCT and ls.MaCT=ct.MaCT and ct.MaLCT=ls.MaLCT"
+                 + " and ls.Loai=N'Xóa' and ls.Lo='" + Lo + "' order by ls.CreateDate desc");
+        }
+
         public DataTable getDS_ChiTiet_TimKiem_Lo(string DanhBo, string Lo)
         {
             var query = from itemCTCT in db.ChungTu_ChiTiets
@@ -678,6 +750,15 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         };
 
             return LINQToDataTable(query);
+        }
+
+        public DataTable getDS_ChiTiet_Xoa_TimKiem_Lo(string DanhBo, string Lo)
+        {
+            return ExecuteQuery_DataTable("select ls.DanhBo,ct.MaLCT,lct.TenLCT,ls.MaCT,ct.NgaySinh,ct.HoTen,ct.DiaChi,ct.SoNKTong,ct.SoNKCat,ct.SoNKNhan,ct.SoNKConLai,ls.SoNKDangKy"
+                 + ",ls.NgayHetHan,ls.ThoiHan,ls.DienThoai,ls.Cat,ls.GhiChu,ls.Lo,ls.Phong,ls.CreateDate,ls.STT,ct.KhacDiaBan,ls.ThuongTru,ls.TamTru,ls.NguoiThucHien,ls.NgayThucHien"
+                 + " from ChungTu_LichSu ls,ChungTu ct,LoaiChungTu lct"
+                 + " where ct.MaLCT=lct.MaLCT and ls.MaCT=ct.MaCT and ct.MaLCT=ls.MaLCT"
+                 + " and ls.Loai=N'Xóa' and ls.DanhBo='" + DanhBo + "' and ls.Lo=N'" + Lo + "' order by ls.CreateDate desc");
         }
 
         public DataTable getDS_ChiTiet_TimKiem_Phong(string Phong)
@@ -716,6 +797,15 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             return LINQToDataTable(query);
         }
 
+        public DataTable getDS_ChiTiet_Xoa_TimKiem_Phong(string Phong)
+        {
+            return ExecuteQuery_DataTable("select ls.DanhBo,ct.MaLCT,lct.TenLCT,ls.MaCT,ct.NgaySinh,ct.HoTen,ct.DiaChi,ct.SoNKTong,ct.SoNKCat,ct.SoNKNhan,ct.SoNKConLai,ls.SoNKDangKy"
+                 + ",ls.NgayHetHan,ls.ThoiHan,ls.DienThoai,ls.Cat,ls.GhiChu,ls.Lo,ls.Phong,ls.CreateDate,ls.STT,ct.KhacDiaBan,ls.ThuongTru,ls.TamTru,ls.NguoiThucHien,ls.NgayThucHien"
+                 + " from ChungTu_LichSu ls,ChungTu ct,LoaiChungTu lct"
+                 + " where ct.MaLCT=lct.MaLCT and ls.MaCT=ct.MaCT and ct.MaLCT=ls.MaLCT"
+                 + " and ls.Loai=N'Xóa' and ls.Phong='" + Phong + "' order by ls.CreateDate desc");
+        }
+
         public DataTable getDS_ChiTiet_TimKiem_Phong(string DanhBo, string Phong)
         {
             var query = from itemCTCT in db.ChungTu_ChiTiets
@@ -752,6 +842,15 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             return LINQToDataTable(query);
         }
 
+        public DataTable getDS_ChiTiet_Xoa_TimKiem_Phong(string DanhBo, string Phong)
+        {
+            return ExecuteQuery_DataTable("select ls.DanhBo,ct.MaLCT,lct.TenLCT,ls.MaCT,ct.NgaySinh,ct.HoTen,ct.DiaChi,ct.SoNKTong,ct.SoNKCat,ct.SoNKNhan,ct.SoNKConLai,ls.SoNKDangKy"
+                 + ",ls.NgayHetHan,ls.ThoiHan,ls.DienThoai,ls.Cat,ls.GhiChu,ls.Lo,ls.Phong,ls.CreateDate,ls.STT,ct.KhacDiaBan,ls.ThuongTru,ls.TamTru,ls.NguoiThucHien,ls.NgayThucHien"
+                 + " from ChungTu_LichSu ls,ChungTu ct,LoaiChungTu lct"
+                 + " where ct.MaLCT=lct.MaLCT and ls.MaCT=ct.MaCT and ct.MaLCT=ls.MaLCT"
+                 + " and ls.Loai=N'Xóa' and ls.DanhBo='" + DanhBo + "' and ls.Phong='" + Phong + "' order by ls.CreateDate desc");
+        }
+
         public DataTable getDS_ChiTiet_TimKiem_Ngay(string DanhBo, string Lo, DateTime FromCreateDate, DateTime ToCreateDate)
         {
             var query = from itemCTCT in db.ChungTu_ChiTiets
@@ -786,6 +885,15 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
                         };
 
             return LINQToDataTable(query);
+        }
+
+        public DataTable getDS_ChiTiet_Xoa_TimKiem_Ngay(string DanhBo, string Lo, DateTime FromCreateDate, DateTime ToCreateDate)
+        {
+            return ExecuteQuery_DataTable("select ls.DanhBo,ct.MaLCT,lct.TenLCT,ls.MaCT,ct.NgaySinh,ct.HoTen,ct.DiaChi,ct.SoNKTong,ct.SoNKCat,ct.SoNKNhan,ct.SoNKConLai,ls.SoNKDangKy"
+                 + ",ls.NgayHetHan,ls.ThoiHan,ls.DienThoai,ls.Cat,ls.GhiChu,ls.Lo,ls.Phong,ls.CreateDate,ls.STT,ct.KhacDiaBan,ls.ThuongTru,ls.TamTru,ls.NguoiThucHien,ls.NgayThucHien"
+                 + " from ChungTu_LichSu ls,ChungTu ct,LoaiChungTu lct"
+                 + " where ct.MaLCT=lct.MaLCT and ls.MaCT=ct.MaCT and ct.MaLCT=ls.MaLCT"
+                 + " and ls.Loai=N'Xóa' and ls.DanhBo='" + DanhBo + "' and ls.Lo=N'" + Lo + "' and cast(ls.NgayThucHien as date)>='" + FromCreateDate.ToString("yyyyMMdd") + "' and cast(ls.NgayThucHien as date)<='" + ToCreateDate.ToString("yyyyMMdd") + "' order by ls.CreateDate desc");
         }
 
         public DataTable getDS_ChiTiet_CCCD()
