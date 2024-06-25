@@ -2426,6 +2426,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             ls.CreateBy = ct.CreateBy;
             ls.ModifyDate = ct.ModifyDate;
             ls.ModifyBy = ct.ModifyBy;
+            ls.SHS = ct.SHS;
             return ls;
         }
 
@@ -2441,6 +2442,7 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             B.MaCT = A.MaCT;
             B.SoNKTong = A.SoNKTong;
             B.SoNKDangKy = A.SoNKDangKy;
+            B.SoNKConLai = A.SoNKConLai;
             B.ThoiHan = A.ThoiHan;
             B.NgayHetHan = A.NgayHetHan;
             B.CatNK_HoTens = A.CatNK_HoTens;
@@ -2449,6 +2451,12 @@ namespace KTKS_DonKH.DAL.DieuChinhBienDong
             B.Phong = A.Phong;
             B.Quan = A.Quan;
             B.Phuong = A.Phuong;
+            B.SHS = A.SHS;
+            B.TamTru = A.TamTru;
+            B.ThuongTru = A.ThuongTru;
+            B.Cat = A.Cat;
+            B.Cat_Ngay = A.Cat_Ngay;
+            B.DienThoai = A.DienThoai;
         }
 
         public DataTable getLichSuChungTu(string MaCT)

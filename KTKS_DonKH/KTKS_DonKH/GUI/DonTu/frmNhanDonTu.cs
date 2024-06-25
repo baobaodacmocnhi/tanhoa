@@ -2086,6 +2086,8 @@ namespace KTKS_DonKH.GUI.DonTu
                     result = _wsEContract.getThongTinDoiTac(txtCCCD.Text.Trim());
                 if (txtDienThoaiMoi.Text.Trim() != "")
                     result += "\r\n" + _wsEContract.getThongTinDoiTac(txtDienThoaiMoi.Text.Trim());
+                if (txtMST.Text.Trim() != "")
+                    result += "\r\n" + _wsEContract.getThongTinDoiTac(txtMST.Text.Trim());
                 if (result != "")
                     MessageBox.Show(result, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else

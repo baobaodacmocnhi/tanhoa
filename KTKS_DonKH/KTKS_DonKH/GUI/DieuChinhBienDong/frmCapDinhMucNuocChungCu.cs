@@ -172,7 +172,7 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
             {
                 if (CTaiKhoan.CheckQuyen(_mnu, "Them"))
                 {
-                    if (txtCCCD.Text.Trim() != "" && txtDanhBo.Text.Trim().Length == 11)
+                    if (txtCCCD.Text.Trim() != "")
                     {
                         if (txtCCCD.Text.Trim().Length != 12)
                         {

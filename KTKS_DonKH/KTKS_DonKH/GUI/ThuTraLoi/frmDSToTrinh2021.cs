@@ -239,9 +239,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                         {
                             DataSetBaoCao dsBaoCao = new DataSetBaoCao();
                             DataRow dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
-
                             ToTrinh_ChiTiet cttt = _cTT.get_ChiTiet(int.Parse(dgvToTrinh["IDCT", i].Value.ToString()));
-
                             if (cttt.ToTrinh_ChiTiet_DanhSaches.Count == 0)
                             {
                                 dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
@@ -268,8 +266,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                 dr["NoiNhan"] = cttt.NoiNhan;
                                 dr["ChucVu"] = CTaiKhoan.ChucVu.ToUpper();
                                 dr["NguoiKy"] = CTaiKhoan.NguoiKy;
-
-                                if (_cttt.VeViec.Contains("Hạ cỡ") || _cttt.VeViec.Contains("hộp bảo vệ"))
+                                if ((_cttt.VeViec.Contains("Hạ cỡ") || _cttt.VeViec.Contains("hộp bảo vệ")) && !bgdTQ.ChucVu.ToUpper().Contains("GIÁM ĐỐC"))
                                 {
                                     dr["ChucVuThongQua"] = "TRÌNH DUYỆT\n" + bgdTQ.ChucVu.ToUpper();
                                     dr["NguoiKyThongQua"] = bgdTQ.HoTen;
@@ -281,13 +278,11 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                 }
                                 dr["ChucVuDuyet"] = bgdDuyet.ChucVu.ToUpper();
                                 dr["NguoiKyDuyet"] = bgdDuyet.HoTen;
-
                                 dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
-
                                 ReportDocument rpt;
                                 //if (cttt.KinhTrinh.ToLower().Contains("thông qua") == true)
                                 //{
-                                if (_cttt.VeViec.Contains("Hạ cỡ") || _cttt.VeViec.Contains("hộp bảo vệ"))
+                                if ((_cttt.VeViec.Contains("Hạ cỡ") || _cttt.VeViec.Contains("hộp bảo vệ")) && !bgdTQ.ChucVu.ToUpper().Contains("GIÁM ĐỐC"))
                                     rpt = new rptToTrinh_ThongQuaPGD();
                                 else
                                     rpt = new rptToTrinh_ThongQuaPGD_2022();
@@ -297,10 +292,8 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                 //    rpt = new rptToTrinh();
                                 //}
                                 rpt.SetDataSource(dsBaoCao);
-
                                 printDialog.AllowSomePages = true;
                                 printDialog.ShowHelp = true;
-
                                 //rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
                                 //rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
                                 rpt.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
@@ -313,7 +306,6 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                 foreach (ToTrinh_ChiTiet_DanhSach item in _cttt.ToTrinh_ChiTiet_DanhSaches.ToList())
                                 {
                                     dr = dsBaoCao.Tables["ThaoThuTraLoi"].NewRow();
-
                                     dr["KyHieuPhong"] = CTaiKhoan.KyHieuPhong;
                                     dr["TenPhong"] = CTaiKhoan.TenPhong.ToUpper();
                                     dr["SoPhieu"] = item.IDCT.ToString().Insert(item.IDCT.ToString().Length - 2, "-");
@@ -348,21 +340,16 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                             }
                                     dr["ChucVu"] = CTaiKhoan.ChucVu.ToUpper();
                                     dr["NguoiKy"] = CTaiKhoan.NguoiKy;
-
                                     //if (bgdTQ.ChucVu.ToUpper() == "GIÁM ĐỐC")
                                     //    dr["ChucVuThongQua"] = "GIÁM ĐỐC";
                                     //else
                                     //    dr["ChucVuThongQua"] = "TRÌNH DUYỆT\n" + bgdTQ.ChucVu.ToUpper();
                                     dr["ChucVuThongQua"] = "DUYỆT\n" + bgdTQ.ChucVu.ToUpper();
                                     dr["NguoiKyThongQua"] = bgdTQ.HoTen;
-
                                     dr["ChucVuDuyet"] = bgdDuyet.ChucVu.ToUpper();
                                     dr["NguoiKyDuyet"] = bgdDuyet.HoTen;
-
                                     dsBaoCao.Tables["ThaoThuTraLoi"].Rows.Add(dr);
-                                    //
                                     DataRow dr2 = dsBaoCao.Tables["ThongBaoCHDB"].NewRow();
-
                                     if (item.ToTrinh_ChiTiet.VeViec.Contains("Điều chỉnh hóa đơn"))
                                     {
                                         dr2["NgayXuLy"] = item.KyHD;
@@ -406,7 +393,6 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
 
                                     dsBaoCao.Tables["ThongBaoCHDB"].Rows.Add(dr2);
                                 }
-
                                 ReportDocument rpt1, rpt2;
                                 if (_cttt.VeViec.Contains("Điều chỉnh hóa đơn") == true)
                                 {
@@ -422,17 +408,14 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                     rpt1 = new rptToTrinh_DCMS_2022();
                                     rpt1.SetDataSource(dsBaoCao);
                                 }
-
                                 printDialog.AllowSomePages = true;
                                 printDialog.ShowHelp = true;
-
                                 //rpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
                                 //rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
                                 rpt1.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
                                 rpt1.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
                                 rpt1.Clone();
                                 rpt1.Dispose();
-
                                 rpt2.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
                                 rpt2.PrintToPrinter(printDialog.PrinterSettings.Copies, printDialog.PrinterSettings.Collate, printDialog.PrinterSettings.ToPage, printDialog.PrinterSettings.FromPage);
                                 rpt2.Clone();

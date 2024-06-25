@@ -794,7 +794,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     dr["NoiNhan"] = _cttt.NoiNhan;
                     dr["ChucVu"] = CTaiKhoan.ChucVu.ToUpper();
                     dr["NguoiKy"] = CTaiKhoan.NguoiKy;
-                    if (_cttt.VeViec.Contains("Hạ cỡ") || _cttt.VeViec.Contains("hộp bảo vệ"))
+                    if ((_cttt.VeViec.Contains("Hạ cỡ") || _cttt.VeViec.Contains("hộp bảo vệ")) && !bgdTQ.ChucVu.ToUpper().Contains("GIÁM ĐỐC"))
                     {
                         dr["ChucVuThongQua"] = "TRÌNH DUYỆT\n" + bgdTQ.ChucVu.ToUpper();
                         dr["NguoiKyThongQua"] = bgdTQ.HoTen;
@@ -810,7 +810,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                     ReportDocument rpt;
                     //if (_cttt.KinhTrinh.ToLower().Contains("thông qua") == true)
                     //{
-                    if (_cttt.VeViec.Contains("Hạ cỡ") || _cttt.VeViec.Contains("hộp bảo vệ"))
+                    if ((_cttt.VeViec.Contains("Hạ cỡ") || _cttt.VeViec.Contains("hộp bảo vệ")) && !bgdTQ.ChucVu.ToUpper().Contains("GIÁM ĐỐC"))
                         rpt = new rptToTrinh_ThongQuaPGD();
                     else
                         rpt = new rptToTrinh_ThongQuaPGD_2022();
@@ -1045,7 +1045,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
             byte[] file = _wsThuongVu.get_Hinh("ToTrinh_ChiTiet_Hinh", _cttt.IDCT.ToString(), dgvHinh.CurrentRow.Cells["Name_Hinh"].Value.ToString() + dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString());
             if (file != null)
                 if (dgvHinh.CurrentRow.Cells["Loai_Hinh"].Value.ToString().ToLower().Contains("pdf"))
-                    _cTT.viewPDF(1,file);
+                    _cTT.viewPDF(1, file);
                 else
                     _cTT.viewImage(file);
             else
