@@ -19,13 +19,13 @@ namespace KTKS_DonKH.GUI.QuanTri
     {
         string _mnu = "mnuBanGiamDoc";
         CBanGiamDoc _cBanGiamDoc = new CBanGiamDoc();
-        int selectedindex = -1;
         CDCBD _cDCBD = new CDCBD();
         CChungTu _cChungTu = new CChungTu();
         CCHDB _cCHDB = new CCHDB();
         CTTTL _cTTTL = new CTTTL();
         CDongNuoc _cDongNuoc = new CDongNuoc();
         CToTrinh _cToTrinh = new CToTrinh();
+        BanGiamDoc _bgd = new BanGiamDoc();
 
         public frmBanGiamDoc()
         {
@@ -44,7 +44,7 @@ namespace KTKS_DonKH.GUI.QuanTri
         {
             txtChucVu.Text = "";
             txtHoTen.Text = "";
-            selectedindex = -1;
+            _bgd = null;
             if (CTaiKhoan.Admin == true)
                 dgvDSBanGiamDoc.DataSource = _cBanGiamDoc.getDS_Admin();
             else
@@ -98,14 +98,12 @@ namespace KTKS_DonKH.GUI.QuanTri
             {
                 try
                 {
-                    if (selectedindex != -1)
+                    if (_bgd != null)
                         if (txtChucVu.Text.Trim() != "" && txtHoTen.Text.Trim() != "")
                         {
-                            BanGiamDoc bangiamdoc = _cBanGiamDoc.get(int.Parse(dgvDSBanGiamDoc["MaBGD", selectedindex].Value.ToString()));
-                            bangiamdoc.ChucVu = txtChucVu.Text.Trim();
-                            bangiamdoc.HoTen = txtHoTen.Text.Trim();
-
-                            if (_cBanGiamDoc.Sua(bangiamdoc))
+                            _bgd.ChucVu = txtChucVu.Text.Trim();
+                            _bgd.HoTen = txtHoTen.Text.Trim();
+                            if (_cBanGiamDoc.Sua(_bgd))
                                 Clear();
                         }
                         else
@@ -126,13 +124,11 @@ namespace KTKS_DonKH.GUI.QuanTri
             {
                 try
                 {
-                    if (selectedindex != -1)
+                    if (_bgd != null)
                         if (txtChucVu.Text.Trim() != "" && txtHoTen.Text.Trim() != "")
                         {
-                            BanGiamDoc bangiamdoc = _cBanGiamDoc.get(int.Parse(dgvDSBanGiamDoc["MaBGD", selectedindex].Value.ToString()));
-                            bangiamdoc.An = true;
-
-                            if (_cBanGiamDoc.Sua(bangiamdoc))
+                            _bgd.An = true;
+                            if (_cBanGiamDoc.Sua(_bgd))
                                 Clear();
                         }
                         else
@@ -159,9 +155,9 @@ namespace KTKS_DonKH.GUI.QuanTri
         {
             try
             {
-                selectedindex = e.RowIndex;
                 txtChucVu.Text = dgvDSBanGiamDoc["ChucVu", e.RowIndex].Value.ToString();
                 txtHoTen.Text = dgvDSBanGiamDoc["HoTen", e.RowIndex].Value.ToString();
+                _bgd = _cBanGiamDoc.get(int.Parse(dgvDSBanGiamDoc["MaBGD", e.RowIndex].Value.ToString()));
             }
             catch (Exception)
             {
@@ -170,11 +166,10 @@ namespace KTKS_DonKH.GUI.QuanTri
 
         private void dgvDSBanGiamDoc_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            BanGiamDoc bangiamdoc = _cBanGiamDoc.get(int.Parse(dgvDSBanGiamDoc["MaBGD", selectedindex].Value.ToString()));
-            //if (bool.Parse(dgvDSBanGiamDoc["KyTen", e.RowIndex].Value.ToString()) != bangiamdoc.KyTen)
+            if (_bgd != null && dgvDSBanGiamDoc.Columns[e.ColumnIndex].Name == "KyTen")
             {
-                bangiamdoc.KyTen = bool.Parse(dgvDSBanGiamDoc["KyTen", e.RowIndex].Value.ToString());
-                _cBanGiamDoc.Sua(bangiamdoc);
+                _bgd.KyTen = bool.Parse(dgvDSBanGiamDoc["KyTen", e.RowIndex].Value.ToString());
+                _cBanGiamDoc.Sua(_bgd);
             }
         }
 
@@ -464,7 +459,7 @@ namespace KTKS_DonKH.GUI.QuanTri
                 btnXem.PerformClick();
         }
 
-        
+
 
 
 

@@ -536,6 +536,11 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                         MessageBox.Show("Chưa có Hiệu Lực Kỳ \nHoặc không có biến động", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
+                    if (txtDinhMuc_BD.Text.Trim() != "" && int.Parse(txtDinhMuc_BD.Text.Trim()) % 4 != 0)
+                    {
+                        MessageBox.Show("Định Mức là bội số của 4", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     DCBD_ChiTietBienDong ctdcbd = new DCBD_ChiTietBienDong();
                     if (_dontu_ChiTiet != null)
                     {
@@ -2328,30 +2333,30 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                             MessageBox.Show("CCCD gồm 12 số", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        //string resultCheckCCCD = "";
-                        //int result = _wsThuongVu.checkExists_CCCD("", txtMaCT.Text.Trim(), out resultCheckCCCD);
-                        //if (result == 1)
-                        //{
-                        //    if (!resultCheckCCCD.Contains("Tân Hòa"))
-                        //    {
-                        //        MessageBox.Show(resultCheckCCCD, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //        return;
-                        //    }
-                        //    else
-                        //    {
-                        //        if (_cChungTu.CheckExist_CT(txtDanhBo.Text.Trim(), txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString())) == true)
-                        //        {
-                        //            MessageBox.Show("Dữ liệu đã tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //            return;
-                        //        }
-                        //    }
-                        //}
-                        //else
-                        //    if (result == -1)
-                        //    {
-                        //        MessageBox.Show("Lỗi, vui lòng thao tác lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //        return;
-                        //    }
+                        string resultCheckCCCD = "";
+                        int result = _wsThuongVu.checkExists_CCCD("", txtMaCT.Text.Trim(), out resultCheckCCCD);
+                        if (result == 1)
+                        {
+                            if (!resultCheckCCCD.Contains("Tân Hòa"))
+                            {
+                                MessageBox.Show(resultCheckCCCD, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                            else
+                            {
+                                if (_cChungTu.CheckExist_CT(txtDanhBo.Text.Trim(), txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString())) == true)
+                                {
+                                    MessageBox.Show("Dữ liệu đã tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                            }
+                        }
+                        else
+                            if (result == -1)
+                            {
+                                MessageBox.Show("Lỗi, vui lòng thao tác lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                         var transactionOptions = new TransactionOptions();
                         transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
                         using (var scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))

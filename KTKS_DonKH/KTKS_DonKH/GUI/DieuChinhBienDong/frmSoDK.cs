@@ -329,30 +329,30 @@ namespace KTKS_DonKH.GUI.DieuChinhBienDong
                 {
                     if (txtMaCT.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "" && txtSoNKDangKy.Text.Trim() != "" && txtSoNKTong.Text.Trim() != "0" && txtSoNKDangKy.Text.Trim() != "0" && txtDanhBo.Text.Trim().Length == 11)
                     {
-                        //string resultCheckCCCD = "";
-                        //int result = _wsThuongVu.checkExists_CCCD("", txtMaCT.Text.Trim(), out resultCheckCCCD);
-                        //if (result == 1)
-                        //{
-                        //    if (!resultCheckCCCD.Contains("Tân Hòa"))
-                        //    {
-                        //        MessageBox.Show(resultCheckCCCD, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //        return;
-                        //    }
-                        //    else
-                        //    {
-                        //        if (_cChungTu.CheckExist_CT(txtDanhBo.Text.Trim(), txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString())) == true)
-                        //        {
-                        //            MessageBox.Show("Dữ liệu đã tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //            return;
-                        //        }
-                        //    }
-                        //}
-                        //else
-                        //    if (result == -1)
-                        //    {
-                        //        MessageBox.Show("Lỗi, vui lòng thao tác lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //        return;
-                        //    }
+                        string resultCheckCCCD = "";
+                        int result = _wsThuongVu.checkExists_CCCD("", txtMaCT.Text.Trim(), out resultCheckCCCD);
+                        if (result == 1)
+                        {
+                            if (!resultCheckCCCD.Contains("Tân Hòa"))
+                            {
+                                MessageBox.Show(resultCheckCCCD, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                            else
+                            {
+                                if (_cChungTu.CheckExist_CT(txtDanhBo.Text.Trim(), txtMaCT.Text.Trim(), int.Parse(cmbLoaiCT.SelectedValue.ToString())) == true)
+                                {
+                                    MessageBox.Show("Dữ liệu đã tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                            }
+                        }
+                        else
+                            if (result == -1)
+                            {
+                                MessageBox.Show("Lỗi, vui lòng thao tác lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                         var transactionOptions = new TransactionOptions();
                         transactionOptions.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
                         using (var scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
