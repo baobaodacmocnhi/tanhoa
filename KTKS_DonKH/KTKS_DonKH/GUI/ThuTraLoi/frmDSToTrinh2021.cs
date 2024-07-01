@@ -266,7 +266,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                 dr["NoiNhan"] = cttt.NoiNhan;
                                 dr["ChucVu"] = CTaiKhoan.ChucVu.ToUpper();
                                 dr["NguoiKy"] = CTaiKhoan.NguoiKy;
-                                if ((_cttt.VeViec.Contains("Hạ cỡ") || _cttt.VeViec.Contains("hộp bảo vệ")) && !bgdTQ.ChucVu.ToUpper().Contains("GIÁM ĐỐC"))
+                                if ((_cttt.VeViec.Contains("Hạ cỡ") || _cttt.VeViec.Contains("hộp bảo vệ")) && bgdTQ.ChucVu.ToUpper().Contains("PHÓ GIÁM ĐỐC"))
                                 {
                                     dr["ChucVuThongQua"] = "TRÌNH DUYỆT\n" + bgdTQ.ChucVu.ToUpper();
                                     dr["NguoiKyThongQua"] = bgdTQ.HoTen;
@@ -282,7 +282,7 @@ namespace KTKS_DonKH.GUI.ThuTraLoi
                                 ReportDocument rpt;
                                 //if (cttt.KinhTrinh.ToLower().Contains("thông qua") == true)
                                 //{
-                                if ((_cttt.VeViec.Contains("Hạ cỡ") || _cttt.VeViec.Contains("hộp bảo vệ")) && !bgdTQ.ChucVu.ToUpper().Contains("GIÁM ĐỐC"))
+                                if ((_cttt.VeViec.Contains("Hạ cỡ") || _cttt.VeViec.Contains("hộp bảo vệ")) && bgdTQ.ChucVu.ToUpper().Contains("PHÓ GIÁM ĐỐC"))
                                     rpt = new rptToTrinh_ThongQuaPGD();
                                 else
                                     rpt = new rptToTrinh_ThongQuaPGD_2022();
