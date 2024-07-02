@@ -353,8 +353,8 @@ namespace ThuTien.GUI.Doi
                                     MessageBox.Show("Ngày Đăng Ngân đã Chốt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
                                 }
-                            if (int.Parse(cmbNhanVien.SelectedValue.ToString()) == 52 || int.Parse(cmbNhanVien.SelectedValue.ToString()) == 120)
-                                foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
+                            foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
+                                if (_cHoaDon.CheckDangNganChuyenKhoan(item.Cells["SoHoaDon_TG"].Value.ToString()))
                                     ///đăng ngân tiền mặt
                                     if (_cHoaDon.CheckDangNganChuyenKhoanTienMat(item.Cells["SoHoaDon_TG"].Value.ToString()))
                                     {
@@ -379,9 +379,8 @@ namespace ThuTien.GUI.Doi
                                                     scope.Complete();
                                         }
                                     }
-                            ///nhân viên khác
-                            else
-                                foreach (DataGridViewRow item in dgvHDTuGia.SelectedRows)
+                                ///nhân viên khác
+                                else
                                     if (!_cHoaDon.XoaDangNgan("", item.Cells["SoHoaDon_TG"].Value.ToString(), int.Parse(cmbNhanVien.SelectedValue.ToString())))
                                     {
                                     }
@@ -389,8 +388,8 @@ namespace ThuTien.GUI.Doi
                         else
                             if (tabControl.SelectedTab.Name == "tabCoQuan")
                             {
-                                if (int.Parse(cmbNhanVien.SelectedValue.ToString()) == 52 || int.Parse(cmbNhanVien.SelectedValue.ToString()) == 120)
-                                    foreach (DataGridViewRow item in dgvHDCoQuan.SelectedRows)
+                                foreach (DataGridViewRow item in dgvHDCoQuan.SelectedRows)
+                                    if (_cHoaDon.CheckDangNganChuyenKhoan(item.Cells["SoHoaDon_CQ"].Value.ToString()))
                                         ///đăng ngân tiền mặt
                                         if (_cHoaDon.CheckDangNganChuyenKhoanTienMat(item.Cells["SoHoaDon_CQ"].Value.ToString()))
                                         {
@@ -415,8 +414,7 @@ namespace ThuTien.GUI.Doi
                                                         scope.Complete();
                                             }
                                         }
-                                else
-                                    foreach (DataGridViewRow item in dgvHDCoQuan.SelectedRows)
+                                    else
                                         if (!_cHoaDon.XoaDangNgan("", item.Cells["SoHoaDon_CQ"].Value.ToString(), int.Parse(cmbNhanVien.SelectedValue.ToString())))
                                         {
                                         }
